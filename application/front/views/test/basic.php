@@ -1,5 +1,11 @@
 
+   <?php $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+if($pageWasRefreshed ) {
+   echo $test_header;
+} 
+ ?> 
                             <!--- middle section start -->
+                            <div id="screen">
                             <div class="common-form common-form_border">
                                 <h3>Basic Information</h3>
                                 <?php echo form_open(base_url('recruiter/basic_information'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => 'clearfix')); ?>
@@ -69,6 +75,20 @@
                                 </fieldset>
                                 </form>
                             </div>
-
+                            </div>
+ <?php if($pageWasRefreshed ) {
+   echo $test_footer;
+} ?>
        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/basic_info.js'); ?>"></script>
-    
+    <script>
+            function ChangeUrl(title, url) {
+                                                     if (typeof (history.pushState) != "undefined") {
+                                                         var obj = {Title: title, Url: url};
+                                                         history.pushState(obj, obj.Title, obj.Url);
+                                                         $("#screen").load(url);
+                                                     } else {
+                                                         alert("Browser does not support HTML5.");
+                                                     }
+                                                 }
+                                                 
+                                                 </script>
