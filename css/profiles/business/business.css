@@ -2100,7 +2100,7 @@ label.cameraButton:active {
     width: 100%;
 }
 .action-button #message_count {
-    right: 158px;
+   /* right: 158px;*/
 }
 .business_data_table td a {
     color: #000;
@@ -4264,6 +4264,7 @@ div .comment {
 .krajee-default.file-preview-frame{margin:6px !important;}
 .post-editor .popup-social-icon ul.editor-header li{padding:0;}
 .inner_search.search{padding:10px;}
+#likeusermodal .mes .modal-footer{display:none;}
 
 
 

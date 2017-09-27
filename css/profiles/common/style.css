@@ -685,15 +685,7 @@ label.error {
 .modal-body {
     padding: 0px!important
 }
-.modal.in .modal-dialog{
-    position:absolute;
-    top: 50%; left: 50%;
-    -ms-transform: translate(-50%,-50%) !important;
-    -webkit-transform: translate(-50%,-50%) !important;
-    -moz-transform: translate(-50%,-50%) !important;
-    -o-transform: translate(-50%,-50%) !important;
-    transform: translate(-50%,-50%) !important;
-}
+
 .modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
 .modal-content {
     background-color: #fefefe;
@@ -1886,7 +1878,22 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 /*** search page design  ***/
 .inner_search .box_search_module{padding:20px !important;}
 
+/***  no login page design ***/
+.no-login .heder-right{}
 
+/*** modal fade in fade out effect  ***/
+.modal-content{
+    /*position:absolute;
+    top: 50%; left: 50%;
+    -ms-transform: translate(-50%,-50%) !important;
+    -webkit-transform: translate(-50%,-50%) !important;
+    -moz-transform: translate(-50%,-50%) !important;
+    -o-transform: translate(-50%,-50%) !important;
+    transform: translate(-50%,-50%) !important;*/
+	transform: translate(0, 50%) !important;
+	-ms-transform: translate(0, 50%) !important; /* IE 9 */
+	-webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
+}
 
 
 
@@ -2167,6 +2174,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 }
 
 @media screen and (max-width: 479px) {
+	.fw-479{width:100%;}
 	ul li,
     ol li {
         font-size: 12px;
@@ -2236,6 +2244,10 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.modal.message-box span.mes{padding:0;}
 	.modal.in .modal-dialog{font-size:88%;}
 	.modal.in .modal-dialog .mes .pop_content{font-size:18px;}
+	
+	.no-login .fw-479{text-align:center;}
+	.no-login .btn-right.pull-right{float:none !important;}
+	.no-login #paddingtop_fixed{padding-top:105px !important;}
 }
 
 @media screen and (max-width: 360px) {
