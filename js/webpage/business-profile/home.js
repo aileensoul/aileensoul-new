@@ -1159,7 +1159,7 @@ function imgval(event) {
             var ext = vfirstname.split('.').pop();
             var ext1 = vname.split('.').pop();
             var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
-            var allowesvideo = ['mp4', 'webm', 'MP4'];
+            var allowesvideo = ['mp4', 'webm', 'mov', 'MP4'];
             var allowesaudio = ['mp3'];
             var allowespdf = ['pdf'];
 

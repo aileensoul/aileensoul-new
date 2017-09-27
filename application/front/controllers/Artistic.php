@@ -33,7 +33,7 @@ class Artistic extends MY_Controller {
         //  }
         //This function is there only one time users slug created after remove it End
 
-        include ('artistic_include.php');
+        include ('include.php');
     }
 
     public function index() {

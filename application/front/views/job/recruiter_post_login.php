@@ -358,15 +358,15 @@
             /*second*/
 
         </style>
-   <body class="page-container-bg-solid page-boxed">
+   <body class="page-container-bg-solid page-boxed no-login">
 
      <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-3">
+                    <div class="col-md-4 col-sm-3 col-xs-4 fw-479">
                         <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
                     </div>
-                    <div class="col-md-8 col-sm-9">
+                    <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
                             <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
@@ -380,7 +380,7 @@
       <div class="container">
       <div class="row row4">
      
-      <div class="col-md-7 col-sm-7 col-sm-push-4 col-md-push-4">
+      <div class="col-md-8 col-sm-12 col-md-push-2">
          <div class="common-form">
             <div class="job-saved-box">
                <h3>

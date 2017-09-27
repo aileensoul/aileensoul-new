@@ -38,7 +38,7 @@
                                                     }
                                                     ?>
                                                     <?php
-                                                    $allowesvideo = array('mp4', '3gp', 'webm');
+                                                    $allowesvideo = array('mp4', '3gp', 'webm', 'mov', 'MP4');
                                                     foreach ($multiplevideo as $mke => $mval) {
                                                         foreach ($mval as $mke1 => $mval1) {
                                                             $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);

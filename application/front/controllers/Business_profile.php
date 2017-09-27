@@ -8871,11 +8871,8 @@ Your browser does not support the audio tag.
         $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $modal = '<div class="modal-header">';
-        $modal .= '<button type="button" class="close" data-dismiss="modal">&times;</button>';
         $modal .= '<h4 class="modal-title">';
-
         $modal .= '' . count($commneteduser) . ' Likes';
-
         $modal .= '</h4></div>';
         $modal .= '<div class="modal-body padding_less_right">';
         $modal .= '<div class="like_user_list">';
@@ -8924,12 +8921,7 @@ Your browser does not support the audio tag.
         $modal .= '</div>';
         $modal .= '<div class="clearfix"></div>';
         $modal .= '</div>';
-        $modal .= '<div class="modal-footer">';
-        $modal .= '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-        $modal .= '</div>';
-
-
-
+        
         echo $modal;
 
 //        echo '<div class="likeduser">';
@@ -12535,7 +12527,7 @@ Your browser does not support the audio tag.
             $multiplevideo[] = $busmultivideo;
         }
 
-        $allowesvideo = array('mp4', 'webm');
+        $allowesvideo = array('mp4', 'webm', 'MP4', 'WEBM');
 
         foreach ($multiplevideo as $mke => $mval) {
 
@@ -12877,7 +12869,7 @@ Your browser does not support the audio tag.
         $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
         $join_str[0]['join_type'] = '';
 
-        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'audio');
+        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'pdf');
         $businesspdf = $this->data['businessaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
         if ($businesspdf) {
@@ -13195,8 +13187,8 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                     $allowespdf = array('pdf');
-                    $allowesvideo = array('mp4', 'webm');
-                    $allowesaudio = array('mp3');
+                    $allowesvideo = array('mp4', 'webm', 'mov', 'MP4');
+                    $allowesaudio = array('mp3', 'MP3');
                     $filename = $businessmultiimage[0]['file_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
