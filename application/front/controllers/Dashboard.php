@@ -442,12 +442,19 @@ class Dashboard extends MY_Controller {
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $main_user = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
+            $userimage = '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
             $userimage .= ' <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
                                                 <img src="'.base_url().'img/cam.png">Update Profile Picture</a>';
-
-            echo $userimage;
         }
+
+         $userimagehead = '<img class="img-circle" height="50" width="50" alt="Smiley face" src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
+
+           echo json_encode(
+                        array(
+                            "uimage" => $userimage,
+                            "uimagehead" => $userimagehead,
+                           
+                ));
     }
 
 //FOR PROGRESSBAR COUNT COMMON FUNCTION START
