@@ -10,7 +10,7 @@
                     <?php
                 } else {
                     ?>
-                    <div> 
+                    <div class="bg-images no-cover-upload"> 
                         <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $business_common_data[0]['company_name']; ?>" >
                     </div> <?php } ?>
             </a>
