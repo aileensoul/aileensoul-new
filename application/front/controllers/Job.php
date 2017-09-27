@@ -3382,7 +3382,7 @@ class Job extends MY_Controller {
                     $contition_array = array('user_id' => $post['user_id'], 're_status' => '1','is_delete'=> '0');
                     $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    $return_html .= '<a href="' . base_url('job/post-' . $post['post_id'].'/'. $text.'-job-vacancy-in-'.$cityname.'-aileensoul.com') . '" title="' . $cache_time . '" class=" post_title">';
+                    $return_html .= '<a href="' . base_url('job/post-' . $post['post_id'].'/'. $text.'-vacancy-in-'.$cityname) . '" title="' . $cache_time . '" class=" post_title">';
                     if ($cache_time) {
                         $return_html .= $cache_time;
                     } else {
@@ -4865,11 +4865,13 @@ public function post($id="")
     $text = preg_replace("/[.!$#%()]+/i", "", $text);
     $this->data['text'] =$text=strtolower($text);
 
-    $cache_time1= $this->db->get_where('cities', array('city_id' => $rec_post[0]['city']))->row()->city_name;
+    $cache_time2= $this->db->get_where('cities', array('city_id' => $rec_post[0]['city']))->row()->city_name;
 
-    $cityname = str_replace(" ", "-", $cache_time1);
+    $cityname = str_replace(" ", "-", $cache_time2);
     $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
     $this->data['cityname']=strtolower($cityname);
+
+    $this->data['title']=$cache_time1."-job-vacancy-in-".$cache_time2."-Aileensoul.com";
 
     //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
     if ($this->session->userdata('aileenuser')) {
