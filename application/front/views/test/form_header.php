@@ -50,7 +50,7 @@
                                     if ($recdata[0]['re_step'] < '1') {
                                         echo "khyati";
                                     }
-                                    ?>">
+                                    ?>" id="step2">
                                         <!--<a href="<?php echo base_url('recruiter/company-information'); ?>">Company Information</a>-->
                                          <a title="Post" href="javascript:void(0);" onclick="ChangeUrl('Page2', '<?php echo base_url('test/contact') ?>');">Company Information</a>
                                </li>

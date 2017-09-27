@@ -1,5 +1,16 @@
 
-   <?php $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+ <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+
+  <script>
+   window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});   </script>
+ <?php
+ $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
 if($pageWasRefreshed ) {
    echo $test_header;
 } 
@@ -253,4 +264,28 @@ if($pageWasRefreshed ) {
                                                      }
                                                  }
                                                  
-                                                 </script>
+                                                
+                                                 
+                                                 jQuery(document).ready(function ($) {
+
+    var options = {
+        beforeSend: function () {
+          
+        },
+        uploadProgress: function (event, position, total, percentComplete) {
+           
+        },
+        success: function () {
+           alert("hello");
+           window.location.href = '<?php echo base_url('recruiter/home'); ?>';
+        },
+        complete: function (response) {
+
+         
+        }
+    };
+    // Submit the form
+    $("#basicinfo").ajaxForm(options);
+    return false;
+});
+ </script>
