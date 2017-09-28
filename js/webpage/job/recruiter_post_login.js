@@ -69,6 +69,7 @@ function rec_post(pagenum) {
 
  function login()
     {
+            
           document.getElementById('error1').style.display = 'none';
     }
     //validation for edit email formate form
@@ -360,12 +361,15 @@ function rec_post(pagenum) {
             });
 
         function login_profile() {
+            $(".password_login").val('');
+            $(".email_login").val('');
                 $('#login').modal('show');
             }
 
 //For Save Button Click Process Start
         function login_profile_save() {
-            
+                $(".password_login").val('');
+            $(".email_login").val('');
                 $('#login_save').modal('show');
             }
          //validation for edit email formate form
@@ -375,19 +379,19 @@ function rec_post(pagenum) {
                 $("#login_form_save").validate({
 
                     rules: {
-                        email_login: {
+                        email_login_save: {
                             required: true,
                         },
-                        password_login: {
+                        password_login_save: {
                             required: true,
                         }
                     },
                     messages:
                             {
-                                email_login: {
+                                email_login_save: {
                                     required: "Please enter email address",
                                 },
-                                password_login: {
+                                password_login_save: {
                                     required: "Please enter password",
                                 }
                             },
@@ -398,8 +402,8 @@ function rec_post(pagenum) {
                 function submitFormsave()
                 {
 
-                    var email_login = $("#email_login").val();
-                    var password_login = $("#password_login").val();
+                    var email_login = $("#email_login_save").val();
+                    var password_login = $("#password_login_save").val();
 
                     var post_data = {
                         'email_login': email_login,
@@ -438,14 +442,14 @@ function rec_post(pagenum) {
                                 }
                                
                             } else if (response.data == "password") {
-                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                                document.getElementById("password_login").classList.add('error');
-                                document.getElementById("password_login").classList.add('error');
+                                $("#errorpass_save").html('<label for="email_login_save" class="error">Please enter a valid password.</label>');
+                                document.getElementById("password_login_save").classList.add('error');
+                                document.getElementById("password_login_save").classList.add('error');
                                 $("#btn1").html('Login');
                             } else {
-                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                                document.getElementById("email_login").classList.add('error');
-                                document.getElementById("email_login").classList.add('error');
+                                $("#errorlogin_save").html('<label for="email_login_save" class="error">Please enter a valid email.</label>');
+                                document.getElementById("email_login_save").classList.add('error');
+                                document.getElementById("email_login_save").classList.add('error');
                                 $("#btn1").html('Login');
                             }
                         }
@@ -458,7 +462,8 @@ function rec_post(pagenum) {
 
 //For Apply Button Click Process Start
         function login_profile_apply() {
-            
+                $(".password_login").val('');
+            $(".email_login").val('');
                 $('#login_apply').modal('show');
             }
          //validation for edit email formate form
@@ -468,19 +473,19 @@ function rec_post(pagenum) {
                 $("#login_form_apply").validate({
 
                     rules: {
-                        email_login: {
+                        email_login_apply: {
                             required: true,
                         },
-                        password_login: {
+                        password_login_apply: {
                             required: true,
                         }
                     },
                     messages:
                             {
-                                email_login: {
+                                email_login_apply: {
                                     required: "Please enter email address",
                                 },
-                                password_login: {
+                                password_login_apply: {
                                     required: "Please enter password",
                                 }
                             },
@@ -491,8 +496,8 @@ function rec_post(pagenum) {
                 function submitFormapply()
                 {
 
-                    var email_login = $("#email_login").val();
-                    var password_login = $("#password_login").val();
+                    var email_login = $("#email_login_apply").val();
+                    var password_login = $("#password_login_apply").val();
 
                     var post_data = {
                         'email_login': email_login,
@@ -534,14 +539,15 @@ function rec_post(pagenum) {
                                 }
                                
                             } else if (response.data == "password") {
-                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                                document.getElementById("password_login").classList.add('error');
-                                document.getElementById("password_login").classList.add('error');
+                                alert("hi");
+                                $("#errorpass_apply").html('<label for="email_login_apply" class="error">Please enter a valid password.</label>');
+                                document.getElementById("password_login_apply").classList.add('error');
+                                document.getElementById("password_login_apply").classList.add('error');
                                 $("#btn1").html('Login');
                             } else {
-                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                                document.getElementById("email_login").classList.add('error');
-                                document.getElementById("email_login").classList.add('error');
+                                $("#errorlogin_apply").html('<label for="email_login_apply" class="error">Please enter a valid email.</label>');
+                                document.getElementById("email_login_apply").classList.add('error');
+                                document.getElementById("email_login_apply").classList.add('error');
                                 $("#btn1").html('Login');
                             }
                         }

@@ -432,7 +432,7 @@
                                         <form role="form" name="login_form" id="login_form" method="post">
 
                                             <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm email_login" placeholder="Email Address*">
                                                 <div id="error2" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('erroremail')) {
@@ -443,7 +443,7 @@
                                                 <div id="errorlogin"></div> 
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm password_login" placeholder="Password*">
                                                 <div id="error1" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('errorpass')) {
@@ -494,7 +494,7 @@
                                         <form role="form" name="login_form_save" id="login_form_save" method="post">
 
                                             <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login_save" id="email_login_save" class="form-control input-sm email_login" placeholder="Email Address*">
                                                 <div id="error2" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('erroremail')) {
@@ -502,10 +502,10 @@
                                                     }
                                                     ?>
                                                 </div>
-                                                <div id="errorlogin"></div> 
+                                                <div id="errorlogin_save"></div> 
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                                <input type="password" name="password_login_save" id="password_login_save" class="form-control input-sm password_login" placeholder="Password*">
                                                 <div id="error1" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('errorpass')) {
@@ -513,7 +513,7 @@
                                                     }
                                                     ?>
                                                 </div>
-                                                <div id="errorpass"></div> 
+                                                <div id="errorpass_save"></div> 
                                             </div>
 
                                             <p class="pt-20 ">
@@ -556,7 +556,7 @@
                                         <form role="form" name="login_form_apply" id="login_form_apply" method="post">
 
                                             <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" class="form-control input-sm email_login" placeholder="Email Address*">
                                                 <div id="error2" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('erroremail')) {
@@ -564,10 +564,10 @@
                                                     }
                                                     ?>
                                                 </div>
-                                                <div id="errorlogin"></div> 
+                                                <div id="errorlogin_apply"></div> 
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                                <input type="password" name="password_login_apply" id="password_login_apply" class="form-control input-sm password_login" placeholder="Password*">
                                                 <div id="error1" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('errorpass')) {
@@ -575,7 +575,7 @@
                                                     }
                                                     ?>
                                                 </div>
-                                                <div id="errorpass"></div> 
+                                                <div id="errorpass_apply"></div> 
                                             </div>
 
                                             <p class="pt-20 ">
