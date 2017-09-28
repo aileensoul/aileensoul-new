@@ -89,15 +89,7 @@
                         <div class="user-pic padd_img">
                             <?php
                             if ($freelancerhiredata[0]['freelancer_hire_user_image'] != '') {
-                                
-                                $info = $s3->getObjectInfo(bucket, $freelancerhiredata[0]['freelancer_hire_user_image']);
-                                if ($info) {
-//File exists                       
-                                    echo "exist";die();
-                                } else {
-//File doesn't exists
-                                    echo "not exist";die();
-                                }
+                               
                                 ?>
                                 <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="" >
                                 <?php

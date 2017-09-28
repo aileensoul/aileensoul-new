@@ -4219,10 +4219,24 @@ class Freelancer extends MY_Controller {
             // code for display page end
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+//            $filename= FREE_HIRE_PROFILE_MAIN_UPLOAD_URL.$hire_data[0]['freelancer_hire_user_image'];
+//            $bucket=bucket.FREE_HIRE_PROFILE_MAIN_UPLOAD_URL;
+//            echo $filename."<br>";
+//           echo  $bucket;die();
+//            $s3 = new S3(awsAccessKey, awsSecretKey);
+//            //$s3 = new S3();
+//            $info = $s3->getObjectInfo(bucket, $filename);
+//            if ($info) {
+//                echo 'File exists'; die();
+//            } else {
+//                echo 'File does not exists'; die();
+//            }
         } else {
             $contition_array = array('user_id' => $id, 'status' => '1', 'free_hire_step' => 3);
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
+
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_profile', $this->data);
     }
