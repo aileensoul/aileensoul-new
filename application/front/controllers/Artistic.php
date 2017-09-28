@@ -2110,19 +2110,16 @@ public function ajax_userlist() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            ';
+                                                </div>';
         }
         echo $return_html;
     }
 
-    public function follow() { //echo "2"; die();
+    public function follow() { 
         $userid = $this->session->userdata('aileenuser');
-
          //if user deactive profile then redirect to artistic/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -2132,26 +2129,20 @@ public function ajax_userlist() {
 
         $art_id = $_POST["follow_to"];
 
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*');
-
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
-        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //  echo "<pre>"; print_r($follow); die();
+        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
-        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-
+        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           
             // insert notification
-
-
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
-            $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($artnotification); die();
-                if ($artnotification[0]['not_read'] == 2) {//echo "11"; die();
+            $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+                if ($artnotification[0]['not_read'] == 2) {
                     
-                } elseif ($artnotification[0]['not_read'] == 1) {//echo "22"; die();
+                } elseif ($artnotification[0]['not_read'] == 1) {
 
                     $datafollow = array(
                         'not_read' => 2,
@@ -2163,21 +2154,6 @@ public function ajax_userlist() {
                     $this->db->where($where);
                     $updatdata = $this->db->update('notification', $datafollow);
                 } 
-
-//             $data = array(
-//                 'not_type' => 8,
-//                 'not_from_id' => $userid,
-//                 'not_to_id' => $followuserid[0]['user_id'],
-//                 'not_read' => 2,
-//                 'not_product_id' => $follow[0]['follow_id'],
-//                 'not_from' => 3,
-//                 'not_active' => 1,
-//                 'not_created_date' => date('Y-m-d H:i:s')
-//             );
-// //echo '<pre>'; print_r($data); die();
-//             $insert_id = $this->common->insert_data_getid($data, 'notification');
-            // end notoification
-
 
         if ($follow) {
             $data = array(
@@ -2191,7 +2167,7 @@ public function ajax_userlist() {
 
 
        $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
-        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($update) {
 
@@ -2238,7 +2214,7 @@ public function ajax_userlist() {
 
 
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
-        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($insert) {
 
@@ -2256,7 +2232,6 @@ public function ajax_userlist() {
                             "follow" => $follow,
                             "count" => $datacount,
                 ));
-
 
             }
         }
