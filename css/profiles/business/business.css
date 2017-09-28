@@ -4267,6 +4267,9 @@ div .comment {
 .inner_search.search{padding:10px;}
 #likeusermodal .mes .modal-footer{display:none;}
 .no-login .all-comment-comment-box{border-bottom:0;}
+.no-login #paddingtop_fixed{padding-top:78px !important;}
+.no-login .form-group{margin-bottom:15px;}
+.no-login .form-group label.error{padding-left:0 !important;}
 
 
 
@@ -4710,6 +4713,7 @@ div .comment {
 	.post-design-name {width:84%; padding-right:0;}
 	.folle_text{width:66%;}
 	.search-page .search-post-box{left:inherit;}
+	.user-list .right_side_posrt{width:100%;}
 }
 @media screen and (max-width: 800px) {
     .mySlides .post-design-commnet-box .cmy_2 {
@@ -5263,7 +5267,7 @@ div .comment {
 	.user_lst #unfollowdiv button span{background:url('../../../img/icon_following.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
 	.user_lst #followdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
 	.user_lst #followdiv button span{background:url('../../../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
-	
+	.user-list .user_lst .folle_text{width:52%;}
 	
 }
 @media screen and (max-width: 540px) {
@@ -5928,6 +5932,9 @@ div .comment {
 	.buisness-menu::before {
         bottom: 41px;
     }
+	.user-list .user_lst ul li:last-child{width:100%;}
+	.user-list .user_lst ul li .follow-img{margin-bottom:0;}
+	.user-list .user_lst .folle_text{width:75%;}
 }
 @media screen and (max-width: 320px) {
     .editor-content {

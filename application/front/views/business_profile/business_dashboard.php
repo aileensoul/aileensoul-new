@@ -11,7 +11,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+		
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -35,72 +37,9 @@
             .fs12{font-size:12px;}
             .red{color:#ff0000;}
             .ttc{text-transform:capitalize !important;}
-            .login-frm{width:480px !important;}
+            
             /***  buttons  ***/
-            .btn1{
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); 
-                background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
-                background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-                background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
-                background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 ); 
-                font-size:16px;
-                color:#fff;
-                padding:5px 25px;
-                text-align:center;
-                border-radius: 4px;
-                border:2px solid #1b8ab9;
-
-            }
-            .btn1:hover{
-                border:2px solid #1b8ab9;
-                color:#fff;
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
-                background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-                background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%);
-                background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-                background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%); 
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
-
-            }
-
-            .btn1:focus{
-                opacity:0.6;
-            }
-
-            .btn2{
-                background:#fff;
-                font-size:16px;
-                color:#1b8ab9;
-                padding:8px 25px;
-                text-align:center;
-                border-radius:4px;
-                display:inline-block;
-                border:1px solid #fff;
-                font-family: 'robotolight';
-                line-height:1;
-            }
-            .btn2:hover{
-                border:1px solid #fff;
-                background:transparent;
-                color:#fff;
-                text-decoration:none;
-            }
-            .btn3{
-                font-size:16px;
-                color:#fff;
-                padding:8px 25px;
-                text-align:center;
-                border-radius:4px;
-                display:inline-block;
-                border:1px solid #fff;
-                font-family: 'robotolight';
-                line-height:1;
-            }
-            .btn3:hover {
-                background: #fff;
-                color: #1b83b9;
-            }
+            
             .clr-c a{color:#999;}
             .main-login{
                 background-color:#fff;
@@ -215,91 +154,7 @@
                 content: '_';
             }
             /***  login form css  ***/
-            .login{
-                /*background:#fff;*/
-                width:100%;
-                margin:0 auto;
-                border:1px solid #c7c7c7;
-                border-radius:5px;
-                -webkit-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
-                -moz-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
-                box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
-                height: auto !important;
-            } 
-            .inner-form .login {
-                background: #fff !important;
-                width: 80%;
-                margin: 0 auto;
-                border: 1px solid #c7c7c7;
-            }
-            .login h4{
-                color:#1b8ab9;
-                background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                padding:15px; 
-                text-align:center;
-                margin:0;
-                color:#1b8ab9;
-                border-bottom:1px solid #c7c7c7;
-                font-size:28px;
-                font-family: 'robotoregular';
-            }
-            .login form{
-                padding:16px 30px 15px;
-            }
-            .login .form-group input, .login .form-group select, .login .form-group textarea {
-                border:none;
-                border-bottom:1px solid #d9d9d9;
-                border-radius:0px;
-                box-shadow:none;
-                font-size:15px;
-                color:#848484;
-                height:35px;
-                padding-left: 6px;
-            }
-            .login .form-group select{
-                width:65px;
-                margin-right:15px;
-                -webkit-appearance: none;
-                -moz-appearance:    none;
-                appearance:         none;
-                position:relative;
-                background:url('../img/down-arrow.png') no-repeat;
-                background-position:right;   
-
-            }
-            .login .form-group select:focus{
-                width:65px;
-                margin-right:15px;
-                -webkit-appearance: none;
-                -moz-appearance:    none;
-                appearance:         none;
-                position:relative;
-                background:url('../img/down-arrow-hover.png') no-repeat;
-                background-position:right;  
-            }
-
-            .login .form-group select.year{
-                width:70px;
-            }
-            .login .form-group select.gender{
-                width:100px;
-            }
-            .form-text{
-                font-size:12px;
-                color:#3b3a3a;
-                padding-top:10px;
-                padding-bottom:10px;
-            }
-            .form-text a{
-                color:#b5b5b5;
-            }
-            .login .btn1{
-                display:inline-block;
-                width:100%;
-            }
-
+            
 
             /*onclick*/
             .form-group textarea:focus {
@@ -665,9 +520,9 @@
         </div>
 
         <!-- Login  -->
-        <div class="modal fade login" id="login" role="dialog">
+        <div class="modal fade" id="login" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content login">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="col-sm-12 right-main">
@@ -727,9 +582,9 @@
         <!-- Login -->
 
         <!-- model for forgot password start -->
-        <div class="modal fade login" id="forgotPassword" role="dialog">
+        <div class="modal fade" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content login">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="col-sm-12 right-main">
@@ -776,9 +631,9 @@
 
         <!-- register -->
 
-        <div class="modal fade register-model login" id="register" role="dialog">
+        <div class="modal fade register-model" id="register" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content login">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="clearfix">

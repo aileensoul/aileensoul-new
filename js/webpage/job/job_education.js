@@ -342,14 +342,15 @@
    
    $.validator.addMethod("regx", function(value, element, regexpr) {          
   
-   if(!value) 
-   {
-   return true;
-   }
-   else
-   {
-   return regexpr.test(value);
-   }
+    if(!value) 
+    {
+      return true;
+    }
+    else
+    {
+      value1 = value.toUpperCase();  
+      return regexpr.test(value1);
+    }
   
    }, "This is not proper format of grade");
    

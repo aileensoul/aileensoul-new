@@ -8,8 +8,10 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />  </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />  
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>" />  
+		</head>
+    <body class="page-container-bg-solid page-boxed pushmenu-push user-list">
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
         <section>
@@ -17,7 +19,7 @@
             </div>
             <div class="user-midd-section bui_art_left_box">
                 <div class="container">
-                    <div class="row">
+                    <div class="">
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
                             <div class="left_fixed">
                             <?php echo $business_left ?>
