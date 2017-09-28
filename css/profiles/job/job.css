@@ -1819,7 +1819,7 @@ label.cameraButton input[accept*="camera"] {
     color: white;
 }
 #ui-id-6 {
-    height: 150px;
+    /*height: 150px;*/
 }
 #experience_month-error {
     margin-top: 38px;
