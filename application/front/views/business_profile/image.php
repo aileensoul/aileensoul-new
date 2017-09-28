@@ -129,7 +129,7 @@
                                                 }
                                             }
                                             ?>
-                                            <img id="preview" src="#" alt="your image"/>
+                                            <!--<img id="preview" src="#" alt="your image"/>-->
                                         </fieldset>
                                         <fieldset class="hs-submit full-width">
                                             <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">

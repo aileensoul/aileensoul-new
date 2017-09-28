@@ -103,7 +103,7 @@
 
                                             <?php } ?>
                                             <option id="busOption" value="0" <?php
-                                            if ($business_type1 == 0) {
+                                            if ($business_type1 == 0 && $other_business !='') {
                                                 echo "selected";
                                             }
                                             ?>>Other</option>
@@ -125,7 +125,7 @@
                                             }
                                             ?>
                                             <option id="busOption" value="0" <?php
-                                            if ($business_type1 == '0') {
+                                            if ($business_type1 == '0' && $other_business !='') {
                                                 echo "selected";
                                             }
                                             ?>>Other</option>
@@ -154,7 +154,7 @@
                                             <?php }
                                             ?>
                                             <option id="indOption" value="0" <?php
-                                            if ($industriyal1 == 0) {
+                                            if ($industriyal1 == 0 && $other_industry !='') {
                                                 echo "selected";
                                             }
                                             ?>>Other</option>  
@@ -177,7 +177,7 @@
                                             }
                                             ?>
                                             <option id="indOption" value="0" <?php
-                                            if ($industriyal1 == '0') {
+                                            if ($industriyal1 == '0' && $other_industry !='') {
                                                 echo "selected";
                                             }
                                             ?>>Other</option>
@@ -188,24 +188,24 @@
 
                                     <?php echo form_error('industriyal'); ?>
                                 </fieldset>
-                                <div id="busDivCheck" <?php if ($business_type1 != 0 || $business_type1 == '') { ?>style="display:none" <?php } ?>>
+                                <div id="busDivCheck" <?php if (($business_type1 != 0 || $business_type1 == '') || ($business_type1 == 0 && $other_business=='')) { ?>style="display:none" <?php } ?>>
                                     <fieldset <?php if ($subindustrial) { ?> class="error-msg" <?php } ?> class="half-width" id="other-business">
                                         <label> Other Business Type: <span style="color:red;" >*</span></label>
                                         <input type="text" name="bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" style="<?php
-                                        if ($business_type1 != 0 && $business_type1 == '') {
+                                        if (($business_type1 != 0 || $business_type1 == '') || ($business_type1 == 0 && $other_business=='')) {
                                             echo 'display: none';
                                         }
                                         ?>" required="">
                                                <?php echo form_error('subindustriyal'); ?>
                                     </fieldset>
                                 </div>
-                                <div id="indDivCheck" <?php if ($industriyal1 != 0 || $industriyal1 == '' ) { ?>style="display:none" <?php } ?>>
+                                <div id="indDivCheck" <?php if (($industriyal1 != 0 || $industriyal1 == '') || ($industriyal1 == 0 && $other_industry=='')) { ?>style="display:none" <?php } ?>>
                                     <fieldset <?php if ($subindustrial) { ?> class="error-msg" <?php } ?> class="half-width" id="other-category">
                                         <?php if ($industriyal1 == 0) { ?>    <!--  <label id="indtype">Add Here Your Other Category type:<span style="color:red">*</span></label> --> <?php } ?>
                                         <label> Other Category:<span style="color:red;" >*</span></label>
                                         <input type="text" name="indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>" 
                                                style="<?php
-                                               if ($industriyal1 != 0) {
+                                               if (($industriyal1 != 0 || $industriyal1 = '') || ($industriyal1 == 0 && $other_industry=='')) {
                                                    echo 'display: none';
                                                }
                                                ?>" required="">

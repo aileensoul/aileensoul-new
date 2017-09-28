@@ -171,26 +171,26 @@ class Blog extends CI_Controller {
      //COMMENT INSERT BY USER END
 
 //SEARCH BY TAG START
-public function tagsearch($tag='')
-{
-        //FOR SEARCH DATA WITH TAG,DETAIL AND DESCRIPTION IN BLOG TABLE
-         $tag = str_replace("-"," ",$tag);
-      
-        $this->data['search_keyword']=$search_keyword = trim($tag);
-        $search_condition = "(title LIKE '%$search_keyword%' OR   description LIKE '%$search_keyword%' OR  tag LIKE '%$search_keyword%')";
-        $contition_array = array('status' => 'publish');
-        $this->data['blog_detail'] = $this->common->select_data_by_search('blog', $search_condition, $contition_array,$data='*', $sortby='id', $orderby='desc', $limit, $offset);
-
-         //FOR GETTING ALL DATA
-        $condition_array = array('status' => 'publish');
-        $this->data['blog_all']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
-      
-          //FOR GETTING 5 LAST DATA
-          $condition_array = array('status' => 'publish');
-        $this->data['blog_last']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit=5, $offset, $join_str = array());
-
-          $this->load->view('blog/index',$this->data);
-}
+//public function tagsearch($tag='')
+//{
+//        //FOR SEARCH DATA WITH TAG,DETAIL AND DESCRIPTION IN BLOG TABLE
+//         $tag = str_replace("-"," ",$tag);
+//      
+//        $this->data['search_keyword']=$search_keyword = trim($tag);
+//        $search_condition = "(title LIKE '%$search_keyword%' OR   description LIKE '%$search_keyword%' OR  tag LIKE '%$search_keyword%')";
+//        $contition_array = array('status' => 'publish');
+//        $this->data['blog_detail'] = $this->common->select_data_by_search('blog', $search_condition, $contition_array,$data='*', $sortby='id', $orderby='desc', $limit, $offset);
+//
+//         //FOR GETTING ALL DATA
+//        $condition_array = array('status' => 'publish');
+//        $this->data['blog_all']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
+//      
+//          //FOR GETTING 5 LAST DATA
+//          $condition_array = array('status' => 'publish');
+//        $this->data['blog_last']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit=5, $offset, $join_str = array());
+//
+//          $this->load->view('blog/index',$this->data);
+//}
 //SEARCH BY TAG END
 
 // blog available check start

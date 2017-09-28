@@ -160,6 +160,9 @@ class Business_profile extends MY_Controller {
 // GEY BUSINESS TYPE DATA
         $this->data['businesstypedata'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        //GET BUSINESS IMAGES
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0');
+        $this->data['busimage'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->load->view('business_profile/business_edit_profile', $this->data);
     }
@@ -877,10 +880,17 @@ class Business_profile extends MY_Controller {
 
     public function business_profile_manage_post($id = "") {
         $this->data['slugid'] = $id;
-
+               
 // manage post start
         $userid = $this->session->userdata('aileenuser');
-
+        
+        if($id == '' && $userid == ''){
+            redirect('login');
+        }
+        elseif($id == '' && $userid != ''){
+            redirect('business-profile');
+        }
+        
         $user_name = $this->session->userdata('user_name');
         if ($userid) {
             $this->business_profile_active_check();
@@ -9358,19 +9368,16 @@ Your browser does not support the audio tag.
         $toid = $_POST['toid'];
         $status = $_POST['status'];
         $userid = $this->session->userdata('aileenuser');
-
-//if user deactive profile then redirect to business_profile/index untill active profile start
+        //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
         if ($business_deactive) {
             redirect('business-profile/');
         }
-//if user deactive profile then redirect to business_profile/index untill active profile End
+        //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $contition_array = array('contact_from_id' => $toid, 'contact_to_id' => $userid, 'status' => 'pending');
-        $person = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $person = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contactid = $person[0]['contact_id'];
         if ($status == 1) {
             $data = array(
@@ -9378,21 +9385,17 @@ Your browser does not support the audio tag.
                 'status' => 'confirm',
                 'not_read' => 2
             );
-
             $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contactid);
         } else {
-
             $data = array(
                 'modify_date' => date('Y-m-d', time()),
                 'status' => 'reject'
             );
-
             $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contactid);
         }
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
         $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 
         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
         $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9417,20 +9420,15 @@ Your browser does not support the audio tag.
 
         if ($contactperson) {
             foreach ($contactperson as $contact) {
-
-
-//echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
                 $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
 
                 if ($contact['contact_to_id'] == $userid) {
 
-
                     $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
-
                     $contactdata .= '<li>';
-                    $contactdata .= '<div class="addcontact-left">';
+                    $contactdata .= '<div class="addcontact-left custome-approved-contact">';
                     $contactdata .= '<a href="javascript:void(0);">';
                     $contactdata .= '<div class="addcontact-pic">';
 
@@ -9440,7 +9438,7 @@ Your browser does not support the audio tag.
                         $contactdata .= '<img src="' . base_url(NOBUSIMAGE) . '">';
                     }
                     $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-text">';
+                    $contactdata .= '<div class="addcontact-text_full">';
                     $contactdata .= '<span><b>' . $busdata[0]['company_name'] . '</b></span>';
                     $contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';
@@ -9459,7 +9457,7 @@ Your browser does not support the audio tag.
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
                     $contactdata .= '<li>';
-                    $contactdata .= '<div class="addcontact-left">';
+                    $contactdata .= '<div class="addcontact-left custome-approved-contact">';
                     $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
                     $contactdata .= '<div class="addcontact-pic">';
 
@@ -9479,7 +9477,7 @@ Your browser does not support the audio tag.
                         $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     }
                     $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-text">';
+                    $contactdata .= '<div class="addcontact-text_full">';
                     $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request.</span>';
 //$contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';

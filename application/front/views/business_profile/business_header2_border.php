@@ -198,8 +198,8 @@
                                                 <a href="<?php echo base_url('business-profile/details/' . $businessdata[0]['business_slug']); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
-                                                <!--<a href="<?php echo base_url('business-profile/business-information-update'); ?>">-->
-                                                <a href="<?php echo base_url('business_profile/business_edit_profile'); ?>">
+                                                <a href="<?php echo base_url('business-profile/business-information-update'); ?>">
+                                                <!--<a href="<?php echo base_url('business_profile/business_edit_profile'); ?>">-->
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
                                                 <?php
@@ -292,8 +292,8 @@
                                                 <a href="<?php echo base_url('business-profile/details/' . $businessdata[0]['business_slug']); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
-                                                <!--<a href="<?php echo base_url('business-profile/business-information-edit'); ?>">-->
-                                                <a href="<?php echo base_url('business_profile/business_edit_profile'); ?>">
+                                                <a href="<?php echo base_url('business-profile/business-information-edit'); ?>">
+                                                <!--<a href="<?php //echo base_url('business_profile/business_edit_profile'); ?>">-->
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
                                                 <?php

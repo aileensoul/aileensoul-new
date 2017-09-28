@@ -37,7 +37,7 @@
                         <div class="col-md-3 col-sm-4">
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
-                                    <li <?php if ($this->uri->segment(1) == 'business_profile') { ?> class="active init business_info_li" <?php } ?>><a href="#"><?php echo $this->lang->line("business_information"); ?></a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'business_profile') { ?> class="active init business_info_li" <?php } ?>><a href="javascrit:void(0);"><?php echo $this->lang->line("business_information"); ?></a></li>
                                     <li class="custom-none contact_info_li <?php
                                     if ($business_common_data[0]['business_step'] < '1') {
                                         echo "active";
@@ -481,7 +481,7 @@
                                         }
                                     }
                                     ?>
-                                    <img id="preview" src="#" alt="your image"/>
+                                    <!--<img id="preview" src="#" alt="your image"/>-->
                                 </fieldset>
                                 <fieldset class="hs-submit full-width">
                                     <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">
