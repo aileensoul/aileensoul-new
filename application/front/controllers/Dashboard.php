@@ -20,17 +20,17 @@ class Dashboard extends MY_Controller {
 
         $this->load->library('form_validation');
         $userid = $this->session->userdata('aileenuser');
-      $userdata =   $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
- if($userdata[0]['user_slider'] == 1){
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
+        if ($userdata[0]['user_slider'] == 1) {
             $data = array(
                 'user_slider' => 0,
                 'modified_date' => date('Y-m-d', time())
             );
 
-            $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);   
-         }
-        
-       $contition_array = array('user_id' => $userid);
+            $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
+        }
+
+        $contition_array = array('user_id' => $userid);
         $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid);
@@ -48,8 +48,8 @@ class Dashboard extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
         $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($this->data['artdata']); die();
-        
-        $this->data['title'] = 'Dashboard'.TITLEPOSTFIX;
+
+        $this->data['title'] = 'Dashboard' . TITLEPOSTFIX;
         $this->load->view('dashboard/cover', $this->data);
     }
 
@@ -152,44 +152,39 @@ class Dashboard extends MY_Controller {
     }
 
     public function logout() {
-    
-    //PROGRESSBAR JOB START
-            $userid = $this->session->userdata('aileenuser');
-            $this->progressbar();
-            if($this->data['count_profile'] == 100)
-            {
-                 $data = array(    
-                    'progressbar' => '1',
-                    'modified_date' => date('Y-m-d h:i:s', time())
-                 );
-              
-                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-              
-            }
-            else
-            {
-                $data = array(    
-                    'progressbar' => '0',
-                    'modified_date' => date('Y-m-d h:i:s', time())
-                 );
-              
-                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-            }
-     //PROGRESSBAR JOB END
 
-   //LOGOUT START       
-       if ($this->session->userdata('aileenuser')) {
-          
-          
-           $this->session->unset_userdata('aileenuser');
-           redirect(base_url(), 'refresh');
-       }
-    //LOGOUT END  
+        //PROGRESSBAR JOB START
+        $userid = $this->session->userdata('aileenuser');
+        $this->progressbar();
+        if ($this->data['count_profile'] == 100) {
+            $data = array(
+                'progressbar' => '1',
+                'modified_date' => date('Y-m-d h:i:s', time())
+            );
+
+            $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+        } else {
+            $data = array(
+                'progressbar' => '0',
+                'modified_date' => date('Y-m-d h:i:s', time())
+            );
+
+            $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+        }
+        //PROGRESSBAR JOB END
+        //LOGOUT START       
+        if ($this->session->userdata('aileenuser')) {
+
+
+            $this->session->unset_userdata('aileenuser');
+            redirect(base_url(), 'refresh');
+        }
+        //LOGOUT END  
     }
 
 // cover pic controller
-   public function ajaxpro() {
-    
+    public function ajaxpro() {
+
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -270,7 +265,7 @@ class Dashboard extends MY_Controller {
         $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
 //        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
-        $coverpic =  '  <div class="bg-images"><img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $this->data['userdata'][0]['profile_background'] . '" /></div>';
+        $coverpic = '  <div class="bg-images"><img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $this->data['userdata'][0]['profile_background'] . '" /></div>';
 
         echo $coverpic;
     }
@@ -310,7 +305,7 @@ class Dashboard extends MY_Controller {
     // cover pic end
 // resend email for account verify start
 
-    public function resendverifyaccount() {  
+    public function resendverifyaccount() {
         $userid = $this->session->userdata('aileenuser');
         $userdata = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
@@ -352,13 +347,12 @@ class Dashboard extends MY_Controller {
         $updatedata = $this->common->update_data($data, 'user', 'user_id', $userid);
     }
 
-
     // profile image uplaod usingajax start
 
     public function profilepic() {
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete'=> '0');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
         $user_reg_data = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $user_reg_prev_image = $user_reg_data[0]['user_image'];
@@ -444,24 +438,22 @@ class Dashboard extends MY_Controller {
             $main_user = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage = '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
             $userimage .= ' <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                                <img src="'.base_url().'img/cam.png">Update Profile Picture</a>';
+                                                <img src="' . base_url() . 'img/cam.png">Update Profile Picture</a>';
         }
 
-         $userimagehead = '<img class="img-circle" height="50" width="50" alt="Smiley face" src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
+        $userimagehead = '<img class="img-circle" height="50" width="50" alt="Smiley face" src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
 
-           echo json_encode(
-                        array(
-                            "uimage" => $userimage,
-                            "uimagehead" => $userimagehead,
-                           
-                ));
+        echo json_encode(
+                array(
+                    "uimage" => $userimage,
+                    "uimagehead" => $userimagehead,
+        ));
     }
 
 //FOR PROGRESSBAR COUNT COMMON FUNCTION START
-public function progressbar() 
-{
-    $userid = $this->session->userdata('aileenuser');
-    //For Counting Profile data start
+    public function progressbar() {
+        $userid = $this->session->userdata('aileenuser');
+        //For Counting Profile data start
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
 
         $job_reg = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'fname,lname,email,experience,keyskill,work_job_title,work_job_industry,work_job_city,phnno,language,dob,gender,city_id,pincode,address,project_name,project_duration,project_description,training_as,training_duration,training_organization', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = array());
@@ -557,6 +549,13 @@ public function progressbar()
         $this->data['count_profile'] = $count_profile;
         $this->data['count_profile_value'] = ($count_profile / 100);
     }
-//FOR PROGRESSBAR COUNT COMMON FUNCTION END
-}
 
+//FOR PROGRESSBAR COUNT COMMON FUNCTION END
+
+    public function header_all_dropdown_list() {
+        $return_html = '<ul><li><div class="all-down"> <a href="'.base_url('job').'"> <div class="all-img"> <img src="'.base_url('img/i1.jpg') .'"> </div><div class="text-all"> Job Profile </div></a> </div></li><li> <div class="all-down"> <a href="'.base_url('recruiter').'"> <div class="all-img"> <img src="'. base_url('img/i2.jpg') .'"> </div><div class="text-all"> Recruiter Profile </div></a> </div></li><li> <div class="all-down"> <a href="'. base_url('freelancer') .'"> <div class="all-img"> <img src="'. base_url('img/i3.jpg') .'"> </div><div class="text-all"> Freelance Profile </div></a> </div></li><li> <div class="all-down"> <a href="'. base_url('business-profile') .'"> <div class="all-img"> <img src="'. base_url('img/i4.jpg') .'"> </div><div class="text-all"> Business Profile </div></a> </div></li><li> <div class="all-down"> <a href="'. base_url('artistic') .'"> <div class="all-img"> <img src="'. base_url('img/i5.jpg').'"> </div><div class="text-all"> Artistic Profile </div></a> </div></li></ul>';
+        
+        echo json_encode(array('return_html' => $return_html));
+    }
+    
+}
