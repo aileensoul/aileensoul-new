@@ -124,7 +124,7 @@ function followuser_two(clicked_id)
             $('.' + 'follow_btn_' + clicked_id).removeClass('user_btn');
             $('.' + 'follow_btn_' + clicked_id).addClass('user_btn_h');
             $('#' + 'unfollow' + clicked_id).html('');
-            $('.' + 'fr' + clicked_id).html(data);
+            $('.' + 'fruser' + clicked_id).html(data);
         }
     });
 }

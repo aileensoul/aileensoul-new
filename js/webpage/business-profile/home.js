@@ -26,12 +26,8 @@ $(document).ready(function () {
     ajax_business_home_post();
     ajax_business_home_three_user_list()
 
-//    $(window).scroll(function () {
     $(window).on('scroll', function () {
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-//        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
         if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
-
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -42,7 +38,6 @@ $(document).ready(function () {
                 if (mod_page > 0) {
                     available_page = available_page + 1;
                 }
-                //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
                     ajax_business_home_post(pagenum);
@@ -54,11 +49,6 @@ $(document).ready(function () {
 var isProcessing = false;
 function ajax_business_home_post(pagenum) {
     if (isProcessing) {
-        /*
-         *This won't go past this condition while
-         *isProcessing is true.
-         *You could even display a message.
-         **/
         return;
     }
     isProcessing = true;
@@ -69,19 +59,16 @@ function ajax_business_home_post(pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                // $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
-                $('#loader').show();
+//                $('#loader').show();
             }
         },
         complete: function () {
-            $('#loader').hide();
+//            $('#loader').hide();
         },
         success: function (data) {
-            $('.loader').remove();
+//            $('.loader').remove();
             $('.business-all-post').append(data);
-
-            // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
                 $("#dropdownclass").addClass("no-post-h2");
@@ -89,7 +76,6 @@ function ajax_business_home_post(pagenum) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
-
             check_no_post_data();
         }
     });
@@ -102,10 +88,10 @@ function ajax_business_home_three_user_list() {
         data: '',
         dataType: "html",
         beforeSend: function () {
-            $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+//            $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
         },
         success: function (data) {
-            $('.loader').remove();
+//            $('.loader').remove();
             $('.profile-boxProfileCard_follow').html(data);
             var liCount = $(data).find("li.follow_box_ul_li").length;
             if (liCount == 0) {

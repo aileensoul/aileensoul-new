@@ -4,12 +4,8 @@ $(document).ready(function () {
     GetBusVideos();
     GetBusAudios();
     GetBusPdf();
-
     $(window).scroll(function () {
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-//        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
           if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
-
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -20,7 +16,6 @@ $(document).ready(function () {
                 if (mod_page > 0) {
                     available_page = available_page + 1;
                 }
-                //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
                     business_dashboard_post(slug, pagenum);
@@ -29,7 +24,6 @@ $(document).ready(function () {
         }
     });
 });
-
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -37,7 +31,6 @@ function checkvalue() {
         return false;
     }
 }
-
 function check() {
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
@@ -45,11 +38,7 @@ function check() {
         return false;
     }
 }
-
-// Upload Post start
 jQuery(document).ready(function ($) {
-    //    var bar = $('#bar');
-//    var percent = $('#percent');
     var bar = $('.progress-bar');
     var percent = $('.sr-only');
     var options = {
@@ -70,16 +59,13 @@ jQuery(document).ready(function ($) {
             bar.width(percentVal)
             percent.html(percentVal);
         },
-        complete: function (response) { //alert(response.responseText);
+        complete: function (response) { 
             $('.art_no_post_avl').hide();
             document.getElementById('test-upload_product').value = '';
             document.getElementById('test-upload_des').value = '';
             document.getElementById('file-1').value = '';
             $("input[name='text_num']").val(50);
             $(".file-preview-frame").hide();
-            // Output AJAX response to the div container
-
-//                    $('#progress_div').fadeOut('5000').remove();
             document.getElementById("progress_div").style.display = "none";
             $(".business-all-post").prepend(response.responseText);
 
@@ -88,7 +74,6 @@ jQuery(document).ready(function ($) {
             GetBusAudios();
             GetBusPdf();
 
-            // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
                 $("#dropdownclass").addClass("no-post-h2");
@@ -96,24 +81,14 @@ jQuery(document).ready(function ($) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
-
         }
     };
-    // Submit the form
     $(".dashboard-upload-image-form").ajaxForm(options);
-
     return false;
 });
-// Upload Post end
-
 var isProcessing = false;
 function business_dashboard_post(slug, pagenum) {
     if (isProcessing) {
-        /*
-         *This won't go past this condition while
-         *isProcessing is true.
-         *You could even display a message.
-         **/
         return;
     }
     isProcessing = true;
@@ -124,7 +99,6 @@ function business_dashboard_post(slug, pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }
@@ -135,8 +109,6 @@ function business_dashboard_post(slug, pagenum) {
         success: function (data) {
             $('.loader').remove();
             $('.business-all-post').append(data);
-
-            // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
                 $("#dropdownclass").addClass("no-post-h2");
@@ -147,9 +119,7 @@ function business_dashboard_post(slug, pagenum) {
         }
     });
 }
-
 function GetBusPhotos() {
-
     $.ajax({
         type: 'POST',
         url: base_url + "business_userprofile/bus_user_photos",
@@ -163,7 +133,6 @@ function GetBusPhotos() {
         }
     });
 }
-
 function GetBusVideos() {
     $.ajax({
         type: 'POST',
@@ -178,7 +147,6 @@ function GetBusVideos() {
         }
     });
 }
-
 function GetBusAudios() {
     $.ajax({
         type: 'POST',
@@ -193,7 +161,6 @@ function GetBusAudios() {
         }
     });
 }
-
 function GetBusPdf() {
     $.ajax({
         type: 'POST',
@@ -208,8 +175,6 @@ function GetBusPdf() {
         }
     });
 }
-
-
 $('#file-fr').fileinput({
     language: 'fr',
     uploadUrl: '#',
@@ -265,12 +230,6 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active2";
 }
-
-// Get the element with id="defaultOpen" and click on it
-//document.getElementById("defaultOpen").click();
-// like comment ajax data start
-
-// post like script start 
 function post_like(clicked_id)
 {
     $.ajax({
@@ -280,7 +239,6 @@ function post_like(clicked_id)
         dataType: 'json',
         beforeSend: function (data) {
             var is_valid_post = check_post_available(clicked_id);
-//            alert(is_valid_post);
         },
         success: function (data) {
             $('.' + 'likepost' + clicked_id).html(data.like);
@@ -295,11 +253,7 @@ function post_like(clicked_id)
             $('#likeusername' + clicked_id).addClass('likeduserlist1');
         }
     });
-
 }
-//post like script end 
-
-// comment insert script start 
 function insert_comment(clicked_id)
 {
     $("#post_comment" + clicked_id).click(function () {
@@ -353,12 +307,8 @@ function insert_comment(clicked_id)
         });
     }
 }
-
-// insert comment using enter 
 function entercomment(clicked_id)
 {
-//    var is_valid_post = check_post_available(clicked_id);
-//    if (is_valid_post == true) {
         $("#post_comment" + clicked_id).click(function () {
             $(this).prop("contentEditable", true);
         });
@@ -423,14 +373,10 @@ function entercomment(clicked_id)
             event.preventDefault();
             $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
         });
-//    }
-    
 }
 
 function insert_comment1(clicked_id)
 {
-//    var is_valid_post = check_post_available(clicked_id);
-//    if (is_valid_post == true) {
         var post_comment = document.getElementById("post_comment1" + clicked_id);
         $.ajax({
             type: 'POST',
@@ -445,11 +391,7 @@ function insert_comment1(clicked_id)
                 $('.comment_count' + clicked_id).html(data.comment_count);
             }
         });
-//    }
 }
-
-// insert comment using enter 
-
 function entercomment1(clicked_id)
 {
     $(document).ready(function () {
@@ -480,9 +422,6 @@ function entercomment1(clicked_id)
         });
     });
 }
-//comment insert script end 
-
-// hide and show data start
 function commentall(clicked_id) {
     var x = document.getElementById('threecomment' + clicked_id);
     var y = document.getElementById('fourcomment' + clicked_id);
@@ -502,9 +441,6 @@ function commentall(clicked_id) {
         });
     }
 }
-// hide and show data end
-
-// comment like script start 
 function comment_like(clicked_id)
 {
     $.ajax({
@@ -516,7 +452,6 @@ function comment_like(clicked_id)
         }
     });
 }
-
 function comment_like1(clicked_id)
 {
     $.ajax({
@@ -528,13 +463,10 @@ function comment_like1(clicked_id)
         }
     });
 }
-//comment like script end 
-
 function comment_delete(clicked_id) {
     $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deleted(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
     $('#bidmodal').modal('show');
 }
-
 function comment_deleted(clicked_id)
 {
     var post_delete = document.getElementById("post_delete" + clicked_id);
@@ -556,10 +488,8 @@ function comment_deletetwo(clicked_id)
     $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deletedtwo(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
     $('#bidmodal').modal('show');
 }
-
 function comment_deletedtwo(clicked_id)
 {
-
     var post_delete1 = document.getElementById("post_deletetwo" + clicked_id);
     $.ajax({
         type: 'POST',
@@ -573,8 +503,6 @@ function comment_deletedtwo(clicked_id)
         }
     });
 }
-//comment delete script end 
-// comment edit box start
 function comment_editbox(clicked_id) {
     document.getElementById('editcomment' + clicked_id).style.display = 'inline-block';
     document.getElementById('showcomment' + clicked_id).style.display = 'none';
@@ -583,7 +511,6 @@ function comment_editbox(clicked_id) {
     document.getElementById('editcancle' + clicked_id).style.display = 'block';
     $('.post-design-commnet-box').hide();
 }
-
 function comment_editcancle(clicked_id) {
     document.getElementById('editcommentbox' + clicked_id).style.display = 'block';
     document.getElementById('editcancle' + clicked_id).style.display = 'none';
@@ -592,7 +519,6 @@ function comment_editcancle(clicked_id) {
     document.getElementById('editsubmit' + clicked_id).style.display = 'none';
     $('.post-design-commnet-box').show();
 }
-
 function comment_editboxtwo(clicked_id) {
     $('div[id^=editcommenttwo]').css('display', 'none');
     $('div[id^=showcommenttwo]').css('display', 'block');
@@ -606,7 +532,6 @@ function comment_editboxtwo(clicked_id) {
     document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
     $('.post-design-commnet-box').hide();
 }
-
 function comment_editcancletwo(clicked_id) {
     document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'block';
     document.getElementById('editcancletwo' + clicked_id).style.display = 'none';
@@ -615,7 +540,6 @@ function comment_editcancletwo(clicked_id) {
     document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
     $('.post-design-commnet-box').show();
 }
-
 function comment_editbox3(clicked_id) {
     document.getElementById('editcomment3' + clicked_id).style.display = 'block';
     document.getElementById('showcomment3' + clicked_id).style.display = 'none';
@@ -624,9 +548,7 @@ function comment_editbox3(clicked_id) {
     document.getElementById('editcancle3' + clicked_id).style.display = 'block';
     $('.post-design-commnet-box').hide();
 }
-
 function comment_editcancle3(clicked_id) {
-
     document.getElementById('editcommentbox3' + clicked_id).style.display = 'block';
     document.getElementById('editcancle3' + clicked_id).style.display = 'none';
     document.getElementById('editcomment3' + clicked_id).style.display = 'none';
@@ -634,7 +556,6 @@ function comment_editcancle3(clicked_id) {
     document.getElementById('editsubmit3' + clicked_id).style.display = 'none';
     $('.post-design-commnet-box').show();
 }
-
 function comment_editbox4(clicked_id) {
     document.getElementById('editcomment4' + clicked_id).style.display = 'block';
     document.getElementById('showcomment4' + clicked_id).style.display = 'none';
@@ -643,9 +564,7 @@ function comment_editbox4(clicked_id) {
     document.getElementById('editcancle4' + clicked_id).style.display = 'block';
     $('.post-design-commnet-box').hide();
 }
-
 function comment_editcancle4(clicked_id) {
-
     document.getElementById('editcommentbox4' + clicked_id).style.display = 'block';
     document.getElementById('editcancle4' + clicked_id).style.display = 'none';
     document.getElementById('editcomment4' + clicked_id).style.display = 'none';
@@ -653,12 +572,8 @@ function comment_editcancle4(clicked_id) {
     document.getElementById('editsubmit4' + clicked_id).style.display = 'none';
     $('.post-design-commnet-box').show();
 }
-//comment edit box end
-
-// comment edit insert start 
 function edit_comment(abc)
 {
-
     $("#editcomment" + abc).click(function () {
         $(this).prop("contentEditable", true);
     });
@@ -681,7 +596,6 @@ function edit_comment(abc)
         url: base_url + "business_profile/edit_comment_insert",
         data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
         success: function (data) {
-
             document.getElementById('editcomment' + abc).style.display = 'none';
             document.getElementById('showcomment' + abc).style.display = 'block';
             document.getElementById('editsubmit' + abc).style.display = 'none';
@@ -834,18 +748,14 @@ function commentedittwo(abc)
         $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
     });
 }
-
-
 function edit_comment3(abc)
 {
-
     var post_comment_edit = document.getElementById("editcomment3" + abc);
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/edit_comment_insert",
         data: 'post_id=' + abc + '&comment=' + post_comment_edit.value,
         success: function (data) {
-
             document.getElementById('editcomment3' + abc).style.display = 'none';
             document.getElementById('showcomment3' + abc).style.display = 'block';
             document.getElementById('editsubmit3' + abc).style.display = 'none';
@@ -855,7 +765,6 @@ function edit_comment3(abc)
             $('.post-design-commnet-box').show();
         }
     });
-//window.location.reload();
 }
 
 function commentedit3(abc)
@@ -913,7 +822,6 @@ function edit_comment4(abc)
             $('#' + 'showcomment4' + abc).html(data);
         }
     });
-//window.location.reload();
 }
 
 function commentedit4(abc)
@@ -952,9 +860,6 @@ function commentedit4(abc)
     });
 }
 
-
-// hide and show data start for save post
-
 function commentall1(clicked_id) {
 
     var x = document.getElementById('threecomment1' + clicked_id);
@@ -967,11 +872,7 @@ function commentall1(clicked_id) {
         y.style.display = 'none';
     }
 }
-// hide and show data end
-// like comment ajax data end
 
-/* When the user clicks on the button, 
- toggle between hiding and showing the dropdown content */
 function myFunction1(clicked_id) {
 
     var dropDownClass = document.getElementById('myDropdown' + clicked_id).className;
@@ -994,7 +895,6 @@ function myFunction1(clicked_id) {
     });
 }
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn1')) {
         var dropdowns = document.getElementsByClassName("dropdown-content1");
@@ -1024,7 +924,6 @@ function myFunction(clicked_id) {
     });
 }
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn2')) {
 
@@ -1038,15 +937,8 @@ window.onclick = function (event) {
         }
     }
 }
-
-
-// drop down script zalak end 
-
-// edit post start 
-
-
 function editpost(abc)
-{ //alert('khyati' + abc);
+{ 
     $("#myDropdown" + abc).removeClass('show');
     document.getElementById('editpostdata' + abc).style.display = 'none';
     document.getElementById('editpostbox' + abc).style.display = 'block';
@@ -1063,7 +955,6 @@ function edit_postinsert(abc)
 {
 
     var editpostname = document.getElementById("editpostname" + abc);
-    // start khyati code
     var $field = $('#editpostname' + abc);
     var editpostdetails = $('#editpostdesc' + abc).html();
     editpostdetails = editpostdetails.replace(/&/g, "%26");
@@ -1098,24 +989,8 @@ function edit_postinsert(abc)
     }
 }
 
-// edit post end 
-// remove save post start 
-
 function remove_post(abc)
 {
-//    $.ajax({
-//        type: 'POST',
-//        url: base_url + "business_profile/business_profile_delete",
-//        data: 'save_id=' + abc,
-//        success: function (data) {
-//            $('#' + 'removepostdata' + abc).html(data);
-//            var total_post = $('.post-design-box').length;
-//            if (total_post == 0) {
-//                $('.art_no_post_avl').show();
-//            }
-//        }
-//    });
-
     $.ajax({
         type: 'POST',
         url: '<?php echo base_url() . "business_profile/business_profile_deleteforpost" ?>',
@@ -1128,13 +1003,7 @@ function remove_post(abc)
             }
         }
     });
-
 }
-
-
-
-// remove save post start 
-
 
 function remove_ownpost(abc)
 {
@@ -1162,57 +1031,38 @@ function remove_ownpost(abc)
     });
 }
 
-
-// remove save post end 
-
-
-// Get the modal
 var modal = document.getElementById('myModal2');
-// Get the button that opens the modal
 var btn = document.getElementById("myBtn1");
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-// When the user clicks the button, open the modal 
 btn.onclick = function () {
     modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
-
-// Get the modal
 var modal = document.getElementById('myModal3');
-// Get the button that opens the modal
 var btn = document.getElementById("myBtn1");
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close3")[0];
-// When the user clicks the button, open the modal 
 btn.onclick = function () {
     modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
-
-// save post start 
 
 function save_post(abc)
 {
@@ -1226,13 +1076,6 @@ function save_post(abc)
     });
 }
 
-
-// save post end 
-
-
-// follow user script start 
-
-
 function followuser_two(clicked_id)
 {
     $.ajax({
@@ -1244,13 +1087,6 @@ function followuser_two(clicked_id)
         }
     });
 }
-
-
-// follow user script end 
-
-// Unfollow user script start 
-
-
 function unfollowuser_two(clicked_id)
 {
     $.ajax({
@@ -1262,13 +1098,6 @@ function unfollowuser_two(clicked_id)
         }
     });
 }
-
-
-// Unfollow user script end 
-
-// post insert developing script start 
-
-
 function imgval(event) {
 
     var fileInput = document.getElementById("file-1").files;
@@ -1282,9 +1111,6 @@ function imgval(event) {
 
         $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
         $('#post').modal('show');
-        //setInterval('window.location.reload()', 10000);
-        // window.location='';
-
         $(document).on('keydown', function (e) {
             if (e.keyCode === 27) {
                 $('#bidmodal').modal('hide');

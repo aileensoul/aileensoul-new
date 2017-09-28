@@ -5,9 +5,6 @@ function checkvalue() {
         return false;
     }
 }
-// end of business search auto fill 
-
-//validation for edit email formate form
 $.validator.addMethod("regx", function (value, element, regexpr) {
     if (!value)
     {
@@ -52,9 +49,7 @@ $(document).ready(function () {
         },
     });
 });
-// footer end 
 $(".alert").delay(3200).fadeOut(300);
-
 function check() {
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
@@ -62,8 +57,6 @@ function check() {
         return false;
     }
 }
-
-
 $(document).ready(function () {
     $('#country').on('change', function () {
         var countryID = $(this).val();
@@ -82,7 +75,6 @@ $(document).ready(function () {
             $('#city').html('<option value="">Select state first</option>');
         }
     });
-
     $('#state').on('change', function () {
         var stateID = $(this).val();
         if (stateID) {
@@ -104,11 +96,8 @@ $(document).ready(function () {
     var len = input1.val().length;
     input1[0].focus();
     input1[0].setSelectionRange(len, len);
-    
     var input = $("#companyname");
     var len = input.val().length;
     input[0].focus();
     input[0].setSelectionRange(len, len);
-    
-    
 });

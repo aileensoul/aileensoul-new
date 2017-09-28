@@ -40,10 +40,10 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta name="keywords" content=" " />
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-6060111582812113",
-            enable_page_level_ads: true
-        });
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-6060111582812113",
+        enable_page_level_ads: true
+    });
 </script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -65,19 +65,23 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <link rel="stylesheet" href="<?php echo base_url('js/scrollbar/jquery.mCustomScrollbar.css') ?>">
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
 
-<!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-1.11.1.min.js?ver='.time());    ?>"></script>-->
+<!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-1.11.1.min.js?ver='.time());     ?>"></script>-->
 
 <?php
 if ($this->uri->segment(1) == 'dashboard') {
     ?>
-    <script type="text/javascript" src="<?php echo base_url('js/jquery-2.0.3.min.js?ver=' . time()); ?>"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="<?php echo base_url('js/jquery-2.0.3.min.js?ver=' . time()); ?>"></script>--> 
     <?php
 } else {
     ?>
-    <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>-->
 <?php }
 ?>
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
-<!--<script src="<?php // echo base_url('js/fb_login.js?ver='.time());   ?>"></script>-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+crossorigin="anonymous"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>-->  
+<!--<script src="<?php // echo base_url('js/fb_login.js?ver='.time());    ?>"></script>-->
 

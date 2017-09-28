@@ -3758,9 +3758,6 @@ Your browser does not support the audio tag.
             // end notoification
             if ($insert) {
                 $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
-                // $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
-                //                <span>Following</span>
-                //       </button>';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
                 echo $follow;
@@ -4155,7 +4152,7 @@ Your browser does not support the audio tag.
                     }
                     $return_html .= '</li>';
                 } else {
-                    $return_html .= '<li class="fr' . $user['follow_to'] . '">';
+                    $return_html .= '<li class="fruser' . $user['follow_to'] . ' fr">';
 
                     $contition_array = array('user_id' => $userid, 'status' => '1');
                     $busdatauser = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4163,14 +4160,13 @@ Your browser does not support the audio tag.
                     $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_to'] != $busdatauser[0]['business_profile_id']) {
                         $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "followdiv">
-                                            <button id="<?php
-                                                    echo "follow"' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')"><span>Follow</span></button>
+                                            <button id="follow' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')"><span>Follow</span></button>
                             </div>';
                     } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) {
                         
                     } else {
                         $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
-                                <button id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
+                                <button class="bg_following" id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
                                                     </div>';
                     }
                     $return_html .= '</li>';
@@ -7010,7 +7006,7 @@ Your browser does not support the audio tag.
 
             if ($insertdata) {
                 $imglike .= '<a id="' . $post_image_comment_id . '" onClick="imgcomment_like(this.id)">';
-                $imglike .= ' <i class="fa fa-thumbs-up" aria-hidden="true">';
+                $imglike .= ' <i class="fa fa-thumbs-up main_color" aria-hidden="true">';
                 $imglike .= '</i>';
                 $imglike .= '<span> ';
                 if (count($bdatacm) > 0) {
@@ -7108,7 +7104,7 @@ Your browser does not support the audio tag.
                 if ($updatdata) {
 
                     $imglike1 .= '<a id="' . $post_image_comment_id . '" onClick="imgcomment_like(this.id)">';
-                    $imglike1 .= '<i class="fa fa-thumbs-up" aria-hidden="true">';
+                    $imglike1 .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true">';
                     $imglike1 .= '</i>';
                     $imglike1 .= '<span> ';
                     if (count($bdata2) > 0) {
