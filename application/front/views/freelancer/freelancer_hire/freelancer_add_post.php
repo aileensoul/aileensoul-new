@@ -99,7 +99,7 @@
                                     <?php echo form_error('other_skill'); ?>
                                     </fieldset>-->
                                     <fieldset class="full-width two-select-box fullwidth_experience" <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
-                                        <label><?php echo $this->lang->line("experiance"); ?>:</label>
+                                        <label><?php echo $this->lang->line("required_experiance"); ?>:</label>
                                         <select tabindex="5" name="year" id="year">
                                             <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
                                             <option value="0">0 Year</option>
