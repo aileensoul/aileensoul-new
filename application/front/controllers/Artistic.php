@@ -626,242 +626,31 @@ class Artistic extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
          //if user deactive profile then redirect to artistic/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
+        $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
         if($artistic_deactive)
         {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
-
         $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
-        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo "<pre>"; print_r($this->data['artisticdata']); die();
-        $artregid = $this->data['artisticdata'][0]['art_id'];
-
-
-//userlist for followdata strat
-        $likeuserarray = explode(',', $this->data['artisticdata'][0]['art_skill']);
-        //echo "<pre>"; print_r($likeuserarray); die();
-        $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id !=' => $userid , 'art_step' => 4);
-        $userlist = $this->data['userlist'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = 'art_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-//using skill user     
-        foreach ($userlist as $row) {
-
-            $userlistarray = explode(',', $row['art_skill']);
-            //echo "<pre>"; print_r($likeuserarray);
-            //echo "<pre>"; print_r($userlistarray); 
-            if (array_intersect($likeuserarray, $userlistarray)) {
-                $usernamelist[] = $row;
-            }
-        }
-
-
-        $this->data['userlistview1'] = $usernamelist;
-        //echo "<pre>"; print_r($this->data['userlistview1']); die();
-//using city user     
-
-        $artregcity = $this->data['artisticdata'][0]['art_city'];
-        foreach ($userlist as $rowcity) {
-
-            $userlistarray1 = explode(',', $rowcity['art_skill']);
-            if (array_intersect($likeuserarray, $userlistarray1)) {
-                
-            } else {
-
-                if ($artregcity == $rowcity['art_city']) {
-                    $userlistcity[] = $rowcity;
-                }
-            }
-        }
-
-        $this->data['userlistview2'] = $userlistcity;
-        // echo "<pre>"; print_r($this->data['userlistview2']); die();
-//using state user     
-
-        $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id !=' => $userid, 'art_city !=' => $artregcity , 'art_step' => 4);
-        $userlist3 = $this->data['userlist3'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = 'art_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-        $artregstate = $this->data['artisticdata'][0]['art_state'];
-        foreach ($userlist3 as $rowstate) {
-
-            $userlistarray2 = explode(',', $rowstate['art_skill']);
-            if (array_intersect($likeuserarray, $userlistarray2)) {
-                
-            } else {
-
-                if ($artregstate == $rowstate['art_state']) {
-                    $userliststate[] = $rowstate;
-                }
-            }
-        }
-
-
-        $this->data['userlistview3'] = $userliststate;
-
-        //echo "<pre>"; print_r($this->data['userlistview3']); die();
-//using last3 user     
-        $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id !=' => $userid, 'art_city !=' => $artregcity, 'art_state !=' => $artregstate , 'art_step' => 4);
-        $userlastview = $this->data['userlastview'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = 'art_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $userlistarray4 = explode(',', $userlastview['art_skill']);
-        if (array_intersect($likeuserarray, $userlistarray4)) {
-            
-        } else {
-            $this->data['userlistview4'] = $userlastview;
-        }
-        //echo"<pre>"; print_r($this->data['userlistview4']); die();
-//userlist for followdata end
-// data fatch using follower start
-
-        $contition_array = array('follow_from' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
-        $followerdata1 = $this->data['followerdata1'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo "<pre>"; print_r($this->data['followerdata']); die();
-
-
-        foreach ($followerdata1 as $fdata) {
-
-            $user_id = $this->db->get_where('art_reg', array('art_id' => $fdata['follow_to'], 'status' => '1'))->row()->user_id;
-
-
-            $contition_array = array('art_post.user_id' => $user_id, 'art_post.status' => '1', 'art_post.user_id !=' => $userid, 'art_post.is_delete' => '0');
-            $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-            $followerabc[] = $this->data['art_data'];
-        }
-
-        //echo "<pre>"; print_r($followerabc); die();
-//data fatch using follower end
-//data fatch using skill start
-
-        $userselectskill = $this->data['artisticdata'][0]['art_skill'];
-        //echo  $userselectskill; die();
-        $contition_array = array('art_skill' => $userselectskill, 'status' => '1' , 'art_step' => 4);
-        $skilldata = $this->data['skilldata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo "<pre>"; print_r($this->data['skilldata']); die();
-
-        foreach ($skilldata as $fdata) {
-
-
-            $contition_array = array('art_post.user_id' => $fdata['user_id'], 'art_post.status' => '1', 'art_post.user_id !=' => $userid, 'art_post.is_delete' => '0');
-
-            $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $skillabc[] = $this->data['art_data'];
-        }
-
-
-//data fatch using skill end
-//data fatch using login user last post start
-        $contition_array = array('art_post.user_id' => $userid, 'art_post.status' => '1', 'art_post.is_delete' => '0');
-
-        $art_userdata = $this->data['art_userdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        if (count($art_userdata) > 0) {
-            $userabc[][] = $this->data['art_userdata'][0];
-        } else {
-            $userabc[] = $this->data['art_userdata'][0];
-        }
-        //echo "<pre>"; print_r($userabc); die();
-        //echo "<pre>"; print_r($skillabc);  die();
-//data fatch using login user last post end
-//echo count($skillabc);
-//echo count($userabc);
-//echo count($unique);
-//echo count($followerabc); 
-
-
-        if (count($skillabc) == 0 && count($userabc) != 0) {
-            $unique = $userabc;
-        } elseif (count($userabc) == 0 && count($skillabc) != 0) {
-            $unique = $skillabc;
-        } elseif (count($userabc) != 0 && count($skillabc) != 0) {
-            $unique = array_merge($skillabc, $userabc);
-        }
-
-        //echo "<pre>"; print_r($userabc); die();
-        //echo count($followerabc);  echo count($unique); die();
-
-        if (count($followerabc) == 0 && count($unique) != 0) {
-            $unique_user = $unique;
-        } elseif (count($unique) == 0 && count($followerabc) != 0) {
-
-            $unique_user = $followerabc;
-        } elseif (count($unique) != 0 && count($followerabc) != 0) {
-            $unique_user = array_merge($unique, $followerabc);
-        }
-
-
-        // foreach ($unique_user as $k => $v) { 
-        //     foreach ($unique_user as $key => $value) {
-        //         foreach ($value as $datak => $datav) {
-        //             // echo "<pre>"; print_r($k); 
-        //             // echo "<pre>"; print_r($datak); 
-        //             // echo "<pre>"; print_r($v['user_id']); 
-        //             // echo "<pre>"; print_r($datav['user_id']); die(); 
-        //             if ($k != $datak && $v['user_id'] == $datav['user_id']) {
-        //                 unset($unique_user[$k]);
-        //             }
-        //         }
-        //     }
-        // }  
-        //echo "<pre>"; print_r($unique); die();
-
-        foreach ($unique_user as $key1 => $val1) {
-            foreach ($val1 as $ke => $va) {
-
-                $qbc[] = $va;
-            }
-        }
-
-
-        $qbc = array_unique($qbc, SORT_REGULAR);
-        //echo "<pre>"; print_r($qbc); die();
-        // sorting start
-
-        $post = array();
-
-        //$i =0;
-        foreach ($qbc as $key => $row) {
-            $post[$key] = $row['art_post_id'];
-            //  $qbc[$i]['created_date'] = $this->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date'])));
-            //$i++;
-        }
-
-        array_multisort($post, SORT_DESC, $qbc);
-        $this->data['finalsorting'] = $qbc;
-       
-        if(!$this->data['artisticdata']){ 
-        redirect('artistic/');
-       }else{ //echo "123456789"; die();
-       $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
-      
-       $artistic_name = $this->get_artistic_name($id);
-      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
-
-        $this->load->view('artistic/art_post', $this->data);
-       
-       }
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,user_id,slug,art_user_image,art_name,art_lastname,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if(!$this->data['artisticdata']){ 
+                   redirect('artistic/');
+            }else{ 
+                $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
+                $artistic_name = $this->get_artistic_name($id);
+                $this->data['title'] = $artistic_name.TITLEPOSTFIX;
+                $this->load->view('artistic/art_post', $this->data);
+                 }
     }
 
     public function art_manage_post($id = "") {
 
         $userid = $this->session->userdata('aileenuser');
-
-        
-
          //if user deactive profile then redirect to artistic/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -869,86 +658,43 @@ class Artistic extends MY_Controller {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $user_name = $this->session->userdata('user_name');
+        $artisticslug = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->slug;
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-            $artisticslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
-
+        if ($id == '' || $id == $artisticslug[0]['slug']) {
             $contition_array = array('user_id' => $userid, 'status' => '1');
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,user_id,art_user_image,art_name,art_lastname,designation,slug,art_id,art_skill,art_yourart,art_desc_art,art_email,art_city,art_country', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $this->data['artid'] = $userid;
-
-            $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
-
         } else {
-
             $contition_array = array('slug' => $id, 'status' => '1' , 'art_step' => 4);
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $this->data['artid'] = $id;
-
-            $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $id, $data = '*', $join_str = array());
-
+            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,user_id,art_user_image,art_name,art_lastname,designation,slug,art_id,art_skill,art_yourart,art_desc_art,art_email,art_city,art_country', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['artid'] = $this->data['artisticdata'][0]['user_id'];
         }
-        //echo "<pre>"; print_r($this->data['artsdata']); die();
-        
-
        if(!$this->data['artisticdata'] && !$this->data['artsdata']){ //echo "22222222"; die();
-      
-      $this->load->view('artistic/notavalible');  
-             
+           $this->load->view('artistic/notavalible');       
        }
         else if($this->data['artisticdata'][0]['art_step'] != 4){   //echo "hii"; die();
-        
-       redirect('artistic/');
-         
+          redirect('artistic/');  
        }
        else{
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
         $artistic_name = $this->get_artistic_name($id);
-      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
-      $this->load->view('artistic/art_manage_post', $this->data);
+        $this->data['title'] = $artistic_name.TITLEPOSTFIX;
+        $this->load->view('artistic/art_manage_post', $this->data);
        }
     }
 
-    public function art_addpost() {
-        $userid = $this->session->userdata('aileenuser');
-
-         //if user deactive profile then redirect to artistic/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if($artistic_deactive)
-        {
-             redirect('artistic/');
-        }
-     //if user deactive profile then redirect to artistic/index untill active profile End
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $this->load->view('artistic/art_addpost', $this->data);
-    }
-
-// khyati changes start
-    //public function art_post_insert($id,$para) {
+   
     public function art_post_insert($id = '', $para = '') {
-        //echo'<pre>'; print_r($_FILES); die();
         $userid = $this->session->userdata('aileenuser');
-
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
-
-//echo '<pre>'; print_r($_POST); die();
-
         if ($para == $userid || $para == '') {
             $data = array(
                 'art_post' => $this->input->post('my_text'),
@@ -959,7 +705,6 @@ class Artistic extends MY_Controller {
                 'user_id' => $userid
             );
         } else {
-
             $data = array(
                 'art_post' => $this->input->post('my_text'),
                 'art_description' => $this->input->post('product_desc'),
@@ -970,10 +715,8 @@ class Artistic extends MY_Controller {
                 'posted_user_id' => $userid
             );
         }
-
         $insert_id = $this->common->insert_data_getid($data, 'art_post');
     
-
        $config = array(
             'upload_path' => $this->config->item('art_post_main_upload_path'),
             'allowed_types' => $this->config->item('art_post_main_allowed_types'),
@@ -1041,7 +784,6 @@ class Artistic extends MY_Controller {
                     }
                     
                     /* RESIZE */
-
                     $artistic_post_main[$i]['image_library'] = 'gd2';
                     $artistic_post_main[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
                     $artistic_post_main[$i]['new_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
@@ -1050,11 +792,7 @@ class Artistic extends MY_Controller {
                     $instanse10 = "image10_$i";
                     $this->load->library('image_lib', $artistic_post_main[$i], $instanse10);
                     $this->$instanse10->watermark();
-                    //$this->image_lib->clear();
-                  //$this->$instanse10->clear();
-                 
-              // }
-//}
+                   
                     /* RESIZE */
 
                         $main_image = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
@@ -1063,50 +801,11 @@ class Artistic extends MY_Controller {
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
 
-                        /* RESIZE4 */
-
-                       // $resize4_image_width = $this->config->item('art_post_resize4_width');
-                       //  $resize4_image_height = $this->config->item('art_post_resize4_height');
-
-                       //  $n_w1 = $image_width;
-                       //  $n_h1 = $image_height;
-
-
-                       //  $conf_new4[$i] = array(
-                       //      'image_library' => 'gd2',
-                       //      'source_image' => $artistic_post_main[$i]['new_image'],
-                       //      'create_thumb' => FALSE,
-                       //      'maintain_ratio' => FALSE,
-                       //      'width' => $resize4_image_width,
-                       //      'height' => $resize4_image_height
-                       //  );
-
-                       //  $conf_new4[$i]['new_image'] = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
-
-                       //  $left = ($n_w1 / 2) - ($resize4_image_width / 2);
-                       //  $top = ($n_h1 / 2) - ($resize4_image_height / 2);
-
-                       //  $conf_new4[$i]['x_axis'] = $left;
-                       //  $conf_new4[$i]['y_axis'] = $top;
-
-                       //  $instanse4 = "image4_$i";
-                       //  //Loading Image Library
-                       //  $this->load->library('image_lib', $conf_new4[$i], $instanse4);
-                       //  $dataimage = $response['result'][$i]['file_name'];
-                       //  //Creating Thumbnail
-                       //  $this->$instanse4->crop();
-
-                       //  $resize_image4 = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
-
-                       //  $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
-
-                        /* RESIZE4 */
                          if ($count == '3') {
                             /* RESIZE 4 */
 
                             $resize4_image_width = $this->config->item('art_post_resize4_width');
                             $resize4_image_height = $this->config->item('art_post_resize4_height');
-
 
                             if ($image_width > $image_height) {
                                 $n_h1 = $resize4_image_height;
@@ -1133,8 +832,6 @@ class Artistic extends MY_Controller {
                             $artistic_profile_post_resize4[$i]['width'] = $n_w1;
                             $artistic_profile_post_resize4[$i]['height'] = $n_h1;
                             $artistic_profile_post_resize4[$i]['quality'] = "100%";
-//                        $business_profile_post_resize4[$i]['x_axis'] = $left;
-//                        $business_profile_post_resize4[$i]['y_axis'] = $top;
                             $instanse4 = "image4_$i";
                             //Loading Image Library
                             $this->load->library('image_lib', $artistic_profile_post_resize4[$i], $instanse4);
@@ -1147,7 +844,6 @@ class Artistic extends MY_Controller {
 
                         $thumb_image_width = $this->config->item('art_post_thumb_width');
                         $thumb_image_height = $this->config->item('art_post_thumb_height');
-
 
                         if ($image_width > $image_height) {
                             $n_h = $thumb_image_height;
@@ -1170,7 +866,6 @@ class Artistic extends MY_Controller {
                         $artistic_post_thumb[$i]['thumb_marker'] = '';
                         $artistic_post_thumb[$i]['width'] = $n_w;
                         $artistic_post_thumb[$i]['height'] = $n_h;
-//                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
                         $artistic_post_thumb[$i]['quality'] = "100%";
                         $artistic_post_thumb[$i]['x_axis'] = '0';
                         $artistic_post_thumb[$i]['y_axis'] = '0';
@@ -1282,7 +977,6 @@ class Artistic extends MY_Controller {
                             $resized_image_height = $thumb_image_height;
                         }
 
-
                         $conf_new2[$i] = array(
                             'image_library' => 'gd2',
                             'source_image' => $artistic_post_thumb[$i]['new_image'],
@@ -1291,7 +985,6 @@ class Artistic extends MY_Controller {
                             'width' => $resized_image_width,
                             'height' => $resized_image_height
                         );
-
                         $conf_new2[$i]['new_image'] = $this->config->item('art_post_resize3_upload_path') . $response['result'][$i]['file_name'];
 
                         $left = ($n_w / 2) - ($resized_image_width / 2);
@@ -1334,121 +1027,21 @@ class Artistic extends MY_Controller {
                         echo $this->upload->display_errors();
                         exit;
                     }
-           //      }
-           //       else {
-           //          $this->session->set_flashdata('error', '<div class="col-md-7 col-sm-7 alert alert-danger1">Something went to wrong in uploded file.</div>');
-           //          exit;
-           //      }
-            //} //die();
         }
 
 //new code end
 
-        $userid = $this->session->userdata('aileenuser');
-        $user_name = $this->session->userdata('user_name');
-
-        $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($artistic_deactive) {
-            redirect('artistic/');
-        }
-
-       $contition_array = array('user_id' => $userid, 'status' => '1');
-        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $artregid = $this->data['artisticdata'][0]['art_id'];
-
-
-          $contition_array = array('follow_from' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
-        $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-        foreach ($followerdata as $fdata) {
-            $contition_array = array('art_id' => $fdata['follow_to'], 'art_step' => 4);
-            $this->data['art_data'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $art_userid = $this->data['art_data'][0]['user_id'];
-
-            $contition_array = array('user_id' => $art_userid, 'status' => '1', 'is_delete' => '0');
-            $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $followerabc[] = $this->data['art_data'];
-        }
-        $userselectskill = $this->data['artisticdata'][0]['art_skill'];
-       
-
-       $contition_array = array('art_skill' => $userselectskill, 'status' => '1' , 'art_step' => 4);
-        $skilldata = $this->data['skilldata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($skilldata as $fdata) {
-            $contition_array = array('art_post.user_id' => $fdata['user_id'], 'art_post.status' => '1', 'art_post.user_id !=' => $userid, 'art_post.is_delete' => '0');
-
-             $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $skillabc[] = $this->data['art_data'];
-        }
-
-       $contition_array = array('art_post.user_id' => $userid, 'art_post.status' => '1', 'art_post.is_delete' => '0');
-        $art_userdata = $this->data['art_userdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-         if (count($art_userdata) > 0) {
-            $userabc[][] = $this->data['art_userdata'][0];
-        } else {
-            $userabc[] = $this->data['art_userdata'][0];
-        }
-
-
-         if (count($skillabc) == 0 && count($userabc) != 0) {
-            $unique = $userabc;
-        } elseif (count($userabc) == 0 && count($skillabc) != 0) {
-            $unique = $skillabc;
-        } elseif (count($userabc) != 0 && count($skillabc) != 0) {
-            $unique = array_merge($skillabc, $userabc);
-        }
-
-        if (count($followerabc) == 0 && count($unique) != 0) {
-            $unique_user = $unique;
-        } elseif (count($unique) == 0 && count($followerabc) != 0) {
-
-            $unique_user = $followerabc;
-        } elseif (count($unique) != 0 && count($followerabc) != 0) {
-            $unique_user = array_merge($unique, $followerabc);
-        }
-
-       foreach ($unique_user as $key1 => $val1) {
-            foreach ($val1 as $ke => $va) {
-
-                $qbc[] = $va;
-            }
-        }
-
-        $qbc = array_unique($qbc, SORT_REGULAR);
-        $post = array();
-
-       
-        foreach ($qbc as $key => $row) {
-            $post[$key] = $row['art_post_id'];
-            //  $qbc[$i]['created_date'] = $this->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date'])));
-            //$i++;
-        }
-
+       $contition_array = array('art_post_id' => $insert_id);
+       $art_insertpost = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post_id,art_post,art_category,art_description,user_id,art_likes_count,art_like_user,created_date,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         
-        array_multisort($post, SORT_DESC, $qbc);
-        $finalsorting = $qbc;
+        $row = $art_insertpost[0];
+       
+       $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
+       $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_skill,user_id,art_user_image,slug,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $row = $finalsorting[0];
+       $contition_array = array('user_id' => $row['posted_user_id'], 'status' => '1');
+       $artdataposted = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_skill,user_id,art_user_image,slug,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //foreach ($businessprofiledatapost as $row) {
-        $userid = $this->session->userdata('aileenuser');
-         $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
-                $artdelete = $this->data['artdelete'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-         $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
-         $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $likeuserarray = explode(',', $artdelete[0]['delete_post']);
-        
-        if (!in_array($userid, $likeuserarray)) {
 
                     $return_html .= '<div id="removepost' . $row['art_post_id'] . '">
                     <div class="col-md-12 col-sm-12 post-design-box">
@@ -1456,29 +1049,15 @@ class Artistic extends MY_Controller {
                             <div class="post-design-top col-md-12" >  
                                 <div class="post-design-pro-img">';
 
-                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_user_image;
-                    $userimageposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
-
-                    $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
-                    $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
-
-                     $firstname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
-                           
-                    $lastname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
-
-                     $posted_slug = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
-
-
-                    
                     if ($row['posted_user_id']) {
 
-                        if ($userimageposted) {
-                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $posted_slug) . '">';
+                        if ($artdataposted[0]['art_user_image']) {
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">';
 
-                            if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
-                                                                $a = $firstnameposted;
+                            if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdataposted[0]['art_user_image'])) {
+                                                                $a = $artdataposted[0]['art_name'];
                                                                 $acr = substr($a, 0, 1);
-                                                                $b = $lastnameposted;
+                                                                $b = $artdataposted[0]['art_lastname'];
                                                                 $bcr = substr($b, 0, 1);
 
                                     $return_html .=  '<div class="post-img-div">';
@@ -1486,17 +1065,17 @@ class Artistic extends MY_Controller {
                                     $return_html .=  '</div>'; 
 
                                 }else{
-                            $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" />';
+                            $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" name="image_src" id="image_src" />';
 
                                 }
 
                             $return_html .=  '</a>';
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $posted_slug) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">';
                                                 
-                                                                $a = $firstnameposted;
+                                                                $a = $artdataposted[0]['art_name'];
                                                                 $acr = substr($a, 0, 1);
-                                                                $b = $lastnameposted;
+                                                                $b = $artdataposted[0]['art_lastname'];
                                                                 $bcr = substr($b, 0, 1);
 
                                     $return_html .=  '<div class="post-img-div">';
@@ -1506,13 +1085,13 @@ class Artistic extends MY_Controller {
                             $return_html .=  '</a>';
                         }
                     } else {
-                        if ($art_userimage) {
-                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['slug']) . '">';
+                        if ($artdata[0]['art_user_image']) {
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
 
-                            if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $firstname;
+                            if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                                                $a = $artdata[0]['art_name'];
                                                                 $acr = substr($a, 0, 1);
-                                                                $b = $lastname;
+                                                                $b = $artdata[0]['art_lastname'];
                                                                 $bcr = substr($b, 0, 1);
 
                                     $return_html .=  '<div class="post-img-div">';
@@ -1521,18 +1100,18 @@ class Artistic extends MY_Controller {
 
                                 }else{
 
-                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
 
                                 }
                             $return_html .= '</a>';
 
 
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['slug']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
 
-                                                                $a = $firstname;
+                                                                $a = $artdata[0]['art_name'];
                                                                 $acr = substr($a, 0, 1);
-                                                                $b = $lastname;
+                                                                $b = $artdata[0]['art_lastname'];
                                                                 $bcr = substr($b, 0, 1);
 
                                     $return_html .=  '<div class="post-img-div">';
@@ -1545,27 +1124,6 @@ class Artistic extends MY_Controller {
                     $return_html .= '</div>
                                 <div class="post-design-name fl col-xs-8 col-md-10">
                                     <ul>';
-                   
-
-                   
-                   $designation = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
-                           
-                           
-                    $userskill = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_skill;
-
-                     $posted_slug = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
-                           
-                           
-                           $aud = $userskill;
-                           $aud_res = explode(',', $aud);
-                           foreach ($aud_res as $skill) {
-                           
-                               $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-                               $skill1[] = $cache_time;
-                           }
-                           $listFinal = implode(', ', $skill1);
-
-
                     
                     $return_html .= '<li>
                                         </li>';
@@ -1573,18 +1131,17 @@ class Artistic extends MY_Controller {
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $posted_slug) . '">' . ucwords($firstnameposted) .' '. ucwords($lastnameposted) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $row['slug']) . '">' . ucwords($firstname) .' '. ucwords($lastname) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">' . ucwords($artdataposted[0]['art_name']) .' '. ucwords($artdataposted[0]['art_lastname']) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">' . ucwords($artdata[0]['art_name']) .' '. ucwords($artdata[0]['art_lastname']) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
                                             </li>';
-                        $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $row['slug']) . '" title="' . ucwords($firstname) .' '. ucwords($lastname) . '">
-                    ' . ucwords($firstname) .' '.ucwords($lastname). '</a>
+                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '" title="' . ucwords($artdata[0]['art_name']) .' '. ucwords($artdata[0]['art_lastname']) . '">
+                    ' . ucwords($artdata[0]['art_name']) .' '.ucwords($artdata[0]['art_lastname']). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
                     ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
@@ -1600,8 +1157,8 @@ class Artistic extends MY_Controller {
                     $return_html .= '<li>
                                             <div class="post-design-product">
                                                 <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
-                    if ($designation) {
-                        $return_html .= ucwords($designation);
+                    if ($artdata[0]['designation']) {
+                        $return_html .= ucwords($artdata[0]['designation']);
                     } else {
                         $return_html .= 'Current Work';
                     }
@@ -1617,7 +1174,7 @@ class Artistic extends MY_Controller {
                                 <div class="dropdown2">
                                     <a onClick="myFunction1(' . $row['art_post_id'] . ')" class=" dropbtn2 fa fa-ellipsis-v">
                                     </a>
-                                    <div id="myDropdown' . $row['art_post_id'] . '" class=" dropdown2_content">';
+                                    <div id="myDropdown' . $row['art_post_id'] . '" class="dropdown-content2">';
 
                     if ($row['posted_user_id'] != 0) {
 
@@ -1845,10 +1402,7 @@ class Artistic extends MY_Controller {
                                         <li class="likepost' . $row['art_post_id'] . '">
                                             <a id="' . $row['art_post_id'] . '" class="ripple like_h_w"  onClick="post_like(this.id)">';
 
-                    $userid = $this->session->userdata('aileenuser');
-                    $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
-                    $artlike = $this->data['artlike'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $likeuserarray = explode(',', $artlike[0]['art_like_user']);
+                    $likeuserarray = explode(',', $row['art_like_user']);
                     if (!in_array($userid, $likeuserarray)) {
 
                         $return_html .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
@@ -1860,14 +1414,13 @@ class Artistic extends MY_Controller {
                     if ($row['art_likes_count'] > 0) {
                         $return_html .= $row['art_likes_count'];
                     }
-
                     $return_html .= '</span>
                                             </a>
                                         </li>
                                         <li id="insertcount' . $row['art_post_id'] . '" style="visibility:show">';
 
                      $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                    $commnetcount = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $commnetcount = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id,user_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     $return_html .= '<a onClick = "commentall(this.id)" id = "' . $row['art_post_id'] . '" class = "ripple like_h_w">
                     <i class = "fa fa-comment-o" aria-hidden = "true">
@@ -1908,24 +1461,10 @@ class Artistic extends MY_Controller {
 
                         $return_html .= '<div class="likeduserlist' . $row['art_post_id'] . '">';
 
-                        $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                        $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                        $likeuser = $commnetcount[0]['art_like_user'];
-                        $countlike = $commnetcount[0]['art_likes_count'] - 1;
-                        $likelistarray = explode(',', $likeuser);
-
-                        foreach ($likelistarray as $key => $value) {
-                            $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                            $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
-                         }
-
                         $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
 
-                         $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                        $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                        $likeuser = $commnetcount[0]['art_like_user'];
-                        $countlike = $commnetcount[0]['art_likes_count'] - 1;
+                        $likeuser = $row['art_like_user'];
+                        $countlike = $row['art_likes_count'] - 1;
                            
                            $likelistarray = explode(',', $likeuser);
                            $likelistarray = array_reverse($likelistarray);
@@ -1959,24 +1498,11 @@ class Artistic extends MY_Controller {
                     }
 
                     $return_html .= '<div class="likeusername' . $row['art_post_id'] . '" id="likeusername' . $row['art_post_id'] . '" style="display:none">';
-                    $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                    $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    $likeuser = $commnetcount[0]['art_like_user'];
-                    $countlike = $commnetcount[0]['art_likes_count'] - 1;
-                    $likelistarray = explode(',', $likeuser);
-
-                    foreach ($likelistarray as $key => $value) {
-                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
-                    }
                     $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
 
-                    $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                    $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                           $likeuser = $commnetcount[0]['art_like_user'];
-                           $countlike = $commnetcount[0]['art_likes_count'] - 1;
+                           $likeuser = $row['art_like_user'];
+                           $countlike = $row['art_likes_count'] - 1;
                            
                            $likelistarray = explode(',', $likeuser);
                            $likelistarray = array_reverse($likelistarray);
@@ -2009,14 +1535,15 @@ class Artistic extends MY_Controller {
                         <div id="threecomment' . $row['art_post_id'] . '" style="display:block">
                             <div class="hidebottomborder insertcomment' . $row['art_post_id'] . '">';
 
-                   $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
-                   $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+                   
+                   $rowdata = $commnetcount[0];
 
-                    if ($artdata) {
-                        foreach ($artdata as $rowdata) {
+                    if ($rowdata) {
+                        
                             $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
                             $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                              $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                             $art_userid = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->user_id;
 
                             $return_html .= '<div class="all-comment-comment-box">
                                             <div class="post-design-pro-comment-img">';
@@ -2093,10 +1620,8 @@ class Artistic extends MY_Controller {
                                                 <div class="comment-details-menu" id="likecomment1' . $rowdata['artistic_post_comment_id'] . '">
                                                     <a id="' . $rowdata['artistic_post_comment_id'] . '" onClick="comment_like1(this.id)">';
 
-                            $userid = $this->session->userdata('aileenuser');
-                            $contition_array = array('artistic_post_comment_id' => $rowdata['artistic_post_comment_id'], 'status' => '1');
-                            $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                            $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+                          
+                            $likeuserarray = explode(',', $rowdata['artistic_comment_like_user']);
                             if (!in_array($userid, $likeuserarray)) {
 
                                 $return_html .= '<i class="fa fa-thumbs-up fa-1x"  aria-hidden="true"></i>';
@@ -2129,10 +1654,9 @@ class Artistic extends MY_Controller {
                                                         </div>
                                                     </div>';
                             }
-                            $userid = $this->session->userdata('aileenuser');
-                            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
                             
-                            if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
+                            
+                            if ($row['user_id'] == $userid || $art_userid == $userid) {
 
                                 $return_html .= '<span role="presentation" aria-hidden="true"> · 
                                                     </span>
@@ -2157,28 +1681,20 @@ class Artistic extends MY_Controller {
                                             </div>
                                         </div>';
                         }
-                    }
+                    
                     $return_html .= '</div>
                         </div>
                     </div>
                     <div class="post-design-commnet-box col-md-12">
                         <div class="post-design-proo-img hidden-mob">';
 
-                         $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
+                    if ($artdata[0]['art_user_image']) {
 
-                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
-
-                    $userid = $this->session->userdata('aileenuser');
-                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
-                     $art_userfn = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                      $art_userln = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
-
-                    if ($art_userimage) {
-
-                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $art_userfn;
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                                                $a = $artdata[0]['art_name'];
                                                                 $acr = substr($a, 0, 1);
-                                                                $b = $art_userln;
+                                                                $b = $artdata[0]['art_lastname'];
                                                                 $bcr = substr($b, 0, 1);
 
                                     $return_html .=  '<div class="post-img-div">';
@@ -2186,13 +1702,13 @@ class Artistic extends MY_Controller {
                                     $return_html .=  '</div>'; 
 
                                 }else{
-                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
 
                            }
                     } else {
-                                                                $a = $art_userfn;
+                                                                $a = $artdata[0]['art_name'];
                                                                 $acr = substr($a, 0, 1);
-                                                                $b = $art_userln;
+                                                                $b = $artdata[0]['art_lastname'];
                                                                 $bcr = substr($b, 0, 1);
 
                                     $return_html .=  '<div class="post-img-div">';
@@ -2219,7 +1735,7 @@ class Artistic extends MY_Controller {
                     </div></div>';
                 
         echo $return_html;
-      }
+      
     }
 
     // khyati changes end
