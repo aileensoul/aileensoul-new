@@ -207,8 +207,6 @@ class Test extends MY_Controller {
 
         $this->load->view('test/contact', $this->data);
    }
-   
-   
   
 }
 

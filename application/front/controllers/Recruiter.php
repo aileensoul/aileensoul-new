@@ -2542,6 +2542,7 @@ class Recruiter extends MY_Controller {
         }
         $userid = $this->session->userdata('aileenuser');
 
+       
         $searchkeyword = trim($_GET["skill"]);
         $searchplace = trim($_GET["place"]);
 
@@ -2571,37 +2572,60 @@ class Recruiter extends MY_Controller {
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
         //insert search keyword into database end
         //RECRUITER SEARCH START 1-9
-        if ($searchkeyword == "" || $this->uri->segment(3) == "0") {
-            //echo "skill search";die();
-            $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-            $contition_array = array('job_reg.city_id' => $cache_time, 'job_reg.status' => '1', 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
+            $userid = $this->session->userdata('aileenuser');
+        
+            
+    
+     //$rec_search = trim($searchkeyword, ' ');
 
-            $unique = $this->data['results'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            // echo "<pre>"; print_r($unique);die();
+      
+        if ($searchkeyword == "" || $this->uri->segment(3) == "0") { 
+ $contition_array = array('city_name' => $searchplace, 'status' => 1);
+ $citydata  = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+  $join_str1 = array(
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_add_edu',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_add_edu.user_id'),
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
+                );
+   $data = 'job_id,job_reg.user_id as iduser,job_reg.fname,job_reg.lname,job_reg.email,job_reg.phnno,job_reg.language,job_reg.keyskill,job_reg.experience,job_reg.job_user_image,job_reg.designation,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.slug,job_add_edu.degree,job_add_edu.stream,job_add_edu.board_primary,job_add_edu.board_secondary,job_add_edu.board_higher_secondary,job_add_edu.percentage_primary,job_add_edu.percentage_secondary,job_add_edu.percentage_higher_secondary';
+  $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => 10, 'job_reg.user_id != ' => $userid,'FIND_IN_SET("' . $citydata[0]['city_id'] . '", work_job_city) != ' => '0');
+  $jobcity_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+  $unique = $jobcity_data;
+  
         } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
-            //SKILL DATA FETCH START
-            $contition_array = array('is_delete' => '0', 'status' => '1');
-            $search_condition = "(skill LIKE '%$rec_search%')";
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-            //$values = array_map('array_pop', $skillid);
-            //$imploded = implode(',', $values);
-            //echo $imploded;
-
-            foreach ($skilldata as $key => $value) {
-
-                $join_str = array(array(
+         
+//JOB TITILE DATA START
+  $contition_array = array('status' => 'publish');
+  $search_condition = "(name LIKE '%$searchkeyword%')";
+  $jobtitledata = $this->common->select_data_by_search('job_title', $search_condition, $contition_array = array(), $data = 'GROUP_CONCAT(title_id) as title_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  $job_list = $jobtitledata[0]['title_list'];
+  $job_list = str_replace(",", "','", $jobtitledata[0]['title_list']); 
+  //JOB TITILE DATA END
+ 
+   //SKILL DATA START
+  $contition_array = array('status' => '1');
+  $search_condition = "(skill LIKE '%$searchkeyword%')";
+  $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'GROUP_CONCAT(skill_id) as skill_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  $skill_list = $skilldata[0]['skill_list'];
+ // $skill_list = str_replace(",", "','", $skilldata[0]['skill_list']); 
+   //SKILL DATA END
+  //echo '<pre>'; print_r($skill_list); die();
+   //INDUSTRY DATA START
+  $contition_array = array('is_delete' => '0', 'status' => '1');
+  $search_condition = "((industry_name LIKE '%$searchkeyword%') OR (industry_name LIKE '%$searchkeyword%' AND user_id = '$userid'))";
+  $inddata = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'GROUP_CONCAT(industry_id) as industry_list ', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  $ind_list = $inddata[0]['industry_list'];
+  $ind_list = str_replace(",", "','", $inddata[0]['industry_list']); 
+   //INDUSTRY DATA END
+    $join_str1 = array(
+                    array(
                         'join_type' => 'left',
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
@@ -2612,366 +2636,58 @@ class Recruiter extends MY_Controller {
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_graduation.user_id')
                 );
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => 10, 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", keyskill) != ' => '0');
-                $jobskilldata[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-            }
-
-            $rec_skill = $jobskilldata;
-
-            $rec_skill = array_reduce($rec_skill, 'array_merge', array());
-
-            $rec_skill = array_unique($rec_skill, SORT_REGULAR);
-
-
-            //SKILL DATA FETCH END
-            //DEGREE FETCH START
-            $contition_array = array('is_delete' => '0', 'status' => '1');
-            $search_condition = "(degree_name LIKE '%$rec_search%')";
-            $degreedata = $this->common->select_data_by_search('degree', $search_condition, $contition_array = array(), $data = 'degree_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-            //$values = array_map('array_pop', $skillid);
-            //$imploded = implode(',', $values);
-            //echo $imploded;
-
-            foreach ($degreedata as $key => $value) {
-                $value['degree_id'] = 6;
-                $join_str = array(array(
-                        'join_type' => '',
-                        'table' => 'job_reg',
-                        'join_table_id' => 'job_add_edu.user_id',
-                        'from_table_id' => 'job_reg.user_id'),
-                    array(
-                        'join_type' => 'left',
-                        'table' => 'job_graduation',
-                        'join_table_id' => 'job_add_edu.user_id',
-                        'from_table_id' => 'job_graduation.user_id')
-                );
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['degree_id'] . '",ailee_job_add_edu.degree) != ' => '0');
-                $jobdegreedata[] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-            }
-
-            $rec_degree = $jobdegreedata;
-
-            $rec_degree = array_reduce($rec_degree, 'array_merge', array());
-            $rec_degree = array_unique($rec_degree, SORT_REGULAR);
-
-
-            //DEGREE DATA FETCH END
-            //STREAM FETCH START
-            $contition_array = array('is_delete' => '0', 'status' => '1');
-            $search_condition = "(stream_name LIKE '%$rec_search%')";
-            $streamdata = $this->common->select_data_by_search('stream', $search_condition, $contition_array = array(), $data = 'stream_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
-
-            //$values = array_map('array_pop', $skillid);
-            //$imploded = implode(',', $values);
-            //echo $imploded;
-
-            foreach ($streamdata as $key => $value) {
-                //  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", keyskill) != ' => '0');
-
-                $join_str = array(array(
-                        'join_type' => 'left',
-                        'table' => 'job_reg',
-                        'join_table_id' => 'job_add_edu.user_id',
-                        'from_table_id' => 'job_reg.user_id'),
-                    array(
-                        'join_type' => 'left',
-                        'table' => 'job_graduation',
-                        'join_table_id' => 'job_add_edu.user_id',
-                        'from_table_id' => 'job_graduation.user_id')
-                );
-
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['stream_id'] . '", ailee_job_add_edu.stream) != ' => '0');
-                $jobstreamdata[] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-            }
-
-            $rec_stream = $jobstreamdata;
-
-            $rec_stream = array_reduce($rec_stream, 'array_merge', array());
-            $rec_stream = array_unique($rec_stream, SORT_REGULAR);
-
-
-            //STREAM DATA FETCH END
-            //JOB TITLE FETCH START
-            $contition_array = array('status' => 'publish');
-            $search_condition = "(name LIKE '%$rec_search%')";
-            $jobtitledata = $this->common->select_data_by_search('job_title', $search_condition, $contition_array = array(), $data = 'title_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-            //$values = array_map('array_pop', $skillid);
-            //$imploded = implode(',', $values);
-            //echo $imploded;
-
-            foreach ($jobtitledata as $key => $value) {
-
-                $join_str = array(array(
-                        'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                    array(
-                        'join_type' => 'left',
-                        'table' => 'job_graduation',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_graduation.user_id')
-                );
-
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['title_id'] . '", work_job_title) != ' => '0');
-                $jobtiledata[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-            }
-
-            $rec_title = $jobtiledata;
-
-            $rec_title = array_reduce($rec_title, 'array_merge', array());
-            $rec_title = array_unique($rec_title, SORT_REGULAR);
-            //JOB TITLE FETCH END
-
-            $unique = array_merge((array) $rec_skill, (array) $rec_degree, (array) $rec_title, (array) $rec_stream);
+   $data = 'job_id,job_reg.user_id as iduser,job_reg.fname,job_reg.lname,job_reg.email,job_reg.phnno,job_reg.language,job_reg.keyskill,job_reg.experience,job_reg.job_user_image,job_reg.designation,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.slug,job_add_edu.degree,job_add_edu.stream,job_add_edu.board_primary,job_add_edu.board_secondary,job_add_edu.board_higher_secondary,job_add_edu.percentage_primary,job_add_edu.percentage_secondary,job_add_edu.percentage_higher_secondary';
+  $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => 10, 'job_reg.user_id != ' => $userid, 'FIND_IN_SET(work_job_industry,' . $ind_list . ') != ' => '0');
+  $jobind_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+  
+    
+  $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => 10, 'job_reg.user_id != ' => $userid, 'FIND_IN_SET(work_job_title,"' . $job_list . '") != ' => '0');
+  $jobtitle_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+  $skill_list = explode(",",$skill_list);
+  foreach($skill_list as $ski){
+  $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => 10, 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $ski . '", keyskill) != ' => '0');
+  $jobskill_data[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+//25-9 SKILL RESULT END FOR RECRUITER
+  }
+            $job_data = $jobskill_data;
+            $job_data = array_reduce($job_data, 'array_merge', array());
+            $job_data = array_unique($job_data, SORT_REGULAR);
+  
+       $unique = array_merge((array) $jobtitle_data, (array) $job_data, (array) $jobind_data);
+           
         } else {
 
-            //echo "Skill & Place  Search";die();
-
-            $contition_array = array('is_delete' => '0', 'status' => '1');
-
-
-            $results = array_unique($result);
-            foreach ($results as $key => $value) {
-                $result1[$key]['label'] = $value;
-                $result1[$key]['value'] = $value;
-            }
-
-            $search_condition = "(skill LIKE '%$rec_search%')";
-
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>"; print_r($artdata['data']);
-
-
-            $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-            $contition_array = array('job_reg.status' => '1', 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            //  echo "<pre>"; print_r($jobdata); die();
-
-
-
-            $this->data['demo'] = array_values($result1);
-            foreach ($skilldata as $key) {
-                $id = $key['skill_id'];
-                // echo $id; echo "<br>";
-                foreach ($jobdata as $postskill) {
-                    $skill = explode(',', $postskill['keyskill']);
-
-                    if (in_array($id, $skill)) {
-                        // echo "Match found"; echo "</br>";
-                        // echo $postskill['post_id'];
-                        $jobskillpost[] = $postskill;
-                    }
-                }
-            }
-
-            $this->data['rec_skill'] = $jobskillpost;
-
-            $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-
-            $contition_array1 = array('job_add_edu.pass_year' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-
-            $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array1, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-            // echo "<pre>"; print_r($yeardata); die();
-
-            $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-
-            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-
-
-
-            $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-
-            $genderdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array2, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-            //  echo "<pre>"; print_r($genderdata); die();
-
-
-            $contition_array = array('status' => '1', 'user_id !=' => $userid);
-
-
-            $recdata = $this->data['results'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'sum(experience_year),user_id,sum(experience_month)', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby = 'user_id');
-
-
-            foreach ($recdata as $rec) {
-
-                $rec_search = str_replace(' ', '', $rec_search);
-
-
-
-                $y = 0;
-                for ($i = 0; $i <= $y; $i++) {
-                    if ($rec['sum(experience_month)'] >= 12) {
-                        $rec['sum(experience_year)'] = $rec['sum(experience_year)'] + 1;
-                        $rec['sum(experience_month)'] = $rec['sum(experience_month)'] - 12;
-                        $y++;
-                    } else {
-                        $y = 0;
-                    }
-                    $rec['sum(experience_year)'] = $rec['sum(experience_year)'] . 'year';
-                    $rec['sum(experience_month)'] = $rec['sum(experience_month)'] . 'month';
-
-
-                    if (($rec['sum(experience_year)'] == '0year') && (strcmp($rec['sum(experience_month)'], $rec_search) == 0)) {
-
-
-//echo "string";
-                        $join_str = array(array(
-                                'join_type' => '',
-                                'table' => 'job_add_edu',
-                                'join_table_id' => 'job_reg.user_id',
-                                'from_table_id' => 'job_add_edu.user_id'),
-                            array(
-                                'join_type' => '',
-                                'table' => 'job_add_workexp',
-                                'join_table_id' => 'job_reg.user_id',
-                                'from_table_id' => 'job_add_workexp.user_id'),
-                            array(
-                                'join_type' => 'left',
-                                'table' => 'job_graduation',
-                                'join_table_id' => 'job_reg.user_id',
-                                'from_table_id' => 'job_graduation.user_id')
-                        );
-
-                        $contition_array = array('job_reg.user_id' => $rec['user_id'], 'job_reg.job_step' => 10);
-
-                        $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-                    } elseif (strcmp($rec['sum(experience_year)'], $rec_search) == 0) {
-
-
-//echo "string11";
-                        $join_str = array(array(
-                                'join_type' => '',
-                                'table' => 'job_add_edu',
-                                'join_table_id' => 'job_reg.user_id',
-                                'from_table_id' => 'job_add_edu.user_id'),
-                            array(
-                                'join_type' => '',
-                                'table' => 'job_add_workexp',
-                                'join_table_id' => 'job_reg.user_id',
-                                'from_table_id' => 'job_add_workexp.user_id'),
-                            array(
-                                'join_type' => 'left',
-                                'table' => 'job_graduation',
-                                'join_table_id' => 'job_reg.user_id',
-                                'from_table_id' => 'job_graduation.user_id')
-                        );
-
-                        $contition_array = array('job_reg.user_id' => $rec['user_id'], 'job_reg.job_step' => 10);
-
-                        $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-                    } else {
-                        $resul[] = array();
-                    }
-                }
-            }
-
-            foreach ($resul as $key => $value) {
-
-
-                foreach ($value as $va) {
-
-
-                    $result4[] = $va;
-                }
-            }
-            $new3 = array();
-
-
-            foreach ($result4 as $ke => $arr) {
-
-                /// foreach ($arr as $valu) {
-
-
-
-
-                $new3[$arr['user_id']] = $arr;
-
-                //  }
-            }
-
-
-            $join_str = array(array(
-                    'join_type' => '',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => '',
-                    'table' => 'job_add_workexp',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_workexp.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-            $search_condition = "(job_add_workexp.jobtitle LIKE '%$rec_search%')";
-            $contition_array = array('job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-
-            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-
-//echo "<pre>"; print_r($results1); die();
-
-
-
-            $recsearch1 = $this->db->get_where('stream', array('stream_name' => $rec_search))->row()->stream_id;
-
-            if ($recsearch1 != "") {
-                // echo "pallavi";die();
-
-                $join_str = array(array(
+           
+//25-9 SKILL RESULT START FOR RECRUITER
+ $contition_array = array('city_name' => $searchplace, 'status' => 1);
+ $citydata  = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+  //echo '<pre>'; print_r($citydata); die();
+  //JOB TITILE DATA START
+  $contition_array = array('status' => 'publish');
+  $search_condition = "(name LIKE '%$searchkeyword%')";
+  $jobtitledata = $this->common->select_data_by_search('job_title', $search_condition, $contition_array = array(), $data = 'GROUP_CONCAT(title_id) as title_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  $job_list = $jobtitledata[0]['title_list'];
+  $job_list = str_replace(",", "','", $jobtitledata[0]['title_list']);
+  //JOB TITLE DATA END
+ 
+   //SKILL DATA START
+  $contition_array = array('status' => '1');
+  $search_condition = "(skill LIKE '%$searchkeyword%')";
+  $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'GROUP_CONCAT(skill_id) as skill_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  $skill_list = $skilldata[0]['skill_list'];
+ // $skill_list = str_replace(",", "','", $skilldata[0]['skill_list']); 
+   //SKILL DATA END
+  
+   //INDUSTRY DATA START
+  $contition_array = array('is_delete' => '0', 'status' => '1');
+  $search_condition = "((industry_name LIKE '%$searchkeyword%') OR (industry_name LIKE '%$searchkeyword%' AND user_id = '$userid'))";
+  $inddata = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'GROUP_CONCAT(industry_id) as industry_list ', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  $ind_list = $inddata[0]['industry_list'];
+   $ind_list = str_replace(",", "','", $inddata[0]['industry_list']); 
+   //INDUSTRY DATA END
+   
+   $join_str1 = array(
+                    array(
                         'join_type' => 'left',
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
@@ -2982,78 +2698,35 @@ class Recruiter extends MY_Controller {
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_graduation.user_id')
                 );
+   $data = 'job_id,job_reg.user_id as iduser,job_reg.fname,job_reg.lname,job_reg.email,job_reg.phnno,job_reg.language,job_reg.keyskill,job_reg.experience,job_reg.job_user_image,job_reg.designation,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.slug,job_add_edu.degree,job_add_edu.stream,job_add_edu.board_primary,job_add_edu.board_secondary,job_add_edu.board_higher_secondary,job_add_edu.percentage_primary,job_add_edu.percentage_secondary,job_add_edu.percentage_higher_secondary';
+ 
+   $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET(work_job_industry,' . $ind_list . ') != ' => '0','FIND_IN_SET("' . $citydata[0]['city_id'] . '", work_job_city) != ' => '0');
+  $jobind_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+    
+  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET(work_job_title,"' . $job_list . '") != ' => '0','FIND_IN_SET("' . $citydata[0]['city_id'] . '", work_job_city) != ' => '0');
+  $jobtitle_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+  $skill_list = explode(",",$skill_list);
+ 
+  foreach($skill_list as $ski){
+  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET("' . $ski . '", keyskill) != ' => '0','FIND_IN_SET("' . $citydata[0]['city_id'] . '", work_job_city) != ' => '0');
+  $jobskill_data[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+//25-9 SKILL RESULT END FOR RECRUITER
+  }
+            $job_data = $jobskill_data;
+            $job_data = array_reduce($job_data, 'array_merge', array());
+            $job_data = array_unique($job_data, SORT_REGULAR);
+  
+       $unique = array_merge((array) $jobtitle_data, (array) $job_data, (array) $jobind_data);
+        
+  }
+//RECRUITER SEARCH END 1-9
+   
+//        $new11 = array();
+//        foreach ($unique as $value) {
+//            $new11[$value['job_id']] = $value;
+//        }
 
-                $contition_array = array('job_add_edu.stream' => $recsearch1, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-
-
-                $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            }
-
-
-            //echo "<pre>"; print_r($adddata); die();
-
-            $recsearch = $this->db->get_where('degree', array('degree_name' => $rec_search))->row()->degree_id;
-
-            if ($recsearch != "") {
-
-                $join_str = array(array(
-                        'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                    array(
-                        'join_type' => 'left',
-                        'table' => 'job_graduation',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_graduation.user_id')
-                );
-                $contition_array = array('job_add_edu.degree' => $recsearch, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-
-
-                $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            }
-            // echo "<pre>"; print_r($adddata); die();
-
-
-            foreach ($jobskillpost as $ke => $arr) {
-
-                $postdata1[] = $arr;
-            }
-
-            $new1 = array();
-            foreach ($postdata1 as $value) {
-                //echo "hi";
-                $new1[$value['job_id']] = $value;
-            }
-
-            // echo '<pre>'; print_r($new1); die();
-
-            if (count($new1) == 0) {
-                $unique = array_merge($adddata, $genderdata, $results1, $new3, $jobdata);
-                // echo count($unique) . "<br>"; die();
-                // echo "<pre>"; print_r($unique); die();
-            } else {
-
-                //echo "hi"; die();
-                $unique = array_merge($new1, $adddata, $genderdata, $results1, $new3, $jobdata);
-            }
-            // echo "<pre>"; print_r($unique); die();
-        }
-
-
-        //echo "<pre>"; print_r($unique); die();
-
-        foreach ($unique as $ke => $arr) {
-
-            $skildataa[] = $arr;
-        }
-//echo "<pre>";print_r($postdata);
-        $new11 = array();
-        foreach ($skildataa as $value) {
-            $new11[$value['user_id']] = $value;
-        }
-
-        $postdetail = $this->data['postdetail'] = $new11;
+        $postdetail = $this->data['postdetail'] = $unique;
         $searchdata1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($searchdata1);
@@ -4753,11 +4426,11 @@ class Recruiter extends MY_Controller {
            
         } else {
 
-            //echo "Skill & Place  Search";die();
+           
 //25-9 SKILL RESULT START FOR RECRUITER
  $contition_array = array('city_name' => $searchplace, 'status' => 1);
  $citydata  = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-   
+  //echo '<pre>'; print_r($citydata); die();
   //JOB TITILE DATA START
   $contition_array = array('status' => 'publish');
   $search_condition = "(name LIKE '%$searchkeyword%')";
@@ -4779,17 +4452,18 @@ class Recruiter extends MY_Controller {
   $search_condition = "((industry_name LIKE '%$searchkeyword%') OR (industry_name LIKE '%$searchkeyword%' AND user_id = '$userid'))";
   $inddata = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'GROUP_CONCAT(industry_id) as industry_list ', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
   $ind_list = $inddata[0]['industry_list'];
-  $ind_list = str_replace(",", "','", $inddata[0]['industry_list']); 
+   $ind_list = str_replace(",", "','", $inddata[0]['industry_list']); 
    //INDUSTRY DATA END
    
-  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET(work_job_industry,' . $ind_list . ') != ' => '0');
+  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET(work_job_industry,' . $ind_list . ') != ' => '0','FIND_IN_SET("' . $citydata[0]['city_id'] . '", work_job_city) != ' => '0');
   $jobind_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
     
-  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET(work_job_title,"' . $job_list . '") != ' => '0');
+  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET(work_job_title,"' . $job_list . '") != ' => '0','FIND_IN_SET("' . $citydata[0]['city_id'] . '", work_job_city) != ' => '0');
   $jobtitle_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
   $skill_list = explode(",",$skill_list);
+ 
   foreach($skill_list as $ski){
-  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET("' . $ski . '", keyskill) != ' => '0');
+  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET("' . $ski . '", keyskill) != ' => '0','FIND_IN_SET("' . $citydata[0]['city_id'] . '", work_job_city) != ' => '0');
   $jobskill_data[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //25-9 SKILL RESULT END FOR RECRUITER
   }
@@ -4798,7 +4472,8 @@ class Recruiter extends MY_Controller {
             $job_data = array_unique($job_data, SORT_REGULAR);
   
        $unique = array_merge((array) $jobtitle_data, (array) $job_data, (array) $jobind_data);
-            }
+        
+  }
 
     }
 }

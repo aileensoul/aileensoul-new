@@ -137,7 +137,7 @@
 <!--STEP 2 OF RECRUITER REGISTER START-->
   <div class="common-form common-form_border" id="reg2" style="display:none">
                                 <h3>Company Information</h3>
-                                <?php echo form_open_multipart(base_url('recruiter/company_info_store'), array('id' => 'companyinfo', 'name' => 'basicinfo', 'class' => 'clearfix', 'onsubmit' => "comlogo(event)")); ?>
+                                <?php echo form_open_multipart(base_url('recruiter/company_info_store'), array('id' => 'companyinfo', 'name' => 'companyinfo', 'class' => 'clearfix', 'onsubmit' => "comlogo(event)")); ?>
 
 
                                 <div> <span class="required_field" >( <span class="red">*</span> ) Indicates required field</span></div>
@@ -389,7 +389,7 @@
         <!-- FIELD VALIDATION JS END -->
        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/basic_info.js'); ?>"></script>
-    
+       <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/company_info.js'); ?>"></script>
        <script type="text/javascript">
 jQuery(document).ready(function ($) {
 
