@@ -161,7 +161,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box {max-width: 430px; position: fixed;}
 .full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
 .profile-boxProfileCard {border: 11px solid #ffffff; background: #fff; border-radius: 3px;}
-.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none;}
+.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none; height:110px;}
 .profile-boxProfileCard-bg {background-size: 100%; border-radius: 4px 4px 0 0; background-position: 0 50%; width: 100%;}
 .data_img {height: 95px; width: 100%;}
 .data_img img {height: 100%; width: 100%;}
@@ -837,8 +837,6 @@ label.cameraButton input[accept*="camera"] {
 .custom-row .user-pic:hover a{width:100%;}
 .post-img-user{
     color:#fff;
-    width:152px;
-    height:153px;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
     background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
@@ -895,12 +893,12 @@ label.cameraButton input[accept*="camera"] {
 .panel-body.rec-edit-post{padding:0; border-top:1px solid #d9d9d9;}
 
 .fancybox-slide .message h2{font-size:27px;}
+
 /***  media query  ***/
 @media screen and (max-width: 1279px){
 .custom-right {
     margin-left: 10px
     }
-    
 } 
 
 @media screen and (max-width: 1200px){

@@ -441,7 +441,7 @@ label.cameraButton:active {
     width: 100%;
 }
 .bui_art_left_box .data_img {
-    height: 84px;
+    height: 110px;
     width: 100%;
 }
 .bui_art_left_box .data_img img {
@@ -645,7 +645,7 @@ label.cameraButton:active {
     margin-left: 0px;
 }
 .bui_art_left_box .profile-boxProfileCard-bg img {
-    height: 84px;
+   
 }
 .profile-job-details p i {
     margin-right: 6px;
