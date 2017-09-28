@@ -1,5 +1,5 @@
 
-<?php  if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'recommen_candidate')) { ?>
+<?php  if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home')) { ?>
 
     <header>
         <div class="bg-search">
