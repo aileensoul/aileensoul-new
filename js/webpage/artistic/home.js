@@ -1362,7 +1362,8 @@ function insert_comment(clicked_id)
             }else{
    
                $('#' + 'removepost' + abc).remove();
-               if(data.notcount == 'count'){
+               var nb = $('.post-design-box').length;
+               if(nb == 0){
                     $('.' + 'nofoundpost').html(data.notfound);
                    }
 
