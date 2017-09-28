@@ -207,7 +207,15 @@ class Test extends MY_Controller {
 
         $this->load->view('test/contact', $this->data);
    }
-  
+   public function dynamic(){
+      
+        $this->load->view('dynamic/index',$this->data);
+    }
+    
+    public function contact_dynamic(){
+       
+        $this->load->view('dynamic/contact',$this->data);
+    }
 }
 
 

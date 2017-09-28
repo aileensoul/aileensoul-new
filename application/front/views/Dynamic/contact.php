@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+<html>
+   
+        <title><?php echo $title; ?></title>
+        <?php echo $head; ?> 
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	
-	<title>Dynamic Page | Home</title>
-	
-	<link rel='stylesheet' type='text/css' href='css/style.css' />
+	<script type="text/javascript">
+	jQuery.browser = {};
+(function () {
+jQuery.browser.msie = false;
+jQuery.browser.version = 0;
+if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+jQuery.browser.msie = true;
+jQuery.browser.version = RegExp.$1;
+}
+})(); </script>
+	<!--<link rel='stylesheet' type='text/css' href='css/style.css' />-->
 	
 	<!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	 <link rel="stylesheet" href="<?php echo base_url() ?>dynamic/css/style.css" />
+	 <!--<link rel="stylesheet" href="<?php echo base_url() ?>dynamic/css/style.css" />-->
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
          <script type="text/javascript" src="<?php echo base_url('dynamic/js/jquery.ba-hashchange.min.js'); ?>"></script>
          <script type="text/javascript" src="<?php echo base_url('dynamic/js/dynamicpage.js'); ?>"></script>
@@ -20,26 +35,78 @@
 
 <body>
 
-    
-
 	<div id="page-wrap">
 
         <header>
-		  <h1>Dynamic Page</h1>
+		  <h1>Dynamic Site</h1>
 		
 		  <nav>
+		      
+		          <ul class="group">
+		          <li><a href="dynamic">Home</a></li>
+		          <li><a href="contact_dynamic">Contact</a></li>
+		    
+		      </ul>
+		  </nav>
+                  
+                   <?php echo $header; ?>
+        <?php if ($recdata[0]['re_step'] == 3) { ?>
+            <?php echo $recruiter_header2_border; ?>
+        <?php } ?>
+        <div id="preloader"></div>
+		</header>
+		 <!-- START CONTAINER -->
+        <section>
+            <div class="user-midd-section" id="paddingtop_fixed">
+                <div class="common-form1">
+                    <div class="col-md-3 col-sm-4"></div>
+
+                    <?php
+                    if ($recdata[0]['re_step'] == 3) {
+                        ?>
+                        <div class="col-md-6 col-sm-8"><h3>You are updating your Recruiter Profile.</h3></div>
+
+                    <?php } else {
+                        ?>
+
+                        <div class="col-md-6 col-sm-8"><h3>You are making your Recruiter Profile.</h3></div>
+                    <?php } ?>
+
+                </div>
+          
+                <div class="container">
+                    <div class="row row4">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="left-side-bar">
+<!--                                <ul class="left-form-each">
+
+                                    <li class="custom-none"><a href="<?php echo base_url('recruiter/basic-information'); ?>">Basic Information</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?>><a href="#">Company Information</a></li>
+
+                                </ul>-->
+<nav>
 		      <ul class="group">
 		          <li><a href="dynamic">Home</a></li>
 		          <li><a href="contact_dynamic">Contact</a></li>
 		      </ul>
 		  </nav>
-		</header>
-		
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-8">
+                            <div>
+                                <?php
+                                if ($this->session->flashdata('error')) {
+                                    echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+                                }
+                                if ($this->session->flashdata('success')) {
+                                    echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+                                }
+                                ?>
+                            </div>
 		<section id="main-content">
 		<div id="guts">
 		
-		      <!--- middle section start -->
-                            <div class="common-form common-form_border">
+		  <div class="common-form common-form_border">
                                 <h3>Company Information</h3>
                                 <?php echo form_open_multipart(base_url('recruiter/company_info_store'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => 'clearfix', 'onsubmit' => "comlogo(event)")); ?>
 
@@ -267,17 +334,16 @@
                                 </fieldset>
                                  </form>   
                             </div>
+
 		</div>
 		</section>
 		
+		<footer>
+		  &copy;2010 CSS-Tricks
+		</footer>
+			
 	</div>
 	
-	<footer>
-	  &copy;2010 CSS-Tricks
-	</footer>
-
-	
-
 </body>
 
 </html>

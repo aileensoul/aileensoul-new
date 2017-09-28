@@ -42,8 +42,8 @@
                                 <ul class="left-form-each">
 
                                     <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?>>
-                                        <!--<a href="#">Basic Information</a>-->
-                                         <a title="Post" href="javascript:void(0);" onclick="ChangeUrl('Page1', '<?php echo base_url('test/basic') ?>');">Basic information</a>
+                                        <a href="basic">Basic Information</a>
+                                         <!--<a title="Post" href="javascript:void(0);" onclick="ChangeUrl('Page1', '<?php echo base_url('test/basic') ?>');">Basic information</a>-->
                                     </li>
 
                                     <li  class="custom-none <?php
@@ -51,8 +51,8 @@
                                         echo "khyati";
                                     }
                                     ?>" id="step2">
-                                        <!--<a href="<?php echo base_url('recruiter/company-information'); ?>">Company Information</a>-->
-                                         <a title="Post" href="javascript:void(0);" onclick="ChangeUrl('Page2', '<?php echo base_url('test/contact') ?>');">Company Information</a>
+                                        <a href="contact">Company Information</a>
+                                         <!--<a title="Post" href="javascript:void(0);" onclick="ChangeUrl('Page2', '<?php echo base_url('test/contact') ?>');">Company Information</a>-->
                                </li>
                                 </ul>
                             </div>

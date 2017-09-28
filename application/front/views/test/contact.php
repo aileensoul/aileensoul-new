@@ -1,11 +1,13 @@
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+<script type="text/javascript" src="<?php echo base_url('dynamic/js/jquery.ba-hashchange.min.js'); ?>"></script>
+         <script type="text/javascript" src="<?php echo base_url('dynamic/js/dynamicpage.js'); ?>"></script>
+    
 
 <?php
-$pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
-if ($pageWasRefreshed) {
+//$pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+//if ($pageWasRefreshed) {
     echo $test_header;
-}
+//}
 ?>                      
 <!--- middle section start -->
 <div id="screen">
@@ -241,9 +243,9 @@ if ($pageWasRefreshed) {
 
 
 <?php
-if ($pageWasRefreshed) {
+//if ($pageWasRefreshed) {
     echo $test_footer;
-}
+//}
 ?>
 <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/company_info.js'); ?>"></script>
