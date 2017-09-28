@@ -2089,9 +2089,9 @@ label.cameraButton:active {
 .head_details1 {
     text-align: center;
 }
-.head_details1 h5:hover {
+/*.head_details1 h5:hover {
     text-decoration: underline;
-}
+}*/
 .profile-boxProfileCard h5 i {
     padding-right: 7px;
 }
@@ -2777,7 +2777,7 @@ label.cameraButton:active {
 .like_one_other_img {
     font-weight: 400;
     border-top: 1px solid #efefef;
-    width: 100%;
+    /*width: 100%;*/
     padding: 1px;
     font-size: 13px;
     display: inline-block;

@@ -560,7 +560,6 @@ class Registration extends CI_Controller {
         $jobuser=$jobdata[0]['total'];
         //For live link need this code End
 
-
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';

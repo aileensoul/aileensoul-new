@@ -1,10 +1,3 @@
-jQuery(document).ready(function ($) {
-    $(window).on('load', function() {
-        $('#preloader').fadeOut('slow', function () {
-            $(this).remove();
-        });
-    });
-});
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);

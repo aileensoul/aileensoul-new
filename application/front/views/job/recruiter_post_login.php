@@ -416,7 +416,7 @@
 <?php echo $footer;  ?>
 </footer>
 
-<!-- Login  -->
+<!-- Login-->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -477,6 +477,131 @@
             </div>
         </div>
         <!-- Login -->
+
+    <!-- Login  For Save Post-->
+        <div class="modal fade login" id="login_save" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <div class="col-sm-12 right-main">
+                            <div class="right-main-inner">
+                                <div class="login-frm">
+                                        <div class="title">
+                                            <h1 class="ttc">Welcome To Aileensoul</h1>
+                                        </div>
+
+                                        <form role="form" name="login_form_save" id="login_form_save" method="post">
+
+                                            <div class="form-group">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                <div id="error2" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('erroremail')) {
+                                                        echo $this->session->flashdata('erroremail');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorlogin"></div> 
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                                <div id="error1" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('errorpass')) {
+                                                        echo $this->session->flashdata('errorpass');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorpass"></div> 
+                                            </div>
+
+                                            <p class="pt-20 ">
+                                                <button class="btn1" onclick="login()">Login</button>
+                                            </p>
+
+                                            <p class=" text-center">
+                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            </p>
+
+                                            <p class="pt15 text-center">
+                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            </p>
+                                        </form>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login -->
+
+         <!-- Login  For Apply Post-->
+        <div class="modal fade login" id="login_apply" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <div class="col-sm-12 right-main">
+                            <div class="right-main-inner">
+                                <div class="login-frm">
+                                        <div class="title">
+                                            <h1 class="ttc">Welcome To Aileensoul</h1>
+                                        </div>
+
+                                        <form role="form" name="login_form_apply" id="login_form_apply" method="post">
+
+                                            <div class="form-group">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                <div id="error2" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('erroremail')) {
+                                                        echo $this->session->flashdata('erroremail');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorlogin"></div> 
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                                <div id="error1" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('errorpass')) {
+                                                        echo $this->session->flashdata('errorpass');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorpass"></div> 
+                                            </div>
+
+                                            <p class="pt-20 ">
+                                                <button class="btn1" onclick="login()">Login</button>
+                                            </p>
+
+                                            <p class=" text-center">
+                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            </p>
+
+                                            <p class="pt15 text-center">
+                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            </p>
+                                        </form>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login -->
+
 
         <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">

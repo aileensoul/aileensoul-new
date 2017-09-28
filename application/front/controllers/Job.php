@@ -5140,7 +5140,7 @@ public function post($id="")
                             if ($this->session->userdata('aileenuser')) {
                                 $rec_post .= 'onclick="applypopup(' . $rec_postdata[0]['post_id'] . ',' . $rec_postdata[0]['user_id'] . ')"';
                             } else {
-                                $rec_post .= 'onClick="login_profile()"';
+                                $rec_post .= 'onClick="login_profile_apply()"';
                             }
 
                             $rec_post .='>Apply</a>';
@@ -5158,7 +5158,7 @@ public function post($id="")
                                 if ($this->session->userdata('aileenuser')) {
                                     $rec_post .= 'onclick="savepopup(' . $rec_postdata[0]['post_id'] .')"';
                                 } else {
-                                    $rec_post .= 'onClick="login_profile()"';
+                                    $rec_post .= 'onClick="login_profile_save()"';
                                 }
                                  $rec_post .='>Save</a>';
                             }

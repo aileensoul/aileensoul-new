@@ -33,7 +33,7 @@
                             <span class="email-img"><img src="<?php echo base_url(); ?>images/email.png"></span>
                             <span class="main-txt">
                                 <span class="as-p">
-                                    Please verify your email address. 
+                                   we have sent you verification mail to this <?php echo "<a>". $userdata[0]['user_email'] ."</a>"; ?>. please verify your email address.
                                 </span>
                                 <span class="ves_c">
                                     <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify</a></span>

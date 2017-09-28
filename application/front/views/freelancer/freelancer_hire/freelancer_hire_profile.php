@@ -87,7 +87,18 @@
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-                            <?php if ($freelancerhiredata[0]['freelancer_hire_user_image'] != '') { ?>
+                            <?php
+                            if ($freelancerhiredata[0]['freelancer_hire_user_image'] != '') {
+                                
+                                $info = $s3->getObjectInfo(bucket, $freelancerhiredata[0]['freelancer_hire_user_image']);
+                                if ($info) {
+//File exists                       
+                                    echo "exist";die();
+                                } else {
+//File doesn't exists
+                                    echo "not exist";die();
+                                }
+                                ?>
                                 <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerhiredata[0]['freelancer_hire_user_image']; ?>" alt="" >
                                 <?php
                             } else {
@@ -165,22 +176,23 @@
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($userid != $this->uri->segment(3)) {
                                     if ($this->uri->segment(3) != "") {
-                                         if(is_numeric($this->uri->segment(3))){
-                                         $id=$this->uri->segment(3);
-                                         }else{
-                                        $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
-                                         }
+                                        if (is_numeric($this->uri->segment(3))) {
+                                            $id = $this->uri->segment(3);
+                                        } else {
+                                            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                        }
                                         ?>
                                         <div class="flw_msg_btn fr">
                                             <ul> <li>
-                                                  <?php
-        $returnpage = $_GET['page'];
-        if ($returnpage == 'freelancer_post') { ?>
-             <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
-   <?php     } else { ?>
-            <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
- <?php       }
-        ?>
+                                                    <?php
+                                                    $returnpage = $_GET['page'];
+                                                    if ($returnpage == 'freelancer_post') {
+                                                        ?>
+                                                        <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php }
+                                                    ?>
                                                 </li>
                                             </ul>
                                         </div>
@@ -194,12 +206,12 @@
                 </div>
 
 
-                <?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
+<?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
                     <div  class="add-post-button mob-block">
                         <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
 
                     </div>
-                <?php } ?>
+<?php } ?>
                 <div class="middle-part">          
                     <div class="job-menu-profile mob-none pt20">
                         <a href="javascript:void(0);">
@@ -224,7 +236,7 @@
                                 <?php } else {
                                     ?>
                                     <a   title=" <?php echo ucwords($freelancerhiredata[0]['designation']); ?>">
-                                        <?php echo ucwords($freelancerhiredata[0]['designation']); ?> </a>
+                                    <?php echo ucwords($freelancerhiredata[0]['designation']); ?> </a>
                                     <?php
                                 }
                             }
@@ -234,7 +246,7 @@
                         <div  class="add-post-button">
                             <?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
                                 <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
-                            <?php } ?>
+<?php } ?>
                         </div>
                     </div>
                     <div class="col-md-7 col-sm-12 mob-clear">
@@ -291,7 +303,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b><?php echo $this->lang->line("skype_id"); ?></b> <span>
-                                                                        <?php echo PROFILENA; ?></span>
+                                                                <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -315,7 +327,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span>
-                                                                        <?php echo PROFILENA; ?></span>
+                                                                <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -368,7 +380,7 @@
                                                                     } else {
                                                                         ?>
                                                                     <li><b><?php echo $this->lang->line("city"); ?></b> <span>
-                                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                                     </li>
                                                                     <?php
                                                                 }
@@ -394,7 +406,7 @@
                                                                 } else {
                                                                     ?>
                                                                     <li><b><?php echo $this->lang->line("pincode"); ?></b> <span>
-                                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                                     </li>
                                                                     <?php
                                                                 }
@@ -434,7 +446,7 @@
                 </div>
         </section>
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <!-- model for popup start -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -475,16 +487,16 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <!--<script src="<?php //echo base_url('js/jquery.js');      ?>"></script>-->         
+        <!--<script src="<?php //echo base_url('js/jquery.js');       ?>"></script>-->         
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('js/jquery-ui.min.js');      ?>"></script>-->
+        <!--<script src="<?php //echo base_url('js/jquery-ui.min.js');       ?>"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time());      ?>">-->
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time());       ?>">-->
         <!--</script>-->
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script>
-                                    var base_url = '<?php echo base_url(); ?>';
+                                var base_url = '<?php echo base_url(); ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
