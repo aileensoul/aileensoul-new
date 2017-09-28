@@ -412,6 +412,7 @@ li.fr a {
 .profile-boxProfileCard-cover {
     border: 1px solid #efefef;
     border-bottom: none;
+	height:110px;
 }
 .profile-boxProfileCard-bg {
     background-size: 100%;
@@ -1286,8 +1287,6 @@ label.cameraButton input[accept*="camera"] {
 
 .post-img-user {
     color: #fff;
-    width: 152px;
-    height: 153px;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     /* ff3.6+ */
     
@@ -1308,7 +1307,7 @@ label.cameraButton input[accept*="camera"] {
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
     font-size: 40px;
-    padding: 64px 0;
+    padding: 63px 0;
     text-align: center;
 }
 .post-editor .popup-img .post-img-div {
@@ -1532,10 +1531,8 @@ label.cameraButton input[accept*="camera"] {
         float: left;
     }
     .post-img-user {
-        height: 118px;
         line-height: 1;
         padding: 40px 0;
-        width: 109px;
     }
     .fullwidth_experience select {
         width: 48%;
@@ -1630,7 +1627,7 @@ label.cameraButton input[accept*="camera"] {
     }
     .job-menu-profile {
         width: 100%;
-        padding-left: 15px;
+        padding-left: 30px;
         margin-top: 10px;
 		
     }

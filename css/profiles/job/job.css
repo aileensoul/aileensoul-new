@@ -432,6 +432,7 @@ li.fr a {
     background-position: 0 50%;
     width: 100%;
 }
+.profile-boxProfileCard-bg img{height:110px;}
 .data_img {
     height: 95px;
     width: 100%;
@@ -1968,8 +1969,6 @@ label.cameraButton input[accept*="camera"] {
 }
 .post-img-user {
     color: #fff;
-    width: 148px;
-    height: 148px;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     /* ff3.6+ */
     
@@ -1990,7 +1989,7 @@ label.cameraButton input[accept*="camera"] {
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
     font-size: 40px;
-    padding: 64px 0;
+    padding: 63px 0;
     text-align: center;
 }
 .post-editor .popup-img .post-img-div {
@@ -2101,6 +2100,7 @@ label.cameraButton input[accept*="camera"] {
 .message button.fancybox-close-small:hover{border:none;}
 
 .current-user{float:left;}
+.profile-boxProfileCard .bg-images.no-cover-upload{height:110px;}
 
 
 
@@ -2205,13 +2205,13 @@ label.cameraButton input[accept*="camera"] {
         padding-top: 54px !important;
     }
     .profile-pho {
-        height: 133px;
-        width: 123px;
+        height: 130px;
+        width: 130px;
         margin-top: -55px;
     }
     .user-pic {
-        height: 125px;
-        width: 115px;
+        height: 128px;
+        width: 128px;
     }
     .buisness-profile-txext {
         width: 28%;
@@ -2238,11 +2238,11 @@ label.cameraButton input[accept*="camera"] {
         float: left;
     }
     .post-img-user {
-        height: 118px;
         line-height: 1;
         padding: 40px 0;
-        width: 109px;
     }
+	.user-pic:hover a{height:118px; width:118px; padding:17px 5px;}
+	
 }
 @media screen and (max-width: 991px) {
     .art_no_post_text {
@@ -2352,7 +2352,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 0;
     }
     .art-side-menu {
-        padding-left: 160px !important;
+        padding-left: 175px !important;
     }
     .flw_msg_btn ul li {
         padding-right: 0 !important;
@@ -2361,7 +2361,7 @@ label.cameraButton input[accept*="camera"] {
     .job-menu-profile {
         width: 100%;
         padding-left: 15px;
-        margin-top: 20px;
+        margin-top: 30px;
     }
     .profile-job-details .job_companyname {
         width: 50%;
@@ -2391,6 +2391,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before {
         top: 84px !important;
     }
+	.art-side-menu ul{float:none; display:inline-block;}
 }
 @media screen and (max-width: 767px) {
     .common-form input[type="radio"],
@@ -2719,8 +2720,9 @@ label.cameraButton input[accept*="camera"] {
     #row1 {
         height: 200px;
     }
+	.job-menu-profile h5{margin-top:0;}
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 639px) {
     .job_con #InboxContainer::before {
         right: 120px;
     }
@@ -2755,6 +2757,9 @@ label.cameraButton input[accept*="camera"] {
     .custom-row .user-pic:hover a {
         width: 88px;
         bottom: 5px;
+		height:88px;
+		padding:27px 5px;
+		font-size:0;
     }
     .cover-pic {
         bottom: 62%;

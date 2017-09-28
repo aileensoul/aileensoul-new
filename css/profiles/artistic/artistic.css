@@ -4117,13 +4117,6 @@ div .comment {
         width: 100%;
         float: left;
     }
-    .post-img-user {
-        height: 100%;
-        line-height: 0;
-        font-size: 18px;
-        padding: 40px 0;
-        width: 100%;
-    }
 }
 
 @media screen and (max-width: 991px) {
@@ -4421,6 +4414,7 @@ div .comment {
 	.post-design-name {width:84%; padding-right:0;}
 	.folle_text{width:66%;}
 	.profile_search{width:100%;}
+	.post-img-user{padding:40px 0; }
 }
 
 @media screen and (max-width: 800px) {

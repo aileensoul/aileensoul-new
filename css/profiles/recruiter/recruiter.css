@@ -845,7 +845,7 @@ label.cameraButton input[accept*="camera"] {
     background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
     font-size: 40px;
-    padding: 64px 0;
+    padding: 63px 0;
     text-align: center;
 }
 .post-editor .popup-img .post-img-div{margin-top:8px; margin-bottom: 7px;}
@@ -1457,13 +1457,6 @@ label.cameraButton input[accept*="camera"] {
     left: 2.5% !important;
     }
 	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
-	.post-img-user {
-		font-size: 16px;
-		height: 100%;
-		line-height: 0;
-		padding: 22px 0;
-		width: 100%;
-	}
 	.floatBarsG{width: 20px; height: 20px;}
 	#floatBarsG {
 		position: absolute;

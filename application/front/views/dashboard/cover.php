@@ -518,7 +518,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <div class="item slide10">
                                                             <div class="center_sl main_cl_sl slider-10 slide-text">
                                                                 <div data-animation="animated fadeInDownBig" class="text_sl_head main_10_sl"> 
-                                                                    <span class="mian_4_hed"> Post your artistic talent and crearivity with photo/audio/video/pdf </span>
+                                                                    <span class="mian_4_hed"> Post your artistic talent and creativity with photo/audio/video/pdf </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
                                                                     <img src="<?php echo base_url(); ?>slicing/img_screen_10.png">

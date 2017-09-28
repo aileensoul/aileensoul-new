@@ -444,6 +444,7 @@ label.cameraButton:active {
 .bui_art_left_box .profile-boxProfileCard-cover {
     border: 1px solid #efefef;
     border-bottom: none;
+	height:110px;
 }
 .bui_art_left_box .profile-boxProfileCard-bg {
     background-size: 100%;
@@ -655,7 +656,7 @@ label.cameraButton:active {
     margin-left: 0px;
 }
 .bui_art_left_box .profile-boxProfileCard-bg img {
-    height: 84px;
+    height: 110px;
 }
 .profile-job-details p i {
     margin-right: 6px;
@@ -3132,7 +3133,7 @@ label.cameraButton:active {
     background-color: white!important;
 }
 .profile-boxProfileCard-bg img {
-    height: 95PX;
+
     width: 100%;
 }
 .search_img {
@@ -4939,13 +4940,13 @@ div .comment {
 	.user-pic:hover a{width:80px; height:80px; padding:23px 5px; font-size:0;}
 	.post-img-user{font-size:24px; padding:30px 0;}
     .bui-menu-profile {
-        padding-left: 110px !important;
+        padding-left: 120px !important;
     }
     .profile-main-box-buis-menu li a {
         padding: 10px 17px 12px !important;
     }
     .buisness-menu::before {
-        bottom: 48px;
+        bottom: 49px;
     }
 	.other-profile-menu .buisness-menu::before {
         bottom: 92px;
@@ -5130,6 +5131,7 @@ div .comment {
 	.profile-job-post-location-name{padding-left:10px; padding-right:10px;}
 	.text-center.tab-block .mob-inner-page a:last-child{text-transform:uppercase;}
 	.search-page .designation_rec{width:47% !important;}
+	.business-profile-right .business-data-menu{padding-left:0;}
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5922,6 +5924,9 @@ div .comment {
     }
     .right-side-menu {
         width: 100%;
+    }
+	.buisness-menu::before {
+        bottom: 41px;
     }
 }
 @media screen and (max-width: 320px) {
