@@ -499,6 +499,9 @@
                 $('#userlist').html(data.leftbar);
                 $('.notification_data_in_h2').html(data.headertwo);
                 $('#seemsg').html(data.seeall);
+//                var InboxContainer = $('#InboxContainer').attr('class');
+//                console.log(InboxContainer);
+//                return false;
                 setTimeout(
                         chatmsg,
                         100000
