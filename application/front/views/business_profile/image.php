@@ -20,7 +20,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php if ($businessdata[0]['business_step'] == 4) { ?>
+        <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
         <!--<div class="js">-->

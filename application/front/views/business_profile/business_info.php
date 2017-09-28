@@ -3,9 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
     </head>
@@ -20,10 +18,8 @@
                     <div class="col-md-3 col-sm-4"></div>
                     <?php
                     $userid = $this->session->userdata('aileenuser');
-
                     $contition_array = array('user_id' => $userid, 'status' => '1');
                     $busdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                     if ($busdata[0]['business_step'] == 4) {
                         ?>
                         <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_edit_title"); ?></h3></div>
