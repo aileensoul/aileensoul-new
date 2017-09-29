@@ -67,7 +67,7 @@
  
                     <div class="col-md-6 col-sm-8">
 
-                     <div>
+                     <div class="art-alert">
                         <?php
                                         if ($this->session->flashdata('error')) {
                                             echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';

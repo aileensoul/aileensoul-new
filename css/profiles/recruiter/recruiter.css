@@ -894,6 +894,8 @@ label.cameraButton input[accept*="camera"] {
 
 .fancybox-slide .message h2{font-size:27px;}
 
+.keyskill_border_active{border: 1px solid red !important; border-radius: 2px;}
+
 /***  media query  ***/
 @media screen and (max-width: 1279px){
 .custom-right {

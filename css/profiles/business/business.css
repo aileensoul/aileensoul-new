@@ -3666,8 +3666,6 @@ label.cameraButton input[accept*="camera"] {
 
 .post-img-user {
     color: #fff;
-    width: 152px;
-    height: 153px;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     /* ff3.6+ */
     
@@ -3688,7 +3686,7 @@ label.cameraButton input[accept*="camera"] {
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
     font-size: 40px;
-    padding: 64px 0;
+    padding: 63px 0;
     text-align: center;
 }
 .post-editor .popup-img .post-img-div {

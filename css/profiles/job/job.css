@@ -2101,6 +2101,7 @@ label.cameraButton input[accept*="camera"] {
 
 .current-user{float:left;}
 .profile-boxProfileCard .bg-images.no-cover-upload{height:110px;}
+.keyskill_border_active{border: 1px solid red !important; border-radius: 2px;}
 
 
 
