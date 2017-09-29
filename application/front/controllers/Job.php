@@ -5226,5 +5226,11 @@ public function rec_profile($id="")
     $this->load->view('job/recruiter_profile',$this->data);
 }
 //FOR RECRUITER POST END
+public function add1(){
+      $contition_array = array('status' => '1', 'is_delete' => '0');
+      $job = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+     echo json_encode(array('RESULT' => $job,'MESSAGE' => 'Success','STATUS' =>'1'));
+      exit();
+}
 
 }
