@@ -199,7 +199,7 @@
                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php } else {
                                                     ?>
-                                                    <img  src="<?php echo  BUS_PROFILE_MAIN_UPLOAD_URL. $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                                    <img  src="<?php echo  BUS_PROFILE_THUMB_UPLOAD_URL. $business_common_data[0]['business_user_image']; ?>"  alt="">
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
@@ -235,7 +235,7 @@
                                                         ?>
 
 
-                                                        <img  src="<?php echo BUS_PROFILE_MAIN_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
 
                                                     <?php } ?>
 

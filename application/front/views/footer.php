@@ -230,7 +230,9 @@
 
 // });
 // better image preloading @ https://perishablepress.com/press/2009/12/28/3-ways-preload-images-css-javascript-ajax/
-    $(document).ready(function () {
+   
+    
+    /*$(document).ready(function () {
         var images = new Array()
         function preload(image) {
 
@@ -250,6 +252,6 @@
                 '<?php echo base_url(); ?>img/index.png',
                 '<?php echo base_url(); ?>img/edit_profile.png',
                 )
-    });
+    }); */
 </script>
 <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>-->

@@ -1755,7 +1755,7 @@ class Business_profile extends MY_Controller {
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
                 }
                 $return_html .= '</a>';
             } else {
@@ -1769,7 +1769,7 @@ class Business_profile extends MY_Controller {
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
                 }
                 $return_html .= '</a>';
             } else {
@@ -2204,7 +2204,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -2324,7 +2324,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
             } else {
-                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
+                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
             }
         } else {
 
@@ -2786,9 +2786,12 @@ Your browser does not support the audio tag.
 
         $upload_image = $user_bg_path . $imageName;
 
-        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+//        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
         $thumb_image = $user_thumb_path . $imageName;
+        
+        copy($main_image, $thumb_image);
+        
         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
@@ -2802,7 +2805,7 @@ Your browser does not support the audio tag.
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
+            $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
             $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
@@ -3091,7 +3094,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
                 }
                 $return_html .= '</a>';
             } else {
@@ -3523,7 +3526,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                             $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $third_user_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $third_user_html .= '</a>';
                     } else {
@@ -3613,7 +3616,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                             $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $third_user_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $third_user_html .= '</a>';
                     } else {
@@ -3948,7 +3951,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="No Image">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -4108,7 +4111,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -4740,7 +4743,7 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if ($business_userimage != '') {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">  </div>';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">  </div>';
                 } else {
 //                    $a = $companyname;
 //                    $acr = substr($a, 0, 1);
@@ -4900,7 +4903,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
 
                     $cmtinsert .= '</div>';
@@ -5303,7 +5306,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -5465,7 +5468,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -6344,7 +6347,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -6502,7 +6505,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -6662,7 +6665,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -6835,7 +6838,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -7369,7 +7372,7 @@ Your browser does not support the audio tag.
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -7525,7 +7528,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -7687,7 +7690,7 @@ Your browser does not support the audio tag.
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
                     }
                 } else {
 
@@ -7820,7 +7823,7 @@ Your browser does not support the audio tag.
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
                     $fourdata .= '</div>';
                 } else {
@@ -7942,7 +7945,7 @@ Your browser does not support the audio tag.
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
                     }
                 } else {
 
@@ -8085,7 +8088,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -8271,7 +8274,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -8424,7 +8427,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -8571,7 +8574,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -8717,7 +8720,7 @@ Your browser does not support the audio tag.
                         $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $mulimgfour .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
 
                     $mulimgfour .= '</div>';
@@ -8859,7 +8862,7 @@ Your browser does not support the audio tag.
 
                     $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $modal .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $bus_image . '"  alt="">';
+                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
                 }
             } else {
 
@@ -8935,7 +8938,7 @@ Your browser does not support the audio tag.
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
                     $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $modal .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $bus_image . '"  alt="">';
+                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
                 }
             } else {
 
@@ -9260,7 +9263,7 @@ Your browser does not support the audio tag.
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
-                            $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
                         /*    $a = $busdata[0]['company_name'];
@@ -9313,7 +9316,7 @@ Your browser does not support the audio tag.
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
-                            $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
 //                        $a = $busdata[0]['company_name'];
@@ -9429,7 +9432,7 @@ Your browser does not support the audio tag.
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
-                        $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                     } else {
                         $contactdata .= '<img src="' . base_url(NOBUSIMAGE) . '">';
                     }
@@ -9465,7 +9468,7 @@ Your browser does not support the audio tag.
                             $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                         } else {
 
-                            $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
 
@@ -9614,7 +9617,7 @@ Your browser does not support the audio tag.
                                                         <div class="profile-img">';
                     if ($friend['business_user_image'] != '') {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
-                                                                    <img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $friend['business_user_image'] . '">
+                                                                    <img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image'] . '">
                                                                 </a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
@@ -9725,7 +9728,7 @@ Your browser does not support the audio tag.
                         $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                     } else {
 
-                        $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                     }
                 } else {
 //                    $a = $busdata[0]['company_name'];
@@ -9874,7 +9877,7 @@ Your browser does not support the audio tag.
                         $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -10308,7 +10311,7 @@ No Contacts Available.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -10322,7 +10325,7 @@ No Contacts Available.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -10759,7 +10762,7 @@ Your browser does not support the audio tag.
 
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -10879,7 +10882,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                     }
                 } else {
 
@@ -11078,7 +11081,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -11092,7 +11095,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -11648,7 +11651,7 @@ Your browser does not support the audio tag.
 
                                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                                 } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                                 }
                                 $return_html .= '</a>';
                             } else {
@@ -11768,7 +11771,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                         }
                     } else {
 
@@ -11907,7 +11910,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -11980,7 +11983,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -12054,7 +12057,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                     } else {
 
@@ -12122,7 +12125,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -12237,7 +12240,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -13061,7 +13064,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -13077,7 +13080,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -13525,7 +13528,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                                 $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                             } else {
 
-                                $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
+                                $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                             }
                         } else {
 
@@ -13635,7 +13638,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
                 } else {
 

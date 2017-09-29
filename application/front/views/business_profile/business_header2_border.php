@@ -535,7 +535,7 @@
     });
 </script>
 <script type="text/javascript">
-    $(document).ready(function () {
+  /*  $(document).ready(function () {
         var images = new Array()
         function preload(image) {
 
@@ -550,5 +550,5 @@
                 '<?php echo base_url(); ?>img/index.png',
                 '<?php echo base_url(); ?>img/edit_profile.png',
                 )
-    });
+    }); */
 </script>

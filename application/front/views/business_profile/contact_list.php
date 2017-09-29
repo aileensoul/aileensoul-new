@@ -125,7 +125,7 @@
 
                                                                             <?php if ($friend['business_user_image'] != '') { ?>
                                                                                 <a  href="<?php echo base_url('business-profile/dashboard/' . $friend['business_slug']); ?>">
-                                                                                    <img src="<?php echo BUS_PROFILE_MAIN_UPLOAD_URL . $friend['business_user_image']; ?>">
+                                                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image']; ?>">
                                                                                 </a>
                                                                             <?php } else { ?>
                                                                                 <a  href="<?php echo base_url('business-profile/dashboard/' . $friend['business_slug']); ?>">
