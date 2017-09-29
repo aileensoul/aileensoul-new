@@ -4676,8 +4676,8 @@ div .comment {
         top: 15px;
     }
     .other-profile-menu .profile-pho-bui .user-pic {
-        height: 82px;
-        width: 82px;
+        height: 90px;
+        width: 90px;
     }
     .other-profile-menu .bui-menu-profile {
         padding-left: 110px !important;
@@ -5753,8 +5753,8 @@ div .comment {
         height: 60px;
     }
     .other-profile-menu .profile-pho-bui .user-pic {
-        width: 52px;
-        height: 52px;
+        width: 60px;
+        height: 60px;
     }
     .other-profile-menu .bui-menu-profile {
         padding-left: 70px !important;
@@ -5770,6 +5770,8 @@ div .comment {
 	.search-page .search_button{width:100%; float:left; }
 	.search-page .search_button div{float:left;}
 	.search-page .search_button .user_btn button{margin-right:15px;}
+	.like_cmnt_count li .like_count_ext{padding:8px 4px; }
+	.like_cmnt_count li .comnt_count_ext{padding:8px 4px; }
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {

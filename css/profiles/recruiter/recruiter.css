@@ -985,7 +985,7 @@ label.cameraButton input[accept*="camera"] {
 }
 
 @media screen and (max-width: 991px){
-          .art_no_post_text{font-size: 21px;}
+    .art_no_post_text{font-size: 21px;}
     .back {
     width: 100%;
     }

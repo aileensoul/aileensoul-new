@@ -1595,9 +1595,8 @@ label.cameraButton input[accept*="camera"] {
         padding-left: 0;
         padding-right: 0;
     }
-    .custom-right {
-        margin-left: 8%;
-    }
+    .custom-right{margin-left: 5%;}
+	 .profile-box{width:300px;}
     .profile-boxProfilebuisness-avatarLink2 {
         margin: 15px 0 0 5px;
         height: 60px !important;
@@ -1660,9 +1659,7 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 840px) {
-    .custom-right {
-        margin-left: 1%;
-    }
+    
 }
 @media screen and (max-width: 767px) {
     .common-form input[type="radio"],
@@ -1956,6 +1953,7 @@ label.cameraButton input[accept*="camera"] {
     #row1 {
         height: 200px;
     }
+	
 }
 @media screen and (max-width: 640px) {
     .post-img-user {

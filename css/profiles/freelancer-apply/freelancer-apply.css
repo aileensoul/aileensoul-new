@@ -1674,11 +1674,11 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before {
         top: 74px !important;
     }
+	.custom-right{margin-left: 5%;}
+	 .profile-box{width:300px;}
 }
 @media screen and (max-width: 840px) {
-    .custom-right {
-        margin-left: 1%;
-    }
+    
 }
 @media screen and (max-width: 767px) {
     .header2 .container {
@@ -1969,6 +1969,7 @@ label.cameraButton input[accept*="camera"] {
     #row1 {
         height: 200px;
     }
+	.custom-right{margin-left: 0%;}
 }
 @media screen and (max-width: 640px) {
     .post-img-user {

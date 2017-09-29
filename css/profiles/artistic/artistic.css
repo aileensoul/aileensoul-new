@@ -5436,7 +5436,8 @@ div .comment {
 	.post-design-name{width:74%;}
 	.inner_search .search_button{width:100%;}
 	.inner_search .search_button div{float:left;}
-	
+	.like_cmnt_count li .like_count_ext{padding:8px 4px; }
+	.like_cmnt_count li .comnt_count_ext{padding:8px 4px; }
 }
 
 @media screen and (max-width: 430px) {
@@ -5594,6 +5595,7 @@ div .comment {
         padding-left: 15px;
     }
 	.art-alert .alert-success{float:none;}
+	
 }
 
 @media screen and (max-width: 320px) {
