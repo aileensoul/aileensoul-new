@@ -15,7 +15,7 @@ class Freelancer extends MY_Controller {
         $this->lang->load('message', 'english');
         $this->load->library('S3');
 
-        include ('include.php');
+        include ('freelancer_include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
 

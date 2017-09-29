@@ -10,19 +10,16 @@ class MY_Controller extends CI_Controller {
 
         $segment_check = $this->uri->segment(2);
 
-        $segment_dynamicpost = substr($segment_check,0,strrpos($segment_check,"-"));
-      
-        if($segment_dynamicpost)
-        {
+        $segment_dynamicpost = substr($segment_check, 0, strrpos($segment_check, "-"));
 
-            $segment2=$segment_dynamicpost;
-        }
-        else
-        {
-             $segment2 = $this->uri->segment(2);
+        if ($segment_dynamicpost) {
+
+            $segment2 = $segment_dynamicpost;
+        } else {
+            $segment2 = $this->uri->segment(2);
         }
 
-        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search','post','ajax_rec_post');
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post');
 
         $segment1 = $this->uri->segment(1);
         $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile');
@@ -34,7 +31,7 @@ class MY_Controller extends CI_Controller {
                 $this->data['userid'] = $this->session->userdata('aileenuser');
             }
         }
-                    
+
         ini_set('gd.jpeg_ignore_warning', 1);
 
         $user_id = $this->data['userid'];
@@ -157,6 +154,8 @@ class MY_Controller extends CI_Controller {
         $thumbnail = $thumb_folder . $file_name;
         list($width, $height) = getimagesize($upload_image);
         $thumb_create = imagecreatetruecolor($thumb_width, $thumb_height);
+        $white = imagecolorallocate($thumb_create, 255, 255, 255);
+        imagefill($thumb_create, 0, 0, $white);
         $file_ext = 'png';
 
         switch ($file_ext) {
@@ -177,7 +176,7 @@ class MY_Controller extends CI_Controller {
         }
 
 
-        imagecopyresized($thumb_create, $source, 0, 0, 0, 0, $thumb_width, $thumb_height, $width, $height);
+        //imagecopyresized($thumb_create, $source, 0, 0, 0, 0, $thumb_width, $thumb_height, $width, $height);
         switch ($file_ext) {
             case 'jpg' || 'jpeg':
                 imagejpeg($thumb_create, $thumbnail, 100);

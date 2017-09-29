@@ -220,7 +220,21 @@ $(document).ready(function () {
     });
 });
 // CODE FOR COUNTRY,STATE, CITY CODE END
-
+//CODE FOR DISABLE ARROW UP AND MOUSE SCROLLING FOR RATE START
+$('form').on('focus', 'input[type=number]', function (e) {
+  $(this).on('mousewheel.disableScroll', function (e) {
+    e.preventDefault()
+  })
+})
+$('form').on('blur', 'input[type=number]', function (e) {
+  $(this).off('mousewheel.disableScroll')
+})
+$('input').bind('keydown', function(e){
+    if(e.keyCode == '38' || e.keyCode == '40'){
+        e.preventDefault();
+    }
+});
+//CODE FOR DISABLE ARROW UP AND MOUSE SCROLLING FOR RATE START
 ////SELECT2 AUTOCOMPLETE START FOR SKILL
 // $('#skills').select2({
 //                placeholder: 'Find Your Skills',

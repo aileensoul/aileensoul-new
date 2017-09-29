@@ -1571,7 +1571,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('freelancer/freelancer_post_profile/' . $total['not_from_id'] . '?page=freelancer_hire') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('freelancer-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filepath = FCPATH . $this->config->item('free_post_profile_thumb_upload_path') . $total['user_image'];
                 if ($total['user_image'] && (file_exists($filepath)) == 1) {
@@ -2303,12 +2303,12 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
             if ($message_from_profile == 4) {
                 $image_path = FCPATH . 'uploads/freelancer_hire_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/freelancer_hire_profile/thumbs/' . $msg['user_image'];
-                $profile_url = base_url() . 'freelancer/freelancer_post_profile/' . $id . '?page=freelancer_hire';
+                $profile_url = base_url() . 'freelancer-work/freelancer-details/' . $id . '?page=freelancer_hire';
             }
             if ($message_from_profile == 3) {
                 $image_path = FCPATH . 'uploads/freelancer_post_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/freelancer_post_profile/thumbs/' . $msg['user_image'];
-                $profile_url = base_url() . 'freelancer/freelancer_hire_profile/' . $id . '?page=freelancer_post';
+                $profile_url = base_url() . 'freelancer-hire/employer-details/' . $id . '?page=freelancer_post';
             }
             if ($message_from_profile == 5) {
                 $image_path = FCPATH . 'uploads/business_profile/thumbs/' . $msg['user_image'];
@@ -3863,7 +3863,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_
                 if ($total['not_from'] == 5) {
                     //    19
 
-                    $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['user_id'] . '?page=freelancer_post">';
+                    $return_html .= '<a href="' . base_url() . 'freelancer-work/freelancer-details/' . $total['user_id'] . '?page=freelancer_post">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
@@ -3899,7 +3899,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_
                 }
                 //20
                 if ($total['not_from'] == 4) {
-                    $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['not_from_id'] . '">';
+                    $return_html .= '<a href="' . base_url() . 'freelancer-work/freelancer-details/' . $total['not_from_id'] . '">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
