@@ -176,7 +176,7 @@ class MY_Controller extends CI_Controller {
         }
 
 
-        imagecopyresized($thumb_create, $source, 0, 0, 0, 0, $thumb_width, $thumb_height, $width, $height);
+        //imagecopyresized($thumb_create, $source, 0, 0, 0, 0, $thumb_width, $thumb_height, $width, $height);
         switch ($file_ext) {
             case 'jpg' || 'jpeg':
                 imagejpeg($thumb_create, $thumbnail, 100);
