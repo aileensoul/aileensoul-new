@@ -3863,7 +3863,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_
                 if ($total['not_from'] == 5) {
                     //    19
 
-                    $return_html .= '<a href="' . base_url() . 'freelancer-work/freelancer-details/' . $total['user_id'] . '?page=freelancer_post">';
+                    $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['user_id'] . '?page=freelancer_post">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';

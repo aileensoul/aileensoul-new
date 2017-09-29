@@ -3822,9 +3822,10 @@ class Freelancer extends MY_Controller {
 
         $upload_image = $user_bg_path . $imageName;
 
-        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+       // $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
         $thumb_image = $user_thumb_path . $imageName;
+        copy($main_image, $thumb_image);
         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
@@ -4055,11 +4056,12 @@ class Freelancer extends MY_Controller {
         $user_thumb_width = $this->config->item('free_post_profile_thumb_width');
         $user_thumb_height = $this->config->item('free_post_profile_thumb_height');
 
-        $upload_image = $user_bg_path . $imageName;
+       // $upload_image = $user_bg_path . $imageName;
 
-        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+      //  $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
         $thumb_image = $user_thumb_path . $imageName;
+        copy($main_image, $thumb_image);
         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
