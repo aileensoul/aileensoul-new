@@ -293,7 +293,7 @@
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
                                                 <a href="<?php echo base_url('business-profile/business-information-edit'); ?>">
-                                                <!--<a href="<?php //echo base_url('business_profile/business_edit_profile'); ?>">-->
+                                                <!--<a href="<?php //echo base_url('business_profile/business_edit_profile');   ?>">-->
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
                                                 <?php
@@ -325,16 +325,12 @@
     </div>
 </div>
 <!-- Model Popup Close -->
-
 <script type="text/javascript">
-
     function deactivate(clicked_id) {
         $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your business profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
         $('#bidmodal').modal('show');
     }
-
     function deactivate_profile(clicked_id) {
-
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "business_profile/deactivate" ?>',
@@ -345,8 +341,6 @@
         });
     }
 </script>
-
-<!-- script for update all read notification start-->
 <script type="text/javascript">
     function Notification_contact() {
         contactperson();
@@ -359,7 +353,6 @@
             dataType: 'json',
             data: '',
             success: function (data) {
-//                $('#addcontactBody').html(data.seeall);
                 $('.notification_data_in_con').html(data.contactdata);
                 $('#seecontact').html(data.seeall);
             }
@@ -370,7 +363,6 @@
             url: "<?php echo base_url(); ?>business_profile/update_contact_count",
             type: "POST",
             success: function (data) {
-                //$('#addcontactBody').html(data);
             }
         });
     }
@@ -389,7 +381,6 @@
                     $('.art-img-nn').hide();
                     business_contacts_header(slug);
                 }
-
                 var not_contact_count = $('.addcontact-left').length;
                 if (not_contact_count == 0) {
                     var data_html = "<li><div class='art-img-nn' id='art-blank'><div class='art_no_post_img'><img src='<?php echo base_url(); ?>img/No_Contact_Request.png'></div><div class='art_no_post_text'>No Contact Request Available.</div></div></li>";
@@ -400,12 +391,9 @@
         });
     }
 </script>
-<!-- script for update all read notification end -->
-<!-- all popup close close using esc start -->
 <script type="text/javascript">
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
-            //$( "#bidmodal" ).hide();
             $('#bidmodal').modal('hide');
         }
     });
@@ -415,7 +403,6 @@
         }
     });
 </script>
-<!-- all popup close close using esc end-->
 <script type="text/javascript" charset="utf-8">
     function addmsg1(type, msg)
     {
@@ -428,11 +415,9 @@
         } else
         {
             $('#message_count').html(msg);
-            //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
             $('#InboxLink').addClass('msg_notification_available');
             $('#message_count').addClass('count_add');
             document.getElementById('message_count').style.display = "block";
-            //alert("welcome");
         }
     }
     function waitForMsg1()
@@ -443,7 +428,6 @@
             async: true,
             cache: false,
             timeout: 50000,
-
             success: function (data) {
                 addmsg1("new", data);
                 setTimeout(
@@ -454,9 +438,7 @@
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             }
         });
-    }
-    ;
-
+    };
     $(document).ready(function () {
         waitForMsg1();
     });
@@ -472,23 +454,21 @@
     });
 
 </script>
-<!-- script for fetch all unread message notification end-->
-
-
-<!-- script for update all read notification start-->
 <script type="text/javascript">
     $(document).ready(function () {
-
-        var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
-        if (segment != "chat") {
-            chatmsg();
+        var InboxContainer = $('#InboxContainer').attr('class');
+        if (InboxContainer == 'dropdown2_content show') {
+            var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
+            if (segment != "chat") {
+                chatmsg();
+            };
         }
-        ;
-    });  // khyati chnages  start
+        $('#Inbox_link').on('click', function () {
+            chatmsg();
+        });
+    });
     function chatmsg()
     {
-        // khyati chnages  start
-
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "chat/userajax/5/5" ?>',
@@ -499,12 +479,9 @@
                 $('#userlist').html(data.leftbar);
                 $('.notification_data_in_h2').html(data.headertwo);
                 $('#seemsg').html(data.seeall);
-//                var InboxContainer = $('#InboxContainer').attr('class');
-//                console.log(InboxContainer);
-//                return false;
                 setTimeout(
                         chatmsg,
-                        100000
+                        25000
                         );
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -558,23 +535,20 @@
     });
 </script>
 <script type="text/javascript">
-    $(document).ready(function() {
-var images = new Array()
-            function preload(image) {
-              
-                for (i = 0; i < preload.arguments.length; i++) {
-                    images[i] = new Image()
-                    images[i].src = preload.arguments[i]
-                }
-            }
-            preload(
-                    
-                      '<?php echo base_url(); ?>img/icon_contact_request.png',
-                      '<?php echo base_url(); ?>img/h3.png',
-                      '<?php echo base_url(); ?>img/index.png',
-                      '<?php echo base_url(); ?>img/edit_profile.png',
+    $(document).ready(function () {
+        var images = new Array()
+        function preload(image) {
 
-                   
-            )
-});
+            for (i = 0; i < preload.arguments.length; i++) {
+                images[i] = new Image()
+                images[i].src = preload.arguments[i]
+            }
+        }
+        preload(
+                '<?php echo base_url(); ?>img/icon_contact_request.png',
+                '<?php echo base_url(); ?>img/h3.png',
+                '<?php echo base_url(); ?>img/index.png',
+                '<?php echo base_url(); ?>img/edit_profile.png',
+                )
+    });
 </script>
