@@ -1433,7 +1433,7 @@ label.cameraButton input[accept*="camera"] {
 	border: 1px solid red !important;
 	border-radius: 2px;
 }
-
+.add-post-textarea{height:200px; resize: none; overflow: auto;}
 
 
 /***  media query  ***/

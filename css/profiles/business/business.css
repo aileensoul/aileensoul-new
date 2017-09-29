@@ -1527,6 +1527,7 @@ label.cameraButton:active {
     font-weight: 400;
     font-size: 13px;
 }
+.comment-details-menu a:hover{/*color:#1b8ab9;*/}
 .comment-details-menu p {
     color: #999999;
     font-weight: 400;
@@ -4134,7 +4135,11 @@ div .comment {
 }
 .post-design-box .post-design-desc a {
     color: black;
-    font-size: 14px;
+    font-size: 15px;
+}
+.post-design-box .post-design-desc a:hover {
+	color:#1b8ab9;
+	text-decoration:underline;
 }
 .profile-job-post-location-name-rec .designation_rec ul li {
     margin-bottom: 0px;
@@ -4266,6 +4271,12 @@ div .comment {
 .post-editor .popup-social-icon ul.editor-header li{padding:0;}
 .inner_search.search{padding:10px;}
 #likeusermodal .mes .modal-footer{display:none;}
+
+.addcontact-text_full span b{font-size:14px; color:#000;}
+.addcontact-text_full span{font-size:13px; color:#646464;}
+.data_noti_msg{font-size:11px !important; color:#646464 !important;}
+.data_noti_msg span{font-size:11px !important; color:#646464 !important;}
+
 .no-login .all-comment-comment-box{border-bottom:0;}
 .no-login #paddingtop_fixed{padding-top:78px !important;}
 .no-login .form-group{margin-bottom:15px;}
