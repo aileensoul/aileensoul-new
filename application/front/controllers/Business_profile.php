@@ -15,8 +15,6 @@ class Business_profile extends MY_Controller {
         $this->load->helper('smiley');
         //AWS access info start
         $this->load->library('S3');
-//        $s3 = new S3(awsAccessKey, awsSecretKey);
-//        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //AWS access info end
 
         $userid = $this->session->userdata('aileenuser');
@@ -12238,14 +12236,14 @@ Your browser does not support the audio tag.
                     if ($userlist['business_user_image']) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt="No Image">';
                         } else {
                             $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt="No Image"></a>';
                     }
                     $return_html .= '</div>
       <div class = "post-design-name_follow fl">
