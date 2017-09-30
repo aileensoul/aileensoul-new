@@ -13,7 +13,7 @@ class Recruiter extends MY_Controller {
         $this->load->model('email_model');
         $this->lang->load('message', 'english');
         $this->load->library('S3');
-        include ('include.php');
+        include ('rec_include.php');
     }
 
     public function index() {
