@@ -2307,7 +2307,7 @@ label.cameraButton:active {
 }
 .popup-text textarea {
     overflow-y: hidden;
-    width: 91%;
+    width: 85%;
     padding-left: 0px;
     height: 30px;
     font-size: 19px!important;
@@ -5059,6 +5059,11 @@ div .comment {
     }
 	.editor-content{width:86%;}
 	.camer_h i{margin-right:-1px;}
+	.post-edit-popup .editor-content {
+        width: 87%;
+    }
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 }
 
 @media screen and (max-width: 479px) {
@@ -5082,8 +5087,10 @@ div .comment {
         width: 42%;
     }
     .popup-text textarea {
-        font-size: 12px!important;
+        font-size: 14px!important;
+		
     }
+	.post-edit-popup .popup-text textarea{padding-right:25px;}
     .editor-content {
         width: 84%;
     }
@@ -5206,8 +5213,10 @@ div .comment {
         padding: 10px;
     }
     .post-edit-popup .editor-content {
-        width: 80%;
+        width: 82%;
     }
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
     .profile-main-box-buis-menu li a {
         padding: 10px 5px 12px !important;
         width: 100%;
@@ -5583,9 +5592,9 @@ div .comment {
         width: 100%;
     }
     .popup-text textarea {
-        line-height: 2.3;
-        padding-left: 15px;
     }
+	.popup-text textarea::-moz-placeholder{font-size:17px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:17px !important;}
 	.art-alert .alert-success{float:none;}
 	
 }
