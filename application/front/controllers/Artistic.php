@@ -11314,10 +11314,6 @@ public function insert_comment_postnewpage() {
         echo $return_html;
     }
 
-
-
-
-
 public function art_home_three_user_list() {
 
         $userid = $this->session->userdata('aileenuser');

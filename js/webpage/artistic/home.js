@@ -174,28 +174,21 @@ function myFunction1(clicked_id) {
 function followuser(clicked_id)
    {
    
-       //$("#fad" + clicked_id).fadeOut(6000);
-   
-   
        $.ajax({
            type: 'POST',
            url: base_url + "artistic/follow_home",
-           //url: '<?php echo base_url() . "artistic/follow_two" ?>',
             dataType: 'json',
            data: 'follow_to=' + clicked_id,
-           success: function (data) { //alert(data.third_user);
-   
+           success: function (data) {    
                $('.' + 'fr' + clicked_id).html(data.follow);
                $('#countfollow').html(data.count);
                $('ul.home_three_follow_ul').append(data.third_user);
                $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
-                    });
-   
+                    });  
            }
-   
-   
+     
        });
    
    }
@@ -208,12 +201,6 @@ function followuser(clicked_id)
         url: base_url + "artistic/artistic_home_follow_ignore",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-        //    if (data) {
-        // $.ajax({
-        // type: 'POST',
-        // url: base_url + "artistic/third_follow_ignore_user_data",
-        // dataType: 'html',
-        // success: function (data) { //alert(data);
             $('ul.home_three_follow_ul').append(data);
             $.when($('.fad' + clicked_id).fadeOut(6000))
                     .done(function () {
@@ -223,32 +210,8 @@ function followuser(clicked_id)
                   
         }
         });
-
-         //}
-           
-    //     }
-    // });
-
-
       
    }
-
-// function artistic_home_follow_ignore(clicked_id)
-// {
-//     $.ajax({
-//         type: 'POST',
-//         url: base_url + "artistic/artistic_home_follow_ignore",
-//         data: 'follow_to=' + clicked_id,
-//         success: function (data) {
-
-//           if (data) {
-//                 return true;
-//             } else {
-//                 return false;
-//             }
-//         }
-//     });
-// }
 
    function followusercell(clicked_id)
    {
