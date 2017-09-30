@@ -31,7 +31,7 @@
                <div class="seeall">
                   <a href="<?php //echo base_url('artistic/userlist'); ?>">All User</a>
                </div>
-               <div class="profile-boxProfileCard_follow_mobile  module">     
+               <div class="profile-boxProfileCard_follow fw  module">     
                </div>
              
             </div>
