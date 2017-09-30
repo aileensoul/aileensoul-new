@@ -317,6 +317,18 @@ class Job extends MY_Controller {
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //S3 BUCKET ACCESS START
 
+        $this->form_validation->set_rules('board_primary', 'Board', 'required');
+        $this->form_validation->set_rules('school_primary', 'School', 'required');
+        $this->form_validation->set_rules('percentage_primary', 'Percentage', 'required');
+        $this->form_validation->set_rules('pass_year_primary', 'Pass year', 'required');
+
+    if ($this->form_validation->run() == FALSE) 
+    {
+        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->load->view('job/job_education', $this->data);
+    } 
+    else
+    {
         $error = '';
         if ($_FILES['edu_certificate_primary']['name'] != '') {
 
@@ -486,6 +498,7 @@ class Job extends MY_Controller {
                 redirect('job/qualification', refresh);
             }
         }
+     }//else form validation end
     }
 
 //Insert Secondary Education Data start
@@ -498,6 +511,19 @@ class Job extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //S3 BUCKET ACCESS START
+
+        $this->form_validation->set_rules('board_secondary', 'Board', 'required');
+        $this->form_validation->set_rules('school_secondary', 'School', 'required');
+        $this->form_validation->set_rules('percentage_secondary', 'Percentage', 'required');
+        $this->form_validation->set_rules('pass_year_secondary', 'Pass year', 'required');
+
+    if ($this->form_validation->run() == FALSE) 
+    {
+        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->load->view('job/job_education', $this->data);
+    } 
+    else
+    {
 
         $error = '';
         if ($_FILES['edu_certificate_secondary']['name'] != '') {
@@ -668,6 +694,7 @@ class Job extends MY_Controller {
                 redirect('job/qualification', refresh);
             }
         }
+     }//else form validation end
     }
 
 //Insert Secondary Education Data End
@@ -684,6 +711,19 @@ class Job extends MY_Controller {
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //S3 BUCKET ACCESS START
 
+        $this->form_validation->set_rules('board_higher_secondary', 'Board', 'required');
+        $this->form_validation->set_rules('stream_higher_secondary', 'Stream', 'required');
+        $this->form_validation->set_rules('school_higher_secondary', 'School', 'required');
+        $this->form_validation->set_rules('percentage_higher_secondary', 'Percentage', 'required');
+        $this->form_validation->set_rules('pass_year_higher_secondary', 'Pass year', 'required');
+
+    if ($this->form_validation->run() == FALSE) 
+    {
+        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->load->view('job/job_education', $this->data);
+    } 
+    else
+    {
         if ($_FILES['edu_certificate_higher_secondary']['name'] != '') {
 
             //Configuring Main Image Start
@@ -853,6 +893,7 @@ class Job extends MY_Controller {
                 redirect('job/qualification', refresh);
             }
         }
+     }//else form validation start
     }
 
 //Insert Higher Secondary Education Data End
@@ -863,9 +904,21 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->post('previous')) {
-            redirect('job/job_address_update', refresh);
-        }
+        $this->form_validation->set_rules('degree[]', 'Degree', 'required');
+        $this->form_validation->set_rules('stream[]', 'Stream', 'required');
+        $this->form_validation->set_rules('university[]', 'University', 'required');
+        $this->form_validation->set_rules('college[]', 'College', 'required');
+        $this->form_validation->set_rules('percentage[]', 'Percentage', 'required');
+        $this->form_validation->set_rules('pass_year[]', 'Pass year', 'required');
+        
+        
+    if ($this->form_validation->run() == FALSE) 
+    {
+
+        $this->load->view('job/job_education',$this->data);
+    } 
+    else
+    {
 
 //Click on Add_More_Education Process start
         if ($this->input->post('add_edu')) {
@@ -1119,6 +1172,7 @@ class Job extends MY_Controller {
             $this->session->flashdata('error', 'Your data not inserted');
             redirect('job/qualification', 'refresh');
         }
+     }//else form validation end
     }
 
 //End first time insert and update

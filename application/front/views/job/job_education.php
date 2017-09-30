@@ -96,6 +96,7 @@
                                                     echo $board_primary1;
                                                 }
                                                 ?>" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+                                                <?php echo form_error('board_primary'); ?>
                                           </fieldset>
                                           <fieldset class="full-width">
                                              <h6>School :<span class="red">*</span></h6>
@@ -104,6 +105,7 @@
                                                     echo $school_primary1;
                                                 }
                                                 ?>" maxlength="255">
+                                                <?php echo form_error('school_primary'); ?>
                                           </fieldset>
                                           <fieldset class="full-width">
                                              <h6>Percentage :<span class="red">*</span></h6>
@@ -112,6 +114,7 @@
                                                     echo $percentage_primary1;
                                                 }
                                                 ?>" maxlength="5" />
+                                                  <?php echo form_error('percentage_primary'); ?>
                                           </fieldset>
                                           <fieldset class="full-width">
                                              <h6>Year Of Passing :<span style="color:red">*</span></h6>
@@ -134,6 +137,7 @@
                                                    }
                                                    ?> 
                                              </select>
+                                               <?php echo form_error('pass_year_primary'); ?>
                                           </fieldset>
                                           <fieldset class="full-width" id="primary_remove">
                                              <h6>Education Certificate:</h6>
@@ -225,6 +229,7 @@
                                                  echo $board_secondary1;
                                              }
                                              ?>" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+                                             <?php echo form_error('board_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width">
                                           <h6>School :<span class="red">*</span></h6>
@@ -233,6 +238,7 @@
                                                  echo $school_secondary1;
                                              }
                                              ?>" maxlength="255">
+                                             <?php echo form_error('school_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width">
                                           <h6>Percentage :<span class="red">*</span></h6>
@@ -241,6 +247,7 @@
                                                  echo $percentage_secondary1;
                                              }
                                              ?>"  maxlength="5" />
+                                             <?php echo form_error('percentage_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width">
                                           <h6>Year Of Passing :<span class="red">*</span></h6>
@@ -263,6 +270,7 @@
                                                 }
                                                 ?> 
                                           </select>
+                                          <?php echo form_error('pass_year_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width" id="secondary_remove">
                                           <h6>Education Certificate:</h6>
@@ -357,6 +365,7 @@
                                                  echo $board_higher_secondary1;
                                              }
                                              ?>" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+                                              <?php echo form_error('board_higher_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width">
                                           <h6>Stream :<span class="red">*</span></h6>
@@ -365,6 +374,7 @@
                                                  echo $stream_higher_secondary1;
                                              }
                                              ?>" maxlength="255">
+                                              <?php echo form_error('stream_higher_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width">
                                           <h6>School :<span class="red">*</span></h6>
@@ -373,6 +383,7 @@
                                                  echo $school_higher_secondary1;
                                              }
                                              ?>" maxlength="255">
+                                              <?php echo form_error('school_higher_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width">
                                           <h6>Percentage :<span class="red">*</span></h6>
@@ -381,6 +392,7 @@
                                                  echo $percentage_higher_secondary1;
                                              }
                                              ?>"  maxlength="5" />
+                                              <?php echo form_error('percentage_higher_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width">
                                           <h6>Year Of Passing :<span class="red">*</span></h6>
@@ -403,6 +415,7 @@
                                                 }
                                                 ?> 
                                           </select>
+                                           <?php echo form_error('pass_year_higher_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width" id="higher_secondary_remove">
                                           <h6>Education Certificate:</h6>
@@ -541,7 +554,7 @@
                                                    ?>
         <option value="<?php echo $degree_otherdata[0]['degree_id']; ?> "><?php echo $degree_otherdata[0]['degree_name']; ?></option>  
                                              </select>
-                                             <?php echo form_error('degree'); ?>
+                                             <?php echo form_error('degree[]'); ?>
                                              <!--    </fieldset> -->
                                              <?php
                                             
@@ -577,7 +590,7 @@
                                                    ?>
                                                 ?>
                                              </select>
-                                             <?php echo form_error('stream'); ?> 
+                                             <?php echo form_error('stream[]'); ?> 
                                              
                                              <h6>University :<span class="red">*</span></h6>
                                             
@@ -601,7 +614,7 @@
                                                    ?>
                 <option value="<?php echo $university_otherdata[0]['university_id']; ?> "><?php echo $university_otherdata[0]['university_name']; ?></option>  
                                              </select>
-                                             <?php echo form_error('univercity'); ?>
+                                             <?php echo form_error('university[]'); ?>
                                              
                                              <h6>College :<span class="red">*</span></h6>
                                              <input type="text" name="college[]" id="college1" tabindex="4" class="college" placeholder="Enter College" value="<?php
@@ -619,7 +632,6 @@
                                                 echo $grade1;
                                                      }
                                                  ?>" maxlength="3">
-                                             <?php echo form_error('grade'); ?>
                                             
                                              <h6>Percentage :<span class="red">*</span></h6>
                                              <input type="text" name="percentage[]" id="percentage1" class="percentage" tabindex="6" placeholder="Enter Percentage"  value="<?php
@@ -627,7 +639,7 @@
                                                    echo $percentage1;
                                                   }
                                                   ?>" maxlength="5"/>
-                                             <?php echo form_error('percentage'); ?>
+                                             <?php echo form_error('percentage[]'); ?>
                                              <h6>Year Of Passing :<span class="red">*</span></h6>
                                              <select name="pass_year[]" id="pass_year1" tabindex="7" class="pass_year" >
                                                 <option value="" selected option disabled>--SELECT--</option>
@@ -647,7 +659,7 @@
                                                        }
                                                     ?> 
                                              </select>
-                                             <?php echo form_error('pass_year'); ?>
+                                             <?php echo form_error('pass_year[]'); ?>
                                            
                                              <h6>Education Certificate:</h6>
                                              <input style="" type="file" name="certificate[]" id="certificate1" tabindex="8" class="certificate" placeholder="CERTIFICATE" multiple="" />&nbsp;&nbsp;&nbsp; <span id="certificate-error"> </span>
@@ -758,7 +770,7 @@
     <option value="<?php echo $degree_otherdata[0]['degree_id']; ?> "><?php echo $degree_otherdata[0]['degree_name']; ?></option> 
 
                                           </select>
-                                          <?php echo form_error('degree'); ?>
+                                          <?php echo form_error('degree[]'); ?>
                                          
                                           <h6>Stream :<span class="red">*</span></h6>
                                           <select name="stream[]" id="stream1" class="stream" >
@@ -778,7 +790,7 @@
                                                 }
                                                 ?>
                                           </select>
-                                          <?php echo form_error('stream'); ?> 
+                                          <?php echo form_error('stream[]'); ?> 
                                           
                                           <h6>University :<span class="red">*</span></h6>
                                 
@@ -804,7 +816,7 @@
                                                 ?>
                         <option value="<?php echo $university_otherdata[0]['university_id']; ?> "><?php echo $university_otherdata[0]['university_name']; ?></option>    
                                           </select>
-                                          <?php echo form_error('univercity'); ?> 
+                                          <?php echo form_error('university[]'); ?> 
                                         
                                           <h6>College :<span class="red">*</span></h6>
                                           <input type="text" name="college[]" id="college1" class="college" placeholder="Enter College" value="<?php
@@ -812,7 +824,7 @@
                                                  echo $college1;
                                              }
                                              ?>" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
-                                          <?php echo form_error('college'); ?>    
+                                          <?php echo form_error('college[]'); ?>    
                                          
                                           <h6>
                                              Grade :
@@ -822,7 +834,7 @@
                                                  echo $grade1;
                                              }
                                              ?>" maxlength="3">
-                                          <?php echo form_error('grade'); ?>
+                                         
                                         
                                           <h6>Percentage :<span class="red">*</span></h6>
                                           <input type="text" name="percentage[]" id="percentage1" class="percentage" placeholder="Enter Percentage"  value="<?php
@@ -830,7 +842,7 @@
                                                  echo $percentage1;
                                              }
                                              ?>" maxlength="5"/>
-                                          <?php echo form_error('percentage'); ?>
+                                          <?php echo form_error('percentage[]'); ?>
                                          
                                           <h6>Year Of Passing :<span class="red">*</span></h6>
                                           <select name="pass_year[]" id="pass_year1" class="pass_year" >
@@ -852,7 +864,7 @@
                                                 }
                                                 ?> 
                                           </select>
-                                          <?php echo form_error('pass_year'); ?>
+                                          <?php echo form_error('pass_year[]'); ?>
                                      
                                           <h6>Education Certificate:</h6>
                                           <input type="file" name="certificate[]" id="certificate1" class="certificate" placeholder="CERTIFICATE" multiple="" />&nbsp;&nbsp;&nbsp; <span id="certificate-error"> </span>
