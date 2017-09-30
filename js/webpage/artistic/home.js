@@ -314,7 +314,7 @@ $(document).ready(function () {
 
 
 var isProcessing = false;
-  function art_home_post(pagenum) {
+  function art_home_post(pagenum) { 
 
     if (isProcessing) {
         /*
@@ -350,6 +350,10 @@ var isProcessing = false;
                             $("#dropdownclass").removeClass("no-post-h2");
                         }
                          isProcessing = false;
+                          var numberPost = $('[id^="removepost"]').length;
+                            if (numberPost == 0) {
+                             $('.art-all-post').html(no_artistic_post_html);
+                             }
 
                     }
                 });

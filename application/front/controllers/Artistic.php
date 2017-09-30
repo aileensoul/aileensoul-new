@@ -33,6 +33,7 @@ class Artistic extends MY_Controller {
         //This function is there only one time users slug created after remove it End
 
         include ('include.php');
+         $this->data['no_artistic_post_html'] = '<div class="art_no_post_avl"><h3>Artistic Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('img/art-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
     }
 
     public function index() {
@@ -11913,7 +11914,7 @@ public function art_home_three_user_list() {
 // all post fatch using aajx start
 
 
-public function art_home_post() {
+public function art_home_postold() {
         // return html
 
         $perpage = 5;
@@ -12893,7 +12894,7 @@ public function art_home_post() {
 
 // all post fatch using aajx end
 
-public function art_home_postnew() {
+public function art_home_post() {
         // return html
 
         $perpage = 4;
@@ -12930,75 +12931,44 @@ public function art_home_postnew() {
         $userselectskill = $this->data['artisticdata'][0]['art_skill'];
         $condition_array = array('art_reg.is_delete' => 0, 'art_reg.status' => 1, 'art_reg.art_step' => 4);
         $search_condition = "(art_skill IN ('$userselectskill'))";
-        $data = "GROUP_CONCAT(user_id) as skilldata";
+        $data = "GROUP_CONCAT(user_id) as skilldata_userlist";
         $skilldata = $this->common->select_data_by_search('art_reg', $search_condition, $condition_array, $data, $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
-        $skill_list = $skilldata[0]['industry_city_user_list'];
+        $skill_list = $skilldata[0]['skilldata_userlist'];
         $skill_list = explode(',', $skill_list);
         /* SKILL WISE DATA END */
 
     
+        $total_user_list = array_merge($self_list, $follower_list, $skill_list);
+        $total_user_list = array_unique($total_user_list, SORT_REGULAR);
+        $total_user_list = implode(',', $total_user_list);
+        $total_user_list = str_replace(",", "','", $total_user_list);
+
        
-         $contition_array = array('art_skill' => $userselectskill, 'status' => '1' , 'art_step' => 4);
-        $skilldata = $this->data['skilldata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $condition_array = array('art_post.is_delete' => 0, 'art_post.status' => 1, 'FIND_IN_SET ("' . $user_id . '", delete_post) !=' => '0');
+        $delete_postdata = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'GROUP_CONCAT(art_post_id) as delete_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        foreach ($skilldata as $fdata) {
-            $contition_array = array('art_post.user_id' => $fdata['user_id'], 'art_post.status' => '1', 'art_post.user_id !=' => $userid, 'art_post.is_delete' => '0');
-
-             $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $skillabc[] = $this->data['art_data'];
-        }
-
-        $contition_array = array('art_post.user_id' => $userid, 'art_post.status' => '1', 'art_post.is_delete' => '0');
-        $art_userdata = $this->data['art_userdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        if (count($art_userdata) > 0) {
-            $userabc[] = $this->data['art_userdata'];
-        } else {
-            $userabc[] = $this->data['art_userdata'];
-        }
-
-       // echo "<pre>"; print_r($userabc); die();
-
-        if (count($skillabc) == 0 && count($userabc) != 0) {
-            $unique = $userabc;
-        } elseif (count($userabc) == 0 && count($skillabc) != 0) {
-            $unique = $skillabc;
-        } elseif (count($userabc) != 0 && count($skillabc) != 0) {
-            $unique = array_merge($skillabc, $userabc);
-        }
-
-        if (count($followerabc) == 0 && count($unique) != 0) {
-            $unique_user = $unique;
-        } elseif (count($unique) == 0 && count($followerabc) != 0) {
-
-            $unique_user = $followerabc;
-        } elseif (count($unique) != 0 && count($followerabc) != 0) {
-            $unique_user = array_merge($unique, $followerabc);
-        }
-
-        foreach ($unique_user as $key1 => $val1) {
-            foreach ($val1 as $ke => $va) {
-
-                $qbc[] = $va;
-            }
-        }
+        $delete_post_id = $delete_postdata[0]['delete_post_id'];
+        $delete_post_id = str_replace(",", "','", $delete_post_id);
 
 
-        $qbc = array_unique($qbc, SORT_REGULAR);
-        $post = array();
-        foreach ($qbc as $key => $row) {
-            $post[$key] = $row['art_post_id'];
-        }
-       
-        array_multisort($post, SORT_DESC, $qbc);
-        $finalsorting = $qbc;
+        $condition_array = array('art_post.is_delete' => 0, 'art_post.status' => 1);
+        $search_condition = "`art_post_id` NOT IN ('$delete_post_id') AND (art_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND art_post.is_delete=0)";
+        $join_str[0]['table'] = 'art_reg';
+        $join_str[0]['join_table_id'] = 'art_reg.user_id';
+        $join_str[0]['from_table_id'] = 'art_post.user_id';
+        $join_str[0]['join_type'] = '';
+        $data = "art_reg.art_user_image,art_reg.art_name,art_reg.art_lastname,art_reg.art_skill,art_reg.slug,art_post.art_post_id,art_post.art_post,art_post.art_category,art_post.art_description,art_post.art_likes_count,art_post.art_like_user,art_post.created_date,art_post.posted_user_id,art_reg.user_id";
+        $artistic_post = $this->common->select_data_by_search('art_post', $search_condition, $condition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
+        $artistic_post1 = $this->common->select_data_by_search('art_post', $search_condition, $condition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+
         $return_html = '';
-        //echo "<pre>"; print_r($finalsorting); die();
+        //echo "<pre>"; print_r($artistic_post); die();
 
-        $finalsorting1 = array_slice($finalsorting, $start, $perpage);
+        //$finalsorting1 = array_slice($finalsorting, $start, $perpage);
 
 
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($finalsorting);
+            $_GET["total_record"] = count($artistic_post1);
         }
 
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
@@ -13007,10 +12977,10 @@ public function art_home_postnew() {
 
        // echo count($finalsorting1);  echo count($finalsorting); die();
 
-        if (count($finalsorting) > 0) {
+        if (count($artistic_post1) > 0) {
             //$row = $businessprofiledatapost[0];
 
-            foreach ($finalsorting1 as $row) {
+            foreach ($artistic_post as $row) {
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
                 $artdelete = $this->data['artdelete'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -13378,24 +13348,7 @@ public function art_home_postnew() {
                                             </div>';
                         }
                     } elseif (count($artmultiimage) == 3) {
-                        // $return_html .= '<div class="three-image-top" >
-                        //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-
-                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) . '"> 
-                        //                     </a>
-                        //                 </div>
-                        //                 <div class="three-image" >
-
-                        //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['file_name']) . '"> 
-                        //                     </a>
-                        //                 </div>
-                        //                 <div class="three-image" >
-                        //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['file_name']) . '"> 
-                        //                     </a>
-                        //                 </div>';
-
+                    
                                          $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
 <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
@@ -13846,35 +13799,35 @@ public function art_home_postnew() {
                 }
             }
         }
-        if (count($finalsorting) > 0) {
-            if (count($count) == count($finalsorting)) {
-                $return_html .= ' <div class="art_no_post_avl" id="no_post_avl">
-                                           <h3>Artistic Post</h3>
-                              <div class="art-img-nn">
-                               <div class="art_no_post_img">
+        // if (count($finalsorting) > 0) {
+        //     if (count($count) == count($finalsorting)) {
+        //         $return_html .= ' <div class="art_no_post_avl" id="no_post_avl">
+        //                                    <h3>Artistic Post</h3>
+        //                       <div class="art-img-nn">
+        //                        <div class="art_no_post_img">
 
-                               <img src="'.base_url('img/art-no.png').'">
+        //                        <img src="'.base_url('img/art-no.png').'">
         
-                                </div>
-                                  <div class="art_no_post_text">
-                                    No Post Available.
-                                    </div>
-                                   </div>
-                                </div>';
-            }
-        } else {
-            $return_html .= '<div class="art_no_post_avl" id="no_post_avl"><h3>Artistic Post</h3>
-                              <div class="art-img-nn">
-                               <div class="art_no_post_img">
+        //                         </div>
+        //                           <div class="art_no_post_text">
+        //                             No Post Available.
+        //                             </div>
+        //                            </div>
+        //                         </div>';
+        //     }
+        // } else {
+        //     $return_html .= '<div class="art_no_post_avl" id="no_post_avl"><h3>Artistic Post</h3>
+        //                       <div class="art-img-nn">
+        //                        <div class="art_no_post_img">
 
-                                     <img src="'.base_url('img/art-no.png').'">
+        //                              <img src="'.base_url('img/art-no.png').'">
         
-                                    </div>
-                                        <div class="art_no_post_text">
-                                     No Post Available.
-                                 </div>
-                                  </div></div>';
-        }
+        //                             </div>
+        //                                 <div class="art_no_post_text">
+        //                              No Post Available.
+        //                          </div>
+        //                           </div></div>';
+        // }
         echo $return_html;
         // return html        
     }
