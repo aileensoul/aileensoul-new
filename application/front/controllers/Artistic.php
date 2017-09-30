@@ -4178,10 +4178,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-
-
-                    
+                    $cmtinsert .=  '</div>';  
 
                   }
                 $cmtinsert .= '</a>';
@@ -4197,15 +4194,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
 
-//              $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcomment' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedit(this.name)">';
-//              $cmtinsert .= '' . $art['comments'] . '';
-//              $cmtinsert .= '</textarea>';
-
                 $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcomment' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedit(' . $art['artistic_post_comment_id'] .','.$post_delete.')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
                 $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] .','.$post_delete.')">Save</button></span>';
                 $cmtinsert .= '</div></div>';
-
-//              $cmtinsert .= '<button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
 
                 $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
@@ -4274,9 +4265,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                 }
             }
         } else {
-//            $cmtcount = '<a onClick="commentall(this.id)" id="' . $art['art_post_id'] . '">';
-//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-//            $cmtcount .= '</i></a>';
             $cmtcount = '';
         }
         echo json_encode(
@@ -4331,8 +4319,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
         } else { 
             $return = 0;
         }
-
-        // echo  $dataavl; die();
          if($return == 0){
             
            $datavl = "notavl";
@@ -4355,7 +4341,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
         $contition_array = array('art_post_id' => $post_delete, 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//echo '<pre>'; print_r($artdata); die();
 // khyati changes start
         if (count($artdata) > 0) {
             foreach ($artdata as $art) {
@@ -4391,7 +4376,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage . '" alt="">';
 
                     }
-
                   
                 }else{
 
@@ -4419,11 +4403,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-//            $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcommenttwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedittwo(this.name)">';
-//            $cmtinsert .= '' . $art['comments'] . '';
-//            $cmtinsert .= '</textarea>';
+
                 $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcommenttwo' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedittwo(' . $art['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
-                //$cmtinsert .= '<button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+             
                 $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Save</button></span>';
                 $cmtinsert .= '</div></div>';
 
@@ -4504,13 +4486,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                 }
             }
         } else {
-//            $idpost = $art['art_post_id'];
-//            $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
-//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-//            $cmtcount .= '</i></a>';
+
             $cmtcount .= '';
         }
-        //echo $cmtinsert;
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
@@ -4574,15 +4552,12 @@ public function delete_commenttwo_postnewpage() {
                                 $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                                 $cmtinsert .=  '</div>';
 
-
                         } else {
-
 
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                     }
-
-                  
+                 
                 }else{
 
 
@@ -4611,11 +4586,8 @@ public function delete_commenttwo_postnewpage() {
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-//            $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcommenttwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedittwo(this.name)">';
-//            $cmtinsert .= '' . $art['comments'] . '';
-//            $cmtinsert .= '</textarea>';
                 $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcommenttwo' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedittwo(' . $art['artistic_post_comment_id'] .','.$post_delete.')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
-                //$cmtinsert .= '<button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+             
                 $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] .','.$post_delete.')">Save</button></span>';
                 $cmtinsert .= '</div></div>';
 
@@ -4696,13 +4668,10 @@ public function delete_commenttwo_postnewpage() {
                                 }
             }
         } else {
-//            $idpost = $art['art_post_id'];
-//            $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
-//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-//            $cmtcount .= '</i></a>';
+
             $cmtcount .= '';
         }
-        //echo $cmtinsert;
+      
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
@@ -4836,8 +4805,6 @@ public function delete_commenttwo_postnewpage() {
             }
             // end notoification
 
-
-
             $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
             $artdata1 = $this->data['artdata1'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -4855,36 +4822,18 @@ public function delete_commenttwo_postnewpage() {
                 $cmtlike .= '</a>';
                 $cmtlike .= '</li>';
 
-                //popup box start like user name
-//         $cmtlikeuser .= '<div id=popuplike' . $artdata1[0]['art_post_id'].' class="overlay">';
-//         $cmtlikeuser .= '<div class="popup">';
-//         $cmtlikeuser .= '<div class="pop_content">';
-
                 $contition_array = array('art_post_id' => $artdata1[0]['art_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $likeuser = $commnetcount[0]['art_like_user'];
-                //echo "<pre>"; print_r($likeuser); die();
-                $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
-                //$likelistarray = explode(',', $likeuser);
-                //   $likelistarray = array_reverse($likelistarray);
+                $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
                 foreach ($likelistarray as $key => $value) {
                     $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
                     $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
-//      $cmtlikeuser .= '<a href="'.base_url('artistic/art_manage_post/'.$value).'">';
-//
-//       $cmtlikeuser .= '' . ucwords($art_fname1) . '' . ucwords($art_lname1) . '&nbsp;';
-//
-//      $cmtlikeuser .= '</a>';
-                }
-//         $cmtlikeuser .= '<p class="okk"><a class="cnclbtn" href="#">Cancel</a></p>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
                 //popup box end like user name
-//            $cmtlikeuser .= '<a href=#popuplike'. $artdata1[0]['art_post_id'].'>';
+
              $cmtlikeuser .= '<div class="like_one_other">';
 
                 $cmtlikeuser .= ' <a href="javascript:void(0);"  onclick="likeuserlist(' . $artdata1[0]['art_post_id'] . ');">';
@@ -4895,16 +4844,13 @@ public function delete_commenttwo_postnewpage() {
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
                 $likelistarray = explode(',', $likeuser);
-                //echo '<pre>'; print_r($likelistarray); die();
-
+               
                 $likelistarray = array_reverse($likelistarray);
-                //echo '<pre>'; print_r($likelistarray); die();
+              
 
               $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
 
               $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
-
-                //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
              
 
                 if (in_array($userid, $likelistarray)) { 
@@ -4916,21 +4862,14 @@ public function delete_commenttwo_postnewpage() {
 
                 if (count($likelistarray) > 1) {
 
-                    // $cmtlikeuser .= '<div class="fl" style="padding-right: 5px;">';
                     $cmtlikeuser .= 'and';
-                    // $cmtlikeuser .= '</div>';
-                    // $cmtlikeuser .= '<div style="padding-left: 5px;">';
                     $cmtlikeuser .= ' ' . $countlike . ' others';
-                    // $cmtlikeuser .= '</div>';
                 }
 
                 $cmtlikeuser .= '</a>';
                    $cmtlikeuser .= '</div>';
 
-
-               // $like_user_count = $commnetcount[0]['art_likes_count'];
-                
-               $like_count = $commnetcount[0]['art_likes_count'];
+            $like_count = $commnetcount[0]['art_likes_count'];
              $like_user_count =  '<span class="comment_like_count">'; 
                if ($commnetcount[0]['art_likes_count'] > 0) { 
               $like_user_count .= '' . $commnetcount[0]['art_likes_count'] . ''; 
@@ -4972,7 +4911,6 @@ public function delete_commenttwo_postnewpage() {
 
                 $cmtlike .= '<a id="' . $artdata2[0]['art_post_id'] . '" class="ripple like_h_w" onClick="post_like(this.id)">';
 
-//                $cmtlike .= ' <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true">';
                 $cmtlike .= '<i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true">';
                 $cmtlike .= '</i>';
 
@@ -4985,9 +4923,6 @@ public function delete_commenttwo_postnewpage() {
                 $cmtlike .= '</li>';
 
                 //popup box start like user name
-//         $cmtlikeuser .= '<div id=popuplike' . $artdata1[0]['art_post_id'].' class="overlay"';
-//         $cmtlikeuser .= '<div class="popup">';
-//         $cmtlikeuser .= '<div class="pop_content2">';
 
                 $contition_array = array('art_post_id' => $artdata1[0]['art_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4995,30 +4930,14 @@ public function delete_commenttwo_postnewpage() {
                 $likeuser = $commnetcount[0]['art_like_user'];
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
-               // $likelistarray = explode(',', $likeuser);
-                //  $likelistarray = array_reverse($likelistarray);
-//        echo '<pre>';
-//        print_r($likelistarray);
-//        exit;
-
                 foreach ($likelistarray as $key => $value) {
 
                     $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
 
                     $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
 
-//      $cmtlikeuser .= '<a href="'.base_url('artistic/art_manage_post/'.$value).'">';
-//
-//       $cmtlikeuser .= '' . ucwords($art_fname1) . '' . ucwords($art_lname1) . '&nbsp;';
-//
-//      $cmtlikeuser .= '</a>';
-                }
-//         $cmtlikeuser .= '<p class="okk"><a class="cnclbtn" href="#">Cancel</a></p>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
                 //popup box end like user name
-//            $cmtlikeuser .= '<a href=#popuplike'. $artdata1[0]['art_post_id'].'>';
+
                $cmtlikeuser .= '<div class="like_one_other">';
                $cmtlikeuser .= ' <a href="javascript:void(0);"  onclick="likeuserlist(' . $artdata1[0]['art_post_id'] . ');">';
 
@@ -5030,33 +4949,24 @@ public function delete_commenttwo_postnewpage() {
 
                 $likelistarray = explode(',', $likeuser);
                 $likelistarray = array_reverse($likelistarray);
-               // echo '<pre>'; print_r($likelistarray); die();
-                //echo "<pre>"; print_r( $likelistarray); die();
                 $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
                 $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
-                //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
-                 if (in_array($userid, $likelistarray)) { //echo "123"; die();
+                 if (in_array($userid, $likelistarray)) { 
                     $cmtlikeuser .= 'You &nbsp';
-                } else { //echo "12f3"; die();
+                } else { 
                     $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '&nbsp;' . ucfirst(strtolower($art_lname)) . '&nbsp;';
                 }
              
 
                 if (count($likelistarray) > 1) {
 
-                    // $cmtlikeuser .= '<div class="fl" style="padding-right: 5px;">';
                     $cmtlikeuser .= 'and';
-                    // $cmtlikeuser .= '</div>';
-                    // $cmtlikeuser .= '<div style="padding-left: 5px;">';
                     $cmtlikeuser .= ' ' . $countlike . ' others';
-                    // $cmtlikeuser .= '</div>';
                 }
 
                 $cmtlikeuser .= '</a>';
-                   $cmtlikeuser .= '</div>';
-
-              
+                   $cmtlikeuser .= '</div>';      
                
              $like_count = $commnetcount[0]['art_likes_count'];
              $like_user_count =  '<span class="comment_like_count">'; 
@@ -5065,8 +4975,7 @@ public function delete_commenttwo_postnewpage() {
               $like_user_count .=     '</span>'; 
               $like_user_count .= '<span> Like</span>';
                  }
-                                                                      
-
+                                                                    
                 echo json_encode(
                         array("like" => $cmtlike,
                             "likeuser" => $cmtlikeuser,
