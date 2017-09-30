@@ -896,6 +896,7 @@ label.cameraButton:active {
 .main-text-area {
     background-color: #ffffff;
     margin: 4px 0px 4px 0px;
+	padding:10px 15px;
     border-radius: 4px;
     width: 100%;
     float: left;
