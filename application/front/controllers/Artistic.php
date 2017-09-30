@@ -334,7 +334,7 @@ class Artistic extends MY_Controller {
 
             $this->form_validation->set_rules('country', 'Country', 'required');
             $this->form_validation->set_rules('state', 'State', 'required');
-            $this->form_validation->set_rules('pincode', 'Pincode', 'numeric');
+           // $this->form_validation->set_rules('pincode', 'Pincode', 'numeric');
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('artistic/art_address');
             } else {
@@ -429,6 +429,13 @@ class Artistic extends MY_Controller {
         {
              redirect('artistic/');
         }
+
+            $this->form_validation->set_rules('skills', 'Skill', 'required');
+            $this->form_validation->set_rules('artname', 'Speciality In Art', 'required');
+            $this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('artistic/art_information');
+            } else {
      //if user deactive profile then redirect to artistic/index untill active profile End
           $skills = $this->input->post('skills');
           $skills = explode(',',$skills); 
@@ -500,6 +507,8 @@ class Artistic extends MY_Controller {
             $this->session->flashdata('error', 'Your data not inserted');
             redirect('artistic/art_information', refresh);
         }
+
+       }
     }
 
     public function art_portfolio() {
