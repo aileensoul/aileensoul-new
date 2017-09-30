@@ -910,24 +910,22 @@ label.cameraButton:active {
     border: 1px solid #d9d9d9;
     height: 50px;
     width: 50px;
-    /*margin-left: 4px;*/
-    margin-top: 7px;
-    margin-bottom: 5px;
 }
 .editor-content {
     width: 90%;
     float: left;
 }
 .popup-text {
-    padding: 18px 0px 11px 16px;
+    padding: 11px 0 9px 10px;
 }
 .popup-text span {
     color: #999999;
-    line-height: 1.6;
+    line-height: 1;
     font-size: 21px;
+	display:inline-block;
+	padding:3px 0 4px;
 }
 .post-editor .camer_h {
-    margin-top: 3px;
     float: right;
 	margin-right:-3px;
 }
