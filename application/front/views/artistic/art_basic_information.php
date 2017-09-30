@@ -69,6 +69,7 @@
                                  $phoneno =  form_error('phoneno');
                                  
                          		?>
+								<div class="fw">
                                <fieldset <?php if($firstname) {  ?> class="error-msg" <?php } ?>>
                                     <label>First Name:<span style="color:red">*</span></label>
                                     <input name="firstname" tabindex="1" autofocus type="text" id="firstname" placeholder="Enter First Name" value="<?php if($firstname1){ echo $firstname1; } else { echo $art[0]['first_name']; }?>"/>
@@ -79,6 +80,8 @@
                                     <input name="lastname" type="text" id="lastname" tabindex="2" placeholder="Enter Last Name" value="<?php if($lastname1){ echo $lastname1; } else { echo $art[0]['last_name']; } ?>"/>
                                     <?php echo form_error('lastname'); ?>
                                 </fieldset>
+								</div>
+								<div class="fw">
                                 <fieldset <?php if($email) {  ?> class="error-msg" <?php } ?>>
                                 <?php $user_email = strtolower($art[0]['user_email']); ?>
                                     <label>E-mail address:<span style="color:red">*</span></label>
@@ -89,7 +92,8 @@
                                     <label>Phone number:</label>
                                     <input name="phoneno"  type="text" id="phoneno" tabindex="4" placeholder="Enter Phone Number" value="<?php if($phoneno1){ echo $phoneno1; } ?>">
                                     <?php echo form_error('phoneno'); ?><br/>
-                                </fieldset>                                
+                                </fieldset> 
+								</div>
                                 <fieldset class="hs-submit full-width">                                 
                                     <input type="submit"  id="next" name="next" value="Next" tabindex="5">
                                     </fieldset>

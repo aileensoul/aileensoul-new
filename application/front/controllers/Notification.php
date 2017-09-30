@@ -794,7 +794,7 @@ class Notification extends MY_Controller {
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'art_reg.user_id')
         );
-        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
+        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name','art_reg.slug as slug');
 
         $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -1078,7 +1078,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('artistic/artistic_profile/' . $total['user_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('artistic/details/' . $total['slug']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
 
@@ -1152,7 +1152,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('notification/art_post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('notification/art-post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
 

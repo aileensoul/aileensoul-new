@@ -70,13 +70,7 @@ class Job extends MY_Controller {
         $data='fname,lname,email,phnno,pincode,address,dob,gender,job_step,city_id,language,count(*) as total';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>"; print_r($userdata);die();
-        $contition_array = array('status' => '1');
-        $this->data['nation'] = $this->common->select_data_by_condition('nation', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('status' => 1);
-        $this->data['language1'] = $this->common->select_data_by_condition('language', $contition_array, $data = '*', $sortby = 'language_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+      
         if ($userdata[0]['total'] != 0) {
             $step = $userdata[0]['job_step'];
 
@@ -92,26 +86,6 @@ class Job extends MY_Controller {
             }
         }
 
-        //Retrieve City data Start   
-        $contition_array = array('status' => '1', 'city_id' => $userdata[0]['city_id']);
-        $citytitle = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $this->data['city_title'] = $citytitle[0]['city_name'];
-        //Retrieve City data End
-        //Retrieve Language data Start 
-        $language_know = explode(',', $userdata[0]['language']);
-        foreach ($language_know as $lan) {
-            $contition_array = array('language_id' => $lan, 'status' => 1);
-            $languagedata = $this->common->select_data_by_condition('language', $contition_array, $data = 'language_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-            $detailes[] = $languagedata[0]['language_name'];
-        }
-
-        $this->data['language2'] = implode(',', $detailes);
-        //Retrieve Language data End
-
-        $skildata = explode(',', $userdata[0]['language']);
-        $this->data['selectdata'] = $skildata;
-
         $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
 
         $this->load->view('job/index', $this->data);
@@ -124,7 +98,7 @@ class Job extends MY_Controller {
 
         $this->form_validation->set_rules('fname', 'Firstname', 'required');
         $this->form_validation->set_rules('lname', 'Lastname', 'required');
-        $this->form_validation->set_rules('email', 'Store  email', 'required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('language', 'Language', 'required');
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
         $this->form_validation->set_rules('gender', 'Gender', 'required');
@@ -132,6 +106,41 @@ class Job extends MY_Controller {
         $this->form_validation->set_rules('pincode', 'Pincode', 'required');
         $this->form_validation->set_rules('address', 'Address', 'required');
 
+
+    if ($this->form_validation->run() == FALSE) 
+    {
+         $userid = $this->session->userdata('aileenuser');
+
+        //Retrieve Data from main user registartion table start
+        $data='first_name,last_name,user_email,user_gender,user_dob';
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
+        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //Retrieve Data from main user registartion table end
+        $data='fname,lname,email,phnno,pincode,address,dob,gender,job_step,city_id,language,count(*) as total';
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      
+        if ($userdata[0]['total'] != 0) {
+            $step = $userdata[0]['job_step'];
+
+            if ($step == 1 || $step > 1) {
+                $this->data['fname1'] = $userdata[0]['fname'];
+                $this->data['lname1'] = $userdata[0]['lname'];
+                $this->data['email1'] = $userdata[0]['email'];
+                $this->data['phnno1'] = $userdata[0]['phnno'];
+                $this->data['pincode1'] = $userdata[0]['pincode'];
+                $this->data['address1'] = $userdata[0]['address'];
+                $this->data['dob1'] = $userdata[0]['dob'];
+                $this->data['gender1'] = $userdata[0]['gender'];
+            }
+        }
+
+        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->load->view('job/index',$this->data);
+    } 
+    else
+    {
         // Language  start   
         $language = $this->input->post('language');
         $language = explode(',', $language);
@@ -192,6 +201,7 @@ class Job extends MY_Controller {
                 redirect('job/basic-information', refresh);
             }
         }
+      }//else form validation end
     }
 
 //job seeker basic info controller end
@@ -2895,20 +2905,7 @@ class Job extends MY_Controller {
 
         //Retrieve Data from main user registartion table end
         //skill data fetch
-        $contition_array = array('status' => 'publish');
-        $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'name');
-
-        foreach ($jobtitle as $key1 => $value1) {
-            foreach ($value1 as $ke1 => $val1) {
-                $title[] = $val1;
-            }
-        }
-        foreach ($title as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-        $this->data['jobtitle'] = array_values($result1);
-
+       
         $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
         $search_condition = "((status = '1'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2920,6 +2917,35 @@ class Job extends MY_Controller {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
+        $this->form_validation->set_rules('first_name', 'Firstname', 'required');
+        $this->form_validation->set_rules('last_name', 'Lastname', 'required');
+        $this->form_validation->set_rules('email', 'Store  email', 'required|valid_email');
+        $this->form_validation->set_rules('fresher', 'Fresher', 'required');
+        $this->form_validation->set_rules('job_title', 'Job Title', 'required');
+        $this->form_validation->set_rules('skills', 'Skills', 'required');
+        $this->form_validation->set_rules('industry', 'Industry', 'required');
+        $this->form_validation->set_rules('cities', 'Cities', 'required');
+
+    if ($this->form_validation->run() == FALSE) 
+    {
+         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        //Retrieve Data from main user registartion table start
+        $data='first_name,last_name,user_email';
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
+        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //Retrieve Data from main user registartion table end
+        //skill data fetch
+       
+        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
+        $search_condition = "((status = '1'))";
+        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $this->load->view('job/job_reg',$this->data);
+    } 
+    else
+    {
         $firstname = $this->input->post('first_name');
         $lastname = $this->input->post('last_name');
         $email = $this->input->post('email');
@@ -3032,6 +3058,7 @@ class Job extends MY_Controller {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             redirect('job/profile', 'refresh');
         }
+     }//else form validation end
     }
 
 //THIS JOB REGISTRATION IS USED FOR FIRST TIME REGISTARTION VIEW END
