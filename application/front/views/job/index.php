@@ -58,18 +58,6 @@
                            <h3>Basic Information</h3>
                            <?php echo form_open(base_url('job/job_basicinfo_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>
                          
-                           <?php
-                              $fname = form_error('fname');
-                              $lname = form_error('lname');
-                              $email = form_error('email');
-                              $phnno = form_error('phnno');
-                              $language = form_error('lan');
-                              $dob = form_error('dob');
-                              $gender = form_error('gender');
-                              $city1 = form_error('city1');
-                              $pincode_error = form_error('pincode_error');
-                              
-                              ?>
                            <fieldset <?php if ($fname) { ?> class="error-msg" <?php } ?>>
                               <label>First Name :<span class="red">*</span></label>
                               <input type="text" tabindex="1" autofocus name="fname" id="fname" placeholder="Enter First name" style="text-transform: capitalize;" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" value="<?php if ($fname1) {
@@ -102,11 +90,11 @@
                               <input type="text" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" name="phnno" id="phnno" tabindex="4" placeholder="Enter Phone Number" value="<?php if ($phnno1) {
                                  echo $phnno1;
                                  } ?>" maxlength="15" tabindex="4"/> <span id="phnno-error"> </span>
-                              <?php echo form_error('phnno'); ?>
+                             
                            </fieldset>
                            <fieldset <?php if ($dob) { ?> class="error-msg" <?php } ?>>
                               <label>Date of Birth:<span class="red">*</span></label>
-                              <input type="hidden" id="datepicker" tabindex="5" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" >
+                              <input type="text" id="datepicker" tabindex="5" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" >
                               <?php echo form_error('dob'); ?>
                            </fieldset>
                            <fieldset class="gender-custom" <?php if ($gender) { ?> class="error-msg" <?php } ?>>
@@ -125,12 +113,12 @@
                            <fieldset id="erroe_nn" <?php if ($language) { ?> class="error-msg" <?php } ?>>
                               <label>Languages Known:<span class="red">*</span></label> 
                               <input id="lan" name="language"  value="<?php if($language2){echo $language2.',';} ?>" placeholder="Select a Language" style="width: 100%"  tabindex="8" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
-                              <?php echo form_error('lan'); ?>
+                              <?php echo form_error('language'); ?>
                            </fieldset>
                            <fieldset id="erroe_nn" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                               <label>Current City:<span class="red">*</span></label> 
                               <input id="city" name="city" value="<?php if($city_title){echo $city_title;} ?>" placeholder="Select City" style="width: 100%"  tabindex="9" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
-                              <?php echo form_error('city1'); ?>
+                              <?php echo form_error('city'); ?>
                            </fieldset>
                            <fieldset <?php if ($pincode_error) { ?> class="error-msg" <?php } ?>>
                               <label>Pincode :<span class="red">*</span></label>
@@ -139,7 +127,7 @@
                                      echo $pincode1;
                                  }
                                  ?>" maxlength="15" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/> <span id="pincode-error"> </span>
-                              <?php echo form_error('pincode_error'); ?>
+                              <?php echo form_error('pincode'); ?>
                            </fieldset>
                            <fieldset class="full-width">
                               <label>Postal Address: <span class="red">*</span> </label>
