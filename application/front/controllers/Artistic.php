@@ -15467,18 +15467,18 @@ public function get_artistic_name($id=''){
                                                      $cache_time = $this->db->get_where('skill', array('skill_id' => $skdata))->row()->skill;
                                                      $skill1[] = $cache_time;
                                                      }
-                                                  $listFinal = implode(', ', $skill1);
-                                                  if($listFinal && $key['other_skill']){ 
+                                                  $listFinal = implode(',', $skill1);
+                                                  // if($listFinal && $key['other_skill']){ 
 
-                                                     $return_html .= $listFinal . ',' . $key['other_skill'];
-                                                  }
-                                                       elseif(!$listFinal){ 
+                                                  //    $return_html .= $listFinal . ',' . $key['other_skill'];
+                                                  // }
+                                                  //      elseif(!$listFinal){ 
 
-                                                      $return_html .= $key['other_skill']; 
+                                                  //     $return_html .= $key['other_skill']; 
 
-                                                  }else if(!$key['other_skill']){
+                                                  // }else if(!$key['other_skill']){
                                                    $return_html .= $listFinal;  
-                                                }    
+                                               // }    
      
                                          $return_html .=  '</li>
                                           <li style="display: block;">
@@ -15602,7 +15602,7 @@ public function get_artistic_name($id=''){
                                           </ul>
                                        </div>
                                        <div class="dropdown1">
-                                               <a  class="  dropbtn1 fa fa-ellipsis-v"></a>
+                                               <a onclick="myFunction('.$key['art_post_id'].')" class=" dropbtn1 fa fa-ellipsis-v"></a>
                                                   <div id="myDropdown'.$key['art_post_id'].'" class="dropdown-content1 ">';
                                                             
                                                             if ($key['posted_user_id'] != 0) {
