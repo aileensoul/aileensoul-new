@@ -67,7 +67,6 @@
                                  $lastname = form_error('lastname');
                                  $email =  form_error('email');
                                  $phoneno =  form_error('phoneno');
-                                 
                          		?>
                                <fieldset <?php if($firstname) {  ?> class="error-msg" <?php } ?>>
                                     <label>First Name:<span style="color:red">*</span></label>

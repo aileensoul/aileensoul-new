@@ -128,7 +128,7 @@ class Artistic extends MY_Controller {
         $this->load->view('artistic/art_basic_information', $this->data);
     }
 
-    public function art_basic_information_insert() { 
+    public function art_basic_information_insert() {  //echo "123"; die();
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -142,13 +142,13 @@ class Artistic extends MY_Controller {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
-        $this->form_validation->set_rules('firstname', 'Please Enter Your Name', 'required');
-
-        $this->form_validation->set_rules('email', 'Please Enter Your EmailId', 'required|valid_email');
+        $this->form_validation->set_rules('firstname', 'First name', 'required');
+        $this->form_validation->set_rules('lastname', 'Last name', 'required');
+        $this->form_validation->set_rules('email', 'Email id', 'required|valid_email');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('artistic/art_basic_information');
-        }
+        }else{
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -197,6 +197,7 @@ class Artistic extends MY_Controller {
                 redirect('artistic/art_basic_information_insert', refresh);
             }
         }
+      }
     }
 
 //check mail start
