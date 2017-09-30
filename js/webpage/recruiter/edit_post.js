@@ -787,46 +787,56 @@ var span = document.getElementsByClassName("close")[0];
 //}
 
 var $ = jQuery.noConflict();
-//Click on University other option process Start 
+//OTHER INDUSTRY INSERT START
 $(document).on('change', '#industry', function (event) {
+    alert(industry);
+   
+      var item=$(this);
+      var industry=(item.val());
+     
+      if(industry == 288)
+      {
+       
+            item.val('');
+            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
+   
+             $('.message #indus').on('click', function () {
 
-    //alert(111);
-    var item = $(this);
-    var uni = (item.val());
-    if (uni == 288)
-    {
+                $("#other_indu").removeClass("keyskill_border_active");
+                $('#field_error').remove();
 
-        $.fancybox.open('<div class="message"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
-
-        $('.message #indus').on('click', function () {
-            var $textbox = $('.message').find('input[type="text"]'),
-                    textVal = $textbox.val();
-            $.ajax({
-                type: 'POST',
-                url: base_url + "recruiter/recruiter_other_industry",
-                dataType: 'json',
-                data: 'other_industry=' + textVal,
-                success: function (response) {
-
-                    if (response.select == 0)
-                    {
-                        $.fancybox.open('<div class="message"><h2>Written industry already available in industry Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                    } else if (response.select == 1)
-                    {
-                        $.fancybox.open('<div class="message"><h2>Empty industry is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                    } else
-                    {
-                        $.fancybox.close();
-                        $('#industry').html(response.select1);
-                        $('#industry').html(response.select);
-                    }
-                }
-            });
-
-        });
-    }
-
-});
+      var $textbox = $('.message').find('input[type="text"]'),
+      textVal  = $textbox.val();
+      $.ajax({
+                          type: 'POST',
+                          url: base_url + 'recruiter/recruiter_other_industry',
+                          data: 'other_industry=' + textVal,
+                          success: function (response) {
+                      
+                               if(response == 0)
+                              {
+                                $("#other_indu").addClass("keyskill_border_active");
+                                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written industry already available in industry Selection</span>').insertAfter('#other_indu');
+                              }
+                              else if(response == 1)
+                              {
+                               
+                                $("#other_indu").addClass("keyskill_border_active");
+                                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty industry  is not valid</span>').insertAfter('#other_indu');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                   $('#industry').html(response);
+                              }
+                          }
+                      });
+      
+                  });
+      }
+     
+   });
+//OTHER INDUSTRY INSERT END
 
 
 
