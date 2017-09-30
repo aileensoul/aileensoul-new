@@ -26,16 +26,16 @@
             <?php echo $business_common; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/photos/' . $business_data[0]['business_slug']) ?>">
                         Photo
                     </a>
-                    <a href="<?php echo base_url('business-profile/videos/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/videos/' . $business_data[0]['business_slug']) ?>">
                         Video
                     </a>
-                    <a href="<?php echo base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/audios/' . $business_data[0]['business_slug']) ?>">
                         Audio
                     </a>
-                    <a href="<?php echo base_url('business-profile/pdf/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/pdf/' . $business_data[0]['business_slug']) ?>">
                         PDf
                     </a>
                 </div>
@@ -53,19 +53,19 @@
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
-                                        <span><a href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug']); ?>"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
+                                        <span><a href="<?php echo base_url('business-profile/details/' . $business_data[0]['business_slug']); ?>"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
                                         </span>      
                                     </div>
                                     <table class="business_data_table">
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-user"></i></td>
-                                            <td class="business_data_td2"><?php echo ucfirst(strtolower($businessdata1[0]['contact_person'])); ?></td>
+                                            <td class="business_data_td2"><?php echo ucfirst(strtolower($business_data[0]['contact_person'])); ?></td>
                                         </tr>
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-mobile"></i></td>
                                             <td class="business_data_td2"><span><?php
-                                                    if ($businessdata1[0]['contact_mobile'] != '0') {
-                                                        echo $businessdata1[0]['contact_mobile'];
+                                                    if ($business_data[0]['contact_mobile'] != '0') {
+                                                        echo $business_data[0]['contact_mobile'];
                                                     } else {
                                                         echo '-';
                                                     }
@@ -74,47 +74,47 @@
                                         </tr>
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-                                            <td class="business_data_td2"><span><?php echo $businessdata1[0]['contact_email']; ?></span></td>
+                                            <td class="business_data_td2"><span><?php echo $business_data[0]['contact_email']; ?></span></td>
                                         </tr>
                                         <tr>
                                             <td class="business_data_td1 detaile_map"><i class="fa fa-map-marker"></i></td>
                                             <td class="business_data_td2"><span>
                                                     <?php
-                                                    if ($businessdata1[0]['address']) {
-                                                        echo $businessdata1[0]['address'];
+                                                    if ($business_data[0]['address']) {
+                                                        echo $business_data[0]['address'];
                                                         echo ",";
                                                     }
                                                     ?> 
                                                     <?php
-                                                    if ($businessdata1[0]['city']) {
-                                                        echo $this->db->get_where('cities', array('city_id' => $businessdata1[0]['city']))->row()->city_name;
+                                                    if ($business_data[0]['city']) {
+                                                        echo $this->db->get_where('cities', array('city_id' => $business_data[0]['city']))->row()->city_name;
                                                         echo",";
                                                     }
                                                     ?> 
                                                     <?php
-                                                    if ($businessdata1[0]['country']) {
-                                                        echo $this->db->get_where('countries', array('country_id' => $businessdata1[0]['country']))->row()->country_name;
+                                                    if ($business_data[0]['country']) {
+                                                        echo $this->db->get_where('countries', array('country_id' => $business_data[0]['country']))->row()->country_name;
                                                     }
                                                     ?> 
                                                 </span></td>
                                         </tr>
                                         <?php
-                                        if ($businessdata1[0]['contact_website']) {
+                                        if ($business_data[0]['contact_website']) {
                                             ?>
                                             <tr>
                                                 <td class="business_data_td1"><i class="fa fa-globe"></i></td>
-                                                <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $businessdata1[0]['contact_website']; ?>"> <?php echo $businessdata1[0]['contact_website']; ?></a></span></td>
+                                                <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $business_data[0]['contact_website']; ?>"> <?php echo $business_data[0]['contact_website']; ?></a></span></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
                                             <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
-                                            <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($businessdata1[0]['details'])); ?></span></td>
+                                            <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($business_data[0]['details'])); ?></span></td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                             <!-- user iamges start-->
-                            <a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/photos/' . $business_data[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
@@ -127,7 +127,7 @@
                             </a>
                             <!-- user images end-->
                             <!-- user video start-->
-                            <a href="<?php echo base_url('business-profile/videos/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/videos/' . $business_data[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <table class="business_data_table">
@@ -142,7 +142,7 @@
                             </a>
                             <!-- user video emd-->
                             <!-- user audio start-->
-                            <a href="<?php echo base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/audios/' . $business_data[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <div class="head_details1">
@@ -157,7 +157,7 @@
                             </a>
                             <!-- user audio end-->
                             <!-- user pdf  start-->
-                            <a href="<?php echo base_url('business-profile/pdf/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/pdf/' . $business_data[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
@@ -171,35 +171,20 @@
                         </div>
                         <div class="col-md-6 custom-right-business">
                             <?php
-                            $userid = $this->session->userdata('aileenuser');
-                            $other_user = $businessdata1[0]['business_profile_id'];
-                            $other_user_id = $businessdata1[0]['user_id'];
-
-                            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-                            $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                            $loginuser = $userdata[0]['business_profile_id'];
-                            $contition_array = array('follow_type' => 2, 'follow_status' => 1);
-                            $search_condition = "((follow_from  = '$loginuser' AND follow_to  = ' $other_user') OR (follow_from  = '$other_user' AND follow_to  = '$loginuser'))";
-                            $followperson = $this->common->select_data_by_search('follow', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
-                            $contition_array = array('contact_type' => 2);
-                            $search_condition = "((contact_from_id  = '$userid' AND contact_to_id = ' $other_user_id') OR (contact_from_id  = '$other_user_id' AND contact_to_id = '$userid'))";
-                            $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
-                            if ((count($followperson) == 2) || ($businessdata1[0]['user_id'] == $userid) || (count($contactperson) == 1)) {
+                            
+                            if ($is_eligable_for_post == 1) {
                                 ?>
                                 <div class="post-editor col-md-12">
                                     <div class="main-text-area col-md-12">
                                         <div class="popup-img"> 
                                             
-                                            <?php if ($business_common_data[0]['business_user_image']) { ?>
-                                                <?php if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image'])) { 
+                                            <?php if ($business_data[0]['business_user_image']) { ?>
+                                                <?php if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_data[0]['business_user_image'])) { 
                                                     ?>
                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php } else {
                                                     ?>
-                                                    <img  src="<?php echo  BUS_PROFILE_THUMB_UPLOAD_URL. $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                                    <img  src="<?php echo  BUS_PROFILE_THUMB_UPLOAD_URL. $business_data[0]['business_user_image']; ?>"  alt="">
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
@@ -221,21 +206,21 @@
                                 <div class="modal-content-post">
                                     <span class="close3">&times;</span>
                                     <div class="post-editor post-edit-popup" id="close">
-                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
+                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $business_data[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
                                         <div class="main-text-area col-md-12"  >
                                             <div class="popup-img-in"> 
                                                 <?php
-                                                if ($business_common_data[0]['business_user_image'] != '') {
+                                                if ($business_data[0]['business_user_image'] != '') {
                                                     ?>
                                                     <?php
-                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
+                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_data[0]['business_user_image'])) {
                                                         ?>
                                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     <?php } else {
                                                         ?>
 
 
-                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_data[0]['business_user_image']; ?>"  alt="">
 
                                                     <?php } ?>
 
