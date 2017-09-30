@@ -190,6 +190,7 @@ class Freelancer extends MY_Controller {
             }
         }
     }
+
 //FREELANCER_APPLY POST_BASIC_INFORMATION PAGE DATA INSERT END
     // FREELANCER_HIRE SLUG START
     public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
@@ -259,8 +260,8 @@ class Freelancer extends MY_Controller {
     }
 
 //CHECK EMAIL AVAIBILITY OF FREELANCER_APPLY END
-//FREELANCER_APPLY ADDRESS PAGE START
-    public function freelancer_post_address_information() {
+//FREELANCER_APPLY USER DEACTIAVTE CHECK START
+    public function freelancer_apply_deactivate_check() {
         $userid = $this->session->userdata('aileenuser');
         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO freelancer/freelancer_post/freelancer_post_basic_information START
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
@@ -268,22 +269,30 @@ class Freelancer extends MY_Controller {
         if ($freelancerpost_deactive) {
             redirect('freelancer/freelancer_post/freelancer_post_basic_information');
         }
-        //IF USER DEACTIVATE PROFILE THEN REDIRECT TO freelancer/freelancer_post/freelancer_post_basic_information END
+        //IF USER DEACTIVATE PROFILE THEN REDIRECT TO freelancer/freelancer_post/freelancer_post_basic_information END  
+    }
+
+//FREELANCER_APPLY USER DEACTIAVTE CHECK START
+//FREELANCER_APPLY ADDRESS PAGE START
+    public function freelancer_post_address_information() {
+        //code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
         $contition_array = array('status' => 1);
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //USER DATA FETCH
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_country,freelancer_post_state,freelancer_post_city,freelancer_post_pincode,freelancer_post_address,free_post_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //FOR GETTING STATE DATA
         $contition_array = array('status' => 1, 'country_id' => $userdata[0]['freelancer_post_country']);
-        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id,state_name', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //FOR GETTING CITY DATA 
         $contition_array = array('status' => 1, 'state_id' => $userdata[0]['freelancer_post_state']);
-        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($userdata) {
             $step = $userdata[0]['free_post_step'];
             if ($step == 2 || $step > 2 || ($step >= 1 && $step <= 2)) {
@@ -405,13 +414,9 @@ class Freelancer extends MY_Controller {
 //freelancer professional page controller Start
     public function freelancer_post_professional_information() {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+        //code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
 // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
@@ -542,13 +547,9 @@ class Freelancer extends MY_Controller {
 //freelancer rate page controller Start 
     public function freelancer_post_rate() {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
 // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
@@ -625,14 +626,9 @@ class Freelancer extends MY_Controller {
 //freelancer avability page controller Start
     public function freelancer_post_avability() {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
@@ -700,13 +696,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY EDUCATION PAGE START
     public function freelancer_post_education() {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
 // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
@@ -851,13 +843,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY PORTFOLIO PAGE START
     public function freelancer_post_portfolio() {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
 // code for display page start
         $this->freelancer_apply_check();
 // code for display page end
@@ -941,14 +929,9 @@ class Freelancer extends MY_Controller {
     }
 
 //FREELANCER_APPLY PORTFOLIO PAGE DATA INSERT END
-//FREELANCER_HIRE POST(PROJECT) PAGE START
-    public function freelancer_hire_post($id = "") {
-        if (is_numeric($id)) {
-            
-        } else {
-            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
-        }
-        $userid = $this->session->userdata('aileenuser');
+//FREELANCER_HIRE DEACTIVATE CHECK START
+public function freelancer_hire_deactivate_check(){
+       $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -956,6 +939,18 @@ class Freelancer extends MY_Controller {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
+}
+//FREELANCER_HIRE DEACTIVATE CHECK END
+//FREELANCER_HIRE POST(PROJECT) PAGE START
+    public function freelancer_hire_post($id = "") {
+        if (is_numeric($id)) {
+            
+        } else {
+            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+        }
+     //check user deactivate start
+     $this->freelancer_hire_deactivate_check();
+     //check user deactivate end
         if ($id == '') {
             // code for display page start
             $this->freelancer_hire_check();
@@ -1288,13 +1283,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE ADD POST(PROJECT) START
     public function freelancer_add_post() {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
+ //check user deactivate start
+     $this->freelancer_hire_deactivate_check();
+     //check user deactivate end
 // code for display page start
         $this->freelancer_hire_check();
 // code for display page end
@@ -1471,13 +1462,9 @@ class Freelancer extends MY_Controller {
     public function recommen_candidate() {
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  end
+ //check user deactivate start
+     $this->freelancer_hire_deactivate_check();
+     //check user deactivate end
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
@@ -1798,14 +1785,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE EDIT POST(PROJECT) PAGE START
     public function freelancer_edit_post($id) {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  end
+ //check user deactivate start
+     $this->freelancer_hire_deactivate_check();
+     //check user deactivate end
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
@@ -1947,15 +1929,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY HOME PAGE START
     public function freelancer_apply_post($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
@@ -2453,13 +2429,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY APPLIED ON POST(PROJECTS) START
     public function freelancer_applied_post() {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
@@ -2869,13 +2841,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE SAVE USER(FREELACER) START
     public function freelancer_save() {
         $userid = $this->session->userdata('aileenuser');
-        //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-        //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
+      //check user deactivate start
+     $this->freelancer_hire_deactivate_check();
+     //check user deactivate end
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
@@ -3118,13 +3086,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY SAVE POST(PROJECT) START
     public function freelancer_save_post() {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
 // code for display page start
         $this->freelancer_apply_check();
 // code for display page end
@@ -3604,14 +3568,9 @@ class Freelancer extends MY_Controller {
             $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         }
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
-
+ //check user deactivate start
+     $this->freelancer_hire_deactivate_check();
+     //check user deactivate end
         if ($id == $userid || $id == '') {
 
             // code for display page start
@@ -3670,14 +3629,9 @@ class Freelancer extends MY_Controller {
             $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
         }
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
-
+//code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
         if ($id == $userid || $id == '') {
             // code for display page start
             $this->freelancer_apply_check();
