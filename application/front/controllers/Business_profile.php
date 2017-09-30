@@ -606,11 +606,19 @@ class Business_profile extends MY_Controller {
 
         if ($this->input->post('next') || $this->input->post('submit')) {
 
-            $config = array(
+            /*$config = array(
                 'upload_path' => $this->config->item('bus_profile_main_upload_path'),
                 'max_size' => 1024 * 100,
                 'allowed_types' => 'gif|jpeg|jpg|png'
             );
+             */
+
+            $config = array(
+                'upload_path' => $this->config->item('bus_profile_main_upload_path'),
+                'max_size' => 1024 * 100,
+                'allowed_types' => VALID_IMAGE
+            );
+            
             $images = array();
             $this->load->library('upload');
 
@@ -1922,7 +1930,8 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
         if (count($businessmultiimage) == 1) {
 
-            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+//            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+            $allowed = VALID_IMAGE;
             $allowespdf = array('pdf');
             $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
             $allowesaudio = array('mp3');
@@ -4230,8 +4239,7 @@ Your browser does not support the audio tag.
                         $tmp = $_FILES['photoimg']['tmp_name'];
                         $bgSave = '<div id = "uX' . $session_uid . '" class = "bgSave wallbutton blackButton">Save Cover</div>';
                         $config['upload_path'] = 'uploads/user_image/';
-                        $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
-
+                        $config['allowed_types'] = VALID_IMAGE;
                         $config['file_name'] = $_FILES['photoimg']['name'];
 
 //Load upload library and initialize configuration
@@ -4429,8 +4437,7 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 
         $config['upload_path'] = $this->config->item('bus_bg_original_upload_path');
-        $config['allowed_types'] = 'jpg|jpeg|png|gif';
-
+        $config['allowed_types'] = VALID_IMAGE;
         $config['file_name'] = $_FILES['image']['name'];
 
 //Load upload library and initialize configuration
@@ -5602,7 +5609,7 @@ Your browser does not support the audio tag.
         if ($updatdata) {
 
             $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-            $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $businessprofiledata = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = 'comments', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $cmtlike = '<div>';
             $cmtlike .= $this->common->make_links($businessprofiledata[0]['comments']);
@@ -10478,7 +10485,8 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 if (count($businessmultiimage) == 1) {
 
-                    $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                    //$allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                    $allowed = VALID_IMAGE;
                     $allowespdf = array('pdf');
                     $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                     $allowesaudio = array('mp3');
@@ -11274,7 +11282,8 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 
                     if (count($businessmultiimage) == 1) {
 
-                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+//                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                        $allowed = VALID_IMAGE;
                         $allowespdf = array('pdf');
                         $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                         $allowesaudio = array('mp3');
@@ -12367,8 +12376,8 @@ Your browser does not support the audio tag.
 
             $multipleimage[] = $busmultiimage;
         }
-        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-
+//        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+        $allowed = VALID_IMAGE;
         foreach ($multipleimage as $mke => $mval) {
 
             foreach ($mval as $mke1 => $mval1) {
@@ -13212,7 +13221,8 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (count($businessmultiimage) == 1) {
 
-                    $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                    //$allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                    $allowed = VALID_IMAGE;
                     $allowespdf = array('pdf');
                     $allowesvideo = array('mp4', 'webm', 'mov', 'MP4');
                     $allowesaudio = array('mp3', 'MP3');

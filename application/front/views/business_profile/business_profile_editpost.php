@@ -69,7 +69,8 @@
 
                                                         
                                                             <?php
-                                                       $allowed =  array('gif','png','jpg');
+//                                                      $allowed =  array('gif','png','jpg');
+                                                        $allowed = VALID_IMAGE;
                                                        $allowespdf = array('pdf');
                                                        
                                                        $filename = $business_profile_data[0]['product_image'];
