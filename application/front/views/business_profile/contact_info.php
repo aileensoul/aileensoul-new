@@ -83,9 +83,9 @@
 
                                 <?php echo form_open(base_url('business-profile/contact-information-insert'), array('id' => 'contactinfo', 'name' => 'contactinfo', 'class' => 'clearfix')); ?>
 
-                                <div>
+                                <!-- <div>
                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                </div>
+                                </div> -->
 
                                 <?php
                                 $contactname = form_error('contactname');

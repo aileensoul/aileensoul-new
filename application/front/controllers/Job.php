@@ -26,7 +26,7 @@ class Job extends MY_Controller {
         // }
         //This function is there only one time users slug created after remove it End
 
-        include ('include.php');
+        include ('job_include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
 
@@ -1215,10 +1215,6 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->post('previous')) {
-            redirect('job/qualification', refresh);
-        }
-        if ($this->input->post('next')) {
 
             $data = array(
                 'project_name' => trim($this->input->post('project_name')),
@@ -1242,7 +1238,6 @@ class Job extends MY_Controller {
                 $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/project', 'refresh');
             }
-        }
     }
 
 //job seeker Project And Training / Internship controller end 
@@ -1316,6 +1311,24 @@ class Job extends MY_Controller {
         $this->job_deactive_profile();
 
         $userid = $this->session->userdata('aileenuser');
+
+        $this->form_validation->set_rules('job_title', 'Job Title', 'required');
+        $this->form_validation->set_rules('skills', 'Skills', 'required');
+        $this->form_validation->set_rules('industry', 'Industry', 'required');
+        $this->form_validation->set_rules('cities', 'City', 'required');
+
+    if ($this->form_validation->run() == FALSE) 
+    {
+
+        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
+        $search_condition = "((status = '1'))";
+        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->load->view('job/job_skill', $this->data);
+    } 
+    else
+    {
 
         $industry = $this->input->post('industry');
 
@@ -1419,6 +1432,7 @@ class Job extends MY_Controller {
                 redirect('job/work-area', 'refresh');
             }
         }
+     }//else form validation complete
     }
 
 //job seeker skill controller end
@@ -1457,24 +1471,35 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
+    //     $this->form_validation->set_rules('job_title', 'Job Title', 'required');
+    //     $this->form_validation->set_rules('skills', 'Skills', 'required');
+    //     $this->form_validation->set_rules('industry', 'Industry', 'required');
+    //     $this->form_validation->set_rules('cities', 'City', 'required');
+
+    // if ($this->form_validation->run() == FALSE) 
+    // {
+       
+    //     $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
+    //     $search_condition = "((status = '1'))";
+    //     $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+    //     $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+    //     $this->load->view('job/job_skill', $this->data);
+    // } 
+    // else
+    // {
         $userdata[] = $_POST;
         $count1 = count($userdata[0]['jobtitle']);
 
-        if ($this->input->post('previous')) {
-            redirect('job/work-area', refresh);
-        }
         $post_data = $this->input->post();
 
 
 //Click on Add_More_WorkExp Process End
 
         if ($this->input->post('next')) {
-
             $exp = $this->input->post('radio');
 
-
             if ($exp == "Fresher") {
-
                 $exp = $this->input->post('radio');
                 $exp_year = '';
                 $exp_month = '';
@@ -1546,10 +1571,20 @@ class Job extends MY_Controller {
                     redirect('job/work-experience', 'refresh');
                 }
             } else {
-
                 $exp = 'Experience';
 
+        $this->form_validation->set_rules('experience_year[]', 'Experience year', 'required');
+        $this->form_validation->set_rules('experience_month[]', 'Experience month', 'required');
+        $this->form_validation->set_rules('jobtitle[]', 'Jobtitle', 'required');
+        $this->form_validation->set_rules('companyname[]', 'Companyname', 'required');
 
+    if ($this->form_validation->run() == FALSE) 
+    {
+        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
+        $this->load->view('job/job_work_exp', $this->data);
+    } 
+    else
+    {
 // Multiple Image insert code start
                 $config = array(
                     'upload_path' => $this->config->item('job_work_main_upload_path'),
@@ -1831,6 +1866,7 @@ class Job extends MY_Controller {
                     redirect('job/work-experience', 'refresh');
                 }
             }
+         }//else form validation complete
         }
     }
 
@@ -2982,7 +3018,6 @@ class Job extends MY_Controller {
 
     if ($this->form_validation->run() == FALSE) 
     {
-         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         //Retrieve Data from main user registartion table start
         $data='first_name,last_name,user_email';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
@@ -3302,6 +3337,7 @@ class Job extends MY_Controller {
 // post detail
 
         $contition_array = array(
+            'user_id !=' =>$userid,
             'is_delete' => 0,
             'status' => 1
         );
@@ -3314,6 +3350,7 @@ class Job extends MY_Controller {
         foreach ($work_skill as $skill) {
             $contition_array = array(
                 'FIND_IN_SET("' . $skill . '",post_skill)!=' => '0',
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3331,6 +3368,7 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'FIND_IN_SET("' . $city . '",city)!=' => '0',
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3346,6 +3384,7 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'industry_type' => $work_job_industry,
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3362,6 +3401,7 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'post_name' => $work_job_title,
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );

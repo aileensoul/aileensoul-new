@@ -265,7 +265,7 @@ class Freelancer extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO freelancer/freelancer_post/freelancer_post_basic_information START
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($freelancerpost_deactive) {
             redirect('freelancer/freelancer_post/freelancer_post_basic_information');
         }
@@ -934,7 +934,7 @@ public function freelancer_hire_deactivate_check(){
        $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($freelancerhire_deactive) {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }

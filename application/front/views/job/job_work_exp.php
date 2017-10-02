@@ -150,6 +150,7 @@
                                                          <option value="19 year"  <?php if ($experience_year1 == "19 year") echo 'selected'; ?>>19 year</option>
                                                          <option value="20 year"  <?php if ($experience_year1 == "20 year") echo 'selected'; ?>>20 year</option>
                                                       </select>
+                                                      <?php echo form_error('experience_year[]'); ?>
                                                       <select style="width: 45%;" name="experience_month[]" tabindex="2"   id="experience_month" class="experience_month keyskil">
                                                          <option value="" selected option disabled>Month</option>
                                                          <option value="0 month"  <?php if ($experience_month1 == "0 month") echo 'selected'; if ($experience_year1 == "0 year") echo 'selected option disabled'; ?>>0 month</option>
@@ -166,8 +167,7 @@
                                                          <option value="11 month"  <?php if ($experience_month1 == "11 month") echo 'selected'; ?>>11 month</option>
                                                          <option value="12 month"  <?php if ($experience_month1 == "12 month") echo 'selected'; ?>>12 month</option>
                                                       </select>
-                                                      <?php echo form_error('experience_year'); ?>
-                                                      <?php echo form_error('experience_month'); ?>
+                                                      <?php echo form_error('experience_month[]'); ?>
                                                       <label  style="   margin-top: 25px;
     display: inline-block;">Job Title:<span class="red">*</span></label>
                                                       <input type="text" name="jobtitle[]" tabindex="3"  class="jobtitle" id="jobtitle"  placeholder="Enter Job Title" value="<?php
@@ -175,7 +175,7 @@
                                                              echo $jobtitle1;
                                                          }
                                                          ?>" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/>&nbsp;&nbsp;&nbsp;
-                                                      <?php echo form_error('jobtitle'); ?>
+                                                      <?php echo form_error('jobtitle[]'); ?>
                                                       </span>
                                                       <label style="   margin-top: 6px; ">Organization Name:<span class="red">*</span></label>
                                                       <input type="text" name="companyname[]" id="companyname"  class="companyname" tabindex="4"placeholder="Enter Organization Name" value="<?php
@@ -196,7 +196,7 @@
                                                              echo $companyphn1;
                                                          }
                                                          ?>"  maxlength="15" />&nbsp;&nbsp;&nbsp; <span id="companyphn-error"> </span>
-                                                      <?php echo form_error('companyphn'); ?>
+                                                      <?php echo form_error('companyphn[]'); ?>
                                                       <label style="  display: block;">Experience Certificate:</label>
                                                       <input style="width:100%;  margin-bottom: 50px; display: inline-block;" type="file" name="certificate[]" id="certificate" tabindex="6" class="certificate fl" placeholder="CERTIFICATE"  tabindex="7" />
                                                       <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
@@ -295,6 +295,7 @@
                                                       <option value="19 year"  <?php if ($experience_year1 == "19 year") echo 'selected'; ?>>19 year</option>
                                                       <option value="20 year"  <?php if ($experience_year1 == "20 year") echo 'selected'; ?>>20 year</option>
                                                    </select>
+                                                    <?php echo form_error('experience_year[]'); ?>
                                                    <select style="width:46%;" name="experience_month[]" id="experience_month" class="experience_month keyskil" disabled>
                                                       <option value="" selected option disabled>Month</option>
                                                       <option value="0 month"  <?php if ($experience_month1 == "0 month") echo 'selected'; ?>>0 month</option>
@@ -311,15 +312,15 @@
                                                       <option value="11 month"  <?php if ($experience_month1 == "11 month") echo 'selected'; ?>>11 month</option>
                                                       <option value="12 month"  <?php if ($experience_month1 == "12 month") echo 'selected'; ?>>12 month</option>
                                                    </select>
-                                                   <?php echo form_error('experience_year'); ?>
-                                                   <?php echo form_error('experience_month'); ?>&nbsp;&nbsp; 
+                                                  
+                                                   <?php echo form_error('experience_month[]'); ?>&nbsp;&nbsp; 
                                                    <label style="    margin-top: 6px; width:100%; float:left;">Job Title:<span class="red">*</span></label>
                                                    <input type="text" name="jobtitle[]"  class="jobtitle" id="jobtitle"  placeholder="Enter Job Title" value="<?php
                                                       if ($jobtitle1) {
                                                           echo $jobtitle1;
                                                       }
                                                       ?>" maxlength="255"/>&nbsp;&nbsp; 
-                                                   <?php echo form_error('jobtitle'); ?>
+                                                   <?php echo form_error('jobtitle[]'); ?>
                                                    </span>
                                                    <label style=" margin-top: 6px;  ">Organization Name:<span class="red">*</span></label>
                                                    <input type="text" name="companyname[]" id="companyname"  class="companyname" placeholder="Enter Organization Name" value="<?php
@@ -327,7 +328,7 @@
                                                           echo $companyname1;
                                                       }
                                                       ?>" maxlength="255"/>&nbsp;&nbsp;
-                                                   <?php echo form_error('companyname'); ?>
+                                                   <?php echo form_error('companyname[]'); ?>
                                                    <label style="   margin-top: 6px; ">Organization Email:</label>
                                                    <input type="text" name="companyemail[]" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
                                                       if ($companyemail1) {
