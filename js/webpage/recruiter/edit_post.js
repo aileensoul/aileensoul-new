@@ -262,11 +262,17 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     var todaydate_new_one = new Date(todaydate_new).getTime();
 
 
-    $('.day').addClass('error');
-    $('.month').addClass('error');
-    $('.year').addClass('error');
-
-    return lastdata_new_one >= todaydate_new_one;
+    if (lastdata_new_one >= todaydate_new_one) {
+        $('.day').removeClass('error');
+        $('.month').removeClass('error');
+        $('.year').removeClass('error');
+        return true;
+    } else {
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+        return false;
+    }
 
 
 }, "Last date should be grater than and equal to today date");
@@ -281,6 +287,9 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
         return false;
     } else
     {
+        $('.day').removeClass('error');
+        $('.month').removeClass('error');
+        $('.year').removeClass('error');
         return true;
     }
 
@@ -789,8 +798,7 @@ var span = document.getElementsByClassName("close")[0];
 var $ = jQuery.noConflict();
 //OTHER INDUSTRY INSERT START
 $(document).on('change', '#industry', function (event) {
-    alert(industry);
-   
+ 
       var item=$(this);
       var industry=(item.val());
      

@@ -55,8 +55,8 @@ class Recruiter extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
 // REDIRECT USER TO REMAIN PROFILE START
-      //  $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
-      //  $apply_step = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
+      $this->data['recdata']= $apply_step = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // REDIRECT USER TO REMAIN PROFILE END
 
         if (count($this->data['recdata']) >= 0) {
