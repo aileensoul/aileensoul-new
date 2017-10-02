@@ -64,7 +64,7 @@
                                     <?php
                                     $professional_info = form_error('professional_info');
                                     ?> 
-                                    <fieldset class="full-width">
+                                    <fieldset class="full-width <?php if($professional_info) {  ?> error-msg <?php } ?>">
                                         <label><?php echo $this->lang->line("professional_info"); ?>:<span class="red">*</span></label>
                                         <textarea tabindex="1" autofocus name ="professional_info" id="professional_info" rows="6" cols="50" placeholder="Enter Professional Information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"><?php
                                             if ($professional_info1) {

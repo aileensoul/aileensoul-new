@@ -948,6 +948,7 @@ public function freelancer_hire_deactivate_check(){
         } else {
             $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         }
+        $userid = $this->session->userdata('aileenuser');
      //check user deactivate start
      $this->freelancer_hire_deactivate_check();
      //check user deactivate end
