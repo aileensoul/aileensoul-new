@@ -64,9 +64,9 @@
                             <div class="common-form common-form_border">
                                 <h3><?php echo $this->lang->line("basic_info"); ?></h3>
                                 <?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_basic_info_insert'), array('id' => 'basic_info', 'name' => 'basic_info', 'class' => 'clearfix')); ?>
-                                <div>
-                                    <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
-                                </div>
+<!--                                 <div>
+                                    <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required"); ?></span>
+                                </div> -->
                                 <?php
                                 $fname = form_error('fname');
                                 $lname = form_error('lname');
