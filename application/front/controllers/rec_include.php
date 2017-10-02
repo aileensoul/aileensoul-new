@@ -3,7 +3,7 @@
 $userid = $this->data['user_id'] =  $this->session->userdata('aileenuser');
 // USERDATA USE FOR HEADER NAME AND IMAGE START
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-$data = 'user_image,first_name';
+$data = 'user_image,first_name,last_name,user_email';
 $this->data['userdata'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // USERDATA USE FOR HEADER NAME AND IMAGE END
 
