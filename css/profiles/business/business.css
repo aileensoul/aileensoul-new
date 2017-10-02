@@ -4278,7 +4278,7 @@ div .comment {
 .no-login #paddingtop_fixed{padding-top:78px !important;}
 .no-login .form-group{margin-bottom:15px;}
 .no-login .form-group label.error{padding-left:0 !important;}
-
+.user_list_head{line-height:1px; padding:8px 15px;}
 
 
 @keyframes pulse1 {
