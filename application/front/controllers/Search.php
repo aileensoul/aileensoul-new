@@ -152,6 +152,8 @@ class Search extends MY_Controller {
     }
 
     public function ajax_business_search() {
+        
+        $business_login_slug = $this->data['business_login_slug'];
 
         $main_business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
         $main_city = $this->data['business_common_data'][0]['city'];
@@ -196,11 +198,10 @@ class Search extends MY_Controller {
             // code for insert search keyword in database end
         }
         if ($search_business == "") {
-            $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4, 'is_deleted'=>0);
             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => 4);
-
+            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => 4, 'is_deleted'=>0);
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -581,7 +582,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                         $return_html .= '<div class = "one-image">';
 
-                        $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+                        $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
@@ -625,7 +626,7 @@ Your browser does not support the audio tag.
                     foreach ($businessmultiimage as $multiimage) {
 
                         $return_html .= '<div class = "two-images">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -633,18 +634,18 @@ Your browser does not support the audio tag.
                 } elseif (count($businessmultiimage) == 3) {
 
                     $return_html .= '<div class = "three-image-top" >
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
@@ -653,7 +654,7 @@ Your browser does not support the audio tag.
                     foreach ($businessmultiimage as $multiimage) {
 
                         $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -664,7 +665,7 @@ Your browser does not support the audio tag.
                     foreach ($businessmultiimage as $multiimage) {
 
                         $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -675,10 +676,10 @@ Your browser does not support the audio tag.
                     }
 
                     $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '">
 </a>
-<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $post_business_slug . '/' . $post_business_profile_post_id) . '">
+<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <div class = "more-image" >
 <span>View All (+
 ' . (count($businessmultiimage) - 4) . ')</span>
