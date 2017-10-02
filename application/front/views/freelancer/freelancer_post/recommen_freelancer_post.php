@@ -31,7 +31,7 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <div class="data_img">
+                                                    <div class="data_img bg-images no-cover-upload">
                                                         <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>"  >
                                                     </div>
                                                     <?php
