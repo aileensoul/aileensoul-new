@@ -16144,19 +16144,10 @@ public function get_artistic_name($id=''){
 
     public function ajax_user_search() { //echo "hii"; die();
 
-        //echo $_GET['skills']; die();
-   //$this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
-
-        // $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
-        // $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
         
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
             redirect('artistic/art_post', refresh);
-
-            // $abc[] = $results;
-            // $this->data['falguni'] = 1;        
+   
         }
 
 //         // Retrieve the posted search term.
@@ -16186,11 +16177,6 @@ public function get_artistic_name($id=''){
             $contition_array = array('art_city' => $cache_time, 'status' => '1', 'art_step' => 4);
             $new = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-
-
-            //  $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
-            // $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
-            // $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
              $contition_array = array('status' => 1, 'type' => '2');
