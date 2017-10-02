@@ -178,13 +178,13 @@
                                     <div class="main-text-area col-md-12">
                                         <div class="popup-img"> 
                                             
-                                            <?php if ($business_data[0]['business_user_image']) { ?>
-                                                <?php if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_data[0]['business_user_image'])) { 
+                                            <?php if ($business_common_data[0]['business_user_image']) { ?>
+                                                <?php if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image'])) { 
                                                     ?>
                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php } else {
                                                     ?>
-                                                    <img  src="<?php echo  BUS_PROFILE_THUMB_UPLOAD_URL. $business_data[0]['business_user_image']; ?>"  alt="">
+                                                    <img  src="<?php echo  BUS_PROFILE_THUMB_UPLOAD_URL. $business_common_data[0]['business_user_image']; ?>"  alt="">
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
@@ -210,17 +210,17 @@
                                         <div class="main-text-area col-md-12"  >
                                             <div class="popup-img-in"> 
                                                 <?php
-                                                if ($business_data[0]['business_user_image'] != '') {
+                                                if ($business_common_data[0]['business_user_image'] != '') {
                                                     ?>
                                                     <?php
-                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_data[0]['business_user_image'])) {
+                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
                                                         ?>
                                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     <?php } else {
                                                         ?>
 
 
-                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_data[0]['business_user_image']; ?>"  alt="">
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
 
                                                     <?php } ?>
 

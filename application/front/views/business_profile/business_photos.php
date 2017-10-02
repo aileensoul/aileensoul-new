@@ -30,8 +30,8 @@
                                                     <ul>
                                                         <?php
                                                         $i = 1;
-//                                                        $allowed = array('gif', 'png', 'jpg');
-                                                        $allowed = VALID_IMAGE;
+                                                        $allowed = array('gif', 'png', 'jpg');
+//                                                        $allowed = VALID_IMAGE;
                                                         foreach ($business_profile_data as $mke => $mval) {
                                                             $ext = pathinfo($mval['file_name'], PATHINFO_EXTENSION);
                                                             if (in_array($ext, $allowed)) {
@@ -76,8 +76,8 @@
                                                         <?php
                                                         $i = 1;
 
-//                                                        $allowed = array('gif', 'png', 'jpg');
-                                                        $allowed = VALID_IMAGE;
+                                                        $allowed = array('gif', 'png', 'jpg');
+                                                        //$allowed = VALID_IMAGE;
                                                         foreach ($business_profile_data as $mke => $mval) {
 
                                                             $ext = pathinfo($mval['file_name'], PATHINFO_EXTENSION);
