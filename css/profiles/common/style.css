@@ -1883,6 +1883,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .profile-job-profile-menu{}
 #regform label.error{position:relative; text-align:right; width:100%; margin-bottom:0;}
 .job-menu-profile h5{cursor:default;}
+.notac_a{padding:15px; text-align:center;}
 /*** end all profile  ***/
 
 /*** search page design  ***/

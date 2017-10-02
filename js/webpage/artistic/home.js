@@ -174,28 +174,21 @@ function myFunction1(clicked_id) {
 function followuser(clicked_id)
    {
    
-       //$("#fad" + clicked_id).fadeOut(6000);
-   
-   
        $.ajax({
            type: 'POST',
            url: base_url + "artistic/follow_home",
-           //url: '<?php echo base_url() . "artistic/follow_two" ?>',
             dataType: 'json',
            data: 'follow_to=' + clicked_id,
-           success: function (data) { //alert(data.third_user);
-   
+           success: function (data) {    
                $('.' + 'fr' + clicked_id).html(data.follow);
                $('#countfollow').html(data.count);
                $('ul.home_three_follow_ul').append(data.third_user);
                $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
-                    });
-   
+                    });  
            }
-   
-   
+     
        });
    
    }
@@ -208,12 +201,6 @@ function followuser(clicked_id)
         url: base_url + "artistic/artistic_home_follow_ignore",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-        //    if (data) {
-        // $.ajax({
-        // type: 'POST',
-        // url: base_url + "artistic/third_follow_ignore_user_data",
-        // dataType: 'html',
-        // success: function (data) { //alert(data);
             $('ul.home_three_follow_ul').append(data);
             $.when($('.fad' + clicked_id).fadeOut(6000))
                     .done(function () {
@@ -223,32 +210,8 @@ function followuser(clicked_id)
                   
         }
         });
-
-         //}
-           
-    //     }
-    // });
-
-
       
    }
-
-// function artistic_home_follow_ignore(clicked_id)
-// {
-//     $.ajax({
-//         type: 'POST',
-//         url: base_url + "artistic/artistic_home_follow_ignore",
-//         data: 'follow_to=' + clicked_id,
-//         success: function (data) {
-
-//           if (data) {
-//                 return true;
-//             } else {
-//                 return false;
-//             }
-//         }
-//     });
-// }
 
    function followusercell(clicked_id)
    {
@@ -285,7 +248,7 @@ function followuser(clicked_id)
 $(document).ready(function () {
                 art_home_post();
                 art_home_three_user_list();
-                art_home_cellphone_user_list();
+                //art_home_cellphone_user_list();
 
                  $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -314,7 +277,7 @@ $(document).ready(function () {
 
 
 var isProcessing = false;
-  function art_home_post(pagenum) {
+  function art_home_post(pagenum) { 
 
     if (isProcessing) {
         /*
@@ -350,6 +313,10 @@ var isProcessing = false;
                             $("#dropdownclass").removeClass("no-post-h2");
                         }
                          isProcessing = false;
+                          var numberPost = $('[id^="removepost"]').length;
+                            if (numberPost == 0) {
+                             $('.art-all-post').html(no_artistic_post_html);
+                             }
 
                     }
                 });
@@ -376,25 +343,6 @@ var isProcessing = false;
                     }
                 });
             }
-
-
-             function art_home_cellphone_user_list() {
-                $.ajax({
-                    type: 'POST',
-                    url: base_url + "artistic/art_home_cellphone_user_list",
-                    //url: '<?php echo base_url() . "artistic/art_home_three_user_list/" ?>',
-                    data: '',
-                    dataType: "html",
-                    beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
-                    },
-                    success: function (data) { //alert(data);
-                        $('.loader').remove();
-                        $('.profile-boxProfileCard_follow_mobile').html(data);
-                    }
-                });
-            }
-
 
  $(document).ready(function () {
        $('video').mediaelementplayer({

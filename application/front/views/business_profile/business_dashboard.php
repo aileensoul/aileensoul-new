@@ -410,7 +410,7 @@
                                                 <?php } else {
                                                     ?>
 
-                                                    <img  src="<?php echo BUS_PROFILE_MAIN_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
+                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
 
                                                 <?php } ?>
 

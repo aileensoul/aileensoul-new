@@ -5,7 +5,7 @@
         <?php echo $head; ?>  
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver=' . time()); ?>" />
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -80,17 +80,16 @@
                                 $companyname = form_error('companyname');
                                 $country = form_error('country');
                                 $state = form_error('state');
-
                                 $business_address = form_error('business_address');
                                 ?>
-                                <fieldset class="full-width" <?php if ($companyname) { ?> class="error-msg" <?php } ?>>
+                                <fieldset class="full-width <?php if ($companyname){?> error-msg <?php } ?>">
                                     <label><?php echo $this->lang->line("company_name"); ?>:<span style="color:red">*</span></label>
                                     <input name="companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="<?php echo $this->lang->line("enter_company_name"); ?>" value="<?php
                                     if ($companyname1) {
                                         echo $companyname1;
                                     }
                                     ?>"/>
-                                           <?php echo form_error('companyname'); ?>
+                                           <span id="companyname-error"></span><?php echo form_error('companyname'); ?>
                                 </fieldset>
                                 <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
@@ -182,8 +181,7 @@
 
                                 </fieldset>
 
-
-                                <fieldset <?php if ($business_address) { ?> class="error-msg" <?php } ?> class="full-width">
+                                <fieldset class="full-width <?php if ($business_address){?> error-msg <?php } ?>">
                                     <label><?php echo $this->lang->line("postal_address"); ?>:<span style="color:red">*</span></label>
                                     <textarea name ="business_address" tabindex="6"  id="business_address" rows="4" cols="50" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;"><?php
                                         if ($address1) {

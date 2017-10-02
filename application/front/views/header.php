@@ -65,68 +65,7 @@ else{
                         <div id="acon"  class="dropdown2_content">
                            <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
                            <div id="abody" class="as">
-                              <ul>
-                                 <li>
-                                    <div class="all-down">
-                                       <a href="<?php echo base_url('job'); ?>">
-                                          <div class="all-img">
-                                             <img src="<?php echo base_url('img/i1.jpg') ?>">
-                                          </div>
-                                          <div class="text-all">
-                                             Job Profile
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div class="all-down">
-                                       <a href="<?php echo base_url('recruiter'); ?>">
-                                          <div class="all-img">
-                                             <img src="<?php echo base_url('img/i2.jpg') ?>">
-                                          </div>
-                                          <div class="text-all">
-                                             Recruiter Profile
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div class="all-down">
-                                       <a href="<?php echo base_url('freelancer'); ?>">
-                                          <div class="all-img">
-                                             <img src="<?php echo base_url('img/i3.jpg') ?>">
-                                          </div>
-                                          <div class="text-all">
-                                             Freelance Profile
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div class="all-down">
-                                       <a href="<?php echo base_url('business-profile'); ?>">
-                                          <div class="all-img">
-                                             <img src="<?php echo base_url('img/i4.jpg') ?>">
-                                          </div>
-                                          <div class="text-all">
-                                             Business Profile
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div class="all-down">
-                                       <a href="<?php echo base_url('artistic'); ?>">
-                                          <div class="all-img">
-                                             <img src="<?php echo base_url('img/i5.jpg') ?>">
-                                          </div>
-                                          <div class="text-all">
-                                             Artistic Profile
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </li>
-                              </ul>
+                                <!--AJAX DATA-->
                            </div>
                         </div>
                      </li>

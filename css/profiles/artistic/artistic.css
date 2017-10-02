@@ -892,43 +892,47 @@ label.cameraButton:active {
     background-color: #ffffff;
     margin: 4px 0px 4px 0px;
     border-radius: 4px;
-    padding-left: 4px !important;
+    padding: 10px 15px;
     width: 100%;
     float: left;
 }
 .popup-img {
-    padding-left: 2px !important;
-    padding-right: 0px;
     float: left;
 }
 .popup-img img {
     border: 1px solid #d9d9d9;
     height: 50px;
     width: 50px;
-    margin-left: 4px;
-    margin-top: 7px;
-    margin-bottom: 5px;
 }
 .editor-content {
-    width: 89%;
+    width: 90%;
     float: left;
 }
 .popup-text {
-    padding: 18px 12px 11px 16px;
+    padding: 11px 0 9px 10px;
+}
+.post-edit-popup .popup-text {
+    padding: 10px 0 8px 10px;
 }
 .popup-text span {
     color: #999999;
-    line-height: 1.3;
+    line-height: 1;
     font-size: 21px;
+	display:inline-block;
+	padding:3px 0 4px;
 }
 .post-editor .camer_h {
     float: right;
+	margin-top:1px;
+}
+.post-edit-popup.post-editor .camer_h{
+	margin-top:3px;
 }
 .camer_h i {
-    margin: 0px;
+    margin: 0px -4px 0 0;
     font-size: 27px;
     cursor: default;
-    color: #1b8ab9
+    color: #1b8ab9;
 }
 .post-design-box {
     padding-left: 0px;
@@ -1615,9 +1619,6 @@ label.cameraButton:active {
     font-size: 14px;
 }
 .popup-img-in {
-    padding-left: 5px !important;
-    padding-right: 0px;
-    padding-top: 10px;
     float: left;
 }
 .popup-img-in img {
@@ -2306,14 +2307,22 @@ label.cameraButton:active {
 }
 .popup-text textarea {
     overflow-y: hidden;
-    width: 91%;
+    width: 85%;
     padding-left: 0px;
-    height: 39px;
-    font-size: 15px!important;
-    line-height: 1.3;
+    height: 30px;
+    font-size: 19px!important;
+    line-height: 1;
     resize: none;
     border: none;
     white-space: nowrap;
+	overflow: -moz-scrollbars-none;
+	padding-top:6px;
+}
+.popup-text textarea::-webkit-scrollbar { 
+    display: none; 
+}
+.popup-text textarea::-moz-scrollbar { 
+    display: none; 
 }
 .post-editor .popup-textarea p {
     color: #999999;
@@ -2337,7 +2346,7 @@ label.cameraButton:active {
 .text_num {
     position: absolute;
     right: 21%;
-    top: 7px;
+    top: -10px;
     background-color: transparent;
     width: 24px !important;
     font-size: 20px;
@@ -3861,22 +3870,6 @@ div .comment {
     background-size: 100%;
     overflow: hidden;
 }
-.text_num {
-    position: absolute;
-    right: 21%;
-    top: 6px;
-    background-color: transparent;
-    width: 24px !important;
-    font-size: 20px;
-    border: none;
-    padding: 5px;
-    height: 30px;
-    color: #999;
-    padding-left: 0px!important;
-}
-.fifty_val .text_num {
-    top: 0px;
-}
 .post-design-box .post-design-desc a {
     color: black;
     font-size: 14px;
@@ -4024,7 +4017,7 @@ div .comment {
         width: 86%;
     }
     .editor-content {
-        width: 86%;
+        /*width: 86%;*/
     }
     .business-profile-right {
         width: 78%;
@@ -4464,7 +4457,7 @@ div .comment {
         font-size: 23px;
     }
     .main-text-area {
-        padding-right: 0px;
+        /*padding-right: 0px;*/
     }
     .tabs-left > li > a {
         font-size: 14px;
@@ -4605,7 +4598,7 @@ div .comment {
         padding-left: 21px;
     }
     .popup-text span {
-        font-size: 15px;
+        /*font-size: 15px;*/
     }
     .post-design-commnet-box {
         padding-left: 15px;
@@ -4830,6 +4823,18 @@ div .comment {
 	.ctre_date{font-size:11px; line-height:1;}
 	.post-design-name ul li a{font-size:12px; line-height:1;}
 	.designation_rec{width:46%;}
+	.art-alert{
+		left: 0;
+		margin-bottom: 0;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 0;
+		position: absolute;
+		right: 0;
+		top: -73px;
+		width: 94%;
+	}
+	.art-alert .alert-success{padding:0 5px; font-size:13px;}
 }
 
 @media screen and (max-width: 639px) {
@@ -4921,7 +4926,7 @@ div .comment {
         width: 87%;
     }
     .post-edit-popup .editor-content {
-        width: 87%;
+        width: 88%;
     }
     .profile-head-text a {
         font-size: 18px;
@@ -4963,7 +4968,7 @@ div .comment {
         right: 143px;
     }
     .editor-content {
-        width: 84%;
+        /*width: 84%;*/
     }
     .folle_text {
         width: 50%;
@@ -4977,9 +4982,7 @@ div .comment {
         font-size: 16px;
         padding: 7px 29px;
     }
-    .post-edit-popup .editor-content {
-        width: 86%;
-    }
+   
     .post-edit-popup .popup-text textarea {
         width: 90%;
     }
@@ -5013,7 +5016,7 @@ div .comment {
         min-height: 35px;
     }
     .main-text-area {
-        margin: 4px 3px 4px 5px;
+        margin: 4px 0px 4px 0px;
     }
     .text_num {
         width: 23px;
@@ -5022,14 +5025,14 @@ div .comment {
         padding-top: 2px;
     }
     .popup-img {
-        padding-right: 8px;
+        /*padding-right: 8px;*/
     }
     .post-editor {
         padding-left: 7px;
         padding-right: 7px;
     }
     .camer_h i {
-        font-size: 19px;
+        font-size: 25px;
     }
     .common-form1 h3 {
         font-size: 15px;
@@ -5054,6 +5057,13 @@ div .comment {
         font-size: 13px;
         padding: 2px 12px !important;
     }
+	.editor-content{width:86%;}
+	.camer_h i{margin-right:-1px;}
+	.post-edit-popup .editor-content {
+        width: 87%;
+    }
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 }
 
 @media screen and (max-width: 479px) {
@@ -5070,9 +5080,6 @@ div .comment {
         width: 280px;
         height: 150px;
     }
-    .editor-content {
-        width: 80%;
-    }
     .bui_bcon {
         width: 49%;
     }
@@ -5080,10 +5087,12 @@ div .comment {
         width: 42%;
     }
     .popup-text textarea {
-        font-size: 12px!important;
+        font-size: 14px!important;
+		
     }
+	.post-edit-popup .popup-text textarea{padding-right:25px;}
     .editor-content {
-        width: 81%;
+        width: 84%;
     }
     .camer_h i {
         font-size: 22px;
@@ -5137,7 +5146,7 @@ div .comment {
         padding-right: 0;
     }
     .popup-img {
-        padding-right: 5px;
+        /*padding-right: 5px;*/
     }
     .post-design-name ul li .post_dot {
         font-size: 14px;
@@ -5204,8 +5213,10 @@ div .comment {
         padding: 10px;
     }
     .post-edit-popup .editor-content {
-        width: 80%;
+        width: 82%;
     }
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
     .profile-main-box-buis-menu li a {
         padding: 10px 5px 12px !important;
         width: 100%;
@@ -5424,7 +5435,11 @@ div .comment {
 	.post-design-name{width:74%;}
 	.inner_search .search_button{width:100%;}
 	.inner_search .search_button div{float:left;}
-	
+	.like_cmnt_count li .like_count_ext{padding:8px 4px; }
+	.like_cmnt_count li .comnt_count_ext{padding:8px 4px; }
+	.popup-img img{width:40px; height:40px;}
+	.popup-text span{font-size:16px; padding:5px 0;}
+	.popup-text{padding:7px 0px 6px 10px;}
 }
 
 @media screen and (max-width: 430px) {
@@ -5507,8 +5522,7 @@ div .comment {
         padding-right: 0;
     }
     .editor-content {
-        width: 77%;
-        padding-left: 0;
+        width: 82%;
     }
     .post-edit-popup .editor-content {
         width: 76%;
@@ -5578,15 +5592,16 @@ div .comment {
         width: 100%;
     }
     .popup-text textarea {
-        line-height: 2.3;
-        padding-left: 15px;
     }
+	.popup-text textarea::-moz-placeholder{font-size:17px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:17px !important;}
+	.art-alert .alert-success{float:none;}
+	
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 319px) {
     .editor-content {
-        width: 70%;
-        padding-left: 0;
+        width: 80%;
     }
     .post-design-name {
         width: 70%;

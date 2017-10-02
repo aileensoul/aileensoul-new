@@ -631,6 +631,12 @@
 //stream change depend on degree End
 
 //Click on University other option process Start 
+function remove_validation() {
+
+    $("#other_field").removeClass("keyskill_border_active");
+    $('#field_error').remove();
+
+}
 
  $(document).on('change', '#input1 .university', function (event) {
       var item=$(this);
@@ -638,10 +644,13 @@
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');   
+            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');   
 
    $('.message #univer').on('click', function () {
 
+      $("#other_uni").removeClass("keyskill_border_active");
+      $('#field_error').remove();
+ 
       var $textbox = $('.message').find('input[type="text"]'),
       textVal  = $textbox.val();
       $.ajax({
@@ -653,11 +662,15 @@
                        
                                if(response.select == 0)
                               {
-                                $.fancybox.open('<div class="message"><h2>Written university already available in university selection</h2><div class="fw text-center"><button data-fancybox-close="" class="btn">OK</button></div></div>');
+                                //$.fancybox.open('<div class="message"><h2>Written university already available in university selection</h2><div class="fw text-center"><button data-fancybox-close="" class="btn">OK</button></div></div>');
+                                  $("#other_uni").addClass("keyskill_border_active");
+                                  $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
                               }
                               else if(response.select == 1)
                               {
-                                $.fancybox.open('<div class="message"><h2>Empty university is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                               // $.fancybox.open('<div class="message"><h2>Empty university is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                 $("#other_uni").addClass("keyskill_border_active");
+                                 $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
                               }  
                               else
                               {
@@ -667,8 +680,9 @@
                               }
                           }
                       });
-      
-                  });
+              });
+
+
       }
      
    });
@@ -679,9 +693,13 @@
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
+
+              $("#other_uni").removeClass("keyskill_border_active");
+              $('#field_error').remove();
+
       var $textbox = $('.message').find('input[type="text"]'),
       textVal  = $textbox.val();
       $.ajax({
@@ -693,11 +711,13 @@
                        
                                if(response.select == 0)
                               {
-                                $.fancybox.open('<div class="message"><h2>Written university already available in university selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                  $("#other_uni").addClass("keyskill_border_active");
+                                  $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');        
                               }
                               else if(response.select == 1)
                               {
-                                $.fancybox.open('<div class="message"><h2>Empty university is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                 $("#other_uni").addClass("keyskill_border_active");
+                                 $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
                               }  
                               else
                               {
@@ -719,9 +739,13 @@
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
+
+              $("#other_uni").removeClass("keyskill_border_active");
+              $('#field_error').remove();
+
       var $textbox = $('.message').find('input[type="text"]'),
       textVal  = $textbox.val();
       $.ajax({
@@ -733,11 +757,13 @@
                        
                                if(response.select == 0)
                               {
-                                $.fancybox.open('<div class="message"><h2>Written university already available in university selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                $("#other_uni").addClass("keyskill_border_active");
+                                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
                               }
                               else if(response.select == 1)
                               {
-                                $.fancybox.open('<div class="message"><h2>Empty university is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                $("#other_uni").addClass("keyskill_border_active");
+                                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
                               }  
                               else
                               {
@@ -759,9 +785,13 @@
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
+
+              $("#other_uni").removeClass("keyskill_border_active");
+              $('#field_error').remove();
+
       var $textbox = $('.message').find('input[type="text"]'),
       textVal  = $textbox.val();
       $.ajax({
@@ -773,11 +803,13 @@
                        
                                if(response.select == 0)
                               {
-                                $.fancybox.open('<div class="message"><h2>Written university already available in university selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                  $("#other_uni").addClass("keyskill_border_active");
+                                  $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
                               }
                               else if(response.select == 1)
                               {
-                                $.fancybox.open('<div class="message"><h2>Empty university is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                $("#other_uni").addClass("keyskill_border_active");
+                                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
                               }  
                               else
                               {
@@ -799,9 +831,13 @@
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
+
+                $("#other_uni").removeClass("keyskill_border_active");
+                $('#field_error').remove();
+
       var $textbox = $('.message').find('input[type="text"]'),
       textVal  = $textbox.val();
       $.ajax({
@@ -813,11 +849,13 @@
                        
                                if(response.select == 0)
                               {
-                                $.fancybox.open('<div class="message"><h2>Written university already available in university selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                $("#other_uni").addClass("keyskill_border_active");
+                                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
                               }
                               else if(response.select == 1)
                               {
-                                $.fancybox.open('<div class="message"><h2>Empty university is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                $("#other_uni").addClass("keyskill_border_active");
+                                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
                               }  
                               else
                               {
@@ -850,7 +888,7 @@
            {
                if(degree == '' && stream != '')
                {
-                    $.fancybox.open('<div class="message"><h2>Empty degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                  $.fancybox.open('<div class="message"><h2>Empty degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                }
                if(stream == '' && degree != '')
                {

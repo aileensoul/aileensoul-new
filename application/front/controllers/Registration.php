@@ -86,29 +86,16 @@ class Registration extends CI_Controller {
         $this->form_validation->set_rules('selgen', 'Gender', 'required');
 
         $contition_array = array('user_email' => $email_reg, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        if ($userdata) {
-            
+        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if ($userdata) {           
         } else {
-
-
             if ($this->form_validation->run() == FALSE) {
-
                 $this->load->view('registration/registration');
             } else {
-
-
-
-                $contition_array = array('user_email' => $email_reg);
-                $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                if ($userdata) {
-                    
+                $userdata = $this->db->get_where('user', array('user_email' => $email_reg))->row()->user_id;
+                if ($userdata) {    
                 } else {
-
-
                     $data = array(
-                        //  'user_name' => $this->input->post('uname'),
                         'first_name' => $this->input->post('first_name'),
                         'last_name' => $this->input->post('last_name'),
                         'user_email' => $this->input->post('email_reg'),
@@ -128,21 +115,38 @@ class Registration extends CI_Controller {
                     $insert_id = $this->common->insert_data_getid($data, 'user');
                 }
                 //for getting last insrert id
-                $user_id = $this->db->insert_id();
 
-                // setcookie('cookie_userid',$user_id, time() + (10 * 365 * 24 * 60 * 60) , '/' );
+                if ($insert_id) {
+                    $this->session->set_userdata('aileenuser', $insert_id);
+                    $datavl = "ok";
+                        echo json_encode(
+                            array(
+                                "okmsg" => $datavl,
+                                "userid" => $insert_id,
+                               
+                    ));
+
+                } else {
+                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    redirect('registration', 'refresh');
+                }
+
+            }
+        }
+    }
 
 
+public function sendmail(){
+
+     $user_id = $_POST['userid'];
                 if ($user_id) {
+        $contition_array = array('user_id' => $user_id);
+        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_email,first_name,last_name,user_id,user_gender,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-                    $email = $this->input->post('email_reg');
-                    $gender = $this->input->post('selgen');
-
-                    $toemail = $this->input->post('email_reg');
-                    $fname = $this->input->post('first_name');
-                    $lname = $this->input->post('last_name');
-                    $userdata = $this->common->select_data_by_id('user', 'user_id', $user_id, $data = '*', $join_str = array());
+                    $gender = $userdata[0]['user_gender'];
+                    $toemail = $userdata[0]['user_email'];
+                    $fname = $userdata[0]['first_name'];
+                    $lname =$userdata[0]['last_name'];
                    
                    $msg = '<tr>
                              <td style="text-align:center; padding-top:15px;">';
@@ -165,7 +169,7 @@ class Registration extends CI_Controller {
                              <p><a class="btn" href="' . base_url() . 'registration/verify/' . $user_id . '">Verify</a></p>
                               </td>
                               </tr>';
-                              //echo "<pre>"; print_r($msg); die();
+                              echo "<pre>"; print_r($msg); die();
 
                     $subject = "Welcome to aileensoul";
 
@@ -174,21 +178,9 @@ class Registration extends CI_Controller {
                     //$mail = $this->email_model->do_email($msg, $subject, $toemail, $from);
                 }
 
-
-                if ($insert_id) {
-                    $this->session->set_userdata('aileenuser', $insert_id);
-                    // $this->session->set_userdata('aileenusername', $user_check[0]['user_name']);
-                    // redirect('dashboard', 'refresh');
-                    echo "ok";
-                } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('registration', 'refresh');
-                }
-            }
-        }
-    }
-
-    //Show main registratin page insert End
+   
+}
+ //Show main registratin page insert End
 //Registrtaion email already exist checking controller start
 
     public function check_email() { //echo "hello"; die();

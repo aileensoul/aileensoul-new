@@ -316,6 +316,7 @@
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url() ?>registration/reg_insert',
+                        dataType: 'json',
                         data: post_data,
                         beforeSend: function ()
                         {
@@ -324,10 +325,12 @@
                         },
                         success: function (response)
                         {
-                            if (response == "ok") {
+                            var userid = response.userid;
+                            if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
 
                                 window.location = "<?php echo base_url() ?>dashboard";
+                                sendmail(userid);
                                 // setTimeout(' window.location.href = "<?php //echo base_url()  ?>dashboard"; ', 4000);
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
@@ -341,7 +344,25 @@
                 }
             });
 
-        </script>
+function sendmail(userid){
+
+
+    var post_data = {
+            'userid': userid,
+        }
+
+    $.ajax({
+            type: 'POST',
+            url: base_url + 'registration/sendmail',
+            data: post_data,
+            success: function (response)
+            {
+            }
+        });
+        return false;
+}
+
+</script>
 
 
 

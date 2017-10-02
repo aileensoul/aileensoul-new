@@ -896,6 +896,7 @@ label.cameraButton:active {
 .main-text-area {
     background-color: #ffffff;
     margin: 4px 0px 4px 0px;
+	padding:10px 15px;
     border-radius: 4px;
     width: 100%;
     float: left;
@@ -909,24 +910,22 @@ label.cameraButton:active {
     border: 1px solid #d9d9d9;
     height: 50px;
     width: 50px;
-    /*margin-left: 4px;*/
-    margin-top: 7px;
-    margin-bottom: 5px;
 }
 .editor-content {
     width: 90%;
     float: left;
 }
 .popup-text {
-    padding: 18px 0px 11px 16px;
+    padding: 11px 0 9px 10px;
 }
 .popup-text span {
     color: #999999;
-    line-height: 1.6;
+    line-height: 1;
     font-size: 21px;
+	display:inline-block;
+	padding:3px 0 4px;
 }
 .post-editor .camer_h {
-    margin-top: 3px;
     float: right;
 	margin-right:-3px;
 }
@@ -1527,6 +1526,7 @@ label.cameraButton:active {
     font-weight: 400;
     font-size: 13px;
 }
+.comment-details-menu a:hover{/*color:#1b8ab9;*/}
 .comment-details-menu p {
     color: #999999;
     font-weight: 400;
@@ -3665,8 +3665,6 @@ label.cameraButton input[accept*="camera"] {
 
 .post-img-user {
     color: #fff;
-    width: 152px;
-    height: 153px;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     /* ff3.6+ */
     
@@ -3687,7 +3685,7 @@ label.cameraButton input[accept*="camera"] {
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
     font-size: 40px;
-    padding: 64px 0;
+    padding: 63px 0;
     text-align: center;
 }
 .post-editor .popup-img .post-img-div {
@@ -4134,7 +4132,11 @@ div .comment {
 }
 .post-design-box .post-design-desc a {
     color: black;
-    font-size: 14px;
+    font-size: 15px;
+}
+.post-design-box .post-design-desc a:hover {
+	color:#1b8ab9;
+	text-decoration:underline;
 }
 .profile-job-post-location-name-rec .designation_rec ul li {
     margin-bottom: 0px;
@@ -4266,6 +4268,12 @@ div .comment {
 .post-editor .popup-social-icon ul.editor-header li{padding:0;}
 .inner_search.search{padding:10px;}
 #likeusermodal .mes .modal-footer{display:none;}
+
+.addcontact-text_full span b{font-size:14px; color:#000;}
+.addcontact-text_full span{font-size:13px; color:#646464;}
+.data_noti_msg{font-size:11px !important; color:#646464 !important;}
+.data_noti_msg span{font-size:11px !important; color:#646464 !important;}
+
 .no-login .all-comment-comment-box{border-bottom:0;}
 .no-login #paddingtop_fixed{padding-top:78px !important;}
 .no-login .form-group{margin-bottom:15px;}
@@ -4667,8 +4675,8 @@ div .comment {
         top: 15px;
     }
     .other-profile-menu .profile-pho-bui .user-pic {
-        height: 82px;
-        width: 82px;
+        height: 90px;
+        width: 90px;
     }
     .other-profile-menu .bui-menu-profile {
         padding-left: 110px !important;
@@ -5744,8 +5752,8 @@ div .comment {
         height: 60px;
     }
     .other-profile-menu .profile-pho-bui .user-pic {
-        width: 52px;
-        height: 52px;
+        width: 60px;
+        height: 60px;
     }
     .other-profile-menu .bui-menu-profile {
         padding-left: 70px !important;
@@ -5761,6 +5769,8 @@ div .comment {
 	.search-page .search_button{width:100%; float:left; }
 	.search-page .search_button div{float:left;}
 	.search-page .search_button .user_btn button{margin-right:15px;}
+	.like_cmnt_count li .like_count_ext{padding:8px 4px; }
+	.like_cmnt_count li .comnt_count_ext{padding:8px 4px; }
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {

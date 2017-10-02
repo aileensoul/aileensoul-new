@@ -119,7 +119,7 @@ function business_dashboard_post(slug, pagenum) {
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/business_dashboard_post/" + slug + "?page=" + pagenum,
+        url: base_url + "business_profile/ajax_business_dashboard_post/" + slug + "?page=" + pagenum,
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {

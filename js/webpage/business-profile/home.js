@@ -494,53 +494,20 @@ function edit_comment(abc)
 
 function commentedit(abc)
 {
-    $("#editcomment" + abc).click(function () {
-        $(this).prop("contentEditable", true);
-    });
     $('#editcomment' + abc).keypress(function (event) {
         if (event.which == 13 && event.shiftKey != 1) {
             event.preventDefault();
-            var sel = $("#editcomment" + abc);
-            var txt = sel.html();
-            txt = txt.replace(/&nbsp;/gi, " ");
-            txt = txt.replace(/<br>$/, '');
-            txt = txt.replace(/&gt;/gi, ">");
-            txt = txt.replace(/div/gi, "p");
-            if (txt == '' || txt == '<br>') {
-                return false;
-            }
-            if (/^\s+$/gi.test(txt))
-            {
-                return false;
-            }
-            txt = txt.replace(/&/g, "%26");
-
+            
             if (window.preventDuplicateKeyPresses)
                 return;
             window.preventDuplicateKeyPresses = true;
             window.setTimeout(function () {
                 window.preventDuplicateKeyPresses = false;
             }, 500);
-            $.ajax({
-                type: 'POST',
-                url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
-                success: function (data) { //alert('falguni');
-                    document.getElementById('editcomment' + abc).style.display = 'none';
-                    document.getElementById('showcomment' + abc).style.display = 'block';
-                    document.getElementById('editsubmit' + abc).style.display = 'none';
-                    document.getElementById('editcommentbox' + abc).style.display = 'block';
-                    document.getElementById('editcancle' + abc).style.display = 'none';
-                    $('#' + 'showcomment' + abc).html(data);
-                    $('.post-design-commnet-box').show();
-                }
-            });
+            edit_comment(abc);
         }
     });
-    $(".scroll").click(function (event) {
-        event.preventDefault();
-        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
-    });
+    
 }
 
 function edit_commenttwo(abc)
@@ -584,32 +551,12 @@ function edit_commenttwo(abc)
         $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
     });
 }
+
 function commentedittwo(abc)
 {
-    $("#editcommenttwo" + abc).click(function () {
-        $(this).prop("contentEditable", true);
-    });
-
     $('#editcommenttwo' + abc).keypress(function (event) {
         if (event.which == 13 && event.shiftKey != 1) {
             event.preventDefault();
-
-            var sel = $("#editcommenttwo" + abc);
-            var txt = sel.html();
-
-            txt = txt.replace(/&nbsp;/gi, " ");
-            txt = txt.replace(/<br>$/, '');
-            txt = txt.replace(/&gt;/gi, ">");
-            txt = txt.replace(/div/gi, "p");
-
-            if (txt == '' || txt == '<br>') {
-                return false;
-            }
-            if (/^\s+$/gi.test(txt))
-            {
-                return false;
-            }
-            txt = txt.replace(/&/g, "%26");
 
             if (window.preventDuplicateKeyPresses)
                 return;
@@ -619,28 +566,10 @@ function commentedittwo(abc)
                 window.preventDuplicateKeyPresses = false;
             }, 500);
 
-            $.ajax({
-                type: 'POST',
-                url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
-                success: function (data) {
-                    document.getElementById('editcommenttwo' + abc).style.display = 'none';
-                    document.getElementById('showcommenttwo' + abc).style.display = 'block';
-                    document.getElementById('editsubmittwo' + abc).style.display = 'none';
-                    document.getElementById('editcommentboxtwo' + abc).style.display = 'block';
-                    document.getElementById('editcancletwo' + abc).style.display = 'none';
-
-                    $('#' + 'showcommenttwo' + abc).html(data);
-                    $('.post-design-commnet-box').show();
-                }
-            });
+            edit_commenttwo(abc);
         }
     });
-    $(".scroll").click(function (event) {
-        event.preventDefault();
-        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
-    });
-
+   
 }
 function commentedit2(abc)
 {

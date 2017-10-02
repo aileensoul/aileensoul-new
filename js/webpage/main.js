@@ -255,6 +255,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: base_url + 'registration/reg_insert',
+            dataType: 'json',
             data: post_data,
             beforeSend: function ()
             {
@@ -263,9 +264,11 @@ $(document).ready(function () {
             },
             success: function (response)
             {
-                if (response == "ok") {
+                var userid = response.userid;
+                if (response.okmsg == "ok") {
                     $("#btn-register").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
                     window.location = base_url + "dashboard";
+                    sendmail(userid);
                 } else {
                     $("#register_error").fadeIn(1000, function () {
                         $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
@@ -279,7 +282,23 @@ $(document).ready(function () {
 });
 
 // forgot password script start 
+function sendmail(userid){
 
+
+    var post_data = {
+            'userid': userid,
+        }
+
+    $.ajax({
+            type: 'POST',
+            url: base_url + 'registration/sendmail',
+            data: post_data,
+            success: function (response)
+            {
+            }
+        });
+        return false;
+}
 
 // Get the modal
 var modal = document.getElementById('myModal');

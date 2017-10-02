@@ -1056,6 +1056,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     width: 100%;
     border-bottom: 1px solid #dddddd;
     color: black;
+	color:#4c4c4c;
 }
 #addcontactTitle a {
     color: black;

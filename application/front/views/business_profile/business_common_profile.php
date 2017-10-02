@@ -65,7 +65,7 @@
     <div class="profile-photo">
         <div class="buisness-menu other-profile-menu">
             <div class="profile-pho-bui">
-                <div class="user-pic">
+                <div class="user-pic padd_img">
                     <?php if ($business_common_data[0]['business_user_image'] != '') { ?>
                         <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image']); ?>" alt="" >
                     <?php } else { ?>

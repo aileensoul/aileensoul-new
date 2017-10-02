@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -34,7 +34,7 @@
 
                     <?php } ?>
                 </div>
-               
+
                 <div class="container">
                     <div class="row row4">
                         <div class="col-md-3 col-sm-4">
@@ -73,58 +73,58 @@
 
                                 <div> <span class="required_field" >( <span class="red">*</span> ) Indicates required field</span></div>
 
-							<div class="fw">
-                                <fieldset>
-                                    <label>First Name<span class="red">*</span>:</label>
-                                    <input name="first_name" tabindex="1" autofocus type="text" id="first_name"  placeholder="Enter First Name" value="<?php
-                                    if ($firstname) {
-                                        echo trim(ucfirst(strtolower($firstname)));
-                                    } else {
-                                        echo trim(ucfirst(strtolower($userdata[0]['first_name'])));
-                                    }
-                                    ?>" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/><span id="fullname-error "></span>
-                                           <?php echo form_error('first_name'); ?>
-                                </fieldset>
+                                <div class="fw">
+                                    <fieldset>
+                                        <label>First Name<span class="red">*</span>:</label>
+                                        <input name="first_name" tabindex="1" autofocus type="text" id="first_name"  placeholder="Enter First Name" value="<?php
+                                        if ($firstname) {
+                                            echo trim(ucfirst(strtolower($firstname)));
+                                        } else {
+                                            echo trim(ucfirst(strtolower($userdata[0]['first_name'])));
+                                        }
+                                        ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/><span id="fullname-error "></span>
+                                               <?php echo form_error('first_name'); ?>
+                                    </fieldset>
 
 
-                                <fieldset>
-                                    <label>Last Name<span class="red">*</span> :</label>
-                                    <input name="last_name" type="text" tabindex="2" placeholder="Enter Last Name"
-                                           value="<?php
-                                           if ($lastname) {
-                                               echo trim(ucfirst(strtolower($lastname)));
-                                           } else {
-                                               echo trim(ucfirst(strtolower($userdata[0]['last_name'])));
-                                           }
-                                           ?>" id="last_name" /><span id="fullname-error" ></span>
-                                           <?php echo form_error('last_name'); ?>
-                                </fieldset>
-							</div>
-							<div class="fw">
+                                    <fieldset>
+                                        <label>Last Name<span class="red">*</span> :</label>
+                                        <input name="last_name" type="text" tabindex="2" placeholder="Enter Last Name"
+                                               value="<?php
+                                               if ($lastname) {
+                                                   echo trim(ucfirst(strtolower($lastname)));
+                                               } else {
+                                                   echo trim(ucfirst(strtolower($userdata[0]['last_name'])));
+                                               }
+                                               ?>" id="last_name" /><span id="fullname-error" ></span>
+                                               <?php echo form_error('last_name'); ?>
+                                    </fieldset>
+                                </div>
+                                <div class="fw">
 
-                                <fieldset>
-                                    <label>Email address:<span class="red">*</span></label>
-                                    <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter Email"  value="<?php
-                                    if ($email) {
-                                        echo $email;
-                                    } else {
-                                        echo $userdata[0]['user_email'];
-                                    }
-                                    ?>" /><span id="email-error" ></span>
-                                           <?php echo form_error('email'); ?>
-                                </fieldset>
+                                    <fieldset>
+                                        <label>Email address:<span class="red">*</span></label>
+                                        <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter Email"  value="<?php
+                                        if ($email) {
+                                            echo $email;
+                                        } else {
+                                            echo $userdata[0]['user_email'];
+                                        }
+                                        ?>" /><span id="email-error" ></span>
+                                               <?php echo form_error('email'); ?>
+                                    </fieldset>
 
-                                <fieldset>
-                                    <label>Phone number:</label>
-                                    <input name="phoneno" placeholder="Enter Phone Number" tabindex="4" value="<?php
-                                    if ($phone) {
-                                        echo $phone;
-                                    }
-                                    ?>" type="text" id="phoneno"  /><span ></span>
-                                           <?php echo form_error('phoneno'); ?>
-                                </fieldset>
+                                    <fieldset>
+                                        <label>Phone number:</label>
+                                        <input name="phoneno" placeholder="Enter Phone Number" tabindex="4" value="<?php
+                                        if ($phone) {
+                                            echo $phone;
+                                        }
+                                        ?>" type="text" id="phoneno"  /><span ></span>
+                                               <?php echo form_error('phoneno'); ?>
+                                    </fieldset>
 
-							</div>
+                                </div>
                                 <fieldset class="hs-submit full-width">
 
 
@@ -153,14 +153,14 @@
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data1 = <?php echo json_encode($de); ?>;
-            var data = <?php echo json_encode($demo); ?>;
-            var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-            var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                        var base_url = '<?php echo base_url(); ?>';
+                                        var data1 = <?php echo json_encode($de); ?>;
+                                        var data = <?php echo json_encode($demo); ?>;
+                                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                        var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <!-- FIELD VALIDATION JS END -->
-       <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
-       <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/basic_info.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/basic_info.js'); ?>"></script>
     </body>
 </html>

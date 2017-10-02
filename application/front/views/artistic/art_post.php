@@ -31,7 +31,7 @@
                <div class="seeall">
                   <a href="<?php //echo base_url('artistic/userlist'); ?>">All User</a>
                </div>
-               <div class="profile-boxProfileCard_follow_mobile  module">     
+               <div class="profile-boxProfileCard_follow fw  module">     
                </div>
              
             </div>
@@ -297,6 +297,7 @@ var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 var complex = <?php echo json_encode($selectdata); ?>;
 var textarea = document.getElementById("textarea");
+ var no_artistic_post_html = '<?php echo $no_artistic_post_html ?>';
 </script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/home.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>

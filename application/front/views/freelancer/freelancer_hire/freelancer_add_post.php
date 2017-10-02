@@ -59,7 +59,7 @@
                                     </fieldset>
                                     <fieldset class="full-width">
                                         <label><?php echo $this->lang->line("project_description"); ?> :<span style="color:red">*</span></label>
-                                        <textarea style="resize: none;height: 22%;overflow: auto;" name="post_desc" id="post_desc" placeholder="Enter Description" tabindex="2" onpaste="OnPaste_StripFormatting(this, event);"></textarea>
+                                        <textarea class="add-post-textarea" name="post_desc" id="post_desc" placeholder="Enter Description" tabindex="2" onpaste="OnPaste_StripFormatting(this, event);"></textarea>
                                         <?php echo form_error('post_desc'); ?>
                                     </fieldset>
                                     <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>

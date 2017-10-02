@@ -68,7 +68,7 @@ function business_contacts(slug, pagenum) {
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').append(data);
+            $('.contact-frnd-post').html(data);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;
@@ -109,8 +109,7 @@ function business_contacts_header(slug, pagenum) {
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').html(data);
-
+            $('.contact-frnd-post').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
