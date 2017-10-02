@@ -15236,18 +15236,22 @@ public function get_artistic_name($id=''){
                 $varfoune2[] = $valuedata; 
                }
             }
-            if($varfoune){
 
-                $otherdata = $varfoune;
 
-            }elseif($varfoune2){
+
+            if(!$varfoune){ echo "1"; die();
+
                 $otherdata = $varfoune2;
 
-            }else{
+            }elseif(!$varfoune2){ echo "10"; die();
+                $otherdata = $varfoune;
+
+            }elseif($varfoune && $varfoune2){ echo "13"; die();
             $otherdata = array_merge($varfoune, $varfoune2);
 
             }
-            //echo "<pre>"; print_r($otherdata); die();
+            
+            echo "<pre>"; print_r($otherdata); die();
             
 
 
