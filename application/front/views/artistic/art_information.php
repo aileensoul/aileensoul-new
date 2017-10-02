@@ -94,15 +94,15 @@
                                     <fieldset class="full-width <?php if($skills) {  ?> error-msg <?php } ?>">
                                         <label>Art:<span style="color:red">*</span></label>
                                     
-                                      <input placeholder="Enter Art" id="skills2" value="<?php echo $work_skill; ?>" name="skills" tabindex="1" size="90">
+                                      <input placeholder="Enter art" id="skills2" value="<?php echo $work_skill; ?>" name="skills" tabindex="1" size="90">
 
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
 
 
                                 <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
-                                    <label>Speciality In Art:<span style="color:red">*</span></label>
-                                    <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Enter Speciality" value="<?php if($artname1){ echo $artname1; } ?>"/><!-- <span id="artname-error"></span> -->
+                                    <label>Speciality in art:<span style="color:red">*</span></label>
+                                    <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Enter speciality" value="<?php if($artname1){ echo $artname1; } ?>"/><!-- <span id="artname-error"></span> -->
                                      <?php echo form_error('artname'); ?>
                                 </fieldset>
               
@@ -110,16 +110,16 @@
                                 <fieldset  class="<?php if($desc_art) {  ?>error-msg <?php } ?> full-width">
                                     <label>Description of your art:<span style="color:red">*</span></label>
 
-                                 <textarea id="textarea" name ="desc_art" id="desc_art" tabindex="3" rows="4" cols="50" placeholder="Enter Description of Your Art" style="resize: none;"><?php if($desc_art1){ echo $desc_art1; } ?></textarea>
+                                 <textarea id="textarea" name ="desc_art" id="desc_art" tabindex="3" rows="4" cols="50" placeholder="Enter description of your art" style="resize: none;"><?php if($desc_art1){ echo $desc_art1; } ?></textarea>
                                    
                                   <?php echo form_error('desc_art'); ?><br/> 
                                 </fieldset>
                                
 
                                 <fieldset class="full-width">
-                                    <label>How You are Inspire:</label>
+                                    <label>How you are inspire:</label>
                                 
-                                    <input name="inspire"  type="text" id="inspire" placeholder="Enter Inspire" tabindex="4" value="<?php if($inspire1){ echo $inspire1; } ?>"/><span ></span>
+                                    <input name="inspire"  type="text" id="inspire" placeholder="Enter inspire" tabindex="4" value="<?php if($inspire1){ echo $inspire1; } ?>"/><span ></span>
                                  
                                 </fieldset>
 
