@@ -5164,9 +5164,6 @@ public function delete_commenttwo_postnewpage() {
 
     }
 
-
-
-
 public function insert_comment_postnewpage() {
 
         $userid = $this->session->userdata('aileenuser');
