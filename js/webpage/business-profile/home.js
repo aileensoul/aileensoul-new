@@ -92,8 +92,10 @@ function ajax_business_home_three_user_list() {
         },
         success: function (data) {
 //            $('.loader').remove();
+
             $('.profile-boxProfileCard_follow').html(data);
             var liCount = $(data).find("li.follow_box_ul_li").length;
+            
             if (liCount == 0) {
                 $('.full-box-module_follow').hide();
             }
