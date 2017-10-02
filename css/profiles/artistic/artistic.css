@@ -2309,6 +2309,7 @@ label.cameraButton:active {
     overflow-y: hidden;
     width: 85%;
     padding-left: 0px;
+    padding-right: 0px;
     height: 30px;
     font-size: 19px!important;
     line-height: 1;
@@ -4516,7 +4517,7 @@ div .comment {
         padding-top: 40px;
     }
     .popup-textarea textarea {
-        padding-right: 18px;
+       /* padding-right: 18px;*/
     }
     .croppie-container .cr-viewport {
         width: 100%!important;
@@ -4961,6 +4962,7 @@ div .comment {
 	.user_lst #unfollowdiv button span{background:url('../../../img/icon_following.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
 	.user_lst #followdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
 	.user_lst #followdiv button span{background:url('../../../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
+	.post-edit-popup .popup-text textarea{width:79%; padding-right:0;}
 }
 
 @media screen and (max-width: 540px) {
@@ -4981,10 +4983,6 @@ div .comment {
     .reactivate_btn_y a {
         font-size: 16px;
         padding: 7px 29px;
-    }
-   
-    .post-edit-popup .popup-text textarea {
-        width: 90%;
     }
     .like_user_list_main_desc {
         width: 73%;
@@ -5090,15 +5088,11 @@ div .comment {
         font-size: 14px!important;
 		
     }
-	.post-edit-popup .popup-text textarea{padding-right:25px;}
     .editor-content {
         width: 84%;
     }
     .camer_h i {
         font-size: 22px;
-    }
-    .post-edit-popup .popup-text textarea {
-        width: 85%;
     }
     .audio_source audio {
         width: 200px;
@@ -5440,6 +5434,7 @@ div .comment {
 	.popup-img img{width:40px; height:40px;}
 	.popup-text span{font-size:16px; padding:5px 0;}
 	.popup-text{padding:7px 0px 6px 10px;}
+	.post-edit-popup .popup-text textarea{width:70%;}
 }
 
 @media screen and (max-width: 430px) {
@@ -5455,9 +5450,7 @@ div .comment {
     .edit-comment-box .comment-edit-button button {
         padding: 6px 13px
     }
-    .post-edit-popup .popup-text textarea {
-        padding-right: 45px;
-    }
+
     .inputtype-edit-comment .editable_text {
         width: 60%!important;
     }
@@ -5596,7 +5589,7 @@ div .comment {
 	.popup-text textarea::-moz-placeholder{font-size:17px !important;}
 	.popup-text textarea::-webkit-input-placeholder{font-size:17px !important;}
 	.art-alert .alert-success{float:none;}
-	
+	.post-edit-popup .popup-text textarea{width:68%;}
 }
 
 @media screen and (max-width: 319px) {

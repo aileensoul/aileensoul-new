@@ -3978,7 +3978,7 @@ public function followtwo() {
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id,user_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
         // all count of commnet 
         $contition_array = array('art_post_id' => $_POST["post_delete"], 'status' => '1');
-        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if (count($artdata) > 0) {
             foreach ($artdata as $art) {
 
@@ -4040,7 +4040,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= 'onClick="comment_like1(this.id)">';
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
-                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_comment_like_user', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
                 if (!in_array($userid, $likeuserarray)) {
 
@@ -4113,7 +4113,7 @@ public function delete_comment_postnewpage() {
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -4130,12 +4130,11 @@ public function delete_comment_postnewpage() {
         $updatdata = $this->common->update_data($data, 'artistic_post_comment', 'artistic_post_comment_id', $post_id);
 
         $contition_array = array('art_post_id' => $post_delete, 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-//echo '<pre>'; print_r($artdata); die();
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'user_id,comments,artistic_post_comment_id,art_post_id,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
         // all count of commnet 
 
         $contition_array = array('art_post_id' => $_POST["post_delete"], 'status' => '1');
-        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // khyati changes start
         if (count($artdata) > 0) {
@@ -4203,12 +4202,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= 'onClick="comment_like1(this.id)">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
-                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+                $likeuserarray = explode(',', $art['artistic_comment_like_user']);
 
                 if (!in_array($userid, $likeuserarray)) {
-
 
                     $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
                 } else {
@@ -4280,7 +4276,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -4289,9 +4285,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
          $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdb = $this->data['artdb'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'art_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $condition_array = array('art_post_id' => $artdata[0]['art_post_id']);
+        $condition_array = array('art_post_id' => $artdb[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -4340,7 +4336,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
         $contition_array = array('art_post_id' => $post_delete, 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'user_id,comments,artistic_post_comment_id,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // khyati changes start
         if (count($artdata) > 0) {
             foreach ($artdata as $art) {
@@ -4369,16 +4365,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                 $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                                 $cmtinsert .=  '</div>';
 
-
                         } else {
-
 
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage . '" alt="">';
 
                     }
                   
                 }else{
-
 
                          $a = $artname;
                             $acr = substr($a, 0, 1);
@@ -4412,11 +4405,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
                 $cmtinsert .= 'onClick="comment_like1(this.id)">';
-
-                $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
-                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+   
+                $likeuserarray = explode(',', $art['artistic_comment_like_user']);
 
                 if (!in_array($userid, $likeuserarray)) {
 
@@ -4433,7 +4423,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '</span>';
                 $cmtinsert .= '</a></div>';
 
-                $userid = $this->session->userdata('aileenuser');
                 if ($art['user_id'] == $userid) {
 
                     $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
@@ -4504,7 +4493,7 @@ public function delete_commenttwo_postnewpage() {
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -4519,23 +4508,14 @@ public function delete_commenttwo_postnewpage() {
         );
 
         $updatdata = $this->common->update_data($data, 'artistic_post_comment', 'artistic_post_comment_id', $post_id);
-
-
         $contition_array = array('art_post_id' => $post_delete, 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//echo '<pre>'; print_r($artdata); die();
-// khyati changes start
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'user_id,artistic_post_comment_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if (count($artdata) > 0) {
             foreach ($artdata as $art) {
-
                 $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
-
                 $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
-
                   $artslug = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
-
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
-
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
@@ -4555,26 +4535,18 @@ public function delete_commenttwo_postnewpage() {
                         } else {
 
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
-
-                    }
-                 
+                    }                
                 }else{
-
-
-                          $a = $artname;
+                            $a = $artname;
                             $acr = substr($a, 0, 1);
                             $b = $artlastname;
                             $bcr = substr($b, 0, 1);
-
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-                   
+                    $cmtinsert .=  '</div>';                  
                 }
-                  $cmtinsert .= '</a>';
-
+                $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
-
                 $cmtinsert .= '<div class="comment-name">';
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">
 
@@ -4595,14 +4567,8 @@ public function delete_commenttwo_postnewpage() {
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
                 $cmtinsert .= 'onClick="comment_like1(this.id)">';
 
-                $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
-                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
-
+                $likeuserarray = explode(',', $art['artistic_comment_like_user']);
                 if (!in_array($userid, $likeuserarray)) {
-
-
                     $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
                 } else {
                     $cmtinsert .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
@@ -4665,13 +4631,12 @@ public function delete_commenttwo_postnewpage() {
            $cntinsert .= '' . count($artdata) . ''; 
            $cntinsert .=   '</span>'; 
            $cntinsert .=  '<span> Comment</span>';
-                                }
+               }
             }
         } else {
 
             $cmtcount .= '';
-        }
-      
+        }  
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
@@ -4688,7 +4653,7 @@ public function delete_commenttwo_postnewpage() {
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -4741,7 +4706,7 @@ public function delete_commenttwo_postnewpage() {
         
 
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_likes_count,art_like_user,is_delete,user_id,', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $art_likes_count = $artdata[0]['art_likes_count'];
         $likeuserarray = explode(',', $artdata[0]['art_like_user']);
@@ -4764,8 +4729,6 @@ public function delete_commenttwo_postnewpage() {
 
 
             $updatdata = $this->common->update_data($data, 'art_post', 'art_post_id', $post_id);
-
-
 
             // insert notification
 
@@ -4806,7 +4769,7 @@ public function delete_commenttwo_postnewpage() {
             // end notoification
 
             $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-            $artdata1 = $this->data['artdata1'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artdata1 = $this->data['artdata1'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post_id,art_likes_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($updatdata) {
 
@@ -4823,7 +4786,7 @@ public function delete_commenttwo_postnewpage() {
                 $cmtlike .= '</li>';
 
                 $contition_array = array('art_post_id' => $artdata1[0]['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_like_user,art_likes_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $likeuser = $commnetcount[0]['art_like_user'];
 
@@ -4832,32 +4795,17 @@ public function delete_commenttwo_postnewpage() {
                 foreach ($likelistarray as $key => $value) {
                     $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
                     $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
-//      $cmtlikeuser .= '<a href="'.base_url('artistic/art_manage_post/'.$value).'">';
-//
-//       $cmtlikeuser .= '' . ucwords($art_fname1) . '' . ucwords($art_lname1) . '&nbsp;';
-//
-//      $cmtlikeuser .= '</a>';
                 }
-//         $cmtlikeuser .= '<p class="okk"><a class="cnclbtn" href="#">Cancel</a></p>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
-                //popup box end like user name
-//            $cmtlikeuser .= '<a href=#popuplike'. $artdata1[0]['art_post_id'].'>';
-             $cmtlikeuser .= '<div class="like_one_other">';
-
+                $cmtlikeuser .= '<div class="like_one_other">';
                 $cmtlikeuser .= ' <a href="javascript:void(0);"  onclick="likeuserlist(' . $artdata1[0]['art_post_id'] . ');">';
                 $contition_array = array('art_post_id' => $artdata1[0]['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_like_user,art_likes_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $likeuser = $commnetcount[0]['art_like_user'];
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
                 $likelistarray = explode(',', $likeuser);
-                //echo '<pre>'; print_r($likelistarray); die();
-
                 $likelistarray = array_reverse($likelistarray);
-                //echo '<pre>'; print_r($likelistarray); die();
 
               $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
 
@@ -4874,22 +4822,14 @@ public function delete_commenttwo_postnewpage() {
              
 
                 if (count($likelistarray) > 1) {
-
-                    // $cmtlikeuser .= '<div class="fl" style="padding-right: 5px;">';
                     $cmtlikeuser .= 'and';
-                    // $cmtlikeuser .= '</div>';
-                    // $cmtlikeuser .= '<div style="padding-left: 5px;">';
                     $cmtlikeuser .= ' ' . $countlike . ' others';
-                    // $cmtlikeuser .= '</div>';
                 }
 
                 $cmtlikeuser .= '</a>';
                    $cmtlikeuser .= '</div>';
-
-
-               // $like_user_count = $commnetcount[0]['art_likes_count'];
                 
-               $like_count = $commnetcount[0]['art_likes_count'];
+             $like_count = $commnetcount[0]['art_likes_count'];
              $like_user_count =  '<span class="comment_like_count">'; 
                if ($commnetcount[0]['art_likes_count'] > 0) { 
               $like_user_count .= '' . $commnetcount[0]['art_likes_count'] . ''; 
@@ -4906,7 +4846,7 @@ public function delete_commenttwo_postnewpage() {
         } else {
 
             $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-            $artdata1 = $this->data['artdata1'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artdata1 = $this->data['artdata1'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post_id,', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             foreach ($likeuserarray as $key => $val) {
                 if ($val == $userid) { //echo $key;
@@ -4922,7 +4862,7 @@ public function delete_commenttwo_postnewpage() {
 
             $updatdata = $this->common->update_data($data, 'art_post', 'art_post_id', $post_id);
             $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-            $artdata2 = $this->data['artdata2'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artdata2 = $this->data['artdata2'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post_id,art_likes_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($updatdata) {
 
@@ -4931,7 +4871,6 @@ public function delete_commenttwo_postnewpage() {
 
                 $cmtlike .= '<a id="' . $artdata2[0]['art_post_id'] . '" class="ripple like_h_w" onClick="post_like(this.id)">';
 
-//                $cmtlike .= ' <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true">';
                 $cmtlike .= '<i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true">';
                 $cmtlike .= '</i>';
 
@@ -4943,80 +4882,47 @@ public function delete_commenttwo_postnewpage() {
                 $cmtlike .= '</a>';
                 $cmtlike .= '</li>';
 
-                //popup box start like user name
-//         $cmtlikeuser .= '<div id=popuplike' . $artdata1[0]['art_post_id'].' class="overlay"';
-//         $cmtlikeuser .= '<div class="popup">';
-//         $cmtlikeuser .= '<div class="pop_content2">';
-
                 $contition_array = array('art_post_id' => $artdata1[0]['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_like_user,art_likes_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $likeuser = $commnetcount[0]['art_like_user'];
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
-
-               // $likelistarray = explode(',', $likeuser);
-                //  $likelistarray = array_reverse($likelistarray);
-//        echo '<pre>';
-//        print_r($likelistarray);
-//        exit;
 
                 foreach ($likelistarray as $key => $value) {
 
                     $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
 
                     $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
-
-//      $cmtlikeuser .= '<a href="'.base_url('artistic/art_manage_post/'.$value).'">';
-//
-//       $cmtlikeuser .= '' . ucwords($art_fname1) . '' . ucwords($art_lname1) . '&nbsp;';
-//
-//      $cmtlikeuser .= '</a>';
                 }
-//         $cmtlikeuser .= '<p class="okk"><a class="cnclbtn" href="#">Cancel</a></p>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
-//         $cmtlikeuser .= '</div>';
-                //popup box end like user name
-//            $cmtlikeuser .= '<a href=#popuplike'. $artdata1[0]['art_post_id'].'>';
                $cmtlikeuser .= '<div class="like_one_other">';
                $cmtlikeuser .= ' <a href="javascript:void(0);"  onclick="likeuserlist(' . $artdata1[0]['art_post_id'] . ');">';
 
                 $contition_array = array('art_post_id' => $artdata1[0]['art_post_id'], 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_like_user,art_likes_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $likeuser = $commnetcount[0]['art_like_user'];
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
                 $likelistarray = explode(',', $likeuser);
                 $likelistarray = array_reverse($likelistarray);
-               // echo '<pre>'; print_r($likelistarray); die();
-                //echo "<pre>"; print_r( $likelistarray); die();
                 $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
                 $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
-                //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
                  if (in_array($userid, $likelistarray)) { //echo "123"; die();
                     $cmtlikeuser .= 'You &nbsp';
-                } else { //echo "12f3"; die();
+                } else {
                     $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '&nbsp;' . ucfirst(strtolower($art_lname)) . '&nbsp;';
                 }
              
-
                 if (count($likelistarray) > 1) {
 
-                    // $cmtlikeuser .= '<div class="fl" style="padding-right: 5px;">';
                     $cmtlikeuser .= 'and';
-                    // $cmtlikeuser .= '</div>';
-                    // $cmtlikeuser .= '<div style="padding-left: 5px;">';
                     $cmtlikeuser .= ' ' . $countlike . ' others';
-                    // $cmtlikeuser .= '</div>';
                 }
 
                 $cmtlikeuser .= '</a>';
                    $cmtlikeuser .= '</div>';
-
-              
-               
+  
              $like_count = $commnetcount[0]['art_likes_count'];
              $like_user_count =  '<span class="comment_like_count">'; 
                if ($commnetcount[0]['art_likes_count'] > 0) { 
@@ -5025,7 +4931,6 @@ public function delete_commenttwo_postnewpage() {
               $like_user_count .= '<span> Like</span>';
                  }
                                                                       
-
                 echo json_encode(
                         array("like" => $cmtlike,
                             "likeuser" => $cmtlikeuser,
@@ -5047,7 +4952,7 @@ public function delete_commenttwo_postnewpage() {
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -5057,7 +4962,7 @@ public function delete_commenttwo_postnewpage() {
 
         $post_id = $_POST["post_id"];
 
-        $condition_array = array('art_post_id' => $id);
+        $condition_array = array('art_post_id' => $post_id);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -5085,24 +4990,19 @@ public function delete_commenttwo_postnewpage() {
         } else { 
             $return = 0;
         }
-
-        // echo  $dataavl; die();
          if($return == 0){
             
            $datavl = "notavl";
             echo json_encode(
                         array(
-                            "notavlpost" => $datavl,
-                           
+                            "notavlpost" => $datavl,                
                 ));
 
          }else{
         
         $post_comment = $_POST["comment"];
-
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'user_id,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $data = array(
             'user_id' => $userid,
             'art_post_id' => $post_id,
@@ -5112,15 +5012,9 @@ public function delete_commenttwo_postnewpage() {
             'is_delete' => 0
         );
 
-
-
         $insert_id = $this->common->insert_data_getid($data, 'artistic_post_comment');
-
-
         // insert notification
-
-        if ($artdatacomment[0]['user_id'] == $userid || $artdatacomment[0]['is_delete'] == '1') {
-            
+        if ($artdatacomment[0]['user_id'] == $userid || $artdatacomment[0]['is_delete'] == '1') {    
         } else {
             $data = array(
                 'not_type' => 6,
@@ -5138,10 +5032,8 @@ public function delete_commenttwo_postnewpage() {
         }
         // end notoification
 
-
-
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'user_id,artistic_post_comment_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // khyati changes start
         $cmtinsert = '<div  class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
@@ -5172,33 +5064,21 @@ public function delete_commenttwo_postnewpage() {
                                 $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                                 $cmtinsert .=  '</div>';
 
-
                         } else {
 
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
-
                 }
-
             }else{
-
-
-                         $a = $artname;
+                            $a = $artname;
                             $acr = substr($a, 0, 1);
                             $b = $artlastname;
                             $bcr = substr($b, 0, 1);
-
-
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
-
-
-                   
-
             }
               $cmtinsert .= '</a>';
               $cmtinsert .=  '</div>';
-
 
             $cmtinsert .= '<div class="comment-name">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">
@@ -5208,27 +5088,19 @@ public function delete_commenttwo_postnewpage() {
             $cmtinsert .= $this->common->make_links($art['comments']);
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-//            $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcommenttwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedittwo(this.name)">';
-//            $cmtinsert .= '' . $art['comments'] . '';
-//            $cmtinsert .= '</textarea>';
             $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcommenttwo' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedittwo(' . $art['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
             $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onclick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Save</button></span>';
             $cmtinsert .= '</div></div>';
-
-//            $cmtinsert .= '<button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
             $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
             $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
             $cmtinsert .= 'onClick="comment_like1(this.id)">';
 
-
-
-            $userid = $this->session->userdata('aileenuser');
+        
             $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
-            $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_comment_like_user', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
 
             if (!in_array($userid, $likeuserarray)) {
-
 
                 $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
             } else {
@@ -5246,8 +5118,6 @@ public function delete_commenttwo_postnewpage() {
             if ($art['user_id'] == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
-
-
                 $cmtinsert .= '<div id="editcommentboxtwo' . $art['artistic_post_comment_id'] . '" style="display:block;">';
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
                 $cmtinsert .= 'onClick="comment_editboxtwo(this.id)">';
@@ -5266,11 +5136,9 @@ public function delete_commenttwo_postnewpage() {
             if ($art['user_id'] == $userid || $art_userid == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
-
                 $cmtinsert .= '<input type="hidden" name="post_deletetwo"';
                 $cmtinsert .= 'id="post_deletetwo"';
                 $cmtinsert .= 'value= "' . $art['art_post_id'] . '">';
-
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
                 $cmtinsert .= 'onClick="comment_deletetwo(this.id)">';
                 $cmtinsert .= 'Delete';
@@ -5280,14 +5148,6 @@ public function delete_commenttwo_postnewpage() {
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
 
-
-            // comment aount variable start
-//            $idpost = $art['art_post_id'];
-//            $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
-//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-//            $cmtcount .= ' ' . count($artdata) . '';
-//            $cmtcount .= '</i></a>';
-//            
              $cntinsert =  '<span class="comment_count" >';
      if (count($artdata) > 0) {
            $cntinsert .= '' . count($artdata) . ''; 
@@ -5296,17 +5156,13 @@ public function delete_commenttwo_postnewpage() {
         
            }
         }
-        //echo $cmtinsert;
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "comment" => $cmtinsert,
                     "commentcount" => $cntinsert));
       }
-        // khyati chande 
+
     }
-
-
-
 
 public function insert_comment_postnewpage() {
 
@@ -5315,7 +5171,7 @@ public function insert_comment_postnewpage() {
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if($artistic_deactive)
         {
@@ -5327,7 +5183,7 @@ public function insert_comment_postnewpage() {
         $post_comment = $_POST["comment"];
 
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'user_id,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $data = array(
             'user_id' => $userid,
@@ -5337,16 +5193,9 @@ public function insert_comment_postnewpage() {
             'status' => 1,
             'is_delete' => 0
         );
-
-
-
         $insert_id = $this->common->insert_data_getid($data, 'artistic_post_comment');
-
-
         // insert notification
-
-        if ($artdatacomment[0]['user_id'] == $userid || $artdatacomment[0]['is_delete'] == '1') {
-            
+        if ($artdatacomment[0]['user_id'] == $userid || $artdatacomment[0]['is_delete'] == '1') {            
         } else {
             $data = array(
                 'not_type' => 6,
@@ -5359,36 +5208,24 @@ public function insert_comment_postnewpage() {
                 'not_active' => 1,
                 'not_created_date' => date('Y-m-d H:i:s')
             );
-
             $insert_id = $this->common->insert_data_getid($data, 'notification');
         }
         // end notoification
-
-
-
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'user_id,artistic_post_comment_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-// khyati changes start
         $cmtinsert = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
         foreach ($artdata as $art) {
 
             $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
-
             $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
-
             $artslug = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
-
-
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
-
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
-
             if($art_userimage){
-
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                             $a = $artname;
                             $acr = substr($a, 0, 1);
@@ -5398,32 +5235,23 @@ public function insert_comment_postnewpage() {
                                 $cmtinsert .= '<div class="post-img-div">';
                                 $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                                 $cmtinsert .=  '</div>';
-
-
                         } else {
 
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                 }
-
-             
+            
             }else{
-
-
-                         $a = $artname;
+                            $a = $artname;
                             $acr = substr($a, 0, 1);
                             $b = $artlastname;
                             $bcr = substr($b, 0, 1);
-
-
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';    
-
             }
               $cmtinsert .= '</a>';
              $cmtinsert .=  '</div>';
-
             $cmtinsert .= '<div class="comment-name">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">
             <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
@@ -5433,28 +5261,18 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= $this->common->make_links($art['comments']);
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-//            $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcommenttwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedittwo(this.name)">';
-//            $cmtinsert .= '' . $art['comments'] . '';
-//            $cmtinsert .= '</textarea>';
             $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcommenttwo' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedittwo(' . $art['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
             $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onclick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Save</button></span>';
             $cmtinsert .= '</div></div>';
-
-//            $cmtinsert .= '<button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
             $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
             $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
             $cmtinsert .= 'onClick="comment_like1(this.id)">';
-
-
-
-            $userid = $this->session->userdata('aileenuser');
+          
             $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
-            $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_comment_like_user', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
 
             if (!in_array($userid, $likeuserarray)) {
-
-
                 $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
             } else {
                 $cmtinsert .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
@@ -5471,8 +5289,6 @@ public function insert_comment_postnewpage() {
             if ($art['user_id'] == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
-
-
                 $cmtinsert .= '<div id="editcommentboxtwo' . $art['artistic_post_comment_id'] . '" style="display:block;">';
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
                 $cmtinsert .= 'onClick="comment_editboxtwo(this.id)">';
@@ -5480,22 +5296,17 @@ public function insert_comment_postnewpage() {
                 $cmtinsert .= '</a></div>';
                 $cmtinsert .= '<div id="editcancletwo' . $art['artistic_post_comment_id'] . '" style="display:none;">';
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '" onClick="comment_editcancletwo(this.id)">Cancel  </a></div>';
-
                 $cmtinsert .= '</div>';
             }
-
-            $userid = $this->session->userdata('aileenuser');
 
             $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
 
             if ($art['user_id'] == $userid || $art_userid == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
-
                 $cmtinsert .= '<input type="hidden" name="post_deletetwo"';
                 $cmtinsert .= 'id="post_deletetwo"';
                 $cmtinsert .= 'value= "' . $art['art_post_id'] . '">';
-
                 $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
                 $cmtinsert .= 'onClick="comment_deletetwo(this.id)">';
                 $cmtinsert .= 'Delete';
@@ -5504,15 +5315,6 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
-
-
-            // comment aount variable start
-//            $idpost = $art['art_post_id'];
-//            $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
-//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-//            $cmtcount .= ' ' . count($artdata) . '';
-//            $cmtcount .= '</i></a>';
-//            
              $cntinsert =  '<span class="comment_count" >';
      if (count($artdata) > 0) {
            $cntinsert .= '' . count($artdata) . ''; 
@@ -5521,12 +5323,10 @@ public function insert_comment_postnewpage() {
         
            }
         }
-        //echo $cmtinsert;
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "comment" => $cmtinsert,
-                    "commentcount" => $cntinsert));
-        // khyati chande 
+                    "commentcount" => $cntinsert)); 
     }
     public function insert_commentthree() {
 
