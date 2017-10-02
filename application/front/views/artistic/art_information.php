@@ -107,7 +107,7 @@
                                 </fieldset>
               
                               
-                                <fieldset  <?php if($desc_art) {  ?> class="error-msg <?php } ?> full-width">
+                                <fieldset  class="<?php if($desc_art) {  ?>error-msg <?php } ?> full-width">
                                     <label>Description of your art:<span style="color:red">*</span></label>
 
                                  <textarea id="textarea" name ="desc_art" id="desc_art" tabindex="3" rows="4" cols="50" placeholder="Enter Description of Your Art" style="resize: none;"><?php if($desc_art1){ echo $desc_art1; } ?></textarea>
