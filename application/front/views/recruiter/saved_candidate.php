@@ -126,12 +126,12 @@
                     </div>
                     <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
-                        <a href="<?php echo site_url('recruiter/rec_profile/' . $recruiterdata[0]['userid']); ?>"><h3><?php echo $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname']; ?></h3></a>
+                        <a href="<?php echo site_url('recruiter/rec_profile/' . $recdata[0]['userid']); ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
                         <!-- text head start -->
                         <div class="profile-text" >
 
                             <?php
-                            if ($recruiterdata[0]['designation'] == "") {
+                            if ($recdata[0]['designation'] == "") {
                                 ?>
 
                                 <a id="designation" class="designation" title="Designation">Designation</a>
@@ -140,7 +140,7 @@
                                 // echo "hello";
                                 ?> 
 
-                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recruiterdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recruiterdata[0]['designation'])); ?></a>
+                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
                             <?php } ?>
 
                         </div>
@@ -160,7 +160,7 @@
 
                             <?php
                             $userid = $this->session->userdata('aileenuser');
-                            if ($recruiterdata[0]['user_id'] == $userid) {
+                            if ($recdata[0]['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
 
@@ -201,12 +201,12 @@
 
             <div class="middle-part container rec_res">    
                 <div class="job-menu-profile mob-none  ">
-                    <a href="<?php echo site_url('recruiter/profile/' . $recruiterdata[0]['userid']); ?>"><h3><?php echo $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname']; ?></h3></a>
+                    <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['userid']); ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 
                         <?php
-                        if ($recruiterdata[0]['designation'] == "") {
+                        if ($recdata[0]['designation'] == "") {
                             ?>
 
                             <a id="designation" class="designation" title="Designation">Designation</a>
@@ -215,7 +215,7 @@
                             // echo "hello";
                             ?> 
 
-                            <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recruiterdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recruiterdata[0]['designation'])); ?></a>
+                            <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
                         <?php } ?>
 
                     </div>
