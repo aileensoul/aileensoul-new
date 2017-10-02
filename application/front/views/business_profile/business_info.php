@@ -73,9 +73,9 @@
                                     <?php echo $this->lang->line("business_information"); ?>
                                 </h3>
                                 <?php echo form_open(base_url('business-profile/business-information-insert'), array('id' => 'businessinfo', 'name' => 'businessinfo', 'class' => 'clearfix')); ?>
-                                <div>
+                               <!--  <div>
                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                </div>
+                                </div> -->
                                 <?php
                                 $companyname = form_error('companyname');
                                 $country = form_error('country');
