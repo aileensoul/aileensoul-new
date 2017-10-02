@@ -15219,7 +15219,8 @@ public function get_artistic_name($id=''){
         
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
-            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+
             // echo $search_condition;
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
            // echo "<pre>"; print_r($othercom); die();
@@ -15239,19 +15240,19 @@ public function get_artistic_name($id=''){
 
 
 
-            if(!$varfoune){ echo "1"; die();
+            if(!$varfoune){ //echo "1"; die();
 
                 $otherdata = $varfoune2;
 
-            }elseif(!$varfoune2){ echo "10"; die();
+            }elseif(!$varfoune2){ //echo "10"; die();
                 $otherdata = $varfoune;
 
-            }elseif($varfoune && $varfoune2){ echo "13"; die();
+            }elseif($varfoune && $varfoune2){ //echo "13"; die();
             $otherdata = array_merge($varfoune, $varfoune2);
 
             }
             
-            echo "<pre>"; print_r($otherdata); die();
+            //echo "<pre>"; print_r($otherdata); die();
             
 
 
@@ -15341,16 +15342,16 @@ public function get_artistic_name($id=''){
                 $varfoune2[] = $valuedata; 
                }
             }
-            if($varfoune){
 
-                $otherdata = $varfoune;
+            if(!$varfoune){ 
 
-            }elseif($varfoune2){
                 $otherdata = $varfoune2;
 
-            }else{
-            $otherdata = array_merge($varfoune, $varfoune2);
+            }elseif(!$varfoune2){ 
+                $otherdata = $varfoune;
 
+            }elseif($varfoune && $varfoune2){ 
+            $otherdata = array_merge($varfoune, $varfoune2);
             }
 
 
