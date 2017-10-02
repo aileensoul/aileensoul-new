@@ -5150,7 +5150,7 @@ public function post($id="")
                         $rec_post .= '' . $this->common->make_links($rec_postdata[0]['post_description']) . '</pre></span>';
                         $rec_post .= '</li>
                                                                 <li><b>Interview Process</b><span>';
-                        if ($post['interview_process'] != '') {
+                        if ($rec_postdata[0]['interview_process'] != '') {
 
                             $rec_post .= '' . $this->common->make_links($rec_postdata[0]['interview_process']) . '';
                         } else {
@@ -5167,6 +5167,7 @@ public function post($id="")
                             $rec_post .= '' . $rec_postdata[0]['min_sal'] . " - " . $rec_postdata[0]['max_sal'] . ' ' . $currency . ' ' . $rec_postdata[0]['salary_type'] . '';
                         } else {
                             $rec_post .= '' . PROFILENA . '';
+                            $rec_post .=$rec_postdata[0]['max_sal'];
                         }
 
                         $rec_post .= '</span></li><li><b>No of Position</b><span>' . $rec_postdata[0]['post_position'] . ' ' . 'Position</span> </li>

@@ -874,11 +874,11 @@ class Recruiter extends MY_Controller {
         $postdatas = $this->data['postdata'] = $this->common->select_data_by_id('rec_post', 'post_id', $id, $data = '*', $join_str = array());
 //echo '<pre>'; print_r($postdatas); die();
 //Selected Job titlre fetch
-        $contition_array = array('status' => 'publish', 'title_id' => $postdatas[0]['post_name']);
+        $contition_array = array('title_id' => $postdatas[0]['post_name']);
         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['work_title'] = $jobtitle[0]['name'];
-
+      
 //Selected skill fetch
         $work_skill = explode(',', $postdatas[0]['post_skill']);
 
@@ -2313,7 +2313,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '</p>  
                                                                     </span>
                                                                 </li>
-                                                                <li><b>Salffary</b><span title="Min - Max" >';
+                                                                <li><b>Salary</b><span title="Min - Max" >';
 
                         $currency = $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
 
