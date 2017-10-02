@@ -6,6 +6,7 @@
 
         <style type="text/css">
       .full-width img{display: none;}
+    
     </style>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -120,8 +121,8 @@
 
 
                                 <fieldset class="full-width">
-                                 <label>Enter Portfolio Description:</label>
-                              <div tabindex="2" style="min-height: 100px;"  class="editable_text"  contenteditable="true" name ="artportfolio" id="artportfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" onpaste="OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(event);"><?php if($art_portfolio1){ echo $art_portfolio1; } ?></div>
+                                 <label>Enter portfolio description:</label>
+                              <div tabindex="2" style="min-height: 100px;"  class="editable_text"  contenteditable="true" name ="artportfolio" id="artportfolio123" rows="4" cols="50" placeholder="Enter portfolio detail" onpaste="OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(event);"><?php if($art_portfolio1){ echo $art_portfolio1; } ?></div>
                                          <?php echo form_error('artportfolio'); ?></fieldset>
                                 
                                  <fieldset class="hs-submit full-width">

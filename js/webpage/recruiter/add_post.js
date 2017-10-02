@@ -1124,5 +1124,15 @@ $('.header ul li #abody ul li a').click(function () {
     }
 });
 
-
+//all popup close close using esc start 
+$(document).ready(function () {
+ $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        $('#bidmodal').modal('hide');
+        $.fancybox.close();
+        $( "#dropdown-content_hover" ).hide();
+    }
+   });  
+});
+//all popup close close using esc end 
 

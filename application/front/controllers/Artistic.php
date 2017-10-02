@@ -167,10 +167,10 @@ class Artistic extends MY_Controller {
 
             if ($updatdata) {
                 $this->session->set_flashdata('success', 'Basic Information updated successfully');
-                redirect('artistic/art_address', refresh);
+                redirect('artistic/artistic-address', refresh);
             } else {
                 $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                redirect('artistic/art_basic_information_insert', refresh);
+                redirect('artistic/artistic-basic-information-insert', refresh);
             }
         } else {
             $data = array(
@@ -191,10 +191,10 @@ class Artistic extends MY_Controller {
 
 
                 $this->session->set_flashdata('success', 'Basic Information updated successfully');
-                redirect('artistic/art_address', refresh);
+                redirect('artistic/artistic-address', refresh);
             } else {
                 $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                redirect('artistic/art_basic_information_insert', refresh);
+                redirect('artistic/artistic-basic-information-insert', refresh);
             }
         }
       }
@@ -364,10 +364,10 @@ class Artistic extends MY_Controller {
                 $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
                 if ($updatdata) {
                     $this->session->set_flashdata('success', 'Address updated successfully');
-                    redirect('artistic/art_information', refresh);
+                    redirect('artistic/artistic-information', refresh);
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('artistic/art_address', refresh);
+                    redirect('artistic/artistic-address', refresh);
                 }
             }
         }
@@ -431,7 +431,7 @@ class Artistic extends MY_Controller {
         }
 
             $this->form_validation->set_rules('skills', 'Skill', 'required');
-            $this->form_validation->set_rules('artname', 'Speciality In Art', 'required');
+            $this->form_validation->set_rules('artname', 'Speciality in art', 'required');
             $this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('artistic/art_information');
@@ -502,10 +502,10 @@ class Artistic extends MY_Controller {
 
         if ($updatdata) {
             $this->session->set_flashdata('success', 'Information updated successfully');
-            redirect('artistic/art_portfolio', refresh);
+            redirect('artistic/artistic-portfolio', refresh);
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('artistic/art_information', refresh);
+            redirect('artistic/artistic-information', refresh);
         }
 
        }

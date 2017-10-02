@@ -4026,7 +4026,7 @@ class Job extends MY_Controller {
                                      <img src="' . base_url('img/job-no.png') . '">
                                 </div>
                                 <div class="art_no_post_text">
-                                    No  Saved Post Available.
+                                    No Saved Job Available.
                                 </div>
                               </div>';
         }//else end
@@ -4280,7 +4280,7 @@ class Job extends MY_Controller {
                               <img src="' . base_url('img/job-no.png') . '">
                            </div>
                            <div class="art_no_post_text">
-                              No  Applied Post Available.
+                              No Applied Job Available.
                            </div>
                         </div>';
         }

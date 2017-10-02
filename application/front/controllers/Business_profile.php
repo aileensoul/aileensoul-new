@@ -665,7 +665,7 @@ class Business_profile extends MY_Controller {
             $config = array(
                 'upload_path' => $this->config->item('bus_profile_main_upload_path'),
                 'max_size' => 1024 * 100,
-                'allowed_types' => VALID_IMAGE
+                'allowed_types' => array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg')
             );
 
             $images = array();
@@ -924,7 +924,7 @@ class Business_profile extends MY_Controller {
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
 
         $this->data['follow_user_suggest_count'] = $userlistview[0]['total'];
-        
+
 
         /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
 
@@ -1551,7 +1551,7 @@ class Business_profile extends MY_Controller {
                             $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
                             /* CROP 335 X 320 */
                         }
-                        if ($count == '4') {
+                        if ($count == '4' || $count > '4') {
                             /* CROP 335 X 245 */
                             // reconfigure the image lib for cropping
 
@@ -1961,8 +1961,8 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
         if (count($businessmultiimage) == 1) {
 
-//            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-            $allowed = VALID_IMAGE;
+            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+//            $allowed = VALID_IMAGE;
             $allowespdf = array('pdf');
             $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
             $allowesaudio = array('mp3');
@@ -4270,7 +4270,8 @@ Your browser does not support the audio tag.
                         $tmp = $_FILES['photoimg']['tmp_name'];
                         $bgSave = '<div id = "uX' . $session_uid . '" class = "bgSave wallbutton blackButton">Save Cover</div>';
                         $config['upload_path'] = 'uploads/user_image/';
-                        $config['allowed_types'] = VALID_IMAGE;
+                        $config['allowed_types'] = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                       // $config['allowed_types'] = VALID_IMAGE;
                         $config['file_name'] = $_FILES['photoimg']['name'];
 
 //Load upload library and initialize configuration
@@ -4468,7 +4469,8 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 
         $config['upload_path'] = $this->config->item('bus_bg_original_upload_path');
-        $config['allowed_types'] = VALID_IMAGE;
+        $config['allowed_types'] = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+        //$config['allowed_types'] = VALID_IMAGE;
         $config['file_name'] = $_FILES['image']['name'];
 
 //Load upload library and initialize configuration
@@ -10511,8 +10513,8 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 if (count($businessmultiimage) == 1) {
 
-                    //$allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-                    $allowed = VALID_IMAGE;
+                    $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                    //$allowed = VALID_IMAGE;
                     $allowespdf = array('pdf');
                     $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                     $allowesaudio = array('mp3');
@@ -11308,8 +11310,8 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 
                     if (count($businessmultiimage) == 1) {
 
-//                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-                        $allowed = VALID_IMAGE;
+                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                        //$allowed = VALID_IMAGE;
                         $allowespdf = array('pdf');
                         $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                         $allowesaudio = array('mp3');
@@ -12252,7 +12254,7 @@ Your browser does not support the audio tag.
         $search_condition = "(business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list'))";
 
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
-        
+
         $return_html = '';
         $return_html .= '<ul class="home_three_follow_ul">';
         if (count($userlistview) > 0) {
@@ -12402,8 +12404,8 @@ Your browser does not support the audio tag.
 
             $multipleimage[] = $busmultiimage;
         }
-//        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-        $allowed = VALID_IMAGE;
+        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+//        $allowed = VALID_IMAGE;
         foreach ($multipleimage as $mke => $mval) {
 
             foreach ($mval as $mke1 => $mval1) {
@@ -13027,9 +13029,11 @@ Your browser does not support the audio tag.
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-
-        $userid = $this->session->userdata('aileenuser');
-
+        if ($id != '') {
+            $userid = $this->db->get_where('business_profile', array('business_slug' => $id, 'status' => 1))->row()->user_id;
+        } else {
+            $userid = $this->session->userdata('aileenuser');
+        }
         $business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
         $city = $this->data['business_common_data'][0]['city'];
         $user_id = $this->data['business_common_data'][0]['user_id'];
@@ -13045,7 +13049,7 @@ Your browser does not support the audio tag.
         $self_list = array($userid);
         /* SELF USER LIST END */
 
-        
+
         $total_user_list = $self_list;
         $total_user_list = array_unique($total_user_list, SORT_REGULAR);
         $total_user_list = implode(',', $total_user_list);
@@ -13296,8 +13300,8 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 if (count($businessmultiimage) == 1) {
 
-                    //$allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-                    $allowed = VALID_IMAGE;
+                    $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+//                    $allowed = VALID_IMAGE;
                     $allowespdf = array('pdf');
                     $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                     $allowesaudio = array('mp3');

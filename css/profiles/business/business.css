@@ -1680,7 +1680,7 @@ label.cameraButton:active {
 .four-image {
     float: left;
     text-align: center;
-    height: 250px;
+    /*height: 250px;*/
     width: 50%;
     padding-right: 1px;
     padding-bottom: 1px;
@@ -3127,7 +3127,7 @@ label.cameraButton:active {
 }
 .designation_rec {
     float: left;
-    width: 68%!important;
+    width: 64%!important;
 
 }
 .profile-job-post-title-inside .profile_search {
@@ -4237,8 +4237,8 @@ div .comment {
     height: 210px;
 }
 .four-image img {
-    width: 280px;
-    height: 200px;
+    /*width: 280px;
+    height: 200px;*/
 }
 .three-image img {
     width: 280px;

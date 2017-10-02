@@ -133,7 +133,7 @@ $lang["employer_details"] = "Employer Details";
 $lang["recommended_freelancer"] = "Recommended Freelancer";
 $lang["location"] = "Location";
 $lang["skill_description"] = "Skill Description";
-$lang["avaiability"] = "Avaiability";
+$lang["avaiability"] = "Availability";
 $lang["rate_hourly"] = "Rate Hourly";
 
 $lang["hours_per_week"] = "Hours per week ";

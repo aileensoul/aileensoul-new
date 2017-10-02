@@ -123,8 +123,8 @@ class Freelancer extends MY_Controller {
         } else {
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-            $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'free_post_step,firstname,lastname,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->input->post('lastname'));
+            $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'free_post_step,freelancer_post_fullname,freelancer_post_username,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $first_lastname = trim($this->input->post('freelancer_post_fullname')) . " " . trim($this->input->post('freelancer_post_username'));
 
             if ($userdata) {
                 if ($userdata[0]['free_post_step'] == 7) {
@@ -930,8 +930,8 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_APPLY PORTFOLIO PAGE DATA INSERT END
 //FREELANCER_HIRE DEACTIVATE CHECK START
-public function freelancer_hire_deactivate_check(){
-       $userid = $this->session->userdata('aileenuser');
+    public function freelancer_hire_deactivate_check() {
+        $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -939,7 +939,8 @@ public function freelancer_hire_deactivate_check(){
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
-}
+    }
+
 //FREELANCER_HIRE DEACTIVATE CHECK END
 //FREELANCER_HIRE POST(PROJECT) PAGE START
     public function freelancer_hire_post($id = "") {
@@ -949,9 +950,9 @@ public function freelancer_hire_deactivate_check(){
             $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         }
         $userid = $this->session->userdata('aileenuser');
-     //check user deactivate start
-     $this->freelancer_hire_deactivate_check();
-     //check user deactivate end
+        //check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
         if ($id == '') {
             // code for display page start
             $this->freelancer_hire_check();
@@ -959,11 +960,19 @@ public function freelancer_hire_deactivate_check(){
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+
+            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         } else {
             $userid = $id;
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+
+            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         }
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
@@ -1284,9 +1293,9 @@ public function freelancer_hire_deactivate_check(){
 //FREELANCER_HIRE ADD POST(PROJECT) START
     public function freelancer_add_post() {
         $userid = $this->session->userdata('aileenuser');
- //check user deactivate start
-     $this->freelancer_hire_deactivate_check();
-     //check user deactivate end
+        //check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
 // code for display page start
         $this->freelancer_hire_check();
 // code for display page end
@@ -1463,9 +1472,9 @@ public function freelancer_hire_deactivate_check(){
     public function recommen_candidate() {
         $userid = $this->session->userdata('aileenuser');
 
- //check user deactivate start
-     $this->freelancer_hire_deactivate_check();
-     //check user deactivate end
+        //check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
@@ -1786,9 +1795,9 @@ public function freelancer_hire_deactivate_check(){
 //FREELANCER_HIRE EDIT POST(PROJECT) PAGE START
     public function freelancer_edit_post($id) {
         $userid = $this->session->userdata('aileenuser');
- //check user deactivate start
-     $this->freelancer_hire_deactivate_check();
-     //check user deactivate end
+        //check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
@@ -2842,9 +2851,9 @@ public function freelancer_hire_deactivate_check(){
 //FREELANCER_HIRE SAVE USER(FREELACER) START
     public function freelancer_save() {
         $userid = $this->session->userdata('aileenuser');
-      //check user deactivate start
-     $this->freelancer_hire_deactivate_check();
-     //check user deactivate end
+        //check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
@@ -3569,9 +3578,9 @@ public function freelancer_hire_deactivate_check(){
             $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         }
         $userid = $this->session->userdata('aileenuser');
- //check user deactivate start
-     $this->freelancer_hire_deactivate_check();
-     //check user deactivate end
+        //check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
         if ($id == $userid || $id == '') {
 
             // code for display page start
