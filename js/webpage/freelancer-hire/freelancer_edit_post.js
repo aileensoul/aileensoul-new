@@ -216,11 +216,11 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#country').on('change', function () {
         var countryID = $(this).val();
-        alert(countryID);
+      //  alert(countryID);
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url() . "freelancer/ajax_dataforcity"; ?>',
+                url:  base_url + "freelancer/ajax_dataforcity",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
@@ -234,13 +234,15 @@ $(document).ready(function () {
     });
 
     $('#state').on('change', function () {
+       
         var stateID = $(this).val();
         if (stateID) {
             $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url() . "freelancer/ajax_dataforcity"; ?>',
+                url: base_url + "freelancer/ajax_dataforcity",
                 data: 'state_id=' + stateID,
                 success: function (html) {
+                   
                     $('#city').html(html);
                 }
             });

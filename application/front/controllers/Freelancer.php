@@ -124,7 +124,7 @@ class Freelancer extends MY_Controller {
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'free_post_step,freelancer_post_fullname,freelancer_post_username,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $first_lastname = trim($this->input->post('freelancer_post_fullname')) . " " . trim($this->input->post('freelancer_post_username'));
+            $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->input->post('lastname'));
 
             if ($userdata) {
                 if ($userdata[0]['free_post_step'] == 7) {
@@ -500,6 +500,7 @@ class Freelancer extends MY_Controller {
                 }
                 if (count($skills) > 0) {
                     foreach ($skills as $ski) {
+                         if ($ski != " ") {
                         $contition_array = array('skill' => trim($ski), 'type' => 1);
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
                         if (count($skilldata) < 0) {
@@ -517,6 +518,7 @@ class Freelancer extends MY_Controller {
                             );
                             $skill[] = $this->common->insert_data_getid($data, 'skill');
                         }
+                    }
                     }
                     $skill = array_unique($skill, SORT_REGULAR);
                     $skills = implode(',', $skill);
@@ -960,19 +962,19 @@ class Freelancer extends MY_Controller {
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
-            $s3 = new S3(awsAccessKey, awsSecretKey);
-
-            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+//            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
+//            $s3 = new S3(awsAccessKey, awsSecretKey);
+//
+//            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         } else {
             $userid = $id;
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
-            $s3 = new S3(awsAccessKey, awsSecretKey);
-
-            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+//            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
+//            $s3 = new S3(awsAccessKey, awsSecretKey);
+//
+//            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         }
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
@@ -1343,6 +1345,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function ajax_dataforcity() {
+     
         if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
             //Get all state data
             $contition_array = array('country_id' => $_POST["country_id"], 'status' => 1);
@@ -1411,6 +1414,7 @@ class Freelancer extends MY_Controller {
             //skill code start
             if (count($skills) > 0) {
                 foreach ($skills as $ski) {
+                     if ($ski != " ") {
                     $contition_array = array('skill' => trim($ski), 'type' => 1);
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
@@ -1429,6 +1433,7 @@ class Freelancer extends MY_Controller {
                         );
                         $skill[] = $this->common->insert_data_getid($data, 'skill');
                     }
+                     }
                 }
                 $skill = array_unique($skill, SORT_REGULAR);
                 $skills = implode(',', $skill);
@@ -1885,6 +1890,7 @@ class Freelancer extends MY_Controller {
             if (count($skills) > 0) {
 
                 foreach ($skills as $ski) {
+                     if ($ski != " ") {
                     $contition_array = array('skill' => trim($ski), 'type' => 1);
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
                     if (count($skilldata) < 0) {
@@ -1902,6 +1908,7 @@ class Freelancer extends MY_Controller {
                         );
                         $skill[] = $this->common->insert_data_getid($data, 'skill');
                     }
+                     }
                 }
                 $skill = array_unique($skill, SORT_REGULAR);
                 $skills = implode(',', $skill);
@@ -1971,18 +1978,22 @@ class Freelancer extends MY_Controller {
 
         $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
         $post_reg_skill = explode(',', $freelancer_post_area);
+       // echo "<pre>";print_r($post_reg_skill);die();
 
         // $date = date('Y-m-d', time());
         // 'post_last_date >=' => $date,
         foreach ($post_reg_skill as $key => $value) {
+            //echo $value;
             $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
             $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($freelancer_post_data) {
                 $freedata[] = $freelancer_post_data;
             }
+           // echo "<pre>";print_r($freedata);
         }
         //        TO CHANGE ARRAY OF ARRAY TO ARRAY START
         $final_post = array_reduce($freedata, 'array_merge', array());
+      //  echo "<pre>"; print_r($final_post); die();
         //        TO CHANGE ARRAY OF ARRAY TO ARRAY END
         // change the order to decending           
         rsort($final_post);
@@ -1991,9 +2002,10 @@ class Freelancer extends MY_Controller {
         $freelancer_post_field = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         // echo "<pre>"; print_r($freelancer_post_field);die();
 
-        $all_post = array_merge($final_post, $freelancer_post_field);
+        $all_post = array_merge((array)$final_post, (array)$freelancer_post_field);
+        //echo "<pre>"; print_r($all_post);die();
         $unique = array_unique($all_post, SORT_ASC);
-        // echo "<pre>"; print_r($unique);die();
+      //   echo "<pre>"; print_r($unique);die();
 
         $postdetail = array_slice($unique, $start, $perpage);
 
