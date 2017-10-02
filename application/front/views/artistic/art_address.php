@@ -69,7 +69,7 @@
                                 <fieldset <?php if($country) {  ?> class="error-msg" <?php } ?>>
 								<label>Country:<span style="color:red">*</span></label>								
         								<select name="country" id="country" tabindex="1" autofocus>
-            							<option value="">Select Country</option>
+            							<option value="">Select country</option>
             							<?php
                                             if(count($countries) > 0){
                                                 foreach($countries as $cnt){
@@ -103,7 +103,7 @@
                                                else
                                                 {
                                             ?>
-                                                 <option value="">Select Country First</option>
+                                                 <option value="">Select country first</option>
                                                   <?php                                            
                                             }
                                             ?>
@@ -124,7 +124,7 @@
                                                 else if($state1)
                                              {
                                             ?>
-                                            <option value="">Select City</option>
+                                            <option value="">Select city</option>
                                             <?php
                                             foreach ($cities as $cnt) {
                                                 ?>
@@ -135,7 +135,7 @@
                                                 else
                                                 {
                                             ?>
-                                        <option value="">Select State First</option>
+                                        <option value="">Select state first</option>
                                          <?php                                          
                                             }
                                             ?>
@@ -144,7 +144,7 @@
 								</fieldset>
                                 <fieldset <?php if($pincode) {  ?> class="error-msg" <?php } ?>>
 									<label>Pincode:</label>
-									<input name="pincode"  type="text" id="pincode" tabindex="4" placeholder="Enter Pincode" value="<?php if($pincode1){ echo $pincode1; } ?>"/><span id="pincode-error"></span>
+									<input name="pincode"  type="text" id="pincode" tabindex="4" placeholder="Enter pincode" value="<?php if($pincode1){ echo $pincode1; } ?>"/><span id="pincode-error"></span>
                                     <?php echo form_error('pincode'); ?>
 									</fieldset>								
                                 <fieldset class="hs-submit full-width">                                       

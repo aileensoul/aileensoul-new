@@ -9,12 +9,12 @@ $(document).ready(function(){
                 data:'country_id='+countryID,
                 success:function(html){
                     $('#state').html(html);
-                    $('#city').html('<option value="">Select State First</option>'); 
+                    $('#city').html('<option value="">Select state first</option>'); 
                 }
             }); 
         }else{
-            $('#state').html('<option value="">Select Country First</option>');
-            $('#city').html('<option value="">Select State First</option>'); 
+            $('#state').html('<option value="">Select country first</option>');
+            $('#city').html('<option value="">Select state first</option>'); 
         }
     });
     
@@ -31,7 +31,7 @@ $(document).ready(function(){
                 }
             }); 
         }else{
-            $('#city').html('<option value="">Select State First</option>'); 
+            $('#city').html('<option value="">Select state first</option>'); 
         }
     });
 });
