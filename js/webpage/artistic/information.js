@@ -15,16 +15,9 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
     }, "No space please and don't leave it empty");
 
 
-//  $.validator.addMethod("regx", function(value, element, regexpr) {          
-//     if(!value) 
-//             {
-//                 return true;
-//             }
-//             else
-//             {
-//                   return regexpr.test(value);
-//             }
-// }, "Number, space and special character are not allowed");
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    return regexpr.test(value);
+}, "Only space and only number are not allow.");
 
 
             $(document).ready(function () { 
@@ -36,7 +29,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
                         firstname: {
 
                             required: true,
-                            //regx:/^[^-\s][a-zA-Z_\s-]+$/,
+                            regx: /^[a-zA-Z\s]*[a-zA-Z]/,
                             noSpace: true
                         },
 
@@ -44,7 +37,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
                         lastname: {
 
                             required: true,
-                            //regx:/^[^-\s][a-zA-Z_\s-]+$/,
+                            regx: /^[a-zA-Z\s]*[a-zA-Z]/,
                             noSpace: true
                         },
 
@@ -54,7 +47,6 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
                             email: true,
                             remote: {
                                 url: base_url + "artistic/check_email",
-                                //url: "<?php echo site_url() . 'artistic/check_email' ?>",
                                 type: "post",
                                 data: {
                                     email: function () {
