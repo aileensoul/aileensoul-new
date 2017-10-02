@@ -45,16 +45,16 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                         email: {
                             required: true,
                             email: true,
-                            remote: {
-                                url: base_url + "artistic/check_email",
-                                type: "post",
-                                data: {
-                                    email: function () {
-                                        return $("#email").val();
-                                    },
-                                    '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
-                                },
-                            },
+                            // remote: {
+                            //     url: base_url + "artistic/check_email",
+                            //     type: "post",
+                            //     data: {
+                            //         email: function () {
+                            //             return $("#email").val();
+                            //         },
+                            //         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                            //     },
+                            // },
                         },
 
                         phoneno: {

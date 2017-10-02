@@ -13,7 +13,7 @@
             <!--    <label>Find Your Location</label>
             -->   
          
-              <input type="text" id="searchplace" name="searchplace" placeholder="Find Location">
+              <input type="text" id="searchplace" name="searchplace" placeholder="Location">
         </fieldset>
         <!--                            <fieldset class="col-md-2">
                                        <input type="submit" name="search_submit" value="Search" onclick="return checkvalue()">
