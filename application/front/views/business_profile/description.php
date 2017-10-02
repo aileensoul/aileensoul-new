@@ -3,7 +3,6 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver=' . time()); ?>">
@@ -25,8 +24,6 @@
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
-        <!--        <div class="js">
-                    <div id="preloader"></div>-->
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="common-form1">
@@ -56,7 +53,7 @@
 
                                     <li class="custom-none <?php
                                     if ($business_common_data[0]['business_step'] < '3') {
-                                        echo "khyati";
+                                        echo "active";
                                     }
                                     ?>"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
                                 </ul>
@@ -78,9 +75,9 @@
                                     Description
                                 </h3>
                                 <?php echo form_open(base_url('business-profile/description-insert'), array('id' => 'businessdis', 'name' => 'businessdis', 'class' => 'clearfix')); ?>
-                                <div>
+                               <!--  <div>
                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                </div>
+                                </div> -->
                                 <?php
                                 $business_type = form_error('business_type');
                                 $industriyal = form_error('industriyal');
@@ -90,16 +87,16 @@
                                 <fieldset <?php if ($business_type) { ?> class="error-msg" <?php } ?>>
                                     <label>Business Type:<span style="color:red">*</span></label>
                                     <select name="business_type" tabindex="1" autofocus id="business_type" onchange="busSelectCheck(this);">
-                                        <!-- <option value="" selected option disabled>Select Business type</option> -->
+                                         <option value=""option disabled>Select Business type</option> 
                                         <?php
                                         if ($business_type1) {
-                                            $businessname = $this->db->get_where('business_type', array('type_id' => $business_type1))->row()->business_name;
+//                                            $businessname = $this->db->get_where('business_type', array('type_id' => $business_type1))->row()->business_name;
                                             ?>
-                                            <option value="<?php echo $business_type1; ?>"><?php echo $businessname; ?></option>
+                                            <!--<option value="<?php echo $business_type1; ?>"><?php echo $businessname; ?></option>-->
                                             <?php
                                             foreach ($businesstypedata as $cnt) {
                                                 ?>
-                                                <option value="<?php echo $cnt['type_id']; ?>"><?php echo $cnt['business_name']; ?></option>
+                                                <option value="<?php echo $cnt['type_id']; ?>" <?php if($cnt['type_id'] == $business_type1){ echo $selected = 'selected';} ?>><?php echo $cnt['business_name']; ?></option>
 
                                             <?php } ?>
                                             <option id="busOption" value="0" <?php
@@ -137,6 +134,7 @@
                                 <fieldset <?php if ($industriyal) { ?> class="error-msg" <?php } ?>>
                                     <label>Category:<span style="color:red">*</span></label>
                                     <select name="industriyal" tabindex="2"  id="industriyal" onchange="indSelectCheck(this);">
+                                        <option value=""option disabled>Select Industry type</option> 
                                         <!-- <option id="indOption" value="0" <?php
                                         if ($industriyal1 == 0) {
                                             echo "selected";
@@ -144,13 +142,13 @@
                                         ?>>Any Other</option> -->  
                                         <?php
                                         if ($industriyal1) {
-                                            $industryname = $this->db->get_where('industry_type', array('industry_id' => $industriyal1))->row()->industry_name;
+//                                            $industryname = $this->db->get_where('industry_type', array('industry_id' => $industriyal1))->row()->industry_name;
                                             ?>
-                                            <option value="<?php echo $industriyal1; ?>"><?php echo $industryname; ?></option>
+                                            <!--<option value="<?php echo $industriyal1; ?>"><?php echo $industryname; ?></option>-->
                                             <?php
                                             foreach ($industriyaldata as $cnt) {
                                                 ?>
-                                                <option value="<?php echo $cnt['industry_id']; ?>"><?php echo $cnt['industry_name']; ?></option>
+                                                <option value="<?php echo $cnt['industry_id']; ?>" <?php if($cnt['industry_id'] == $industriyal1){ echo $selected="selected";} ?>><?php echo $cnt['industry_name']; ?></option>
                                             <?php }
                                             ?>
                                             <option id="indOption" value="0" <?php
@@ -231,17 +229,11 @@
                 </div>
             </div>
         </section>
-        <!--</div>-->
         <footer>
             <?php echo $footer; ?>
         </footer>
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-<!--        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
-
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
                                             var slug = '<?php echo $slugid; ?>';

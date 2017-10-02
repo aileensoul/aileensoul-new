@@ -15219,7 +15219,8 @@ public function get_artistic_name($id=''){
         
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
-            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+
             // echo $search_condition;
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
            // echo "<pre>"; print_r($othercom); die();
@@ -15236,17 +15237,21 @@ public function get_artistic_name($id=''){
                 $varfoune2[] = $valuedata; 
                }
             }
-            if($varfoune){
 
-                $otherdata = $varfoune;
 
-            }elseif($varfoune2){
+
+            if(!$varfoune){ //echo "1"; die();
+
                 $otherdata = $varfoune2;
 
-            }else{
+            }elseif(!$varfoune2){ //echo "10"; die();
+                $otherdata = $varfoune;
+
+            }elseif($varfoune && $varfoune2){ //echo "13"; die();
             $otherdata = array_merge($varfoune, $varfoune2);
 
             }
+            
             //echo "<pre>"; print_r($otherdata); die();
             
 
@@ -15337,16 +15342,16 @@ public function get_artistic_name($id=''){
                 $varfoune2[] = $valuedata; 
                }
             }
-            if($varfoune){
 
-                $otherdata = $varfoune;
+            if(!$varfoune){ 
 
-            }elseif($varfoune2){
                 $otherdata = $varfoune2;
 
-            }else{
-            $otherdata = array_merge($varfoune, $varfoune2);
+            }elseif(!$varfoune2){ 
+                $otherdata = $varfoune;
 
+            }elseif($varfoune && $varfoune2){ 
+            $otherdata = array_merge($varfoune, $varfoune2);
             }
 
 
@@ -15467,18 +15472,18 @@ public function get_artistic_name($id=''){
                                                      $cache_time = $this->db->get_where('skill', array('skill_id' => $skdata))->row()->skill;
                                                      $skill1[] = $cache_time;
                                                      }
-                                                  $listFinal = implode(', ', $skill1);
-                                                  if($listFinal && $key['other_skill']){ 
+                                                  $listFinal = implode(',', $skill1);
+                                                  // if($listFinal && $key['other_skill']){ 
 
-                                                     $return_html .= $listFinal . ',' . $key['other_skill'];
-                                                  }
-                                                       elseif(!$listFinal){ 
+                                                  //    $return_html .= $listFinal . ',' . $key['other_skill'];
+                                                  // }
+                                                  //      elseif(!$listFinal){ 
 
-                                                      $return_html .= $key['other_skill']; 
+                                                  //     $return_html .= $key['other_skill']; 
 
-                                                  }else if(!$key['other_skill']){
+                                                  // }else if(!$key['other_skill']){
                                                    $return_html .= $listFinal;  
-                                                }    
+                                               // }    
      
                                          $return_html .=  '</li>
                                           <li style="display: block;">
@@ -15602,7 +15607,7 @@ public function get_artistic_name($id=''){
                                           </ul>
                                        </div>
                                        <div class="dropdown1">
-                                               <a  class="  dropbtn1 fa fa-ellipsis-v"></a>
+                                               <a onclick="myFunction('.$key['art_post_id'].')" class=" dropbtn1 fa fa-ellipsis-v"></a>
                                                   <div id="myDropdown'.$key['art_post_id'].'" class="dropdown-content1 ">';
                                                             
                                                             if ($key['posted_user_id'] != 0) {
@@ -16139,19 +16144,10 @@ public function get_artistic_name($id=''){
 
     public function ajax_user_search() { //echo "hii"; die();
 
-        //echo $_GET['skills']; die();
-   //$this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
-
-        // $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
-        // $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
         
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
             redirect('artistic/art_post', refresh);
-
-            // $abc[] = $results;
-            // $this->data['falguni'] = 1;        
+   
         }
 
 //         // Retrieve the posted search term.
@@ -16181,11 +16177,6 @@ public function get_artistic_name($id=''){
             $contition_array = array('art_city' => $cache_time, 'status' => '1', 'art_step' => 4);
             $new = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-
-
-            //  $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
-            // $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
-            // $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
              $contition_array = array('status' => 1, 'type' => '2');

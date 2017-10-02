@@ -58,13 +58,13 @@
                                 <div class="common-form common-form_border ">
                                     <h3><?php echo $this->lang->line("professional_info"); ?></h3>
                                     <?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_professional_info_insert'), array('id' => 'professional_info1', 'name' => 'professional_info', 'class' => 'clearfix')); ?>
-                                    <div>
-                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
-                                    </div>
+<!--                                     <div>
+                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required"); ?></span>
+                                    </div> -->
                                     <?php
                                     $professional_info = form_error('professional_info');
                                     ?> 
-                                    <fieldset class="full-width">
+                                    <fieldset class="full-width <?php if($professional_info) {  ?> error-msg <?php } ?>">
                                         <label><?php echo $this->lang->line("professional_info"); ?>:<span class="red">*</span></label>
                                         <textarea tabindex="1" autofocus name ="professional_info" id="professional_info" rows="6" cols="50" placeholder="Enter Professional Information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"><?php
                                             if ($professional_info1) {
