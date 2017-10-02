@@ -1374,6 +1374,14 @@ label.cameraButton:active {
     font-weight: 500;
     font-size: 14px;
 }
+.editable_text[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block;
+    color: #999;
+    font-weight: 500;
+    font-size: 14px;
+}
+#artportfolio
 .post-design-commnet-box .editable_text {
     min-height: 37px !important;
     line-height: 1.6;
