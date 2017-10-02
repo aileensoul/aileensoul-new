@@ -3337,6 +3337,7 @@ class Job extends MY_Controller {
 // post detail
 
         $contition_array = array(
+            'user_id !=' =>$userid,
             'is_delete' => 0,
             'status' => 1
         );
@@ -3349,6 +3350,7 @@ class Job extends MY_Controller {
         foreach ($work_skill as $skill) {
             $contition_array = array(
                 'FIND_IN_SET("' . $skill . '",post_skill)!=' => '0',
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3366,6 +3368,7 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'FIND_IN_SET("' . $city . '",city)!=' => '0',
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3381,6 +3384,7 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'industry_type' => $work_job_industry,
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3397,6 +3401,7 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'post_name' => $work_job_title,
+                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
