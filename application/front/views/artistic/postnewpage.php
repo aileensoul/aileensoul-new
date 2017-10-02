@@ -55,16 +55,8 @@
                                                 <?php if($userimageposted){?>
 
                                                 <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
-                                              $a = $firstnameposted;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $lastnameposted;
-                                              $bcr = substr($b, 0, 1);
-                                                ?>
-
-                                                <div class="post-img-div">
-                                <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?> 
-                                </div>
+                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
+                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                 <?php }else{?>
 
                                                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
@@ -73,16 +65,7 @@
 
                                                 <?php }else{?>
 
-                                                    <?php 
-                          $a = $firstnameposted;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $lastnameposted;
-                                              $bcr = substr($b, 0, 1);?>
-
-                            <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
-                       
+                                                     <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
 
                                                 <?php }?>
                                                  </a>
@@ -95,16 +78,8 @@
 
 
                                             <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                              $a = $firstname;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $lastname;
-                                              $bcr = substr($b, 0, 1);
-                                                ?>
-
-                                                <div class="post-img-div">
-                                <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?> 
-                                </div>
+                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                 <?php }else{?>
                                                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
 
@@ -113,16 +88,7 @@
                                                 <?php }else{?>
 
 
-                                                 <?php 
-                         $a = $firstname;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $lastname;
-                                              $bcr = substr($b, 0, 1);?>
-
-                            <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
-
+                                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                                 <?php }?>
 
                                                  </a>
@@ -131,23 +97,8 @@
                                             else { ?>
                                             <a class="post_dot"  href="<?php echo base_url('artistic/dashboard/' . $row['user_id']); ?>">
 
-
-                                                <?php 
-
-
-                                                 $a = $row['art_name'];
-                                              $acr = substr($a, 0, 1);
-                                              $b = $row['art_lastname'];
-                                              $bcr = substr($b, 0, 1);
-
-
-                          ?>
-
-                            <div class="post-img-div">
-                            <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
+                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                        
-
                                                 </a>
 
                                         <?php } ?>
@@ -607,35 +558,17 @@
 
 
                             <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                              $a = $art_first;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $art_last;
-                                              $bcr = substr($b, 0, 1);
-                                                ?>
-
-                                                <div class="post-img-div">
-                                <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?> 
-                                </div>
+                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                               <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                 <?php }else{?>
 
                             <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
 
                             <?php }?>
-
-
-                                                                <?php
+                                      <?php
                                                             } else {
                                                                 ?>
-                                                                <?php 
-                           $a = $art_first;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $art_last;
-                                              $bcr = substr($b, 0, 1);?>
-
-                            <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
+                                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                        
                                                                 <?php
                                                             }
@@ -794,16 +727,8 @@
                                         <?php if ($art_userimage) { ?>
 
                                               <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                              $a = $art_first;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $art_last;
-                                              $bcr = substr($b, 0, 1);
-                                                ?>
-
-                                                <div class="post-img-div">
-                                <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?> 
-                                </div>
+                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                 <?php }else{?>
 
                                             <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
@@ -812,15 +737,7 @@
                                             <?php
                                         } else {
                                             ?>
-                                            <?php 
-                          $a = $art_first;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $art_last;
-                                              $bcr = substr($b, 0, 1);?>
-
-                            <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
+                                              <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                        
                                             <?php
                                         }
@@ -1124,16 +1041,8 @@
 
 
                                 <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                              $a = $companyname;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $lastname;
-                                              $bcr = substr($b, 0, 1);
-                                                ?>
-
-                                                <div class="post-img-div">
-                                <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?> 
-                                </div>
+                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                 <?php }else{?>
 
                              <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
@@ -1141,20 +1050,9 @@
                              <?php }?>
 
                                  <?php }else{?> 
-
-
-                                                                      <?php 
-                          $a = $companyname;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $lastname;
-                                              $bcr = substr($b, 0, 1);?>
-
-                            <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
+                                          <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                        
-
-                                                                     <?php }?>   </a>         
+                                           <?php }?>   </a>         
                                                                                 </div>
                                                                                 <div class="comment-name">
                                                                                     <b>  <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $rowdata['user_id']); ?>"> <?php
@@ -1296,16 +1194,8 @@
 
 
                                 <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                              $a = $art_firstuser;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $art_lastuser;
-                                              $bcr = substr($b, 0, 1);
-                                                ?>
-
-                                                <div class="post-img-div">
-                                <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?> 
-                                </div>
+                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                 <?php }else{?>
 
                             <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
@@ -1315,16 +1205,7 @@
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                    <?php 
-                          $a = $art_firstuser;
-                                              $acr = substr($a, 0, 1);
-                                              $b = $art_lastuser;
-                                              $bcr = substr($b, 0, 1);?>
-
-                            <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
-                       
+                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                                                     <?php
                                                                 }
                                                                 ?>

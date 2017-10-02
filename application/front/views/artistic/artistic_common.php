@@ -109,15 +109,8 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
                  <?php 
 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) {
-                                                                $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                                                ?>
-                                                                <div class="post-img-user">
-                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
-                                                                </div> 
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
+                                                                 <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
 
@@ -128,18 +121,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                 <?php } else { ?>
 
-                    <?php 
-                           $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);?>
-
-                            <div class="post-img-user">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
-                       
-
-                    <!-- <img alt="" class="img-circle" src="<?php //echo base_url(NOIMAGE); ?>" alt="" /> -->
+                      <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
 
 
                 <?php } ?>

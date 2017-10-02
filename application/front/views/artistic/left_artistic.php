@@ -33,15 +33,8 @@ if (!file_exists($this->config->item('art_bg_thumb_upload_path') . $artisticdata
 
 <?php 
 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) {
-                                                                $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                                                ?>
-                                                                <div>
-                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
-                                                                </div> 
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
+                                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
 
@@ -52,15 +45,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                         <?php } else { ?> 
                         <div class="data_img_2">
                            
-                          <?php 
-                          $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);?>
-
-                            <div>
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
+                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                         </div>
                         <?php } ?>
                         <!-- box image end -->
