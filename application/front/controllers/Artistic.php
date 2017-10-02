@@ -1066,14 +1066,7 @@ class Artistic extends MY_Controller {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdataposted[0]['art_user_image'])) {
-                                                                $a = $artdataposted[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artdataposted[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                                 }else{
                             $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" name="image_src" id="image_src" />';
@@ -1084,15 +1077,7 @@ class Artistic extends MY_Controller {
                         } else {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">';
                                                 
-                                                                $a = $artdataposted[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artdataposted[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
-
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                             $return_html .=  '</a>';
                         }
                     } else {
@@ -1100,14 +1085,7 @@ class Artistic extends MY_Controller {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
-                                                                $a = $artdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                                 }else{
 
@@ -1119,15 +1097,7 @@ class Artistic extends MY_Controller {
 
                         } else {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
-
-                                                                $a = $artdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                                                 
                             $return_html .= '</a>';
                         }
@@ -1564,33 +1534,16 @@ class Artistic extends MY_Controller {
                             if ($art_userimage) {
                                 
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
-
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                                 }else{
 
                                 $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                                   } 
 
                             } else {
-                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">';
-                                          
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
-
-                                  
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">';                                         
+                                 $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                 
                             }
                                 $return_html .= '</a>';
                             
@@ -1703,28 +1656,14 @@ class Artistic extends MY_Controller {
                     if ($artdata[0]['art_user_image']) {
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
-                                                                $a = $artdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                                 }else{
                         $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
 
                            }
                     } else {
-                                                                $a = $artdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                    $return_html .=  '<div class="post-img-div">';
-                                    $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .=  '</div>'; 
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                     }
                     $return_html .= '</a></div>
 
@@ -2060,14 +1999,7 @@ public function ajax_userlist() {
             if ($user['art_user_image'] != '') {
                 $return_html .= '<a href="' . base_url('artistic/dashboard/' . $user['slug']) . '">';
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'])) {
-                                            $a = $user['art_name'];
-                                            $acr = substr($a, 0, 1);
-                                            $b = $user['art_lastname'];
-                                            $bcr = substr($b, 0, 1);
-                    $return_html .=  '<div class="post-img-userlist">';
-                    $return_html .=    ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                    $return_html .= '</div>'; 
-
+                       $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                 } else {
 
                     $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'] . '" height="50px" width="50px" alt="" >';
@@ -2075,13 +2007,7 @@ public function ajax_userlist() {
                 $return_html .= '</a>';
             } else {
                 $return_html .= '<a href="' . base_url('artistic/dashboard/' . $user['slug']) . '">';
-                                            $a = $user['art_name'];
-                                            $acr = substr($a, 0, 1);
-                                            $b = $user['art_lastname'];
-                                            $bcr = substr($b, 0, 1);
-                    $return_html .=  '<div class="post-img-userlist">';
-                    $return_html .=    ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                    $return_html .= '</div>';   
+                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                 $return_html .=   '</a>';
             }
@@ -2430,15 +2356,7 @@ public function follow_home() {
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $third_user_html .= '<div class="post-img-div">';
-                                  $third_user_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $third_user_html .= '</div>'; 
-
+                                    $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                                     }else{
 
                         $third_user_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
@@ -2449,14 +2367,7 @@ public function follow_home() {
                     } else {
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
                                                                                     
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $third_user_html .= '<div class="post-img-div">';
-                                  $third_user_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $third_user_html .= '</div>'; 
+                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                          $third_user_html .= '</a>';
                     }
@@ -2555,14 +2466,7 @@ public function follow_home() {
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $third_user_html .= '<div class="post-img-div">';
-                                  $third_user_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $third_user_html .= '</div>'; 
+                                $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                                     }else{
 
@@ -2574,14 +2478,7 @@ public function follow_home() {
                     } else {
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
                                                                                     
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $third_user_html .= '<div class="post-img-div">';
-                                  $third_user_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $third_user_html .= '</div>'; 
+                         $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                          $third_user_html .= '</a>';
                     }
@@ -2690,14 +2587,7 @@ public function follow_home() {
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $third_user_html .= '<div class="post-img-div">';
-                                  $third_user_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $third_user_html .= '</div>'; 
+                            $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                                     }else{
 
@@ -2709,14 +2599,7 @@ public function follow_home() {
                     } else {
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
                                                                                     
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $third_user_html .= '<div class="post-img-div">';
-                                  $third_user_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $third_user_html .= '</div>'; 
+                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                          $third_user_html .= '</a>';
                     }
@@ -3224,14 +3107,7 @@ public function followtwo() {
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artaval[0]['slug']) . '">';
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
 
-                                                                $a = $artaval[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artaval[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                        $return_html .= '<div class="post-img-userlist">';
-                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                     } else {
                         $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'] . '" height="50px" width="50px" alt="" >';
@@ -3239,14 +3115,7 @@ public function followtwo() {
                     $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' . $followerslug) . '">';
-                                                                $a = $artaval[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artaval[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                        $return_html .= '<div class="post-img-userlist">';
-                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                        $return_html .= '</div>';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         $return_html .= '</a>';
                 }
                 $return_html .= '</div>
@@ -3420,14 +3289,7 @@ public function followtwo() {
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' .$artaval[0]['slug']) . '" title="' . ucfirst(strtolower($artaval[0]['art_name'])) .' '. ucfirst(strtolower($artaval[0]['art_lastname'])) .'">';
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
 
-                                                                $a = $artaval[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artaval[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                        $return_html .= '<div class="post-img-userlist">';
-                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                        $return_html .= '</div> ';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                     } else {
                         $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image']. '" height="50px" width="50px" alt="" >';
@@ -3435,15 +3297,8 @@ public function followtwo() {
                     $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artaval[0]['slug']) . '" title="' . ucfirst(strtolower($artaval[0]['art_name'])).' '. ucfirst(strtolower($artaval[0]['art_lastname'])) .'">';
-
-                                                                $a = $artaval[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artaval[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                        $return_html .= '<div class="post-img-userlist">';
-                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                        $return_html .= '</div> ';
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    $return_html .= '</a> ';
 
                 }
                 $return_html .= '</div>
@@ -3994,14 +3849,7 @@ public function followtwo() {
                 if($art_userimage){
 
 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                         } else {
 
@@ -4010,15 +3858,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     }
 
                   }else{
-
-                          $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';     
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                   }
                    $cmtinsert .= '</a>';
                    $cmtinsert .= '</div>';
@@ -4152,16 +3992,7 @@ public function delete_comment_postnewpage() {
                 if($art_userimage){
 
 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
-
-
+                            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                         } else {
 
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
@@ -4170,15 +4001,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                   }else{
 
-                          $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';  
-
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
+                         
                   }
                 $cmtinsert .= '</a>';
                   $cmtinsert .= '</div>';
@@ -4356,14 +4180,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 if($art_userimage){
 
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
+                    
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                         } else {
 
@@ -4373,15 +4191,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                   
                 }else{
 
-                         $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';  
-
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                 }
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
@@ -4523,27 +4333,15 @@ public function delete_commenttwo_postnewpage() {
                 if($art_userimage){
 
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
+                    
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                         } else {
 
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
                     }                
                 }else{
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';                  
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                
                 }
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
@@ -5055,27 +4853,14 @@ public function delete_commenttwo_postnewpage() {
             if($art_userimage){
 
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                         } else {
 
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
                 }
             }else{
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
             }
               $cmtinsert .= '</a>';
               $cmtinsert .=  '</div>';
@@ -5227,14 +5012,8 @@ public function insert_comment_postnewpage() {
 
             if($art_userimage){
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
+                            
                         } else {
 
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
@@ -5242,13 +5021,7 @@ public function insert_comment_postnewpage() {
                 }
             
             }else{
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';    
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';      
             }
               $cmtinsert .= '</a>';
              $cmtinsert .=  '</div>';
@@ -5460,15 +5233,7 @@ public function insert_comment_postnewpage() {
 
 
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
-
+                             $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                         } else {
 
@@ -5478,13 +5243,7 @@ public function insert_comment_postnewpage() {
 
             }else{
  
-                           $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';      
+                           $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';  
             }
              $cmtinsert .= '</a>';
             $cmtinsert .= '</div>';
@@ -6957,39 +6716,16 @@ public function insert_comment_postnewpage() {
             if($art_userimage){
 
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
-
-
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                         } else {
 
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">'; 
 
                 }
 
-             
              }else{
 
-               //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';  
-
-
-                           $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-
-
-                   
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                       
              }
               $cmtinsert .= '</a>';
               $cmtinsert .=  '</div>';
@@ -7202,35 +6938,16 @@ public function insert_comment_postnewpage() {
 
 
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
-
-
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                         } else {
 
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                   }
              
-
             }else{
-
-             
-                         $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-                    
+           
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                           
             }
 
               $cmtinsert .= '</a>';
@@ -8000,35 +7717,14 @@ public function insert_comment_postnewpage() {
             if($art_userimage){
 
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
-
-
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                         } else {
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage . '" alt="">';
 
                    }
-            
-
            }else{
 
-            //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
-
-                           $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr)) .ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-                    
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';        
            }
             $cmtinsert .= '</a>';
            $cmtinsert .= '</div>';
@@ -8207,36 +7903,16 @@ public function insert_comment_postnewpage() {
                 if($art_userimage){
 
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
-
-
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                         } else {
 
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                      }
                
-
                }else{
 
-                //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
-
-                            $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-                   
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                }
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
@@ -8450,37 +8126,15 @@ public function insert_comment_postnewpage() {
 
                     
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $fourdata .= '<div class="post-img-div">';
-                                $fourdata .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $fourdata .=  '</div>';
-
-
+                      $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
+                           
                         } else {
                     $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                     }
-
                     
                 } else {
 
-
-                    //
-                          $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $fourdata .=  '</div>';
-
-
-                    
-                    //$fourdata .= '<img src="' . base_url(NOIMAGE) . '" alt=""></div>';
+                    $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                 }
                 $fourdata .= '</a>';
@@ -8625,36 +8279,16 @@ public function insert_comment_postnewpage() {
             if($art_userimage){
 
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $fourdata .= '<div class="post-img-div">';
-                                $fourdata .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $fourdata .=  '</div>';
-
+                           $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                         } else {
 
             $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
 
                 }
-
-          
+         
             }else{
-
-             
-
-                          $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $fourdata .=  '</div>';
-                    
+                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
             }
               $fourdata .= '</a>';  
               $fourdata .=  '</div>';
@@ -8808,15 +8442,7 @@ public function insert_comment_postnewpage() {
          if ($art_image) {
 
             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_image)) {
-                            $a = $art_name1;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $modal .= '<div class="post-img-div">';
-                                $modal .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $modal .=  '</div>';
-
+                            $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                         } else {
 
@@ -8825,17 +8451,7 @@ public function insert_comment_postnewpage() {
 
                 } else {
 
-                           $a = $art_name1;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $modal .=  '</div>';
-                    //$cmtinsert .= '</div>';
-
-                    //$modal .= '<img src="' . base_url(NOIMAGE) . '" alt="">';
+                          $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                 }
        $modal .=  '</div>';
        $modal .=  '<div class="like_user_list_main_desc">';
@@ -8916,15 +8532,7 @@ public function insert_comment_postnewpage() {
          if ($art_image) {
 
             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_image)) {
-                            $a = $art_name1;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $modal .= '<div class="post-img-div">';
-                                $modal .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $modal .=  '</div>';
-
+                          $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                         } else {
 
@@ -8933,21 +8541,7 @@ public function insert_comment_postnewpage() {
                      }
                 } else {
 
-
-                    //$modal .= '<img src="' . base_url(NOIMAGE) . '" alt="">';
-
-                         $a = $art_name1;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $modal .=  '</div>';
-
-
-                    //$cmtinsert .= '</div>';
-
+                          $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                 }
        $modal .=  '</div>';
        $modal .=  '<div class="like_user_list_main_desc">';
@@ -9074,16 +8668,8 @@ public function insert_comment_postnewpage() {
             if($art_userimage){
 
                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $cmtinsert .= '<div class="post-img-div">';
-                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $cmtinsert .=  '</div>';
-
-
+                          $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
+            
                         } else {
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
@@ -9091,19 +8677,7 @@ public function insert_comment_postnewpage() {
              
             }else{
 
-
-           // $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
-
-
-                          $a = $art_name;
-                            $acr = substr($a, 0, 1);
-                            $b = $art_lastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-                    
+            $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
             }
             $cmtinsert .= '</a>';
@@ -9813,27 +9387,7 @@ public function insert_comment_postnewpage() {
                         $usrsrch .= ' <div class="chat_heae_img">';
 
 
-                       // $usrsrch .= '<img src="' . base_url(NOIMAGE) . '" alt="" height="50px" weight="50px">';
-
-
-                          $a = $user['first_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $user['last_name'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
-                    $usrsrch .= '<div class="post-img-div">';
-                    $usrsrch .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
-                    $usrsrch .=  '</div>';
-
-
-                    //$cmtinsert .= '</div>';
+                       $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                         $usrsrch .= '</div>';
                     }
@@ -10072,24 +9626,7 @@ public function insert_comment_postnewpage() {
                     } else {
                         $usrsrch .= '<div class="chat_heae_img">';
 
-                       // $usrsrch .= '<img src="' . base_url(NOIMAGE) . '" alt="" >';
-                          $a = $user['first_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $user['last_name'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
-                    $usrsrch .= '<div class="post-img-div">';
-                    $usrsrch .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
-                    $usrsrch .=  '</div>';
-                    //$usrsrch .= '</div>';
-
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         $usrsrch .= '</div>';
                     }
                     $usrsrch .= '<div class="about">';
@@ -10223,26 +9760,9 @@ public function insert_comment_postnewpage() {
                         $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="avatar" height="50px" weight="50px" />';
                         $usrsrch .= '</div>';
                     } else {
-                        $usrsrch .= '    <div class="chat_heae_img">';
+                        $usrsrch .= '<div class="chat_heae_img">';
 
-                       
-                        //$usrsrch .= '<img src="' . base_url(NOIMAGE) . '" alt="" height="50px" weight="50px">';
-                          $a = $user['first_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b =  $user['last_name'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
-                    $usrsrch .= '<div class="post-img-div">';
-                    $usrsrch .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
-                    $usrsrch .=  '</div>';
-                   // $cmtinsert .= '</div>';
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
 
                         $usrsrch .= '</div>';
@@ -10501,25 +10021,7 @@ public function insert_comment_postnewpage() {
                         $usrsrch .= '<div class="chat_heae_img">';
 
 
-                        //$usrsrch .= '<img src="' . base_url(NOIMAGE) . '" alt="" height="30px" weight="30px">';
-
-                          $a = $user['first_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $user['last_name'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
-                    $usrsrch .= '<div class="post-img-div">';
-                    $usrsrch .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
-                    $usrsrch .=  '</div>';
-                    //$cmtinsert .= '</div>';
-
+                         $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         $usrsrch .= '</div>';
                     }
                     $usrsrch .= '<div class="about">';
@@ -10554,23 +10056,7 @@ public function insert_comment_postnewpage() {
                     } else {
                         $usrsrch .= '<div class="chat_heae_img">';
 
-                          $a = $lstusrdata[0]['first_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $lstusrdata[0]['last_name'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
-                    $usrsrch .= '<div class="post-img-div">';
-                    $usrsrch .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
-                    $usrsrch .=  '</div>';
-                    //$cmtinsert .= '</div>';
-                       // $usrsrch .= '<img src="' . base_url(NOIMAGE) . '" alt="" height="50px" weight="50px">';
+                         $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                         $usrsrch .= '</div>';
                     }
@@ -10607,27 +10093,9 @@ public function insert_comment_postnewpage() {
                             $usrsrch .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $user['user_image']) . '" alt="" height="50px" weight="50px">';
                             $usrsrch .= '</div>';
                         } else {
-                            $usrsrch .= '<div class="chat_heae_img">';
+                        $usrsrch .= '<div class="chat_heae_img">';
 
-
-                            //$usrsrch .= '<img src="' . base_url(NOIMAGE) . '" alt="" height="50px" weight="50px">';
-
-                            $a = $user['first_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $user['last_name'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
-                    $usrsrch .= '<div class="post-img-div">';
-                    $usrsrch .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
-                    $usrsrch .=  '</div>';
-
+                        $usrsrch .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         $usrsrch .= '</div>';
                         }
                         $usrsrch .= '<div class="about">';
@@ -10777,15 +10245,8 @@ public function insert_comment_postnewpage() {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $return_html .= '<div class="post-img-div">';
-                                  $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $return_html .= '</div>'; 
-
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
+                                                               
                                     }else{
 
                         $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
@@ -10797,14 +10258,7 @@ public function insert_comment_postnewpage() {
                     } else {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
                                                                                     
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $return_html .= '<div class="post-img-div">';
-                                  $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                          $return_html .= '</a>';
                     }
@@ -10868,16 +10322,7 @@ public function insert_comment_postnewpage() {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' '. ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-
-                                $return_html .= '<div class="post-img-div">';
-
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                              $return_html .= '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                             }else{                          
 
@@ -10889,17 +10334,7 @@ public function insert_comment_postnewpage() {
 
                     } else {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-
-                              $return_html .= '<div class="post-img-div">';
-
-                              $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                              $return_html .= '</div>';
-
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                               $return_html .=  '</a>';
                     }
                     $return_html .= '</div>';
@@ -10962,27 +10397,16 @@ public function insert_comment_postnewpage() {
                     if ($userlist['art_user_image'] != '') {
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                     $return_html .= '<div class="post-img-div">';
-                                    $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .= '</div>';
-
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                                                
                             }else{
-                        $return_html .= '<img  src="' .ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
+                               $return_html .= '<img  src="' .ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
 
                             }
 
                     } else {
                         $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                     $return_html .= '<div class="post-img-div">';
-                                    $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .= '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                     }
                     $return_html .= '</a>
                                                                         </div>
@@ -11042,13 +10466,7 @@ public function insert_comment_postnewpage() {
                     if ($userlist['art_user_image']) {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) .' '. ucwords($userlist['art_lastname']) . '">';
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {       
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                     $return_html .= '<div class="post-img-div">';
-                                    $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .= '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                 }else{
                           $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
                               }
@@ -11057,13 +10475,7 @@ public function insert_comment_postnewpage() {
 
                     } else {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . ' ' .ucwords($userlist['art_lastname']) . '">';
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                     $return_html .= '<div class="post-img-div">';
-                                    $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                    $return_html .= '</div>';
+                                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                    $return_html .= '</a>';
                     }
                     $return_html .= '</div>
@@ -11167,15 +10579,8 @@ public function art_home_three_user_list() {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ' '.ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $return_html .= '<div class="post-img-div">';
-                                  $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $return_html .= '</div>'; 
-
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                                               
                                     }else{
 
                         $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
@@ -11186,14 +10591,7 @@ public function art_home_three_user_list() {
                     } else {
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
                                                                                     
-                                                                $a = $userlist['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userlist['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-
-                                  $return_html .= '<div class="post-img-div">';
-                                  $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                  $return_html .= '</div>'; 
+                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                          $return_html .= '</a>';
                     }
@@ -11395,14 +10793,7 @@ public function art_home_postold() {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userslug) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
-                                                                $a = $userimagefn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userimageln;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                            $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                                                             } else { 
 
@@ -11414,14 +10805,7 @@ public function art_home_postold() {
 
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userslug) . '">';
 
-                                                                $a = $userimagefn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userimageln;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                            $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                            $return_html .= '</a>';
                         }
@@ -11430,32 +10814,17 @@ public function art_home_postold() {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $slug) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $userfn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                                 
                                                             } else { 
 
                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
-
                             }
                             $return_html .= '</a>';
                         } else {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $slug) . '">';
-                                                $a = $userfn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
-                                           $return_html .=  '</a>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                            $return_html .=  '</a>';
                         }
                     }
                     $return_html .= '</div>
@@ -11993,34 +11362,15 @@ public function art_home_postold() {
                                 
 
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                 $return_html .= '</div>'; 
-                                                                
+                                 $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                                                  
                                                             } else { 
 
                                 $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                                         }
-
-                                
-                            } else {
-                                
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                 $return_html .= '</div>'; 
-                                                                
-                                                           
-                                
+                               
+                            } else {     
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                                                   
                             }
 
                             $return_html .= '</a>';
@@ -12146,14 +11496,7 @@ public function art_home_postold() {
                     if ($art_userimage) {
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $art_fn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $art_ln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                                 
                                                             } else { 
 
@@ -12161,14 +11504,7 @@ public function art_home_postold() {
                             }
 
                     } else {
-                                                                $a = $art_fn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $art_ln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                     }
                     $return_html .= '</a></div>
 
@@ -12352,15 +11688,7 @@ public function art_home_post() {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userslug) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
-                                                                $a = $userimagefn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userimageln;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                            $return_html .= '</div>'; 
-
+                                $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                                                             } else { 
 
                             $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" />';
@@ -12370,31 +11698,15 @@ public function art_home_post() {
                         } else {
 
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userslug) . '">';
-
-                                                                $a = $userimagefn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userimageln;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                            $return_html .= '</div>'; 
-
-                           $return_html .= '</a>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            $return_html .= '</a>';
                         }
                     } else {
                         if ($art_userimage) {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $slug) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $userfn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                                 
                                                             } else { 
 
@@ -12404,14 +11716,7 @@ public function art_home_post() {
                             $return_html .= '</a>';
                         } else {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $slug) . '">';
-                                                $a = $userfn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $userln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                            $return_html .=  '</a>';
                         }
                     }
@@ -12933,15 +12238,7 @@ public function art_home_post() {
                                 
 
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                 $return_html .= '</div>'; 
-                                                                
+                                       $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';               
                                                             } else { 
 
                                 $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
@@ -12950,17 +12247,8 @@ public function art_home_post() {
                                 
                             } else {
                                 
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                 $return_html .= '</div>'; 
-                                                                
-                                                           
-                                
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                                                                        
                             }
 
                             $return_html .= '</a>';
@@ -13086,14 +12374,7 @@ public function art_home_post() {
                     if ($art_userimage) {
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                                                                $a = $art_fn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $art_ln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                                 
                                                             } else { 
 
@@ -13101,14 +12382,7 @@ public function art_home_post() {
                             }
 
                     } else {
-                                                                $a = $art_fn;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $art_ln;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>'; 
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                     }
                     $return_html .= '</a></div>
 
@@ -13623,16 +12897,8 @@ public function art_home_post() {
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
 
-                             $a = $firstnameposted;
-                             $acr = substr($a, 0, 1);
-                             $b = $lastnameposted;
-                             $bcr = substr($b, 0, 1);
-
                              $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)).'" href="'.base_url('artistic/dashboard/' . $slugposted).'">';
-
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                            $return_html .= '</div> ';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';         
                             $return_html .= '</a>';
 
                         } else {
@@ -13644,16 +12910,10 @@ public function art_home_post() {
                     } else {
 
 
-                             $a = $firstnameposted;
-                             $acr = substr($a, 0, 1);
-                             $b = $lastnameposted;
-                             $bcr = substr($b, 0, 1);
-
                              $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstnameposted)). ' ' . ucfirst(strtolower($lastnameposted)).'" href="'.base_url('artistic/dashboard/' . $slugposted).'">';
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                            $return_html .= '</div> ';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                           
                             $return_html .= '</a>';
                     }
                 } else {
@@ -13662,16 +12922,11 @@ public function art_home_post() {
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimage)) {
 
 
-                             $a = $firstname;
-                             $acr = substr($a, 0, 1);
-                             $b = $lastname;
-                             $bcr = substr($b, 0, 1);
-
+                            
                              $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artistic/dashboard/' . $slug).'">';
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                           
                             $return_html .= '</a>';
                         } else {
 
@@ -13681,17 +12936,9 @@ public function art_home_post() {
                         }
                     } else {
 
-
-                             $a = $firstname;
-                             $acr = substr($a, 0, 1);
-                             $b = $lastname;
-                             $bcr = substr($b, 0, 1);
-
                              $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artistic/dashboard/' . $slug).'">';
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                             $return_html .= '</a>';
                     }
                 }
@@ -14082,31 +13329,14 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                                $a = $artname;
-                                $acr = substr($a, 0, 1);
-                                $b = $artlastname;
-                                $bcr = substr($b, 0, 1);
-                               
-                                $return_html .= ' <div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div> ';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                             } else {
                                 
                                 $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                             }
                         } else {
-
-
-                                $a = $artname;
-                                $acr = substr($a, 0, 1);
-                                $b = $artlastname;
-                                $bcr = substr($b, 0, 1);
-
-                                
-                                $return_html .= ' <div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div> ';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                         }
 
                         $return_html .= '</a>';
@@ -14219,31 +13449,16 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $a = $art_name;
-                        $acr = substr($a, 0, 1);
-                        $b = $art_lastname;
-                        $bcr = substr($b, 0, 1);
-
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                        $return_html .= '</div> ';
-
+                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                        
                     } else {
 
                         $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                     }
                 } else {
 
-
-                         $a = $art_name;
-                        $acr = substr($a, 0, 1);
-                        $b = $art_lastname;
-                        $bcr = substr($b, 0, 1);
-
-
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                        $return_html .= '</div> ';
+                      $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                        
                 }
                 $return_html .= '</a></div>
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
@@ -14324,38 +13539,15 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                     
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
-                            $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                                $fourdata .= '<div class="post-img-div">';
-                                $fourdata .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                                $fourdata .=  '</div>';
-
+                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                         } else {
                     $fourdata .= '<img  src="' .ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                     }
-
-                    
+                   
                 } else {
 
-
-                    //
-                          $a = $artname;
-                            $acr = substr($a, 0, 1);
-                            $b = $artlastname;
-                            $bcr = substr($b, 0, 1);
-
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $fourdata .=  '</div>';
-
-
-                    
-                    //$fourdata .= '<img src="' . base_url(NOIMAGE) . '" alt=""></div>';
-
+                 $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                 }
                  $fourdata .= '</a>';
                 $fourdata .= '</div>';
@@ -15238,14 +14430,8 @@ public function get_artistic_name($id=''){
                            $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">';
                                  }else{
                            
-                                             $a = $key['art_name'];
-                                              $acr = substr($a, 0, 1);
-                                              $b = $key['art_lastname'];
-                                              $bcr = substr($b, 0, 1);
-                                       
-                                     $return_html .=  '<div class="post-img-profile">';
-                                             $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                         $return_html .=  '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                           
                                        }
                                        $return_html .= '</div>
                                     </div>
@@ -15367,14 +14553,7 @@ public function get_artistic_name($id=''){
                                             $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="">';
                                                    }else{
                                                    
-                                                    $a = $key['art_name'];
-                                                    $acr = substr($a, 0, 1);
-                                                    $b = $key['art_lastname'];
-                                                    $bcr = substr($b, 0, 1);
-                                                   
-                                            $return_html .= '<div class="post-img-div">
-                                                    '.ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)).'
-                                                    </div>';
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                                      
                                            }
                                         $return_html .= '</a>
                                        </div>
@@ -15769,18 +14948,9 @@ public function get_artistic_name($id=''){
                                                        if ($art_userimage) { 
                                                          
                                                           $return_html .= '<img  src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
-                                                                 } else { 
+                                                                 } else {                                                                
+                                                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                                 
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                                            $return_html .= '<div class="post-img-profile">';
-                                                
-                                                                    $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                                                                    
-                                            $return_html .= '</div>';
                                                                }
                                             $return_html .= '</a>';
                                             $return_html .= '</div>
@@ -15891,17 +15061,8 @@ public function get_artistic_name($id=''){
                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" name="image_src" id="image_src" />';
                                                    
                                                 } else {
-                                                    
-                                                      
-                                                                $a = $art_name;
-                                                                $acr = substr($a, 0, 1);
-                                                                 $b = $art_lastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                        $return_html .= '<div class="post-img-profile">';
-                                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                        $return_html .= '</div>';
-                                                    
+                                                                                                         
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                                                      
                                                 }
                                                 
                                       $return_html .= '</a></div>
@@ -16156,14 +15317,8 @@ public function get_artistic_name($id=''){
                            $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">';
                                  }else{
                            
-                                             $a = $key['art_name'];
-                                              $acr = substr($a, 0, 1);
-                                              $b = $key['art_lastname'];
-                                              $bcr = substr($b, 0, 1);
-                                       
-                                     $return_html .=  '<div class="post-img-profile">';
-                                             $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                         $return_html .=  '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                            
                                        }
                                        $return_html .= '</div>
                                     </div>
@@ -16286,15 +15441,8 @@ public function get_artistic_name($id=''){
 
                                             $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="">';
                                                    }else{
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                    
-                                                    $a = $key['art_name'];
-                                                    $acr = substr($a, 0, 1);
-                                                    $b = $key['art_lastname'];
-                                                    $bcr = substr($b, 0, 1);
-                                                   
-                                            $return_html .= '<div class="post-img-div">
-                                                    '.ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)).'
-                                                    </div>';
                                            }
                                         $return_html .= '</a>
                                        </div>
@@ -16684,14 +15832,8 @@ public function get_artistic_name($id=''){
                                                           $return_html .= '<img  src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
                                                                  } else { 
                                                                 
-                                                                $a = $artname;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artlastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                                
-                                            $return_html .= '<div class="post-img-profile">';
-                                                                    $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                                            $return_html .= '</div>';
+                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                                               
                                                                }
                                             $return_html .= '</a></div>
                                                         <div class="comment-name">';
