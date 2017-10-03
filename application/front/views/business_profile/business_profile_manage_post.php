@@ -210,24 +210,20 @@
                                         <div class="main-text-area col-md-12"  >
                                             <div class="popup-img-in"> 
                                                 <?php
-                                                if ($business_common_data[0]['business_user_image'] != '') {
+                                                if ($business_login_user_image != '') {
                                                     ?>
                                                     <?php
-                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
+                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_login_user_image)) {
                                                         ?>
-                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
                                                     <?php } else {
                                                         ?>
-
-
-                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
-
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="Business Profile">
                                                     <?php } ?>
-
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
                                                     <?php
                                                 }
                                                 ?>
@@ -386,6 +382,7 @@
         <script>
                                                     var base_url = '<?php echo base_url(); ?>';
                                                     var slug = '<?php echo $slugid; ?>';
+                                                    var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>

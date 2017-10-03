@@ -144,6 +144,7 @@ function business_dashboard_post(slug, pagenum) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
+            check_no_post_data();
         }
     });
 }
@@ -1126,6 +1127,7 @@ function remove_post(abc)
             if (total_post == 0) {
                 $('.art_no_post_avl').show();
             }
+            check_no_post_data();
         }
     });
 
@@ -1158,6 +1160,7 @@ function remove_ownpost(abc)
                 $('.' + 'dataconaudio').html(data.notaudio);
                 $('.' + 'dataconphoto').html(data.notphoto);
             }
+            check_no_post_data();
         }
     });
 }
@@ -1915,4 +1918,14 @@ function setEndOfContenteditable(contentEditableElement)
         range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
         range.select();//Select the range (make it the visible selection
     }
+}
+
+
+
+function check_no_post_data() {
+    var numberPost = $('[id^="removepost"]').length;
+    if (numberPost == 0) {
+        $('.business-all-post').html(no_business_post_html);
+    }
+
 }
