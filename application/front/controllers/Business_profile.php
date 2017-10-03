@@ -13964,4 +13964,33 @@ Your browser does not support the audio tag.
     public function ffmpeg_view(){
         $this->load->view('business_profile/ffmpeg_view',$this->data);
     }
+    
+    public function add_video() {
+    $config['upload_path'] = './videos/';
+    $config['allowed_types'] = 'mov|mpeg|mp3|avi';
+    $config['max_size']= '';
+    $config['overwrite'] = FALSE;
+    $config['remove_spaces'] = TRUE;
+    $config['encrypt_name'] = TRUE;
+ 
+    $this->upload->initialize($config);
+    $this->load->library('upload', $config);
+ 
+    if(!$this->upload->do_upload()) {
+        // If there is any error
+        $err_msgs .= 'Error in Uploading video '.$this->upload->display_errors().'<br />';
+    } else {
+        $upload_data= $this->upload->data();
+        $video_path = $upload_data['file_name'];
+        
+        // ffmpeg command to convert video
+        exec("ffmpeg -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".flv"); 
+     
+        /// In the end update video name in DB 
+        $array = array('video' => $upload_data['raw_name'].'.'.'flv');
+        $this->db->set($array);
+        $query = $this->db->update('videos_tbl');     
+    }
+}
+
 }
