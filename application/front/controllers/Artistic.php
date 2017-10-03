@@ -12792,8 +12792,9 @@ public function art_home_post() {
 
                 $fetch_pdf .= '<div class="image_profile">';
                 // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['post_files_id']) . '"><div class="pdf_img">';
-                $fetch_pdf .= '<a href="'.ART_POST_MAIN_UPLOAD_URL . $mi['file_name'].'">';
-                $fetch_pdf .= '<embed src="' . ART_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" width="100%" height="450px" />';
+                $fetch_pdf .= '<a href="'.ART_POST_MAIN_UPLOAD_URL . $mi['file_name'].'"><div class = "pdf_img">';
+                // $fetch_pdf .= '<embed src="' . ART_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" width="100%" height="450px" />';
+                 $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
