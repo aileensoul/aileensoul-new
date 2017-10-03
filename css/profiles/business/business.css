@@ -4279,6 +4279,8 @@ div .comment {
 .no-login #paddingtop_fixed{padding-top:78px !important;}
 .no-login .form-group{margin-bottom:15px;}
 .no-login .form-group label.error{padding-left:0 !important;}
+.no-login .profile-boxProfileCard .not_available{display:none;}
+.no-login footer{display:none;}
 
 
 
