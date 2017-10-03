@@ -126,6 +126,9 @@ $route['business-profile/post-detail/(:any)/(:any)'] = "business_profile/postnew
 $route['business-profile/creat-pdf'] = "business_profile/creat_pdf";
 $route['business-profile/business-profile-editpost'] = "business_profile/business_profile_editpost";
 
+$route['notification/business-profile-post/(:any)'] = "notification/business_post/$1";
+$route['notification/business-profile-post-detail/(:any)/(:any)'] = "notification/bus_post_img/$1/$2";
+
 
 //FREELANCER HIRE ROUTES SETTINGS
 $route['freelancer-hire/home'] = "freelancer/recommen_candidate";

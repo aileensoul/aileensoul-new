@@ -12941,7 +12941,7 @@ Your browser does not support the audio tag.
             $i = 0;
             foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
-                $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" target="_blank"><div class = "pdf_img">';
+                $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" target="_blank"><div class = "pdf_img">';
                 //$fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" width="100%" height="450px" />';
 //                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '&embedded=true" style="width:50px; height:60px;" frameborder="0"></iframe>';
                 $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
@@ -13961,4 +13961,7 @@ Your browser does not support the audio tag.
         return $contacts_count;
     }
 
+    public function ffmpeg_view(){
+        $this->load->view('business_profile/ffmpeg_view',$this->data);
+    }
 }
