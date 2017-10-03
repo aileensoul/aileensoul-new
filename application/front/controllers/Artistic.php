@@ -562,13 +562,13 @@ class Artistic extends MY_Controller {
 
         $art_bestofmine = $art_reg_data[0]['art_bestofmine'];
 
-        if ($art_bestofmine != '') {
-            $art_pdf_path = $this->config->item('art_portfolio_main_upload_path');
-            $art_pdf = $art_pdf_path . $art_bestofmine;
-            if (isset($art_pdf)) {
-                unlink($art_pdf);
-            }
-        }
+        // if ($art_bestofmine != '') {
+        //     $art_pdf_path = $this->config->item('art_portfolio_main_upload_path');
+        //     $art_pdf = $art_pdf_path . $art_bestofmine;
+        //     if (isset($art_pdf)) {
+        //         unlink($art_pdf);
+        //     }
+        // }
          $config = array(
             'upload_path' => $this->config->item('art_portfolio_main_upload_path'),
             'max_size' => 2500000000000,

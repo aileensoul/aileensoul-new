@@ -29,6 +29,7 @@ input[0].setSelectionRange(len, len);
   var lastIndex = bestofmine.lastIndexOf("\\");
     if (lastIndex >= 0) {
         bestofmine = bestofmine.substring(lastIndex + 1);
+        
     }    
   $("#datav").text(bestofmine); 
 
