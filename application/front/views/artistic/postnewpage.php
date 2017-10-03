@@ -121,7 +121,7 @@
                                             $listFinal = implode(', ', $skill1);
                                             ?>
 
-                                            <li><?php if ($art_data[0]['posted_user_id']) { ?>
+                                            <li><div class="post-design-product"><?php if ($art_data[0]['posted_user_id']) { ?>
 
                                                     <div class="else_post_d">
                                                         <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
@@ -146,7 +146,7 @@
   <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art_data[0]['created_date']))); ?>
  </span></div>
 
-                                                <?php } ?>                 </li>
+                                                <?php } ?>                 </div></li>
                                            
                                             
                                             <li><div class="post-design-product">

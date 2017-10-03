@@ -14232,7 +14232,7 @@ public function get_artistic_name($id=''){
             $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%' or art_reg.other_skill LIKE '%$searchskill%')";
 
 
-            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
                  
                  if($artskillpost){
@@ -14330,7 +14330,7 @@ public function get_artistic_name($id=''){
 
 
             $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
-            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($artpost);
 
            
