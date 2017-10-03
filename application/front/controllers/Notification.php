@@ -1115,7 +1115,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('notification/art_post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('notification/art-post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
                 $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -1187,7 +1187,7 @@ class Notification extends MY_Controller {
                         $notification .= 'active2';
                     }
                     $notification .= '"';
-                    $notification .= '><a href="' . base_url('notification/art_post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
+                    $notification .= '><a href="' . base_url('notification/art-post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
                     $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
@@ -3294,7 +3294,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 1) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post/' . $total['art_post_id'] . '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3334,7 +3334,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 2) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post/' . $total['art_post_id'] . '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3376,7 +3376,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 3) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post/' . $total['art_post_id'] . '">
+                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">
                                             <li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
