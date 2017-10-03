@@ -8504,10 +8504,12 @@ public function insert_comment_postnewpage() {
      $art_lastname = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
      $designation = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->designation;
      $art_image = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_user_image;
+
+     $art_slug = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->slug;
    
        $modal .=  '<li>';
        $modal .=  '<div class="like_user_listq">';
-       $modal .=  '<a href="' . base_url('artistic/artistic_profile/' . $value) . '" title="' . $art_name1 . '" class="head_main_name" >';
+       $modal .=  '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '" title="' . $art_name1 . '" class="head_main_name" >';
        $modal .=  '<div class="like_user_list_img">';
        
        
