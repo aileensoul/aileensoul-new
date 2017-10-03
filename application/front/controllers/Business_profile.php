@@ -2941,10 +2941,9 @@ Your browser does not support the audio tag.
             $contition_array = array('user_id' => $userid, 'is_delete' => '0');
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'is_delete' => '0');
+            $contition_array = array('user_id' => $this->data['business_common_data'][0]['user_id'], 'is_delete' => '0');
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
 
@@ -12942,9 +12941,10 @@ Your browser does not support the audio tag.
             $i = 0;
             foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
-                $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '"><div class = "pdf_img">';
+                $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" target="_blank"><div class = "pdf_img">';
                 //$fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" width="100%" height="450px" />';
-                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '&embedded=true" style="width:50px; height:60px;" frameborder="0"></iframe>';
+//                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '&embedded=true" style="width:50px; height:60px;" frameborder="0"></iframe>';
+                $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
