@@ -2318,14 +2318,15 @@ label.cameraButton:active {
     width: 85%;
     padding-left: 0px;
     padding-right: 0px;
-    height: 30px;
+    height: 32px;
     font-size: 19px!important;
     line-height: 1;
     resize: none;
     border: none;
     white-space: nowrap;
 	overflow: -moz-scrollbars-none;
-	padding-top:6px;
+	padding-top:5px;
+	padding-bottom:4px;
 }
 .popup-text textarea::-webkit-scrollbar { 
     display: none; 
@@ -3960,11 +3961,13 @@ div .comment {
 .post-design-commnet-box button:focus{/*outline:none;*/}
 
 .flw_msg_btn ul li:last-child a{margin-top:0;}
-.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
+.krajee-default[data-template="audio"] .file-preview-audio {/*height:100% !important;*/ border:none; }
 #mainContainer{min-width:108% !important;}
 .post-design-product_follow_main{padding-top:5px;}
 .post-design-product_follow{padding-top:5px;}
 .attach-file-name{padding-left:15px;}
+/*.animated.fadeInUp{animation-fill-mode: none;}*/
+
 
 
 /***  media query  ***/

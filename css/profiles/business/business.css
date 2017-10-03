@@ -935,7 +935,7 @@ label.cameraButton:active {
     margin: 0px;
     font-size: 27px;
     cursor: default;
-    padding-top: 1px;
+    padding-top: 2px;
     color: #1b8ab9
 }
 .post-design-box {
@@ -1620,9 +1620,6 @@ label.cameraButton:active {
     font-size: 14px;
 }
 .popup-img-in {
-    /*padding-left: 5px !important;*/
-    padding-right: 0px;
-    padding-top: 10px;
     float: left;
 }
 .popup-img-in img {
@@ -2317,13 +2314,18 @@ label.cameraButton:active {
 }
 .popup-text textarea {
     overflow-y: hidden;
-    width: 91%;
+    width: 85%;
     padding-left: 0px;
-    height: 39px;
-    font-size: 15px!important;
-    line-height: 1.3;
+    padding-right: 0px;
+    height: 32px;
+    font-size: 19px!important;
+    line-height: 1;
     resize: none;
     border: none;
+    white-space: nowrap;
+	overflow: -moz-scrollbars-none;
+	padding-top:5px;
+	padding-bottom:4px;
 }
 .post-editor .popup-textarea p {
     color: #999999;
@@ -2344,7 +2346,7 @@ label.cameraButton:active {
 .text_num {
     position: absolute;
     right: 21%;
-    top: 7px;
+    top: -10px;
     background-color: transparent;
     width: 24px !important;
     font-size: 20px;
@@ -2353,9 +2355,7 @@ label.cameraButton:active {
     height: 30px;
     color: #999;
     padding-left: 0px!important;
-}
-.fifty_val .text_num {
-    top: 0px;
+    cursor: default;
 }
 .editor-content.popup-textarea {
     width: 100%;
@@ -3727,9 +3727,6 @@ label.cameraButton input[accept*="camera"] {
     padding-right: 1px !important;
     padding-left: 6px !important;
 }
-.camera_in {
-    margin-top: 5px;
-}
 .close3 {
     color: #ffffff;
     float: right;
@@ -4254,7 +4251,7 @@ div .comment {
 .mob-comment button:focus {
     outline: none;
 }
-.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
+.krajee-default[data-template="audio"] .file-preview-audio {/*height:100% !important;*/ border:none;}
 #mainContainer{min-width:108% !important;}
 
 .editor-header .form-group .file-input{margin-left:8px;}
