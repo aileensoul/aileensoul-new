@@ -2333,8 +2333,8 @@ public function follow_home() {
             $user_list = str_replace(",", "','", $userdata[0]['user_list']);
             // GET ARTISTIC USER IGNORE LIST END
             //GET ARTISTIC USER SUGGESTED USER LIST 
-            $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id != ' => $userid, 'art_step' => 4);
-        $search_condition = "((art_skill IN ('$art_skill')) OR (art_city = '$city') OR (art_state = '$state')) AND art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
+        $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id != ' => $userid, 'art_step' => 4);
+        $search_condition = "art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
 
         $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id, slug', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
 
@@ -2563,7 +2563,7 @@ public function follow_home() {
             // GET ARTISTIC USER IGNORE LIST END
             //GET ARTISTIC USER SUGGESTED USER LIST 
             $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id != ' => $userid, 'art_step' => 4);
-        $search_condition = "((art_skill IN ('$art_skill')) OR (art_city = '$city') OR (art_state = '$state')) AND art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
+        $search_condition = "art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
 
         $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id, slug', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
         //echo "<pre>"; print_r($userlistview); die();
