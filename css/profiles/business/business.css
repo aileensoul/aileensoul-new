@@ -4103,7 +4103,7 @@ div .comment {
     padding: 10px;
     height: inherit;
     line-height: 14px;
-    margin: -25px -23px 1px -20px;
+    margin: -20px -20px 1px -20px;
     font-size: 22px;
 }
 #addcontactContainer {
@@ -4237,8 +4237,8 @@ div .comment {
     height: 210px;
 }
 .four-image img {
-    /*width: 280px;
-    height: 200px;*/
+    width: 280px;
+    height: 200px;
 }
 .three-image img {
     width: 280px;
@@ -4342,9 +4342,7 @@ div .comment {
     .mySlides .post-design-commnet-box .cmy_2 {
         width: 86%;
     }
-    .editor-content {
-        width: 86%;
-    }
+   
     .business-profile-right {
         width: 78%;
     }
@@ -4602,9 +4600,6 @@ div .comment {
         width: 100%;
         float: left;
     }
-    .editor-content {
-        width: 88%;
-    }
     .custom-right-art {
         margin-left: 0;
     }
@@ -4776,7 +4771,7 @@ div .comment {
         font-size: 23px
     }
     .main-text-area {
-        padding-right: 0px;
+       /* padding-right: 0px;*/
     }
     .hidden-mob {
         display: none;
@@ -4904,9 +4899,6 @@ div .comment {
     }
     .post-design-mid {
         padding-left: 21px;
-    }
-    .popup-text span {
-        font-size: 15px;
     }
     .two-images {
         height: 250px;
@@ -5233,7 +5225,7 @@ div .comment {
         height: 30%;
     }
     .editor-content {
-        width: 80%;
+        width: 87%;
     }
     .post-edit-popup .editor-content {
         width: 87%;
@@ -5351,8 +5343,9 @@ div .comment {
         padding-left: 7px;
         padding-right: 7px;
     }
+	.editor-content{width:85%;}
     .camer_h i {
-        font-size: 19px;
+        font-size: 25px;
     }
     .common-form1 h3 {
         font-size: 15px;
@@ -5410,7 +5403,7 @@ div .comment {
         font-size: 12px!important;
     }
     .editor-content {
-        width: 81%;
+        width: 84%;
     }
     .camer_h i {
         font-size: 22px;
@@ -5774,6 +5767,10 @@ div .comment {
 	.search-page .search_button .user_btn button{margin-right:15px;}
 	.like_cmnt_count li .like_count_ext{padding:8px 4px; }
 	.like_cmnt_count li .comnt_count_ext{padding:8px 4px; }
+	.popup-img img{width:40px; height:40px;}
+	.popup-text span{font-size:16px; padding:5px 0;}
+	.popup-text{padding:7px 0px 6px 10px;}
+	.post-edit-popup .popup-text textarea{width:70%;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {
@@ -5872,7 +5869,7 @@ div .comment {
         padding-right: 0;
     }
     .editor-content {
-        width: 77%;
+        width: 81%;
         padding-left: 0;
     }
     .post-edit-popup .editor-content {
@@ -5949,9 +5946,9 @@ div .comment {
 	.user-list .user_lst ul li .follow-img{margin-bottom:0;}
 	.user-list .user_lst .folle_text{width:75%;}
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 319px) {
     .editor-content {
-        width: 70%;
+        width: 79%;
         padding-left: 0;
     }
     .post-design-name {

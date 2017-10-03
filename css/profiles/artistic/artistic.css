@@ -3964,7 +3964,7 @@ div .comment {
 #mainContainer{min-width:108% !important;}
 .post-design-product_follow_main{padding-top:5px;}
 .post-design-product_follow{padding-top:5px;}
-
+.attach-file-name{padding-left:15px;}
 
 
 /***  media query  ***/
@@ -4306,9 +4306,7 @@ div .comment {
         width: 100%;
         float: left;
     }
-    .editor-content {
-        width: 90%;
-    }
+   
     .custom-right-art {
         margin-left: 0;
     }
