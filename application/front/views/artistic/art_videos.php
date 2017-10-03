@@ -44,43 +44,30 @@
           $contition_array = array('user_id' => $artisticdata[0]['user_id']);
          $artvideo = $this->data['artvideo'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-          
+          //echo "<pre>"; print_r($artvideo); die();
             foreach ($artvideo as $val) {
              
             
 
-              $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' =>'1', 'insert_profile' => '1');
+            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' =>'1', 'insert_profile' => '1', 'post_format' => 'video');
             $artmultivideo = $this->data['artmultivideo'] =  $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
               $multiplevideo[] = $artmultivideo;
-             }  
+             } 
 
-                  ?>
+            $abc = array_reduce($multiplevideo, 'array_merge', array());
 
-                  <?php   
+             ?>
 
-                $allowesvideo = array('mp4','webm', 'MP4');
-              
-                foreach ($multiplevideo as $mke => $mval) {
-                  
-                  foreach ($mval as $mke1 => $mval1) {
-                      $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+               
+        <?php  if(count($abc) > 0) {  
 
-                     if(in_array($ext,$allowesvideo)){ 
-                   $singlearray1[] = $mval1;
-                     }
-                  }
-                } 
-                ?>
-        <?php  if($singlearray1) {  
-
-            foreach ($singlearray1 as $videov) {
-         
+            foreach ($abc as $videov) { //echo "<pre>"; print_r($videov); die();
          ?>
          <li>
              <div class="vidoe_tag"> 
                  <video controls>
-                  <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $videov['image_name']; ?>" type = "video/mp4">
+                  <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $videov['file_name']; ?>" type = "video/mp4">
                    <!--  <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$videov['image_name'])?>" type="video/mp4"> -->
                     <source src="movie.ogg" type="video/ogg">
                Your browser does not support the video tag.
@@ -88,7 +75,7 @@
               </div>
              </li>
 
-      <?php }   }  else{?>
+      <?php }  }  else{?>
  <div class="art_no_pva_avl">
          <div class="art_no_post_img">
           <img src="<?php echo base_url('images/010.png'); ?>"  >

@@ -2202,24 +2202,13 @@ public function ajax_userlist() {
 
 public function follow_home() { 
         $userid = $this->session->userdata('aileenuser');
-         //if user deactive profile then redirect to artistic/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if($artistic_deactive)
-        {
-             redirect('artistic/');
-        }
-     //if user deactive profile then redirect to artistic/index untill active profile End
-
+    
         $art_id = $_POST["follow_to"];
         $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
-        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        $followuserid = $this->common->select_data_by_id('art_reg', 'art_id', $art_id, $data = 'user_id');
             // insert notification
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
             $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2243,8 +2232,6 @@ public function follow_home() {
                 'follow_status' => 1,
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
-
-
 
        $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
         $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6123,22 +6110,15 @@ public function insert_comment_postnewpage() {
          $contition_array = array('user_id' => $userid, 'status' => '1');
         $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
+        if ($id == '' || $id == $artisticslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>"; print_r($artisticdata); die();
-            $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
-            $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
             $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
-            $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
         
@@ -12536,25 +12516,13 @@ public function art_home_post() {
 
 
 
-           $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
+           $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1', 'post_format' => 'video');
            $artmultivideo = $this->data['artmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multiplevideo[] = $artmultivideo;
         }
 
-        $allowesvideo = array('mp4', '3gp', 'avi', 'ogg', '3gp', 'webm', 'MP4');
-
-        
-        foreach ($multiplevideo as $mke => $mval) {
-
-                                foreach ($mval as $mke1 => $mval1) {
-                                    $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
-
-                                    if (in_array($ext, $allowesvideo)) {
-                                        $singlearray1[] = $mval1;
-                                    }
-                                }
-        }
+        $singlearray1 = array_reduce($multiplevideo, 'array_merge', array());
 
         if ($singlearray1) {
             $fetch_video .= '<tr>';
