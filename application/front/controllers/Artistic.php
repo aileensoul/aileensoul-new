@@ -14113,21 +14113,11 @@ public function get_artistic_name($id=''){
 
         
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-            redirect('artistic/art_post', refresh);
-
-            // $abc[] = $results;
-            // $this->data['falguni'] = 1;        
+            redirect('artistic/art_post', refresh);     
         }
-
-//         // Retrieve the posted search term.
-//        //echo "<pre>";print_r($_POST);die();
         $searchskill = strtolower(trim($this->input->get('skills')));
         $this->data['keyword'] = $searchskill;
 
-
-        // echo $searchskill; die();
-        //$searchskill = explode(',',$search_skill);
-        //echo"<pre>";print_r($searchskill);die();
         $search_place = trim($this->input->get('searchplace'));
 //insert search keyword into data base code start
 
@@ -14138,8 +14128,6 @@ public function get_artistic_name($id=''){
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-        //echo "hi"; die();
         $data = array(
             'search_keyword' => $searchskill,
             'search_location' => $search_place,
@@ -14149,8 +14137,6 @@ public function get_artistic_name($id=''){
             'status' => 1,
             'module'=>'6'
         );
-
-        // echo"<pre>"; print_r($data); die();
 
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 //insert search keyword into data base code end
@@ -14166,11 +14152,9 @@ public function get_artistic_name($id=''){
             $search_condition = "(skill LIKE '%$searchskill%')";
             // echo $search_condition;
             $temp = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($temp); die();
 
             foreach ($temp as $keytemp => $valuetemp) {
                
-          
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $valuetemp['skill_id'] . '", art_skill) != ' => '0');
             $artskill[] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
@@ -14388,7 +14372,7 @@ public function get_artistic_name($id=''){
                            <h4 class="search_head">Profiles</h4>
                            <div class="inner_search">';
       
-                              foreach ($artuserdata as $key) {
+                              foreach ($artuserdata as $key) { 
                                 if($key['art_id']){
 
                              $return_html .=  '<div class="profile-job-profile-button clearfix box_search_module">
@@ -14411,7 +14395,7 @@ public function get_artistic_name($id=''){
                                           </li>
                                           <li style="display: block;">
                                              <a  class="color-search" href="'.base_url('artistic/dashboard/' . $key['slug'] . '').'">';
-                                                 if($key['designation']){
+                                                 if($key['designation']){ //echo "hii";  die();
                                                     $return_html .= $key['designation'];
                                                 } else{
                                                    $return_html .= 'Current work';
@@ -14542,7 +14526,22 @@ public function get_artistic_name($id=''){
                                                      $return_html .= '</span>
                                                    </div>
                                                 </div>
-                                             </li>
+                                             </li>';
+
+                                             $return_html .= '<li>
+                                            <div class="post-design-product">
+                                                <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
+                    if ($key['designation']) {
+                        $return_html .= ucwords($key['designation']);
+                    } else {
+                        $return_html .= 'Current Work';
+                    }
+
+                    $return_html .= '</a>
+                                            </div>
+                                        </li>
+
+
                                              <li>
                                                 <div class="post-design-product" id="editpostdata' . $key['art_post_id'].'" >
                                                    <a href="javascript:void(0);" style=" color: #000033; font-weight: 400; cursor: default;" title="" id="editpostval' . $key['art_post_id'].'">';
