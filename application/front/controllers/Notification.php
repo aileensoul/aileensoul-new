@@ -3352,7 +3352,7 @@ Your browser does not support the audio tag.
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'art_reg.user_id')
         );
-        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
+        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name', ' art_reg.slug as slug');
 
         $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 //echo '<pre>'; print_r($this->data['artfollow']); die();
@@ -3638,7 +3638,7 @@ Your browser does not support the audio tag.
                 //   2
                 if ($total['not_from'] == 3 && $total['not_img'] == 0) {
 
-                    $return_html .= '<a href="' . base_url() . 'artistic/artistic_profile/' . $total['user_id'] . '">';
+                    $return_html .= '<a href="' . base_url() . 'artistic/dashboard/' . $total['slug'] . '">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
