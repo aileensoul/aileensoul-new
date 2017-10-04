@@ -14187,8 +14187,6 @@ public function get_artistic_name($id=''){
                }
             }
 
-
-
             if(!$varfoune){ //echo "1"; die();
 
                 $otherdata = $varfoune2;
@@ -14384,8 +14382,14 @@ public function get_artistic_name($id=''){
                                     <div class="module_Ssearch" style="display: inline-block; float: left;">
                                        <div class="search_img" style="height: 110px; width: 108px;">';
                                           if($key['art_user_image']){
-                           $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">';
-                                 }else{
+
+                                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
+                                                 $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                         
+                                }else{
+                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">'; 
+
+                                } }else{
                            
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                            
@@ -14507,8 +14511,14 @@ public function get_artistic_name($id=''){
                                           <a class="post_dot" href="'.base_url('artistic/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
                                            if($key['art_user_image']){
 
-                                            $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="">';
-                                                   }else{
+                                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
+                                                 $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                         
+                                }else{
+                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">'; 
+
+                                } }else{
+                           
                                                    
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                                      
                                            }
