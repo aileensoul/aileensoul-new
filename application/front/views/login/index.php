@@ -267,47 +267,6 @@ echo form_open('profile/forgot_password', $form_attribute);
                                                         'password_login': password_login,
                                                         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
                                                     }
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: '<?php echo base_url() ?>registration/check_login',
-                                                        data: post_data,
-                                                        dataType: "json",
-                                                        beforeSend: function ()
-                                                        {
-                                                            $("#error").fadeOut();
-                                                            $("#btn-login").html('Login ...');
-                                                        },
-                                                        success: function (response)
-                                                        {
-                                                            if (response.data == "ok") {
-                                                                $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-
-                                                                window.location = "<?php echo base_url() ?>dashboard";
-
-                                                                //setTimeout(' window.location.href = "<?php //echo base_url()  ?>home"; ', 4000);
-                                                                // setTimeout(' window.location.href = ""; ', 4000);
-                                                            } else if (response.data == "password") {
-
-                                                                //$("#error").fadeIn(1000, function () {
-
-                                                                //document.getElementById('error1').style.display = 'none';
-                                                                //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
-                                                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                $("#btn-login").html('Login');
-                                                                //    }); 
-
-                                                            } else {
-                                                                //   document.getElementById('error1').style.display = 'none';
-                                                                //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
-                                                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                $("#btn-login").html('Login');
-                                                            }
-                                                        }
-                                                    });
                                                     return false;
                                                 }
                                                 /* login submit */
