@@ -186,7 +186,13 @@ function followuser(clicked_id)
                $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
-                    });  
+                        var numberPost = $('[class^="follow_box_ul_li"]').length;
+                            if (numberPost == 0) {
+                              $('.full-box-module_follow').hide();
+                                } 
+                    }); 
+
+                    
            }
      
        });
@@ -204,8 +210,11 @@ function followuser(clicked_id)
             $('ul.home_three_follow_ul').append(data);
             $.when($('.fad' + clicked_id).fadeOut(6000))
                     .done(function () {
-                        //artistic_home_follow_ignore(clicked_id);
                         $('.fad' + clicked_id).remove();
+                        var numberPost = $('[class^="follow_box_ul_li"]').length;
+                            if (numberPost == 0) {
+                              $('.full-box-module_follow').hide();
+                                } 
                     });
                   
         }
@@ -335,11 +344,11 @@ var isProcessing = false;
                     success: function (data) { //alert(data);
                         $('.loader').remove();
                         $('.profile-boxProfileCard_follow').html(data);
-                        var nb = $('.follow_box_ul_li').length;
-                        // alert(nb);
-                         if(nb > 0){ //alert("jii");
-                          document.getElementById("hideuserlist").style.display = "block";
-                         }
+                         var liCount = $(data).find("li.follow_box_ul_li").length;
+            
+                            if (liCount == 0) {
+                              $('.full-box-module_follow').hide();
+                                }
                     }
                 });
             }
