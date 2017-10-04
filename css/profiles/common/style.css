@@ -703,7 +703,7 @@ label.error {
     width: 100%;
     float: left;
 }
-.profile-modal-close, .modal-close, .posterror-modal-close
+.profile-modal-close, .modal-close,
 .modal-close1 {
     height: 30px !important;
     width: 30px !important;
@@ -719,8 +719,7 @@ label.error {
     margin: 0 !important;
     text-align: center !important;
     z-index: 7 !important;
-	padding: 0px 6px;
-	float: right;
+	padding: 4px 7px;
 	border-radius: 100%;
 }
 .modal.message-box .modal-body {

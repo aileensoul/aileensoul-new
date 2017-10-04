@@ -961,7 +961,7 @@ label.cameraButton:active {
     border-bottom: none;
 }
 .post-design-pro-img {
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     padding-left: 17px;
     display: inline-block;
     float: left;
@@ -4701,7 +4701,7 @@ div .comment {
         padding: 9px !important;
     }
     .buisness-menu.other-profile-menu::before {
-        bottom: 97px;
+        bottom: 89px;
     }
     .other-profile-menu .bpro-fw li {
         width: 20%;
@@ -5268,6 +5268,7 @@ div .comment {
 	.user_lst #followdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
 	.user_lst #followdiv button span{background:url('../../../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
 	.user-list .user_lst .folle_text{width:52%;}
+	.post-edit-popup .popup-text textarea{width:79%;}
 	
 }
 @media screen and (max-width: 540px) {
@@ -5367,6 +5368,9 @@ div .comment {
         font-size: 13px;
         padding: 2px 12px !important;
     }
+	.post-edit-popup .popup-text textarea{width:70%;}
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 }
 @media screen and (max-width: 479px) {
     
@@ -5767,7 +5771,9 @@ div .comment {
 	.popup-img img{width:40px; height:40px;}
 	.popup-text span{font-size:16px; padding:5px 0;}
 	.popup-text{padding:7px 0px 6px 10px;}
-	.post-edit-popup .popup-text textarea{width:70%;}
+	.post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {
@@ -5942,6 +5948,8 @@ div .comment {
 	.user-list .user_lst ul li:last-child{width:100%;}
 	.user-list .user_lst ul li .follow-img{margin-bottom:0;}
 	.user-list .user_lst .folle_text{width:75%;}
+	.popup-text textarea::-moz-placeholder{font-size:17px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:17px !important;}
 }
 @media screen and (max-width: 319px) {
     .editor-content {

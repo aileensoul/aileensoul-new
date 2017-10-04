@@ -957,7 +957,7 @@ label.cameraButton:active {
     border-bottom: none;
 }
 .post-design-pro-img {
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     padding-left: 17px;
     display: inline-block;
     float: left;
@@ -5443,7 +5443,7 @@ div .comment {
 	.popup-img img{width:40px; height:40px;}
 	.popup-text span{font-size:16px; padding:5px 0;}
 	.popup-text{padding:7px 0px 6px 10px;}
-	.post-edit-popup .popup-text textarea{width:70%;}
+	.post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
 }
 
 @media screen and (max-width: 430px) {
