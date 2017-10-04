@@ -3,10 +3,10 @@
     <head>
         <title> <?php echo $title; ?></title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
-        <!--<script src="<?php //echo base_url('js/fb_login.js'); ?>"></script>-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver=' . time()); ?>">
+        <!--<script src="<?php //echo base_url('js/fb_login.js');  ?>"></script>-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -48,7 +48,10 @@
                                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" 
                                                    href="<?php echo base_url('freelancer-work/freelancer-details'); ?>" title="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                        <?php
-                                                       if ($freelancerdata[0]['freelancer_post_user_image']) {
+                                                       $filename = $this->config->item('free_post_profile_main_upload_path') . $freelancerdata[0]['freelancer_post_user_image'];
+                                                       $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                       $info = $s3->getObjectInfo(bucket, $filename);
+                                                       if ($info) {
                                                            ?>
                                                         <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>" >
                                                         <?php
@@ -93,23 +96,23 @@
                                     </div>                             
                                 </div>
                                 <div class="custom_footer_left fw">
-								  <div class="fl">
-									 <ul>
-									 <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
-									  
-									  <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
-									  
-									  <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-									  
-									  <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-									  
-									  <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-									  
-									  <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
-									</ul>
-								  </div>
-						
-							</div>
+                                    <div class="fl">
+                                        <ul>
+                                            <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
+
+                                            <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
+
+                                            <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
+
+                                            <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
+
+                                            <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+
+                                            <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                         <!-- cover pic end -->
@@ -144,15 +147,15 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>">
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
         <script type="text/javascript">
             var base_url = '<?php echo base_url(); ?>';
-            
+
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/post_apply.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/post_apply.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
     </body>               
 </html>

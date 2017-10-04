@@ -1002,13 +1002,15 @@ label.cameraButton:active {
     width: auto;
     font-size: 15px;
     display: inline-block;
+	float:left;
+	padding-right:5px;
     font-weight: 600;
     color: #1b8ab9;
     /*text-overflow: ellipsis;*/
     vertical-align: bottom;
     /*overflow: hidden;
    /* white-space: nowrap;*/
-    line-height: 20px;
+    line-height: 21px;
     margin-bottom: 0px;
     font-size: 15px;
 }
@@ -1030,6 +1032,7 @@ label.cameraButton:active {
 }
 .datespan {
     display: inline-block;
+	line-height:1;
 }
 .post-design-product span {
     padding: 0;
@@ -1105,7 +1108,7 @@ label.cameraButton:active {
     position: relative;
     width: 100%;
     float: left;
-    padding: 5px 20px 0px 20px;
+    padding: 5px 17px 0px 17px;
     text-align: left;
     text-align: justify;
     font-size: 13px;
@@ -2319,7 +2322,7 @@ label.cameraButton:active {
     padding-right: 0px;
     height: 32px;
     font-size: 19px!important;
-    line-height: 1;
+    line-height: 1.2;
     resize: none;
     border: none;
     white-space: nowrap;
@@ -2869,8 +2872,8 @@ label.cameraButton:active {
 }
 .post-design-box .post-design-desc .fr {
     position: absolute;
-    right: 9px;
-    bottom: 0px;
+    right: 0px;
+    bottom: 5px;
 }
 /***--------- end common css for bui and art  ----------***/
 /*** ---------  only bus  -----------  ***/
@@ -3758,6 +3761,7 @@ label.cameraButton input[accept*="camera"] {
     font-weight: 500!important;
     color: #91949d;
     display: inline-block;
+	float:left;
 }
 .editav_2 {
     display: none;
@@ -4279,21 +4283,15 @@ div .comment {
 .no-login .profile-boxProfileCard .not_available{display:none;}
 .no-login footer{display:none;}
 
+.post-design-desc .text_num{top:7px;}
+.all-comment-comment-box .editable_text{margin-left:10px;}
+.all-comment-comment-box .inputtype-edit-comment	.editable_text{margin-left: 10px !important;
+    margin-top: 0 !important;
+    min-height: 37px !important;
+    width: 81%;}
 
 
-@keyframes pulse1 {
-    0% {
-        transform: scale(.1);
-        opacity: 0;
-    }
-    50% {
-        opacity: .4;
-    }
-    100% {
-        transform: scale(1.6);
-        opacity: 0;
-    }
-}
+
 /***  media query  ***/
 
 @media screen and (max-width: 1280px) {
@@ -5964,7 +5962,19 @@ div .comment {
     }
 }
 
-
+@keyframes pulse1 {
+    0% {
+        transform: scale(.1);
+        opacity: 0;
+    }
+    50% {
+        opacity: .4;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
 
 
 

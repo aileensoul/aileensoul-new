@@ -88,7 +88,7 @@
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-                            <?php if ($freelancerpostdata[0]['freelancer_post_user_image'] != '') { ?>
+                            <?php if ($info) { ?>
                                 <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="" >
                                 <?php
                             } else {

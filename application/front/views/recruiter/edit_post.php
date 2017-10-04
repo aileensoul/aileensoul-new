@@ -25,9 +25,11 @@
                         <div class="col-md-2 col-sm-1"> </div>
                         <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
 
-                            <div class="common-form">
+                            <div class="common-form custom-form">
+								<h3 class="">Edit Job Post</h3>
+								
 								<div class="job-saved-box">
-                                <h3 class="h3_edit">Edit Job Post</h3>
+                                
                                 <?php
                                 if ($this->session->flashdata('error')) {
                                     echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
@@ -61,32 +63,61 @@
 
                                 $salary_type = form_error('salary_type');
                                 ?>
-
-                                <fieldset class="full-width">
+							<div class="custom-add-box">
+								<h3>Job Detail</h3>
+								<div class="p15 fw">
+									<fieldset class="full-width">
                                     <label>Job Title:<span style="color:red">*</span></label>
                                     <input name="post_name" tabindex="1" autofocus type="text" id="post_name" placeholder=" Position title [Ex:- Sr. Engineer, Jr. Engineer]" value="<?php echo $work_title; ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('post_name'); ?>
                                 </fieldset>
+								<fieldset  class="full-width">
+                                    <label >Job description:<span style="color:red">*</span></label>
 
+                                    <!--  <?php echo form_textarea(array('name' => 'post_desc', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($postdata[0]['post_description']))); ?> -->
 
-                                <fieldset class="full-width">
+                                    <textarea name="post_desc" tabindex="10" id="varmailformat" rows="8" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
+
+<?php echo form_error('post_desc'); ?>
+                                </fieldset>
+								<fieldset class="full-width">
                                     <label class="control-label">Skills:<span style="color:red">*</span></label>
 
                                     <input id="skills2" value="<?php echo $work_skill; ?>" name="skills" placeholder="Enter SKills" class="full-width " tabindex="2">
 
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
+								<fieldset class=" half-width pad_right"> 
+                                    <label>Industry:<span style="color:red">*</span></label>
+                                    <select name="industry" id="industry" tabindex="7">
+                                        <option value="" selected option disabled>Select Industry</option>
 
-                                <fieldset class="full-width">
-                                    <label>No of Position:<span style="color:red">*</span></label>
+                                        <?php
+                                        if (count($industry) > 0) {
+                                            foreach ($industry as $indu) {
 
-                                    <input name="position" type="text" tabindex="3"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of position"/>
-                                    <span id="fullname-error"></span>
-                                    <?php echo form_error('position'); ?>
+                                                if ($postdata[0]['industry_type']) {
+                                                    ?>
+
+                                                    <option value="<?php echo $indu['industry_id']; ?>" <?php if ($indu['industry_id'] == $postdata[0]['industry_type']) echo 'selected'; ?>><?php echo $indu['industry_name']; ?></option>
+                                                <?php }else {
+                                                    ?>
+                                                    <option value="<?php echo $indu['industry_id']; ?>"><?php echo $indu['industry_name']; ?></option>
+                                                <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+
+                                        <option value="<?php echo $industry_otherdata[0]['industry_id']; ?> "><?php echo $industry_otherdata[0]['industry_name']; ?></option>   
+                                    </select>
+
+
+<?php echo form_error('industry'); ?>
+
                                 </fieldset>
-
-                                <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="">
+								<fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="">
                                     <label class="control-label">Minimum experience:<span style="color:red">*</span></label>
 
 
@@ -182,39 +213,15 @@
                                     }
                                     ?>
                                 </fieldset>
+								<fieldset id="erroe_nn" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
+                                    <label>Required education:</label> 
 
-                                <fieldset class=" half-width pad_right"> 
-                                    <label>Industry:<span style="color:red">*</span></label>
-                                    <select name="industry" id="industry" tabindex="7">
-                                        <option value="" selected option disabled>Select Industry</option>
-
-                                        <?php
-                                        if (count($industry) > 0) {
-                                            foreach ($industry as $indu) {
-
-                                                if ($postdata[0]['industry_type']) {
-                                                    ?>
-
-                                                    <option value="<?php echo $indu['industry_id']; ?>" <?php if ($indu['industry_id'] == $postdata[0]['industry_type']) echo 'selected'; ?>><?php echo $indu['industry_name']; ?></option>
-                                                <?php }else {
-                                                    ?>
-                                                    <option value="<?php echo $indu['industry_id']; ?>"><?php echo $indu['industry_name']; ?></option>
-                                                <?php
-                                                }
-                                            }
-                                        }
-                                        ?>
-
-                                        <option value="<?php echo $industry_otherdata[0]['industry_id']; ?> "><?php echo $industry_otherdata[0]['industry_name']; ?></option>   
-                                    </select>
-
-
-<?php echo form_error('industry'); ?>
+                                    <input type="search" tabindex="9" autofocus id="education" name="education" value="<?php echo $degree_data; ?>" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                    <span id="fullname-error"></span>
+<?php echo form_error('education'); ?>
 
                                 </fieldset>
-
-
-                                <fieldset <?php if ($emp_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
+								<fieldset <?php if ($emp_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
                                     <label class="control-label">Employment Type:<span style="color:red">*</span></label>
 
 
@@ -231,26 +238,35 @@
 <?php echo form_error('emp_type'); ?>  <?php echo form_error('emp_type'); ?>
 
                                 </fieldset>
+								<fieldset class="full-width">
+                                    <label>No of Position:<span style="color:red">*</span></label>
 
-
-                                <fieldset id="erroe_nn" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
-                                    <label>Required education:</label> 
-
-                                    <input type="search" tabindex="9" autofocus id="education" name="education" value="<?php echo $degree_data; ?>" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                    <input name="position" type="text" tabindex="3"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of position"/>
                                     <span id="fullname-error"></span>
-<?php echo form_error('education'); ?>
-
+                                    <?php echo form_error('position'); ?>
                                 </fieldset>
+								
+								
+								</div>
+							</div>
+                                
 
-                                <fieldset  class="full-width">
-                                    <label >Job description:<span style="color:red">*</span></label>
 
-                                    <!--  <?php echo form_textarea(array('name' => 'post_desc', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($postdata[0]['post_description']))); ?> -->
+                                
 
-                                    <textarea name="post_desc" tabindex="10" id="varmailformat" rows="4" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
+                                
 
-<?php echo form_error('post_desc'); ?>
-                                </fieldset>
+                                
+
+                                
+
+
+                                
+
+
+                                
+
+                                
 
 
                                 <fieldset class="full-width">

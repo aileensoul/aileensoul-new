@@ -2167,7 +2167,7 @@ Your browser does not support the audio tag.
                 $return_html .= "You";
                 $return_html .= "&nbsp;";
             } else {
-                $return_html .= ucfirst(strtolower($business_fname1));
+                $return_html .= ucfirst($business_fname1);
                 $return_html .= "&nbsp;";
             }
 
@@ -2202,7 +2202,7 @@ Your browser does not support the audio tag.
 
         $return_html .= '<div class = "like_one_other">';
 
-        $return_html .= ucfirst(strtolower($business_fname1));
+        $return_html .= ucfirst($business_fname1);
         $return_html .= "&nbsp;";
 
         if (count($likelistarray) > 1) {
@@ -2844,7 +2844,7 @@ Your browser does not support the audio tag.
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= '<a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="'.base_url('img/cam.png').'">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -2887,7 +2887,6 @@ Your browser does not support the audio tag.
             $join_str[4]['from_table_id'] = 'business_profile.industriyal';
             $join_str[4]['join_type'] = 'LEFT';
             $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            
         } else {
             $userid = $this->session->userdata('aileenuser');
             $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => 1, 'business_profile.business_step' => 4);
@@ -2914,7 +2913,7 @@ Your browser does not support the audio tag.
             $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
 
-        
+
         $this->data['business_data']['company_name'] = $business_data[0]['company_name'] == '' ? PROFILENA : $business_data[0]['company_name'];
         $this->data['business_data']['country_name'] = $business_data[0]['country_name'] == '' ? PROFILENA : $business_data[0]['country_name'];
         $this->data['business_data']['state_name'] = $business_data[0]['state_name'] == '' ? PROFILENA : $business_data[0]['state_name'];
@@ -3632,9 +3631,9 @@ Your browser does not support the audio tag.
         // GET BUSINESS USER IGNORE LIST END
         //GET BUSINESS USER SUGGESTED USER LIST 
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
-        $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
+        $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
+        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'ASC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
 
         $third_user_html = '';
         if (count($userlistview) > 0) {
@@ -3659,19 +3658,19 @@ Your browser does not support the audio tag.
                         }
                         $third_user_html .= '</a>';
                     } else {
-                        $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+                        $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">';
                         $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
                     }
                     $third_user_html .= '</div>
       <div class = "post-design-name_follow fl">
       <ul><li><div class = "post-design-product_follow">';
-                    $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+                    $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
+      <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a></div></li>';
                     $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
                     $third_user_html .= '<li>
       <div class = "post-design-product_follow_main" style = "display:block;">
-      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
       <p>';
                     if ($category) {
                         $third_user_html .= $category;
@@ -4272,7 +4271,7 @@ Your browser does not support the audio tag.
                         $bgSave = '<div id = "uX' . $session_uid . '" class = "bgSave wallbutton blackButton">Save Cover</div>';
                         $config['upload_path'] = 'uploads/user_image/';
                         $config['allowed_types'] = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-                       // $config['allowed_types'] = VALID_IMAGE;
+                        // $config['allowed_types'] = VALID_IMAGE;
                         $config['file_name'] = $_FILES['photoimg']['name'];
 
 //Load upload library and initialize configuration
@@ -5170,7 +5169,7 @@ Your browser does not support the audio tag.
                 if ($userid == $likelistarray[0]) {
                     $cmtlikeuser .= 'You ';
                 } else {
-                    $cmtlikeuser .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
+                    $cmtlikeuser .= '' . ucfirst($business_fname1) . '&nbsp;';
                 }
 
 
@@ -5251,7 +5250,7 @@ Your browser does not support the audio tag.
 
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
 
-                $cmtlikeuser .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
+                $cmtlikeuser .= '' . ucfirst($business_fname1) . '&nbsp;';
 
 
                 if (count($likelistarray) > 1) {
@@ -6116,7 +6115,7 @@ Your browser does not support the audio tag.
                     $imglikeuser .= 'You ';
                 } else {
 
-                    $imglikeuser .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
+                    $imglikeuser .= '' . ucfirst($business_fname1) . '&nbsp;';
                 }
 
                 if (count($commneteduser) > 1) {
@@ -6186,7 +6185,7 @@ Your browser does not support the audio tag.
 
                         $imglikeuser1 .= 'You ';
                     } else {
-                        $imglikeuser1 .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
+                        $imglikeuser1 .= '' . ucfirst($business_fname1) . '&nbsp;';
                     }
 
                     if (count($commneteduser) > 1) {
@@ -6294,7 +6293,7 @@ Your browser does not support the audio tag.
                     if ($userid == $commneteduser[0]['user_id']) {
                         $imglikeuser1 .= 'You ';
                     } else {
-                        $imglikeuser1 .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
+                        $imglikeuser1 .= '' . ucfirst($business_fname1) . '&nbsp;';
                     }
 
                     if (count($commneteduser) > 1) {
@@ -8911,7 +8910,7 @@ Your browser does not support the audio tag.
             $modal .= '</div>';
             $modal .= '<div class="like_user_list_main_desc">';
             $modal .= '<div class="like_user_list_main_name">';
-            $modal .= '' . ucfirst(strtolower($business_fname)) . '';
+            $modal .= '' . ucfirst($business_fname) . '';
             $modal .= '</div></a>';
             $modal .= '<div class="like_user_list_current_work">';
             $modal .= '<span class="head_main_work">' . $category . '</span>';
@@ -8987,7 +8986,7 @@ Your browser does not support the audio tag.
             $modal .= '</div>';
             $modal .= '<div class="like_user_list_main_desc">';
             $modal .= '<div class="like_user_list_main_name">';
-            $modal .= '' . ucfirst(strtolower($business_fname)) . '';
+            $modal .= '' . ucfirst($business_fname) . '';
             $modal .= '</div></a>';
             $modal .= '<div class="like_user_list_current_work">';
             $modal .= '<span class="head_main_work">' . $category . '</span>';
@@ -9466,7 +9465,8 @@ Your browser does not support the audio tag.
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
                     $contactdata .= '<li>';
-                    $contactdata .= '<div class="addcontact-left custome-approved-contact">';
+                    //$contactdata .= '<div class="addcontact-left custome-approved-contact">';
+                    $contactdata .= '<div class="addcontact-left">';
                     $contactdata .= '<a href="javascript:void(0);">';
                     $contactdata .= '<div class="addcontact-pic">';
 
@@ -9502,11 +9502,8 @@ Your browser does not support the audio tag.
                     if ($busdata[0]['business_user_image']) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-
-
                             $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                         } else {
-
                             $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
@@ -9819,6 +9816,145 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_bus_contact($id = "") {
+        $perpage = 5;
+        $page = 1;
+        $userid = $this->session->userdata('aileenuser');
+
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+        if ($id != '') {
+            $business_user_id = $this->db->select('user_id')->get_where('business_profile', array('business_slug' => $id))->row()->user_id;
+            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
+            $search_condition = "(contact_to_id = '$business_user_id' OR contact_from_id = '$business_user_id')";
+            $data = "contact_id,contact_from_id,contact_to_id,status";
+            $contacts_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data, $sortby = 'contact_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str = array(), $groupby = '');
+            $contacts_user1 = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data, $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+            $business_user_id = $userid;
+            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
+            $search_condition = "(contact_to_id = '$userid' OR contact_from_id = '$userid')";
+            $data = "contact_id,contact_from_id,contact_to_id,status";
+            $contacts_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data, $sortby = 'contact_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str = arrat(), $groupby = '');
+            $contacts_user1 = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data, $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+        $return_html = '';
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($contacts_user1);
+        }
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        if (count($contacts_user1) > 0) {
+            foreach ($contacts_user as $user) {
+                if ($user['contact_from_id'] == $business_user_id) {
+                    $business_data = $this->db->select('company_name,industriyal,business_user_image,user_id,business_slug')->get_where('business_profile', array('user_id' => $user['contact_to_id']))->row();
+                    $company_name = $business_data->company_name;
+                    $industriyal = $business_data->industriyal;
+                    $business_user_image = $business_data->business_user_image;
+                    $user_id = $business_data->user_id;
+                    $business_slug = $business_data->business_slug;
+                } else {
+                    $business_data = $this->db->select('company_name,industriyal,business_user_image,user_id,business_slug')->get_where('business_profile', array('user_id' => $user['contact_from_id']))->row();
+                    $company_name = $business_data->company_name;
+                    $industriyal = $business_data->industriyal;
+                    $business_user_image = $business_data->business_user_image;
+                    $user_id = $business_data->user_id;
+                    $business_slug = $business_data->business_slug;
+                }
+                $user_industryal_name = $this->db->select('industry_name')->get_where('industry_type', array('industry_id' => $industriyal))->row()->industry_name;
+
+                $this->db->select('status');
+                $where = '((contact_to_id = ' . $userid . ' AND contact_from_id = ' . $user_id . ') OR (contact_from_id = ' . $userid . ' AND contact_to_id = ' . $user_id . '))';
+                $this->db->where($where);
+                $user_contact_status = $this->db->get('contact_person')->row()->status;
+
+                $return_html .= '<div class="job-contact-frnd"><div class="profile-job-post-detail clearfix" id="removecontact' . $user_id . '">
+    <div class="profile-job-post-title-inside clearfix">
+        <div class="profile-job-post-location-name">
+            <div class="user_lst">
+                <ul>
+                    <li class="fl">
+                        <div class="follow-img">
+                            <a href="' . base_url('business-profile/dashboard/' . $business_slug) . '">';
+                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_user_image) || $business_user_image =='' ) {
+                    $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                } else {
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '" height="50px" width="50px" alt="' . $company_name . '" >';
+                }
+                $return_html .= '</a>
+                        </div>
+                    </li>
+                    <li class="bui_bcon">
+                        <div class="">
+                            <div class="follow-li-text " style="padding: 0;">
+                                <a href="' . base_url('business-profile/dashboard/' . $business_slug) . '">' . $company_name . '</a>
+                            </div>
+                            <div><a>' . $user_industryal_name . '</a>
+                            </div>
+                        </div>
+                    </li>';
+                if ($user_id == $userid) {
+                    
+                } else {
+                    if ($user_contact_status == 'cancel') {
+                        $return_html .= '<li class="fr">
+                        <div class="user_btn" id="statuschange' . $user_id . '">
+                            <button onclick="contact_person_menu(' . $user_id . ')" class="contact_user_list">
+                                Add to contact
+                            </button>
+                        </div>
+                    </li>';
+                    } elseif ($user_contact_status == 'pending') {
+                        $return_html .= '<li class="fr">
+                        <div class="user_btn" id="statuschange' . $user_id . '">
+                            <button onclick="contact_person_cancle(' . $user_id . ", 'pending'" . ')" class="contact_user_list">
+                                Cancel request
+                            </button>
+                        </div>
+                    </li>';
+                    } else if ($user_contact_status == 'confirm') {
+                        $return_html .= '<li class="fr">
+                        <div class="user_btn cont_req" id="statuschange' . $user_id . '">
+                            <button onclick="contact_person_cancle(' . $user_id . ", 'confirm'" . ')" class="contact_user_list">
+                                In contacts
+                            </button>
+                        </div>
+                    </li>';
+                    } else if ($user_contact_status == 'reject') {
+                        $return_html .= '<li class="fr">
+                        <div class="user_btn" id="statuschange' . $user_id . '">
+                            <button onclick="contact_person_menu(' . $user_id . ')" class="contact_user_list">
+                                Add to contact
+                            </button>
+                        </div>
+                    </li>';
+                    } else {
+                        $return_html .= '<li class="fr">
+                        <div class="user_btn" id="statuschange' . $user_id . '">
+                            <button onclick="contact_person_menu(' . $user_id . ')" class="contact_user_list">
+                                Add to contact
+                            </button>
+                        </div>
+                    </li>';
+                    }
+                }
+                $return_html .= '</ul>
+            </div>
+        </div>
+    </div>
+</div></div>';
+            }
+        }
+        echo $return_html;
+    }
+
+    public function ajax_bus_contact_old($id = "") {
 
         $perpage = 5;
         $page = 1;
@@ -9837,7 +9973,6 @@ Your browser does not support the audio tag.
         $slug_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $slug_id = $slug_data[0]['business_slug'];
-
         if ($id == $slug_id || $id == '') {
             $busuid = $busuid = $this->session->userdata('aileenuser');
             $contition_array = array('user_id' => $busuid, 'is_deleted' => 0, 'status' => 1);
@@ -9885,6 +10020,7 @@ Your browser does not support the audio tag.
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         if (count($unique_user1) > 0) {
+
             foreach ($unique_user as $user) {
                 if ($busuid == $user['contact_from_id']) {
                     $cdata = $this->common->select_data_by_id('business_profile', 'user_id', $user['contact_to_id'], $data = '*', $join_str = array());
@@ -9895,7 +10031,6 @@ Your browser does not support the audio tag.
                     $contition_array = array('contact_to_id' => $login, 'contact_from_id' => $user['contact_from_id'], 'contact_type' => 2);
                     $clistuser = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'status,contact_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 }
-
                 $return_html .= '<div class="job-contact-frnd">
                                                     <div class="profile-job-post-detail clearfix" id="removecontact' . $cdata[0]['user_id'] . '">
                                                         <div class="profile-job-post-title-inside clearfix">
@@ -10029,9 +10164,9 @@ Your browser does not support the audio tag.
         $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
         $datacount = count($unique_user);
-//        $contactdata = '<button onClick = "contact_person_menu(' . $to_id . ')">';
-//        $contactdata .= ' Add to contact';
-//        $contactdata .= '</button>';
+        $contactdata = '<button onClick = "contact_person_menu(' . $to_id . ')">';
+        $contactdata .= ' Add to contact';
+        $contactdata .= '</button>';
 
 
         if (count($unique_user) == 0) {
@@ -10074,13 +10209,9 @@ No Contacts Available.
         $to_id = $_POST['toid'];
         $userid = $this->session->userdata('aileenuser');
 
-
         $contition_array = array('contact_type' => 2);
-
         $search_condition = "((contact_to_id = ' $to_id' AND contact_from_id = ' $userid') OR (contact_from_id = ' $to_id' AND contact_to_id = '$userid'))";
-
-        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
+        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'status,contact_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
         if ($contactperson) {
 
             $status = $contactperson[0]['status'];
@@ -10099,17 +10230,14 @@ No Contacts Available.
                 $contactdata .= '</button>';
             } elseif ($status == 'cancel') {
                 $data = array(
+                    'contact_from_id' => $userid,
+                    'contact_to_id' => $to_id,
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
                     'not_read' => 2
                 );
-
-
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
-
                 $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
-
-
                 $contactdata .= 'Cancel request';
                 $contactdata .= '</button>';
             } elseif ($status == 'reject') {
@@ -10119,12 +10247,8 @@ No Contacts Available.
                     'not_read' => 2
                 );
 
-
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
-
                 $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
-
-
                 $contactdata .= 'Cancel request';
                 $contactdata .= '</button>';
             }
@@ -10389,7 +10513,7 @@ No Contacts Available.
                     $return_html .= '<li>
                             <div class = "post-design-product">
                                 <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '" title = "' . ucfirst(strtolower($post_company_name)) . '">
-' . ucfirst(strtolower($post_company_name)) . '</a>
+' . ucfirst($post_company_name) . '</a>
                     <span role = "presentation" aria-hidden = "true"> · </span>
 <div class = "datespan"> <span class = "ctre_date" >
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
@@ -10724,7 +10848,7 @@ Your browser does not support the audio tag.
                         $return_html .= "You";
                         $return_html .= "&nbsp;";
                     } else {
-                        $return_html .= ucfirst(strtolower($business_fname1));
+                        $return_html .= ucfirst($business_fname1);
                         $return_html .= "&nbsp;";
                     }
 //                    echo count($likelistarray);
@@ -10758,7 +10882,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<div class = "like_one_other">';
 
-                $return_html .= ucfirst(strtolower($business_fname1));
+                $return_html .= ucfirst($business_fname1);
                 $return_html .= "&nbsp;";
 
                 if (count($likelistarray) > 1) {
@@ -11648,7 +11772,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "like_one_other">';
 
-                    $return_html .= ucfirst(strtolower($business_fname1));
+                    $return_html .= ucfirst($business_fname1);
                     $return_html .= "&nbsp;";
 
                     if (count($likelistarray) > 1) {
@@ -11963,7 +12087,7 @@ Your browser does not support the audio tag.
       <li>
       <div class = "post-design-product_follow">';
                     $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a>
       </div>
       </li>';
@@ -12036,7 +12160,7 @@ Your browser does not support the audio tag.
       <li>
       <div class = "post-design-product_follow">
       <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a>
       </div>
       </li>';
@@ -12107,7 +12231,7 @@ Your browser does not support the audio tag.
       <li>
       <div class = "post-design-product_follow">
       <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
-      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a>
       </div>
       </li>';
@@ -12178,7 +12302,7 @@ Your browser does not support the audio tag.
       <li>
       <div class = "post-design-product_follow">
       <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
-      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a>
       </div>
       </li>';
@@ -12287,13 +12411,13 @@ Your browser does not support the audio tag.
                     $return_html .= '</div>
       <div class = "post-design-name_follow fl">
       <ul><li><div class = "post-design-product_follow">';
-                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
+      <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a></div></li>';
                     $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
                     $return_html .= '<li>
       <div class = "post-design-product_follow_main" style = "display:block;">
-      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
       <p>';
                     if ($category) {
                         $return_html .= $category;
@@ -13028,14 +13152,14 @@ Your browser does not support the audio tag.
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
-
+        $userid = $this->session->userdata('aileenuser');
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
         if ($id != '') {
-            $userid = $this->db->get_where('business_profile', array('business_slug' => $id, 'status' => 1))->row()->user_id;
+            $bus_userid = $this->db->get_where('business_profile', array('business_slug' => $id, 'status' => 1))->row()->user_id;
         } else {
-            $userid = $this->session->userdata('aileenuser');
+            $bus_userid = $this->session->userdata('aileenuser');
         }
         $business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
         $city = $this->data['business_common_data'][0]['city'];
@@ -13049,7 +13173,7 @@ Your browser does not support the audio tag.
         $other_industrial = $this->data['business_common_data'][0]['other_industrial'];
 
         /* SELF USER LIST START */
-        $self_list = array($userid);
+        $self_list = array($bus_userid);
         /* SELF USER LIST END */
 
 
@@ -13177,7 +13301,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<li>
                             <div class = "post-design-product">
                                 <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '" title = "' . ucfirst(strtolower($post_company_name)) . '">
-' . ucfirst(strtolower($post_company_name)) . '</a>
+' . ucfirst($post_company_name) . '</a>
                     <span role = "presentation" aria-hidden = "true"> · </span>
 <div class = "datespan"> <span class = "ctre_date" >
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
@@ -13206,14 +13330,11 @@ Your browser does not support the audio tag.
 </ul>
 </div>
 <div class = "dropdown1">
-<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common  dropbtn1 fa fa-ellipsis-v">
+<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common dropbtn1 fa fa-ellipsis-v">
 </a>
 <div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
-
                 if ($post_posted_user_id != 0) {
-
                     if ($userid == $post_posted_user_id) {
-
                         $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
@@ -13223,7 +13344,6 @@ Your browser does not support the audio tag.
 </i>Edit
 </a>';
                     } else {
-
                         $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
@@ -13240,7 +13360,6 @@ Your browser does not support the audio tag.
 </i>Edit
 </a>';
                     } else {
-
                         $return_html .= '<a onclick = "user_postdeleteparticular(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
@@ -13512,7 +13631,7 @@ Your browser does not support the audio tag.
                         $return_html .= "You";
                         $return_html .= "&nbsp;";
                     } else {
-                        $return_html .= ucfirst(strtolower($business_fname1));
+                        $return_html .= ucfirst($business_fname1);
                         $return_html .= "&nbsp;";
                     }
 //                    echo count($likelistarray);
@@ -13546,7 +13665,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<div class = "like_one_other">';
 
-                $return_html .= ucfirst(strtolower($business_fname1));
+                $return_html .= ucfirst($business_fname1);
                 $return_html .= "&nbsp;";
 
                 if (count($likelistarray) > 1) {
@@ -13961,36 +14080,36 @@ Your browser does not support the audio tag.
         return $contacts_count;
     }
 
-    public function ffmpeg_view(){
-        $this->load->view('business_profile/ffmpeg_view',$this->data);
+    public function ffmpeg_view() {
+        $this->load->view('business_profile/ffmpeg_view', $this->data);
     }
-    
+
     public function add_video() {
-    $config['upload_path'] = './videos/';
-    $config['allowed_types'] = 'mov|mpeg|mp3|avi';
-    $config['max_size']= '';
-    $config['overwrite'] = FALSE;
-    $config['remove_spaces'] = TRUE;
-    $config['encrypt_name'] = TRUE;
- 
-    $this->upload->initialize($config);
-    $this->load->library('upload', $config);
- 
-    if(!$this->upload->do_upload()) {
-        // If there is any error
-        $err_msgs .= 'Error in Uploading video '.$this->upload->display_errors().'<br />';
-    } else {
-        $upload_data= $this->upload->data();
-        $video_path = $upload_data['file_name'];
-        
-        // ffmpeg command to convert video
-        exec("ffmpeg -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".flv"); 
-     
-        /// In the end update video name in DB 
-        $array = array('video' => $upload_data['raw_name'].'.'.'flv');
-        $this->db->set($array);
-        $query = $this->db->update('videos_tbl');     
+        $config['upload_path'] = './videos/';
+        $config['allowed_types'] = 'mov|mpeg|mp3|avi';
+        $config['max_size'] = '';
+        $config['overwrite'] = FALSE;
+        $config['remove_spaces'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+
+        $this->upload->initialize($config);
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload()) {
+            // If there is any error
+            $err_msgs .= 'Error in Uploading video ' . $this->upload->display_errors() . '<br />';
+        } else {
+            $upload_data = $this->upload->data();
+            $video_path = $upload_data['file_name'];
+
+            // ffmpeg command to convert video
+            exec("ffmpeg -i " . $upload_data['full_path'] . " " . $upload_data['file_path'] . $upload_data['raw_name'] . ".flv");
+
+            /// In the end update video name in DB 
+            $array = array('video' => $upload_data['raw_name'] . '.' . 'flv');
+            $this->db->set($array);
+            $query = $this->db->update('videos_tbl');
+        }
     }
-}
 
 }

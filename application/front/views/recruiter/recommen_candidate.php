@@ -29,7 +29,7 @@
                                         <div class="profile-boxProfileCard-cover"> 
                                             <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
-
+<div class="bg-images no-cover-upload"> 
                                                 <?php
                                                 $image_ori = $this->config->item('rec_bg_thumb_upload_path') . $recdata[0]['profile_background'];
 
@@ -46,6 +46,7 @@
                                                     <?php
                                                 }
                                                 ?>
+</div>
                                             </a>
                                         </div>
                                         <div class="profile-boxProfileCard-content clearfix">
@@ -126,7 +127,8 @@
 						  </div>
 				
 					</div>
-                                <?php if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
+                                
+								<?php if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
                                     <div  class="add-post-button">
                                         <a class="btn btn-3 btn-3b"  href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                                     </div> <?php } ?>

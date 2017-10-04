@@ -915,17 +915,34 @@ window.onclick = function (event) {
 
 /* When the user clicks on the button, 
  toggle between hiding and showing the dropdown content */
-function myFunction(clicked_id) {
-    document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+//function myFunction(clicked_id) {
+//    document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+//    $(document).on('keydown', function (e) {
+//        if (e.keyCode === 27) {
+//                document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+//            $(".dropdown-content1").removeClass('show');
+//        }
+//
+//    });
+//}
+
+function myFunction1(clicked_id) {
+    var dropDownClass = document.getElementById('myDropdown' + clicked_id).className;
+    dropDownClass = dropDownClass.split(" ").pop(-1);
+    if (dropDownClass != 'show') {
+        $('.dropdown-content1').removeClass('show');
+        $('#myDropdown' + clicked_id).addClass('show');
+    } else {
+        $('.dropdown-content1').removeClass('show');
+    }
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
-
             document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
             $(".dropdown-content1").removeClass('show');
         }
-
     });
 }
+
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn1')) {

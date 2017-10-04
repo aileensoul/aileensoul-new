@@ -68,7 +68,7 @@ function business_contacts(slug, pagenum) {
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').html(data);
+            $('.contact-frnd-post').append(data);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;
@@ -183,8 +183,8 @@ function removecontactuser(clicked_id) {
         data: 'contact_id=' + clicked_id + '&showdata=' + showdata,
         success: function (data) {
             
-//          $('#' + 'statuschange' + clicked_id).html(data.contactdata);
-            $('#' + 'removecontact' + clicked_id).fadeOut(2000);
+          $('#' + 'statuschange' + clicked_id).html(data.contactdata);
+            //$('#' + 'removecontact' + clicked_id).fadeOut(2000);
             if (data.notfound == 1) {
                 if (data.notcount == 0) { 
                     $('.contact-frnd-post').html(data.nomsg);
@@ -215,17 +215,11 @@ $(document).on('keydown', function (e) {
     }
 });
 
-
-
-
 function contact_person_query(clicked_id, status) {
-
-
     $.ajax({
         type: 'POST',
         //url: '<?php echo base_url() . "business_profile/contact_person_query" ?>',
         url: base_url + "business_profile/contact_person_query",
-
         data: 'toid=' + clicked_id + '&status=' + status,
         success: function (data) { //alert(data);
             // return data;
@@ -233,12 +227,6 @@ function contact_person_query(clicked_id, status) {
         }
     });
 }
-
-
-
-
-
-
 
 function contact_person_model(clicked_id, status, data) {
 
