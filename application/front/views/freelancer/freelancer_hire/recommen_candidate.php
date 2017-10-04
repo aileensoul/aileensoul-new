@@ -3,9 +3,9 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
@@ -39,12 +39,14 @@
 
                                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>">
                                                     <?php
-                                                    if ($freehiredata[0]['freelancer_hire_user_image']) {
+                                                       $filename = $this->config->item('free_hire_profile_main_upload_path') . $freehiredata[0]['freelancer_hire_user_image'];
+                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                    if ($info) {
                                                         ?>
                                                         <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freehiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>" >
-
-                                                        <?php
-                                                    } else {
+                                                      
+                                                    <?php  } else {
                                                         $fname = $freehiredata[0]['fullname'];
                                                         $lname = $freehiredata[0]['username'];
                                                         $sub_fname = substr($fname, 0, 1);
@@ -82,24 +84,24 @@
                                     </div>                             
                                 </div>
 
-                            <div class="custom_footer_left fw">
-						  <div class="fl">
-							 <ul>
-							 <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
-							  
-							  <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
-							  
-							  <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-							  
-							  <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-							  
-							  <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-							  
-							  <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
-							</ul>
-						  </div>
-				
-					</div>
+                                <div class="custom_footer_left fw">
+                                    <div class="fl">
+                                        <ul>
+                                            <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
+
+                                            <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
+
+                                            <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
+
+                                            <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
+
+                                            <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+
+                                            <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
 
                                 <div  class="add-post-button">
                                     <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
@@ -129,7 +131,7 @@
                                             <div class="col-md-1">
                                             </div>
                                         </div>
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
 
                                     </div>
                                 </div>
@@ -155,14 +157,14 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-<!--        <script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-        
-   
-    <script>
-        var base_url = '<?php echo base_url(); ?>';
-    </script>
-    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/recommen_candidate.js?ver='.time()); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
-</body>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+<!--        <script src="<?php //echo base_url('js/jquery-ui.min.js');  ?>"></script>-->
+
+
+        <script>
+            var base_url = '<?php echo base_url(); ?>';
+        </script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+    </body>
 </html>

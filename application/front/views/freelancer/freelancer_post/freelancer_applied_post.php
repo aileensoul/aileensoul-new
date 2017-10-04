@@ -76,7 +76,11 @@
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-                            <?php if ($freepostdata[0]['freelancer_post_user_image'] != '') { ?>
+                            <?php 
+                            $filename = $this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'];
+                            $s3 = new S3(awsAccessKey, awsSecretKey);
+                             $info = $s3->getObjectInfo(bucket, $filename);
+                            if ($info) { ?>
                                 <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="" >
                                 <?php
                             } else {
