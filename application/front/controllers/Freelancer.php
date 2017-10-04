@@ -500,25 +500,25 @@ class Freelancer extends MY_Controller {
                 }
                 if (count($skills) > 0) {
                     foreach ($skills as $ski) {
-                         if ($ski != " ") {
-                        $contition_array = array('skill' => trim($ski), 'type' => 1);
-                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                        if (count($skilldata) < 0) {
-                            $contition_array = array('skill' => trim($ski), 'type' => 5);
+                        if ($ski != " ") {
+                            $contition_array = array('skill' => trim($ski), 'type' => 1);
                             $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                            if (count($skilldata) < 0) {
+                                $contition_array = array('skill' => trim($ski), 'type' => 5);
+                                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                            }
+                            if ($skilldata) {
+                                $skill[] = $skilldata[0]['skill_id'];
+                            } else {
+                                $data = array(
+                                    'skill' => trim($ski),
+                                    'status' => '1',
+                                    'type' => 5,
+                                    'user_id' => $userid,
+                                );
+                                $skill[] = $this->common->insert_data_getid($data, 'skill');
+                            }
                         }
-                        if ($skilldata) {
-                            $skill[] = $skilldata[0]['skill_id'];
-                        } else {
-                            $data = array(
-                                'skill' => trim($ski),
-                                'status' => '1',
-                                'type' => 5,
-                                'user_id' => $userid,
-                            );
-                            $skill[] = $this->common->insert_data_getid($data, 'skill');
-                        }
-                    }
                     }
                     $skill = array_unique($skill, SORT_REGULAR);
                     $skills = implode(',', $skill);
@@ -1345,7 +1345,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function ajax_dataforcity() {
-     
+
         if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
             //Get all state data
             $contition_array = array('country_id' => $_POST["country_id"], 'status' => 1);
@@ -1414,26 +1414,26 @@ class Freelancer extends MY_Controller {
             //skill code start
             if (count($skills) > 0) {
                 foreach ($skills as $ski) {
-                     if ($ski != " ") {
-                    $contition_array = array('skill' => trim($ski), 'type' => 1);
-                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-
-                    if (count($skilldata) < 0) {
-                        $contition_array = array('skill' => trim($ski), 'type' => 5);
+                    if ($ski != " ") {
+                        $contition_array = array('skill' => trim($ski), 'type' => 1);
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                        if (count($skilldata) < 0) {
+                            $contition_array = array('skill' => trim($ski), 'type' => 5);
+                            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        }
+                        if ($skilldata) {
+                            $skill[] = $skilldata[0]['skill_id'];
+                        } else {
+                            $data = array(
+                                'skill' => trim($ski),
+                                'status' => '1',
+                                'type' => 5,
+                                'user_id' => $userid,
+                            );
+                            $skill[] = $this->common->insert_data_getid($data, 'skill');
+                        }
                     }
-                    if ($skilldata) {
-                        $skill[] = $skilldata[0]['skill_id'];
-                    } else {
-                        $data = array(
-                            'skill' => trim($ski),
-                            'status' => '1',
-                            'type' => 5,
-                            'user_id' => $userid,
-                        );
-                        $skill[] = $this->common->insert_data_getid($data, 'skill');
-                    }
-                     }
                 }
                 $skill = array_unique($skill, SORT_REGULAR);
                 $skills = implode(',', $skill);
@@ -1890,25 +1890,25 @@ class Freelancer extends MY_Controller {
             if (count($skills) > 0) {
 
                 foreach ($skills as $ski) {
-                     if ($ski != " ") {
-                    $contition_array = array('skill' => trim($ski), 'type' => 1);
-                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                    if (count($skilldata) < 0) {
-                        $contition_array = array('skill' => trim($ski), 'type' => 5);
+                    if ($ski != " ") {
+                        $contition_array = array('skill' => trim($ski), 'type' => 1);
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        if (count($skilldata) < 0) {
+                            $contition_array = array('skill' => trim($ski), 'type' => 5);
+                            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        }
+                        if ($skilldata) {
+                            $skill[] = $skilldata[0]['skill_id'];
+                        } else {
+                            $data = array(
+                                'skill' => trim($ski),
+                                'status' => '1',
+                                'type' => 5,
+                                'user_id' => $userid,
+                            );
+                            $skill[] = $this->common->insert_data_getid($data, 'skill');
+                        }
                     }
-                    if ($skilldata) {
-                        $skill[] = $skilldata[0]['skill_id'];
-                    } else {
-                        $data = array(
-                            'skill' => trim($ski),
-                            'status' => '1',
-                            'type' => 5,
-                            'user_id' => $userid,
-                        );
-                        $skill[] = $this->common->insert_data_getid($data, 'skill');
-                    }
-                     }
                 }
                 $skill = array_unique($skill, SORT_REGULAR);
                 $skills = implode(',', $skill);
@@ -1978,8 +1978,7 @@ class Freelancer extends MY_Controller {
 
         $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
         $post_reg_skill = explode(',', $freelancer_post_area);
-       // echo "<pre>";print_r($post_reg_skill);die();
-
+        // echo "<pre>";print_r($post_reg_skill);die();
         // $date = date('Y-m-d', time());
         // 'post_last_date >=' => $date,
         foreach ($post_reg_skill as $key => $value) {
@@ -1989,11 +1988,11 @@ class Freelancer extends MY_Controller {
             if ($freelancer_post_data) {
                 $freedata[] = $freelancer_post_data;
             }
-           // echo "<pre>";print_r($freedata);
+            // echo "<pre>";print_r($freedata);
         }
         //        TO CHANGE ARRAY OF ARRAY TO ARRAY START
         $final_post = array_reduce($freedata, 'array_merge', array());
-      //  echo "<pre>"; print_r($final_post); die();
+        //  echo "<pre>"; print_r($final_post); die();
         //        TO CHANGE ARRAY OF ARRAY TO ARRAY END
         // change the order to decending           
         rsort($final_post);
@@ -2002,10 +2001,10 @@ class Freelancer extends MY_Controller {
         $freelancer_post_field = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         // echo "<pre>"; print_r($freelancer_post_field);die();
 
-        $all_post = array_merge((array)$final_post, (array)$freelancer_post_field);
+        $all_post = array_merge((array) $final_post, (array) $freelancer_post_field);
         //echo "<pre>"; print_r($all_post);die();
         $unique = array_unique($all_post, SORT_ASC);
-      //   echo "<pre>"; print_r($unique);die();
+        //   echo "<pre>"; print_r($unique);die();
 
         $postdetail = array_slice($unique, $start, $perpage);
 
@@ -2343,31 +2342,40 @@ class Freelancer extends MY_Controller {
         $save_id = $_POST['save_id'];
 
         $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_id' => $save_id);
-        $userdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($userdata) {
-            $data = array(
-                'status' => 0
-            );
-
-            $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
-            if ($updatedata) {
-                $saveuser = 'Saved';
-                echo $saveuser;
-            }
+        //this condition for prevent dublicate entry of save
+        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'status' => 0, 'save_type' => 2);
+        $usersearchdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if ($usersearchdata) {
+            $saveuser = 'Saved';
+            echo $saveuser;
         } else {
-            $data = array(
-                'from_id' => $userid,
-                'to_id' => $id,
-                'status' => 0,
-                'save_type' => 2
-            );
+            $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_id' => $save_id);
+            $userdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $insert_id = $this->common->insert_data($data, 'save');
-            if ($insert_id) {
-                $saveuser = 'Saved';
-                echo $saveuser;
+            if ($userdata) {
+                $data = array(
+                    'status' => 0
+                );
+
+                $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+                if ($updatedata) {
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
+            } else {
+                $data = array(
+                    'from_id' => $userid,
+                    'to_id' => $id,
+                    'status' => 0,
+                    'save_type' => 2
+                );
+
+                $insert_id = $this->common->insert_data($data, 'save');
+                if ($insert_id) {
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
             }
         }
     }
