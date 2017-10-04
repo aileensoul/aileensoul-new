@@ -163,7 +163,7 @@ $loginuser = $userdata[0]['art_id'];
  if((count($contactperson) == 2) || ($artisticdata[0]['user_id'] == $userid)){
 ?>
                 <div class="post-editor col-md-12">
-                    <div class="main-text-area col-md-12" style="padding-left: 1px;">
+                    <div class="main-text-area col-md-12">
                         <div class="popup-img"> 
                             <a href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['slug']) ?>">
                              <?php

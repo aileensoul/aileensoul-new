@@ -22,10 +22,10 @@
         <section>
             <div>
                 <div class="user-midd-section" id="paddingtop_fixed">
-                    <div class="row"></div>
                     <div class="container">
-                        <div class="col-lg-2 col-md-1"></div>
-                        <div class="col-lg-8 col-md-10 col-sm-12">
+                        <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-7 col-sm-8 animated fadeInLeftBig">
                             <div>
                                 <?php
                                 if ($this->session->flashdata('error')) {
@@ -224,8 +224,8 @@
                                         </select><span id="city-error"></span>
                                         <?php echo form_error('city'); ?>
                                     </fieldset>
-                                    <div class="fr fw">           
-                                        <fieldset class="hs-submit full-width">
+                                    
+                                        <fieldset class="hs-submit half-width">
                                             <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                             <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                 <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
@@ -234,7 +234,7 @@
                                             <?php } ?>
                                             <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                         </fieldset>
-                                    </div>  
+                                    
                                     <?php echo form_close(); ?>
                                 </div>
                                 <div class="col-md-1">
@@ -244,8 +244,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <footer>
+        </div>
+    </section>
+    <footer>
             <?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
