@@ -25,6 +25,11 @@ class Dynamicc extends MY_Controller {
        
         $this->load->view('dynamic/dy_contact',$this->data);
     }
+    
+     public function dynamic(){
+    
+        $this->load->view('dynamic/dy_basic',$this->data);
+    }
 }
 
 

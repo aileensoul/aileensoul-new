@@ -4,7 +4,16 @@
 //   return value == '' || value.trim().length != 0;  
 // }, "No space please and don't leave it empty");
 
+$(document).on("click", '.mylink', function(event) { 
+    alert("new link clic ked!");
+});
 
+$("#next").click(function(){ alert("kkk");
+            $("#basicinfo").submit();
+            return false;
+        });
+        
+        
 $.validator.addMethod("regx", function (value, element, regexpr) {
     return regexpr.test(value);
 }, "Number, space and special character are not allowed.");
