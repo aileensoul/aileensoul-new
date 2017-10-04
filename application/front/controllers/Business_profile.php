@@ -1198,7 +1198,6 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_addpost_insert($id = "", $para = "") {
-
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -1687,7 +1686,7 @@ class Business_profile extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
-
+        
         $business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
         $city = $this->data['business_common_data'][0]['city'];
         $user_id = $this->data['business_common_data'][0]['user_id'];
@@ -1741,8 +1740,10 @@ class Business_profile extends MY_Controller {
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
-        $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '1', $offset = $start, $join_str, $groupby = '');
-
+        $business_profile_post = $this->common->select_data_by_search('business_profile_post1', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '1', $offset = '0', $join_str, $groupby = '');
+        echo '<pre>';
+        print_r($business_profile_post);
+        exit;
         $return_html = '';
         $row = $business_profile_post[0];
         $post_business_user_image = $row['business_user_image'];

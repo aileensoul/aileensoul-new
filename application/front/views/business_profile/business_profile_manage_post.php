@@ -356,6 +356,18 @@
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade message-box" id="bidmodal-3" role="dialog">
+        <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+                <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <span class="mes">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
             <?php echo $footer; ?>
