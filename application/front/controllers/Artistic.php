@@ -6721,13 +6721,13 @@ public function insert_comment_postnewpage() {
 
             $cmtinsert .= '<div class="comment-details" id= "showcommentimg' . $art_comment['post_image_comment_id'] . '"" >';
             $cmtinsert .= $this->common->make_links($art_comment['comment']);
-            $cmtinsert .= '</div>';
+            $cmtinsert .= '</div><div class ="inputtype-edit-comment">';
             $cmtinsert .= '<div contenteditable="true" class="editable_text" style="width:75%; display:none;" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimg' . $art_comment['post_image_comment_id'] . '"style="display:none;" onkeyup="commenteditimg(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
 
             $cmtinsert .= '' . $art_comment['comment'] . '';
             $cmtinsert .= '</div>';
 
-            $cmtinsert .= '<button id="editsubmitimg' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimg(' . $art_comment['post_image_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
+            $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmitimg' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimg(' . $art_comment['post_image_comment_id'] . ')">Save</button></span></div><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
 
             $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
             $cmtinsert .= 'onClick="comment_likeimg(this.id)">';
