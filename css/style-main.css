@@ -1586,9 +1586,7 @@ select:focus{ outline: none; }
 	.top-middle{padding-left:0;}
 	.bottom-middle{padding-left:0;}
 	.header-login .input{width:26%;}
-	.left-profile .profile-photo img.main-pic{width: 147px;
-height: 146px;}
-.left-profile .profile-photo{/*padding: 1px;*/}
+
 }
 
 @media screen and (max-width: 1199px) {
@@ -1617,7 +1615,7 @@ height: 146px;}
 	.upload-profile{ width: 110px; height: 110px; padding: 25px 11px;}
 	/*.banner-box .left-profile{width: 235px;}*/
 	.left-profile .profile-photo{width: 120px; height: 120px;}
-	.left-profile .profile-photo img.main-pic{width: 116px; height: 116px;}
+	.left-profile .profile-photo img.main-pic{width: 110px; height: 110px;}
 	.profile-detail h2{font-size: 20px;}
 	.left-profile .profile-photo{top:-84px;	}
 	.upload-profile img{width:25px; margin-bottom:2px;}
@@ -1767,7 +1765,7 @@ height: 146px;}
 	.banner-box .banner-img{max-height:200px;}
 	.banner-box img{height:200px;}
 	.left-profile .profile-photo{width: 97px; height: 91px;}
-	.left-profile .profile-photo img.main-pic{height: 87px; width: 93px;}
+	.left-profile .profile-photo img.main-pic{height: 81px; width: 93px;}
 	.upload-profile{width: 87px; height: 81px; padding:15px 4px; font-size:9px; line-height:1.5;}
 	.upload-profile img{width:25px !important; height:25px !important;}
 	.banner-box #row2 img{height:200px;}
@@ -1775,9 +1773,7 @@ height: 146px;}
 }
 
 @media screen and (max-width: 479px) {
-	.custom-box .custom-width .right-box h1 a::after{left: 50% !important;
-width: 150px;
-margin-left: -75px;}
+	.custom-box .custom-width .right-box h1 a::after{left: 50% !important; width: 150px; margin-left: -75px;}
     .pt-a{padding-top: 35px;}
     .main-login .middle-main{/*padding: 180px 0 30px;*/}
 	.mob-none{display:none;}
@@ -1810,21 +1806,16 @@ margin-left: -75px;}
 @media screen and (max-width: 360px) {
 	.main-inner .btn-right.pull-right a.btn2{padding:8px 18px;}
 	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
-	.banner {
-		padding-top: 10px;
-	}
+	.banner {padding-top: 10px;}
 	.how-it-popup .modal-body h3{font-size:22px; margin-bottom:12px;}
 }
 
 @media screen and (max-width: 320px) {
 	.por_content ul li{padding: 10px;}
-.login .form-group select{width:60px; margin-right: 5px; }
-.por_content ul li .pro-text{font-size: 12px;}
-.por_content ul li img{margin-right: 3px;
-float: left;
-width: 40px;
-height: 40px;}
-.por_content ul li .pro-text .count{width: 14px;}
+	.login .form-group select{width:60px; margin-right: 5px; }
+	.por_content ul li .pro-text{font-size: 12px;}
+	.por_content ul li img{margin-right: 3px; float: left; width: 40px; height: 40px;}
+	.por_content ul li .pro-text .count{width: 14px;}
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 

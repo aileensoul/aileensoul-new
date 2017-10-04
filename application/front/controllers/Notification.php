@@ -12,11 +12,7 @@ class Notification extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
 
-        // if ($this->session->userdata('aileensoul_front') == '') {
-        //           redirect('login', 'refresh');
-        //       }
         include ('include.php');
-//        include ('business_include.php');
     }
 
     // public function index() {
@@ -24,320 +20,12 @@ class Notification extends MY_Controller {
     // }
     public function index() {
         $userid = $this->session->userdata('aileenuser');
-// 1-5 notification start
-// recruiter notfication start 
-//
-//        $contition_array = array('notification.not_type' => 3, 'notification.not_to_id' => $userid, 'notification.not_from' => 2, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'job_apply',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'job_apply.app_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'job_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'job_reg.user_id')
-//        );
-//        $data = array('notification.*', 'job_apply.*', 'job_reg.user_id as user_id', 'job_reg.fname as first_name', 'job_reg.job_user_image as user_image', 'job_reg.lname as last_name');
-//        $rec_not = $this->data['rec_not'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// recruiter notification end
-// job notfication start 
-//        $contition_array = array('notification.not_type' => 4, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'job_apply',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'job_apply.app_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'recruiter',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'recruiter.user_id')
-//        );
-//        $data = array('notification.*', ' job_apply.*', ' recruiter.user_id as user_id', 'recruiter.rec_firstname as first_name', 'recruiter.recruiter_user_image as user_image', 'recruiter.rec_lastname as last_name');
-//
-//        $job_not = $this->data['job_not'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// job notification end
-// freelancer hire  notification start
-//        $contition_array = array('notification.not_type' => 3, 'notification.not_from' => 4, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//
-//        $join_str = array(
-//            array(
-//                'join_type' => '',
-//                'table' => 'freelancer_apply',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'freelancer_apply.app_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'freelancer_post_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'freelancer_post_reg.user_id')
-//        );
-//        $data = array('notification.*', 'freelancer_apply.*', ' freelancer_post_reg.user_id as user_id', 'freelancer_post_reg.freelancer_post_fullname as first_name', 'freelancer_post_reg.freelancer_post_user_image as user_image', 'freelancer_post_reg.freelancer_post_username as last_name');
-//
-//        $hire_not = $this->data['hire_noth'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-        // freelancer hire notification end
-// freelancer post notification start
-        // $this->data['work_post'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($hire_not); die();
-//        $contition_array = array('notification.not_type' => 4, 'notification.not_from' => 5, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'user_invite',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'user_invite.invite_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'freelancer_hire_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'freelancer_hire_reg.user_id')
-//        );
-//        $data = array('notification.*', ' user_invite.*', 'freelancer_hire_reg.user_id as user_id', 'freelancer_hire_reg.fullname as first_name', 'freelancer_hire_reg.freelancer_hire_user_image as user_image', 'freelancer_hire_reg.username as last_name');
-//
-//        $work_post = $this->data['work_post'] = $work_post = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'invite_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// freelancer post notification end
-//artistic notification start
-// follow notification start
-//        $contition_array = array('notification.not_type' => 8, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'follow',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'follow.follow_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'art_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'art_reg.user_id')
-//        );
-//        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
-//
-//        $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($this->data['artfollow']); die();
-// follow notification end
-//post comment notification start
-//        $contition_array = array('notification.not_type' => 6, 'not_img' => 1, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'artistic_post_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'artistic_post_comment.artistic_post_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'art_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'art_reg.user_id')
-//        );
-//        $data = array('notification.*', ' artistic_post_comment.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
-//        $artcommnet = $this->data['artcommnet'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'artistic_post_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// comment notification end
-//post like notification start
-//        $contition_array = array('notification.not_type' => 5, 'notification.not_from' => 3, 'not_img' => 2, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'art_post',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'art_post.art_post_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'art_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'art_reg.user_id')
-//        );
-//        $data = array('notification.*', 'art_post.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
-//        $artlike = $this->data['artlike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//        $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'post_files',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'post_image.image_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'art_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'art_reg.user_id')
-//        );
-//       $data = array('notification.*', 'post_image.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
-//        $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//
-//        $contition_array = array('notification.not_type' => 5, 'not_img' => 3, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'artistic_post_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'artistic_post_comment.artistic_post_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'art_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'art_reg.user_id')
-//        );
-//        $data = array('notification.*', 'artistic_post_comment.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
-//        $artcmtlike = $this->data['artcmtlike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'artistic_post_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//        $contition_array = array('notification.not_type' => 6, 'not_img' => 4, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'art_post_image_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'art_post_image_comment.post_image_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'art_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'art_reg.user_id')
-//        );
-//        $data = array('notification.*', ' art_post_image_comment.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
-//        $artimgcommnet = $this->data['artimgcommnet'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_image_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//        $contition_array = array('notification.not_type' => 5, 'not_img' => 6, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'art_post_image_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'art_post_image_comment.post_image_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'art_reg',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'art_reg.user_id')
-//        );
-//        $data = array('notification.*', ' art_post_image_comment.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
-//        $this->data['artimgcmtlike'] = $artimgcmtlike = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_image_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// like notification end
-// artistic notification end
-// business profile notification start
-// follow notification start
-//        $contition_array = array('notification.not_type' => 8, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'follow',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'follow.follow_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'business_profile',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'business_profile.user_id')
-//        );
-//        $data = array('notification.*', 'follow.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
-//        $busifollow = $this->data['busifollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-// follow notification end
-// comment notification start
-//        $contition_array = array('notification.not_type' => 6, 'not_img' => 1, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'business_profile_post_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'business_profile_post_comment.business_profile_post_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'business_profile',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'business_profile.user_id')
-//        );
-//        $data = array('notification.*', 'business_profile_post_comment.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
-//
-//        $buscommnet = $this->data['buscommnet'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'business_profile_post_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($this->data['buscommnet']);
-//        $contition_array = array('notification.not_type' => 6, 'not_img' => 4, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'bus_post_image_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'bus_post_image_comment.post_image_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'business_profile',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'business_profile.user_id')
-//        );
-//        $data = array('notification.*', 'bus_post_image_comment.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
-//
-//        $this->data['busimgcommnet'] = $busimgcommnet = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_image_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo '<pre>'; print_r($this->data['busimgcommnet']); die(); 
-// comment notification end
-// like notification start
-//        $contition_array = array('notification.not_type' => 5, 'not_img' => 2, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'business_profile_post',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'business_profile_post.business_profile_post_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'business_profile',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'business_profile.user_id')
-//        );
-//        $data = array('notification.*', ' business_profile_post.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
-//
-//        $buslike = $this->data['buslike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//        $contition_array = array('notification.not_type' => 5, 'not_img' => 3, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'business_profile_post_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'business_profile_post_comment.business_profile_post_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'business_profile',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'business_profile.user_id')
-//        );
-//        $data = array('notification.*', 'business_profile_post_comment.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
-//
-//        $buscmtlike = $this->data['buscmtlike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'business_profile_post_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//        $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'post_files',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'post_image.image_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'business_profile',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'business_profile.user_id')
-//        );
-//        $data = array('notification.*', 'post_image.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
-//
-//        $busimglike = $this->data['busimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//        $contition_array = array('notification.not_type' => 5, 'not_img' => 6, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
-//        $join_str = array(array(
-//                'join_type' => '',
-//                'table' => 'bus_post_image_comment',
-//                'join_table_id' => 'notification.not_product_id',
-//                'from_table_id' => 'bus_post_image_comment.post_image_comment_id'),
-//            array(
-//                'join_type' => '',
-//                'table' => 'business_profile',
-//                'join_table_id' => 'notification.not_from_id',
-//                'from_table_id' => 'business_profile.user_id')
-//        );
-//        $data = array('notification.*', 'bus_post_image_comment.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
-//
-//        $busimgcmtlike = $this->data['busimgcmtlike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_image_comment_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//
-//        $this->data['totalnotifi'] = $totalnotifi = array_merge($rec_not, $job_not, $hire_not, $work_post, $artcommnet, $artlike, $artcmtlike, $artimglike, $artimgcommnet, $artfollow, $artimgcmtlike, $busimgcommnet, $busifollow, $buscommnet, $buslike, $buscmtlike, $busimgcmtlike, $busimglike);
-//        $this->data['totalnotification'] = $totalnotification = $this->aasort($totalnotifi, "not_id");
-
-
         $this->load->view('notification/index', $this->data);
     }
 
 //recruiter post for notification start
 
     public function recruiter_post($id) {
-        // echo "falguni"; 
-        // echo $id; die();
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 
@@ -414,7 +102,7 @@ class Notification extends MY_Controller {
         $contition_array = array('art_post_id' => $id, 'status' => '1', 'is_delete' => '0');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo '<pre>'; print_r($this->data['art_data']); die();
-         $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
+        $this->data['left_artistic'] = $this->load->view('artistic/left_artistic', $this->data, true);
         $this->load->view('notification/art_post', $this->data);
     }
 
@@ -496,17 +184,26 @@ class Notification extends MY_Controller {
 
 
     public function business_post($id) {
+        $userid = $this->session->userdata('aileenuser');
+        include ('business_include.php');
 
+//        echo '<pre>';
+//        print_r($this->data['business_common_data']);
+//        exit;
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
         $this->data['busienss_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
+
         $this->load->view('notification/business_post', $this->data);
     }
 
     public function bus_post_img($id, $imageid) { //echo $id; die();
         $userid = $this->session->userdata('aileenuser');
+        include ('business_include.php');
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
@@ -528,26 +225,16 @@ class Notification extends MY_Controller {
 
 
         $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>";print_r($businessdata);die();
-
 
         $contition_array = array('status' => '1', 'is_delete' => '0');
-
-
         $businesstype = $this->data['results'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>";print_r($businesstype);
-
         $contition_array = array('status' => '1', 'is_delete' => '0');
-
-
         $industrytype = $this->data['results'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         // echo "<pre>";print_r($industrytype);die();
         $unique = array_merge($businessdata, $businesstype, $industrytype);
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
-
-
                     $result[] = $val;
                 }
             }
@@ -560,9 +247,705 @@ class Notification extends MY_Controller {
 
         $this->data['demo'] = $result1;
 
-
+        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
 
         $this->load->view('notification/bus_image', $this->data);
+    }
+
+    public function ajax_business_home_post() {
+// return html
+        $userid = $this->session->userdata('aileenuser');
+        include ('business_include.php');
+        $business_login_slug = $this->data['business_login_slug'];
+        $post_id = $_GET['post_id'];
+        
+        $user_name = $this->session->userdata('user_name');
+
+        $business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
+        $city = $this->data['business_common_data'][0]['city'];
+        $user_id = $this->data['business_common_data'][0]['user_id'];
+        $business_user_image = $this->data['business_common_data'][0]['business_user_image'];
+        $business_slug = $this->data['business_common_data'][0]['business_slug'];
+        $company_name = $this->data['business_common_data'][0]['company_name'];
+        $profile_background = $this->data['business_common_data'][0]['profile_background'];
+        $state = $this->data['business_common_data'][0]['state'];
+        $industriyal = $this->data['business_common_data'][0]['industriyal'];
+        $other_industrial = $this->data['business_common_data'][0]['other_industrial'];
+
+//        $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1', 'is_delete' => 0);
+//        $business_profile_post = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+//        $condition_array = array('business_profile_post_id' => $post_id, 'business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
+//        $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND is_delete=0)";
+//        $join_str[0]['table'] = 'business_profile';
+//        $join_str[0]['join_table_id'] = 'business_profile.user_id';
+//        $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
+//        $join_str[0]['join_type'] = '';
+//        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
+//        $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
+//        $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        $condition_array = array('business_profile_post.business_profile_post_id' => $post_id, 'business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
+        $join_str[0]['table'] = 'business_profile';
+        $join_str[0]['join_table_id'] = 'business_profile.user_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
+        $join_str[0]['join_type'] = '';
+        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
+//        $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
+        $business_profile_post = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        $return_html = '';
+        $row = $business_profile_post[0];
+
+        $post_business_user_image = $row['business_user_image'];
+        $post_company_name = $row['company_name'];
+        $post_business_profile_post_id = $row['business_profile_post_id'];
+        $post_product_name = $row['product_name'];
+        $post_product_image = $row['product_image'];
+        $post_product_description = $row['product_description'];
+        $post_business_likes_count = $row['business_likes_count'];
+        $post_business_like_user = $row['business_like_user'];
+        $post_created_date = $row['created_date'];
+        $post_posted_user_id = $row['posted_user_id'];
+        $post_business_slug = $row['business_slug'];
+        $post_industriyal = $row['industriyal'];
+        $post_user_id = $row['user_id'];
+        $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+        $post_other_industrial = $row['other_industrial'];
+        if ($post_posted_user_id) {
+            $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
+            $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
+            $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+            $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
+        }
+
+        $return_html .= '<div id = "removepost' . $post_business_profile_post_id . '">
+                        <div class = "col-md-12 col-sm-12 post-design-box">
+                            <div class = "post_radius_box">
+                                <div class = "post-design-top col-md-12" >
+                            <div class = "post-design-pro-img">
+                                <div id = "popup1" class = "overlay">
+                                    <div class = "popup">
+                                        <div class = "pop_content">
+                                            Your Post is Successfully Saved.
+                                            <p class = "okk">
+                                                <a class = "okbtn" href = "#">Ok</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>';
+
+
+        if ($post_posted_user_id) {
+
+            if ($posted_business_user_image) {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
+
+                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                } else {
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                }
+                $return_html .= '</a>';
+            } else {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
+                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                $return_html .= '</a>';
+            }
+        } else {
+            if ($post_business_user_image) {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
+                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                } else {
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                }
+                $return_html .= '</a>';
+            } else {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
+                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                $return_html .= '</a>';
+            }
+        }
+        $return_html .= '</div>
+                        <div class = "post-design-name fl col-xs-8 col-md-10">
+                    <ul>';
+
+        $return_html .= '<li></li>';
+
+        if ($post_posted_user_id) {
+            $return_html .= '<li>
+                            <div class = "else_post_d">
+                                <div class = "post-design-product">
+                                    <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">' . ucfirst(strtolower($posted_company_name)) . '</a>
+<p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">' . ucfirst(strtolower($post_company_name)) . '</a>
+<span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">
+' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
+</span> </div></div>
+</li>';
+        } else {
+            $return_html .= '<li>
+                            <div class = "post-design-product">
+                                <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '" title = "' . ucfirst(strtolower($post_company_name)) . '">
+' . ucfirst(strtolower($post_company_name)) . '</a>
+                    <span role = "presentation" aria-hidden = "true"> · </span>
+<div class = "datespan"> <span class = "ctre_date" >
+' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
+
+</span></div>
+
+</div>
+</li>';
+        }
+
+        $return_html .= '<li>
+<div class = "post-design-product">
+<a class = "buuis_desc_a" href = "javascript:void(0);" title = "Category">';
+        if ($post_industriyal) {
+            $return_html .= ucfirst(strtolower($post_category));
+        } else {
+            $return_html .= ucfirst(strtolower($post_other_industrial));
+        }
+
+        $return_html .= '</a>
+</div>
+</li>
+
+<li>
+</li>
+</ul>
+</div>
+<div class = "dropdown1">
+<a onClick = "myFunction(' . $post_business_profile_post_id . ')" class = "dropbtn_common  dropbtn1 fa fa-ellipsis-v">
+</a>
+<div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
+
+        if ($post_posted_user_id != 0) {
+
+            if ($userid == $post_posted_user_id) {
+
+                $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
+</a>
+<a id = "' . $post_business_profile_post_id . '" onClick = "editpost(this.id)">
+<i class = "fa fa-pencil-square-o" aria-hidden = "true">
+</i>Edit
+</a>';
+            } else {
+
+                $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
+</a>';
+            }
+        } else {
+            if ($userid == $post_user_id) {
+                $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
+</a>
+<a id = "' . $post_business_profile_post_id . '" onClick = "editpost(this.id)">
+<i class = "fa fa-pencil-square-o" aria-hidden = "true">
+</i>Edit
+</a>';
+            } else {
+
+                $return_html .= '<a onclick = "user_postdeleteparticular(' . $post_business_profile_post_id . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
+</a>';
+            }
+        }
+
+        $return_html .= '</div>
+</div>
+<div class = "post-design-desc">
+<div class = "ft-15 t_artd">
+<div id = "editpostdata' . $post_business_profile_post_id . '" style = "display:block;">
+<a>' . $this->common->make_links($post_product_name) . '</a>
+</div>
+<div id = "editpostbox' . $post_business_profile_post_id . '" style = "display:none;">
+
+
+<input type = "text" class="productpostname" id = "editpostname' . $post_business_profile_post_id . '" name = "editpostname" placeholder = "Product Name" value = "' . $post_product_name . '" tabindex="' . $post_business_profile_post_id . '" onKeyDown = check_lengthedit(' . $post_business_profile_post_id . ');
+onKeyup = check_lengthedit(' . $post_business_profile_post_id . ');
+onblur = check_lengthedit(' . $post_business_profile_post_id . ');
+>';
+
+        if ($post_product_name) {
+            $counter = $post_product_name;
+            $a = strlen($counter);
+
+            $return_html .= '<input size = 1 id = "text_num_' . $post_business_profile_post_id . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num disabled>';
+        } else {
+            $return_html .= '<input size = 1 id = "text_num_' . $post_business_profile_post_id . '" class = "text_num" value = 50 name = text_num disabled>';
+        }
+        $return_html .= '</div>
+
+</div>
+<div id = "khyati' . $post_business_profile_post_id . '" style = "display:block;">';
+
+        $small = substr($post_product_description, 0, 180);
+        $return_html .= nl2br($this->common->make_links($small));
+        if (strlen($post_product_description) > 180) {
+            $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $post_business_profile_post_id . ')">View More</span>';
+        }
+
+        $return_html .= '</div>
+<div id = "khyatii' . $post_business_profile_post_id . '" style = "display:none;">
+' . $post_product_description . '</div>
+<div id = "editpostdetailbox' . $post_business_profile_post_id . '" style = "display:none;">
+<div contenteditable = "true" id = "editpostdesc' . $post_business_profile_post_id . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="' . ($post_business_profile_post_id + 1) . '" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="cursorpointer(' . $post_business_profile_post_id . ')">' . $post_product_description . '</div>
+</div>
+<div id = "editpostdetailbox' . $post_business_profile_post_id . '" style = "display:none;">
+<div contenteditable = "true" id = "editpostdesc' . $post_business_profile_post_id . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $post_product_description . '</div>
+</div>
+<button class = "fr" id = "editpostsubmit' . $post_business_profile_post_id . '" style = "display:none;margin: 5px 0; border-radius: 3px;" onClick = "edit_postinsert(' . $post_business_profile_post_id . ')">Save
+</button>
+</div>
+</div>
+<div class = "post-design-mid col-md-12 padding_adust" >
+<div>';
+
+        $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
+        $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if (count($businessmultiimage) == 1) {
+
+            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+            //$allowed = VALID_IMAGE;
+            $allowespdf = array('pdf');
+            $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
+            $allowesaudio = array('mp3');
+            $filename = $businessmultiimage[0]['file_name'];
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if (in_array($ext, $allowed)) {
+
+                $return_html .= '<div class = "one-image">';
+
+                $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
+</a>
+</div>';
+            } elseif (in_array($ext, $allowespdf)) {
+
+                $return_html .= '<div>
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+</div>
+</a>
+</div>';
+            } elseif (in_array($ext, $allowesvideo)) {
+
+                $return_html .= '<div>
+<video width = "100%" height = "350" controls>
+<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
+<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
+Your browser does not support the video tag.
+</video>
+</div>';
+            } elseif (in_array($ext, $allowesaudio)) {
+
+                $return_html .= '<div class = "audio_main_div">
+<div class = "audio_img">
+<img src = "' . base_url('images/music-icon.png') . '">
+</div>
+<div class = "audio_source">
+<audio id = "audio_player" width = "100%" height = "100" controls>
+<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "audio/mp3">
+<source src = "movie.ogg" type = "audio/ogg">
+Your browser does not support the audio tag.
+</audio>
+</div>
+<div class = "audio_mp3" id = "' . "postname" . $post_business_profile_post_id . '">
+<p title = "' . $post_product_name . '">' . $post_product_name . '</p>
+</div>
+</div>';
+            }
+        } elseif (count($businessmultiimage) == 2) {
+
+            foreach ($businessmultiimage as $multiimage) {
+
+                $return_html .= '<div class = "two-images">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
+</a>
+</div>';
+            }
+        } elseif (count($businessmultiimage) == 3) {
+
+            $return_html .= '<div class = "three-image-top" >
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
+</a>
+</div>
+<div class = "three-image" >
+
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '">
+</a>
+</div>
+<div class = "three-image" >
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '">
+</a>
+</div>';
+        } elseif (count($businessmultiimage) == 4) {
+
+            foreach ($businessmultiimage as $multiimage) {
+
+                $return_html .= '<div class = "four-image">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+</a>
+</div>';
+            }
+        } elseif (count($businessmultiimage) > 4) {
+
+            $i = 0;
+            foreach ($businessmultiimage as $multiimage) {
+
+                $return_html .= '<div class = "four-image">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
+</a>
+</div>';
+
+                $i++;
+                if ($i == 3)
+                    break;
+            }
+
+            $return_html .= '<div class = "four-image">
+<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '">
+</a>
+<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
+<div class = "more-image" >
+<span>View All (+
+' . (count($businessmultiimage) - 4) . ')</span>
+
+</div>
+
+</a>
+</div>';
+        }
+        $return_html .= '<div>
+</div>
+</div>
+</div>
+<div class = "post-design-like-box col-md-12">
+<div class = "post-design-menu">
+<ul class = "col-md-6 col-sm-6 col-xs-6">
+<li class = "likepost' . $post_business_profile_post_id . '">
+<a id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w" onClick = "post_like(this.id)">';
+
+        $likeuser = $post_business_like_user;
+        $likeuserarray = explode(',', $likeuser);
+        if (!in_array($userid, $likeuserarray)) {
+
+            $return_html .= '<i class = "fa fa-thumbs-up fa-1x" aria-hidden = "true"></i>';
+        } else {
+            $return_html .= '<i class = "fa fa-thumbs-up fa-1x main_color" aria-hidden = "true"></i>';
+        }
+        $return_html .= '<span class = "like_As_count">';
+
+        if ($post_business_likes_count > 0) {
+            $return_html .= $post_business_likes_count;
+        }
+
+        $return_html .= '</span>
+</a>
+</li>
+<li id = "insertcount' . $post_business_profile_post_id . '" style = "visibility:show">';
+
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
+        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
+<i class = "fa fa-comment-o" aria-hidden = "true">
+</i>
+</a>
+</li>
+</ul>
+<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">
+<li>
+<div class = "like_count_ext">
+<span class = "comment_count' . $post_business_profile_post_id . '" >';
+
+        if (count($commnetcount) > 0) {
+            $return_html .= count($commnetcount);
+            $return_html .= '<span> Comment</span>';
+        }
+        $return_html .= '</span>
+
+</div>
+</li>
+
+<li>
+<div class = "comnt_count_ext">
+<span class = "comment_like_count' . $post_business_profile_post_id . '">';
+        if ($post_business_likes_count > 0) {
+            $return_html .= $post_business_likes_count;
+
+            $return_html .= '<span> Like</span>';
+        }
+        $return_html .= '</span>
+
+</div></li>
+</ul>
+</div>
+</div>';
+        if ($post_business_likes_count > 0) {
+
+            $return_html .= '<div class = "likeduserlist' . $post_business_profile_post_id . '">';
+
+            $likeuser = $post_business_like_user;
+            $countlike = $post_business_likes_count - 1;
+            $likelistarray = explode(',', $likeuser);
+//                    foreach ($likelistarray as $key => $value) {
+//                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//                    }
+
+            $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+            $return_html .= '<div class = "like_one_other">';
+
+            /* if ($userid == $value) {
+              $return_html .= "You";
+              $return_html .= "&nbsp;";
+              } */
+
+            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
+
+            if (in_array($userid, $likelistarray)) {
+                $return_html .= "You";
+                $return_html .= "&nbsp;";
+            } else {
+                $return_html .= ucfirst(strtolower($business_fname1));
+                $return_html .= "&nbsp;";
+            }
+//                    echo count($likelistarray);
+            if (count($likelistarray) > 1) {
+                $return_html .= " and ";
+
+                $return_html .= $countlike;
+                $return_html .= "&nbsp;";
+                $return_html .= "others";
+            }
+            $return_html .= '</div>
+</a>
+</div>';
+        }
+
+        $return_html .= '<div class = "likeusername' . $post_business_profile_post_id . '" id = "likeusername' . $post_business_profile_post_id . '" style = "display:none">';
+
+        $likeuser = $post_business_like_user;
+        $countlike = $post_business_likes_count - 1;
+        $likelistarray = explode(', ', $likeuser);
+//                foreach ($likelistarray as $key => $value) {
+//                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//                }
+        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+
+        $likeuser = $post_business_like_user;
+        $countlike = $post_business_likes_count - 1;
+        $likelistarray = explode(', ', $likeuser);
+
+        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+
+        $return_html .= '<div class = "like_one_other">';
+
+        $return_html .= ucfirst(strtolower($business_fname1));
+        $return_html .= "&nbsp;";
+
+        if (count($likelistarray) > 1) {
+
+            $return_html .= "and";
+
+            $return_html .= $countlike;
+            $return_html .= "&nbsp;";
+            $return_html .= "others";
+        }
+        $return_html .= '</div>
+</a>
+</div>
+
+<div class = "art-all-comment col-md-12">
+<div id = "fourcomment' . $post_business_profile_post_id . '" style = "display:none;">
+</div>
+<div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
+<div class = "insertcomment' . $post_business_profile_post_id . '">';
+
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+        if ($businessprofiledata) {
+            foreach ($businessprofiledata as $rowdata) {
+                $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
+
+                $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
+
+                $return_html .= '<div class = "all-comment-comment-box">
+<div class = "post-design-pro-comment-img">';
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+
+                if ($business_userimage) {
+                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
+
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    } else {
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                    }
+                    $return_html .= '</a>';
+                } else {
+                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
+
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+                }
+                $return_html .= '</div>
+<div class = "comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $slugname1 . '">
+<b title = "' . $companyname . '">';
+                $return_html .= $companyname;
+                $return_html .= '</br>';
+
+                $return_html .= '</b></a>
+</div>
+<div class = "comment-details" id = "showcomment' . $rowdata['business_profile_post_comment_id'] . '">';
+
+                $return_html .= '<div id = "lessmore' . $rowdata['business_profile_post_comment_id'] . '" style = "display:block;">';
+                $small = substr($rowdata['comments'], 0, 180);
+                $return_html .= nl2br($this->common->make_links($small));
+
+                if (strlen($rowdata['comments']) > 180) {
+                    $return_html .= '... <span id = "kkkk" onClick = "seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
+                }
+                $return_html .= '</div>';
+                $return_html .= '<div id = "seemore' . $rowdata['business_profile_post_comment_id'] . '" style = "display:none;">';
+                $new_product_comment = $this->common->make_links($rowdata['comments']);
+                $return_html .= nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
+                $return_html .= '</div>';
+                $return_html .= '</div>
+<div class = "edit-comment-box">
+<div class = "inputtype-edit-comment">
+<div contenteditable = "true" class = "editable_text editav_2" name = "' . $rowdata['business_profile_post_comment_id'] . '" id = "editcomment' . $rowdata['business_profile_post_comment_id'] . '" placeholder = "Enter Your Comment " value = "" onkeyup = "commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+<span class = "comment-edit-button"><button id = "editsubmit' . $rowdata['business_profile_post_comment_id'] . '" style = "display:none" onClick = "edit_comment(' . $rowdata['business_profile_post_comment_id'] . ')">Save</button></span>
+</div>
+</div>
+<div class = "art-comment-menu-design">
+<div class = "comment-details-menu" id = "likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
+<a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
+
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
+                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $likeuserarray = explode(', ', $businesscommentlike[0]['business_comment_like_user']);
+                if (!in_array($userid, $likeuserarray)) {
+
+                    $return_html .= '<i class = "fa fa-thumbs-up" style = "color: #999;" aria-hidden = "true"></i>';
+                } else {
+                    $return_html .= '<i class = "fa fa-thumbs-up main_color" aria-hidden = "true">
+</i>';
+                }
+                $return_html .= '<span>';
+
+                if ($rowdata['business_comment_likes_count']) {
+                    $return_html .= $rowdata['business_comment_likes_count'];
+                }
+
+                $return_html .= '</span>
+</a>
+</div>';
+                $userid = $this->session->userdata('aileenuser');
+                if ($rowdata['user_id'] == $userid) {
+
+                    $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+</span>
+<div class = "comment-details-menu">
+<div id = "editcommentbox' . $rowdata['business_profile_post_comment_id'] . '" style = "display:block;">
+<a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_editbox(this.id)" class = "editbox">Edit
+</a>
+</div>
+<div id = "editcancle' . $rowdata['business_profile_post_comment_id'] . '" style = "display:none;">
+<a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_editcancle(this.id)">Cancel
+</a>
+</div>
+</div>';
+                }
+                $userid = $this->session->userdata('aileenuser');
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
+
+                    $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+</span>
+<div class = "comment-details-menu">
+<input type = "hidden" name = "post_delete" id = "post_delete' . $rowdata['business_profile_post_comment_id'] . '" value = "' . $rowdata['business_profile_post_id'] . '">
+<a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_delete(this.id)"> Delete
+<span class = "insertcomment' . $rowdata['business_profile_post_comment_id'] . '">
+</span>
+</a>
+</div>';
+                }
+                $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+</span>
+<div class = "comment-details-menu">
+<p>';
+
+                $return_html .= $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
+                $return_html .= '</br>';
+
+                $return_html .= '</p>
+</div>
+</div>
+</div>';
+            }
+        }
+        $return_html .= '</div>
+</div>
+</div>
+<div class = "post-design-commnet-box col-md-12">
+<div class = "post-design-proo-img hidden-mob">';
+
+        $userid = $this->session->userdata('aileenuser');
+        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
+        if ($business_userimage) {
+
+            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+
+
+                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+            } else {
+                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+            }
+        } else {
+
+
+            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+        }
+        $return_html .= '</div>
+
+<div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
+<div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
+<div class="mob-comment">       
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
+                            </button>
+                        </div>
+</div>
+' . form_error('post_comment') . '
+<div class = "comment-edit-butn hidden-mob">
+<button id = "' . $post_business_profile_post_id . '" onClick = "insert_comment(this.id)">Comment
+</button>
+</div>
+
+</div>
+</div>
+</div></div>';
+
+
+        echo $return_html;
+// return html        
     }
 
     //business _profile notification post end 
@@ -720,7 +1103,7 @@ class Notification extends MY_Controller {
 // recruiter notification end
 // job notfication start 
 
-        $contition_array = array('notification.not_type' => 4, 'notification.not_to_id' => $userid,'notification.not_from' => 1, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
+        $contition_array = array('notification.not_type' => 4, 'notification.not_to_id' => $userid, 'notification.not_from' => 1, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
                 'table' => 'user_invite',
@@ -794,7 +1177,7 @@ class Notification extends MY_Controller {
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'art_reg.user_id')
         );
-        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name','art_reg.slug as slug');
+        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name', 'art_reg.slug as slug');
 
         $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -1115,7 +1498,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('notification/art_post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('notification/art-post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
                 $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -1187,7 +1570,7 @@ class Notification extends MY_Controller {
                         $notification .= 'active2';
                     }
                     $notification .= '"';
-                    $notification .= '><a href="' . base_url('notification/art_post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
+                    $notification .= '><a href="' . base_url('notification/art-post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
                     $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
@@ -1323,7 +1706,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('notification/business_post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('notification/business-profile-post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                 if ($total['user_image'] && (file_exists($filepath)) == 1) {
@@ -1383,7 +1766,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('notification/business_post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('notification/business-profile-post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                 if ($total['user_image'] && (file_exists($filepath)) == 1) {
@@ -1412,7 +1795,7 @@ class Notification extends MY_Controller {
                         $notification .= 'active2';
                     }
                     $notification .= '"';
-                    $notification .= '><a href="' . base_url('notification/business_post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')">
+                    $notification .= '><a href="' . base_url('notification/business-profile-post/' . $total['business_profile_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')">
                     <div class="notification-database"> <div class="notification-pic" >';
                     $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
@@ -1445,7 +1828,7 @@ class Notification extends MY_Controller {
                         $notification .= 'active2';
                     }
                     $notification .= '"';
-                    $notification .= '><a href="' . base_url('notification/bus_post_img/' . $total['post_id'] . '/' . $total['post_files_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
+                    $notification .= '><a href="' . base_url('notification/business-profile-post-detail/' . $total['post_id'] . '/' . $total['post_files_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
                     $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
@@ -1478,7 +1861,7 @@ class Notification extends MY_Controller {
                         $notification .= 'active2';
                     }
                     $notification .= '"';
-                    $notification .= '><a href="' . base_url('notification/bus_post_img/' . $postid . '/' . $total['post_image_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
+                    $notification .= '><a href="' . base_url('notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
                     $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
@@ -1511,7 +1894,7 @@ class Notification extends MY_Controller {
                         $notification .= 'active2';
                     }
                     $notification .= '"';
-                    $notification .= '><a href="' . base_url('notification/bus_post_img/' . $postid . '/' . $total['post_image_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
+                    $notification .= '><a href="' . base_url('notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
                     $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
@@ -1536,7 +1919,7 @@ class Notification extends MY_Controller {
             }
             //16
             if ($total['not_from'] == 2) {
-        $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_id']))->row()->slug;
+                $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_id']))->row()->slug;
                 $notification .= '<li class="';
                 if ($total['not_active'] == 1) {
                     $notification .= 'active2';
@@ -2288,7 +2671,7 @@ class Notification extends MY_Controller {
         // $user_message = array_merge($return_arraysel, $userlist);
 
         foreach ($user_message as $msg) {
-$job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slug;
+            $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slug;
             if ($message_from_profile == 2) {
                 $image_path = FCPATH . 'uploads/job_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/job_profile/thumbs/' . $msg['user_image'];
@@ -2756,7 +3139,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/notification/business_post/60" onclick="not_active(1366)">
+        <a href="http://localhost/aileensoul/notification/business-profile-post/60" onclick="not_active(1366)">
             <div class="notification-database">
                 <div class="notification-pic"><img src="http://localhost/aileensoul/uploads/business_profile/thumbs/images.png">
                 </div>
@@ -2809,7 +3192,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/notification/business_post/65" onclick="not_active(1151)">
+        <a href="http://localhost/aileensoul/notification/business-profile-post/65" onclick="not_active(1151)">
             <div class="notification-database">
                 <div class="notification-pic"><img src="http://localhost/aileensoul/uploads/business_profile/thumbs/images.png">
                 </div>
@@ -2822,7 +3205,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/notification/business_post/66" onclick="not_active(1150)">
+        <a href="http://localhost/aileensoul/notification/business-profile-post/66" onclick="not_active(1150)">
             <div class="notification-database">
                 <div class="notification-pic"><img src="http://localhost/aileensoul/uploads/business_profile/thumbs/images.png">
                 </div>
@@ -2835,7 +3218,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/notification/business_post/67" onclick="not_active(1149)">
+        <a href="http://localhost/aileensoul/notification/business-profile-post/67" onclick="not_active(1149)">
             <div class="notification-database">
                 <div class="notification-pic"><img src="http://localhost/aileensoul/uploads/business_profile/thumbs/images.png">
                 </div>
@@ -2969,7 +3352,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'art_reg.user_id')
         );
-        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
+        $data = array('notification.*', ' follow.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name', ' art_reg.slug as slug');
 
         $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'follow_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 //echo '<pre>'; print_r($this->data['artfollow']); die();
@@ -3218,8 +3601,8 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
-                    } 
-                    
+                    }
+
                     $return_html .= '">';
 
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
@@ -3255,7 +3638,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 //   2
                 if ($total['not_from'] == 3 && $total['not_img'] == 0) {
 
-                    $return_html .= '<a href="' . base_url() . 'artistic/artistic_profile/' . $total['user_id'] . '">';
+                    $return_html .= '<a href="' . base_url() . 'artistic/dashboard/' . $total['slug'] . '">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
@@ -3294,7 +3677,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 1) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post/' . $total['art_post_id'] . '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3334,7 +3717,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 2) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post/' . $total['art_post_id'] . '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3376,7 +3759,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 3) {
 
-                        $return_html .= '<a href="' . base_url() . 'notification/art_post/' . $total['art_post_id'] . '">
+                        $return_html .= '<a href="' . base_url() . 'notification/art-post/' . $total['art_post_id'] . '">
                                             <li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3538,7 +3921,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                 if ($bus_from1 == '6' && $bus_img1 == '1') {
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
 
-                    $return_html .= '<a href="' . base_url() . 'notification/business_post/' . $total['business_profile_post_id'] . '"  onClick="not_active(' . $total['not_id'] . ')">
+                    $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '"  onClick="not_active(' . $total['not_id'] . ')">
                                         <li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
@@ -3577,7 +3960,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     if ($total['not_img'] == 4) {
                         $postid = $this->db->get_where('post_files', array('post_files_id' => $total['post_image_id']))->row()->post_id;
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
-                        $return_html .= '<a href="' . base_url() . 'notification/bus_post_img/' . $postid . '/' . $total['post_image_id'] . '">
+                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">
                                             <li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3617,7 +4000,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     if ($total['not_img'] == 6) {
                         $postid = $this->db->get_where('post_files', array('post_files_id' => $total['post_image_id']))->row()->post_id;
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
-                        $return_html .= '<a href="' . base_url() . 'notification/bus_post_img/' . $postid . '/' . $total['post_image_id'] . '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post-detail/' . $postid . '/' . $total['post_image_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3700,7 +4083,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     if ($total['not_img'] == 2) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
 
-                        $return_html .= '<a href="' . base_url() . 'notification/business_post/' . $total['business_profile_post_id'] . '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3740,7 +4123,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     if ($total['not_img'] == 3) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
 
-                        $return_html .= '<a href="' . base_url() . 'notification/business_post/' . $total['business_profile_post_id'] . '">';
+                        $return_html .= '<a href="' . base_url() . 'notification/business-profile-post/' . $total['business_profile_post_id'] . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3781,7 +4164,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     if ($total['not_img'] == 5) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
 
-                        $return_html .= '<a href="' . base_url('notification/bus_post_img/' . $total['post_id'] . '/' . $total['post_files_id']) . '">';
+                        $return_html .= '<a href="' . base_url('notification/business-profile-post-detail/' . $total['post_id'] . '/' . $total['post_files_id']) . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
@@ -3821,7 +4204,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
 
                     $id = $this->db->get_where('job_reg', array('user_id' => $total['not_to_id']))->row()->job_id;
                     if ($id) {
-$job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_id']))->row()->slug;
+                        $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_id']))->row()->slug;
                         $return_html .= '<a href="' . base_url() . 'job/resume/' . $job_slug . '?page=recruiter">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
@@ -3933,7 +4316,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_
                                         </a>';
                 }
             }
-        }else{
+        } else {
             $return_html .= '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
 
@@ -3946,6 +4329,128 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_
 
         echo $return_html;
         //NOTIFICATION DATA END
+    }
+
+    public function business_home_follow_ignore() {
+        $userid = $this->session->userdata('aileenuser');
+        $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        $follow_to = $_POST['follow_to'];
+
+        $insert_data['profile'] = '2';
+        $insert_data['user_from'] = $business_profile_id;
+        $insert_data['user_to'] = $follow_to;
+
+        echo $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
+    }
+
+    public function business_profile_active_check() {
+        $userid = $this->session->userdata('aileenuser');
+        if (!$userid) {
+            redirect('login');
+        }
+        // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
+
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business-profile');
+        }
+
+
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
+// DEACTIVATE PROFILE END
+    }
+
+    public function is_business_profile_register() {
+        $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
+        $business_check = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+        if ($business_check) {
+
+            if ($business_check[0]['business_step'] == 1) {
+                redirect('business-profile/contact-information', refresh);
+            } else if ($business_check[0]['business_step'] == 2) {
+                redirect('business-profile/description', refresh);
+            } else if ($business_check[0]['business_step'] == 3) {
+                redirect('business-profile/image', refresh);
+            }
+        } else {
+            redirect('business-profile/business-information-update', refresh);
+        }
+
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
+// DEACTIVATE PROFILE END
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWING COUNT START
+
+    public function business_user_following_count($business_profile_id = '') {
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id == '') {
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        }
+
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_following[0]['table'] = 'follow';
+        $join_str_following[0]['join_table_id'] = 'follow.follow_to';
+        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_following[0]['join_type'] = '';
+
+        $bus_user_f_ing_count = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as following_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
+
+        $following_count = $bus_user_f_ing_count[0]['following_count'];
+
+        return $following_count;
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWING COUNT END
+    // BUSIENSS PROFILE USER FOLLOWER COUNT START
+
+    public function business_user_follower_count($business_profile_id = '') {
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id == '') {
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        }
+
+        $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_following[0]['table'] = 'follow';
+        $join_str_following[0]['join_table_id'] = 'follow.follow_from';
+        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_following[0]['join_type'] = '';
+
+        $bus_user_f_er_count = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as follower_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
+
+        $follower_count = $bus_user_f_er_count[0]['follower_count'];
+
+        return $follower_count;
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWER COUNT END
+    // 
+    public function business_user_contacts_count($business_profile_id = '') {
+
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id != '') {
+            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
+        }
+
+        $contition_array = array('contact_type' => 2, 'contact_person.status' => 'confirm', 'business_profile.status' => 1);
+        $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
+
+        $join_str_contact[0]['table'] = 'business_profile';
+        $join_str_contact[0]['join_table_id'] = 'business_profile.user_id';
+        $join_str_contact[0]['from_table_id'] = 'contact_person.contact_from_id';
+        $join_str_contact[0]['join_type'] = '';
+
+        $contacts_count = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as contact_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_contact, $groupby = '');
+
+        $contacts_count = $contacts_count[0]['contact_count'];
+
+        return $contacts_count;
     }
 
 }

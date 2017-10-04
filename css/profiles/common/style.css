@@ -703,7 +703,7 @@ label.error {
     width: 100%;
     float: left;
 }
-.profile-modal-close, .modal-close, .posterror-modal-close
+.profile-modal-close, .modal-close,
 .modal-close1 {
     height: 30px !important;
     width: 30px !important;
@@ -719,8 +719,7 @@ label.error {
     margin: 0 !important;
     text-align: center !important;
     z-index: 7 !important;
-	padding: 0px 6px;
-	float: right;
+	padding: 4px 7px;
 	border-radius: 100%;
 }
 .modal.message-box .modal-body {
@@ -1080,7 +1079,7 @@ label.cameraButton {
     background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(30, #FCFCFF), color-stop(100, #d5ebfd));
     background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%); 
     background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%, #d5ebfd 100%);
-	height:100%;
+	/*height:100%;*/
 }
 .banner-box{border-bottom:1px solid #d9d9d9;}
 label.cameraButton input[accept*="camera"] {
@@ -2260,6 +2259,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.no-login .fw-479{text-align:center;}
 	.no-login .btn-right.pull-right{float:none !important;}
 	.no-login #paddingtop_fixed{padding-top:105px !important;}
+	
+	
 }
 
 @media screen and (max-width: 360px) {

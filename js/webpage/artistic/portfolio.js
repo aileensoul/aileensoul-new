@@ -13,13 +13,27 @@ input[0].focus();
 input[0].setSelectionRange(len, len);
  });
 
-function portfolio_form_submit(event){  
+
+
+ $("#bestofmine").change(function(event) {
+    
+     $(".bestofmine_image").html("");
     var bestofmine = document.getElementById("bestofmine").value;
     var bestmine = document.getElementById("bestmine").value;
   var $field = $('#artportfolio123');
   var artportfolio = $('#artportfolio123').html();
   artportfolio = artportfolio.replace(/ /gi, " ");
   artportfolio = artportfolio.trim();
+
+
+  var lastIndex = bestofmine.lastIndexOf("\\");
+    if (lastIndex >= 0) {
+        bestofmine = bestofmine.substring(lastIndex + 1);
+        
+    }    
+  $("#datav").text(bestofmine); 
+
+
   if(bestofmine != ''){ 
       var bestofmine_ext = bestofmine.split('.').pop();      
       var allowespdf = ['pdf'];
@@ -31,9 +45,34 @@ function portfolio_form_submit(event){
        if(foundPresentpdf == false)
        {
                  $(".bestofmine_image").html("Please select only pdf file.");
-                return false;       
+                return false;
+                event.preventDefault();       
       }
-      else{ 
+            });
+
+
+function portfolio_form_submit(event){  
+    var bestofmine = document.getElementById("bestofmine").value;
+    var bestmine = document.getElementById("bestmine").value;
+  var $field = $('#artportfolio123');
+  var artportfolio = $('#artportfolio123').html();
+  artportfolio = artportfolio.replace(/ /gi, " ");
+  artportfolio = artportfolio.trim();
+
+      if(bestofmine != ''){ 
+      var bestofmine_ext = bestofmine.split('.').pop();      
+      var allowespdf = ['pdf'];
+      var foundPresentpdf = $.inArray(bestofmine_ext, allowespdf) > -1;
+      }
+      var bestmine_ext = bestmine.split('.').pop();    
+       var allowespdf = ['pdf'];
+       var foundPresentportfolio = $.inArray(bestmine_ext, allowespdf) > -1;
+       if(foundPresentpdf == false)
+       {
+                
+                return false;
+                event.preventDefault();       
+      }else{
         var fd = new FormData();                
          fd.append("image", $("#bestofmine")[0].files[0]);
          files = this.files;
@@ -55,8 +94,9 @@ function portfolio_form_submit(event){
                 // window.location= "<?php echo base_url() ?>artistic/art_post"; 
                   } 
             }
-         });          
-      }
+         });    
+        }       
+     
     }
 
     function delpdf(){
@@ -71,16 +111,16 @@ function portfolio_form_submit(event){
           }
             }); 
   }
-document.getElementById('bestofmine').onchange = uploadOnChange;   
-function uploadOnChange() {
-    var filename = null;
-    var filename = this.value;
-     var lastIndex = filename.lastIndexOf("\\");
-    if (lastIndex >= 0) {
-        filename = filename.substring(lastIndex + 1);
-    }    
-  $("#filename").text(filename); 
-   }
+// document.getElementById('bestofmine').onchange = uploadOnChange;   
+// function uploadOnChange() {
+//     var filename = null;
+//     var filename = this.value;
+//      var lastIndex = filename.lastIndexOf("\\");
+//     if (lastIndex >= 0) {
+//         filename = filename.substring(lastIndex + 1);
+//     }    
+//   $("#filename").text(filename); 
+//    }
    $(".alert").delay(3200).fadeOut(300);
 
 

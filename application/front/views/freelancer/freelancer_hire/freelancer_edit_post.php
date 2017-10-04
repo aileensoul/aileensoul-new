@@ -35,9 +35,9 @@
                             <div class="common-form">
                                 <h3 class="h3_edit"><?php echo $this->lang->line("edit_project"); ?></h3>
                                 <?php echo form_open(base_url('freelancer/freelancer_edit_post_insert/' . $freelancerpostdata[0]['post_id']), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit')); ?>
-                                <div>
+                                <fieldset>
                                     <h4 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h4>
-                                </div>
+                                </fieldset>
 <!--                                <div class="indiavte_freelancer">
                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
                                     <span style="color:#7f7f7e"><?php //echo $this->lang->line("filed_required"); ?></span>

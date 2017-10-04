@@ -55,8 +55,13 @@ class Recruiter extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
 // REDIRECT USER TO REMAIN PROFILE START
+<<<<<<< HEAD
         $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
         $apply_step = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+=======
+       $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
+      $this->data['recdata']= $apply_step = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+>>>>>>> ca7ca60e9becc1244e7e5cb244289056879ee16e
 // REDIRECT USER TO REMAIN PROFILE END
 
         if (count($apply_step) >= 0) {
@@ -874,11 +879,11 @@ class Recruiter extends MY_Controller {
         $postdatas = $this->data['postdata'] = $this->common->select_data_by_id('rec_post', 'post_id', $id, $data = '*', $join_str = array());
 //echo '<pre>'; print_r($postdatas); die();
 //Selected Job titlre fetch
-        $contition_array = array('status' => 'publish', 'title_id' => $postdatas[0]['post_name']);
+        $contition_array = array('title_id' => $postdatas[0]['post_name']);
         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['work_title'] = $jobtitle[0]['name'];
-
+      
 //Selected skill fetch
         $work_skill = explode(',', $postdatas[0]['post_skill']);
 

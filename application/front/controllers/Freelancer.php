@@ -124,7 +124,7 @@ class Freelancer extends MY_Controller {
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'free_post_step,freelancer_post_fullname,freelancer_post_username,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $first_lastname = trim($this->input->post('freelancer_post_fullname')) . " " . trim($this->input->post('freelancer_post_username'));
+            $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->input->post('lastname'));
 
             if ($userdata) {
                 if ($userdata[0]['free_post_step'] == 7) {
@@ -500,22 +500,24 @@ class Freelancer extends MY_Controller {
                 }
                 if (count($skills) > 0) {
                     foreach ($skills as $ski) {
-                        $contition_array = array('skill' => trim($ski), 'type' => 1);
-                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                        if (count($skilldata) < 0) {
-                            $contition_array = array('skill' => trim($ski), 'type' => 5);
+                        if ($ski != " ") {
+                            $contition_array = array('skill' => trim($ski), 'type' => 1);
                             $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                        }
-                        if ($skilldata) {
-                            $skill[] = $skilldata[0]['skill_id'];
-                        } else {
-                            $data = array(
-                                'skill' => trim($ski),
-                                'status' => '1',
-                                'type' => 5,
-                                'user_id' => $userid,
-                            );
-                            $skill[] = $this->common->insert_data_getid($data, 'skill');
+                            if (count($skilldata) < 0) {
+                                $contition_array = array('skill' => trim($ski), 'type' => 5);
+                                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                            }
+                            if ($skilldata) {
+                                $skill[] = $skilldata[0]['skill_id'];
+                            } else {
+                                $data = array(
+                                    'skill' => trim($ski),
+                                    'status' => '1',
+                                    'type' => 5,
+                                    'user_id' => $userid,
+                                );
+                                $skill[] = $this->common->insert_data_getid($data, 'skill');
+                            }
                         }
                     }
                     $skill = array_unique($skill, SORT_REGULAR);
@@ -960,18 +962,18 @@ class Freelancer extends MY_Controller {
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
             $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
             $s3 = new S3(awsAccessKey, awsSecretKey);
-
             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         } else {
             $userid = $id;
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
             $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
             $s3 = new S3(awsAccessKey, awsSecretKey);
-
             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         }
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
@@ -1343,6 +1345,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function ajax_dataforcity() {
+
         if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
             //Get all state data
             $contition_array = array('country_id' => $_POST["country_id"], 'status' => 1);
@@ -1411,23 +1414,25 @@ class Freelancer extends MY_Controller {
             //skill code start
             if (count($skills) > 0) {
                 foreach ($skills as $ski) {
-                    $contition_array = array('skill' => trim($ski), 'type' => 1);
-                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-
-                    if (count($skilldata) < 0) {
-                        $contition_array = array('skill' => trim($ski), 'type' => 5);
+                    if ($ski != " ") {
+                        $contition_array = array('skill' => trim($ski), 'type' => 1);
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                    }
-                    if ($skilldata) {
-                        $skill[] = $skilldata[0]['skill_id'];
-                    } else {
-                        $data = array(
-                            'skill' => trim($ski),
-                            'status' => '1',
-                            'type' => 5,
-                            'user_id' => $userid,
-                        );
-                        $skill[] = $this->common->insert_data_getid($data, 'skill');
+
+                        if (count($skilldata) < 0) {
+                            $contition_array = array('skill' => trim($ski), 'type' => 5);
+                            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        }
+                        if ($skilldata) {
+                            $skill[] = $skilldata[0]['skill_id'];
+                        } else {
+                            $data = array(
+                                'skill' => trim($ski),
+                                'status' => '1',
+                                'type' => 5,
+                                'user_id' => $userid,
+                            );
+                            $skill[] = $this->common->insert_data_getid($data, 'skill');
+                        }
                     }
                 }
                 $skill = array_unique($skill, SORT_REGULAR);
@@ -1885,22 +1890,24 @@ class Freelancer extends MY_Controller {
             if (count($skills) > 0) {
 
                 foreach ($skills as $ski) {
-                    $contition_array = array('skill' => trim($ski), 'type' => 1);
-                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                    if (count($skilldata) < 0) {
-                        $contition_array = array('skill' => trim($ski), 'type' => 5);
+                    if ($ski != " ") {
+                        $contition_array = array('skill' => trim($ski), 'type' => 1);
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                    }
-                    if ($skilldata) {
-                        $skill[] = $skilldata[0]['skill_id'];
-                    } else {
-                        $data = array(
-                            'skill' => trim($ski),
-                            'status' => '1',
-                            'type' => 5,
-                            'user_id' => $userid,
-                        );
-                        $skill[] = $this->common->insert_data_getid($data, 'skill');
+                        if (count($skilldata) < 0) {
+                            $contition_array = array('skill' => trim($ski), 'type' => 5);
+                            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        }
+                        if ($skilldata) {
+                            $skill[] = $skilldata[0]['skill_id'];
+                        } else {
+                            $data = array(
+                                'skill' => trim($ski),
+                                'status' => '1',
+                                'type' => 5,
+                                'user_id' => $userid,
+                            );
+                            $skill[] = $this->common->insert_data_getid($data, 'skill');
+                        }
                     }
                 }
                 $skill = array_unique($skill, SORT_REGULAR);
@@ -1948,6 +1955,7 @@ class Freelancer extends MY_Controller {
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
         $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
         $this->data['title'] = 'Freelancer Apply' . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/post_apply', $this->data);
     }
@@ -1971,18 +1979,21 @@ class Freelancer extends MY_Controller {
 
         $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
         $post_reg_skill = explode(',', $freelancer_post_area);
-
+        // echo "<pre>";print_r($post_reg_skill);die();
         // $date = date('Y-m-d', time());
         // 'post_last_date >=' => $date,
         foreach ($post_reg_skill as $key => $value) {
+            //echo $value;
             $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
             $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($freelancer_post_data) {
                 $freedata[] = $freelancer_post_data;
             }
+            // echo "<pre>";print_r($freedata);
         }
         //        TO CHANGE ARRAY OF ARRAY TO ARRAY START
         $final_post = array_reduce($freedata, 'array_merge', array());
+        //  echo "<pre>"; print_r($final_post); die();
         //        TO CHANGE ARRAY OF ARRAY TO ARRAY END
         // change the order to decending           
         rsort($final_post);
@@ -1991,9 +2002,10 @@ class Freelancer extends MY_Controller {
         $freelancer_post_field = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         // echo "<pre>"; print_r($freelancer_post_field);die();
 
-        $all_post = array_merge($final_post, $freelancer_post_field);
+        $all_post = array_merge((array) $final_post, (array) $freelancer_post_field);
+        //echo "<pre>"; print_r($all_post);die();
         $unique = array_unique($all_post, SORT_ASC);
-        // echo "<pre>"; print_r($unique);die();
+        //   echo "<pre>"; print_r($unique);die();
 
         $postdetail = array_slice($unique, $start, $perpage);
 
@@ -2331,31 +2343,40 @@ class Freelancer extends MY_Controller {
         $save_id = $_POST['save_id'];
 
         $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_id' => $save_id);
-        $userdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($userdata) {
-            $data = array(
-                'status' => 0
-            );
-
-            $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
-            if ($updatedata) {
-                $saveuser = 'Saved';
-                echo $saveuser;
-            }
+        //this condition for prevent dublicate entry of save
+        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'status' => 0, 'save_type' => 2);
+        $usersearchdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if ($usersearchdata) {
+            $saveuser = 'Saved';
+            echo $saveuser;
         } else {
-            $data = array(
-                'from_id' => $userid,
-                'to_id' => $id,
-                'status' => 0,
-                'save_type' => 2
-            );
+            $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_id' => $save_id);
+            $userdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $insert_id = $this->common->insert_data($data, 'save');
-            if ($insert_id) {
-                $saveuser = 'Saved';
-                echo $saveuser;
+            if ($userdata) {
+                $data = array(
+                    'status' => 0
+                );
+
+                $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+                if ($updatedata) {
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
+            } else {
+                $data = array(
+                    'from_id' => $userid,
+                    'to_id' => $id,
+                    'status' => 0,
+                    'save_type' => 2
+                );
+
+                $insert_id = $this->common->insert_data($data, 'save');
+                if ($insert_id) {
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
             }
         }
     }
@@ -2860,6 +2881,11 @@ class Freelancer extends MY_Controller {
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
         $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
         $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_save', $this->data);
     }
@@ -3104,7 +3130,7 @@ class Freelancer extends MY_Controller {
 // code for display page end
 // job seeker detail
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
-        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['title'] = $jobdata[0]['freelancer_post_fullname'] . " " . $jobdata[0]['freelancer_post_username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_save_post', $this->data);
@@ -3589,21 +3615,15 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-//            $filename= FREE_HIRE_PROFILE_MAIN_UPLOAD_URL.$hire_data[0]['freelancer_hire_user_image'];
-//            $bucket=bucket.FREE_HIRE_PROFILE_MAIN_UPLOAD_URL;
-//            echo $filename."<br>";
-//           echo  $bucket;die();
-//            $s3 = new S3(awsAccessKey, awsSecretKey);
-//            //$s3 = new S3();
-//            $info = $s3->getObjectInfo(bucket, $filename);
-//            if ($info) {
-//                echo 'File exists'; die();
-//            } else {
-//                echo 'File does not exists'; die();
-//            }
+            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         } else {
             $contition_array = array('user_id' => $id, 'status' => '1', 'free_hire_step' => 3);
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         }
 
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
@@ -3648,9 +3668,15 @@ class Freelancer extends MY_Controller {
             // code for display page end
             $contition_array = array('user_id' => $userid);
             $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $filename = $this->config->item('free_post_profile_main_upload_path') . $apply_data[0]['freelancer_post_user_image'];
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         } else {
             $contition_array = array('user_id' => $id, 'free_post_step' => 7);
             $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $filename = $this->config->item('free_post_profile_main_upload_path') . $apply_data[0]['freelancer_post_user_image'];
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         }
         $this->data['title'] = $apply_data[0]['freelancer_post_fullname'] . " " . $apply_data[0]['freelancer_post_username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_profile', $this->data);

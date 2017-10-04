@@ -93,9 +93,9 @@
                                 <div class="common-form common-form_border">
                                     <h3><?php echo $this->lang->line("professional_info"); ?></h3>
                                     <?php echo form_open(base_url('freelancer/freelancer_post_professional_information_insert'), array('id' => 'freelancer_post_professional', 'name' => 'freelancer_post_professional', 'class' => 'clearfix')); ?>
-                                    <div>
-                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
-                                    </div>
+                                    <!-- <div>
+                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required"); ?></span>
+                                    </div> -->
                                     <?php
                                     $field = form_error('field');
                                     $area = form_error('area');

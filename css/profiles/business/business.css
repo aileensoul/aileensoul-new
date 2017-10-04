@@ -935,7 +935,7 @@ label.cameraButton:active {
     margin: 0px;
     font-size: 27px;
     cursor: default;
-    padding-top: 1px;
+    padding-top: 2px;
     color: #1b8ab9
 }
 .post-design-box {
@@ -961,7 +961,7 @@ label.cameraButton:active {
     border-bottom: none;
 }
 .post-design-pro-img {
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     padding-left: 17px;
     display: inline-block;
     float: left;
@@ -1002,13 +1002,15 @@ label.cameraButton:active {
     width: auto;
     font-size: 15px;
     display: inline-block;
+	float:left;
+	padding-right:5px;
     font-weight: 600;
     color: #1b8ab9;
     /*text-overflow: ellipsis;*/
     vertical-align: bottom;
     /*overflow: hidden;
    /* white-space: nowrap;*/
-    line-height: 20px;
+    line-height: 21px;
     margin-bottom: 0px;
     font-size: 15px;
 }
@@ -1030,6 +1032,7 @@ label.cameraButton:active {
 }
 .datespan {
     display: inline-block;
+	line-height:1;
 }
 .post-design-product span {
     padding: 0;
@@ -1105,7 +1108,7 @@ label.cameraButton:active {
     position: relative;
     width: 100%;
     float: left;
-    padding: 5px 20px 0px 20px;
+    padding: 5px 17px 0px 17px;
     text-align: left;
     text-align: justify;
     font-size: 13px;
@@ -1620,9 +1623,6 @@ label.cameraButton:active {
     font-size: 14px;
 }
 .popup-img-in {
-    /*padding-left: 5px !important;*/
-    padding-right: 0px;
-    padding-top: 10px;
     float: left;
 }
 .popup-img-in img {
@@ -2317,13 +2317,18 @@ label.cameraButton:active {
 }
 .popup-text textarea {
     overflow-y: hidden;
-    width: 91%;
+    width: 85%;
     padding-left: 0px;
-    height: 39px;
-    font-size: 15px!important;
-    line-height: 1.3;
+    padding-right: 0px;
+    height: 32px;
+    font-size: 19px!important;
+    line-height: 1.2;
     resize: none;
     border: none;
+    white-space: nowrap;
+	overflow: -moz-scrollbars-none;
+	padding-top:5px;
+	padding-bottom:4px;
 }
 .post-editor .popup-textarea p {
     color: #999999;
@@ -2344,7 +2349,7 @@ label.cameraButton:active {
 .text_num {
     position: absolute;
     right: 21%;
-    top: 7px;
+    top: -10px;
     background-color: transparent;
     width: 24px !important;
     font-size: 20px;
@@ -2353,9 +2358,7 @@ label.cameraButton:active {
     height: 30px;
     color: #999;
     padding-left: 0px!important;
-}
-.fifty_val .text_num {
-    top: 0px;
+    cursor: default;
 }
 .editor-content.popup-textarea {
     width: 100%;
@@ -2869,8 +2872,8 @@ label.cameraButton:active {
 }
 .post-design-box .post-design-desc .fr {
     position: absolute;
-    right: 9px;
-    bottom: 0px;
+    right: 0px;
+    bottom: 5px;
 }
 /***--------- end common css for bui and art  ----------***/
 /*** ---------  only bus  -----------  ***/
@@ -3727,9 +3730,6 @@ label.cameraButton input[accept*="camera"] {
     padding-right: 1px !important;
     padding-left: 6px !important;
 }
-.camera_in {
-    margin-top: 5px;
-}
 .close3 {
     color: #ffffff;
     float: right;
@@ -4103,7 +4103,7 @@ div .comment {
     padding: 10px;
     height: inherit;
     line-height: 14px;
-    margin: -25px -23px 1px -20px;
+    margin: -20px -20px 1px -20px;
     font-size: 22px;
 }
 #addcontactContainer {
@@ -4237,8 +4237,8 @@ div .comment {
     height: 210px;
 }
 .four-image img {
-    /*width: 280px;
-    height: 200px;*/
+    width: 280px;
+    height: 200px;
 }
 .three-image img {
     width: 280px;
@@ -4254,7 +4254,7 @@ div .comment {
 .mob-comment button:focus {
     outline: none;
 }
-.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
+.krajee-default[data-template="audio"] .file-preview-audio {/*height:100% !important;*/ border:none;}
 #mainContainer{min-width:108% !important;}
 
 .editor-header .form-group .file-input{margin-left:8px;}
@@ -4279,22 +4279,18 @@ div .comment {
 .no-login #paddingtop_fixed{padding-top:78px !important;}
 .no-login .form-group{margin-bottom:15px;}
 .no-login .form-group label.error{padding-left:0 !important;}
+.no-login .profile-boxProfileCard .not_available{display:none;}
+.no-login footer{display:none;}
+
+.post-design-desc .text_num{top:7px;}
+.all-comment-comment-box .editable_text{margin-left:10px;}
+.all-comment-comment-box .inputtype-edit-comment	.editable_text{margin-left: 10px !important;
+    margin-top: 0 !important;
+    min-height: 37px !important;
+    width: 81%;}
 
 
 
-@keyframes pulse1 {
-    0% {
-        transform: scale(.1);
-        opacity: 0;
-    }
-    50% {
-        opacity: .4;
-    }
-    100% {
-        transform: scale(1.6);
-        opacity: 0;
-    }
-}
 /***  media query  ***/
 
 @media screen and (max-width: 1280px) {
@@ -4340,9 +4336,7 @@ div .comment {
     .mySlides .post-design-commnet-box .cmy_2 {
         width: 86%;
     }
-    .editor-content {
-        width: 86%;
-    }
+   
     .business-profile-right {
         width: 78%;
     }
@@ -4600,9 +4594,6 @@ div .comment {
         width: 100%;
         float: left;
     }
-    .editor-content {
-        width: 88%;
-    }
     .custom-right-art {
         margin-left: 0;
     }
@@ -4707,7 +4698,7 @@ div .comment {
         padding: 9px !important;
     }
     .buisness-menu.other-profile-menu::before {
-        bottom: 97px;
+        bottom: 89px;
     }
     .other-profile-menu .bpro-fw li {
         width: 20%;
@@ -4774,7 +4765,7 @@ div .comment {
         font-size: 23px
     }
     .main-text-area {
-        padding-right: 0px;
+       /* padding-right: 0px;*/
     }
     .hidden-mob {
         display: none;
@@ -4902,9 +4893,6 @@ div .comment {
     }
     .post-design-mid {
         padding-left: 21px;
-    }
-    .popup-text span {
-        font-size: 15px;
     }
     .two-images {
         height: 250px;
@@ -5231,7 +5219,7 @@ div .comment {
         height: 30%;
     }
     .editor-content {
-        width: 80%;
+        width: 87%;
     }
     .post-edit-popup .editor-content {
         width: 87%;
@@ -5277,6 +5265,7 @@ div .comment {
 	.user_lst #followdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
 	.user_lst #followdiv button span{background:url('../../../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
 	.user-list .user_lst .folle_text{width:52%;}
+	.post-edit-popup .popup-text textarea{width:79%;}
 	
 }
 @media screen and (max-width: 540px) {
@@ -5349,8 +5338,9 @@ div .comment {
         padding-left: 7px;
         padding-right: 7px;
     }
+	.editor-content{width:85%;}
     .camer_h i {
-        font-size: 19px;
+        font-size: 25px;
     }
     .common-form1 h3 {
         font-size: 15px;
@@ -5375,6 +5365,9 @@ div .comment {
         font-size: 13px;
         padding: 2px 12px !important;
     }
+	.post-edit-popup .popup-text textarea{width:70%;}
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 }
 @media screen and (max-width: 479px) {
     
@@ -5408,7 +5401,7 @@ div .comment {
         font-size: 12px!important;
     }
     .editor-content {
-        width: 81%;
+        width: 84%;
     }
     .camer_h i {
         font-size: 22px;
@@ -5772,6 +5765,12 @@ div .comment {
 	.search-page .search_button .user_btn button{margin-right:15px;}
 	.like_cmnt_count li .like_count_ext{padding:8px 4px; }
 	.like_cmnt_count li .comnt_count_ext{padding:8px 4px; }
+	.popup-img img{width:40px; height:40px;}
+	.popup-text span{font-size:16px; padding:5px 0;}
+	.popup-text{padding:7px 0px 6px 10px;}
+	.post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
+	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {
@@ -5870,7 +5869,7 @@ div .comment {
         padding-right: 0;
     }
     .editor-content {
-        width: 77%;
+        width: 81%;
         padding-left: 0;
     }
     .post-edit-popup .editor-content {
@@ -5946,10 +5945,12 @@ div .comment {
 	.user-list .user_lst ul li:last-child{width:100%;}
 	.user-list .user_lst ul li .follow-img{margin-bottom:0;}
 	.user-list .user_lst .folle_text{width:75%;}
+	.popup-text textarea::-moz-placeholder{font-size:17px !important;}
+	.popup-text textarea::-webkit-input-placeholder{font-size:17px !important;}
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 319px) {
     .editor-content {
-        width: 70%;
+        width: 79%;
         padding-left: 0;
     }
     .post-design-name {
@@ -5960,7 +5961,19 @@ div .comment {
     }
 }
 
-
+@keyframes pulse1 {
+    0% {
+        transform: scale(.1);
+        opacity: 0;
+    }
+    50% {
+        opacity: .4;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
 
 
 

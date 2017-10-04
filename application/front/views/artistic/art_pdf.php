@@ -115,8 +115,8 @@
         <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['file_name']) ?>">
 
         <div class="margin_less" >
-              <!-- <img src="<?php echo base_url('images/PDF.jpg')?>" style="height: 100%; width: 100%;"> -->
-              <embed src="<?php echo ART_POST_MAIN_UPLOAD_URL . $pdfv['file_name'] ?>" width="100%" height="450px" />
+              <img src="<?php echo base_url('images/PDF.jpg')?>" style="height: 100%; width: 100%;"> 
+              <!-- <embed src="<?php echo ART_POST_MAIN_UPLOAD_URL . $pdfv['file_name'] ?>" width="100%" height="450px" /> -->
                                                               
               </div></a> </div> 
 

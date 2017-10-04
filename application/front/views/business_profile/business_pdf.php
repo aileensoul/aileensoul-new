@@ -62,7 +62,8 @@
                                                             <li>
                                                                 <div class="main_box_pdf">
                                                                     <div class="main_box_img">
-                                                                        <a href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['post_files_id']) ?>">
+                                                                        <!--<a href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['post_files_id']) ?>">-->
+                                                                        <a href="<?php echo BUS_POST_MAIN_UPLOAD_URL  . $pdfv['file_name']  ?>" target="_blank">
                                                                             <div class="" style="margin: 0!important;">
                                                                                 <img src="<?php echo base_url('images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
                                                                             </div>
@@ -72,7 +73,7 @@
                                                                     $contition_array = array('business_profile_post_id' => $pdfv['post_id']);
                                                                     $businesstitle = $this->data['businesstitle'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
-                                                                    <div class="pdf_name"><a title="Zalak infotech .in pdf" href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['post_files_id']) ?>"><?php echo ucfirst(strtolower($businesstitle[0]['product_name'])); ?></a> </div>
+                                                                    <div class="pdf_name"><a title="<?php echo $businesstitle[0]['product_name']; ?>" href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['post_files_id']) ?>"><?php echo ucfirst(strtolower($businesstitle[0]['product_name'])); ?></a> </div>
                                                                 </div>
                                                             </li>
                                                             <?php

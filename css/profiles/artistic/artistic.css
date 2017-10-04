@@ -11,6 +11,7 @@
     width: 100%;
     float: left;
 }
+.inner_search .box_search_module{padding-left: 35px !important;}
 .job-saved-box h3 {
     background: #fff !important;
     margin: 0;
@@ -957,7 +958,7 @@ label.cameraButton:active {
     border-bottom: none;
 }
 .post-design-pro-img {
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     padding-left: 17px;
     display: inline-block;
     float: left;
@@ -999,13 +1000,15 @@ label.cameraButton:active {
     width: auto;
     font-size: 15px;
     display: inline-block;
+	float:left;
+	padding-right:5px;
     font-weight: 600;
     color: #1b8ab9;
     /*text-overflow: ellipsis;*/
     vertical-align: bottom;
     /*overflow: hidden;
    /* white-space: nowrap;*/
-    line-height: 20px;
+    line-height: 21px;
     margin-bottom: 0px;
     font-size: 15px;
 }
@@ -1029,6 +1032,7 @@ label.cameraButton:active {
 }
 .datespan {
     display: inline-block;
+	line-height:1;
 }
 .post-design-product span {
     padding: 0;
@@ -1104,7 +1108,7 @@ label.cameraButton:active {
     position: relative;
     width: 100%;
     float: left;
-    padding: 5px 20px 0px 20px;
+    padding: 5px 17px 0px 17px;
     text-align: left;
     text-align: justify;
     font-size: 13px;
@@ -1812,10 +1816,10 @@ label.cameraButton:active {
     list-style: none;
 }
 .profile-main-box-buis-menu li a:hover {
-    /*box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
     background-color: #1b8ab9;
     color: #ffffff;
-    border-bottom: 5px solid #1b8ab9;*/
+    border-bottom: 5px solid #1b8ab9;
 }
 .profile-main-box-buis-menu ul li.active {
     position: relative;
@@ -2318,14 +2322,15 @@ label.cameraButton:active {
     width: 85%;
     padding-left: 0px;
     padding-right: 0px;
-    height: 30px;
+    height: 32px;
     font-size: 19px!important;
-    line-height: 1;
+    line-height: 1.2;
     resize: none;
     border: none;
     white-space: nowrap;
 	overflow: -moz-scrollbars-none;
-	padding-top:6px;
+	padding-top:5px;
+	padding-bottom:4px;
 }
 .popup-text textarea::-webkit-scrollbar { 
     display: none; 
@@ -2871,8 +2876,8 @@ label.cameraButton:active {
 }
 .post-design-box .post-design-desc .fr {
     position: absolute;
-    right: 9px;
-    bottom: 0px;
+    right: 0px;
+    bottom: 5px;
 }
 /***--------- end common css for bui and art  ----------***/
 /*** ---------  only art  -----------  ***/
@@ -3960,10 +3965,19 @@ div .comment {
 .post-design-commnet-box button:focus{/*outline:none;*/}
 
 .flw_msg_btn ul li:last-child a{margin-top:0;}
-.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
+.krajee-default[data-template="audio"] .file-preview-audio {/*height:100% !important;*/ border:none; }
 #mainContainer{min-width:108% !important;}
 .post-design-product_follow_main{padding-top:5px;}
 .post-design-product_follow{padding-top:5px;}
+.attach-file-name{padding-left:15px;}
+.animated.fadeInUp{animation-fill-mode: none;}
+
+.post-design-desc .text_num{top:7px;}
+.all-comment-comment-box .editable_text{margin-left:10px;}
+.all-comment-comment-box .inputtype-edit-comment	.editable_text{margin-left: 10px !important;
+    margin-top: 0 !important;
+    min-height: 37px !important;
+    width: 81%;}
 
 
 
@@ -4306,9 +4320,7 @@ div .comment {
         width: 100%;
         float: left;
     }
-    .editor-content {
-        width: 90%;
-    }
+   
     .custom-right-art {
         margin-left: 0;
     }
@@ -5442,7 +5454,7 @@ div .comment {
 	.popup-img img{width:40px; height:40px;}
 	.popup-text span{font-size:16px; padding:5px 0;}
 	.popup-text{padding:7px 0px 6px 10px;}
-	.post-edit-popup .popup-text textarea{width:70%;}
+	.post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
 }
 
 @media screen and (max-width: 430px) {
@@ -5523,7 +5535,7 @@ div .comment {
         padding-right: 0;
     }
     .editor-content {
-        width: 82%;
+        width: 81%;
     }
     .post-edit-popup .editor-content {
         width: 76%;

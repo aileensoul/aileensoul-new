@@ -41,21 +41,38 @@
                         <div class="col-md-3 col-sm-4">
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
-                                    <li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>">Business Information</a></li> 
+<!--                                    <li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>">Business Information</a></li> 
 
                                     <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#">Contact Information</a></li>
 
                                     <li class="custom-none <?php
                                     if ($business_common_data[0]['business_step'] < '2') {
-                                        echo "khyati";
+                                        echo "active";
                                     }
                                     ?>"><a href="<?php echo base_url('business-profile/description'); ?>">Description</a></li>
 
                                     <li class="custom-none <?php
                                     if ($business_common_data[0]['business_step'] < '3') {
-                                        echo "khyati";
+                                        echo "active";
                                     }
                                     ?>"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
+                                    -->
+
+                                    <li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>"><?php echo $this->lang->line("business_information"); ?></a></li>
+                                    <li class="custom-none active init"><a href="javascript:void(0);"><?php echo $this->lang->line("contact_information"); ?></a></li>
+                                    <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
+                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/description'); ?>"><?php echo $this->lang->line("description"); ?></a></li>
+                                    <?php } else { ?>
+                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("description"); ?></a></li>
+                                    <?php } ?>
+                                    <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
+                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/image'); ?>"><?php echo $this->lang->line("business_images"); ?></a></li>
+                                    <?php } else {
+                                        ?>
+                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("business_images"); ?></a></li>
+                                    <?php }
+                                    ?>
+
 
                                 </ul>
                             </div>

@@ -137,7 +137,7 @@
 <?php echo $business_left; ?>
                             </div>
                         </div>
-                        <div class="col-md-7 search-post-box col-sm-12 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
+                        <div class="col-md-6 search-post-box col-sm-12 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">

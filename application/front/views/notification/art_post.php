@@ -72,28 +72,14 @@
                      ?>
                      <?php if($artisticdata[0]['art_user_image']){?>
                       <?php 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) {
-                                                                $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                                                ?>
-                                                                <div class= "post-img-div">
-                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
-                                                                </div> 
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
+                                                                 <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
 <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>"  alt="">
                   <?php }?>
-                  <?php }else{
-                    $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                    ?>
-                          <div class= "post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
+                  <?php }else{ ?>
+                     <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                   <?php }?>
                </div>
                <div id="myBtn"  class="editor-content popup-text">
@@ -134,31 +120,41 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                    <?php
                                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
 
+                                        $art_slug = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id'], 'status' => 1))->row()->slug;
+
                                         $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
+
+                                        $slugid = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->slug;
+
                                                     ?>
 
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
 
-                                        <a class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>">
+                                        <a class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
 
                                                 <?php if($userimageposted){?>
+
+                                                 <a href="<?php echo base_url('artistic/dashboard/' . $art_slug . ''); ?>">
+
                                                 <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
+                                              </a>
 
                                                 <?php }else{?>
-<img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
+                                                 <a href="<?php echo base_url('artistic/dashboard/' . $art_slug . ''); ?>">
+<img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>"></a>
 
                                                 <?php }?>
                                             </a>
 
                                         <?php } else { ?>
 
-                                          <a  class="post_dot" title="" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
+                                          <a  class="post_dot" title="" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>">
 
                <?php if($art_userimage){?>
                 <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
                 <?php }else{?>
 
-                 <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($art_data[0]['art_name']) . ' ' . ucwords($art_data[0]['art_lastname']); ?>">
+                 <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucwords($art_data[0]['art_name']) . ' ' . ucwords($art_data[0]['art_lastname']); ?>">
                 <?php }?>
                  </a>
          <?php } ?>
@@ -171,8 +167,11 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                                         $lastname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_lastname;
 
+                                                        
                                                         $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_name;
                                                         $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_lastname;
+
+                                                         $slugposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->slug;
                                                        
                                                         $designation = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->designation;
 
@@ -198,9 +197,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                                                 <?php if ($art_data[0]['posted_user_id']) { ?>
                                                                     <div class="else_post_d">
-                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
+                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugposted); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
                                                                         <p class="posted_with" > Posted With </p>
-                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
+                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
 
                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                         <span class="ctre_date"> 
@@ -215,7 +214,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                                                     echo ucwords($firstname);
                                                                     print "&nbsp;&nbsp;";
                                                                     echo ucwords($lastname);
-                                                                    ?>" class="post_dot" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>"><?php
+                                                                    ?>" class="post_dot" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>"><?php
                                                                        echo ucwords($firstname);
                                                                        print "&nbsp;&nbsp;";
                                                                        echo ucwords($lastname);
@@ -347,9 +346,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                                     <?php if (count($artmultiimage) == 1) { ?>
 
                                                         <?php
-                                                        $allowed = array('gif', 'png', 'jpg');
+                                                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                                                         $allowespdf = array('pdf');
-                                                        $allowesvideo = array('mp4', '3gp', 'avi', 'ogg', '3gp', 'webm');
+                                                        $allowesvideo = array('mp4', 'MP4', '3gp', 'avi', 'ogg', '3gp', 'webm');
                                                         $allowesaudio = array('mp3');
                                                         $filename = $artmultiimage[0]['file_name'];
                                                         $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -727,48 +726,51 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                         foreach ($artdata as $rowdata) {
                                            $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
                                             $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                                            $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                         ?>
 
 
 
                     <div class="all-comment-comment-box">
-                                                                                <a href="<?php echo base_url('artistic/art_manage_post/' . $rowdata['user_id'] . ''); ?>">
+                                                                               
                         <div class="post-design-pro-comment-img">
 
                         <?php
                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                     ?>
-                                                                            <?php if ($art_userimage) { ?>
+                              <?php if ($art_userimage) { ?>
 
-                                                                                    <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
+                               <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+
+                                    <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
+                                  </a>
                         <?php
                     } else {
                         ?>
-                                                                                <a href="<?php echo base_url('artistic/art_manage_post/' . $rowdata['user_id'] . ''); ?>">
+                          <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
 
-                                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
-                                                                                </a>
+                           <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="">
+                         </a>
                         <?php
                     }
                     ?>
                                                                     
-
                         </div>
 
 
                               <div class="comment-name">
-                                                                            <b title=" <?php
-                                                                                   echo ucwords($artname);
-                                                                                   echo "&nbsp;";
-                                                                                   echo ucwords($artlastname);
-                                                                                   ?>">
-                                                                                <?php
-                                                                                echo ucwords($artname);
-                                                                                echo "&nbsp;";
-                                                                                echo ucwords($artlastname);
-                                                                                ?></b><?php echo '</br>'; ?></div>
+                                      <b title=" <?php echo ucwords($artname); echo "&nbsp;"; echo ucwords($artlastname); ?>">
+                                      <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                              <?php
+                                               echo ucwords($artname);
+                                                echo "&nbsp;";
+                                                echo ucwords($artlastname);
+                                                 ?></b><?php echo '</br>'; ?>
+                                               </a>
+
+                                               </div>
                         
-                                                                                </a>
+                                    
 
                                          <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['artistic_post_comment_id']; ?>">
                     <?php
@@ -816,19 +818,18 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                      </div>
 
                                           <?php
-                                                                            $userid = $this->session->userdata('aileenuser');
+                                               $userid = $this->session->userdata('aileenuser');
 
-                                                                            if ($rowdata['user_id'] == $userid) {
+                                                   if ($rowdata['user_id'] == $userid) {
                                                                                 ?> 
-
-                                                                                <span role="presentation" aria-hidden="true"> · </span>
-                                                                                <div class="comment-details-menu">
-                                                                                    <div id="<?php echo 'editcommentbox' . $rowdata['artistic_post_comment_id']; ?>" style="display:block;">
-                                                                                        <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editbox(this.id)" class="editbox">Edit
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div id="<?php echo 'editcancle' . $rowdata['artistic_post_comment_id']; ?>" style="display:none;">
-                                                                                        <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editcancle(this.id)">Cancel
+                                        <span role="presentation" aria-hidden="true"> · </span>
+                                              <div class="comment-details-menu">
+                                                  <div id="<?php echo 'editcommentbox' . $rowdata['artistic_post_comment_id']; ?>" style="display:block;">
+                                                 <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editbox(this.id)" class="editbox">Edit
+                                                       </a>
+                                                  </div>
+                                          <div id="<?php echo 'editcancle' . $rowdata['artistic_post_comment_id']; ?>" style="display:none;">
+                                                <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>" onClick="comment_editcancle(this.id)">Cancel
                                                                                         </a>
                                                                                     </div>
                                                                                 </div>
@@ -887,11 +888,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                                     ?>
                                                 <div class="post-design-proo-img">
                                                     <?php if ($art_userimage) { ?>
+                                                     <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
                                                         <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
+                                                      </a>
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <img src="<?php echo base_url(NOIMAGE); ?>" alt="No Image">
+                                                         <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                                        <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="No Image"></a>
                 <?php
             }
             ?>
@@ -1032,28 +1036,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                      <div class="popup-img-in "> 
                      <?php if($artisticdata[0]['art_user_image']){?>
                    <?php 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) {
-                                                                $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);
-                                                                ?>
-                                                                <div class="post-img-div">
-                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
-                                                                </div> 
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
+                                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
                      <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>"  alt="">
                      <?php }?>
                      <?php }else{?>
-                                  <?php 
-                         $a = $artisticdata[0]['art_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $artisticdata[0]['art_lastname'];
-                                                                $bcr = substr($b, 0, 1);?>
-                            <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
-                            </div>
+                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                      <?php }?>
                      </div>
                      <div id="myBtn"  class="editor-content col-md-10 popup-text" >

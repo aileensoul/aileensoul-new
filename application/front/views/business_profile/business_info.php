@@ -27,7 +27,6 @@
                         ?>
                         <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_title"); ?></h3></div>
                     <?php } ?>
-
                 </div>
                 <div class="container">
                     <div class="row">
@@ -35,24 +34,23 @@
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
                                     <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("business_information"); ?></a></li>
-                                    <li class="custom-none <?php
-                                    if ($business_common_data[0]['business_step'] < '1') {
-                                        echo "active";
-                                    }
-                                    ?>"><a href="<?php echo base_url('business-profile/contact-information'); ?>"><?php echo $this->lang->line("contact_information"); ?></a></li>
-
-                                    <li class="custom-none <?php
-                                    if ($business_common_data[0]['business_step'] < '2') {
-                                        echo "active";
-                                    }
-                                    ?>"><a href="<?php echo base_url('business-profile/description'); ?>"><?php echo $this->lang->line("description"); ?></a></li>
-
-                                    <li class="custom-none <?php
-                                    if ($business_common_data[0]['business_step'] < '3') {
-                                        echo "active";
-                                    }
-                                    ?>"><a href="<?php echo base_url('business-profile/image'); ?>"><?php echo $this->lang->line("business_images"); ?></a></li>
-
+                                    <?php if ($business_common_data[0]['business_step'] > '0' && $business_common_data[0]['business_step'] != '') { ?>
+                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/contact-information'); ?>"><?php echo $this->lang->line("contact_information"); ?></a></li>
+                                    <?php } else { ?>
+                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("contact_information"); ?></a></li>
+                                    <?php } ?>
+                                    <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
+                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/description'); ?>"><?php echo $this->lang->line("description"); ?></a></li>
+                                    <?php } else { ?>
+                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("description"); ?></a></li>
+                                    <?php } ?>
+                                    <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
+                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/image'); ?>"><?php echo $this->lang->line("business_images"); ?></a></li>
+                                    <?php } else {
+                                        ?>
+                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("business_images"); ?></a></li>
+                                        <?php }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -73,23 +71,23 @@
                                     <?php echo $this->lang->line("business_information"); ?>
                                 </h3>
                                 <?php echo form_open(base_url('business-profile/business-information-insert'), array('id' => 'businessinfo', 'name' => 'businessinfo', 'class' => 'clearfix')); ?>
-                               <!--  <div>
-                                    <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                </div> -->
+                                <!--  <div>
+                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
+                                 </div> -->
                                 <?php
                                 $companyname = form_error('companyname');
                                 $country = form_error('country');
                                 $state = form_error('state');
                                 $business_address = form_error('business_address');
                                 ?>
-                                <fieldset class="full-width <?php if ($companyname){?> error-msg <?php } ?>">
+                                <fieldset class="full-width <?php if ($companyname) { ?> error-msg <?php } ?>">
                                     <label><?php echo $this->lang->line("company_name"); ?>:<span style="color:red">*</span></label>
                                     <input name="companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="<?php echo $this->lang->line("enter_company_name"); ?>" value="<?php
                                     if ($companyname1) {
                                         echo $companyname1;
                                     }
                                     ?>"/>
-                                           <span id="companyname-error"></span><?php echo form_error('companyname'); ?>
+                                    <span id="companyname-error"></span><?php echo form_error('companyname'); ?>
                                 </fieldset>
                                 <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
@@ -181,7 +179,7 @@
 
                                 </fieldset>
 
-                                <fieldset class="full-width <?php if ($business_address){?> error-msg <?php } ?>">
+                                <fieldset class="full-width <?php if ($business_address) { ?> error-msg <?php } ?>">
                                     <label><?php echo $this->lang->line("postal_address"); ?>:<span style="color:red">*</span></label>
                                     <textarea name ="business_address" tabindex="6"  id="business_address" rows="4" cols="50" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;"><?php
                                         if ($address1) {

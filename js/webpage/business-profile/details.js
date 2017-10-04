@@ -45,9 +45,11 @@ function unfollowuser_two(clicked_id)
 
 function openModal() {
     document.getElementById('myModal1').style.display = "block";
+    $('body').addClass('modal-open');
 }
 function closeModal() {
     document.getElementById('myModal1').style.display = "none";
+    $('body').removeClass('modal-open');
 }
 
 var n = 1;
