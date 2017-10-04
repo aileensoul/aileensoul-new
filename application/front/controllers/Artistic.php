@@ -14568,7 +14568,7 @@ public function get_artistic_name($id=''){
                                           </ul>
                                        </div>
                                        <div class="dropdown1">
-                                               <a onclick="myFunction('.$key['art_post_id'].')" class=" dropbtn1 fa fa-ellipsis-v"></a>
+                                               <a onclick="myFunctionone('.$key['art_post_id'].')" class=" dropbtn1 fa fa-ellipsis-v"></a>
                                                   <div id="myDropdown'.$key['art_post_id'].'" class="dropdown-content1 ">';
                                                             
                                                             if ($key['posted_user_id'] != 0) {
