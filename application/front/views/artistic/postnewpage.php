@@ -1301,7 +1301,6 @@ var base_url = '<?php echo base_url(); ?>';
 var data = <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($de); ?>;                                       
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/postnewpage.js?ver='.time()); ?>"></script>
 </body>
 </html>
