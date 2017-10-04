@@ -6722,7 +6722,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="comment-details" id= "showcommentimg' . $art_comment['post_image_comment_id'] . '"" >';
             $cmtinsert .= $this->common->make_links($art_comment['comment']);
             $cmtinsert .= '</div><div class ="inputtype-edit-comment">';
-            $cmtinsert .= '<div contenteditable="true" class="editable_text" style="width:75%; display:none;" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimg' . $art_comment['post_image_comment_id'] . '"style="display:none;" onkeyup="commenteditimg(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
+            $cmtinsert .= '<div contenteditable="true" class="editable_text" style="display:none;" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimg' . $art_comment['post_image_comment_id'] . '"style="display:none;" onkeyup="commenteditimg(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
 
             $cmtinsert .= '' . $art_comment['comment'] . '';
             $cmtinsert .= '</div>';
