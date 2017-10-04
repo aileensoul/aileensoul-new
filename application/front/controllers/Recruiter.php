@@ -215,20 +215,20 @@ class Recruiter extends MY_Controller {
 //if user deactive profile then redirect to recruiter/index untill active profile End
 
 
-      //  $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
-      //  $userdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
+        $userdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //$email1 = $this->data['recdata'][0]['rec_email'];
+        $email1 = $userdata[0]['rec_email'];
 
-        if ($this->data['recdata'][0]['rec_email']) {
+        if ($email1) {
             $condition_array = array('is_delete' => '0', 'user_id !=' => $userid, 're_status' => '1');
 
-            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $this->data['recdata'][0]['rec_email'], '', '', $condition_array);
+            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $email, '', '', $condition_array);
         } else {
 
             $condition_array = array('is_delete' => '0', 're_status' => '1');
 
-            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $this->data['recdata'][0]['rec_email'], '', '', $condition_array);
+            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $email, '', '', $condition_array);
         }
 
         if ($check_result) {
@@ -499,7 +499,7 @@ class Recruiter extends MY_Controller {
 
 // RECRUITER CHECK EMAIL FUCNTION IN COMPANY INFORMATION INSERT CODE END   
 // RECRUITER CHECK EMAIL COMAPNY FUNCTION START   
-    public function check_email_com() { //echo "hello"; die();
+     public function check_email_com() { //echo "hello"; die();
         $email = $this->input->post('comp_email');
 
         $userid = $this->session->userdata('aileenuser');
@@ -513,20 +513,20 @@ class Recruiter extends MY_Controller {
         }
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
 
-       // $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
-       // $userdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
+        $userdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-       // $email1 = $this->data['recdata'][0]['rec_email'];
+        $email1 = $userdata[0]['rec_email'];
 
-        if ($this->data['recdata'][0]['rec_email']) {
+        if ($email1) {
             $condition_array = array('is_delete' => '0', 'user_id !=' => $userid);
 
-            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $this->data['recdata'][0]['rec_email'], '', '', $condition_array);
+            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $email, '', '', $condition_array);
         } else {
 
             $condition_array = array('is_delete' => '0');
 
-            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $this->data['recdata'][0]['rec_email'], '', '', $condition_array);
+            $check_result = $this->common->check_unique_avalibility('recruiter', 'rec_email', $email, '', '', $condition_array);
         }
 
         if ($check_result) {
@@ -860,11 +860,11 @@ class Recruiter extends MY_Controller {
         $contition_array = array('status' => 1);
         $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
+        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Others");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Other");
+        $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Others");
         $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
@@ -2313,7 +2313,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '</p>  
                                                                     </span>
                                                                 </li>
-                                                                <li><b>Salffary</b><span title="Min - Max" >';
+                                                                <li><b>Salary</b><span title="Min - Max" >';
 
                         $currency = $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
 
@@ -2724,6 +2724,8 @@ class Recruiter extends MY_Controller {
         }
 
         $postdetail = $this->data['postdetail'] = $unique;
+ $postdetail = array_unique($postdetail, SORT_REGULAR);
+ 
         $searchdata1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($searchdata1);
