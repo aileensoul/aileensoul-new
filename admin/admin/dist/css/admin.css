@@ -1,0 +1,56 @@
+.fl{float: left;}
+table.table-bordered tbody th, table.table-bordered tbody td{font-size: 12px;}
+.fr{float: right;}
+.btn.btn-flat{margin-top: 15px;}
+.mt0{margin-top: 0px;}
+.post .form-group{margin-bottom: 5px;}
+.post .form-group label{padding-top: 0;}
+.post .form-group .control-label{padding-top: 0;}
+.head_title {
+    margin: 5px;
+    display: inline-block;
+    border-bottom: 2px solid;
+    margin-bottom: 15px;
+}
+
+.message{text-align:center; }
+.message a{margin: 0px 10px 5px 20px;}
+.message button{margin: 0px 10px 4px 20px;}
+.btn1{background-color: #1b8ab9;color: #fff!important;}
+.btn1:hover{background-color: #156f95;color: #fff;}
+.btn1:active{background-color: #156f95;color: #fff;}
+.message #delete,#activate{padding: 6px 24px 6px 24px;}
+.table td .btn-xs{margin: 2px;}
+
+.pagi_exp .tablinks {
+	border:0;
+    padding: 2px 3px;
+    background-color: white;
+    color: black;
+}
+.data_exp {
+    /*padding: 12px 12px!important;*/
+    /* border: 1px solid #ccc; */
+    
+    border: none!important;
+}
+.pagi_exp {
+    margin: 0 auto;
+    text-align: center;
+}
+.pagi_exp .tablinks:hover {
+    background-color: #d9d9d9;
+    border-radius: 3px;
+}
+.tabcontent {
+    display: none;
+    /*padding: 6px 12px;*/
+    
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.approve_action{
+width: 25%;
+float: right;
+margin-top: 23px;
+}
