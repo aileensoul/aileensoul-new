@@ -13,8 +13,14 @@ $this->data['footer'] = $this->load->view('footer', $this->data, true);
 
 $this->data['rec_search'] = $this->load->view('recruiter/rec_search', $this->data, true);
 $this->data['recruiter_header2_border'] = $this->load->view('recruiter/recruiter_header2_border', $this->data, true);
-
 // recruiter detail
+
+// Start Job
+$this->data['job_left'] = $this->load->view('job/job_left', $this->data, true);
+$this->data['job_search'] = $this->load->view('job/job_search', $this->data, true);
+$this->data['job_menubar'] = $this->load->view('job/menubar', $this->data, true);
+$this->data['job_header2_border'] = $this->load->view('job/job_header2_border', $this->data, true);
+// End Job
 
 $id = $this->uri->segment(3);
 

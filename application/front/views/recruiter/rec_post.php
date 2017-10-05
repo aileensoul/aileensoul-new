@@ -18,15 +18,15 @@
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
         <?php
- $returnpage= $_GET['page'];
- if($returnpage == 'job'){
+  $returnpage= $_GET['page'];
+ 
+ if($returnpage == 'job'){ 
      echo $job_header2_border; 
  }
- elseif($recdata[0]['re_step'] == 3){
-  echo $recruiter_header2_border; 
+ elseif($recdata[0]['re_step'] == 3){ echo 22; die();
+  $recruiter_header2_border; 
  }
  elseif($returnpage == 'notification'){
-
  }
 ?>
         <div id="preloader"></div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="">
                     <div class="" id="row2">
-                        <?php echo "122"; 
+                        <?php 
                         $userid = $this->session->userdata('aileenuser');
                         if ($this->uri->segment(3) == $userid) {
                             $user_id = $userid;

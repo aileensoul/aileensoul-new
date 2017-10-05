@@ -97,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <?php
                                 if ($message_from_profile == 1) {
                                     $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'recruiter/rec_profile/' . $id . '?page=job';
+                                    $profile_url = base_url() . 'recruiter/profile/' . $id . '?page=job';
                                 }
                                 if ($message_from_profile == 2) {
                                     $last_user_image = $last_user_data['user_image'];
