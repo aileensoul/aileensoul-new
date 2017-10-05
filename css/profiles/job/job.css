@@ -472,8 +472,8 @@ li.fr a {
     /* w3c */
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
-    font-size: 24px;
-    padding: 22px 0;
+    font-size: 20px;
+    padding: 16px 0;
     text-align: center;
     text-transform: uppercase;
 }
@@ -618,7 +618,7 @@ li.fr a {
     line-height: 4;
 }
 .a-inlineBlock .data_img_2 .post-img-profile {
-    line-height: 1;
+    line-height: 2;
 }
 .notac_a {
     text-align: center;
