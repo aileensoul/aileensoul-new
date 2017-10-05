@@ -432,7 +432,7 @@ class Artistic extends MY_Controller {
 
             $this->form_validation->set_rules('skills', 'Skill', 'required');
             $this->form_validation->set_rules('artname', 'Speciality in art', 'required');
-            $this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
+            //$this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('artistic/art_information');
             } else {

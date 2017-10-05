@@ -87,7 +87,7 @@
                                 <?php
                                  $artname =  form_error('artname');
                                  $skills =  form_error('skills');
-                                 $desc_art =  form_error('desc_art');
+                                 //$desc_art =  form_error('desc_art');
                                   
                                  ?>
 
@@ -107,8 +107,8 @@
                                 </fieldset>
               
                               
-                                <fieldset  class="<?php if($desc_art) {  ?>error-msg <?php } ?> full-width">
-                                    <label>Description of your artistic career:<span style="color:red">*</span></label>
+                                <fieldset  class="full-width">
+                                    <label>Description of your artistic career:<!-- <span style="color:red">*</span> --></label>
 
                                  <textarea id="textarea" name ="desc_art" id="desc_art" tabindex="3" rows="4" cols="50" placeholder="Enter description of your art" style="resize: none;"><?php if($desc_art1){ echo $desc_art1; } ?></textarea>
                                    
