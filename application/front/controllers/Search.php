@@ -291,17 +291,24 @@ class Search extends MY_Controller {
                                                                                 <li style="display: block;">
                                                                                     <a  class="color-search" s title="">';
 
-                    $cache_time = $this->db->get_where('industry_type', array('industry_id' => $p['industriyal']))->row()->industry_name;
+                   $cache_time = $this->db->get_where('industry_type', array('industry_id' => $p['industriyal']))->row()->industry_name;
+                   if($cache_time != ''){
                     $return_html .= $cache_time;
-
+                   }
+                   else{
+                       $return_html .= $p['other_industrial'];
+                   }
                     $return_html .= '</a>
                                                                                 </li>
                                                                                 <li style="display: block;">
                                                                                     <a title="" class="color-search">';
 
-                    $cache_time = $this->db->get_where('business_type', array('type_id' => $p['business_type']))->row()->business_name;
-                    $return_html .= $cache_time;
-
+                   $cache_time = $this->db->get_where('business_type', array('type_id' => $p['business_type']))->row()->business_name;
+                   if($cache_time != ''){
+                       $return_html .= $cache_time;
+                   }else{
+                       $return_html .= $p['other_business_type'];
+                   }
                     $return_html .= '</a>
                                                                                 </li>
                                                                                 <li style="display: block;">

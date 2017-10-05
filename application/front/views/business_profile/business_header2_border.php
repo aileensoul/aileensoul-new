@@ -2,9 +2,10 @@
 
     function addmsg_contact(type, msg)
     {
-        if (msg == 0)
+        if (msg == '0')
         {
             $("#addcontact_count").html('');
+            $('#addcontact_count').css({"background-color": "", "padding": "0px"});
             $('#addcontactLink').removeClass('contact_notification_available');
         } else
         {
@@ -410,6 +411,7 @@
         {
             $("#message_count").html('');
             $("#message_count").removeAttr("style");
+            $('#message_count').removeClass('count_add');
             $('#InboxLink').removeClass('msg_notification_available');
             document.getElementById('message_count').style.display = "none";
         } else
