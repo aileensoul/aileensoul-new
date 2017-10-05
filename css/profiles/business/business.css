@@ -992,7 +992,8 @@ label.cameraButton:active {
     color: #91949d;
     font-size: 13px;
     line-height: 16px;
-    display: block;
+    /*display: block;*/
+	float:left;
 }
 .post-design-product {
     padding-left: 10px;
@@ -3218,6 +3219,7 @@ label.cameraButton:active {
 .color-search {
     color: #999!important;
 }
+.color-search:hover{color:#1b8ab9 !important;}
 .images_add_bui {
     display: block;
     text-align: center;
@@ -3762,6 +3764,7 @@ label.cameraButton input[accept*="camera"] {
     color: #91949d;
     display: inline-block;
 	float:left;
+	line-height:1;
 }
 .editav_2 {
     display: none;
