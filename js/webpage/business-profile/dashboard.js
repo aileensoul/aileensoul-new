@@ -8,7 +8,7 @@ $(document).ready(function () {
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 //        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-          if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
 
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
@@ -360,92 +360,92 @@ function entercomment(clicked_id)
 {
 //    var is_valid_post = check_post_available(clicked_id);
 //    if (is_valid_post == true) {
-        $("#post_comment" + clicked_id).click(function () {
-            $(this).prop("contentEditable", true);
-        });
-        $('#post_comment' + clicked_id).keypress(function (e) {
-            if (e.keyCode == 13 && !e.shiftKey) {
-                e.preventDefault();
-                var sel = $("#post_comment" + clicked_id);
-                var txt = sel.html();
-                txt = txt.replace(/&nbsp;/gi, " ");
-                txt = txt.replace(/<br>$/, '');
-                txt = txt.replace(/&gt;/gi, ">");
-                txt = txt.replace(/div/gi, 'p');
-                if (txt == '' || txt == '<br>') {
-                    return false;
-                }
-                if (/^\s+$/gi.test(txt))
-                {
-                    return false;
-                }
-                txt = txt.replace(/&/g, "%26");
-                $('#post_comment' + clicked_id).html("");
-                if (window.preventDuplicateKeyPresses)
-                    return;
-                window.preventDuplicateKeyPresses = true;
-                window.setTimeout(function () {
-                    window.preventDuplicateKeyPresses = false;
-                }, 500);
-                var x = document.getElementById('threecomment' + clicked_id);
-                var y = document.getElementById('fourcomment' + clicked_id);
-                if (x.style.display === 'block' && y.style.display === 'none') {
-                    $.ajax({
-                        type: 'POST',
-                        url: base_url + "business_profile/insert_commentthree",
-                        data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
-                        dataType: "json",
-                        success: function (data) {
-                            $('textarea').each(function () {
-                                $(this).val('');
-                            });
-                            $('.insertcomment' + clicked_id).html(data.comment);
-                            $('.comment_count' + clicked_id).html(data.comment_count);
-                        }
-                    });
-                } else {
-                    $.ajax({
-                        type: 'POST',
-                        url: base_url + "business_profile/insert_comment",
-                        data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
-                        dataType: "json",
-                        success: function (data) {
-                            $('textarea').each(function () {
-                                $(this).val('');
-                            });
-                            $('#' + 'fourcomment' + clicked_id).html(data.comment);
-                            $('.comment_count' + clicked_id).html(data.comment_count);
-                        }
-                    });
-                }
+    $("#post_comment" + clicked_id).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    $('#post_comment' + clicked_id).keypress(function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            var sel = $("#post_comment" + clicked_id);
+            var txt = sel.html();
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            txt = txt.replace(/&gt;/gi, ">");
+            txt = txt.replace(/div/gi, 'p');
+            if (txt == '' || txt == '<br>') {
+                return false;
             }
-        });
-        $(".scroll").click(function (event) {
-            event.preventDefault();
-            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
-        });
+            if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            }
+            txt = txt.replace(/&/g, "%26");
+            $('#post_comment' + clicked_id).html("");
+            if (window.preventDuplicateKeyPresses)
+                return;
+            window.preventDuplicateKeyPresses = true;
+            window.setTimeout(function () {
+                window.preventDuplicateKeyPresses = false;
+            }, 500);
+            var x = document.getElementById('threecomment' + clicked_id);
+            var y = document.getElementById('fourcomment' + clicked_id);
+            if (x.style.display === 'block' && y.style.display === 'none') {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/insert_commentthree",
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                    dataType: "json",
+                    success: function (data) {
+                        $('textarea').each(function () {
+                            $(this).val('');
+                        });
+                        $('.insertcomment' + clicked_id).html(data.comment);
+                        $('.comment_count' + clicked_id).html(data.comment_count);
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/insert_comment",
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                    dataType: "json",
+                    success: function (data) {
+                        $('textarea').each(function () {
+                            $(this).val('');
+                        });
+                        $('#' + 'fourcomment' + clicked_id).html(data.comment);
+                        $('.comment_count' + clicked_id).html(data.comment_count);
+                    }
+                });
+            }
+        }
+    });
+    $(".scroll").click(function (event) {
+        event.preventDefault();
+        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+    });
 //    }
-    
+
 }
 
 function insert_comment1(clicked_id)
 {
 //    var is_valid_post = check_post_available(clicked_id);
 //    if (is_valid_post == true) {
-        var post_comment = document.getElementById("post_comment1" + clicked_id);
-        $.ajax({
-            type: 'POST',
-            url: base_url + "business_profile/insert_comment1",
-            data: 'post_id=' + clicked_id + '&comment=' + post_comment.value,
-            dataType: "json",
-            success: function (data) {
-                $('textarea').each(function () {
-                    $(this).val('');
-                });
-                $('.' + 'insertcomment1' + clicked_id).html(data.comment);
-                $('.comment_count' + clicked_id).html(data.comment_count);
-            }
-        });
+    var post_comment = document.getElementById("post_comment1" + clicked_id);
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/insert_comment1",
+        data: 'post_id=' + clicked_id + '&comment=' + post_comment.value,
+        dataType: "json",
+        success: function (data) {
+            $('textarea').each(function () {
+                $(this).val('');
+            });
+            $('.' + 'insertcomment1' + clicked_id).html(data.comment);
+            $('.comment_count' + clicked_id).html(data.comment_count);
+        }
+    });
 //    }
 }
 
@@ -1600,7 +1600,7 @@ function user_postdelete(clicked_id)
 
 $('body').on("click", "*", function (e) {
 //    var classNames = $(e.target).attr("class").toString().split(' ').pop();
-   var classNames = $(e.target).prop("class").toString().split(' ').pop();
+    var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != '' && classNames != 'undefined') {
         classNames = classNames.toString().split(' ').pop();
         if (classNames != 'fa-ellipsis-v') {
@@ -1609,8 +1609,8 @@ $('body').on("click", "*", function (e) {
     }
 });
 
-$('body').on('touchstart', function(e) {
-     var classNames = $(e.target).prop("class").toString().split(' ').pop();
+$('body').on('touchstart', function (e) {
+    var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != '' && classNames != 'undefined') {
         classNames = classNames.toString().split(' ').pop();
         if (classNames != 'fa-ellipsis-v') {
@@ -1892,17 +1892,17 @@ $(document).keydown(function (e) {
 
 
 
-function cursorpointer(abc){
+function cursorpointer(abc) {
 
-   elem = document.getElementById('editpostdesc' + abc);
-   elem.focus();
-  setEndOfContenteditable(elem);
+    elem = document.getElementById('editpostdesc' + abc);
+    elem.focus();
+    setEndOfContenteditable(elem);
 }
 
 function setEndOfContenteditable(contentEditableElement)
 {
-    var range,selection;
-    if(document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
+    var range, selection;
+    if (document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
     {
         range = document.createRange();//Create a range (a range is a like the selection but invisible)
         range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
@@ -1910,9 +1910,8 @@ function setEndOfContenteditable(contentEditableElement)
         selection = window.getSelection();//get the selection object (allows you to change selection)
         selection.removeAllRanges();//remove any selections already made
         selection.addRange(range);//make the range you have just created the visible selection
-    }
-    else if(document.selection)//IE 8 and lower
-    { 
+    } else if (document.selection)//IE 8 and lower
+    {
         range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
         range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
         range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
