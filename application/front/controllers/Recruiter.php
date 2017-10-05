@@ -2729,10 +2729,10 @@ class Recruiter extends MY_Controller {
 
         $postdetail = $this->data['postdetail'] = $unique;
  $postdetail = array_unique($postdetail, SORT_REGULAR);
- 
+ //echo '<pre>'; print_r($unique); die();
         $searchdata1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($searchdata1);
+            $_GET["total_record"] = count($postdetail);
         }
 
 
@@ -2800,7 +2800,8 @@ class Recruiter extends MY_Controller {
                                         <ul class="clearfix">';
 
                 if ($p['work_job_title']) {
-                    $contition_array = array('status' => 'publish', 'title_id' => $p['work_job_title']);
+                   // $contition_array = array('status' => 'publish', 'title_id' => $p['work_job_title']);
+                    $contition_array = array('title_id' => $p['work_job_title']);
                     $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     $return_html .= '<li><b>Job Title</b><span>' . $jobtitle[0]['name'] . '</span></li>';
@@ -3285,7 +3286,8 @@ class Recruiter extends MY_Controller {
 
 
                     if ($rec['work_job_title']) {
-                        $contition_array = array('status' => 'publish', 'title_id' => $rec['work_job_title']);
+                   //     $contition_array = array('status' => 'publish', 'title_id' => $rec['work_job_title']);
+                        $contition_array = array( 'title_id' => $rec['work_job_title']);
                         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                         $return_html .= '<li> <b> Job Title</b> <span>';
