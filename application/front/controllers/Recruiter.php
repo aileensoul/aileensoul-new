@@ -1474,10 +1474,12 @@ class Recruiter extends MY_Controller {
                     $b = $row['lname'];
                     $acr1 = substr($b, 0, 1);
 
+                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['slug'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                     $postdata .= '<div class="post-img-profile">';
                     $postdata .= '' . ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)) . '';
 
                     $postdata .= '</div>';
+                    $postdata .= '</a>';
                 }
 
                 $postdata .= '</div>';
