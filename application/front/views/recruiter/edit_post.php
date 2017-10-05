@@ -77,20 +77,20 @@
 
                                     <!--  <?php echo form_textarea(array('name' => 'post_desc', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($postdata[0]['post_description']))); ?> -->
 
-                                    <textarea name="post_desc" tabindex="10" id="varmailformat" rows="8" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
+                                    <textarea name="post_desc" tabindex="2" id="varmailformat" rows="8" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
 
 <?php echo form_error('post_desc'); ?>
                                 </fieldset>
 								<fieldset class="full-width">
                                     <label class="control-label">Skills:<span style="color:red">*</span></label>
 
-                                    <input id="skills2" value="<?php echo $work_skill; ?>" name="skills" placeholder="Enter SKills" class="full-width " tabindex="2">
+                                    <input id="skills2" value="<?php echo $work_skill; ?>" name="skills" placeholder="Enter SKills" class="full-width " tabindex="3">
 
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
 								<fieldset class="fw pad_right"> 
                                     <label>Industry:<span style="color:red">*</span></label>
-                                    <select name="industry" id="industry" tabindex="7">
+                                    <select name="industry" id="industry" tabindex="4">
                                         <option value="" selected option disabled>Select Industry</option>
 
                                         <?php
@@ -121,7 +121,7 @@
                                     <label class="control-label">Minimum Experience:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" tabindex="4" name="minyear" id="minyear" class="keyskil">
+                                    <select style="cursor:pointer;" tabindex="5" name="minyear" id="minyear" class="keyskil">
 
                                         <option value="" selected option disabled>Year</option>
 
@@ -163,7 +163,7 @@
                                     <label class="control-label">Maximum Experience:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" name="maxyear" tabindex="5"  id="maxyear" class="keyskil1">
+                                    <select style="cursor:pointer;" name="maxyear" tabindex="6"  id="maxyear" class="keyskil1">
 
                                         <option value="" selected option disabled>Year</option>
 
@@ -202,12 +202,12 @@
                                           <?php
                                           if ($postdata[0]['fresher']) {
                                               ?>
-                                        <input type="checkbox" name="fresher" id="fresher_nme" tabindex="6" value="1" checked>
+                                        <input type="checkbox" name="fresher" id="fresher_nme" tabindex="7" value="1" checked>
                                         <label for="fresher_nme">Fresher can also apply..!</label> 
                                         <?php
                                     } else {
                                         ?>
-                                        <input type="checkbox"  name="fresher" value="1" id="fresher_nme" tabindex="10" >
+                                        <input type="checkbox"  name="fresher" value="1" id="fresher_nme" tabindex="8" >
                                         <label for="fresher_nme">Fresher can also apply..!</label> 
                                         <?php
                                     }
@@ -225,7 +225,7 @@
                                     <label class="control-label">Employment Type:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" tabindex="8" name="emp_type" id="emp_type" class="keyskil">
+                                    <select style="cursor:pointer;" tabindex="10" name="emp_type" id="emp_type" class="keyskil">
 
                                         <option value="" selected option disabled>Employment Type</option>
 
@@ -241,14 +241,14 @@
 								<fieldset class="">
                                     <label>No Of Position:<span style="color:red">*</span></label>
 
-                                    <input name="position" type="text" tabindex="3"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of position"/>
+                                    <input name="position" type="text" tabindex="11"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of position"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('position'); ?>
                                 </fieldset>
 								<fieldset class="fw edit-post">
                                     <label>Last date for apply: <span style="color:red">*</span></label>
 
-                                    <input type="hidden" id="example2" tabindex="18">
+                                    <input type="hidden" id="example2" tabindex="11">
 
 <?php echo form_error('last_date'); ?> 
                                 </fieldset>
@@ -263,7 +263,7 @@
                                     <label class="control-label">Salary Type:</label>
 
 
-                                    <select style="cursor:pointer;" tabindex="15" name="salary_type" id="salary_type" class="keyskil">
+                                    <select style="cursor:pointer;" tabindex="14" name="salary_type" id="salary_type" class="keyskil">
 
                                         <option value="" selected option disabled>Salary Type</option>
 
@@ -276,7 +276,7 @@
                                 </fieldset>
 								<fieldset class=" half-width pad_right"> 
                                     <label>Currency:</label>
-                                    <select name="currency" id="currency" tabindex="19">
+                                    <select name="currency" id="currency" tabindex="15">
                                         <option value="" selected option disabled>Select Currency</option>
 
                                         <?php
@@ -326,7 +326,7 @@
 
 <?php $countryname = $this->db->get_where('countries', array('country_id' => $postdata[0]['country']))->row()->country_name; ?>
 
-                                    <select style="cursor:pointer;" name="country" tabindex="12" id="country">
+                                    <select style="cursor:pointer;" name="country" tabindex="18" id="country">
 
 
 
@@ -358,7 +358,7 @@
 
                                 <fieldset  class="fw" <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                     <label>State:<span style="color:red">*</span></label>
-                                    <select style="cursor:pointer;" name="state" id="state" tabindex="13">
+                                    <select style="cursor:pointer;" name="state" id="state" tabindex="19">
                                         <?php
                                         if ($postdata[0]['state']) {
                                             foreach ($states as $cnt) {
@@ -385,7 +385,7 @@
 
                                 <fieldset class="fw" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                                     <label>City:</label>
-                                    <select name="city" id="city" tabindex="14">
+                                    <select name="city" id="city" tabindex="20">
                                         <?php
                                         if ($postdata[0]['city']) {
                                             foreach ($cities as $cnt) {
@@ -437,7 +437,7 @@
                                   
 
 
-                                    <input type="submit" id="submit" class="add_post_btns" tabindex="20" name="submit" value="save">                    
+                                    <input type="submit" id="submit" class="add_post_btns" tabindex="21" name="submit" value="save">                    
                                 </fieldset>
 								</div>
 								</div>

@@ -67,14 +67,14 @@
                                     </fieldset>
 									<fieldset class="form-group full-width">
                                         <label class="control-label">Job Description:<span style="color:red">*</span></label>
-                                         <textarea name="post_desc" id="post_desc" tabindex="10" rows="8" cols="50"  placeholder="Enter Job Description" style="resize: none;"></textarea>
+                                         <textarea name="post_desc" id="post_desc" tabindex="2" rows="8" cols="50"  placeholder="Enter Job Description" style="resize: none;"></textarea>
 
                                         <?php echo form_error('post_desc'); ?>
                                     </fieldset>
 									<fieldset class="full-width" <?php if ($skills) { ?> class="error-msg" <?php } ?>>
                                         <label class="control-label">Skills: <span style="color:red">*</span></label>
 
-                                        <input id="skills2" name="skills" tabindex="2" size="90" placeholder="Enter Skills">
+                                        <input id="skills2" name="skills" tabindex="3" size="90" placeholder="Enter Skills">
 
                                     <!-- <select class="skill_other full-width" name="skills[]" tabindex="2" id="skills" multiple="multiple">
 
@@ -88,7 +88,7 @@
                                     </fieldset>
 									<fieldset class="full-width" <?php if ($industry) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                         <label>Industry:<span style="color:red">*</span></label>
-                                        <select name="industry" id="industry" tabindex="7">
+                                        <select name="industry" id="industry" tabindex="4">
 
                                             <option value="" selected option disabled>Select Industry</option>
 
@@ -107,7 +107,7 @@
                                         <label style="cursor:pointer;" class="control-label">Minimum Experience:<span style="color:red">*</span></label>
 
 
-                                        <select name="minyear" style="cursor:pointer;" class="keyskil" id="minyear" tabindex="4">
+                                        <select name="minyear" style="cursor:pointer;" class="keyskil" id="minyear" tabindex="5">
                                             <option value="" selected option disabled>Year</option>
 
                                             <option value="0">0 Year</option>
@@ -146,7 +146,7 @@
                                         <label style="cursor:pointer;" class="control-label">Maximum Experience:<span style="color:red">*</span></label>
 
 
-                                        <select tabindex="5" name="maxyear" style="cursor:pointer;" class="keyskil1" id="maxyear">
+                                        <select tabindex="6" name="maxyear" style="cursor:pointer;" class="keyskil1" id="maxyear">
                                             <option value="" selected option disabled>Year</option>
                                             <option value="0">0 Year</option>
                                             <option value="0.5">0.5 Year</option>
@@ -179,12 +179,12 @@
                                     </fieldset>
 
                                     <fieldset class="rec_check form-group full-width">
-                                        <input  type="checkbox" tabindex="6" id="fresher_nme" name="fresher" value="1"><label for="fresher_nme">Fresher can also apply..!</label> 
+                                        <input  type="checkbox" tabindex="7" id="fresher_nme" name="fresher" value="1"><label for="fresher_nme">Fresher can also apply..!</label> 
                                     </fieldset>
 									<fieldset id="erroe_nn" class="full-width" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
                                         <label>Required Education:</label> 
 
-                                        <input type="search" tabindex="9" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                        <input type="search" tabindex="8" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('education'); ?>
                                      </fieldset>
@@ -193,7 +193,7 @@
                                         <label style="cursor:pointer;" class="control-label">Employment Type:<span style="color:red">*</span></label>
 
 
-                                        <select name="emp_type" style="cursor:pointer;" class="keyskil" tabindex="8" id="emp_type">
+                                        <select name="emp_type" style="cursor:pointer;" class="keyskil" tabindex="9" id="emp_type">
                                             <option value="" selected option disabled>Employment Type</option>
                                             <option value="Part Time">Part Time</option>
                                             <option value="Full Time">Full Time</option>
@@ -205,14 +205,14 @@
 									
 									<fieldset class="" <?php if ($position) { ?> class="error-msg" <?php } ?>>
                                         <label class="control-label">No Of Position:<span style="color:red">*</span> </label>
-                                        <input name="position_no" type="text"  id="position" value="1" tabindex="3" placeholder="Enter No of position"/>
+                                        <input name="position_no" type="text"  id="position" value="1" tabindex="10" placeholder="Enter No of position"/>
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('position'); ?>        
                                     </fieldset>
 									<fieldset class="form-group fw">
                                         <label class="control-label">Last Date For Apply:<span style="color:red">*</span></label>
 
-                                        <input type="hidden" id="example2" tabindex="18">
+                                        <input type="hidden" id="example2" tabindex="11">
 
                                         <?php echo form_error('last_date'); ?> 
                                     </fieldset>
@@ -227,7 +227,7 @@
                                         <label style="cursor:pointer;" class="control-label">Salary Type:</label>
 
 
-                                        <select name="salary_type" style="cursor:pointer;" class="keyskil" id="salary_type" tabindex="15">
+                                        <select name="salary_type" style="cursor:pointer;" class="keyskil" id="salary_type" tabindex="14">
                                             <option value="" selected option disabled>Salary Type</option>
                                             <option value="Per Year"> Per Year</option>
                                             <option value="Per Month">Per Month</option>
@@ -243,7 +243,7 @@
                                     </fieldset>
 									<fieldset class="" <?php if ($currency) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                         <label>Currency:</label>
-                                        <select name="currency" id="currency" tabindex="19">
+                                        <select name="currency" id="currency" tabindex="15">
 
                                             <option value="" selected option disabled>Select Currency</option>
 
@@ -273,7 +273,7 @@
 									<div class="p15 fw">
 									<fieldset class="fw" <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                         <label >Country:<span style="color:red">*</span></label>
-                                        <select style="cursor:pointer;" name="country" id="country" tabindex="12">
+                                        <select style="cursor:pointer;" name="country" id="country" tabindex="18">
                                             <option value="" selected option disabled>Select Country</option>
                                             <?php
                                             if (count($countries) > 0) {
@@ -290,7 +290,7 @@
 
                                     <fieldset class="fw" <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                         <label>State:<span style="color:red">*</span></label>
-                                        <select style="cursor:pointer;" name="state" id="state" tabindex="13">
+                                        <select style="cursor:pointer;" name="state" id="state" tabindex="19">
                                             <option value="">Select Country First</option>
                                         </select>
                                         <?php echo form_error('state'); ?> 
@@ -298,7 +298,7 @@
 
                                     <fieldset class="fw" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                                         <label>City:</label>
-                                        <select style="cursor:pointer;" name="city" id="city" tabindex="14">
+                                        <select style="cursor:pointer;" name="city" id="city" tabindex="20">
                                             <option value="">Select State First</option>
                                         </select>
 
@@ -361,14 +361,14 @@
 
 
 
-                                    <input type="hidden" id="tagSelect" tabindex="20" value="brown,red,green" style="width:300px;" />
+                                    <input type="hidden" id="tagSelect" tabindex="21" value="brown,red,green" style="width:300px;" />
 
 
 
                                     <fieldset  class="hs-submit full-width">
 
 
-                                        <input type="submit" id="submit" class="add_post_btns" tabindex="21" name="submit" value="Post">
+                                        <input type="submit" id="submit" class="add_post_btns" tabindex="22" name="submit" value="Post">
 
                                     </fieldset>
 									</div>

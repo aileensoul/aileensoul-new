@@ -52,7 +52,7 @@
 											</fieldset>
 											<fieldset class="full-width" <?php if ($post_skill) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                    <input id="skills2" name="skills"  tabindex="4"  size="90" placeholder="Enter SKills" value="<?php if($skill_2){echo $skill_2;} ?>">
+                                    <input id="skills2" name="skills"  tabindex="3"  size="90" placeholder="Enter SKills" value="<?php if($skill_2){echo $skill_2;} ?>">
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
 <!--                                <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
@@ -63,7 +63,7 @@
                                 </fieldset>-->
 											<fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
 												<label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
-												<select tabindex="3" name="fields_req" id="fields_req" class="field_other">
+												<select tabindex="4" name="fields_req" id="fields_req" class="field_other">
 													<option value="" selected option disabled><?php echo $this->lang->line("select_filed"); ?></option>
 													<?php
 													if (count($category_data) > 0) {
@@ -130,7 +130,7 @@
 											</fieldset>
 											<fieldset>
 												<label><?php echo $this->lang->line("time_of_project"); ?>:</label>
-												<input name="est_time" type="text" tabindex="11" id="est_time" placeholder="Enter Estimated time in month/year" value="<?php echo $freelancerpostdata[0]['post_est_time'] ?> "/>
+												<input name="est_time" type="text" tabindex="7" id="est_time" placeholder="Enter Estimated time in month/year" value="<?php echo $freelancerpostdata[0]['post_est_time'] ?> "/>
 												<span id="fullname-error"></span>
 												<?php echo form_error('post_name'); ?>
 											</fieldset>
@@ -149,13 +149,13 @@
 										<div class="p15 fw">
 											<fieldset style="padding-left: 8px;" class="col-md-6" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
 												<label class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
-												<input name="rate" type="number" id="rate" tabindex="7" placeholder="Enter Your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
+												<input name="rate" type="number" id="rate" tabindex="11" placeholder="Enter Your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
 												<span id="fullname-error"></span>
 												<?php echo form_error('rate'); ?>
 											</fieldset>
 											<fieldset class=" col-md-6"> 
 												<label><?php echo $this->lang->line("currency"); ?>:</label>
-												<select name="currency" id="currency" tabindex="8">
+												<select name="currency" id="currency" tabindex="12">
 													<option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
 													<?php
 													if (count($currency) > 0) {
@@ -176,8 +176,8 @@
 											</fieldset>
 											<fieldset style="padding-left: 8px;" class="col-md-12">
 												<label><?php echo $this->lang->line("work_type"); ?></label>
-												<input type="radio" name="rating" tabindex="9" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
-												<input type="radio" name="rating" tabindex="10"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
+												<input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
+												<input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
 												<?php echo form_error('rating'); ?>
 											</fieldset>
 										
