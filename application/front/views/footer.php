@@ -152,10 +152,11 @@
         if (msg == 0) {
             $("#notification_count").html('');
             $('#notification_count').css({
-                "background-color": " ",
-                "padding": "5px 6px"
+                "background-color": "",
+                "padding": "0px"
             });
             $('#notificationLink').removeClass('notification_available');
+            document.getElementById('notification_count').style.display = 'none';
         } else {
             $('#notification_count').html(msg);
             $('#notification_count').css({

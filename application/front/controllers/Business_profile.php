@@ -1739,7 +1739,7 @@ class Business_profile extends MY_Controller {
         $join_str[0]['join_type'] = '';
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '1', $offset = '0', $join_str, $groupby = '');
-        
+
         $return_html = '';
         $row = $business_profile_post[0];
         $post_business_user_image = $row['business_user_image'];
@@ -2841,7 +2841,7 @@ Your browser does not support the audio tag.
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
-            $userimage .= '<a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="'.base_url('img/cam.png').'">';
+            $userimage .= '<a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url('img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -9029,7 +9029,7 @@ Your browser does not support the audio tag.
 
         $contition_array = array('contact_type' => 2);
         $search_condition = "((contact_to_id = '$to_id' AND contact_from_id = ' $userid') OR (contact_from_id = '$to_id' AND contact_to_id = '$userid'))";
-        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
         if ($contactperson[0]['status'] == $status) {
             echo 1;
         } else {
@@ -9226,58 +9226,31 @@ Your browser does not support the audio tag.
     }
 
     public function contact_notification() {
-
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($business_deactive) {
-            redirect('business_profile/');
-        }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
-
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
-        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'created_date', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
-        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'created_date', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $unique_user = array_merge($contactperson_req, $contactperson_con);
-
-
         $new = array();
         foreach ($unique_user as $value) {
-            $new[$value['contact_id']] = $value;
+            $new[$value['created_date']] = $value;
         }
-
         $post = array();
-
         foreach ($new as $key => $row) {
-
-            $post[$key] = $row['contact_id'];
+            $post[$key] = $row['created_date'];
         }
         array_multisort($post, SORT_DESC, $new);
-
         $contactperson = $new;
 
-//echo "<pre>"; print_r($contactperson); die();
-
-
-
         foreach ($contactperson as $contact) {
-
-
-            //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
-            //$contactdata .= '<ul id="' . $contact['contact_id'] . '">';
-
             if ($contact['contact_to_id'] == $userid) {
-
                 $contition_array = array('user_id' => $contact['contact_from_id'], 'status' => '1');
                 $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 if ($contactperson_from) {
-
                     $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
@@ -9879,7 +9852,7 @@ Your browser does not support the audio tag.
                     <li class="fl">
                         <div class="follow-img">
                             <a href="' . base_url('business-profile/dashboard/' . $business_slug) . '">';
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_user_image) || $business_user_image =='' ) {
+                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_user_image) || $business_user_image == '') {
                     $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
                     $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '" height="50px" width="50px" alt="' . $company_name . '" >';
