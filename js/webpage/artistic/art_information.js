@@ -115,13 +115,13 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
                     required: true,
 
                 },
-                       desc_art: {
+                       // desc_art: {
 
-                            required: true,
-                             regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                       //      required: true,
+                       //       regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
                            
                             
-                        },
+                       //  },
                         
                     },
 
@@ -139,11 +139,11 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
                    
                 },
 
-                        desc_art: {
+                        // desc_art: {
 
-                            required: "Description of your art is required.",
+                        //     required: "Description of your art is required.",
                             
-                        },
+                        // },
                        
                 },
 
