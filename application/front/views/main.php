@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="custom-main">
     <head>
         <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
         <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
