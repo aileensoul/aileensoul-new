@@ -117,6 +117,14 @@
 <?php echo form_error('industry'); ?>
 
                                 </fieldset>
+                                                                    
+                                                                     <fieldset class="full-width">
+                                      <label>Interview process:<!-- <span style="color:red">*</span> --></label>
+
+                                    <textarea name="interview" id="interview" tabindex="11" rows="4" placeholder="Enter Interview Process"><?php echo $postdata[0]['interview_process']; ?></textarea>
+
+<?php echo form_error('interview'); ?> 
+                                </fieldset>
 								<fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="">
                                     <label class="control-label">Minimum Experience:<span style="color:red">*</span></label>
 

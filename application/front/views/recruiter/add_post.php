@@ -102,6 +102,16 @@
 
                                         <?php echo form_error('industry'); ?>
                                     </fieldset>
+                                                                            
+                                                                            <fieldset class="form-group full-width">
+                                        <label class="control-label">Interview process:</label>
+
+
+
+                                        <textarea name="interview" id="interview" rows="4" tabindex="11" cols="50"  placeholder="Enter Interview Process" style="resize: none;"></textarea>
+
+                                        <?php //echo form_error('interview'); ?> 
+                                    </fieldset>
 									<fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
 
                                         <label style="cursor:pointer;" class="control-label">Minimum Experience:<span style="color:red">*</span></label>
@@ -338,15 +348,7 @@
 
                                     
 
-                                    <!--fieldset class="form-group full-width">
-                                        <label class="control-label">Interview process:</label>
-
-
-
-                                        <textarea name="interview" id="interview" rows="4" tabindex="11" cols="50"  placeholder="Enter Interview Process" style="resize: none;"></textarea>
-
-                                        <?php //echo form_error('interview'); ?> 
-                                    </fieldset-->
+                                    
 
                                     
 

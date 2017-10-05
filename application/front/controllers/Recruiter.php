@@ -837,6 +837,8 @@ class Recruiter extends MY_Controller {
 // RECRUITER POST END
 // RECRUITER EDIT POST START
     public function edit_post($id = "") {
+        
+        
 
         $this->recruiter_apply_check();
 
