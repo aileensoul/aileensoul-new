@@ -773,7 +773,7 @@ class Recruiter extends MY_Controller {
 
         if ($insert_id) {
             $this->session->set_flashdata('success', 'your post inserted successfully');
-            redirect('recruiter/post', 'refresh');
+            redirect('recruiter/home', 'refresh');
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             redirect('recruiter', 'refresh');
