@@ -73,7 +73,7 @@
                                           foreach ($words as $w) {
                                             $acronym1 .= $w[0];
                                             }?>
-                                       <div>
+                                       <div class="post-img-profile">
                                           <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                                        </div>
                                     </div>

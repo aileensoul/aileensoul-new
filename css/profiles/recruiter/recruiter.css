@@ -24,7 +24,7 @@
     margin-top: 20px;
     text-transform: capitalize;
 }
-
+.profile-boxProfileCard .bg-images img{height: 110px;}
 .profile-job-post-detail .profile-job-post-title .button:hover{ background: #1b8ab9; color: #fff; }
 .add-post-button{margin-top: 25px;}
 .add-post-button .btn:focus{color: white; background: #156f95;}
