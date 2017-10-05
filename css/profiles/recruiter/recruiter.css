@@ -951,7 +951,7 @@ label.cameraButton input[accept*="camera"] {
 	.profile-main-rec-box-menu {
         height: 41px;
     }
-     .custom-right{margin-left: 0px;}
+    .custom-right{margin-left: 0px;}
 	.profile-main-rec-box-menu li a {
         padding: 10px 15px;
         font-size: 13px;
@@ -996,9 +996,7 @@ label.cameraButton input[accept*="camera"] {
 
 @media screen and (max-width: 991px){
     .art_no_post_text{font-size: 21px;}
-    .back {
-    width: 100%;
-    }
+    .back {width: 100%;}
     .custom_footer_dot{ padding: 0px 1px 0px; }
     .custom_footer_left ul li{padding: 0 6px;}
     .art_no_post_text{font-size: 23px;}
