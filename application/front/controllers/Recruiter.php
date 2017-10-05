@@ -88,8 +88,8 @@ class Recruiter extends MY_Controller {
       //  $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step,rec_firstname,rec_lastname,rec_email,rec_phone', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($this->data['recdata']) {
-            $step = $recdata[0]['re_step'];
-            if ($step == 1 || $step > 1) {
+           // $step = $this->data['recdata'][0]['re_step'];
+            if ($this->data['recdata'][0]['re_step'] == 1 || $this->data['recdata'][0]['re_step'] > 1) {
                 $this->data['firstname'] = $this->data['recdata'][0]['rec_firstname'];
                 $this->data['lastname'] = $this->data['recdata'][0]['rec_lastname'];
                 $this->data['email'] = $this->data['recdata'][0]['rec_email'];
