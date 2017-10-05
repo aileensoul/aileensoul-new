@@ -10477,7 +10477,7 @@ No Contacts Available.
                                 <div class = "post-design-product">
                                     <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">' . ucfirst(strtolower($posted_company_name)) . '</a>
 <p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">' . ucfirst(strtolower($post_company_name)) . '</a>
-<span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">
+<span class = "ctre_date">
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
 </span> </div></div>
 </li>';
@@ -10485,9 +10485,7 @@ No Contacts Available.
                     $return_html .= '<li>
                             <div class = "post-design-product">
                                 <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '" title = "' . ucfirst(strtolower($post_company_name)) . '">
-' . ucfirst($post_company_name) . '</a>
-                    <span role = "presentation" aria-hidden = "true"> · </span>
-<div class = "datespan"> <span class = "ctre_date" >
+' . ucfirst($post_company_name) . '</a><div class = "datespan"> <span class = "ctre_date" >
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
 
 </span></div>
@@ -11255,7 +11253,7 @@ Your browser does not support the audio tag.
                                 <div class = "post-design-product">
                                     <a class = "post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
 <p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
-<span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">
+<span class = "ctre_date">
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
 </span> </div></div>
 </li>';
@@ -11264,9 +11262,7 @@ Your browser does not support the audio tag.
                         $return_html .= '<li>
                             <div class = "post-design-product">
                                 <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $slugname) . '" title = "' . ucfirst(strtolower($companyname)) . '">
-' . ucfirst(strtolower($companyname)) . '</a>
-                    <span role = "presentation" aria-hidden = "true"> · </span>
-<div class = "datespan"> <span class = "ctre_date" >
+' . ucfirst(strtolower($companyname)) . '</a><div class = "datespan"> <span class = "ctre_date" >
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
 
 </span></div>
@@ -13265,7 +13261,7 @@ Your browser does not support the audio tag.
                                 <div class = "post-design-product">
                                     <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">' . ucfirst(strtolower($posted_company_name)) . '</a>
 <p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">' . ucfirst(strtolower($post_company_name)) . '</a>
-<span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">
+<span class = "ctre_date">
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
 </span> </div></div>
 </li>';
@@ -13273,9 +13269,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<li>
                             <div class = "post-design-product">
                                 <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '" title = "' . ucfirst(strtolower($post_company_name)) . '">
-' . ucfirst($post_company_name) . '</a>
-                    <span role = "presentation" aria-hidden = "true"> · </span>
-<div class = "datespan"> <span class = "ctre_date" >
+' . ucfirst($post_company_name) . '</a><div class = "datespan"> <span class = "ctre_date" >
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
 
 </span></div>

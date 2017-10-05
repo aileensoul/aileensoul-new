@@ -163,7 +163,7 @@
                                                                     <a  class="other_name name_business post_dot" href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>"><?php echo ucfirst(strtolower($companynameposted)); ?></a>
                                                                     <p class="posted_with" > Posted With </p>
                                                                     <a  class="other_name name_business post_dot" href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucfirst(strtolower($companyname)); ?></a>
-                                                                    <span role="presentation" aria-hidden="true"> · </span><span class="ctre_date"  >
+                                                                    <!--<span role="presentation" aria-hidden="true"> · </span>--><span class="ctre_date"  >
                                                                         <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>                     
                                                                     </span> 
                                                                 </div>
@@ -172,9 +172,9 @@
                                                     <?php } else { ?>
                                                         <li>
                                                             <div class="post-design-product"><a class="post_dot" href="<?php echo base_url('business-profile/details/' . $slugname); ?>"> <span class="span_main_name">  <?php echo ucfirst(strtolower($companyname)); ?> </span> </a>
-                                                                <span role="presentation" aria-hidden="true"> · </span>
+                                                                <!--<span role="presentation" aria-hidden="true"> · </span>-->
                                                                 <span> 
-                                                                    <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_common_data[0]['created_date']))); ?>      
+                                                                    <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_data[0]['created_date']))); ?>      
                                                                 </span>
                                                             </div>
                                                         </li>
