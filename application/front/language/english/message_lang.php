@@ -35,8 +35,8 @@ $lang["images"] = "Images";
 
 /* COMMON NAME */
 
-$lang["company_name"] = "Company Name";
-$lang["enter_company_name"] = "Enter Company Name";
+$lang["company_name"] = "Company name";
+$lang["enter_company_name"] = "Enter company name";
 $lang["company_name_validation"] = "Company name is required.";
 
 $lang["country"] = "Country";
@@ -51,10 +51,10 @@ $lang["city"] = "City";
 $lang["select_city"] = "Select City";
 $lang["select_state_first"] = "Select State First";
 $lang["pincode"] = "Pincode";
-$lang["enter_pincode"] = "Enter Pincode";
+$lang["enter_pincode"] = "Enter pincode";
 
-$lang["postal_address"] = "Postal Address";
-$lang["enter_address"] = "Enter Address";
+$lang["postal_address"] = "Postal address";
+$lang["enter_address"] = "Enter address";
 $lang["address_validation"] = "Business address is required.";
 
 $lang["next"] = "Next";
@@ -98,7 +98,7 @@ $lang["select_city"]="Select City";
 $lang["state"] = "State";
 $lang["state_first"]="Select state first";
 $lang["pincode"] = "Pincode";
-$lang["postal_address"] = "Postal Address";
+$lang["postal_address"] = "Postal address";
 $lang["first_name"]="First Name";
 $lang["last_name"]="Last Name";
 $lang["email"] = "Email";

@@ -98,7 +98,7 @@
                                 $business_details = form_error('business_details');
                                 ?> 
                                 <fieldset <?php if ($business_type) { ?> class="error-msg" <?php } ?>>
-                                    <label>Business Type:<span style="color:red">*</span></label>
+                                    <label>Business type:<span style="color:red">*</span></label>
                                     <select name="business_type" tabindex="1" autofocus id="business_type" onchange="busSelectCheck(this);">
 
                                         <?php
@@ -128,7 +128,7 @@
                                                 if ($business_type1 == '') {
                                                     echo "selected";
                                                 }
-                                                ?>>Select Business Type</option>
+                                                ?>>Select business type</option>
                                                         <?php foreach ($businesstypedata as $cnt) {
                                                             ?>
 
@@ -202,7 +202,7 @@
                                 </fieldset>
                                 <div id="busDivCheck" <?php if (($business_type1 != 0 || $business_type1 == '') || ($business_type1 == 0 && $other_business == '')) { ?>style="display:none" <?php } ?>>
                                     <fieldset <?php if ($subindustrial) { ?> class="error-msg" <?php } ?> class="half-width" id="other-business">
-                                        <label> Other Business Type: <span style="color:red;" >*</span></label>
+                                        <label> Other business type: <span style="color:red;" >*</span></label>
                                         <input type="text" name="bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" style="<?php
                                         if (($business_type1 != 0 || $business_type1 == '') || ($business_type1 == 0 && $other_business == '')) {
                                             echo 'display: none';
@@ -214,7 +214,7 @@
                                 <div id="indDivCheck" <?php if (($industriyal1 != 0 || $industriyal1 == '') || ($industriyal1 == 0 && $other_industry == '')) { ?>style="display:none" <?php } ?>>
                                     <fieldset <?php if ($subindustrial) { ?> class="error-msg" <?php } ?> class="half-width" id="other-category">
                                         <?php if ($industriyal1 == 0) { ?>    <!--  <label id="indtype">Add Here Your Other Category type:<span style="color:red">*</span></label> --> <?php } ?>
-                                        <label> Other Category:<span style="color:red;" >*</span></label>
+                                        <label> Other category:<span style="color:red;" >*</span></label>
                                         <input type="text" name="indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>" 
                                                style="<?php
                                                if (($industriyal1 != 0 || $industriyal1 = '') || ($industriyal1 == 0 && $other_industry == '')) {
@@ -226,7 +226,7 @@
                                 </div>
                                 <fieldset <?php if ($business_details) { ?> class="error-msg" <?php } ?> class="full-width">
                                     <label>Details of your business:<span style="color:red">*</span></label>
-                                    <textarea name="business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter Business Detail" style="resize: none;"><?php
+                                    <textarea name="business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter business detail" style="resize: none;"><?php
                                         if ($business_details1) {
                                             echo $business_details1;
                                         }

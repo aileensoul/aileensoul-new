@@ -111,8 +111,8 @@
                                 $contactwebsite = form_error('contactwebsite');
                                 ?>
                                 <fieldset <?php if ($contactname) { ?> class="error-msg" <?php } ?>>
-                                    <label>Contact Person:<span style="color:red">*</span></label>
-                                    <input name="contactname" tabindex="1" autofocus type="text" id="contactname" placeholder="Enter Contact Name" value="<?php
+                                    <label>Contact person:<span style="color:red">*</span></label>
+                                    <input name="contactname" tabindex="1" autofocus type="text" id="contactname" placeholder="Enter contact name" value="<?php
                                     if ($contactname1) {
                                         echo $contactname1;
                                     }
@@ -120,8 +120,8 @@
                                            <?php echo form_error('contactname'); ?>
                                 </fieldset>
                                 <fieldset <?php if ($contactmobile) { ?> class="error-msg" <?php } ?>>
-                                    <label>Contact Mobile:<span style="color:red">*</span></label>
-                                    <input name="contactmobile" type="text" tabindex="2"  id="contactmobile" placeholder="Enter Contact Mobile" value="<?php
+                                    <label>Contact mobile:<span style="color:red">*</span></label>
+                                    <input name="contactmobile" type="text" tabindex="2"  id="contactmobile" placeholder="Enter contact mobile" value="<?php
                                     if ($contactmobile1) {
                                         echo $contactmobile1;
                                     }
@@ -129,8 +129,8 @@
                                            <?php echo form_error('contactmobile'); ?> 
                                 </fieldset>
                                 <fieldset <?php if ($contactemail) { ?> class="error-msg" <?php } ?>>
-                                    <label>Contact Email:<span style="color:red">*</span></label>
-                                    <input name="email" type="text" id="email" tabindex="3"  placeholder="Enter Contact Email" value="<?php
+                                    <label>Contact email:<span style="color:red">*</span></label>
+                                    <input name="email" type="text" id="email" tabindex="3"  placeholder="Enter contact email" value="<?php
                                     if ($contactemail1) {
                                         echo $contactemail1;
                                     }
@@ -138,8 +138,8 @@
                                            <?php echo form_error('email'); ?>
                                 </fieldset>
                                 <fieldset>
-                                    <label>Contact Website:</label>
-                                    <input name="contactwebsite" type="url" id="contactwebsite" tabindex="4"  placeholder="Enter Contact website" value="<?php
+                                    <label>Contact website:</label>
+                                    <input name="contactwebsite" type="url" id="contactwebsite" tabindex="4"  placeholder="Enter contact website" value="<?php
                                     if ($contactwebsite1) {
                                         echo $contactwebsite1;
                                     }
