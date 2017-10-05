@@ -68,7 +68,7 @@
 								<div class="p15 fw">
 									<fieldset class="full-width">
                                     <label>Job Title:<span style="color:red">*</span></label>
-                                    <input name="post_name" tabindex="1" autofocus type="text" id="post_name" placeholder=" Position title [Ex:- Sr. Engineer, Jr. Engineer]" value="<?php echo $work_title; ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
+                                    <input name="post_name" tabindex="1" autofocus type="text" id="post_name" placeholder="Enter Job Title" value="<?php echo $work_title; ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('post_name'); ?>
                                 </fieldset>
