@@ -25,9 +25,11 @@
                         <div class="col-md-2 col-sm-1"> </div>
                         <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
 
-                            <div class="common-form">
+                            <div class="common-form custom-form">
+								<h3 class="">Edit Job Post</h3>
+								
 								<div class="job-saved-box">
-                                <h3 class="h3_edit">Edit Job Post</h3>
+                                
                                 <?php
                                 if ($this->session->flashdata('error')) {
                                     echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
@@ -61,36 +63,65 @@
 
                                 $salary_type = form_error('salary_type');
                                 ?>
-
-                                <fieldset class="full-width">
+							<div class="custom-add-box">
+								<h3>Job Detail</h3>
+								<div class="p15 fw">
+									<fieldset class="full-width">
                                     <label>Job Title:<span style="color:red">*</span></label>
                                     <input name="post_name" tabindex="1" autofocus type="text" id="post_name" placeholder=" Position title [Ex:- Sr. Engineer, Jr. Engineer]" value="<?php echo $work_title; ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('post_name'); ?>
                                 </fieldset>
+								<fieldset  class="full-width">
+                                    <label >Job Description:<span style="color:red">*</span></label>
 
+                                    <!--  <?php echo form_textarea(array('name' => 'post_desc', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($postdata[0]['post_description']))); ?> -->
 
-                                <fieldset class="full-width">
+                                    <textarea name="post_desc" tabindex="2" id="varmailformat" rows="8" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
+
+<?php echo form_error('post_desc'); ?>
+                                </fieldset>
+								<fieldset class="full-width">
                                     <label class="control-label">Skills:<span style="color:red">*</span></label>
 
-                                    <input id="skills2" value="<?php echo $work_skill; ?>" name="skills" placeholder="Enter SKills" class="full-width " tabindex="2">
+                                    <input id="skills2" value="<?php echo $work_skill; ?>" name="skills" placeholder="Enter SKills" class="full-width " tabindex="3">
 
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
+								<fieldset class="fw pad_right"> 
+                                    <label>Industry:<span style="color:red">*</span></label>
+                                    <select name="industry" id="industry" tabindex="4">
+                                        <option value="" selected option disabled>Select Industry</option>
 
-                                <fieldset class="full-width">
-                                    <label>No of Position:<span style="color:red">*</span></label>
+                                        <?php
+                                        if (count($industry) > 0) {
+                                            foreach ($industry as $indu) {
 
-                                    <input name="position" type="text" tabindex="3"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of position"/>
-                                    <span id="fullname-error"></span>
-                                    <?php echo form_error('position'); ?>
+                                                if ($postdata[0]['industry_type']) {
+                                                    ?>
+
+                                                    <option value="<?php echo $indu['industry_id']; ?>" <?php if ($indu['industry_id'] == $postdata[0]['industry_type']) echo 'selected'; ?>><?php echo $indu['industry_name']; ?></option>
+                                                <?php }else {
+                                                    ?>
+                                                    <option value="<?php echo $indu['industry_id']; ?>"><?php echo $indu['industry_name']; ?></option>
+                                                <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+
+                                        <option value="<?php echo $industry_otherdata[0]['industry_id']; ?> "><?php echo $industry_otherdata[0]['industry_name']; ?></option>   
+                                    </select>
+
+
+<?php echo form_error('industry'); ?>
+
                                 </fieldset>
+								<fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="">
+                                    <label class="control-label">Minimum Experience:<span style="color:red">*</span></label>
 
-                                <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="">
-                                    <label class="control-label">Minimum experience:<span style="color:red">*</span></label>
 
-
-                                    <select style="cursor:pointer;" tabindex="4" name="minyear" id="minyear" class="keyskil">
+                                    <select style="cursor:pointer;" tabindex="5" name="minyear" id="minyear" class="keyskil">
 
                                         <option value="" selected option disabled>Year</option>
 
@@ -129,10 +160,10 @@
 
 
                                 <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
-                                    <label class="control-label">Maximum experience:<span style="color:red">*</span></label>
+                                    <label class="control-label">Maximum Experience:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" name="maxyear" tabindex="5"  id="maxyear" class="keyskil1">
+                                    <select style="cursor:pointer;" name="maxyear" tabindex="6"  id="maxyear" class="keyskil1">
 
                                         <option value="" selected option disabled>Year</option>
 
@@ -171,54 +202,30 @@
                                           <?php
                                           if ($postdata[0]['fresher']) {
                                               ?>
-                                        <input   type="checkbox" name="fresher" id="fresher_nme" tabindex="6" value="1" checked>
+                                        <input type="checkbox" name="fresher" id="fresher_nme" tabindex="7" value="1" checked>
                                         <label for="fresher_nme">Fresher can also apply..!</label> 
                                         <?php
                                     } else {
                                         ?>
-                                        <input type="checkbox"  name="fresher" value="1" id="fresher_nme" tabindex="10" >
+                                        <input type="checkbox"  name="fresher" value="1" id="fresher_nme" tabindex="8" >
                                         <label for="fresher_nme">Fresher can also apply..!</label> 
                                         <?php
                                     }
                                     ?>
                                 </fieldset>
+								<fieldset id="erroe_nn" class="fw" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
+                                    <label>Required Education:</label> 
 
-                                <fieldset class=" half-width pad_right"> 
-                                    <label>Industry:<span style="color:red">*</span></label>
-                                    <select name="industry" id="industry" tabindex="7">
-                                        <option value="" selected option disabled>Select Industry</option>
-
-                                        <?php
-                                        if (count($industry) > 0) {
-                                            foreach ($industry as $indu) {
-
-                                                if ($postdata[0]['industry_type']) {
-                                                    ?>
-
-                                                    <option value="<?php echo $indu['industry_id']; ?>" <?php if ($indu['industry_id'] == $postdata[0]['industry_type']) echo 'selected'; ?>><?php echo $indu['industry_name']; ?></option>
-                                                <?php }else {
-                                                    ?>
-                                                    <option value="<?php echo $indu['industry_id']; ?>"><?php echo $indu['industry_name']; ?></option>
-                                                <?php
-                                                }
-                                            }
-                                        }
-                                        ?>
-
-                                        <option value="<?php echo $industry_otherdata[0]['industry_id']; ?> "><?php echo $industry_otherdata[0]['industry_name']; ?></option>   
-                                    </select>
-
-
-<?php echo form_error('industry'); ?>
+                                    <input type="search" tabindex="9" autofocus id="education" name="education" value="<?php echo $degree_data; ?>" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                    <span id="fullname-error"></span>
+<?php echo form_error('education'); ?>
 
                                 </fieldset>
-
-
-                                <fieldset <?php if ($emp_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
+								<fieldset <?php if ($emp_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
                                     <label class="control-label">Employment Type:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" tabindex="8" name="emp_type" id="emp_type" class="keyskil">
+                                    <select style="cursor:pointer;" tabindex="10" name="emp_type" id="emp_type" class="keyskil">
 
                                         <option value="" selected option disabled>Employment Type</option>
 
@@ -231,45 +238,95 @@
 <?php echo form_error('emp_type'); ?>  <?php echo form_error('emp_type'); ?>
 
                                 </fieldset>
+								<fieldset class="">
+                                    <label>No Of Position:<span style="color:red">*</span></label>
 
-
-                                <fieldset id="erroe_nn" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
-                                    <label>Required education:</label> 
-
-                                    <input type="search" tabindex="9" autofocus id="education" name="education" value="<?php echo $degree_data; ?>" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                    <input name="position" type="text" tabindex="11"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of position"/>
                                     <span id="fullname-error"></span>
-<?php echo form_error('education'); ?>
+                                    <?php echo form_error('position'); ?>
+                                </fieldset>
+								<fieldset class="fw edit-post">
+                                    <label>Last date for apply: <span style="color:red">*</span></label>
+
+                                    <input type="hidden" id="example2" tabindex="11">
+
+<?php echo form_error('last_date'); ?> 
+                                </fieldset>
+								
+								
+								</div>
+							</div>
+							<div class="custom-add-box">
+								<h3>Salary Information</h3>
+								<div class="p15 fw">
+									<fieldset <?php if ($salary_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
+                                    <label class="control-label">Salary Type:</label>
+
+
+                                    <select style="cursor:pointer;" tabindex="14" name="salary_type" id="salary_type" class="keyskil">
+
+                                        <option value="" selected option disabled>Salary Type</option>
+
+                                        <option value="Per Year" <?php if ($postdata[0]['salary_type'] == "Per Year") echo 'selected="selected"'; ?>>Per Year</option>
+                                        <option value="Per Month" <?php if ($postdata[0]['salary_type'] == "Per Month") echo 'selected="selected"'; ?>>Per Month</option>
+                                        <option value="Per Week" <?php if ($postdata[0]['salary_type'] == "Per Week") echo 'selected="selected"'; ?>>Per Week</option>
+
+                                        <option value="Per Day" <?php if ($postdata[0]['salary_type'] == "Per Day") echo 'selected="selected"'; ?>>Per Day</option>
+                                    </select>
+                                </fieldset>
+								<fieldset class=" half-width pad_right"> 
+                                    <label>Currency:</label>
+                                    <select name="currency" id="currency" tabindex="15">
+                                        <option value="" selected option disabled>Select Currency</option>
+
+                                        <?php
+                                        if (count($currency) > 0) {
+                                            foreach ($currency as $cur) {
+
+                                                if ($postdata[0]['post_currency']) {
+                                                    ?>
+
+                                                    <option value="<?php echo $cur['currency_id']; ?>" <?php if ($cur['currency_id'] == $postdata[0]['post_currency']) echo 'selected'; ?>><?php echo $cur['currency_name']; ?></option>
+                                                <?php }else {
+                                                    ?>
+                                                    <option value="<?php echo $cur['currency_id']; ?>"><?php echo $cur['currency_name']; ?></option>
+                                                <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+
+
+<?php echo form_error('currency'); ?>
 
                                 </fieldset>
-
-                                <fieldset  class="full-width">
-                                    <label >Job description:<span style="color:red">*</span></label>
-
-                                    <!--  <?php echo form_textarea(array('name' => 'post_desc', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($postdata[0]['post_description']))); ?> -->
-
-                                    <textarea name="post_desc" tabindex="10" id="varmailformat" rows="4" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
-
-<?php echo form_error('post_desc'); ?>
+								<fieldset class="half-width  pad_left" <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
+                                          <label class="control-label">Minimum Salary:<!-- <span style="color:red">*</span> --></label>
+                                    <input name="minsal" tabindex="16" type="text" id="minsal" value="<?php echo $postdata[0]['min_sal']; ?>"  placeholder="Enter Minimum Salary" /><span id="fullname-error"></span>
+<?php echo form_error('minsal'); ?>
                                 </fieldset>
+                             
 
-
-                                <fieldset class="full-width">
-                                      <label>Interview process:<!-- <span style="color:red">*</span> --></label>
-
-                                    <textarea name="interview" id="interview" tabindex="11" rows="4" placeholder="Enter Interview Process"><?php echo $postdata[0]['interview_process']; ?></textarea>
-
-<?php echo form_error('interview'); ?> 
+                                <fieldset class="half-width " <?php if ($maxsal) { ?> class="error-msg" <?php } ?>>
+                                   <label class="control-label">Maximum Salary:<!-- <span style="color:red">*</span> --></label>
+                                    <input name="maxsal" type="text" tabindex="17" id="maxsal" value="<?php echo $postdata[0]['max_sal']; ?>"  placeholder="Enter Maximum Salary" /><span id="fullname-error"></span>
+<?php echo form_error('maxsal'); ?>
                                 </fieldset>
-
-
-
-                                <fieldset class="half-width" <?php if ($country) { ?> class="error-msg" <?php } ?>>
+								
+								</div>
+							</div>
+							<div class="custom-add-box">
+								<h3>Job Location</h3>
+								<div class="p15 fw">
+                                
+                                <fieldset class="fw" <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                     <label>Country:<span style="color:red">*</span></label>
 
 
 <?php $countryname = $this->db->get_where('countries', array('country_id' => $postdata[0]['country']))->row()->country_name; ?>
 
-                                    <select style="cursor:pointer;" name="country" tabindex="12" id="country">
+                                    <select style="cursor:pointer;" name="country" tabindex="18" id="country">
 
 
 
@@ -299,9 +356,9 @@
 
 <?php $statename = $this->db->get_where('states', array('state_id' => $postdata[0]['state']))->row()->state_name; ?>
 
-                                <fieldset  class="half-width" <?php if ($state) { ?> class="error-msg" <?php } ?>>
+                                <fieldset  class="fw" <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                     <label>State:<span style="color:red">*</span></label>
-                                    <select style="cursor:pointer;" name="state" id="state" tabindex="13">
+                                    <select style="cursor:pointer;" name="state" id="state" tabindex="19">
                                         <?php
                                         if ($postdata[0]['state']) {
                                             foreach ($states as $cnt) {
@@ -315,7 +372,7 @@
 
                                         else {
                                             ?>
-                                            <option value="">Select country first</option>
+                                            <option value="">Select Country First</option>
                                             <?php
                                         }
                                         ?>
@@ -326,9 +383,9 @@
 
 <?php $cityname = $this->db->get_where('cities', array('city_id' => $postdata[0]['city']))->row()->city_name; ?>
 
-                                <fieldset class="half-width" <?php if ($city) { ?> class="error-msg" <?php } ?>>
+                                <fieldset class="fw" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                                     <label>City:</label>
-                                    <select name="city" id="city" tabindex="14">
+                                    <select name="city" id="city" tabindex="20">
                                         <?php
                                         if ($postdata[0]['city']) {
                                             foreach ($cities as $cnt) {
@@ -354,7 +411,7 @@
                                             }
                                         } else {
                                             ?>
-                                            <option value="">Select state first</option>
+                                            <option value="">Select State First</option>
 
                                             <?php
                                         }
@@ -363,82 +420,27 @@
 <?php echo form_error('city'); ?>
                                 </fieldset>
 
-<fieldset <?php if ($salary_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
-                                    <label class="control-label">Salary Type:</label>
 
 
-                                    <select style="cursor:pointer;" tabindex="15" name="salary_type" id="salary_type" class="keyskil">
-
-                                        <option value="" selected option disabled>Salary Type</option>
-
-                                        <option value="Per Year" <?php if ($postdata[0]['salary_type'] == "Per Year") echo 'selected="selected"'; ?>>Per Year</option>
-                                        <option value="Per Month" <?php if ($postdata[0]['salary_type'] == "Per Month") echo 'selected="selected"'; ?>>Per Month</option>
-                                        <option value="Per Week" <?php if ($postdata[0]['salary_type'] == "Per Week") echo 'selected="selected"'; ?>>Per Week</option>
-
-                                        <option value="Per Day" <?php if ($postdata[0]['salary_type'] == "Per Day") echo 'selected="selected"'; ?>>Per Day</option>
-                                    </select>
-                                </fieldset>
-
-                                <fieldset class="half-width  pad_left" <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
-                                          <label class="control-label">Minimum salary:<!-- <span style="color:red">*</span> --></label>
-                                    <input name="minsal" tabindex="16" type="text" id="minsal" value="<?php echo $postdata[0]['min_sal']; ?>"  placeholder="Enter Minimum Salary" /><span id="fullname-error"></span>
-<?php echo form_error('minsal'); ?>
-                                </fieldset>
-                             
-
-                                <fieldset class="half-width " <?php if ($maxsal) { ?> class="error-msg" <?php } ?>>
-                                   <label class="control-label">Maximum salary:<!-- <span style="color:red">*</span> --></label>
-                                    <input name="maxsal" type="text" tabindex="17" id="maxsal" value="<?php echo $postdata[0]['max_sal']; ?>"  placeholder="Enter Maximum Salary" /><span id="fullname-error"></span>
-<?php echo form_error('maxsal'); ?>
-                                </fieldset>
+                                
 
 
-   <fieldset class="half-width edit-post">
-                                    <label>Last date for apply: <span style="color:red">*</span></label>
-
-                                    <input type="hidden" id="example2" tabindex="18">
-
-<?php echo form_error('last_date'); ?> 
-                                </fieldset>
+   
 
 
                              
 
 
                                 
-   <fieldset class=" half-width pad_right"> 
-                                    <label>Currency:</label>
-                                    <select name="currency" id="currency" tabindex="19">
-                                        <option value="" selected option disabled>Select Currency</option>
-
-                                        <?php
-                                        if (count($currency) > 0) {
-                                            foreach ($currency as $cur) {
-
-                                                if ($postdata[0]['post_currency']) {
-                                                    ?>
-
-                                                    <option value="<?php echo $cur['currency_id']; ?>" <?php if ($cur['currency_id'] == $postdata[0]['post_currency']) echo 'selected'; ?>><?php echo $cur['currency_name']; ?></option>
-                                                <?php }else {
-                                                    ?>
-                                                    <option value="<?php echo $cur['currency_id']; ?>"><?php echo $cur['currency_name']; ?></option>
-                                                <?php
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-
-
-<?php echo form_error('currency'); ?>
-
-                                </fieldset>
+   
                                 <fieldset class="hs-submit full-width">
                                   
 
 
-                                    <input type="submit" id="submit" class="add_post_btns" tabindex="20" name="submit" value="save">                    
+                                    <input type="submit" id="submit" class="add_post_btns" tabindex="21" name="submit" value="save">                    
                                 </fieldset>
+								</div>
+								</div>
                             </div>
 								</div>
                             </div>

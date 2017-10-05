@@ -94,7 +94,7 @@
                                     <fieldset class="full-width <?php if($skills) {  ?> error-msg <?php } ?>">
                                         <label>Art:<span style="color:red">*</span></label>
                                     
-                                      <input placeholder="Enter art" id="skills2" value="<?php echo $work_skill; ?>" name="skills" tabindex="1" size="90">
+                                      <input placeholder="Ex:- Dancing, Photography, Writing, Singing, Acting" id="skills2" value="<?php echo $work_skill; ?>" name="skills" tabindex="1" size="90">
 
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
@@ -102,13 +102,13 @@
 
                                 <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
                                     <label>Speciality in art:<span style="color:red">*</span></label>
-                                    <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Enter speciality" value="<?php if($artname1){ echo $artname1; } ?>"/><!-- <span id="artname-error"></span> -->
+                                    <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Ex:- Classical dancing, Contemporary, Zumba, Hip Hop " value="<?php if($artname1){ echo $artname1; } ?>"/><!-- <span id="artname-error"></span> -->
                                      <?php echo form_error('artname'); ?>
                                 </fieldset>
               
                               
                                 <fieldset  class="<?php if($desc_art) {  ?>error-msg <?php } ?> full-width">
-                                    <label>Description of your art:<span style="color:red">*</span></label>
+                                    <label>Description of your artistic career:<span style="color:red">*</span></label>
 
                                  <textarea id="textarea" name ="desc_art" id="desc_art" tabindex="3" rows="4" cols="50" placeholder="Enter description of your art" style="resize: none;"><?php if($desc_art1){ echo $desc_art1; } ?></textarea>
                                    

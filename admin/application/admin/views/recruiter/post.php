@@ -154,7 +154,7 @@ echo $leftmenu;
                     <td><?php echo $i++; ?></td>
                     
                     <td><?php echo ucfirst($user['rec_firstname']); echo ' ';echo ucfirst($user['rec_lastname']);  ?></td>
-                    <?php $job_name = $this->db->get_where('job_title', array('title_id' => $user['post_name'], 'status' => 1))->row()->name; ?>
+                    <?php $job_name = $this->db->get_where('job_title', array('title_id' => $user['post_name']))->row()->name; ?>
                     <td><?php  if($job_name){ echo $job_name; }else{ echo  $user['post_name'];} ?></td>
 
                     <td>

@@ -970,7 +970,7 @@ label.cameraButton:active {
 }
 .post-design-name {
     padding-left: 0;
-    bottom: -3px;
+    bottom: -4px;
     padding-right: 0;
 }
 .post-design-name ul {
@@ -3669,6 +3669,7 @@ label.cameraButton input[accept*="camera"] {
     padding-left: 4px!important;
     padding-right: 4px!important;
     word-spacing: 2px;
+    float: left;
     font-weight: 500!important;
     color: #91949d;
     display: inline-block;

@@ -295,9 +295,9 @@ $(function () {
 
         //startDate: today,
     });
-    $(".day").attr('tabindex', 12);
-    $(".month").attr('tabindex', 13);
-    $(".year").attr('tabindex', 14);
+    $(".day").attr('tabindex', 8);
+    $(".month").attr('tabindex',9);
+    $(".year").attr('tabindex', 10);
 
 });
 //SCRIPT FOR DATEPICKER END 
