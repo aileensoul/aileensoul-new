@@ -997,6 +997,8 @@ label.cameraButton:active {
 }
 .post-design-product {
     padding-left: 10px;
+	line-height:1;
+	float:left;
 }
 .post-design-name ul li .post_dot {
     /*max-width: 80%;*/
@@ -1042,6 +1044,8 @@ label.cameraButton:active {
     font-weight: 400;
     color: #91949d;
     cursor: default;
+	font-size:12px; 
+	line-height:1.5;
 }
 .post-design-name ul li .datespan span:before {
     content: "  ";
@@ -3764,7 +3768,7 @@ label.cameraButton input[accept*="camera"] {
     color: #91949d;
     display: inline-block;
 	float:left;
-	line-height:1;
+	line-height:1.3;
 }
 .editav_2 {
     display: none;
