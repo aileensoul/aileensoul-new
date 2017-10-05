@@ -85,10 +85,10 @@
                 </div>
             </div>
         </div>
-        <div class="user-midd-section" id="paddingtop_fixed pt_mn">
+        <div class="user-midd-section" id="paddingtop_fixed">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-sm-7 pt120 pt_mn2">
+                    <div class="col-md-8 col-sm-7 pt_mn2">
                         <div class="common-form main_cqlist">
                             <div class="contact-list">
                                 <h3 class="list-title list-title2"> Contact Request</h3>
@@ -102,7 +102,7 @@
                         </div>
                         <!-- END PAGE TITLE -->
                     </div>
-                    <div class="col-md-4 col-sm-5 pt120 hidden-xs ">
+                    <div class="col-md-4 col-sm-5 hidden-xs ">
                         <div class="common-form ">
                             <div class="main_cqlist-1"> 
                                 <div class="contact-list ">

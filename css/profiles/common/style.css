@@ -1919,7 +1919,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
   }
 }
 
-@media screen and (min-width: 1340px) {
+@media screen and (min-width: 1280px) {
     .container {
         width: 1280px;
     }
