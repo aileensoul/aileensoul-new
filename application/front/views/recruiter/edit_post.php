@@ -202,7 +202,7 @@
                                           <?php
                                           if ($postdata[0]['fresher']) {
                                               ?>
-                                        <input   type="checkbox" name="fresher" id="fresher_nme" tabindex="6" value="1" checked>
+                                        <input type="checkbox" name="fresher" id="fresher_nme" tabindex="6" value="1" checked>
                                         <label for="fresher_nme">Fresher can also apply..!</label> 
                                         <?php
                                     } else {
