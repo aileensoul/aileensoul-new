@@ -4300,6 +4300,8 @@ div .comment {
     margin-top: 0 !important;
     min-height: 37px !important;
     width: 81%;}
+	
+.post-design-product .ctre_date:before{content:"·"; }
 
 
 
