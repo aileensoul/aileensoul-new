@@ -3959,7 +3959,7 @@ div .comment {
     padding: 15px;
 }
 .post_dot_2 {
-    max-width: 26%;
+    /*max-width: 26%;*/
     width: auto;
     font-size: 16px;
     display: inline-block;
@@ -3967,9 +3967,9 @@ div .comment {
     font-weight: 600;
     color: #1b8ab9;
     margin-bottom: -3px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
+    /*white-space: nowrap;*/
 }
 .padding_adust {
     padding-right: 20px;
