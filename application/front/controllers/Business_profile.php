@@ -1200,6 +1200,8 @@ class Business_profile extends MY_Controller {
     public function business_profile_addpost_insert($id = "", $para = "") {
         $userid = $this->session->userdata('aileenuser');
 
+        $business_login_slug = $this->data['business_login_slug'];
+        
         $this->business_profile_active_check();
         $this->is_business_profile_register();
 
@@ -1969,7 +1971,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 $return_html .= '<div class = "one-image">';
 
-                $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $business_slug . '/' . $post_business_profile_post_id) . '">
+                $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $business_login_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';

@@ -524,7 +524,7 @@
                                                     <form role="form" name="login_form" id="login_form" method="post">
 
                                                         <div class="form-group">
-                                                            <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                            <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email address*">
                                                             <div id="error2" style="display:block;">
                                                                 <?php
                                                                 if ($this->session->flashdata('erroremail')) {
