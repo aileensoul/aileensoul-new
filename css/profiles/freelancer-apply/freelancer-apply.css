@@ -410,14 +410,14 @@ li.fr a {
     margin-bottom: 10px;
 }
 .profile-boxProfileCard {
-    border: 11px solid #ffffff;
+    border: 6px solid #ffffff;
     background: #fff;
     border-radius: 3px;
 }
 .profile-boxProfileCard-cover {
     border: 1px solid #efefef;
     border-bottom: none;
-	height:110px;
+	height:80px;
 }
 .profile-boxProfileCard-bg {
     background-size: 100%;
@@ -480,7 +480,7 @@ li.fr a {
     display: block;
     position: absolute;
     content: "";
-    top: 60px;
+    top: 46px;
     background: #d9d9d9;
 }
 .profile-boxProfileCard-content {
@@ -499,12 +499,12 @@ li.fr a {
     padding-left: 1px !important;
 }
 .profile-boxProfilebuisness-avatarLink2 {
-    background-color: #fff;
+    /*background-color: #fff;*/
     border-radius: 6px;
-    margin: 11px 0 12px 12px;
+    margin: 9px 0 8px 4px;
     padding: 1px;
     vertical-align: bottom;
-    border: 3px solid #ffffff;
+    border: none;
 }
 .a-inlineBlock {
     display: inline-block!important;
@@ -520,7 +520,7 @@ li.fr a {
     position: relative;
 }
 .right_left_box_design {
-    padding: 10px 10px 0px 16px;
+    padding: 7px 9px 0px 5px;
     width: 76%;
     display: inline-block;
     float: left;
@@ -533,9 +533,10 @@ li.fr a {
     white-space: nowrap;
     width: auto;
     color: #1b8ab9;
+	line-height:18px;
 }
 .profile-company-name a {
-    font-size: 18px;
+    font-size: 15px;
     margin-left: 0px;
     font-weight: 600;
     color: #1b8ab9;
@@ -545,6 +546,7 @@ li.fr a {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+	line-height:18px;
 }
 .left_box_menubar {
     width: 100%;
@@ -561,7 +563,7 @@ li.fr a {
     width: 32.33%;
 }
 .left_box_menubar li a {
-    padding: 10px;
+    padding: 4px;
     display: inline-block;
 }
 .left_box_menubar li:last-child a {
@@ -574,8 +576,8 @@ li.fr a {
     text-align: right;
 }
 .left_iner_img_profile {
-    height: 67px;
-    width: 67px;
+    height: 60px;
+    width: 60px;
     z-index: 3;
     position: relative;
     overflow: hidden;
@@ -593,8 +595,8 @@ li.fr a {
 }
 .post-img-profile {
     color: #fff;
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
     background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
@@ -603,13 +605,13 @@ li.fr a {
     background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
     font-size: 20px;
-    padding: 16px 0;
+    padding: 21px 0;
     text-align: center;
     text-transform: uppercase;
     line-height: 1;
 }
 .a-inlineBlock .post-img-profile {
-    line-height: 2;
+    /*line-height: 2;*/
 }
 .search_img .post-img-profile {
     line-height: 4;
@@ -1444,7 +1446,34 @@ label.cameraButton input[accept*="camera"] {
 	border: 1px solid red !important;
 	border-radius: 2px;
 }
+/***  new structure main page  ***/
+.left_side_posrt {
+    width: 320px;
+    float: left;
+    position: fixed;
+}
+.right_side_posrt {
+    float: left;
+    width: 600px;
+}
+.right_middle_side_posrt {
+    width: 310px;
+    float: left;
+    margin-left: 10px;
+    position: fixed;
+    margin-left: 940px;
+}
+.mian_middle_post_box {
+    float: left;
+    width: 600px;
+    margin-left: 10px;
+    left: 320px;
+    position: relative;
+}
+.profile-boxProfile-name a{font-size:14px;}
 
+
+/***  end new structure  ***/
 
 
 /***  media query  ***/

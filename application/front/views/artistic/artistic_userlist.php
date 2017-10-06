@@ -22,8 +22,8 @@
 <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
     <?php echo $left_artistic; ?>
 </div>
-       <div class=" custom-right-art animated fadeInUp">
-                            <div class="mian_middle_post_box">  
+       <div class=" custom-right-art mian_middle_post_box animated fadeInUp">
+                            <div class="">  
                                 <div class="right_side_posrt fl"> 
         <div>
             <?php
@@ -51,7 +51,20 @@
     </div>
     </div>
     </div>
-    </div>
+		
+		<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+					
+						<div class="fw text-center">
+                        <script type="text/javascript" language="javascript">
+						  var aax_size='300x250';
+						  var aax_pubname = 'aileensoul-21';
+						  var aax_src='302';
+						</script>
+						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+						</div>
+                    </div>
+	
+	</div>
             </div>
         </div>
 </section>
