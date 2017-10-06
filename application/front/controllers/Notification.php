@@ -1432,11 +1432,11 @@ Your browser does not support the audio tag.
                 $notification .= '<div class="notification-pic">';
 
 
-                 $filename = $this->config->item('rec_profile_thumb_upload_url') . $total['user_image'];
+                 $filename = $this->config->item('rec_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                       if ($total['user_image'] != '' && $info) { 
-                    $notification .= '<img src="' . base_url(REC_PROFILE_THUMB_UPLOAD_URL . $total['user_image']) . '" >';
+                    $notification .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                 } else {
                     $a = $total['first_name'];
                     $b = $total['last_name'];
@@ -1934,11 +1934,11 @@ Your browser does not support the audio tag.
                 $notification .= '><a href="' . base_url('job/resume/' . $job_slug . '?page=recruiter') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
               
-                $filename = $this->config->item('job_profile_thumb_upload_url') . $total['user_image'];
+                $filename = $this->config->item('job_profile_thumb_upload_path') . $total['user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                       if ($total['user_image'] != '' && $info) { 
-                    $notification .= '<img src="' . base_url(JOB_PROFILE_THUMB_UPLOAD_URL . $total['user_image']) . '" >';
+                    $notification .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                    
                     } else {
                     $a = $total['first_name'];
