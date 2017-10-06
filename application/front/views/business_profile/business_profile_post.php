@@ -204,7 +204,7 @@
                                 <label for="file-1">
                                     <i class="fa fa-camera upload_icon"><span class="upload_span_icon"> Photo </span></i>
                                     <i class="fa fa-video-camera upload_icon"><span class="upload_span_icon"> Video</span>  </i> 
-                                    <i class="fa fa-music upload_icon"> <span class="upload_span_icon">Audio </span> </i>
+                                    <i class="fa fa-music upload_icon"> <span class="upload_span_icon">  Audio </span> </i>
                                     <i class="fa fa-file-pdf-o upload_icon"><span class="upload_span_icon"> PDF </span></i>
                                 </label>
                             </li>

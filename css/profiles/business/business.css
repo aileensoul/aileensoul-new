@@ -733,8 +733,8 @@ label.cameraButton:active {
 .follow_left_box_main {
     padding-left: 1px;
     padding-right: 1px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    /*padding-top: 4px;*/
+    padding-bottom: 3px;
 }
 .profile-boxProfileCard_follow {
     position: relative;
@@ -4278,7 +4278,7 @@ div .comment {
 #mainContainer{min-width:108% !important;}
 
 .editor-header .form-group .file-input{margin-left:8px;}
-.post-design-product_follow_main{padding-top:5px;}
+.post-design-product_follow_main{/*padding-top:5px;*/}
 .post-design-product_follow{padding-top:5px;}
 .search-page .search-post-box{float: left;
     left: 320px;
