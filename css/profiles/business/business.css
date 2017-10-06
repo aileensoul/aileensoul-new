@@ -2496,7 +2496,7 @@ label.cameraButton:active {
 .profile-job-post-location-name ul li .follow-img img {
     height: 100%;
     width: 100%;
-    margin-bottom: 10px;
+    
 }
 .profile-job-post-location-name ul li .follow-li-text {
     font-size: 18px;
@@ -2540,7 +2540,7 @@ label.cameraButton:active {
     letter-spacing: 1px;
     width: 100px;
     padding: 8px 7px;
-    margin-bottom: 15px;
+    margin-bottom: 7px;
     background: rgb(44, 83, 158);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -2558,6 +2558,8 @@ label.cameraButton:active {
     -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
     font-weight: bold;
     text-decoration: none;
+	margin-right:0;
+	margin-left:10px;
 }
 .folle_text {
     width: 64%;
