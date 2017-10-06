@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -312,7 +312,7 @@
                         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
                         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
                         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-                        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+                        <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
 
                         <!-- script for business autofill -->
                         <script>
