@@ -3643,12 +3643,21 @@ class Chat extends MY_Controller {
 
                 $usrsrch .= '<div class="chat_heae_img">';
                 if ($message_from_profile == 2) {
-                    $image_path = FCPATH . 'uploads/job_profile/thumbs/' . $user['user_image'];
-                    $user_image = base_url() . 'uploads/job_profile/thumbs/' . $user['user_image'];
+                    
+                    $filename = $this->config->item('job_profile_thumb_upload_url') . $user['user_image'];
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $this->data['image_path'] = $image_path = $s3->getObjectInfo(bucket, $filename);
+                         
+               //     $image_path = FCPATH . 'uploads/job_profile/thumbs/' . $user['user_image'];
+                    $user_image = base_url() . JOB_PROFILE_THUMB_UPLOAD_URL . $user['user_image'];
                 }
                 if ($message_from_profile == 1) {
-                    $image_path = FCPATH . 'uploads/recruiter_profile/thumbs/' . $user['user_image'];
-                    $user_image = base_url() . 'uploads/recruiter_profile/thumbs/' . $user['user_image'];
+                    $filename = $this->config->item('rec_profile_thumb_upload_url') . $user['user_image'];
+                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                    $this->data['image_path'] = $image_path = $s3->getObjectInfo(bucket, $filename);
+                    
+                   // $image_path = FCPATH . 'uploads/recruiter_profile/thumbs/' . $user['user_image'];
+                    $user_image = base_url() . REC_PROFILE_THUMB_UPLOAD_URL . $user['user_image'];
                 }
                 if ($message_from_profile == 4) {
                     $image_path = FCPATH . 'uploads/freelancer_hire_profile/thumbs/' . $user['user_image'];
