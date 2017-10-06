@@ -736,7 +736,8 @@ ul.dropdown-menu li a i {
 .header2 input::-moz-placeholder {
     line-height: 16px;
 }
-.header2 input::-moz-placeholder {} .header2 ul li .dropdown-content_hover a i {
+.header2 input::-moz-placeholder {} 
+.header2 ul li .dropdown-content_hover a i {
     padding-right: 5px!important;
     margin-left: -6px !important;
 }
@@ -1002,8 +1003,8 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 #inboxcontainer::before {
     right: 17px;
 }
-/*** business profile  ***/
 
+/*** business profile  ***/
 #addcontact_count {
     font-weight: 600;
     height: 16px;
