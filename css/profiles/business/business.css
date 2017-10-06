@@ -2,6 +2,7 @@
 
 .bui_bcon {
     width: 67%;
+	padding-left:10px !important;
 }
 .job-saved-box {
     margin-bottom: 50px;
@@ -732,8 +733,8 @@ label.cameraButton:active {
 .follow_left_box_main {
     padding-left: 1px;
     padding-right: 1px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    /*padding-top: 4px;*/
+    padding-bottom: 3px;
 }
 .profile-boxProfileCard_follow {
     position: relative;
@@ -1051,8 +1052,8 @@ label.cameraButton:active {
 	float:left;
 }
 .post-design-name ul li .datespan span:before {
-    content: "  ";
-    font-size: 17px;
+   /* content: "  ";
+    font-size: 17px;*/
 }
 .post-design-name ul li .post-design-product .in_desc_cw {
     padding-left: 10px;
@@ -2457,20 +2458,26 @@ label.cameraButton:active {
     height: 100%;
 }
 .profile-job-post-location-name {
-    padding: 12px 10px;
+    padding: 15px;
     font-weight: bold;
+	width:100%;
+	float:left;
 }
 .profile-job-post-location-name ul {
     padding: 0;
     font-size: 0;
+	width:100%;
+	float:left;
 }
 .profile-job-post-location-name ul li {
     margin: 0;
     list-style: none;
     display: inline-block;
+	padding-left:0;
 }
 .profile-job-post-location-name ul li.folle_text {
     padding-top: 5px;
+	padding-left:10px;
 }
 .profile-job-post-location-name ul li .user_btn {
     padding-top: 10px;
@@ -2481,7 +2488,6 @@ label.cameraButton:active {
 .follow-img {
     border: 1px solid #d9d9d9;
     height: 60px;
-    margin-bottom: 14px;
     width: 60px;
 }
 .user_lst li a {
@@ -2490,7 +2496,7 @@ label.cameraButton:active {
 .profile-job-post-location-name ul li .follow-img img {
     height: 100%;
     width: 100%;
-    margin-bottom: 10px;
+    
 }
 .profile-job-post-location-name ul li .follow-li-text {
     font-size: 18px;
@@ -2534,7 +2540,7 @@ label.cameraButton:active {
     letter-spacing: 1px;
     width: 100px;
     padding: 8px 7px;
-    margin-bottom: 15px;
+    margin-bottom: 7px;
     background: rgb(44, 83, 158);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -2552,6 +2558,8 @@ label.cameraButton:active {
     -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
     font-weight: bold;
     text-decoration: none;
+	margin-right:0;
+	margin-left:10px;
 }
 .folle_text {
     width: 64%;
@@ -4270,7 +4278,7 @@ div .comment {
 #mainContainer{min-width:108% !important;}
 
 .editor-header .form-group .file-input{margin-left:8px;}
-.post-design-product_follow_main{padding-top:5px;}
+.post-design-product_follow_main{/*padding-top:5px;*/}
 .post-design-product_follow{padding-top:5px;}
 .search-page .search-post-box{float: left;
     left: 320px;
@@ -4302,7 +4310,9 @@ div .comment {
     width: 81%;}
 	
 .post-design-product .ctre_date:before{content:"·"; }
-
+.animated.fadeInUp{animation-fill-mode: none;}
+.user_btn .contact_user_list{width:130px; margin-bottom:0; margin-right:0;}
+.profile-job-post-location-name .user_lst ul li .user_btn{padding-top:7px;}
 
 
 /***  media query  ***/
@@ -5400,7 +5410,6 @@ div .comment {
 	.other-profile-menu .profile-left {
         width: 52%;
     }
-	
     .four-image img {
         width: 280px;
         height: 150px;

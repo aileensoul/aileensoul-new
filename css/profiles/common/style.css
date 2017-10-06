@@ -201,6 +201,7 @@ select {
     font-size: 16px;
     height:35px;
     cursor: pointer;
+    color: #acacac;
 }
 .comment-edit-butn button:focus{background-color: #1b8ab9;}
 input[type=submit],
@@ -801,10 +802,10 @@ label.error {
     margin-top: 40px;
 }
 .pop_content .cnclbtn:hover {
-    background-color: #156f95 !important
+    background-color: #156f95 !important;
 }
 .pop_content .okbtn:hover {
-    background-color: #156f95 !important
+    background-color: #156f95 !important;
 }
 
 /**---------- end model ---------------**/
@@ -1069,7 +1070,7 @@ label.cameraButton {
     float:left;
 }
 .cover .profile-modal-close, .cover .modal-close, .posterror-modal-close{line-height:30px;}
-.custom-c .middle-section{background:#f3f3f3;}
+.custom-c .middle-section{background:#fff;}
 .bg-images.no-cover-upload{
     background:#fff;
    /* border-bottom:1px solid #d9d9d9;*/
@@ -1169,8 +1170,8 @@ label.cameraButton input[accept*="camera"] {
     display: inline-block;
     margin-top: 5px;   
 }
-#notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px; margin-left: 11px; 
-	display: inline-block;
+#notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px; 
+	margin-left: 11px; display: inline-block;
 }
 #noti_pc img{border-radius: none;}
 #notification_inside h6{font-size: 17px;}

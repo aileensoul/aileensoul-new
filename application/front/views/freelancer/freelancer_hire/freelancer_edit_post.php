@@ -20,8 +20,8 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-7 col-sm-8 animated fadeInLeftBig">
+                        <div class="col-md-2 col-sm-1"></div>
+                        <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
                             <div>
                                 <?php
                                 if ($this->session->flashdata('error')) {

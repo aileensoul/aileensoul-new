@@ -1542,7 +1542,7 @@ function editpost(abc)
 //    document.getElementById('khyati' + abc).style.display = 'none';
 
     var editposttitle = $('#editpostdata' + abc + ' a').html();
-    var editpostdesc = $('#khyati' + abc).html();
+    var editpostdesc = $('#khyatii' + abc).html();
     $("#myDropdown" + abc).removeClass('show');
     document.getElementById('editpostdata' + abc).style.display = 'none';
     document.getElementById('editpostbox' + abc).style.display = 'block';
@@ -1554,8 +1554,9 @@ function editpost(abc)
 
     editposttitle = editposttitle.trim();
     editpostdesc = editpostdesc.trim();
+    
     $('#editpostname' + abc).val(editposttitle);
-    $('#editpostdesc' + abc).html(editpostdesc);
+    $('#editpostdesc' + abc).html(nl2br(editpostdesc));
 
     var input = $("#editpostdesc" + abc);
     var len = input.text().length;
@@ -1643,7 +1644,7 @@ jQuery(document).ready(function ($) {
             $("input[name='text_num']").val(50);
             $(".file-preview-frame").hide();
             document.getElementById("progress_div").style.display = "none";
-            $('.business-all-post').find('.post-design-box:first').parent().remove();
+           // $('.business-all-post').find('.post-design-box:first').parent().remove();
             $(".business-all-post").prepend(response.responseText);
             // second header class add for scroll
             var nb = $('.post-design-box').length;

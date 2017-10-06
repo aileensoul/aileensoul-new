@@ -962,7 +962,6 @@ class Business_profile extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'business_step' => 4);
             $business_data = $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'user_id,business_profile_id,company_name,contact_email,contact_person,contact_mobile,contact_website,details,address,city,country', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-
         if ($business_main_slug == $id) {
             $this->data['is_eligable_for_post'] = 1;
         } else {
@@ -986,11 +985,15 @@ class Business_profile extends MY_Controller {
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
 //manage post end
-        if ($this->session->userdata('aileenuser')) {
-            $this->load->view('business_profile/business_profile_manage_post', $this->data);
+        if (count($business_data) == 0) {
+            $this->load->view('business_profile/notavalible');
         } else {
-            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
-            $this->load->view('business_profile/business_dashboard', $this->data);
+            if ($this->session->userdata('aileenuser')) {
+                $this->load->view('business_profile/business_profile_manage_post', $this->data);
+            } else {
+                $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+                $this->load->view('business_profile/business_dashboard', $this->data);
+            }
         }
 // save post end       
     }
@@ -1198,10 +1201,11 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_addpost_insert($id = "", $para = "") {
+
         $userid = $this->session->userdata('aileenuser');
 
         $business_login_slug = $this->data['business_login_slug'];
-        
+
         $this->business_profile_active_check();
         $this->is_business_profile_register();
 
@@ -1466,7 +1470,9 @@ class Business_profile extends MY_Controller {
                             //Creating Thumbnail
                             $this->$instanse4->resize();
                             $this->$instanse4->clear();
-
+                            
+                            $resize_image4 = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                            $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
                             /* RESIZE 4 */
                         }
 
@@ -1862,10 +1868,13 @@ class Business_profile extends MY_Controller {
 </li>
 </ul>
 </div>
-<div class = "dropdown1">
-<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common  dropbtn1 fa fa-ellipsis-v">
-</a>
-<div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
+<div class = "dropdown1">';
+        if ($id == 'manage') {
+            $return_html .= '<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common  dropbtn1 fa fa-ellipsis-v"></a>';
+        } else {
+            $return_html .= '<a onClick = "myFunction(' . $post_business_profile_post_id . ')" class = "dropbtn_common  dropbtn1 fa fa-ellipsis-v"></a>';
+        }
+        $return_html .= '<div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
 
         if ($post_posted_user_id != 0) {
 
@@ -2946,11 +2955,15 @@ Your browser does not support the audio tag.
         $this->data['title'] = $company_name . TITLEPOSTFIX;
 
 //manage post end
-        if ($this->session->userdata('aileenuser')) {
-            $this->load->view('business_profile/business_resume', $this->data);
+        if (count($business_data) == 0) {
+            $this->load->view('business_profile/notavalible');
         } else {
-            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
-            $this->load->view('business_profile/business_details', $this->data);
+            if ($this->session->userdata('aileenuser')) {
+                $this->load->view('business_profile/business_resume', $this->data);
+            } else {
+                $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+                $this->load->view('business_profile/business_details', $this->data);
+            }
         }
     }
 
@@ -3905,11 +3918,13 @@ Your browser does not support the audio tag.
         $this->business_profile_active_check();
         $this->is_business_profile_register();
 
-
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
-
-        $this->load->view('business_profile/business_followers', $this->data);
+        if ($company_name == '') {
+            $this->load->view('business_profile/notavalible');
+        } else {
+            $this->load->view('business_profile/business_followers', $this->data);
+        }
     }
 
     public function ajax_followers($id = "") {
@@ -4068,8 +4083,11 @@ Your browser does not support the audio tag.
 
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
-
-        $this->load->view('business_profile/business_following', $this->data);
+        if ($company_name == '') {
+            $this->load->view('business_profile/notavalible');
+        } else {
+            $this->load->view('business_profile/business_following', $this->data);
+        }
     }
 
     public function ajax_following($id = "") {
@@ -9397,30 +9415,30 @@ Your browser does not support the audio tag.
             $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contactid);
         } else {
             $data = array(
-                'modify_date' => date('Y-m-d', time()),
+                'modify_date' => date('Y-m-d H:i:s', time()),
                 'status' => 'reject'
             );
             $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contactid);
         }
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
-        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'created_date', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
-        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'created_date', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $unique_user = array_merge($contactperson_req, $contactperson_con);
 
         $new = array();
         foreach ($unique_user as $value) {
-            $new[$value['contact_id']] = $value;
+            $new[$value['created_date']] = $value;
         }
 
         $post = array();
 
         foreach ($new as $key => $row) {
 
-            $post[$key] = $row['contact_id'];
+            $post[$key] = $row['created_date'];
         }
         array_multisort($post, SORT_DESC, $new);
 
@@ -9487,6 +9505,9 @@ Your browser does not support the audio tag.
                     $contactdata .= '<div class="addcontact-text_full">';
                     $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request.</span>';
 //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+                    $contactdata .= '<div class="data_noti_msg">';
+                    $contactdata .= $this->time_elapsed_string($contact['action_date']);
+                    $contactdata .= '</div>';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
                     $contactdata .= '</div>';
@@ -9780,11 +9801,13 @@ Your browser does not support the audio tag.
 
     public function bus_contact($id = "") {
         $this->data['slug_id'] = $id;
-
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
-
-        $this->load->view('business_profile/bus_contact', $this->data);
+        if ($company_name == '') {
+            $this->load->view('business_profile/notavalible');
+        } else {
+            $this->load->view('business_profile/bus_contact', $this->data);
+        }
     }
 
     public function ajax_bus_contact($id = "") {
@@ -13295,10 +13318,10 @@ Your browser does not support the audio tag.
 </li>
 </ul>
 </div>
-<div class = "dropdown1">
-<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common dropbtn1 fa fa-ellipsis-v">
-</a>
-<div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
+<div class = "dropdown1">';
+                $return_html .= '<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common dropbtn1 fa fa-ellipsis-v"></a>';
+
+                $return_html .= '<div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
                 if ($post_posted_user_id != 0) {
                     if ($userid == $post_posted_user_id) {
                         $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
