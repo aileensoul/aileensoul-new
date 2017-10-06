@@ -82,8 +82,8 @@
             dataType: 'json',
             data: '',
             beforeSend: function () {
-
                 $('#gen_not_loader').show();
+                $('ul.notification_data_in').html('<div class="fw" id="gen_not_loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>');
             },
 
             complete: function () {
