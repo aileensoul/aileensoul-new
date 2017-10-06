@@ -3040,9 +3040,12 @@ class Chat extends MY_Controller {
             $this->data['last_user_data']['first_name'] = $last_user_data[0]['rec_firstname'];
             $this->data['last_user_data']['last_name'] = $last_user_data[0]['rec_lastname'];
 
-            $user_image = FCPATH . 'uploads/recruiter_profile/thumbs/' . $last_user_data[0]['recruiter_user_image'];
-            if ($last_user_data[0]['recruiter_user_image'] && (file_exists($user_image)) == 1) {
-                $this->data['last_user_data']['user_image'] = base_url() . 'uploads/recruiter_profile/thumbs/' . $last_user_data[0]['recruiter_user_image'];
+           $filename = $this->config->item('rec_profile_thumb_upload_url') . $last_user_data[0]['recruiter_user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                      $user_image = $s3->getObjectInfo(bucket, $filename);
+            if ($last_user_data[0]['recruiter_user_image'] && $user_image) {
+                $this->data['last_user_data']['user_image'] = base_url() . REC_PROFILE_THUMB_UPLOAD_URL . $last_user_data[0]['recruiter_user_image'];
+            
             } else {
                 $a = $last_user_data[0]['rec_firstname'];
                 $b = $last_user_data[0]['rec_lastname'];
@@ -3078,10 +3081,15 @@ class Chat extends MY_Controller {
             $this->data['last_user_data']['user_profile_id'] = $last_user_data[0]['rec_id'];
             $this->data['last_user_data']['first_name'] = $last_user_data[0]['fname'];
             $this->data['last_user_data']['last_name'] = $last_user_data[0]['lname'];
-            $user_image = FCPATH . 'uploads/job_profile/thumbs/' . $last_user_data[0]['job_user_image'];
-            if ($last_user_data[0]['job_user_image'] && (file_exists($user_image)) == 1) {
-                $this->data['last_user_data']['user_image'] = base_url() . 'uploads/job_profile/thumbs/' . $last_user_data[0]['job_user_image'];
-            } else {
+           
+            $filename = $this->config->item('job_profile_thumb_upload_url') . $last_user_data[0]['job_user_image'];
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+            $user_image = $s3->getObjectInfo(bucket, $filename);
+            
+            if ($last_user_data[0]['job_user_image'] && $user_image) {
+                $this->data['last_user_data']['user_image'] = base_url() . JOB_PROFILE_THUMB_UPLOAD_URL . $last_user_data[0]['job_user_image'];
+           
+                } else {
                 $a = $last_user_data[0]['fname'];
                 $b = $last_user_data[0]['lname'];
                 $acr = substr($a, 0, 1);
