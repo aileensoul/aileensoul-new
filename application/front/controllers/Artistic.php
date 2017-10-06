@@ -850,6 +850,10 @@ class Artistic extends MY_Controller {
                             $this->$instanse4->resize();
                             $this->$instanse4->clear();
 
+                            $thumb_image = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+                        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
                             /* RESIZE 4 */
                         }
 
