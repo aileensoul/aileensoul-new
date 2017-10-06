@@ -343,7 +343,32 @@ jQuery.browser.version = RegExp.$1;
 		</footer>
 			
 	</div>
-	
-</body>
+	<?php $arr = array(
+'http://www.domain.com/?foo=bar',
+'http://www.that"sallfolks.com',
+'This is really cool site: https://www.domain.net/ isn\'t it?',
+'http://subdomain.domain.org',
+'www.domain.com/folder',
+'Hello! You can visit vertigofx.com/mysite/rocks for some awesome pictures, or just go to vertigofx.com by itself',
+'subdomain.domain.net',
+'subdomain.domain.edu/folder/subfolder',
+'Hello! Check out my site at domain.net!',
+'welcome.to.computers',
+'Hello.Come visit oursite.com!',
+'foo.bar',
+'domain.com/folder',
+'domain.in/folder',
+
+);
+foreach($arr as $url) {   
+   $link = preg_replace_callback('#(\s|^)((?:https?://)?\w+(?:\.\w+)+(?<=\.(net|org|edu|com))(?:/[^\s]*|))(?=\s|\b)#is',
+           create_function('$m', 'if (!preg_match("#^(https?://)#", $m[2]))
+               return $m[1]."<a href=\"http://".$m[2]."\">".$m[2]."</a>"; else return $m[1]."<a href=\"".$m[2]."\">".$m[2]."</a>";'),
+           $url);
+//secho $link . "\n"; } 
+}
+echo auto_link('http://www.google.com') . '<br>';
+echo auto_link('http://google.com'); ?>
+                    </body>
 
 </html>
