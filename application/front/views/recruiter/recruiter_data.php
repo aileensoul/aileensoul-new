@@ -7,7 +7,7 @@
 
 <!--        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
 
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
+        <link rel="stylesheet" href="<?php //echo base_url('assets/css/bootstrap-3.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">

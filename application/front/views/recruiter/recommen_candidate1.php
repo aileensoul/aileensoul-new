@@ -28,7 +28,7 @@
                                     <div class="profile-boxProfileCard-cover"> 
                                               <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                  aria-hidden="true" rel="noopener">
-               
+             <div class="bg-images no-cover-upload">  
                <?php
 
                 $imageee= $this->config->item('rec_bg_thumb_upload_path').$recdata[0]['profile_background'];
@@ -45,6 +45,7 @@
                              }
                                  ?>
                                         </a>
+                                    </div>
                                     </div>
                                     <div class="profile-boxProfileCard-content clearfix">
                                     <div class="left_side_box_img buisness-profile-txext">

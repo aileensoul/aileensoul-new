@@ -13,6 +13,10 @@ class Chat extends MY_Controller {
         if (!$this->session->userdata('aileenuser')) {
             redirect('login', 'refresh');
         }
+        
+        //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
 
         include('include.php');
     }
