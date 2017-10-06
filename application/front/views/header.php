@@ -80,7 +80,7 @@ else{
                               <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
                                  <div>
                                     <ul class="notification_data_in">
-                                       <div class="fw" id="gen_not_loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                        <!--AJAX DATA..-->
                                     </ul>
                                  </div>
                               </div>
