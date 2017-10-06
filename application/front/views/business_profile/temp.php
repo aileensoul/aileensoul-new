@@ -29,7 +29,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
 <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
 <!-- script for cropiee immage End-->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('css/croppie.css'); ?>">
 
 <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> -->
 
@@ -1815,7 +1815,7 @@
 
 
             <!-- script for skill textbox automatic start-->
-            <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
+            <script src="<?php echo base_url('js/croppie.js'); ?>"></script>
 
 
             <!-- script for cropiee immage start-->

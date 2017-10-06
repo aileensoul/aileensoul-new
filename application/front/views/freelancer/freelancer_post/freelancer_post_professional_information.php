@@ -131,7 +131,7 @@
                                     </fieldset>
                                     <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
-                                        <input id="skills1" name="skills" tabindex="2"   placeholder="Enter SKills" value="<?php if($skill_2){ echo $skill_2; }?>">
+                                        <input id="skills1" name="skills" tabindex="2"   placeholder="Enter skills" value="<?php if($skill_2){ echo $skill_2; }?>">
                                         <?php echo form_error('area'); ?>
                                     </fieldset>
 <!--                                    <fieldset>

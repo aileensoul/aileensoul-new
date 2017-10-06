@@ -41,18 +41,18 @@
                                     <div class="p15 fw">
                                         <fieldset class="full-width">
                                             <label><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>
-                                            <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter Post Name" value="<?php echo $freelancerpostdata[0]['post_name'] ?> " onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
+                                            <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter post name" value="<?php echo $freelancerpostdata[0]['post_name'] ?> " onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
                                             <span id="fullname-error"></span>                        
                                             <?php echo form_error('post_name'); ?>
                                         </fieldset>
                                         <fieldset class="full-width">
                                             <label><?php echo $this->lang->line("project_description"); ?>:<span style="color:red">*</span></label>
-                                            <textarea row="8" style="resize: none; overflow: auto;" tabindex="2" name="post_desc" id="post_desc" placeholder="Enter Description"><?php echo $freelancerpostdata[0]['post_description']; ?></textarea>
+                                            <textarea row="8" style="resize: none; overflow: auto;" tabindex="2" name="post_desc" id="post_desc" placeholder="Enter description"><?php echo $freelancerpostdata[0]['post_description']; ?></textarea>
                                             <?php echo form_error('post_desc'); ?>
                                         </fieldset>
                                         <fieldset class="full-width" <?php if ($post_skill) { ?> class="error-msg" <?php } ?>>
                                             <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                            <input id="skills2" name="skills"  tabindex="3"  size="90" placeholder="Enter SKills" value="<?php if ($skill_2) {
+                                            <input id="skills2" name="skills"  tabindex="3"  size="90" placeholder="Enter skills" value="<?php if ($skill_2) {
                                                 echo $skill_2;
                                             } ?>">
 <?php echo form_error('skills'); ?>
@@ -132,7 +132,7 @@
                                         </fieldset>
                                         <fieldset>
                                             <label><?php echo $this->lang->line("time_of_project"); ?>:</label>
-                                            <input name="est_time" type="text" tabindex="7" id="est_time" placeholder="Enter Estimated time in month/year" value="<?php echo $freelancerpostdata[0]['post_est_time'] ?> "/>
+                                            <input name="est_time" type="text" tabindex="7" id="est_time" placeholder="Enter estimated time in month/year" value="<?php echo $freelancerpostdata[0]['post_est_time'] ?> "/>
                                             <span id="fullname-error"></span>
 <?php echo form_error('post_name'); ?>
                                         </fieldset>
@@ -151,7 +151,7 @@
                                     <div class="p15 fw">
                                         <fieldset style="padding-left: 8px;" class="col-md-6" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
                                             <label class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
-                                            <input name="rate" type="number" id="rate" tabindex="11" placeholder="Enter Your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
+                                            <input name="rate" type="number" id="rate" tabindex="11" placeholder="Enter your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                             <span id="fullname-error"></span>
 <?php echo form_error('rate'); ?>
                                         </fieldset>

@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>" />
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo base_url('css/croppie.css'); ?>" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>" />
@@ -367,7 +367,7 @@
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
-        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
+        <script src="<?php echo base_url('js/croppie.js'); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
         <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>

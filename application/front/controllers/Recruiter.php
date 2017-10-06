@@ -3789,9 +3789,9 @@ class Recruiter extends MY_Controller {
 
         $update = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
 
-       // $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
+        $this->data['reccdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
 
-        $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['recdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
+        $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['reccdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
         echo $coverpic;
         //echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
     }
