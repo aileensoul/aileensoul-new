@@ -85,7 +85,10 @@ function portfolio_form_submit(event){
              data: fd,
             processData: false,
             contentType: false,
-             beforeSend: function () {                     
+             beforeSend: function () { 
+              document.getElementById("bestofmine").value = "";
+              document.getElementById("submit").style.cursor = "default";
+               document.getElementById("submit").onclick = '';                    
                        $(".portfolioloader").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
             success: function (response) {
