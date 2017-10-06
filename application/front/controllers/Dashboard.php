@@ -42,8 +42,8 @@ class Dashboard extends MY_Controller {
         $contition_array = array('user_id' => $userid);
         $workdata = $this->data['workdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-        $this->data['busdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0');
+        $this->data['busdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step,status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
         $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
