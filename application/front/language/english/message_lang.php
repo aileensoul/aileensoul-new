@@ -167,7 +167,7 @@ $lang["profess_info"]="Professional Info";
 //variable of add post & edit post start
 $lang["project_post"]="Post Your Project";
 $lang["project_title"]="Project Title";
-$lang["field_of_requirement"]="Fields Of Requirement";
+$lang["field_of_requirement"]="Fields Of Requirements";
 $lang["skill_of_requirement"]="Skills of Requirements";
 $lang["select_filed"]="Select Fields of Requirement";
 $lang["experiance"]="Experience";
