@@ -906,6 +906,9 @@ label.cameraButton input[accept*="camera"] {
 .custom-add-box .hs-submit input{margin-right:0;}
 /*** end new add form  ***/
 
+.job-contact-frnd .rio .add-post-button.add-post-custom{text-align:center; margin:0 0 6px;}
+
+
 /***  media query  ***/
 @media screen and (max-width: 1279px){
 .custom-right {

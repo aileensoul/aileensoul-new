@@ -2,6 +2,7 @@
 
 .bui_bcon {
     width: 67%;
+	padding-left:10px !important;
 }
 .job-saved-box {
     margin-bottom: 50px;
@@ -2457,17 +2458,22 @@ label.cameraButton:active {
     height: 100%;
 }
 .profile-job-post-location-name {
-    padding: 12px 10px;
+    padding: 15px;
     font-weight: bold;
+	width:100%;
+	float:left;
 }
 .profile-job-post-location-name ul {
     padding: 0;
     font-size: 0;
+	width:100%;
+	float:left;
 }
 .profile-job-post-location-name ul li {
     margin: 0;
     list-style: none;
     display: inline-block;
+	padding-left:0;
 }
 .profile-job-post-location-name ul li.folle_text {
     padding-top: 5px;
@@ -2481,7 +2487,6 @@ label.cameraButton:active {
 .follow-img {
     border: 1px solid #d9d9d9;
     height: 60px;
-    margin-bottom: 14px;
     width: 60px;
 }
 .user_lst li a {
@@ -4302,7 +4307,9 @@ div .comment {
     width: 81%;}
 	
 .post-design-product .ctre_date:before{content:"·"; }
-
+.animated.fadeInUp{animation-fill-mode: none;}
+.user_btn .contact_user_list{width:130px; margin-bottom:0; margin-right:0;}
+.profile-job-post-location-name .user_lst ul li .user_btn{padding-top:7px;}
 
 
 /***  media query  ***/

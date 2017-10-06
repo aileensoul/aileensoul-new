@@ -110,26 +110,13 @@
                             <!--<div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>-->
                         </div>
                     </div>
-                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-                        <?php
-                        if ($follow_user_suggest_count > 0) {
-                            ?>
-                            <div class="full-box-module_follow" style="margin-top: 0px;">
-                                <div class="common-form">
-                                    <h3 class="user_list_head">User List</h3>
-                                    <div class="seeall">
-                                        <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
-                                <div class="profile-boxProfileCard_follow fw  module"></div>
-                                <!-- GET USER FOLLOE SUGESSION LIST START -->
-                                <!-- follower list end  -->
-                            </div>
-                            <?php
-                        }
-                        ?>
+                    <div class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+                        <script type="text/javascript" language="javascript">
+						  var aax_size='300x250';
+						  var aax_pubname = 'aileensoul-21';
+						  var aax_src='302';
+						</script>
+						<script type="text/javascript" language="javascript" src="http://c.amazon-adsystem.com/aax2/assoc.js"></script>
                     </div>
                 </div>
             </div>
