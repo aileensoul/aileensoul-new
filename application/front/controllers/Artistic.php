@@ -2327,11 +2327,15 @@ public function follow_home() {
         $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id != ' => $userid, 'art_step' => 4);
         $search_condition = "art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id, slug', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
+        $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id, slug', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
+
+//echo '<pre>'; print_r($userlistview); 
 
             $third_user_html = '';
-            if (count($userlistview) > 0) {
-               foreach ($userlistview as $userlist) {
+            $userlist = $userlistview[2];
+            if (count($userlist) > 0) {
+                //$userlist = $userlistview[2];
+               //foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
                 $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
@@ -2401,7 +2405,7 @@ public function follow_home() {
                         </div>
                 </div></div></li>';
                     }
-                }
+                //}
             }
             
             return $third_user_html;
@@ -2524,11 +2528,17 @@ public function follow_home() {
         $art_id = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
         $follow_to = $_POST['follow_to'];
 
+
+         $contition_array = array('profile' => '1', 'user_from' => $art_id, 'user_to' => $follow_to);
+            $notignore = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if(!$notignore){
+
         $insert_data['profile'] = '1';
         $insert_data['user_from'] = $art_id;
         $insert_data['user_to'] = $follow_to;
 
         $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
+      }
 
          // GET USER ARTISTIC DATA START
         if($insert_id){
@@ -2556,12 +2566,12 @@ public function follow_home() {
             $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id != ' => $userid, 'art_step' => 4);
         $search_condition = "art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id, slug', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
+        $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id, slug', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
         //echo "<pre>"; print_r($userlistview); die();
-
+        $userlist = $userlistview[2];
             $third_user_html = '';
-            if (count($userlistview) > 0) {
-                foreach ($userlistview as $userlist) {
+            if (count($userlist) > 0) {
+               // foreach ($userlistview as $userlist) {
                     $userid = $this->session->userdata('aileenuser');
                 $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
@@ -2633,7 +2643,7 @@ public function follow_home() {
                         </div>
                 </div></div></li>';
                     }
-                }
+                //}
             }
             
             echo $third_user_html;
