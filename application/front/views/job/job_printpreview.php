@@ -76,7 +76,7 @@
                         
                         $image_ori = $image[0]['profile_background'];
                         
-                         $filename = $this->config->item('job_bg_main_upload_url') . $image[0]['profile_background'];
+                         $filename = $this->config->item('job_bg_main_upload_path') . $image[0]['profile_background'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info && $image[0]['profile_background'] != '') {
@@ -106,7 +106,7 @@
             <div class="profile-photo">
                <div class="profile-pho">
                   <div class="user-pic padd_img">
-                     <?php  $filename = $this->config->item('job_profile_thumb_upload_url') . $job[0]['job_user_image'];
+                     <?php  $filename = $this->config->item('job_profile_thumb_upload_path') . $job[0]['job_user_image'];
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                       if ($job[0]['job_user_image'] != '' && $info) { ?>
