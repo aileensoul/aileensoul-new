@@ -46,7 +46,7 @@ class Dashboard extends MY_Controller {
         $this->data['busdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step,status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-        $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_step,status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($this->data['artdata']); die();
 
         $this->data['title'] = 'Dashboard' . TITLEPOSTFIX;
