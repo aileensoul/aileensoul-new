@@ -1927,10 +1927,14 @@ Your browser does not support the audio tag.
                 $notification .= '"';
                 $notification .= '><a href="' . base_url('job/resume/' . $job_slug . '?page=recruiter') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
-                $filepath = FCPATH . $this->config->item('job_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                    $notification .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path') . $total['user_image']) . '" >';
-                } else {
+              
+                $filename = $this->config->item('job_profile_thumb_upload_url') . $total['user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $notification .= '<img src="' . base_url(JOB_PROFILE_THUMB_UPLOAD_URL . $total['user_image']) . '" >';
+                   
+                    } else {
                     $a = $total['first_name'];
                     $b = $total['last_name'];
                     $acr = substr($a, 0, 1);
