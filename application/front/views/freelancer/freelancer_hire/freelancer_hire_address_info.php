@@ -144,7 +144,7 @@
                                 <?php ?>
                                 <fieldset>
                                     <label><?php echo $this->lang->line("pincode"); ?>:</label>
-                                    <input type="text" name="pincode" tabindex="4" id="pincode" placeholder="Enter Pincode"  value="<?php
+                                    <input type="text" name="pincode" tabindex="4" id="pincode" placeholder="Enter pincode"  value="<?php
                                     if ($pincode1) {
                                         echo $pincode1;
                                     }

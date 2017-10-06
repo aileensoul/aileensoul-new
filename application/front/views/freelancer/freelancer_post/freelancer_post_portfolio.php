@@ -69,7 +69,7 @@
                                           class="clearfix"  enctype="multipart/form-data" >
                                         <fieldset> 
                                             <label><?php echo $this->lang->line("attach"); ?>:</label>
-                                            <input type="file" name="portfolio_attachment" id="portfolio_attachment" class="portfolio_attachment" tabindex="1" autofocus placeholder="PORTFOLIO ATTACHMENT" multiple="" />&nbsp;&nbsp;&nbsp; 
+                                            <input type="file" name="portfolio_attachment" id="portfolio_attachment" class="portfolio_attachment" tabindex="1" autofocus placeholder="Portfolio attachment" multiple="" />&nbsp;&nbsp;&nbsp; 
                                             <span id ="filename" class="file_name_pdf"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
                                             <div class="portfolio_image" style="color:#f00; display: block;"></div>
                                             <?php if ($portfolio_attachment1) { ?>
@@ -87,7 +87,7 @@
                                         </fieldset>   
                                         <fieldset class="full-width">
                                             <label><?php echo $this->lang->line("descri"); ?>:</label>
-                                            <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
+                                            <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter portfolio detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                                 if ($portfolio1) {
                                                     echo $portfolio1;
                                                 }

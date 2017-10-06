@@ -75,7 +75,7 @@
                                 ?>
                                 <fieldset <?php if ($fname) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("first_name"); ?><span class="red">*</span>:</label>
-                                    <input type="text" tabindex="1" autofocus name="fname" id="fname" placeholder="Enter First Name" value="<?php
+                                    <input type="text" tabindex="1" autofocus name="fname" id="fname" placeholder="Enter first name" value="<?php
                                     if ($firstname1) {
                                         echo $firstname1;
                                     } else {
@@ -86,7 +86,7 @@
                                 </fieldset>
                                 <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("last_name"); ?><span class="red">*</span>:</label>
-                                    <input type="text" tabindex="2" name="lname" id="lname" placeholder="Enter Last Name" value="<?php
+                                    <input type="text" tabindex="2" name="lname" id="lname" placeholder="Enter last name" value="<?php
                                     if ($lastname1) {
                                         echo $lastname1;
                                     } else {
@@ -97,7 +97,7 @@
                                 </fieldset>
                                 <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("email"); ?><span class="red">*</span>:</label>
-                                    <input type="text" name="email" tabindex="3" id="email" placeholder="Enter Email" value="<?php
+                                    <input type="text" name="email" tabindex="3" id="email" placeholder="Enter email" value="<?php
                                     if ($email1) {
                                         echo $email1;
                                     } else {
@@ -108,7 +108,7 @@
                                 </fieldset>
                                 <fieldset>
                                     <label><?php echo $this->lang->line("skype_id"); ?></label>
-                                    <input type="text" name="skyupid" id="skyupid"  tabindex="4" placeholder="Enter SkypeId" value="<?php
+                                    <input type="text" name="skyupid" id="skyupid"  tabindex="4" placeholder="Enter skypeId" value="<?php
                                     if ($skypeid1) {
                                         echo $skypeid1;
                                     }
@@ -117,7 +117,7 @@
                                 </fieldset>
                                 <fieldset <?php if ($phone) { ?> class="error-msg" <?php } ?> class="full-width">
                                     <label><?php echo $this->lang->line("phone_no"); ?></label>
-                                    <input type="text" tabindex="5" name="phone" id="phone" placeholder="Enter Phone Number" value="<?php
+                                    <input type="text" tabindex="5" name="phone" id="phone" placeholder="Enter phone number" value="<?php
                                     if ($phoneno1) {
                                         echo $phoneno1;
                                     }
