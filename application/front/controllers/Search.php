@@ -2518,8 +2518,11 @@ Your browser does not support the audio tag.
                         $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                         $return_html .= '</a>';
                     }
-                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                    $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                     $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
+                $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
+
                     if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction">
                                                  <p><span title="Location">
