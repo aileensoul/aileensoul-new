@@ -57,18 +57,18 @@
                                             <div class="p15 fw">
                                                 <fieldset class="full-width" <?php if ($post_name) { ?> class="error-msg" <?php } ?>>
                                                     <label ><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>                 
-                                                    <input name="post_name" type="text" maxlength="100" id="post_name" autofocus tabindex="1" placeholder="Enter Project Name"/>
+                                                    <input name="post_name" type="text" maxlength="100" id="post_name" autofocus tabindex="1" placeholder="Enter project name"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('post_name'); ?>
                                                 </fieldset>
                                                 <fieldset class="full-width">
                                                     <label><?php echo $this->lang->line("project_description"); ?> :<span style="color:red">*</span></label>
-                                                    <textarea class="add-post-textarea" name="post_desc" id="post_desc" placeholder="Enter Description" tabindex="2" onpaste="OnPaste_StripFormatting(this, event);"></textarea>
+                                                    <textarea class="add-post-textarea" name="post_desc" id="post_desc" placeholder="Enter description" tabindex="2" onpaste="OnPaste_StripFormatting(this, event);"></textarea>
                                                     <?php echo form_error('post_desc'); ?>
                                                 </fieldset>
                                                 <fieldset class="full-width" <?php if ($skills) { ?> class="error-msg" <?php } ?>>
                                                     <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                                    <input id="skills2" name="skills" tabindex="3" size="90" placeholder="Enter SKills">
+                                                    <input id="skills2" name="skills" tabindex="3" size="90" placeholder="Enter skills">
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('skills'); ?>
                                                 </fieldset>
@@ -146,7 +146,7 @@
                                                 </fieldset>
                                                 <fieldset class="col-md-6 pl10" <?php if ($est_time) { ?> class="error-msg" <?php } ?>>
                                                     <label><?php echo $this->lang->line("time_of_project"); ?>:</label>
-                                                    <input tabindex="7" name="est_time" type="text" id="est_time" placeholder="Enter Estimated time in month/year" /><span id="fullname-error"></span>
+                                                    <input tabindex="7" name="est_time" type="text" id="est_time" placeholder="Enter estimated time in month/year" /><span id="fullname-error"></span>
                                                     <?php echo form_error('est_time'); ?>
                                                 </fieldset>           
                                                 <fieldset <?php if ($last_date) { ?> class="error-msg" <?php } ?>>
@@ -163,7 +163,7 @@
                                             <div class="p15 fw">
                                                 <fieldset  class="col-md-6 pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
-                                                    <input tabindex="11" name="rate" type="number" id="rate" placeholder="Enter Your rate" min='1'/>
+                                                    <input tabindex="11" name="rate" type="number" id="rate" placeholder="Enter your rate" min='1'/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>
@@ -308,7 +308,7 @@
             // LEAVE PAGE ON ADD AND EDIT POST PAGE START
             function leave_page(clicked_id)
             {
-
+                //alert('jjjj');
                 var post_name = document.getElementById('post_name').value;
                 var post_desc = document.getElementById('post_desc').value;
                 var fields_req = document.getElementById('fields_req').value;
@@ -319,12 +319,12 @@
                 var currency = document.getElementById('currency').value;
                 var est_time = document.getElementById('est_time').value;
                 var datepicker = document.getElementById('example2').value;
-                var country = document.getElementById('country').value;
-                var city = document.getElementById('city').value;
+//                var country = document.getElementById('country').value;
+//                var city = document.getElementById('city').value;
                 var searchkeyword = $.trim(document.getElementById('tags').value);
                 var searchplace = $.trim(document.getElementById('searchplace').value);
                 var page = document.getElementById('page').value;
-                if (post_name == "" && post_desc == "" && fields_req == "" && skills == "" && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" && country == "" && city == "")
+                if (post_name == "" && post_desc == "" && fields_req == "" && skills == "" && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" )
                 {
                     if (clicked_id == 1)
                     {

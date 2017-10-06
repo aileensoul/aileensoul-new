@@ -85,7 +85,7 @@
                                     ?>
                                     <fieldset <?php if ($hourly) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("hourly"); ?>:</label>
-                                        <input type="number" name="hourly" min="1" id="hourly" tabindex="1" autofocus placeholder="Enter hourly Rate"  value="<?php
+                                        <input type="number" name="hourly" min="1" id="hourly" tabindex="1" autofocus placeholder="Enter hourly rate"  value="<?php
                                         if ($hourly1) {
                                             echo $hourly1;
                                         }
