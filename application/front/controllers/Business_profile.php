@@ -1470,7 +1470,9 @@ class Business_profile extends MY_Controller {
                             //Creating Thumbnail
                             $this->$instanse4->resize();
                             $this->$instanse4->clear();
-
+                            
+                            $resize_image4 = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                            $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
                             /* RESIZE 4 */
                         }
 
@@ -13317,11 +13319,7 @@ Your browser does not support the audio tag.
 </ul>
 </div>
 <div class = "dropdown1">';
-                if ($id == 'manage') {
-                    $return_html .= '<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common dropbtn1 fa fa-ellipsis-v"></a>';
-                } else {
-                    $return_html .= '<a onClick = "myFunction(' . $post_business_profile_post_id . ')" class = "dropbtn_common dropbtn1 fa fa-ellipsis-v"></a>';
-                }
+                $return_html .= '<a onClick = "myFunction1(' . $post_business_profile_post_id . ')" class = "dropbtn_common dropbtn1 fa fa-ellipsis-v"></a>';
 
                 $return_html .= '<div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
                 if ($post_posted_user_id != 0) {
