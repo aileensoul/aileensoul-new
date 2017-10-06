@@ -1164,7 +1164,26 @@ function remove_ownpost(abc)
         }
     });
 }
+// remove particular user post start 
 
+function del_particular_userpost(abc)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/del_particular_userpost",
+        dataType: 'json',
+        data: 'business_profile_post_id=' + abc,
+        success: function (data) {
+            $('#' + 'removepost' + abc).remove();
+            /*if (data.notcount == 'count') {
+             $('.' + 'nofoundpost').html(data.notfound);
+             }*/
+            check_no_post_data();
+        }
+    });
+}
+
+// remove particular user post end 
 
 // remove save post end 
 
@@ -1592,6 +1611,12 @@ function likeuserlist(post_id) {
 function user_postdelete(clicked_id)
 {
     $('.biderror .mes').html("<div class='pop_content'> Do you want to delete this post?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='remove_ownpost(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
+function user_postdeleteparticular(clicked_id)
+{
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this post from your profile?.<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='del_particular_userpost(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
     $('#bidmodal').modal('show');
 }
 
