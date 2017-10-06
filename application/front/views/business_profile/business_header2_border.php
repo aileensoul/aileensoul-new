@@ -374,7 +374,8 @@
             data: 'toid=' + toid + '&status=' + status,
             dataType: "json",
             success: function (data) {
-                $('.mCS_no_scrollbar').html(data.contactdata);
+                //$('.mCS_no_scrollbar').html(data.contactdata);
+                $('.mCustomScrollbar').html(data.contactdata);
                 $('.contactcount').html(data.contactcount);
                 var segment = '<?php echo $this->uri->segment(2); ?>';
                 if (segment == 'contacts') {

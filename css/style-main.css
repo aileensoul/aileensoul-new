@@ -558,7 +558,7 @@ footer ul li a:hover{
   color: pink !important;
 }
  */
-   select
+select
 {
     color: #ccc;
 }
@@ -680,13 +680,10 @@ textarea:focus::-webkit-input-placeholder
 
 .title{
 	text-align:center;
-        	/*background: white;*/
-          
-            margin: 0 auto;
-            
-            border-bottom: 1px solid #c7c7c7;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+    margin: 0 auto;
+    border-bottom: 1px solid #c7c7c7;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .title h1{
@@ -715,9 +712,7 @@ textarea:focus::-webkit-input-placeholder
 }*/
 .inner-form{
 	width:560px;
-	margin:0 auto;
-        
-        
+	margin:0 auto;    
 }
 .pt-50{padding-top: 95px;}
 .inner-form .login{
@@ -727,9 +722,9 @@ textarea:focus::-webkit-input-placeholder
 	background:transparent;
 }
 .inner-form .login textarea{
-	    max-height: 90px;
-            resize: none;
-            min-height: 90px;
+	max-height: 90px;
+    resize: none;
+    min-height: 90px;
 }
 .about-content{
 	width:92%;
@@ -794,7 +789,7 @@ h3.text-effect span {
   display: inline-block;
   opacity: 0;
   -webkit-transition: 2s;
-          transition: 2s;
+  transition: 2s;
 }
 /***  required placeholder  ***/
 .required::-webkit-input-placeholder:after {
@@ -1148,7 +1143,8 @@ transition: background-color 600s ease-in-out 0s;
 }
 
 section { overflow: hidden; }
-.md-2{width: 450px!important;
+.md-2{
+	width: 450px!important;
 	margin: 0 auto; 
 	top: 50%; position: absolute; left: 50%;
 		-ms-transform: translate(-50%,-50%);
@@ -1156,7 +1152,7 @@ section { overflow: hidden; }
 		-moz-transform: translate(-50%,-50%);
 		-o-transform: translate(-50%,-50%);
 		transform: translate(-50%,-50%);}
-    .modal{background-color: rgba(0, 0, 0, 0.5);}
+.modal{background-color: rgba(0, 0, 0, 0.5);}
 .sign_in{width:100%; text-align:center;}
 .sign_in p a:hover{text-decoration:underline;}
 .login p a:hover{text-decoration:underline; color:#337ab7;}
@@ -1429,8 +1425,7 @@ input.form-control{box-shadow:none !important; -webkit-appearance: none;}
 .main_otp_box_head {border-bottom: 1px solid #d9d9d9;}
 .main_otp_box_middle{padding: 14px; border-bottom: 1px solid #d9d9d9; line-height: 22px;}
 .otp_bottom{padding: 10px 14px;}
-.otp_bottom_link{    vertical-align: middle;
-    padding-top: 6px;}
+.otp_bottom_link{vertical-align: middle; padding-top: 6px;}
 .main_otp_box_middle_submit{ padding: 14px 0px }
 .main_otp_box_middle_submit input[type="password"]{background-color: white;
    
@@ -1463,15 +1458,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
 }
 
 .main_otp_box_middle_submit label{
-	    display: block;
+	display: block;
     color: #1b8ab9;
     padding-bottom: 3px;
 }
 .main_otp_box_middle_submit input:focus{outline: none;}
 .main_otp_box_middle_submit a#showhide{
-padding: 4px;
+	padding: 4px;
     border: 1px solid #d9d9d9;
-   color: #7b7c7c;
+	color: #7b7c7c;
     border-radius: 3px;
     background: -webkit-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
     background: -o-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
@@ -1479,10 +1474,10 @@ padding: 4px;
     background: linear-gradient(to top, #e9e9e9 5%, #f9f9f9 100%);
     -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
     border: 1px solid #dcdcdc!important;}
-    .main_otp_box_middle_submit a#showhide:hover{text-decoration-line: none;}
+.main_otp_box_middle_submit a#showhide:hover{text-decoration-line: none;}
 .otp_bottom_submit input.cancel_password{
-	 border: 1px solid #d9d9d9;
-   color: #7b7c7c;
+	border: 1px solid #d9d9d9;
+	color: #7b7c7c;
     border-radius: 3px;
     background: -webkit-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
     background: -o-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);

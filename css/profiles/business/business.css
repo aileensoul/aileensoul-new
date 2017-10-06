@@ -1051,8 +1051,8 @@ label.cameraButton:active {
 	float:left;
 }
 .post-design-name ul li .datespan span:before {
-    content: "  ";
-    font-size: 17px;
+   /* content: "  ";
+    font-size: 17px;*/
 }
 .post-design-name ul li .post-design-product .in_desc_cw {
     padding-left: 10px;
@@ -5400,7 +5400,6 @@ div .comment {
 	.other-profile-menu .profile-left {
         width: 52%;
     }
-	
     .four-image img {
         width: 280px;
         height: 150px;

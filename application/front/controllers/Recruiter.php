@@ -2767,7 +2767,9 @@ class Recruiter extends MY_Controller {
                     $b = $p['lname'];
                     $acr1 = substr($b, 0, 1);
 
+                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">'; 
                     $return_html .= '<div class="post-img-profile">' . ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)) . '</div>';
+                    $return_html .= '</a>';
                 }
                 $return_html .= '</div></div>';
 

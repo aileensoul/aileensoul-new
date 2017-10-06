@@ -85,7 +85,14 @@ function portfolio_form_submit(event){
              data: fd,
             processData: false,
             contentType: false,
+             beforeSend: function () { 
+              document.getElementById("bestofmine").value = "";
+              document.getElementById("submit").style.cursor = "default";
+               document.getElementById("submit").onclick = '';                    
+                       $(".portfolioloader").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                    },
             success: function (response) {
+                $('.loader').remove();
               if(art_step == 4){ 
                  //window.location= "<?php echo base_url() ?>artistic/artistic_profile";
                  window.location= base_url + "artistic/details"; 
