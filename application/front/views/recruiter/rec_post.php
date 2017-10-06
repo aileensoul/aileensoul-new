@@ -6,8 +6,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">  
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+<!--        <link rel="stylesheet" href="<?php //echo base_url('assets/css/bootstrap-3.min.css'); ?>">
+        <link rel="stylesheet" href="<?php //echo base_url('assets/css/croppie.css'); ?>">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
@@ -18,15 +18,15 @@
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
         <?php
-  $returnpage= $_GET['page'];
- 
- if($returnpage == 'job'){ 
+ $returnpage= $_GET['page'];
+ if($returnpage == 'job'){
      echo $job_header2_border; 
  }
- elseif($recdata[0]['re_step'] == 3){ echo 22; die();
-  $recruiter_header2_border; 
+ elseif($recdata[0]['re_step'] == 3){
+  echo $recruiter_header2_border; 
  }
  elseif($returnpage == 'notification'){
+
  }
 ?>
         <div id="preloader"></div>
