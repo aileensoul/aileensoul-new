@@ -2477,6 +2477,7 @@ label.cameraButton:active {
 }
 .profile-job-post-location-name ul li.folle_text {
     padding-top: 5px;
+	padding-left:10px;
 }
 .profile-job-post-location-name ul li .user_btn {
     padding-top: 10px;
