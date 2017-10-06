@@ -5,7 +5,7 @@
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed">
@@ -968,7 +968,7 @@
         </div>
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>">
+        <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>">
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
         </script>

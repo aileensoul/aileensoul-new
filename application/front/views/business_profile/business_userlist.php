@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver=' . time()); ?>">
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
@@ -99,7 +99,7 @@
 <!--        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>
         <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>
         <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <!-- script for business autofill -->
