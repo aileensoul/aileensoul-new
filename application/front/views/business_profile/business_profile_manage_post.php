@@ -43,12 +43,6 @@
             <div class="user-midd-section">
                 <div class="container">
                     <div class="row">
-                    </div>
-                </div>
-            </div>
-            <div class="user-midd-section">
-                <div class="container">
-                    <div class="row">
                         <div class="col-md-4 profile-box-custom">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
