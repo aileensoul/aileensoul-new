@@ -1004,7 +1004,7 @@ class Freelancer extends MY_Controller {
             $offset = $start;
 
             $contition_array = array('freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => 3);
-            $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.country,freelancer_post.city,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image';
+            $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image,freelancer_hire_reg.country,freelancer_hire_reg.city';
             $postdata = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             $postdata1 = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit, $offset = '', $join_str, $groupby = '');
         } else {
@@ -1024,7 +1024,7 @@ class Freelancer extends MY_Controller {
             $offset = $start;
 
             $contition_array = array('freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => 3);
-            $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.country,freelancer_post.city,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image';
+            $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image,freelancer_hire_reg.country,freelancer_hire_reg.city';
             $postdata = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             $postdata1 = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit, $offset = '', $join_str, $groupby = '');
         }
@@ -1389,13 +1389,13 @@ class Freelancer extends MY_Controller {
         $this->form_validation->set_rules('post_name', 'Post Name', 'required');
         $this->form_validation->set_rules('post_desc', 'Post description', 'required');
         $this->form_validation->set_rules('fields_req', 'Field required', 'required');
-        $this->form_validation->set_rules('country', 'Country', 'required');
-        $this->form_validation->set_rules('state', 'state', 'required');
+//        $this->form_validation->set_rules('country', 'Country', 'required');
+//        $this->form_validation->set_rules('state', 'state', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
-            $contition_array = array('status' => 1);
-            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//            $contition_array = array('status' => 1);
+//            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('status' => 1);
             $this->data['category'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1453,9 +1453,9 @@ class Freelancer extends MY_Controller {
                 'post_exp_year' => trim($this->input->post('year')),
                 'post_last_date' => $lastdate,
                 //'post_location' => $this->input->post('location'),
-                'country' => trim($this->input->post('country')),
-                'state' => trim($this->input->post('state')),
-                'city' => trim($this->input->post('city')),
+//                'country' => trim($this->input->post('country')),
+//                'state' => trim($this->input->post('state')),
+//                'city' => trim($this->input->post('city')),
                 'user_id' => $userid,
                 'created_date' => date('Y-m-d', time()),
                 'status' => 1,
@@ -1807,18 +1807,18 @@ class Freelancer extends MY_Controller {
         $this->freelancer_hire_check();
         // code for display page end
 
-        $contition_array = array('status' => 1);
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//        $contition_array = array('status' => 1);
+//        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('post_id' => $id, 'is_delete' => 0);
         $userdata = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('status' => 1, 'country_id' => $userdata[0]['country']);
-        $state = $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//        $contition_array = array('status' => 1, 'country_id' => $userdata[0]['country']);
+//        $state = $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //for getting city data
-        $contition_array = array('status' => 1, 'state_id' => $userdata[0]['state']);
-        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//        //for getting city data
+//        $contition_array = array('status' => 1, 'state_id' => $userdata[0]['state']);
+//        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //for getting univesity data Start
         $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
@@ -1847,9 +1847,9 @@ class Freelancer extends MY_Controller {
 
         $this->data['skill_2'] = implode(',', $detailes);
         //Retrieve skill data End
-        $this->data['country1'] = $this->data['freelancerpostdata'][0]['country'];
-        $this->data['city1'] = $this->data['freelancerpostdata'][0]['city'];
-        $this->data['state1'] = $this->data['freelancerpostdata'][0]['state'];
+//        $this->data['country1'] = $this->data['freelancerpostdata'][0]['country'];
+//        $this->data['city1'] = $this->data['freelancerpostdata'][0]['city'];
+//        $this->data['state1'] = $this->data['freelancerpostdata'][0]['state'];
 
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
         $data = 'username,fullname';
@@ -1869,21 +1869,18 @@ class Freelancer extends MY_Controller {
         $this->form_validation->set_rules('post_name', 'Post Name', 'required');
         $this->form_validation->set_rules('post_desc', 'Post description', 'required');
         //  $this->form_validation->set_rules('fields_req', 'Field required', 'required');
-
-
-        $this->form_validation->set_rules('est_time', 'Estimated time', 'required');
-
+       // $this->form_validation->set_rules('est_time', 'Estimated time', 'required');
         $this->form_validation->set_rules('rating', 'Rating', 'required');
 
-
-        $this->form_validation->set_rules('country', 'Country', 'required');
-
+//        $this->form_validation->set_rules('country', 'Country', 'required');
 
         $this->form_validation->set_rules('last_date', 'Last date', 'required');
 
         if ($this->form_validation->run() == FALSE) {
+          
             $this->load->view('freelancer/freelancer_hire/freelancer_edit_post');
         } else {
+          
             $datereplace = $this->input->post('last_date');
             $lastdate = str_replace('/', '-', $datereplace);
             // skills  start   
@@ -1927,8 +1924,8 @@ class Freelancer extends MY_Controller {
                 'post_exp_month' => trim($this->input->post('month')),
                 'post_exp_year' => trim($this->input->post('year')),
                 'post_last_date' => $lastdate,
-                'country' => trim($this->input->post('country')),
-                'city' => trim($this->input->post('city')),
+//                'country' => trim($this->input->post('country')),
+//                'city' => trim($this->input->post('city')),
                 'modify_date' => date('Y-m-d', time()),
             );
 
