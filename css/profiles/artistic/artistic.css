@@ -442,7 +442,7 @@ label.cameraButton:active {
     width: 100%;
 }
 .bui_art_left_box .data_img {
-    height: 110px;
+    height: 80px;
     width: 100%;
 }
 .bui_art_left_box .data_img img {
@@ -707,7 +707,7 @@ label.cameraButton:active {
 .full-box-module_follow {
     border: 1px solid #d9d9d9;
     border-radius: 2px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     width: 100%;
     float: left;
 }
@@ -715,6 +715,7 @@ label.cameraButton:active {
     background-color: #fff;
     color: #1b8ab9;
     border-bottom: 1px solid #d9d9d9;
+	line-height:1; padding:8px 15px 7px;
 }
 .seeall {
     float: right;

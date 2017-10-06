@@ -445,7 +445,7 @@ label.cameraButton:active {
 .bui_art_left_box .profile-boxProfileCard-cover {
     border: 1px solid #efefef;
     border-bottom: none;
-	height:110px;
+	height:80px;
 }
 .bui_art_left_box .profile-boxProfileCard-bg {
     background-size: 100%;
@@ -712,7 +712,7 @@ label.cameraButton:active {
 .full-box-module_follow {
     border: 1px solid #d9d9d9;
     border-radius: 2px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     width: 100%;
     float: left;
 }
@@ -4313,6 +4313,7 @@ div .comment {
 .animated.fadeInUp{animation-fill-mode: none;}
 .user_btn .contact_user_list{width:130px; margin-bottom:0; margin-right:0;}
 .profile-job-post-location-name .user_lst ul li .user_btn{padding-top:7px;}
+#followdiv button{margin-right:0;}
 
 
 /***  media query  ***/
@@ -4337,11 +4338,7 @@ div .comment {
         padding-bottom: 13px;
     }
     .cq_latest_right {
-        width: 70%;
-    }
-    .cq_latest_left {
-        width: 25%;
-    }
+        width:
     .follow_left_box_main_btn button {
         width: 72px;
         padding: 5px 7px;

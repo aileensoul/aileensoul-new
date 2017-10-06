@@ -24,12 +24,12 @@
       <div class="left_fixed"> 
          <?php ?>
 <?php echo $left_artistic; ?>
-          <div class="full-box-module_follow fixed_right_display_none">
+          <div class="full-box-module_follow">
           
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
                <div class="seeall">
-                  <a href="<?php //echo base_url('artistic/userlist'); ?>">All User</a>
+                  <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
                </div>
                <div class="profile-boxProfileCard_follow fw  module">     
                </div>
@@ -46,10 +46,10 @@
               
               <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
               
+			  <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+			  
               <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-              
-              <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-              
+        
               <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
             </ul>
           </div>
@@ -114,18 +114,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
     </div> 
 	<div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" >
      
-         <div class="full-box-module_follow" style="margin-top: 0px;">
-            <!-- follower list start  -->  
-            <div class="common-form">
-               <h3 class="user_list_head">User List</h3>
-               <div class="seeall">
-                  <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
-               </div>
-               <div class="profile-boxProfileCard_follow  module">     
-               </div>
-               <!-- follower list end  -->
-            </div>
-         </div>
+					<div class="fw text-center">
+                        <script type="text/javascript" language="javascript">
+						  var aax_size='300x250';
+						  var aax_pubname = 'aileensoul-21';
+						  var aax_src='302';
+						</script>
+						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+					</div>
      
       </div>
   <!-- Bid-modal  -->
