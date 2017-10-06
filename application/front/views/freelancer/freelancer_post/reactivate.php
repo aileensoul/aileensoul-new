@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta charset="utf-8">
         <title>Reactivate</title>
         <!-- http://bootsnipp.com/snippets/4jXW -->
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chat.css" />
+      
     </head>
     <body>
         <div class="container" id="paddingtop_fixed">
