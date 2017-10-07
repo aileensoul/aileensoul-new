@@ -210,10 +210,10 @@
             </section>
             <footer>
                 <?php echo $footer; ?>
-            </footer>
+            </footer> <script src="<?php echo base_url('js/croppie.js'); ?>"></script>  
             <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
             <script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
+           <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
           
             <script>
                // var complex = <?php echo json_encode($selectdata); ?>;
