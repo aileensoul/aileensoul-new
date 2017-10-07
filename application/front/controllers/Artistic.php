@@ -561,14 +561,6 @@ class Artistic extends MY_Controller {
         $art_reg_data = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_bestofmine', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $art_bestofmine = $art_reg_data[0]['art_bestofmine'];
-
-        // if ($art_bestofmine != '') {
-        //     $art_pdf_path = $this->config->item('art_portfolio_main_upload_path');
-        //     $art_pdf = $art_pdf_path . $art_bestofmine;
-        //     if (isset($art_pdf)) {
-        //         unlink($art_pdf);
-        //     }
-        // }
          $config = array(
             'upload_path' => $this->config->item('art_portfolio_main_upload_path'),
             'max_size' => 2500000000000,
@@ -1303,9 +1295,7 @@ class Artistic extends MY_Controller {
                                                         Your browser does not support the audio tag.
                                                     </audio>
                                                 </div></div>';
-                                                // <div class="audio_mp3" id="'."postname" . $row['art_post_id'].'">
-                                                //     <p title="'.$row['art_post'].'">'.$row['art_post'].'</p>
-                                                // </div>
+                                            
                                             
                         }
                     } elseif (count($artmultiimage) == 2) {
@@ -4493,7 +4483,6 @@ public function delete_commenttwo_postnewpage() {
             $return = 0;
         }
 
-        // echo  $dataavl; die();
          if($return == 0){
             
            $datavl = "notavl";
@@ -4612,9 +4601,7 @@ public function delete_commenttwo_postnewpage() {
 
               $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
-                //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
-             
-
+            
                 if (in_array($userid, $likelistarray)) { 
                     $cmtlikeuser .= 'You &nbsp';
                 } else { 
@@ -5198,7 +5185,7 @@ public function insert_comment_postnewpage() {
                 'not_active' => 1,
                 'not_created_date' => date('Y-m-d H:i:s')
             );
-            //echo "<pre>"; print_r($notificationdata); 
+         
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
         }
         // end notoification
@@ -5208,12 +5195,10 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($artdata); die();
         // all count of commnet 
 
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        // echo '<pre>'; print_r($artdata); die();            
+        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');         
 // khyati changes start
 
         foreach ($artdata as $art) {
@@ -5327,10 +5312,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
-//          $cntinsert .= '<a onclick="commentall(this.id)" id="' . $art['art_post_id'] . '">';
- //          $cntinsert .= '<i class="fa fa-comment-o" aria-hidden="true">' .
-//                    count($allcomnt) . '</i>';
-            
+
           $cntinsert =  '<span class="comment_count" >';
      if (count($allcomnt) > 0) {
            $cntinsert .= '' . count($allcomnt) . ''; 
@@ -5500,17 +5482,7 @@ public function insert_comment_postnewpage() {
             $quality = "100%";
         }
 
-        //  /* RESIZE */
-        // $artistic_bg['image_library'] = 'gd2';
-        // $artistic_bg['source_image'] = $main_image;
-        // $artistic_bg['new_image'] = $main_image;
-        // $artistic_bg['quality'] = $quality;
-        // $instanse10 = "image10";
-        // $this->load->library('image_lib', $artistic_bg, $instanse10);
-        // $this->$instanse10->watermark();
-        // /* RESIZE */
-
-
+      
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
@@ -5531,8 +5503,6 @@ public function insert_comment_postnewpage() {
 
         $update = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
         $this->data['artdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*', $join_str = array());
-
-//        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
         $coverpic =  '<img id="image_src" name="image_src" src = "' . ART_BG_MAIN_UPLOAD_URL . $this->data['artdata'][0]['profile_background'] . '" />';
 
         echo $coverpic;
@@ -5608,11 +5578,6 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $id, 'status' => '1', 'is_delete' => '0');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($this->data['art_data']);die();
-
-        
-
-
         if($this->data['artisticdata']){
             $artistic_name = $this->get_artistic_name($id);
       $this->data['title'] =ucfirst(strtolower($artistic_name)).TITLEPOSTFIX;
@@ -5632,7 +5597,6 @@ public function insert_comment_postnewpage() {
 
         $userid = $this->session->userdata('aileenuser');
 
-        //echo "<pre>"; print_r($_POST); die();
 
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
@@ -5653,7 +5617,6 @@ public function insert_comment_postnewpage() {
                $condition_array = array('art_post_id' => $post_id);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($profile_data); die();
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
             $return = 1;
 
@@ -5679,7 +5642,6 @@ public function insert_comment_postnewpage() {
             $return = 0;
         }
 
-        // echo  $dataavl; die();
          if($return == 0){
             
            $datavl = "notavl";
@@ -5704,7 +5666,6 @@ public function insert_comment_postnewpage() {
             $contition_array = array('art_post_id' => $_POST["art_post_id"], 'status' => '1');
             $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            //echo "<pre>"; print_r($artdata); die();
             if ($this->data['artdata'][0]['art_post']) {
                 $editpost = '<div><a class="ft-15 t_artd">';
                 $editpost .= $this->common->make_links($artdata[0]['art_post']) . "<br>";
@@ -5728,7 +5689,6 @@ public function insert_comment_postnewpage() {
                 }
 
                 $postname = '<p title="'.$artdata[0]['art_post'].'">'.$artdata[0]['art_post'].'</p>';
-            //echo $editpost;   echo $editpostdes;
             echo json_encode(
                     array("title" => $editpost,
                         "description" => $editpostdes,
@@ -5805,14 +5765,11 @@ public function insert_comment_postnewpage() {
          $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($this->data['artisticdata']); die();
         $artregid = $this->data['artisticdata'][0]['art_id'];
 
 
          $contition_array = array('follow_from' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
         $followerdata1 = $this->data['followerdata1'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo "<pre>"; print_r($this->data['followerdata']); die();
 
 
         foreach ($followerdata1 as $fdata) {
@@ -5827,7 +5784,6 @@ public function insert_comment_postnewpage() {
             $followerabc[] = $this->data['art_data'];
         }
 
-        //echo "<pre>"; print_r($followerabc); die();
 //data fatch using follower end
 //data fatch using skill start
 
@@ -5835,8 +5791,6 @@ public function insert_comment_postnewpage() {
         //echo  $userselectskill; die();
         $contition_array = array('art_skill' => $userselectskill, 'status' => '1' , 'art_step' => 4);
         $skilldata = $this->data['skilldata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo "<pre>"; print_r($this->data['skilldata']); die();
 
         foreach ($skilldata as $fdata) {
 
@@ -5859,15 +5813,6 @@ public function insert_comment_postnewpage() {
         } else {
             $userabc[] = $this->data['art_userdata'][0];
         }
-        //echo "<pre>"; print_r($userabc); die();
-        //echo "<pre>"; print_r($skillabc);  die();
-//data fatch using login user last post end
-//echo count($skillabc);
-//echo count($userabc);
-//echo count($unique);
-//echo count($followerabc); 
-
-
         if (count($skillabc) == 0 && count($userabc) != 0) {
             $unique = $userabc;
         } elseif (count($userabc) == 0 && count($skillabc) != 0) {
@@ -5875,9 +5820,6 @@ public function insert_comment_postnewpage() {
         } elseif (count($userabc) != 0 && count($skillabc) != 0) {
             $unique = array_merge($skillabc, $userabc);
         }
-
-        //echo "<pre>"; print_r($userabc); die();
-        //echo count($followerabc);  echo count($unique); die();
 
         if (count($followerabc) == 0 && count($unique) != 0) {
             $unique_user = $unique;
@@ -5899,7 +5841,6 @@ public function insert_comment_postnewpage() {
 
 
         $qbc = array_unique($qbc, SORT_REGULAR);
-        //echo "<pre>"; print_r($qbc); die();
         // sorting start
 
         $post = array();
@@ -5910,15 +5851,11 @@ public function insert_comment_postnewpage() {
          }
 
         array_multisort($post, SORT_DESC, $qbc);
-        // echo '<pre>';
-        // print_r($qbc);
-        // exit;
         $otherdata = $qbc;
 
 
          if (count($otherdata) > 0) { 
              foreach ($otherdata as $row) {
-                 //  echo '<pre>'; print_r($finalsorting); die();
                  $userid = $this->session->userdata('aileenuser');
          
                  $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
@@ -5933,7 +5870,7 @@ public function insert_comment_postnewpage() {
 
                   }
   } 
-//echo count($otherdata); die();
+
   if(count($otherdata) > 0){ 
           if(count($count) == count($otherdata)){ 
         
@@ -6009,15 +5946,11 @@ public function insert_comment_postnewpage() {
             $contition_array = array('user_id' => $userid, 'status' => '1');
 
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //  echo "<pre>"; print_r($artisticdata); die();
-
-
-
+           
             $contition_array = array('user_id' => $userid, 'is_delete' => '0');
 
              $artisticpost = $this->data['artisticdatapost'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($artisticpost); die();
-
+           
              foreach ($artisticpost as $value) {
                 
             
@@ -6029,10 +5962,6 @@ public function insert_comment_postnewpage() {
 
            foreach ($a_d as $key_ad => $value_ad) {
                foreach ($value_ad as $art_fn => $v) {
-
-          // echo "<pre>"; print_r($art_fn);  
-
-          // echo "<pre>"; print_r($v); 
 
 
                 $art_data[] = $v;
@@ -6044,23 +5973,16 @@ public function insert_comment_postnewpage() {
 
            $this->data['artistic_data'] = $art_data; 
 
-            //echo "<pre>"; print_r($art_data); die();
-
-
-
+    
         } else {
 
            $contition_array = array('slug' => $id, 'status' => '1');
 
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //  echo "<pre>"; print_r($artisticdata); die();
-
-
-
+        
             $contition_array = array('user_id' => $id, 'is_delete' => '0');
 
              $artisticpost = $this->data['artisticdatapost'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($artisticpost); die();
 
              foreach ($artisticpost as $value) {
                 
@@ -6074,15 +5996,10 @@ public function insert_comment_postnewpage() {
            foreach ($a_d as $key_ad => $value_ad) {
                foreach ($value_ad as $art_fn => $v) {
 
-          // echo "<pre>"; print_r($art_fn);  
-
-          // echo "<pre>"; print_r($v); 
-
-
                 $art_data[] = $v;
                    
                }
-           }//die();
+           }
 
            $art_data = array_unique($art_data, SORT_REGULAR);
 
@@ -6395,8 +6312,7 @@ public function insert_comment_postnewpage() {
               $like_user_count .= '<span> Like</span>';
                }
               
-              
-                    //    echo "123456789"; die();           
+             
                 //    $like_user_count = count($commnetcount);
                     echo json_encode(
                             array("like" => $imglike,
@@ -6484,8 +6400,7 @@ public function insert_comment_postnewpage() {
               $like_user_count .= '<span> Like</span>';
                }
               
-              
-                    //    echo "123456789"; die();           
+                     
                 //    $like_user_count = count($commnetcount);
                     echo json_encode(
                             array("like" => $imglike1,
