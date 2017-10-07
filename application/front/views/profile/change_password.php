@@ -86,9 +86,9 @@
 
 
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+
 <script type="text/javascript">
 $(document).ready(function () { //alert("hii");
           /* validation */
