@@ -24,7 +24,7 @@
     margin-top: 20px;
     text-transform: capitalize;
 }
-.profile-boxProfileCard .bg-images img{height: 110px;}
+.profile-boxProfileCard .bg-images img{/*height: 110px;*/}
 .profile-job-post-detail .profile-job-post-title .button:hover{ background: #1b8ab9; color: #fff; }
 .add-post-button{margin-top: 25px;}
 .add-post-button .btn:focus{color: white; background: #156f95;}
@@ -182,7 +182,7 @@ li.fr a {text-decoration: none !important;}
     text-transform: uppercase;
 }
 .profile-boxProfileCard-content:before {width: 100%; height: 1px; display: block; position: absolute; content: "";
-    top: 46px; background: #d9d9d9;}
+    top: 49px; background: #d9d9d9;}
 .profile-boxProfileCard-content {position: relative; background-color: #e8f3f8;}
 .left_side_box_img {float: left;}
 .buisness-profile-txext {z-index: 1; position: relative; display: inline-block; width: 24%; padding-right: 1px !important;
@@ -192,14 +192,14 @@ li.fr a {text-decoration: none !important;}
     padding: 1px; vertical-align: bottom; border:none;
 }
 .a-inlineBlock {display: inline-block!important; width: 75px; z-index: 3; position: relative; height: 75px;}
-.profile-boxProfileCard-content .buisness-profile-txext a img {height: 100%; width: 100%; z-index: 3; position: relative;}
+.profile-boxProfileCard-content .buisness-profile-txext a img {height: 60px; width: 60px; z-index: 3; position: relative;}
 .right_left_box_design {padding: 7px 9px 0px 5px; width: 76%; display: inline-block; float: left;}
 .right_left_box_design .profile-company-name {display: block; max-width: 100%; overflow: hidden; 
 	text-overflow: ellipsis; white-space: nowrap; width: auto; color: #1b8ab9; line-height:18px;
 }
 .profile-company-name a {font-size: 15px; margin-left: 0px; font-weight: 600; color: #1b8ab9;}
 .profile-boxProfile-name{max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height:18px;}
-.left_box_menubar {width: 100%; padding: 0px; margin: 0px; float: left;}
+.left_box_menubar {width: 100%; padding: 5px 0 0; margin: 0px; float: left;}
 .left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 32.33%;}
 .left_box_menubar li a {padding: 4px; display: inline-block;}
 .left_box_menubar li:last-child a {text-align: center;}
@@ -233,7 +233,7 @@ background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
 background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
 background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
-font-size: 21px 0;
+padding: 21px 0;
 text-align: center;
 text-transform: uppercase;
 line-height: 1;}
@@ -928,11 +928,13 @@ label.cameraButton input[accept*="camera"] {
 .mian_middle_post_box {
     float: left;
     width: 600px;
-    margin-left: 10px;
+    margin-left: 15px;
     left: 320px;
     position: relative;
 }
 .profile-boxProfile-name a{font-size:14px;}
+.buisness-profile-pic-candidate .post-img-profile{width:50px; height:50px; font-size:20px; padding:16px 0;}
+#hideuserlist .fw.text-center{text-align:right;}
 
 
 /***  end new structure  ***/
@@ -960,11 +962,7 @@ label.cameraButton input[accept*="camera"] {
 	.profile-boxProfilebuisness-avatarLink2 {
         height: 75px !important;
     }
-    .right_left_box_design {
-        padding: 17px 12px 12px 16px !important;
-    }
 	.experience_year{margin-right:34px;}
-	.right_left_box_design{padding:17px 12px 12px 25px !important;}
 	.job_edit_menu{width: 22.5% !important;}
 	.job_edit_pr{padding-left: 225px;}
 }
@@ -1003,13 +1001,6 @@ label.cameraButton input[accept*="camera"] {
     }
 	.post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 118px;}
 	.user-pic:hover a{width:118px; height:118px; padding:17px 5px; }
-    .buisness-profile-txext {
-        width: 28%;
-    }
-	.right_left_box_design {
-        width: 72% !important;
-        padding: 14px 12px 10px 16px !important;
-    }
     .profile-boxProfile-name {
         line-height: 1;
     }
@@ -1027,6 +1018,8 @@ label.cameraButton input[accept*="camera"] {
 }
 
 @media screen and (max-width: 991px){
+	.profile-box-custom{position:relative; display:none;}
+	.mian_middle_post_box{position:inherit; float:none; margin:0 auto;}
     .art_no_post_text{font-size: 21px;}
     .back {width: 100%;}
     .custom_footer_dot{ padding: 0px 1px 0px; }
@@ -1404,7 +1397,7 @@ label.cameraButton input[accept*="camera"] {
 }
 
 @media screen and (max-width: 640px) {
-
+	.mian_middle_post_box{width:100%;}
 
     #InboxContainer{
         width: 95%!important;

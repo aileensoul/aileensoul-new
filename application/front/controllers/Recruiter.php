@@ -883,7 +883,7 @@ class Recruiter extends MY_Controller {
         $postdatas = $this->data['postdata'] = $this->common->select_data_by_id('rec_post', 'post_id', $id, $data = '*', $join_str = array());
 //echo '<pre>'; print_r($postdatas); die();
 //Selected Job titlre fetch
-        $contition_array = array('status' => 'publish', 'title_id' => $postdatas[0]['post_name']);
+        $contition_array = array( 'title_id' => $postdatas[0]['post_name']);
         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['work_title'] = $jobtitle[0]['name'];
@@ -935,6 +935,7 @@ class Recruiter extends MY_Controller {
 
 //jobtitle data fetch
         $contition_array = array('status' => 'publish');
+       // $contition_array = array('title_id !=' => '');
         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         foreach ($jobtitle as $key1 => $value1) {

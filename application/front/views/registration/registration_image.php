@@ -124,7 +124,7 @@
 <!-- Field Validation Js start -->
 
 <!--This Script is also used For Image preview Start-->
-<script src="<?php echo base_url('js/jquery.js'); ?>"></script>
+
 <!--This Script is also used For Image preview End-->
 
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
