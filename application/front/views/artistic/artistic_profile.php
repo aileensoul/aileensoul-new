@@ -148,7 +148,7 @@ echo $listFinal;
                                          <?php } else {
            if($artisticdata[0]['user_id'] == $userid){ 
                   ?>  
-      <li><b>Description of your art</b> <span>
+      <li><b>How You are Inspire</b> <span>
              <?php echo PROFILENA;?></span></li><?php  }else{}?>               
           <?php }?>  
 </ul>

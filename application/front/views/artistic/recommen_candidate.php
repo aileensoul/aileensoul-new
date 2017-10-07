@@ -100,8 +100,6 @@
 
 <script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
-<!-- <script src="<?php //echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script> -->
-<script src="<?php //echo base_url('assets/js/jquery.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 
  <script type="text/javascript">

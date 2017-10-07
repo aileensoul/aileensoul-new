@@ -11,7 +11,6 @@
         <link rel="stylesheet" href="css/common-style.css">
         <link rel="stylesheet" href="css/style-main.css">
         
-        <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
     </head>
     <body class="registeration">
         <div class="main-inner">

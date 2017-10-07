@@ -108,7 +108,7 @@
      <?php echo $footer;  ?>
     </footer>
     </div>
-  <!-- <script type="text/javascript" src="<?php //echo site_url('js/jquery-ui.js?ver='.time()) ?>"></script>   -->
+
   <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
   <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
   <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
