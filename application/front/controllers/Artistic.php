@@ -32,7 +32,7 @@ class Artistic extends MY_Controller {
         //  }
         //This function is there only one time users slug created after remove it End
 
-        include ('include.php');
+        include ('artistic_include.php');
          $this->data['no_artistic_post_html'] = '<div class="art_no_post_avl"><h3>Artistic Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('img/art-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
     }
 
