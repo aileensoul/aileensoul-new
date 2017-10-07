@@ -195,7 +195,7 @@
 <footer>
 <?php echo $footer ?>
 </footer>
-<script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+<!--<script src="<?php //echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
 <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <script src="<?php echo base_url('js/jquery.highlite.js?ver=' . time()); ?>">
 </script>

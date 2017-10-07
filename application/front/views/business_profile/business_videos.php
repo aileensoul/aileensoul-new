@@ -143,10 +143,7 @@
         </div>
         <!-- Model Popup Close -->
         <?php echo $footer; ?>
-<!--        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
-        <script src="<?php echo base_url('js/jquery.jMosaic.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php //echo base_url('js/jquery.jMosaic.js?ver='.time()); ?>"></script>-->
         <script src="<?php echo base_url('js/croppie.js?ver='.time()); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
