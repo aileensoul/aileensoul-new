@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo base_url('css/croppie.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/jquery.fancybox.css">
+        <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css">
         
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
