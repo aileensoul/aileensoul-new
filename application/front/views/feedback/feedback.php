@@ -34,7 +34,7 @@
         <link rel="stylesheet" href="css/common-style.css">
         <link rel="stylesheet" href="css/style-main.css">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        
         <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
     </head>
     <body>

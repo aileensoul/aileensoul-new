@@ -149,8 +149,7 @@
   <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
 
  
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
 
 <script type="text/javascript">
