@@ -2559,7 +2559,7 @@ label.cameraButton:active {
     font-weight: bold;
     text-decoration: none;
 	margin-right:0;
-	margin-left:10px;
+	/*margin-left:10px;*/
 }
 .folle_text {
     width: 64%;
