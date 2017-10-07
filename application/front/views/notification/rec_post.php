@@ -584,8 +584,8 @@ echo $head;
 
             
             
-            <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+            
+            
 
 
 
