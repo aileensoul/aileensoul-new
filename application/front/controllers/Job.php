@@ -16,17 +16,17 @@ class Job extends MY_Controller {
         $this->load->library('S3');
         $this->load->library('upload');
 
-        //This function is there only one time users slug created after remove it start
-        // $this->db->select('job_id,fname,lname');
-        // $res = $this->db->get('job_reg')->result();
-        // foreach ($res as $k => $v) {
-        //     $data = array('slug' => $this->setcategory_slug($v->fname."-". $v->lname, 'slug', 'job_reg'));
-        //     $this->db->where('job_id', $v->job_id);
-        //     $this->db->update('job_reg', $data);
-        // }
-        //This function is there only one time users slug created after remove it End
+     //   This function is there only one time users slug created after remove it start
+//         $this->db->select('job_id,fname,lname');
+//         $res = $this->db->get('job_reg')->result();
+//         foreach ($res as $k => $v) {
+//             $data = array('slug' => $this->setcategory_slug($v->fname."-". $v->lname, 'slug', 'job_reg'));
+//             $this->db->where('job_id', $v->job_id);
+//             $this->db->update('job_reg', $data);
+//         }
+       // This function is there only one time users slug created after remove it End
 
-        include ('job_include.php');
+        include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
 
@@ -70,7 +70,13 @@ class Job extends MY_Controller {
         $data='fname,lname,email,phnno,pincode,address,dob,gender,job_step,city_id,language,count(*) as total';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-      
+        //echo "<pre>"; print_r($userdata);die();
+        $contition_array = array('status' => '1');
+        $this->data['nation'] = $this->common->select_data_by_condition('nation', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('status' => 1);
+        $this->data['language1'] = $this->common->select_data_by_condition('language', $contition_array, $data = '*', $sortby = 'language_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
         if ($userdata[0]['total'] != 0) {
             $step = $userdata[0]['job_step'];
 
@@ -85,6 +91,26 @@ class Job extends MY_Controller {
                 $this->data['gender1'] = $userdata[0]['gender'];
             }
         }
+
+        //Retrieve City data Start   
+        $contition_array = array('status' => '1', 'city_id' => $userdata[0]['city_id']);
+        $citytitle = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $this->data['city_title'] = $citytitle[0]['city_name'];
+        //Retrieve City data End
+        //Retrieve Language data Start 
+        $language_know = explode(',', $userdata[0]['language']);
+        foreach ($language_know as $lan) {
+            $contition_array = array('language_id' => $lan, 'status' => 1);
+            $languagedata = $this->common->select_data_by_condition('language', $contition_array, $data = 'language_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            $detailes[] = $languagedata[0]['language_name'];
+        }
+
+        $this->data['language2'] = implode(',', $detailes);
+        //Retrieve Language data End
+
+        $skildata = explode(',', $userdata[0]['language']);
+        $this->data['selectdata'] = $skildata;
 
         $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
 
@@ -98,7 +124,7 @@ class Job extends MY_Controller {
 
         $this->form_validation->set_rules('fname', 'Firstname', 'required');
         $this->form_validation->set_rules('lname', 'Lastname', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('email', 'Store  email', 'required|valid_email');
         $this->form_validation->set_rules('language', 'Language', 'required');
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
         $this->form_validation->set_rules('gender', 'Gender', 'required');
@@ -106,41 +132,6 @@ class Job extends MY_Controller {
         $this->form_validation->set_rules('pincode', 'Pincode', 'required');
         $this->form_validation->set_rules('address', 'Address', 'required');
 
-
-    if ($this->form_validation->run() == FALSE) 
-    {
-         $userid = $this->session->userdata('aileenuser');
-
-        //Retrieve Data from main user registartion table start
-        $data='first_name,last_name,user_email,user_gender,user_dob';
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //Retrieve Data from main user registartion table end
-        $data='fname,lname,email,phnno,pincode,address,dob,gender,job_step,city_id,language,count(*) as total';
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-      
-        if ($userdata[0]['total'] != 0) {
-            $step = $userdata[0]['job_step'];
-
-            if ($step == 1 || $step > 1) {
-                $this->data['fname1'] = $userdata[0]['fname'];
-                $this->data['lname1'] = $userdata[0]['lname'];
-                $this->data['email1'] = $userdata[0]['email'];
-                $this->data['phnno1'] = $userdata[0]['phnno'];
-                $this->data['pincode1'] = $userdata[0]['pincode'];
-                $this->data['address1'] = $userdata[0]['address'];
-                $this->data['dob1'] = $userdata[0]['dob'];
-                $this->data['gender1'] = $userdata[0]['gender'];
-            }
-        }
-
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-        $this->load->view('job/index',$this->data);
-    } 
-    else
-    {
         // Language  start   
         $language = $this->input->post('language');
         $language = explode(',', $language);
@@ -201,7 +192,6 @@ class Job extends MY_Controller {
                 redirect('job/basic-information', refresh);
             }
         }
-      }//else form validation end
     }
 
 //job seeker basic info controller end
@@ -317,18 +307,6 @@ class Job extends MY_Controller {
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //S3 BUCKET ACCESS START
 
-        $this->form_validation->set_rules('board_primary', 'Board', 'required');
-        $this->form_validation->set_rules('school_primary', 'School', 'required');
-        $this->form_validation->set_rules('percentage_primary', 'Percentage', 'required');
-        $this->form_validation->set_rules('pass_year_primary', 'Pass year', 'required');
-
-    if ($this->form_validation->run() == FALSE) 
-    {
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-        $this->load->view('job/job_education', $this->data);
-    } 
-    else
-    {
         $error = '';
         if ($_FILES['edu_certificate_primary']['name'] != '') {
 
@@ -498,7 +476,6 @@ class Job extends MY_Controller {
                 redirect('job/qualification', refresh);
             }
         }
-     }//else form validation end
     }
 
 //Insert Secondary Education Data start
@@ -511,19 +488,6 @@ class Job extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //S3 BUCKET ACCESS START
-
-        $this->form_validation->set_rules('board_secondary', 'Board', 'required');
-        $this->form_validation->set_rules('school_secondary', 'School', 'required');
-        $this->form_validation->set_rules('percentage_secondary', 'Percentage', 'required');
-        $this->form_validation->set_rules('pass_year_secondary', 'Pass year', 'required');
-
-    if ($this->form_validation->run() == FALSE) 
-    {
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-        $this->load->view('job/job_education', $this->data);
-    } 
-    else
-    {
 
         $error = '';
         if ($_FILES['edu_certificate_secondary']['name'] != '') {
@@ -694,7 +658,6 @@ class Job extends MY_Controller {
                 redirect('job/qualification', refresh);
             }
         }
-     }//else form validation end
     }
 
 //Insert Secondary Education Data End
@@ -711,19 +674,6 @@ class Job extends MY_Controller {
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //S3 BUCKET ACCESS START
 
-        $this->form_validation->set_rules('board_higher_secondary', 'Board', 'required');
-        $this->form_validation->set_rules('stream_higher_secondary', 'Stream', 'required');
-        $this->form_validation->set_rules('school_higher_secondary', 'School', 'required');
-        $this->form_validation->set_rules('percentage_higher_secondary', 'Percentage', 'required');
-        $this->form_validation->set_rules('pass_year_higher_secondary', 'Pass year', 'required');
-
-    if ($this->form_validation->run() == FALSE) 
-    {
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-        $this->load->view('job/job_education', $this->data);
-    } 
-    else
-    {
         if ($_FILES['edu_certificate_higher_secondary']['name'] != '') {
 
             //Configuring Main Image Start
@@ -893,7 +843,6 @@ class Job extends MY_Controller {
                 redirect('job/qualification', refresh);
             }
         }
-     }//else form validation start
     }
 
 //Insert Higher Secondary Education Data End
@@ -904,21 +853,9 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        $this->form_validation->set_rules('degree[]', 'Degree', 'required');
-        $this->form_validation->set_rules('stream[]', 'Stream', 'required');
-        $this->form_validation->set_rules('university[]', 'University', 'required');
-        $this->form_validation->set_rules('college[]', 'College', 'required');
-        $this->form_validation->set_rules('percentage[]', 'Percentage', 'required');
-        $this->form_validation->set_rules('pass_year[]', 'Pass year', 'required');
-        
-        
-    if ($this->form_validation->run() == FALSE) 
-    {
-
-        $this->load->view('job/job_education',$this->data);
-    } 
-    else
-    {
+        if ($this->input->post('previous')) {
+            redirect('job/job_address_update', refresh);
+        }
 
 //Click on Add_More_Education Process start
         if ($this->input->post('add_edu')) {
@@ -1172,7 +1109,6 @@ class Job extends MY_Controller {
             $this->session->flashdata('error', 'Your data not inserted');
             redirect('job/qualification', 'refresh');
         }
-     }//else form validation end
     }
 
 //End first time insert and update
@@ -1215,6 +1151,10 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
+        if ($this->input->post('previous')) {
+            redirect('job/qualification', refresh);
+        }
+        if ($this->input->post('next')) {
 
             $data = array(
                 'project_name' => trim($this->input->post('project_name')),
@@ -1238,6 +1178,7 @@ class Job extends MY_Controller {
                 $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/project', 'refresh');
             }
+        }
     }
 
 //job seeker Project And Training / Internship controller end 
@@ -1249,8 +1190,12 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
-        $search_condition = "((status = '1'))";
+//        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
+//        $search_condition = "((status = '1'))";
+//        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  
+          $contition_array = array('is_delete' => '0','is_other' => '0', 'industry_name !=' => "Others");
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -1311,24 +1256,6 @@ class Job extends MY_Controller {
         $this->job_deactive_profile();
 
         $userid = $this->session->userdata('aileenuser');
-
-        $this->form_validation->set_rules('job_title', 'Job Title', 'required');
-        $this->form_validation->set_rules('skills', 'Skills', 'required');
-        $this->form_validation->set_rules('industry', 'Industry', 'required');
-        $this->form_validation->set_rules('cities', 'City', 'required');
-
-    if ($this->form_validation->run() == FALSE) 
-    {
-
-        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
-        $search_condition = "((status = '1'))";
-        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-        $this->load->view('job/job_skill', $this->data);
-    } 
-    else
-    {
 
         $industry = $this->input->post('industry');
 
@@ -1432,7 +1359,6 @@ class Job extends MY_Controller {
                 redirect('job/work-area', 'refresh');
             }
         }
-     }//else form validation complete
     }
 
 //job seeker skill controller end
@@ -1471,35 +1397,24 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-    //     $this->form_validation->set_rules('job_title', 'Job Title', 'required');
-    //     $this->form_validation->set_rules('skills', 'Skills', 'required');
-    //     $this->form_validation->set_rules('industry', 'Industry', 'required');
-    //     $this->form_validation->set_rules('cities', 'City', 'required');
-
-    // if ($this->form_validation->run() == FALSE) 
-    // {
-       
-    //     $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
-    //     $search_condition = "((status = '1'))";
-    //     $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-    //     $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-    //     $this->load->view('job/job_skill', $this->data);
-    // } 
-    // else
-    // {
         $userdata[] = $_POST;
         $count1 = count($userdata[0]['jobtitle']);
 
+        if ($this->input->post('previous')) {
+            redirect('job/work-area', refresh);
+        }
         $post_data = $this->input->post();
 
 
 //Click on Add_More_WorkExp Process End
 
         if ($this->input->post('next')) {
+
             $exp = $this->input->post('radio');
 
+
             if ($exp == "Fresher") {
+
                 $exp = $this->input->post('radio');
                 $exp_year = '';
                 $exp_month = '';
@@ -1571,20 +1486,10 @@ class Job extends MY_Controller {
                     redirect('job/work-experience', 'refresh');
                 }
             } else {
+
                 $exp = 'Experience';
 
-        $this->form_validation->set_rules('experience_year[]', 'Experience year', 'required');
-        $this->form_validation->set_rules('experience_month[]', 'Experience month', 'required');
-        $this->form_validation->set_rules('jobtitle[]', 'Jobtitle', 'required');
-        $this->form_validation->set_rules('companyname[]', 'Companyname', 'required');
 
-    if ($this->form_validation->run() == FALSE) 
-    {
-        $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-        $this->load->view('job/job_work_exp', $this->data);
-    } 
-    else
-    {
 // Multiple Image insert code start
                 $config = array(
                     'upload_path' => $this->config->item('job_work_main_upload_path'),
@@ -1866,7 +1771,6 @@ class Job extends MY_Controller {
                     redirect('job/work-experience', 'refresh');
                 }
             }
-         }//else form validation complete
         }
     }
 
@@ -2995,8 +2899,21 @@ class Job extends MY_Controller {
 
         //Retrieve Data from main user registartion table end
         //skill data fetch
-       
-        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other",'is_other'=>'0');
+        $contition_array = array('status' => 'publish');
+        $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'name');
+
+        foreach ($jobtitle as $key1 => $value1) {
+            foreach ($value1 as $ke1 => $val1) {
+                $title[] = $val1;
+            }
+        }
+        foreach ($title as $key => $value) {
+            $result1[$key]['label'] = $value;
+            $result1[$key]['value'] = $value;
+        }
+        $this->data['jobtitle'] = array_values($result1);
+
+        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Others",'is_other'=>'0');
         $search_condition = "((status = '1'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3007,34 +2924,6 @@ class Job extends MY_Controller {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
-        $this->form_validation->set_rules('first_name', 'Firstname', 'required');
-        $this->form_validation->set_rules('last_name', 'Lastname', 'required');
-        $this->form_validation->set_rules('email', 'Store  email', 'required|valid_email');
-        $this->form_validation->set_rules('fresher', 'Fresher', 'required');
-        $this->form_validation->set_rules('job_title', 'Job Title', 'required');
-        $this->form_validation->set_rules('skills', 'Skills', 'required');
-        $this->form_validation->set_rules('industry', 'Industry', 'required');
-        $this->form_validation->set_rules('cities', 'Cities', 'required');
-
-    if ($this->form_validation->run() == FALSE) 
-    {
-        //Retrieve Data from main user registartion table start
-        $data='first_name,last_name,user_email';
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //Retrieve Data from main user registartion table end
-        //skill data fetch
-       
-        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
-        $search_condition = "((status = '1'))";
-        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-        $this->load->view('job/job_reg',$this->data);
-    } 
-    else
-    {
         $firstname = $this->input->post('first_name');
         $lastname = $this->input->post('last_name');
         $email = $this->input->post('email');
@@ -3147,7 +3036,6 @@ class Job extends MY_Controller {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             redirect('job/profile', 'refresh');
         }
-     }//else form validation end
     }
 
 //THIS JOB REGISTRATION IS USED FOR FIRST TIME REGISTARTION VIEW END
@@ -3337,7 +3225,6 @@ class Job extends MY_Controller {
 // post detail
 
         $contition_array = array(
-            'user_id !=' =>$userid,
             'is_delete' => 0,
             'status' => 1
         );
@@ -3350,7 +3237,6 @@ class Job extends MY_Controller {
         foreach ($work_skill as $skill) {
             $contition_array = array(
                 'FIND_IN_SET("' . $skill . '",post_skill)!=' => '0',
-                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3368,7 +3254,6 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'FIND_IN_SET("' . $city . '",city)!=' => '0',
-                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3384,7 +3269,6 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'industry_type' => $work_job_industry,
-                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -3401,7 +3285,6 @@ class Job extends MY_Controller {
             $data = '*';
             $contition_array = array(
                 'post_name' => $work_job_title,
-                'user_id !=' =>$userid,
                 'is_delete' => 0,
                 'status' => 1
             );
@@ -4026,7 +3909,7 @@ class Job extends MY_Controller {
                                      <img src="' . base_url('img/job-no.png') . '">
                                 </div>
                                 <div class="art_no_post_text">
-                                    No Saved Job Available.
+                                    No  Saved Post Available.
                                 </div>
                               </div>';
         }//else end
@@ -4280,7 +4163,7 @@ class Job extends MY_Controller {
                               <img src="' . base_url('img/job-no.png') . '">
                            </div>
                            <div class="art_no_post_text">
-                              No Applied Job Available.
+                              No  Applied Post Available.
                            </div>
                         </div>';
         }
@@ -5150,7 +5033,7 @@ public function post($id="")
                         $rec_post .= '' . $this->common->make_links($rec_postdata[0]['post_description']) . '</pre></span>';
                         $rec_post .= '</li>
                                                                 <li><b>Interview Process</b><span>';
-                        if ($rec_postdata[0]['interview_process'] != '') {
+                        if ($post['interview_process'] != '') {
 
                             $rec_post .= '' . $this->common->make_links($rec_postdata[0]['interview_process']) . '';
                         } else {
@@ -5167,7 +5050,6 @@ public function post($id="")
                             $rec_post .= '' . $rec_postdata[0]['min_sal'] . " - " . $rec_postdata[0]['max_sal'] . ' ' . $currency . ' ' . $rec_postdata[0]['salary_type'] . '';
                         } else {
                             $rec_post .= '' . PROFILENA . '';
-                            $rec_post .=$rec_postdata[0]['max_sal'];
                         }
 
                         $rec_post .= '</span></li><li><b>No of Position</b><span>' . $rec_postdata[0]['post_position'] . ' ' . 'Position</span> </li>
@@ -5348,11 +5230,5 @@ public function rec_profile($id="")
     $this->load->view('job/recruiter_profile',$this->data);
 }
 //FOR RECRUITER POST END
-public function add1(){
-      $contition_array = array('status' => '1', 'is_delete' => '0');
-      $job = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-     echo json_encode(array('RESULT' => $job,'MESSAGE' => 'Success','STATUS' =>'1'));
-      exit();
-}
 
 }
