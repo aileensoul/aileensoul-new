@@ -664,14 +664,11 @@
          <footer>
             <?php echo $footer; ?>
         </footer>
-<!-- <script src="<?php //echo base_url('js/jquery-2.0.3.min.js?ver='.time()); ?>" type="text/javascript"></script> -->
+
 <script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
-<!-- <script src="<?php //echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script> -->
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script>
-<script src="<?php //echo base_url('assets/js/jquery.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
 

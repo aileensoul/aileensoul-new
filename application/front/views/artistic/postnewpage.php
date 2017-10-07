@@ -48,9 +48,13 @@
                                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
 
                                         $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
+
+                                        $slugposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->slug;
+                                         $slug = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->slug;
+
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
-                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_data[0]['posted_user_id']); ?>">
+                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugposted); ?>">
 
                                                 <?php if($userimageposted){?>
 
@@ -72,7 +76,7 @@
 
                                         <?php } else if($art_data[0]['user_id']){ ?>
 
-                                         <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_data[0]['user_id']); ?>">
+                                         <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slug); ?>">
 
                                             <?php if($art_userimage){?>
 
@@ -95,7 +99,7 @@
 
                                             <?php }
                                             else { ?>
-                                            <a class="post_dot"  href="<?php echo base_url('artistic/dashboard/' . $row['user_id']); ?>">
+                                            <a class="post_dot"  href="<?php echo base_url('artistic/dashboard/' . $slug); ?>">
 
                                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                        
@@ -124,8 +128,8 @@
                                             <li><div class="post-design-product"><?php if ($art_data[0]['posted_user_id']) { ?>
 
                                                     <div class="else_post_d">
-                                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
-                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artistic/dashboard/' . $art_data[0]['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugposted); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
+                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artistic/dashboard/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                         <span role="presentation" aria-hidden="true" style="color: #91949d; font-size: 14px;"> · </span>
                                                         <span class="ctre_date"> 
          <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>
@@ -136,7 +140,7 @@
                                                     <!-- other user post time name end-->
                                                 <?php } else { ?>
 
-                                                    <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>"   href="<?php echo base_url('artistic/dashboard/' . $art_data[0]['user_id']); ?>">
+                                                    <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>"   href="<?php echo base_url('artistic/dashboard/' . $slug); ?>">
                                                         <?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>
 
                                                     </a>
@@ -546,9 +550,13 @@
                                                 foreach ($artdata as $rowdata) {
                                                     $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
                                                     $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                                                    $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                                     ?>
                                                     <div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img"> 
+
+                                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $artslug); ?>"> 
+
                                                             <?php
                                                             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                             $art_first = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_name;
@@ -573,8 +581,10 @@
                                                                 <?php
                                                             }
                                                             ?>
+                                                        </a>
                                                         </div>
                                                         <div class="comment-name">
+                                                             <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $artslug); ?>"> 
                                                             <b title=" <?php
                                                             echo ucfirst(strtolower($artname));
                                                             echo "&nbsp;";
@@ -584,7 +594,7 @@
                                                                    echo ucfirst(strtolower($artname));
                                                                    echo "&nbsp;";
                                                                    echo ucfirst(strtolower($artlastname));
-                                                                   ?></b><?php echo '</br>'; ?></div>
+                                                                   ?></b><?php echo '</br>'; ?></a></div>
 
                                                         <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['artistic_post_comment_id']; ?>">
                                                            <div id="<?php echo "lessmore" . $rowdata['artistic_post_comment_id']; ?>" style="display:block;">
@@ -721,9 +731,13 @@
                                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
                                     $art_first = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
                                     $art_last = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                                    $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
                                     ?>
+
                                     <div class="post-design-proo-img  hidden-mob">
+                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($art_first)) . ' ' . ucfirst(strtolower($art_last)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+
                                         <?php if ($art_userimage) { ?>
 
                                               <?php 
@@ -742,6 +756,7 @@
                                             <?php
                                         }
                                         ?>
+                                    </a>
                                     </div>
                                     <div class="">
                                         <div id="content" class="col-md-12 inputtype-comment cmy_2" >
@@ -1028,11 +1043,12 @@
                                                                             $companyname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
 
                                                                             $lastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                                                                            $slugdata = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                                                             ?>
                                                                             <div class="all-comment-comment-box">
                                                                                 <div class="post-design-pro-comment-img">
 
-                                                                                <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $rowdata['user_id']); ?>"> 
+                                                                                <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugdata); ?>"> 
 
                                                                                     <?php
                                                                                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
@@ -1055,7 +1071,7 @@
                                            <?php }?>   </a>         
                                                                                 </div>
                                                                                 <div class="comment-name">
-                                                                                    <b>  <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $rowdata['user_id']); ?>"> <?php
+                                                                                    <b>  <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugdata); ?>"> <?php
                                                                                         echo ucfirst(strtolower($companyname)) . ' '.ucfirst(strtolower($lastname)) ;
                                                                                         echo '</br>';
                                                                                         ?>
@@ -1290,7 +1306,7 @@
 <?php echo $footer; ?>
 </footer>
 
-<!-- <script src="<?php //echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script> -->
+
 
 
  <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
