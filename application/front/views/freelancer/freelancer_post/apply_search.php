@@ -710,7 +710,6 @@
             <?php echo $footer; ?>
         </footer>
         <!-- script for skill textbox automatic start (option 2)-->
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
 

@@ -169,10 +169,6 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-<!--        <script src="<?php //echo base_url('js/jquery-ui.min.js');  ?>"></script>-->
-
-
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>

@@ -1,3 +1,84 @@
+//FORM FILL UP VALIDATION START
+//validation for edit email formate form
+
+$.validator.addMethod("noSpace", function (value, element) {
+    return value == '' || value.trim().length != 0;
+}, "No space please and don't leave it empty");
+
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    return regexpr.test(value);
+}, "Only space, only number and only specila characters are not allow");
+
+$(document).ready(function () {
+  
+    $("#freelancer_post_professional").validate({
+      
+        ignore: '*:not([name])',
+          ignore: ":hidden",
+//        groups: {
+//            experience_year: "experience_year experience_month"
+//        },
+//        errorPlacement: function (error, element) {
+//            if (element.attr('name') === 'experience_year' || element.attr('name') === 'experience_month')
+//                error.insertAfter('#experience_month');
+//        },
+        rules: {
+
+            field: {
+                required: true
+            },
+            area: {
+                required: true
+            },
+
+            skills: {
+                required: true,
+                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+            },
+
+            skill_description: {
+                required: true,
+                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+            }
+//            experience_year: {
+//                require_from_group: [1, ".day"]
+//            },
+
+//            experience_month: {
+//                require_from_group: [1, ".day"]
+//
+//            }
+
+        },
+
+        messages: {
+
+            field: {
+                required: "This field is required."
+            },
+
+            area: {
+                required: "Area is required."
+            },
+
+            'skills[]': {
+                required: "You must either fill out 'skills' or 'Other Skills'"
+            },
+
+            skill_description: {
+                required: "Skill description is required."
+            }
+//            experience_year: {
+//                require_from_group: "You must either fill out 'experience year' or 'experience month'"
+//            },
+//            experience_month: {
+//                require_from_group: "You must either fill out 'experience year' or 'experience month'"
+//            }
+        }
+
+    });
+});
+//FORM FILL UP VALIDATION END
 //SKILL VALIDATION START
 function imgval() {
     var skill_main = document.getElementById("skill1").value;
@@ -7,102 +88,11 @@ function imgval() {
     }
 }
 //SKILL VALIDATION END
-//FORM FILL UP VALIDATION START
-//validation for edit email formate form
 
-jQuery.validator.addMethod("noSpace", function (value, element) {
-    return value == '' || value.trim().length != 0;
-}, "No space please and don't leave it empty");
-
-$.validator.addMethod("regx", function (value, element, regexpr) {
-    return regexpr.test(value);
-}, "Only space, only number and only specila characters are not allow");
-
-$(document).ready(function () {
-
-    $("#freelancer_post_professional").validate({
-        ignore: '*:not([name])',
-        //  ignore: ":hidden",
-        groups: {
-            experience_year: "experience_year experience_month"
-        },
-        errorPlacement: function (error, element) {
-            if (element.attr('name') == 'experience_year' || element.attr('name') == 'experience_month')
-                error.insertAfter('#experience_month');
-        },
-        rules: {
-
-            field: {
-                required: true,
-            },
-            area: {
-                required: true,
-            },
-
-            'skills[]': {
-                require_from_group: [1, ".keyskil"],
-                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-            },
-
-            skill_description: {
-                required: true,
-                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-            },
-            experience_year: {
-                require_from_group: [1, ".day"]
-            },
-
-            experience_month: {
-                require_from_group: [1, ".day"],
-
-            }
-
-        },
-
-        messages: {
-
-            field: {
-                required: "This field is required.",
-            },
-
-            area: {
-                required: "Area is required.",
-            },
-
-            'skills[]': {
-                require_from_group: "You must either fill out 'skills' or 'Other Skills'"
-            },
-
-            otherskill: {
-                require_from_group: "You must either fill out 'skills' or 'Other Skills'"
-            },
-
-            skill_description: {
-                required: "Skill description is required.",
-            },
-            experience_year: {
-                require_from_group: "You must either fill out 'experience year' or 'experience month'"
-            },
-            experience_month: {
-                require_from_group: "You must either fill out 'experience year' or 'experience month'"
-            },
-        }
-
-    });
-});
-//FORM FILL UP VALIDATION END
 //FLASH MESSAGE SCRIPT START
 $(".alert").delay(3200).fadeOut(300);
 //FLASH MESSAGE SCRIPT END
-//CODE FOR PREELOADER START
-jQuery(document).ready(function ($) {
-    $(window).load(function () {
-        $('#preloader').fadeOut('slow', function () {
-            $(this).remove();
-        });
-    });
-});
-//CODE FOR PREELOADER END
+
 //CHECK SEARCH KEYWORD AND LOCATION BLANK START
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);

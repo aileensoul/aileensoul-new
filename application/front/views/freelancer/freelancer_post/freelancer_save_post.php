@@ -210,7 +210,6 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
         </script>

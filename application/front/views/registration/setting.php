@@ -12,8 +12,6 @@
 <!-- END HEAD -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> -->
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 
 

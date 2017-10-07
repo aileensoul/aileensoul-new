@@ -9,7 +9,7 @@
 
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-      <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>">
+      <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver='.time()); ?>">
       <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
@@ -1622,8 +1622,8 @@
       <!-- script for skill textbox automatic end (option 2)-->
       <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
       <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/raphael-min.js
-         ?ver='.time()); ?>"></script>
+<!--      <script type="text/javascript" src="<?php //echo base_url('js/raphael-min.js
+        // ?ver='.time()); ?>"></script>-->
       <script type="text/javascript" src="<?php echo base_url('js/progressloader.js?ver='.time()); ?>"></script>
 
       <script>

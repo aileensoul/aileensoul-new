@@ -72,10 +72,12 @@
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></td>
                                 <td class="business_data_td2"><span><?php echo $artisticdata[0]['art_yourart']; ?></span></td>
                             </tr>
+                            <?php if($artisticdata[0]['art_desc_art']){?>
                             <tr>
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-file-text" aria-hidden="true"></i></td>
                                 <td class="business_data_td2"><span><?php echo $this->common->make_links($artisticdata[0]['art_desc_art']); ?></span></td>
                             </tr>
+                            <?php }?>
                             <tr>
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-envelope" aria-hidden="true"></i></td>
                                 <td class="business_data_td2">
@@ -370,7 +372,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
 <script src="<?php echo base_url('js/croppie.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-<!-- <script src="<?php //echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script> -->
 <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>

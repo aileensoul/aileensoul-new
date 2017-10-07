@@ -211,10 +211,11 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
-            <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+            
+            
             <script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
-          
+            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+
             <script>
                // var complex = <?php echo json_encode($selectdata); ?>;
                var base_url = '<?php echo base_url(); ?>';

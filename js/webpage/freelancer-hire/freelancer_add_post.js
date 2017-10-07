@@ -144,7 +144,7 @@ $(document).ready(function () {
                 required: true,
             },
             est_time: {
-                regx_num_space: /^[0-9][\Sa-zA-Z]/
+                regx_num_space: /[0-9\s][a-zA-Z]/
             }
 
         },
