@@ -2420,6 +2420,10 @@ label.cameraButton input[accept*="camera"] {
         top: 84px !important;
     }
 	.art-side-menu ul{float:none; display:inline-block;}
+	
+	/***  addvertise  ***/
+	
+	/*** end advertise  ***/
 }
 @media screen and (max-width: 767px) {
     .common-form input[type="radio"],
