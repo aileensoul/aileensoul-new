@@ -483,7 +483,7 @@ li.fr a {
     display: block;
     position: absolute;
     content: "";
-    top: 46px;
+    top: 49px;
     background: #d9d9d9;
 }
 .profile-boxProfileCard-content {
@@ -553,7 +553,7 @@ li.fr a {
 }
 .left_box_menubar {
     width: 100%;
-    padding: 0px;
+    padding: 5px 0 0;
     margin: 0px;
     float: left;
 }
@@ -2125,11 +2125,12 @@ label.cameraButton input[accept*="camera"] {
 .mian_middle_post_box {
     float: left;
     width: 600px;
-    margin-left: 10px;
+    margin-left: 15px;
     left: 320px;
     position: relative;
 }
 .profile-boxProfile-name a{font-size:14px;}
+#hideuserlist .fw.text-center{text-align:right;}
 
 
 /***  end new structure  ***/
@@ -2245,13 +2246,6 @@ label.cameraButton input[accept*="camera"] {
         height: 128px;
         width: 128px;
     }
-    .buisness-profile-txext {
-        width: 28%;
-    }
-    .right_left_box_design {
-        width: 72% !important;
-        padding: 14px 12px 10px 16px !important;
-    }
     .profile-boxProfile-name {
         line-height: 1;
     }
@@ -2277,6 +2271,8 @@ label.cameraButton input[accept*="camera"] {
 	
 }
 @media screen and (max-width: 991px) {
+	.profile-box-custom{position:relative; display:none;}
+	.mian_middle_post_box{position:inherit; float:none; margin:0 auto;}
     .art_no_post_text {
         font-size: 21px;
     }
@@ -2755,6 +2751,7 @@ label.cameraButton input[accept*="camera"] {
 	.job-menu-profile h5{margin-top:0;}
 }
 @media screen and (max-width: 639px) {
+	.mian_middle_post_box{width:100%;}
     .job_con #InboxContainer::before {
         right: 120px;
     }

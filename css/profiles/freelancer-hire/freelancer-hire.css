@@ -475,7 +475,7 @@ li.fr a {
     display: block;
     position: absolute;
     content: "";
-    top: 46px;
+    top: 49px;
     background: #d9d9d9;
 }
 .profile-boxProfileCard-content {
@@ -509,8 +509,8 @@ li.fr a {
     height: 75px;
 }
 .profile-boxProfileCard-content .buisness-profile-txext a img {
-    height: 100%;
-    width: 100%;
+    height: 60px;
+    width: 60px;
     z-index: 3;
     position: relative;
 }
@@ -545,7 +545,7 @@ li.fr a {
 }
 .left_box_menubar {
     width: 100%;
-    padding: 0px;
+    padding: 5px 0 0;
     margin: 0px;
     float: left;
 }
@@ -1475,13 +1475,12 @@ label.cameraButton input[accept*="camera"] {
 .mian_middle_post_box {
     float: left;
     width: 600px;
-    margin-left: 10px;
+    margin-left: 15px;
     left: 320px;
     position: relative;
 }
 .profile-boxProfile-name a{font-size:14px;}
-
-
+#hideuserlist .fw.text-center{text-align:right;}
 /***  end new structure  ***/
 
 
@@ -1505,14 +1504,8 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfilebuisness-avatarLink2 {
         height: 75px !important;
     }
-    .right_left_box_design {
-        padding: 17px 12px 12px 16px !important;
-    }
     .experience_year {
         margin-right: 34px;
-    }
-    .right_left_box_design {
-        padding: 17px 12px 12px 25px !important;
     }
     .custom-right {
         margin-left: 50px;
@@ -1555,13 +1548,6 @@ label.cameraButton input[accept*="camera"] {
         width: 118px;
 		padding:17px 5px;
 	}
-    .buisness-profile-txext {
-        width: 28%;
-    }
-    .right_left_box_design {
-        width: 72% !important;
-        padding: 14px 12px 10px 16px !important;
-    }
     .profile-boxProfile-name {
         line-height: 1;
     }
@@ -1588,6 +1574,8 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 991px) {
+	.profile-box-custom{position:relative; display:none;}
+	.mian_middle_post_box{position:inherit; float:none; margin:0 auto;}
     .art_no_post_text {
         font-size: 21px;
     }
@@ -2005,6 +1993,7 @@ label.cameraButton input[accept*="camera"] {
 	
 }
 @media screen and (max-width: 640px) {
+	.mian_middle_post_box{width:100%;}
     .post-img-user {
         font-size: 26px;
         height: 88px;
