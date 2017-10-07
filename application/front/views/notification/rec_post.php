@@ -410,7 +410,10 @@ echo $head;
                                                 </li>
                                                 <li>
                                                     <a href="#" title="Post Title"  style="font-size: 19px;font-weight: 600;cursor:default;">
-                                                        <?php echo $post['post_name'] ?> </a>     </li>
+                                                        <?php 
+                                                $post_title =  $this->db->select('name')->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+                                                        
+                                                        echo $post_title ?> </a>     </li>
                                                 <li>   
                                                     <div class="fr lction">
                                                     <?php $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name; ?>
