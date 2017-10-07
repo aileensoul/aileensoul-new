@@ -2214,10 +2214,12 @@ label.cameraButton input[accept*="camera"] {
     #experience_year {
         margin-right: 30px !important;
     }
+	/***  add  ***/
 	.tablate-add{display:none;}
 	.tablate-potrat-add{display:block;}
 	.tablate-potrat-add .fw.text-center{text-align:center;}
 	.left_side_posrt{position:absolute;}
+	/***  end add  ***/
 }
 @media screen and (max-width: 1130px) {
     .custom-right {
@@ -3142,7 +3144,7 @@ label.cameraButton input[accept*="camera"] {
 	.contact-frnd-post{padding:10px 8px 0;}
 	/*** end add  ***/
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 319px) {
     .main_raio [type="radio"]:checked + .point_radio,
     .main_raio [type="radio"]:not(:checked) + .point_radio {
         padding-left: 20px;
