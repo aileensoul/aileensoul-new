@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="reactivate_btn_n">
                             <a href="<?php echo base_url('dashboard'); ?>"><?php echo $this->lang->line("no"); ?></a>
                         </div>
-                        <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+                     
                     </div>
                 </center>
             </div>

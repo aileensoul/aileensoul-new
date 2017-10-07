@@ -168,7 +168,7 @@
 
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>-->
 
         <script type="text/javascript">
             var base_url = '<?php echo base_url(); ?>';

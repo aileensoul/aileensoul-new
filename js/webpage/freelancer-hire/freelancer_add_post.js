@@ -1,6 +1,6 @@
 // CHECK SEARCH KEYWORD AND LOCATION BLANK START
 function checkvalue() {
-    alert(123);
+   
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "") {
@@ -9,7 +9,7 @@ function checkvalue() {
 }
 
 function checkvalue_search() {
-    alert(456);
+  
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "")
@@ -18,7 +18,7 @@ function checkvalue_search() {
     }
 }
 function check() {
-    alert(789);
+    
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
     if (keyword == "" && place == "") {
@@ -144,7 +144,7 @@ $(document).ready(function () {
                 required: true,
             },
             est_time: {
-                regx_num_space: /^[0-9][a-zA-Z\s]+$/
+                regx_num_space: /^[0-9][\Sa-zA-Z]/
             }
 
         },
