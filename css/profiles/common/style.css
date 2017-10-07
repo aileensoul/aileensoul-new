@@ -1947,14 +1947,11 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	}
 }
 
-@media screen and (max-width:1280px){
-  .fixed_right_side{right: 0;}
-  .fixed_right_display_none{display:block;}
-  .fixed_right_display{display: none;}
-} 
-
 @media screen and (max-width: 1279px) {
 	.header2{width:1140px;}
+	.fixed_right_side{right: 0;}
+  .fixed_right_display_none{display:block;}
+  .fixed_right_display{display: none;}
 }
 
 @media screen and (max-width: 1199px) {

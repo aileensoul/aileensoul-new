@@ -22,7 +22,7 @@
    <!-- END HEADER -->
    <body class="page-container-bg-solid page-boxed">
       <div class="user-midd-section" id="paddingtop_fixed">
-         <div class="container" >
+         <div class="container padding-360" >
             <div class="">
                <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                   <div class="">
@@ -169,6 +169,16 @@
                            }
                            ?>
                      </div>
+					 <div class="tablate-potrat-add">
+								<div class="fw text-center pt10">
+									<script type="text/javascript" language="javascript">
+									  var aax_size='300x250';
+									  var aax_pubname = 'aileensoul-21';
+									  var aax_src='302';
+									</script>
+									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+									</div>
+							</div>
                     <div class="custom_footer_left fw">
 						  <div class="fl">
 							 <ul>
@@ -195,7 +205,18 @@
                         <h3>Recommended Job</h3>
                         
                          <div class="contact-frnd-post">
+							<div class="mob-add">
+								<div class="fw text-center pt10 pb5">
+									<script type="text/javascript" language="javascript">
+									  var aax_size='300x250';
+									  var aax_pubname = 'aileensoul-21';
+									  var aax_src='302';
+									</script>
+									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+									</div>
+							</div>
                             <div class="job-contact-frnd ">
+								
                               <!--.........AJAX DATA......-->           
                             </div>
                          <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
@@ -214,7 +235,18 @@
 						</script>
 						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 						</div>
-                    </div>
+                </div>
+				
+
+				<div class="tablate-add">
+					
+					<script type="text/javascript" language="javascript">
+					  var aax_size='160x600';
+					  var aax_pubname = 'aileensoul-21';
+					  var aax_src='302';
+					</script>
+					<script type="text/javascript" language="javascript" src="http://c.amazon-adsystem.com/aax2/assoc.js"></script>
+				</div>
       </section>
       <!-- Model Popup Open -->
       <!-- Bid-modal  -->
