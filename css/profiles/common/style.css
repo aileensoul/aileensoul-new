@@ -201,7 +201,7 @@ select {
     font-size: 16px;
     height:35px;
     cursor: pointer;
-    color: #acacac;
+    /*color: #acacac;*/
 }
 .comment-edit-butn button:focus{background-color: #1b8ab9;}
 input[type=submit],
