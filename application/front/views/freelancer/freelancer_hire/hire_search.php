@@ -719,7 +719,7 @@
         <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
         <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
         <!-- script for skill textbox automatic end (option 2)-->
-        <script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script> 
+        
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>">
         </script>

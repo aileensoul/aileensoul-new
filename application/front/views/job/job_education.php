@@ -959,7 +959,6 @@
 </footer>
 
 <!-- Calender JS Start-->
-<script src="<?php echo base_url('js/jquery.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js?ver='.time()) ?>"></script>
 <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>

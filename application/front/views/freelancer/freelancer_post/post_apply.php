@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver=' . time()); ?>">
-        <!--<script src="<?php //echo base_url('js/fb_login.js');  ?>"></script>-->
+      
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>

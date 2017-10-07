@@ -10,7 +10,6 @@
 <div style="display: block;">
     <?php echo $business_header2; ?>
 </div>
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 
 
 
@@ -26,9 +25,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 
 
-<!-- <script src="<?php //echo base_url('js/jquery.min.js');                                              ?>"></script> -->
-        <!-- <script src="<?php //echo base_url('js/jquery-ui.min.js');     ?>"></script>
-        <script src="<?php //echo base_url('js/jquery.wallform.js');     ?>"></script> -->
+    
         <script>
             $(document).ready(function ()
             {
@@ -1583,7 +1580,7 @@
 
 </html>
 <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script> 
+ 
 
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>

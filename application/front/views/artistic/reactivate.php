@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-1.11.1.min.js?ver='.time()); ?>"></script>-->
 <!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-2.0.3.min.js?ver='.time()); ?>"></script>-->
 <script type="text/javascript" src="<?php  echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver='.time()); ?>"></script>  
+<!-- <script type="text/javascript" src="<?php //echo base_url('js/jquery-ui.min-1.12.1.js?ver='.time()); ?>"></script>   -->
 <!--<script src="<?php // echo base_url('js/fb_login.js?ver='.time()); ?>"></script>-->
 
 
