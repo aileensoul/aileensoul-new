@@ -1289,9 +1289,11 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 }
 .custom_footer_left ul li {
     display: inline-block;
-    padding: 3px 6px;
+    padding: 0;
     margin: 0;
     float: left;
+	font-size:12px;
+	padding: 5px 2px 0px;
 }
 .custom_footer_left ul li a {
     padding: 0px;

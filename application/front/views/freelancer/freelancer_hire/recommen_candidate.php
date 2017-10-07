@@ -13,8 +13,8 @@
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
-                    <div class="row row4">
-                        <div class="col-md-4 col-sm-4 profile-box profile-box-left  animated fadeInLeftBig">
+                    <div class="row4">
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
@@ -92,10 +92,10 @@
                                             <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
 
                                             <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-
+											<li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
                                             <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
 
-                                            <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+                                            
 
                                             <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
                                         </ul>
@@ -119,7 +119,7 @@
                         }
                         ?>
                         <!-- middle div stat -->
-                        <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
+                        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
@@ -138,7 +138,19 @@
                             </div>
                         </div>
                         <!-- middle div  -->
+						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+					
+						<div class="fw text-center">
+                        <script type="text/javascript" language="javascript">
+						  var aax_size='300x250';
+						  var aax_pubname = 'aileensoul-21';
+						  var aax_src='302';
+						</script>
+						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+						</div>
                     </div>
+					
+					</div>
                 </div>
             </div>
         </section>

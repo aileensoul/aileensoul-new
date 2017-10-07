@@ -250,7 +250,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 <footer>
 <?php echo $footer; ?>
 </footer>
-<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>

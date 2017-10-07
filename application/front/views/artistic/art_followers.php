@@ -92,7 +92,7 @@
 
 <script src="<?php echo base_url('js/croppie.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
+
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script>
 var base_url = '<?php echo base_url(); ?>';   
