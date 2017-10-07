@@ -482,7 +482,7 @@ label.cameraButton input[accept*="camera"] {
         </html>
 
     
-   <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+   
     <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
     <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
