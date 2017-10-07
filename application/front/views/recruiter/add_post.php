@@ -439,7 +439,7 @@
         <style type="text/css">
 
             .keyskill_border_active {
-                border: 3px solid #f00 !important;
+                border: 1px solid #f00 !important;
 
             }
             #skills-error{margin-top: 40px !important;}

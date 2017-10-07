@@ -938,13 +938,17 @@ label.cameraButton input[accept*="camera"] {
 
 
 /***  end new structure  ***/
+.tablate-add{display:none;}
+.tablate-potrat-add{display:none;}
+.mob-add{display:none;}
 
 
 /***  media query  ***/
 @media screen and (max-width: 1279px){
-.custom-right {
-    margin-left: 10px
+	.custom-right {
+		margin-left: 10px
     }
+	.tablate-add{display:block; width:160px; position:fixed; margin-left:960px;}
 } 
 
 @media screen and (max-width: 1200px){
@@ -965,6 +969,12 @@ label.cameraButton input[accept*="camera"] {
 	.experience_year{margin-right:34px;}
 	.job_edit_menu{width: 22.5% !important;}
 	.job_edit_pr{padding-left: 225px;}
+	/***  add  ***/
+	.tablate-add{display:none;}
+	.tablate-potrat-add{display:block;}
+	.tablate-potrat-add .fw.text-center{text-align:center;}
+	.left_side_posrt{position:absolute;}
+	/***  end add  ***/
 }
 
 @media screen and (max-width: 1130px){
@@ -1109,6 +1119,11 @@ label.cameraButton input[accept*="camera"] {
     margin-left: 5%;
     }
 	.add-post-button{margin-bottom:10px; margin-top:10px;}
+	/***  addvertise  ***/
+	.tablate-potrat-add{display:none;}
+	.tablate-add{display:block; width:160px; position:fixed; margin-left:565px;}
+	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
+	/*** end advertise  ***/
 }
 
 @media screen and (max-width: 767px){
@@ -1393,7 +1408,13 @@ label.cameraButton input[accept*="camera"] {
         height: 200px;
     }
     #row2{border-left:0; border-right:0;}
-     #row1{height:200px;}
+    #row1{height:200px;}
+	/*** add ***/
+	.tablate-potrat-add{display:block;}
+	.tablate-add{display:none;}
+	.mian_middle_post_box{float:none;}
+	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
+	/*** end add  ***/
 }
 
 @media screen and (max-width: 640px) {
@@ -1694,8 +1715,13 @@ label.cameraButton input[accept*="camera"] {
 	.right-side-menu {
         width: 100%;
     }
+	/***  add  ***/
+	.mob-add{margin-bottom:0; border:none;}
+	.padding-360{padding-left:1px; padding-right:1px;}
+	.contact-frnd-post{padding:10px 8px 0;}
+	/*** end add  ***/
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 319px){
 	.profile-job-details .post_title{font-size: 11px;}
 }
