@@ -1116,8 +1116,8 @@ class Artistic extends MY_Controller {
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">' . ucwords($artdataposted[0]['art_name']) .' '. ucwords($artdataposted[0]['art_lastname']) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">' . ucwords($artdata[0]['art_name']) .' '. ucwords($artdata[0]['art_lastname']) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">' . ucfirst(strtolower($artdataposted[0]['art_name'])) .' '. ucfirst(strtolower($artdataposted[0]['art_lastname'])) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">' . ucfirst(strtolower($artdata[0]['art_name'])) .' '. ucfirst(strtolower($artdata[0]['art_lastname'])) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -1125,8 +1125,8 @@ class Artistic extends MY_Controller {
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '" title="' . ucwords($artdata[0]['art_name']) .' '. ucwords($artdata[0]['art_lastname']) . '">
-                    ' . ucwords($artdata[0]['art_name']) .' '.ucwords($artdata[0]['art_lastname']). '</a>
+                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '" title="' . ucfirst(strtolower($artdata[0]['art_name'])) .' '. ucfirst(strtolower($artdata[0]['art_lastname'])) . '">
+                    ' . ucfirst(strtolower($artdata[0]['art_name'])) .' '.ucfirst(strtolower($artdata[0]['art_lastname'])). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
                     ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
@@ -1143,7 +1143,7 @@ class Artistic extends MY_Controller {
                                             <div class="post-design-product">
                                                 <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
                     if ($artdata[0]['designation']) {
-                        $return_html .= ucwords($artdata[0]['designation']);
+                        $return_html .= ucfirst(strtolower($artdata[0]['designation']));
                     } else {
                         $return_html .= 'Current Work';
                     }
@@ -1463,9 +1463,9 @@ class Artistic extends MY_Controller {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
-                            $return_html .= ucwords($art_fname);
+                            $return_html .= ucfirst(strtolower($art_fname));
                             $return_html .= "&nbsp;";
-                            $return_html .= ucwords($art_lname);
+                            $return_html .= ucfirst(strtolower($art_lname));
                             $return_html .= "&nbsp;";
 
                         }
@@ -1497,9 +1497,9 @@ class Artistic extends MY_Controller {
 
                     $return_html .= '<div class="like_one_other">';
 
-                    $return_html .= ucwords($art_fname);
+                    $return_html .= ucfirst(strtolower($art_fname));
                     $return_html .= "&nbsp;";
-                    $return_html .= ucwords($art_lname);
+                    $return_html .= ucfirst(strtolower($art_lname));
                     $return_html .= "&nbsp;";
 
                     if (count($likelistarray) > 1) {
@@ -2360,7 +2360,7 @@ public function follow_home() {
                         $third_user_html .= '</a>';
 
                     } else {
-                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . '">';
                                                                                     
                         $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
@@ -2471,7 +2471,7 @@ public function follow_home() {
                         $third_user_html .= '</a>';
 
                     } else {
-                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . '">';
                                                                                     
                          $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
@@ -2598,7 +2598,7 @@ public function follow_home() {
                         $third_user_html .= '</a>';
 
                     } else {
-                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' .ucfirst(strtolower($userlist['art_name'])) . '">';
                                                                                     
                         $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
@@ -10254,7 +10254,7 @@ public function insert_comment_postnewpage() {
 
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . '">';
                                                                                     
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
@@ -10413,7 +10413,7 @@ public function insert_comment_postnewpage() {
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
                                                                                         <a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '">
-                                                                                            <h6>' . ucwords($userlist['art_name']) .' '.ucwords($userlist['art_lastname']) .'</h6>
+                                                                                            <h6>' . ucfirst(strtolower($userlist['art_name'])) .' '.ucfirst(strtolower($userlist['art_lastname'])) .'</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
@@ -10462,7 +10462,7 @@ public function insert_comment_postnewpage() {
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) .' '. ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">';
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {       
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                 }else{
@@ -10472,7 +10472,7 @@ public function insert_comment_postnewpage() {
                             $return_html .= '</a>';
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . ' ' .ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
                                   $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                    $return_html .= '</a>';
                     }
@@ -10587,7 +10587,7 @@ public function art_home_three_user_list() {
                         $return_html .= '</a>';
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . '">';
                                                                                     
                          $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
@@ -10894,7 +10894,7 @@ public function art_home_postold() {
                                             <div class="post-design-product">
                                                 <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
                     if ($designation) {
-                        $return_html .= ucwords($designation);
+                        $return_html .= ucfirst(strtolower($designation));
                     } else {
                         $return_html .= 'Current Work';
                     }
@@ -11272,9 +11272,9 @@ public function art_home_postold() {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
-                            $return_html .= ucwords($art_fname);
+                            $return_html .= ucfirst(strtolower($art_fname));
                             $return_html .= "&nbsp;";
-                            $return_html .= ucwords($art_lname);
+                            $return_html .= ucfirst(strtolower($art_lname));
                             $return_html .= "&nbsp;";
 
                         }
@@ -11319,9 +11319,9 @@ public function art_home_postold() {
 
                     $return_html .= '<div class="like_one_other">';
 
-                    $return_html .= ucwords($art_fname);
+                    $return_html .= ucfirst(strtolower($art_fname));
                     $return_html .= "&nbsp;";
-                    $return_html .= ucwords($art_lname);
+                    $return_html .= ucfirst(strtolower($art_lname));
                     $return_html .= "&nbsp;";
 
                     if (count($likelistarray) > 1) {
@@ -11787,7 +11787,7 @@ public function art_home_post() {
                                             <div class="post-design-product">
                                                 <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
                     if ($designation) {
-                        $return_html .= ucwords($designation);
+                        $return_html .= ucfirst(strtolower($designation));
                     } else {
                         $return_html .= 'Current Work';
                     }
@@ -12148,9 +12148,9 @@ public function art_home_post() {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
-                            $return_html .= ucwords($art_fname);
+                            $return_html .= ucfirst(strtolower($art_fname));
                             $return_html .= "&nbsp;";
-                            $return_html .= ucwords($art_lname);
+                            $return_html .= ucfirst(strtolower($art_lname));
                             $return_html .= "&nbsp;";
 
                         }
@@ -12195,9 +12195,9 @@ public function art_home_post() {
 
                     $return_html .= '<div class="like_one_other">';
 
-                    $return_html .= ucwords($art_fname);
+                    $return_html .= ucfirst(strtolower($art_fname));
                     $return_html .= "&nbsp;";
-                    $return_html .= ucwords($art_lname);
+                    $return_html .= ucfirst(strtolower($art_lname));
                     $return_html .= "&nbsp;";
 
                     if (count($likelistarray) > 1) {
@@ -14560,7 +14560,7 @@ public function get_artistic_name($id=''){
                                             <div class="post-design-product">
                                                 <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
                     if ($key['designation']) {
-                        $return_html .= ucwords($key['designation']);
+                        $return_html .= ucfirst(strtolower($key['designation']));
                     } else {
                         $return_html .= 'Current Work';
                     }
