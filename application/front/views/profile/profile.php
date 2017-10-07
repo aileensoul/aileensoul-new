@@ -172,9 +172,9 @@ color: #1b8ab9 !important;}
             <?php echo $footer; ?>
         </footer>
         <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
+       
         <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>">
+        
         </script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>

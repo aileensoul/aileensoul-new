@@ -1,3 +1,69 @@
+jQuery.validator.addMethod("noSpace", function(value, element) { 
+      return value == '' || value.trim().length != 0;  
+    }, "No space please and don't leave it empty");
+
+
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    return regexpr.test(value);
+}, "Only space and only number are not allow.");
+
+            $(document).ready(function () { 
+
+                $("#artinfo").validate({ 
+  
+                  ignore: '*:not([name])',
+                    rules: {
+
+                        artname: {
+
+                            required: true,
+                            regx: /^[a-zA-Z\s]*[a-zA-Z]/,
+                            noSpace: true
+                           
+                        },
+
+                        skills: {
+
+                    required: true,
+
+                },
+                       // desc_art: {
+
+                       //      required: true,
+                       //       regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                           
+                            
+                       //  },
+                        
+                    },
+
+                    messages: {
+
+                        artname: {
+
+                            required: "Speciality is required.",
+                            
+                        },
+
+                         skills: {
+
+                    required: "Skill is required.",
+                   
+                },
+
+                        // desc_art: {
+
+                        //     required: "Description of your art is required.",
+                            
+                        // },
+                       
+                },
+
+                });
+                   });
+
+
+
 $(function() {
         function split( val ) {
             return val.split( /,\s*/ );
@@ -73,82 +139,7 @@ textarea.onkeyup = function(evt) {
 }
 
     
-jQuery.validator.addMethod("noSpace", function(value, element) { 
-      return value == '' || value.trim().length != 0;  
-    }, "No space please and don't leave it empty");
 
-
-            $.validator.addMethod("regx1", function(value, element, regexpr) {          
-    return regexpr.test(value);
-}, "Only space not allow");
-
-
-$.validator.addMethod("regx", function(value, element, regexpr) {          
-     if(!value) 
-            {
-                return true;
-            }
-            else
-            {
-                  return regexpr.test(value);
-            }
-
-}, "Only space, only number and only special characters are not allow");
-
-
-            $(document).ready(function () { 
-
-                $("#artinfo").validate({ 
-  
-                  ignore: '*:not([name])',
-                    rules: {
-
-                        artname: {
-
-                            required: true,
-                            regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-                           
-                        },
-
-                        skills: {
-
-                    required: true,
-
-                },
-                       // desc_art: {
-
-                       //      required: true,
-                       //       regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-                           
-                            
-                       //  },
-                        
-                    },
-
-                    messages: {
-
-                        artname: {
-
-                            required: "Speciality is required.",
-                            
-                        },
-
-                         skills: {
-
-                    required: "Skill is required.",
-                   
-                },
-
-                        // desc_art: {
-
-                        //     required: "Description of your art is required.",
-                            
-                        // },
-                       
-                },
-
-                });
-                   });
 
 
 function checkvalue() {
