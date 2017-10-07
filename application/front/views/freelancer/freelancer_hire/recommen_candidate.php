@@ -104,7 +104,7 @@
                                 </div>
 
                                 <div  class="add-post-button">
-                                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
+                                    <a class="btn btn-3 btn-3b" id ="Fh-post-project" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
                                 </div>
                             </div>
 
