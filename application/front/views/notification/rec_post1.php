@@ -88,7 +88,7 @@
             <?php   $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'],0,40)."..." : $post['re_comp_name'];
              echo $out;?> </a>
               </li>
-              <li class="fw"><a class="display_inline" title="Recruiter Name" href="javascript:void(0)"> <?php echo ucfirst(strtolower($post['rec_firstname'])).''.ucfirst(strtolower($post['rec_lastname'])); ?> </a></li>
+              <li class="fw"><a class="display_inline" title="Recruiter Name" href="javascript:void(0)"> <?php echo ucfirst(strtolower($post['rec_firstname'])).' '.ucfirst(strtolower($post['rec_lastname'])); ?> </a></li>
                                                 <!-- vishang 14-4 end -->    
                                             </ul>
                                         </div>
