@@ -412,7 +412,6 @@
 <?php echo $footer;  ?>
 </footer>
 
-<script src="<?php echo base_url('js/jquery.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js?ver='.time()) ?>"></script>
 <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>

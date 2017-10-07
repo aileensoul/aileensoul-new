@@ -13,7 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Reactivate</title>
 
 
-   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
  
 		
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />

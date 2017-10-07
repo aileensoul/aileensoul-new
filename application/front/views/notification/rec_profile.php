@@ -108,7 +108,6 @@ body {
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <!--<link rel="stylesheet" href="<?php// echo base_url('assets/css/bootstrap-3.min.css'); ?>">-->
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 
 
 <style type="text/css" media="screen">
@@ -699,7 +698,7 @@ function text2link($text){
 <!-- 
  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" /> -->
 
- <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+ 
    <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
     <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
     <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>

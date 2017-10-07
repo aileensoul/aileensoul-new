@@ -149,5 +149,4 @@
 
 </html>
 <!-- script for skill textbox automatic start (option 2)-->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> -->
   

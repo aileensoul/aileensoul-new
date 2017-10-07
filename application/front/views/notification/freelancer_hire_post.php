@@ -1,7 +1,6 @@
 <!-- start head -->
 <?php echo $head; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
-<script src="<?php echo base_url('js/jquery.min.js'); ?>"></script>
 
 
 <!--post save success pop up style strat -->
@@ -110,7 +109,6 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
 
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 
 <!--post save success pop up style end -->
 
@@ -483,7 +481,7 @@ label.cameraButton input[accept*="camera"] {
 
         </html>
 
-    <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+    
    <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
     <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
     <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>

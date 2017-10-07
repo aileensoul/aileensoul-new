@@ -139,7 +139,6 @@ echo $head;
 <!--<link rel="stylesheet" href="<?php// echo base_url('assets/css/bootstrap-3.min.css'); ?>">-->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 
 <style type="text/css" media="screen">
     #row2 { overflow: hidden; width: 100%; }
@@ -582,7 +581,7 @@ echo $head;
             <!-- script for skill textbox automatic end (option 2)-->
 
 
-            <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+            
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
