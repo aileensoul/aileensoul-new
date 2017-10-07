@@ -581,11 +581,18 @@ class Recruiter extends MY_Controller {
         $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        $contition_array = array('is_delete' => '0','status'=>'1','industry_name !=' => "Other");
-        $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
+//        $contition_array = array('is_delete' => '0','status'=>'1','industry_name !=' => "Others");
+//        $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
+//        $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//
+//        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
+//        $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//         
+         $contition_array = array('is_delete' => '0', 'industry_name !=' => "Others");
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
         $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Other");
+        $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Others");
         $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
