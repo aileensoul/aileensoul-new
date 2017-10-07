@@ -309,7 +309,7 @@
                                                 </div>-->
                         <!-- Model Popup Close -->
                         <?php echo $footer; ?>
-                        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+                        <!--<script src="<?php //echo base_url('js/jquery.wallform.js'); ?>"></script>-->
                         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
                         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
                         <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>

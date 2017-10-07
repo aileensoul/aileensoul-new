@@ -738,10 +738,10 @@
         </footer>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+        <!--<script src="<?php //echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
         <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
-        <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>
+        <!--<script src="<?php //echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>-->
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
