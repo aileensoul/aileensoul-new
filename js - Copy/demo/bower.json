@@ -1,8 +1,0 @@
-{
-  "name": "jquery-flexdatalist",
-  "version": "1.9.4",
-  "main": ["jquery.flexdatalist.js"],
-  "dependencies": {
-    "jquery": ">=1.8"
-  }
-}
