@@ -153,31 +153,33 @@
                                 </ul>
 
                                 <?php
+                                if(is_numeric($this->uri->segment(3))){
+                                                  $id=  $this->uri->segment(3);
+                                                }else{
+                                                $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                                }
                                 $userid = $this->session->userdata('aileenuser');
-                                $contition_array = array('from_id' => $userid, 'to_id' => $this->uri->segment(3), 'save_type' => 2, 'status' => '0');
+                                $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => 2, 'status' => '0');
                                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 if ($userid != $this->uri->segment(3)) {
                                     if ($this->uri->segment(3) != "") { ?>
                                         <div class="flw_msg_btn fr">
                                                 <ul>
-                                       <?php if (!$data) {
+                                       <?php  
+                                       if (!$data) {
                                             ?> 
                                             
                                                     <li>
-                                                        <a id="<?php echo $this->uri->segment(3); ?>" onClick="savepopup(<?php echo $this->uri->segment(3); ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $this->uri->segment(3); ?>">
+                                                        <a id="<?php echo $id; ?>" onClick="savepopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>">
                                                             <?php echo $this->lang->line("save"); ?>
                                                         </a> 
 
                                                     </li> <?php } else { ?>
                                                     <li> 
-                                                        <a class="saved butt_rec <?php echo 'saveduser' . $this->uri->segment(3); ?> "><?php echo $this->lang->line("saved"); ?></a>
+                                                        <a class="saved butt_rec <?php echo 'saveduser' .$id; ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                     </li> <?php
                                                 }
-                                                if(is_numeric($this->uri->segment(3))){
-                                                  $id=  $this->uri->segment(3);
-                                                }else{
-                                                $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
-                                                }
+                                               
                                                 ?>
                                                 <li>
                                                     <?php

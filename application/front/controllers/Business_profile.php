@@ -28,8 +28,6 @@ class Business_profile extends MY_Controller {
     public function index() {
         $userid = $this->session->userdata('aileenuser');
 
-//        $this->business_profile_active_check();
-
         $contition_array = array('user_id' => $userid, 'status' => '0');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($businessdata) {
@@ -39,19 +37,15 @@ class Business_profile extends MY_Controller {
 // GET BUSINESS PROFILE DATA
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 // GET COUNTRY DATA
             $contition_array = array('status' => 1);
             $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 // GET STATE DATA
             $contition_array = array('status' => 1);
             $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id,state_name,country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 // GET CITY DATA
             $contition_array = array('status' => 1);
             $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name,state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
             if (count($userdata) > 0) {
 
                 if ($userdata[0]['business_step'] == 1) {
@@ -61,7 +55,6 @@ class Business_profile extends MY_Controller {
                 } else if ($userdata[0]['business_step'] == 3) {
                     redirect('business-profile/image', refresh);
                 } else if ($userdata[0]['business_step'] == 4) {
-//redirect('business_profile/addmore', refresh);
                     redirect('business-profile/home', refresh);
                 } else if ($userdata[0]['business_step'] == 5) {
                     redirect('business-profile/home', refresh);
@@ -73,7 +66,6 @@ class Business_profile extends MY_Controller {
     }
 
     public function ajax_data() {
-
 //dependentacy industrial and sub industriyal start
         if (isset($_POST["industry_id"]) && !empty($_POST["industry_id"])) {
 //Get all state data
@@ -1299,7 +1291,13 @@ class Business_profile extends MY_Controller {
 
                     $imgdata = $this->upload->data();
                     if ($this->upload->do_upload('postattach')) {
-                        $response['result'][] = $this->upload->data();
+                        $upload_data = $response['result'][] = $this->upload->data();
+                        
+                        if($file_type == 'video'){
+                            exec("ffmpeg -ss 00:00:05 -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".png"); 
+                        }
+                        
+                        
                         $main_image_size = $_FILES['postattach']['size'];
 
                         if ($main_image_size > '1000000') {
@@ -1470,7 +1468,7 @@ class Business_profile extends MY_Controller {
                             //Creating Thumbnail
                             $this->$instanse4->resize();
                             $this->$instanse4->clear();
-                            
+
                             $resize_image4 = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
                             $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
                             /* RESIZE 4 */
@@ -11089,6 +11087,9 @@ Your browser does not support the audio tag.
           </div>
           </div>';
           } */
+        $return_html .= '<link rel="stylesheet" type="text/css" href="' . base_url('assets/as-videoplayer/build/mediaelementplayer.css') . '" /><script type="text/javascript" src="' . base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()) . '"></script>
+        <script type="text/javascript" src="' . base_url('assets/as-videoplayer/demo.js?ver=' . time()) . '"></script>';
+
         echo $return_html;
 // return html        
     }

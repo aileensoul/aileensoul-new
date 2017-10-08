@@ -165,7 +165,7 @@ echo form_open('profile/forgot_password', $form_attribute);
                 </div>
             </footer>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+         <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.min.js"></script>
         <script>
                                             $(document).ready(function () {
 
@@ -230,7 +230,7 @@ echo form_open('profile/forgot_password', $form_attribute);
                                                 document.getElementById('error1').style.display = 'none';
                                             }
                                             //validation for edit email formate form
-                                            $(document).ready(function () {
+                                            $(document).ready(function () { 
                                                 /* validation */
                                                 $("#login_form").validate({
                                                     rules: {
@@ -255,7 +255,7 @@ echo form_open('profile/forgot_password', $form_attribute);
                                                 /* validation */
                                                 /* login submit */
                                                 function submitForm()
-                                                {
+                                                { //alert("jj");
 
                                                     var email_login = $("#email_login").val();
                                                     var password_login = $("#password_login").val();

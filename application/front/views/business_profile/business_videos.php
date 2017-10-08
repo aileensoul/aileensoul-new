@@ -3,13 +3,14 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.jMosaic.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.jMosaic.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />-->
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -54,7 +55,7 @@
                                                             ?>
                                                             <li>
                                                             <td class="vidoe_tag">
-                                                                <video controls>
+                                                                <video poster="" preload="none" controls playsinline webkit-playsinline>
                                                                     <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4">
                                                                     <source src="movie.ogg" type="video/ogg">
                                                                     Your browser does not support the video tag.
@@ -105,7 +106,7 @@
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
 
-        
+
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -143,14 +144,16 @@
         </div>
         <!-- Model Popup Close -->
         <?php echo $footer; ?>
-        <!--<script src="<?php //echo base_url('js/jquery.jMosaic.js?ver='.time()); ?>"></script>-->
-        <script src="<?php echo base_url('js/croppie.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php //echo base_url('js/jquery.jMosaic.js?ver='.time());  ?>"></script>-->
+        <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+<!--        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>-->
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/videos.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/videos.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
