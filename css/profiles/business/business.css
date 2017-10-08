@@ -445,7 +445,7 @@ label.cameraButton:active {
 .bui_art_left_box .profile-boxProfileCard-cover {
     border: 1px solid #efefef;
     border-bottom: none;
-	height:80px;
+	height:88px;
 }
 .bui_art_left_box .profile-boxProfileCard-bg {
     background-size: 100%;
@@ -503,7 +503,7 @@ label.cameraButton:active {
     display: block;
     position: absolute;
     content: "";
-    top: 49px;
+    top: 42px;
     background: #d9d9d9;
 }
 .bui_art_left_box .profile-boxProfileCard-content {
@@ -524,7 +524,7 @@ label.cameraButton:active {
 .bui_art_left_box .profile-boxProfilebuisness-avatarLink2 {
     background-color: transparent;
     border-radius: 6px;
-    margin: 9px 0 8px 4px;
+    margin: 5px 0 8px 4px;
     border: none;
     height: 60px;
     width: 60px;
@@ -545,7 +545,7 @@ label.cameraButton:active {
     position: relative;
 }
 .bui_art_left_box .right_left_box_design {
-    padding: 7px 9px 0px 5px;
+    padding: 3px 9px 0px 5px;
     width: 76%;
     display: inline-block;
     float: left;
@@ -589,7 +589,7 @@ label.cameraButton:active {
 }
 .bui_art_left_box .left_box_menubar li a {
     font-size: 12px;
-    padding: 4px;
+    padding: 4px 4px 0;
     display: inline-block;
 }
 .bui_art_left_box .left_box_menubar li:last-child a {

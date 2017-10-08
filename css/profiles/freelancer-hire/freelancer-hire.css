@@ -417,7 +417,7 @@ li.fr a {
 .profile-boxProfileCard-cover {
     border: 1px solid #efefef;
     border-bottom: none;
-	height:80px;
+	height:88px;
 }
 .profile-boxProfileCard-bg {
     background-size: 100%;
@@ -496,7 +496,7 @@ li.fr a {
 .profile-boxProfilebuisness-avatarLink2 {
     /*background-color: #fff;*/
     border-radius: 6px;
-    margin: 9px 0 8px 4px;
+    margin: 5px 0 8px 4px;
     padding: 1px;
     vertical-align: bottom;
     border: none;
@@ -515,7 +515,7 @@ li.fr a {
     position: relative;
 }
 .right_left_box_design {
-    padding: 7px 9px 0px 5px;
+    padding: 3px 9px 0px 5px;
     width: 76%;
     display: inline-block;
     float: left;
@@ -558,7 +558,7 @@ li.fr a {
     width: 32.33%;
 }
 .left_box_menubar li a {
-    padding: 4px;
+    padding: 4px 4px 0;
     display: inline-block;
 }
 .left_box_menubar li:last-child a {

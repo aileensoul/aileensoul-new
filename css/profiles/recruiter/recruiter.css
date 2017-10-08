@@ -161,7 +161,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box {max-width: 430px; position: fixed;}
 .full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
 .profile-boxProfileCard {border: 6px solid #ffffff; background: #fff; border-radius: 3px;}
-.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none; height:80px;}
+.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none; height:88px;}
 .profile-boxProfileCard-bg {background-size: 100%; border-radius: 4px 4px 0 0; background-position: 0 50%; width: 100%;}
 .data_img {height: 95px; width: 100%;}
 .data_img img {height: 100%; width: 100%;}
@@ -188,12 +188,12 @@ li.fr a {text-decoration: none !important;}
 .buisness-profile-txext {z-index: 1; position: relative; display: inline-block; width: 24%; padding-right: 1px !important;
     padding-left: 1px !important;}
 .profile-boxProfilebuisness-avatarLink2 {/*background-color: #fff;*/ border-radius: 6px; 
-	margin: 9px 0 8px 4px;
+	margin: 5px 0 8px 4px;
     padding: 1px; vertical-align: bottom; border:none;
 }
 .a-inlineBlock {display: inline-block!important; width: 75px; z-index: 3; position: relative; height: 75px;}
 .profile-boxProfileCard-content .buisness-profile-txext a img {height: 60px; width: 60px; z-index: 3; position: relative;}
-.right_left_box_design {padding: 7px 9px 0px 5px; width: 76%; display: inline-block; float: left;}
+.right_left_box_design {padding: 3px 9px 0px 5px; width: 76%; display: inline-block; float: left;}
 .right_left_box_design .profile-company-name {display: block; max-width: 100%; overflow: hidden; 
 	text-overflow: ellipsis; white-space: nowrap; width: auto; color: #1b8ab9; line-height:18px;
 }
@@ -201,7 +201,7 @@ li.fr a {text-decoration: none !important;}
 .profile-boxProfile-name{max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height:18px;}
 .left_box_menubar {width: 100%; padding: 5px 0 0; margin: 0px; float: left;}
 .left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 32.33%;}
-.left_box_menubar li a {padding: 4px; display: inline-block;}
+.left_box_menubar li a {padding: 4px 4px 0; display: inline-block;}
 .left_box_menubar li:last-child a {text-align: center;}
 .left_box_menubar li:first-child { text-align: left;}
 .left_box_menubar li:last-child {text-align: right;}
