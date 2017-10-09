@@ -69,8 +69,8 @@
                                                     ?>
                                                 </a>
                                             </div>
-                                            <div class="right_left_box_design ">
-                                                <span class="profile-company-name ">
+                                            <div class="right_left_box_design">
+                                                <span class="profile-company-name">
                                                     <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php echo ucwords($freelancerdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerdata[0]['freelancer_post_username']); ?></a>
                                                 </span>
                                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
@@ -96,7 +96,7 @@
                                     </div>                             
                                 </div>
 								<div class="tablate-potrat-add">
-								<div class="fw text-center pt10">
+									<div class="fw text-center pt10">
 									<script type="text/javascript" language="javascript">
 									  var aax_size='300x250';
 									  var aax_pubname = 'aileensoul-21';
@@ -104,7 +104,7 @@
 									</script>
 									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 									</div>
-							</div>
+								</div>
                                 <div class="custom_footer_left fw">
                                     <div class="fl">
                                         <ul>
@@ -132,17 +132,19 @@
                                     <h3><?php echo $this->lang->line("recommended_project"); ?></h3>
                                     <div class="contact-frnd-post">
 									<div class="mob-add">
-								<div class="fw text-center pt10 pb5">
-									<script type="text/javascript" language="javascript">
-									  var aax_size='300x250';
-									  var aax_pubname = 'aileensoul-21';
-									  var aax_src='302';
-									</script>
-									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+										<div class="fw text-center pt10 pb5">
+											<script type="text/javascript" language="javascript">
+											  var aax_size='300x250';
+											  var aax_pubname = 'aileensoul-21';
+											  var aax_src='302';
+											</script>
+											<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+										</div>
 									</div>
-							</div>
                                         <!--.............AJAX DATA............-->
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                                    <div class="fw" id="loader" style="text-align:center;">
+										<img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" />
+									</div>
                                     </div>
                                 </div>
                             </div>
@@ -150,13 +152,13 @@
                     
 						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 					
-						<div class="fw text-center">
-							<script type="text/javascript" language="javascript">
-							  var aax_size='300x250';
-							  var aax_pubname = 'aileensoul-21';
-							  var aax_src='302';
-							</script>
-							<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+							<div class="fw text-center">
+								<script type="text/javascript" language="javascript">
+								  var aax_size='300x250';
+								  var aax_pubname = 'aileensoul-21';
+								  var aax_src='302';
+								</script>
+								<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 							</div>
 						</div>
 						<div class="tablate-add">

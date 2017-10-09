@@ -18,7 +18,7 @@
    <?php echo $header; ?>
    <?php echo $art_header2_border; ?>
       <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
-      <div class="container art_container">
+      <div class="container art_container padding-360">
       <div class="">
       <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
       <div class="left_fixed"> 
@@ -36,6 +36,16 @@
              
             </div>
          </div>
+		 <div class="tablate-potrat-add">
+									<div class="fw text-center pt10">
+									<script type="text/javascript" language="javascript">
+									  var aax_size='300x250';
+									  var aax_pubname = 'aileensoul-21';
+									  var aax_src='302';
+									</script>
+									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+									</div>
+								</div>
 
          <div class="custom_footer_left fw">
           <div class="fl">
@@ -101,6 +111,16 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                 </div>
          </div>
                              <div class="art-all-post">
+								<div class="mob-add">
+										<div class="fw text-center pt10 pb5">
+											<script type="text/javascript" language="javascript">
+											  var aax_size='300x250';
+											  var aax_pubname = 'aileensoul-21';
+											  var aax_src='302';
+											</script>
+											<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+										</div>
+									</div>
                             
                              </div>
                               <div class="nofoundpost"> 
@@ -122,8 +142,19 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 						</script>
 						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 					</div>
+					
      
       </div>
+	  <div class="tablate-add">
+					
+							<script type="text/javascript" language="javascript">
+							  var aax_size='160x600';
+							  var aax_pubname = 'aileensoul-21';
+							  var aax_src='302';
+							</script>
+							<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+						</div>
+
   <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
                         <div class="modal-dialog modal-lm deactive">
