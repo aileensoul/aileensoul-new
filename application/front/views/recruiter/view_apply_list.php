@@ -255,7 +255,7 @@
                                                                         <li>
                                                                             <b>Degree</b><span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
+                                                                                $cache_time = $this->db->select('degree_name')->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -268,7 +268,7 @@
                                                                         <li><b>Stream</b>
                                                                             <span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
+                                                                                $cache_time = $this->db->select('stream_name')->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -284,7 +284,7 @@
 
 
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
+                                                                                $cache_time = $this->db->select('degree_name')->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -297,7 +297,7 @@
                                                                         <li><b>Stream</b>
                                                                             <span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
+                                                                                $cache_time = $this->db->select('stream_name')->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -314,7 +314,7 @@
                                                                         <li>
                                                                             <b>Degree</b><span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
+                                                                                $cache_time = $this->db->select('degree_name')->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -327,7 +327,7 @@
                                                                         <li><b>Stream</b>
                                                                             <span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
+                                                                                $cache_time = $this->db->select('stream_name')->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -342,7 +342,7 @@
                                                                         <li>
                                                                             <b>Degree</b><span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
+                                                                                $cache_time = $this->db->select('degree_name')->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -355,7 +355,7 @@
                                                                         <li><b>Stream</b>
                                                                             <span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
+                                                                                $cache_time = $this->db->select('stream_name')->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -369,7 +369,7 @@
                                                                         <li>
                                                                             <b>Degree</b><span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
+                                                                                $cache_time = $this->db->select('degree_name')->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -382,7 +382,7 @@
                                                                         <li><b>Stream</b>
                                                                             <span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
+                                                                                $cache_time = $this->db->select('stream_name')->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -452,7 +452,7 @@
 
 
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
+                                                                                $cache_time = $this->db->select('degree_name')->get_where('degree', array('degree_id' => $graduation_data[0]['degree']))->row()->degree_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {
@@ -465,7 +465,7 @@
                                                                         <li><b>Stream</b>
                                                                             <span>
                                                                                 <?php
-                                                                                $cache_time = $this->db->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
+                                                                                $cache_time = $this->db->select('stream_name')->get_where('stream', array('stream_id' => $graduation_data[0]['stream']))->row()->stream_name;
                                                                                 if ($cache_time) {
                                                                                     echo $cache_time;
                                                                                 } else {

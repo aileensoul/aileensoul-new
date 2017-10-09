@@ -69,6 +69,7 @@
                                  <?php foreach ($industry as $indu) { ?>
                                  <option value="<?php echo $indu['industry_id']; ?>" <?php if($indu['industry_id'] == $work_industry){ echo "selected"; } ?>><?php echo $indu['industry_name']; ?></option>
                                  <?php } ?>
+                                    <option value="<?php echo $industry_otherdata[0]['industry_id']; ?> "><?php echo $industry_otherdata[0]['industry_name']; ?></option>    
                               </select>
                               <?php echo form_error('industry'); ?>
                            </fieldset>
@@ -97,7 +98,7 @@
 
        
       <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+      <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>-->
       <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
       <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
       <script>
