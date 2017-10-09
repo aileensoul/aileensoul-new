@@ -2028,8 +2028,9 @@ Your browser does not support the audio tag.
             $contition_array = array('freelancer_post_city' => $cache_time, 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7, 'is_delete' => '0');
             $unique = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
-
-            $contition_array = array('status' => '1', 'type' => '1');
+          //  echo "4444";die();
+            //echo $search_skill;die();
+            $contition_array = array('status' => '1');
             $search_condition = "(skill LIKE '%$search_skill%')";
             $skillid = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //            $values = array_map('array_pop', $skillid);
@@ -2040,12 +2041,12 @@ Your browser does not support the audio tag.
 //    $result = $this->db->get('freelancer_post_reg')->result_array();
 //    echo count($result);die();
 //        
-//echo '<pre>'; print_r($result); die();
+//echo '<pre>'; print_r($skillid); die();
             foreach ($skillid as $key => $value) {
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", freelancer_post_area) != ' => '0');
                 $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
-            //  echo "<pre>"; print_r($candidate); die();
+ //             echo "<pre>"; print_r($candidate); die();
             $candidate = array_reduce($candidate, 'array_merge', array());
             // echo "<pre>"; print_r($candidate); die();
 //            $candidate = array_unique($candidate, SORT_REGULAR);
@@ -2059,16 +2060,16 @@ Your browser does not support the audio tag.
 
             $contition_array = array('freelancer_post_field' => $category_temp, 'user_id !=' => $userid, 'free_post_step' => 7, 'status' => '1');
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-
+          //  echo "<pre>"; print_r($fieldfound); die();
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id !=' => $userid, 'free_post_step' => 7);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $new1 = array_merge(array($candidate), array($fieldfound), array($otherdata));
-            $candidate_11 = array_reduce($new1, 'array_merge', array());
-
+          //  echo "<pre>"; print_r($otherdata); die();
+            $new1 = array_merge((array)$candidate, (array)$fieldfound, (array)$otherdata);
+         
+          //  echo "<pre>"; print_r($new1); die();
             $unique = array();
-            foreach ($candidate_11 as $value) {
+            foreach ($new1 as $value) {
                 $unique[$value['freelancer_post_reg_id']] = $value;
             }
         } else {
@@ -2089,7 +2090,7 @@ Your browser does not support the audio tag.
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             // $unique = array_merge($candidate, $fieldfound, $otherdata);
-            $new1 = array_merge($candidate, $fieldfound, $otherdata);
+            $new1 = array_merge((array)$candidate, (array)$fieldfound, (array)$otherdata);
 
             $unique = array();
             foreach ($new1 as $value) {
@@ -2424,11 +2425,11 @@ Your browser does not support the audio tag.
             //echo "<pre>"; print_r($unique);die();
         } elseif ($search_place == "") {
 
-            $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '1'))->row()->skill_id;
+            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '1'))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
+            $category_temp = $this->db->select('category_id')->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
             $contition_array = array('post_field_req' => $category_temp, 'user_id !=' => $userid, 'status' => '1', 'city' => $cache_time);
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 
@@ -2436,18 +2437,18 @@ Your browser does not support the audio tag.
             $contion_array = array('freelancer_post.user_id !=' => $userid);
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>";print_r($freeldata);die();
-            $unique = array_merge($freeskillpost, $freeldata, $fieldfound);
+            $unique = array_merge((array)$freeskillpost, (array)$freeldata, (array)$fieldfound);
             $new = array();
             foreach ($unique as $value) {
                 $new[$value['post_id']] = $value;
             }
         } else {
 
-            $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '1'))->row()->skill_id;
+            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'city' => $cache_time, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
+            $category_temp = $this->db->select('category_id')->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
             // echo $category_temp;die();
             $contition_array = array('post_field_req' => $category_temp, 'user_id !=' => $userid, 'status' => '1', 'is_delete' => 0, 'city' => $cache_time);
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
@@ -2457,7 +2458,7 @@ Your browser does not support the audio tag.
             $contion_array = array('city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $unique = array_merge($freeskillpost, $freeldata, $fieldfound);
+            $unique = array_merge((array)$freeskillpost, (array)$freeldata, (array)$fieldfound);
             $new = array();
             foreach ($unique as $value) {
                 $new[$value['post_id']] = $value;
@@ -2505,9 +2506,9 @@ Your browser does not support the audio tag.
                     $return_html .= ucwords($this->text2link($post['post_name']));
                     $return_html .= '</a> </li>';
 
-                    $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
-                    $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
-                    $hireslug = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id'], 'status' => 1))->row()->freelancer_hire_slug;
+                    $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                    $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                    $hireslug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id'], 'status' => 1))->row()->freelancer_hire_slug;
                     $return_html .= '<li>';
                     if ($userid) {
                         $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
@@ -2547,7 +2548,7 @@ Your browser does not support the audio tag.
                     $return_html .= $this->lang->line("field");
                     $return_html .= '</b> 
                                         <span>';
-                    $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
+                    $return_html .= $this->db->select('category_name')->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
                     $return_html .= '</span>
                                           </li>
                                               <li> <b>';
@@ -2565,7 +2566,7 @@ Your browser does not support the audio tag.
                             if ($k != 0) {
                                 $return_html .= $comma;
                             }
-                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                            $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                             $return_html .= $cache_time;
                             $k++;
                         }
@@ -2574,7 +2575,7 @@ Your browser does not support the audio tag.
                             if ($k != 0) {
                                 $return_html .= $comma;
                             }
-                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                            $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                             $return_html .= $cache_time;
                             $k++;
                         } $return_html .= "," . $post['post_other_skill'];
@@ -2599,7 +2600,7 @@ Your browser does not support the audio tag.
                     if ($post['post_rate']) {
                         $return_html .= $post['post_rate'];
                         $return_html .= "&nbsp";
-                        $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                        $return_html .= $this->db->select('currency_name')->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                         $return_html .= "&nbsp";
                         if ($post['post_rating_type'] == 1) {
                             $return_html .= "Hourly";

@@ -949,7 +949,7 @@ class Freelancer extends MY_Controller {
         if (is_numeric($id)) {
             
         } else {
-            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+            $id = $this->db->select('')->select('user_id')->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         }
         $userid = $this->session->userdata('aileenuser');
         //check user deactivate start
@@ -1011,7 +1011,7 @@ class Freelancer extends MY_Controller {
             if (is_numeric($id)) {
                 
             } else {
-                $id = $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+                $id = $category = $this->db->select('user_id')->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
             }
 
             $userid = $id;
@@ -1053,10 +1053,10 @@ class Freelancer extends MY_Controller {
                 $return_html .= '<a href="#" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title ">
                                                     ' . ucwords($this->text2link($post['post_name'])) . '</a> </li>';
 
-                $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
-                $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
-                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<li>';
                 if ($retur == 'freelancer_post') {
                     $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . '"> ' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '</a>';
@@ -1094,7 +1094,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= $this->lang->line("field");
                 $return_html .= '</b> 
                                         <span>';
-                $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
+                $return_html .= $this->db->select('category_name')->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
                 $return_html .= ' </span>
                                         </li>
                                         <li> <b>';
@@ -1111,7 +1111,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     }
@@ -1120,7 +1120,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     }
@@ -1147,7 +1147,7 @@ class Freelancer extends MY_Controller {
                 if ($post['post_rate']) {
                     $return_html .= $post['post_rate'];
                     $return_html .= "&nbsp";
-                    $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                    $return_html .= $this->db->select('currency_name')->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                     $return_html .= "&nbsp";
                     if ($post['post_rating_type'] == 0) {
                         $return_html .= "Hourly";
@@ -1234,7 +1234,7 @@ class Freelancer extends MY_Controller {
                         if (is_numeric($this->uri->segment(3))) {
                             $id = $this->uri->segment(3);
                         } else {
-                            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                            $id = $this->db->select('user_id')->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
                         }
                         $return_html .= '<input type="hidden" id="allpost' . $post['post_id'] . '" value="all">';
                         $return_html .= '<input type="hidden" id="userid' . $post['post_id'] . '" value="' . $post['user_id'] . '">';
@@ -1544,7 +1544,7 @@ class Freelancer extends MY_Controller {
             $final_field = array_reduce($freelancerpostfield, 'array_merge', array());
 //        TO CHANGE ARRAY OF ARRAY TO ARRAY END
 
-            $applyuser_merge = array_merge($final_candidate, $final_field);
+            $applyuser_merge = array_merge((array)$final_candidate, (array)$final_field);
             $unique = array_unique($applyuser_merge, SORT_REGULAR);
 
             $candidatefreelancer = $unique;
@@ -1613,7 +1613,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= $this->lang->line("field");
                     $return_html .= '</b><span>';
                     if ($row['freelancer_post_field']) {
-                        $field_name = $this->db->get_where('category', array('category_id' => $row['freelancer_post_field']))->row()->category_name;
+                        $field_name = $this->db->select('category_name')->get_where('category', array('category_id' => $row['freelancer_post_field']))->row()->category_name;
                         $return_html .= $field_name;
                     } else {
                         $return_html .= PROFILENA;
@@ -1630,7 +1630,7 @@ class Freelancer extends MY_Controller {
                         $return_html .= $row['freelancer_post_otherskill'];
                     } elseif (!$row['freelancer_post_otherskill']) {
                         foreach ($aud_res as $skill) {
-                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                            $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                             $skillsss[] = $cache_time;
                         }
                         $listskill = implode(', ', $skillsss);
@@ -1638,7 +1638,7 @@ class Freelancer extends MY_Controller {
                         unset($skillsss);
                     } elseif ($row['freelancer_post_area'] && $row['freelancer_post_otherskill']) {
                         foreach ($aud_res as $skillboth) {
-                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skillboth))->row()->skill;
+                            $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skillboth))->row()->skill;
                             $skilldddd[] = $cache_time;
                         }
                         $listFinal = implode(', ', $skilldddd);
@@ -1648,7 +1648,7 @@ class Freelancer extends MY_Controller {
 
                     $return_html .= '</span>
                 </li>';
-                    $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name;
+                    $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name;
                     $return_html .= '<li><b>';
                     $return_html .= $this->lang->line("location");
                     $return_html .= '</b><span>';
@@ -1683,7 +1683,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= $this->lang->line("rate_hourly");
                     $return_html .= '</b> <span>';
                     if ($row['freelancer_post_hourly']) {
-                        $currency = $this->db->get_where('currency', array('currency_id' => $row['freelancer_post_ratestate']))->row()->currency_name;
+                        $currency = $this->db->select('currency_name')->get_where('currency', array('currency_id' => $row['freelancer_post_ratestate']))->row()->currency_name;
                         if ($row['freelancer_post_fixed_rate'] == '1') {
                             $return_html .= $row['freelancer_post_hourly'] . "   " . $currency . "  (Also work on fixed Rate) ";
                         } else {
@@ -2053,9 +2053,9 @@ class Freelancer extends MY_Controller {
                                                                                             </div>';
                 }
 
-                $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
-                $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
-                $hireslug = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
+                $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                $hireslug = $this->db->select('freelancer_hire_slug')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
                 $return_html .= '</li>';
                 $return_html .= '<li><a class="display_inline" title="ucwords($firstname); &nbsp; ucwords($lastname);" href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
                 $return_html .= ucwords($firstname) . " " . ucwords($lastname);
@@ -2090,7 +2090,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     }
@@ -2099,7 +2099,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     } $return_html .= "," . $post['post_other_skill'];
@@ -2124,7 +2124,7 @@ class Freelancer extends MY_Controller {
                 if ($post['post_rate']) {
                     $return_html .= $post['post_rate'];
                     $return_html .= "&nbsp";
-                    $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                    $return_html .= $this->db->select('currency_name')->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                     $return_html .= "&nbsp";
                     if ($post['post_rating_type'] == 1) {
                         $return_html .= "Hourly";
@@ -2541,8 +2541,8 @@ class Freelancer extends MY_Controller {
                 $return_html .= '</a>   
                                                                         </li>';
 
-                $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
-                $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
 
                 $return_html .= '<li>
                                                                             <a class="display_inline" title="' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . '">';
@@ -2576,7 +2576,7 @@ class Freelancer extends MY_Controller {
                                                                     <li> <b>';
                 $return_html .= $this->lang->line("field");
                 $return_html .= ' </b> <span>';
-                $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
+                $return_html .= $this->db->select('category_name')->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
                 $return_html .= ' </span>
                                                                     </li>
                                                                     <li> <b>';
@@ -2597,7 +2597,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     }
@@ -2606,7 +2606,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     } $return_html .= "," . $post['post_other_skill'];
@@ -2637,7 +2637,7 @@ class Freelancer extends MY_Controller {
                 if ($post['post_rate']) {
                     $return_html .= $post['post_rate'];
                     $return_html .= "&nbsp";
-                    $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                    $return_html .= $this->db->select('currency_name')->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                     $return_html .= "&nbsp";
                     if ($post['post_rating_type'] == 1) {
                         $return_html .= "Hourly";
@@ -2973,7 +2973,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= $this->lang->line("field");
                 $return_html .= '</b><span>';
                 if ($rec['freelancer_post_field']) {
-                    $field_name = $this->db->get_where('category', array('category_id' => $rec['freelancer_post_field']))->row()->category_name;
+                    $field_name = $this->db->select('category_name')->get_where('category', array('category_id' => $rec['freelancer_post_field']))->row()->category_name;
                     $return_html .= $field_name;
                 } else {
                     $return_html .= PROFILENA;
@@ -2994,7 +2994,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     }
@@ -3003,7 +3003,7 @@ class Freelancer extends MY_Controller {
                         if ($k != 0) {
                             $return_html .= $comma;
                         }
-                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                         $return_html .= $cache_time;
                         $k++;
                     }
@@ -3011,7 +3011,7 @@ class Freelancer extends MY_Controller {
                 }
                 $return_html .= ' </span>
                                         </li>';
-                $cityname = $this->db->get_where('cities', array('city_id' => $rec['freelancer_post_city']))->row()->city_name;
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $rec['freelancer_post_city']))->row()->city_name;
                 $return_html .= '<li><b>';
                 $return_html .= $this->lang->line("location");
                 $return_html .= '</b><span>';
@@ -3047,7 +3047,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= $this->lang->line("rate");
                 $return_html .= '</b><span>';
                 if ($rec['freelancer_post_hourly']) {
-                    $currency = $this->db->get_where('currency', array('currency_id' => $rec['freelancer_post_ratestate']))->row()->currency_name;
+                    $currency = $this->db->select('currency_name')->get_where('currency', array('currency_id' => $rec['freelancer_post_ratestate']))->row()->currency_name;
                     if ($rec['freelancer_post_fixed_rate'] == '1') {
                         $rate_type = 'Fixed';
                     } else {
@@ -3200,8 +3200,8 @@ class Freelancer extends MY_Controller {
                     $return_html .= '<a href="#" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title">';
                     $return_html .= ucwords($this->text2link($post['post_name']));
                     $return_html .= '</a> </li>';
-                    $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
-                    $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                    $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                    $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
 
                     $return_html .= '<li><a class="display_inline" title="' . ucwords($firstname) . ' ." ".' . ucwords($lastname) . '" href="' . base_url('freelancer/freelancer_hire_profile/' . $post['user_id'] . '?page=freelancer_post') . '">';
                     $return_html .= ucwords($firstname) . "  " . ucwords($lastname);
@@ -3232,7 +3232,7 @@ class Freelancer extends MY_Controller {
                                                 <li> <b>';
                     $return_html .= $this->lang->line("field");
                     $return_html .= '</b> <span>';
-                    $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
+                    $return_html .= $this->db->select('category_name')->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
 
                     $return_html .= '</span>
                                                 </li>
@@ -3251,7 +3251,7 @@ class Freelancer extends MY_Controller {
                             if ($k != 0) {
                                 $return_html .= $comma;
                             }
-                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                            $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
 
                             $return_html .= $cache_time;
                             $k++;
@@ -3261,7 +3261,7 @@ class Freelancer extends MY_Controller {
                             if ($k != 0) {
                                 $return_html .= $comma;
                             }
-                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                            $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                             $return_html .= $cache_time;
                             $k++;
                         } $return_html .= "," . $post['post_other_skill'];
@@ -3286,7 +3286,7 @@ class Freelancer extends MY_Controller {
                     if ($post['post_rate']) {
                         $return_html .= $post['post_rate'];
                         $return_html .= "&nbsp";
-                        $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                        $return_html .= $this->db->select('currency_name')->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                         $return_html .= "&nbsp";
                         if ($post['post_rating_type'] == 1) {
                             $return_html .= "Hourly";
@@ -3603,7 +3603,7 @@ class Freelancer extends MY_Controller {
         if (is_numeric($id)) {
             
         } else {
-            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+            $id = $this->db->select('user_id')->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         }
         $userid = $this->session->userdata('aileenuser');
         //check user deactivate start
@@ -3658,7 +3658,7 @@ class Freelancer extends MY_Controller {
         if (is_numeric($id)) {
             
         } else {
-            $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
+            $id = $this->db->select('user_id')->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
         }
         $userid = $this->session->userdata('aileenuser');
 //code for check user deactivate start
@@ -4168,7 +4168,7 @@ class Freelancer extends MY_Controller {
             $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
             $skill = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
         }
-        $unique = array_merge($field, $skill, $freelancer_postdata);
+        $unique = array_merge((array)$field, (array)$skill, (array)$freelancer_postdata);
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
@@ -4225,7 +4225,7 @@ class Freelancer extends MY_Controller {
             $search_condition = "(category_name LIKE '" . trim($searchTerm) . "%')";
             $field = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = 'category_name', $sortby = 'category_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'category_name');
         }
-        $uni = array_merge($skill, $freelancer_postdata, $field, $results_post);
+        $uni = array_merge((array)$skill, (array)$freelancer_postdata, (array)$field, (array)$results_post);
         foreach ($uni as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
