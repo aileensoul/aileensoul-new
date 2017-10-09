@@ -14,7 +14,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
-
+<!-- This Css is used for call popup -->
+<link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()); ?>" />
 </head>
 <!-- END HEAD -->
 
@@ -76,6 +77,7 @@
                               <?php foreach ($industry as $indu) { ?>
                               <option value="<?php echo $indu['industry_id']; ?>"><?php echo $indu['industry_name']; ?></option>
                               <?php } ?>
+                               <option value="<?php echo $other_industry[0]['industry_id']; ?>"><?php echo $other_industry[0]['industry_name']; ?></option>
                            </select>
                            <?php echo form_error('industry');; ?>
                         </fieldset>
@@ -109,6 +111,10 @@
    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
    <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
   
+<!-- This Js is used for call popup -->
+<script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
+<!-- This Js is used for call popup -->
+ 
 
    <script>
      var base_url = '<?php echo base_url(); ?>';
