@@ -27,27 +27,24 @@ if (!file_exists($this->config->item('art_bg_thumb_upload_path') . $artisticdata
                   <div class="left_side_box_img buisness-profile-txext">
                      <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artistic/dashboard'); ?>" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                         <!-- box image start -->
-                        <?php if ($artisticdata[0]['art_user_image']) { ?>
+                       
                         <div class="data_img_2"> 
 
+                      <?php 
 
-<?php 
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
-                                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                    if ($info) { ?>
+                        <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" class="bgImage"  alt="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" >
                                                                 <?php
                                                             } else { ?>
 
-                           <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" class="bgImage"  alt="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" >
-
+                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                               <?php } ?>
                         </div>
-                        <?php } else { ?> 
-                        <div class="data_img_2">
-                           
-                            <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                        </div>
-                        <?php } ?>
+                        
                         <!-- box image end -->
                      </a>
                   </div>

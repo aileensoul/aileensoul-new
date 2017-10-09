@@ -71,17 +71,22 @@
                      $userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                      $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                      ?>
-                     <?php if($artisticdata[0]['art_user_image']){?>
                       <?php 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
-                                                                 <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                if ($info) { ?>
+
+                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+
+                                 
                                                                 <?php
                                                             } else { ?>
-<img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
-                  <?php }?>
-                  <?php }else{ ?>
-                     <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                  <?php }?>
+                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                        <?php }?>
+                 
                 </a>
                </div>
                <div id="myBtn"  class="editor-content popup-text">
@@ -195,17 +200,21 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                   <?php echo form_open_multipart(base_url('artistic/art_post_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
                   <div class="main-text-area " >
                      <div class="popup-img-in "> 
-                     <?php if($artisticdata[0]['art_user_image']){?>
+                    
                    <?php 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
-                                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                                                <?php
+
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                      if ($info) { ?>
+                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                         <?php
                                                             } else { ?>
-                     <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                      <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                      <?php }?>
-                     <?php }else{?>
-                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                     <?php }?>
+                     
                      </div>
                      <div id="myBtn"  class="editor-content col-md-10 popup-text" >
                         <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onKeyup=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>
