@@ -461,7 +461,7 @@
                                                         ?>
 
                                                         <li> <b> Country</b> <span><?php
-                                                                $cache_time = $this->db->get_where('countries', array('country_id' => $recdata[0]['re_comp_country']))->row()->country_name;
+                                                                $cache_time = $this->db->select('country_name')->get_where('countries', array('country_id' => $recdata[0]['re_comp_country']))->row()->country_name;
 
                                                                 if ($cache_time) {
                                                                     echo $cache_time;
@@ -472,7 +472,7 @@
                                                         </li>
 
                                                         <li> <b>State </b><span> <?php
-                                                                $cache_time = $this->db->get_where('states', array('state_id' => $recdata[0]['re_comp_state']))->row()->state_name;
+                                                                $cache_time = $this->db->select('state_name')->get_where('states', array('state_id' => $recdata[0]['re_comp_state']))->row()->state_name;
                                                                 if ($cache_time) {
                                                                     echo $cache_time;
                                                                 } else {
@@ -486,7 +486,7 @@
                                                             if ($recdata[0]['re_comp_city']) {
                                                                 ?>
                                                                 <li><b> City</b> <span><?php
-                                                                        $cache_time = $this->db->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
+                                                                        $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
                                                                         if ($cache_time) {
                                                                             echo $cache_time;
                                                                         }
@@ -499,7 +499,7 @@
                                                             if ($recdata[0]['re_comp_city']) {
                                                                 ?>
                                                                 <li><b> City</b> <span><?php
-                                                                        $cache_time = $this->db->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
+                                                                        $cache_time = $this->db->select('city_name')->get_where('cities', array('city_id' => $recdata[0]['re_comp_city']))->row()->city_name;
                                                                         if ($cache_time) {
                                                                             echo $cache_time;
                                                                         }
