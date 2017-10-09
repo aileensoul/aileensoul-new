@@ -4597,9 +4597,9 @@ public function delete_commenttwo_postnewpage() {
                 $likelistarray = explode(',', $likeuser);
                 $likelistarray = array_reverse($likelistarray);
 
-              $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+              $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
 
-              $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+              $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
             
                 if (in_array($userid, $likelistarray)) { 
@@ -4678,9 +4678,9 @@ public function delete_commenttwo_postnewpage() {
 
                 foreach ($likelistarray as $key => $value) {
 
-                    $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                    $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
 
-                    $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                    $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                 }
                $cmtlikeuser .= '<div class="like_one_other">';
                $cmtlikeuser .= ' <a href="javascript:void(0);"  onclick="likeuserlist(' . $artdata1[0]['art_post_id'] . ');">';
@@ -4693,8 +4693,8 @@ public function delete_commenttwo_postnewpage() {
 
                 $likelistarray = explode(',', $likeuser);
                 $likelistarray = array_reverse($likelistarray);
-                $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                  if (in_array($userid, $likelistarray)) { //echo "123"; die();
                     $cmtlikeuser .= 'You &nbsp';
@@ -4827,14 +4827,14 @@ public function delete_commenttwo_postnewpage() {
         $cmtinsert = '<div  class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
         foreach ($artdata as $art) {
 
-            $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
 
-            $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
 
-            $artslug = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
+            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
 
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -4906,7 +4906,7 @@ public function delete_commenttwo_postnewpage() {
 
             $userid = $this->session->userdata('aileenuser');
 
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
 
             if ($art['user_id'] == $userid || $art_userid == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
@@ -4992,10 +4992,10 @@ public function insert_comment_postnewpage() {
         $cmtinsert = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
         foreach ($artdata as $art) {
 
-            $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
-            $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
-            $artslug = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
@@ -5062,7 +5062,7 @@ public function insert_comment_postnewpage() {
                 $cmtinsert .= '</div>';
             }
 
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
 
             if ($art['user_id'] == $userid || $art_userid == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
@@ -5203,15 +5203,15 @@ public function insert_comment_postnewpage() {
 
         foreach ($artdata as $art) {
 
-            $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
 
-            $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
 
-             $artslug = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
+             $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
 
 
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -5294,7 +5294,7 @@ public function insert_comment_postnewpage() {
             }
 
             $userid = $this->session->userdata('aileenuser');
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
 
             if ($art['user_id'] == $userid || $art_userid == $userid) {
 
@@ -5774,7 +5774,7 @@ public function insert_comment_postnewpage() {
 
         foreach ($followerdata1 as $fdata) {
 
-            $user_id = $this->db->get_where('art_reg', array('art_id' => $fdata['follow_to'], 'status' => '1'))->row()->user_id;
+            $user_id = $this->db->select('user_id')->get_where('art_reg', array('art_id' => $fdata['follow_to'], 'status' => '1'))->row()->user_id;
 
 
             $contition_array = array('art_post.user_id' => $user_id, 'art_post.status' => '1', 'art_post.user_id !=' => $userid, 'art_post.is_delete' => '0');
@@ -6269,8 +6269,8 @@ public function insert_comment_postnewpage() {
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     foreach ($commnetcount as $comment) {
-                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
+                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
                     }
                        $cmtlikeuser .= '<div class="like_one_other">';
 
@@ -6281,8 +6281,8 @@ public function insert_comment_postnewpage() {
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-                    $art_fname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
-                    $art_lname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
+                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
+                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
 
                     if ($userid == $commnetcount[0]['user_id']) {
 
@@ -6357,8 +6357,8 @@ public function insert_comment_postnewpage() {
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     foreach ($commnetcount as $comment) {
-                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
+                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
                     }
                        $cmtlikeuser .= '<div class="like_one_other">';
 
@@ -6369,8 +6369,8 @@ public function insert_comment_postnewpage() {
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-                    $art_fname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
-                    $art_lname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
+                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
+                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
 
                     if ($userid == $commnetcount[0]['user_id']) {
 
@@ -6486,8 +6486,8 @@ public function insert_comment_postnewpage() {
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     //       echo '<pre>'; print_r($commnetcount); die();                                     
                     foreach ($commnetcount as $comment) {
-                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
+                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
                     }
       $cmtlikeuser .= '<div class="like_one_other">';
 
@@ -6496,8 +6496,8 @@ public function insert_comment_postnewpage() {
                     $contition_array = array('post_image_id' => $post_image, 'is_unlike' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     //echo "hehehe";   echo '<pre>'; echo count($commnetcount); print_r($commnetcount); die();         
-                    $art_fname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
-                    $art_lname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
+                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
+                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
 
               
                     if ($userid == $commnetcount[0]['user_id']) {
@@ -6612,13 +6612,13 @@ public function insert_comment_postnewpage() {
         foreach ($artcomment as $art_comment) {
 
 
-            $art_name = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
+            $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
 
-            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
+            $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
 
-            $art_slug = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
+            $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert = '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -6712,7 +6712,7 @@ public function insert_comment_postnewpage() {
 
             $userid = $this->session->userdata('aileenuser');
 
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
 
 
             if ($art_comment['user_id'] == $userid || $art_userid == $userid) {
@@ -6833,13 +6833,13 @@ public function insert_comment_postnewpage() {
 
         foreach ($artdata as $art) {
 
-            $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
 
-            $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
 
-             $artslug = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
+             $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -6923,7 +6923,7 @@ public function insert_comment_postnewpage() {
             }
 
             $userid = $this->session->userdata('aileenuser');
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
 
             if ($art['user_id'] == $userid || $art_userid == $userid) {
 
@@ -7022,13 +7022,13 @@ public function insert_comment_postnewpage() {
         foreach ($artcomment as $art_comment) {
 
 
-            $art_name = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
-            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
+            $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
+            $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
 
-             $art_slug = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
+             $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
 
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -7106,7 +7106,7 @@ public function insert_comment_postnewpage() {
 
             $userid = $this->session->userdata('aileenuser');
 
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
 
 
             if ($art_comment['user_id'] == $userid || $art_userid == $userid) {
@@ -7605,14 +7605,14 @@ public function insert_comment_postnewpage() {
         foreach ($artcomment as $art_comment) {
 
 
-            $art_name = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
+            $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
 
-            $art_lname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
+            $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
 
-            $art_slug = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
+            $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
 
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -7708,7 +7708,7 @@ public function insert_comment_postnewpage() {
 
             $userid = $this->session->userdata('aileenuser');
 
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
 
 
             if ($art_comment['user_id'] == $userid || $art_userid == $userid) {
@@ -7793,12 +7793,12 @@ public function insert_comment_postnewpage() {
         if (count($artcomment) > 0) {
             foreach ($artcomment as $art_comment) {
 
-                $art_name = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
-                $art_lastname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
+                $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
+                $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
 
-                $art_slug = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
+                $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
 
-                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
+                $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                
@@ -7895,7 +7895,7 @@ public function insert_comment_postnewpage() {
 
                 $userid = $this->session->userdata('aileenuser');
 
-                $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
+                $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
 
 
                 if ($art_comment['user_id'] == $userid || $art_userid == $userid) {
@@ -8018,15 +8018,15 @@ public function insert_comment_postnewpage() {
         if ($artdata) {
             foreach ($artdata as $rowdata) {
 
-                $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
-                 $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                 $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
                 $fourdata .= '<div class="all-comment-comment-box">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
                 $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
                 
-                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                 if ($art_userimage) {
 
                     
@@ -8107,7 +8107,7 @@ public function insert_comment_postnewpage() {
                     $fourdata .= '<a id="' . $rowdata['artistic_post_comment_id'] . '" onClick="comment_editcancletwo(this.id)">Cancel</a></div></div>';
                 }
                 $userid = $this->session->userdata('aileenuser');
-                $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
                 if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
                     $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
                     $fourdata .= '<div class="comment-details-menu">';
@@ -8162,11 +8162,11 @@ public function insert_comment_postnewpage() {
 
         foreach ($artmulimage1 as $rowdata) {
 
-            $artname = $this->db->get_where('art_reg', array('user_id' => $userid))->row()->art_name;
+            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid))->row()->art_name;
 
 
-            $artlastname = $this->db->get_where('art_reg', array('user_id' => $userid))->row()->art_lastname;
-            $artslug = $this->db->get_where('art_reg', array('user_id' => $userid))->row()->slug;
+            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid))->row()->art_lastname;
+            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid))->row()->slug;
 
 
 
@@ -8174,7 +8174,7 @@ public function insert_comment_postnewpage() {
             $fourdata .= '<div class="post-design-pro-comment-img">';
             $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
             if($art_userimage){
 
@@ -8249,7 +8249,7 @@ public function insert_comment_postnewpage() {
                 $fourdata .= '<a id="' . $rowdata['post_image_comment_id'] . '" onClick="comment_editcancleimgtwo(this.id,'.$image_id.')">Cancel</a></div></div>';
             }
             $userid = $this->session->userdata('aileenuser');
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
             if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
 
                 $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
@@ -8323,12 +8323,12 @@ public function insert_comment_postnewpage() {
        $modal .=     '<ul>';
           foreach ($commnetcount as $comment) {
              
-     $art_name1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
+     $art_name1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
 
-     $art_lastname = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+     $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
 
-     $designation = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->designation;
-     $art_image = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_user_image;
+     $designation = $this->db->select('designation')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->designation;
+     $art_image = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_user_image;
    
        $modal .=  '<li>';
        $modal .=  '<div class="like_user_listq">';
@@ -8406,12 +8406,12 @@ public function insert_comment_postnewpage() {
        $modal .=     '<ul>';
           foreach ($likelistarray as $key => $value) {
              
-     $art_name1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-     $art_lastname = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
-     $designation = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->designation;
-     $art_image = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_user_image;
+     $art_name1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+     $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+     $designation = $this->db->select('designation')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->designation;
+     $art_image = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_user_image;
 
-     $art_slug = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->slug;
+     $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->slug;
    
        $modal .=  '<li>';
        $modal .=  '<div class="like_user_listq">';
@@ -8533,13 +8533,13 @@ public function insert_comment_postnewpage() {
         //echo "<pre>"; print_r($artcomment); die();
         foreach ($artcomment as $art_comment) {
 
-            $art_name = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
+            $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
 
-            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
+            $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
 
-            $art_slug = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
+            $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->slug;
 
-            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
+            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -8637,7 +8637,7 @@ public function insert_comment_postnewpage() {
 
             $userid = $this->session->userdata('aileenuser');
 
-            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
+            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $art_comment['post_image_id'], 'status' => 1))->row()->user_id;
 
 
             if ($art_comment['user_id'] == $userid || $art_userid == $userid) {
@@ -10106,7 +10106,7 @@ public function insert_comment_postnewpage() {
                 $userid = $this->session->userdata('aileenuser');
                  $userid = $this->session->userdata('aileenuser');
                               
-                                      $followfrom = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
+                                      $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                               
                               
                                       $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
@@ -10185,7 +10185,7 @@ public function insert_comment_postnewpage() {
         if ($userlistview2 > 0) {
             foreach ($userlistview2 as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
+                $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                               
                               
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
@@ -10260,7 +10260,7 @@ public function insert_comment_postnewpage() {
         if ($userlistview3 > 0) {
             foreach ($userlistview3 as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                 $followfrom = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
+                 $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                               
                               
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
@@ -10330,7 +10330,7 @@ public function insert_comment_postnewpage() {
         if ($userlistview4 > 0) {
             foreach ($userlistview4 as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                 $followfrom = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
+                 $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                               
                               
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
@@ -10442,7 +10442,7 @@ public function art_home_three_user_list() {
         if (count($userlistview) > 0) {
             foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
+                $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
                 $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
               
@@ -10651,17 +10651,17 @@ public function art_home_postold() {
                             <div class="post-design-top col-md-12" >  
                                 <div class="post-design-pro-img">';
 
-                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_user_image;
-                    $userimageposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
+                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_user_image;
+                    $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
 
-                     $userfn = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_name;
-                        $userln = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_lastname;
-                        $slug = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->slug;
+                     $userfn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_name;
+                        $userln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_lastname;
+                        $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->slug;
                       
 
-                        $userimagefn = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_name;
-                        $userimageln = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_lastname;
-                        $userslug = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->slug;
+                        $userimagefn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_name;
+                        $userimageln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_lastname;
+                        $userslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->slug;
 
 
                     
@@ -10708,36 +10708,36 @@ public function art_home_postold() {
                     $return_html .= '</div>
                                 <div class="post-design-name fl col-xs-8 col-md-10">
                                     <ul>';
-                    $firstname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
+                    $firstname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
                            
-                    $lastname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
+                    $lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
 
-                     $slug = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
+                     $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
 
-                    $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
-                    $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+                    $firstnameposted = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+                    $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
 
                    
-                   $designation = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
+                   $designation = $this->db->select('designation')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
                            
                            
-                    $userskill = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_skill;
+                    $userskill = $this->db->select('art_skill')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_skill;
                            
                            
                            $aud = $userskill;
                            $aud_res = explode(',', $aud);
                            foreach ($aud_res as $skill) {
                            
-                               $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                               $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                                $skill1[] = $cache_time;
                            }
                            $listFinal = implode(', ', $skill1);
 
 
-                    $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
-                    $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+                    $firstnameposted = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+                    $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
 
-                    $slugposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
+                    $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
 
 
                     $return_html .= '<li>
@@ -10752,7 +10752,7 @@ public function art_home_postold() {
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
                                             </li>';
-                        $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
+                       
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
@@ -11098,8 +11098,8 @@ public function art_home_postold() {
                         $likelistarray = explode(',', $likeuser);
 
                         foreach ($likelistarray as $key => $value) {
-                            $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                            $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                            $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                            $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                          }
 
                         $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
@@ -11113,8 +11113,8 @@ public function art_home_postold() {
                            $likelistarray = explode(',', $likeuser);
                            $likelistarray = array_reverse($likelistarray);
 
-                        $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                        $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                        $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                        $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                         $return_html .= '<div class="like_one_other">';
 
@@ -11150,8 +11150,8 @@ public function art_home_postold() {
                     $likelistarray = explode(',', $likeuser);
 
                     foreach ($likelistarray as $key => $value) {
-                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                     }
                     $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
 
@@ -11164,8 +11164,8 @@ public function art_home_postold() {
                            $likelistarray = explode(',', $likeuser);
                            $likelistarray = array_reverse($likelistarray);
 
-                   $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                   $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                   $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                   $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                     $return_html .= '<div class="like_one_other">';
 
@@ -11197,14 +11197,14 @@ public function art_home_postold() {
 
                     if ($artdata) {
                         foreach ($artdata as $rowdata) {
-                            $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                            $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
-                            $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
                             $return_html .= '<div class="all-comment-comment-box">
                                             <div class="post-design-pro-comment-img">';
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">';
-                          $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                          $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
                                 
@@ -11297,7 +11297,7 @@ public function art_home_postold() {
                                                     </div>';
                             }
                             $userid = $this->session->userdata('aileenuser');
-                            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
                             
                             if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
 
@@ -11331,15 +11331,15 @@ public function art_home_postold() {
                     <div class="post-design-commnet-box col-md-12">
                         <div class="post-design-proo-img hidden-mob">';
 
-                         $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+                         $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
 
                     $userid = $this->session->userdata('aileenuser');
-                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
 
-                    $art_fn = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                    $art_ln = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                    $art_fn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                    $art_ln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
                     if ($art_userimage) {
 
@@ -11516,17 +11516,17 @@ public function art_home_post() {
                             <div class="post-design-top col-md-12" >  
                                 <div class="post-design-pro-img">';
 
-                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_user_image;
-                    $userimageposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
+                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_user_image;
+                    $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
 
-                     $userfn = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_name;
-                        $userln = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_lastname;
-                        $slug = $this->db->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->slug;
+                     $userfn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_name;
+                        $userln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->art_lastname;
+                        $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['user_id'], 'status' => 1))->row()->slug;
                       
 
-                        $userimagefn = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_name;
-                        $userimageln = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_lastname;
-                        $userslug = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->slug;
+                        $userimagefn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_name;
+                        $userimageln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->art_lastname;
+                        $userslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->slug;
 
 
                     
@@ -11571,36 +11571,36 @@ public function art_home_post() {
                     $return_html .= '</div>
                                 <div class="post-design-name fl col-xs-8 col-md-10">
                                     <ul>';
-                    $firstname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
+                    $firstname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
                            
-                    $lastname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
+                    $lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
 
-                     $slug = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
+                     $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
 
-                    $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
-                    $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+                    $firstnameposted = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+                    $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
 
                    
-                   $designation = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
+                   $designation = $this->db->select('designation')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
                            
                            
-                    $userskill = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_skill;
+                    $userskill = $this->db->select('art_skill')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_skill;
                            
                            
                            $aud = $userskill;
                            $aud_res = explode(',', $aud);
                            foreach ($aud_res as $skill) {
                            
-                               $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                               $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                                $skill1[] = $cache_time;
                            }
                            $listFinal = implode(', ', $skill1);
 
 
-                    $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
-                    $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+                    $firstnameposted = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+                    $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
 
-                    $slugposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
+                    $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
 
 
                     $return_html .= '<li>
@@ -11615,7 +11615,7 @@ public function art_home_post() {
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
                                             </li>';
-                        $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
+                       
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
@@ -11959,8 +11959,8 @@ public function art_home_post() {
                         $likelistarray = explode(',', $likeuser);
 
                         foreach ($likelistarray as $key => $value) {
-                            $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                            $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                            $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                            $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                          }
 
                         $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
@@ -11974,8 +11974,8 @@ public function art_home_post() {
                            $likelistarray = explode(',', $likeuser);
                            $likelistarray = array_reverse($likelistarray);
 
-                        $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                        $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                        $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                        $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                         $return_html .= '<div class="like_one_other">';
 
@@ -12011,8 +12011,8 @@ public function art_home_post() {
                     $likelistarray = explode(',', $likeuser);
 
                     foreach ($likelistarray as $key => $value) {
-                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                     }
                     $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
 
@@ -12025,8 +12025,8 @@ public function art_home_post() {
                            $likelistarray = explode(',', $likeuser);
                            $likelistarray = array_reverse($likelistarray);
 
-                   $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                   $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                   $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                   $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                     $return_html .= '<div class="like_one_other">';
 
@@ -12058,14 +12058,14 @@ public function art_home_post() {
 
                     if ($artdata) {
                         foreach ($artdata as $rowdata) {
-                            $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                            $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
-                            $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
                             $return_html .= '<div class="all-comment-comment-box">
                                             <div class="post-design-pro-comment-img">';
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">';
-                          $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                          $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
                                 
@@ -12160,7 +12160,7 @@ public function art_home_post() {
                                                     </div>';
                             }
                             $userid = $this->session->userdata('aileenuser');
-                            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
                             
                             if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
 
@@ -12194,15 +12194,15 @@ public function art_home_post() {
                     <div class="post-design-commnet-box col-md-12">
                         <div class="post-design-proo-img hidden-mob">';
 
-                         $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+                         $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
 
                     $userid = $this->session->userdata('aileenuser');
-                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
 
-                    $art_fn = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                    $art_ln = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                    $art_fn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                    $art_ln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
                     if ($art_userimage) {
 
@@ -12669,17 +12669,17 @@ public function art_home_post() {
 <div class = "post-design-top col-md-12" >
 <div class = "post-design-pro-img">';
                 $userid = $this->session->userdata('aileenuser');
-                $userimage = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_user_image;
-                $userimageposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
+                $userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_user_image;
+                $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
 
-                $firstname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
-                $lastname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
+                $firstname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
+                $lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
 
-                $slug = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
+                $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
 
-                $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
-                $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
-                $slugposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
+                $firstnameposted = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+                $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+                $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
 
                 if ($row['posted_user_id']) {
                     if ($userimageposted) {
@@ -12734,18 +12734,18 @@ public function art_home_post() {
                 $return_html .= '</div>
 <div class = "post-design-name fl col-xs-8 col-md-10">
 <ul>';
-                $firstname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
-                $lastname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
+                $firstname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
+                $lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
 
-                 $slug = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
+                 $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->slug;
 
 
-               $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
-               $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+               $firstnameposted = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+               $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
 
-               $slugposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
+               $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
                                                               
-              $designation = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
+              $designation = $this->db->select('designation')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
 
                 if ($row['posted_user_id']) {
                     $return_html .= '<li>
@@ -13046,8 +13046,8 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $countlike = $commnetcount[0]['art_likes_count'] - 1;
                     $likelistarray = explode(',', $likeuser);
                     foreach ($likelistarray as $key => $value) {
-                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                     }
                     $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ');">';
                     $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
@@ -13057,8 +13057,8 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $countlike = $commnetcount[0]['art_likes_count'] - 1;
                     $likelistarray = explode(',', $likeuser);
 
-                  $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                 $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                  $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                 $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                     $return_html .= '<div class="like_one_other">';
                     if (in_array($userid, $likelistarray)) {
@@ -13090,17 +13090,17 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                 if ($artdata) {
                     foreach ($artdata as $rowdata) {
-                        $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                        $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
 
-                        $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                        $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
-                         $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                         $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
                         $return_html .= '<div class="all-comment-comment-box">
                 <div class="post-design-pro-comment-img">';
                  $return_html .= '<a href="'.base_url('artistic/dashboard/' . $artslug . '').'">';
 
-                        $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
+                        $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
 
                         if ($art_userimage) {
 
@@ -13185,7 +13185,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                     </div>';
                         }
                         $userid = $this->session->userdata('aileenuser');
-                        $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                        $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
                         if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
                             $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                     <div class="comment-details-menu">
@@ -13211,14 +13211,14 @@ $return_html .= '<div class="art-all-comment col-md-12">
 <div class="post-design-commnet-box col-md-12">
     <div class="post-design-proo-img hidden-mob"> ';
 
-    $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+    $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
-                $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
 
                 
@@ -13301,17 +13301,17 @@ $return_html .= '<div class="art-all-comment col-md-12">
         if ($artdata) {
             foreach ($artdata as $rowdata) {
 
-                $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
-                $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
 
                 $fourdata .= '<div class="all-comment-comment-box">';
                 
                 $fourdata .= '<div class="post-design-pro-comment-img">';
                 $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
-                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                 if ($art_userimage) {
 
                     
@@ -13391,7 +13391,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                     $fourdata .= '<a id="' . $rowdata['artistic_post_comment_id'] . '" onClick="comment_editcancletwo(this.id,'.$post_id.')">Cancel</a></div></div>';
                 }
                 $userid = $this->session->userdata('aileenuser');
-                $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
                 if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
                     $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
                     $fourdata .= '<div class="comment-details-menu">';
@@ -13690,7 +13690,7 @@ public function get_artistic_name($id=''){
         $search_place = trim($this->input->get('searchplace'));
 //insert search keyword into data base code start
 
-        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
+        $cache_time = $this->db->select('city_id')->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
         $this->data['keyword1'] = $search_place;
 
@@ -13800,7 +13800,7 @@ public function get_artistic_name($id=''){
             // echo "both";
 
 
-             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             
@@ -13913,7 +13913,7 @@ public function get_artistic_name($id=''){
         $search_place = trim($this->input->get('searchplace'));
 //insert search keyword into data base code start
 
-        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
+        $cache_time = $this->db->select('city_id')->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
         $this->data['keyword1'] = $search_place;
 
@@ -14050,7 +14050,7 @@ public function get_artistic_name($id=''){
             // echo "both";
 
 
-             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             
@@ -14204,7 +14204,7 @@ public function get_artistic_name($id=''){
                                                    $aud_res = explode(',', $aud);
                                                    $skill1 = array();
                                                    foreach ($aud_res as $skdata) {
-                                                     $cache_time = $this->db->get_where('skill', array('skill_id' => $skdata))->row()->skill;
+                                                     $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
                                                      $skill1[] = $cache_time;
                                                      }
                                                   $listFinal = implode(',', $skill1);
@@ -14215,8 +14215,8 @@ public function get_artistic_name($id=''){
                                          $return_html .=  '</li>
                                           <li style="display: block;">
                                              <a  class="color-search" href="">';
-                                              $country = $this->db->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
-                                               $city = $this->db->get_where('cities', array('city_id' => $key['art_city']))->row()->city_name;
+                                              $country = $this->db->select('country_name')->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
+                                               $city = $this->db->select('city_name')->get_where('cities', array('city_id' => $key['art_city']))->row()->city_name;
                                                 
                                               if(!$country){ 
                                                $return_html .= $city;
@@ -14241,7 +14241,7 @@ public function get_artistic_name($id=''){
                                     $return_html .= '<div class="fl search_button">
                                        <div class="fruser' . $key['art_id'].'">';
 
-                                         $status  =  $this->db->get_where('follow',array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to'=>$key['art_id'] ))->row()->follow_status; 
+                                         $status  =  $this->db->select('follow_status')->get_where('follow',array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to'=>$key['art_id'] ))->row()->follow_status; 
                                             if($status == 0 || $status == " "){
 
                                  $return_html .= '<div id="followdiv " class="user_btn">
@@ -14604,8 +14604,8 @@ public function get_artistic_name($id=''){
                                                 $likelistarray = explode(',', $likeuser);
                                               
                                                 foreach ($likelistarray as $key1 => $value) {
-                                                    $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                                    $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                                                    $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                                                    $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                                                    
                                                 } 
                                                                                                                 
@@ -14617,8 +14617,8 @@ public function get_artistic_name($id=''){
 
                                                     $likelistarray = explode(',', $likeuser);
                                                     $likelistarray = array_reverse($likelistarray);
-                                                    $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                                    $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                                                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                                    
                                                    $return_html .= '<div class="like_one_other">
                                                     <a href="javascript:void(0);"  onclick="likeuserlist('.$key['art_post_id'].')">';
@@ -14651,8 +14651,8 @@ public function get_artistic_name($id=''){
                                             $likelistarray = explode(',', $likeuser);
                                          
                                             foreach ($likelistarray as $key2 => $value) {
-                                                $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                                $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                                                $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                                                $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                                                 
                                              } 
                                                                                                                            
@@ -14664,8 +14664,8 @@ public function get_artistic_name($id=''){
 
                                                 $likelistarray = explode(',', $likeuser);
                                                 $likelistarray = array_reverse($likelistarray);
-                                                $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                                $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                                $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                                                $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                               
                                      $return_html .= '<a href="javascript:void(0);" onclick="likeuserlist('.$key['art_post_id'].');">
                                           <div class="like_one_other">';
@@ -14696,16 +14696,16 @@ public function get_artistic_name($id=''){
     
                                                     if ($artdata) {
                                                         foreach ($artdata as $rowdata) {
-                                                            $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                                                            $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                                                            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                                                            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
-                                                            $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                                                            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                                             
                                                 $return_html .= '<div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img">';
                                                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
                                                           
-                                                              $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                                                              $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                  
                                                        if ($art_userimage) { 
                                                          
@@ -14780,7 +14780,7 @@ public function get_artistic_name($id=''){
                                                                     } 
                                                                    
                                                                     $userid = $this->session->userdata('aileenuser');
-                                                                    $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                                                                    $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
 
                                                                     if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
                                                                         
@@ -14808,14 +14808,14 @@ public function get_artistic_name($id=''){
                                     <div class="post-design-commnet-box col-md-12">';
                                      
                                             $userid = $this->session->userdata('aileenuser');
-                                            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                                            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
 
-                                            $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                                            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                                            $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                                            $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
                                            
                                       $return_html .= '<div class="post-design-proo-img hidden-mob">';
 
-                                      $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+                                      $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
 
@@ -14885,7 +14885,7 @@ public function get_artistic_name($id=''){
         $search_place = trim($this->input->get('searchplace'));
 //insert search keyword into data base code start
 
-        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
+        $cache_time = $this->db->select('city_id')->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
         $this->data['keyword1'] = $search_place;
 
@@ -14982,7 +14982,7 @@ public function get_artistic_name($id=''){
             // echo "both";
 
 
-             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             
@@ -15106,7 +15106,7 @@ public function get_artistic_name($id=''){
                                                    $aud_res = explode(',', $aud);
                                                    $skill1 = array();
                                                    foreach ($aud_res as $skdata) {
-                                                     $cache_time = $this->db->get_where('skill', array('skill_id' => $skdata))->row()->skill;
+                                                     $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
                                                      $skill1[] = $cache_time;
                                                      }
                                                   $listFinal = implode(', ', $skill1);
@@ -15125,8 +15125,8 @@ public function get_artistic_name($id=''){
                                          $return_html .=  '</li>
                                           <li style="display: block;">
                                              <a  class="color-search" href="">';
-                                              $country = $this->db->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
-                                               $city = $this->db->get_where('cities', array('city_id' => $key['art_city']))->row()->city_name;
+                                              $country = $this->db->select('country_name')->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
+                                               $city = $this->db->select('city_name')->get_where('cities', array('city_id' => $key['art_city']))->row()->city_name;
                                                 
                                               if(!$country){ 
                                                $return_html .= $city;
@@ -15151,7 +15151,7 @@ public function get_artistic_name($id=''){
                                     $return_html .= '<div class="fl search_button">
                                        <div class="fruser' . $key['art_id'].'">';
 
-                                         $status  =  $this->db->get_where('follow',array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to'=>$key['art_id'] ))->row()->follow_status; 
+                                         $status  =  $this->db->select('follow_status')->get_where('follow',array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to'=>$key['art_id'] ))->row()->follow_status; 
                                             if($status == 0 || $status == " "){
 
                                  $return_html .= '<div id="followdiv " class="user_btn">
@@ -15500,8 +15500,8 @@ public function get_artistic_name($id=''){
 
                                                     $likelistarray = explode(',', $likeuser);
                                                     $likelistarray = array_reverse($likelistarray);
-                                                    $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                                    $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                                                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                                    
                                                    $return_html .= '<div class="like_one_other">
                                                     <a  href="javascript:void(0);" onclick="login_profile();">';
@@ -15534,8 +15534,8 @@ public function get_artistic_name($id=''){
                                             $likelistarray = explode(',', $likeuser);
                                          
                                             foreach ($likelistarray as $key2 => $value) {
-                                                $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                                $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                                                $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                                                $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                                                 
                                              } 
                                                                                                                            
@@ -15547,8 +15547,8 @@ public function get_artistic_name($id=''){
 
                                                 $likelistarray = explode(',', $likeuser);
                                                 $likelistarray = array_reverse($likelistarray);
-                                                $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                                $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                                $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                                                $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                               
                                      $return_html .= '<a href="javascript:void(0);" onclick="login_profile();">
                                           <div class="like_one_other">';
@@ -15579,16 +15579,16 @@ public function get_artistic_name($id=''){
     
                                                     if ($artdata) {
                                                         foreach ($artdata as $rowdata) {
-                                                            $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                                                            $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                                                            $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                                                            $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
-                                                            $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                                                            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                                             
                                                 $return_html .= '<div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img">';
                                                          $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
                                                           
-                                                              $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                                                              $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                  
                                                        if ($art_userimage) { 
                                                           $return_html .= '<img  src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
@@ -15662,7 +15662,7 @@ public function get_artistic_name($id=''){
                                                                     } 
                                                                    
                                                                     $userid = $this->session->userdata('aileenuser');
-                                                                    $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                                                                    $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
 
                                                                     if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
                                                                         

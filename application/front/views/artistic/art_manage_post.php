@@ -60,7 +60,7 @@
                                     $aud = $artisticdata[0]['art_skill'];
                                     $aud_res = explode(',', $aud);
                                     foreach ($aud_res as $skill) {
-                                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                        $cache_time = $this->db->select('skill')->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                                         $skill1[] = $cache_time;
                                     }
                                     $listFinal = implode(', ', $skill1);
@@ -89,13 +89,13 @@
                                 <td class="business_data_td2"><span>
                                         <?php
                                         if ($artisticdata[0]['art_city']) {
-                                            echo $this->db->get_where('cities', array('city_id' => $artisticdata[0]['art_city']))->row()->city_name;
+                                            echo $this->db->select('city_name')->select('city_name')->get_where('cities', array('city_id' => $artisticdata[0]['art_city']))->row()->city_name;
                                             echo",";
                                         }
                                         ?> 
                                         <?php
                                         if ($artisticdata[0]['art_country']) {
-                                            echo $this->db->get_where('countries', array('country_id' => $artisticdata[0]['art_country']))->row()->country_name;
+                                            echo $this->db->select('country_name')->select('country_name')->get_where('countries', array('country_id' => $artisticdata[0]['art_country']))->row()->country_name;
                                         }
                                         ?>
                                     </span></td>
@@ -168,8 +168,8 @@ $loginuser = $userdata[0]['art_id'];
                         <div class="popup-img"> 
                             <a href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['slug']) ?>">
                              <?php
-                                                    $userimage = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
-                                                    $userimageposted = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
+                                                    $userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
+                                                    $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                                                     ?>
                                                     <?php ?>
                                                             

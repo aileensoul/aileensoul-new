@@ -55,7 +55,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                      <span class="profile-company-name ">
                      <a   href="<?php echo site_url('artistic/dashboard'); ?>"> <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
                      </span>
-                     <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
+                    
                      <div class="profile-boxProfile-name">
                         <a  href="<?php echo site_url('artistic/dashboard'); ?>">
                         <?php

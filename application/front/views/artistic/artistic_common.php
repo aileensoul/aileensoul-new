@@ -294,7 +294,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                 $bup_id = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                                $status = $this->db->get_where('follow', array('follow_type' => 1, 'follow_from' => $bup_id[0]['art_id'], 'follow_to' => $artisticdata[0]['art_id']))->row()->follow_status;
+                                $status = $this->db->select('follow_status')->get_where('follow', array('follow_type' => 1, 'follow_from' => $bup_id[0]['art_id'], 'follow_to' => $artisticdata[0]['art_id']))->row()->follow_status;
                                 //echo "<pre>"; print_r($status); die();
 
                                 if ($status == 0 || $status == " ") {

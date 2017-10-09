@@ -180,7 +180,7 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 //   validation border is not show in last date start
 $.validator.addMethod("required1", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
-
+   // alert(value);
     if (!value)
     {
         $('.day').addClass('error');
@@ -294,8 +294,8 @@ $(document).ready(function () {
 
             last_date: {
 
-                required1: "Last date of apply is required.",
-                isValid: 'Last date should be grater than and equal to today date.'
+               required1: "Last date of apply is required.",
+              //  isValid: 'Last date should be grater than and equal to today date.'
 
             },
             minsal: {
