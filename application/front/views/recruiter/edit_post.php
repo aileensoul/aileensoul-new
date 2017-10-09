@@ -3,6 +3,7 @@
    <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
+        
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
@@ -474,19 +475,20 @@
             </div>
         </div>
         <!-- BID MODAL END -->
-        <!-- BEGIN FOOTER -->
-<?php echo $footer; ?>
+           <!-- BEGIN FOOTER -->
+        <?php echo $footer; ?>
         <!-- END FOOTER -->
         <!-- FIELD VALIDATION JS START -->
+        <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
         
         
         
         
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-        <!--<script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>-->
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>-->
 
         <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.2.0/select2.js"></script>
+
         <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
 
@@ -504,6 +506,8 @@
                                             var complex1 = <?php echo json_encode($selectdata1); ?>;
                                             var jobdata = <?php echo json_encode($jobtitle); ?>;
                                             var date_picker = '<?php echo date('Y-m-d', strtotime($postdata[0]['post_last_date'])); ?>';
+       
+        
         </script> 
         <!-- FIELD VALIDATION JS END -->
         <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
@@ -513,7 +517,7 @@
         <style type="text/css">
 
             .keyskill_border_active {
-                border: 3px solid #f00 !important;
+                border: 1px solid #f00 !important;
 
             }
             #skills-error{margin-top: 40px !important;}
@@ -531,31 +535,5 @@
 
 
         </style>
-
-        <style type="text/css">
-            #example2-error{margin-top: 42px;}
-        </style>
-        <!-- Calender JS Start-->
-        <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
-        <script type="text/javascript">
-
-                                            jQuery.noConflict();
-
-                                            (function ($) {
-                                                $('#datepicker').datetimepicker({
-                                                    //yearOffset:222,
-                                                    minDate: 0,
-                                                    //startDate: "2013/02/14",
-                                                    lang: 'ch',
-                                                    timepicker: false,
-                                                    format: 'd/m/Y',
-                                                    formatDate: 'Y/m/d',
-                                                    scrollMonth: false,
-                                                    scrollInput: false
-
-                                                });
-                                            })(jQuery);
-        </script>
-        <!-- Calender Js End
-            </body>
-        </html>
+    </body>
+</html>

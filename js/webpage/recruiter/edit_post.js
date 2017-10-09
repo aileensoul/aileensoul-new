@@ -290,10 +290,10 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
 
 //date validation end
 
-jQuery.noConflict();
-
-(function ($) {
-    $(document).ready(function () {
+//jQuery.noConflict();
+//
+//(function ($) {
+//    $(document).ready(function () {
 
         $("#basicinfo").validate({
             //ignore: [],
@@ -456,20 +456,15 @@ jQuery.noConflict();
         });
 
 
-    });
-})(jQuery);
+//    });
+//})(jQuery);
 
 
-jQuery.noConflict();
-
-(function ($) {
-
-// alert(data);
 
 
 // EDUCATION AUTOCOMPLETE DATA START
 
-    $(function () {
+    
         function split(val) {
             return val.split(/,\s*/);
         }
@@ -517,129 +512,104 @@ jQuery.noConflict();
 
 
                 });
-    });
+    
 
 // EDUCATION AUTOCOMPLETE DATA END
 
 
-    $(function () {
-        // alert('hi');
-        $("#tags").autocomplete({
-            source: function (request, response) {
-                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                response($.grep(data, function (item) {
-                    return matcher.test(item.label);
-                }));
-            },
-            minLength: 1,
-            select: function (event, ui) {
-                event.preventDefault();
-                $("#tags").val(ui.item.label);
-                $("#selected-tag").val(ui.item.label);
-                // window.location.href = ui.item.value;
-            }
-            ,
-            focus: function (event, ui) {
-                event.preventDefault();
-                $("#tags").val(ui.item.label);
-            }
-        });
-    });
-})(jQuery);
+//jQuery.noConflict();
+//
+//(function ($) {
+//
+//// alert(data);
+//
+//
+//    $(function () {
+//        // alert('hi');
+//        $("#searchplace").autocomplete({
+//            source: function (request, response) {
+//                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//                response($.grep(data1, function (item) {
+//                    return matcher.test(item.label);
+//                }));
+//            },
+//            minLength: 1,
+//            select: function (event, ui) {
+//                event.preventDefault();
+//                $("#searchplace").val(ui.item.label);
+//                $("#selected-tag").val(ui.item.label);
+//                // window.location.href = ui.item.value;
+//            }
+//            ,
+//            focus: function (event, ui) {
+//                event.preventDefault();
+//                $("#searchplace").val(ui.item.label);
+//            }
+//        });
+//    });
+//})(jQuery);
 
-jQuery.noConflict();
-
-(function ($) {
-
-// alert(data);
-
-
-    $(function () {
-        // alert('hi');
-        $("#searchplace").autocomplete({
-            source: function (request, response) {
-                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                response($.grep(data1, function (item) {
-                    return matcher.test(item.label);
-                }));
-            },
-            minLength: 1,
-            select: function (event, ui) {
-                event.preventDefault();
-                $("#searchplace").val(ui.item.label);
-                $("#selected-tag").val(ui.item.label);
-                // window.location.href = ui.item.value;
-            }
-            ,
-            focus: function (event, ui) {
-                event.preventDefault();
-                $("#searchplace").val(ui.item.label);
-            }
-        });
-    });
-})(jQuery);
-
-jQuery.noConflict();
-
-(function ($) {
-
-// alert(data);
-
-
-    $(function () {
-        // alert('hi');
-        $("#tags1").autocomplete({
-            source: function (request, response) {
-                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                response($.grep(data, function (item) {
-                    return matcher.test(item.label);
-                }));
-            },
-            minLength: 1,
-            select: function (event, ui) {
-                event.preventDefault();
-                $("#tags1").val(ui.item.label);
-                $("#selected-tag").val(ui.item.label);
-                // window.location.href = ui.item.value;
-            }
-            ,
-            focus: function (event, ui) {
-                event.preventDefault();
-                $("#tags1").val(ui.item.label);
-            }
-        });
-    });
-})(jQuery);
-
-
-jQuery.noConflict();
-
-(function ($) {
-
-    $(function () {
-        // alert('hi');
-        $("#searchplace1").autocomplete({
-            source: function (request, response) {
-                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                response($.grep(data1, function (item) {
-                    return matcher.test(item.label);
-                }));
-            },
-            minLength: 1,
-            select: function (event, ui) {
-                event.preventDefault();
-                $("#searchplace1").val(ui.item.label);
-                $("#selected-tag").val(ui.item.label);
-                // window.location.href = ui.item.value;
-            }
-            ,
-            focus: function (event, ui) {
-                event.preventDefault();
-                $("#searchplace1").val(ui.item.label);
-            }
-        });
-    });
-})(jQuery);
+//jQuery.noConflict();
+//
+//(function ($) {
+//
+//// alert(data);
+//
+//
+//    $(function () {
+//        // alert('hi');
+//        $("#tags1").autocomplete({
+//            source: function (request, response) {
+//                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//                response($.grep(data, function (item) {
+//                    return matcher.test(item.label);
+//                }));
+//            },
+//            minLength: 1,
+//            select: function (event, ui) {
+//                event.preventDefault();
+//                $("#tags1").val(ui.item.label);
+//                $("#selected-tag").val(ui.item.label);
+//                // window.location.href = ui.item.value;
+//            }
+//            ,
+//            focus: function (event, ui) {
+//                event.preventDefault();
+//                $("#tags1").val(ui.item.label);
+//            }
+//        });
+//    });
+//})(jQuery);
+//
+//
+//jQuery.noConflict();
+//
+//(function ($) {
+//
+//    $(function () {
+//        // alert('hi');
+//        $("#searchplace1").autocomplete({
+//            source: function (request, response) {
+//                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//                response($.grep(data1, function (item) {
+//                    return matcher.test(item.label);
+//                }));
+//            },
+//            minLength: 1,
+//            select: function (event, ui) {
+//                event.preventDefault();
+//                $("#searchplace1").val(ui.item.label);
+//                $("#selected-tag").val(ui.item.label);
+//                // window.location.href = ui.item.value;
+//            }
+//            ,
+//            focus: function (event, ui) {
+//                event.preventDefault();
+//                $("#searchplace1").val(ui.item.label);
+//            }
+//        });
+//    });
+//})(jQuery);
 
 
 $(function () {
