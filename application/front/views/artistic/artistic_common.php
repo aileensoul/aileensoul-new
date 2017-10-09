@@ -104,27 +104,21 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
                     <div class="profile-pho-bui">
 
                         <div class="user-pic padd_img">
-                <?php if ($artisticdata[0]['art_user_image'] != '') { ?>
-
 
                  <?php 
 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
-                                                                 <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                                                <?php
-                                                            } else { ?>
 
-                    
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
-                    <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" alt="" >
+                   if ($info) { ?>
+                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" alt="" >
+                <?php
+                } else { ?>
+
+                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                        <?php }?>
-
-                <?php } else { ?>
-
-                      <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-
-
-                <?php } ?>
 
                 <?php
                 $userid = $this->session->userdata('aileenuser');
