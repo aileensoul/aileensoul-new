@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.fancybox.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.fancybox.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
@@ -332,7 +332,7 @@
                                     <label>Country:<span style="color:red">*</span></label>
 
 
-<?php $countryname = $this->db->get_where('countries', array('country_id' => $postdata[0]['country']))->row()->country_name; ?>
+<?php $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $postdata[0]['country']))->row()->country_name; ?>
 
                                     <select style="cursor:pointer;" name="country" tabindex="18" id="country">
 
@@ -362,7 +362,7 @@
                                 <?php echo form_error('country'); ?>
                                 </fieldset>
 
-<?php $statename = $this->db->get_where('states', array('state_id' => $postdata[0]['state']))->row()->state_name; ?>
+<?php $statename = $this->db->select('state_name')->get_where('states', array('state_id' => $postdata[0]['state']))->row()->state_name; ?>
 
                                 <fieldset  class="fw" <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                     <label>State:<span style="color:red">*</span></label>
@@ -389,7 +389,7 @@
                                 </fieldset>
 
 
-<?php $cityname = $this->db->get_where('cities', array('city_id' => $postdata[0]['city']))->row()->city_name; ?>
+<?php $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $postdata[0]['city']))->row()->city_name; ?>
 
                                 <fieldset class="fw" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                                     <label>City:</label>
@@ -480,8 +480,8 @@
         <!-- FIELD VALIDATION JS START -->
         
         
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+        
+        
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
         <!--<script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>-->
 

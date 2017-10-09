@@ -92,6 +92,7 @@
 var base_url = '<?php echo base_url(); ?>';   
    
 </script>
+ <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/feedback.js'); ?>"></script>
     </body>

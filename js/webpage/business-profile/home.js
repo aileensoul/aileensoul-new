@@ -95,7 +95,7 @@ function ajax_business_home_three_user_list() {
 
             $('.profile-boxProfileCard_follow').html(data);
             var liCount = $(data).find("li.follow_box_ul_li").length;
-            
+
             if (liCount == 0) {
                 $('.full-box-module_follow').hide();
             }
@@ -499,7 +499,7 @@ function commentedit(abc)
     $('#editcomment' + abc).keypress(function (event) {
         if (event.which == 13 && event.shiftKey != 1) {
             event.preventDefault();
-            
+
             if (window.preventDuplicateKeyPresses)
                 return;
             window.preventDuplicateKeyPresses = true;
@@ -509,7 +509,7 @@ function commentedit(abc)
             edit_comment(abc);
         }
     });
-    
+
 }
 
 function edit_commenttwo(abc)
@@ -571,7 +571,7 @@ function commentedittwo(abc)
             edit_commenttwo(abc);
         }
     });
-   
+
 }
 function commentedit2(abc)
 {
@@ -1554,7 +1554,7 @@ function editpost(abc)
 
     editposttitle = editposttitle.trim();
     editpostdesc = editpostdesc.trim();
-    
+
     $('#editpostname' + abc).val(editposttitle);
     $('#editpostdesc' + abc).html(nl2br(editpostdesc));
 
@@ -1644,7 +1644,7 @@ jQuery(document).ready(function ($) {
             $("input[name='text_num']").val(50);
             $(".file-preview-frame").hide();
             document.getElementById("progress_div").style.display = "none";
-           // $('.business-all-post').find('.post-design-box:first').parent().remove();
+            // $('.business-all-post').find('.post-design-box:first').parent().remove();
             $(".business-all-post").prepend(response.responseText);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
