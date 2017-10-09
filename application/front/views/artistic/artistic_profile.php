@@ -80,15 +80,15 @@ if ($artisticdata[0]['user_id'] === $userid) {
                                     </div>
                                     <div class="profile-job-profile-menu">
                                         <ul class="clearfix">
-                                            <li> <b> Country</b> <span> <?php echo $this->db->get_where('countries', array('country_id' => $artisticdata[0]['art_country']))->row()->country_name; ?> </span>
+                                            <li> <b> Country</b> <span> <?php echo $this->db->select('country_name')->get_where('countries', array('country_id' => $artisticdata[0]['art_country']))->row()->country_name; ?> </span>
                                             </li>
                                             <li> <b>State </b><span> <?php echo
-$this->db->get_where('states', array('state_id' => $artisticdata[0]['art_state']))->row()->state_name;
+$this->db->select('state_name')->get_where('states', array('state_id' => $artisticdata[0]['art_state']))->row()->state_name;
 ?> </span>
 <?php if($artisticdata[0]['art_city']){?>
                                         </li>
                                             <li><b> City</b> <span><?php echo
-$this->db->get_where('cities', array('city_id' => $artisticdata[0]['art_city']))->row()->city_name;
+$this->db->select('city_name')->get_where('cities', array('city_id' => $artisticdata[0]['art_city']))->row()->city_name;
 ?></span> </li>
 <?php }  else {
            if($artisticdata[0]['user_id'] == $userid){ 
@@ -125,7 +125,7 @@ $this->db->get_where('cities', array('city_id' => $artisticdata[0]['art_city']))
 $aud = $artisticdata[0]['art_skill'];
 $aud_res = explode(',', $aud);
 foreach ($aud_res as $skill) {
-    $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+    $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
     $skill1[] = $cache_time;
 }
 $listFinal = implode(', ', $skill1);
