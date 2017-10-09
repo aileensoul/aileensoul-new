@@ -65,16 +65,9 @@ class Freelancer extends MY_Controller {
 
     public function freelancer_post_basic_information() {
         $userid = $this->session->userdata('aileenuser');
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-
-        $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
-        }
-        //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
-
+        //code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_email,freelancer_post_skypeid,freelancer_post_phoneno', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1544,7 +1537,7 @@ class Freelancer extends MY_Controller {
             $final_field = array_reduce($freelancerpostfield, 'array_merge', array());
 //        TO CHANGE ARRAY OF ARRAY TO ARRAY END
 
-            $applyuser_merge = array_merge((array)$final_candidate, (array)$final_field);
+            $applyuser_merge = array_merge((array) $final_candidate, (array) $final_field);
             $unique = array_unique($applyuser_merge, SORT_REGULAR);
 
             $candidatefreelancer = $unique;
@@ -2790,16 +2783,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE APPLIED POERSON LIST START
     public function freelancer_apply_list($id) {
         $userid = $this->session->userdata('aileenuser');
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
-        }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  end
+//check user deactivate start
+        $this->freelancer_hire_deactivate_check();
+        //check user deactivate end
 // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
@@ -3486,7 +3472,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_hire_user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -3585,7 +3571,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();" class="cusome_upload"><img  src="' . base_url('img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -4121,14 +4107,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY DELETE PDF OF PORTFOLIO START
     public function deletepdf() {
         $userid = $this->session->userdata('aileenuser');
-        //if user deactive profile then redirect to artistic/index untill active profile start
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-
-        $free_deactive = $this->data['free_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        if ($free_deactive) {
-            redirect('freelancer/');
-        }
-        //if user deactive profile then redirect to artistic/index untill active profile End
+        //code for check user deactivate start
+        $this->freelancer_apply_deactivate_check();
+        //code for check user deactivate end
 
         $contition_array = array('user_id' => $userid);
         $free_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4168,7 +4149,7 @@ class Freelancer extends MY_Controller {
             $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
             $skill = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
         }
-        $unique = array_merge((array)$field, (array)$skill, (array)$freelancer_postdata);
+        $unique = array_merge((array) $field, (array) $skill, (array) $freelancer_postdata);
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
@@ -4225,7 +4206,7 @@ class Freelancer extends MY_Controller {
             $search_condition = "(category_name LIKE '" . trim($searchTerm) . "%')";
             $field = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = 'category_name', $sortby = 'category_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'category_name');
         }
-        $uni = array_merge((array)$skill, (array)$freelancer_postdata, (array)$field, (array)$results_post);
+        $uni = array_merge((array) $skill, (array) $freelancer_postdata, (array) $field, (array) $results_post);
         foreach ($uni as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {

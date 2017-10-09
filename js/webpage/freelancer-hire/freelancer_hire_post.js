@@ -93,7 +93,9 @@ function divClicked() {
     editableText.focus();
     editableText.blur(editableTextBlurred);
 }
-
+function capitalize(s){
+    return s[0].toUpperCase() + s.slice(1);
+}
 function editableTextBlurred() {
     //alert(789);
     var html = $(this).val();
@@ -101,7 +103,7 @@ function editableTextBlurred() {
     if (html.match(/^\s*$/) || html == '') {
         html = "Current Work";
     }
-    viewableText.html(html);
+    viewableText.html(capitalize(html));
     $(this).replaceWith(viewableText);
     viewableText.click(divClicked);
     $.ajax({
