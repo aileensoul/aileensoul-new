@@ -268,6 +268,7 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY USER DEACTIAVTE CHECK START
 //FREELANCER_APPLY ADDRESS PAGE START
     public function freelancer_post_address_information() {
+        $userid = $this->session->userdata('aileenuser');
         //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
         //code for check user deactivate end
@@ -279,6 +280,7 @@ class Freelancer extends MY_Controller {
         //USER DATA FETCH
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_country,freelancer_post_state,freelancer_post_city,freelancer_post_pincode,freelancer_post_address,free_post_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
         //FOR GETTING STATE DATA
         $contition_array = array('status' => 1, 'country_id' => $userdata[0]['freelancer_post_country']);
         $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id,state_name', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
