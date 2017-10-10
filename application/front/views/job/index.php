@@ -5,7 +5,7 @@
       <?php echo $head; ?>
       <title><?php echo $title; ?></title>
       <!-- Calender Css Start-->
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css?ver='.time()); ?>">
+      <!--<link rel="stylesheet" type="text/css" href="<?php // echo base_url('css/jquery.datetimepicker.css?ver='.time()); ?>">-->
       <!-- Calender Css End-->
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
