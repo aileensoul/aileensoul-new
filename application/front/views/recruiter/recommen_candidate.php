@@ -9,6 +9,31 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
+   
+        <script type="text/javascript" language="javascript">
+                                            var aax_size = '300x250';
+                                            var aax_pubname = 'aileensoul-21';
+                                            var aax_src = '302';
+                                </script>
+
+<script type="text/javascript">
+  var oldDocumentWrite = document.write
+
+// change document.write temporary
+document.write = function(node){
+    $("#khyati").append(node)
+}
+
+// get script
+$.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() {
+    // replace the temp document.write with the original version
+    setTimeout(function() {
+        document.write = oldDocumentWrite
+    }, 100000000)
+});
+
+</script>
+    
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -141,6 +166,7 @@
                                     <div  class="add-post-button">
                                         <a class="btn btn-3 btn-3b"  href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                                     </div> <?php //} ?>
+                                
                             </div>
 
                         </div>
