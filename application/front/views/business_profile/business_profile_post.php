@@ -1,3 +1,6 @@
+<?php
+$s3 = new S3(awsAccessKey, awsSecretKey);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,25 +49,25 @@
                                 <!-- GET USER FOLLOE SUGESSION LIST START -->
                                 <!-- follower list end  -->
                             </div>
-							<div class="tablate-potrat-add">
-									<div class="fw text-center pt10">
-									<script type="text/javascript" language="javascript">
-									  var aax_size='300x250';
-									  var aax_pubname = 'aileensoul-21';
-									  var aax_src='302';
-									</script>
-									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-									</div>
-								</div>
+                            <div class="tablate-potrat-add">
+                                <div class="fw text-center pt10">
+                                    <script type="text/javascript" language="javascript">
+                                        var aax_size = '300x250';
+                                        var aax_pubname = 'aileensoul-21';
+                                        var aax_src = '302';
+                                    </script>
+                                    <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+                                </div>
+                            </div>
                             <div class="custom_footer_left fw">
                                 <div class="fl">
                                     <ul>
                                         <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
                                         <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
                                         <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-										<li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+                                        <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
                                         <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-                                        
+
                                         <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
                                     </ul>
                                 </div>
@@ -89,14 +92,29 @@
                                     <div class="popup-img"> 
                                         <?php if ($business_common_data[0]['business_user_image']) { ?>
                                             <?php
-                                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
-                                                ?>
-                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                            <?php } else {
-                                                ?>
-                                                <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
-                                            <?php } ?>
-                                        <?php } else { ?>
+                                            if (IMAGEPATHFROM == 'upload') {
+                                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
+                                                    ?>
+                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                <?php } else {
+                                                    ?>
+                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                                    <?php
+                                                }
+                                            } else {
+                                                $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'];
+                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                if (!$info) {
+                                                    ?>
+                                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
+                                                <?php } else {
+                                                    ?>
+                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                                    <?php
+                                                }
+                                            }
+                                        } else {
+                                            ?>
                                             <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                         <?php } ?>
                                     </div>
@@ -116,16 +134,16 @@
                                 </div>
                             </div>
                             <div class="business-all-post">
-								<div class="mob-add">
-										<div class="fw text-center pt10 pb5">
-											<script type="text/javascript" language="javascript">
-											  var aax_size='300x250';
-											  var aax_pubname = 'aileensoul-21';
-											  var aax_src='302';
-											</script>
-											<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-										</div>
-									</div>
+                                <div class="mob-add">
+                                    <div class="fw text-center pt10 pb5">
+                                        <script type="text/javascript" language="javascript">
+                                        var aax_size = '300x250';
+                                        var aax_pubname = 'aileensoul-21';
+                                        var aax_src = '302';
+                                        </script>
+                                        <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+                                    </div>
+                                </div>
                                 <div class="nofoundpost"> 
                                 </div>
                             </div>
@@ -133,28 +151,28 @@
                         </div>
                     </div>
                     <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-					
-						<div class="fw text-center">
-							<script type="text/javascript" language="javascript">
-							  var aax_size='300x250';
-							  var aax_pubname = 'aileensoul-21';
-							  var aax_src='302';
-							</script>
-							<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-						</div>
-						<div class="fw pt20" style="text-align:center;">
-							<a target="_blank"  href="https://www.amazon.in/gp/product/8192910911/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=8192910911&linkCode=as2&tag=aileensoul-21&linkId=cfaad4640ddeb8da617a61f6587f5207"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=8192910911&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=8192910911" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-						</div>
+
+                        <div class="fw text-center">
+                            <script type="text/javascript" language="javascript">
+                                        var aax_size = '300x250';
+                                        var aax_pubname = 'aileensoul-21';
+                                        var aax_src = '302';
+                            </script>
+                            <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+                        </div>
+                        <div class="fw pt20" style="text-align:center;">
+                            <a target="_blank"  href="https://www.amazon.in/gp/product/8192910911/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=8192910911&linkCode=as2&tag=aileensoul-21&linkId=cfaad4640ddeb8da617a61f6587f5207"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=8192910911&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=8192910911" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                        </div>
                     </div>
-					<div class="tablate-add">
-					
-							<script type="text/javascript" language="javascript">
-							  var aax_size='160x600';
-							  var aax_pubname = 'aileensoul-21';
-							  var aax_src='302';
-							</script>
-							<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-						</div>
+                    <div class="tablate-add">
+
+                        <script type="text/javascript" language="javascript">
+                                        var aax_size = '160x600';
+                                        var aax_pubname = 'aileensoul-21';
+                                        var aax_src = '302';
+                        </script>
+                        <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+                    </div>
                 </div>
             </div>
         </section>
@@ -172,14 +190,27 @@
                             if ($business_common_data[0]['business_user_image'] != '') {
                                 ?>
                                 <?php
-                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
-                                    ?>
-                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
-                                <?php } else {
-                                    ?>
-                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
-                                <?php } ?>
-                                <?php
+                                if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) {
+                                        ?>
+                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
+                                    <?php } else {
+                                        ?>
+                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                        <?php
+                                    }
+                                } else {
+                                    $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'];
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if (!$info) {
+                                        ?>
+                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
+                                    <?php } else {
+                                        ?>
+                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
+                                        <?php
+                                    }
+                                }
                             } else {
                                 ?>
                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
@@ -299,18 +330,18 @@
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <!--<script src="<?php// echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/jquery.wallform.js?ver=' . time());      ?>"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
         <!-- POST BOX JAVASCRIPT START --> 
-        <!--<script src="<?php // echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/mediaelement-and-player.min.js?ver=' . time());      ?>"></script>-->
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-<!--        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>-->
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                 var base_url = '<?php echo base_url(); ?>';

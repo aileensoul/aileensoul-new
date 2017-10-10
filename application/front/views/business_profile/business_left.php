@@ -1,3 +1,6 @@
+<?php
+$s3 = new S3(awsAccessKey, awsSecretKey);
+?>
 <div class="full-box-module">   
     <div class="profile-boxProfileCard  module">
         <div class="profile-boxProfileCard-cover"> 
@@ -24,14 +27,28 @@
                         ?>
                         <div class="left_iner_img_profile"> 
                             <?php
-                            if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image'])) {
-                                ?>
-                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt=""No Image>
-                            <?php } else {
-                                ?>
-
-                                <img  src="<?php echo base_url($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image']); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>" >
-                            <?php } ?>
+                            if (IMAGEPATHFROM == 'upload') {
+                                if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image'])) {
+                                    ?>
+                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt=""No Image>
+                                <?php } else {
+                                    ?>
+                                    <img  src="<?php echo base_url($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image']); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>" >
+                                    <?php
+                                }
+                            } else {
+                                $filename = $this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image'];
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if (!$info) {
+                                    ?>
+                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
+                                <?php } else {
+                                    ?>
+                                    <img  src="<?php echo base_url($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image']); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>" >
+                                    <?php
+                                }
+                            }
+                            ?>
                         </div>
                     <?php } else { ?>
                         <div class="left_iner_img_profile">  

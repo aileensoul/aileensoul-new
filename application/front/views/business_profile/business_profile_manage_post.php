@@ -1,3 +1,6 @@
+<?php
+$s3 = new S3(awsAccessKey, awsSecretKey);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -165,22 +168,37 @@
                         </div>
                         <div class="col-md-6 custom-right-business">
                             <?php
-                            
                             if ($is_eligable_for_post == 1) {
                                 ?>
                                 <div class="post-editor col-md-12">
                                     <div class="main-text-area col-md-12">
                                         <div class="popup-img"> 
-                                            
+
                                             <?php if ($business_login_user_image) { ?>
-                                                <?php if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_login_user_image)) { 
-                                                    ?>
-                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                <?php } else {
-                                                    ?>
-                                                    <img  src="<?php echo  BUS_PROFILE_THUMB_UPLOAD_URL. $business_login_user_image; ?>"  alt="">
-                                                <?php } ?>
-                                            <?php } else { ?>
+                                                <?php
+                                                if (IMAGEPATHFROM == 'upload') {
+                                                    if (!file_exists($this->config->item('bus_profile_main_upload_path') . $business_login_user_image)) {
+                                                        ?>
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <?php } else {
+                                                        ?>
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="">
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image;
+                                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                    if (!$info) {
+                                                        ?>
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <?php } else {
+                                                        ?>
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="">
+                                                        <?php
+                                                    }
+                                                }
+                                            } else {
+                                                ?>
                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                             <?php } ?>
                                         </div>
@@ -207,14 +225,27 @@
                                                 if ($business_login_user_image != '') {
                                                     ?>
                                                     <?php
-                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_login_user_image)) {
-                                                        ?>
-                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
-                                                    <?php } else {
-                                                        ?>
-                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="Business Profile">
-                                                    <?php } ?>
-                                                    <?php
+                                                    if (IMAGEPATHFROM == 'upload') {
+                                                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_login_user_image)) {
+                                                            ?>
+                                                            <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
+                                                        <?php } else {
+                                                            ?>
+                                                            <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="Business Profile">
+                                                        <?php
+                                                        }
+                                                    } else {
+                                                        $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image;
+                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                        if (!$info) {
+                                                            ?>
+                                                            <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
+                                                        <?php } else {
+                                                            ?>
+                                                            <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="Business Profile">
+                                                        <?php
+                                                        }
+                                                    }
                                                 } else {
                                                     ?>
                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
@@ -263,7 +294,7 @@
                                         <div class="fr margin_btm">
                                             <button type="submit"  value="Submit">Post</button>    
                                         </div>
-                                        <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -350,34 +381,28 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal fade message-box" id="bidmodal-3" role="dialog">
-        <div class="modal-dialog modal-lm">
-            <div class="modal-content">
-                <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
-                <div class="modal-body">
-                    <span class="mes">
-                    </span>
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
-        <!--<script src="<?php //echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
-
-<!--        <script src="<?php echo base_url('js/jquery-ui.min.js?ver=' . time()); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver=' . time()); ?>"></script> 
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver=' . time()); ?>"></script> -->
         <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
-
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <!--<script src="<?php //echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php //echo base_url('js/mediaelement-and-player.min.js?ver=' . time());   ?>"></script>-->
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>

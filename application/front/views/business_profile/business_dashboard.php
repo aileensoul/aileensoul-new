@@ -1,3 +1,6 @@
+<?php
+$s3 = new S3(awsAccessKey, awsSecretKey);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-		
+
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>" />
         <style type="text/css">
@@ -37,9 +40,9 @@
             .fs12{font-size:12px;}
             .red{color:#ff0000;}
             .ttc{text-transform:capitalize !important;}
-            
+
             /***  buttons  ***/
-            
+
             .clr-c a{color:#999;}
             .main-login{
                 background-color:#fff;
@@ -154,7 +157,7 @@
                 content: '_';
             }
             /***  login form css  ***/
-            
+
 
             /*onclick*/
             .form-group textarea:focus {
@@ -403,18 +406,30 @@
                                     <div class="main-text-area col-md-12">
                                         <div class="popup-img"> 
                                             <?php if ($businessdata[0]['business_user_image']) { ?>
-
-
-                                                <?php if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) { ?>
-                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                <?php } else {
-                                                    ?>
-
-                                                    <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
-
-                                                <?php } ?>
-
-                                            <?php } else { ?>
+                                                <?php
+                                                if (IMAGEPATHFROM == 'upload') {
+                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                        ?>
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <?php } else {
+                                                        ?>
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $businessdata[0]['business_user_image'];
+                                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                    if (!$info) {
+                                                        ?>
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <?php } else {
+                                                        ?>
+                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
+                                                        <?php
+                                                    }
+                                                }
+                                            } else {
+                                                ?>
                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                             <?php } ?>
                                         </div>
@@ -738,10 +753,10 @@
         </footer>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php //echo base_url('js/jquery.wallform.js?ver=' . time());     ?>"></script>-->
         <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
-        <!--<script src="<?php //echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php //echo base_url('js/mediaelement-and-player.min.js?ver=' . time());     ?>"></script>-->
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -750,8 +765,8 @@
 
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
-                                                    var base_url = '<?php echo base_url(); ?>';
-                                                    var slug = '<?php echo $slugid; ?>';
+                                            var base_url = '<?php echo base_url(); ?>';
+                                            var slug = '<?php echo $slugid; ?>';
         </script>
         <!-- script for login  user valoidtaion start -->
         <script>
@@ -1057,7 +1072,7 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-        
+
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
