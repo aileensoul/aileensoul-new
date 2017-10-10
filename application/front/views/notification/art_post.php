@@ -76,10 +76,8 @@
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                       $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-
                       if ($info) { ?>
-
-                      <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $artisticdata[0]['art_user_image']); ?>"  alt="">
+                      <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image'] ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
                               <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
@@ -144,7 +142,7 @@
 
                                                  <a class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
 
-                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted); ?>" name="image_src" id="image_src" />
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
                                               </a>
                           <?php }else{?>
 
@@ -168,7 +166,7 @@
               $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if($info){?>
-                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage); ?>"  alt="">
+                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                 <?php }else{?>
 
                  <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucwords($art_data[0]['art_name']) . ' ' . ucwords($art_data[0]['art_lastname']); ?>">
@@ -764,7 +762,7 @@
 
                                <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
 
-                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage); ?>"  alt="">
+                                    <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage; ?>"  alt="">
                                   </a>
                         <?php
                     } else {
@@ -917,7 +915,7 @@
 
                             if ($info) { ?>
                                                      <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
-                                                        <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage); ?>" name="image_src" id="image_src" />
+                                                        <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage; ?>" name="image_src" id="image_src" />
                                                       </a>
                                                         <?php
                                                     } else {
@@ -1068,7 +1066,7 @@
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                      if($info){?>
-                     <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $artisticdata[0]['art_user_image']); ?>"  alt="">
+                     <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $artisticdata[0]['art_user_image']; ?>"  alt="">
                       <?php }else{?>
                       <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">                                       
                      <?php }?>
