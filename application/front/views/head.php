@@ -57,7 +57,6 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver=' . time()) ?>" />
 
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
