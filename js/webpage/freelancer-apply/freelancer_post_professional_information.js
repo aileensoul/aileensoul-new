@@ -212,7 +212,8 @@ $(document).on('change', '.field_other', function (event) {
 
     if (other_field == 15) {
         item.val('');
-        $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Field</h2><input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()"><div class="fw"><a id="field" class="btn">OK</a></div></div>');
+         $('#bidmodal').modal('show');
+//        $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Field</h2><input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()"><div class="fw"><a id="field" class="btn">OK</a></div></div>');
         $('.message #field').on('click', function () {
             $("#other_field").removeClass("keyskill_border_active");
             $('#field_error').remove();
@@ -243,9 +244,13 @@ $(document).on('change', '.field_other', function (event) {
 //                            $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                         } else
                         {
-                            $.fancybox.close();
-
+                            $('#bidmodal').modal('hide');
                             $('.field_other').html(response.select);
+                            $('#other_field').val('');
+                            $("#other_field").removeClass("keyskill_border_active");
+//                            $.fancybox.close();
+
+                            
                         }
                     }
                 });
