@@ -11,7 +11,9 @@ class Profile extends CI_Controller {
 //            redirect('login', 'refresh');
 //        }
          $this->load->model('email_model');
-        
+        //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
         include ('include.php');
     }
 

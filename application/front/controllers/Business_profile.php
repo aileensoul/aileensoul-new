@@ -609,7 +609,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function image_insert() {
-$s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userdata = $this->session->userdata();
         $userid = $this->session->userdata('aileenuser');
 
@@ -4530,7 +4530,7 @@ Your browser does not support the audio tag.
     }
 
     public function creat_pdf($id) {
-$s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $contition_array = array('post_files_id' => $id, 'is_deleted' => '1');
         $this->data['busdata'] = $this->common->select_data_by_condition('post_files', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo "<pre>"; print_r($this->data['artdata']); die();
@@ -5249,7 +5249,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 //Business_profile comment delete end     
 // Business_profile post like start
 
-    public function like_post() {   
+    public function like_post() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
@@ -10660,7 +10660,7 @@ No Contacts Available.
 
     public function ajax_business_home_post() {
 // return html
-        
+
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $business_login_slug = $this->data['business_login_slug'];
         $perpage = 4;
@@ -13422,7 +13422,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_audio() {
-$s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -13522,7 +13522,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     }
 
     public function bus_audio_old() {
-$s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -13817,7 +13817,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
-        
+
         $return_html = '';
 
         if (empty($_GET["total_record"])) {

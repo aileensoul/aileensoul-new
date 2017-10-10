@@ -7,7 +7,9 @@ class Under_construction extends CI_Controller {
     public function __construct() 
     {
         parent::__construct();
-
+        //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
         include ('include.php'); 
     }
         

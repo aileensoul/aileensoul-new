@@ -11,7 +11,9 @@ class General extends MY_Controller {
 //             redirect('login', 'refresh');
 //         }
         
-        
+         //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
         include ('include.php');
     }
 

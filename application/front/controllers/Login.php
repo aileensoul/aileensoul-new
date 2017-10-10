@@ -10,7 +10,9 @@ class Login extends CI_Controller {
     public function __construct() {
         parent::__construct();
 
-
+        //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
         if ($this->session->userdata('aileenuser')) {
             redirect('dashboard', 'refresh');
         }

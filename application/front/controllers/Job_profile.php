@@ -10,7 +10,9 @@ class Job_profile extends MY_Controller {
 //        if (!$this->session->userdata('user_id')) {
 //            redirect('login', 'refresh');
 //        }
-        
+        //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
         
         include ('include.php');
     }

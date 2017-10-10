@@ -14,6 +14,9 @@ class Main extends CI_Controller {
         $this->load->model('email_model');
         $this->load->helper('cookie');
         $this->load->model('logins');
+        //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
 
         // if ($this->session->userdata('aileenuser')) {
         //     redirect('dashboard', 'refresh');

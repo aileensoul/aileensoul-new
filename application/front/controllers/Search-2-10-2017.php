@@ -11,7 +11,9 @@ class Search extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->helper('form');
         $this->lang->load('message', 'english');
-
+        //AWS access info start
+        $this->load->library('S3');
+        //AWS access info end
         $this->load->model('common');
 
 //        if (!$this->session->userdata('user_id')) {
