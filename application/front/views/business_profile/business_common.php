@@ -1,6 +1,3 @@
-<?php
-$s3 = new S3(awsAccessKey, awsSecretKey);
-?>
 <div class="container" id="paddingtop_fixed">
     <div class="row" id="row1" style="display:none;">
         <div class="col-md-12 text-center">
@@ -97,7 +94,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 }
                             } else {
                                 $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'];
-                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                //$this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                $info == 1;
                                 if (!$info) {
                                     ?>
                                     <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
