@@ -305,7 +305,6 @@ if ($returnpage == '') {
                                     var return_page = '<?php echo $_GET['page']; ?>';
         </script>
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
 
         <!-- FIELD VALIDATION JS END -->
         <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
