@@ -955,19 +955,13 @@ class Freelancer extends MY_Controller {
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
-            $s3 = new S3(awsAccessKey, awsSecretKey);
-            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+          
         } else {
             $userid = $id;
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
             $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
-            $s3 = new S3(awsAccessKey, awsSecretKey);
-            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         }
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
@@ -2868,10 +2862,6 @@ class Freelancer extends MY_Controller {
         $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
         $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_save', $this->data);
     }
@@ -3596,24 +3586,15 @@ class Freelancer extends MY_Controller {
         $this->freelancer_hire_deactivate_check();
         //check user deactivate end
         if ($id == $userid || $id == '') {
-
             // code for display page start
             $this->freelancer_hire_check();
             // code for display page end
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
-            $s3 = new S3(awsAccessKey, awsSecretKey);
-            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         } else {
             $contition_array = array('user_id' => $id, 'status' => '1', 'free_hire_step' => 3);
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $filename = $this->config->item('free_hire_profile_main_upload_path') . $hire_data[0]['freelancer_hire_user_image'];
-            $s3 = new S3(awsAccessKey, awsSecretKey);
-            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         }
-
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_profile', $this->data);
     }
