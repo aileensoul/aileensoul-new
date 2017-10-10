@@ -1736,8 +1736,13 @@ label.cameraButton input[accept*="camera"] {
     margin-top: 0px;
     position: absolute;
 }
-.job_work_experience_main_div {
-    border: none;
+
+.job_work_experience_main_div{
+	border: none;
+   margin-top: 10px;
+   display: inline-block;
+   border-bottom: 2px solid #d9d9d9;
+   margin-bottom: 20px;
 }
 .job_education_submitbox {
     width: 100%;
@@ -2104,7 +2109,7 @@ label.cameraButton input[accept*="camera"] {
 .current-user{float:left;}
 .profile-boxProfileCard .bg-images.no-cover-upload{height:110px;}
 .keyskill_border_active{border: 1px solid red !important; border-radius: 2px;}
-
+.keyskil{width:93% !important;} 
 /***  new structure main page  ***/
 .left_side_posrt {
     width: 320px;
@@ -2134,9 +2139,16 @@ label.cameraButton input[accept*="camera"] {
 
 
 /***  end new structure  ***/
+/***  add css  ***/
 .tablate-add{display:none;}
 .tablate-potrat-add{display:none;}
 .mob-add{display:none;}
+/*** end add css  ***/
+.img_remove img{display: none!important;}
+#work6 {display: block;}
+#gra1 {display: block;}
+ 
+
 
 /***  media query  ***/
 
