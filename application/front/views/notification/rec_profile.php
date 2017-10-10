@@ -106,7 +106,6 @@ body {
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
 <!--<link rel="stylesheet" href="<?php// echo base_url('assets/css/bootstrap-3.min.css'); ?>">-->
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 
 
 <style type="text/css" media="screen">
@@ -700,9 +699,7 @@ function text2link($text){
    
     
     
-       <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+       
 <script>
 
 var data= <?php echo json_encode($demo); ?>;

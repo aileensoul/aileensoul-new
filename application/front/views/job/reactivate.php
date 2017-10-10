@@ -7,7 +7,6 @@
    <head>
       <meta charset="utf-8">
       <title>Reactivate</title>  
-      <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time());?>" />
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()); ?>">
 	   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>

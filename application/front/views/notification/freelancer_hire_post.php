@@ -104,9 +104,6 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
 
 
 <!--post save success pop up style end -->

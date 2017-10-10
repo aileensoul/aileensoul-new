@@ -4,11 +4,8 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
 
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
 <!--   <script type="text/javascript" language="javascript">
                                             var aax_size = '300x250';
                                             var aax_pubname = 'aileensoul-21';

@@ -134,10 +134,7 @@ echo $head;
 <!--post save success pop up style end -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-<!--<link rel="stylesheet" href="<?php// echo base_url('assets/css/bootstrap-3.min.css'); ?>">-->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+
 
 <style type="text/css" media="screen">
     #row2 { overflow: hidden; width: 100%; }
@@ -594,9 +591,7 @@ echo $head;
 
 
             <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-<!--            <link rel="stylesheet" href="<?php //echo base_url('assets/css/croppie.css'); ?>">
 
-            <link rel="stylesheet" href="<?php //echo base_url() ?>css/bootstrap.min.css" />-->
             <script>
 
                     var data = <?php echo json_encode($demo); ?>;
