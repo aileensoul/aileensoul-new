@@ -55,106 +55,135 @@
                                                             ?>
                                                             <li>
                                                             <td class="vidoe_tag">
-                                                                <video poster="" preload="none" controls playsinline webkit-playsinline>
-                                                                    <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4">
-                                                                    <source src="movie.ogg" type="video/ogg">
-                                                                    Your browser does not support the video tag.
-                                                                </video>
-                                                            </td>
-                                                            </li>
-                                                            <?php
-                                                        }
-                                                    } else {
-                                                        ?>
-                                                        <div class="art_no_pva_avl">
-                                                            <div class="art_no_post_img">
-                                                                <img src="<?php echo base_url('images/010.png'); ?>"  >
-                                                            </div>
-                                                            <div class="art_no_post_text1">
-                                                                No video Available.
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="profile">Profile Tab.</div>
-                                <div class="tab-pane" id="messages">Messages Tab.</div>
-                                <div class="tab-pane" id="settings">Settings Tab.</div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                                                                <?php
+                                                                $post_poster = $videov['file_name'];
+                                                                $post_poster1 = explode('.', $post_poster);
+                                                                $post_poster2 = end($post_poster1);
+                                                                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                                                                if (IMAGEPATHFROM == 'upload') {
+                                                                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                                                                        ?>
+                                                                        <video preload="none" poster="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $post_poster); ?>" controls playsinline webkit-playsinline>
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
+                                                                            <video preload="none" controls playsinline webkit-playsinline>
+                                                                                <?php
+                                                                            }
+                                                                        } else {
+                                                                            $filename = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                                                                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                            if ($info) {
+                                                                                ?>
+                                                                                <video preload="none" poster="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $post_poster); ?>" controls playsinline webkit-playsinline>
+                                                                                    <?php
+                                                                                } else {
+                                                                                    ?>
+                                                                                    <video preload="none" controls playsinline webkit-playsinline>
+                                                                                        <?php
+                                                                                    }
+                                                                                }
+                                                                                ?>
+                                                                                <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4">
+                                                                                <source src="movie.ogg" type="video/ogg">
+                                                                                Your browser does not support the video tag.
+                                                                            </video>
+                                                                            </td>
+                                                                            </li>
+                                                                            <?php
+                                                                        }
+                                                                    } else {
+                                                                        ?>
+                                                                        <div class="art_no_pva_avl">
+                                                                            <div class="art_no_post_img">
+                                                                                <img src="<?php echo base_url('images/010.png'); ?>"  >
+                                                                            </div>
+                                                                            <div class="art_no_post_text1">
+                                                                                No video Available.
+                                                                            </div>
+                                                                        </div>
+                                                                    <?php } ?>
+                                                                    </ul>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="tab-pane" id="profile">Profile Tab.</div>
+                                                                    <div class="tab-pane" id="messages">Messages Tab.</div>
+                                                                    <div class="tab-pane" id="settings">Settings Tab.</div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </section>
 
 
-        <!-- Bid-modal for this modal appear or not start -->
-        <div class="modal fade message-box" id="query" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" id="query" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <span class="mes">
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bid-modal for this modal appear or not  Popup Close -->
+                                                                    <!-- Bid-modal for this modal appear or not start -->
+                                                                    <div class="modal fade message-box" id="query" role="dialog">
+                                                                        <div class="modal-dialog modal-lm">
+                                                                            <div class="modal-content">
+                                                                                <button type="button" class="modal-close" id="query" data-dismiss="modal">&times;</button>       
+                                                                                <div class="modal-body">
+                                                                                    <span class="mes">
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Bid-modal for this modal appear or not  Popup Close -->
 
 
-        <!-- Bid-modal  -->
-        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                       <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
-                        <span class="mes"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Model Popup Close -->
-        <!-- Bid-modal-2  -->
-        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-            <div class="modal-dialog modal-lm" style="z-index: 9999;">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <span class="mes">
-                            <div id="popup-form">
-                                <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                <input type="hidden" name="hitext" id="hitext" value="10">
-                                <div class="popup_previred">
-                                    <img id="preview" src="#" alt="your image""/>
-                                </div>
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                <?php echo form_close(); ?>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Model Popup Close -->
-        <?php echo $footer; ?>
-        <!--<script src="<?php //echo base_url('js/jquery.jMosaic.js?ver='.time());  ?>"></script>-->
-        <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-        <script>
-            var base_url = '<?php echo base_url(); ?>';
-        </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/videos.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-    </body>
-</html>
+                                                                    <!-- Bid-modal  -->
+                                                                    <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+                                                                        <div class="modal-dialog modal-lm">
+                                                                            <div class="modal-content">
+                                                                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                                                                                <div class="modal-body">
+                                                                                   <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                                                                                    <span class="mes"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Model Popup Close -->
+                                                                    <!-- Bid-modal-2  -->
+                                                                    <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+                                                                        <div class="modal-dialog modal-lm" style="z-index: 9999;">
+                                                                            <div class="modal-content">
+                                                                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                                                                                <div class="modal-body">
+                                                                                    <span class="mes">
+                                                                                        <div id="popup-form">
+                                                                                            <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                                                                            <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+                                                                                            <input type="hidden" name="hitext" id="hitext" value="10">
+                                                                                            <div class="popup_previred">
+                                                                                                <img id="preview" src="#" alt="your image""/>
+                                                                                            </div>
+                                                                                            <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                                                                            <?php echo form_close(); ?>
+                                                                                        </div>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Model Popup Close -->
+                                                                    <?php echo $footer; ?>
+                                                                    <!--<script src="<?php //echo base_url('js/jquery.jMosaic.js?ver='.time());       ?>"></script>-->
+                                                                    <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
+                                                                    <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+                                                                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+                                                                    <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+                                                                    <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+                                                                    <script>
+                                                                        var base_url = '<?php echo base_url(); ?>';
+                                                                    </script>
+                                                                    <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/videos.js?ver=' . time()); ?>"></script>
+                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+                                                                    </body>
+                                                                    </html>
 
