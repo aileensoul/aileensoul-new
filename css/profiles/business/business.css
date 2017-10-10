@@ -4324,6 +4324,7 @@ div .comment {
 .video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
 .video li .mejs__container.mejs__video .mejs__overlay{width:100% !important; height:100% !important;}
 .video li .mejs__container.mejs__video .mejs__mediaelement video{width:100% !important; height:100% !important;}
+.video .mejs__poster{width:100% !important; height:100% !important; background-size:100% !important;}
 /*** end video css  ***/
 
 

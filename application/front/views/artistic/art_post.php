@@ -139,17 +139,17 @@
     </div> 
 	<div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" >
      
-					<!--div class="fw text-center">
+					<div class="fw text-center">
                         <script type="text/javascript" language="javascript">
 						  var aax_size='300x250';
 						  var aax_pubname = 'aileensoul-21';
 						  var aax_src='302';
 						</script>
 						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-					</div-->
-					<div class="fw pt20" style="text-align:center;">
-						<SCRIPT charset="utf-8" type="text/javascript" src="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Faileensoul-21%2F8001%2Fbc68b7d5-0dda-4c16-9b54-d825604a91dc"> </SCRIPT> <NOSCRIPT><A rel="nofollow" HREF="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Faileensoul-21%2F8001%2Fbc68b7d5-0dda-4c16-9b54-d825604a91dc&Operation=NoScript">Amazon.in Widgets</A></NOSCRIPT>
 					</div>
+					<!--div class="fw pt20" style="text-align:center;">
+						<SCRIPT charset="utf-8" type="text/javascript" src="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Faileensoul-21%2F8001%2Fbc68b7d5-0dda-4c16-9b54-d825604a91dc"> </SCRIPT> <NOSCRIPT><A rel="nofollow" HREF="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Faileensoul-21%2F8001%2Fbc68b7d5-0dda-4c16-9b54-d825604a91dc&Operation=NoScript">Amazon.in Widgets</A></NOSCRIPT>
+					</div-->
 					
      
       </div>
