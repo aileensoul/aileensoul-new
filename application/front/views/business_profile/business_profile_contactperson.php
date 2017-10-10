@@ -80,7 +80,6 @@
         </footer>
     </body>
 </html>
-<script src="<?php echo base_url('js/fb_login.js?ver=' . time()); ?>"></script>
 <!-- script for business autofill -->
 
 <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>

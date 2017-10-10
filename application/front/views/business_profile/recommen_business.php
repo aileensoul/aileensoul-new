@@ -4,13 +4,11 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
         <link href="<?php echo base_url('css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url('js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
         <script src="<?php echo base_url('js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
