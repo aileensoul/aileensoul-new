@@ -3,8 +3,6 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" href=<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed">

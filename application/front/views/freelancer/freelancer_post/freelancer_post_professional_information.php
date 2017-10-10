@@ -9,8 +9,6 @@
             }
             #tin-error{position: relative;}
         </style>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver=' . time()) ?>" />
 
@@ -217,6 +215,7 @@
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
 <!--                    <div class="message" style="width:300px;">-->
                         <h2>Add Field</h2>         
                         <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
