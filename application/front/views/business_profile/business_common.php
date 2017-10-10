@@ -94,8 +94,7 @@
                                 }
                             } else {
                                 $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'];
-                                //$this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                $info == 1;
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if (!$info) {
                                     ?>
                                     <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >

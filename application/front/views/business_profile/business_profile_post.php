@@ -330,7 +330,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <!--<script src="<?php // echo base_url('js/jquery.wallform.js?ver=' . time());      ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/jquery.wallform.js?ver=' . time());        ?>"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
         <!-- POST BOX JAVASCRIPT START --> 
@@ -339,8 +339,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
@@ -348,5 +346,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/home.js?ver=' . time()); ?>"></script>
-    </body>
+        <script>
+                                $.(document).ready(function(){
+                <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+
+        });
+    </script>
+</body>
 </html>

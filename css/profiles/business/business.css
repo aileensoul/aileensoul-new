@@ -4314,10 +4314,20 @@ div .comment {
 .user_btn .contact_user_list{width:130px; margin-bottom:0; margin-right:0;}
 .profile-job-post-location-name .user_lst ul li .user_btn{padding-top:7px;}
 #followdiv button{margin-right:0;}
-
+/*** add post  ***/
 .tablate-add{display:none;}
 .tablate-potrat-add{display:none;}
 .mob-add{display:none;}
+/***  end add  ***/
+
+/*** video css  ***/
+.video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
+.video li .mejs__container.mejs__video .mejs__overlay{width:100% !important; height:100% !important;}
+.video li .mejs__container.mejs__video .mejs__mediaelement video{width:100% !important; height:100% !important;}
+.video .mejs__poster{width:100% !important; height:100% !important; background-size:100% !important;}
+/*** end video css  ***/
+
+
 
 
 /***  media query  ***/

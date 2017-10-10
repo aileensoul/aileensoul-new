@@ -3977,14 +3977,22 @@ div .comment {
 
 .post-design-desc .text_num{top:7px;}
 .all-comment-comment-box .editable_text{margin-left:10px;}
-.all-comment-comment-box .inputtype-edit-comment	.editable_text{margin-left: 10px !important;
+.all-comment-comment-box .inputtype-edit-comment .editable_text{margin-left: 10px !important;
     margin-top: 0 !important;
     min-height: 37px !important;
     width: 81%;}
 	
+/*** add post  ***/
 .tablate-add{display:none;}
 .tablate-potrat-add{display:none;}
 .mob-add{display:none;}
+/***  end add  ***/
+
+/*** video css  ***/
+.video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
+.video li .mejs__container.mejs__video .mejs__overlay{width:100% !important; height:100% !important;}
+.video li .mejs__container.mejs__video .mejs__mediaelement video{width:100% !important; height:100% !important;}
+/*** end video css  ***/
 
 
 
