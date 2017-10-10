@@ -6,13 +6,8 @@
             <?php echo $title; ?>
         </title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
-        <!-- This Css is used for call popup start -->
-        <link rel="stylesheet" href=<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?> /> 
-        <!--call popup end-->
-        <!-- Calender Css Start-->
+        
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver=' . time()); ?>">
-        <!-- Calender Css End-->
         <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver=' . time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
     </head>
