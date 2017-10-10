@@ -1071,6 +1071,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     padding: 0px 0px 0px 0px !important;
     overflow: hidden!important;
     border-radius: 3px;
+	height: 350px;
 }
 #addcontactBody ul,
 #addcontactBody li {
@@ -1144,6 +1145,12 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 .addcontact-text span {
     color: #404040;
     font-size: 13px;
+	display: block;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
 }
 #addcontactBody li:hover {
     background-color: #e9f4f8;
@@ -1217,6 +1224,9 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 }
 .addcontact-left a {
     padding-left: 0px !important;
+}
+.addcontact-right a:hover, .addcontact-right a:focus {
+    background: none !important;
 }
 .contct-no li {
     border-bottom: none !important;
@@ -1582,6 +1592,10 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 }
 header.animated {
     z-index: 9;
+}
+.ani{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
 }
 .cover .fancybox-slide > * {
     padding: 0 !important;
@@ -1965,8 +1979,18 @@ footer {
 .em-blush {
     background-image: url("../../../img/blush.png")
 }
-/***  end emoji   ***/
 
+.highlight {
+
+    display: inline-block;
+   border-radius: .125em;
+    
+}
+.h_w{height: 100%;}
+/***  end emoji   ***/
+ div.panel {
+        display: none;
+    }
 
 /***  media query  ***/
 
