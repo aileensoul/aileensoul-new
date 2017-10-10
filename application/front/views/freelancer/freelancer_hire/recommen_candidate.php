@@ -134,7 +134,7 @@
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
                                     <div class="contact-frnd-post">
-										<div class="mob-add">
+<!--										<div class="mob-add">
 								<div class="fw text-center pt10 pb5">
 									<script type="text/javascript" language="javascript">
 									  var aax_size='300x250';
@@ -143,7 +143,7 @@
 									</script>
 									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 									</div>
-							</div>
+							</div>-->
                                         <div class="job-contact-frnd">
                                             <!--AJAX DATA...........-->
 
