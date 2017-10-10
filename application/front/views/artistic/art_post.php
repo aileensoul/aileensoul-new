@@ -18,7 +18,7 @@
    <?php echo $header; ?>
    <?php echo $art_header2_border; ?>
       <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
-      <div class="container art_container">
+      <div class="container art_container padding-360">
       <div class="">
       <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
       <div class="left_fixed"> 
@@ -36,6 +36,16 @@
              
             </div>
          </div>
+		 <div class="tablate-potrat-add">
+									<div class="fw text-center pt10">
+									<script type="text/javascript" language="javascript">
+									  var aax_size='300x250';
+									  var aax_pubname = 'aileensoul-21';
+									  var aax_src='302';
+									</script>
+									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+									</div>
+								</div>
 
          <div class="custom_footer_left fw">
           <div class="fl">
@@ -71,17 +81,22 @@
                      $userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                      $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                      ?>
-                     <?php if($artisticdata[0]['art_user_image']){?>
                       <?php 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
-                                                                 <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                if ($info) { ?>
+
+                                <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+
+                                 
                                                                 <?php
                                                             } else { ?>
-<img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
-                  <?php }?>
-                  <?php }else{ ?>
-                     <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                  <?php }?>
+                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                        <?php }?>
+                 
                 </a>
                </div>
                <div id="myBtn"  class="editor-content popup-text">
@@ -101,6 +116,16 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                 </div>
          </div>
                              <div class="art-all-post">
+								<div class="mob-add">
+										<div class="fw text-center pt10 pb5">
+											<script type="text/javascript" language="javascript">
+											  var aax_size='300x250';
+											  var aax_pubname = 'aileensoul-21';
+											  var aax_src='302';
+											</script>
+											<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+										</div>
+									</div>
                             
                              </div>
                               <div class="nofoundpost"> 
@@ -122,8 +147,19 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 						</script>
 						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 					</div>
+					
      
       </div>
+	  <div class="tablate-add">
+					
+							<script type="text/javascript" language="javascript">
+							  var aax_size='160x600';
+							  var aax_pubname = 'aileensoul-21';
+							  var aax_src='302';
+							</script>
+							<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+						</div>
+
   <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
                         <div class="modal-dialog modal-lm deactive">
@@ -195,17 +231,21 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                   <?php echo form_open_multipart(base_url('artistic/art_post_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
                   <div class="main-text-area " >
                      <div class="popup-img-in "> 
-                     <?php if($artisticdata[0]['art_user_image']){?>
+                    
                    <?php 
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
-                                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                                                <?php
+
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                      if ($info) { ?>
+                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                         <?php
                                                             } else { ?>
-                     <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                      <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                      <?php }?>
-                     <?php }else{?>
-                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                     <?php }?>
+                     
                      </div>
                      <div id="myBtn"  class="editor-content col-md-10 popup-text" >
                         <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onKeyup=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>

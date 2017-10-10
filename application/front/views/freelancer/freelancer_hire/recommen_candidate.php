@@ -134,7 +134,7 @@
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
                                     <div class="contact-frnd-post">
-										<div class="mob-add">
+<!--										<div class="mob-add">
 								<div class="fw text-center pt10 pb5">
 									<script type="text/javascript" language="javascript">
 									  var aax_size='300x250';
@@ -143,7 +143,7 @@
 									</script>
 									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 									</div>
-							</div>
+							</div>-->
                                         <div class="job-contact-frnd">
                                             <!--AJAX DATA...........-->
 
@@ -161,12 +161,15 @@
 						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 					
 						<div class="fw text-center">
-                        <script type="text/javascript" language="javascript">
-						  var aax_size='300x250';
-						  var aax_pubname = 'aileensoul-21';
-						  var aax_src='302';
-						</script>
-						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+							<script type="text/javascript" language="javascript">
+							  var aax_size='300x250';
+							  var aax_pubname = 'aileensoul-21';
+							  var aax_src='302';
+							</script>
+							<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+						</div>
+						<div class="fw pt20" style="text-align:center;">
+							<a target="_blank"  href="https://www.amazon.in/gp/product/B01J2J5AJK/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=B01J2J5AJK&linkCode=as2&tag=aileensoul-21&linkId=20545e667d8508dfeeec485f8ac5d518"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=B01J2J5AJK&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=B01J2J5AJK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
 						</div>
                     </div>
 					<div class="tablate-add">

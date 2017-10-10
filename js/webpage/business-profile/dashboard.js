@@ -1646,13 +1646,13 @@ $('body').on('touchstart', function (e) {
 
 // This  script use for close dropdown in every post 
 
-$(document).ready(function () {
+/*$(document).ready(function () {
     $('.video').mediaelementplayer({
         alwaysShowControls: false,
         videoVolume: 'horizontal',
         features: ['playpause', 'progress', 'volume', 'fullscreen']
     });
-});
+});*/
 $(document).keydown(function (e) {
     if (!e)
         e = window.event;

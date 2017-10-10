@@ -26,6 +26,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function index() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => '0');
@@ -66,6 +67,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function ajax_data() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 //dependentacy industrial and sub industriyal start
         if (isset($_POST["industry_id"]) && !empty($_POST["industry_id"])) {
 //Get all state data
@@ -124,6 +126,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_edit_profile() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
 
@@ -158,6 +161,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_information_update() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -197,6 +201,7 @@ class Business_profile extends MY_Controller {
 
 //business automatic retrieve controller start
     public function business() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $json = [];
 
         if (!empty($this->input->get("q"))) {
@@ -241,7 +246,7 @@ class Business_profile extends MY_Controller {
 // BUSINESS PROFILE SLUG END
 
     public function business_information_insert() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
 //        $this->business_profile_active_check();
@@ -341,7 +346,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function contact_information() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -367,6 +372,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function contact_information_insert() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
 
@@ -436,6 +442,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function check_email() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $email = $this->input->post('email');
         $userid = $this->session->userdata('aileenuser');
 
@@ -461,7 +468,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function description() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -495,7 +502,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function description_insert() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -578,7 +585,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function image() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -602,7 +609,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function image_insert() {
-
+$s3 = new S3(awsAccessKey, awsSecretKey);
         $userdata = $this->session->userdata();
         $userid = $this->session->userdata('aileenuser');
 
@@ -843,6 +850,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function addmore() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -863,6 +871,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function addmore_insert() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -884,6 +893,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_post() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -927,6 +937,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_manage_post($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['slugid'] = $id;
 
 // manage post start
@@ -991,6 +1002,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_deletepost() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST["business_profile_post_id"];
         $data = array(
             'is_delete' => 1,
@@ -1024,6 +1036,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_deleteforpost() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -1180,6 +1193,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_addpost() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -1193,6 +1207,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_addpost_insert($id = "", $para = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -1290,14 +1305,22 @@ class Business_profile extends MY_Controller {
 //                  $this->upload->do_upload();
 
                     $imgdata = $this->upload->data();
+
                     if ($this->upload->do_upload('postattach')) {
                         $upload_data = $response['result'][] = $this->upload->data();
-                        
-                        if($file_type == 'video'){
-                            exec("ffmpeg -ss 00:00:05 -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".png"); 
+
+                        if ($file_type == 'video') {
+                            $uploaded_url = base_url() . $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
+//                            echo '<br>';
+//                            echo $upload_data['file_path'] . $upload_data['raw_name'] . "1" . $upload_data['file_ext'];
+//                            exec("ffmpeg -i 'http://35.165.1.109:81/uploads/ffmpeg/not_working.mp4' -vcodec h264 -acodec aac -strict -2 /var/www/html/aileensouldesigner/uploads/ffmpeg/chek_vv.mp4");
+//                              exec("ffmpeg -i 'http://35.165.1.109:81/uploads/business_post/main/file_1507550255_NyKva.mp4' -vcodec h264 -acodec aac -strict -2 /var/www/html/aileensouldesigner/uploads/business_post/main/file_KA.mp4");
+                            exec("ffmpeg -i " . $uploaded_url . " -vcodec h264 -acodec aac -strict -2 " . $upload_data['file_path'] . $upload_data['raw_name'] . "1" . $upload_data['file_ext'] . "");
+                            exec("ffmpeg -ss 00:00:05 -i " . $upload_data['full_path'] . " " . $upload_data['file_path'] . $upload_data['raw_name'] . "1" . ".png");
+                            $fileName = $response['result'][$i]['file_name'] = $upload_data['raw_name'] . "1" . $upload_data['file_ext'];
+                            unlink($this->config->item('bus_post_main_upload_path') . $upload_data['raw_name'] . "" . $upload_data['file_ext']);
                         }
-                        
-                        
+
                         $main_image_size = $_FILES['postattach']['size'];
 
                         if ($main_image_size > '1000000') {
@@ -1328,6 +1351,14 @@ class Business_profile extends MY_Controller {
 
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
                         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+                        $post_poster = $response['result'][$i]['file_name'];
+                        $post_poster1 = explode('.', $post_poster);
+                        $post_poster2 = end($post_poster1);
+                        $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                        $main_image1 = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $abc = $s3->putObjectFile($main_image1, bucket, $main_image1, S3::ACL_PUBLIC_READ);
 
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
@@ -1791,12 +1822,22 @@ class Business_profile extends MY_Controller {
 
             if ($posted_business_user_image) {
                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
-                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    } else {
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                    }
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    } else {
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                    }
                 }
+
                 $return_html .= '</a>';
             } else {
                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
@@ -1806,10 +1847,20 @@ class Business_profile extends MY_Controller {
         } else {
             if ($post_business_user_image) {
                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
-                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                    } else {
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                    }
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                    } else {
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                    }
                 }
                 $return_html .= '</a>';
             } else {
@@ -1991,14 +2042,38 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </a>
 </div>';
             } elseif (in_array($ext, $allowesvideo)) {
+                $post_poster = $businessmultiimage[0]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
 
-                $return_html .= '<div>
-<video width = "100%" height = "350" controls>
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
-Your browser does not support the video tag.
-</video>
-</div>';
+                if (IMAGEPATHFROM == 'upload') {
+                    $return_html .= '<div>';
+                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $return_html .= '<video width = "100%" height = "350" controls>';
+                    }
+                    $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                    $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                    $return_html .= 'Your browser does not support the video tag.';
+                    $return_html .= '</video>';
+                    $return_html .= '</div>';
+                } else {
+                    $filename = BUS_POST_MAIN_UPLOAD_URL . $post_poster;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    $return_html .= '<div>';
+                    if ($info) {
+                        $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $return_html .= '<video width = "100%" height = "350" controls>';
+                    }
+                    $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                    $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                    $return_html .= 'Your browser does not support the video tag.';
+                    $return_html .= '</video>';
+                    $return_html .= '</div>';
+                }
             } elseif (in_array($ext, $allowesaudio)) {
 
                 $return_html .= '<div class = "audio_main_div">
@@ -2243,12 +2318,20 @@ Your browser does not support the audio tag.
 
                 if ($business_userimage) {
                     $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        } else {
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        }
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        } else {
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        }
                     }
                     $return_html .= '</a>';
                 } else {
@@ -2362,17 +2445,22 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
         $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
         if ($business_userimage) {
-
-            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+            if (IMAGEPATHFROM == 'upload') {
+                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                } else {
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                }
             } else {
-                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                if (!$info) {
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                } else {
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                }
             }
         } else {
-
-
             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
         }
         $return_html .= '</div>
@@ -2400,6 +2488,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_profile_editpost($id) {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $this->business_profile_active_check();
         $this->is_business_profile_register();
@@ -2411,6 +2500,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_profile_editpost_insert($id) {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $this->business_profile_active_check();
         $this->is_business_profile_register();
@@ -2496,7 +2586,7 @@ Your browser does not support the audio tag.
 
 
     public function business_profile_contactperson($id) {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
         $this->is_business_profile_register();
@@ -2511,6 +2601,7 @@ Your browser does not support the audio tag.
 //business_profile_contactperson _query
 
     public function business_profile_contactperson_query($id) {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -2579,6 +2670,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_profile_save_post() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -2603,6 +2695,7 @@ Your browser does not support the audio tag.
     }
 
     public function user_image_insert() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -2761,6 +2854,7 @@ Your browser does not support the audio tag.
     }
 
     public function user_image_insert_new() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -2863,6 +2957,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_resume($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['slugid'] = $id;
         $userid = $this->session->userdata('aileenuser');
         if ($userid) {
@@ -2966,6 +3061,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_user_post($id) {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $this->data['userid'] = $id;
         $userid = $this->session->userdata('aileenuser');
@@ -2984,6 +3080,7 @@ Your browser does not support the audio tag.
 
 //Business Profile Save Post Start
     public function business_profile_save() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $id = $_POST['business_profile_post_id'];
         $userid = $this->session->userdata('aileenuser');
@@ -3027,6 +3124,7 @@ Your browser does not support the audio tag.
 //Business Profile Save Post End
 //Business Profile Remove Save Post Start
     public function business_profile_delete($id) {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $id = $_POST['save_id'];
         $userid = $this->session->userdata('aileenuser');
@@ -3042,6 +3140,7 @@ Your browser does not support the audio tag.
 //Business Profile Remove Save Post Start
 //location automatic retrieve controller start
     public function location() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $json = [];
 
         $this->load->database('aileensoul');
@@ -3063,6 +3162,7 @@ Your browser does not support the audio tag.
 // user list of artistic users
 
     public function userlist($id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         $compnay_name = $this->get_company_name($id);
@@ -3072,7 +3172,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_userlist() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -3138,11 +3238,20 @@ Your browser does not support the audio tag.
                                                                         <div class="follow-img">';
             if ($user['business_user_image'] != '') {
                 $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $user['business_slug']) . '">';
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image'])) {
-                    $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image'])) {
+                        $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                    }
                 } else {
-
-                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image'];
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                    }
                 }
                 $return_html .= '</a>';
             } else {
@@ -3194,6 +3303,7 @@ Your browser does not support the audio tag.
     }
 
     public function follow() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -3359,6 +3469,7 @@ Your browser does not support the audio tag.
     }
 
     public function unfollow() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
 //if user deactive profile then redirect to business_profile/index untill active profile start
@@ -3417,6 +3528,7 @@ Your browser does not support the audio tag.
     }
 
     public function home_three_follow() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -3523,6 +3635,7 @@ Your browser does not support the audio tag.
     }
 
     public function third_follow_user_data() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -3571,10 +3684,20 @@ Your browser does not support the audio tag.
       <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
                         $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         } else {
-                            $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         }
                         $third_user_html .= '</a>';
                     } else {
@@ -3613,6 +3736,7 @@ Your browser does not support the audio tag.
     }
 
     public function third_follow_ignore_user_data() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -3661,10 +3785,20 @@ Your browser does not support the audio tag.
       <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
                         $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         } else {
-                            $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         }
                         $third_user_html .= '</a>';
                     } else {
@@ -3703,6 +3837,7 @@ Your browser does not support the audio tag.
     }
 
     public function follow_two() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         //if user deactive profile then redirect to business_profile/index untill active profile start
@@ -3817,6 +3952,7 @@ Your browser does not support the audio tag.
     }
 
     public function unfollow_two() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
@@ -3861,6 +3997,7 @@ Your browser does not support the audio tag.
     }
 
     public function unfollow_following() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $business_id = $_POST["follow_to"];
@@ -3911,6 +4048,7 @@ Your browser does not support the audio tag.
     }
 
     public function followers($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['slug_id'] = $id;
 
         $this->business_profile_active_check();
@@ -3926,6 +4064,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_followers($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $perpage = 5;
         $page = 1;
@@ -3998,11 +4137,22 @@ Your browser does not support the audio tag.
 
                 if ($followerimage != '') {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $followerslug) . '">';
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
-                        $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="No Image">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
+                            $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="No Image">';
+                        } else {
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
+                        }
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $followerimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="No Image">';
+                        } else {
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
+                        }
                     }
+
                     $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $followerslug) . '">
@@ -4073,6 +4223,7 @@ Your browser does not support the audio tag.
     }
 
     public function following($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['slug_id'] = $id;
 
         $this->business_profile_active_check();
@@ -4089,6 +4240,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_following($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $perpage = 5;
         $page = 1;
@@ -4160,11 +4312,20 @@ Your browser does not support the audio tag.
                 if ($this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image != '') {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '" title="' . $companyname . '">';
                     $uimage = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image;
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
-
-                        $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
+                            $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
+                        }
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $uimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
+                        }
                     }
                     $return_html .= '</a>';
                 } else {
@@ -4254,6 +4415,7 @@ Your browser does not support the audio tag.
 // end of user list
 //deactivate user start
     public function deactivate() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $id = $_POST['id'];
 
@@ -4267,6 +4429,7 @@ Your browser does not support the audio tag.
 // deactivate user end
 
     public function image_upload_ajax() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         session_start();
         $session_uid = $this->session->userdata('aileenuser');
@@ -4325,7 +4488,7 @@ Your browser does not support the audio tag.
     }
 
     public function image_saveBG_ajax() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         session_start();
         $session_uid = $this->session->userdata('aileenuser');
 
@@ -4360,14 +4523,14 @@ Your browser does not support the audio tag.
 // create pdf start
 
     public function creat_pdf1($id) {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->load->view('business_profile/business_pdfdispaly', $this->data);
     }
 
     public function creat_pdf($id) {
-
+$s3 = new S3(awsAccessKey, awsSecretKey);
         $contition_array = array('post_files_id' => $id, 'is_deleted' => '1');
         $this->data['busdata'] = $this->common->select_data_by_condition('post_files', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo "<pre>"; print_r($this->data['artdata']); die();
@@ -4378,6 +4541,7 @@ Your browser does not support the audio tag.
 // cover pic controller
 
     public function ajaxpro() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
 // REMOVE OLD IMAGE FROM FOLDER
@@ -4481,6 +4645,7 @@ Your browser does not support the audio tag.
     }
 
     public function imagedata() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $config['upload_path'] = $this->config->item('bus_bg_original_upload_path');
@@ -4519,7 +4684,7 @@ Your browser does not support the audio tag.
 // busienss_profile like comment ajax start
 
     public function like_comment() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
@@ -4642,7 +4807,7 @@ Your browser does not support the audio tag.
     }
 
     public function like_comment1() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
@@ -4764,6 +4929,7 @@ Your browser does not support the audio tag.
 // Business_profile comment like end 
 //Business_profile comment delete start
     public function delete_comment() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
@@ -4926,6 +5092,7 @@ Your browser does not support the audio tag.
 //second page manage in manage post for function start
 
     public function delete_commenttwo() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
@@ -4950,14 +5117,22 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 if ($business_userimage != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     }
+
 
                     $cmtinsert .= '</div>';
                 } else {
@@ -5074,7 +5249,8 @@ Your browser does not support the audio tag.
 //Business_profile comment delete end     
 // Business_profile post like start
 
-    public function like_post() {
+    public function like_post() {   
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -5299,6 +5475,7 @@ Your browser does not support the audio tag.
 //business_profile comment insert start
 
     public function insert_commentthree() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -5353,19 +5530,23 @@ Your browser does not support the audio tag.
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
-
                 $cmtinsert .= '</div>';
             } else {
-
-
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
@@ -5462,7 +5643,7 @@ Your browser does not support the audio tag.
     }
 
     public function insert_comment() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST["post_id"];
         $post_comment = $_POST["comment"];
@@ -5514,16 +5695,21 @@ Your browser does not support the audio tag.
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage) {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
-
                 $cmtinsert .= '</div>';
             } else {
 
@@ -5642,7 +5828,7 @@ Your browser does not support the audio tag.
 //business_profile comment insert end  
 //business_profile comment edit start
     public function edit_comment_insert() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST["post_id"];
         $post_comment = $_POST["comment"];
@@ -5670,6 +5856,7 @@ Your browser does not support the audio tag.
 // click on post after post open on new page start
 
     public function postnewpage($slug_id = '', $id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -5694,7 +5881,7 @@ Your browser does not support the audio tag.
 //edit post start
 
     public function edit_post_insert() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST["business_profile_post_id"];
         $business_post = $_POST["product_name"];
@@ -5738,7 +5925,7 @@ Your browser does not support the audio tag.
 //reactivate account start
 
     public function reactivate() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $data = array(
             'status' => 1,
@@ -5757,6 +5944,7 @@ Your browser does not support the audio tag.
 //reactivate accont end    
 //delete post particular user start
     public function del_particular_userpost() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST['business_profile_post_id'];
@@ -5898,6 +6086,7 @@ Your browser does not support the audio tag.
 
 
     public function business_photos($id) {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -5947,6 +6136,7 @@ Your browser does not support the audio tag.
 
 
     public function business_videos($id) {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
         $this->is_business_profile_register();
@@ -5982,7 +6172,7 @@ Your browser does not support the audio tag.
 
 
     public function business_audios($id) {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
@@ -6019,7 +6209,7 @@ Your browser does not support the audio tag.
 
 
     public function business_pdf($id) {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
         $this->is_business_profile_register();
@@ -6053,6 +6243,7 @@ Your browser does not support the audio tag.
 //multiple pdf for manage user end 
 //multiple images like start
     public function mulimg_like() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $post_image = $_POST['post_image_id'];
         $userid = $this->session->userdata('aileenuser');
 
@@ -6339,7 +6530,7 @@ Your browser does not support the audio tag.
 //multiple images comment strat
 
     public function mulimg_commentthree() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_image_id = $_POST["post_image_id"];
@@ -6393,20 +6584,23 @@ Your browser does not support the audio tag.
 
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
-
                 $cmtinsert .= '</div>';
             } else {
-
-
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
@@ -6497,7 +6691,7 @@ Your browser does not support the audio tag.
     }
 
     public function mulimg_comment() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_image_id = $_POST["post_image_id"];
@@ -6551,19 +6745,23 @@ Your browser does not support the audio tag.
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
                 $cmtinsert .= '</div>';
             } else {
-
-
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
             $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
@@ -6653,7 +6851,7 @@ Your browser does not support the audio tag.
     }
 
     public function pnmulimg_comment() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_image_id = $_POST["post_image_id"];
@@ -6711,16 +6909,21 @@ Your browser does not support the audio tag.
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
-
                 $cmtinsert .= '</div>';
             } else {
 
@@ -6828,7 +7031,7 @@ Your browser does not support the audio tag.
     }
 
     public function pnmulimgcommentthree() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
@@ -6884,19 +7087,23 @@ Your browser does not support the audio tag.
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
-
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
                 $cmtinsert .= '</div>';
             } else {
-
-
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
@@ -7010,7 +7217,7 @@ Your browser does not support the audio tag.
 //multiple images comment end 
 //multiple images comment like start
     public function mulimg_comment_like() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $post_image_comment_id = $_POST["post_image_comment_id"];
 
@@ -7176,7 +7383,7 @@ Your browser does not support the audio tag.
     }
 
     public function mulimg_comment_liketwo() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_image_comment_id = $_POST["post_image_comment_id"];
@@ -7361,6 +7568,7 @@ Your browser does not support the audio tag.
 //multiple images comemnt like end
 //multiple images comment edit start
     public function mul_edit_com_insert() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_image_comment_id = $_POST["post_image_comment_id"];
@@ -7387,6 +7595,7 @@ Your browser does not support the audio tag.
 //multiple images comment edit end
 //multiple images commnet delete start
     public function mul_delete_comment() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_image_comment_id = $_POST["post_image_comment_id"];
@@ -7418,15 +7627,22 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 if ($business_userimage != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     } else {
-
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     }
+
                     $cmtinsert .= '</div>';
                 } else {
 
@@ -7549,6 +7765,7 @@ Your browser does not support the audio tag.
     }
 
     public function mul_delete_commenttwo() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_image_comment_id = $_POST["post_image_comment_id"];
@@ -7575,18 +7792,23 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 if ($business_userimage != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     }
                     $cmtinsert .= '</div>';
                 } else {
-
-
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $cmtinsert .= '</div>';
                 }
@@ -7714,7 +7936,7 @@ Your browser does not support the audio tag.
 //mulitple images commnet delete end  
 
     public function fourcomment($postid = '') {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST['bus_post_id'];
@@ -7737,17 +7959,22 @@ Your browser does not support the audio tag.
                 $busienss_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
 
                 if ($busienss_userimage) {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
-
-
-                        $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
+                            $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        }
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        }
                     }
                 } else {
-
-
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
@@ -7847,7 +8074,7 @@ Your browser does not support the audio tag.
     }
 
     public function mulfourcomment($postid) {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST['bus_post_id'];
@@ -7871,17 +8098,23 @@ Your browser does not support the audio tag.
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
 
                 if ($business_userimage != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-                        $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        }
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        }
                     }
                     $fourdata .= '</div>';
                 } else {
-
-
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $fourdata .= '</div>';
                 }
@@ -7972,7 +8205,7 @@ Your browser does not support the audio tag.
 //postnews page controller start
 
     public function pnfourcomment($postid) {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['bus_post_id'];
 
@@ -7992,17 +8225,22 @@ Your browser does not support the audio tag.
                 $busienss_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
 
                 if ($busienss_userimage) {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
-
-
-                        $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
+                            $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        }
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        }
                     }
                 } else {
-
-
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>';
@@ -8074,7 +8312,7 @@ Your browser does not support the audio tag.
     }
 
     public function pninsert_commentthree() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST["post_id"];
         $post_comment = $_POST["comment"];
@@ -8135,18 +8373,24 @@ Your browser does not support the audio tag.
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
+
                 $cmtinsert .= '</div>';
             } else {
-
-
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
             $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . ucfirst($company_name) . '</b></a>';
@@ -8260,7 +8504,7 @@ Your browser does not support the audio tag.
     }
 
     public function pninsert_comment() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
@@ -8321,14 +8565,22 @@ Your browser does not support the audio tag.
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                    $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    }
                 }
+
                 $cmtinsert .= '</div>';
             } else {
 
@@ -8447,6 +8699,7 @@ Your browser does not support the audio tag.
 
 //Business_profile comment delete start
     public function pndelete_comment() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
@@ -8475,17 +8728,24 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if ($business_userimage != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     }
+
                     $cmtinsert .= '</div>';
                 } else {
-
-
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $companyname . '</b></a>';
@@ -8595,6 +8855,7 @@ Your browser does not support the audio tag.
     }
 
     public function pndelete_commenttwo() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["post_id"];
@@ -8621,18 +8882,23 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 if ($business_userimage != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        }
                     }
                     $cmtinsert .= '</div>';
                 } else {
-
-
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $companyname . '</b></a>';
@@ -8747,7 +9013,7 @@ Your browser does not support the audio tag.
     }
 
     public function pnmulimagefourcomment() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $postid = $_POST['bus_img_id'];
         $mulimgfour = '<div class="insertimgcommenttwo' . $postid . '">';
 
@@ -8767,15 +9033,21 @@ Your browser does not support the audio tag.
 
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
                 if ($business_userimage != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-                        $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        }
                     } else {
-
-                        $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        }
                     }
-
                     $mulimgfour .= '</div>';
                 } else {
 
@@ -8870,6 +9142,7 @@ Your browser does not support the audio tag.
 //postnews page controller end
 
     public function likeuserlist() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $post_id = $_POST['post_id'];
 
         $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1', 'is_delete' => '0');
@@ -8909,17 +9182,22 @@ Your browser does not support the audio tag.
             $modal .= '<a href="' . base_url('business-profile/details/' . $bus_slug) . '" title="' . $business_fname1 . '" class="head_main_name" >';
             $modal .= '<div class="like_user_list_img">';
             if ($bus_image) {
-
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
-
-
-                    $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
+                        $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    }
                 } else {
-                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $bus_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    }
                 }
             } else {
-
-
                 $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
             }
             $modal .= '</div>';
@@ -8958,6 +9236,7 @@ Your browser does not support the audio tag.
     }
 
     public function imglikeuserlist() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $post_id = $_POST['post_id'];
 
         $contition_array = array('post_image_id' => $post_id, 'is_unlike' => '0');
@@ -8988,14 +9267,22 @@ Your browser does not support the audio tag.
             $modal .= '<a href="' . base_url('business-profile/details/' . $bus_slug) . '" title="' . $business_fname1 . '" class="head_main_name" >';
             $modal .= '<div class="like_user_list_img">';
             if ($bus_image) {
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
-                    $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
+                        $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NO IMAGE">';
+                    } else {
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    }
                 } else {
-                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $bus_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info) {
+                        $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="NO IMAGE">';
+                    } else {
+                        $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    }
                 }
             } else {
-
-
                 $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
             }
             $modal .= '</div>';
@@ -9031,6 +9318,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_img_delete() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $grade_id = $_POST['grade_id'];
         $delete_data = $this->common->delete_data('bus_image', 'bus_image_id', $grade_id);
         if ($delete_data) {
@@ -9039,6 +9327,7 @@ Your browser does not support the audio tag.
     }
 
     public function contact_person_query() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
         $to_id = $_POST['toid'];
@@ -9056,6 +9345,7 @@ Your browser does not support the audio tag.
     }
 
     public function contact_person() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $to_id = $_POST['toid'];
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
@@ -9244,6 +9534,7 @@ Your browser does not support the audio tag.
     }
 
     public function contact_notification() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
@@ -9278,18 +9569,22 @@ Your browser does not support the audio tag.
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                                $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                            } else {
 
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                            /*  $a = $busdata[0]['company_name'];
-                              $acr = substr($a, 0, 1);
-
-                              $contactdata .= '<div class="post-img-div">';
-                              $contactdata .= ucfirst(strtolower($acr));
-                              $contactdata .= '</div>'; */
-                            $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            }
                         } else {
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                            } else {
 
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            }
                         }
                     } else {
                         /*    $a = $busdata[0]['company_name'];
@@ -9330,19 +9625,20 @@ Your browser does not support the audio tag.
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-//                            $a = $busdata[0]['company_name'];
-//                            $acr = substr($a, 0, 1);
-//
-//                            $contactdata .= '<div class="post-img-div">';
-//                            $contactdata .= ucfirst(strtolower($acr));
-//                            $contactdata .= '</div>';
-
-                            $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                                $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                            } else {
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            }
                         } else {
-
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                            } else {
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            }
                         }
                     } else {
 //                        $a = $busdata[0]['company_name'];
@@ -9389,6 +9685,7 @@ Your browser does not support the audio tag.
     }
 
     public function contact_approve() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $toid = $_POST['toid'];
         $status = $_POST['status'];
@@ -9488,15 +9785,22 @@ Your browser does not support the audio tag.
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                            $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                                $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                            } else {
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            }
                         } else {
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                            } else {
+                                $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            }
                         }
                     } else {
-
-
                         $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     }
                     $contactdata .= '</div>';
@@ -9553,7 +9857,7 @@ Your browser does not support the audio tag.
     }
 
     public function contact_list() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
         $this->is_business_profile_register();
@@ -9584,7 +9888,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_contact_list() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $perpage = 9;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -9695,7 +9999,7 @@ Your browser does not support the audio tag.
     }
 
     public function contact_list_approve() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $toid = $_POST['toid'];
         $status = $_POST['status'];
         $userid = $this->session->userdata('aileenuser');
@@ -9743,19 +10047,20 @@ Your browser does not support the audio tag.
                 $contactdata .= '<div class="list-box">';
                 $contactdata .= '<div class="profile-img">';
                 if ($busdata[0]['business_user_image'] != '') {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-//                        $a = $busdata[0]['company_name'];
-//                        $acr = substr($a, 0, 1);
-//
-//                        $contactdata .= '<div class="post-img-div">';
-//                        $contactdata .= ucfirst(strtolower($acr));
-//                        $contactdata .= '</div>';
-
-                        $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                            $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                        } else {
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                        }
                     } else {
-
-                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'];
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                        } else {
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                        }
                     }
                 } else {
 //                    $a = $busdata[0]['company_name'];
@@ -9798,6 +10103,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_contact($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['slug_id'] = $id;
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
@@ -9809,6 +10115,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_bus_contact($id = "") {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $perpage = 5;
         $page = 1;
         $userid = $this->session->userdata('aileenuser');
@@ -9875,11 +10182,22 @@ Your browser does not support the audio tag.
                     <li class="fl">
                         <div class="follow-img">
                             <a href="' . base_url('business-profile/dashboard/' . $business_slug) . '">';
-                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_user_image) || $business_user_image == '') {
-                    $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                if (IMAGEPATHFROM == 'upload') {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_user_image) || $business_user_image == '') {
+                        $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '" height="50px" width="50px" alt="' . $company_name . '" >';
+                    }
                 } else {
-                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '" height="50px" width="50px" alt="' . $company_name . '" >';
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if (!$info || $business_user_image == '') {
+                        $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    } else {
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_user_image . '" height="50px" width="50px" alt="' . $company_name . '" >';
+                    }
                 }
+
                 $return_html .= '</a>
                         </div>
                     </li>
@@ -9948,7 +10266,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_bus_contact_old($id = "") {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -10033,14 +10351,22 @@ Your browser does not support the audio tag.
                                                                             <div class="follow-img">';
                 if ($cdata[0]['business_user_image'] != '') {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $cdata[0]['business_slug']) . '">';
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0]['business_user_image'])) {
-
-                        $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0]['business_user_image'])) {
+                            $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                        }
                     } else {
-
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $cdata[0]['business_user_image'];
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        } else {
+                            $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                        }
                     }
+
                     $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $cdata[0]['business_slug']) . '">
@@ -10125,7 +10451,7 @@ Your browser does not support the audio tag.
     }
 
     public function removecontactuser() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $to_id = $_POST["contact_id"];
         $showdata = $_POST["showdata"];
 
@@ -10198,7 +10524,7 @@ No Contacts Available.
 
 
     public function contact_person_menu() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $to_id = $_POST['toid'];
         $userid = $this->session->userdata('aileenuser');
 
@@ -10272,7 +10598,7 @@ No Contacts Available.
 //conatct request count start
 
     public function contact_count() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending', 'not_read' => '2');
@@ -10289,6 +10615,7 @@ No Contacts Available.
     }
 
     public function update_contact_count() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('not_read' => 2, 'contact_to_id' => $userid, 'status' => 'pending');
@@ -10313,7 +10640,7 @@ No Contacts Available.
 
 
     public function edit_more_insert() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $post_id = $_POST["business_profile_post_id"];
@@ -10333,6 +10660,8 @@ No Contacts Available.
 
     public function ajax_business_home_post() {
 // return html
+        
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $business_login_slug = $this->data['business_login_slug'];
         $perpage = 4;
         $page = 1;
@@ -10459,12 +10788,22 @@ No Contacts Available.
 
                     if ($posted_business_user_image) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            }
                         }
+
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
@@ -10474,11 +10813,22 @@ No Contacts Available.
                 } else {
                     if ($post_business_user_image) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image;
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            }
                         }
+
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
@@ -10654,9 +11004,14 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </a>
 </div>';
                     } elseif (in_array($ext, $allowesvideo)) {
+                        $post_poster = $businessmultiimage[0]['file_name'];
+                        $post_poster1 = explode('.', $post_poster);
+                        $post_poster2 = end($post_poster1);
+                        $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
 
                         $return_html .= '<div>
-<video width = "100%" height = "350" controls>
+<video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
 Your browser does not support the video tag.
@@ -10908,12 +11263,20 @@ Your browser does not support the audio tag.
 
                         if ($business_userimage) {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
-
-                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            if (IMAGEPATHFROM == 'upload') {
+                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                }
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if (!$info) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                }
                             }
                             $return_html .= '</a>';
                         } else {
@@ -11027,13 +11390,20 @@ Your browser does not support the audio tag.
                 $userid = $this->session->userdata('aileenuser');
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
                 if ($business_userimage) {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        } else {
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        }
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        } else {
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        }
                     }
                 } else {
 
@@ -11087,14 +11457,13 @@ Your browser does not support the audio tag.
           </div>
           </div>';
           } */
-        $return_html .= '<link rel="stylesheet" type="text/css" href="' . base_url('assets/as-videoplayer/build/mediaelementplayer.css') . '" /><script type="text/javascript" src="' . base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()) . '"></script>
-        <script type="text/javascript" src="' . base_url('assets/as-videoplayer/demo.js?ver=' . time()) . '"></script>';
 
         echo $return_html;
 // return html        
     }
 
     public function ajax_business_home_post_old() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 // return html
         $perpage = 3;
         $page = 1;
@@ -11231,12 +11600,22 @@ Your browser does not support the audio tag.
 
                         if ($userimageposted) {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
-
-                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            if (IMAGEPATHFROM == 'upload') {
+                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                                }
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $userimageposted;
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if (!$info) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                                }
                             }
+
                             $return_html .= '</a>';
                         } else {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
@@ -11246,10 +11625,20 @@ Your browser does not support the audio tag.
                     } else {
                         if ($business_userimage) {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname) . '">';
-                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            if (IMAGEPATHFROM == 'upload') {
+                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                }
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if (!$info) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                }
                             }
                             $return_html .= '</a>';
                         } else {
@@ -11475,13 +11864,39 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 //Your browser does not support the video tag.
 //</video>
 //</div>';
-                            $return_html .= '<div>
-<video width = "100%" height = "350" controls>
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
-Your browser does not support the video tag.
-</video>
-</div>';
+
+                            $post_poster = $businessmultiimage[0]['file_name'];
+                            $post_poster1 = explode('.', $post_poster);
+                            $post_poster2 = end($post_poster1);
+                            $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                            if (IMAGEPATHFROM == 'upload') {
+                                $return_html .= '<div>';
+                                if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'])) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<div>';
+                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            }
                         } elseif (in_array($ext, $allowesaudio)) {
                             /*
                               $return_html .= '<div class = "audio_main_div">
@@ -11799,13 +12214,22 @@ Your browser does not support the audio tag.
 
                             if ($business_userimage) {
                                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
-
-                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                    } else {
+                                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                    }
                                 } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if (!$info) {
+                                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                    } else {
+                                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                    }
                                 }
+
                                 $return_html .= '</a>';
                             } else {
                                 $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
@@ -11918,13 +12342,20 @@ Your browser does not support the audio tag.
                     $userid = $this->session->userdata('aileenuser');
                     $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
                     if ($business_userimage) {
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                            }
                         }
                     } else {
 
@@ -11986,7 +12417,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_home_three_user_list1() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -12057,13 +12488,20 @@ Your browser does not support the audio tag.
                     if ($userlist['business_user_image']) {
 
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         }
 
                         $return_html .= '</a>';
@@ -12129,16 +12567,21 @@ Your browser does not support the audio tag.
       <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         } else {
-
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         }
-
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
@@ -12203,17 +12646,22 @@ Your browser does not support the audio tag.
       <div class = "post-design-pro-img_follow">
       <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">';
                     if ($userlist['business_user_image'] != '') {
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         } else {
-
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         }
                     } else {
-
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                     }
                     $return_html .= '</a>
@@ -12272,14 +12720,22 @@ Your browser does not support the audio tag.
       <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         }
+
 
                         $return_html .= '</a>';
                     } else {
@@ -12339,7 +12795,7 @@ Your browser does not support the audio tag.
 // ajax function start 
 
     public function ajax_business_home_three_user_list() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -12390,10 +12846,20 @@ Your browser does not support the audio tag.
       <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt="No Image">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt="No Image">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt="No Image">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
                         }
                         $return_html .= '</a>';
                     } else {
@@ -12431,6 +12897,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_photos() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -12481,6 +12948,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_photos_old() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -12557,7 +13025,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_videos() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -12590,68 +13058,226 @@ Your browser does not support the audio tag.
             $fetch_video .= '<tr>';
 
             if ($businessvideo[0]['file_name']) {
-                $fetch_video .= '<td class = "image_profile">';
-                $fetch_video .= '<video controls>';
 
-                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $businessvideo[0]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
 
             if ($businessvideo[1]['file_name']) {
-                $fetch_video .= '<td class = "image_profile">';
-                $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $businessvideo[1]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             if ($businessvideo[2]['file_name']) {
-                $fetch_video .= '<td class = "image_profile">';
-                $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+
+                $post_poster = $businessvideo[2]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             $fetch_video .= '</tr>';
             $fetch_video .= '<tr>';
 
             if ($businessvideo[3]['file_name']) {
-                $fetch_video .= '<td class = "image_profile">';
-                $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+
+                $post_poster = $businessvideo[3]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             if ($businessvideo[4]['file_name']) {
-                $fetch_video .= '<td class = "image_profile">';
-                $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+
+                $post_poster = $businessvideo[4]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             if ($businessvideo[5]['file_name']) {
-                $fetch_video .= '<td class = "image_profile">';
-                $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+
+                $post_poster = $businessvideo[5]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             $fetch_video .= '</tr>';
         } else {
-
-
             //$fetch_video .= '<div class = "not_available"> <p> Video Not Available </p></div>';
         }
 
@@ -12662,7 +13288,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_videos_old() {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -12796,7 +13422,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_audio() {
-
+$s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -12896,7 +13522,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_audio_old() {
-
+$s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -12960,7 +13586,6 @@ Your browser does not support the audio tag.
             if ($singlearray2[0]['file_name']) {
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
-
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[0]['file_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
@@ -13025,6 +13650,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_pdf() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -13076,6 +13702,7 @@ Your browser does not support the audio tag.
     }
 
     public function bus_pdf_old() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -13137,6 +13764,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_business_dashboard_post($id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
 // manage post start
         $business_login_slug = $this->data['business_login_slug'];
         $perpage = 5;
@@ -13189,7 +13817,7 @@ Your browser does not support the audio tag.
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
-
+        
         $return_html = '';
 
         if (empty($_GET["total_record"])) {
@@ -13246,11 +13874,20 @@ Your browser does not support the audio tag.
 
                     if ($posted_business_user_image) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            }
                         }
                         $return_html .= '</a>';
                     } else {
@@ -13261,10 +13898,20 @@ Your browser does not support the audio tag.
                 } else {
                     if ($post_business_user_image) {
                         $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                        if (IMAGEPATHFROM == 'upload') {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            }
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image;
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if (!$info) {
+                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                            } else {
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            }
                         }
                         $return_html .= '</a>';
                     } else {
@@ -13436,14 +14083,40 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </a>
 </div>';
                     } elseif (in_array($ext, $allowesvideo)) {
+                        $post_poster = $businessmultiimage[0]['file_name'];
+                        $post_poster1 = explode('.', $post_poster);
+                        $post_poster2 = end($post_poster1);
+                        $post_poster = str_replace($post_poster2, 'png', $post_poster);
 
-                        $return_html .= '<div>
-<video width = "100%" height = "350" controls>
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
-Your browser does not support the video tag.
-</video>
-</div>';
+                        if (IMAGEPATHFROM == 'upload') {
+                            $return_html .= '<div>';
+                            if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                                $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                            } else {
+                                $return_html .= '<video width = "100%" height = "350" controls>';
+                            }
+
+                            $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                            $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                            $return_html .= 'Your browser does not support the video tag.';
+                            $return_html .= '</video>';
+                            $return_html .= '</div>';
+                        } else {
+                            $return_html .= '<div>';
+
+                            $filename = BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'];
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if ($info) {
+                                $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                            } else {
+                                $return_html .= '<video width = "100%" height = "350" controls>';
+                            }
+                            $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                            $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                            $return_html .= 'Your browser does not support the video tag.';
+                            $return_html .= '</video>';
+                            $return_html .= '</div>';
+                        }
                     } elseif (in_array($ext, $allowesaudio)) {
 
                         $return_html .= '<div class = "audio_main_div">
@@ -13690,13 +14363,22 @@ Your browser does not support the audio tag.
 
                         if ($business_userimage) {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
-
-                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            if (IMAGEPATHFROM == 'upload') {
+                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                }
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if (!$info) {
+                                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                                } else {
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                }
                             }
+
                             $return_html .= '</a>';
                         } else {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
@@ -13809,17 +14491,22 @@ Your browser does not support the audio tag.
                 $userid = $this->session->userdata('aileenuser');
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
                 if ($business_userimage) {
-
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        } else {
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        }
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if (!$info) {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        } else {
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        }
                     }
                 } else {
-
-
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                 }
                 $return_html .= '</div>
@@ -13847,6 +14534,7 @@ Your browser does not support the audio tag.
     }
 
     public function check_post_available() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $post_id = $_POST['post_id'];
 
         $condition_array = array('business_profile_post_id' => $post_id);
@@ -13882,6 +14570,7 @@ Your browser does not support the audio tag.
     }
 
     public function get_company_name($id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => 1);
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -13889,6 +14578,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_business_skill() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $term = $_GET['term'];
 
         $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
@@ -13931,6 +14621,7 @@ Your browser does not support the audio tag.
     }
 
     public function ajax_location_data() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $term = $_GET['term'];
         if (!empty($term)) {
             $contition_array = array('status' => '1', 'state_id !=' => '0');
@@ -13949,6 +14640,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_home_follow_ignore() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
         $follow_to = $_POST['follow_to'];
@@ -13961,6 +14653,7 @@ Your browser does not support the audio tag.
     }
 
     public function business_profile_active_check() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if (!$userid) {
             redirect('login');
@@ -13980,6 +14673,7 @@ Your browser does not support the audio tag.
     }
 
     public function is_business_profile_register() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
         $business_check = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
@@ -14004,6 +14698,7 @@ Your browser does not support the audio tag.
     // BUSIENSS PROFILE USER FOLLOWING COUNT START
 
     public function business_user_following_count($business_profile_id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
             $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
@@ -14027,6 +14722,7 @@ Your browser does not support the audio tag.
     // BUSIENSS PROFILE USER FOLLOWER COUNT START
 
     public function business_user_follower_count($business_profile_id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
             $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
@@ -14049,7 +14745,7 @@ Your browser does not support the audio tag.
     // BUSIENSS PROFILE USER FOLLOWER COUNT END
     // 
     public function business_user_contacts_count($business_profile_id = '') {
-
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id != '') {
             $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
@@ -14071,29 +14767,58 @@ Your browser does not support the audio tag.
     }
 
     public function ffmpeg_view() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->load->view('business_profile/ffmpeg_view', $this->data);
     }
 
     public function add_video() {
-        $config['upload_path'] = './videos/';
-        $config['allowed_types'] = 'mov|mpeg|mp3|avi';
-        $config['max_size'] = '';
-        $config['overwrite'] = FALSE;
-        $config['remove_spaces'] = TRUE;
-        $config['encrypt_name'] = TRUE;
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $config111['upload_path'] = 'uploads/ffmpeg/';
+        $config111['allowed_types'] = 'mov|mpeg|mp3|avi|mp4';
+        $config111['max_size'] = '';
+        $config111['overwrite'] = FALSE;
+        //$config111['remove_spaces'] = TRUE;
+        //$config111['encrypt_name'] = TRUE;
 
-        $this->upload->initialize($config);
-        $this->load->library('upload', $config);
+        $store = $_FILES['video']['name'];
 
-        if (!$this->upload->do_upload()) {
-            // If there is any error
-            $err_msgs .= 'Error in Uploading video ' . $this->upload->display_errors() . '<br />';
+        $store_ext = explode('.', $store);
+        $store_ext = end($store_ext);
+
+        $fileName = 'file_' . $title . '_' . $this->random_string() . '.' . $store_ext;
+
+        $images[] = $fileName;
+        $config111['file_name'] = $fileName;
+
+//    echo '<pre>';
+//    print_r($config);
+//    exit;
+        $this->load->library('upload', $config111);
+        $this->upload->initialize($config111);
+
+
+
+
+        if (!$this->upload->do_upload('video')) {
+
+            //If there is any error
+            echo $err_msgs .= 'Error in Uploading video ' . $this->upload->display_errors() . '<br />';
+            //   exit;
+            exec("ffmpeg -i 'http://35.165.1.109:81/uploads/ffmpeg/not_working.mp4' -vcodec h264 -acodec aac -strict -2 /var/www/html/aileensouldesigner/uploads/ffmpeg/chek_vv.mp4");
         } else {
             $upload_data = $this->upload->data();
-            $video_path = $upload_data['file_name'];
+            echo '<pre>';
+            print_r($upload_data);
 
+            $video_path = $upload_data['file_name'];
+            //echo $upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name']; die();
             // ffmpeg command to convert video
-            exec("ffmpeg -i " . $upload_data['full_path'] . " " . $upload_data['file_path'] . $upload_data['raw_name'] . ".flv");
+// wring for thumb image       exec("ffmpeg -ss 00:00:03 -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".png"); 
+            //exec("ffmpeg -ss 00:00:03 -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name'].".png"); 
+//    exec("ffmpeg -vcodec h264 -acodec aac -strict -2 -i ".$upload_data['full_path']." ".$upload_data['file_path'].$upload_data['raw_name']."1.mp4"); 
+            //trying for video converter       exec(" ffmpeg -i {input}.mov -vcodec h264 -acodec aac -strict -2 {output}.mp4"); 
+            exec(" ffmpeg -i {input}.mov -vcodec h264 -acodec aac -strict -2 {output}.mp4");
+
 
             /// In the end update video name in DB 
             $array = array('video' => $upload_data['raw_name'] . '.' . 'flv');

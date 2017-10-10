@@ -2283,7 +2283,7 @@ label.cameraButton:active {
     background-size: 100%;
 }
 .dropdown-content2 a:hover .h2-img {
-    background: : url(../img/icon_view_profile_white.png) no-repeat, background-size: 100%;
+    background: url(../img/icon_view_profile_white.png) no-repeat, background-size: 100%;
 }
 .dropdown-content2 a i {
     padding-right: 13px;
@@ -3036,7 +3036,7 @@ label.cameraButton:active {
     float: left;
     width: 100%;
     border: 1px solid #d9d9d9;
-    margin-bottom:
+   /* margin-bottom:*/
 }
 .noti_cq {
     float: left;
@@ -4315,10 +4315,14 @@ div .comment {
 .profile-job-post-location-name .user_lst ul li .user_btn{padding-top:7px;}
 #followdiv button{margin-right:0;}
 
+.tablate-add{display:none;}
+.tablate-potrat-add{display:none;}
+.mob-add{display:none;}
+
 
 /***  media query  ***/
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
     .mian_middle_post_box {
         width: 610px;
     }
@@ -4328,6 +4332,7 @@ div .comment {
     .fixed_right_display {
         display: none!important;
     }
+	.tablate-add{display:block; width:160px; position:fixed; margin-left:960px;}
 }
 @media screen and (max-width: 1199px) {
     .bui_art_left_box .profile-boxProfileCard-content::before {
@@ -4337,8 +4342,8 @@ div .comment {
         padding: 11px 4px 13px 13px !important;
         padding-bottom: 13px;
     }
-    .cq_latest_right {
-        width:
+    /*.cq_latest_right {
+        width:}*/
     .follow_left_box_main_btn button {
         width: 72px;
         padding: 5px 7px;
@@ -4375,6 +4380,12 @@ div .comment {
         padding: 10px 7px 8px 7px !important;
     }
 	.folle_text{width:64%;}
+	/***  add  ***/
+	.tablate-add{display:none;}
+	.tablate-potrat-add{display:block;}
+	.tablate-potrat-add .fw.text-center{text-align:center;}
+	.left_side_posrt{position:absolute;}
+	/***  end add  ***/
 	
 }
 @media screen and (max-width: 1024px) {
@@ -4453,7 +4464,7 @@ div .comment {
         left: 0;
     }
     .right_side_posrt {
-        width: 600px;
+        width: 580px;
         margin: 0 auto;
         float: none;
     }
@@ -4735,6 +4746,11 @@ div .comment {
 	.folle_text{width:66%;}
 	.search-page .search-post-box{left:inherit;}
 	.user-list .right_side_posrt{width:100%;}
+	/***  addvertise  ***/
+	.tablate-potrat-add{display:none;}
+	.tablate-add{display:block; width:160px; position:fixed; margin-left:590px;}
+	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
+	/*** end advertise  ***/
 }
 @media screen and (max-width: 800px) {
     .mySlides .post-design-commnet-box .cmy_2 {
@@ -5119,7 +5135,7 @@ div .comment {
     .profile-left {
         width: 100%;
     }
-	..other-profile-menu .profile-left {
+	.other-profile-menu .profile-left {
         width: 76%;
     }
     #contact_per {
@@ -5154,6 +5170,12 @@ div .comment {
 	.text-center.tab-block .mob-inner-page a:last-child{text-transform:uppercase;}
 	.search-page .designation_rec{width:47% !important;}
 	.business-profile-right .business-data-menu{padding-left:0;}
+	/*** add ***/
+	.tablate-potrat-add{display:block;}
+	.tablate-add{display:none;}
+	.mian_middle_post_box{float:none;}
+	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
+	/*** end add  ***/
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5287,6 +5309,7 @@ div .comment {
 	.user_lst #followdiv button span{background:url('../../../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
 	.user-list .user_lst .folle_text{width:52%;}
 	.post-edit-popup .popup-text textarea{width:79%;}
+	.mian_middle_post_box{width:100%;}
 	
 }
 @media screen and (max-width: 540px) {
@@ -5967,6 +5990,11 @@ div .comment {
 	.user-list .user_lst .folle_text{width:75%;}
 	.popup-text textarea::-moz-placeholder{font-size:17px !important;}
 	.popup-text textarea::-webkit-input-placeholder{font-size:17px !important;}
+	/***  add  ***/
+	.mob-add{margin-bottom:0; border:none;}
+	.padding-360{padding-left:1px; padding-right:1px;}
+	.contact-frnd-post{padding:10px 8px 0;}
+	/*** end add  ***/
 }
 @media screen and (max-width: 319px) {
     .editor-content {

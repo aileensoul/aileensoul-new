@@ -63,7 +63,7 @@
                         } else {
                             ?>
                             <div class="bg-images no-cover-upload">
-                            <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                             </div>
                         <?php }
                         ?>
@@ -84,20 +84,46 @@
                     <div class="profile-pho">
 
                         <div class="user-pic padd_img">
-                            <?php if ($info) { ?>
-                                <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
-                                <?php
+                            <?php
+                            $fname = $freelancr_user_data[0]['fullname'];
+                            $lname = $freelancr_user_data[0]['username'];
+                            $sub_fname = substr($fname, 0, 1);
+                            $sub_lname = substr($lname, 0, 1);
+                            if ($freelancr_user_data[0]['freelancer_hire_user_image']) {
+                                if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('free_hire_profile_main_upload_path') . $freelancr_user_data[0]['freelancer_hire_user_image'])) {
+                                        ?>
+                                        <div class="post-img-user">
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div>
+                                    <?php } else {
+                                        ?>
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                        <?php
+                                    }
+                                } else {
+                                    $filename = $this->config->item('free_hire_profile_main_upload_path') . $freelancr_user_data[0]['freelancer_hire_user_image'];
+                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if ($info) {
+                                        ?>
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <div class="post-img-user">
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
                             } else {
-                                $fname = $freelancr_user_data[0]['fullname'];
-                                $lname = $freelancr_user_data[0]['username'];
-                                $sub_fname = substr($fname, 0, 1);
-                                $sub_lname = substr($lname, 0, 1);
                                 ?>
                                 <div class="post-img-user">
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                                <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>img/cam.png"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                            <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>img/cam.png"><?php echo $this->lang->line("update_profile_picture"); ?></a>
 
                         </div>
                     </div>
@@ -198,9 +224,9 @@
                 <div class="modal-body">
                     <span class="mes">
                         <div id="popup-form">
-                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));       ?>
 <!--                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <input type="hidden" name="hitext" id="hitext" value="3">
                                 <div class="popup_previred">
@@ -215,7 +241,7 @@
                                 </div>
                                 <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                             </form>
-                            <?php //echo form_close(); ?>
+                            <?php //echo form_close();       ?>
                         </div>
                     </span>
                 </div>

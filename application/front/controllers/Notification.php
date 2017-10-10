@@ -1469,23 +1469,20 @@ Your browser does not support the audio tag.
                 $notification .= '<div class="notification-pic">';
 
 
-                $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                    $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
+                 $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                 $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+               // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                if ($total['user_image'] && $filepath) {
+                $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                 } else {
-                    $a = $total['first_name'];
-                    $b = $total['last_name'];
-                    $acr = substr($a, 0, 1);
-                    $bcr = substr($b, 0, 1);
-
-
-                    $notification .= '<div class="post-img-div">';
-                    $notification .= '' . ucwords($acr) . ucwords($bcr) . '';
-                    $notification .= '</div>';
+                  $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                    
                 }
 
                 $notification .= '</div><div class="notification-data-inside">';
-                $notification .= '<h6><b>' . '  ' . ucwords($total['first_name']) . ' ' . ucwords($total['last_name']) . '</b> <span class="noti-msg-y"> Started following you in artistic profile.</span></h6>';
+                $notification .= '<h6><b>' . '  ' . ucfirst(strtolower($total['first_name'])) . ' ' . ucfirst(strtolower($total['last_name'])) . '</b> <span class="noti-msg-y"> Started following you in artistic profile.</span></h6>';
                 $notification .= '<div ><i class="clockimg" ></i><span class="day-text">';
                 $notification .= '' . $this->common->time_elapsed_string($total['not_created_date'], $full = false) . '';
                 $notification .= '</span></div></div></div></a></li>';
@@ -1505,19 +1502,15 @@ Your browser does not support the audio tag.
                 $notification .= '><a href="' . base_url('notification/art-post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
-                $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                    $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
+                 $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                 $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                if ($total['user_image'] && $filepath) {
+                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                 } else {
-                    $a = $total['first_name'];
-                    $b = $total['last_name'];
-                    $acr = substr($a, 0, 1);
-                    $bcr = substr($b, 0, 1);
-
-
-                    $notification .= '<div class="post-img-div">';
-                    $notification .= '' . ucwords($acr) . ucwords($bcr) . '';
-                    $notification .= '</div>';
+                    $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                 }
                 $notification .= '</div><div class="notification-data-inside">';
                 //$notification .= '';
@@ -1543,19 +1536,16 @@ Your browser does not support the audio tag.
                 $notification .= '<div class="notification-pic">';
 
 
-                $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                    $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                 $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+
+                //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                if ($total['user_image'] && $filepath) {
+                    $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                 } else {
-                    $a = $total['first_name'];
-                    $b = $total['last_name'];
-                    $acr = substr($a, 0, 1);
-                    $bcr = substr($b, 0, 1);
-
-
-                    $notification .= '<div class="post-img-div">';
-                    $notification .= '' . ucwords($acr) . ucwords($bcr) . '';
-                    $notification .= '</div>';
+                  $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                 }
 
                 $notification .= '</div><div class="notification-data-inside">';
@@ -1575,19 +1565,16 @@ Your browser does not support the audio tag.
                     }
                     $notification .= '"';
                     $notification .= '><a href="' . base_url('notification/art-post/' . $total['art_post_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
-                    $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                    if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                        $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
+
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                    //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                    if ($total['user_image'] && $filepath) {
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                     } else {
-                        $a = $total['first_name'];
-                        $b = $total['last_name'];
-                        $acr = substr($a, 0, 1);
-                        $bcr = substr($b, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . ucwords($bcr) . '';
-                        $notification .= '</div>';
+                         $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -1608,19 +1595,17 @@ Your browser does not support the audio tag.
                     }
                     $notification .= '"';
                     $notification .= '><a href="' . base_url('notification/art_post_img/' . $total['post_id'] . '/' . $total['post_files_id']) . '"><div class="notification-database"><div class="notification-pic">';
-                    $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                    if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                        $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
+
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                    // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                    if ($total['user_image'] && $filepath) {
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                     } else {
-                        $a = $total['first_name'];
-                        $b = $total['last_name'];
-                        $acr = substr($a, 0, 1);
-                        $bcr = substr($b, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . ucwords($bcr) . '';
-                        $notification .= '</div>';
+                  $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -1642,19 +1627,17 @@ Your browser does not support the audio tag.
                     }
                     $notification .= '"';
                     $notification .= '><a href="' . base_url('notification/art_post_img/' . $postid . '/' . $total['post_image_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic">';
-                    $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                    if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                        $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
+
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                    //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                    if ($total['user_image'] && $filepath) {
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                     } else {
-                        $a = $total['first_name'];
-                        $b = $total['last_name'];
-                        $acr = substr($a, 0, 1);
-                        $bcr = substr($b, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . ucwords($bcr) . '';
-                        $notification .= '</div>';
+                  $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -1676,19 +1659,18 @@ Your browser does not support the audio tag.
                     }
                     $notification .= '"';
                     $notification .= '><a href="' . base_url('notification/art_post_img/' . $postid . '/' . $total['post_image_id']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database"><div class="notification-pic" >';
-                    $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
-                    if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                        $notification .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $total['user_image']) . '" >';
+
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+
+                   // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                    if ($total['user_image'] && $filepath) {
+                        $notification .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                     } else {
-                        $a = $total['first_name'];
-                        $b = $total['last_name'];
-                        $acr = substr($a, 0, 1);
-                        $bcr = substr($b, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . ucwords($bcr) . '';
-                        $notification .= '</div>';
+                  $notification .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -3655,18 +3637,19 @@ Your browser does not support the audio tag.
                     } $return_html .= '">';
 
                     $return_html .= '<div class="notification-pic" id="noti_pc">';
-                    $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
 
-                    if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                        $return_html .= '<img src="' . base_url() . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'] . '" >';
+
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                    //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+
+                    if ($total['user_image'] && $filepath) {
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                     } else {
-                        $a = $total['first_name'];
-                        $b = $total['last_name'];
-                        $acr = substr($a, 0, 1);
-                        $bcr = substr($b, 0, 1);
-                        $return_html .= '<div class="post-img-div">' .
-                                ucwords($acr) . ucwords($bcr) .
-                                '</div>';
+                       $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        
                     }
 
                     $return_html .= '</div>
@@ -3694,19 +3677,18 @@ Your browser does not support the audio tag.
                         } $return_html .= '">
                                              
                                                 <div class="notification-pic" id="noti_pc">';
-                        $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
 
-                        if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                            $return_html .= '<img src="' . base_url() . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'] . '" >';
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                 $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                       // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+
+                        if ($total['user_image'] && $filepath) {
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                         } else {
-                            $a = $total['first_name'];
-                            $b = $total['last_name'];
-                            $acr = substr($a, 0, 1);
-                            $bcr = substr($b, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) . ucwords($bcr) .
-                                    '</div>';
+                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            
                         }
                         $return_html .= '</div>
                                                 
@@ -3734,19 +3716,18 @@ Your browser does not support the audio tag.
                         } $return_html .= '">';
 
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
-                        $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
 
-                        if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                            $return_html .= '<img src="' . base_url() . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'] . '" >';
+                        $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                       $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                       // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+
+                        if ($total['user_image'] && $filepath) {
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                         } else {
-                            $a = $total['first_name'];
-                            $b = $total['last_name'];
-                            $acr = substr($a, 0, 1);
-                            $bcr = substr($b, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) . ucwords($bcr) .
-                                    '</div>';
+                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                           
                         }
                         $return_html .= '</div>
                                                 
@@ -3777,19 +3758,17 @@ Your browser does not support the audio tag.
                         $return_html .= '">
                                                 <div class="notification-pic" id="noti_pc" >';
 
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                     $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $filepath = $s3->getObjectInfo(bucket, $filename);
 
-                        $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                        //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
 
-                        if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                            $return_html .= '<img src="' . base_url() . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'] . '" >';
+                        if ($total['user_image'] && $filepath) {
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                         } else {
-                            $a = $total['first_name'];
-                            $b = $total['last_name'];
-                            $acr = substr($a, 0, 1);
-                            $bcr = substr($b, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) . ucwords($bcr);
+                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                            
                         }
                         $return_html .= '</div>
                                                 
@@ -3816,19 +3795,18 @@ Your browser does not support the audio tag.
                         } $return_html .= '">';
 
                         $return_html .= '<div class="notification-pic"  id="noti_pc">';
-                        $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                 $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                        //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
 
                         if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                            $return_html .= '<img src="' . base_url() . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'] . '" >';
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                         } else {
-                            $a = $total['first_name'];
-                            $b = $total['last_name'];
-                            $acr = substr($a, 0, 1);
-                            $bcr = substr($b, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) . ucwords($bcr) .
-                                    '</div>';
+                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                           
                         }
                         $return_html .= '</div>
                                                 
@@ -3854,19 +3832,18 @@ Your browser does not support the audio tag.
                             $return_html .= 'active2';
                         } $return_html .= '">
                                             <div class="notification-pic" id="noti_pc" >';
-                        $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
 
-                        if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                            $return_html .= '<img src="' . base_url() . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'] . '" >';
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                 $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                        //$filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+
+                        if ($total['user_image'] && $filepath) {
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                         } else {
-                            $a = $total['first_name'];
-                            $b = $total['last_name'];
-                            $acr = substr($a, 0, 1);
-                            $bcr = substr($b, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) . ucwords($bcr) .
-                                    '</div>';
+                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                           
                         }
 
                         $return_html .= '</div>
@@ -3897,19 +3874,18 @@ Your browser does not support the audio tag.
                         } $return_html .= '">
                                             
                                             <div class="notification-pic" id="noti_pc">';
-                        $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
 
-                        if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                            $return_html .= '<img src="' . base_url() . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'] . '" >';
+                $filename = $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+                 $s3 = new S3(awsAccessKey, awsSecretKey);
+                $filepath = $s3->getObjectInfo(bucket, $filename);
+
+                    // $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
+
+                        if ($total['user_image'] && $filepath) {
+                            $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" >';
                         } else {
-                            $a = $total['first_name'];
-                            $b = $total['last_name'];
-                            $acr = substr($a, 0, 1);
-                            $bcr = substr($b, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) . ucwords($bcr) .
-                                    '</div>';
+                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                           
                         }
                         $return_html .= '</div>
                                             

@@ -78,254 +78,279 @@
 
                     </div>
                 </div>
-                
-			</div>	
-				<div class=" container tablate-container art-profile">    
-                    <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
-                        <div class="upload-img">
 
-                            <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
-                                <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
-                            </label>
-                        </div>
-                    <?php } ?>
-                    <!-- cover image end-->
+            </div>	
+            <div class=" container tablate-container art-profile">    
+                <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
+                    <div class="upload-img">
+
+                        <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
+                            <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
+                        </label>
+                    </div>
+                <?php } ?>
+                <!-- cover image end-->
 
 
-                    <div class="profile-photo">
-                        <div class="profile-pho">
-                            <div class="user-pic padd_img">
-                                <?php if ($info) { ?>
-                                    <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
-                                    <?php
-                                } else {
-                                    $fname = $freelancr_user_data[0]['fullname'];
-                                    $lname = $freelancr_user_data[0]['username'];
-                                    $sub_fname = substr($fname, 0, 1);
-                                    $sub_lname = substr($lname, 0, 1);
-                                    ?>
-                                    <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                    </div>
-                                <?php } ?>
-                                <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
-                                    <a href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>img/cam.png"><?php echo $this->lang->line("update_profile_picture"); ?></a>
-                                <?php } ?>
-                            </div>
-                        </div>
-
-                        <div class="job-menu-profile mob-block">
-                            <a href="javascript:void(0);">  <h3> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h3></a>
-                            <div class="profile-text">
-                                <?php
-                                if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) {
-                                    if ($freelancr_user_data[0]['designation'] == '') {
+                <div class="profile-photo">
+                    <div class="profile-pho">
+                        <div class="user-pic padd_img">
+                            <?php
+                            $fname = $freelancr_user_data[0]['fullname'];
+                            $lname = $freelancr_user_data[0]['username'];
+                            $sub_fname = substr($fname, 0, 1);
+                            $sub_lname = substr($lname, 0, 1);
+                            if ($freelancr_user_data[0]['freelancer_hire_user_image']) {
+                                if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('free_hire_profile_main_upload_path') . $freelancr_user_data[0]['freelancer_hire_user_image'])) {
+                                        ?>  
+                                        <div class="post-img-user">
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div>
+                                        <?php } else {
                                         ?>
-                                        <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
 
-                                    <?php } else { ?> 
-                                        <a id="designation" class="designation" title="<?php echo ucwords($freelancr_user_data[0]['designation']); ?>"><?php echo ucwords($freelancr_user_data[0]['designation']); ?></a>
-                                        <?php
+                                    <?php
                                     }
                                 } else {
-                                    if ($freelancr_user_data[0]['designation'] == '') {
-                                        echo $this->lang->line("designation");
+                                    $filename = $this->config->item('free_hire_profile_main_upload_path') . $freelancerhiredata[0]['freelancer_hire_user_image'];
+                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if ($info) {
                                         ?>
-
-                                    <?php } else { ?>
-
-                                        <?php echo ucwords($freelancr_user_data[0]['designation']); ?>
-
-                                        <?php
+                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                        <?php } else { ?>
+                                        <div class="post-img-user">
+                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div>
+                                    <?php
                                     }
                                 }
+                            } else {
                                 ?>
-                            </div>
+                                <div class="post-img-user">
+                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                </div>
+                            <?php } ?>
+                            <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
+                                <a href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>img/cam.png"><?php echo $this->lang->line("update_profile_picture"); ?></a>
+<?php } ?>
                         </div>
-                        <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
-                            <div class=" right-side-menu art-side-menu padding_less_right  right-menu-jr">  
+                    </div>
+
+                    <div class="job-menu-profile mob-block">
+                        <a href="javascript:void(0);">  <h3> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h3></a>
+                        <div class="profile-text">
+                            <?php
+                            if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) {
+                                if ($freelancr_user_data[0]['designation'] == '') {
+                                    ?>
+                                    <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+
+                                <?php } else { ?> 
+                                    <a id="designation" class="designation" title="<?php echo ucwords($freelancr_user_data[0]['designation']); ?>"><?php echo ucwords($freelancr_user_data[0]['designation']); ?></a>
+                                    <?php
+                                }
+                            } else {
+                                if ($freelancr_user_data[0]['designation'] == '') {
+                                    echo $this->lang->line("designation");
+                                    ?>
+
+                                <?php } else { ?>
+
+                                    <?php echo ucwords($freelancr_user_data[0]['designation']); ?>
+
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
+                        <div class=" right-side-menu art-side-menu padding_less_right  right-menu-jr">  
+                            <?php
+                            $userid = $this->session->userdata('aileenuser');
+                            if ($freelancr_user_data[0]['user_id'] == $userid) {
+                                ?>     
+                                <ul class="current-user pro-fw">
+                                    <?php } else { ?>
+                                    <ul class="pro-fw4">
+                                        <?php } ?>  
+                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>>
+                                        <?php if ($returnpage == 'freelancer_post') { ?><a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
+                                    </li>
+                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>>
+                                    <?php if ($returnpage == 'freelancer_post') { ?><a title="Post" href="<?php echo base_url('freelancer-hire/projects/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>"> Projects</a> <?php } else { ?> <a title="Post" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a> <?php } ?>
+                                    </li>
+                                    <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects' || $this->uri->segment(2) == 'employer-details' || $this->uri->segment(2) == 'add-projects' || $this->uri->segment(2) == 'freelancer-save') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
+                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved_freelancer"); ?></a>
+                                        </li>
+<?php } ?>
+
+
+                                </ul>
+
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');
-                                if ($freelancr_user_data[0]['user_id'] == $userid) {
-                                    ?>     
-                                    <ul class="current-user pro-fw">
-                                    <?php } else { ?>
-                                        <ul class="pro-fw4">
-                                        <?php } ?>  
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>>
-                                            <?php if ($returnpage == 'freelancer_post') { ?><a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
-                                        </li>
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>>
-                                            <?php if ($returnpage == 'freelancer_post') { ?><a title="Post" href="<?php echo base_url('freelancer-hire/projects/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>"> Projects</a> <?php } else { ?> <a title="Post" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a> <?php } ?>
-                                        </li>
-                                        <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects' || $this->uri->segment(2) == 'employer-details' || $this->uri->segment(2) == 'add-projects' || $this->uri->segment(2) == 'freelancer-save') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
-                                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved_freelancer"); ?></a>
-                                            </li>
-                                        <?php } ?>
-
-
-                                    </ul>
-
-                                    <?php
-                                    $userid = $this->session->userdata('aileenuser');
-                                    if ($userid != $freelancr_user_data[0]['user_id']) {
-                                        if (is_numeric($this->uri->segment(3))) {
-                                            $id = $this->uri->segment(3);
-                                        } else {
-                                            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
-                                        }
-                                        // $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
-                                        ?>
-                                        <div class="flw_msg_btn fr">
-                                            <ul>
-                                                <li> 
-                                                    <?php
-                                                    $returnpage = $_GET['page'];
-                                                    if ($returnpage == 'freelancer_post') {
-                                                        ?>
-                                                        <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
-                                                    <?php } else { ?>
-                                                        <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
-                                                    <?php }
+                                if ($userid != $freelancr_user_data[0]['user_id']) {
+                                    if (is_numeric($this->uri->segment(3))) {
+                                        $id = $this->uri->segment(3);
+                                    } else {
+                                        $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                    }
+                                    // $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                    ?>
+                                    <div class="flw_msg_btn fr">
+                                        <ul>
+                                            <li> 
+                                                <?php
+                                                $returnpage = $_GET['page'];
+                                                if ($returnpage == 'freelancer_post') {
                                                     ?>
-    <!--                                                    <a href="<?php //echo base_url('chat/abc/3/4/' . $id);  ?>"><?php //echo $this->lang->line("message");  ?></a>-->
-                                                </li>
+                                                    <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                <?php } else { ?>
+                                                    <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+    <?php }
+    ?>
+    <!--                                                    <a href="<?php //echo base_url('chat/abc/3/4/' . $id);     ?>"><?php //echo $this->lang->line("message");     ?></a>-->
+                                            </li>
 
-                                            <?php } ?>
-											</ul>
-										</div>
-                            </div>
+<?php } ?>
+                                    </ul>
+                                </div>
                         </div>
                     </div>
-					
-					
-					
-					
-                    <div  class="add-post-button mob-block">
-                        <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
-                            <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-                        <?php } ?>
-                    </div> 
-                    <div class="middle-part container">
-                        <div class="job-menu-profile mob-none pt20">
-                            <a href="javascript:void(0);">  <h3> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h3></a>
-                            <div class="profile-text">
-                                <?php
-                                if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) {
-                                    if ($freelancr_user_data[0]['designation'] == '') {
-                                        ?>
-                                        <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+                </div>
 
-                                    <?php } else { ?> 
-                                        <a id="designation" class="designation" title="<?php echo ucwords($freelancr_user_data[0]['designation']); ?>"><?php echo ucwords($freelancr_user_data[0]['designation']); ?></a>
-                                        <?php
-                                    }
+
+
+
+                <div  class="add-post-button mob-block">
+                    <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
+                        <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
+<?php } ?>
+                </div> 
+                <div class="middle-part container">
+                    <div class="job-menu-profile mob-none pt20">
+                        <a href="javascript:void(0);">  <h3> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h3></a>
+                        <div class="profile-text">
+                            <?php
+                            if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) {
+                                if ($freelancr_user_data[0]['designation'] == '') {
+                                    ?>
+                                    <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
+
+                                <?php } else { ?> 
+                                    <a id="designation" class="designation" title="<?php echo ucwords($freelancr_user_data[0]['designation']); ?>"><?php echo ucwords($freelancr_user_data[0]['designation']); ?></a>
+                                    <?php
+                                }
+                            } else {
+                                if ($freelancr_user_data[0]['designation'] == '') {
+                                    ?>
+                                    <?php echo $this->lang->line("designation"); ?>
+                                    <?php
                                 } else {
-                                    if ($freelancr_user_data[0]['designation'] == '') {
-                                        ?>
-                                        <?php echo $this->lang->line("designation"); ?>
-                                        <?php
-                                    } else {
-                                        echo ucwords($freelancr_user_data[0]['designation']);
-                                    }
+                                    echo ucwords($freelancr_user_data[0]['designation']);
+                                }
+                            }
+                            ?>
+                        </div>
+
+                        <div  class="add-post-button">
+                            <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
+                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
+<?php } ?>
+                        </div> 
+                    </div>
+                    <div class="col-md-7 col-sm-12 mob-clear">
+                        <div class="common-form">
+                            <div class="job-saved-box">
+                                <h3><?php echo $this->lang->line("Projects"); ?></h3>
+                                <?php
+
+                                function text2link($text) {
+                                    $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
+                                    $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
+                                    $text = preg_replace('/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/i', '<a href="mailto:\\1" rel="nofollow" target="_blank">\\1</a>', $text);
+                                    return $text;
                                 }
                                 ?>
-                            </div>
-
-                            <div  class="add-post-button">
-                                <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
-                                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-                                <?php } ?>
-                            </div> 
-                        </div>
-                        <div class="col-md-7 col-sm-12 mob-clear">
-                            <div class="common-form">
-                                <div class="job-saved-box">
-                                    <h3><?php echo $this->lang->line("Projects"); ?></h3>
-                                    <?php
-
-                                    function text2link($text) {
-                                        $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
-                                        $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
-                                        $text = preg_replace('/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/i', '<a href="mailto:\\1" rel="nofollow" target="_blank">\\1</a>', $text);
-                                        return $text;
-                                    }
-                                    ?>
-                                    <div class="contact-frnd-post">
-                                        <!--AJAX DATA..........-->
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
-                                        <div class="col-md-1">
-                                        </div>
+                                <div class="contact-frnd-post">
+                                    <!--AJAX DATA..........-->
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                                    <div class="col-md-1">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </section>
-                    <footer>
-                        <?php echo $footer; ?>
-                    </footer>
-                    <!-- model for popup start -->
-                    <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
-                                <div class="modal-body">
-                                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
-                                    <span class="mes"></span>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+        </section>
+        <footer>
+<?php echo $footer; ?>
+        </footer>
+        <!-- model for popup start -->
+        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <div class="modal-body">
+                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                        <span class="mes"></span>
                     </div>
-                    <!-- model for popup -->
-                    <!-- Bid-modal-2  -->
-                    <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                                <div class="modal-body">
-                                    <span class="mes">
-                                        <div id="popup-form">
-                                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
-                                            <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));   ?>
-                                                <div class="col-md-5">
-                                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
-                                                </div>
-                                                <div class="col-md-7 text-center">
-                                                    <div id="upload-demo-one" style="width:350px"></div>
-                                                </div>
-                                                <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                            </form>
-                                            <?php //echo form_close();   ?>
-                                        </div>
-                                    </span>
-                                </div>
+                </div>
+            </div>
+        </div>
+        <!-- model for popup -->
+        <!-- Bid-modal-2  -->
+        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div id="popup-form">
+                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                                <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));    ?>
+                                    <div class="col-md-5">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                                    </div>
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="width:350px"></div>
+                                    </div>
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                </form>
+<?php //echo form_close();    ?>
                             </div>
-                        </div>
+                        </span>
                     </div>
-                    <!-- Model Popup Close -->
-                    <!-- Bid-modal  -->
-                    <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
-                                <div class="modal-body">
-                                    <span class="mes"></span>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- Model Popup Close -->
+        <!-- Bid-modal  -->
+        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <div class="modal-body">
+                        <span class="mes"></span>
                     </div>
-                    <!-- Model Popup Close -->
-                    <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
-                    <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>">
-                    </script>
-                    <script>
-                        var base_url = '<?php echo base_url(); ?>';
-                        var returnpage = '<?php echo $returnpage; ?>';
-                        var user_id =<?php echo json_encode($this->uri->segment(3)) ?>;
-                    </script>
-                    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_post.js?ver=' . time()); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-                    </body>
-                    </html>
+                </div>
+            </div>
+        </div>
+        <!-- Model Popup Close -->
+        <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>">
+        </script>
+        <script>
+            var base_url = '<?php echo base_url(); ?>';
+            var returnpage = '<?php echo $returnpage; ?>';
+            var user_id =<?php echo json_encode($this->uri->segment(3)) ?>;
+        </script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_post.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+    </body>
+</html>

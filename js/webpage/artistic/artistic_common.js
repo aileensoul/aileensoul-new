@@ -11,6 +11,10 @@ function divClicked() {
                 editableText.blur(editableTextBlurred);
             }
 
+            function capitalize(s){
+             return s[0].toUpperCase() + s.slice(1);
+            }
+
             function editableTextBlurred() {
                 var html = $(this).val();
                  html = html.trim();
@@ -18,7 +22,7 @@ function divClicked() {
                 if (html.match(/^\s*$/) || html == '') {
                     html = "Current Work";
                 }
-                viewableText.html(html);
+                viewableText.html(capitalize(html));
                 $(this).replaceWith(viewableText);
                 // setup the click event for this new div
                 viewableText.click(divClicked);

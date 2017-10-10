@@ -38,88 +38,80 @@
 
                                          $userid = $this->session->userdata('aileenuser');
 
-                                         $firstname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_name;
-                                            $lastname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_lastname;
+                                         $firstname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_name;
+                                            $lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_lastname;
 
-                                            $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_name;
-                                            $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_lastname;
+                                            $firstnameposted = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_name;
+                                            $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_lastname;
 
 
-                                        $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
+                                        $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
 
-                                        $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
+                                        $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
 
-                                        $slugposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->slug;
-                                         $slug = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->slug;
+                                        $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->slug;
+                                         $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->slug;
 
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
                                             <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugposted); ?>">
 
-                                                <?php if($userimageposted){?>
-
+                                             
                                                 <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
-                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                <?php }else{?>
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
 
                                                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
 
+                                              
+                                <?php }else{?>
+
+                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
                                                 <?php }?>
 
-                                                <?php }else{?>
-
-                                                     <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-
-                                                <?php }?>
+                                               
                                                  </a>
 
                                         <?php } else if($art_data[0]['user_id']){ ?>
 
                                          <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slug); ?>">
 
-                                            <?php if($art_userimage){?>
-
-
+                                    
                                             <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
-                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                <?php }else{?>
+
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
                                                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
-
+                                <?php }else{?>
+                                                
+                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                                 <?php } ?>
-
-                                                <?php }else{?>
-
-
-                                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                                <?php }?>
-
                                                  </a>
 
-                                            <?php }
-                                            else { ?>
-                                            <a class="post_dot"  href="<?php echo base_url('artistic/dashboard/' . $slug); ?>">
-
-                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                       
-                                                </a>
-
-                                        <?php } ?>
+                                            <?php }?>                                            
                                     </div>
                                     <div class="post-design-name fl col-xs-8 col-md-10">
                                         <ul>
                                             <?php
                                             
 
-                                            $designation = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
+                                            $designation = $this->db->select('designation')->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
                                             
-                                            $userskill = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_skill;
+                                            $userskill = $this->db->select('art_skill')->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_skill;
                                             $aud = $userskill;
                                             $aud_res = explode(',', $aud);
                                             foreach ($aud_res as $skill) {
 
-                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
                                                 $skill1[] = $cache_time;
                                             }
                                             $listFinal = implode(', ', $skill1);
@@ -441,8 +433,8 @@
                                         $countlike = $commnetcount[0]['art_likes_count'] - 1;
                                         $likelistarray = explode(',', $likeuser);
                                         foreach ($likelistarray as $key => $value) {
-                                            $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                            $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                                            $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                                            $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                                             ?>
                                         <?php } ?>
                                         <!-- pop up box end-->
@@ -456,8 +448,8 @@
 
                                             $likelistarray = explode(',', $likeuser);
                                             $likelistarray = array_reverse($likelistarray);
-                                            $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                            $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                            $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                                            $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                             ?>
                                             <div class="like_one_other">
                                             <a href="javascript:void(0);" class="likeuserlist1"  onclick="likeuserlist(<?php echo $art_data[0]['art_post_id']; ?>);">
@@ -494,8 +486,8 @@
                                     $countlike = $commnetcount[0]['art_likes_count'] - 1;
                                     $likelistarray = explode(',', $likeuser);
                                     foreach ($likelistarray as $key => $value) {
-                                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                                         ?>
                                     <?php } ?>
                                     <!-- pop up box end-->
@@ -508,8 +500,8 @@
                                         $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
                                         $likelistarray = explode(',', $likeuser);
-                                        $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                        $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                        $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                                        $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                         ?>
                                         <div class="like_one_other">
                                          <a href="javascript:void(0);"  class="likeuserlist1" onclick="likeuserlist(<?php echo $art_data[0]['art_post_id']; ?>);">
@@ -548,9 +540,9 @@
 
                                             if ($artdata) {
                                                 foreach ($artdata as $rowdata) {
-                                                    $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                                                    $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
-                                                    $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                                                    $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                                                    $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                                                    $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                                     ?>
                                                     <div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img"> 
@@ -558,29 +550,26 @@
                                                             <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $artslug); ?>"> 
 
                                                             <?php
-                                                            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
-                                                            $art_first = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_name;
-                                                            $art_last = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_lastname;
+                                                            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                                                            $art_first = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_name;
+                                                            $art_last = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_lastname;
                                                             ?>
-                                                            <?php if ($art_userimage) { ?>
+                                                        
+
+                                     <?php 
 
 
-                            <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
-                                               <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) { ?>
+                                               <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                                 <?php }else{?>
 
-                            <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
-
+                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                             <?php }?>
-                                      <?php
-                                                            } else {
-                                                                ?>
-                                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                       
-                                                                <?php
-                                                            }
-                                                            ?>
                                                         </a>
                                                         </div>
                                                         <div class="comment-name">
@@ -683,7 +672,7 @@
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
 
-                                                            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                                                            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
 
 
                                                             if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
@@ -728,34 +717,29 @@
                                 <div class="post-design-commnet-box col-md-12" id="<?php echo "box_hide" . $art_data[0]['art_post_id']; ?>">
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
-                                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
-                                    $art_first = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                                    $art_last = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
-                                    $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+                                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                                    $art_first = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                                    $art_last = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                                    $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
                                     ?>
 
                                     <div class="post-design-proo-img  hidden-mob">
                                         <a  class="post_dot" title="<?php echo ucfirst(strtolower($art_first)) . ' ' . ucfirst(strtolower($art_last)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
 
-                                        <?php if ($art_userimage) { ?>
-
                                               <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
-                                                <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+                                               <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
                                 <?php }else{?>
 
-                                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
-
+                                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                             <?php }?>
-                                            <?php
-                                        } else {
-                                            ?>
-                                              <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                       
-                                            <?php
-                                        }
-                                        ?>
                                     </a>
                                     </div>
                                     <div class="">
@@ -937,8 +921,8 @@
                                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                 // echo '<pre>'; print_r($commnetcount);
                                                                 foreach ($commnetcount as $comment) {
-                                                                    $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
-                                                                    $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                    $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
+                                                                    $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
                                                                     ?>
                                                                 <?php } ?>
                                                                 <!-- pop up box end-->
@@ -948,8 +932,8 @@
                                                                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-                                                                    $art_fname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
-                                                                    $art_lname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
+                                                                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
                                                                     ?>
                                                                     <div class="like_one_other" >
                                                                     <a href="javascript:void(0);" class="likeuserlist1"  onclick="likeuserlistimg(<?php echo $artdata['post_files_id']; ?>);">
@@ -984,8 +968,8 @@
                                                             $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                             // echo '<pre>'; print_r($commnetcount);
                                                             foreach ($commnetcount as $comment) {
-                                                                $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
-                                                                $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
+                                                                $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
                                                                 ?>
                                                             <?php } ?>
                                                             <!-- pop up box end-->
@@ -995,8 +979,8 @@
                                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-                                                                $art_fname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
-                                                                $art_lname = $this->db->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
+                                                                $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
                                                                 ?>
                                                                 <div class="like_one_other" >
                                                                 <a href="javascript:void(0);" class="likeuserlist1" onclick="likeuserlistimg(<?php echo $artdata['post_files_id']; ?>);">
@@ -1040,10 +1024,10 @@
                                                                     $artmulimage = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
                                                                     if ($artmulimage) {
                                                                         foreach ($artmulimage as $rowdata) {
-                                                                            $companyname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                                                                            $companyname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
 
-                                                                            $lastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
-                                                                            $slugdata = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+                                                                            $lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                                                                            $slugdata = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                                                             ?>
                                                                             <div class="all-comment-comment-box">
                                                                                 <div class="post-design-pro-comment-img">
@@ -1051,24 +1035,23 @@
                                                                                 <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugdata); ?>"> 
 
                                                                                     <?php
-                                                                                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                                                                                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                                     ?>
-                                <?php if($art_userimage){?>
-
 
                                 <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
-                                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+                                             <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                                 <?php }else{?>
 
-                             <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
-
+                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                              <?php }?>
 
-                                 <?php }else{?> 
-                                          <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                       
-                                           <?php }?>   </a>         
+                               </a>         
                                                                                 </div>
                                                                                 <div class="comment-name">
                                                                                     <b>  <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugdata); ?>"> <?php
@@ -1153,7 +1136,7 @@
                                                                                     <?php
                                                                                     $userid = $this->session->userdata('aileenuser');
 
-                                                                                    $business_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['post_image_id'], 'status' => 1))->row()->user_id;
+                                                                                    $business_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['post_image_id'], 'status' => 1))->row()->user_id;
 
 
                                                                                     if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
@@ -1199,32 +1182,26 @@
                                                         <div class="post-design-commnet-box col-md-12" id="<?php echo "box_comment" . $artdata['post_files_id']; ?>">
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
-                                                            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
-                                                            $art_firstuser = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                                                            $art_lastuser = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                                                            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                                                            $art_firstuser = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                                                            $art_lastuser = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
                                                             ?>
                                                             <div class="post-design-proo-img hidden-mob">
-                                                                <?php if ($art_userimage) { ?>
-
-
-
+                                                                
                                 <?php 
-                                                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
-                                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+                                             <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
                                 <?php }else{?>
 
-                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
-
+                             <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                             <?php }?>
-
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
-                                                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                                                    <?php
-                                                                }
-                                                                ?>
                                                             </div>
                                                             <div class="">
                                                                 <div id="content" class="col-md-12 inputtype-comment cmy_2" >
