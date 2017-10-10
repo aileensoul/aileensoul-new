@@ -8,7 +8,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <?php echo $head; ?>  
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver=' . time()); ?>" />
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver=' . time()); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver=' . time()); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>" /> 
