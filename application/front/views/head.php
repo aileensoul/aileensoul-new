@@ -38,13 +38,13 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 <meta name="description" content=" " />
 <meta name="keywords" content=" " />
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
+<!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+<!--<script>
     (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-6060111582812113",
         enable_page_level_ads: true
     });
-</script>
+</script>-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <link rel="icon" href="<?php echo base_url('images/favicon.png?ver=' . time()); ?>">
