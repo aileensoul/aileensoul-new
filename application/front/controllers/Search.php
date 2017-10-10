@@ -197,14 +197,14 @@ class Search extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'search_info');
             // code for insert search keyword in database end
         }
-        
+
         $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1, 'FIND_IN_SET ("' . $userid . '", delete_post) !=' => '0');
         $delete_postdata = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'GROUP_CONCAT(business_profile_post_id) as delete_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $delete_post_id = $delete_postdata[0]['delete_post_id'];
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
-        
+
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4, 'is_deleted' => 0);
             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -291,24 +291,23 @@ class Search extends MY_Controller {
                                                                                 <li style="display: block;">
                                                                                     <a  class="color-search" s title="">';
 
-                   $cache_time = $this->db->get_where('industry_type', array('industry_id' => $p['industriyal']))->row()->industry_name;
-                   if($cache_time != ''){
-                    $return_html .= $cache_time;
-                   }
-                   else{
-                       $return_html .= $p['other_industrial'];
-                   }
+                    $cache_time = $this->db->get_where('industry_type', array('industry_id' => $p['industriyal']))->row()->industry_name;
+                    if ($cache_time != '') {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= $p['other_industrial'];
+                    }
                     $return_html .= '</a>
                                                                                 </li>
                                                                                 <li style="display: block;">
                                                                                     <a title="" class="color-search">';
 
-                   $cache_time = $this->db->get_where('business_type', array('type_id' => $p['business_type']))->row()->business_name;
-                   if($cache_time != ''){
-                       $return_html .= $cache_time;
-                   }else{
-                       $return_html .= $p['other_business_type'];
-                   }
+                    $cache_time = $this->db->get_where('business_type', array('type_id' => $p['business_type']))->row()->business_name;
+                    if ($cache_time != '') {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= $p['other_business_type'];
+                    }
                     $return_html .= '</a>
                                                                                 </li>
                                                                                 <li style="display: block;">
@@ -2028,7 +2027,7 @@ Your browser does not support the audio tag.
             $contition_array = array('freelancer_post_city' => $cache_time, 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7, 'is_delete' => '0');
             $unique = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
-          //  echo "4444";die();
+            //  echo "4444";die();
             //echo $search_skill;die();
             $contition_array = array('status' => '1');
             $search_condition = "(skill LIKE '%$search_skill%')";
@@ -2046,7 +2045,7 @@ Your browser does not support the audio tag.
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", freelancer_post_area) != ' => '0');
                 $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
- //             echo "<pre>"; print_r($candidate); die();
+            //             echo "<pre>"; print_r($candidate); die();
             $candidate = array_reduce($candidate, 'array_merge', array());
             // echo "<pre>"; print_r($candidate); die();
 //            $candidate = array_unique($candidate, SORT_REGULAR);
@@ -2060,14 +2059,14 @@ Your browser does not support the audio tag.
 
             $contition_array = array('freelancer_post_field' => $category_temp, 'user_id !=' => $userid, 'free_post_step' => 7, 'status' => '1');
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-          //  echo "<pre>"; print_r($fieldfound); die();
+            //  echo "<pre>"; print_r($fieldfound); die();
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id !=' => $userid, 'free_post_step' => 7);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          //  echo "<pre>"; print_r($otherdata); die();
-            $new1 = array_merge((array)$candidate, (array)$fieldfound, (array)$otherdata);
-         
-          //  echo "<pre>"; print_r($new1); die();
+            //  echo "<pre>"; print_r($otherdata); die();
+            $new1 = array_merge((array) $candidate, (array) $fieldfound, (array) $otherdata);
+
+            //  echo "<pre>"; print_r($new1); die();
             $unique = array();
             foreach ($new1 as $value) {
                 $unique[$value['freelancer_post_reg_id']] = $value;
@@ -2090,7 +2089,7 @@ Your browser does not support the audio tag.
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             // $unique = array_merge($candidate, $fieldfound, $otherdata);
-            $new1 = array_merge((array)$candidate, (array)$fieldfound, (array)$otherdata);
+            $new1 = array_merge((array) $candidate, (array) $fieldfound, (array) $otherdata);
 
             $unique = array();
             foreach ($new1 as $value) {
@@ -2116,18 +2115,41 @@ Your browser does not support the audio tag.
                                                                 <div class="profile-job-post-location-name-rec">
                                                                     <div style="display: inline-block; float: left;">
                                                                         <div  class="buisness-profile-pic-candidate">';
-                $filename = $this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'];
-                $s3 = new S3(awsAccessKey, awsSecretKey);
-                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                if ($info) {
-                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                $post_fname = $row['freelancer_post_fullname'];
+                $post_lname = $row['freelancer_post_username'];
+                $sub_post_fname = substr($post_fname, 0, 1);
+                $sub_post_lname = substr($post_lname, 0, 1);
+
+                if ($row['freelancer_post_user_image']) {
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'])) {
+                            $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                            $return_html .= '<div class = "post-img-div">';
+                            $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
+                            $return_html .= '</div>
+                </a>';
+                        } else {
+                            $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                            $return_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
+                        }
+                    } else {
+                        $filename = $this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'];
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if($info){
+                            $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                     $return_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
+                        }else{
+                            $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                    $return_html .= '<div class = "post-img-div">';
+                    $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
+                    $return_html .= '</div>
+                </a>';
+                        }
+                    }
+                    
                 } else {
                     $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
-                    $post_fname = $row['freelancer_post_fullname'];
-                    $post_lname = $row['freelancer_post_username'];
-                    $sub_post_fname = substr($post_fname, 0, 1);
-                    $sub_post_lname = substr($post_lname, 0, 1);
                     $return_html .= '<div class = "post-img-div">';
                     $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
                     $return_html .= '</div>
@@ -2437,7 +2459,7 @@ Your browser does not support the audio tag.
             $contion_array = array('freelancer_post.user_id !=' => $userid);
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>";print_r($freeldata);die();
-            $unique = array_merge((array)$freeskillpost, (array)$freeldata, (array)$fieldfound);
+            $unique = array_merge((array) $freeskillpost, (array) $freeldata, (array) $fieldfound);
             $new = array();
             foreach ($unique as $value) {
                 $new[$value['post_id']] = $value;
@@ -2458,7 +2480,7 @@ Your browser does not support the audio tag.
             $contion_array = array('city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $unique = array_merge((array)$freeskillpost, (array)$freeldata, (array)$fieldfound);
+            $unique = array_merge((array) $freeskillpost, (array) $freeldata, (array) $fieldfound);
             $new = array();
             foreach ($unique as $value) {
                 $new[$value['post_id']] = $value;
@@ -2519,10 +2541,10 @@ Your browser does not support the audio tag.
                         $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                         $return_html .= '</a>';
                     }
-                     $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
-                $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
-                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
-                $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
+                    $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
+                    $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
+                    $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                    $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
 
                     if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction">

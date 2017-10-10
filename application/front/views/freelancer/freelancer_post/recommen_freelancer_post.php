@@ -44,20 +44,42 @@
                                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" 
                                                    href="<?php echo base_url('freelancer-work/freelancer-details/' . $freepostdata[0]['user_id']); ?>" title="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                        <?php
-                                                       $filename = $this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'];
-                                                       $s3 = new S3(awsAccessKey, awsSecretKey);
-                                                       $info = $s3->getObjectInfo(bucket, $filename);
-                                                       if ($info) {
-                                                           ?>
-                                                        <div class="data_img_2">
-                                                            <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
-                                                        </div>
-                                                        <?php
+                                                       $fname = $freepostdata[0]['freelancer_post_fullname'];
+                                                       $lname = $freepostdata[0]['freelancer_post_username'];
+                                                       $sub_fname = substr($fname, 0, 1);
+                                                       $sub_lname = substr($lname, 0, 1);
+
+                                                       if ($freepostdata[0]['freelancer_post_user_image']) {
+                                                           if (IMAGEPATHFROM == 'upload') {
+                                                               if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'])) {
+                                                                   ?>
+                                                                <div class="post-img-profile">
+                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                </div> 
+                                                            <?php } else {
+                                                                ?>
+                                                                <div class="data_img_2">
+                                                                    <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            $filename = $this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'];
+                                                            $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                            $info = $s3->getObjectInfo(bucket, $filename);
+                                                            if ($info) {
+                                                                ?>
+                                                                <div class="data_img_2">
+                                                                    <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                                </div>
+                                                            <?php } else { ?>
+                                                                <div class="post-img-profile">
+                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                </div> 
+                                                                <?php
+                                                            }
+                                                        }
                                                     } else {
-                                                        $fname = $freepostdata[0]['freelancer_post_fullname'];
-                                                        $lname = $freepostdata[0]['freelancer_post_username'];
-                                                        $sub_fname = substr($fname, 0, 1);
-                                                        $sub_lname = substr($lname, 0, 1);
                                                         ?>
                                                         <div class="post-img-profile">
                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -139,17 +161,17 @@
         </div>
         <!-- script for skill textbox automatic start (option 2)-->
 
-    <script>
-        var base_url = '<?php echo base_url(); ?>';
-        var skill = '<?php echo $this->input->get('skills'); ?>';
-        var place = '<?php echo $this->input->get('searchplace'); ?>';
-        var button = '<?php echo $this->input->get('search_submit'); ?>';
+        <script>
+            var base_url = '<?php echo base_url(); ?>';
+            var skill = '<?php echo $this->input->get('skills'); ?>';
+            var place = '<?php echo $this->input->get('searchplace'); ?>';
+            var button = '<?php echo $this->input->get('search_submit'); ?>';
 
-    </script>
-    <!-- script for skill textbox automatic end -->
-    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
-</body>
+        </script>
+        <!-- script for skill textbox automatic end -->
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_search_result.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+    </body>
 </html>
 
 
