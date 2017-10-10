@@ -4463,7 +4463,7 @@ public function delete_commenttwo_postnewpage() {
             $condition_array = array('user_id' => $profile_data[0]['user_id']);
             $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+            if ($user_data[0]['status'] == '1') {
                 $return = 1;
             } else {
                 $return = 0;
