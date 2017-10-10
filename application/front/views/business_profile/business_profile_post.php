@@ -15,7 +15,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -334,7 +334,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
         <!-- POST BOX JAVASCRIPT START --> 
-        <!--<script src="<?php // echo base_url('js/mediaelement-and-player.min.js?ver=' . time());      ?>"></script>-->
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
