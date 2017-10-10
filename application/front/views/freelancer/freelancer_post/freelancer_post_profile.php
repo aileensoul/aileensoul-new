@@ -67,7 +67,7 @@
                             <?php
                         } else {
                             ?>
-                            <div class="bg-images no-cover-upload">
+                                 <div class="bg-images no-cover-upload">
                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                             </div>
 
@@ -88,14 +88,38 @@
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-                            <?php if ($info) { ?>
-                                <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="" >
-                                <?php
+                            <?php
+                            $fname = $freelancerpostdata[0]['freelancer_post_fullname'];
+                            $lname = $freelancerpostdata[0]['freelancer_post_username'];
+                            $sub_fname = substr($fname, 0, 1);
+                            $sub_lname = substr($lname, 0, 1);
+                            if ($freelancerpostdata[0]['freelancer_post_user_image']) {
+                                if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'])) {
+                                        ?>
+                                        <div class="post-img-user">
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div>
+                                    <?php } else {
+                                        ?>
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="" >        
+                                        <?php
+                                    }
+                                } else {
+                                    $filename = $this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'];
+                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if ($info) {
+                                        ?>
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="" >
+                                    <?php } else { ?>
+                                        <div class="post-img-user">
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
                             } else {
-                                $fname = $freelancerpostdata[0]['freelancer_post_fullname'];
-                                $lname = $freelancerpostdata[0]['freelancer_post_username'];
-                                $sub_fname = substr($fname, 0, 1);
-                                $sub_lname = substr($lname, 0, 1);
                                 ?>
                                 <div class="post-img-user">
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -153,22 +177,23 @@
                                 </ul>
 
                                 <?php
-                                if(is_numeric($this->uri->segment(3))){
-                                                  $id=  $this->uri->segment(3);
-                                                }else{
-                                                $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
-                                                }
+                                if (is_numeric($this->uri->segment(3))) {
+                                    $id = $this->uri->segment(3);
+                                } else {
+                                    $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                }
                                 $userid = $this->session->userdata('aileenuser');
                                 $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => 2, 'status' => '0');
                                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 if ($userid != $this->uri->segment(3)) {
-                                    if ($this->uri->segment(3) != "") { ?>
+                                    if ($this->uri->segment(3) != "") {
+                                        ?>
                                         <div class="flw_msg_btn fr">
-                                                <ul>
-                                       <?php  
-                                       if (!$data) {
-                                            ?> 
-                                            
+                                            <ul>
+                                                <?php
+                                                if (!$data) {
+                                                    ?> 
+
                                                     <li>
                                                         <a id="<?php echo $id; ?>" onClick="savepopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>">
                                                             <?php echo $this->lang->line("save"); ?>
@@ -176,21 +201,21 @@
 
                                                     </li> <?php } else { ?>
                                                     <li> 
-                                                        <a class="saved butt_rec <?php echo 'saveduser' .$id; ?> "><?php echo $this->lang->line("saved"); ?></a>
+                                                        <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                     </li> <?php
                                                 }
-                                               
                                                 ?>
                                                 <li>
                                                     <?php
-        $returnpage = $_GET['page'];
-        if ($returnpage == 'freelancer_hire') { ?>
-             <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
-   <?php     } else { ?>
-            <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
- <?php       }
-        ?>
-                                                   
+                                                    $returnpage = $_GET['page'];
+                                                    if ($returnpage == 'freelancer_hire') {
+                                                        ?>
+                                                        <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php }
+                                                    ?>
+
                                                 </li>
                                             </ul>
                                         </div>
@@ -952,7 +977,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));   ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));       ?>
                                     <div class="col-md-5">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -961,7 +986,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                                <?php //echo form_close();   ?>
+                                <?php //echo form_close();       ?>
                             </div>
                         </span>
                     </div>
@@ -969,7 +994,7 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-     
+
         <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>">
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">

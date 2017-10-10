@@ -75,18 +75,38 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php
-                            $filename = $this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'];
-                            $s3 = new S3(awsAccessKey, awsSecretKey);
-                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                            if ($info) {
-                                ?>
-                                <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="" >
-                                <?php
+                            $fname = $freepostdata[0]['freelancer_post_fullname'];
+                            $lname = $freepostdata[0]['freelancer_post_username'];
+                            $sub_fname = substr($fname, 0, 1);
+                            $sub_lname = substr($lname, 0, 1);
+
+                            if ($freepostdata[0]['freelancer_post_user_image']) {
+                                if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'])) {
+                                        ?>
+                                        <div class="post-img-user">
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div> 
+                                    <?php } else {
+                                        ?>
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="" >
+                                        <?php
+                                    }
+                                } else {
+                                    $filename = $this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'];
+                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if ($info) {
+                                        ?>
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="" >
+                                        <?php } else { ?>
+                                        <div class="post-img-user">
+                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                        </div>
+                                    <?php
+                                    }
+                                }
                             } else {
-                                $fname = $freepostdata[0]['freelancer_post_fullname'];
-                                $lname = $freepostdata[0]['freelancer_post_username'];
-                                $sub_fname = substr($fname, 0, 1);
-                                $sub_lname = substr($lname, 0, 1);
                                 ?>
                                 <div class="post-img-user">
                                 <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -118,7 +138,7 @@
                                 <ul class="current-user pro-fw">
                                     <?php } else { ?>
                                     <ul class="pro-fw4">
-<?php } ?>  
+                                    <?php } ?>  
                                     <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details')) { ?> class="active" <?php } ?>><a title="Freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php echo $this->lang->line("freelancer_details"); ?></a>
                                     </li>
 <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'saved-projects' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
@@ -187,7 +207,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));  ?>
+<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));     ?>
 <!--                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
                                     <input type="hidden" name="hitext" id="hitext" value="2">
                                     <div class="popup_previred">
@@ -202,7 +222,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-<?php //echo form_close();  ?>
+<?php //echo form_close();     ?>
                             </div>
                         </span>
                     </div>
