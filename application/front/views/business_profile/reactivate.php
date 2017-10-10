@@ -7,11 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta charset="utf-8">
         <title>Reactivate</title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <!-- http://bootsnipp.com/snippets/4jXW -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
     </head>
     <body>
         <?php echo $header; ?>
@@ -36,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </center>
             </div>
         </div>
-        <?php  echo $footer; ?>
+        <?php echo $footer; ?>
     </body>
 </html>
 

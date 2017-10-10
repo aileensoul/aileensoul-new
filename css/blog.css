@@ -1,3 +1,5 @@
+.blog_class_main_desc p{cursor: default;}
+.blog_view_link a{cursor: pointer;}
 body.blog{position: initial;}
 .ft ul li{font-size: 14px;}
 .header-left-menu ul{padding-bottom: 3px!important;}
@@ -93,7 +95,7 @@ height: 24px; width: 24px; float: left;}
 .blog_class_main_name span{color: #1b8ab9; font-size: 25px; font-family: robotoregular;}
 .blog_class_main_by { color: #707070; padding: 0px 0px; }
 .blog_class_main_by  span{padding-right: 20px; font-size: 15px;}
-.blog_class_main_desc span{font-size: 14px; color: #272222!important; line-height: 17px; word-break: break-word; cursor: pointer;}
+.blog_class_main_desc span{font-size: 14px; color: #272222!important; line-height: 25px; word-break: break-word; cursor: pointer;}
 .blog_class_main_desc a:hover{color: #136386; text-decoration: underline;}
 .blog_class_main_desc a{cursor: pointer;}
 .blog_view_link{padding: 6px; color: #707070;}
@@ -359,6 +361,7 @@ ol.upper_alpha{list-style-type: upper-alpha; padding: 5px 25px;}
 
 }
 @media screen and (max-width: 767px) {
+	.date_blog_left{display: none;}
 	.blog_header {
 		padding-top: 102px;
 	}

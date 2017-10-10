@@ -3,12 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <script type="text/javascript">
             //For Scroll page at perticular position js Start
             $(document).ready(function () {
@@ -145,12 +143,12 @@
         <?php echo $footer; ?>
         <script src="<?php echo base_url('js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('js/jquery.jMosaic.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php //echo base_url('js/jquery.jMosaic.js?ver=' . time());  ?>"></script>-->
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('js/webpage/business-profile/audio.js?ver=' . time()); ?>"></script>-->
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/webpage/business-profile/audio.js?ver=' . time());  ?>"></script>-->
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

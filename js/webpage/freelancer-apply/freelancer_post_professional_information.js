@@ -214,7 +214,7 @@ $(document).on('change', '.field_other', function (event) {
         item.val('');
          $('#bidmodal').modal('show');
 //        $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Field</h2><input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()"><div class="fw"><a id="field" class="btn">OK</a></div></div>');
-        $('.message #field').on('click', function () {
+        $('.message #field').off('click').on('click', function () {
             $("#other_field").removeClass("keyskill_border_active");
             $('#field_error').remove();
             var x = $.trim(document.getElementById("other_field").value);
@@ -231,7 +231,7 @@ $(document).on('change', '.field_other', function (event) {
                     dataType: 'json',
                     data: 'other_field=' + textVal,
                     success: function (response) {
-
+                        
                         if (response.select == 0)
                         {
 //                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
@@ -245,9 +245,10 @@ $(document).on('change', '.field_other', function (event) {
                         } else
                         {
                             $('#bidmodal').modal('hide');
-                            $('.field_other').html(response.select);
                             $('#other_field').val('');
                             $("#other_field").removeClass("keyskill_border_active");
+                            $("#field_error").removeClass("error");
+                            $('.field_other').html(response.select);
 //                            $.fancybox.close();
 
                             

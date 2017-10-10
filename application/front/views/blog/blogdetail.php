@@ -86,7 +86,7 @@
                      </a>
                   </div>
                </div>
-               <div class="col-md-8 col-sm-7 col-xs-7 header-left-menu">
+               <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                   <div class="main-menu-right">
                      <ul class="">
                         <li><a href="<?php echo base_url('blog/');?>">Recent Post </a></li>

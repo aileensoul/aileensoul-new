@@ -1660,6 +1660,7 @@ select:focus{ outline: none; }
 		height: 34px;
 		width: 41px;
 	}
+	.header-login .input{width:46% !important;}
     .t-r-l{text-align: right !important;}
 	.header-login .btn1{margin-left: 0px;}
 	.header-login .input{width: 46%; margin-right: 2%; margin-left: 2%;}
