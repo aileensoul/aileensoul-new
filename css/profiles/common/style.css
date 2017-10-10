@@ -1906,7 +1906,9 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	-webkit-transform: translate(0, 50%) !important; */
 }
 /*.fancybox-slide .modal-content{transform: inherit !important;}*/
-
+.hs-submit img{
+   display: none !important;
+   }
 
 
 
