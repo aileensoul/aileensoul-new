@@ -14,7 +14,7 @@
 <div id="Content" class="wrapper topSection">
 	<div id="Header">
 	<div class="wrapper">
-		<div class="logo"><h1><img src="under-images/main_logo.png" />Aileensoul</h1>	</div>
+		<div class="logo"><h1><img src="assets/under-images/main_logo.png" />Aileensoul</h1>	</div>
 		</div>
 	</div>
 	<h2>We are coming soon!!!</h2> 	
@@ -28,7 +28,7 @@
     <div class="row">
 	<div class="col-md-12">
         <div class="featuresPro" style="margin-left:350px;">
-		<div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="under-images/job1.png" data-at2x="under-images/icon-1@2x.png" alt="Features"></div>
+		<div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="assets/under-images/job1.png" data-at2x="assets/under-images/icon-1@2x.png" alt="Features"></div>
           <div class="col-md-9 col-sm-9 col-xs-9 pt10"> 
             <!--features 1-->
             <h4>Job Profile</h4>
@@ -40,7 +40,7 @@
       </div>
       <div class="col-md-6">
         <div class="featuresPro">
-          <div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="under-images/rec.png" data-at2x="under-images/icon-2@2x.png" alt="Features"></div>
+          <div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="assets/under-images/rec.png" data-at2x="assets/under-images/icon-2@2x.png" alt="Features"></div>
           <div class="col-md-9 col-sm-9 col-xs-9 pt10"> 
             <!--features 2-->
             <h4>Recruiter Profile</h4>
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="featuresPro">
-		<div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="under-images/freelancer.png" data-at2x="under-images/icon-3@2x.png" alt="Features"></div>
+		<div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="assets/under-images/freelancer.png" data-at2x="assets/under-images/icon-3@2x.png" alt="Features"></div>
           <div class="col-md-9 col-sm-9 col-xs-9 pt10"> 
             <!--features 3-->
             <h4>Freelance Profile</h4>
@@ -61,7 +61,7 @@
       </div>
       <div class="col-md-6">
         <div class="featuresPro">
-		<div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="under-images/business.png" data-at2x="under-images/icon-4@2x.png" alt="Features"></div>
+		<div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="assets/under-images/business.png" data-at2x="assets/under-images/icon-4@2x.png" alt="Features"></div>
           <div class="col-md-9 col-sm-9 col-xs-9 pt10"> 
             <!--features 4-->
             <h4>Business Profile</h4>
@@ -71,7 +71,7 @@
           
         </div>
         <div class="featuresPro">
-          <div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="under-images/art.png" data-at2x="under-images/icon-3@2x.png" alt="Features"></div>
+          <div class="col-md-3 col-sm-3 col-xs-3 text-center"><img src="assets/under-images/art.png" data-at2x="assets/under-images/icon-3@2x.png" alt="Features"></div>
           <div class="col-md-9 col-sm-9 col-xs-9 pt10"> 
             <!--features 3-->
             <h4>Artistic Profile</h4>
