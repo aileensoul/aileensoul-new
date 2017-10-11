@@ -126,6 +126,9 @@ $(document).ready(function () {
                     $("#feedback_subject").val('');
                     $("#feedback_message").val('');
 
+                    $('.biderror .mes').html("<div class='pop_content'>Your message send successfully.</div>");
+                     $('#bidmodal').modal('show');
+
                     $.fancybox.open('<div class="alert alert-danger feedback"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Your feedback send successfully' + ' !</div>');
 
                 } else {
