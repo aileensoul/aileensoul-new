@@ -20,7 +20,12 @@ function myFunctionone(clicked_id) {
             }
 
 
-
+ $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           $('#likeusermodal').modal('hide');
+       }
+   });  
+ 
 $(document).ready(function () { 
     artistic_search_post();
 

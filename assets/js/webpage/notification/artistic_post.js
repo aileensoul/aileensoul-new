@@ -23,6 +23,31 @@ var modal = document.getElementById('myModal');
                             }
                         } 
 
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#likeusermodal').modal('hide');
+    }
+});  
+   
+$(document).on('keydown', function (e) { 
+    if (e.keyCode === 27) {
+        if($('.modal-post').show()){
+
+          $( document ).on( 'keydown', function ( e ) {
+          if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+       $('.modal-post').hide();
+        }
+       });  
+     
+
+        }
+         document.getElementById('myModal').style.display = "none";
+         }
+ });
+
+//all popup close close using esc end
 
  //validation for edit email formate form
 
@@ -1471,31 +1496,6 @@ function check_length(my_form)
                             }
                         }
 
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-        $('#likeusermodal').modal('hide');
-    }
-});  
-   
-$(document).on('keydown', function (e) { 
-    if (e.keyCode === 27) {
-        if($('.modal-post').show()){
-
-          $( document ).on( 'keydown', function ( e ) {
-          if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-       $('.modal-post').hide();
-        }
-       });  
-     
-
-        }
-         document.getElementById('myModal').style.display = "none";
-         }
- });
-
-//all popup close close using esc end
 
  // pop up open & close aarati code start 
 jQuery(document).mouseup(function (e) {
