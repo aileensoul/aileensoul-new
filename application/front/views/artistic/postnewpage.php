@@ -4,12 +4,12 @@
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/timeline.css?ver='.time()); ?>">
+
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ;?>" />
+
 
     <body>
     <?php echo $header; ?>
