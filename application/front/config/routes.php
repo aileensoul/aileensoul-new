@@ -168,6 +168,7 @@ $route['freelancer-work/portfolio'] = "freelancer/freelancer_post_portfolio";
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
+$route['freelancer-work/reactivate'] = "freelancer/reactivate";
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 $route['freelancer-work'] = "freelancer/freelancer_post";
 

@@ -4068,7 +4068,7 @@ class Freelancer extends MY_Controller {
         $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
         if ($updatdata) {
 
-            redirect('freelancer/freelancer_apply_post', refresh);
+            redirect('freelancer-work/home', refresh);
         } else {
 
             redirect('freelancer/reactivate', refresh);
