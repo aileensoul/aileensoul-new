@@ -24,6 +24,10 @@
       <div class="left_fixed"> 
          <?php ?>
 <?php echo $left_artistic; ?>
+
+<?php 
+if(count($usercount) != count($followcount) + count($crosscount)){?>
+
           <div class="full-box-module_follow">
           
             <div class="common-form">
@@ -36,6 +40,8 @@
              
             </div>
          </div>
+         <?php }?>
+
 		 <div class="tablate-potrat-add">
 									<div class="fw text-center pt10">
 									<script type="text/javascript" language="javascript">
