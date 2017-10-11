@@ -3,9 +3,16 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
+        <?php
+        if (IS_CSS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+            <?php
+        } else {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
+        <?php } ?>
         <style type="text/css">
             .header2{border-bottom-left-radius: 4px;border-bottom-right-radius: 4px; }
             .full-width  img{display: none;}
@@ -102,7 +109,7 @@
                                                 <div class="img_bui_data"> 
                                                     <div class="edit_bui_img">
                                                         <img id="imageold" src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name'] ?>" >
-                                                        <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['file_name'])  ?>" >-->
+                                                        <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['file_name'])   ?>" >-->
                                                     </div>
 
                                                     <?php // if ($y != 1) {
@@ -124,7 +131,7 @@
                                         }
                                     }
                                     ?>
-                            <!--<img id="preview" src="#" alt="your image"/>-->
+                    <!--<img id="preview" src="#" alt="your image"/>-->
                                 </fieldset>
                                 <fieldset class="hs-submit full-width">
                                     <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">
@@ -140,13 +147,13 @@
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver='.time());   ?>"></script>-->
 
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
-                                                                        var base_url = '<?php echo base_url(); ?>';
-                                                                        var slug = '<?php echo $slugid; ?>';
+                                                                var base_url = '<?php echo base_url(); ?>';
+                                                                var slug = '<?php echo $slugid; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/image.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>

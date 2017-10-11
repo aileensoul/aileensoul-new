@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver='.time()); ?>">
        
         <!-- This Css is used for call popup -->
         <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver='.time()) ?>" />
@@ -208,7 +208,53 @@
             <footer>
 <?php echo $footer; ?>
             </footer>
-            <!--<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>-->
+                   <!-- Bid-modal  -->
+        <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content message">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+<!--                    <div class="message" style="width:300px;">-->
+                        <h2>Add University</h2> 
+                        <input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()">
+                        <!--<input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">-->
+                        <div class="fw"><a id="univer" class="btn">OK</a></div>
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- Model Popup Close -->
+        <!-- Bid-modal  -->
+        <div class="modal fade message-box biderror custom-message" id="bidmodal_degree" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content message2">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+<!--                    <div class="message" style="width:300px;">-->
+                        <h2>Add Degree</h2>         
+                        <input type="text" name="other_degree" id="other_degree" onkeypress="return remove_validation()">
+                        <h2>Add Stream</h2>
+                        <select name="other_stream" id="other_stream" class="other_stream" onchange="return remove_validation1()">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select>
+                        <!--<input type="text" name="other_degree" id="other_degree" onkeypress="return remove_validation()">-->
+                        <div class="fw"><a id="univer2" class="btn">OK</a></div>
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- Model Popup Close -->
+           <!-- Bid-modal  -->
+        <div class="modal fade message-box biderror custom-message" id="bidmodal_stream" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content message1">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+<!--                    <div class="message" style="width:300px;">-->
+                        <h2>Add stream</h2> 
+                        <input type="text" name="other_degree1" id="other_degree1" onkeypress="return remove_validation_stream()">
+                        <!--<input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">-->
+                        <div class="fw"><a id="univer1" class="btn">OK</a></div>
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- Model Popup Close -->
             <!-- This Js is used for call popup -->
             <script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver='.time()); ?>"></script>
             <!-- This Js is used for call popup -->

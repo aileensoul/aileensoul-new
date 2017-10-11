@@ -5,10 +5,9 @@
         <?php echo $head; ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" href="assets/css/style-main.css">
-        <link rel="stylesheet" href="css/jquery.fancybox.css">
-        <link rel="stylesheet" type="text/css" href="css/slider.css">
-       
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css') ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/slider.css') ?>">
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
@@ -175,7 +174,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                             <?php } ?>
 
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                                <img src="<?php echo base_url(); ?>img/cam.png">Update Profile Picture</a>
+                                                <img src="<?php echo base_url(); ?>assets/img/cam.png">Update Profile Picture</a>
                                         </div>
                                     <?php } else { ?>
                                         <div class="profile-photo no-image-upload">
@@ -188,7 +187,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
                                                                 </div>  
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                                <img src="<?php echo base_url(); ?>img/u1.png">Update Profile Picture</a>
+                                                <img src="<?php echo base_url(); ?>assets/img/u1.png">Update Profile Picture</a>
                                         </div>
                                     <?php } ?>
                                     <div class="profile-detail">
@@ -223,7 +222,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('job'); ?>"><img src="<?php echo base_url(); ?>img/i1.png"></a>
+                                                <a href="<?php echo base_url('job'); ?>"><img src="<?php echo base_url(); ?>assets/img/i1.png"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
@@ -256,7 +255,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class="row">
                                         <div class="col-md-4 pull-right col-sm-4 col-xs-12">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('recruiter'); ?>"><img src="<?php echo base_url(); ?>img/i2.jpg"></a>
+                                                <a href="<?php echo base_url('recruiter'); ?>"><img src="<?php echo base_url(); ?>assets/img/i2.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
@@ -293,7 +292,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="<?php echo base_url(); ?>img/i3.jpg"></a>
+                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="<?php echo base_url(); ?>assets/img/i3.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
@@ -327,7 +326,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4 pull-right col-xs-12">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('business-profile'); ?>"><img src="<?php echo base_url(); ?>img/i4.jpg"></a>
+                                                <a href="<?php echo base_url('business-profile'); ?>"><img src="<?php echo base_url(); ?>assets/img/i4.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
@@ -359,7 +358,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('artistic'); ?>"><img src="<?php echo base_url(); ?>img/i5.jpg"></a>
+                                                <a href="<?php echo base_url('artistic'); ?>"><img src="<?php echo base_url(); ?>assets/img/i5.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
@@ -407,7 +406,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <p> welcome to</p>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_logo.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_logo.png">
                                                                 </div>
                                                             </div>
                                                         </div> 
@@ -415,10 +414,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <div class="item slide2">
                                                             <div class="center_sl main_cl_sl slider-2 slide-text">
                                                                 <div data-animation="animated fadeInDownBig" class="imh_logo2">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_logo.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_logo.png">
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="slicing/img_screen_2.png">
+                                                                    <img src="assets/slicing/img_screen_2.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -430,7 +429,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <p>You can easily access any profile from main page.</p>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_3.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_3.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -441,7 +440,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> You can easily navigate to one profile to another profile</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_4.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_4.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -453,7 +452,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> You can easily search location vise jobs, employees, freelance projects, business, artists etc.</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_5.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_5.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -465,7 +464,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Recruiters can post job as per their requirement and find desired employees </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_6.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_6.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -477,7 +476,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Hire Freelancers and Also Find Freelance Work</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_7.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_7.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -489,7 +488,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Post your product in business profile with photo/audio/video/pdf</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_8.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_8.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -506,7 +505,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     </div>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_9.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_9.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -518,7 +517,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Post your artistic talent and creativity with photo/audio/video/pdf </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_10.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_10.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -531,7 +530,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_11.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_11.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -545,7 +544,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                         network can also message each other. </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_12.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_12.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -558,9 +557,9 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     </span>
                                                                 </div>
                                                                 <div class="imh_logo">
-                                                                    <img class="img1" data-animation="animated fadeInUpBig" src="<?php echo base_url(); ?>slicing/sld13-1.png">
-                                                                    <img class="img2" data-animation="animated fadeInRightBig" src="<?php echo base_url(); ?>slicing/sld13-2.png">
-                                                                    <img class="img3" data-animation="animated fadeInLeftBig" src="<?php echo base_url(); ?>slicing/sld13-3.png">
+                                                                    <img class="img1" data-animation="animated fadeInUpBig" src="<?php echo base_url(); ?>assets/slicing/sld13-1.png">
+                                                                    <img class="img2" data-animation="animated fadeInRightBig" src="<?php echo base_url(); ?>assets/slicing/sld13-2.png">
+                                                                    <img class="img3" data-animation="animated fadeInLeftBig" src="<?php echo base_url(); ?>assets/slicing/sld13-3.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -569,7 +568,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <div class="item slide14">
                                                             <div class="center_sl main_cl_sl slider-14 slide-text">
                                                                 <div data-animation="animated fadeInDownBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/latsgo.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/latsgo.png">
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="text_sl_head main_6_sl"> 
                                                                     <span class="mian_4_hed"><?php echo ucfirst($userdata[0]['first_name']);echo" ";echo ucfirst($userdata[0]['last_name']); ?></span>
@@ -598,8 +597,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <div class="ld_sl"></div>
                                             </div>
                                             <div class="lfar_sl">
-                                                <a href="#carousel-example-generic" role="button" data-slide="prev"  class="next-btn pull-left abc_left" id="right_img"><img src="<?php echo base_url(); ?>slicing/right-arrow.png" ></a>
-                                                <a href="#carousel-example-generic" role="button" data-slide="next"  class="next-btn pull-right" id="left_img"><img src="<?php echo base_url(); ?>slicing/img_arrow.png" > </a>
+                                                <a href="#carousel-example-generic" role="button" data-slide="prev"  class="next-btn pull-left abc_left" id="right_img"><img src="<?php echo base_url(); ?>assets/slicing/right-arrow.png" ></a>
+                                                <a href="#carousel-example-generic" role="button" data-slide="next"  class="next-btn pull-right" id="left_img"><img src="<?php echo base_url(); ?>assets/slicing/img_arrow.png" > </a>
                                             </div>
                                         </div>
                                     </div>	
@@ -618,14 +617,14 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Job Profile</h3>
-                                            <img src="<?php echo base_url(); ?>img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>assets/img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p2.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get job recommendation as per your skills</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - Save - Apply for the job</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with the recruiter and view recruiter's profile.</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p2.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get job recommendation as per your skills</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - Save - Apply for the job</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with the recruiter and view recruiter's profile.</span></span></li>
                                             </ul>
 
                                         </div>
@@ -652,14 +651,14 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Recruiter Profile</h3>
-                                            <img src="<?php echo base_url(); ?>img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>assets/img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p5.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post job and see recommended candidates</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p6.png"><span class="pro-text"><span class="count">3.</span><span class="text">Invite from applied candidates for an interview</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with job seekers and view their profiles.</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p5.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post job and see recommended candidates</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p6.png"><span class="pro-text"><span class="count">3.</span><span class="text">Invite from applied candidates for an interview</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with job seekers and view their profiles.</span></span></li>
                                             </ul>
 
                                         </div>
@@ -690,7 +689,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Freelance Profile</h3>
-                                            <img src="<?php echo base_url(); ?>img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>assets/img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <div class="card">
@@ -704,18 +703,18 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane active" id="home">
                                                         <ul>
-                                                            <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                            <li><img src="<?php echo base_url(); ?>img/p7.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get freelance work as per your skills</span></span></li>
-                                                            <li><img src="<?php echo base_url(); ?>img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - save - apply for freelance work </span></span></li>
-                                                            <li><img src="<?php echo base_url(); ?>img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with the employer.</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p7.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get freelance work as per your skills</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - save - apply for freelance work </span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with the employer.</span></span></li>
                                                         </ul>
                                                     </div>
                                                     <div role="tabpanel" class="tab-pane" id="profile">
                                                         <ul>
-                                                            <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                            <li><img src="<?php echo base_url(); ?>img/p10.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post a project and see recommended freelancers. </span></span></li>
-                                                            <li><img src="<?php echo base_url(); ?>img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Select from applied freelancers for your project </span></span></li>
-                                                            <li><img src="<?php echo base_url(); ?>img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with freelancer.</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p10.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post a project and see recommended freelancers. </span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Select from applied freelancers for your project </span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>assets/img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with freelancer.</span></span></li>
                                                         </ul>
                                                     </div>
 
@@ -752,12 +751,12 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Business Profile</h3>
-                                            <img src="<?php echo base_url(); ?>img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>assets/img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p4.png"><span class="pro-text"><span class="count">2.</span><span class="text">Build business network.</span></span>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p4.png"><span class="pro-text"><span class="count">2.</span><span class="text">Build business network.</span></span>
                                                 </li>
                                             </ul>
                                             <div class="sub-text">
@@ -793,12 +792,12 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Artistic Profile</h3>
-                                            <img src="<?php echo base_url(); ?>img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>assets/img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="<?php echo base_url(); ?>img/p9.png"><span class="pro-text"><span class="count">2.</span><span class="text">You can upload photos/videos/audios and pdf of your art/talent.</span></span>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>assets/img/p9.png"><span class="pro-text"><span class="count">2.</span><span class="text">You can upload photos/videos/audios and pdf of your art/talent.</span></span>
                                                 </li>
                                             </ul>
                                             <div class="sub-text">

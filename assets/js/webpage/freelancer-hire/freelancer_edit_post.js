@@ -216,11 +216,11 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#country').on('change', function () {
         var countryID = $(this).val();
-      //  alert(countryID);
+        //  alert(countryID);
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url:  base_url + "freelancer/ajax_dataforcity",
+                url: base_url + "freelancer/ajax_dataforcity",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
@@ -234,7 +234,7 @@ $(document).ready(function () {
     });
 
     $('#state').on('change', function () {
-       
+
         var stateID = $(this).val();
         if (stateID) {
             $.ajax({
@@ -242,7 +242,7 @@ $(document).ready(function () {
                 url: base_url + "freelancer/ajax_dataforcity",
                 data: 'state_id=' + stateID,
                 success: function (html) {
-                   
+
                     $('#city').html(html);
                 }
             });
@@ -278,8 +278,17 @@ $(document).on('change', '.field_other', function (event) {
 
     if (other_field == 15) {
         item.val('');
-        $.fancybox.open('<div class="message"><h2>Add Field</h2><input type="text" name="other_field" id="other_field"><a id="field" class="btn">OK</a></div>');
-        $('.message #field').on('click', function () {
+        $('#bidmodal2').modal('show');
+        //   $.fancybox.open('<div class="message"><h2>Add Field</h2><input type="text" name="other_field" id="other_field"><a id="field" class="btn">OK</a></div>');
+        $('.message #field').off('click').on('click', function () {
+            $("#other_field").removeClass("keyskill_border_active");
+            $('#field_error').remove();
+             var x = $.trim(document.getElementById("other_field").value);
+             if (x == '') {
+                $("#other_field").addClass("keyskill_border_active");
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
+                return false;
+            } else {
             var $textbox = $('.message').find('input[type="text"]'),
                     textVal = $textbox.val();
             $.ajax({
@@ -291,23 +300,36 @@ $(document).on('change', '.field_other', function (event) {
 
                     if (response.select == 0)
                     {
-                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+//                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+$("#other_field").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_field');
                     } else if (response.select == 1)
                     {
-                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                        $("#other_field").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
+//                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                     } else
                     {
-                        $.fancybox.close();
-
+                        // $.fancybox.close();
+                        $('#bidmodal2').modal('hide');
+                        $('#other_field').val('');
+                        $("#other_field").removeClass("keyskill_border_active");
+                        $("#field_error").removeClass("error");
                         $('.field_other').html(response.select);
                     }
                 }
             });
-
+            }
         });
     }
 
 });
+function remove_validation() {
+
+    $("#other_field").removeClass("keyskill_border_active");
+    $('#field_error').remove();
+
+}
 //SCRIPT FOR ADD OTHER FILED END
 //SCRIPT FOR DATE PICKER START
 $(function () {
@@ -340,15 +362,15 @@ $(function () {
 
 //CODE FOR DISABLE ARROW UP AND MOUSE SCROLLING FOR RATE START
 $('form').on('focus', 'input[type=number]', function (e) {
-  $(this).on('mousewheel.disableScroll', function (e) {
-    e.preventDefault()
-  })
+    $(this).on('mousewheel.disableScroll', function (e) {
+        e.preventDefault()
+    })
 })
 $('form').on('blur', 'input[type=number]', function (e) {
-  $(this).off('mousewheel.disableScroll')
+    $(this).off('mousewheel.disableScroll')
 })
-$('input').bind('keydown', function(e){
-    if(e.keyCode == '38' || e.keyCode == '40'){
+$('input').bind('keydown', function (e) {
+    if (e.keyCode == '38' || e.keyCode == '40') {
         e.preventDefault();
     }
 });

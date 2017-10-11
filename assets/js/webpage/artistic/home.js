@@ -24,6 +24,47 @@
    }
 
 
+// all popup close close using esc start
+
+
+
+    $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           $('#likeusermodal').modal('hide');
+       }
+   });  
+
+    $(document).on('keydown', function (e) { 
+       if (e.keyCode === 27) {
+           if($('.modal-post').show()){
+   
+             $( document ).on( 'keydown', function ( e ) {
+             if ( e.keyCode === 27 ) {
+          $('.modal-post').hide();
+
+           }
+          });  
+        
+           }
+            }
+    });
+
+    $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           $('#post').modal('hide');
+          
+       }
+   });  
+
+    $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           $('#postedit').modal('hide');
+          $(".my_text").prop("readonly", false);
+          $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
+       }
+   });  
+
  $('#post').on('click', function(){
         $('#myModal').modal('show');
 
@@ -1896,46 +1937,7 @@ function setEndOfContenteditable(contentEditableElement)
    }
    
 
-// all popup close close using esc start
 
-
-
-    $( document ).on( 'keydown', function ( e ) {
-       if ( e.keyCode === 27 ) {
-           $('#likeusermodal').modal('hide');
-       }
-   });  
-
-    $(document).on('keydown', function (e) { 
-       if (e.keyCode === 27) {
-           if($('.modal-post').show()){
-   
-             $( document ).on( 'keydown', function ( e ) {
-             if ( e.keyCode === 27 ) {
-          $('.modal-post').hide();
-
-           }
-          });  
-        
-           }
-            }
-    });
-
-    $( document ).on( 'keydown', function ( e ) {
-       if ( e.keyCode === 27 ) {
-           $('#post').modal('hide');
-          
-       }
-   });  
-
-    $( document ).on( 'keydown', function ( e ) {
-       if ( e.keyCode === 27 ) {
-           $('#postedit').modal('hide');
-          $(".my_text").prop("readonly", false);
-          $('.editable_text').attr('contentEditable', true);
-         $('.fr').attr('disabled', false);
-       }
-   });  
   
 
   var _onPaste_StripFormatting_IEPaste = false;

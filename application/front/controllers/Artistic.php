@@ -637,7 +637,27 @@ class Artistic extends MY_Controller {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
-        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,user_id,slug,art_user_image,art_name,art_lastname,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,user_id,slug,art_user_image,art_name,art_lastname,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        // for three userlist box condition_array start
+
+        $contition_array = array('status' => '1', 'art_step' => '4','is_delete' => '0');
+        $this->data['usercount'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r(count($this->data['usercount']));
+
+         $contition_array = array('follow_type' => '1', 'follow_from' => $artisticdata[0]['art_id'],'follow_status' => '1');
+        $this->data['followcount'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r(count($this->data['followcount'])); 
+
+         $contition_array = array('profile' => '1', 'user_from' => $artisticdata[0]['art_id']);
+        $this->data['crosscount'] = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r(count($this->data['crosscount'])); die();
+        // for three userlist box condition_array end
+
+
+
             if(!$this->data['artisticdata']){ 
                    redirect('artistic/');
             }else{ 
@@ -8425,7 +8445,7 @@ public function insert_comment_postnewpage() {
        $modal .=  '<div class="like_user_list_current_work">';
 
        if($designation){
-       $modal .=  '<span class="head_main_work">' . $designation . '</span>';
+       $modal .=  '<span class="head_main_work">' . ucfirst(strtolower($designation)) . '</span>';
         }else{
        $modal .=  '<span class="head_main_work">Current work</span>';
 

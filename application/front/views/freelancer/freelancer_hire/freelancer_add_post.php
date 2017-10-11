@@ -284,7 +284,20 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-    
+     <!-- Bid-modal  -->
+        <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content message">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+<!--                    <div class="message" style="width:300px;">-->
+                        <h2>Add Field</h2>         
+                        <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
+                        <div class="fw"><a id="field" class="btn">OK</a></div>
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- Model Popup Close -->
         <!-- Calender JS Start-->
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <!-- Calender Js End-->

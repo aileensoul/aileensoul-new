@@ -48,6 +48,9 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
+<?php
+if(IS_CSS_MINIFY == '0'){
+?>
 <!-- CSS START -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/media.css?ver=' . time()); ?>">
@@ -56,14 +59,15 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
-
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
 <link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/style.css') ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.css') ?>">
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
-
-<!--<script type="text/javascript" src="<?php //  echo base_url('assets/js/jquery-1.11.1.min.js?ver='.time());     ?>"></script>-->
-
+<?php
+}else{ ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/common-header.min.css?ver=' . time()); ?>">    
+<?php }
+?>
 <?php
 if ($this->uri->segment(1) == 'dashboard') {
     ?>

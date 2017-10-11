@@ -69,7 +69,7 @@ color: #1b8ab9 !important;}
         </div>
         <?php echo $footer; ?>
 
-        <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
+       <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <!-- validation for edit email formate form strat -->
 
 <script>

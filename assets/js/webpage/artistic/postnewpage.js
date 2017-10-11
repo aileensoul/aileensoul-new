@@ -38,6 +38,20 @@ $(document).ready(function () {
        }
    });  
   
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#bidmodal').modal('hide');
+    }
+});  
+
+    $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#likeusermodal').modal('hide');
+    }
+});  
+
 
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
     $(function() {
@@ -2311,20 +2325,6 @@ var _onPaste_StripFormatting_IEPaste = false;
                             }
 
                         }
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-        $('#bidmodal').modal('hide');
-    }
-});  
-
-    $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-        $('#likeusermodal').modal('hide');
-    }
-});  
-
 
  function seemorediv(abc) { //alert("hii");
          

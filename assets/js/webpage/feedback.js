@@ -126,13 +126,23 @@ $(document).ready(function () {
                     $("#feedback_subject").val('');
                     $("#feedback_message").val('');
 
-                    $.fancybox.open('<div class="alert alert-danger feedback"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Your feedback send successfully' + ' !</div>');
+                    $('.biderror .mes').html("<div class='pop_content'>Your feedback send successfully.</div>");
+                     $('#bidmodal').modal('show');
 
                 } else {
-                    $.fancybox.open('<div class="alert alert-danger feedback"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'your feedback not send successfully' + ' !</div>');
+
+                     $('.biderror .mes').html("<div class='pop_content'>Your feedback not send successfully.</div>");
+                     $('#bidmodal').modal('show');
                 }
             }
         });
         return false;
     }
 });
+
+
+$( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   $('#bidmodal').modal('hide');
+                  }
+               });  

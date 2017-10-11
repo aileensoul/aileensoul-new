@@ -5,8 +5,8 @@
 <?php echo $head; ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>">
-<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver='.time()); ?>">
+<link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/video.css?ver='.time()); ?>">
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
@@ -24,6 +24,10 @@
       <div class="left_fixed"> 
          <?php ?>
 <?php echo $left_artistic; ?>
+
+<?php 
+if(count($usercount) != count($followcount) + count($crosscount)){?>
+
           <div class="full-box-module_follow">
           
             <div class="common-form">
@@ -36,6 +40,8 @@
              
             </div>
          </div>
+         <?php }?>
+
 		 <div class="tablate-potrat-add">
 									<div class="fw text-center pt10">
 									<script type="text/javascript" language="javascript">
@@ -147,9 +153,9 @@
 						</script>
 						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 					</div>
-					<!--div class="fw pt20" style="text-align:center;">
-						<SCRIPT charset="utf-8" type="text/javascript" src="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Faileensoul-21%2F8001%2Fbc68b7d5-0dda-4c16-9b54-d825604a91dc"> </SCRIPT> <NOSCRIPT><A rel="nofollow" HREF="http://ws-in.amazon-adsystem.com/widgets/q?rt=tf_mfw&ServiceVersion=20070822&MarketPlace=IN&ID=V20070822%2FIN%2Faileensoul-21%2F8001%2Fbc68b7d5-0dda-4c16-9b54-d825604a91dc&Operation=NoScript">Amazon.in Widgets</A></NOSCRIPT>
-					</div-->
+					<div class="fw pt20" style="text-align:center;">
+						<a target="_blank"  href="https://www.amazon.in/gp/product/8192910962/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=8192910962&linkCode=as2&tag=aileensoul-21&linkId=495259fda0add98d83251ff709493a3c"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=8192910962&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=8192910962" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+					</div>
 					
      
       </div>
@@ -296,11 +302,11 @@
 
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';   
 var data= <?php echo json_encode($demo); ?>;
