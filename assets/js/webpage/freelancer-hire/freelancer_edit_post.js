@@ -281,6 +281,14 @@ $(document).on('change', '.field_other', function (event) {
         $('#bidmodal2').modal('show');
         //   $.fancybox.open('<div class="message"><h2>Add Field</h2><input type="text" name="other_field" id="other_field"><a id="field" class="btn">OK</a></div>');
         $('.message #field').off('click').on('click', function () {
+            $("#other_field").removeClass("keyskill_border_active");
+            $('#field_error').remove();
+             var x = $.trim(document.getElementById("other_field").value);
+             if (x == '') {
+                $("#other_field").addClass("keyskill_border_active");
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
+                return false;
+            } else {
             var $textbox = $('.message').find('input[type="text"]'),
                     textVal = $textbox.val();
             $.ajax({
@@ -292,10 +300,14 @@ $(document).on('change', '.field_other', function (event) {
 
                     if (response.select == 0)
                     {
-                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+//                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+$("#other_field").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_field');
                     } else if (response.select == 1)
                     {
-                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                        $("#other_field").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
+//                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                     } else
                     {
                         // $.fancybox.close();
@@ -307,11 +319,17 @@ $(document).on('change', '.field_other', function (event) {
                     }
                 }
             });
-
+            }
         });
     }
 
 });
+function remove_validation() {
+
+    $("#other_field").removeClass("keyskill_border_active");
+    $('#field_error').remove();
+
+}
 //SCRIPT FOR ADD OTHER FILED END
 //SCRIPT FOR DATE PICKER START
 $(function () {

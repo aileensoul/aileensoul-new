@@ -53,9 +53,10 @@ $(document).on('change', '.university_1', function (event) {
     if (uni == 463)
     {
         item.val('');
-        $.fancybox.open('<div class="message" style="width:300px;" onkeypress="return remove_validation()"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><div class="fw"><a id="univer" class="btn">OK</a></div></div>');
+        $('#bidmodal2').modal('show');
+       // $.fancybox.open('<div class="message" style="width:300px;" onkeypress="return remove_validation()"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><div class="fw"><a id="univer" class="btn">OK</a></div></div>');
 
-        $('.message #univer').on('click', function () {
+        $('.message #univer').off('click').on('click', function () {
           
             $("#other_uni").removeClass("keyskill_border_active");
             $('#uni_error').remove();
@@ -87,8 +88,11 @@ $(document).on('change', '.university_1', function (event) {
 //                        $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                         } else
                         {
-                            $.fancybox.close();
-
+                           // $.fancybox.close();
+                            $('#bidmodal2').modal('hide');
+                            $('#other_uni').val('');
+                            $("#other_uni").removeClass("keyskill_border_active");
+                            $("#field_error").removeClass("error");
                             $('.university_1').html(response.select);
                         }
                     }
