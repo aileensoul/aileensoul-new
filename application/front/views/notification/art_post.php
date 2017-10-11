@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver='.time()); ?>">
 <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/video.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/artistic/artistic.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ;?>" />
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       
@@ -138,15 +138,15 @@
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) { ?>
 
-                                                 <a class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                                                 <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
 
                                                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
                                               </a>
                           <?php }else{?>
 
-                          <a class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                          <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
 
-                         <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>">  
+                         <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>">  
 
                           </a>
 
@@ -167,7 +167,7 @@
                 <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                 <?php }else{?>
 
-                 <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucwords($art_data[0]['art_name']) . ' ' . ucwords($art_data[0]['art_lastname']); ?>">
+                 <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucfirst(strtolower($art_data[0]['art_name'])) . ' ' . ucfirst(strtolower($art_data[0]['art_lastname'])); ?>">
                 <?php }?>
                  </a>
          <?php } ?>
@@ -210,9 +210,9 @@
 
                                                                 <?php if ($art_data[0]['posted_user_id']) { ?>
                                                                     <div class="else_post_d">
-                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugposted); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
+                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugposted); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
                                                                         <p class="posted_with" > Posted With </p>
-                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
+                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
 
                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                         <span class="ctre_date"> 
@@ -224,13 +224,13 @@
 
 
                                                                     <a title="<?php
-                                                                    echo ucwords($firstname);
+                                                                    echo ucfirst(strtolower($firstname));
                                                                     print "&nbsp;&nbsp;";
-                                                                    echo ucwords($lastname);
+                                                                    echo ucfirst(strtolower($lastname));
                                                                     ?>" class="post_dot" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>"><?php
-                                                                       echo ucwords($firstname);
+                                                                       echo ucfirst(strtolower($firstname));
                                                                        print "&nbsp;&nbsp;";
-                                                                       echo ucwords($lastname);
+                                                                       echo ucfirst(strtolower($lastname));
                                                                        ?> </a>
 <span role="presentation" aria-hidden="true"> · </span>
                                                                     <div class="datespan">
@@ -245,7 +245,7 @@
                                                          
                                                         <li><div class="post-design-product">
                                                                 <a><?php if($designation)
-                                                                    {echo $designation;
+                                                                    {echo ucfirst(strtolower($designation));
                                                                     
                                                                     }else{
                                                                         echo "Current Work";
@@ -645,9 +645,9 @@
 
                                                                     echo "You";
                                                                 } else {
-                                                                    echo ucwords($art_fname);
+                                                                    echo ucfirst(strtolower($art_fname));
                                                                     echo "&nbsp;";
-                                                                    echo ucwords($art_lname);
+                                                                    echo ucfirst(strtolower($art_lname));
                                                                     echo "&nbsp;";
                                                                 }
                                                                 ?>
@@ -699,9 +699,9 @@
                                                         ?>
                                                         <div class="like_one_other">
                                                             <?php
-                                                            echo ucwords($art_fname);
+                                                            echo ucfirst(strtolower($art_fname));
                                                             echo "&nbsp;";
-                                                            echo ucwords($art_lname);
+                                                            echo ucfirst(strtolower($art_lname));
                                                             echo "&nbsp;";
                                                             ?>
                                                             <?php
@@ -777,12 +777,12 @@
 
 
                               <div class="comment-name">
-                                      <b title=" <?php echo ucwords($artname); echo "&nbsp;"; echo ucwords($artlastname); ?>">
+                                      <b title=" <?php echo ucfirst(strtolower($artname)); echo "&nbsp;"; echo ucfirst(strtolower($artlastname)); ?>">
                                       <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
                                               <?php
-                                               echo ucwords($artname);
+                                               echo ucfirst(strtolower($artname));
                                                 echo "&nbsp;";
-                                                echo ucwords($artlastname);
+                                                echo ucfirst(strtolower($artlastname));
                                                  ?></b><?php echo '</br>'; ?>
                                                </a>
 
