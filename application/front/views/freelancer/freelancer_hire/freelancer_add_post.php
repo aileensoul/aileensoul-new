@@ -7,7 +7,7 @@
         </title>
         <?php echo $head; ?> 
         
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver=' . time()) ?>" />
+      
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <body class="pushmenu-push">
@@ -301,7 +301,6 @@
         <!-- Calender JS Start-->
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <!-- Calender Js End-->
-        <script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script>

@@ -2149,7 +2149,7 @@ label.cameraButton input[accept*="camera"] {
 #work6 {display: block;}
 #gra1 {display: block;}
  
-
+.cancel-result:hover{color: #fff;background-color: #1b8ab9;}
 
 /***  media query  ***/
 

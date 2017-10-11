@@ -1488,6 +1488,10 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .message{padding:20px 30px;;}
 .custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;} 
 .custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+.cancel-result:hover{color: #fff;background-color: #1b8ab9;}
 
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
