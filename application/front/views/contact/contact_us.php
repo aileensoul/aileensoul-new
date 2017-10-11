@@ -101,9 +101,10 @@
     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
-  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>-->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.min.js?ver='.time()); ?>"></script>
+<!--<script src="<?php echo base_url('assets/js/jquery.min.js?ver='.time()); ?>"></script>-->
 <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/webpage/contactus.js?ver='.time()); ?>"></script>
 </body>
