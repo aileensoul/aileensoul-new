@@ -3,7 +3,7 @@
     <head><title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/freelancer-apply.css?ver=' . time()); ?>">
     </head>
     <body>
         <?php echo $header; ?>
