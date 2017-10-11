@@ -5,12 +5,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 <html>
     <head>
         <title><?php echo $title; ?></title>
-        <?php echo $head; ?>  
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
-        <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/timeline.css?ver=' . time()); ?>" /> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+        <?php echo $head; ?>
+        <?php if (IS_CSS_MINIFY == '0') { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
+            <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+        <?php } else { ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile_manage_post.min.css?ver=' . time()); ?>">
+           <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');  ?>" />-->
+        <?php } ?>
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -227,7 +231,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         <?php } else {
                                                             ?>
                                                             <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="Business Profile">
-                                                        <?php
+                                                            <?php
                                                         }
                                                     } else {
                                                         $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image;
@@ -238,7 +242,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                         <?php } else {
                                                             ?>
                                                             <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image; ?>"  alt="Business Profile">
-                                                        <?php
+                                                            <?php
                                                         }
                                                     }
                                                 } else {
@@ -289,7 +293,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <div class="fr margin_btm">
                                             <button type="submit"  value="Submit">Post</button>    
                                         </div>
-<?php echo form_close(); ?>
+                                        <?php echo form_close(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -390,14 +394,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());   ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());     ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
