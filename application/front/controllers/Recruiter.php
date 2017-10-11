@@ -2192,7 +2192,7 @@ class Recruiter extends MY_Controller {
 //                    $rec_post .= '<div class="art-img-nn">
 //                                            <div class="art_no_post_img">
 //
-//                                                <img src="' . base_url('img/job-no.png') . '">
+//                                                <img src="' . base_url('assets/img/job-no.png') . '">
 //
 //                                            </div>
 //                                            <div class="art_no_post_text">
@@ -2464,7 +2464,7 @@ class Recruiter extends MY_Controller {
             $rec_post .= '<div class="art-img-nn">
                                             <div class="art_no_post_img">
 
-                                                <img src="' . base_url('img/job-no.png') . '">
+                                                <img src="' . base_url('assets/img/job-no.png') . '">
 
                                             </div>
                                             <div class="art_no_post_text">

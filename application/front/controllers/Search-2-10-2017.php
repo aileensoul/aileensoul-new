@@ -504,7 +504,7 @@ class Search extends MY_Controller {
                                 $return_html .= '<div>
                                             <a title="click to open" href="' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['post_files_id']) . '">
                                                 <div class="pdf_img">
-                                                    <img src="' . base_url('images/PDF.jpg') . '"">
+                                                    <img src="' . base_url('assets/images/PDF.jpg') . '"">
                                                 </div>
                                             </a>
                                         </div>';
@@ -3100,7 +3100,7 @@ class Search extends MY_Controller {
                                 $return_html .= '<div>
                                             <a title="click to open"  href="javascript:void(0);"  onClick="login_profile()">
                                                 <div class="pdf_img">
-                                                    <img src="' . base_url('images/PDF.jpg') . '"">
+                                                    <img src="' . base_url('assets/images/PDF.jpg') . '"">
                                                 </div>
                                             </a>
                                         </div>';

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Grow Business Network|Hiring|Search Jobs|Freelance Work|It's Free|Aileensoul</title>
-        <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <meta charset="utf-8">
         <?php
         if($_SERVER['HTTP_HOST'] != "localhost"){

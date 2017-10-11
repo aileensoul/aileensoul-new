@@ -78,7 +78,7 @@
       <?php }  }  else{?>
  <div class="art_no_pva_avl">
          <div class="art_no_post_img">
-          <img src="<?php echo base_url('images/010.png'); ?>"  >
+          <img src="<?php echo base_url('assets/images/010.png'); ?>"  >
          </div>
          <div class="art_no_post_text1">
            No video Available.

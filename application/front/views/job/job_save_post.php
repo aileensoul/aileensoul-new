@@ -197,7 +197,7 @@
                               <!--.........AJAX DATA......-->           
                             </div>
 
-                           <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                           <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
                         </div>
 
                         <div class="col-md-1">
@@ -287,7 +287,7 @@
                   
                     <div id="popup-form">
 
-                    <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                    <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
 
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
 

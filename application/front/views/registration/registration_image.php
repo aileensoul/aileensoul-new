@@ -21,7 +21,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 col-sm-5">
-						<div class="logo"><a href="index.html"><img src="<?php echo base_url('images/logo-white.png'); ?>"></a></div>
+						<div class="logo"><a href="index.html"><img src="<?php echo base_url('assets/images/logo-white.png'); ?>"></a></div>
 					</div>
 					<div class="col-md-8 col-sm-7">
 					
@@ -63,7 +63,7 @@
 			                	</fieldset>
 			                	<fieldset class="full-width">
 			                		<div id="imagePreview" class="reg-profile">
-			               			<!-- <img src="<?php //echo base_url('images/user-img.png'); ?>" >  --> 
+			               			<!-- <img src="<?php //echo base_url('assets/images/user-img.png'); ?>" >  --> 
 			                		</div>    
 			                	</fieldset>
 			                    <fieldset class="full-width">
@@ -88,7 +88,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="footer-logo">
-							<a href="index.html"><img src="<?php echo base_url('images/logo-white.png'); ?>"></a>
+							<a href="index.html"><img src="<?php echo base_url('assets/images/logo-white.png'); ?>"></a>
 						</div>
 						<ul>
 							<li>E-912 Titanium City Center Anandngar Ahmedabad-380015</li>

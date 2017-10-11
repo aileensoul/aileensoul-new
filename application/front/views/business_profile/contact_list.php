@@ -70,7 +70,7 @@
                                         <li><div class="art-img-nn" id= "art-blank">
                                                 <div class="art_no_post_img">
 
-                                                    <img src="<?php echo base_url('img/No_Contact_Request.png') ?>" width="100">
+                                                    <img src="<?php echo base_url('assets/img/No_Contact_Request.png') ?>" width="100">
 
                                                 </div>
                                                 <div class="art_no_post_text" style="font-size: 20px;">
@@ -97,7 +97,7 @@
                                 <ul  id="contactlist">
                                     <!-- AJAX DATA ... -->
                                 </ul>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                             </div>        
                         </div>
                         <!-- END PAGE TITLE -->
@@ -162,7 +162,7 @@
                                                     <li><div class="art-img-nn" id= "art-blank">
                                                             <div class="art_no_post_img">
 
-                                                                <img src="<?php echo base_url('img/No_Contact_Request.png') ?>" width="100">
+                                                                <img src="<?php echo base_url('assets/img/No_Contact_Request.png') ?>" width="100">
 
                                                             </div>
                                                             <div class="art_no_post_text" style="font-size: 20px;">

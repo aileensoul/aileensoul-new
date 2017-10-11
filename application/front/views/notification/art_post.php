@@ -380,7 +380,7 @@
                                                             <!-- one pdf start -->
                                                             <div>
                                                                 <a href="<?php echo base_url('artistic/creat_pdf/' . $artmultiimage[0]['post_files_id']) ?>"><div class="pdf_img">
-                                                                        <img src="<?php echo base_url('images/PDF.jpg') ?>">
+                                                                        <img src="<?php echo base_url('assets/images/PDF.jpg') ?>">
                                                                     </div></a>
                                                             </div>
                                                             <!-- one pdf end -->
@@ -405,7 +405,7 @@
                                                            
                                                                 <div class="audio_main_div">
                                                                     <div class="audio_img">
-                                                                        <img src="<?php echo base_url('images/music-icon.png') ?> ">  
+                                                                        <img src="<?php echo base_url('assets/images/music-icon.png') ?> ">  
                                                                     </div>
                                                                     <div class="audio_source">
                                                                         <audio  controls>

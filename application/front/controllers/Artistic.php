@@ -33,7 +33,7 @@ class Artistic extends MY_Controller {
         //This function is there only one time users slug created after remove it End
 
         include ('artistic_include.php');
-         $this->data['no_artistic_post_html'] = '<div class="art_no_post_avl"><h3>Artistic Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('img/art-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
+         $this->data['no_artistic_post_html'] = '<div class="art_no_post_avl"><h3>Artistic Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/art-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
     }
 
     public function index() {
@@ -1286,7 +1286,7 @@ class Artistic extends MY_Controller {
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -1758,7 +1758,7 @@ $datacount = count($otherdata);
           <div class="art-img-nn">
          <div class="art_no_post_img">
 
-           <img src="'.base_url('img/art-no.png').'">
+           <img src="'.base_url('assets/img/art-no.png').'">
         
          </div>
          <div class="art_no_post_text">
@@ -1844,7 +1844,7 @@ $datacount = count($otherdata);
           <div class="art-img-nn">
          <div class="art_no_post_img">
 
-           <img src="'.base_url('img/art-no.png').'">
+           <img src="'.base_url('assets/img/art-no.png').'">
         
          </div>
          <div class="art_no_post_text">
@@ -2972,7 +2972,7 @@ public function followtwo() {
                     $notfound = '<div class="art-img-nn">
          <div class="art_no_post_img">
 
-           <img src="'.base_url('img/icon_no_following.png').'">
+           <img src="'.base_url('assets/img/icon_no_following.png').'">
         
          </div>
          <div class="art_no_post_text">
@@ -3161,7 +3161,7 @@ public function followtwo() {
         } else {
             $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: block">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('img/icon_no_follower.png') . '">
+                                                    <img src="' . base_url('assets/img/icon_no_follower.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -3360,7 +3360,7 @@ public function followtwo() {
 
             $return_html .= '<div class = "art-img-nn">
                                                     <div class = "art_no_post_img">
-                                                    <img src = "' . base_url('img/icon_no_following.png') . '">
+                                                    <img src = "' . base_url('assets/img/icon_no_following.png') . '">
                                                     </div>
                                                     <div class = "art_no_post_text">
                                                     No Following Available.
@@ -5877,7 +5877,7 @@ public function insert_comment_postnewpage() {
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 
-                               <img src="'.base_url('img/art-no.png').'">
+                               <img src="'.base_url('assets/img/art-no.png').'">
         
                                 </div>
                                   <div class="art_no_post_text">
@@ -5895,7 +5895,7 @@ public function insert_comment_postnewpage() {
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 
-                               <img src="'.base_url('img/art-no.png').'">
+                               <img src="'.base_url('assets/img/art-no.png').'">
         
                                 </div>
                                   <div class="art_no_post_text">
@@ -10913,7 +10913,7 @@ public function art_home_postold() {
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -11359,7 +11359,7 @@ public function art_home_postold() {
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 
-                               <img src="'.base_url('img/art-no.png').'">
+                               <img src="'.base_url('assets/img/art-no.png').'">
         
                                 </div>
                                   <div class="art_no_post_text">
@@ -11373,7 +11373,7 @@ public function art_home_postold() {
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 
-                                     <img src="'.base_url('img/art-no.png').'">
+                                     <img src="'.base_url('assets/img/art-no.png').'">
         
                                     </div>
                                         <div class="art_no_post_text">
@@ -11771,7 +11771,7 @@ public function art_home_post() {
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
@@ -12551,7 +12551,7 @@ public function art_home_post() {
 
                 $fetch_pdf .= '<div class="image_profile">';
                 $fetch_pdf .= '<a href="'.ART_POST_MAIN_UPLOAD_URL . $mi['file_name'].'"><div class = "pdf_img">';
-                 $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
+                 $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -12863,7 +12863,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     } elseif (in_array($ext, $allowesaudio)) {
                         $return_html .= '<div class="audio_main_div">
             <div class="audio_img">
-                <img src="' . base_url('images/music-icon.png') . '">  
+                <img src="' . base_url('assets/images/music-icon.png') . '">  
             </div>
             <div class="audio_source">
                 <audio  controls>
@@ -13200,7 +13200,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="editable_text edt_2" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment...." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
           <div class="mob-comment">       
-                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
+                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>
     </div>';
@@ -13217,7 +13217,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/art-no.png') . '">
+                                        <img src="' . base_url('assets/img/art-no.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">

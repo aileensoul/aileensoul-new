@@ -326,7 +326,7 @@
                                                         <div>
                                                             <a href="<?php echo base_url('business_profile/creat_pdf/' . $data['post_files_id']) ?>">
                                                                 <div class="pdf_img">
-                                                                    <img src="<?php echo base_url('images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
+                                                                    <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
                                                                 </div>
                                                             </a>
                                                         </div>
@@ -676,7 +676,7 @@
                                             <div class="col-md-12 inputtype-comment cmy_2">
                                                 <div contenteditable="true" class="editable_text" name="<?php echo $busienss_data[0]['business_profile_post_id']; ?>"  id="<?php echo "post_comment" . $busienss_data[0]['business_profile_post_id']; ?>" placeholder="Add a Comment ..." value= "" onClick="entercomment(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
                                                 <div class="mob-comment">       
-                                                    <button id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>" onClick="insert_comment(this.id)"><img src=<?php echo base_url('img/send.png') ?> ;">
+                                                    <button id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>" onClick="insert_comment(this.id)"><img src=<?php echo base_url('assets/img/send.png') ?> ;">
                                                     </button>
                                                 </div>
                                             </div>
@@ -691,7 +691,7 @@
                                     <h3>Business Post</h3>
                                     <div class="art-img-nn">
                                         <div class="art_no_post_img">
-                                            <img src="<?php echo base_url('img/bui-no.png') ?>">
+                                            <img src="<?php echo base_url('assets/img/bui-no.png') ?>">
                                         </div>
                                         <div class="art_no_post_text">
                                             Sorry, this content isn't available at the moment
@@ -1034,7 +1034,7 @@
                                             <div class="col-md-12 inputtype-comment cmy_2">
                                                 <div contenteditable="true" class="editable_text" name="<?php echo $busdata['post_files_id']; ?>" id="<?php echo "post_imgcomment" . $busdata['post_files_id']; ?>" placeholder="Add a Comment ..." onkeyup="entercommentimg(<?php echo $busdata['post_files_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
                                                 <div class="mob-comment">       
-                                                    <button id="<?php echo $busdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php echo base_url('img/send.png') ?> ;">
+                                                    <button id="<?php echo $busdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php echo base_url('assets/img/send.png') ?> ;">
                                                     </button>
                                                 </div>
                                             </div>

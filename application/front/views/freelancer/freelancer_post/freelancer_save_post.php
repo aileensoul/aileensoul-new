@@ -170,7 +170,7 @@
                                 <div class="contact-frnd-post">
                                     <!--...................AJAX DATA....................-->
                                     <div>
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
 <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));     ?>
 <!--                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">

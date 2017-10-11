@@ -168,7 +168,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
 
                                                 </div>
 
@@ -187,7 +187,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div>
-                                                        <span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_cancel.png'); ?>"></span>
+                                                        <span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_cancel.png'); ?>"></span>
                                                     </div>
 
                                                 </div>
@@ -206,7 +206,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                                     <div class="in_your_contact_change">
                                                         <span class="in_your_contct_img">
-                                                            <img src="<?php echo base_url('img/icon_contact_accept.png'); ?>">
+                                                            <img src="<?php echo base_url('assets/img/icon_contact_accept.png'); ?>">
                                                         </span>
                                                     </div>
 
@@ -226,7 +226,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
 
                                                 </div>
 
@@ -244,7 +244,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     <div></div>
                                                     <div></div>
                                                     <div></div>
-                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png'); ?>"></span></div>
+                                                    <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
 
                                                 </div>
 
@@ -326,7 +326,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
                 <div class="modal-body">
                     <span class="mes">
-                        <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                        <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                         <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                             <div class="col-md-5">
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >

@@ -2682,14 +2682,14 @@ class Job extends MY_Controller {
         if ($pdf[0]['edu_certificate_primary']) {
             if ($seg == 'primary') {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 $select .= '<form action="' . base_url() . '/job/qualification/primary" method="post">';
                 $select .= '<button type="submit">Back</button>';
                 $select .= '</form>';
                 echo $select;
             } else {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 $select .= '<input action="action" type="button" value="Back" onclick="history.back();" /> <br/><br/>';
                 echo $select;
             }
@@ -2706,14 +2706,14 @@ class Job extends MY_Controller {
         if ($pdf[0]['edu_certificate_secondary']) {
             if ($seg == 'secondary') {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 $select .= '<form action="' . base_url() . '/job/qualification/secondary" method="post">';
                 $select .= '<button type="submit">Back</button>';
                 $select .= '</form>';
                 echo $select;
             } else {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 $select .= '<input action="action" type="button" value="Back" onclick="history.back();" /> <br/><br/>';
                 echo $select;
             }
@@ -2730,14 +2730,14 @@ class Job extends MY_Controller {
         if ($pdf[0]['edu_certificate_higher_secondary']) {
             if ($seg == 'higher-secondary') {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 $select .= '<form action="' . base_url() . '/job/qualification/higher-secondary" method="post">';
                 $select .= '<button type="submit">Back</button>';
                 $select .= '</form>';
                 echo $select;
             } else {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 $select .= '<input action="action" type="button" value="Back" onclick="history.back();" /> <br/><br/>';
                 echo $select;
             }
@@ -2754,11 +2754,11 @@ class Job extends MY_Controller {
         if ($pdf[0]['edu_certificate']) {
             if ($seg == 'graduation') {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 echo $select;
             } else {
                 $select = '<title>' . $pdf[0]['edu_certificate'] . '</title>';
-                $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+                $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
                 echo $select;
             }
 
@@ -2772,7 +2772,7 @@ class Job extends MY_Controller {
         $pdf = $this->data['pdf'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'work_certificate', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $select = '<title>' . $pdf[0]['work_certificate'] . '</title>';
-        $select .= '<link rel="icon" href="' . base_url('images/favicon.png') . '">';
+        $select .= '<link rel="icon" href="' . base_url('assets/images/favicon.png') . '">';
         $select .= '<input action="action" type="button" value="Back" onclick="history.back();" /> <br/><br/>';
 
         $select .= '<embed src="' . base_url() . $this->config->item('job_work_main_upload_path') . $pdf[0]['work_certificate'] . '"width="100%" height="100%">';
@@ -3637,7 +3637,7 @@ class Job extends MY_Controller {
 
             $return_html .= '<div class="art-img-nn">
                                 <div class="art_no_post_img">
-                                 <img src="' . base_url('img/job-no.png') . '">
+                                 <img src="' . base_url('assets/img/job-no.png') . '">
                               </div>
                               <div class="art_no_post_text">
                                  No  Recommended Post Available.
@@ -3920,7 +3920,7 @@ class Job extends MY_Controller {
         else {
             $return_html .= '<div class="art-img-nn">
                                 <div class="art_no_post_img">
-                                     <img src="' . base_url('img/job-no.png') . '">
+                                     <img src="' . base_url('assets/img/job-no.png') . '">
                                 </div>
                                 <div class="art_no_post_text">
                                     No  Saved Post Available.
@@ -4174,7 +4174,7 @@ class Job extends MY_Controller {
         } else {
             $return_html .= '<div class="art-img-nn">
                            <div class="art_no_post_img">
-                              <img src="' . base_url('img/job-no.png') . '">
+                              <img src="' . base_url('assets/img/job-no.png') . '">
                            </div>
                            <div class="art_no_post_text">
                               No  Applied Post Available.
@@ -5030,7 +5030,7 @@ echo "hi";die();
 
             $return_html .= '<div class="art-img-nn">
                                 <div class="art_no_post_img">
-                                 <img src="' . base_url('img/job-no.png') . '">
+                                 <img src="' . base_url('assets/img/job-no.png') . '">
                               </div>
                               <div class="art_no_post_text">
                                  No  Recommended Post Available.
@@ -5581,7 +5581,7 @@ public function post($id="")
             $rec_post .= '<div class="art-img-nn">
                                             <div class="art_no_post_img">
 
-                                                <img src="' . base_url('img/job-no.png') . '">
+                                                <img src="' . base_url('assets/img/job-no.png') . '">
 
                                             </div>
                                             <div class="art_no_post_text">

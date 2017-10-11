@@ -108,7 +108,7 @@ function profile_pic(event){
 
 
                  beforeSend: function () {
-                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
+                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('assets/images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                         $(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
                 success: function (data) { 

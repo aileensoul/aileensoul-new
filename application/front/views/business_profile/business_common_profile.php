@@ -133,7 +133,7 @@
                                                 <div></div>
                                                 <div></div>
                                                 <div></div>
-                                                <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png'); ?>"></span></div>
+                                                <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
 
                                             </div>
 
@@ -152,7 +152,7 @@
                                                 <div></div>
                                                 <div></div>
                                                 <div>
-                                                    <span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_cancel.png'); ?>"></span>
+                                                    <span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_cancel.png'); ?>"></span>
                                                 </div>
 
                                             </div>
@@ -171,7 +171,7 @@
 
                                                 <div class="in_your_contact_change">
                                                     <span class="in_your_contct_img">
-                                                        <img src="<?php echo base_url('img/icon_contact_accept.png'); ?>">
+                                                        <img src="<?php echo base_url('assets/img/icon_contact_accept.png'); ?>">
                                                     </span>
                                                 </div>
 
@@ -191,7 +191,7 @@
                                                 <div></div>
                                                 <div></div>
                                                 <div></div>
-                                                <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png'); ?>"></span></div>
+                                                <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
 
                                             </div>
 
@@ -209,7 +209,7 @@
                                                 <div></div>
                                                 <div></div>
                                                 <div></div>
-                                                <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png'); ?>"></span></div>
+                                                <div><span class="cancel_req_busi">   <img src="<?php echo base_url('assets/img/icon_contact_add.png'); ?>"></span></div>
 
                                             </div>
 

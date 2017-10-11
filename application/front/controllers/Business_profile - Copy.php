@@ -1119,7 +1119,7 @@ class Business_profile extends MY_Controller {
                 $notfound = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -1134,7 +1134,7 @@ class Business_profile extends MY_Controller {
             $notfound = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -1677,7 +1677,7 @@ class Business_profile extends MY_Controller {
                 } elseif (in_array($ext, $allowespdf)) {
                     $return_html .= '<div>
             <a title="click to open" href="' . base_url('business_profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
-                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">
+                    <img src="' . base_url('assets/images/PDF.jpg') . '" style="height: 100%; width: 100%;">
                 </div>
             </a>
         </div>';
@@ -1692,7 +1692,7 @@ class Business_profile extends MY_Controller {
                 } elseif (in_array($ext, $allowesaudio)) {
                     $return_html .= '<div class="audio_main_div">
             <div class="audio_img">
-                <img src="' . base_url('images/music-icon.png') . '">  
+                <img src="' . base_url('assets/images/music-icon.png') . '">  
             </div>
             <div class="audio_source">
                 <audio id="audio_player" width="100%" height="100" controls>
@@ -3005,7 +3005,7 @@ class Business_profile extends MY_Controller {
                     $notfound = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -3220,7 +3220,7 @@ class Business_profile extends MY_Controller {
 
             $return_html .= '<div class="art-img-nn">
                 <div class="art_no_post_img">
-                    <img src="' . base_url('img/bui-no.png') . '">
+                    <img src="' . base_url('assets/img/bui-no.png') . '">
                 </div>
                 <div class="art_no_post_text">
                     No Following Available.
@@ -8110,7 +8110,7 @@ class Business_profile extends MY_Controller {
                                                              <div></div>
                                                             <div></div>
                                                             <div></div>
-                                                            <div><span class="cancel_req_busi">   <img src="' . base_url('img/icon_contact_add.png') . '"></span></div>
+                                                            <div><span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
 
                                                             </div>
                                                             
@@ -8141,7 +8141,7 @@ class Business_profile extends MY_Controller {
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
+                                                         <span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -8169,7 +8169,7 @@ class Business_profile extends MY_Controller {
                                                              <div></div>
                                                             <div></div>
                                                             <div></div>
-                                                            <div><span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_add.png') . '"></span></div>
+                                                            <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
 
                                                             </div>
                                                             
@@ -8199,7 +8199,7 @@ class Business_profile extends MY_Controller {
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi">   <img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
+                                                         <span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -8235,7 +8235,7 @@ class Business_profile extends MY_Controller {
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
+                                                         <span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -8849,7 +8849,7 @@ class Business_profile extends MY_Controller {
             $nomsg = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -9442,7 +9442,7 @@ class Business_profile extends MY_Controller {
                         } elseif (in_array($ext, $allowespdf)) {
                             $return_html .= '<div>
                                                 <a title="click to open" href="' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
-                                                        <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">
+                                                        <img src="' . base_url('assets/images/PDF.jpg') . '" style="height: 100%; width: 100%;">
                                                     </div>
                                                 </a>
                                             </div>';
@@ -9457,7 +9457,7 @@ class Business_profile extends MY_Controller {
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
-                                                    <img src="' . base_url('images/music-icon.png') . '">  
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio id="audio_player" width="100%" height="100" controls>
@@ -10708,7 +10708,7 @@ class Business_profile extends MY_Controller {
 
                 $fetch_pdf .= '<div class="image_profile">';
                 $fetch_pdf .= '<a href="' . base_url('business_profile/creat_pdf/' . $singlearray3[0]['image_id']) . '"><div class="pdf_img">';
-                $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
+                $fetch_pdf .= '<img src="' . base_url('assets/images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -10946,7 +10946,7 @@ class Business_profile extends MY_Controller {
 
                         $return_html .= '<div>
             <a href="' . base_url('business-profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
-                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">
+                    <img src="' . base_url('assets/images/PDF.jpg') . '" style="height: 100%; width: 100%;">
                 </div></a>
         </div>';
                     } elseif (in_array($ext, $allowesvideo)) {
@@ -10960,7 +10960,7 @@ class Business_profile extends MY_Controller {
                     } elseif (in_array($ext, $allowesaudio)) {
                         $return_html .= '<div class="audio_main_div">
             <div class="audio_img">
-                <img src="' . base_url('images/music-icon.png') . '">  
+                <img src="' . base_url('assets/images/music-icon.png') . '">  
             </div>
             <div class="audio_source">
                 <audio  controls>
@@ -11319,7 +11319,7 @@ class Business_profile extends MY_Controller {
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">

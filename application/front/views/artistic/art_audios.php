@@ -68,7 +68,7 @@
                <?php } } else{?>
              <div class="art_no_pva_avl">
          <div class="art_no_post_img">
-              <img src="<?php echo base_url('images/color_008.png'); ?>"  >                              
+              <img src="<?php echo base_url('assets/images/color_008.png'); ?>"  >                              
          </div>
          <div class="art_no_post_text1">
            No Audio Available.

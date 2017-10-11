@@ -641,7 +641,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     } elseif (in_array($ext, $allowesaudio)) {
                         $return_html .= '<div class="audio_main_div">
             <div class="audio_img">
-                <img src="' . base_url('images/music-icon.png') . '">  
+                <img src="' . base_url('assets/images/music-icon.png') . '">  
             </div>
             <div class="audio_source">
                 <audio  controls>
@@ -958,7 +958,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">

@@ -747,7 +747,7 @@
                                             <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $art_data[0]['art_post_id']; ?>"  id="<?php echo "post_comment" . $art_data[0]['art_post_id']; ?>" placeholder="Add a Comment ..." onClick="entercomment(<?php echo $art_data[0]['art_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
                                       
    <div class="mob-comment">
-                            <button id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="insert_comment(this.id)"><img src="<?php echo base_url('img/send.png') ?>"></button> 
+                            <button id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="insert_comment(this.id)"><img src="<?php echo base_url('assets/img/send.png') ?>"></button> 
                             
                            </div>
 
@@ -772,7 +772,7 @@
           <div class="art-img-nn">
          <div class="art_no_post_img">
 
-           <img src="<?php echo base_url('img/art-no.png')?>">
+           <img src="<?php echo base_url('assets/img/art-no.png')?>">
         
          </div>
          <div class="art_no_post_text">
@@ -1207,7 +1207,7 @@
                                                                 <div id="content" class="col-md-12 inputtype-comment cmy_2" >
                                                                     <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $artdata['post_files_id']; ?>"  id="<?php echo "post_commentimg" . $artdata['post_files_id']; ?>" placeholder="Add a Comment ..." onclick="entercommentimg(<?php echo $artdata['post_files_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
                                                                       <div class="mob-comment">       
-                            <button id="<?php echo $artdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php  echo base_url('img/send.png') ?> ;">
+                            <button id="<?php echo $artdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php  echo base_url('assets/img/send.png') ?> ;">
                             </button>
                         </div>
                                                                 </div>

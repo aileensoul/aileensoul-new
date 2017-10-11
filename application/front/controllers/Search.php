@@ -621,7 +621,7 @@ Your browser does not support the video tag.
 
                                 $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('images/music-icon.png') . '">
+<img src = "' . base_url('assets/images/music-icon.png') . '">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -1000,7 +1000,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>
 </div>
@@ -3279,7 +3279,7 @@ Your browser does not support the audio tag.
                                 $return_html .= '<div>
                                             <a title="click to open"  href="javascript:void(0);"  onClick="login_profile()">
                                                 <div class="pdf_img">
-                                                    <img src="' . base_url('images/PDF.jpg') . '"">
+                                                    <img src="' . base_url('assets/images/PDF.jpg') . '"">
                                                 </div>
                                             </a>
                                         </div>';

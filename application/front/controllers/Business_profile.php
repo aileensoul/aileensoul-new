@@ -22,7 +22,7 @@ class Business_profile extends MY_Controller {
 
         // FIX BUSINESS PROFILE NO POST DATA
 
-        $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Business Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('img/bui-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
+        $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Business Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/bui-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
     }
 
     public function index() {
@@ -1157,7 +1157,7 @@ class Business_profile extends MY_Controller {
 //                                        <div class="art-img-nn">
 //                                            <div class="art_no_post_img">
 //
-//                                        <img src="' . base_url('img/bui-no.png') . '">
+//                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 //
 //                                    </div>
 //                                            <div class="art_no_post_text">
@@ -1175,7 +1175,7 @@ class Business_profile extends MY_Controller {
 //                                        <div class="art-img-nn">
 //                                            <div class="art_no_post_img">
 //
-//                                        <img src="' . base_url('img/bui-no.png') . '">
+//                                        <img src="' . base_url('assets/img/bui-no.png') . '">
 //
 //                                    </div>
 //                                            <div class="art_no_post_text">
@@ -2078,7 +2078,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('images/music-icon.png') . '">
+<img src = "' . base_url('assets/images/music-icon.png') . '">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -2468,7 +2468,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>
 </div>
@@ -2944,7 +2944,7 @@ Your browser does not support the audio tag.
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
-            $userimage .= '<a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url('img/cam.png') . '">';
+            $userimage .= '<a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url('assets/img/cam.png') . '">';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -4030,7 +4030,7 @@ Your browser does not support the audio tag.
                     $notfound = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/icon_no_following.png') . '">
+                                        <img src="' . base_url('assets/img/icon_no_following.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -4211,7 +4211,7 @@ Your browser does not support the audio tag.
         } else {
             $return_html .= '<div class="art-img-nn" id= "art-blank">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('img/icon_no_follower.png') . '">
+                                                    <img src="' . base_url('assets/img/icon_no_follower.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -4399,7 +4399,7 @@ Your browser does not support the audio tag.
 
             $return_html .= '<div class = "art-img-nn">
                                                     <div class = "art_no_post_img">
-                                                    <img src = "' . base_url('img/icon_no_following.png') . '">
+                                                    <img src = "' . base_url('assets/img/icon_no_following.png') . '">
                                                     </div>
                                                     <div class = "art_no_post_text">
                                                     No Following Available.
@@ -9390,7 +9390,7 @@ Your browser does not support the audio tag.
                                                              <div></div>
                                                             <div></div>
                                                             <div></div>
-                                                            <div><span class="cancel_req_busi">   <img src="' . base_url('img/icon_contact_add.png') . '"></span></div>
+                                                            <div><span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
 
                                                             </div>
                                                             
@@ -9421,7 +9421,7 @@ Your browser does not support the audio tag.
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
+                                                         <span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -9449,7 +9449,7 @@ Your browser does not support the audio tag.
                                                              <div></div>
                                                             <div></div>
                                                             <div></div>
-                                                            <div><span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_add.png') . '"></span></div>
+                                                            <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
 
                                                             </div>
                                                             
@@ -9479,7 +9479,7 @@ Your browser does not support the audio tag.
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi">   <img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
+                                                         <span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -9515,7 +9515,7 @@ Your browser does not support the audio tag.
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
+                                                         <span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -9987,7 +9987,7 @@ Your browser does not support the audio tag.
             $return_html .= '<li><div class="art-img-nn" id= "art-blank">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/No_Contact_Request.png') . '">
+                                        <img src="' . base_url('assets/img/No_Contact_Request.png') . '">
 
                                     </div>
         <div class="art_no_post_text">
@@ -10091,7 +10091,7 @@ Your browser does not support the audio tag.
             $contactdata = '<li><div class="art-img-nn" id= "art-blank">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/No_Contact_Request.png') . '" width="100">
+                                        <img src="' . base_url('assets/img/No_Contact_Request.png') . '" width="100">
 
                                     </div>
         <div class="art_no_post_text" style="font-size: 20px;">
@@ -10439,7 +10439,7 @@ Your browser does not support the audio tag.
         } else {
             $return_html .= '<div class="art-img-nn">
                 <div class="art_no_post_img">
-                    <img src="' . base_url('img/No_Contact_Request.png') . '">
+                    <img src="' . base_url('assets/img/No_Contact_Request.png') . '">
     </div>
     <div class="art_no_post_text">
         No Contacts Available.
@@ -10492,7 +10492,7 @@ Your browser does not support the audio tag.
             $nomsg = ' <div class = "art-img-nn">
 <div class = "art_no_post_img">
 
-<img src = "' . base_url('img/No_Contact_Request.png') . '">
+<img src = "' . base_url('assets/img/No_Contact_Request.png') . '">
 
 </div>
 <div class = "art_no_post_text">
@@ -11021,7 +11021,7 @@ Your browser does not support the video tag.
 
                         $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('images/music-icon.png') . '">
+<img src = "' . base_url('assets/images/music-icon.png') . '">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -11415,7 +11415,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>
 </div>
@@ -11436,7 +11436,7 @@ Your browser does not support the audio tag.
           <h3>Business Post</h3>
           <div class="art-img-nn">
           <div class="art_no_post_img">
-          <img src="' . base_url('img/bui-no.png') . '">
+          <img src="' . base_url('assets/img/bui-no.png') . '">
           </div>
           <div class="art_no_post_text">
           No Post Available.
@@ -11449,7 +11449,7 @@ Your browser does not support the audio tag.
           <h3>Business Post</h3>
           <div class="art-img-nn">
           <div class="art_no_post_img">
-          <img src="' . base_url('img/bui-no.png') . '">
+          <img src="' . base_url('assets/img/bui-no.png') . '">
           </div>
           <div class="art_no_post_text">
           No Post Available.
@@ -11839,7 +11839,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                         } elseif (in_array($ext, $allowespdf)) {
 //                            $return_html .= '<div>
 //<a title = "click to open" href = "' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '"><div class = "pdf_img">
-//<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">
+//<img src = "' . base_url('assets/images/PDF.jpg') . '" style = "height: 100%; width: 100%;">
 //</div>
 //</a>
 //</div>';
@@ -11901,7 +11901,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                             /*
                               $return_html .= '<div class = "audio_main_div">
                               <div class = "audio_img">
-                              <img src = "' . base_url('images/music-icon.png') . '">
+                              <img src = "' . base_url('assets/images/music-icon.png') . '">
                               </div>
                               <div class = "audio_source">
                               <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -11918,7 +11918,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 
                             $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('images/music-icon.png') . '">
+<img src = "' . base_url('assets/images/music-icon.png') . '">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -12367,7 +12367,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $row['business_profile_post_id'] . '" id = "post_comment' . $row['business_profile_post_id'] . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $row['business_profile_post_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
+                            <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>
 </div>
@@ -12391,7 +12391,7 @@ Your browser does not support the audio tag.
           <h3>Business Post</h3>
           <div class="art-img-nn">
           <div class="art_no_post_img">
-          <img src="' . base_url('img/bui-no.png') . '">
+          <img src="' . base_url('assets/img/bui-no.png') . '">
           </div>
           <div class="art_no_post_text">
           No Post Available.
@@ -12404,7 +12404,7 @@ Your browser does not support the audio tag.
           <h3>Business Post</h3>
           <div class="art-img-nn">
           <div class="art_no_post_img">
-          <img src="' . base_url('img/bui-no.png') . '">
+          <img src="' . base_url('assets/img/bui-no.png') . '">
           </div>
           <div class="art_no_post_text">
           No Post Available.
@@ -13686,7 +13686,7 @@ Your browser does not support the audio tag.
                 $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" target="_blank"><div class = "pdf_img">';
                 //$fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" width="100%" height="450px" />';
 //                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '&embedded=true" style="width:50px; height:60px;" frameborder="0"></iframe>';
-                $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
+                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -13748,7 +13748,7 @@ Your browser does not support the audio tag.
                 $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '"><div class = "pdf_img">';
 //                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>';
                 $fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" width="100%" height="450px" />';
-//                $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">';
+//                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" style = "height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -14121,7 +14121,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                         $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
-<img src = "' . base_url('images/music-icon.png') . '">
+<img src = "' . base_url('assets/images/music-icon.png') . '">
 </div>
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
@@ -14514,7 +14514,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
+                            <button id="' . $post_business_profile_post_id . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>
 </div>

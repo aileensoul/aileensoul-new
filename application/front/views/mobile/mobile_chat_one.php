@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta charset="utf-8">
         <title>Chat | Aileensoul</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
@@ -149,7 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                               
                                 <div class="chat_drop">
-                                    <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('img/t_dot.png') ?>"> </a>
+                                    <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('assets/img/t_dot.png') ?>"> </a>
                                     <div id="mychat_dropdown" class="chatdropdown-content">
                                         <a href="javascript:void(0);" onClick="delete_history()">
                                             <span class="h4-img h2-srrt"></span>  Delete All

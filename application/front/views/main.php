@@ -4,7 +4,7 @@
         <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
         <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
         <meta property="og:description" content="Aileensoul.com is the free platform where you can grow business, hire employees, freelancers & artists. Also find job, freelance work & artistic opportunities."/>
-        <meta property="og:image" content="<?php echo base_url('images/meta-icon.png'); ?>" />
+        <meta property="og:image" content="<?php echo base_url('assets/images/meta-icon.png'); ?>" />
         <?php
         if($_SERVER['HTTP_HOST'] != "localhost"){
         ?>
@@ -38,7 +38,7 @@
             });
         </script>
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
-        <link rel="icon" href="<?php echo base_url('images/favicon.png?ver=' . time()); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, 
               minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -137,7 +137,7 @@
                                     <div class="carousel-inner" role="listbox">
                                         <div class="item active">  
                                             <div class="carousel-caption">
-                                                <img src="<?php echo base_url('img/job1.png?ver=' . time()); ?>" alt="Job Profile">
+                                                <img src="<?php echo base_url('assets/img/job1.png?ver=' . time()); ?>" alt="Job Profile">
                                                 <div class="carousel-text">
                                                     <h3>Job Profile</h3>
                                                     <p>Find best job options and connect with recruiters.</p>
@@ -146,7 +146,7 @@
                                         </div>
                                         <div class="item"> 
                                             <div class="carousel-caption">
-                                                <img src="<?php echo base_url('img/rec.png?ver=' . time()); ?>" alt="Recruiter">
+                                                <img src="<?php echo base_url('assets/img/rec.png?ver=' . time()); ?>" alt="Recruiter">
                                                 <div class="carousel-text">
                                                     <h3>Recruiter Profile</h3>
                                                     <p>Hire quality employees here.</p>
@@ -155,7 +155,7 @@
                                         </div>
                                         <div class="item"> 
                                             <div class="carousel-caption">
-                                                <img src="<?php echo base_url('img/freelancer.png?ver=' . time()); ?>" alt="Freelancer">
+                                                <img src="<?php echo base_url('assets/img/freelancer.png?ver=' . time()); ?>" alt="Freelancer">
                                                 <div class="carousel-text">
                                                     <h3>Freelance Profile</h3>
                                                     <p>Hire freelancers and also find freelance work.</p>
@@ -164,7 +164,7 @@
                                         </div>
                                         <div class="item"> 
                                             <div class="carousel-caption">
-                                                <img src="<?php echo base_url('img/business.png?ver=' . time()); ?>" alt="Business">
+                                                <img src="<?php echo base_url('assets/img/business.png?ver=' . time()); ?>" alt="Business">
                                                 <div class="carousel-text">
                                                     <h3>Business Profile</h3>
                                                     <p>Grow your business network.</p>
@@ -173,7 +173,7 @@
                                         </div>
                                         <div class="item"> 
                                             <div class="carousel-caption">
-                                                <img src="<?php echo base_url('img/art.png?ver=' . time()); ?>" alt="Artistic">
+                                                <img src="<?php echo base_url('assets/img/art.png?ver=' . time()); ?>" alt="Artistic">
                                                 <div class="carousel-text">
                                                     <h3>Artistic Profile</h3>
                                                     <p> Show your art & talent to the world.</p>

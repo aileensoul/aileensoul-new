@@ -56,7 +56,7 @@
                                                             ?>
                                                             <div class="art_no_pva_avl">
                                                                 <div class="art_no_post_img">
-                                                                    <img src="<?php echo base_url('images/020-c.png'); ?>"  >
+                                                                    <img src="<?php echo base_url('assets/images/020-c.png'); ?>"  >
                                                                 </div>
                                                                 <div class="art_no_post_text1">
                                                                     No Photo Available.

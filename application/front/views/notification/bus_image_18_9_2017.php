@@ -568,7 +568,7 @@
                                                 <!-- one pdf start -->
                                                 <div>
                                                     <a href="<?php echo base_url('business_profile/creat_pdf/' . $data['post_files_id']) ?>"><div class="pdf_img">
-                                                            <img src="<?php echo base_url('images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
+                                                            <img src="<?php echo base_url('assets/images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
                                                         </div></a>
                                                 </div>
                                                 <!-- one pdf end -->
