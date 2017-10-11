@@ -62,12 +62,45 @@
          ?>
          <li>
              <div class="vidoe_tag"> 
-                 <video controls>
-                  <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $videov['file_name']; ?>" type = "video/mp4">
+
+
+                <?php
+                      $post_poster = $videov['file_name'];
+                      $post_poster1 = explode('.', $post_poster);
+                      $post_poster2 = end($post_poster1);
+                      $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                    if (IMAGEPATHFROM == 'upload') {
+                          if (file_exists($this->config->item('art_post_main_upload_path') . $post_poster)) {
+                      ?>
+                      <video preload="none" poster="<?php echo base_url($this->config->item('art_post_main_upload_path') . $post_poster); ?>" controls playsinline webkit-playsinline>
+                      <?php
+                        } else {
+                      ?>
+                    <video preload="none" controls playsinline webkit-playsinline>
+                     <?php
+                      }
+                      } else {
+                      $filename = $this->config->item('art_post_main_upload_path') . $post_poster;
+                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($info) {?>
+                    <video preload="none" poster="<?php echo base_url($this->config->item('art_post_main_upload_path') . $post_poster); ?>" controls playsinline webkit-playsinline>
+                      <?php
+                      } else {
+                      ?>
+                      <video preload="none" controls playsinline webkit-playsinline>
+                      <?php
+                         } } ?>
+                      <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4">
+                      <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                      </video>
+                <!--  <video controls>
+                  <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $videov['file_name']; ?>" type = "video/mp4"> -->
                    <!--  <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$videov['image_name'])?>" type="video/mp4"> -->
-                    <source src="movie.ogg" type="video/ogg">
+                   <!--  <source src="movie.ogg" type="video/ogg">
                Your browser does not support the video tag.
-                  </video>
+                  </video> -->
               </div>
              </li>
 

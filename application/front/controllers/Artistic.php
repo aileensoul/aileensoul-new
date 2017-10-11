@@ -789,6 +789,20 @@ class Artistic extends MY_Controller {
              if ($this->upload->do_upload('postattach')) {
 
                 $response['result'][] = $this->upload->data();
+
+
+                 if ($file_type == 'video') {
+                            $uploaded_url = base_url() . $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+//                            echo '<br>';
+//                            echo $upload_data['file_path'] . $upload_data['raw_name'] . "1" . $upload_data['file_ext'];
+//                            exec("ffmpeg -i 'http://35.165.1.109:81/uploads/ffmpeg/not_working.mp4' -vcodec h264 -acodec aac -strict -2 /var/www/html/aileensouldesigner/uploads/ffmpeg/chek_vv.mp4");
+//                              exec("ffmpeg -i 'http://35.165.1.109:81/uploads/business_post/main/file_1507550255_NyKva.mp4' -vcodec h264 -acodec aac -strict -2 /var/www/html/aileensouldesigner/uploads/business_post/main/file_KA.mp4");
+                            exec("ffmpeg -i " . $uploaded_url . " -vcodec h264 -acodec aac -strict -2 " . $upload_data['file_path'] . $upload_data['raw_name'] . "1" . $upload_data['file_ext'] . "");
+                            exec("ffmpeg -ss 00:00:05 -i " . $upload_data['full_path'] . " " . $upload_data['file_path'] . $upload_data['raw_name'] . "1" . ".png");
+                            $fileName = $response['result'][$i]['file_name'] = $upload_data['raw_name'] . "1" . $upload_data['file_ext'];
+                            unlink($this->config->item('art_post_main_upload_path') . $upload_data['raw_name'] . "" . $upload_data['file_ext']);
+                        }
+
                 
                 $main_image_size = $_FILES['postattach']['size'];
 
@@ -820,6 +834,15 @@ class Artistic extends MY_Controller {
 
                         $main_image = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
                         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+
+                        $post_poster = $response['result'][$i]['file_name'];
+                        $post_poster1 = explode('.', $post_poster);
+                        $post_poster2 = end($post_poster1);
+                        $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                        $main_image1 = $this->config->item('art_post_main_upload_path') . $post_poster;
+                        $abc = $s3->putObjectFile($main_image1, bucket, $main_image1, S3::ACL_PUBLIC_READ);
 
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
@@ -907,6 +930,9 @@ class Artistic extends MY_Controller {
 
                         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
+                        
+                         if ($count == '2' || $count == '3') {
+
                         /* CROP 335 X 320 */
                         // reconfigure the image lib for cropping
 
@@ -948,7 +974,9 @@ class Artistic extends MY_Controller {
                         $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
                         /* CROP 335 X 320 */
 
+                        }
 
+                    if ($count == '4' || $count > '4') {
                         /* CROP 335 X 245 */
                         // reconfigure the image lib for cropping
 
@@ -991,6 +1019,8 @@ class Artistic extends MY_Controller {
                         $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
 
                         /* CROP 335 X 245 */
+
+                    }
 
                         /* CROP 210 X 210 */
                         // reconfigure the image lib for cropping
@@ -1296,13 +1326,42 @@ class Artistic extends MY_Controller {
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowesvideo)) {
-                            $return_html .= '<div>
-                                                <video width="100%" height="350" controls>
-                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
-                                                     <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">
-                                                    Your browser does not support the video tag.
-                                                </video>
-                                            </div>';
+
+
+                          $post_poster = $artmultiimage[0]['file_name'];
+                          $post_poster1 = explode('.', $post_poster);
+                          $post_poster2 = end($post_poster1);
+                          $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                            if (IMAGEPATHFROM == 'upload') {
+
+                             $return_html .= '<div>';
+                            if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                                $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                            } else {
+                                $return_html .= '<video width = "100%" height = "350" controls>';
+                            }
+                            $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                            $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                            $return_html .= 'Your browser does not support the video tag.';
+                            $return_html .= '</video>';
+                            $return_html .= '</div>';
+                             }else {
+                                $filename = ART_POST_MAIN_UPLOAD_URL . $post_poster;
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                $return_html .= '<div>';
+                                if ($info) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls>';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            }
+
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
@@ -10916,20 +10975,41 @@ public function art_home_postold() {
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowesvideo)) {
-                            $return_html .= '<div>
-                                                <video width="100%" height="350" controls>
 
-                                             
-                                                <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) . '" type="video/mp4">
-                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) . '" type="video/ogg">
 
-                                                    
-                                                    Your browser does not support the video tag.
-                                                </video>
-                                            </div>';
+                            $post_poster = $artmultiimage[0]['file_name'];
+                            $post_poster1 = explode('.', $post_poster);
+                            $post_poster2 = end($post_poster1);
+                            $post_poster = str_replace($post_poster2, 'png', $post_poster);
 
-                                              
-
+                            if (IMAGEPATHFROM == 'upload') {
+                                $return_html .= '<div>';
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<div>';
+                                $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            }
+                                        
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
@@ -11774,18 +11854,40 @@ public function art_home_post() {
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowesvideo)) {
-                            $return_html .= '<div>
-                                                <video width="100%" height="350" controls>
 
-                                             
-                                                <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) . '" type="video/mp4">
-                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) . '" type="video/ogg">
 
-                                                    
-                                                    Your browser does not support the video tag.
-                                                </video>
-                                            </div>';
+                            $post_poster = $artmultiimage[0]['file_name'];
+                            $post_poster1 = explode('.', $post_poster);
+                            $post_poster2 = end($post_poster1);
+                            $post_poster = str_replace($post_poster2, 'png', $post_poster);
 
+                            if (IMAGEPATHFROM == 'upload') {
+                                $return_html .= '<div>';
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<div>';
+                                $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            }
                                               
 
                         } elseif (in_array($ext, $allowesaudio)) {
@@ -12341,63 +12443,221 @@ public function art_home_post() {
             $fetch_video .= '<tr>';
 
             if ($singlearray1[0]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video controls>';
 
-                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+
+                $post_poster = $singlearray1[0]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[0]['file_name'];
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
+
             }
 
             if ($singlearray1[1]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[1]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $singlearray1[1]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[1]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[1]['file_name'];
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[1]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             if ($singlearray1[2]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[2]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $singlearray1[2]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[2]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[2]['file_name'];
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[2]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             $fetch_video .= '</tr>';
             $fetch_video .= '<tr>';
 
             if ($singlearray1[3]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[3]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $singlearray1[3]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[3]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[3]['file_name'];
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[3]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             if ($singlearray1[4]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[4]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $singlearray1[4]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[4]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[4]['file_name'];
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[4]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             if ($singlearray1[5]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[5]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $singlearray1[5]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[5]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[5]['file_name'];
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[5]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             $fetch_video .= '</tr>';
         } else {
@@ -12871,15 +13131,41 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 </div></a>
         </div>';
                     } elseif (in_array($ext, $allowesvideo)) {
-                        $return_html .= '<div>
-            <video class="video" width="100%" height="350" controls>
 
-                 <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
 
-                <source src="movie.ogg" type="video/ogg">
-                Your browser does not support the video tag.
-            </video>
-        </div>';
+                            $post_poster = $artmultiimage[0]['file_name'];
+                            $post_poster1 = explode('.', $post_poster);
+                            $post_poster2 = end($post_poster1);
+                            $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                            if (IMAGEPATHFROM == 'upload') {
+                                $return_html .= '<div>';
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<div>';
+                                $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            }
+
                     } elseif (in_array($ext, $allowesaudio)) {
                         $return_html .= '<div class="audio_main_div">
             <div class="audio_img">
@@ -14422,13 +14708,40 @@ public function get_artistic_name($id=''){
                     </div></a>
                     </div>';
                    } elseif (in_array($ext, $allowesvideo)) { 
-                  $return_html .= '<div class="video_post">
-                        <video width="100%" height="55%" controls>
-                         <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
-                        <source src="movie.ogg" type="video/ogg">
-                        Your browser does not support the video tag.
-                         </video>
-                    </div>';                                    
+
+                            $post_poster = $artmultiimage[0]['file_name'];
+                            $post_poster1 = explode('.', $post_poster);
+                            $post_poster2 = end($post_poster1);
+                            $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                            if (IMAGEPATHFROM == 'upload') {
+                                $return_html .= '<div>';
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<div>';
+                                $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            }
+                             
                  } elseif (in_array($ext, $allowesaudio)) {                                          
                         $return_html .= '<div>
                         <audio width="120" height="100" controls>
@@ -15308,6 +15621,40 @@ public function get_artistic_name($id=''){
                     </div></a>
                     </div>';
                    } elseif (in_array($ext, $allowesvideo)) { 
+
+                            $post_poster = $artmultiimage[0]['file_name'];
+                            $post_poster1 = explode('.', $post_poster);
+                            $post_poster2 = end($post_poster1);
+                            $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                            if (IMAGEPATHFROM == 'upload') {
+                                $return_html .= '<div>';
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<div>';
+                                $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
+                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                if ($info) {
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                } else {
+                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                }
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
+                                $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                $return_html .= 'Your browser does not support the video tag.';
+                                $return_html .= '</video>';
+                                $return_html .= '</div>';
+                            }
+
                   $return_html .= '<div class="video_post">
                         <video width="100%" height="55%" controls>
                          <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
