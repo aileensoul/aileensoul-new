@@ -11,7 +11,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/timeline.css?ver=' . time()); ?>" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
