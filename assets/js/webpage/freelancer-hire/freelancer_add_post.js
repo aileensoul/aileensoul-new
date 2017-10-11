@@ -1,6 +1,6 @@
 // CHECK SEARCH KEYWORD AND LOCATION BLANK START
 function checkvalue() {
-   
+
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "") {
@@ -9,7 +9,7 @@ function checkvalue() {
 }
 
 function checkvalue_search() {
-  
+
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "")
@@ -18,7 +18,7 @@ function checkvalue_search() {
     }
 }
 function check() {
-    
+
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
     if (keyword == "" && place == "") {
@@ -68,9 +68,9 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     var todaydate = yyyy + '-' + mm + '-' + dd;
     var one = new Date(value).getTime();
     var second = new Date(todaydate).getTime();
-  
-    if(one >= second){
-    return one >= second;
+
+    if (one >= second) {
+        return one >= second;
     }
     $('.day').addClass('error');
     $('.month').addClass('error');
@@ -225,15 +225,15 @@ $(document).ready(function () {
 // CODE FOR COUNTRY,STATE, CITY CODE END
 //CODE FOR DISABLE ARROW UP AND MOUSE SCROLLING FOR RATE START
 $('form').on('focus', 'input[type=number]', function (e) {
-  $(this).on('mousewheel.disableScroll', function (e) {
-    e.preventDefault()
-  })
+    $(this).on('mousewheel.disableScroll', function (e) {
+        e.preventDefault()
+    })
 })
 $('form').on('blur', 'input[type=number]', function (e) {
-  $(this).off('mousewheel.disableScroll')
+    $(this).off('mousewheel.disableScroll')
 })
-$('input').bind('keydown', function(e){
-    if(e.keyCode == '38' || e.keyCode == '40'){
+$('input').bind('keydown', function (e) {
+    if (e.keyCode == '38' || e.keyCode == '40') {
         e.preventDefault();
     }
 });
@@ -299,7 +299,7 @@ $(function () {
         //startDate: today,
     });
     $(".day").attr('tabindex', 8);
-    $(".month").attr('tabindex',9);
+    $(".month").attr('tabindex', 9);
     $(".year").attr('tabindex', 10);
 
 });
@@ -376,9 +376,10 @@ $(document).on('change', '.field_other', function (event) {
 
     if (other_field == 15) {
         item.val('');
-        $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Field</h2><input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()"><div class="fw"><a id="field" class="btn">OK</a></div></div>');
+        $('#bidmodal2').modal('show');
+//        $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Field</h2><input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()"><div class="fw"><a id="field" class="btn">OK</a></div></div>');
 
-        $('.message #field').on('click', function () {
+        $('.message #field').off('click').on('click', function () {
             $("#other_field").removeClass("keyskill_border_active");
             $('#field_error').remove();
 
@@ -410,7 +411,11 @@ $(document).on('change', '.field_other', function (event) {
 //                                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                         } else
                         {
-                            $.fancybox.close();
+                            // $.fancybox.close();
+                            $('#bidmodal2').modal('hide');
+                            $('#other_field').val('');
+                            $("#other_field").removeClass("keyskill_border_active");
+                            $("#field_error").removeClass("error");
                             $('.field_other').html(response.select);
                         }
                     }

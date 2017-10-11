@@ -33,9 +33,7 @@
         ?>
         <link rel="stylesheet" href="assets/css/common-style.css">
         <link rel="stylesheet" href="assets/css/style-main.css">
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
-        
-        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
+       
     </head>
     <body class="contact">
         <div class="main-inner">
@@ -86,13 +84,26 @@
     </section>
     <?php echo $login_footer; ?>
 </div>
+
+ <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+
 <script>
     var base_url = '<?php echo base_url(); ?>';
     var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/contactus.js'); ?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/webpage/contactus.js?ver='.time()); ?>"></script>
 </body>
 </html>
