@@ -9,8 +9,6 @@
             }
             #tin-error{position: relative;}
         </style>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/freelancer-apply.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver=' . time()) ?>" />
 
