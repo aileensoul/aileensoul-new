@@ -788,7 +788,7 @@ class Artistic extends MY_Controller {
           
              if ($this->upload->do_upload('postattach')) {
 
-                $response['result'][] = $this->upload->data();
+                $upload_data  = $response['result'][] = $this->upload->data();
 
 
                  if ($file_type == 'video') {
