@@ -210,7 +210,7 @@ label.cameraButton:active {
     background-color: #fff;
     border:1px solid #1b8ab9;
 }
-.cancel-result:hover{color: #fff;background-color: #1b8ab9;}
+.cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color:#1B8AB9 !important;}
 .set-btn {
     float: right;
     display: block;

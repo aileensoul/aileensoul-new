@@ -942,7 +942,7 @@ label.cameraButton input[accept*="camera"] {
 .tablate-potrat-add{display:none;}
 .mob-add{display:none;}
 
-.cancel-result:hover{color: #fff;background-color: #1b8ab9;}
+.cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color:#1B8AB9 !important;}
 
 /***  media query  ***/
 @media screen and (max-width: 1279px){
