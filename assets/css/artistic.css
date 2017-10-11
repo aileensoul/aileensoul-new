@@ -1807,6 +1807,7 @@ label.cameraButton:active {
     text-align: justify;
     display: inline-block;
     margin-bottom: 0px;
+	float:left;
 }
 .business-profile-right .profile-main-box-buis-menu ul li {
     padding-left: 0;

@@ -20,8 +20,8 @@
    <body class="page-container-bg-solid page-boxed">
       <div class="user-midd-section" id="paddingtop_fixed">
       <div class="container">
-      <div class="row row4">
-      <div class="col-md-4 profile-box profile-box-left">
+      <div class="row4">
+      <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
          <div class="">
             <div class="full-box-module">
                <div class="profile-boxProfileCard  module">
@@ -52,7 +52,7 @@
                         <?php
                            if ($jobdata[0]['job_user_image']) {
                                ?>
-                        <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="<?php echo $jobdata[0]['fname']; ?> " >
+                        <div class="left_iner_img_profile"><img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="<?php echo $jobdata[0]['fname']; ?> " ></div>
                         <?php
                            } else {
                                ?>
@@ -111,7 +111,7 @@
             </div>
          </div>
       </div>
-      <div class="col-md-7 col-sm-7 col-sm-push-4 col-md-push-4 custom-right">
+      <div class="custom-right-art mian_middle_post_box animated fadeInUp">
          <div class="common-form">
             <div class="job-saved-box">
                <h3>
