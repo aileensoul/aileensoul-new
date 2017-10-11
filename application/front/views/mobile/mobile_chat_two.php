@@ -22,12 +22,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
               
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
-                <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css'); ?>">
 
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css'); ?>">
 			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
 
 

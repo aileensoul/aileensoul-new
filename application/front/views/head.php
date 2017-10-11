@@ -53,9 +53,9 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css?ver=' . time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/animate.css?ver=' . time()) ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css?ver=' . time()); ?>">
 
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
 <link rel="stylesheet" href="<?php echo base_url('js/scrollbar/style.css') ?>">

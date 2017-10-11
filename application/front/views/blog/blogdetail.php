@@ -48,10 +48,10 @@
       <meta name="twitter:domain" content="<?php base_url('blog/'.$blog_detail[0]['blog_slug']) ?>">
       
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/blog.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css'); ?>">
       <!-- This Css is used for call popup -->
       <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
    </head>

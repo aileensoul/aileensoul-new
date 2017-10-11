@@ -65,9 +65,9 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/blog.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
     
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
    </head>
    <body class="blog">
       <div class="main-inner">

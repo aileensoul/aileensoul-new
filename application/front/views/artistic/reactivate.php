@@ -22,9 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/animate.css?ver='.time()) ?>" />
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css?ver='.time()); ?>">
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ?>" />
 <script type="text/javascript" src="<?php  echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
