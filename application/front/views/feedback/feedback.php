@@ -33,9 +33,7 @@
         ?>
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
-        
-        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
+       
     </head>
     <body>
         <div class="main-inner" class="feedback">
