@@ -753,7 +753,7 @@
         <!-- register -->
 
 <!-- script for skill textbox automatic start-->
-<script src="<?php echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
 
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
