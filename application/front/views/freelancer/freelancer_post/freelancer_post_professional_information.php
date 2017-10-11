@@ -212,7 +212,7 @@
         </footer>
 
         <!-- Bid-modal  -->
-        <div class="modal fade message-box biderror" id="bidmodal2" role="dialog">
+        <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
