@@ -205,5 +205,9 @@ $(document).ready(function () {
     }
 });
 
-
+$( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   $('#bidmodal').modal('hide');
+                  }
+               });  
 

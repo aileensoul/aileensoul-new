@@ -106,7 +106,7 @@ var base_url = '<?php echo base_url(); ?>';
 </script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
+<script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/feedback.js'); ?>"></script>
     </body>
 </html>
