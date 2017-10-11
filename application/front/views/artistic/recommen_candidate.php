@@ -2,7 +2,7 @@
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
- <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
+
 <link href="<?php echo base_url('css/fileinput.css?ver='.time());?>" media="all" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url('js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
 </head>

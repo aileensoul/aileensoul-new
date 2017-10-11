@@ -3,11 +3,11 @@
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>">
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>">
 <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="<?php echo base_url('css/croppie.css?ver='.time()); ?>" />
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>">
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
