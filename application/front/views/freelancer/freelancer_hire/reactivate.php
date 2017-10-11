@@ -7,8 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta charset="utf-8">
         <title>Reactivate</title>
         <?php echo $head; ?>
-       
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <body>
         <?php echo $header; ?>
