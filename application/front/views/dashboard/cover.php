@@ -5,7 +5,7 @@
         <?php echo $head; ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" href="css/style-main.css">
+        <link rel="stylesheet" href="assets/css/style-main.css">
         <link rel="stylesheet" href="css/jquery.fancybox.css">
         <link rel="stylesheet" type="text/css" href="css/slider.css">
        
