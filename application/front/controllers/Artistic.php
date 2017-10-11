@@ -8425,7 +8425,7 @@ public function insert_comment_postnewpage() {
        $modal .=  '<div class="like_user_list_current_work">';
 
        if($designation){
-       $modal .=  '<span class="head_main_work">' . $designation . '</span>';
+       $modal .=  '<span class="head_main_work">' . ucfirst(strtolower($designation)) . '</span>';
         }else{
        $modal .=  '<span class="head_main_work">Current work</span>';
 
