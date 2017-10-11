@@ -127,12 +127,12 @@
                      ?>
                </h3>
 
-               <div class="contact-frnd-post">
+				<div class="contact-frnd-post">
                             <div class="job-contact-frnd ">
                               <!--.........AJAX DATA......-->           
                             </div>
                          <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
-              </div>
+				</div>
 
             </div>
          </div>
