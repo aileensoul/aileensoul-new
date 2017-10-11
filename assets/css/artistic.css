@@ -4507,6 +4507,9 @@ div .comment {
     .close2 {
         right: 12px;
     }
+    .flw_msg_btn ul li:last-child{margin-right:0 !important}
+.profile-main-box-buis-menu li a:hover{border-bottom: none;}
+
 	#row2{border-left:0; border-right:0;}
     #row2 img {
         border: none;

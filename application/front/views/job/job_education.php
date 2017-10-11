@@ -728,15 +728,15 @@
                                           ?>
                                        
                                        <div class="fr img_remove">
-                                          <input  style="font-size: 14px;" class="job_edu_graduation_submit_btn" tabindex="8" type="Submit"  id="next" name="next" value="Save">
+                                          <input  style="font-size: 14px;" class="job_edu_graduation_submit_btn" tabindex="11" type="Submit"  id="next" name="next" value="Save">
                                           
                                        </div>
                                        <div class="display_inline_block" >
                                           <div class="fr img_remove job_edu_graduation_removebox" >
-                                             <input class="job_edu_graduation_removebtn" type="button" id="btnRemove" name="btnRemove"  value=" - "   />
+                                             <input class="job_edu_graduation_removebtn" type="button" id="btnRemove" name="btnRemove" tabindex="10"  value=" - "   />
                                           </div>
                                           <div class="fr img_remove" >
-                                             <input type="button" id="btnAdd"  name="btnAdd" class="job_edu_graduation_addbtn"  value=" + ">
+                                             <input type="button" id="btnAdd"  name="btnAdd" class="job_edu_graduation_addbtn" tabindex="9"  value=" + ">
                                           </div>
                                        </div>
                                        <fieldset class="hs-submit full-width job_edu_graduation_nextbtnbox">
@@ -745,7 +745,7 @@
                                           } else {
                                               ?>
                                        <!--clone div start-->              
-                                       <div id="input1" style="margin-bottom:4px;" class="clonedInput job_work_experience_main_div">
+                                       <div id="input1" style="margin-bottom:4px;position: relative;" class="clonedInput job_work_experience_main_div">
                                           <!-- <fieldset class=""> -->
                                           <h6>Degree :<span class="red">*</span></h6>
                                           <select name="degree[]" id="degree1" class="degree">

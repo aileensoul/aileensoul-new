@@ -106,7 +106,7 @@
 
 
 
-                                        <textarea name="interview" id="interview" rows="4" tabindex="11" cols="50"  placeholder="Enter Interview Process" style="resize: none;"></textarea>
+                                        <textarea name="interview" id="interview" rows="4" tabindex="5" cols="50"  placeholder="Enter Interview Process" style="resize: none;"></textarea>
 
                                         <?php //echo form_error('interview'); ?> 
                                     </fieldset>
@@ -115,7 +115,7 @@
                                         <label style="cursor:pointer;" class="control-label">Minimum Experience:<span style="color:red">*</span></label>
 
 
-                                        <select name="minyear" style="cursor:pointer;" class="keyskil" id="minyear" tabindex="5">
+                                        <select name="minyear" style="cursor:pointer;" class="keyskil" id="minyear" tabindex="6">
                                             <option value="" selected option disabled>Year</option>
 
                                             <option value="0">0 Year</option>
