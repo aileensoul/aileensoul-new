@@ -7,7 +7,6 @@
         </title>
         <?php echo $head; ?> 
         
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver=' . time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/freelancer-hire.css?ver=' . time()); ?>">
     </head>
