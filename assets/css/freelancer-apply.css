@@ -1477,7 +1477,7 @@ label.cameraButton input[accept*="camera"] {
 .tablate-add{display:none;}
 .tablate-potrat-add{display:none;}
 .mob-add{display:none;}
-
+.custom-message .message{padding:20px 30px;;}
 
 /***  media query  ***/
 
