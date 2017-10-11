@@ -5,8 +5,8 @@
 <meta name="description" content="">
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold"> 
-<link rel="stylesheet" type="text/css" href="css/under-bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/under-styles.css">
+<link rel="stylesheet" type="text/css" href="assets/css/under-bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/css/under-styles.css">
 </head>
 
 <body id="home">
@@ -85,9 +85,9 @@
   </div>
 </section>
 <!--Scripts-->
-<script type="text/javascript" src="<?php echo base_url() ?>js/jquery-3.2.1.min.js"></script> 
-<script type="text/javascript" src="<?php echo base_url() ?>js/jquery.countdown.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/global.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery-3.2.1.min.js"></script> 
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.countdown.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/global.js"></script>
 
 </body>
 </html>
