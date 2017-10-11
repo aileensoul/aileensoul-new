@@ -10,8 +10,6 @@
             #tin-error{position: relative;}
         </style>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver=' . time()) ?>" />
-
 
     </head>
     <!--    <div class="js">-->
@@ -92,7 +90,7 @@
                                 <h3><?php echo $this->lang->line("professional_info"); ?></h3>
                                 <?php echo form_open(base_url('freelancer/freelancer_post_professional_information_insert'), array('id' => 'freelancer_post_professional', 'name' => 'freelancer_post_professional', 'class' => 'clearfix')); ?>
                                 <!-- <div>
-                                    <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required");  ?></span>
+                                    <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required");   ?></span>
                                 </div> -->
                                 <?php
                                 $field = form_error('field');
@@ -128,9 +126,11 @@
                                 </fieldset>
                                 <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
                                     <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
-                                    <input id="skills1" name="skills" tabindex="2"   placeholder="Enter skills" value="<?php if ($skill_2) {
+                                    <input id="skills1" name="skills" tabindex="2"   placeholder="Enter skills" value="<?php
+                                    if ($skill_2) {
                                         echo $skill_2;
-                                    } ?>">
+                                    }
+                                    ?>">
 <?php echo form_error('area'); ?>
                                 </fieldset>
                                 <!--                                    <fieldset>
@@ -216,22 +216,24 @@
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-<!--                    <div class="message" style="width:300px;">-->
-                        <h2>Add Field</h2>         
-                        <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
-                        <div class="fw"><a id="field" class="btn">OK</a></div>
-<!--                    </div>-->
+                    <!--                    <div class="message" style="width:300px;">-->
+                    <h2>Add Field</h2>         
+                    <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
+                    <div class="fw"><a id="field" class="btn">OK</a></div>
+                    <!--                    </div>-->
                 </div>
             </div>
         </div>
         <!-- Model Popup Close -->
-            <!--<script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver=' . time()); ?>"></script>-->
+
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate1.15.0..min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/additional-methods1.15.0.min.js?ver=' . time()); ?>"></script>
+
 
         <script>
-                    // var complex = <?php echo json_encode($selectdata); ?>;
-                    var base_url = '<?php echo base_url(); ?>';
+                        // var complex = <?php echo json_encode($selectdata); ?>;
+                        var base_url = '<?php echo base_url(); ?>';
 
 
         </script>

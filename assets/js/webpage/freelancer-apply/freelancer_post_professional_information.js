@@ -15,13 +15,13 @@ $(document).ready(function () {
       
         ignore: '*:not([name])',
           ignore: ":hidden",
-//        groups: {
-//            experience_year: "experience_year experience_month"
-//        },
-//        errorPlacement: function (error, element) {
-//            if (element.attr('name') === 'experience_year' || element.attr('name') === 'experience_month')
-//                error.insertAfter('#experience_month');
-//        },
+        groups: {
+            experience_year: "experience_year experience_month"
+        },
+        errorPlacement: function (error, element) {
+            if (element.attr('name') === 'experience_year' || element.attr('name') === 'experience_month')
+                error.insertAfter('#experience_month');
+        },
         rules: {
 
             field: {
@@ -39,15 +39,15 @@ $(document).ready(function () {
             skill_description: {
                 required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-            }
-//            experience_year: {
-//                require_from_group: [1, ".day"]
-//            },
+            },
+            experience_year: {
+                require_from_group: [1, ".day"]
+            },
 
-//            experience_month: {
-//                require_from_group: [1, ".day"]
-//
-//            }
+            experience_month: {
+                require_from_group: [1, ".day"]
+
+            }
 
         },
 
@@ -67,13 +67,13 @@ $(document).ready(function () {
 
             skill_description: {
                 required: "Skill description is required."
+            },
+            experience_year: {
+                require_from_group: "You must either fill out 'experience year' or 'experience month'"
+            },
+            experience_month: {
+                require_from_group: "You must either fill out 'experience year' or 'experience month'"
             }
-//            experience_year: {
-//                require_from_group: "You must either fill out 'experience year' or 'experience month'"
-//            },
-//            experience_month: {
-//                require_from_group: "You must either fill out 'experience year' or 'experience month'"
-//            }
         }
 
     });

@@ -190,7 +190,7 @@ $lang["no_applied_freelancer"]="No Applied Freelancer Found.";
 //variable of applied freelancer end
 
 //variable of reactive freelancer
-$lang["reactive_massage"]="Are you sure you want to reactive your freelancer_hire profile?";
+$lang["reactive_massage"]="Are you sure you want to reactive your freelancer hire profile?";
 $lang["yes"]="Yes";
 $lang["no"]="No";
 //variable of reactive freelancer end

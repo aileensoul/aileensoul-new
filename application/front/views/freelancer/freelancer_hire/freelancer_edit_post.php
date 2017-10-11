@@ -3,9 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <!-- Calender Css Start-->
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver=' . time()) ?>" />
-        <!-- Calender Css End-->
+       
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
 
     </head>
@@ -324,7 +322,6 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>">
         </script>
