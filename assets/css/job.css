@@ -837,7 +837,7 @@ label.cameraButton:active {
 .cameraButton .fa.fa-camera {
     width: 30px;
     height: 26px;
-    background: url('../../../img/cam.png') no-repeat;
+    background: url('../img/cam.png') no-repeat;
     border: none;
     padding: 5px;
     opacity: 0.6;
@@ -1492,7 +1492,7 @@ label.cameraButton input[accept*="camera"] {
     -moz-appearance: none;
     appearance: none;
     position: relative;
-    background: url(../../../img/down-arrow.png) no-repeat;
+    background: url(../img/down-arrow.png) no-repeat;
     background-position: right;
 }
 .common-form fieldset.fresher_select select {
@@ -1723,7 +1723,7 @@ label.cameraButton input[accept*="camera"] {
     margin-right: 0px !important;
 }
 .job_work_experience_main_div input.datad_delete {
-    background: url('../../../img/error.png') no-repeat;
+    background: url('../img/error.png') no-repeat;
     background-size: auto auto;
     background-size: 100%;
     height: 20px;
@@ -2007,7 +2007,7 @@ label.cameraButton input[accept*="camera"] {
     font-size: inherit;
 }
 #work_certi input.delete_graduation {
-    background: url(../../../img/error.png) no-repeat;
+    background: url(../img/error.png) no-repeat;
     background-size: auto auto;
     background-size: 100%;
     height: 20px;
