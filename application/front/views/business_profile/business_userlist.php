@@ -3,9 +3,17 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-		</head>
+        <?php
+        if (IS_CSS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+            <?php
+        } else {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
+        <?php } ?>
+    </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push user-list">
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
@@ -17,38 +25,38 @@
                     <div class="">
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
                             <div class="left_fixed">
-                            <?php echo $business_left ?>
+                                <?php echo $business_left ?>
                             </div>
                         </div>
-                        
-						<div class="custom-right-art mian_middle_post_box animated fadeInUp">
+
+                        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="">  
                                 <div class="right_side_posrt fl"> 
-                            <div class="common-form">
-                                <div class="job-saved-box">
-                                    <h3>User list</h3>
-                                    <div class="contact-frnd-post">
-                                        <!-- AJAX DATA... -->
-                                    </div>
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                                    <div class="col-md-1">
+                                    <div class="common-form">
+                                        <div class="job-saved-box">
+                                            <h3>User list</h3>
+                                            <div class="contact-frnd-post">
+                                                <!-- AJAX DATA... -->
+                                            </div>
+                                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                            <div class="col-md-1">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                        </div>
+                        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                            <div class="fw text-center">
+                                <script type="text/javascript" language="javascript">
+                                    var aax_size = '300x250';
+                                    var aax_pubname = 'aileensoul-21';
+                                    var aax_src = '302';
+                                </script>
+                                <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
                             </div>
                         </div>
-						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-					
-						<div class="fw text-center">
-                        <script type="text/javascript" language="javascript">
-						  var aax_size='300x250';
-						  var aax_pubname = 'aileensoul-21';
-						  var aax_src='302';
-						</script>
-						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-						</div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -91,15 +99,15 @@
         </div>
         <!-- Model Popup Close -->
         <!-- script for skill textbox automatic end (option 2)-->
-<!--        <script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());  ?>"></script>
-        <script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>
-        <script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
+<!--        <script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());   ?>"></script>
+        <script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());   ?>"></script>
+        <script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());   ?>"></script>-->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <!-- script for business autofill -->
         <script>
-            var base_url = '<?php echo base_url(); ?>';
+                            var base_url = '<?php echo base_url(); ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/userlist.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
