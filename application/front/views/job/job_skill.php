@@ -9,7 +9,7 @@
 
     
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
 
 <!-- This Css is used for call popup -->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver='.time()); ?>" />
