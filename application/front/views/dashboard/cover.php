@@ -407,7 +407,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <p> welcome to</p>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_logo.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_logo.png">
                                                                 </div>
                                                             </div>
                                                         </div> 
@@ -415,10 +415,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <div class="item slide2">
                                                             <div class="center_sl main_cl_sl slider-2 slide-text">
                                                                 <div data-animation="animated fadeInDownBig" class="imh_logo2">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_logo.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_logo.png">
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="slicing/img_screen_2.png">
+                                                                    <img src="assets/slicing/img_screen_2.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -430,7 +430,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <p>You can easily access any profile from main page.</p>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_3.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_3.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -441,7 +441,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> You can easily navigate to one profile to another profile</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_4.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_4.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -453,7 +453,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> You can easily search location vise jobs, employees, freelance projects, business, artists etc.</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_5.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_5.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -465,7 +465,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Recruiters can post job as per their requirement and find desired employees </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_6.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_6.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -477,7 +477,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Hire Freelancers and Also Find Freelance Work</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_7.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_7.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -489,7 +489,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Post your product in business profile with photo/audio/video/pdf</span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_8.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_8.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -506,7 +506,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     </div>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_9.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_9.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -518,7 +518,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <span class="mian_4_hed"> Post your artistic talent and creativity with photo/audio/video/pdf </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_10.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_10.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -531,7 +531,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_11.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_11.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -545,7 +545,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                         network can also message each other. </span>
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/img_screen_12.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/img_screen_12.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -558,9 +558,9 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     </span>
                                                                 </div>
                                                                 <div class="imh_logo">
-                                                                    <img class="img1" data-animation="animated fadeInUpBig" src="<?php echo base_url(); ?>slicing/sld13-1.png">
-                                                                    <img class="img2" data-animation="animated fadeInRightBig" src="<?php echo base_url(); ?>slicing/sld13-2.png">
-                                                                    <img class="img3" data-animation="animated fadeInLeftBig" src="<?php echo base_url(); ?>slicing/sld13-3.png">
+                                                                    <img class="img1" data-animation="animated fadeInUpBig" src="<?php echo base_url(); ?>assets/slicing/sld13-1.png">
+                                                                    <img class="img2" data-animation="animated fadeInRightBig" src="<?php echo base_url(); ?>assets/slicing/sld13-2.png">
+                                                                    <img class="img3" data-animation="animated fadeInLeftBig" src="<?php echo base_url(); ?>assets/slicing/sld13-3.png">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -569,7 +569,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <div class="item slide14">
                                                             <div class="center_sl main_cl_sl slider-14 slide-text">
                                                                 <div data-animation="animated fadeInDownBig" class="imh_logo">
-                                                                    <img src="<?php echo base_url(); ?>slicing/latsgo.png">
+                                                                    <img src="<?php echo base_url(); ?>assets/slicing/latsgo.png">
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="text_sl_head main_6_sl"> 
                                                                     <span class="mian_4_hed"><?php echo ucfirst($userdata[0]['first_name']);echo" ";echo ucfirst($userdata[0]['last_name']); ?></span>
@@ -598,8 +598,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <div class="ld_sl"></div>
                                             </div>
                                             <div class="lfar_sl">
-                                                <a href="#carousel-example-generic" role="button" data-slide="prev"  class="next-btn pull-left abc_left" id="right_img"><img src="<?php echo base_url(); ?>slicing/right-arrow.png" ></a>
-                                                <a href="#carousel-example-generic" role="button" data-slide="next"  class="next-btn pull-right" id="left_img"><img src="<?php echo base_url(); ?>slicing/img_arrow.png" > </a>
+                                                <a href="#carousel-example-generic" role="button" data-slide="prev"  class="next-btn pull-left abc_left" id="right_img"><img src="<?php echo base_url(); ?>assets/slicing/right-arrow.png" ></a>
+                                                <a href="#carousel-example-generic" role="button" data-slide="next"  class="next-btn pull-right" id="left_img"><img src="<?php echo base_url(); ?>assets/slicing/img_arrow.png" > </a>
                                             </div>
                                         </div>
                                     </div>	
