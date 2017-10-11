@@ -7,9 +7,9 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
       
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <style>
@@ -753,10 +753,10 @@
         <!-- register -->
 
 <!-- script for skill textbox automatic start-->
-<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>
 
-<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
@@ -768,6 +768,6 @@
     var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
 
-  <script type="text/javascript" src="<?php echo base_url('js/webpage/job/recruiter_post_login.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/recruiter_post_login.js'); ?>"></script>
 </body>
 </html>

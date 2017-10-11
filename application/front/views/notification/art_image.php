@@ -3,9 +3,9 @@
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/artistic/artistic.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ;?>" />
 <style type="text/css">
                         .likeduser{
                             width: 100%;
@@ -1076,10 +1076,10 @@
                     
                     
                     
-                    <script src="<?php echo base_url('js/jquery.jMosaic.js'); ?>"></script>                
-                    <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+                    <script src="<?php echo base_url('assets/js/jquery.jMosaic.js'); ?>"></script>                
+                    <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
 
 <script>
 var base_url = '<?php echo base_url(); ?>';   
@@ -1087,5 +1087,5 @@ var data = <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($de); ?>;
 var count = '<?php echo $count; ?>';                                       
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/art_image_notification.js?ver='.time()); ?>"></script>  
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/art_image_notification.js?ver='.time()); ?>"></script>  

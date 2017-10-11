@@ -13,17 +13,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
         <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/1.10.3.jquery-ui.css'); ?>">-->
+        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">-->
         <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <!-- http://bootsnipp.com/snippets/4jXW -->
 
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
-                <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css'); ?>">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
+                <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
 
-			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css'); ?>">
-              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css'); ?>">
+			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
               
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}

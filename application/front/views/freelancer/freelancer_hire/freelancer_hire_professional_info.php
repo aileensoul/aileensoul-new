@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/freelancer-hire.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <!--    <div class="js">-->
     <body>
@@ -84,15 +84,15 @@
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <!--<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>-->
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver=' . time()); ?>"></script>-->
         <script type="text/javascript">
                                         var base_url = '<?php echo base_url(); ?>';
 
         </script>
 
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_professional_info.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_professional_info.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
 
     </body>
     <!--</div>-->

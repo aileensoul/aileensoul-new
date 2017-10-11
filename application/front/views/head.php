@@ -49,36 +49,36 @@ if ($_SERVER['HTTP_HOST'] != "localhost") {
 
 <link rel="icon" href="<?php echo base_url('images/favicon.png?ver=' . time()); ?>">
 <!-- CSS START -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/animate.css?ver=' . time()) ?>" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver=' . time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/media.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/animate.css?ver=' . time()) ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
 
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
-<link rel="stylesheet" href="<?php echo base_url('js/scrollbar/style.css') ?>">
-<link rel="stylesheet" href="<?php echo base_url('js/scrollbar/jquery.mCustomScrollbar.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/style.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.css') ?>">
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
 
-<!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-1.11.1.min.js?ver='.time());     ?>"></script>-->
+<!--<script type="text/javascript" src="<?php //  echo base_url('assets/js/jquery-1.11.1.min.js?ver='.time());     ?>"></script>-->
 
 <?php
 if ($this->uri->segment(1) == 'dashboard') {
     ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="<?php echo base_url('js/jquery-2.0.3.min.js?ver=' . time()); ?>"></script>--> 
+    <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.0.3.min.js?ver=' . time()); ?>"></script>--> 
     <?php
 } else {
     ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>-->
+    <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>-->
 <?php }
 ?>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 crossorigin="anonymous"></script>
-<!--<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>-->  
-<!--<script src="<?php // echo base_url('js/fb_login.js?ver='.time());    ?>"></script>-->
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>-->  
+<!--<script src="<?php // echo base_url('assets/js/fb_login.js?ver='.time());    ?>"></script>-->
 

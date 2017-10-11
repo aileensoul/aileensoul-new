@@ -167,8 +167,8 @@ echo form_open('profile/forgot_password', $form_attribute);
                 </div>
             </footer>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
         <script>
                                             $(document).ready(function () {
 

@@ -43,10 +43,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, 
               minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css?ver=' . time()); ?>">
-        <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script> 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
         
         <!-- Facebook Pixel Code -->
         <script>
@@ -292,7 +292,7 @@
         </section>
         <?php echo $login_footer ?>
     </div>
-    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
     <script type="text/javascript">
                                             var loader = document.getElementById('adsense-loader');
                                             document.getElementById("adsense").appendChild(loader);
@@ -314,7 +314,7 @@
         var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
         var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
     </script>
-    <script type="text/javascript" src="<?php echo base_url('js/webpage/main.js?ver=' . time()); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
 </body>
 </html>
 

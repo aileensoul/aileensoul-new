@@ -3,9 +3,9 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
 <!--   <script type="text/javascript" language="javascript">
                                             var aax_size = '300x250';
                                             var aax_pubname = 'aileensoul-21';
@@ -256,7 +256,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
         
         
         
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <script>
                                                                                 var base_url = '<?php echo base_url(); ?>';
                                                                              //   var data1 = <?php //echo json_encode($de); ?>;
@@ -268,8 +268,8 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
        
 
         <!-- FIELD VALIDATION JS END -->
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/recommen_candidate.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/recommen_candidate.js'); ?>"></script>
 
 
     </body>

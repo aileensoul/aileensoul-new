@@ -1,6 +1,6 @@
 <!-- start head -->
 <?php  echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
     
 <!-- END HEAD -->
     <!-- start header -->

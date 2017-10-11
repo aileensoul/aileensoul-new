@@ -1,7 +1,7 @@
 
 <?php echo $head; ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
 
 <?php echo $header; ?>
 

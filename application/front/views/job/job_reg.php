@@ -8,10 +8,10 @@
  <title>Job Profile - Aileensoul.com</title>
 
 <!-- Calender Css End-->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css?ver='.time()); ?>">
 <!-- This Css is used for call popup -->
-<link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()); ?>" />
+<link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver='.time()); ?>" />
 </head>
 <!-- END HEAD -->
 
@@ -103,12 +103,12 @@
 </footer>
 
  
-   <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
-   <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
-   <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
+   <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
   
 <!-- This Js is used for call popup -->
-<script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver='.time()); ?>"></script>
 <!-- This Js is used for call popup -->
  
 
@@ -117,8 +117,8 @@
   </script>
 
 
-  <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_reg.js?ver='.time()); ?>"></script>
-  <script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_reg.js?ver='.time()); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

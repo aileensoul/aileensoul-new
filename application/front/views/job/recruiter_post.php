@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
 
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
        
         <link rel="stylesheet" href="css/jquery.fancybox.css">
     </head>
@@ -240,9 +240,9 @@
         
         
           
-        <script src="<?php echo base_url('js/croppie.js'); ?>"></script>  
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
        
         <script>
                   var base_url = '<?php echo base_url(); ?>';
@@ -251,7 +251,7 @@
         </script>
 
         <!-- FIELD VALIDATION JS END -->
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_common.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/job/recruiter_post.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/recruiter_post.js'); ?>"></script>
     </body>
 </html>

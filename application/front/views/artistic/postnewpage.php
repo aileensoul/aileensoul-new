@@ -4,12 +4,12 @@
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/timeline.css?ver='.time()); ?>">
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/artistic/artistic.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ;?>" />
 
     <body>
     <?php echo $header; ?>
@@ -1286,14 +1286,14 @@
 
 
 
- <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+ <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 
 <script>
 var base_url = '<?php echo base_url(); ?>';   
 var data = <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($de); ?>;                                       
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/postnewpage.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/postnewpage.js?ver='.time()); ?>"></script>
 </body>
 </html>

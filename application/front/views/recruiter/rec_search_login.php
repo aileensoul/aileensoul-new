@@ -7,9 +7,9 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
       
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <style>
@@ -637,17 +637,17 @@
         <!-- register -->
 
 <!-- script for skill textbox automatic start-->
-<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.wallform.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>
 
-<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
 
-<!--<script src="<?php// echo base_url('js/jquery.wallform.js'); ?>"></script>
-   <script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>
-    <script src="<?php //echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-    <script src="<?php //echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script src="<?php //echo base_url('js/bootstrap.min.js'); ?>"></script>-->
+<!--<script src="<?php// echo base_url('assets/js/jquery.wallform.js'); ?>"></script>
+   <script src="<?php //echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
+    <script src="<?php //echo base_url('assets/js/demo/jquery-1.9.1.js'); ?>"></script>
+    <script src="<?php //echo base_url('assets/js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+<script src="<?php //echo base_url('assets/js/bootstrap.min.js'); ?>"></script>-->
 
 
  <script>
@@ -658,6 +658,6 @@
 </script>
 
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/rec_search_login.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_search_login.js?ver='.time()); ?>"></script>
 </body>
 </html>

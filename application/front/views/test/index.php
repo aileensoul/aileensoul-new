@@ -113,8 +113,8 @@
   
   
 </div>
- <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
  <script>
     $(document).ready(function () {
   var navListItems = $('div.setup-panel div a'),

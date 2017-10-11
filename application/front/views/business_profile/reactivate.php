@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <title>Reactivate</title>
         <?php echo $head; ?>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
     </head>
     <body>
         <?php echo $header; ?>
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="reactivate_btn_n">
                             <a href="<?php echo base_url('dashboard'); ?>">No</a>
                         </div>
-                        <script src="<?php echo base_url('js/fb_login.js?ver=' . time()); ?>"></script>
+                        <script src="<?php echo base_url('assets/js/fb_login.js?ver=' . time()); ?>"></script>
                     </div>
                 </center>
             </div>

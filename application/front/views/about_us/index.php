@@ -64,6 +64,6 @@
             echo $login_footer
             ?>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/aboutus.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
     </body>
 </html>

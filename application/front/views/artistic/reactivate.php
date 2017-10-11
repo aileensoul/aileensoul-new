@@ -15,19 +15,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Reactivate</title>
 <link rel="icon" href="<?php echo base_url('images/favicon.png?ver='.time()); ?>">
 <!-- CSS START -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/animate.css?ver='.time()) ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style_harshad.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/media.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/animate.css?ver='.time()) ?>" />
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/header.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/header.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ?>" />
-<script type="text/javascript" src="<?php  echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ?>" />
+<script type="text/javascript" src="<?php  echo base_url('assets/js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
 
 
    
@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="reactivate_btn_n">
 		  <a href="<?php echo base_url('dashboard'); ?>">No</a>
         </div>
-          <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+          <script src="<?php echo base_url('assets/js/fb_login.js'); ?>"></script>
 
 		</div>
            </center>

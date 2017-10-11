@@ -1,5 +1,5 @@
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" /><!-- start head  -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" /><!-- start head  -->
 <?php echo $head; ?>
 <!-- END HEAD -->
 <!-- start header -->
@@ -19,7 +19,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
 
 
     
@@ -1585,7 +1585,7 @@
 
 
 
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
 
 
 <!-- script for business autofill -->
@@ -1651,8 +1651,8 @@
 </script>
 
 
-<script src="<?php echo base_url('js/jquery.jMosaic.js'); ?>"></script>
-<!-- <script src="<?php //echo base_url('js/bootstrap.min.js');     ?>"></script> -->
+<script src="<?php echo base_url('assets/js/jquery.jMosaic.js'); ?>"></script>
+<!-- <script src="<?php //echo base_url('assets/js/bootstrap.min.js');     ?>"></script> -->
 
 
 <script type="text/javascript">

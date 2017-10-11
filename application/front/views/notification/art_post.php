@@ -3,12 +3,12 @@
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>">
 <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/video.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/artistic/artistic.css?ver='.time()); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ;?>" />
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       
    </head>
@@ -1112,10 +1112,10 @@
 <footer>
 <?php echo $footer; ?>
 </footer>
-<!-- <script src="<?php //echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script> -->
-<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()); ?>"></script>
-<!-- <script src="<?php //echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script> -->
+<!-- <script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver='.time()); ?>"></script> -->
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
+<!-- <script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver='.time()); ?>"></script> -->
 <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
@@ -1130,8 +1130,8 @@ var textarea = document.getElementById("textarea");
 </script>
 
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/notification-home.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/search.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/notification-home.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/search.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

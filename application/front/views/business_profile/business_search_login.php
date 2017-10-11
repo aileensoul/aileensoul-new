@@ -7,15 +7,15 @@
 
         <title><?php echo $title; ?></title>
 
-        <link href="<?php echo base_url('css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url('js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo base_url('js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <link href="<?php echo base_url('assets/css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <script src="<?php echo base_url('assets/js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('assets/js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
 
         <script>
             $(function () {
@@ -672,9 +672,9 @@
                     </div>
                     <!-- register -->
 
-<!--<script src="<?php //echo base_url('js/jquery.wallform.js?ver='.time());  ?>"></script>-->
-                    <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver='.time());  ?>"></script>-->
+                    <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
 
 
@@ -690,6 +690,6 @@
 
 
 
-                    <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
                     </body>
                     </html>

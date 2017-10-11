@@ -247,8 +247,8 @@
     echo $test_footer;
 //}
 ?>
-<script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/company_info.js'); ?>"></script>
+<script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/company_info.js'); ?>"></script>
 <script>
                     function ChangeUrl(title, url) {
                         if (typeof (history.pushState) != "undefined") {

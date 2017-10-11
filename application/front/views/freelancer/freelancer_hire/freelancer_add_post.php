@@ -7,8 +7,8 @@
         </title>
         <?php echo $head; ?> 
         
-        <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver=' . time()) ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/freelancer-hire.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver=' . time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
@@ -286,10 +286,10 @@
         <!-- Model Popup Close -->
     
         <!-- Calender JS Start-->
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <!-- Calender Js End-->
-        <script src="<?php echo base_url('js/jquery.fancybox.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
@@ -467,8 +467,8 @@
             }
             // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
 
         <style type="text/css">
             #skills-error{margin-top: 42px;}

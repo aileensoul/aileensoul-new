@@ -132,7 +132,7 @@ echo $head;
 </style>
 
 <!--post save success pop up style end -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
 
 
 
@@ -623,7 +623,7 @@ echo $head;
                     });
 
             </script>
-            <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
             <script>
                     function removepopup(id) {
                         $('.biderror .mes').html("<div class='pop_content'>Are you sure want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
@@ -895,7 +895,7 @@ echo $head;
             </script>
 
             <!-- remove  post end -->
-            <!-- <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+            <!-- <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
             <script>
                 function removepopup(id) {
                     $('.biderror .mes').html("<div class='pop_content'>Are you sure want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id="+ id +" onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");

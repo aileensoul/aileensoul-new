@@ -108,6 +108,6 @@
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/login/index.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/login/index.js'); ?>"></script>
     </body>
 </html>

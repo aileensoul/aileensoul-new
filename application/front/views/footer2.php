@@ -173,5 +173,5 @@
 </script>
 <!-- footer end -->
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
-<script type="text/javascript" src="<?php echo base_url('js/scrollbar/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/scrollbar/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->

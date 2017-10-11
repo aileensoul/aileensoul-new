@@ -7,8 +7,8 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -1610,15 +1610,15 @@
 </footer>
 
       <!-- script for skill textbox automatic start-->
-      <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>
     
-      <script src="<?php echo base_url('js/croppie.js?ver='.time()); ?>"></script> 
+      <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script> 
       <!-- script for skill textbox automatic end (option 2)-->
-      <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
-      <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-<!--      <script type="text/javascript" src="<?php //echo base_url('js/raphael-min.js
+      <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+      <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<!--      <script type="text/javascript" src="<?php //echo base_url('assets/js/raphael-min.js
         // ?ver='.time()); ?>"></script>-->
-      <script type="text/javascript" src="<?php echo base_url('js/progressloader.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
 
       <script>
          var base_url = '<?php echo base_url(); ?>';
@@ -1626,10 +1626,10 @@
          var count_profile='<?php echo $count_profile;?>';
       </script>
 
-      <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_common.js?ver='.time()); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_printpreview.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
       
    </body>
 </html>

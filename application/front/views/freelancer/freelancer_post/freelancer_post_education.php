@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
        
         <!-- This Css is used for call popup -->
-        <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()) ?>" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver='.time()) ?>" />
     </head>
 <!--    <div class="js">-->
         <body>
@@ -208,18 +208,18 @@
             <footer>
 <?php echo $footer; ?>
             </footer>
-            <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+            <!--<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>-->
             <!-- This Js is used for call popup -->
-            <script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver='.time()); ?>"></script>
             <!-- This Js is used for call popup -->
-            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
-            <!--<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>-->
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+            <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>-->
             <script>
                 var base_url = '<?php echo base_url(); ?>';
                 var html = '<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>';
             </script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_education.js?ver='.time()); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_education.js?ver='.time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
         </body>
     <!--</div>-->
 </html>

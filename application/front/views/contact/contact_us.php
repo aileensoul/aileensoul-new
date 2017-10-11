@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="css/style-main.css">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
         
-        <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
     </head>
     <body class="contact">
         <div class="main-inner">
@@ -93,6 +93,6 @@
 </script>
 <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/contactus.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/contactus.js'); ?>"></script>
 </body>
 </html>

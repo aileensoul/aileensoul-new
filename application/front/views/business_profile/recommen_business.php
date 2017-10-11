@@ -4,14 +4,14 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="<?php echo base_url('css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url('js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo base_url('js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <link href="<?php echo base_url('assets/css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <script src="<?php echo base_url('assets/js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('assets/js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
         <script>
             $(function () {
                 var showTotalChar = 200, showChar = "ReadMore", hideChar = "";
@@ -192,9 +192,9 @@
 <footer>
 <?php echo $footer ?>
 </footer>
-<!--<script src="<?php //echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
-<script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
-<script src="<?php echo base_url('js/jquery.highlite.js?ver=' . time()); ?>">
+<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.highlite.js?ver=' . time()); ?>">
 </script>
 <script>
     $('#content').on('change keyup keydown paste cut', 'textarea', function () {
@@ -206,7 +206,7 @@
     var keyword = '<?php echo $keyword; ?>';
     var keyword1 = '<?php echo $keyword1; ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
-<script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 </body>
 </html>

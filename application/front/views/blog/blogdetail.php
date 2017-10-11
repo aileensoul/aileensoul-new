@@ -47,11 +47,11 @@
       <meta name="twitter:image" content="http://placekitten.com/250/250">
       <meta name="twitter:domain" content="<?php base_url('blog/'.$blog_detail[0]['blog_slug']) ?>">
       
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/blog.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
       <!-- This Css is used for call popup -->
       <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
    </head>
@@ -336,14 +336,14 @@
       </footer>
    </body>
 </html>
-<script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-1.11.1.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
 <!-- This Js is used for call popup -->
-<script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
 
 <script>
 var base_url = '<?php echo base_url(); ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/blog/blog_detail.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js'); ?>"></script>

@@ -10,10 +10,10 @@
     </style>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
        
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/artistic/artistic.css?ver='.time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ;?>" />
     </head>
     
     <body class="page-container-bg-solid page-boxed">
@@ -166,7 +166,7 @@ $userid = $this->session->userdata('aileenuser');
 </footer>
 </div>
   
-<script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 
 <!-- script for skill textbox automatic end (option 2)-->
 <script>
@@ -178,7 +178,7 @@ var data1 = <?php echo json_encode($city_data); ?>;
  var art_step = "<?php echo $art_reg_data[0]['art_step']; ?>";
  
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/portfolio.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/portfolio.js?ver='.time()); ?>"></script>
 </body>
 </html>

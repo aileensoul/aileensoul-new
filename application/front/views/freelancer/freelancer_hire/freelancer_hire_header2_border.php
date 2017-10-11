@@ -102,7 +102,7 @@
     </div>
 </div>
 <!-- Model Popup Close -->
-<script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <script type="text/javascript">
                                                 function deactivate(clicked_id) {
                                                    

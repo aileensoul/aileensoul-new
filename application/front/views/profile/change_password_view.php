@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>css/style-main.css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
        
-        <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
     </head>
     <body class="contact">
 
@@ -82,8 +82,8 @@
 </body>
 </html>
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery.min.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
 <script type="text/javascript">
 $(document).ready(function () { //alert("hii");
           /* validation */

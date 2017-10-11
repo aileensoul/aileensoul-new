@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
        
         <style type="text/css">
             /* img{display: none;}*/
@@ -107,14 +107,14 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
-            <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+            <!--<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>-->
             </script>
             <script>
                 var base_url = '<?php echo base_url(); ?>';
                
             </script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver='.time()); ?>"></script>
-             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver='.time()); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
         </body>
     <!--</div>-->
 </html>

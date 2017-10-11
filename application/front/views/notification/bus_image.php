@@ -4,9 +4,9 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css'); ?>" />
         <script>
             $(document).ready(function ()
             {
@@ -1095,17 +1095,17 @@
                 </div>
             </div>
             <?php echo $footer; ?>
-            <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script> 
+            <script src="<?php echo base_url('assets/js/jquery.wallform.js?ver=' . time()); ?>"></script> 
          <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-            <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
-            <script src="<?php echo base_url('js/jquery.jMosaic.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/jquery.jMosaic.js?ver=' . time()); ?>"></script>
             <!-- script for business autofill -->
             <script>
                                                     var base_url = '<?php echo base_url(); ?>';
                                                     var post_id = '<?php echo $post_id; ?>';
                                                     var count = '<?php echo $count; ?>';
             </script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/notification/bus_image.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/notification/bus_image.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

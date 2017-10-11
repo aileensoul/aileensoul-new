@@ -8,10 +8,10 @@
       <title><?php echo $title; ?></title>
 
       
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
       <!-- This Css is used for call popup -->
-      <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()); ?>" />
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css?ver='.time()); ?>">
+      <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver='.time()); ?>" />
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -410,17 +410,17 @@
 <?php echo $footer;  ?>
 </footer>
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js?ver='.time()) ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.js?ver='.time()) ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>
 
 <!-- This Js is used for call popup -->
-<script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver='.time()); ?>"></script>
 <!-- duplicate div end -->
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script> 
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script> 
 <!-- This Js is used for call popup -->
-<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script> 
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script> 
 
 
 <script>
@@ -428,8 +428,8 @@
     var clone_mathod_count='<?php echo $clone_mathod_count; ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_work_exp.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_work_exp.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
 
  </body>
 </html>

@@ -892,9 +892,9 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     <?php
                     echo $footer;
                     ?>
-                    <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js'); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
                     <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
 <script type="text/javascript">
@@ -1025,8 +1025,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     <script>
                                         var base_url = '<?php echo base_url(); ?>';
                     </script>
-                    <script type="text/javascript" src="<?php echo base_url('js/webpage/dashboard/cover.js'); ?>"></script>
-					<script type="text/javascript" src="<?php echo base_url('js/webpage/jquery.popupoverlay.js'); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/dashboard/cover.js'); ?>"></script>
+					<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/jquery.popupoverlay.js'); ?>"></script>
 					<script>document.body.className += ' fade-out';</script>
 					<script>
 						$(document).ready(function () {

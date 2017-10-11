@@ -2,17 +2,17 @@
 <head>
 <title>Grow Business Network|Hiring|Search Jobs|Freelance Work|It's Free|Aileensoul</title>
 
-<link href="<?php echo base_url('css/fileinput.css?ver='.time());?>" media="all" rel="stylesheet" type="text/css"/>
-<link href="<?php echo base_url('js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url('assets/css/fileinput.css?ver='.time());?>" media="all" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url('assets/js/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
 </head>
- <link rel="stylesheet" href="<?php echo base_url('css/common-style.css?ver='.time()); ?>">
+ <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()) ?>" />
- <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/demo.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()) ?>" />
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/artistic/artistic.css?ver='.time()); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css?ver='.time()) ;?>" />
 
     <style>
             /***  commen css  ***/
@@ -665,12 +665,12 @@
             <?php echo $footer; ?>
         </footer>
 
-<script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script src="<?php echo base_url('assets/js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/js/jquery.highlite.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 
 
  <script type="text/javascript">
@@ -679,7 +679,7 @@ var base_url = '<?php echo base_url(); ?>';
 var keyword = '<?php echo $keyword; ?>';
 var keyword1 = '<?php echo $keyword1; ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/user_search.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/user_search.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
             function login()
             {

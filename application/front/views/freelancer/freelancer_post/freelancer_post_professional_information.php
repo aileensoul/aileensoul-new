@@ -9,8 +9,8 @@
             }
             #tin-error{position: relative;}
         </style>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/freelancer-apply.css?ver=' . time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver=' . time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.fancybox.css?ver=' . time()) ?>" />
 
 
     </head>
@@ -225,9 +225,9 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-            <!--<script src="<?php echo base_url('js/jquery.fancybox.js?ver=' . time()); ?>"></script>-->
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+            <!--<script src="<?php echo base_url('assets/js/jquery.fancybox.js?ver=' . time()); ?>"></script>-->
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
 
         <script>
                     // var complex = <?php echo json_encode($selectdata); ?>;
@@ -235,8 +235,8 @@
 
 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_professional_information.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_professional_information.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
 
         <style type="text/css">
             #experience_year-error{margin-top: 42px;margin-left: 15px;}

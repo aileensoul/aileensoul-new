@@ -62,12 +62,12 @@
          }
          ?>
          
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/blog.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
     
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/font-awesome.min.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
    </head>
    <body class="blog">
       <div class="main-inner">
@@ -411,11 +411,11 @@
    </body>
 </html>
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-1.11.1.min.js'); ?>"></script>
 
 <script>
 var base_url = '<?php echo base_url(); ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/blog/blog.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js'); ?>"></script>
 

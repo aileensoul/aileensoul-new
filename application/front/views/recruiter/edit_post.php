@@ -5,9 +5,9 @@
         <?php echo $head; ?> 
         
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.fancybox.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/recruiter.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.fancybox.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -477,22 +477,22 @@
         <?php echo $footer; ?>
         <!-- END FOOTER -->
         <!-- FIELD VALIDATION JS START -->
-        <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
         
         
         
         
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>-->
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
+        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/additional-methods1.15.0.min.js'); ?>"></script>-->
 
-        <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
 
         <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
 
         <!--SCRIPT FOR DATE START-->
 
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>
 
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
@@ -508,8 +508,8 @@
         
         </script> 
         <!-- FIELD VALIDATION JS END -->
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/edit_post.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/edit_post.js'); ?>"></script>
 
 
         <style type="text/css">

@@ -102,5 +102,5 @@
     var seg='<?php $this->uri->segment(3) ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_header2_border.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_header2_border.js?ver='.time()); ?>"></script>
 

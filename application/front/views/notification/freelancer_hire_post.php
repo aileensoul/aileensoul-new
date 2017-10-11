@@ -1,6 +1,6 @@
 <!-- start head -->
 <?php echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/freelancer-hire.css?ver=' . time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
 
 
 <!--post save success pop up style strat -->
@@ -102,7 +102,7 @@
  /*   }*/
 </style>
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
 
 
 
@@ -482,7 +482,7 @@ label.cameraButton input[accept*="camera"] {
     
     
 
-     <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
      <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
 
         <!-- script for skill textbox automatic start (option 2)-->
