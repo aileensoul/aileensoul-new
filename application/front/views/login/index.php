@@ -228,7 +228,7 @@ echo form_open('profile/forgot_password', $form_attribute);
 
         <!-- script for login  user valoidtaion start -->
 
-        <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
+         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript">
 
                                             function login()
