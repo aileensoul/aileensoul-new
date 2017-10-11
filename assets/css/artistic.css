@@ -208,7 +208,7 @@ label.cameraButton:active {
     margin-right: 36px;
     color: #1b8ab9;
     background-color: #fff;
-    border-color: #1b8ab9;
+    border:1px solid #1b8ab9;
 }
 .set-btn {
     float: right;
