@@ -177,7 +177,9 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <img src="<?php echo base_url(); ?>assets/img/cam.png">Update Profile Picture</a>
                                         </div>
                                     <?php } else { ?>
-                                        <div class="profile-photo no-image-upload">
+
+                                    <!-- <div class="profile-photo no-image-upload"> -->
+                                        <div class="profile-photo">
                                             <?php               $a = $first_name;
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $last_name;

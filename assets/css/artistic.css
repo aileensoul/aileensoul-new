@@ -915,7 +915,7 @@ label.cameraButton:active {
     padding: 9px 0 8px 10px;
 }
 .post-edit-popup .popup-text {
-    padding: 10px 0 8px 10px;
+    padding: 8px 0 8px 10px;
 }
 .popup-text span {
     color: #999999;
@@ -2332,7 +2332,7 @@ label.cameraButton:active {
     border: none;
     white-space: nowrap;
     overflow: -moz-scrollbars-none;
-    padding-top:5px;
+    padding-top:6px;
     padding-bottom:4px;
 }
 .popup-text textarea::-webkit-scrollbar { 
@@ -4026,6 +4026,13 @@ div .comment {
     height: 20px;
 }
 .paddingtop_fixed_art{padding-top: 62px!important;}
+
+.post-edit-popup .camer_h i{padding-top:2px;}
+.krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon1.png'); background-size:100%;}
+.kv-file-content audio{margin-top:83px;}
+.popup-text textarea::-webkit-scrollbar { 
+    display: none; 
+}
 
 
 /***  media query  ***/

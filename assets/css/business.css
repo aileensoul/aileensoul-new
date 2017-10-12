@@ -2340,6 +2340,9 @@ label.cameraButton:active {
 	padding-top:5px;
 	padding-bottom:4px;
 }
+.popup-text textarea::-webkit-scrollbar { 
+    display: none; 
+}
 .post-editor .popup-textarea p {
     color: #999999;
 }
@@ -4375,6 +4378,9 @@ div .comment {
 .cancel-result:hover{color: #fff;background-color: #1b8ab9 !important;}
 .post-edit-popup .popup-text{padding:9px 0 7px 10px;}
 .post-edit-popup .camer_h i{padding-top:4px;}
+.post-edit-popup .camer_h i{padding-top:2px;}
+.krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon1.png'); background-size:100%;}
+.kv-file-content audio{margin-top:83px;}
 
 
 
