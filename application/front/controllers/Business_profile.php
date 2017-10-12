@@ -2055,7 +2055,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         $return_html .= '<video width = "100%" height = "350" controls>';
                     }
                     $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
-                    $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                    //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
                     $return_html .= 'Your browser does not support the video tag.';
                     $return_html .= '</video>';
                     $return_html .= '</div>';
@@ -2069,7 +2069,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         $return_html .= '<video width = "100%" height = "350" controls>';
                     }
                     $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
-                    $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                    //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
                     $return_html .= 'Your browser does not support the video tag.';
                     $return_html .= '</video>';
                     $return_html .= '</div>';
@@ -2083,7 +2083,6 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "audio/mp3">
-<source src = "movie.ogg" type = "audio/ogg">
 Your browser does not support the audio tag.
 </audio>
 </div>
@@ -11013,7 +11012,6 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         $return_html .= '<div>
 <video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
-<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
 Your browser does not support the video tag.
 </video>
 </div>';
@@ -11026,7 +11024,6 @@ Your browser does not support the video tag.
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "audio/mp3">
-<source src = "movie.ogg" type = "audio/ogg">
 Your browser does not support the audio tag.
 </audio>
 </div>
@@ -11878,7 +11875,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                                     $return_html .= '<video width = "100%" height = "350" controls">';
                                 }
                                 $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
-                                $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+//                                $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
                                 $return_html .= 'Your browser does not support the video tag.';
                                 $return_html .= '</video>';
                                 $return_html .= '</div>';
@@ -11892,7 +11889,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                                     $return_html .= '<video width = "100%" height = "350" controls">';
                                 }
                                 $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
-                                $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                                //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
                                 $return_html .= 'Your browser does not support the video tag.';
                                 $return_html .= '</video>';
                                 $return_html .= '</div>';
@@ -11923,7 +11920,6 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "audio/mp3">
-<source src = "movie.ogg" type = "audio/ogg">
 Your browser does not support the audio tag.
 </audio>
 </div>
@@ -13072,7 +13068,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13087,7 +13083,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13108,7 +13104,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13123,7 +13119,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13144,7 +13140,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13159,7 +13155,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13183,7 +13179,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13198,7 +13194,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13219,7 +13215,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13234,7 +13230,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13255,7 +13251,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13270,7 +13266,7 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
-                    $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -13354,7 +13350,7 @@ Your browser does not support the audio tag.
                 $fetch_video .= '<video controls>';
 
                 $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
@@ -13364,7 +13360,7 @@ Your browser does not support the audio tag.
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
                 $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[1]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
@@ -13373,7 +13369,7 @@ Your browser does not support the audio tag.
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
                 $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[2]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
@@ -13385,7 +13381,7 @@ Your browser does not support the audio tag.
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
                 $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[3]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
@@ -13394,7 +13390,7 @@ Your browser does not support the audio tag.
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
                 $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[4]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
@@ -13403,7 +13399,7 @@ Your browser does not support the audio tag.
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
                 $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[5]['file_name'] . '" type = "video/mp4">';
-                $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
@@ -13459,7 +13455,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<audio controls>';
 
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[0]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
@@ -13469,7 +13465,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[1]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
@@ -13478,7 +13474,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[2]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
@@ -13490,7 +13486,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[3]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
@@ -13499,7 +13495,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[4]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
@@ -13508,7 +13504,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[5]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
@@ -13587,7 +13583,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[0]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
@@ -13597,7 +13593,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[1]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
@@ -13606,7 +13602,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[2]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
@@ -13618,7 +13614,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[3]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
@@ -13627,7 +13623,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[4]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+               // $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
@@ -13636,7 +13632,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[5]['file_name'] . '" type = "audio/mp3">';
-                $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
@@ -14097,7 +14093,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                             }
 
                             $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
-                            $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                            //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
                             $return_html .= 'Your browser does not support the video tag.';
                             $return_html .= '</video>';
                             $return_html .= '</div>';
@@ -14112,7 +14108,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                                 $return_html .= '<video width = "100%" height = "350" controls>';
                             }
                             $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
-                            $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
+                            //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
                             $return_html .= 'Your browser does not support the video tag.';
                             $return_html .= '</video>';
                             $return_html .= '</div>';
@@ -14126,7 +14122,6 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div class = "audio_source">
 <audio id = "audio_player" width = "100%" height = "100" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "audio/mp3">
-<source src = "movie.ogg" type = "audio/ogg">
 Your browser does not support the audio tag.
 </audio>
 </div>

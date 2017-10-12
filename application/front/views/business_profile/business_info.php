@@ -219,7 +219,15 @@
             var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
             var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php
+        if (IS_JS_MINIFY == '0') {
+            ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+            <?php } else {
+            ?>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/business-info.min.js?ver=' . time()); ?>"></script>
+        <?php }
+        ?>
     </body>
 </html>
