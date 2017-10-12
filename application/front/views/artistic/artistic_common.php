@@ -133,7 +133,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
                 $userid = $this->session->userdata('aileenuser');
                 if ($artisticdata[0]['user_id'] == $userid) {
                     ?>                                                                                                                                    
-                    <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>img/cam.png"> Update Profile Picture</a>
+                    <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
                 <?php } ?>
                </div>
 
