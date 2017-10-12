@@ -121,7 +121,7 @@
                                                    
                                                            ?>
                                                 <input type="hidden" name="exp_data[]" value="old" class="exp_data" id="exp_data<?php echo $y; ?>">
-                                                <div id="input<?php echo $y; ?>" style="margin-bottom:4px;" class="clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
+                                                <div id="input<?php echo $y; ?>" style="margin-bottom:4px;position: relative;" class="clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
                                                    <div class="job_work_experience_main_div">
                                                       <label>Experience:<span class="red">*</span></label>
                                                       <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change_edittime();">
