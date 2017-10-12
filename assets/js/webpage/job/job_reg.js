@@ -247,3 +247,8 @@ $(document).on('change', '#industry', function (event) {
      
    });
 //OTHER INDUSTRY INSERT END
+ $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   $( "#bidmodal" ).hide();
+                  }
+               });  
