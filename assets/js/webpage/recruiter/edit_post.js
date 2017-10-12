@@ -852,7 +852,9 @@ $(function () {
         //startDate: today,
 
     });
-
+ $(".day").attr('tabindex', 11);
+    $(".month").attr('tabindex', 12);
+    $(".year").attr('tabindex', 13);
 });
 
 
