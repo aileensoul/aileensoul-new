@@ -79,7 +79,7 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 
 //date validation end
 //   validation border is not show in last date start
-$.validator.addMethod("required1", function (value, element, regexpr) {
+$.validator.addMethod("last_date_require", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
     if (!value)
     {
@@ -128,8 +128,8 @@ $(document).ready(function () {
                 regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
             last_date: {
-                required1: "Last date of apply is required.",
-                isValid: 'Last date should be grater than and equal to today date'
+                last_date_require: true,
+                isValid: true
             },
 //            currency: {
 //                required: true,
@@ -164,9 +164,9 @@ $(document).ready(function () {
             post_desc: {
                 required: "Project description  is required.",
             },
-            last_date: {
-                //required: "Last Date of apply is required.",
-            },
+//            last_date: {
+//                //required: "Last Date of apply is required.",
+//            },
 //            currency: {
 //                required: "Please select currency type",
 //            },
@@ -370,7 +370,7 @@ $(function () {
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
-
+alert(123);
     var item = $(this);
     var other_field = (item.val());
 
@@ -430,6 +430,36 @@ function remove_validation() {
 
     $("#other_field").removeClass("keyskill_border_active");
     $('#field_error').remove();
-
 }
+$(document).on('change', '.year', function (event) {
+    var ss = document.querySelectorAll("label[for]");
+    var i;
+    for (i = 0; i < ss.length; i++) {
+        var zz = ss[i].getAttribute('for');
+        if (zz == 'example2') {
+            ss[i].remove();
+        }
+    }
+});
+//$(document).on('change', '.month', function (event) {
+//    var ss = document.querySelectorAll("label[for]");
+//    var i;
+//    for (i = 0; i < ss.length; i++) {
+//        var zz = ss[i].getAttribute('for');
+//        if (zz == 'example2') {
+//            ss[i].remove();
+//        }
+//    }
+//});
+//$(document).on('change', '.day', function (event) {
+//    var ss = document.querySelectorAll("label[for]");
+//    var i;
+//    for (i = 0; i < ss.length; i++) {
+//        var zz = ss[i].getAttribute('for');
+//        if (zz == 'example2') {
+//            ss[i].remove();
+//        }
+//    }
+//});
+
 //SCRIPT FOR ADD OTHER FILED END

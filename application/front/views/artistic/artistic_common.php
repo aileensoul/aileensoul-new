@@ -107,6 +107,15 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
                  <?php 
 
+                        if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                   <?php }
+                                } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -118,7 +127,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
                 } else { ?>
 
                     <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                       <?php }?>
+                       <?php } }?>
 
                 <?php
                 $userid = $this->session->userdata('aileenuser');
