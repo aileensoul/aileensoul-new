@@ -102,7 +102,7 @@
                         <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                      </div>
                      <?php } ?>
-                     <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>img/cam.png">Update Profile Picture</a>
+                     <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png">Update Profile Picture</a>
                   </div>
                </div>
                <div class="job-menu-profile mob-block">
