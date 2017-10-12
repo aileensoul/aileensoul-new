@@ -79,7 +79,7 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 
 //date validation end
 //   validation border is not show in last date start
-$.validator.addMethod("required1", function (value, element, regexpr) {
+$.validator.addMethod("last_date_require", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
     if (!value)
     {
@@ -128,7 +128,7 @@ $(document).ready(function () {
                 regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
             last_date: {
-                required1: true,
+                last_date_require: true,
                 isValid: true
             },
 //            currency: {
@@ -370,7 +370,7 @@ $(function () {
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
-
+alert(123);
     var item = $(this);
     var other_field = (item.val());
 
