@@ -157,15 +157,15 @@ $(document).ready(function () {
 
 $(".alert").delay(3200).fadeOut(300);
 
-jQuery(document).ready(function ($) {
-
-// site preloader -- also uncomment the div in the header and the css style for #preloader
-    $(window).load(function () {
-        $('#preloader').fadeOut('slow', function () {
-            $(this).remove();
-        });
-    });
-});
+//jQuery(document).ready(function ($) {
+//
+//// site preloader -- also uncomment the div in the header and the css style for #preloader
+//    $(window).load(function () {
+//        $('#preloader').fadeOut('slow', function () {
+//            $(this).remove();
+//        });
+//    });
+//});
 
 
 function comlogo(event) {
@@ -204,7 +204,7 @@ function delete_logo(id, logo) {
     $('.message #delete').on('click', function () {
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "recruiter/delete_logo" ?>',
+            url: base_url + "recruiter/delete_logo",
             data: 'id=' + id + '&logo=' + logo,
             success: function (data) {
 

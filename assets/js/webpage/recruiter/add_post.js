@@ -161,9 +161,9 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     var todaydate_new_one = new Date(todaydate_new).getTime();
 
     if (lastdata_new_one >= todaydate_new_one) {
-        $('.day').removeClass('error');
-        $('.month').removeClass('error');
-        $('.year').removeClass('error');
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
         return true;
     } else {
         $('.day').addClass('error');
@@ -180,7 +180,7 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 //   validation border is not show in last date start
 $.validator.addMethod("required1", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
-   // alert(value);
+
     if (!value)
     {
         $('.day').addClass('error');
@@ -189,9 +189,6 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
         return false;
     } else
     {
-        $('.day').removeClass('error');
-        $('.month').removeClass('error');
-        $('.year').removeClass('error');
         return true;
     }
 
@@ -294,8 +291,8 @@ $(document).ready(function () {
 
             last_date: {
 
-               required1: "Last date of apply is required.",
-              //  isValid: 'Last date should be grater than and equal to today date.'
+                required1: "Last date of apply is required.",
+                isValid: 'Last date should be grater than and equal to today date.'
 
             },
             minsal: {
@@ -911,11 +908,16 @@ $(document).on('change', '#industry', function (event) {
             item.val('');
             $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
    
-             $('.message #indus').on('click', function () {
+             $('.message #indus').off('click').on('click', function () {
 
                 $("#other_indu").removeClass("keyskill_border_active");
                 $('#field_error').remove();
-
+ var x = $.trim(document.getElementById("other_indu").value);
+            if (x == '') {
+                $("#other_indu").addClass("keyskill_border_active");
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_indu');
+                return false;
+            } else {
       var $textbox = $('.message').find('input[type="text"]'),
       textVal  = $textbox.val();
       $.ajax({
@@ -942,7 +944,7 @@ $(document).on('change', '#industry', function (event) {
                               }
                           }
                       });
-      
+      }
                   });
       }
      

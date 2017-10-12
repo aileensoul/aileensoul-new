@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/jquery.fancybox.css">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>

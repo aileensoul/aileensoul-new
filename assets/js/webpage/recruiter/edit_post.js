@@ -785,7 +785,12 @@ $(document).on('change', '#industry', function (event) {
 
                 $("#other_indu").removeClass("keyskill_border_active");
                 $('#field_error').remove();
-
+var x = $.trim(document.getElementById("other_indu").value);
+            if (x == '') {
+                $("#other_indu").addClass("keyskill_border_active");
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_indu');
+                return false;
+            } else {
       var $textbox = $('.message').find('input[type="text"]'),
       textVal  = $textbox.val();
       $.ajax({
@@ -812,7 +817,7 @@ $(document).on('change', '#industry', function (event) {
                               }
                           }
                       });
-      
+                  }
                   });
       }
      
