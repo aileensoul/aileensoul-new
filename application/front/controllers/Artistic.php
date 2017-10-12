@@ -1111,28 +1111,44 @@ class Artistic extends MY_Controller {
                        
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">';
 
+                            if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdataposted[0]['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
                              $filename = $this->config->item('art_profile_thumb_upload_path') . $artdataposted[0]['art_user_image'];
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                             if ($info) {
-                                 $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" name="image_src" id="image_src" />';
-                               
-
+                                 $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'] . '" name="image_src" id="image_src" />';                               
                                 }else{
                              $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
-                                }
-
-                            $return_html .=  '</a>';
+                                }                           
+                         }
+                         $return_html .=  '</a>';
                         
                     } else {
                         
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
+                            if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
                             $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
                             $s3 = new S3(awsAccessKey, awsSecretKey);
-                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-
-                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
-
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);                          
                             if ($info) {
 
                                 $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
@@ -1141,12 +1157,10 @@ class Artistic extends MY_Controller {
 
                              $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
-
-                                }
-                            $return_html .= '</a>';
-
-
-                       
+                                }                           
+                        }
+                        $return_html .= '</a>';
+                      
                     }
                     $return_html .= '</div>
                                 <div class="post-design-name fl col-xs-8 col-md-10">
@@ -1605,6 +1619,15 @@ class Artistic extends MY_Controller {
                           $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                 
 
+                          if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -1619,6 +1642,7 @@ class Artistic extends MY_Controller {
                                 $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                                   } 
+                            }   
 
                             
                             $return_html .= '</a>';
@@ -1730,6 +1754,16 @@ class Artistic extends MY_Controller {
 
                          $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
                   
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -1742,7 +1776,7 @@ class Artistic extends MY_Controller {
                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                            }
-                    
+                        }
                     $return_html .= '</a></div>
 
                         <div id="content" class="col-md-12  inputtype-comment cmy_2" >
@@ -2077,6 +2111,17 @@ public function ajax_userlist() {
            
                 $return_html .= '<a href="' . base_url('artistic/dashboard/' . $user['slug']) . '">';
 
+                if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
+
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -2089,6 +2134,8 @@ public function ajax_userlist() {
                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
 
                 }
+
+             }
                 $return_html .= '</a>';
             
             $return_html .= '</div>
@@ -2425,7 +2472,19 @@ public function follow_home() {
                     
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
-                        $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
+
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $third_user_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
@@ -2436,6 +2495,7 @@ public function follow_home() {
 
                                     $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         }
+                      }
                         $third_user_html .= '</a>';
 
                     
@@ -2533,6 +2593,17 @@ public function follow_home() {
 
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
+                          if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $third_user_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
+
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                      $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -2547,6 +2618,8 @@ public function follow_home() {
                                 $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                     
                         }
+
+                    }
                         $third_user_html .= '</a>';
 
                     
@@ -2660,7 +2733,18 @@ public function follow_home() {
 
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
-                        $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
+
+                         if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $third_user_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
+                    $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
@@ -2670,6 +2754,7 @@ public function follow_home() {
 
                             $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         }
+                     } 
                         $third_user_html .= '</a>';
 
                     
@@ -3176,6 +3261,15 @@ public function followtwo() {
                 
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artaval[0]['slug']) . '">';
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -3188,6 +3282,7 @@ public function followtwo() {
                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         
                     }
+                  }
                     $return_html .= '</a>';
             
                 $return_html .= '</div>
@@ -3362,6 +3457,15 @@ public function followtwo() {
             
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' .$artaval[0]['slug']) . '" title="' . ucfirst(strtolower($artaval[0]['art_name'])) .' '. ucfirst(strtolower($artaval[0]['art_lastname'])) .'">';
 
+                     if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -3374,6 +3478,7 @@ public function followtwo() {
                     $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                         
                     }
+                 }
                     $return_html .= '</a>';
                 
                 $return_html .= '</div>
@@ -3922,6 +4027,16 @@ public function followtwo() {
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
                 
+                     if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                       $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -3933,7 +4048,7 @@ public function followtwo() {
                 $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                     }
 
-                  
+                }
                    $cmtinsert .= '</a>';
                    $cmtinsert .= '</div>';
 
@@ -4063,11 +4178,21 @@ public function delete_comment_postnewpage() {
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                       $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
-if ($info) {
+                if ($info) {
                 $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                         } else {
@@ -4075,7 +4200,7 @@ if ($info) {
                 $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                     }
-
+                  }  
                  
                 $cmtinsert .= '</a>';
                   $cmtinsert .= '</div>';
@@ -4250,6 +4375,16 @@ if ($info) {
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -4264,7 +4399,7 @@ if ($info) {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                     }
-                  
+                }
                 
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
@@ -4403,6 +4538,16 @@ public function delete_commenttwo_postnewpage() {
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
+                   if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -4413,7 +4558,7 @@ public function delete_commenttwo_postnewpage() {
                         } else {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                     }                
-               
+                 }
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-name">';
@@ -4918,18 +5063,28 @@ public function delete_commenttwo_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
+                      if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                 if ($info) {
 
-            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+                   $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                         } else {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                 }
-           
+             }
               $cmtinsert .= '</a>';
               $cmtinsert .=  '</div>';
 
@@ -5078,6 +5233,15 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
+                if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -5087,7 +5251,7 @@ public function insert_comment_postnewpage() {
                         } else {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                 }
-            
+              }
           
               $cmtinsert .= '</a>';
              $cmtinsert .=  '</div>';
@@ -5293,6 +5457,15 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
+                if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -5305,8 +5478,8 @@ public function insert_comment_postnewpage() {
 
                 $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                   }
+                }
 
-           
              $cmtinsert .= '</a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-name">';
@@ -6698,6 +6871,15 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
+                if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -6709,7 +6891,7 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                 }
 
-            
+              }
               $cmtinsert .= '</a>';
               $cmtinsert .=  '</div>';
 
@@ -6917,6 +7099,15 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -6930,7 +7121,7 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                   }
-            
+               }
               $cmtinsert .= '</a>';
              $cmtinsert .= '</div>';
 
@@ -7104,7 +7295,34 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
-            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt=""> </a> </div>';
+
+             if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+           
+                if ($info) {
+
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
+
+                        } else {
+
+                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
+
+                  }
+               }
+
+
+           // $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">'; 
+            $cmtinsert .= '</a> </div>';
             $cmtinsert .= '<div class="comment-name">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">
 
@@ -7688,6 +7906,15 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
 
                    $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -7702,7 +7929,7 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                    }
-           
+                }
             $cmtinsert .= '</a>';
            $cmtinsert .= '</div>';
 
@@ -7877,6 +8104,15 @@ public function insert_comment_postnewpage() {
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
                  $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -7887,7 +8123,7 @@ public function insert_comment_postnewpage() {
                         } else {
                     $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                      }
-               
+                }
                
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
@@ -8098,6 +8334,16 @@ public function insert_comment_postnewpage() {
                 
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                
+                     if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $fourdata .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -8109,7 +8355,7 @@ public function insert_comment_postnewpage() {
                         } else {
                       $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                     }
-                    
+                  } 
                 
                 $fourdata .= '</a>';
                 $fourdata .= '</div>';
@@ -8245,6 +8491,16 @@ public function insert_comment_postnewpage() {
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
+                     if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $fourdata .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -8257,7 +8513,7 @@ public function insert_comment_postnewpage() {
 
                            $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                 }
-         
+               }
             
               $fourdata .= '</a>';  
               $fourdata .=  '</div>';
@@ -8405,6 +8661,15 @@ public function insert_comment_postnewpage() {
        $modal .=  '<div class="like_user_list_img">';
        
        
+                if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_image)) {
+                                       
+                                        $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $modal .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_image.'" alt="" >';
+                                    }
+                                } else{
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_image;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -8415,7 +8680,7 @@ public function insert_comment_postnewpage() {
                             $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                        }
 
-               
+                }
        $modal .=  '</div>';
        $modal .=  '<div class="like_user_list_main_desc">';
        $modal .=  '<div class="like_user_list_main_name">';
@@ -8484,6 +8749,15 @@ public function insert_comment_postnewpage() {
        $modal .=  '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '" title="' . ucfirst(strtolower($art_name1)) .' '. ucfirst(strtolower($art_lastname)) .'" class="head_main_name" >';
        $modal .=  '<div class="like_user_list_img">';
        
+                 if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_image)) {
+                                       
+                                        $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $modal .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_image.'" alt="" >';
+                                    }
+                                } else{
        
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_image;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -8495,6 +8769,7 @@ public function insert_comment_postnewpage() {
                         } else {
                           $modal .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                      }
+                 }
                
        $modal .=  '</div>';
        $modal .=  '<div class="like_user_list_main_desc">';
@@ -8608,6 +8883,16 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
+                     if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -8619,7 +8904,7 @@ public function insert_comment_postnewpage() {
 
                           $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
                     }
-             
+               }
            
             $cmtinsert .= '</a>';
             $cmtinsert .= '</div>';
@@ -10183,6 +10468,16 @@ public function insert_comment_postnewpage() {
 
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -10196,6 +10491,7 @@ public function insert_comment_postnewpage() {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';    
 
                         }
+                      }
                         $return_html .= '</a>';
 
 
@@ -10259,6 +10555,17 @@ public function insert_comment_postnewpage() {
                    
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' '. ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
+
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -10271,6 +10578,7 @@ public function insert_comment_postnewpage() {
 
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                         }
+                      }
 
                         $return_html .= '</a>';
 
@@ -10334,6 +10642,16 @@ public function insert_comment_postnewpage() {
                                                                         <div class="post-design-pro-img_follow">
                                                                             <a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '">';
 
+
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{                                                       
                    $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -10346,7 +10664,7 @@ public function insert_comment_postnewpage() {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                             }
-
+                         }
                     
                     $return_html .= '</a>
                                                                         </div>
@@ -10406,6 +10724,17 @@ public function insert_comment_postnewpage() {
                    
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
+
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -10419,7 +10748,7 @@ public function insert_comment_postnewpage() {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                               }
-
+                            }
                             $return_html .= '</a>';
 
                     
@@ -10523,6 +10852,17 @@ public function art_home_three_user_list() {
 
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ' '.ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
+
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -10533,6 +10873,7 @@ public function art_home_three_user_list() {
                                     }else{
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';  
                         }
+                     }
                         $return_html .= '</a>';
 
                     
@@ -10733,6 +11074,18 @@ public function art_home_postold() {
                       
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userslug) . '">';
 
+
+
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted.'" alt="" >';
+                                    }
+                                } else{
+
                             $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -10743,12 +11096,24 @@ public function art_home_postold() {
                         } else { 
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                             }
+                        }
                             $return_html .=  '</a>';
 
                        
                     } else {
                        
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $slug) . '">';
+
+                            if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
 
                             $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                             $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -10760,6 +11125,7 @@ public function art_home_postold() {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                             }
+                          }
                             $return_html .= '</a>';
                         
                     }
@@ -10984,7 +11350,7 @@ public function art_home_postold() {
 
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
-                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
                                     $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                                 } else {
                                     $return_html .= '<video width = "100%" height = "350" controls">';
@@ -11285,6 +11651,16 @@ public function art_home_postold() {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">';
                           $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
+                          if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                           $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -11296,7 +11672,7 @@ public function art_home_postold() {
                                         } else { 
                                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                                                                    }
                                
-                            
+                                 }
 
                             $return_html .= '</a>';
                             $return_html .= '</div>
@@ -11418,6 +11794,16 @@ public function art_home_postold() {
                     $art_fn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
                     $art_ln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                    $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -11429,6 +11815,7 @@ public function art_home_postold() {
                          } else { 
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                             }
+                         }
 
                     $return_html .= '</a></div>
 
@@ -11611,6 +11998,16 @@ public function art_home_post() {
                         
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userslug) . '">';
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted.'" alt="" >';
+                                    }
+                                } else{
+
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
                     $s3 = new S3(awsAccessKey, awsSecretKey);
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -11622,12 +12019,23 @@ public function art_home_post() {
                                                             } else { 
                                 $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                             }
+                          }
                             $return_html .=  '</a>';
 
                        
                     } else {
                        
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $slug) . '">';
+
+                            if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
 
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -11639,6 +12047,7 @@ public function art_home_post() {
                             } else { 
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                             }
+                         }
                             $return_html .= '</a>';
                         
                     }
@@ -11863,7 +12272,7 @@ public function art_home_post() {
 
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
-                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
                                     $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                                 } else {
                                     $return_html .= '<video width = "100%" height = "350" controls">';
@@ -12163,7 +12572,16 @@ public function art_home_post() {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">';
                           $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
-                          
+                           if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                           $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -12174,7 +12592,7 @@ public function art_home_post() {
                                } else { 
                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';               
                                         }
-
+                                    }
                                 
                             $return_html .= '</a>';
                             $return_html .= '</div>
@@ -12296,6 +12714,16 @@ public function art_home_post() {
                     $art_fn = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
                     $art_ln = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                    $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -12307,6 +12735,7 @@ public function art_home_post() {
                              } else { 
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                             }
+                          }
 
                     $return_html .= '</a></div>
 
@@ -12931,6 +13360,16 @@ public function art_home_post() {
                 $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
 
                 if ($row['posted_user_id']) {
+
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted.'" alt="" >';
+                                    }
+                                } else{
                     
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -12948,9 +13387,19 @@ public function art_home_post() {
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                    
                              $return_html .= '</a>';
                         }
-                    
+                     }
                 } else {
                     
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userimage.'" alt="" >';
+                                    }
+                                } else{
+
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -12969,6 +13418,7 @@ public function art_home_post() {
 
                             $return_html .= '</a>';
                         }
+                     }
                    
                 }
                 $return_html .= '</div>
@@ -13140,7 +13590,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
-                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
                                     $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                                 } else {
                                     $return_html .= '<video width = "100%" height = "350" controls">';
@@ -13368,6 +13818,17 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                         $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
 
+                        if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
+
                        $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -13380,7 +13841,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                             }
-                       
+                       }
 
                         $return_html .= '</a>';
                         $return_html .= '</div>
@@ -13486,7 +13947,15 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 $art_name = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
                 $art_lastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
-
+                if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
                 
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -13501,7 +13970,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                     $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                     }
-                
+                   }
                 $return_html .= '</a></div>
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="editable_text edt_2" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment...." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
@@ -13578,6 +14047,16 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                
+               if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $fourdata .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -13589,7 +14068,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                         } else {
                             $fourdata .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                     }
-                   
+                }
                
                  $fourdata .= '</a>';
                 $fourdata .= '</div>';
@@ -14432,6 +14911,16 @@ public function get_artistic_name($id=''){
                                  <div class="profile-job-post-location-name-rec">
                                     <div class="module_Ssearch" style="display: inline-block; float: left;">
                                        <div class="search_img" style="height: 110px; width: 108px;">';
+
+                                       if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
                                          
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -14443,6 +14932,7 @@ public function get_artistic_name($id=''){
                                 }else{
                                                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                 } 
+                             }
                                        $return_html .= '</div>
                                     </div>
                                     <div class="designation_rec">
@@ -14551,6 +15041,16 @@ public function get_artistic_name($id=''){
                                             
                                           <a class="post_dot" href="'.base_url('artistic/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
                                          
+                                         if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+                                         
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -14562,6 +15062,7 @@ public function get_artistic_name($id=''){
                                 }else{
                                     $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                 } 
+                             }
                                         $return_html .= '</a>
                                        </div>
                                        <div class="post-design-name col-xs-8 fl col-md-10">
@@ -14716,7 +15217,7 @@ public function get_artistic_name($id=''){
 
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
-                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
                                     $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                                 } else {
                                     $return_html .= '<video width = "100%" height = "350" controls">';
@@ -14993,14 +15494,38 @@ public function get_artistic_name($id=''){
                                                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
                                                           
                                                               $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+
+                                                              if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+                                         
+                    $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                                             if ($info) {
+                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt=" ">'; 
+                         
+                                }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                } 
+                             }
+
                                                                  
-                                                       if ($art_userimage) { 
+                                                       // if ($art_userimage) { 
                                                          
-                                                          $return_html .= '<img  src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
-                                                                 } else {                                                                
-                                                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                                       //    $return_html .= '<img  src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
+                                                       //           } else {                                                                
+                                                       //      $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                                 
-                                                               }
+                                                       //         }
                                             $return_html .= '</a>';
                                             $return_html .= '</div>
                                                         <div class="comment-name">';
@@ -15106,13 +15631,36 @@ public function get_artistic_name($id=''){
 
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
 
-                                           if ($art_userimage) { 
-                                    $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" name="image_src" id="image_src" />';
+                            if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+                                         
+                    $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                                             if ($info) {
+                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt=" ">'; 
+                         
+                                }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                } 
+                             }
+
+                                    //        if ($art_userimage) { 
+                                    // $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" name="image_src" id="image_src" />';
                                                    
-                                                } else {
+                                    //             } else {
                                                                                                          
-                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                                                      
-                                                }
+                                    //     $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                                                      
+                                    //             }
                                                 
                                       $return_html .= '</a></div>
                                        <div id="content" class="col-md-12 inputtype-comment cmy_2">
@@ -15362,13 +15910,38 @@ public function get_artistic_name($id=''){
                                  <div class="profile-job-post-location-name-rec">
                                     <div class="module_Ssearch" style="display: inline-block; float: left;">
                                        <div class="search_img" style="height: 110px; width: 108px;">';
-                                          if($key['art_user_image']){
-                           $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">';
-                                 }else{
+
+
+                                       if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+                                         
+                    $filename = $this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                                             if ($info) {
+                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">'; 
+                         
+                                }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                } 
+                             }
+
+                           //                if($key['art_user_image']){
+                           // $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">';
+                           //       }else{
                            
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                           //  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                             
-                                       }
+                           //             }
                                        $return_html .= '</div>
                                     </div>
                                     <div class="designation_rec" style="    float: left;
@@ -15486,13 +16059,37 @@ public function get_artistic_name($id=''){
                                        <div class="post-design-pro-img ">
                                             
                                           <a class="post_dot" href="'.base_url('artistic/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
-                                           if($key['art_user_image']){
 
-                                            $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="">';
-                                                   }else{
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                           if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="" >';
+                                    }
+                                } else{
+                                         
+                    $filename = $this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                                             if ($info) {
+                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">'; 
+                         
+                                }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                } 
+                             }
+
+                            //                if($key['art_user_image']){
+
+                            //                 $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="">';
+                            //                        }else{
+                            // $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                    
-                                           }
+                            //                }
                                         $return_html .= '</a>
                                        </div>
                                        <div class="post-design-name col-xs-8 fl col-md-10">
@@ -15629,7 +16226,7 @@ public function get_artistic_name($id=''){
 
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
-                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'])) {
+                                if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
                                     $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                                 } else {
                                     $return_html .= '<video width = "100%" height = "350" controls">';
@@ -15910,14 +16507,38 @@ public function get_artistic_name($id=''){
                                                          $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
                                                           
                                                               $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                                                              
+                                                               if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                                       
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
+                                    }
+                                } else{
+                                         
+                    $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                                             if ($info) {
+                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt=" ">'; 
+                         
+                                }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                                } 
+                             }
+
                                                                  
-                                                       if ($art_userimage) { 
-                                                          $return_html .= '<img  src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
-                                                                 } else { 
+                            //                            if ($art_userimage) { 
+                            //                               $return_html .= '<img  src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
+                            //                                      } else { 
                                                                 
-                            $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
+                            // $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                                                
-                                                               }
+                            //                                    }
                                             $return_html .= '</a></div>
                                                         <div class="comment-name">';
                                                          $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">
