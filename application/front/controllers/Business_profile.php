@@ -2050,7 +2050,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 if (IMAGEPATHFROM == 'upload') {
                     $return_html .= '<div>';
-                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
                         $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
                         $return_html .= '<video width = "100%" height = "350" controls>';
@@ -2061,7 +2061,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                     $return_html .= '</video>';
                     $return_html .= '</div>';
                 } else {
-                    $filename = BUS_POST_MAIN_UPLOAD_URL . $post_poster;
+                    $filename = $this->config->item('bus_post_main_upload_path') . $post_poster;
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     $return_html .= '<div>';
                     if ($info) {
@@ -14087,7 +14087,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                         if (IMAGEPATHFROM == 'upload') {
                             $return_html .= '<div>';
-                            if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                            if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
                                 $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                             } else {
                                 $return_html .= '<video width = "100%" height = "350" controls>';
@@ -14101,7 +14101,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         } else {
                             $return_html .= '<div>';
 
-                            $filename = BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'];
+                            $filename = $this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name'];
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) {
                                 $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';

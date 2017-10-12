@@ -96,7 +96,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <?php
                                 }
                             } else {
-                                $filename = BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image'];
+                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'];
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if (!$info) {
                                     ?>
