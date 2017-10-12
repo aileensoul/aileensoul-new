@@ -377,7 +377,7 @@ $config['encryption_key'] = 'CIPAMA';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'aileensoul_front_session';
 //$config['sess_expiration'] = 7200;
 //$config['sess_expiration'] = (60*60*24*365*10);
 $config['sess_expiration'] = 315360000;
