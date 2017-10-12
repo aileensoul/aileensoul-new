@@ -1561,7 +1561,7 @@ class Freelancer extends MY_Controller {
                     $sub_post_lname = substr($post_lname, 0, 1);
                     if ($row['freelancer_post_user_image']) {
                         if (IMAGEPATHFROM == 'upload') {
-                            if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $row[0]['freelancer_post_user_image'])) {
+                            if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'])) {
                                 $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                                 $return_html .= '<div class = "post-img-div">';
                                 $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
@@ -1573,7 +1573,7 @@ class Freelancer extends MY_Controller {
                 </a>';
                             }
                         } else {
-                            $filename = $this->config->item('free_hire_profile_main_upload_path') . $freelancerhiredata[0]['freelancer_hire_user_image'];
+                            $filename = $this->config->item('free_post_profile_main_upload_path') . $row['freelancer_hire_user_image'];
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) {
