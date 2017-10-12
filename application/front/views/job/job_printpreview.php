@@ -1422,7 +1422,7 @@
                                                    $ext = explode('.', $work['work_certificate']);
                                                    if ($ext[1] == 'pdf') {
                                                        ?>
-                                                <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $work['work_certificate'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                                <a title="open pdf" href="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work['work_certificate'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                                 <?php
                                                    } else {
                                                        ?>
