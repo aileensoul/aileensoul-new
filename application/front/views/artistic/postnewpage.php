@@ -59,6 +59,16 @@
                                              
                                                 <?php 
 
+                                                 if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
+                                   <?php }
+                                } else{
+
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -72,7 +82,7 @@
 
                                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
 
-                                                <?php }?>
+                                                <?php } }?>
 
                                                
                                                  </a>
@@ -84,6 +94,15 @@
                                     
                                             <?php 
 
+                                             if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php }
+                                } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -97,7 +116,7 @@
                                                 <?php } ?>
                                                  </a>
 
-                                            <?php }?>                                            
+                                            <?php } }?>                                            
                                     </div>
                                     <div class="post-design-name fl col-xs-8 col-md-10">
                                         <ul>
@@ -558,6 +577,15 @@
 
                                      <?php 
 
+                                      if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php }
+                                } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -569,7 +597,7 @@
                                 <?php }else{?>
 
                              <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                            <?php }?>
+                            <?php } }?>
                                                         </a>
                                                         </div>
                                                         <div class="comment-name">
@@ -729,6 +757,15 @@
 
                                               <?php 
 
+                                               if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php }
+                                } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -739,7 +776,7 @@
                                 <?php }else{?>
 
                                              <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                                            <?php }?>
+                                            <?php } }?>
                                     </a>
                                     </div>
                                     <div class="">
@@ -1040,6 +1077,16 @@
 
                                 <?php 
 
+                                 if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php }
+                                } else{
+
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -1049,7 +1096,7 @@
                                 <?php }else{?>
 
                              <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                             <?php }?>
+                             <?php } }?>
 
                                </a>         
                                                                                 </div>
@@ -1191,6 +1238,15 @@
                                                                 
                                 <?php 
 
+                                 if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php }
+                                } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -1201,7 +1257,7 @@
                                 <?php }else{?>
 
                              <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                            <?php }?>
+                            <?php } }?>
                                                             </div>
                                                             <div class="">
                                                                 <div id="content" class="col-md-12 inputtype-comment cmy_2" >
