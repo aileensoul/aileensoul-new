@@ -199,7 +199,9 @@ function comlogo(event) {
 //DELETE LOGO START
 function delete_logo(id, logo) {
 
-    $.fancybox.open('<div class="message"><h2>Are you sure you want to Remove this Logo?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+    $('.biderror .mes').html('<div class="message"><h2>Are you sure you want to Remove this Logo?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+    $('#bidmodal').modal('show');
+    //$.fancybox.open('<div class="message"><h2>Are you sure you want to Remove this Logo?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
 
     $('.message #delete').on('click', function () {
         $.ajax({
@@ -210,7 +212,8 @@ function delete_logo(id, logo) {
 
                 if (data == 1)
                 {
-                    $.fancybox.close();
+                    //$.fancybox.close();
+                    $('#bidmodal').modal('hide');
                     $('#logo_remove a').remove();
                     $('#logo_remove img').remove();
                     $('#logo').remove();
