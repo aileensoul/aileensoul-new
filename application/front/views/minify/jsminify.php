@@ -16,6 +16,14 @@ $bus_audio = array(
 $this->minify->js($bus_audio);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/audio.min.js');
 
+// CONTACT LIST START   
+$bus_audio = array(
+    'webpage/business-profile/common.js',
+);
+$this->minify->js($bus_audio);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/contact_list.min.js');
+
+
 // BUSINESS_CONTACT_PERSON START   
 $bus_contatt_person = array(
     'webpage/business-profile/common.js',
@@ -104,6 +112,81 @@ $profile_post = array(
 
 $this->minify->js($profile_post);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/home.min.js');
+
+// BUSINESS RESUME MANAGE POST 
+$bus_resume = array(
+    'webpage/business-profile/details.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($bus_resume);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/details.min.js');
+
+// BUSINESS USERLIST MANAGE POST 
+$bus_userlist = array(
+    'webpage/business-profile/userlist.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($bus_userlist);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/userlist.min.js');
+
+// BUSINESS VIDEO 
+$bus_video = array(
+    'webpage/business-profile/videos.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($bus_userlist);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/videos.min.js');
+
+// BUSINESS CONTACT INFO
+$contact_info = array(
+    'webpage/business-profile/contact_info.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($contact_info);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/contact_info.min.js');
+
+// BUSINESS DESCRIPTION INFO
+$description = array(
+    'webpage/business-profile/description.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($description);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/description.min.js');
+
+
+// BUSINESS IMAGE INFO
+$image = array(
+    'webpage/business-profile/image.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($image);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/image.min.js');
+
+
+// POSTNEWPAGE INFO
+$postnewpage = array(
+    'webpage/business-profile/post_detail.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($postnewpage);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/post_detail.min.js');
+
+
+// RECOMMEN CANDIDATE BUSINESS
+$postnewpage = array(
+    'webpage/business-profile/search.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($postnewpage);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/search.min.js');
 
 // BUSINESS_CONTACT FOOTER CROPPI BOOTSTRAP VALIDATE  
 $bus_contact_footer = array(
