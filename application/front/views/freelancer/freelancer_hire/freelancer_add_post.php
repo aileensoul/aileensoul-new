@@ -6,9 +6,22 @@
             <?php echo $title; ?>
         </title>
         <?php echo $head; ?> 
-        
-      
+
+
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <style type="text/css">
+            .last_date_error{
+                background: none;
+                color: red !important;
+                padding: 0px 10px !important;
+                position: absolute;
+                right: 8px;
+                z-index: 8;
+                line-height: 15px;
+                padding-right: 0px!important;
+                font-size: 11px!important;
+            }
+        </style>
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
@@ -39,7 +52,7 @@
 
                                         <!--                                    <div>
                                                                                 <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
-                                                                                <span style="color:#7f7f7e"><?php //ceho $this->lang->line("filed_required");  ?></span>
+                                                                                <span style="color:#7f7f7e"><?php //ceho $this->lang->line("filed_required");    ?></span>
                                                                             </div>-->
                                         <?php
                                         $post_name = form_error('post_name');
@@ -203,12 +216,12 @@
                                             foreach ($countries as $cnt) {
                                                 if ($country1) {
                                                     ?>
-                                                                                                                                                                                    <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
+                                                                                                                                                                                                            <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
                                                     <?php
                                                 }
                                                 else {
                                                     ?>
-                                                                                                                                                                                    <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name']; ?></option>
+                                                                                                                                                                                                            <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name']; ?></option>
                                                     <?php
                                                 }
                                             }
@@ -231,14 +244,14 @@
                                         if ($city1) {
                                             foreach ($cities as $cnt) {
                                                 ?>
-                                                                                                                                                                        <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
+                                                                                                                                                                                        <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
                                                 <?php
                                             }
                                         }
                                         else {
                                             ?>
-                                                                                                                                                            <option value=""><?php echo $this->lang->line("state_first"); ?></option>
-                                            
+                                                                                                                                                                    <option value=""><?php echo $this->lang->line("state_first"); ?></option>
+                                                    
                                             <?php
                                         }
                                         ?>
@@ -248,9 +261,9 @@
                                                                                                                                 <fieldset class="hs-submit half-width">
                                                                                                                                         <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                         <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                                                                                                                                    <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
+                                                                                                                                                            <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                         <?php } else { ?>
-                                                                                                                                                    <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
+                                                                                                                                                            <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                         <?php } ?>
                                                                                                                                         <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                                                                                                 </fieldset>
@@ -284,16 +297,16 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-     <!-- Bid-modal  -->
+        <!-- Bid-modal  -->
         <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content message">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
-<!--                    <div class="message" style="width:300px;">-->
-                        <h2>Add Field</h2>         
-                        <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
-                        <div class="fw"><a id="field" class="btn">OK</a></div>
-<!--                    </div>-->
+                    <!--                    <div class="message" style="width:300px;">-->
+                    <h2>Add Field</h2>         
+                    <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
+                    <div class="fw"><a id="field" class="btn">OK</a></div>
+                    <!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -304,180 +317,180 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script>
-            var base_url = '<?php echo base_url(); ?>';
+                        var base_url = '<?php echo base_url(); ?>';
 
-            // LEAVE PAGE ON ADD AND EDIT POST PAGE START
-            function leave_page(clicked_id)
-            {
-                //alert('jjjj');
-                var post_name = document.getElementById('post_name').value;
-                var post_desc = document.getElementById('post_desc').value;
-                var fields_req = document.getElementById('fields_req').value;
-                var skills = document.getElementById('skills2').value;
-                var year = document.getElementById('year').value;
-                var month = document.getElementById('month').value;
-                var rate = document.getElementById('rate').value;
-                var currency = document.getElementById('currency').value;
-                var est_time = document.getElementById('est_time').value;
-                var datepicker = document.getElementById('example2').value;
+                        // LEAVE PAGE ON ADD AND EDIT POST PAGE START
+                        function leave_page(clicked_id)
+                        {
+                            //alert('jjjj');
+                            var post_name = document.getElementById('post_name').value;
+                            var post_desc = document.getElementById('post_desc').value;
+                            var fields_req = document.getElementById('fields_req').value;
+                            var skills = document.getElementById('skills2').value;
+                            var year = document.getElementById('year').value;
+                            var month = document.getElementById('month').value;
+                            var rate = document.getElementById('rate').value;
+                            var currency = document.getElementById('currency').value;
+                            var est_time = document.getElementById('est_time').value;
+                            var datepicker = document.getElementById('example2').value;
 //                var country = document.getElementById('country').value;
 //                var city = document.getElementById('city').value;
-                var searchkeyword = $.trim(document.getElementById('tags').value);
-                var searchplace = $.trim(document.getElementById('searchplace').value);
-                var page = document.getElementById('page').value;
-                if (post_name == "" && post_desc == "" && fields_req == "" && skills == "" && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" )
-                {
-                    if (clicked_id == 1)
-                    {
-                        location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
-                    }
-                    if (clicked_id == 2)
-                    {
-                        location.href = '<?php echo base_url('freelancer-hire/employer-details'); ?>';
-                    }
-                    if (clicked_id == 3)
-                    {
-                        location.href = '<?php echo base_url('freelancer-hire/basic-information'); ?>';
-                    }
-                    if (clicked_id == 4)
-                    {
-                        if (searchkeyword == "" && searchplace == "")
-                        {
-                            return checkvalue_search;
-                        } else
-                        {
-
-                            if (searchkeyword == "")
+                            var searchkeyword = $.trim(document.getElementById('tags').value);
+                            var searchplace = $.trim(document.getElementById('searchplace').value);
+                            var page = document.getElementById('page').value;
+                            if (post_name == "" && post_desc == "" && fields_req == "" && skills == "" && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "")
                             {
-                                location.href = '<?php echo base_url() ?>freelancer-hire/search/' + 0 + '/' + searchplace;
+                                if (clicked_id == 1)
+                                {
+                                    location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
+                                }
+                                if (clicked_id == 2)
+                                {
+                                    location.href = '<?php echo base_url('freelancer-hire/employer-details'); ?>';
+                                }
+                                if (clicked_id == 3)
+                                {
+                                    location.href = '<?php echo base_url('freelancer-hire/basic-information'); ?>';
+                                }
+                                if (clicked_id == 4)
+                                {
+                                    if (searchkeyword == "" && searchplace == "")
+                                    {
+                                        return checkvalue_search;
+                                    } else
+                                    {
 
-                            } else if (searchplace == "")
-                            {
-                                location.href = '<?php echo base_url() ?>freelancer-hire/search/' + searchkeyword + '/' + 0;
+                                        if (searchkeyword == "")
+                                        {
+                                            location.href = '<?php echo base_url() ?>freelancer-hire/search/' + 0 + '/' + searchplace;
+
+                                        } else if (searchplace == "")
+                                        {
+                                            location.href = '<?php echo base_url() ?>freelancer-hire/search/' + searchkeyword + '/' + 0;
+                                        } else
+                                        {
+                                            location.href = '<?php echo base_url() ?>freelancer-hire/search/' + searchkeyword + '/' + searchplace;
+                                        }
+                                    }
+                                }
+                                if (clicked_id == 5)
+                                {
+                                    document.getElementById('acon').style.display = 'block !important';
+                                }
+                                if (clicked_id == 6)
+                                {
+                                    location.href = '<?php echo base_url() . 'profile' ?>';
+                                }
+                                if (clicked_id == 7)
+                                {
+                                    location.href = '<?php echo base_url('registration/changepassword') ?>';
+                                }
+                                if (clicked_id == 8)
+                                {
+                                    location.href = '<?php echo base_url('dashboard/logout') ?>';
+                                }
+                                if (clicked_id == 9)
+                                {
+                                    if (page == 'professional') {
+                                        location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
+                                    } else {
+                                        location.href = 'javascript:history.back()';
+                                    }
+
+                                }
+
                             } else
                             {
-                                location.href = '<?php echo base_url() ?>freelancer-hire/search/' + searchkeyword + '/' + searchplace;
+
+                                return home(clicked_id, searchkeyword, searchplace);
+
+
                             }
                         }
-                    }
-                    if (clicked_id == 5)
-                    {
-                        document.getElementById('acon').style.display = 'block !important';
-                    }
-                    if (clicked_id == 6)
-                    {
-                        location.href = '<?php echo base_url() . 'profile' ?>';
-                    }
-                    if (clicked_id == 7)
-                    {
-                        location.href = '<?php echo base_url('registration/changepassword') ?>';
-                    }
-                    if (clicked_id == 8)
-                    {
-                        location.href = '<?php echo base_url('dashboard/logout') ?>';
-                    }
-                    if (clicked_id == 9)
-                    {
-                        if (page == 'professional') {
-                            location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
-                        } else {
-                            location.href = 'javascript:history.back()';
-                        }
-
-                    }
-
-                } else
-                {
-
-                    return home(clicked_id, searchkeyword, searchplace);
 
 
-                }
-            }
+                        function home(clicked_id, searchkeyword, searchplace) {
 
-
-            function home(clicked_id, searchkeyword, searchplace) {
-
-                if (clicked_id == 5)
-                {
-                    $('.header ul li #abody ul li a').click(function () {
-
-                        var all_clicked_href = $(this).attr('href');
-                        $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ',' + '"' + all_clicked_href + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                        $('#bidmodal').modal('show');
-                        return false;
-
-                    });
-                } else
-                {
-                    $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                    $('#bidmodal').modal('show');
-                    return false;
-                }
-
-
-            }
-
-            function home_profile(clicked_id, searchkeyword, searchplace, all_clicked_href) {
-                var url, data;
-                if (clicked_id == 4) {
-
-                    url = '<?php echo base_url() . "freelancer-hire/search" ?>';
-                    data = 'id=' + clicked_id + '&skills=' + searchkeyword + '&searchplace=' + searchplace;
-                }
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    success: function (data) {
-                        if (clicked_id == 1)
-                        {
-                            window.location = "<?php echo base_url('freelancer-hire/home'); ?>";
-                        } else if (clicked_id == 2)
-                        {
-                            window.location = "<?php echo base_url('freelancer-hire/employer-details'); ?>";
-                        } else if (clicked_id == 3)
-                        {
-                            window.location = "<?php echo base_url('freelancer-hire/basic-information'); ?>";
-                        } else if (clicked_id == 4)
-                        {
-
-                            if (searchkeyword == "")
+                            if (clicked_id == 5)
                             {
-                                window.location = "<?php echo base_url() ?>freelancer-hire/search/" + 0 + "/" + searchplace;
+                                $('.header ul li #abody ul li a').click(function () {
 
-                            } else if (searchplace == "")
-                            {
+                                    var all_clicked_href = $(this).attr('href');
+                                    $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ',' + '"' + all_clicked_href + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                    $('#bidmodal').modal('show');
+                                    return false;
 
-                                window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + 0;
+                                });
                             } else
                             {
-                                window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + searchplace;
+                                $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                $('#bidmodal').modal('show');
+                                return false;
                             }
-                        } else if (clicked_id == 5)
-                        {
-                            window.location = all_clicked_href;
-                        } else if (clicked_id == 6)
-                        {
-                            window.location = "<?php echo base_url() . 'profile' ?>";
-                        } else if (clicked_id == 7)
-                        {
-                            window.location = "<?php echo base_url('registration/changepassword') ?>";
-                        } else if (clicked_id == 8)
-                        {
-                            window.location = "<?php echo base_url('dashboard/logout') ?>";
-                        } else if (clicked_id == 9)
-                        {
-                            location.href = 'javascript:history.back()';
-                        } else
-                        {
-                            alert("edit profilw");
+
+
                         }
 
-                    }
-                });
-            }
-            // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
+                        function home_profile(clicked_id, searchkeyword, searchplace, all_clicked_href) {
+                            var url, data;
+                            if (clicked_id == 4) {
+
+                                url = '<?php echo base_url() . "freelancer-hire/search" ?>';
+                                data = 'id=' + clicked_id + '&skills=' + searchkeyword + '&searchplace=' + searchplace;
+                            }
+                            $.ajax({
+                                type: 'POST',
+                                url: url,
+                                data: data,
+                                success: function (data) {
+                                    if (clicked_id == 1)
+                                    {
+                                        window.location = "<?php echo base_url('freelancer-hire/home'); ?>";
+                                    } else if (clicked_id == 2)
+                                    {
+                                        window.location = "<?php echo base_url('freelancer-hire/employer-details'); ?>";
+                                    } else if (clicked_id == 3)
+                                    {
+                                        window.location = "<?php echo base_url('freelancer-hire/basic-information'); ?>";
+                                    } else if (clicked_id == 4)
+                                    {
+
+                                        if (searchkeyword == "")
+                                        {
+                                            window.location = "<?php echo base_url() ?>freelancer-hire/search/" + 0 + "/" + searchplace;
+
+                                        } else if (searchplace == "")
+                                        {
+
+                                            window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + 0;
+                                        } else
+                                        {
+                                            window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + searchplace;
+                                        }
+                                    } else if (clicked_id == 5)
+                                    {
+                                        window.location = all_clicked_href;
+                                    } else if (clicked_id == 6)
+                                    {
+                                        window.location = "<?php echo base_url() . 'profile' ?>";
+                                    } else if (clicked_id == 7)
+                                    {
+                                        window.location = "<?php echo base_url('registration/changepassword') ?>";
+                                    } else if (clicked_id == 8)
+                                    {
+                                        window.location = "<?php echo base_url('dashboard/logout') ?>";
+                                    } else if (clicked_id == 9)
+                                    {
+                                        location.href = 'javascript:history.back()';
+                                    } else
+                                    {
+                                        alert("edit profilw");
+                                    }
+
+                                }
+                            });
+                        }
+                        // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
         </script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>

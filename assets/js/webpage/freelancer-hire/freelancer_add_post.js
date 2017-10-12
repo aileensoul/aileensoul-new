@@ -52,49 +52,6 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
     }
     // return regexpr.test(value);
 }, "Only space, only number and only special characters are not allow");
-// for date validtaion start
-jQuery.validator.addMethod("isValid", function (value, element) {
-    var todaydate = new Date();
-    var dd = todaydate.getDate();
-    var mm = todaydate.getMonth() + 1; //January is 0!
-    var yyyy = todaydate.getFullYear();
-    if (dd < 10) {
-        dd = '0' + dd
-    }
-
-    if (mm < 10) {
-        mm = '0' + mm
-    }
-    var todaydate = yyyy + '-' + mm + '-' + dd;
-    var one = new Date(value).getTime();
-    var second = new Date(todaydate).getTime();
-
-    if (one >= second) {
-        return one >= second;
-    }
-    $('.day').addClass('error');
-    $('.month').addClass('error');
-    $('.year').addClass('error');
-}, "Last date should be grater than and equal to today date");
-
-//date validation end
-//   validation border is not show in last date start
-$.validator.addMethod("last_date_require", function (value, element, regexpr) {
-    //return value == '' || value.trim().length != 0; 
-    if (!value)
-    {
-        $('.day').addClass('error');
-        $('.month').addClass('error');
-        $('.year').addClass('error');
-        return false;
-    } else
-    {
-        return true;
-    }
-
-    // return regexpr.test(value);
-}, "Last Date of apply is required.");
-//   validation border is not show in last date end 
 //VALIDATION FOR ESTIMATE TIME NOT ACCEPT ONLY NUMBER START
 $.validator.addMethod("regx_num_space", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
@@ -127,10 +84,10 @@ $(document).ready(function () {
                 required: true,
                 regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
-            last_date: {
-                last_date_require: true,
-                isValid: true
-            },
+//            last_date: {
+//                last_date_require: true,
+//                isValid: true
+//            },
 //            currency: {
 //                required: true,
 //            },
@@ -148,16 +105,13 @@ $(document).ready(function () {
             }
 
         },
-
         messages: {
             post_name: {
                 required: "Project name is required.",
             },
-
             skills: {
                 required: "Skill is required"
             },
-
             fields_req: {
                 required: "Please select field of requirement",
             },
@@ -181,7 +135,6 @@ $(document).ready(function () {
             }
 
         },
-
     });
 });
 // FORM FILL UP VALIDATION END
@@ -189,7 +142,6 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#country').on('change', function () {
         var countryID = $(this).val();
-
         if (countryID) {
             $.ajax({
                 type: 'POST',
@@ -205,7 +157,6 @@ $(document).ready(function () {
             $('#city').html('<option value="">Select state first</option>');
         }
     });
-
     $('#state').on('change', function () {
         var stateID = $(this).val();
         if (stateID) {
@@ -295,13 +246,17 @@ $(function () {
         dayLabel: 'DD',
         monthLabel: 'MM',
         yearLabel: 'YYYY',
-
         //startDate: today,
     });
     $(".day").attr('tabindex', 8);
+    $(".day").attr('onChange', 'check_datevalidation();');
+    //$(".day").attr('required', 'required');
     $(".month").attr('tabindex', 9);
+    $(".month").attr('onChange', 'check_datevalidation();');
+    //$(".month").attr('required', 'required');
     $(".year").attr('tabindex', 10);
-
+    $(".year").attr('onChange', 'check_datevalidation();');
+    //$(".year").attr('required', 'required');
 });
 //SCRIPT FOR DATEPICKER END 
 //NEW SCRIPT FOR SKILL START
@@ -334,7 +289,6 @@ $(function () {
 
                     var text = this.value;
                     var terms = split(this.value);
-
                     text = text == null || text == undefined ? "" : text;
                     var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
                     if (checked == 'checked') {
@@ -365,15 +319,12 @@ $(function () {
 
             });
 });
-
 //NEW SCRIPT FOR SKILL END
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
-alert(123);
     var item = $(this);
     var other_field = (item.val());
-
     if (other_field == 15) {
         item.val('');
         $('#bidmodal2').modal('show');
@@ -382,7 +333,6 @@ alert(123);
         $('.message #field').off('click').on('click', function () {
             $("#other_field").removeClass("keyskill_border_active");
             $('#field_error').remove();
-
             var x = $.trim(document.getElementById("other_field").value);
             if (x == '') {
                 $("#other_field").addClass("keyskill_border_active");
@@ -425,22 +375,21 @@ alert(123);
     }
 
 });
-
 function remove_validation() {
 
     $("#other_field").removeClass("keyskill_border_active");
     $('#field_error').remove();
 }
-$(document).on('change', '.year', function (event) {
-    var ss = document.querySelectorAll("label[for]");
-    var i;
-    for (i = 0; i < ss.length; i++) {
-        var zz = ss[i].getAttribute('for');
-        if (zz == 'example2') {
-            ss[i].remove();
-        }
-    }
-});
+//$(document).on('change', '.year', function (event) {
+//    var ss = document.querySelectorAll("label[for]");
+//    var i;
+//    for (i = 0; i < ss.length; i++) {
+//        var zz = ss[i].getAttribute('for');
+//        if (zz == 'example2') {
+//            ss[i].remove();
+//        }
+//    }
+//});
 //$(document).on('change', '.month', function (event) {
 //    var ss = document.querySelectorAll("label[for]");
 //    var i;
@@ -463,3 +412,98 @@ $(document).on('change', '.year', function (event) {
 //});
 
 //SCRIPT FOR ADD OTHER FILED END
+//
+function check_datevalidation() {
+    var day = $('.day').val();
+    var month = $('.month').val();
+    var year = $('.year').val();
+    if (day == '' || month == '' || year == '') {
+        if (day == '') {
+            $('.day').addClass('error');
+        }
+        if (month == '') {
+            $('.month').addClass('error');
+        }
+        if (year == '') {
+            $('.year').addClass('error');
+        }
+        $('.date-dropdowns .last_date_error').remove();
+        $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last Date of apply is required.</label>');
+        return false;
+        //<label for="example2" class="error">Last Date of apply is required.</label>
+    } else {
+        var todaydate = new Date();
+        var dd = todaydate.getDate();
+        var mm = todaydate.getMonth() + 1; //January is 0!
+        var yyyy = todaydate.getFullYear();
+        var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
+
+
+        var selected_date_in_str = "" + year + month + day;
+
+        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
+            $('.day').addClass('error');
+            $('.month').addClass('error');
+            $('.year').addClass('error');
+
+            $('.date-dropdowns .last_date_error').remove();
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
+            return false;
+        }
+        else{
+            $('.day').removeClass('error');
+            $('.month').removeClass('error');
+            $('.year').removeClass('error');
+            $('.date-dropdowns .last_date_error').remove();
+            return true;
+        }
+    }
+}
+
+$("form").submit(function () {
+    var day = $('.day').val();
+    var month = $('.month').val();
+    var year = $('.year').val();
+    if (day == '' || month == '' || year == '') {
+        if (day == '') {
+            $('.day').addClass('error');
+        }
+        if (month == '') {
+            $('.month').addClass('error');
+        }
+        if (year == '') {
+            $('.year').addClass('error');
+        }
+        $('.date-dropdowns .last_date_error').remove();
+        $('.date-dropdowns').append('<label for="example2" class="last_date_error" style="display: block;">Last Date of apply is required.</label>');
+        return false;
+
+    }else {
+        var todaydate = new Date();
+        var dd = todaydate.getDate();
+        var mm = todaydate.getMonth() + 1; //January is 0!
+        var yyyy = todaydate.getFullYear();
+        var todaydate_in_str = yyyy.toString() + mm.toString() + dd.toString();
+
+
+        var selected_date_in_str = "" + year + month + day;
+
+        if (parseInt(todaydate_in_str) > parseInt(selected_date_in_str)) {
+            $('.day').addClass('error');
+            $('.month').addClass('error');
+            $('.year').addClass('error');
+
+            $('.date-dropdowns .error').show();
+            $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
+            $('.date-dropdowns .last_date_error').removeAttr('style');
+            return false;
+        }
+        else{
+            $('.day').removeClass('error');
+            $('.month').removeClass('error');
+            $('.year').removeClass('error');
+            $('.date-dropdowns .last_date_error').remove();
+            return true;
+        }
+    }
+});
