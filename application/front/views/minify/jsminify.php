@@ -249,26 +249,63 @@ $this->minify->js($bus_profile_post_common);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_profile_post_common_footer.min.js');
 
 
-// BUSINESS PROFILE POST COMMON FOOTER
-$bus_profile_post_common = array(
+// BUSINESS dashboard COMMON FOOTER
+$bus_dashboard_common = array(
     'bootstrap.min.js',
+    'jquery.validate.min.js',
+    'croppie.js',
+    '../dragdrop/js/plugins/sortable.js',
+    'fileinput.js',
+    '../dragdrop/js/locales/fr.js',
+    '../dragdrop/js/locales/es.js',
+    '../dragdrop/themes/explorer/theme.js',
+    
+);
+
+$this->minify->js($bus_dashboard_common);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_dashboard_common_footer.min.js');
+
+// BUSINESS EDIT PROFILE COMMON FOOTER
+$bus_edit_profile_common = array(
+    'bootstrap.min.js',
+    'jquery.form.3.51.js',
+    
+);
+
+$this->minify->js($bus_edit_profile_common);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_edit_profile_common_footer.min.js');
+
+// BUSINESS PROFILE MANAGE POST COMMON FOOTER
+$bus_profile_manage_post_common = array(
+    'croppie.js',
+    'bootstrap.min.js',
+    'jquery.validate.min.js',
     'jquery.form.3.51.js',
     '../dragdrop/js/plugins/sortable.js',
     'fileinput.js',
     '../dragdrop/js/locales/fr.js',
     '../dragdrop/js/locales/es.js',
-    '../themes/explorer/theme.js',
-    '../as-videoplayer/build/mediaelement-and-player.js',
-    '../as-videoplayer/demo.js',
+    '../dragdrop/themes/explorer/theme.js',
+    
 );
 
-$this->minify->js($bus_profile_post_common);
-echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_profile_post_common_footer.min.js');
+$this->minify->js($bus_profile_manage_post_common);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_profile_manage_post_common_footer.min.js');
 
+// BUSINESS VIDEOS  COMMON FOOTER
+$bus_video_common = array(
+    'croppie.js',
+    'bootstrap.min.js',
+    'jquery.validate.min.js',
+    '../as-videoplayer/build/mediaelement-and-player.js',
+    '../as-videoplayer/demo.js',
+   
+    
+);
 
+$this->minify->js($bus_video_common);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_video_common_footer.min.js');
 
-
-//RECRUITER CHNAGES END
 
 
 
