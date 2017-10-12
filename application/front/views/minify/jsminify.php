@@ -11,12 +11,29 @@ echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/common.min.js');
 
 // BUSINESS_INFO START   
 $bus_info = array('webpage/business-profile/information.js',
-    'webpage/business-profile/common.min.js',
+    '../js_min/webpage/business-profile/common.min.js',
 );
 
 $this->minify->js($bus_info);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/business-info.min.js');
 // BUSINESS_INFO END 
+
+// BUSINESS_CONTACT START   
+$bus_info = array('webpage/business-profile/contacts.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($bus_info);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/contacts.min.js');
+// BUSINESS_CONTACT END 
+
+// BUSINESS_SEARCH_LOGIN START   
+$bus_info = array('webpage/business-profile/contacts.js',
+    '../js_min/webpage/business-profile/common.min.js',
+);
+
+$this->minify->js($bus_info);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_search_login.min.js');
 
 
 //$this->minify->js(array('helpers.js', 'jqModal.js'));
