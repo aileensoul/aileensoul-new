@@ -644,7 +644,7 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('.biderror .mes').html('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
             $('#bidmodal').modal('show');
             //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');   
 
@@ -696,7 +696,7 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('.biderror .mes').html('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
             $('#bidmodal').modal('show');
             //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
@@ -746,7 +746,7 @@ function remove_validation() {
       {
             item.val('');
 
-            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('.biderror .mes').html('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
             $('#bidmodal').modal('show');
             //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
@@ -795,7 +795,7 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-             $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+             $('.biderror .mes').html('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
             $('#bidmodal').modal('show');
             //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
@@ -844,7 +844,7 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-             $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+             $('.biderror .mes').html('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
             $('#bidmodal').modal('show');
             //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
    
@@ -1428,7 +1428,7 @@ function next_page()
     if(board_primary=="" && school_primary=="" && percentage_primary=="" && pass_year_primary=="" && school_secondary == '' && percentage_secondary == '' && pass_year_secondary == '' && board_secondary == '' && board_higher_secondary == '' && stream_higher_secondary == '' && school_higher_secondary == '' && percentage_higher_secondary == '' && pass_year_higher_secondary == '' && degree1=="" &&  stream1 == '' && university1 == '' && college1 == '' && percentage1 == '' && pass_year1 == '')
     {
          
-      $('.biderror .mes').html('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+      $('.biderror .mes').html('<div class="message"><h2>Must fill out any of four</h2></div>');
       $('#bidmodal').modal('show');
 
        //$.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
@@ -1502,17 +1502,24 @@ function next_page()
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('#bidmodal').modal('show');
+
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+            $('.biderror .mes').html('<div class="message"><h2Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+            $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1522,25 +1529,35 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of Higher Secondary Education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('.biderror .mes').html('<div class="message"><h2>Please press submit button of Higher Secondary Education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of Higher Secondary Education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1550,25 +1567,35 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary!="" ||  stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>'); 
+            $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>'); 
        }
    }
    
@@ -1583,7 +1610,9 @@ function next_page()
           
     if(board_primary=="" && school_primary=="" && percentage_primary=="" && pass_year_primary=="" && school_secondary == '' && percentage_secondary == '' && pass_year_secondary == '' && board_secondary == '' && board_higher_secondary == '' && stream_higher_secondary == '' && school_higher_secondary == '' && percentage_higher_secondary == '' && pass_year_higher_secondary == '' && degree1=="" &&  stream1 == '' && university1 == '' && college1 == '' && percentage1 == '' && pass_year1 == '' && degree2=="" &&  stream2 == '' && university2 == '' && college2 == '' && percentage2 == '' && pass_year2 == '')
     {
-         $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('#bidmodal').modal('show');
+         //$.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
     }
     
    else if(board_primary!="" || school_primary!="" || percentage_primary!="" || pass_year_primary!="")
@@ -1592,25 +1621,36 @@ function next_page()
        {
            if(school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '' || board_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of primary education to  fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of primary education to  fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of primary education to  fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+           $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+           $('#bidmodal').modal('show');
+          // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1622,25 +1662,35 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+           $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+          // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1650,25 +1700,38 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of Secondary Education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of Secondary Education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of Secondary Education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+                $('.biderror .mes').html('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data </h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1678,25 +1741,37 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary!="" ||  stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+          // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1711,7 +1786,10 @@ function next_page()
       
     if(board_primary=="" && school_primary=="" && percentage_primary=="" && pass_year_primary=="" && school_secondary == '' && percentage_secondary == '' && pass_year_secondary == '' && board_secondary == '' && board_higher_secondary == '' && stream_higher_secondary == '' && school_higher_secondary == '' && percentage_higher_secondary == '' && pass_year_higher_secondary == '' && degree1=="" &&  stream1 == '' && university1 == '' && college1 == '' && percentage1 == '' && pass_year1 == '' && degree2=="" &&  stream2 == '' && university2 == '' && college2 == '' && percentage2 == '' && pass_year2 == '' && degree3=="" &&  stream3 == '' && university3 == '' && college3 == '' && percentage3 == '' && pass_year3 == '')
     {
-       $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');    
+
+      $('.biderror .mes').html('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+      $('#bidmodal').modal('show');
+      // $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');    
     }
     
    else if(board_primary!="" || school_primary!="" || percentage_primary!="" || pass_year_primary!="")
@@ -1720,25 +1798,36 @@ function next_page()
        {
            if(school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '' || board_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1750,25 +1839,37 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1778,25 +1879,36 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1806,25 +1918,35 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary!="" ||  stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+           $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1839,7 +1961,9 @@ function next_page()
           
     if(board_primary=="" && school_primary=="" && percentage_primary=="" && pass_year_primary=="" && school_secondary == '' && percentage_secondary == '' && pass_year_secondary == '' && board_secondary == '' && board_higher_secondary == '' && stream_higher_secondary == '' && school_higher_secondary == '' && percentage_higher_secondary == '' && pass_year_higher_secondary == '' && degree1=="" &&  stream1 == '' && university1 == '' && college1 == '' && percentage1 == '' && pass_year1 == '' && degree2=="" &&  stream2 == '' && university2 == '' && college2 == '' && percentage2 == '' && pass_year2 == '' && degree3=="" &&  stream3 == '' && university3 == '' && college3 == '' && percentage3 == '' && pass_year3 == '' && degree4=="" &&  stream4 == '' && university4 == '' && college4 == '' && percentage4 == '' && pass_year4 == '')
     {
-         $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+         $('.biderror .mes').html('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+        // $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
     }
     
    else if(board_primary!="" || school_primary!="" || percentage_primary!="" || pass_year_primary!="")
@@ -1848,25 +1972,37 @@ function next_page()
        {
            if(school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '' || board_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '' || degree4!="" ||  stream4 != '' || university4 != '' || college4 != '' ||  percentage4 != '' || pass_year4 != '' )
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1878,26 +2014,37 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '' || degree4!="" ||  stream4 != '' || university4 != '' || college4 != '' ||  percentage4 != '' || pass_year4 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
             
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1907,25 +2054,35 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '' || degree4!="" ||  stream4 != '' || university4 != '' || college4 != '' ||  percentage4 != '' || pass_year4 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1935,25 +2092,38 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary!="" ||  stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+                $('.biderror .mes').html('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+                $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1968,7 +2138,10 @@ function next_page()
           
     if(board_primary=="" && school_primary=="" && percentage_primary=="" && pass_year_primary=="" && school_secondary == '' && percentage_secondary == '' && pass_year_secondary == '' && board_secondary == '' && board_higher_secondary == '' && stream_higher_secondary == '' && school_higher_secondary == '' && percentage_higher_secondary == '' && pass_year_higher_secondary == '' && degree1=="" &&  stream1 == '' && university1 == '' && college1 == '' && percentage1 == '' && pass_year1 == '' && degree2=="" &&  stream2 == '' && university2 == '' && college2 == '' && percentage2 == '' && pass_year2 == '' && degree3=="" &&  stream3 == '' && university3 == '' && college3 == '' && percentage3 == '' && pass_year3 == '' && degree4=="" &&  stream4 == '' && university4 == '' && college4 == '' && percentage4 == '' && pass_year4 == '' && degree5=="" &&  stream5 == '' && university5 == '' && college5 == '' && percentage5 == '' && pass_year5 == '' )
     {
-         $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+         $('.biderror .mes').html('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+        // $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
     }
     
    else if(board_primary!="" || school_primary!="" || percentage_primary!="" || pass_year_primary!="")
@@ -1977,25 +2150,40 @@ function next_page()
        {
            if(school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '' || board_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '' || degree4!="" ||  stream4 != '' || university4 != '' || college4 != '' ||  percentage4 != '' || pass_year4 != '' || degree5!="" ||  stream5 != '' || university5 != '' || college5 != '' ||  percentage5 != '' || pass_year5 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please press submit button of primary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -2007,25 +2195,40 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '' || degree4!="" ||  stream4 != '' || university4 != '' || college4 != '' ||  percentage4 != '' || pass_year4 != '' || degree5!="" ||  stream5 != '' || university5 != '' || college5 != '' ||  percentage5 != '' || pass_year5 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please press submit button of secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+          $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+           //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -2035,25 +2238,40 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+               $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '' || degree2!="" ||  stream2 != '' || university2 != '' || college2 != '' ||  percentage2 != '' || pass_year2 != '' || degree3!="" ||  stream3 != '' || university3 != '' || college3 != '' ||  percentage3 != '' || pass_year3 != '' || degree4!="" ||  stream4 != '' || university4 != '' || college4 != '' ||  percentage4 != '' || pass_year4 != '' || degree5!="" ||  stream5 != '' || university5 != '' || college5 != '' ||  percentage5 != '' || pass_year5 != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please press submit button of higher secondary education to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+        $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+          // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -2063,25 +2281,40 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_secondary != '' || school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(board_higher_secondary!="" ||  stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else
            {
-               $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+              $('.biderror .mes').html('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please press submit button of graduation to fulfil data</h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
        }
        
        else
        {
-           $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+
+           $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+          // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -2094,7 +2327,9 @@ function next_page()
    //edit time next page
    function next_page_edit() {
    
-       $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' +base_url+'job/project">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+         $('.biderror .mes').html('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' +base_url+'job/project">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+              $('#bidmodal').modal('show');
+      // $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' +base_url+'job/project">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
    }
       
   //script start for next button end
@@ -2102,7 +2337,9 @@ function next_page()
     //DELETE GRADUATION CERTIFICATE START
    function delete_job_exp(grade_id,certificate) {
 
-      $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this graduation detail?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
+      $('.biderror .mes').html('<div class="p20"><div class="message"><h2>Are you sure you want to delete this graduation detail?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
+              $('#bidmodal').modal('show');
+      //$.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this graduation detail?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
 
   $('.message #delete').on('click', function () {
        $.ajax({
@@ -2111,7 +2348,8 @@ function next_page()
            data: 'grade_id=' + grade_id+ '&certificate=' + certificate,
            success: function (data) {
                if (data == 1) {
-                   $.fancybox.close();
+                   //$.fancybox.close();
+                    $('#bidmodal').modal('hide');
                    $('.job_work_edit_' + grade_id).remove();
                }
            }
@@ -2122,7 +2360,10 @@ function next_page()
 
       //DELETE PRIMARY CERTIFICATE START
 function delete_primary(edu_id,certificate) {
-$.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this primary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
+
+  $('.biderror .mes').html('<div class="p20"><div class="message"><h2>Are you sure you want to delete this primary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
+              $('#bidmodal').modal('show');
+//$.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this primary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
  
       $('.message #delete').on('click', function () {
          $.ajax({
@@ -2133,7 +2374,9 @@ $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want
 
                if (data == 1) 
                {
-                  $.fancybox.close();      
+                  //$.fancybox.close(); 
+              $('#bidmodal').modal('hide');
+
                   $('#primary_remove a').remove();
                   $('#primary_remove img').remove();
                   $('#primary_certi').remove();
@@ -2148,7 +2391,11 @@ $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want
 
 //DELETE SECONDARY CERTIFICATE START
 function delete_secondary(edu_id,certificate) {
-$.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
+
+  $('.biderror .mes').html('<div class="p20"><div class="message"><h2>Are you sure you want to delete this secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
+              $('#bidmodal').modal('show');
+
+//$.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
  
       $('.message #delete').on('click', function () {
          $.ajax({
@@ -2159,7 +2406,9 @@ $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want
 
                if (data == 1) 
                {
-                  $.fancybox.close();      
+                  //$.fancybox.close(); 
+              $('#bidmodal').modal('hide');
+
                   $('#secondary_remove a').remove();
                   $('#secondary_remove img').remove();
                   $('#secondary_certi').remove();
@@ -2174,7 +2423,11 @@ $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want
 
 //DELETE SECONDARY HIGHER CERTIFICATE START
 function delete_higher_secondary(edu_id,certificate) {
-$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this higher secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+
+       $('.biderror .mes').html('<div class="message"><h2>Are you sure you want to delete this higher secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+       $('#bidmodal').modal('show');
+
+//$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this higher secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
  
       $('.message #delete').on('click', function () {
          $.ajax({
@@ -2185,7 +2438,9 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this h
 
                if (data == 1) 
                {
-                  $.fancybox.close();      
+                  //$.fancybox.close();
+               $('#bidmodal').modal('hide');
+
                   $('#higher_secondary_remove a').remove();
                   $('#higher_secondary_remove img').remove();
                   $('#higher_secondary_certi').remove();
@@ -2201,7 +2456,11 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this h
 //DELETE DEGREE CERTIFICATE EDIT START
 function delete_graduation(edu_id,certificate) {
   
-$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this degree certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+$('.biderror .mes').html('<div class="message"><h2>Are you sure you want to delete this degree certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+       $('#bidmodal').modal('show');
+
+
+//$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this degree certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
  
       $('.message #delete').on('click', function () {
          $.ajax({
@@ -2212,7 +2471,9 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this d
 
                if (data == 1) 
                {
-                  $.fancybox.close();   
+                  //$.fancybox.close();
+                  $('#bidmodal').modal('hide');
+
                   $('.job_work_edit_'+edu_id+' .img_work_exp a').remove();
                   $('.job_work_edit_'+edu_id+' .img_work_exp img').remove();
                   $('.job_work_edit_'+edu_id+'  #graduation_certi').remove();
