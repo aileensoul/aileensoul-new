@@ -1,7 +1,6 @@
 <!-- CLOSE ALL DROPEDOWN WHEN CLICK TO BODY OR OTHER DROPDOWN START -->
 <script type="text/javascript">
     $('.all').on('click', function () {
-        alert(1212);
         header_all_list_open();
     });
     function header_all_list_open() {
