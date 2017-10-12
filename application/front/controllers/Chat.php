@@ -3825,7 +3825,7 @@ class Chat extends MY_Controller {
             $seeall = '<div class="fw">
   <div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url() . 'img/icon_no_message.png">
+                                                    <img src="' . base_url() . 'assets/img/icon_no_message.png">
                                                 </div>
                                                 <div class="art_no_post_text_c">
                                                     No Messages Available.
