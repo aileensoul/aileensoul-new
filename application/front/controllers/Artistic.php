@@ -12836,7 +12836,7 @@ public function art_home_post() {
     }
 
     public function artistic_videos() {
-
+               $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['art_id'];
         // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -12873,11 +12873,11 @@ public function art_home_post() {
 
             if ($singlearray1[0]['file_name']) {
 
-
                 $post_poster = $singlearray1[0]['file_name'];
                 $post_poster1 = explode('.', $post_poster);
                 $post_poster2 = end($post_poster1);
                 $post_poster = str_replace($post_poster2, 'png', $post_poster);
+                //echo "<pre>"; print_r($post_poster); die();
 
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
@@ -12891,13 +12891,22 @@ public function art_home_post() {
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
-                } else {
+                }
+                else {
                     $fetch_video .= '<td class = "image_profile">';
 
-                    $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[0]['file_name'];
-                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                    if ($info) {
+                     $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[0]['file_name'];
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) { 
+
+                      $postposter = $this->config->item('art_post_main_upload_path') . $post_poster;
+                       $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+
+                        if($postposter){
                         $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                        $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -12934,7 +12943,14 @@ public function art_home_post() {
                     $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[1]['file_name'];
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+                       $postposter = $this->config->item('art_post_main_upload_path') . $post_poster;
+                       $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+
+                        if($postposter){
                         $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                        $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -12969,7 +12985,14 @@ public function art_home_post() {
                     $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[2]['file_name'];
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+                       $postposter = $this->config->item('art_post_main_upload_path') . $post_poster;
+                       $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+
+                        if($postposter){
                         $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                        $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -13007,7 +13030,14 @@ public function art_home_post() {
                     $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[3]['file_name'];
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+                       $postposter = $this->config->item('art_post_main_upload_path') . $post_poster;
+                       $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+
+                        if($postposter){
                         $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                        $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -13042,7 +13072,14 @@ public function art_home_post() {
                     $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[4]['file_name'];
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+                        $postposter = $this->config->item('art_post_main_upload_path') . $post_poster;
+                       $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+
+                        if($postposter){
                         $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                        $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -13077,7 +13114,14 @@ public function art_home_post() {
                     $filename = $this->config->item('art_post_main_upload_path') . $singlearray1[5]['file_name'];
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+                        $postposter = $this->config->item('art_post_main_upload_path') . $post_poster;
+                       $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+
+                        if($postposter){
                         $fetch_video .= '<video controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                        $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
