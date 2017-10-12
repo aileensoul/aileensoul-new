@@ -188,13 +188,16 @@
 
                                 <fieldset class="full-width <?php if ($business_address) { ?> error-msg <?php } ?>">
                                     <label><?php echo $this->lang->line("postal_address"); ?>:<span style="color:red">*</span></label>
-                                    <textarea name ="business_address" tabindex="6"  id="business_address" rows="4" cols="50" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;"><?php
+                                    <!--<textarea name ="business_address" tabindex="6"  id="business_address" rows="4" cols="50" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;"> -->
+                                    <input name="business_address" tabindex="6" autofocus type="text" id="business_address" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;" value="<?php
                                         if ($address1) {
                                             echo $address1;
                                         }
-                                        ?></textarea>
+                                        ?>"/>
+                                    <span id="business_address-error"></span><?php echo form_error('business_address'); ?>
                                     <?php echo form_error('business_address'); ?>
                                 </fieldset>
+                                
                                 <fieldset class="hs-submit full-width">
                                     <input type="submit"  id="next" name="next" tabindex="7"  value="<?php echo $this->lang->line("next"); ?>">
                                 </fieldset>
