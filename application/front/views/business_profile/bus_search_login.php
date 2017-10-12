@@ -12,10 +12,16 @@
         <script src="<?php echo base_url('assets/js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('assets/js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/timeline.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
-        
+        <?php
+        if (IS_CSS_MINIFY == '0') {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+            <?php
+        } else {
+            ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
+        <?php } ?>
         <script>
             $(function () {
                 var showTotalChar = 200, showChar = "ReadMore", hideChar = "";
@@ -454,7 +460,7 @@
                     <!-- Model Popup Close -->
 
                     <footer>        
-<?php echo $footer; ?>
+                        <?php echo $footer; ?>
                     </footer>
 
                     <!-- Login  -->
@@ -671,7 +677,6 @@
                     </div>
                     <!-- register -->
 
-                    <script src="<?php echo base_url('assets/js/jquery.wallform.js?ver=' . time()); ?>"></script>
                     <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
@@ -679,16 +684,19 @@
 
 
                     <script>
-                                                          var base_url = '<?php echo base_url(); ?>';
-                                                          var keyword = '<?php echo $keyword; ?>';
-                                                          var keyword1 = '<?php echo $keyword1; ?>';
-                                                          var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                          var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                        var base_url = '<?php echo base_url(); ?>';
+                                                        var keyword = '<?php echo $keyword; ?>';
+                                                        var keyword1 = '<?php echo $keyword1; ?>';
+                                                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                        var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                     </script>
-
-
-
-
-                    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
+                    <?php
+                    if (IS_JS_MINIFY == '0') {
+                        ?>
+                        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
+                    <?php } else {
+                        ?>
+                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/bus_search_login.min.js?ver=' . time()); ?>"></script>            
+                    <?php } ?>
                     </body>
                     </html>
