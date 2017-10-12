@@ -677,7 +677,7 @@
                     </div>
                     <!-- register -->
 
-<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver='.time());    ?>"></script>-->
+<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver='.time());     ?>"></script>-->
                     <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
@@ -694,7 +694,11 @@
 
 
 
-
+                    <?php if (IS_JS_MINIFY == '0') { ?>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
+                    <?php } else { ?>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/bus_search_login.min.js?ver=' . time()); ?>"></script>
+                    <?php } ?>
+
                     </body>
                     </html>

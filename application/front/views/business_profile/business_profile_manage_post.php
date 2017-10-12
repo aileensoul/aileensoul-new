@@ -13,7 +13,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile.min.css?ver=' . time()); ?>">
-           <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');  ?>" />-->
+           <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');   ?>" />-->
         <?php } ?>
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -401,7 +401,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());     ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());      ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -414,7 +414,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     var slug = '<?php echo $slugid; ?>';
                                                     var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php if (IS_JS_MINIFY == '0') { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/dashboard.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
     </body>
 </html>

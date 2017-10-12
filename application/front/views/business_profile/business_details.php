@@ -13,7 +13,7 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
         <?php } ?>
-	<style>
+        <style>
             /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
             .pr0{padding-right: 0;} .pr5{padding-right: 5px;} .pr10{padding-right: 10px;} .pr15{padding-right: 15px;} .pr20{padding-right: 20px;}
@@ -31,9 +31,9 @@
             .fs12{font-size:12px;}
             .red{color:#ff0000;}
             .ttc{text-transform:capitalize !important;}
-            
+
             /***  buttons  ***/
-            
+
             .clr-c a{color:#999;}
             .main-login{
                 background-color:#fff;
@@ -148,7 +148,7 @@
                 content: '_';
             }
             /***  login form css  ***/
-            
+
 
 
             /*onclick*/
@@ -729,9 +729,9 @@
                         <!-- Model Popup Close -->
                         <?php echo $footer; ?>
                         <!-- script for skill textbox automatic start (option 2)-->
-                        <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());   ?>"></script>-->
-                        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());   ?>"></script>-->
-                        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());   ?>"></script>-->
+                        <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());    ?>"></script>-->
+                        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());    ?>"></script>-->
+                        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());    ?>"></script>-->
                         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
                         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
@@ -1056,6 +1056,11 @@
                                 });
                             });
                         </script>
+                        <?php if (IS_JS_MINIFY == '0') { ?>
                         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>                        
+                        <?php } else { ?>
+                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/details.min.js?ver=' . time()); ?>"></script>                        
+                        <?php } ?>
+
                         </body>
                         </html>

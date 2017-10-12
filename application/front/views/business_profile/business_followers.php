@@ -103,7 +103,11 @@
             var base_url = '<?php echo base_url(); ?>';
             var slug_id = '<?php echo $slug_id; ?>';
         </script>
+        <?php if (IS_JS_MINIFY == '0') { ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/followers.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/followers.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
     </body>
 </html>

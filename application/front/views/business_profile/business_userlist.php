@@ -99,17 +99,21 @@
         </div>
         <!-- Model Popup Close -->
         <!-- script for skill textbox automatic end (option 2)-->
-<!--        <script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());   ?>"></script>
-        <script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());   ?>"></script>
-        <script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());   ?>"></script>-->
+<!--        <script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());    ?>"></script>
+        <script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());    ?>"></script>
+        <script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());    ?>"></script>-->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <!-- script for business autofill -->
         <script>
-                            var base_url = '<?php echo base_url(); ?>';
+                                    var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/userlist.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php if (IS_JS_MINIFY == '0') { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/userlist.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/userlist.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
     </body>
 </html>

@@ -13,7 +13,7 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
         <?php } ?>
-    
+
         <style type="text/css">
             [contenteditable=true]:empty:before{
                 content: attr(placeholder);
@@ -57,15 +57,15 @@
                                     <?php
                                     if ($business_common_data[0]['business_step'] == '3' || $business_common_data[0]['business_step'] == '4') {
                                         ?>
-                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
+                                                <li class="custom-none"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
                                         <?php
                                     } else {
                                         ?>
-                                        <li class="custom-none"><a href="javascript:void(0);">Business Images</a></li>
+                                                <li class="custom-none"><a href="javascript:void(0);">Business Images</a></li>
                                         <?php
                                     }
                                     ?>
--->
+                                    -->
                                     <li class="custom-none"><a href="<?php echo base_url('business-profile/business-information-update'); ?>"><?php echo $this->lang->line("business_information"); ?></a></li>
                                     <li class="custom-none"><a href="<?php echo base_url('business-profile/contact-information'); ?>"><?php echo $this->lang->line("contact_information"); ?></a></li>
                                     <li class="custom-none active init"><a href="javascript:void(0);"><?php echo $this->lang->line("description"); ?></a></li>
@@ -250,14 +250,18 @@
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());   ?>"></script>-->
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script>
                                         var base_url = '<?php echo base_url(); ?>';
                                         var slug = '<?php echo $slugid; ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php if (IS_JS_MINIFY == '0') { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/description.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
     </body>
 </html>
 

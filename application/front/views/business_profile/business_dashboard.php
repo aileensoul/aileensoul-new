@@ -13,7 +13,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile.min.css?ver=' . time()); ?>">
-           <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');  ?>" />-->
+           <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');     ?>" />-->
         <?php } ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
         <style type="text/css">
@@ -752,10 +752,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </footer>
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());     ?>"></script>-->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());     ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());        ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -1069,9 +1068,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
             });
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-
+        <?php if (IS_JS_MINIFY == '0') { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/user_dashboard.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
