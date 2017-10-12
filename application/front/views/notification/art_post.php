@@ -71,6 +71,16 @@
                     
                       <?php 
 
+                       if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                   <?php }
+                                } else{
+
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                       $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -79,7 +89,7 @@
                                                                 <?php
                                                             } else { ?>
                               <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
-                  <?php }?>
+                  <?php } }?>
           
                </div>
                <div id="myBtn"  class="editor-content popup-text">
@@ -133,6 +143,22 @@
                                         
 
                           <?php 
+
+                          if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
+                                       
+                                        <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                      </a>
+                                        
+                                    <?php } else { ?>
+                                     <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
+                                      </a>
+                                   <?php }
+                                } else{
+
+
                             $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -150,7 +176,7 @@
 
                           </a>
 
-                          <?php }?>
+                          <?php } }?>
                                                 
                                           
 
@@ -159,6 +185,21 @@
                                           <a  class="post_dot" title="" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>">
 
                <?php
+
+               if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                     
+                                        
+                                    <?php } else { ?>
+                                     
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                      
+                                   <?php }
+                                } else{
+
                $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
               $s3 = new S3(awsAccessKey, awsSecretKey);
               $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -170,7 +211,7 @@
                  <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucfirst(strtolower($art_data[0]['art_name'])) . ' ' . ucfirst(strtolower($art_data[0]['art_lastname'])); ?>">
                 <?php }?>
                  </a>
-         <?php } ?>
+         <?php } }?>
         </div>
                  <div class="post-design-name fl col-md-10">
                     <ul>
@@ -752,6 +793,21 @@
                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                     ?>
                               <?php 
+
+                              if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                         <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                      </a>
+                                        
+                                    <?php } else { ?>
+                                     <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                      </a>
+                                   <?php }
+                                } else{
+
                               $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -770,7 +826,7 @@
                            <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="">
                          </a>
                         <?php
-                    }
+                    } }
                     ?>
                                                                     
                         </div>
@@ -907,6 +963,20 @@
                                                 <div class="post-design-proo-img">
                                                     <?php 
 
+                                                     if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                      </a>
+                                        
+                                    <?php } else { ?>
+                                    <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                      </a>
+                                   <?php }
+                                } else{
+
                                                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -921,7 +991,7 @@
                                                          <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
                                                         <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="No Image"></a>
                 <?php
-            }
+            } }
             ?>
                                                 </div>
                                                 <div class="">
@@ -1059,6 +1129,20 @@
                   <div class="main-text-area " >
                      <div class="popup-img-in "> 
                      <?php 
+                      if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
+                                       
+                                      
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                      
+                                        
+                                    <?php } else { ?>
+                                    
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
+                                     
+                                   <?php }
+                                } else{
+
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
                             $s3 = new S3(awsAccessKey, awsSecretKey);
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -1067,7 +1151,7 @@
                      <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $artisticdata[0]['art_user_image']; ?>"  alt="">
                       <?php }else{?>
                       <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">                                       
-                     <?php }?>
+                     <?php } }?>
                      </div>
                      <div id="myBtn"  class="editor-content col-md-10 popup-text" >
                         <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onKeyup=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>
