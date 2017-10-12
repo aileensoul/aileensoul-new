@@ -1728,5 +1728,4 @@ function check_no_post_data() {
     if (numberPost == 0) {
         $('.business-all-post').html(no_business_post_html);
     }
-
 }

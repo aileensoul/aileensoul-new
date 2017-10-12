@@ -551,7 +551,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 
 .flw_msg_btn ul li .fr {
-    padding-left: 10px;
+    padding-left: 4px;
 }
 .flw_msg_btn ul li a {
     letter-spacing: 1px;
@@ -943,6 +943,7 @@ label.cameraButton input[accept*="camera"] {
 .mob-add{display:none;}
 
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color:#1B8AB9 !important;}
+
 
 /***  media query  ***/
 @media screen and (max-width: 1279px){

@@ -204,7 +204,7 @@ $(document).on('change', '#industry', function (event) {
       
             item.val('');
 
-            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
+            $('.biderror .mes').html('<h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a>');
             $('#bidmodal').modal('show');
 
             //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
@@ -247,3 +247,8 @@ $(document).on('change', '#industry', function (event) {
      
    });
 //OTHER INDUSTRY INSERT END
+ $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   $( "#bidmodal" ).hide();
+                  }
+               });  
