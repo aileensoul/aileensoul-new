@@ -1,8 +1,17 @@
 <?php
 
+
+// BUSINESS_COMMON START   
+$bus_info = array(
+    'webpage/business-profile/common.js',
+);
+$this->minify->js($bus_info);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/common.min.js');
+// BUSINESS_COMMON END 
+
 // BUSINESS_INFO START   
 $bus_info = array('webpage/business-profile/information.js',
-    'webpage/business-profile/common.js',
+    'webpage/business-profile/common.min.js',
 );
 
 $this->minify->js($bus_info);
