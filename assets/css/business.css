@@ -936,7 +936,7 @@ label.cameraButton:active {
     margin: 0px;
     font-size: 27px;
     cursor: default;
-    padding-top: 2px;
+    padding-top: 3px;
     color: #1b8ab9
 }
 .post-design-box {
@@ -2332,7 +2332,7 @@ label.cameraButton:active {
     padding-right: 0px;
     height: 32px;
     font-size: 19px!important;
-    line-height: 1.2;
+    line-height: 1.3;
     resize: none;
     border: none;
     white-space: nowrap;
@@ -4373,6 +4373,8 @@ div .comment {
     height: 20px;
 }
 .cancel-result:hover{color: #fff;background-color: #1b8ab9 !important;}
+.post-edit-popup .popup-text{padding:9px 0 7px 10px;}
+.post-edit-popup .camer_h i{padding-top:4px;}
 
 
 
@@ -4786,7 +4788,7 @@ div .comment {
         padding: 9px !important;
     }
     .buisness-menu.other-profile-menu::before {
-        bottom: 89px;
+        bottom: 97px;
     }
     .other-profile-menu .bpro-fw li {
         width: 20%;
@@ -4805,7 +4807,7 @@ div .comment {
 	/***  addvertise  ***/
 	.tablate-potrat-add{display:none;}
 	.tablate-add{display:block; width:160px; position:fixed; margin-left:590px;}
-	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
+	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:580px; }
 	/*** end advertise  ***/
 }
 @media screen and (max-width: 800px) {
@@ -5870,6 +5872,8 @@ div .comment {
 	.post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
 	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
 	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
+	.padd_img{padding:0;}
+	.buisness-menu .profile-pho-bui{border-radius:4px;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {
@@ -5896,7 +5900,8 @@ div .comment {
         width: 60%!important;
     }
     .post-edit-popup .popup-text textarea {
-        padding-right: 45px;
+        padding-right: 0;
+        padding-left: 0;
     }
     .popup-text textarea {
         line-height: 2.3;
@@ -6051,6 +6056,8 @@ div .comment {
 	.padding-360{padding-left:1px; padding-right:1px;}
 	.contact-frnd-post{padding:10px 8px 0;}
 	/*** end add  ***/
+	.business-profile-right .bui-menu-profile{min-height:85px ;}
+	.buisness-menu.other-profile-menu::before{bottom:89px;}
 }
 @media screen and (max-width: 319px) {
     .editor-content {
