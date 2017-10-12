@@ -2110,7 +2110,7 @@ label.cameraButton input[accept*="camera"] {
 .current-user{float:left;}
 .profile-boxProfileCard .bg-images.no-cover-upload{height:110px;}
 .keyskill_border_active{border: 1px solid red !important; border-radius: 2px;}
-.keyskil{width:93% !important;} 
+/*.keyskil{width:93% !important;} */
 /***  new structure main page  ***/
 .left_side_posrt {
     width: 320px;
@@ -2159,6 +2159,7 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
 .custom-message .modal-content .mes{padding:0 !important; margin:0!important;}
 
+.message button{background-color: #fff;color: #1B8AB9;}
 
 /***  media query  ***/
 
