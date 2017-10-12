@@ -1506,7 +1506,8 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
     text-overflow: ellipsis;
     font-size: 14px;
     color: #777;
-    max-height:24px;
+    max-height:22px;
+    line-height:20px;
 }
 .smily_b {
     position: absolute;
