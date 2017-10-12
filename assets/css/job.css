@@ -2045,7 +2045,7 @@ label.cameraButton input[accept*="camera"] {
 #univer {
     background: #1b8ab9;
     color: white;
-    margin: 22px 0px 0px;
+    margin: 28px 0px 0px;
     padding: 8px 36px;
 }
 .btn:focus {
@@ -2160,6 +2160,9 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .modal-content .mes{padding:0 !important; margin:0!important;}
 
 .message button{background-color: #fff;color: #1B8AB9;}
+.biderror .modal-body span{padding: 0;margin:0;}
+.modal-content .message span#field_error_stream{width: 100%;float: left!important;text-align: right;}
+.modal-content .message1 span#field_error{width: 100%;float: left;text-align: right;}
 
 /***  media query  ***/
 
