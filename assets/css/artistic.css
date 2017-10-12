@@ -4510,7 +4510,7 @@ div .comment {
         right: 12px;
     }
     .flw_msg_btn ul li:last-child{margin-right:0 !important}
-.profile-main-box-buis-menu li a:hover{border-bottom: none;}
+	.profile-main-box-buis-menu li a:hover{border-bottom: none;}
 
     #row2{border-left:0; border-right:0;}
     #row2 img {
@@ -4923,6 +4923,8 @@ div .comment {
     .mian_middle_post_box{float:none;}
     .mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
     /*** end add  ***/
+	.padd_img{padding:0;}
+	.buisness-menu .profile-pho-bui{border-radius:4px;}
 }
 
 @media screen and (max-width: 639px) {
@@ -5323,7 +5325,7 @@ div .comment {
     .profile-left {
         margin-left: 5px;
     }
-    .business-profile-right .bui-menu-profile{min-height:100px;}
+    .business-profile-right .bui-menu-profile{min-height:75px;}
     .bui-menu-profile {
         width: 70%;
         overflow: hidden;
@@ -5499,8 +5501,8 @@ div .comment {
         height: 60px;
     }
     .other-profile-menu .profile-pho-bui .user-pic {
-        width: 52px;
-        height: 52px;
+        width: 60px;
+        height: 60px;
     }
     .other-profile-menu .bui-menu-profile {
         padding-left: 70px !important;
@@ -5524,8 +5526,7 @@ div .comment {
     .popup-text span{font-size:16px; padding:5px 0;}
     .popup-text{padding:7px 0px 6px 10px;}
     .post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
-    .padd_img{padding:0;}
-	.buisness-menu .profile-pho-bui{border-radius:4px;}
+    
 }
 
 @media screen and (max-width: 430px) {
@@ -5686,8 +5687,6 @@ div .comment {
     .padding-360{padding-left:1px; padding-right:1px;}
     .contact-frnd-post{padding:10px 8px 0;}
     /*** end add  ***/
-	.business-profile-right .bui-menu-profile{min-height:85px ;}
-	.buisness-menu.other-profile-menu::before{bottom:89px;}
 }
 
 @media screen and (max-width: 319px) {

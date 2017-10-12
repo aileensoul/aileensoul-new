@@ -5234,6 +5234,8 @@ div .comment {
 	.mian_middle_post_box{float:none;}
 	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
 	/*** end add  ***/
+	.padd_img{padding:0;}
+	.buisness-menu .profile-pho-bui{border-radius:4px;}
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5872,8 +5874,7 @@ div .comment {
 	.post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
 	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
 	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
-	.padd_img{padding:0;}
-	.buisness-menu .profile-pho-bui{border-radius:4px;}
+	
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {
