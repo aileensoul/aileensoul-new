@@ -127,7 +127,7 @@
                      </div>
                      <?php } ?>
                      <?php if ($returnpage == '') { ?>
-                     <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>img/cam.png"> Update Profile Picture</a>
+                     <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
                      <?php } ?>
                   </div>
                </div>
