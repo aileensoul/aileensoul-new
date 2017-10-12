@@ -644,7 +644,9 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');   
+            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('#bidmodal').modal('show');
+            //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');   
 
    $('.message #univer').on('click', function () {
 
@@ -674,7 +676,8 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');
                                    $('.university').html(response.select1);
                                    $('#input1 .university').html(response.select);
                               }
@@ -693,7 +696,9 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('#bidmodal').modal('show');
+            //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
 
@@ -721,7 +726,8 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');                               
                                    $('.university').html(response.select1);
                                    $('#input2 .university').html(response.select);
                               }
@@ -739,7 +745,10 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+
+            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('#bidmodal').modal('show');
+            //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
 
@@ -767,7 +776,8 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                
                                    $('.university').html(response.select1);
                                    $('#input3 .university').html(response.select);
                               }
@@ -785,7 +795,9 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+             $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
+            $('#bidmodal').modal('show');
+            //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
 
@@ -813,7 +825,8 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                                                  
                                    $('.university').html(response.select1);
                                    $('#input4 .university').html(response.select);
                               }
@@ -831,7 +844,9 @@ function remove_validation() {
       if(uni == 463)
       {
             item.val('');
-            $.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+             $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+            $('#bidmodal').modal('show');
+            //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
 
@@ -859,7 +874,8 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                                                                                    
                                    $('.university').html(response.select1);
                                    $('#input5 .university').html(response.select);
                               }
@@ -880,7 +896,10 @@ function remove_validation() {
       if(degree == 54)
       {
              item.val('');
-             $.fancybox.open(html);
+            $('.biderror .mes').html(html);
+            $('#bidmodal').modal('show');
+
+            // $.fancybox.open(html);
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
                  var stream = document.querySelector(".message #other_stream").value;    
@@ -896,17 +915,17 @@ function remove_validation() {
                {
                   $(".message #other_degree").addClass("keyskill_border_active");
                   $('<span class="error" id="field_error_degree" style="float: right;color: red; font-size: 11px;">Empty degree is not valid</span>').insertAfter('.message #other_degree');
-                 // $.fancybox.open('<div class="message"><h2>Empty degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                
                }
                if(stream == '' && degree != '')
                {
                   $(".message #other_stream").addClass("keyskill_border_active");
                   $('<span class="error" id="field_error_stream" style="float: right;color: red; font-size: 11px;">Empty stream is not valid</span>').insertAfter('.message #other_stream');
-                 // $.fancybox.open('<div class="message"><h2>Empty stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                
                }
                if (stream == '' && degree == '')
                {
-                  //$.fancybox.open('<div class="message"><h2>Empty degree and empty stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                  
                   $(".message #other_degree").addClass("keyskill_border_active");
                   $('<span class="error" id="field_error_degree" style="float: right;color: red; font-size: 11px;">Empty degree is not valid</span>').insertAfter('.message #other_degree');
                   $(".message #other_stream").addClass("keyskill_border_active");
@@ -931,17 +950,18 @@ function remove_validation() {
                               {
                                 $(".message #other_degree").addClass("keyskill_border_active");
                                 $('<span class="error" id="field_error_degree" style="float: right;color: red; font-size: 11px;">Written degree already available in degree selection</span>').insertAfter('.message #other_degree');
-                               // $.fancybox.open('<div class="message"><h2>Written degree already available in degree selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              
                               }
                               else if(response.select == 1)
                               {
                                 $(".message #other_degree").addClass("keyskill_border_active");
                                 $('<span class="error" id="field_error_degree" style="float: right;color: red; font-size: 11px;">Empty degree is not valid</span>').insertAfter('.message #other_degree');
-                                //$.fancybox.open('<div class="message"><h2>Empty degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                
                               }  
                               else
                               {
-                                    $.fancybox.close();
+                                    //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                                                                                                                       
                                     $('.degree').html(response.select1);
                                     $('#input1 .degree').html(response.select);
                                     $('#input1 .stream').html(response.select2);      
@@ -960,7 +980,10 @@ function remove_validation() {
       if(degree == 54)
       {
             item.val('');
-            $.fancybox.open(html);
+            //$.fancybox.open(html);
+            $('.biderror .mes').html(html);
+            $('#bidmodal').modal('show');
+
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
                  var stream = document.querySelector(".message #other_stream").value;
@@ -1016,7 +1039,8 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                  // $.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                                                                                                                                                        
                                     $('.degree').html(response.select1);
                                     $('#input2 .degree').html(response.select);
                                     $('#input2 .stream').html(response.select2);      
@@ -1035,7 +1059,10 @@ function remove_validation() {
       if(degree == 54)
       {
             item.val('');
-            $.fancybox.open(html);
+            //$.fancybox.open(html);
+            $('.biderror .mes').html(html);
+            $('#bidmodal').modal('show');
+
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
                  var stream = document.querySelector(".message #other_stream").value; 
@@ -1091,7 +1118,9 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                                                                                                                       
+
                                     $('.degree').html(response.select1);
                                     $('#input3 .degree').html(response.select);
                                     $('#input3 .stream').html(response.select2);      
@@ -1110,7 +1139,10 @@ function remove_validation() {
       if(degree == 54)
       {
             item.val('');
-            $.fancybox.open(html);
+           // $.fancybox.open(html);
+           $('.biderror .mes').html(html);
+            $('#bidmodal').modal('show');
+
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
                  var stream = document.querySelector(".message #other_stream").value;    
@@ -1166,7 +1198,9 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                                                                                                                       
+
                                     $('.degree').html(response.select1);
                                     $('#input4 .degree').html(response.select);
                                     $('#input4 .stream').html(response.select2);      
@@ -1185,7 +1219,10 @@ function remove_validation() {
       if(degree == 54)
       {
             item.val('');
-            $.fancybox.open(html);
+            //$.fancybox.open(html);
+            $('.biderror .mes').html(html);
+            $('#bidmodal').modal('show');
+
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
                  var stream = document.querySelector(".message #other_stream").value; 
@@ -1241,7 +1278,9 @@ function remove_validation() {
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                  // $.fancybox.close();
+                                   $('#bidmodal').modal('hide');                                                                                                                                                                       
+
                                     $('.degree').html(response.select1);
                                     $('#input5 .degree').html(response.select);
                                     $('#input5 .stream').html(response.select2);      
@@ -1261,7 +1300,10 @@ var other_stream=(item1.val());
  if(other_stream == 61)
 {
 
-    $.fancybox.open('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
+    //$.fancybox.open('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
+
+      $('.biderror .mes').html('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
+      $('#bidmodal').modal('show');
 
       $('.message1 #univer1').on('click', function () {
       var $textbox1 = $('.message1').find('input[type="text"]'),
@@ -1290,7 +1332,8 @@ var other_stream=(item1.val());
                               }  
                               else
                               {
-                                $.fancybox.close();
+                                //$.fancybox.close();
+                                $('#bidmodal').modal('hide');                                                                                                                                                                                                      
                                 $('.message #other_stream').html(response);
                               }
                           }
@@ -1385,7 +1428,10 @@ function next_page()
     if(board_primary=="" && school_primary=="" && percentage_primary=="" && pass_year_primary=="" && school_secondary == '' && percentage_secondary == '' && pass_year_secondary == '' && board_secondary == '' && board_higher_secondary == '' && stream_higher_secondary == '' && school_higher_secondary == '' && percentage_higher_secondary == '' && pass_year_higher_secondary == '' && degree1=="" &&  stream1 == '' && university1 == '' && college1 == '' && percentage1 == '' && pass_year1 == '')
     {
          
-       $.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+      $('.biderror .mes').html('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+      $('#bidmodal').modal('show');
+
+       //$.fancybox.open('<div class="message"><h2>Must fill out any of four</h2><button data-fancybox-close="" class="btn">OK</button></div>');
           
     }
           
@@ -1395,30 +1441,42 @@ function next_page()
        {
            if(school_secondary != '' || percentage_secondary != '' || pass_year_secondary != '' || board_secondary != '')
            {
-                $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('#bidmodal').modal('show');
+                //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
                
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-                $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                
+                $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                $('#bidmodal').modal('show');
+
+                //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
                
               
            }
            else if(degree1!='' ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '')
            {
-                $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                 $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of graduation field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                $('#bidmodal').modal('show');
+                //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of graduation field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
                
            }
            else
            {
-              $.fancybox.open('<div class="message"><h2>Please press submit button of primary education to  fulfil data </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('.biderror .mes').html('<div class="message"><h2>Please press submit button of primary education to  fulfil data </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               $('#bidmodal').modal('show');
+              //$.fancybox.open('<div class="message"><h2>Please press submit button of primary education to  fulfil data </h2><button data-fancybox-close="" class="btn">OK</button></div>');
                
            }
        }
        
        else
        {
-            $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+            $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+            $('#bidmodal').modal('show');
+           // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
        }
    }
    
@@ -1430,12 +1488,17 @@ function next_page()
        {
            if(board_primary != '' || school_primary != '' || percentage_primary != '' || pass_year_primary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+              // $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of primary education field</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                 
            }
            else if(board_higher_secondary != '' || stream_higher_secondary != '' || school_higher_secondary != '' || percentage_higher_secondary != '' || pass_year_higher_secondary != '')
            {
-               $.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               
+              $('.biderror .mes').html('<div class="message"><h2>Please complete mendatory detail of higher secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
+              $('#bidmodal').modal('show');
+               //$.fancybox.open('<div class="message"><h2>Please complete mendatory detail of higher secondary education field </h2><button data-fancybox-close="" class="btn">OK</button></div>');
            }
            else if(degree1!="" ||  stream1 != '' || university1 != '' || college1 != '' ||  percentage1 != '' || pass_year1 != '')
            {
