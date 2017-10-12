@@ -232,12 +232,43 @@ $croppie = array('croppie.js',
 $this->minify->js($croppie);
 echo $this->minify->deploy_js(FALSE, 'croppie.min.js');
 
-// CROPPIE START   
-$croppie = array('croppie.js',
+// BUSINESS PROFILE POST COMMON FOOTER
+$bus_profile_post_common = array(
+    'bootstrap.min.js',
+    'jquery.form.3.51.js',
+    '../dragdrop/js/plugins/sortable.js',
+    'fileinput.js',
+    '../dragdrop/js/locales/fr.js',
+    '../dragdrop/js/locales/es.js',
+    '../dragdrop/themes/explorer/theme.js',
+    '../as-videoplayer/build/mediaelement-and-player.js',
+    '../as-videoplayer/demo.js',
 );
 
-$this->minify->js($croppie);
-echo $this->minify->deploy_js(FALSE, 'croppie.min.js');
+$this->minify->js($bus_profile_post_common);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_profile_post_common_footer.min.js');
+
+
+// BUSINESS PROFILE POST COMMON FOOTER
+$bus_profile_post_common = array(
+    'bootstrap.min.js',
+    'jquery.form.3.51.js',
+    '../dragdrop/js/plugins/sortable.js',
+    'fileinput.js',
+    '../dragdrop/js/locales/fr.js',
+    '../dragdrop/js/locales/es.js',
+    '../themes/explorer/theme.js',
+    '../as-videoplayer/build/mediaelement-and-player.js',
+    '../as-videoplayer/demo.js',
+);
+
+$this->minify->js($bus_profile_post_common);
+echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_profile_post_common_footer.min.js');
+
+
+
+
+//RECRUITER CHNAGES END
 
 
 
