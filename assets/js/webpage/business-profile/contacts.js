@@ -78,6 +78,7 @@ function business_contacts(slug, pagenum) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
+            check_no_contact_list();
         }
     });
 }
@@ -147,6 +148,7 @@ function unfollowuser_two(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data);
+            check_no_contact_list();
         }
     });
 }
@@ -252,13 +254,7 @@ function contact_person_model(clicked_id, status, data) {
         $('#query').modal('show');
 
     }
-
-
-
 }
-
-
-
 
 function contact_person(clicked_id) {
 
@@ -276,3 +272,10 @@ function contact_person(clicked_id) {
     });
 }
 
+function check_no_contact_list() {
+    //var numberPost = $('[id^="removepost"]').length;
+    var numberList = $('.job-contact-frnd').length;
+    if (numberList == 0) {
+        $('.contact-frnd-post').html(no_business_contact_html);
+    }
+}

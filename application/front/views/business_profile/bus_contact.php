@@ -98,6 +98,7 @@
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug = '<?php echo $slug_id; ?>';
+            var no_business_contact_html = '<?php echo $no_business_contact_html ?>';
         </script>
         <?php
         if(IS_JS_MINIFY == '0'){
