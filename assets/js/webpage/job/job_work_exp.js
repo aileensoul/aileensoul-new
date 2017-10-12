@@ -706,7 +706,9 @@ function expyear_change(){
   //DELETE JOB WORK EXP CLONE START
     function delete_job_work(work_id,certificate) {
    
-         $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this work experience?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+          $('.biderror .mes').html('<div class="message"><h2>Are you sure you want to delete this work experience?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+            $('#bidmodal').modal('show');
+         //$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this work experience?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
      
        $('.message #delete').on('click', function () {
    
@@ -717,7 +719,8 @@ function expyear_change(){
               success: function (data) {
                   if(data == 1)
                   {
-                      $.fancybox.close();
+                      //$.fancybox.close();
+                      $('#bidmodal').modal('hide');
                       $('.job_work_edit_' + work_id).remove();
                     
                   }
@@ -938,7 +941,11 @@ function expyear_change(){
    //DELETE WORK EXPERIENCE CERTIFICATE START
    function delete_workexp(work_id,certificate) {
     
-   $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this experience certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+
+     $('.biderror .mes').html('<div class="message"><h2>Are you sure you want to delete this experience certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+            $('#bidmodal').modal('show');
+
+   //$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this experience certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
     
          $('.message #delete').on('click', function () {
             $.ajax({
@@ -949,7 +956,8 @@ function expyear_change(){
    
                   if (data == 1) 
                   {
-                     $.fancybox.close();   
+                     //$.fancybox.close(); 
+                     $('#bidmodal').modal('hide');
                      $('.job_work_edit_'+work_id+' .img_work_exp a').remove();
                      $('.job_work_edit_'+work_id+' .img_work_exp img').remove();
                      $('.job_work_edit_'+work_id+'  #work_certi').remove();

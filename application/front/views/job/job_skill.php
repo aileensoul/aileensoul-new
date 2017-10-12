@@ -95,6 +95,19 @@
       </section>
       <!-- END CONTAINER -->
 
+         <!-- Bid-modal  -->
+      <div class="modal fade message-box biderror custom-message in" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content message">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+
 <footer>        
 <?php echo $footer;  ?>
 </footer>

@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css'); ?>">
        
-        <link rel="stylesheet" href="css/jquery.fancybox.css">
+       <!--  <link rel="stylesheet" href="css/jquery.fancybox.css"> -->
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -241,7 +241,7 @@
         
           
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
+       <!--  <script type="text/javascript" src="<?php// echo base_url('assets/js/jquery.fancybox.js'); ?>"></script> -->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
        
         <script>
