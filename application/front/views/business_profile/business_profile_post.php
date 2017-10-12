@@ -1,5 +1,6 @@
 <?php
 $s3 = new S3(awsAccessKey, awsSecretKey);
+$mobile_agent = $this->agent->mobile;
 ?>
 <!DOCTYPE html>
 <html>
@@ -135,6 +136,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                             </div>
                             <div class="business-all-post">
+                                <?php
+                                if($mobile_agent){
+                                ?>
                                 <div class="mob-add">
                                     <div class="fw text-center pt10 pb5">
                                         <script type="text/javascript" language="javascript">
@@ -145,6 +149,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
                                     </div>
                                 </div>
+                                <?php } ?>
                                 <div class="nofoundpost"> 
                                 </div>
                             </div>
