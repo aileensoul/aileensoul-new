@@ -1492,6 +1492,7 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;}
+.date-dropdowns label{margin-top:40px !important;}
 
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
