@@ -276,16 +276,20 @@
             </div>
         </div>
         <?php echo $footer; ?>
-        <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver=' . time()); ?>"></script>-->
-        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver=' . time());   ?>"></script>-->
+        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());    ?>"></script>-->
+        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());    ?>"></script>-->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script>
                                                             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/photos.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php if (IS_JS_MINIFY == '0') { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/photos.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+        <?php } else { ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/photos.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
     </body>
 </html>

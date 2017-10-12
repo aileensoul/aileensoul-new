@@ -27,7 +27,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="reactivate_btn_n">
                             <a href="<?php echo base_url('dashboard'); ?>">No</a>
                         </div>
-                        <script src="<?php echo base_url('assets/js/fb_login.js?ver=' . time()); ?>"></script>
                     </div>
                 </center>
             </div>

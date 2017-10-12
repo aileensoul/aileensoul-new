@@ -129,16 +129,18 @@
         <?php echo $header; ?>
         <!-- END HEADER -->
 
-        <?php if ($is_business) {
+        <?php
+        if ($is_business) {
             echo $business_header2_border;
-        } ?>
+        }
+        ?>
         <section class="search-page">
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
                     <div class="">
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
-<?php echo $business_left; ?>
+                                <?php echo $business_left; ?>
                             </div>
                         </div>
                         <div class="col-md-6 search-post-box col-sm-12 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
@@ -197,9 +199,9 @@
 </div>
 <!-- Model Popup Close -->
 <footer>
-<?php echo $footer ?>
+    <?php echo $footer ?>
 </footer>
-<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time()); ?>"></script>-->
+<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());   ?>"></script>-->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.highlite.js?ver=' . time()); ?>">
 </script>
@@ -213,7 +215,11 @@
     var keyword = '<?php echo $keyword; ?>';
     var keyword1 = '<?php echo $keyword1; ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
-<script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+<?php if (IS_JS_MINIFY == '0') { ?>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
+    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+<?php } else { ?>
+    <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/search.min.js?ver=' . time()); ?>"></script>
+<?php } ?>
 </body>
 </html>

@@ -83,10 +83,13 @@
                 </div>
         </section>
         <footer>
-        <?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
     </body>
 </html>
 <!-- script for business autofill -->
-
+<?php if (IS_JS_MINIFY == '0') { ?>
 <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+<?php } else { ?>
+<script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/contactperson.min.js?ver=' . time()); ?>"></script>
+<?php } ?>
