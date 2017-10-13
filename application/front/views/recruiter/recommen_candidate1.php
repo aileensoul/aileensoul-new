@@ -2,9 +2,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
-       
-
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; 

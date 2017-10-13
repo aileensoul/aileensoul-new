@@ -5,7 +5,7 @@
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
-    </head> <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/profiles/common/mobile.css') ;?>" />
+    </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
         <?php //if ($recdata[0]['re_step'] == 3) { ?>
