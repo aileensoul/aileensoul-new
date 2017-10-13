@@ -22,7 +22,7 @@
 .message1 {
     text-align: center;
 }
-#field{background: #1b8ab9; color: white; margin-top: 10px;}
+#field{background: #fff; color: #1b8ab9; margin-top: 20px;}
 .saved,
 .applied {
     color: #fff !important;
@@ -1487,11 +1487,11 @@ label.cameraButton input[accept*="camera"] {
 .mob-add{display:none;}
 .custom-message .message{padding:20px 30px;;}
 .custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;} 
-.custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
+.custom-message .modal-content .btn:hover{background:#1b8ab9 !important; color:#fff !important;}
 input[type=number] {
     -moz-appearance:textfield;
 }
-.cancel-result:hover{color: #fff;background-color: #1b8ab9;}
+.cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color: #1b8ab9;}
 .date-dropdowns label{margin-top:40px !important;}
 
 /***  media query  ***/
