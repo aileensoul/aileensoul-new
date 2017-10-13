@@ -307,7 +307,9 @@ $this->minify->js($bus_video_common);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_video_common_footer.min.js');
 
 
+//RECRUITER CHNAGES START
 
+//RECRUITER CHANGES END
 
 
 
