@@ -438,7 +438,7 @@
         </script>
         <!-- FIELD VALIDATION JS END -->
         <?php
-        if (IS_REC_JS_MINIFY == '0') {
+        if (IS_REC_JS_MINIFY == '0') {  
             ?>
    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/add_post.js'); ?>"></script>
