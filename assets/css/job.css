@@ -474,7 +474,7 @@ li.fr a {
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
     font-size: 20px;
-    padding: 16px 0;
+    padding: 20px 0;
     text-align: center;
     text-transform: uppercase;
 }
@@ -621,7 +621,7 @@ li.fr a {
     line-height: 4;
 }
 .a-inlineBlock .data_img_2 .post-img-profile {
-    line-height: 2;
+    line-height: 1;
 }
 .notac_a {
     text-align: center;
@@ -2163,6 +2163,7 @@ label.cameraButton input[accept*="camera"] {
 .biderror .modal-body span{padding: 0;margin:0;}
 .modal-content .message span#field_error_stream{width: 100%;float: left!important;text-align: right;}
 .modal-content .message1 span#field_error{width: 100%;float: left;text-align: right;}
+#jobseeker_regform label.error{position:relative; width:100%; float:left;}
 
 /***  media query  ***/
 

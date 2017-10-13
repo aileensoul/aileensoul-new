@@ -106,8 +106,8 @@ echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/dashboard.min.js'
 
 // BUSINESS PROFILE MANAGE POST 
 $profile_post = array(
-    '../js_min/webpage/business-profile/common.min.js',
     'webpage/business-profile/home.js',
+    '../js_min/webpage/business-profile/common.min.js',
 );
 
 $this->minify->js($profile_post);

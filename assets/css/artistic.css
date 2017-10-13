@@ -5332,7 +5332,7 @@ div .comment {
     .profile-left {
         margin-left: 5px;
     }
-    .business-profile-right .bui-menu-profile{min-height:75px;}
+    .other-profile-menu .business-profile-right .bui-menu-profile{min-height:75px;}
     .bui-menu-profile {
         width: 70%;
         overflow: hidden;
