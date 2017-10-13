@@ -9,7 +9,7 @@
             type: "POST",
             dataType: 'json',
             beforeSend: function () {
-                $(".as").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".as").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
             },
             success: function (data) {
                 $('.as').html(data.return_html);
@@ -27,6 +27,13 @@
         });
 
         $('body').on('click', function (e) {
+            if (!$(e.target).closest('.dropbtn_common').length)
+            {
+                $('.dropbtn_common').next().removeClass('show');
+            }
+
+        });
+        $(window).on('click', function (e) {
             if (!$(e.target).closest('.dropbtn_common').length)
             {
                 $('.dropbtn_common').next().removeClass('show');
