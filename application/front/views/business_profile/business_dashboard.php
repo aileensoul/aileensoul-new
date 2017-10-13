@@ -6,7 +6,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <?php if (IS_CSS_MINIFY == '0') { ?>
+        <?php if (IS_BUSINESS_CSS_MINIFY == '0') { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/dragdrop/fileinput.css?ver=' . time()); ?>" />
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
@@ -1068,7 +1068,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
             });
         </script>
-        <?php if (IS_JS_MINIFY == '0') { ?>
+        <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>

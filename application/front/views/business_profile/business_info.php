@@ -4,7 +4,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
         <?php
-        if (IS_CSS_MINIFY == '0') {
+        if (IS_BUSINESS_CSS_MINIFY == '0') {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
@@ -223,7 +223,7 @@
             var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
         <?php
-        if (IS_JS_MINIFY == '0') {
+        if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
