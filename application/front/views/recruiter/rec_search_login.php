@@ -637,17 +637,11 @@
         <!-- register -->
 
 <!-- script for skill textbox automatic start-->
-<script src="<?php echo base_url('assets/js/jquery.wallform.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>
 
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
 
-<!--<script src="<?php// echo base_url('assets/js/jquery.wallform.js'); ?>"></script>
-   <script src="<?php //echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>
-    <script src="<?php //echo base_url('assets/js/demo/jquery-1.9.1.js'); ?>"></script>
-    <script src="<?php //echo base_url('assets/js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script src="<?php //echo base_url('assets/js/bootstrap.min.js'); ?>"></script>-->
 
 
  <script>

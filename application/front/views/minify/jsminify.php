@@ -249,7 +249,7 @@ $this->minify->js($bus_profile_post_common);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_profile_post_common_footer.min.js');
 
 
-// BUSINESS dashboard COMMON FOOTER
+// BUSINESS DASHBOARD COMMON FOOTER
 $bus_dashboard_common = array(
     'bootstrap.min.js',
     'jquery.validate.min.js',
@@ -308,6 +308,95 @@ echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_video_common_
 
 
 //RECRUITER CHNAGES START
+
+// RECRUITER BASIC INFO
+$rec_basic_info = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/basic_info.js',
+);
+$this->minify->js($rec_basic_info);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_basic_info.min.js');
+
+
+// RECRUITER COMPANY INFO
+$rec_comp_info = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/company_info.js',
+);
+$this->minify->js($rec_comp_info);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_company_info.min.js');
+
+// RECRUITER ADD POST
+$rec_add_post = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/add_post.js',
+);
+$this->minify->js($rec_add_post);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_add_post.min.js');
+
+// RECRUITER EDIT POST
+$rec_edit_post = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/edit_post.js',
+);
+$this->minify->js($rec_edit_post);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_edit_post.min.js');
+
+
+// RECRUITER POST
+$rec_post = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/rec_post.js',
+);
+$this->minify->js($rec_post);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_post.min.js');
+
+// RECRUITER PROFILE
+$rec_profile = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/rec_profile.js',
+);
+$this->minify->js($rec_profile);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_profile.min.js');
+
+// RECRUITER SEARCH LOGIN
+$rec_search_login = array(
+    'webpage/recruiter/rec_search_login.js',
+);
+$this->minify->js($rec_search_login);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_search_login.min.js');
+
+// RECOMMEN CANDIDATE
+$recommen_candidate = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/recommen_candidate.js',
+);
+$this->minify->js($recommen_candidate);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/recommen_candidate.min.js');
+
+// RECOMMEN CANDIDATE1
+$rec_search = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/rec_search.js',
+);
+$this->minify->js($rec_search);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_search.min.js');
+
+// RECOMMEN CANDIDATE1
+$rec_search = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/rec_search.js',
+);
+$this->minify->js($rec_search);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/rec_search.min.js');
+
+// SAVED CANDIDATE
+$save_candidate = array(
+    'webpage/recruiter/search.js',
+    'webpage/recruiter/saved_candidate.js',
+);
+$this->minify->js($save_candidate);
+echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/saved_candidate.min.js');
 
 //RECRUITER CHANGES END
 
