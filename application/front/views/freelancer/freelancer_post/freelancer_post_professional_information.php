@@ -149,7 +149,7 @@
 <?php echo form_error('skill_description'); ?>
                                 </fieldset>
                                 <fieldset  class="" <?php if ($experience_year) { ?> class="error-msg" <?php } ?>>
-                                    <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="4" id="experience_year" class="experience_year col-md-5 day" style="margin-right: 5px;">
+                                    <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="4" id="experience_year" class="experience_year col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
 
                                         <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
                                         <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 Year</option>
@@ -177,7 +177,7 @@
                                     </select>
 
 
-                                    <select name="experience_month" tabindex="5" id="experience_month" placeholder="Month" class="experience_month col-md-5 day" style="margin-right: 5px;">
+                                    <select name="experience_month" tabindex="5" id="experience_month" placeholder="Month" class="experience_month col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
                                         <option value="" selected option disabled><?php echo $this->lang->line("month"); ?></option>
                                         <option value="0 month"  <?php if ($experience_month1 == "0 month") echo 'selected'; ?>>0 Month</option>
                                         <option value="1 month"  <?php if ($experience_month1 == "1 month") echo 'selected'; ?>>1 Month</option>
@@ -227,8 +227,7 @@
         <!-- Model Popup Close -->
 
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate1.15.0..min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/additional-methods1.15.0.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 
 
         <script>

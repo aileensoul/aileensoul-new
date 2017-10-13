@@ -15,19 +15,16 @@ $(document).ready(function () {
 
         ignore: '*:not([name])',
         ignore: ":hidden",
-        groups: {
-            experience_year: "experience_year experience_month"
-        },
-        errorPlacement: function (error, element) {
-            if (element.attr('name') === 'experience_year' || element.attr('name') === 'experience_month')
-                error.insertAfter('#experience_month');
-        },
+//        groups: {
+//            experience_year: "experience_year experience_month"
+//        },
+//        errorPlacement: function (error, element) {
+//            if (element.attr('name') === 'experience_year' || element.attr('name') === 'experience_month')
+//                error.insertAfter('#experience_month');
+//        },
         rules: {
 
             field: {
-                required: true
-            },
-            area: {
                 required: true
             },
 
@@ -39,15 +36,15 @@ $(document).ready(function () {
             skill_description: {
                 required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-            },
-            experience_year: {
-                require_from_group: [1, ".day"]
-            },
-
-            experience_month: {
-                require_from_group: [1, ".day"]
-
             }
+//            experience_year: {
+//                require_from_group: [1, ".day"]
+//            },
+//
+//            experience_month: {
+//                require_from_group: [1, ".day"]
+//
+//            }
 
         },
 
@@ -57,11 +54,7 @@ $(document).ready(function () {
                 required: "This field is required."
             },
 
-            area: {
-                required: "Area is required."
-            },
-
-            'skills[]': {
+            skills: {
                 required: "You must either fill out 'skills' or 'Other Skills'"
             },
 
@@ -249,6 +242,15 @@ $(document).on('change', '.field_other', function (event) {
                             $('#other_field').val('');
                             $("#other_field").removeClass("keyskill_border_active");
                             $("#field_error").removeClass("error");
+                            var ss = document.querySelectorAll("label[for]");
+                            var i;
+                            for (i = 0; i < ss.length; i++) {
+                                var zz = ss[i].getAttribute('for');
+                                if (zz == 'fields_req') {
+                                    ss[i].remove();
+                                }
+                            }
+                            $("#fields_req").removeClass("error");
                             $('.field_other').html(response.select);
 //                            $.fancybox.close();
 
@@ -270,3 +272,35 @@ function remove_validation() {
 
 }
 //SCRIPT FOR ADD OTHER FILED END
+
+$("#freelancer_post_professional").submit(function () {
+    $('#experience_error').remove();
+    $('.experience_month').removeClass('error');
+    $('.experience_year').removeClass('error');
+
+    var year = $('.experience_year').val();
+    var month = $('.experience_month').val();
+
+    if (year == null && month == null) {
+        alert(1111);
+        $('.experience_year').addClass('error');
+        $('.experience_month').addClass('error');
+        $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
+        return false;
+    }else{
+        return true;
+    }
+//    $('.experience_month').append('<label for="year-month" class="year-month" style="display: block;">Experiance is required.</label>');
+
+});
+function check_yearmonth() {
+    var year = $('.experience_year').val();
+    var month = $('.experience_month').val();
+    if (year != null || month != null) {
+        $('#experience_error').remove();
+        $('.experience_month').removeClass('error');
+        $('.experience_year').removeClass('error');
+        return true;
+    }
+
+}
