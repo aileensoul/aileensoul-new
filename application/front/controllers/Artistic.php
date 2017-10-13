@@ -14681,28 +14681,21 @@ public function get_artistic_name($id=''){
 
 
     public function ajax_artistic_search() {
-
-        
+       
    $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
-
         $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
-       $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        
+       $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = ''); 
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
             redirect('artistic/art_post', refresh);     
         }
         $searchskill = strtolower(trim($this->input->get('skills')));
         $this->data['keyword'] = $searchskill;
-
         $search_place = trim($this->input->get('searchplace'));
 //insert search keyword into data base code start
 
         $cache_time = $this->db->select('city_id')->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
         $this->data['keyword1'] = $search_place;
-
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -14740,22 +14733,23 @@ public function get_artistic_name($id=''){
 
             // echo $search_condition;
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           // echo "<pre>"; print_r($othercom); die();
+          
 
-            foreach ($othercom as $keydata => $valuedata) {
+           foreach ($othercom as $keydata => $valuedata) {
 
                 $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
                 //echo $concatedata; 
 
-               if($valuedata['art_name'] == $searchskill || $valuedata['art_lastname'] == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
+               if(strtolower($valuedata['art_name']) == $searchskill || strtolower($valuedata['art_lastname']) == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
                {
                 $varfoune[] = $valuedata; 
                }else{
                 $varfoune2[] = $valuedata; 
                }
             }
-            
+           
             $otherdata = array_merge((array) $varfoune, (array) $varfoune2);
+
             foreach ($otherdata as $postdata) { 
                
             $join_str[0]['table'] = 'art_reg';
@@ -14797,6 +14791,8 @@ public function get_artistic_name($id=''){
             $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
             $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or art_city LIKE '%$cache_time%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%')";
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            //echo "<pre>"; print_r($otherdata); die();
              
             foreach ($othercom as $keydata => $valuedata) {
 
