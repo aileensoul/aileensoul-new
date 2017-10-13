@@ -35,7 +35,8 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                <div class="seeall">
                   <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
                </div>
-               <div class="profile-boxProfileCard_follow fw  module">     
+               <div class="profile-boxProfileCard_follow fw  module">
+                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>     
                </div>
              
             </div>

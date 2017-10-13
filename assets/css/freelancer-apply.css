@@ -1192,6 +1192,7 @@ fieldset .add_post_btns:hover {
 .profile-text {
     color: #8c8c8c;
     font-size: 18px;
+    padding-top: 0;
 }
 .profile-text p {
     font-weight: 400 !important;
