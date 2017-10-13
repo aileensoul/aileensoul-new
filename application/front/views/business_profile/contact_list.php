@@ -306,7 +306,7 @@
         <?php if (IS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <?php } else { ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/contact_list.min.js?ver=' . time()); ?>"></script>
+                 <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>

@@ -695,7 +695,7 @@
                         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/bus_search_login.js?ver=' . time()); ?>"></script>
                     <?php } else {
                         ?>
-                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/bus_search_login.min.js?ver=' . time()); ?>"></script>            
+                        <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/bus_search_login.min.js?ver=' . time()); ?>"></script>
                     <?php } ?>
                     </body>
                     </html>
