@@ -18,6 +18,8 @@ class Dashboard extends MY_Controller {
 
     public function index($id = " ") {
                $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+               $this->data['footer'] = $this->load->view('footer', $this->data, TRUE);
+
         $this->load->library('form_validation');
         $userid = $this->session->userdata('aileenuser');
         $userdata = $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());

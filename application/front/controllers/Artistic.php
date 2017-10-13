@@ -10854,6 +10854,8 @@ public function art_home_three_user_list() {
 
 
                         if (IMAGEPATHFROM == 'upload') {
+
+                            if($userlist['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -10861,6 +10863,10 @@ public function art_home_three_user_list() {
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
                                     }
+                                  }else{
+                                     $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                  }
                                 } else{
 
                         $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
