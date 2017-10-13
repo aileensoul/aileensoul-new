@@ -1563,7 +1563,8 @@ select:focus{ outline: none; }
 	}
 .no-login .title h1{font-size:28px; margin-bottom:0;}
 .no-login .login .form-group input{height:36px;}
-	
+.cover footer{background:#fff;}
+body.cover{padding-bottom:60px;}
 
 
 /***  media query  ***/
@@ -1656,7 +1657,9 @@ select:focus{ outline: none; }
 }
 
 @media screen and (max-width: 767px) {
-	   .banner-box .upload-camera {
+	body.cover{padding-bottom:90px;}
+	footer ul li{padding-left:0;}
+	.banner-box .upload-camera {
 		height: 34px;
 		width: 41px;
 	}
