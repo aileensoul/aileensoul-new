@@ -398,6 +398,27 @@ $save_candidate = array(
 $this->minify->js($save_candidate);
 echo $this->minify->deploy_js(FALSE, 'webpage/recruiter/saved_candidate.min.js');
 
+//VALIDATE BOOTSTRAP DROPDOWN
+$val_crop_boot_drop = array(
+    'jquery.validate.min.js',
+    'bootstrap.min.js',
+    'jquery.date-dropdowns.js',
+);
+$this->minify->js($val_boot_drop);
+echo $this->minify->deploy_js(FALSE, 'val_boot_drop.min.js');
+
+// CROPP VALIDATE BOOTSTRAP DROPDOWN
+$val_crop_boot_drop = array(
+    'jquery.validate.min.js',
+    'croppie.js',
+    'bootstrap.min.js',
+    'jquery.date-dropdowns.js',
+);
+$this->minify->js($val_crop_boot_drop);
+echo $this->minify->deploy_js(FALSE, 'val_crop_boot_drop.min.js');
+
+
+
 //RECRUITER CHANGES END
 
 

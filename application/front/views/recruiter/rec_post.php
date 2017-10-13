@@ -286,14 +286,10 @@ if ($returnpage == '') {
 
 
         <!-- FIELD VALIDATION JS START -->
-
-
-        
           
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-        <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>-->
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
