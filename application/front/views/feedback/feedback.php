@@ -3,7 +3,7 @@
     <head>
         <title>Feedback - Share valuable thoughts with Aileensoul.com</title>
         <meta name="description" content="Feel free to share your views and thoughts about Aileensoul.com services." />
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <?php

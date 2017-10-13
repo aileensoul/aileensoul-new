@@ -10611,19 +10611,22 @@ No Contacts Available.
 //conatct request count start
 
     public function contact_count() {
-        $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
+        
+        $contition_array = array('not_read' => 2);
+        $search_condition = "((contact_to_id = '$userid' AND status = 'pending') OR (contact_from_id = '$userid' AND status = 'confirm'))";
+        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'contact_id', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+        
+//        $contition_array = array('contact_to_id' => $userid, 'status' => 'pending', 'not_read' => '2');
+//        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//
+//        $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm', 'not_read' => '2');
+//        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//
+//        $unique_user = array_merge($contactperson_req, $contactperson_con);
+//        $contactcount = count($unique_user);
 
-        $contition_array = array('contact_to_id' => $userid, 'status' => 'pending', 'not_read' => '2');
-        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm', 'not_read' => '2');
-        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $unique_user = array_merge($contactperson_req, $contactperson_con);
-
-        $contactcount = count($unique_user);
-
+        $contactcount = $contactperson[0]['total'];
         echo $contactcount;
     }
 
