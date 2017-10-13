@@ -49,7 +49,7 @@ function freelancerwork_save(pagenum)
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }
@@ -123,7 +123,7 @@ function remove_post(abc)
             $('#' + 'postdata' + abc).parent().removeClass();
             var numItems = $('.contact-frnd-post .job-contact-frnd').length;
             if (numItems == '0') {
-                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text"> No Saved Projects Found.</div></div>';
+                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="/assets/img/free-no1.png"></div><div class="art_no_post_text"> No Saved Projects Found.</div></div>';
                 $('.contact-frnd-post').html(nodataHtml);
             }
         }
