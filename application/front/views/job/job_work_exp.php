@@ -267,7 +267,7 @@
                                                     else {
                                                        ?>
                                                 <!--clone div start-->              
-                                                <div id="input1" style="margin-bottom:4px;" class="clonedInput">
+                                                <div id="input1" style="margin-bottom:4px;position: relative;" class="clonedInput">
                                                    <label>Experience:<span class="red">*</span></label>
                                                    <select style="width:45%; float: left; margin-right: 43px;" name="experience_year[]" id="experience_year" class="experience_year keyskil" onchange="expyear_change();">
                                                       <option value="" selected option disabled>Year</option>

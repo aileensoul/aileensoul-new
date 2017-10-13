@@ -304,7 +304,7 @@ li.fr a {
 .fancybox-close-small{width: auto!important; height: auto!important;}
 .message a.mesg_link:hover{color:#fff; background:#156f95;}
 .message button:hover{color:#fff; border:none;} 
-.message1 #univer1{border:1px solid #1b8ab9; margin-top:22px;}
+.message1 #univer1{border:1px solid #1b8ab9; margin-top:20px;}
 .message1 #univer1:hover{background:#1b8ab9; color:#fff;}
 .message1 h2{font-size: 20px; text-align: left;}
 .message1{text-align: center!important;}
@@ -444,9 +444,9 @@ li.fr a {
     height: 100%;
 }
 .message #field{
-    background: #1b8ab9; 
-    color: white; 
-    margin-top: 10px;
+    background: #fff; 
+    color: #1b8ab9; 
+    margin-top: 20px;
  }
 .data_img_2 div {
     color: #fff;
@@ -1345,9 +1345,9 @@ label.cameraButton input[accept*="camera"] {
     font-size: inherit;
 }
 #univer {
-    background: #1b8ab9;
-    color: white;
-    margin-top: 10px;
+    background: #fff;
+    color: #1b8ab9;
+    margin-top: 20px;
 }
 .editable_text {
     min-height: 40px;
@@ -1481,8 +1481,8 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .modal-content h2{font-size:20px; line-height:30px;} 
 /*.custom-message .modal-content input{margin-bottom:15px;} */
 /*.custom-message .modal-content select{margin-bottom:15px;} */
-.custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;} 
-.custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
+.custom-message .modal-content .btn{background:#fff; color:#1b8ab9; border:1px solid #1b8ab9; padding:10px 20px;margin-top: 20px;} 
+.custom-message .modal-content .btn:hover{background:#1b8ab9 !important; color:#fff !important;}
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color: #1b8ab9;}
 .date-dropdowns .error{margin-top:40px;}
 
@@ -1798,7 +1798,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 0px;
     }
     .profile-text a {
-        font-size: 16px !important;
+        font-size: 18px !important;
     }
     .pro-fw {
         width: 100%;
