@@ -89,10 +89,12 @@ function portfolio_form_submit(event){
               document.getElementById("bestofmine").value = "";
               document.getElementById("submit").style.cursor = "default";
                document.getElementById("submit").onclick = '';                    
-                       $(".portfolioloader").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                       //$(".portfolioloader").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                       //document.getElementById("loader").display = "block";
+                       document.getElementById('loader').style.display = 'block';
                     },
             success: function (response) {
-                $('.loader').remove();
+                $('#loader').hide();
               if(art_step == 4){ 
                  //window.location= "<?php echo base_url() ?>artistic/artistic_profile";
                  window.location= base_url + "artistic/details"; 

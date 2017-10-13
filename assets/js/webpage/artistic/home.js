@@ -227,7 +227,7 @@ function followuser(clicked_id)
                $('.' + 'fr' + clicked_id).html(data.follow);
                $('#countfollow').html(data.count);
                $('ul.home_three_follow_ul').append(data.third_user);
-               $.when($('.fad' + clicked_id).fadeOut(2500))
+               $.when($('.fad' + clicked_id).fadeOut(2000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
                         var numberPost = $('[class^="follow_box_ul_li"]').length;
@@ -256,7 +256,7 @@ function followuser(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('ul.home_three_follow_ul').append(data);
-            $.when($('.fad' + clicked_id).fadeOut(2500))
+            $.when($('.fad' + clicked_id).fadeOut(1500))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
                         var numberPost = $('[class^="follow_box_ul_li"]').length;
@@ -359,7 +359,8 @@ var isProcessing = false;
                     $('#loader').hide();
                     },
                     success: function (data) {
-                        $('.fw').hide();
+                        //$('.fw').hide();
+                         $('#loader').hide();
                         $('.art-all-post').append(data);
 
                         // second header class add for scroll
