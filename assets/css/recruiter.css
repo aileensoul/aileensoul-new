@@ -878,7 +878,7 @@ label.cameraButton input[accept*="camera"] {
 .profile-job-post-detail .profile-job-post-title .button.invited{float:left; background:#1b8ab9; color:#fff;}
 .job-contact-frnd .add-post-button .btn-3{margin: 10px;}
 #basicinfo  label.error{position: absolute; margin-top: 5px; right: 0; margin-bottom: 0px; margin-right: 0; text-align: right;}
-#indus{border:1px solid #1b8ab9; margin-top:10px; }
+#indus{border:1px solid #1b8ab9; margin-top:20px; }
 #indus:hover{background:#1b8ab9; color:#fff;}
 .job_edit_menu {
     width: 22.5% !important;
@@ -943,6 +943,7 @@ label.cameraButton input[accept*="camera"] {
 .mob-add{display:none;}
 
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color:#1B8AB9 !important;}
+.modal-content .message span#field_error{width: 100%;float: left!important;text-align: right;}
 
 /***  media query  ***/
 @media screen and (max-width: 1279px){
