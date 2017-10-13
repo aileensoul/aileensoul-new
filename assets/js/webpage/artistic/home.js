@@ -387,10 +387,12 @@ var isProcessing = false;
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+
+                      $('#loader').show(); 
+                        //$(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) { //alert(data);
-                        $('.loader').remove();
+                        $('#loader').hide();
                         $('.profile-boxProfileCard_follow').html(data);
                          var liCount = $(data).find("li.follow_box_ul_li").length;
             
