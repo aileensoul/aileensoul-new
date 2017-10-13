@@ -118,7 +118,7 @@
                               <?php echo form_error('city'); ?>
                            </fieldset>
                            <fieldset <?php if ($pincode_error) { ?> class="error-msg" <?php } ?>>
-                              <label>Pincode :<span class="red">*</span></label>
+                              <label>Pincode :</label>
                               <input type="text" tabindex="10" name="pincode" id="pincode" placeholder="Enter Pincode" value="<?php
                                  if ($pincode1) {
                                      echo $pincode1;
