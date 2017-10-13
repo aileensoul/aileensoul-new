@@ -12,6 +12,28 @@ $this->minify->css(array('common-style.css',
 ));
 echo $this->minify->deploy_css(FALSE, 'common-header.min.css');
 // COMMON HEAD CSS MINIFY END
+// BUSINESS PROFILE START
+// BUSINESS_INFO START   
+$bus_info = array('1.10.3.jquery-ui.css',
+    'business.css',
+);
+$this->minify->css($bus_info);
+echo $this->minify->deploy_css(FALSE, 'business_profile/business-common.min.css');
+// BUSINESS_INFO END 
+
+// BUSINESS_PROFILE_POST START   
+$bus_profile_post = array('../dragdrop/fileinput.css',
+    '../dragdrop/themes/explorer/theme.css',
+    '../css_min/business_profile/business-common.min.css',
+    '../as-videoplayer/build/mediaelementplayer.css',
+);
+$this->minify->css($bus_profile_post);
+echo $this->minify->deploy_css(FALSE, 'business_profile/business_profile.min.css');
+// BUSINESS_PROFILE_POST END 
+
+// BUSINESS PROFILE END   
+
+
 
 //RECRUITER PROFILE CSS START
 
