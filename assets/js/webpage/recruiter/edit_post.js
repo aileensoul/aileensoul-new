@@ -780,7 +780,7 @@ $(document).on('change', '#industry', function (event) {
        
             item.val('');
 
-            $('.biderror .mes').html('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
+            $('.biderror .mes').html('<div class="message"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
             $('#bidmodal').modal('show');
             //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
    
@@ -815,7 +815,8 @@ var x = $.trim(document.getElementById("other_indu").value);
                               }  
                               else
                               {
-                                   $.fancybox.close();
+                                   //$.fancybox.close();
+                                   $('#bidmodal').modal('hide');
                                    $('#industry').html(response);
                               }
                           }
@@ -866,7 +867,7 @@ $(document).ready(function () {
  $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         $('#bidmodal').modal('hide');
-        $.fancybox.close();
+       // $.fancybox.close();
         $( "#dropdown-content_hover" ).hide();
     }
    });  
