@@ -1431,8 +1431,10 @@ class Recruiter extends MY_Controller {
         }
         $jobdata = array_reduce($jobdata, 'array_merge', array());
         $candidatejob = $this->data['candidatejob'] = $jobdata;
- $candidatejob = array_unique($candidatejob, SORT_REGULAR);
-//echo '<pre>'; print_r($candidatejob); die();
+// $candidatejob = array_unique($candidatejob, SORT_REGULAR);
+$tempArr = array_unique(array_column($candidatejob, 'iduser'));
+$candidatejob = array_intersect_key($candidatejob, $tempArr); 
+
         $postdata = '';
 
         $candidatejob1 = array_slice($candidatejob, $start, $perpage);
@@ -1884,7 +1886,7 @@ class Recruiter extends MY_Controller {
         } else {
             $postdata .= '<div class="art-img-nn">';
             $postdata .= '    <div class="art_no_post_img">';
-            $postdata .= '<img src="' . base_url() . 'img/job-no1.png">';
+            $postdata .= '<img src="' . base_url() . 'assets/img/job-no1.png">';
 
             $postdata .= '</div>';
             $postdata .= '<div class="art_no_post_text">';
@@ -2736,7 +2738,10 @@ class Recruiter extends MY_Controller {
         }
 
         $postdetail = $this->data['postdetail'] = $unique;
- $postdetail = array_unique($postdetail, SORT_REGULAR);
+ //$postdetail = array_unique($postdetail, SORT_REGULAR);
+ $tempArr = array_unique(array_column($postdetail, 'iduser'));
+$postdetail = array_intersect_key($postdetail, $tempArr); 
+
  //echo '<pre>'; print_r($unique); die();
         $searchdata1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
@@ -3684,7 +3689,7 @@ class Recruiter extends MY_Controller {
             $return_html .= '<div class="art-img-nn">
                                         <div class="art_no_post_img">
 
-                                            <img src="' . base_url() . 'img/job-no1.png">
+                                            <img src="' . base_url() . 'assets/img/job-no1.png">
 
                                         </div>
                                         <div class="art_no_post_text">
@@ -4608,28 +4613,5 @@ class Recruiter extends MY_Controller {
     }
 
 //add other_industry into database End 
-//DELETE LOGO START
-public function delete_logo()
-{
-        $id=$_POST['id'];
-        $logo= $_POST['logo'];
-        
-           $data = array(
-                'comp_logo' => ''
-                
-            );
 
-           $updatedata = $this->common->update_data($data, 'recruiter','rec_id',$id);
-    
-        //FOR DELETE IMAGE AND PDF IN FOLDER START
-            $path='uploads/recruiter_profile/main/'.$logo;
-            $path1='uploads/recruiter_profile/thumbs/'.$logo;
-           
-            unlink($path); 
-            unlink($path1); 
-        //FOR DELETE IMAGE AND PDF IN FOLDER END
-            echo 1;             
-            die();
-}
-//DELETE LOGO END
 }
