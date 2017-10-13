@@ -19,7 +19,7 @@
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
                                             <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
-                                               href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>"
+                                               href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"
                                                tabindex="-1"
                                                aria-hidden="true"
                                                rel="noopener">
