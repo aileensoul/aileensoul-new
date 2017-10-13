@@ -895,7 +895,7 @@ label.cameraButton input[accept*="camera"] {
 .fancybox-slide .message h2{font-size:27px;}
 
 .keyskill_border_active{border: 1px solid red !important; border-radius: 2px;}
-.keyskil{width:93% !important;} 
+/*.keyskil{width:93% !important;} */
 
 /*** new add form design  ***/
 .custom-form h3{background:none; color:#1b8ab9; font-size:25px; font-weight:bold; text-align:center;}
