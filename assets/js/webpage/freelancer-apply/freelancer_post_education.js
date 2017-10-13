@@ -48,6 +48,8 @@ $(".alert").delay(3200).fadeOut(300);
 //FLASH MESSAGE SCRIPT END
 //OTHER UNIVERSITY ADD START
 $(document).on('change', '.university_1', function (event) {
+    $("#other_uni").removeClass("keyskill_border_active");
+    $('#uni_error').remove();
     var item = $(this);
     var uni = (item.val());
     if (uni == 463)
@@ -143,7 +145,10 @@ $(document).ready(function () {
 //FORM FILL UP VALIDATION END
 
 $(document).on('change', '#degree', function (event) {
-
+    $("#other_degree").removeClass("keyskill_border_active");
+    $("#other_stream").removeClass("keyskill_border_active");
+    $('#degree_error').remove();
+    $('#stream_error').remove();
     var item = $(this);
     var degree = (item.val());
 
@@ -225,6 +230,8 @@ $(document).on('change', '#degree', function (event) {
     }
 });
 $(document).on('change', '#other_stream', function (event) {
+    $("#other_degree1").removeClass("keyskill_border_active");
+    $('#field_error').remove();
     var item1 = $(this);
     var other_stream = (item1.val());
 
