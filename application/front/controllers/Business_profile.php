@@ -68,6 +68,18 @@ class Business_profile extends MY_Controller {
         }
     }
 
+    public function minify_css() {
+        $this->load->library('minify');
+        $this->load->helper('url');
+        $this->load->view('business_profile/minify_css');
+    }
+
+    public function minify_js() {
+        $this->load->library('minify');
+        $this->load->helper('url');
+        $this->load->view('business_profile/minify_js');
+    }
+
     public function ajax_data() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
 //dependentacy industrial and sub industriyal start
@@ -4274,7 +4286,7 @@ Your browser does not support the audio tag.
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'business_step' => 4, 'status' => 1 , 'is_deleted' => 0);
+            $contition_array = array('business_slug' => $id, 'business_step' => 4, 'status' => 1, 'is_deleted' => 0);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -13625,7 +13637,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[4]['file_name'] . '" type = "audio/mp3">';
-               // $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
+                // $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
