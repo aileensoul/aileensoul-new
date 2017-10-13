@@ -46,49 +46,69 @@ $bus_userlist = array('webpage/business-profile/userlist.js');
 $bus_videos = array('webpage/business-profile/videos.js');
 
 $this->minify->js($bus_audio);
-$this->minify->js($bus_bus_search_login);
-$this->minify->js($bus_common);
-$this->minify->js($bus_contact_info);
-$this->minify->js($bus_contacts);
-$this->minify->js($bus_dashboard);
-$this->minify->js($bus_description);
-$this->minify->js($bus_details);
-$this->minify->js($bus_edit_profile);
-$this->minify->js($bus_followers);
-$this->minify->js($bus_following);
-$this->minify->js($bus_home);
-$this->minify->js($bus_image);
-$this->minify->js($bus_information);
-$this->minify->js($bus_pdf);
-$this->minify->js($bus_photos);
-$this->minify->js($bus_post_detail);
-$this->minify->js($bus_search);
-$this->minify->js($bus_user_dashboard);
-$this->minify->js($bus_user_dashboard_1);
-$this->minify->js($bus_userlist);
-$this->minify->js($bus_videos);
-
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/audio.min.js');
+
+$this->minify->js($bus_bus_search_login);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/bus_search_login.min.js');
+
+$this->minify->js($bus_common);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/common.min.js');
+
+$this->minify->js($bus_contact_info);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/contact_info.min.js');
+
+$this->minify->js($bus_contacts);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/contacts.min.js');
+
+$this->minify->js($bus_dashboard);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/dashboard.min.js');
+
+$this->minify->js($bus_description);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/description.min.js');
+
+$this->minify->js($bus_details);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/details.min.js');
+
+$this->minify->js($bus_edit_profile);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/edit_profile.min.js');
+
+$this->minify->js($bus_followers);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/followers.min.js');
+
+$this->minify->js($bus_following);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/following.min.js');
+
+$this->minify->js($bus_home);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/home.min.js');
+
+$this->minify->js($bus_image);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/image.min.js');
+
+$this->minify->js($bus_information);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/information.min.js');
+
+$this->minify->js($bus_pdf);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/pdf.min.js');
+
+$this->minify->js($bus_photos);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/photos.min.js');
+
+$this->minify->js($bus_post_detail);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/post_detail.min.js');
+
+$this->minify->js($bus_search);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/search.min.js');
+
+$this->minify->js($bus_user_dashboard);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/user_dashboard.min.js');
+
+$this->minify->js($bus_user_dashboard_1);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/user_dashboard_1.min.js');
+
+$this->minify->js($bus_userlist);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/userlist.min.js');
+
+$this->minify->js($bus_videos);
 echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/videos.min.js');
 
 

@@ -1,5 +1,5 @@
 function checkvalue() {
-    var searchkeyword = $.trim(document.getElementById('tags123').value);
+    var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "") {
         return false;

@@ -101,13 +101,14 @@
             var no_business_contact_html = '<?php echo $no_business_contact_html ?>';
         </script>
         <?php
-        if(IS_JS_MINIFY == '0'){
-        ?>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/contacts.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-        <?php
-        }else{ ?>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/contacts.min.js?ver=' . time()); ?>"></script>            
+        if (IS_JS_MINIFY == '0') {
+            ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/contacts.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+            <?php } else {
+            ?>
+            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/contacts.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
     </body>
 </html>

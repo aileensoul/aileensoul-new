@@ -1,3 +1,20 @@
+function checkvalue() {
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}
+
+// END OF BUSINESS SEARCH AUTO FILL 
+
 
 // follow user script start 
 function followuser_two(clicked_id)
@@ -25,25 +42,6 @@ function unfollowuser_two(clicked_id)
     });
 }
 // Unfollow user script end 
-
-function checkvalue() {
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
-    if (searchkeyword == "" && searchplace == "") {
-        return false;
-    }
-}
-function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
-
-// END OF BUSINESS SEARCH AUTO FILL 
-
-
 
 function openModal() {
     document.getElementById('myModal1').style.display = "block";
