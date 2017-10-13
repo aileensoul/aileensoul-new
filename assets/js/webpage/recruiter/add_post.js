@@ -945,7 +945,7 @@ $(document).on('change', '#industry', function (event) {
                               else
                               {
                                    //$.fancybox.close();
-                                   $('#bidmodal').modal('show');
+                                   $('#bidmodal').modal('hide');
                                    $('#industry').html(response);
                               }
                           }
