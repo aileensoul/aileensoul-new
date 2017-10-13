@@ -196,7 +196,7 @@ $bus_contact_footer = array(
 );
 
 $this->minify->js($bus_contact_footer);
-echo $this->minify->deploy_js(FALSE, 'webpage/business-profile/croppie_bootstrap_validate.min.js');
+echo $this->minify->deploy_js(FALSE, 'croppie_bootstrap_validate.min.js');
 
 //BOOTSTARP AND VALIDATE MIN   
 $bootstrap_valdidate = array(

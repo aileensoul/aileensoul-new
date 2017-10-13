@@ -12,80 +12,42 @@ $this->minify->css(array('common-style.css',
 ));
 echo $this->minify->deploy_css(FALSE, 'common-header.min.css');
 // COMMON HEAD CSS MINIFY END
+// BUSINESS PROFILE START
+// BUSINESS_INFO START   
+$bus_info = array('1.10.3.jquery-ui.css',
+    'business.css',
+);
+$this->minify->css($bus_info);
+echo $this->minify->deploy_css(FALSE, 'business_profile/business-common.min.css');
+// BUSINESS_INFO END 
+
+// BUSINESS_PROFILE_POST START   
+$bus_profile_post = array('../dragdrop/fileinput.css',
+    '../dragdrop/themes/explorer/theme.css',
+    '../css_min/business_profile/business-common.min.css',
+    '../as-videoplayer/build/mediaelementplayer.css',
+);
+$this->minify->css($bus_profile_post);
+echo $this->minify->deploy_css(FALSE, 'business_profile/business_profile.min.css');
+// BUSINESS_PROFILE_POST END 
+
+// BUSINESS PROFILE END   
+
+
 
 //RECRUITER PROFILE CSS START
 
-// REC ADD POST 
-$rec_add_post = array(
+// REC COMMON HEADER FOR EVERY PAGE
+
+$rec_comon_header = array(
     '1.10.3.jquery-ui.css',
     'recruiter.css',
 );
-$this->minify->css($rec_add_post);
-echo $this->minify->deploy_css(FALSE, 'recruiter/add_post.min.css');
-
-// REC COMAPNY INFORMATION 
-$rec_comp_info = array(
-    '1.10.3.jquery-ui.css',
-    'recruiter.css',
-);
-$this->minify->css($rec_comp_info);
-echo $this->minify->deploy_css(FALSE, 'recruiter/comapny_information.min.css');
-
-// REC EDIT POST
-$rec_edit_post = array(
-    '1.10.3.jquery-ui.css',
-    'recruiter.css',
-);
-$this->minify->css($rec_edit_post);
-echo $this->minify->deploy_css(FALSE, 'recruiter/edit_post.min.css');
-
-// REC BASIC INFORMATION
-$rec_basic_info = array(
-    '1.10.3.jquery-ui.css',
-    'recruiter.css',
-);
-$this->minify->css($rec_basic_info);
-echo $this->minify->deploy_css(FALSE, 'recruiter/rec_basic_information.min.css');
-
-// REC POST
-$rec_post = array(
-    '1.10.3.jquery-ui.css',
-    'recruiter.css',
-);
-$this->minify->css($rec_post);
-echo $this->minify->deploy_css(FALSE, 'recruiter/rec_post.min.css');
-
-// REC PROFILE
-$rec_profile = array(
-    '1.10.3.jquery-ui.css',
-    'recruiter.css',
-);
-$this->minify->css($rec_profile);
-echo $this->minify->deploy_css(FALSE, 'recruiter/rec_profile.min.css');
-
-// REC SEARCH LOGIN
-$rec_search_login = array(
-    '1.10.3.jquery-ui.css',
-    'recruiter.css',
-);
-$this->minify->css($rec_search_login);
-echo $this->minify->deploy_css(FALSE, 'recruiter/rec_search_login.min.css');
-
-// REC SEARCH LOGIN
-$rec_search_login = array(
-    '1.10.3.jquery-ui.css',
-    'recruiter.css',
-);
-$this->minify->css($rec_search_login);
-echo $this->minify->deploy_css(FALSE, 'recruiter/rec_search_login.min.css');
-
+$this->minify->css($rec_comon_header);
+echo $this->minify->deploy_css(FALSE, 'recruiter/rec_common_header.min.css');
 
 // RECRUITER PROFILE CSS END
 
-
-
-//	//	$this->minify->js(array('helpers.js', 'jqModal.js'));
-//echo $this->minify->deploy_js(FALSE, 'custom_js_name.min.js');
 ?>
 <div id="container">
     <h1>Welcome to CodeIgniter Minify library!</h1>

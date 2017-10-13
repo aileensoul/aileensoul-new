@@ -10,11 +10,11 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 }, "Only space, only number and only specila characters are not allow");
 
 $(document).ready(function () {
-  
+
     $("#freelancer_post_professional").validate({
-      
+
         ignore: '*:not([name])',
-          ignore: ":hidden",
+        ignore: ":hidden",
         groups: {
             experience_year: "experience_year experience_month"
         },
@@ -206,13 +206,14 @@ $(function () {
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
-
+    $("#other_field").removeClass("keyskill_border_active");
+    $('#field_error').remove();
     var item = $(this);
     var other_field = (item.val());
 
     if (other_field == 15) {
         item.val('');
-         $('#bidmodal2').modal('show');
+        $('#bidmodal2').modal('show');
 //        $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Field</h2><input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()"><div class="fw"><a id="field" class="btn">OK</a></div></div>');
         $('.message #field').off('click').on('click', function () {
             $("#other_field").removeClass("keyskill_border_active");
@@ -231,7 +232,7 @@ $(document).on('change', '.field_other', function (event) {
                     dataType: 'json',
                     data: 'other_field=' + textVal,
                     success: function (response) {
-                        
+
                         if (response.select == 0)
                         {
 //                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
@@ -251,7 +252,7 @@ $(document).on('change', '.field_other', function (event) {
                             $('.field_other').html(response.select);
 //                            $.fancybox.close();
 
-                            
+
                         }
                     }
                 });

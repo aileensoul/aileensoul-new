@@ -272,7 +272,8 @@ $(document).ready(function () {
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
-
+    $("#other_field").removeClass("keyskill_border_active");
+    $('#field_error').remove();
     var item = $(this);
     var other_field = (item.val());
 
@@ -283,42 +284,42 @@ $(document).on('change', '.field_other', function (event) {
         $('.message #field').off('click').on('click', function () {
             $("#other_field").removeClass("keyskill_border_active");
             $('#field_error').remove();
-             var x = $.trim(document.getElementById("other_field").value);
-             if (x == '') {
+            var x = $.trim(document.getElementById("other_field").value);
+            if (x == '') {
                 $("#other_field").addClass("keyskill_border_active");
                 $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
                 return false;
             } else {
-            var $textbox = $('.message').find('input[type="text"]'),
-                    textVal = $textbox.val();
-            $.ajax({
-                type: 'POST',
-                url: base_url + "freelancer/freelancer_hire_other_field",
-                dataType: 'json',
-                data: 'other_field=' + textVal,
-                success: function (response) {
+                var $textbox = $('.message').find('input[type="text"]'),
+                        textVal = $textbox.val();
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "freelancer/freelancer_hire_other_field",
+                    dataType: 'json',
+                    data: 'other_field=' + textVal,
+                    success: function (response) {
 
-                    if (response.select == 0)
-                    {
+                        if (response.select == 0)
+                        {
 //                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-$("#other_field").addClass("keyskill_border_active");
+                            $("#other_field").addClass("keyskill_border_active");
                             $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_field');
-                    } else if (response.select == 1)
-                    {
-                        $("#other_field").addClass("keyskill_border_active");
+                        } else if (response.select == 1)
+                        {
+                            $("#other_field").addClass("keyskill_border_active");
                             $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
 //                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                    } else
-                    {
-                        // $.fancybox.close();
-                        $('#bidmodal2').modal('hide');
-                        $('#other_field').val('');
-                        $("#other_field").removeClass("keyskill_border_active");
-                        $("#field_error").removeClass("error");
-                        $('.field_other').html(response.select);
+                        } else
+                        {
+                            // $.fancybox.close();
+                            $('#bidmodal2').modal('hide');
+                            $('#other_field').val('');
+                            $("#other_field").removeClass("keyskill_border_active");
+                            $("#field_error").removeClass("error");
+                            $('.field_other').html(response.select);
+                        }
                     }
-                }
-            });
+                });
             }
         });
     }

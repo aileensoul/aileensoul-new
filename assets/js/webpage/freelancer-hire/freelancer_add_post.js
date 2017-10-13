@@ -323,6 +323,8 @@ $(function () {
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
+    $("#other_field").removeClass("keyskill_border_active");
+    $('#field_error').remove();
     var item = $(this);
     var other_field = (item.val());
     if (other_field == 15) {
@@ -449,8 +451,7 @@ function check_datevalidation() {
             $('.date-dropdowns .last_date_error').remove();
             $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
             return false;
-        }
-        else{
+        } else {
             $('.day').removeClass('error');
             $('.month').removeClass('error');
             $('.year').removeClass('error');
@@ -478,7 +479,7 @@ $("form").submit(function () {
         $('.date-dropdowns').append('<label for="example2" class="last_date_error" style="display: block;">Last Date of apply is required.</label>');
         return false;
 
-    }else {
+    } else {
         var todaydate = new Date();
         var dd = todaydate.getDate();
         var mm = todaydate.getMonth() + 1; //January is 0!
@@ -497,8 +498,7 @@ $("form").submit(function () {
             $('.date-dropdowns').append('<label for="example2" class="error last_date_error">Last date should be grater than and equal to today date</label>');
             $('.date-dropdowns .last_date_error').removeAttr('style');
             return false;
-        }
-        else{
+        } else {
             $('.day').removeClass('error');
             $('.month').removeClass('error');
             $('.year').removeClass('error');
