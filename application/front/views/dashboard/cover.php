@@ -247,7 +247,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <a class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
 
                                                     <?php } ?>
-                                                    <a data-fancybox data-src="#jop-popup" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                                    <a data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -613,9 +613,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     <?php } ?>
                     <!--  how it work popup  -->
-                    <div style="display:none;" class="how-it-popup" id="jop-popup">
+                    <div style="display:none;" class="modal how-it-popup" id="jop-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
+								<button type="button" class="modal-close" data-dismiss="modal">×</button>
                                 <div class="modal-header">
                                     <h1 class="modal-title">How It Works ?</h1>
                                 </div>
@@ -647,7 +648,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                             </div>
                         </div>
                     </div>
-                    <div style="display:none;" class="how-it-popup" id="rec-popup">
+                    <div style="display:none;" class="modal how-it-popup" id="rec-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">

@@ -1622,7 +1622,7 @@ header.animated {
     box-shadow: none;
 }
 .cover .modal-close {
-    line-height: 32px !important;
+    line-height: 1 !important;
 }
 #search .new-search-input {
     height: 215px;
