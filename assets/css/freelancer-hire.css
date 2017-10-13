@@ -22,7 +22,11 @@
 .message1 {
     text-align: center;
 }
-#field{background: #fff; color: #1b8ab9; margin-top: 20px;}
+#field{
+    background: #fff; 
+    color: #1b8ab9; 
+    margin-top: 20px;
+ }
 .saved,
 .applied {
     color: #fff !important;
@@ -1491,7 +1495,7 @@ label.cameraButton input[accept*="camera"] {
 input[type=number] {
     -moz-appearance:textfield;
 }
-.cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color: #1b8ab9;}
+.cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color: #1b8ab9}
 .date-dropdowns label{margin-top:40px !important;}
 
 /***  media query  ***/
