@@ -2474,6 +2474,8 @@ public function follow_home() {
 
 
                         if (IMAGEPATHFROM == 'upload') {
+
+                            if($userlist['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                        
                                         $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -2481,6 +2483,9 @@ public function follow_home() {
                                      } else { 
                                         $third_user_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
                                     }
+                                  }else{
+                                    $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
                                 } else{
 
 
@@ -2531,7 +2536,7 @@ public function follow_home() {
                             </button>
                             </div>
                             </div>
-                            <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                            <span class="Follow_close" id="Follow_close' . $userlist['art_id'] . '" onClick="followclose(' . $userlist['art_id'] . ')">
                             <i class="fa fa-times" aria-hidden="true">
                             </i>
                         </span>
@@ -2655,7 +2660,7 @@ public function follow_home() {
                             </button>
                             </div>
                             </div>
-                            <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                            <span class="Follow_close" id="Follow_close' . $userlist['art_id'] . '" onClick="followclose(' . $userlist['art_id'] . ')">
                             <i class="fa fa-times" aria-hidden="true">
                             </i>
                         </span>
@@ -2735,6 +2740,8 @@ public function follow_home() {
 
 
                          if (IMAGEPATHFROM == 'upload') {
+
+                            if($userlist['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                        
                                         $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -2742,6 +2749,9 @@ public function follow_home() {
                                      } else { 
                                         $third_user_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
                                     }
+                                  }else{
+                                     $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                  }
                                 } else{
 
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'];
@@ -2790,7 +2800,7 @@ public function follow_home() {
                             </button>
                             </div>
                             </div>
-                            <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                            <span class="Follow_close" id="Follow_close' . $userlist['art_id'] . '" onClick="followclose(' . $userlist['art_id'] . ')">
                             <i class="fa fa-times" aria-hidden="true">
                             </i>
                         </span>
@@ -10529,7 +10539,7 @@ public function insert_comment_postnewpage() {
                                                                                 </button>
                                                                             </div>
                                                                         </div>
-                                                                        <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                                                                        <span class="Follow_close" id="Follow_close' . $userlist['art_id'] . '" onClick="followclose(' . $userlist['art_id'] . ')">
                                                                             <i class="fa fa-times" aria-hidden="true">
                                                                             </i>
                                                                         </span>
@@ -10617,7 +10627,7 @@ public function insert_comment_postnewpage() {
                                                                                 </button>
                                                                             </div>
                                                                         </div>
-                                                                        <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                                                                        <span class="Follow_close"  id="Follow_close' . $userlist['art_id'] . '" onClick="followclose(' . $userlist['art_id'] . ')">
                                                                             <i class="fa fa-times" aria-hidden="true">
                                                                             </i>
                                                                         </span>
@@ -10698,7 +10708,7 @@ public function insert_comment_postnewpage() {
                                                                                 </button>
                                                                             </div>
                                                                         </div>
-                                                                        <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                                                                        <span class="Follow_close"  id="Follow_close' . $userlist['art_id'] . '" onClick="followclose(' . $userlist['art_id'] . ')">
                                                                             <i class="fa fa-times" aria-hidden="true">
                                                                             </i>
                                                                         </span>
@@ -10784,7 +10794,7 @@ public function insert_comment_postnewpage() {
                                                                                 </button>
                                                                             </div>
                                                                         </div>
-                                                                        <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                                                                        <span class="Follow_close" id="Follow_close' . $userlist['art_id'] . '" onClick="followclose(' . $userlist['art_id'] . ')">
                                                                             <i class="fa fa-times" aria-hidden="true">
                                                                             </i>
                                                                         </span>
@@ -10915,7 +10925,7 @@ public function art_home_three_user_list() {
                             </button>
                             </div>
                             </div>
-                            <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                            <span class="Follow_close" id="Follow_close' . $userlist['art_id'] . '"  onClick="followclose(' . $userlist['art_id'] . ')">
                             <i class="fa fa-times" aria-hidden="true">
                             </i>
                         </span>

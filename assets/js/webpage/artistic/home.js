@@ -214,6 +214,7 @@ function myFunction1(clicked_id) {
 
 function followuser(clicked_id)
    {
+      document.getElementById('followdiv' + clicked_id).removeAttribute("onclick");
    
        $.ajax({
            type: 'POST',
@@ -243,6 +244,8 @@ function followuser(clicked_id)
     function followclose(clicked_id)
    { //alert("hii");
 
+      document.getElementById('Follow_close' + clicked_id).removeAttribute("onclick");
+    
     $.ajax({
         type: 'POST',
         url: base_url + "artistic/artistic_home_follow_ignore",
