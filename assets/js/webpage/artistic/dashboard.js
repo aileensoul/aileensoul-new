@@ -91,6 +91,49 @@ function check_lengthedit(abc)
     });
 });
          
+var isProcessing = false;
+function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+       // return;
+    }
+    isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "artistic/artistic_dashboard_post/"+ slug + "?page=" + pagenum,
+        //url: base_url + "artistic/artistic_dashboard_post/" + slug + "?page=" + pagenum,
+       // data: 'slug=' + slug,
+       data: {total_record: $("#total_record").val()},
+        dataType: "html",
+        beforeSend: function () {
+            //if (pagenum == 'undefined') {
+                //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            //} else {
+                $('#loader').show();
+            //}
+        },
+        complete: function () {
+            $('#loader').hide();
+        },
+        success: function (data) {
+            $('.fw').hide();
+            $('.art-all-post').append(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            isProcessing = false;
+        }
+    });
+}
 
 
 
@@ -2107,48 +2150,5 @@ $(document).ready(function(){
 
 
 
-var isProcessing = false;
-function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
-    if (isProcessing) {
-        /*
-         *This won't go past this condition while
-         *isProcessing is true.
-         *You could even display a message.
-         **/
-       // return;
-    }
-    isProcessing = true;
-    $.ajax({
-        type: 'POST',
-        url: base_url + "artistic/artistic_dashboard_post/"+ slug + "?page=" + pagenum,
-        //url: base_url + "artistic/artistic_dashboard_post/" + slug + "?page=" + pagenum,
-       // data: 'slug=' + slug,
-       data: {total_record: $("#total_record").val()},
-        dataType: "html",
-        beforeSend: function () {
-            //if (pagenum == 'undefined') {
-                //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
-            //} else {
-                $('#loader').show();
-            //}
-        },
-        complete: function () {
-            $('#loader').hide();
-        },
-        success: function (data) {
-            $('.loader').remove();
-            $('.art-all-post').append(data);
-
-            // second header class add for scroll
-            var nb = $('.post-design-box').length;
-            if (nb == 0) {
-                $("#dropdownclass").addClass("no-post-h2");
-            } else {
-                $("#dropdownclass").removeClass("no-post-h2");
-            }
-            isProcessing = false;
-        }
-    });
-}
 
 

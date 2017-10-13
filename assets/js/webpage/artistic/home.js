@@ -359,7 +359,7 @@ var isProcessing = false;
                     $('#loader').hide();
                     },
                     success: function (data) {
-                        $('.loader').remove();
+                        $('.fw').hide();
                         $('.art-all-post').append(data);
 
                         // second header class add for scroll
