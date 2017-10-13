@@ -44,12 +44,16 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
 
 		 <div class="tablate-potrat-add">
 									<div class="fw text-center pt10">
-									<script type="text/javascript" language="javascript">
-									  var aax_size='300x250';
-									  var aax_pubname = 'aileensoul-21';
-									  var aax_src='302';
+									<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
 									</script>
-									<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 									</div>
 								</div>
 
@@ -135,12 +139,16 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                              <div class="art-all-post">
 								<div class="mob-add">
 										<div class="fw text-center pt10 pb5">
-											<script type="text/javascript" language="javascript">
-											  var aax_size='300x250';
-											  var aax_pubname = 'aileensoul-21';
-											  var aax_src='302';
-											</script>
-											<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+											<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 										</div>
 									</div>
                             
