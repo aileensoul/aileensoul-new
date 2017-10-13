@@ -526,7 +526,7 @@
                                                       $predefine_data = $count;
                                                   }
                                                   ?>   
-                                       <div id="input<?php echo $y ?>" style="margin-bottom:4px;" class="clonedInput job_work_edit_<?php echo $jobgrad[$x]['job_graduation_id']?>">
+                                       <div id="input<?php echo $y ?>" style="margin-bottom:4px;position: relative;" class="clonedInput job_work_edit_<?php echo $jobgrad[$x]['job_graduation_id']?>">
                                           <input type="hidden" name="education_data[]" value="old" class="exp_data" id="exp_data<?php echo $y; ?>">
                                           <div class="job_work_experience_main_div">
                                              <!--   <fieldset class="full-width"> -->
