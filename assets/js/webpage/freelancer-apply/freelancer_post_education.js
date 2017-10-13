@@ -155,8 +155,8 @@ $(document).on('change', '#degree', function (event) {
         $('.message2 #univer2').off('click').on('click', function () {
             $("#other_degree").removeClass("keyskill_border_active");
             $("#other_stream").removeClass("keyskill_border_active");
-            $('#field_error').remove();
-            $('#field_error').remove();
+            $('#degree_error').remove();
+            $('#stream_error').remove();
             var degree = document.querySelector(".message2 #other_degree").value;
             var stream = document.querySelector(".message2 #other_stream").value;
             if (stream == '' || degree == '')
