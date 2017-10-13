@@ -762,8 +762,8 @@ $config['bus_bg_main_max_height'] = '3000';
 
 // BUSINESS PROFILE BACKGROUND THUMBS
 $config['bus_bg_thumb_upload_path'] = 'uploads/business_bg/thumbs/';
-$config['bus_bg_thumb_width'] = '305'; //400
-$config['bus_bg_thumb_height'] = '110'; //150
+$config['bus_bg_thumb_width'] = '450'; //400
+$config['bus_bg_thumb_height'] = '130'; //150
 
 // BUSINESS PROFILE BACKGROUND ORIGINAL
 $config['bus_bg_original_upload_path'] = 'uploads/business_bg/original/';
