@@ -147,8 +147,9 @@ if (!file_exists($this->config->item('user_bg_main_upload_path') . $userdata[0][
                         <div class="upload-camera">
                             <label class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span> <i class="fa fa-camera" aria-hidden="true"></i>
                                 <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
-                                </div>
-                                </div>
+                                </label>
+                        </div>
+					</div>
                                 <div class="left-profile">
                                     <?php
                                     $image_ori = $userdata[0]['user_image'];
@@ -197,8 +198,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                         <!-- <p>Ahmedabad, Gujarat</p> -->
                                     </div>
                                 </div>
-                                </section>
-                        </div>
+				</section>
+            </div>
                         <div class="sticky-container right-profile">
                             <ul class="sticky-right">
                                 <li>
@@ -218,7 +219,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                 </li>
                             </ul>
                         </div>
-                        <section class="all-profile-custom">
+                        
+						<section class="all-profile-custom">
                             <div id="job-scroll" class="custom-box odd">
                                 <div class="custom-width">
                                     <div class="row">
@@ -390,8 +392,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                             <!-- End  bootstrap-touch-slider Slider -->
                             <!-- Modal content-->
                         </section>
-                    </div>
-                    <?php if ($userdata[0]['user_slider'] == 1) { ?>
+                    
+		</div>
+                    
+					<?php if ($userdata[0]['user_slider'] == 1) { ?>
                         <div id="onload-Modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="main_sl">
@@ -888,11 +892,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 						<button class="fadeandscale_close btn btn-default">Close</button>
 					</div>
 					
+					<?php echo $login_footer ?>
 					
-					
-                    <?php
-                    echo $footer;
-                    ?>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
