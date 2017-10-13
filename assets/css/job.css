@@ -1954,7 +1954,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .ui-autocomplete {
     outline: none;
-    max-width: 300px!important;
+    max-width: 572px!important;
     z-index: 9999 !important;
 }
 .ui-state-focus {
@@ -2050,6 +2050,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .btn:focus {
     color: white;
+    background-color: #1B8AB9;
 }
 .message {
     text-align: center;
@@ -2087,6 +2088,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .message button:hover {
     color: #fff;
+    background-color: #1b8ab9;
     border: 1px solid transparent;
 }
 .message1 #univer1 {
@@ -2159,13 +2161,18 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
 .custom-message .modal-content .mes{padding:0 !important; margin:0!important;}
 
-.message button{background-color: #fff;color: #1B8AB9;}
+.message button{background-color: #fff;color: #1B8AB9;border-color: #1B8AB9}
 .biderror .modal-body span{padding: 0;margin:0;}
 .modal-content .message span#field_error_stream{width: 100%;float: left!important;text-align: right;}
 .modal-content .message1 span#field_error{width: 100%;float: left;text-align: right;}
-#jobseeker_regform label.error{position:relative; width:100%; float:left;}
+#jobseeker_regform label.error{position:absolute;float:right;}
+.modal-close:hover{background-color: #156f95;color: white;}
+/*.date-dropdowns label.error {margin-top: 36px;}
+.clonedInput select label.error{margin-top: 36px;}
+*/
 
 /***  media query  ***/
+
 
 @media screen and (min-width: 768px) {
     .mob-progressbar.temp {
