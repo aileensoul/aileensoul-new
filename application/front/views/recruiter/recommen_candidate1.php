@@ -192,5 +192,14 @@
                                               
 </script>
         <!-- FIELD VALIDATION JS END -->
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+        <?php
+        if (IS_REC_JS_MINIFY == '0') {
+            ?>
+          <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_search.js'); ?>"></script>
+            <?php
+        } else {
+            ?>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/recruiter/rec_search.min.js?ver=' . time()); ?>"></script>
+        <?php } ?>
+       
