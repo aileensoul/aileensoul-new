@@ -6,36 +6,9 @@
 <body   class="page-container-bg-solid page-boxed ">
 
     <section>
-        <div class="container">
-            <div class="row" id="row1" style="display:none;">
-                <div class="col-md-12 text-center">
-                    <div id="upload-demo" style="width:100%"></div>
-                </div>
-                <div class="col-md-12 cover-pic" style="padding-top: 25px;text-align: center;">
-                    <button class="btn btn-success cancel-result" onclick="" >Cancel</button>
-                    <button class="btn btn-success set-btn upload-result " onclick="myFunction()">Upload Image</button>
-                    <div id="message1" style="display:none;">
-                        <div id="floatBarsG">
-                            <div id="floatBarsG_1" class="floatBarsG"></div>
-                            <div id="floatBarsG_2" class="floatBarsG"></div>
-                            <div id="floatBarsG_3" class="floatBarsG"></div>
-                            <div id="floatBarsG_4" class="floatBarsG"></div>
-                            <div id="floatBarsG_5" class="floatBarsG"></div>
-                            <div id="floatBarsG_6" class="floatBarsG"></div>
-                            <div id="floatBarsG_7" class="floatBarsG"></div>
-                            <div id="floatBarsG_8" class="floatBarsG"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12"  style="visibility: hidden; ">
-                    <div id="upload-demo-i" style="background:#e1e1e1;width:100%;padding:30px;height:1px;margin-top:30px"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>   
-
-<div class="container">    
+ 
+    <div class="user-midd-section" id="paddingtop_fixed">
+    <div class="container padding-360">    
     <!--    <div class="upload-img">
     
     <?php if ($returnpage == '') { ?>
@@ -48,13 +21,13 @@
     <div class="profile-photo">
         <div class="job-menu-profile">
             <h5 > <?php echo ucwords($freelancerpostdata[0]['fullname']) . ' ' . ucwords($freelancerpostdata[0]['username']); ?></h5>
-            <div  class="add-post-button">
+            <div  class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
             </div> 
         </div>
-        <div class="col-md-7 col-sm-7 all-form-content">
+        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
             <div class="common-form">
                 <div class="job-saved-box">
-                    <h3> Recommended Post</h3>
+                    
                     <div class="contact-frnd-post">
                         <?php
                         if ($freelancerpostdata) {
@@ -68,12 +41,12 @@
                                                     <div class="profile-job-profile-button clearfix">
                                                         <div class="profile-job-details col-md-12">
                                                             <ul>
-                                                                <li class="fr created_date">
+                                                                <li class="fr">
                                                                     Created Date : <?php
                                                                     echo trim(date('d-M-Y', strtotime($post['created_date'])));
                                                                     ?>
                                                                 </li>
-                                                                <li class="dot_free">
+                                                                <li>
                                                                     <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>" title="<?php echo ucwords($post['post_name']); ?>" class="display_inline post_title">
                                                                         <?php echo ucwords($post['post_name']); ?> </a>   </li>
                                                                 <?php $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name; ?>
@@ -304,6 +277,9 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>  
+</div>
         </section>
         <footer>
             <?php echo $footer; ?>
