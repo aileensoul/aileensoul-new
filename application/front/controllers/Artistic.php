@@ -4368,7 +4368,7 @@ public function delete_comment_postnewpage() {
 
 
         $contition_array = array('art_post_id' => $post_delete, 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'user_id,comments,artistic_post_comment_id,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'art_post_id,user_id,comments,artistic_post_comment_id,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // khyati changes start
         if (count($artdata) > 0) {
             foreach ($artdata as $art) {
@@ -4489,11 +4489,16 @@ public function delete_comment_postnewpage() {
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
 
                 // comment aount variable start
-                $idpost = $art['art_post_id'];
-                $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
-                $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-                $cmtcount .= ' ' . count($artdata) . '';
-                $cmtcount .= '</i></a>';
+           //      if(count($artdata) > 0){
+           //      $idpost = $art['art_post_id'];
+           //      $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
+           //      $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
+           //      $cmtcount .= ' ' . count($artdata) . '';
+           //      $cmtcount .= '</i></a>';
+           //     }else {
+
+           //  $cmtcount .= '';
+           // }
                 
            $cntinsert =  '<span class="comment_count" >';
                           if (count($artdata) > 0) {
@@ -4502,13 +4507,10 @@ public function delete_comment_postnewpage() {
            $cntinsert .=  '<span> Comment</span>';
                                 }
             }
-        } else {
-
-            $cmtcount .= '';
-        }
+        } 
         echo json_encode(
                 array("comment" => $cmtinsert,
-                    "count" => $cmtcount,
+                    //"count" => $cmtcount,
                     "commentcount" => $cntinsert));
 
        }
