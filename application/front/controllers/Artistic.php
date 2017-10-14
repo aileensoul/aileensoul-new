@@ -14749,25 +14749,9 @@ public function get_artistic_name($id=''){
           $othercom = str_replace(",", "','", $othercom[0]['user_data']);
 
         $search_condition = "art_id  IN ('$othercom')";
-        $otherdata = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array =array(), $data = '*', $sortby =' CASE WHEN (art_name = "' . $searchskill . '") THEN art_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
+        $otherdata = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array =array(), $data = '*', $sortby =' CASE WHEN (art_name = "' . $searchskill . '") THEN art_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');  
 
-           // foreach ($othercom as $keydata => $valuedata) {
-
-           //      $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
-           //      //echo $concatedata; 
-
-           //     if(strtolower($valuedata['art_name']) == $searchskill || strtolower($valuedata['art_lastname']) == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
-           //     {
-           //      $varfoune[] = $valuedata; 
-           //     }else{
-           //      $varfoune2[] = $valuedata; 
-           //     }
-           //  }
-           
-           //  $otherdata = array_merge((array) $varfoune, (array) $varfoune2);
-
-            foreach ($otherdata as $postdata) { 
-               
+            foreach ($otherdata as $postdata) {               
             $join_str[0]['table'] = 'art_reg';
             $join_str[0]['join_table_id'] = 'art_reg.user_id';
             $join_str[0]['from_table_id'] = 'art_post.user_id';
