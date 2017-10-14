@@ -4390,7 +4390,7 @@ div .comment {
 .kv-file-content audio{margin-top:83px;}
 /***  custom user list css  ***/
 .full-box-module_follow .seeall{margin-top:-28px;}
-.custom-user-list{margin-bottom:10px; width:100%; float:left;}
+.custom-user-list{margin-bottom:10px; width:100%; float:left; display:none;}
 .custom-user-list .profile-boxProfileCard_follow{height:300px; max-height:300px;}
 .custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:33.33% !important; float:left; text-align:center;}
 .custom-user-list .post-design-pro-img_follow{width:180px; padding:15px 15px 0; height:180px; margin:0 auto; float:none; display:block;}
@@ -4542,6 +4542,7 @@ div .comment {
     }
 }
 @media screen and (max-width: 991px) {
+	.custom-user-list{display:block;}
     .mian_middle_post_box {
         width: 100%;
         margin-left: 0px;

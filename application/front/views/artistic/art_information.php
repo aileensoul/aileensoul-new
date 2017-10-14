@@ -140,8 +140,8 @@
 
   
 
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 
 <script type="text/javascript">
  var base_url = '<?php echo base_url(); ?>';   
@@ -156,8 +156,8 @@ var complex = <?php echo json_encode($selectdata); ?>;
 var textarea = document.getElementById("textarea");
 
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/art_information.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/art_information.js?ver='.time()); ?>"></script>
 </body>
 </html>
    

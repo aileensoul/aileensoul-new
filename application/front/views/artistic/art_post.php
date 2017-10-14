@@ -54,7 +54,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
 										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
 									}());
 									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+									<script  type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 									</div>
 								</div>
 
@@ -209,7 +209,7 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
 							  var aax_pubname = 'aileensoul-21';
 							  var aax_src='302';
 							</script>
-							<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+							<script async type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 						</div>
 
   <!-- Bid-modal  -->
@@ -352,13 +352,13 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
 <?php echo $footer; ?>
 </footer>
 
-<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';   
 var data= <?php echo json_encode($demo); ?>;
@@ -367,8 +367,8 @@ var complex = <?php echo json_encode($selectdata); ?>;
 var textarea = document.getElementById("textarea");
  var no_artistic_post_html = '<?php echo $no_artistic_post_html ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/home.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/home.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
 
 
 </body>

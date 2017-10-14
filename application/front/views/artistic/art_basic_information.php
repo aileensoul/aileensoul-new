@@ -108,8 +108,8 @@
     </div>
 
   
-  <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+  <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+  <script async type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 
 <script>
  var base_url = '<?php echo base_url(); ?>';
@@ -117,7 +117,7 @@ var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($de); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/search.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/information.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/search.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/information.js?ver='.time()); ?>"></script>
 </body>
 </html>

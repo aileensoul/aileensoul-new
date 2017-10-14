@@ -404,15 +404,15 @@ if ($info) { ?>
 <?php echo $footer; ?>
 </footer>
 
-<script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
 
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';   
@@ -422,8 +422,8 @@ var complex = <?php echo json_encode($selectdata); ?>;
 var textarea = document.getElementById("textarea");
 var slug = '<?php echo $artid; ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/dashboard.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/dashboard.js?ver='.time()); ?>"></script>
  </body>
 </html>
 

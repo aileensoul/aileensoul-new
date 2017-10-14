@@ -113,7 +113,7 @@
 										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
 									}());
 									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+									<script  type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
                                 </div>
 
@@ -210,7 +210,7 @@
                                             var aax_pubname = 'aileensoul-21';
                                             var aax_src = '302';
                             </script>
-                            <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+                            <script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js" async></script>
                         </div>
 
                     </div>
@@ -235,7 +235,7 @@
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/recommen_candidate.js?ver=' . time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
