@@ -655,13 +655,13 @@
 <!-- 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
-<script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script async src="<?php echo base_url('assets/js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
-<script async src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
-<script async src="<?php echo base_url('assets/js/jquery.highlite.js?ver='.time()); ?>"></script>
-<script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script async type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script  src="<?php echo base_url('assets/js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
+<script  src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
+<script  src="<?php echo base_url('assets/js/jquery.highlite.js?ver='.time()); ?>"></script>
+<script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 
 
  <script type="text/javascript">
@@ -670,7 +670,7 @@ var base_url = '<?php echo base_url(); ?>';
 var keyword = '<?php echo $keyword; ?>';
 var keyword1 = '<?php echo $keyword1; ?>';
 </script>
-<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/user_search.js?ver='.time()); ?>"></script>
+<script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/user_search.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
             function login()
             {

@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
 
-<script async type="text/javascript" src="<?php  echo base_url('assets/js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php  echo base_url('assets/js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
 
 
    
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="reactivate_btn_n">
 		  <a href="<?php echo base_url('dashboard'); ?>">No</a>
         </div>
-          <script async src="<?php echo base_url('assets/js/fb_login.js'); ?>"></script>
+          <script src="<?php echo base_url('assets/js/fb_login.js'); ?>"></script>
 
 		</div>
            </center>

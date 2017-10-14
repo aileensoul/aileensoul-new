@@ -1487,7 +1487,7 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .modal-content .btn:hover{background:#1b8ab9 !important; color:#fff !important;}
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color: #1b8ab9;}
 .date-dropdowns .error{margin-top:40px;}
-
+.custom_footer_left ul li a:focus{color: #1b8ab9 !important}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {

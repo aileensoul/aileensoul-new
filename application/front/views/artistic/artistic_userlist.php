@@ -60,7 +60,7 @@
 						  var aax_pubname = 'aileensoul-21';
 						  var aax_src='302';
 						</script>
-						<script async type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+						<script  type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
 						</div>
                     </div>
 	
@@ -110,9 +110,9 @@
 <?php echo $footer; ?>
 </footer>
 
-<script async src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+<script  src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 
-<script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';   
 var data = <?php echo json_encode($demo); ?>;
@@ -120,8 +120,8 @@ var data1 = <?php echo json_encode($de); ?>;
 var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
-<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/userlist.js?ver='.time()); ?>"></script>
-<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/userlist.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
 
  </body>
 </html>
