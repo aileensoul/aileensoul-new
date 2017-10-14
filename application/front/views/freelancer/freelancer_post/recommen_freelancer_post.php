@@ -126,7 +126,7 @@
                                             echo '"' . $keyword1 . '"';
                                         } else {
                                             echo '"' . $keyword . '"';
-                                            echo " and ";
+                                            echo " In ";
                                             echo '"' . $keyword1 . '"';
                                         }
                                         ?></h3>
