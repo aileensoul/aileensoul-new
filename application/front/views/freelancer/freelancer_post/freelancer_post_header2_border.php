@@ -190,9 +190,9 @@ var images = new Array()
             preload(
                     
                   
-                      '<?php echo base_url(); ?>img/h3.png',
-                      '<?php echo base_url(); ?>img/index.png',
-                      '<?php echo base_url(); ?>img/edit_profile.png',
+                      <?php echo base_url('assets/img/h3.png'); ?>,
+                      <?php echo base_url('assets/img/index.png'); ?>,
+                      <?php echo base_url('assets/img/edit_profile.png'); ?>,
 
                    
             )

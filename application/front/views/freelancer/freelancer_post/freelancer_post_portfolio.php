@@ -107,14 +107,14 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
-            <!--<script src="<?php echo base_url('assets/js/jquery-ui.min.js'); ?>"></script>-->
+          
             </script>
             <script>
                 var base_url = '<?php echo base_url(); ?>';
                
             </script>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver='.time()); ?>"></script>
-             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
+            <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver='.time()); ?>"></script>
+             <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
         </body>
     <!--</div>-->
 </html>
