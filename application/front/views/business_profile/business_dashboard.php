@@ -832,7 +832,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login');
+                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Login');
                                 if (response.is_bussiness == '1') {
                                     window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 } else {
@@ -1030,7 +1030,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         success: function (response)
                         {
                             if (response == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
 //                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>business-profile/";
                             } else {

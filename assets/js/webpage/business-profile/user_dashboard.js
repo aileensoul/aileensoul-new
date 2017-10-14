@@ -125,7 +125,7 @@ function GetBusPhotos() {
         url: base_url + "business_userprofile/bus_user_photos",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_photos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_photos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();
@@ -139,7 +139,7 @@ function GetBusVideos() {
         url: base_url + "business_userprofile/bus_user_videos",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_videos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_videos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();
@@ -153,7 +153,7 @@ function GetBusAudios() {
         url: base_url + "business_userprofile/bus_user_audio",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_audios").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_audios").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();
@@ -167,7 +167,7 @@ function GetBusPdf() {
         url: base_url + "business_userprofile/bus_user_pdf",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_pdf").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_pdf").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();

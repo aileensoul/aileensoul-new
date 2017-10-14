@@ -45,7 +45,7 @@ function business_following(slug_id, pagenum)
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }

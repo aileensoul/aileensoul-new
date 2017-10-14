@@ -179,7 +179,7 @@ $(document).ready(function () {
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'assets/images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) { //alert(data);
                         $('.loader').remove();
@@ -202,7 +202,7 @@ $(document).ready(function () {
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'assets/images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) { //alert(data);
                         $('.loader').remove();
