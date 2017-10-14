@@ -14744,27 +14744,27 @@ public function get_artistic_name($id=''){
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                    
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
-
            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+            $othercom  = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'GROUP_CONCAT(art_id) as user_data', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          $othercom = str_replace(",", "','", $othercom[0]['user_data']);
 
-            // echo $search_condition;
-            $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          
+        $search_condition = "art_id  IN ('$othercom')";
+        $otherdata = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array =array(), $data = '*', $sortby =' CASE WHEN (art_name = "' . $searchskill . '") THEN art_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
 
-           foreach ($othercom as $keydata => $valuedata) {
+           // foreach ($othercom as $keydata => $valuedata) {
 
-                $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
-                //echo $concatedata; 
+           //      $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
+           //      //echo $concatedata; 
 
-               if(strtolower($valuedata['art_name']) == $searchskill || strtolower($valuedata['art_lastname']) == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
-               {
-                $varfoune[] = $valuedata; 
-               }else{
-                $varfoune2[] = $valuedata; 
-               }
-            }
+           //     if(strtolower($valuedata['art_name']) == $searchskill || strtolower($valuedata['art_lastname']) == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
+           //     {
+           //      $varfoune[] = $valuedata; 
+           //     }else{
+           //      $varfoune2[] = $valuedata; 
+           //     }
+           //  }
            
-            $otherdata = array_merge((array) $varfoune, (array) $varfoune2);
+           //  $otherdata = array_merge((array) $varfoune, (array) $varfoune2);
 
             foreach ($otherdata as $postdata) { 
                
@@ -14804,26 +14804,20 @@ public function get_artistic_name($id=''){
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             
-            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
-            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or art_city LIKE '%$cache_time%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%')";
-            $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_step' => 4);
+            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%')";
+            $othercom = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'GROUP_CONCAT(art_id) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_list = str_replace(",", "','", $othercom[0]['user_list']);
 
-            //echo "<pre>"; print_r($otherdata); die();
-             
-            foreach ($othercom as $keydata => $valuedata) {
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_step' => 4);
+            $search_condition = "(art_city LIKE '%$cache_time%')";
+            $user_data = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'GROUP_CONCAT(art_id) as user_data', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
-                //echo $concatedata; 
+            $user_data = str_replace(",", "','", $user_data[0]['user_data']);
 
-               if(strtolower($valuedata['art_name']) == $searchskill || strtolower($valuedata['art_lastname']) == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
-               {
-                $varfoune[] = $valuedata; 
-               }else{
-                $varfoune2[] = $valuedata; 
-               }
-            }
-           
-            $otherdata = array_merge((array) $varfoune, (array) $varfoune2);
+        $search_condition = "art_id IN ('$user_list') AND art_id  IN ('$user_data')";
+        $otherdata = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array =array(), $data = '*', $sortby =' CASE WHEN (art_name = "' . $searchskill . '") THEN art_id END, CASE WHEN (art_city = ' . $cache_time . ') THEN art_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
+        
             foreach ($otherdata as $postdata) {                
             $join_str[0]['table'] = 'art_reg';
             $join_str[0]['join_table_id'] = 'art_reg.user_id';
