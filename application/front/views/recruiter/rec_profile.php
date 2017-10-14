@@ -575,36 +575,6 @@
 
                                                         <?php
                                                         if ($returnpage == 'job') {
-                                                            if ($recdata[0]['re_comp_activities']) {
-                                                                ?>
-                                                                <li><b> Other Activities</b> <span>
-                                                                        <pre>  <?php
-                                                                echo $this->common->make_links($recdata[0]['re_comp_activities']);
-                                                                ?></pre> </span> </li>
-                                                                <?php
-                                                            } else {
-                                                                echo "";
-                                                            }
-                                                        } else {
-                                                            if ($recdata[0]['re_comp_activities']) {
-                                                                ?>
-                                                                <li><b> Other Activities</b> <span>
-                                                                        <pre>  <?php
-                                                                echo $this->common->make_links($recdata[0]['re_comp_activities']);
-                                                                ?></pre> </span> </li>
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <li><b>Other Activities</b> <span>
-                                                                <?php echo PROFILENA; ?></span>
-                                                                </li>
-                                                                <?php
-                                                            }
-                                                        }
-                                                        ?>
-
-                                                        <?php
-                                                        if ($returnpage == 'job') {
                                                             if ($recdata[0]['comp_logo']) {
                                                                 ?>
                                                                 <li><b>Company Logo</b> <span>

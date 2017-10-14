@@ -285,7 +285,7 @@ class Recruiter extends MY_Controller {
                 $this->data['city1'] = $this->data['recdata'][0]['re_comp_city'];
                 $this->data['compsector'] = $this->data['recdata'][0]['re_comp_sector'];
                 $this->data['comp_profile1'] = $this->data['recdata'][0]['re_comp_profile'];
-                $this->data['other_activities1'] = $this->data['recdata'][0]['re_comp_activities'];
+               // $this->data['other_activities1'] = $this->data['recdata'][0]['re_comp_activities'];
                 $this->data['complogo1'] = $this->data['recdata'][0]['comp_logo'];
             }
         }
@@ -329,7 +329,7 @@ class Recruiter extends MY_Controller {
                     $this->data['country1'] = $this->data['recdata'][0]['re_comp_country'];
                     $this->data['state1'] = $this->data['recdata'][0]['re_comp_state'];
                     $this->data['city1'] = $this->data['recdata'][0]['re_comp_city'];
-                    $this->data['other_activities1'] = $this->data['recdata'][0]['re_comp_activities'];
+                    //$this->data['other_activities1'] = $this->data['recdata'][0]['re_comp_activities'];
                     $this->data['complogo1'] = $this->data['recdata'][0]['comp_logo'];
                 }
             }
@@ -448,7 +448,7 @@ class Recruiter extends MY_Controller {
                     're_comp_phone' => $this->input->post('comp_num'),
                     're_comp_sector' => trim($this->input->post('comp_sector')),
                     're_comp_profile' => trim($this->input->post('comp_profile')),
-                    're_comp_activities' => trim($this->input->post('other_activities')),
+                  //  're_comp_activities' => trim($this->input->post('other_activities')),
                     're_comp_country' => $this->input->post('country'),
                     're_comp_state' => $this->input->post('state'),
                     're_comp_city' => $this->input->post('city'),
@@ -471,7 +471,7 @@ class Recruiter extends MY_Controller {
                     're_comp_phone' => $this->input->post('comp_num'),
                     're_comp_sector' => trim($this->input->post('comp_sector')),
                     're_comp_profile' => trim($this->input->post('comp_profile')),
-                    're_comp_activities' => trim($this->input->post('other_activities')),
+                   // 're_comp_activities' => trim($this->input->post('other_activities')),
                     're_comp_country' => $this->input->post('country'),
                     're_comp_state' => $this->input->post('state'),
                     're_comp_city' => $this->input->post('city'),
