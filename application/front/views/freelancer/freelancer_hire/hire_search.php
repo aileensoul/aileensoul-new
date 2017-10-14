@@ -715,8 +715,8 @@
       
         <!-- script for skill textbox automatic end (option 2)-->
         
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>">
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+        <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>">
         </script>
            <script>
             function login_profile() {
@@ -1065,7 +1065,7 @@
            //LEAVE PAGE AT ADD AND EDIT FREELANCER PAGE THEN PROBLEM SO BELOW CODE END
            
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_search_result.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_search_result.js?ver='.time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
     </body>
 </html>

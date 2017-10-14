@@ -3657,7 +3657,7 @@ class Freelancer extends MY_Controller {
         $this->freelancer_apply_deactivate_check();
         //code for check user deactivate end
         if ($id == $userid || $id == '') {
-           // echo "111";die();
+         
             // code for display page start
             $this->freelancer_apply_check();
             // code for display page end
