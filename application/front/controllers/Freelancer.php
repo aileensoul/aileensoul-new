@@ -2042,7 +2042,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                 $return_html .= '</li>
                                                                                     <li>';
-                $return_html .= '<a href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . ' " title="' . ucwords($post['post_name']) . '" class="display_inline post_title">';
+                $return_html .= '<a href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
                 $return_html .= ucwords($post['post_name']);
                 $return_html .= '</a> </li>';
                 $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;

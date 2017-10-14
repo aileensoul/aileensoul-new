@@ -137,6 +137,25 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                                     </div>
                                 </div>
          </div>
+		<div class="custom-user-list">
+			<?php 
+			if(count($usercount) != count($followcount) + count($crosscount)){?>
+
+			  <div class="full-box-module_follow">
+			  
+				<div class="common-form">
+				   <h3 class="user_list_head">User List</h3>
+				   <div class="seeall">
+					  <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
+				   </div>
+				   <div class="profile-boxProfileCard_follow fw  module">
+					<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>     
+				   </div>
+				 
+				</div>
+			 </div>
+			 <?php }?>
+		</div>
                              <div class="art-all-post">
 								<div class="mob-add">
 										<div class="fw text-center pt10 pb5">
