@@ -1051,7 +1051,7 @@ class Job extends MY_Controller {
                         'grade' => $userdata[0]['grade'][$x],
                         'percentage' => $userdata[0]['percentage'][$x],
                         'pass_year' => $userdata[0]['pass_year'][$x],
-                        'edu_certificate' => $edu_certificate1,
+                        'edu_certificate' => str_replace(' ', '_', $edu_certificate1),
                         'degree_count' => $i
                     );
 
@@ -1066,7 +1066,7 @@ class Job extends MY_Controller {
                         'grade' => $userdata[0]['grade'][$x],
                         'percentage' => $userdata[0]['percentage'][$x],
                         'pass_year' => $userdata[0]['pass_year'][$x],
-                        'edu_certificate' => $edu_certificate,
+                        'edu_certificate' => str_replace(' ', '_', $edu_certificate),
                         'degree_count' => $i
                     );
                     $insert_id = $this->common->insert_data_getid($data, 'job_graduation');
@@ -1090,7 +1090,7 @@ class Job extends MY_Controller {
                     'grade' => $userdata[0]['grade'][$x],
                     'percentage' => $userdata[0]['percentage'][$x],
                     'pass_year' => $userdata[0]['pass_year'][$x],
-                    'edu_certificate' => $edu_certificate,
+                    'edu_certificate' => str_replace(' ', '_', $edu_certificate),
                     'degree_count' => $i
                 );
                 $insert_id = $this->common->insert_data_getid($data, 'job_graduation');
@@ -1673,7 +1673,7 @@ class Job extends MY_Controller {
                                 'companyname' => $userdata[0]['companyname'][$x],
                                 'companyemail' => $userdata[0]['companyemail'][$x],
                                 'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => $work_certificate1
+                                'work_certificate' => str_replace(' ', '_', $work_certificate1),
                             );
 
                             $updatedata1 = $this->common->update_data($data, 'job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
@@ -1697,7 +1697,7 @@ class Job extends MY_Controller {
                                 'companyname' => $userdata[0]['companyname'][$x],
                                 'companyemail' => $userdata[0]['companyemail'][$x],
                                 'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => $work_certificate,
+                                'work_certificate' => str_replace(' ', '_', $work_certificate),
                                 'status' => 1
                             );
 
@@ -1738,7 +1738,7 @@ class Job extends MY_Controller {
                             'companyname' => $userdata[0]['companyname'][$x],
                             'companyemail' => $userdata[0]['companyemail'][$x],
                             'companyphn' => $userdata[0]['companyphn'][$x],
-                            'work_certificate' => $work_certificate,
+                            'work_certificate' => str_replace(' ', '_', $work_certificate),
                             'status' => 1
                         );
 
