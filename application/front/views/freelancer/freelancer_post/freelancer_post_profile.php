@@ -82,6 +82,7 @@
                         </label>
                     </div>
                 <?php } ?>
+                
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
@@ -91,18 +92,22 @@
                             $sub_fname = substr($fname, 0, 1);
                             $sub_lname = substr($lname, 0, 1);
                             if ($freelancerpostdata[0]['freelancer_post_user_image']) {
+                              
                                 if (IMAGEPATHFROM == 'upload') {
-                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freepostdata[0]['freelancer_post_user_image'])) {
+                                 
+                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'])) { 
                                         ?>
                                         <div class="post-img-user">
                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
                                     <?php } else {
+                                      
                                         ?>
-                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="" >        
+                                        <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="user_image" >        
                                         <?php
                                     }
                                 } else {
+                                  
                                     $filename = $this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'];
                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -117,6 +122,7 @@
                                     }
                                 }
                             } else {
+                                 
                                 ?>
                                 <div class="post-img-user">
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>

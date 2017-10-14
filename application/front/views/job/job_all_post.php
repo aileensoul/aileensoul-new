@@ -284,7 +284,7 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <!--<script type="text/javascript" src="<?php// echo base_url('assets/js/raphael-min.js
-?ver='.time()); ?>"></script>-->
+//?ver='.time()); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
 
 <script>

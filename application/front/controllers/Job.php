@@ -1051,7 +1051,7 @@ class Job extends MY_Controller {
                         'grade' => $userdata[0]['grade'][$x],
                         'percentage' => $userdata[0]['percentage'][$x],
                         'pass_year' => $userdata[0]['pass_year'][$x],
-                        'edu_certificate' => $edu_certificate1,
+                        'edu_certificate' => str_replace(' ', '_', $edu_certificate1),
                         'degree_count' => $i
                     );
 
@@ -1066,7 +1066,7 @@ class Job extends MY_Controller {
                         'grade' => $userdata[0]['grade'][$x],
                         'percentage' => $userdata[0]['percentage'][$x],
                         'pass_year' => $userdata[0]['pass_year'][$x],
-                        'edu_certificate' => $edu_certificate,
+                        'edu_certificate' => str_replace(' ', '_', $edu_certificate),
                         'degree_count' => $i
                     );
                     $insert_id = $this->common->insert_data_getid($data, 'job_graduation');
@@ -1090,7 +1090,7 @@ class Job extends MY_Controller {
                     'grade' => $userdata[0]['grade'][$x],
                     'percentage' => $userdata[0]['percentage'][$x],
                     'pass_year' => $userdata[0]['pass_year'][$x],
-                    'edu_certificate' => $edu_certificate,
+                    'edu_certificate' => str_replace(' ', '_', $edu_certificate),
                     'degree_count' => $i
                 );
                 $insert_id = $this->common->insert_data_getid($data, 'job_graduation');
@@ -1673,7 +1673,7 @@ class Job extends MY_Controller {
                                 'companyname' => $userdata[0]['companyname'][$x],
                                 'companyemail' => $userdata[0]['companyemail'][$x],
                                 'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => $work_certificate1
+                                'work_certificate' => str_replace(' ', '_', $work_certificate1),
                             );
 
                             $updatedata1 = $this->common->update_data($data, 'job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
@@ -1697,7 +1697,7 @@ class Job extends MY_Controller {
                                 'companyname' => $userdata[0]['companyname'][$x],
                                 'companyemail' => $userdata[0]['companyemail'][$x],
                                 'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => $work_certificate,
+                                'work_certificate' => str_replace(' ', '_', $work_certificate),
                                 'status' => 1
                             );
 
@@ -1738,7 +1738,7 @@ class Job extends MY_Controller {
                             'companyname' => $userdata[0]['companyname'][$x],
                             'companyemail' => $userdata[0]['companyemail'][$x],
                             'companyphn' => $userdata[0]['companyphn'][$x],
-                            'work_certificate' => $work_certificate,
+                            'work_certificate' => str_replace(' ', '_', $work_certificate),
                             'status' => 1
                         );
 
@@ -4488,13 +4488,15 @@ class Job extends MY_Controller {
                     $return_html .= PROFILENA;
                 }
                 $return_html .= '</span></li>';
-
                 $return_html .= '<li><b>No of Position</b><span>' . $post['post_position'] . ' Position</span></li>';
-
-                $return_html .= '<li><b>Industry Type</b> <span>';
+                $return_html .= '<li><b>Industry Type</b> <span>'; 
+               if ($post['industry_type']) {
                 $cache_time = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;
-                $return_html .= $cache_time . '</span></li>';
-
+                    $return_html .= $cache_time;
+                } else {
+                    $return_html .= PROFILENA;
+                }
+                $return_html .= '</span></li>';
                 if ($post['degree_name'] != '' || $post['other_education'] != '') {
                     $return_html .= '<li> <b>Education Required</b> <span>';
 

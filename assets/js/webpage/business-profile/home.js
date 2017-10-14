@@ -1613,6 +1613,7 @@ jQuery(document).ready(function ($) {
     var percent = $('.sr-only');
     var options = {
         beforeSend: function () {
+            $('body').removeClass('modal-open'); 
             // Replace this with your loading gif image
             document.getElementById("progress_div").style.display = "block";
             var percentVal = '0%';
@@ -1729,3 +1730,11 @@ function check_no_post_data() {
         $('.business-all-post').html(no_business_post_html);
     }
 }
+
+$('.editor-content').click(function(){
+   $('body').addClass('modal-open'); 
+});
+
+$('.close1').click(function(){
+    $('body').removeClass('modal-open'); 
+});

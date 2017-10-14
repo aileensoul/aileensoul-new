@@ -575,36 +575,6 @@
 
                                                         <?php
                                                         if ($returnpage == 'job') {
-                                                            if ($recdata[0]['re_comp_activities']) {
-                                                                ?>
-                                                                <li><b> Other Activities</b> <span>
-                                                                        <pre>  <?php
-                                                                echo $this->common->make_links($recdata[0]['re_comp_activities']);
-                                                                ?></pre> </span> </li>
-                                                                <?php
-                                                            } else {
-                                                                echo "";
-                                                            }
-                                                        } else {
-                                                            if ($recdata[0]['re_comp_activities']) {
-                                                                ?>
-                                                                <li><b> Other Activities</b> <span>
-                                                                        <pre>  <?php
-                                                                echo $this->common->make_links($recdata[0]['re_comp_activities']);
-                                                                ?></pre> </span> </li>
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <li><b>Other Activities</b> <span>
-                                                                <?php echo PROFILENA; ?></span>
-                                                                </li>
-                                                                <?php
-                                                            }
-                                                        }
-                                                        ?>
-
-                                                        <?php
-                                                        if ($returnpage == 'job') {
                                                             if ($recdata[0]['comp_logo']) {
                                                                 ?>
                                                                 <li><b>Company Logo</b> <span>
@@ -703,7 +673,6 @@
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
         
-        
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
                                     //var data1 = <?php// echo json_encode($de); ?>;
@@ -715,9 +684,12 @@
         <!-- FIELD VALIDATION JS END -->
         <?php
         if (IS_REC_JS_MINIFY == '0') {
-            ?>
+         if($returnpage == 'job'){   ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+<?php }else{ ?>
  <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_profile.js'); ?>"></script>
+<?php } ?>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_profile.js'); ?>"></script>
             <?php
         } else {
             ?>
