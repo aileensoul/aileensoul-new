@@ -427,11 +427,11 @@ class Job extends MY_Controller {
 
             if ($edu_certificate_primary == "") {
                 $data = array(
-                    'edu_certificate_primary' => $this->input->post('image_hidden_primary')
+                    'edu_certificate_primary' => str_replace(' ', '_', $this->input->post('image_hidden_primary'))
                 );
             } else {
                 $data = array(
-                    'edu_certificate_primary' => $job_certificate
+                    'edu_certificate_primary' => str_replace(' ', '_', $job_certificate)
                 );
             }
             $updatedata = $this->common->update_data($data, 'job_add_edu', 'user_id', $userid);
@@ -463,7 +463,7 @@ class Job extends MY_Controller {
                 'school_primary' => $this->input->post('school_primary'),
                 'percentage_primary' => $this->input->post('percentage_primary'),
                 'pass_year_primary' => $this->input->post('pass_year_primary'),
-                'edu_certificate_primary' => $job_certificate,
+                'edu_certificate_primary' => str_replace(' ', '_', $job_certificate),
                 'status' => 1
             );
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
@@ -609,11 +609,11 @@ class Job extends MY_Controller {
 
             if ($edu_certificate_secondary == "") {
                 $data = array(
-                    'edu_certificate_secondary' => $this->input->post('image_hidden_secondary')
+                    'edu_certificate_secondary' => str_replace(' ', '_', $this->input->post('image_hidden_secondary'))
                 );
             } else {
                 $data = array(
-                    'edu_certificate_secondary' => $job_certificate
+                    'edu_certificate_secondary' => str_replace(' ', '_', $job_certificate)
                 );
             }
             $updatedata = $this->common->update_data($data, 'job_add_edu', 'user_id', $userid);
@@ -645,7 +645,7 @@ class Job extends MY_Controller {
                 'school_secondary' => $this->input->post('school_secondary'),
                 'percentage_secondary' => $this->input->post('percentage_secondary'),
                 'pass_year_secondary' => $this->input->post('pass_year_secondary'),
-                'edu_certificate_secondary' => $job_certificate,
+                'edu_certificate_secondary' => str_replace(' ', '_', $job_certificate),
                 'status' => 1
             );
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
@@ -791,11 +791,11 @@ class Job extends MY_Controller {
 
             if ($edu_certificate_higher_secondary == "") {
                 $data = array(
-                    'edu_certificate_higher_secondary' => $this->input->post('image_hidden_higher_secondary')
+                    'edu_certificate_higher_secondary' => str_replace(' ', '_', $this->input->post('image_hidden_higher_secondary'))
                 );
             } else {
                 $data = array(
-                    'edu_certificate_higher_secondary' => $job_certificate
+                    'edu_certificate_higher_secondary' => str_replace(' ', '_', $job_certificate)
                 );
             }
 
@@ -829,7 +829,7 @@ class Job extends MY_Controller {
                 'school_higher_secondary' => $this->input->post('school_higher_secondary'),
                 'percentage_higher_secondary' => $this->input->post('percentage_higher_secondary'),
                 'pass_year_higher_secondary' => $this->input->post('pass_year_higher_secondary'),
-                'edu_certificate_higher_secondary' => $job_certificate,
+                'edu_certificate_higher_secondary' => str_replace(' ', '_', $job_certificate),
                 'status' => 1
             );
 
@@ -1051,7 +1051,7 @@ class Job extends MY_Controller {
                         'grade' => $userdata[0]['grade'][$x],
                         'percentage' => $userdata[0]['percentage'][$x],
                         'pass_year' => $userdata[0]['pass_year'][$x],
-                        'edu_certificate' => $edu_certificate1,
+                        'edu_certificate' => str_replace(' ', '_', $edu_certificate1),
                         'degree_count' => $i
                     );
 
@@ -1066,7 +1066,7 @@ class Job extends MY_Controller {
                         'grade' => $userdata[0]['grade'][$x],
                         'percentage' => $userdata[0]['percentage'][$x],
                         'pass_year' => $userdata[0]['pass_year'][$x],
-                        'edu_certificate' => $edu_certificate,
+                        'edu_certificate' => str_replace(' ', '_', $edu_certificate),
                         'degree_count' => $i
                     );
                     $insert_id = $this->common->insert_data_getid($data, 'job_graduation');
@@ -1090,7 +1090,7 @@ class Job extends MY_Controller {
                     'grade' => $userdata[0]['grade'][$x],
                     'percentage' => $userdata[0]['percentage'][$x],
                     'pass_year' => $userdata[0]['pass_year'][$x],
-                    'edu_certificate' => $edu_certificate,
+                    'edu_certificate' => str_replace(' ', '_', $edu_certificate),
                     'degree_count' => $i
                 );
                 $insert_id = $this->common->insert_data_getid($data, 'job_graduation');
@@ -1673,7 +1673,7 @@ class Job extends MY_Controller {
                                 'companyname' => $userdata[0]['companyname'][$x],
                                 'companyemail' => $userdata[0]['companyemail'][$x],
                                 'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => $work_certificate1
+                                'work_certificate' => str_replace(' ', '_', $work_certificate1),
                             );
 
                             $updatedata1 = $this->common->update_data($data, 'job_add_workexp', 'work_id', $jobdata[$x]['work_id']);
@@ -1697,7 +1697,7 @@ class Job extends MY_Controller {
                                 'companyname' => $userdata[0]['companyname'][$x],
                                 'companyemail' => $userdata[0]['companyemail'][$x],
                                 'companyphn' => $userdata[0]['companyphn'][$x],
-                                'work_certificate' => $work_certificate,
+                                'work_certificate' => str_replace(' ', '_', $work_certificate),
                                 'status' => 1
                             );
 
@@ -1738,7 +1738,7 @@ class Job extends MY_Controller {
                             'companyname' => $userdata[0]['companyname'][$x],
                             'companyemail' => $userdata[0]['companyemail'][$x],
                             'companyphn' => $userdata[0]['companyphn'][$x],
-                            'work_certificate' => $work_certificate,
+                            'work_certificate' => str_replace(' ', '_', $work_certificate),
                             'status' => 1
                         );
 

@@ -267,6 +267,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div id="myModal" class="modal">
                 <div class="modal-content md-2">
                     <?php
@@ -289,6 +291,8 @@
                     <?php echo form_close(); ?>
                 </div>
             </div>
+
+            
         </section>
         <?php echo $login_footer ?>
     </div>
