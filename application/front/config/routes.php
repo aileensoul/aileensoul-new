@@ -150,6 +150,7 @@ $route['freelancer-hire/reactivate'] = "freelancer_hire/reactivate";
 $route['freelancer-hire/deactivate'] = "freelancer/deactivate_hire";
 $route['freelancer-hire/freelancer-applied/(:any)'] = "freelancer/freelancer_apply_list/$1";
 $route['freelancer-hire'] = "freelancer_hire/freelancer_hire";
+$route['notification/freelancer-hire/(:any)'] = "notification/freelancer_hire_post/$1";
 
 
 //FREELANCER APPLY ROUTES SETTINGS
