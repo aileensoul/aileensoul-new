@@ -4613,5 +4613,7 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
     }
 
 //add other_industry into database End 
+    
+    
 
 }
