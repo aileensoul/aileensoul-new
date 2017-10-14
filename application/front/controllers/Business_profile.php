@@ -9752,8 +9752,7 @@ Your browser does not support the audio tag.
         array_multisort($post, SORT_DESC, $new);
 
         $contactperson = $new;
-
-
+        
         if ($contactperson) {
             foreach ($contactperson as $contact) {
                 $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
@@ -9986,9 +9985,9 @@ Your browser does not support the audio tag.
                                                         </div>
                                                         <div class="fw">
                                                             <p class="connect-link">
-                                                                <a href="#" class="cr-accept acbutton  ani" onclick = "return contactapprove(' . $friend['contact_from_id'] . ', 1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i>
+                                                                <a href="#" class="cr-accept acbutton  ani" onclick = "return contactapprove1(' . $friend['contact_from_id'] . ', 1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i>
                                                                     </span></a>
-                                                                <a href="#" class="cr-decline" onclick = "return contactapprove(' . $friend['contact_from_id'] . ', 0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i>
+                                                                <a href="#" class="cr-decline" onclick = "return contactapprove1(' . $friend['contact_from_id'] . ', 0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i>
                                                                     </span></a>
                                                             </p>
                                                         </div>
@@ -11028,7 +11027,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
 
                         $return_html .= '<div>
-<video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" controls>
+<video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" controls playsinline webkit-playsinline>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
 Your browser does not support the video tag.
 </video>
