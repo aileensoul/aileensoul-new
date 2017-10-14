@@ -4031,6 +4031,19 @@ div .comment {
 .popup-text textarea::-webkit-scrollbar { 
     display: none; 
 }
+/***  custom user list css  ***/
+.full-box-module_follow .seeall{margin-top:-28px;}
+.custom-user-list{margin-bottom:10px; width:100%; float:left;}
+.custom-user-list .profile-boxProfileCard_follow{height:300px; max-height:300px;}
+.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:33.33% !important; float:left; text-align:center;}
+.custom-user-list .post-design-pro-img_follow{width:180px; padding:15px 15px 0; height:180px; margin:0 auto; float:none; display:block;}
+.custom-user-list .follow_left_box_main{height:270px;}
+.custom-user-list .post-design-name_follow{width:100%; padding:0 5px; text-align:center;}
+.custom-user-list .profile-boxProfileCard_follow ul{padding-bottom:0;}
+.custom-user-list .follow_left_box_main_btn{padding:0 !important; margin:0; float:none;}
+.custom-user-list .follow_left_box_main_btn button{margin-top:5px;}
+.custom-user-list .Follow_close{right:-5px;}
+/***  end custom user list css  ***/
 
 
 /***  media query  ***/
@@ -4930,6 +4943,7 @@ div .comment {
     /*** end add  ***/
 	.padd_img{padding:0;}
 	.buisness-menu .profile-pho-bui{border-radius:4px;}
+	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
 }
 
 @media screen and (max-width: 639px) {
@@ -5531,7 +5545,7 @@ div .comment {
     .popup-text span{font-size:16px; padding:5px 0;}
     .popup-text{padding:7px 0px 6px 10px;}
     .post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
-    
+    .custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:100% !important;}
 }
 
 @media screen and (max-width: 430px) {

@@ -671,7 +671,7 @@ label.error {
 
 /***---------  model css  -------------***/
 .modal {
-    display: none;
+    /*display: none;
     position: fixed;
     z-index: 6;
     padding-top: 100px;
@@ -679,22 +679,14 @@ label.error {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: auto;*/
     background-color: rgba(0, 0, 0, 0.8);
     
 }
 .modal-body {
     padding: 0px!important
 }
-.modal.in .modal-dialog{
-    position:absolute;
-    top: 50%; left: 50%;
-    -ms-transform: translate(-50%,-50%) !important;
-    -webkit-transform: translate(-50%,-50%) !important;
-    -moz-transform: translate(-50%,-50%) !important;
-    -o-transform: translate(-50%,-50%) !important;
-    transform: translate(-50%,-50%) !important;
-}
+
 .modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
 .modal-content {
     background-color: #fefefe;
@@ -763,7 +755,7 @@ label.error {
     outline: none;
 }
 #popup-form input[type="submit"]{margin:15px 1px 10px 0;}
-.deactive {padding-top: 20px;}
+.deactive {/*padding-top: 20px;*/}
 #bidmodal{z-index: 10003;}
 
 .model_ok_cancel {
@@ -1061,14 +1053,7 @@ label.cameraButton {
     font-size: 32px;
     cursor: pointer;
 }
-.cover .modal.in .modal-dialog{
-    top:50%;
-    left:50%;
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%, -50%);
-    margin:0;
-    float:left;
-}
+
 .cover .profile-modal-close, .cover .modal-close, .posterror-modal-close{line-height:30px;}
 .custom-c .middle-section{background:#fff;}
 .bg-images.no-cover-upload{
@@ -1858,18 +1843,48 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 /*** end image crop  ***/
 
 /*** new popup css  ***/
+.cover .modal.in .modal-dialog{
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    margin:0;
+    float:left;
+}
+.modal.in .modal-dialog{
+    position:absolute;
+    top: 50%; left: 50%;
+    -ms-transform: translate(-50%,-50%) !important;
+    -webkit-transform: translate(-50%,-50%) !important;
+    -moz-transform: translate(-50%,-50%) !important;
+    -o-transform: translate(-50%,-50%) !important;
+    transform: translate(-50%,-50%) !important;
+}
+
+.modal-dialog {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin:0 auto;
+}
+
+.modal-content {
+  margin: 0 auto;
+  width:600px;
+}
 .fade {
     opacity: 0;
-    -webkit-transition: opacity .20s linear;
-    transition: opacity .20s linear;
+    -webkit-transition: opacity .05s linear;
+    transition: opacity .05s linear;
 }
 
 .cover .modal .modal-dialog{
-	transform: scale(0.8);
+	transform: scale(0.8) !important;
 
 }
 .cover .modal.in .modal-dialog {
-	transform: scale(1);
+	transform: scale(1) !important;
 }
 /*** end new popup  ***/
 
@@ -1910,6 +1925,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .hs-submit img{
    display: none !important;
    }
+
 
 
 

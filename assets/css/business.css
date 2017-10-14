@@ -4388,7 +4388,19 @@ div .comment {
 .post-edit-popup .camer_h i{padding-top:2px;}
 .krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon1.png'); background-size:100%;}
 .kv-file-content audio{margin-top:83px;}
-
+/***  custom user list css  ***/
+.full-box-module_follow .seeall{margin-top:-28px;}
+.custom-user-list{margin-bottom:10px; width:100%; float:left;}
+.custom-user-list .profile-boxProfileCard_follow{height:300px; max-height:300px;}
+.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:33.33% !important; float:left; text-align:center;}
+.custom-user-list .post-design-pro-img_follow{width:180px; padding:15px 15px 0; height:180px; margin:0 auto; float:none; display:block;}
+.custom-user-list .follow_left_box_main{height:270px;}
+.custom-user-list .post-design-name_follow{width:100%; padding:0 5px; text-align:center;}
+.custom-user-list .profile-boxProfileCard_follow ul{padding-bottom:0;}
+.custom-user-list .follow_left_box_main_btn{padding:0 !important; margin:0; float:none;}
+.custom-user-list .follow_left_box_main_btn button{margin-top:5px;}
+.custom-user-list .Follow_close{right:-5px;}
+/***  end custom user list css  ***/
 
 
 
@@ -4468,7 +4480,7 @@ div .comment {
         padding: 3px 0 3px 0;
     }
     .profile-boxProfileCard_follow {
-        max-height: 198px;
+        /*max-height: 198px;*/
     }
     .post-design-pro-img_follow {
         width: 60px;
@@ -4502,8 +4514,8 @@ div .comment {
         width: 28%;
     }
     .right_left_box_design {
-        width: 72% !important;
-        padding: 14px 12px 10px 16px !important;
+       /* width: 72% !important;
+        padding: 14px 12px 10px 16px !important;*/
     }
     .profile-boxProfile-name {
         line-height: 1;
