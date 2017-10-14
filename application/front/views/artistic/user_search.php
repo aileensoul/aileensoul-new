@@ -510,7 +510,7 @@
         </div>
         <!-- Login -->
          <!-- model for forgot password start -->
-         
+
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -666,8 +666,11 @@
         </footer>
 
 <!-- <script src="<?php //echo base_url('assets/js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script> -->
+<!-- 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script src="<?php echo base_url('assets/js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/jquery.highlite.js?ver='.time()); ?>"></script>
