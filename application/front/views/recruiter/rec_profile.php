@@ -685,9 +685,12 @@
         <!-- FIELD VALIDATION JS END -->
         <?php
         if (IS_REC_JS_MINIFY == '0') {
-            ?>
+         if($returnpage == 'job'){   ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+<?php }else{ ?>
  <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_profile.js'); ?>"></script>
+<?php } ?>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_profile.js'); ?>"></script>
             <?php
         } else {
             ?>
