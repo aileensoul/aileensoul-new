@@ -1334,9 +1334,10 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 .profile-boxProfileCard_follow ul li {
     width: 100%!important;
     border-bottom: none;
+	
 }
 .profile-boxProfileCard_follow ul li .contact-frnd-post {
-    padding: 2px 8px 0;
+    padding: 5px 10px;
 }
 .profile-boxProfileCard_follow_mobile ul li {
     width: 100%!important;

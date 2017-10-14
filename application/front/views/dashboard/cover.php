@@ -11,6 +11,39 @@
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
+		<style>
+			.cover .modal.in .modal-dialog{
+				top:inherit;
+				left:inherit;
+				-webkit-transform:inherit;
+				transform: inherit;
+				margin:0 auto;
+				float:none;
+				position:relative;
+			}
+			.modal.in .modal-dialog{
+				position:inherit;
+				top: inherit; left: inherit;
+				-ms-transform: inherit !important;
+				-webkit-transform: inherit !important;
+				-moz-transform: inherit !important;
+				-o-transform: inherit !important;
+				transform: inherit !important;
+			}
+			.modal-dialog {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.modal-content {
+  margin: 0 auto;
+  width:600px;
+}
+
+
+		</style>
     </head>
     <body class="cover ">
         <?php echo $header; ?>
@@ -267,7 +300,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <h1><a href="<?php echo base_url('recruiter'); ?>">Recruiter Profile</a></h1>
                                                 <p>Hire quality employees here.</p>
                                                 <div class="btns">
-                                                    <a data-fancybox data-src="#rec-popup" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
+                                                    <a data-target="#rec-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
                                                     
 
                                                     <?php if ($recrdata[0]['re_step'] != 3) { ?>
@@ -317,7 +350,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <a class="btn-4" id="free-hire-take-btn" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
 
                                                     <?php } ?>
-                                                    <a data-fancybox data-src="#fre-popup" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                                    <a data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 
                                                 </div>
                                             </div>
@@ -338,7 +371,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <h1><a href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
                                                 <p>Grow your business network.</p>
                                                 <div class="btns">
-                                                    <a data-fancybox data-src="#bus-popup" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
+                                                    <a data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
                                                     <?php if ($busdata[0]['business_step'] != 4) { ?>
                                                         <a class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
                                                     <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
@@ -381,7 +414,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         ?>
                                                         <a class="btn-4" id="artistic-take-btn" href="<?php echo base_url('artistic'); ?>">Take me in</a>
                                                     <?php } ?>
-                                                    <a data-fancybox data-src="#art-popup" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                                    <a data-target="#art-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 
                                                 </div>
                                             </div>
@@ -393,7 +426,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                             <!-- Modal content-->
                         </section>
                     
-		</div>
+			</div>
                     
 					<?php if ($userdata[0]['user_slider'] == 1) { ?>
                         <div id="onload-Modal" class="modal fade" role="dialog">
@@ -613,7 +646,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     <?php } ?>
                     <!--  how it work popup  -->
-                    <div style="display:none;" class="modal how-it-popup" id="jop-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div style="display:none;" class="modal fade how-it-popup" id="jop-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					
                         <div class="modal-dialog">
                             <div class="modal-content">
 								<button type="button" class="modal-close" data-dismiss="modal">×</button>
@@ -647,10 +681,12 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div style="display:none;" class="modal how-it-popup" id="rec-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                   
+					</div>
+                    <div style="display:none;" class="modal fade how-it-popup" id="rec-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
+								<button type="button" class="modal-close" data-dismiss="modal">×</button>
                                 <div class="modal-header">
                                     <h1 class="modal-title">How It Works ?</h1>
                                 </div>
@@ -685,9 +721,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     </div>
 
-                    <div style="display:none;" class="how-it-popup" id="fre-popup">
+                    <div style="display:none;" class="modal how-it-popup" id="fre-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
+								<button type="button" class="modal-close" data-dismiss="modal">×</button>
                                 <div class="modal-header">
 
                                     <h1 class="modal-title">How It Works ?</h1>
@@ -747,9 +784,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     </div>
 
-                    <div style="display:none;" class="how-it-popup" id="bus-popup">
+                    <div style="display:none;" class="modal how-it-popup" id="bus-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
+								<button type="button" class="modal-close" data-dismiss="modal">×</button>
                                 <div class="modal-header">
 
                                     <h1 class="modal-title">How It Works ?</h1>
@@ -788,9 +826,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     </div>
 
-                    <div style="display:none;" class="how-it-popup" id="art-popup">
+                    <div style="display:none;" class="modal how-it-popup" id="art-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
+								<button type="button" class="modal-close" data-dismiss="modal">×</button>
                                 <div class="modal-header">
 
                                     <h1 class="modal-title">How It Works ?</h1>
@@ -900,6 +939,9 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
                     <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
+					<script>
+						
+					</script>
 <script type="text/javascript">
     $(document).ready(function ($) {
         if (screen.width > 767) {

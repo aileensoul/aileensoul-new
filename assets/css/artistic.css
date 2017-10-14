@@ -716,7 +716,7 @@ label.cameraButton:active {
     background-color: #fff;
     color: #1b8ab9;
     border-bottom: 1px solid #d9d9d9;
-    line-height:1; padding:8px 15px 7px;
+    line-height:1; padding:8px 10px 7px;
 }
 .seeall {
     float: right;
@@ -727,17 +727,18 @@ label.cameraButton:active {
     text-decoration-line: underline;
 }
 .follow_left_box_main {
-    padding-left: 1px;
-    padding-right: 1px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+	position:relativ;
+    height: 60px;
+    padding:0;
+
 }
 .profile-boxProfileCard_follow {
     position: relative;
-    max-height: 240px;
+    max-height: 220px;
     background-color: white;
     height: auto;
     overflow: hidden;
+	padding:5px 0;
 }
 .profile-boxProfileCard_follow ul {
     padding: 0;
@@ -768,11 +769,11 @@ label.cameraButton:active {
     border: 1px solid #ededed;
 }
 .post-design-pro-img_follow {
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
     display: inline-block;
     float: left;
-    padding: 7px 5px 7px 5px;
+
 }
 .post-design-pro-img_follow img {
     height: 100%;
@@ -781,7 +782,7 @@ label.cameraButton:active {
 }
 .post-design-name_follow ul li a h6 {
     font-weight: 600;
-    padding-top: 9px;
+    padding-top: 2px;
     font-size: 13px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -795,8 +796,9 @@ label.cameraButton:active {
     font-size: 12px;
 }
 .post-design-name_follow {
-    width: 42%;
+    width: 48%;
     overflow: hidden;
+	padding:5px 0 5px 5px;
 }
 .post-design-name_follow ul {
     font-size: 0;
@@ -821,7 +823,7 @@ label.cameraButton:active {
     margin-left: 10px;
     display: inline-block;
     float: left;
-    padding-top: 18px !important;
+    padding-top: 10px !important;
 }
 .follow_left_box_main_btn .bg_following {
     margin-bottom: 0px;
@@ -868,7 +870,7 @@ label.cameraButton:active {
 .Follow_close {
     transform: translate(0, -50%);
     float: right;
-    top: 14%;
+    top: 8%;
     position: absolute;
     right: 0px;
 }
@@ -2903,7 +2905,7 @@ label.cameraButton:active {
 
 .profile-boxProfileCard_follow_mobile {
     position: relative;
-    max-height: 240px;
+    max-height: 210px;
     background-color: white;
     height: auto;
     overflow: hidden;
@@ -2966,9 +2968,7 @@ label.cameraButton:active {
     padding: 8px;
     border-radius: 2px;
 }
-.profile-boxProfileCard_follow ul li .contact-frnd-post {
-    padding-top: 0px;
-}
+
 .profile-boxProfileCard_follow_mobile ul li .contact-frnd-post {
     padding-top: 0px;
     border: none;
@@ -3972,8 +3972,6 @@ div .comment {
 .flw_msg_btn ul li:last-child a{margin-top:0;}
 .krajee-default[data-template="audio"] .file-preview-audio {/*height:100% !important;*/ border:none; }
 #mainContainer{min-width:108% !important;}
-.post-design-product_follow_main{padding-top:5px;}
-.post-design-product_follow{padding-top:5px;}
 .attach-file-name{padding-left:15px;}
 .animated.fadeInUp{animation-fill-mode: none;}
 

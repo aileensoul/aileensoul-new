@@ -1860,8 +1860,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 /*** new popup css  ***/
 .fade {
     opacity: 0;
-    -webkit-transition: opacity 1s linear;
-    transition: opacity 1s linear;
+    -webkit-transition: opacity .20s linear;
+    transition: opacity .20s linear;
 }
 
 .cover .modal .modal-dialog{
