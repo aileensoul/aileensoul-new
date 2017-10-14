@@ -646,8 +646,6 @@
         if (IS_REC_JS_MINIFY == '0') {
             ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
-        <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
         <!--SCRIPT FOR DATE START-->
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>

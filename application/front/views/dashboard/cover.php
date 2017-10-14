@@ -933,6 +933,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 					</div>
 					
 					<?php echo $login_footer ?>
+                    <?php echo $footer ?>
 					
                     <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js'); ?>"></script>

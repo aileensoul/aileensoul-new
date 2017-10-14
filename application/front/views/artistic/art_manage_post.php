@@ -107,7 +107,9 @@
                         <div class="head_details">
                             <h5><i class="fa fa-camera" aria-hidden="true"></i>Photos</h5>
                         </div>  
-                        <div class="art_photos"></div>
+                        <div class="art_photos">
+                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                        </div>
                     </div>
                 </div>
                 </a>
@@ -118,7 +120,9 @@
                             <div class="head_details">
                                  <h5><i class="fa fa-video-camera" aria-hidden="true"></i>  Video</h5>
                             </div>  
-                            <div class="art_videos"></div>
+                            <div class="art_videos">
+                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                            </div>
                         </table>
                     </div>
                 </div>
@@ -130,7 +134,9 @@
                             <div class="head_details">
                                  <h5><i class="fa fa-music" aria-hidden="true"></i>  Audio</h5>
                             </div>
-                            <div class="art_audios"></div>
+                            <div class="art_audios">
+                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                            </div>
                         </table>
                     </div>
                 </div>
@@ -142,7 +148,9 @@
                             <div class="head_details">
                                  <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  PDF</h5>
                             </div>
-                            <div class="art_pdf"></div>
+                            <div class="art_pdf">
+                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                            </div>
                         </table>
                     </div>
                 </div>

@@ -467,19 +467,19 @@
         </section>
         <!-- END CONTAINER -->
 
-        <!-- BID MODAL START -->
-        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                     <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
-                        <span class="mes"></span>
-                    </div>
-                </div>
+          <!-- Bid-modal  --> 
+      <div class="modal fade message-box biderror custom-message in" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content message">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
             </div>
-        </div>
-        <!-- BID MODAL END -->
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+      
            <!-- BEGIN FOOTER -->
         <?php echo $footer; ?>
         <!-- END FOOTER -->

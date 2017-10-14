@@ -173,22 +173,28 @@
                                             </div>
                                         </div>
                                     </li>  
-                                    <li id="Inbox_link">
+                                   <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
+                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
-                                            <span id="message_count" class="message_count"></span>
+                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
+
+                                            <span id="message_count"></span>
                                         </a>
 
                                         <div id="InboxContainer" class="dropdown2_content">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
-                                                <div>
-                                                    <ul class="notification_data_in_h2">
-                                                    </ul>
+                                                <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
+                                                <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
+
+                                                    <div>
+                                                        <ul class="notification_data_in_h2">
+<div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                                        </ul></div>
+
                                                 </div>
                                             </div>
-                                    </li>   
+                                    </li> 
                                     <li>
                                         <div class="dropdown_hover">
                                             <span id="art_profile" class="dropbtn_common" >Business Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
@@ -268,21 +274,26 @@
                                     </li>   
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
+                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="InboxLink" onclick="return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
-                                            <span id="message_count" class="message_count"></span>
+                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
+
+                                            <span id="message_count"></span>
                                         </a>
 
                                         <div id="InboxContainer" class="dropdown2_content">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
-                                                <div>
-                                                    <ul class="notification_data_in_h2">
+                                                <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
+                                                <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
 
-                                                    </ul>
+                                                    <div>
+                                                        <ul class="notification_data_in_h2">
+<div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                                        </ul></div>
+
                                                 </div>
                                             </div>
-                                    </li>        
+                                    </li>       
                                     <li>
                                         <div class="dropdown_hover">
                                             <span id="art_profile" class="dropbtn_common">Business Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>

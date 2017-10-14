@@ -31,6 +31,7 @@
                         tabindex="-1"
                         aria-hidden="true"
                         rel="noopener">
+                          <div class="bg-images no-cover-upload"> 
                         <?php
                            if ($jobdata[0]['profile_background'] != '') {
                                                                             ?>
@@ -45,6 +46,7 @@
                            }
                            ?>
                      </a>
+</div>
                   </div>
                   <div class="profile-boxProfileCard-content clearfix">
                      <div class="left_side_box_img buisness-profile-txext">

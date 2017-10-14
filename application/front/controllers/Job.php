@@ -1197,7 +1197,7 @@ class Job extends MY_Controller {
         $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'industry_name' => "Other",'is_other'=>'0');
+        $contition_array = array('is_delete' => '0', 'industry_name' => "Others");
         $search_condition = "((status = '1'))";
          $this->data['other_industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
   
@@ -2926,7 +2926,7 @@ class Job extends MY_Controller {
         $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'industry_name' => "Other",'is_other'=>'0');
+        $contition_array = array('is_delete' => '0', 'industry_name' => "Others",'is_other'=>'0');
         $search_condition = "((status = '1'))";
          $this->data['other_industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
       //echo "<pre>";print_r($this->data['other_industry']);die();
@@ -5677,7 +5677,7 @@ public function rec_profile($id="")
                         }
                     }
 //For Getting Other at end
- $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Other");
+ $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Others");
        $industry_otherdata =  $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 

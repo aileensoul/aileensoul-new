@@ -316,6 +316,15 @@ $(document).on('change', '.field_other', function (event) {
                             $('#other_field').val('');
                             $("#other_field").removeClass("keyskill_border_active");
                             $("#field_error").removeClass("error");
+                            var ss = document.querySelectorAll("label[for]");
+                            var i;
+                            for (i = 0; i < ss.length; i++) {
+                                var zz = ss[i].getAttribute('for');
+                                if (zz == 'fields_req') {
+                                    ss[i].remove();
+                                }
+                            }
+                            $("#fields_req").removeClass("error");
                             $('.field_other').html(response.select);
                         }
                     }

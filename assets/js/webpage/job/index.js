@@ -172,11 +172,11 @@
                    required: true,
    
                },
-                pincode: {
-   
-                   required: true,
-   
-               },
+//                pincode: {
+//   
+//                   required: true,
+//   
+//               },
                 address: {
    
                    required: true,
@@ -230,11 +230,11 @@
                    required: "City is required.",
    
                },
-                pincode: {
-   
-                   required: "Pincode is required.",
-   
-               },
+//                pincode: {
+//   
+//                   required: "Pincode is required.",
+//   
+//               },
                 address: {
    
                    required: "Address is required.",

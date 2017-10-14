@@ -1177,7 +1177,7 @@ fieldset .add_post_btns:hover {
 }
 .profile-text a {
     color: #8c8c8c;
-    font-size: 18px;
+    font-size: 15px;
     cursor: pointer;
 }
 .profile-text {
@@ -1497,7 +1497,9 @@ input[type=number] {
 }
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color: #1b8ab9}
 .date-dropdowns label{margin-top:40px !important;}
-
+.selected{color: #fff !important;
+background-color: #1b8ab9 !important;
+pointer-events: none;}
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
     .common-form fieldset.mgrd input[type="radio"] {

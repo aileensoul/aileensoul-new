@@ -2170,10 +2170,14 @@ label.cameraButton input[accept*="camera"] {
 /*.date-dropdowns label.error {margin-top: 36px;}
 .clonedInput select label.error{margin-top: 36px;}
 */
-.modal-content .message span#field_error{width: 100%;float: left!important;text-align: right;}
 
+.modal-content .message span#field_error{width: 100%;float: left!important;text-align: right;}
 #indus{border:1px solid #1b8ab9; margin-top:20px; }
 #indus:hover{background:#1b8ab9; color:#fff;}
+.clonedInput label.error{right: 0;}
+#jobseeker_regform1 #experience_year + .error{top:60px;}
+#jobseeker_regform #datepicker + .error{top:65px;}
+
 /***  media query  ***/
 
 

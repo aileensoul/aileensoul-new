@@ -776,7 +776,7 @@ function followuser_two(clicked_id)
             $('ul.home_three_follow_ul').append(data.third_user);
 
             $('.left_box_following_count').html('(' + data.following_count + ')')
-            $.when($('.fad' + clicked_id).fadeOut(3000))
+            $.when($('.fad' + clicked_id).fadeOut(1500))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
                     });
@@ -798,7 +798,7 @@ function followclose(clicked_id)
                     dataType: 'html',
                     success: function (data) {
                         $('ul.home_three_follow_ul').append(data);
-                        $.when($('.fad' + clicked_id).fadeOut(3000))
+                        $.when($('.fad' + clicked_id).fadeOut(2000))
                                 .done(function () {
                                     $('.fad' + clicked_id).remove();
                                 });

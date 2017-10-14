@@ -214,6 +214,9 @@ function myFunction1(clicked_id) {
 
 function followuser(clicked_id)
    {
+      document.getElementById('followdiv' + clicked_id).removeAttribute("onclick");
+      document.getElementById('Follow_close' + clicked_id).removeAttribute("onclick");
+
    
        $.ajax({
            type: 'POST',
@@ -224,7 +227,7 @@ function followuser(clicked_id)
                $('.' + 'fr' + clicked_id).html(data.follow);
                $('#countfollow').html(data.count);
                $('ul.home_three_follow_ul').append(data.third_user);
-               $.when($('.fad' + clicked_id).fadeOut(3000))
+               $.when($('.fad' + clicked_id).fadeOut(2000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
                         var numberPost = $('[class^="follow_box_ul_li"]').length;
@@ -243,13 +246,17 @@ function followuser(clicked_id)
     function followclose(clicked_id)
    { //alert("hii");
 
+      document.getElementById('Follow_close' + clicked_id).removeAttribute("onclick");
+      document.getElementById('followdiv' + clicked_id).removeAttribute("onclick");
+
+
     $.ajax({
         type: 'POST',
         url: base_url + "artistic/artistic_home_follow_ignore",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('ul.home_three_follow_ul').append(data);
-            $.when($('.fad' + clicked_id).fadeOut(6000))
+            $.when($('.fad' + clicked_id).fadeOut(1500))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
                         var numberPost = $('[class^="follow_box_ul_li"]').length;
@@ -352,7 +359,8 @@ var isProcessing = false;
                     $('#loader').hide();
                     },
                     success: function (data) {
-                        $('.loader').remove();
+                        //$('.fw').hide();
+                         $('#loader').hide();
                         $('.art-all-post').append(data);
 
                         // second header class add for scroll
@@ -380,10 +388,12 @@ var isProcessing = false;
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+
+                      $('#loader').show(); 
+                        //$(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) { //alert(data);
-                        $('.loader').remove();
+                        $('#loader').hide();
                         $('.profile-boxProfileCard_follow').html(data);
                          var liCount = $(data).find("li.follow_box_ul_li").length;
             
