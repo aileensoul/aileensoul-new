@@ -4488,13 +4488,15 @@ class Job extends MY_Controller {
                     $return_html .= PROFILENA;
                 }
                 $return_html .= '</span></li>';
-
                 $return_html .= '<li><b>No of Position</b><span>' . $post['post_position'] . ' Position</span></li>';
-
-                $return_html .= '<li><b>Industry Type</b> <span>';
+                $return_html .= '<li><b>Industry Type</b> <span>'; 
+               if ($post['industry_type']) {
                 $cache_time = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;
-                $return_html .= $cache_time . '</span></li>';
-
+                    $return_html .= $cache_time;
+                } else {
+                    $return_html .= PROFILENA;
+                }
+                $return_html .= '</span></li>';
                 if ($post['degree_name'] != '' || $post['other_education'] != '') {
                     $return_html .= '<li> <b>Education Required</b> <span>';
 
