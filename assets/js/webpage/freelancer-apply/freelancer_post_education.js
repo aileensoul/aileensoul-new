@@ -16,20 +16,108 @@ function check() {
 //CHECK SEARCH KEYWORD AND LOCATION BLANK END
 //CODE FOR DEGREE DATA START
 $(document).ready(function () {
+
     $('#degree').on('change', function () {
         var degreeID = $(this).val();
-        if (degreeID) {
-            $.ajax({
-                type: 'POST',
-                url: base_url + "freelancer/ajax_data",
-                data: 'degree_id=' + degreeID,
-                success: function (html) {
-                    $('#stream').html(html);
-
-                }
-            });
+        if (degreeID != 54) {
+            if (degreeID) {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "freelancer/ajax_data",
+                    data: 'degree_id=' + degreeID,
+                    success: function (html) {
+                        $('#stream').html(html);
+                    }
+                });
+            } else {
+                $('#stream').html('<option value="">Select Degree first</option>');
+            }
         } else {
-            $('#stream').html('<option value="">Select Degree first</option>');
+
+            var item = $(this);
+            var degree = (item.val());
+
+            if (degree == 54)
+            {
+                $("#other_degree").removeClass("keyskill_border_active");
+                $("#other_stream").removeClass("keyskill_border_active");
+                $('#degree_error').remove();
+                $('#stream_error').remove();
+                item.val('');
+                $('#bidmodal_degree').modal('show');
+                //  $.fancybox.open(html);
+                $('.message2 #univer2').off('click').on('click', function () {
+                    $("#other_degree").removeClass("keyskill_border_active");
+                    $("#other_stream").removeClass("keyskill_border_active");
+                    $('#degree_error').remove();
+                    $('#stream_error').remove();
+                    var degree = document.querySelector(".message2 #other_degree").value;
+                    var stream = document.querySelector(".message2 #other_stream").value;
+                    if (stream == '' || degree == '')
+                    {
+                        if (degree == '' && stream != '')
+                        {
+                            $("#other_degree").addClass("keyskill_border_active");
+                            $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
+                            //$.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                        }
+                        if (stream == '' && degree != '')
+                        {
+                            $("#other_stream").addClass("keyskill_border_active");
+                            $('<span class="error" id="stream_error" style="float: right;color: red; font-size: 11px;">Empty Stream is not valid</span>').insertAfter('#other_stream');
+                            //  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                        }
+                        if (stream == '' && degree == '')
+                        {
+                            $("#other_degree").addClass("keyskill_border_active");
+                            $("#other_stream").addClass("keyskill_border_active");
+                            $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
+                            $('<span class="error" id="stream_error" style="float: right;color: red; font-size: 11px;">Empty Stream is not valid</span>').insertAfter('#other_stream');
+                            //  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                        }
+                        return false;
+                    } else
+                    {
+                        var $textbox = $('.message2').find('input[type="text"]'),
+                                textVal = $textbox.val();
+                        var selectbox_stream = $('.message2').find(":selected").text()
+
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url + 'freelancer/freelancer_other_degree',
+                            dataType: 'json',
+                            data: 'other_degree=' + textVal + '&other_stream=' + selectbox_stream,
+                            success: function (response) {
+
+                                if (response.select == 0)
+                                {
+                                    $("#other_degree").addClass("keyskill_border_active");
+                                    $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Written Degree already available in Degree Selection</span>').insertAfter('#other_degree');
+                                    // $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                } else if (response.select == 1)
+                                {
+                                    $("#other_degree").addClass("keyskill_border_active");
+                                    $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
+                                    //$.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                } else
+                                {
+                                    // $.fancybox.close();
+                                    $('#bidmodal_degree').modal('hide');
+                                    $('#other_degree').val('');
+                                    $('#other_stream').val('');
+                                    $("#other_degree").removeClass("keyskill_border_active");
+                                    $("#other_stream").removeClass("keyskill_border_active");
+                                    $("#degree_error").removeClass("error");
+                                    $("#stream_error").removeClass("error");
+                                    $('#degree').html(response.select);
+                                    $('#stream').html(response.select2);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
         }
     });
 });
@@ -144,91 +232,92 @@ $(document).ready(function () {
 });
 //FORM FILL UP VALIDATION END
 
-$(document).on('change', '#degree', function (event) {
-    $("#other_degree").removeClass("keyskill_border_active");
-    $("#other_stream").removeClass("keyskill_border_active");
-    $('#degree_error').remove();
-    $('#stream_error').remove();
-    var item = $(this);
-    var degree = (item.val());
-
-    if (degree == 54)
-    {
-        item.val('');
-        $('#bidmodal_degree').modal('show');
-        //  $.fancybox.open(html);
-        $('.message2 #univer2').off('click').on('click', function () {
-            $("#other_degree").removeClass("keyskill_border_active");
-            $("#other_stream").removeClass("keyskill_border_active");
-            $('#degree_error').remove();
-            $('#stream_error').remove();
-            var degree = document.querySelector(".message2 #other_degree").value;
-            var stream = document.querySelector(".message2 #other_stream").value;
-            if (stream == '' || degree == '')
-            {
-                if (degree == '' && stream != '')
-                {
-                    $("#other_degree").addClass("keyskill_border_active");
-                    $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
-                    //$.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                }
-                if (stream == '' && degree != '')
-                {
-                    $("#other_stream").addClass("keyskill_border_active");
-                    $('<span class="error" id="stream_error" style="float: right;color: red; font-size: 11px;">Empty Stream is not valid</span>').insertAfter('#other_stream');
-                    //  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                }
-                if (stream == '' && degree == '')
-                {
-                    $("#other_degree").addClass("keyskill_border_active");
-                    $("#other_stream").addClass("keyskill_border_active");
-                    $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
-                    $('<span class="error" id="stream_error" style="float: right;color: red; font-size: 11px;">Empty Stream is not valid</span>').insertAfter('#other_stream');
-                    //  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                }
-                return false;
-            } else
-            {
-                var $textbox = $('.message2').find('input[type="text"]'),
-                        textVal = $textbox.val();
-                var selectbox_stream = $('.message2').find(":selected").text()
-
-                $.ajax({
-                    type: 'POST',
-                    url: base_url + 'freelancer/freelancer_other_degree',
-                    dataType: 'json',
-                    data: 'other_degree=' + textVal + '&other_stream=' + selectbox_stream,
-                    success: function (response) {
-
-                        if (response.select == 0)
-                        {
-                            $("#other_degree").addClass("keyskill_border_active");
-                            $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Written Degree already available in Degree Selection</span>').insertAfter('#other_degree');
-                            // $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                        } else if (response.select == 1)
-                        {
-                            $("#other_degree").addClass("keyskill_border_active");
-                            $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
-                            //$.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                        } else
-                        {
-                            // $.fancybox.close();
-                            $('#bidmodal_degree').modal('hide');
-                            $('#other_degree').val('');
-                            $('#other_stream').val('');
-                            $("#other_degree").removeClass("keyskill_border_active");
-                            $("#other_stream").removeClass("keyskill_border_active");
-                            $("#degree_error").removeClass("error");
-                            $("#stream_error").removeClass("error");
-                            $('#degree').html(response.select);
-                            $('#stream').html(response.select2);
-                        }
-                    }
-                });
-            }
-        });
-    }
-});
+//$(document).on('change', '#degree', function (event) {
+//
+//    $("#other_degree").removeClass("keyskill_border_active");
+//    $("#other_stream").removeClass("keyskill_border_active");
+//    $('#degree_error').remove();
+//    $('#stream_error').remove();
+//    var item = $(this);
+//    var degree = (item.val());
+//
+//    if (degree == 54)
+//    {
+//        item.val('');
+//        $('#bidmodal_degree').modal('show');
+//        //  $.fancybox.open(html);
+//        $('.message2 #univer2').off('click').on('click', function () {
+//            $("#other_degree").removeClass("keyskill_border_active");
+//            $("#other_stream").removeClass("keyskill_border_active");
+//            $('#degree_error').remove();
+//            $('#stream_error').remove();
+//            var degree = document.querySelector(".message2 #other_degree").value;
+//            var stream = document.querySelector(".message2 #other_stream").value;
+//            if (stream == '' || degree == '')
+//            {
+//                if (degree == '' && stream != '')
+//                {
+//                    $("#other_degree").addClass("keyskill_border_active");
+//                    $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
+//                    //$.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+//                }
+//                if (stream == '' && degree != '')
+//                {
+//                    $("#other_stream").addClass("keyskill_border_active");
+//                    $('<span class="error" id="stream_error" style="float: right;color: red; font-size: 11px;">Empty Stream is not valid</span>').insertAfter('#other_stream');
+//                    //  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+//                }
+//                if (stream == '' && degree == '')
+//                {
+//                    $("#other_degree").addClass("keyskill_border_active");
+//                    $("#other_stream").addClass("keyskill_border_active");
+//                    $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
+//                    $('<span class="error" id="stream_error" style="float: right;color: red; font-size: 11px;">Empty Stream is not valid</span>').insertAfter('#other_stream');
+//                    //  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+//                }
+//                return false;
+//            } else
+//            {
+//                var $textbox = $('.message2').find('input[type="text"]'),
+//                        textVal = $textbox.val();
+//                var selectbox_stream = $('.message2').find(":selected").text()
+//
+//                $.ajax({
+//                    type: 'POST',
+//                    url: base_url + 'freelancer/freelancer_other_degree',
+//                    dataType: 'json',
+//                    data: 'other_degree=' + textVal + '&other_stream=' + selectbox_stream,
+//                    success: function (response) {
+//
+//                        if (response.select == 0)
+//                        {
+//                            $("#other_degree").addClass("keyskill_border_active");
+//                            $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Written Degree already available in Degree Selection</span>').insertAfter('#other_degree');
+//                            // $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+//                        } else if (response.select == 1)
+//                        {
+//                            $("#other_degree").addClass("keyskill_border_active");
+//                            $('<span class="error" id="degree_error" style="float: right;color: red; font-size: 11px;">Empty Degree is not valid</span>').insertAfter('#other_degree');
+//                            //$.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+//                        } else
+//                        {
+//                            // $.fancybox.close();
+//                            $('#bidmodal_degree').modal('hide');
+//                            $('#other_degree').val('');
+//                            $('#other_stream').val('');
+//                            $("#other_degree").removeClass("keyskill_border_active");
+//                            $("#other_stream").removeClass("keyskill_border_active");
+//                            $("#degree_error").removeClass("error");
+//                            $("#stream_error").removeClass("error");
+//                            $('#degree').html(response.select);
+//                            $('#stream').html(response.select2);
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//    }
+//});
 $(document).on('change', '#other_stream', function (event) {
     $("#other_degree1").removeClass("keyskill_border_active");
     $('#field_error').remove();

@@ -263,6 +263,7 @@
             </script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_education.js?ver='.time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         </body>
     <!--</div>-->
 </html>
