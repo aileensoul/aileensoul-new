@@ -1500,6 +1500,7 @@ input[type=number] {
 .selected{color: #fff !important;
 background-color: #1b8ab9 !important;
 pointer-events: none;}
+.custom_footer_left ul li a:focus{color: #1b8ab9 !important;}
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
     .common-form fieldset.mgrd input[type="radio"] {
