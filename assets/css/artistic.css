@@ -4031,7 +4031,7 @@ div .comment {
 .popup-text textarea::-webkit-scrollbar { 
     display: none; 
 }
-<<<<<<< HEAD
+
 /***  custom user list css  ***/
 .full-box-module_follow .seeall{margin-top:-28px;}
 .custom-user-list{margin-bottom:10px; width:100%; float:left;}
@@ -4044,11 +4044,12 @@ div .comment {
 .custom-user-list .follow_left_box_main_btn{padding:0 !important; margin:0; float:none;}
 .custom-user-list .follow_left_box_main_btn button{margin-top:5px;}
 .custom-user-list .Follow_close{right:-5px;}
+.custom-user-list .post-design-name_follow ul li a h6{max-width:100%;}
 /***  end custom user list css  ***/
 
-=======
-.modal-backdrop.in{opacity:0!important;}
->>>>>>> 309892946dff8500be6777752f5ca2146b129937
+/*
+.modal-backdrop.in{opacity:0!important;}*/
+
 
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
