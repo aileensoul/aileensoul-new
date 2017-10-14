@@ -427,11 +427,11 @@ class Job extends MY_Controller {
 
             if ($edu_certificate_primary == "") {
                 $data = array(
-                    'edu_certificate_primary' => $this->input->post('image_hidden_primary')
+                    'edu_certificate_primary' => str_replace(' ', '_', $this->input->post('image_hidden_primary'))
                 );
             } else {
                 $data = array(
-                    'edu_certificate_primary' => $job_certificate
+                    'edu_certificate_primary' => str_replace(' ', '_', $job_certificate)
                 );
             }
             $updatedata = $this->common->update_data($data, 'job_add_edu', 'user_id', $userid);
@@ -463,7 +463,7 @@ class Job extends MY_Controller {
                 'school_primary' => $this->input->post('school_primary'),
                 'percentage_primary' => $this->input->post('percentage_primary'),
                 'pass_year_primary' => $this->input->post('pass_year_primary'),
-                'edu_certificate_primary' => $job_certificate,
+                'edu_certificate_primary' => str_replace(' ', '_', $job_certificate),
                 'status' => 1
             );
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
@@ -609,11 +609,11 @@ class Job extends MY_Controller {
 
             if ($edu_certificate_secondary == "") {
                 $data = array(
-                    'edu_certificate_secondary' => $this->input->post('image_hidden_secondary')
+                    'edu_certificate_secondary' => str_replace(' ', '_', $this->input->post('image_hidden_secondary'))
                 );
             } else {
                 $data = array(
-                    'edu_certificate_secondary' => $job_certificate
+                    'edu_certificate_secondary' => str_replace(' ', '_', $job_certificate)
                 );
             }
             $updatedata = $this->common->update_data($data, 'job_add_edu', 'user_id', $userid);
@@ -645,7 +645,7 @@ class Job extends MY_Controller {
                 'school_secondary' => $this->input->post('school_secondary'),
                 'percentage_secondary' => $this->input->post('percentage_secondary'),
                 'pass_year_secondary' => $this->input->post('pass_year_secondary'),
-                'edu_certificate_secondary' => $job_certificate,
+                'edu_certificate_secondary' => str_replace(' ', '_', $job_certificate),
                 'status' => 1
             );
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
@@ -791,11 +791,11 @@ class Job extends MY_Controller {
 
             if ($edu_certificate_higher_secondary == "") {
                 $data = array(
-                    'edu_certificate_higher_secondary' => $this->input->post('image_hidden_higher_secondary')
+                    'edu_certificate_higher_secondary' => str_replace(' ', '_', $this->input->post('image_hidden_higher_secondary'))
                 );
             } else {
                 $data = array(
-                    'edu_certificate_higher_secondary' => $job_certificate
+                    'edu_certificate_higher_secondary' => str_replace(' ', '_', $job_certificate)
                 );
             }
 
@@ -829,7 +829,7 @@ class Job extends MY_Controller {
                 'school_higher_secondary' => $this->input->post('school_higher_secondary'),
                 'percentage_higher_secondary' => $this->input->post('percentage_higher_secondary'),
                 'pass_year_higher_secondary' => $this->input->post('pass_year_higher_secondary'),
-                'edu_certificate_higher_secondary' => $job_certificate,
+                'edu_certificate_higher_secondary' => str_replace(' ', '_', $job_certificate),
                 'status' => 1
             );
 
