@@ -161,7 +161,7 @@ $userid = $this->session->userdata('aileenuser');
 </footer>
 </div>
   
-<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 
 <!-- script for skill textbox automatic end (option 2)-->
 <script>
@@ -173,7 +173,7 @@ var data1 = <?php echo json_encode($city_data); ?>;
  var art_step = "<?php echo $art_reg_data[0]['art_step']; ?>";
  
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/portfolio.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/portfolio.js?ver='.time()); ?>"></script>
 </body>
 </html>

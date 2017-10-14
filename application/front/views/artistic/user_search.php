@@ -10,8 +10,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()) ?>" />
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">  
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
 
     <style>
             /***  commen css  ***/
@@ -511,51 +511,37 @@
         <!-- Login -->
          <!-- model for forgot password start -->
 
-        <div class="modal fade login" id="forgotPassword" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
-                    <div class="modal-body">
-                        <div class="col-sm-12 right-main">
-                            <div class="right-main-inner">
-                                <div class="login-frm">
-                                        <div class="title">
-                                            <h1 class="ttc">Forgot Password</h1>
-                                        </div>
-                                        <?php
-                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                        echo form_open('profile/forgot_password', $form_attribute);
-                                        ?>
-                                        <div class="form-group">
-                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
-                                            <div id="error2" style="display:block;">
-                                                <?php
-                                                if ($this->session->flashdata('erroremail')) {
-                                                    echo $this->session->flashdata('erroremail');
-                                                }
-                                                ?>
-                                            </div>
-                                            <div id="errorlogin"></div> 
-                                        </div>
-                                        
-                                        <p class="pt-20 ">
-                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
-                                        </p>
-
-
-                                        </form>
-
-                                    
-                                </div>
-                            </div>
+         <div id="forgotPassword" class="modal">
+                <div class="modal-content md-2">
+                    <?php
+                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                    echo form_open('profile/forgot_password', $form_attribute);
+                    ?>
+                    <div class="modal-header" style=" text-align: center;">
+                        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
+                        <label style="color: #a0b3b0;">Forgot Password</label>
+                    </div>
+                    <div class="modal-body" style="text-align: center;">
+                        <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
+                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                        <div id="error2" style="display:block;">
+                            <?php
+                               if ($this->session->flashdata('erroremail')) {
+                                    echo $this->session->flashdata('erroremail');
+                                }
+                                ?>
                         </div>
+                        <div id="errorlogin"></div> 
 
                     </div>
+                    <div class="modal-footer ">
+                        <div class="submit_btn">              
+                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                        </div>
+                    </div>
+                    <?php echo form_close(); ?>
                 </div>
             </div>
-        </div>
-
-
         <!-- model for forgot password end -->
         <!-- register -->
 
@@ -669,13 +655,13 @@
 <!-- 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<script src="<?php echo base_url('assets/js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('assets/js/jquery.highlite.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script async src="<?php echo base_url('assets/js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
+<script async src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
+<script async src="<?php echo base_url('assets/js/jquery.highlite.js?ver='.time()); ?>"></script>
+<script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 
 
  <script type="text/javascript">
@@ -684,7 +670,7 @@ var base_url = '<?php echo base_url(); ?>';
 var keyword = '<?php echo $keyword; ?>';
 var keyword1 = '<?php echo $keyword1; ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/user_search.js?ver='.time()); ?>"></script>
+<script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/user_search.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
             function login()
             {
