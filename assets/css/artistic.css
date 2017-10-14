@@ -4031,7 +4031,7 @@ div .comment {
 .popup-text textarea::-webkit-scrollbar { 
     display: none; 
 }
-
+.modal-backdrop.in{opacity:0!important;}
 
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
