@@ -4570,7 +4570,7 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
                 if ($insert_id) {
 
                     
-                     $contition_array = array('is_delete' => '0','is_other' => '0', 'industry_name !=' => "Others");
+        $contition_array = array('is_delete' => '0','is_other' => '0', 'industry_name !=' => "Others");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
         $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -4613,5 +4613,7 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
     }
 
 //add other_industry into database End 
+    
+    
 
 }

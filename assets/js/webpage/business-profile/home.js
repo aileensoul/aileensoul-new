@@ -77,6 +77,9 @@ function ajax_business_home_post(pagenum) {
             }
             isProcessing = false;
             check_no_post_data();
+
+            $('video, audio').mediaelementplayer();
+
         }
     });
 }
@@ -95,7 +98,6 @@ function ajax_business_home_three_user_list() {
 
             $('.profile-boxProfileCard_follow').html(data);
             var liCount = $(data).find("li.follow_box_ul_li").length;
-
             if (liCount == 0) {
                 $('.full-box-module_follow').hide();
             }
@@ -780,6 +782,10 @@ function followuser_two(clicked_id)
                     .done(function () {
                         $('.fad' + clicked_id).remove();
                     });
+            var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+            if (liCount == 1) {
+                $('.full-box-module_follow').hide();
+            }
         }
     });
 }
@@ -802,6 +808,10 @@ function followclose(clicked_id)
                                 .done(function () {
                                     $('.fad' + clicked_id).remove();
                                 });
+                        var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+                        if (liCount == 1) {
+                            $('.full-box-module_follow').hide();
+                        }
                     }
                 });
             }
@@ -828,6 +838,10 @@ function business_home_follow_ignore(clicked_id)
                 return true;
             } else {
                 return false;
+            }
+            var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+            if (liCount == 1) {
+                $('.full-box-module_follow').hide();
             }
         }
     });
@@ -1613,7 +1627,7 @@ jQuery(document).ready(function ($) {
     var percent = $('.sr-only');
     var options = {
         beforeSend: function () {
-            $('body').removeClass('modal-open'); 
+            $('body').removeClass('modal-open');
             // Replace this with your loading gif image
             document.getElementById("progress_div").style.display = "block";
             var percentVal = '0%';
@@ -1647,6 +1661,7 @@ jQuery(document).ready(function ($) {
             document.getElementById("progress_div").style.display = "none";
             // $('.business-all-post').find('.post-design-box:first').parent().remove();
             $(".business-all-post").prepend(response.responseText);
+            $('video, audio').mediaelementplayer();
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -1657,6 +1672,7 @@ jQuery(document).ready(function ($) {
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
             check_no_post_data();
+            
         }
     };
     // Submit the form
@@ -1731,10 +1747,10 @@ function check_no_post_data() {
     }
 }
 
-$('.editor-content').click(function(){
-   $('body').addClass('modal-open'); 
+$('.editor-content').click(function () {
+    $('body').addClass('modal-open');
 });
 
-$('.close1').click(function(){
-    $('body').removeClass('modal-open'); 
+$('.close1').click(function () {
+    $('body').removeClass('modal-open');
 });

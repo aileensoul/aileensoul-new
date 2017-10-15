@@ -16,11 +16,20 @@ $mobile_agent = $this->agent->mobile;
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile.min.css?ver=' . time()); ?>">
-            <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');    ?>" />-->
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } ?>
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
+            }
+            .mejs__overlay-button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__overlay-loading-bg-img {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__button > button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
             }
         </style>
     </head>
@@ -54,15 +63,18 @@ $mobile_agent = $this->agent->mobile;
                             <div class="tablate-potrat-add">
                                 <div class="fw text-center pt10">
                                     <script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                                    </script>
+                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                 </div>
                             </div>
                             <div class="custom_footer_left fw">
@@ -141,22 +153,25 @@ $mobile_agent = $this->agent->mobile;
                             </div>
                             <div class="business-all-post">
                                 <?php
-                                if($mobile_agent){
-                                ?>
-                                <div class="mob-add">
-                                    <div class="fw text-center pt10 pb5">
-                                        <script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                if ($mobile_agent) {
+                                    ?>
+                                    <div class="mob-add">
+                                        <div class="fw text-center pt10 pb5">
+                                            <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                            </script>
+                                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                        </div>
                                     </div>
-                                </div>
                                 <?php } ?>
                                 <div class="nofoundpost"> 
                                 </div>
@@ -168,15 +183,18 @@ $mobile_agent = $this->agent->mobile;
 
                         <div class="fw text-center">
                             <script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                            </script>
+                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                         </div>
                         <div class="fw pt20" style="text-align:center;">
                             <a target="_blank"  href="https://www.amazon.in/gp/product/8192910911/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=8192910911&linkCode=as2&tag=aileensoul-21&linkId=cfaad4640ddeb8da617a61f6587f5207"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=8192910911&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=8192910911" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
@@ -348,7 +366,7 @@ $mobile_agent = $this->agent->mobile;
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver=' . time());             ?>"></script>-->
+        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver=' . time());              ?>"></script>-->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
         <!-- POST BOX JAVASCRIPT START --> 
