@@ -4028,10 +4028,14 @@ div .comment {
 .post-edit-popup .camer_h i{padding-top:2px;}
 .krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon1.png'); background-size:100%;}
 .kv-file-content audio{margin-top:83px;}
+.file-preview{padding-top:0 !important; width:560px; overflow-x: auto; white-space: nowrap;}
+.krajee-default.file-preview-frame{margin:6px !important; display: inline-block; white-space:normal; float:none;}
+.post-editor .popup-social-icon ul.editor-header li{padding:0;}
+.editor-header .form-group .file-input{margin-left:8px;}
 .popup-text textarea::-webkit-scrollbar { 
     display: none; 
 }
-
+.editor-header .form-group .file-input{margin-left:0;}
 /***  custom user list css  ***/
 .full-box-module_follow .seeall{margin-top:-28px;}
 .custom-user-list{margin-bottom:10px; width:100%; float:left; display:none;}
@@ -4049,6 +4053,7 @@ div .comment {
 
 /*
 .modal-backdrop.in{opacity:0!important;}*/
+.art-search-extra .profile-job-post-title-inside{width:100%; float:left;}
 
 
 /***  media query  ***/
@@ -4950,6 +4955,7 @@ div .comment {
 	.padd_img{padding:0;}
 	.buisness-menu .profile-pho-bui{border-radius:4px;}
 	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
+	.file-preview{width:520px;}
 }
 
 @media screen and (max-width: 639px) {
@@ -5078,6 +5084,7 @@ div .comment {
     .user_lst #followdiv button span{background:url('../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
     .post-edit-popup .popup-text textarea{width:79%; padding-right:0;}
     .mian_middle_post_box{width:100%;}
+	.file-preview{width:435px;}
 }
 
 @media screen and (max-width: 540px) {
@@ -5177,6 +5184,7 @@ div .comment {
     }
     .popup-text textarea::-moz-placeholder{font-size:19px !important;}
     .popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
+	.file-preview{width:380px;}
 }
 
 @media screen and (max-width: 479px) {
@@ -5552,6 +5560,7 @@ div .comment {
     .popup-text{padding:7px 0px 6px 10px;}
     .post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
     .custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:100% !important;}
+	.file-preview{width:260px;}
 }
 
 @media screen and (max-width: 430px) {
@@ -5712,6 +5721,7 @@ div .comment {
     .padding-360{padding-left:1px; padding-right:1px;}
     .contact-frnd-post{padding:10px 8px 0;}
     /*** end add  ***/
+	.file-preview{width:194px;}
 }
 
 @media screen and (max-width: 319px) {

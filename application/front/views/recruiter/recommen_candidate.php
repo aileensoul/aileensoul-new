@@ -137,7 +137,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                                         </div>
                                     </div>                             
                                 </div>
-								<div class="tablate-potrat-add">
+							<div class="tablate-potrat-add">
 								<div class="fw text-center pt10">
 									<script type="text/javascript">
 									  ( function() {
@@ -169,7 +169,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
 							</ul>
 						  </div>
 				
-					</div>
+						</div>
                                 <?php// if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
                                     <div  class="add-post-button">
                                         <a class="btn btn-3 btn-3b"  href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
