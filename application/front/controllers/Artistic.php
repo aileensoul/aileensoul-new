@@ -3424,9 +3424,11 @@ public function followtwo() {
            $limit = $perpage;
            $offset = $start;
 
-            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'art_reg.status' => '1');
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+           // echo count($userlist1); die();
         } else { 
 
            $this->data['artisticdata'] = $artisticdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = 'art_id, user_id');
@@ -3439,7 +3441,7 @@ public function followtwo() {
            $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'art_reg.status' => 1);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } 
