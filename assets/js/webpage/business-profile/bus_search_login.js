@@ -124,7 +124,7 @@ function business_search_post(pagenum) {
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login');
+                                $("#btn1").html('<img src="' + base_url + 'assets/images/btn-ajax-loader.gif" /> &nbsp; Login');
                                 if (response.is_bussiness == '1') {
                                     window.location = base_url + "search/ajax_business_user_login_search?page=" + pagenum + "&skills=" + keyword + "&searchplace=" + keyword1;
                                 }
@@ -320,7 +320,7 @@ function business_search_post(pagenum) {
                         success: function (response)
                         {
                             if (response == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                $("#btn-register").html('<img src="' + base_url + 'assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
 //                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>business-profile/";
                             } else {

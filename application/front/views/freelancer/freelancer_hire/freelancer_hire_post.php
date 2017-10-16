@@ -340,10 +340,10 @@
         </div>
         <!-- Model Popup Close -->
         
-        <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
+        <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
-        <script async src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
+        <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
     </script>
 
         <script>
@@ -351,7 +351,7 @@
             var returnpage = '<?php echo $returnpage; ?>';
             var user_id =<?php echo json_encode($this->uri->segment(3)) ?>;
         </script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_post.js?ver=' . time()); ?>"></script>
-        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_post.js?ver=' . time()); ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

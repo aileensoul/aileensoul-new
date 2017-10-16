@@ -135,7 +135,7 @@ function business_dashboard_post(slug, pagenum) {
         success: function (data) {
             $('.loader').remove();
             $('.business-all-post').append(data);
-
+            $('video, audio').mediaelementplayer();
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -145,6 +145,8 @@ function business_dashboard_post(slug, pagenum) {
             }
             isProcessing = false;
             check_no_post_data();
+
+            
         }
     });
 }
@@ -156,7 +158,7 @@ function GetBusPhotos() {
         url: base_url + "business_profile/bus_photos",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_photos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_photos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();
@@ -171,7 +173,7 @@ function GetBusVideos() {
         url: base_url + "business_profile/bus_videos",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_videos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_videos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();
@@ -186,7 +188,7 @@ function GetBusAudios() {
         url: base_url + "business_profile/bus_audio",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_audios").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_audios").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();
@@ -201,7 +203,7 @@ function GetBusPdf() {
         url: base_url + "business_profile/bus_pdf",
         data: 'bus_slug=' + slug,
         beforeSend: function () {
-            $(".bus_pdf").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            $(".bus_pdf").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
             $('.loader').remove();
@@ -1647,12 +1649,12 @@ $('body').on('touchstart', function (e) {
 // This  script use for close dropdown in every post 
 
 /*$(document).ready(function () {
-    $('.video').mediaelementplayer({
-        alwaysShowControls: false,
-        videoVolume: 'horizontal',
-        features: ['playpause', 'progress', 'volume', 'fullscreen']
-    });
-});*/
+ $('.video').mediaelementplayer({
+ alwaysShowControls: false,
+ videoVolume: 'horizontal',
+ features: ['playpause', 'progress', 'volume', 'fullscreen']
+ });
+ });*/
 $(document).keydown(function (e) {
     if (!e)
         e = window.event;

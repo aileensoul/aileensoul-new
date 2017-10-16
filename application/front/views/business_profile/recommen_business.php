@@ -136,14 +136,28 @@
         ?>
         <section class="search-page">
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
-                <div class="container">
+                <div class="container art_container padding-360">
                     <div class="">
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <?php echo $business_left; ?>
+								<div class="tablate-potrat-add">
+								<div class="fw text-center pt10">
+									<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								</div>
+							</div>
                             </div>
                         </div>
-                        <div class="col-md-6 search-post-box col-sm-12 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
+                        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
@@ -160,13 +174,56 @@
                                         }
                                         ?>
                                     </h3>
+										<div class="mob-add">
+								<div class="fw text-center pt10 pb5">
+									<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								</div>
+							</div>
                                     <div class="job-contact-frnd">
                                         <!-- AJAX DATA... -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+						
+						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+					
+							<div class="fw text-center">
+								<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+								<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+							</div>
+							<div class="fw pt20" style="text-align:center;">
+								<a target="_blank"  href="https://www.amazon.in/gp/product/B00KJGYB8M/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=B00KJGYB8M&linkCode=as2&tag=aileensoul-21&linkId=dc5e1b2815cc8b94d7f3d631af3cf96e"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=B00KJGYB8M&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=B00KJGYB8M" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+							</div>
+						</div>
+						<div class="tablate-add">
+					
+						<script type="text/javascript" language="javascript">
+						  var aax_size='160x600';
+						  var aax_pubname = 'aileensoul-21';
+						  var aax_src='302';
+						</script>
+						<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
+					</div>
+					
+					</div>
                 </div>
             </div>
         </div>

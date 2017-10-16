@@ -795,7 +795,7 @@
                                         success: function (response)
                                         {
                                             if (response.data == "ok") {
-                                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                                $("#btn1").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                                                 if (response.is_bussiness == '1') {
                                                     window.location = "<?php echo base_url() ?>business-profile/details/" + slug;
                                                 } else {
@@ -993,7 +993,7 @@
                                         success: function (response)
                                         {
                                             if (response == "ok") {
-                                                $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                                $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
                                                 window.location = "<?php echo base_url() ?>business-profile/details/" + slug;
                                             } else {
                                                 $("#register_error").fadeIn(1000, function () {
