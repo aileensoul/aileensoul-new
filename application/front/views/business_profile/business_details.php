@@ -305,9 +305,9 @@
                                                                 <li><b>Business  Type</b><span><?php echo $business_data['business_type']; ?></span></li>
                                                                 <li><b>Category</b><span><?php echo $business_data['industry_name']; ?></span></li>
                                                                 <li><b>Details Of Your Business </b> 
-                                                                    <span>
-                                                                        <p> <?php echo nl2br($this->common->make_links($business_data['details'])); ?></p>
-                                                                    </span>
+                                                                    
+                                                                        <p> <span><?php echo nl2br($this->common->make_links($business_data['details'])); ?></span></p>
+                                                                    
                                                                 </li>
                                                             </ul>
                                                         </div>
