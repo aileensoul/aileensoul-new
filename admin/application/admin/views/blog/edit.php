@@ -65,11 +65,11 @@ echo $leftmenu;
                         <!-- BLOG SLUG END -->
 
                         <!--  TAG SELECTION START -->
-                        <div class="form-group col-sm-10">
+<!--                        <div class="form-group col-sm-10">
                                 <label>Tag*</label>
 
                                <input type="text" class="form-control" name="tag" id="tag" value="<?php echo $blog_detail[0]['tag'];?>">
-                        </div>
+                        </div>-->
                         <!-- TAG SELECTION END -->
 
                          <!-- BLOG DESCRIPTION START -->
@@ -144,9 +144,9 @@ echo $leftmenu;
                 blog_slug: {
                     required: true,
                 },
-                tag: {
-                    required: true,
-                },
+//                tag: {
+//                    required: true,
+//                },
                 manufacture_id: {
                     required: true,
                 },
@@ -167,9 +167,9 @@ echo $leftmenu;
                         blog_slug: {
                             required: "Please enter blog slug",
                         },
-                        tag: {
-                            required: "Please select tag",
-                        },
+//                        tag: {
+//                            required: "Please select tag",
+//                        },
                         meta_description: {
                             required: "Please enter meta description",
                         },

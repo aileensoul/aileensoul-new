@@ -350,7 +350,7 @@
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/recruiter/rec_company_info.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_company_info.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
       
        

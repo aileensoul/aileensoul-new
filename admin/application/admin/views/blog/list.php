@@ -111,9 +111,9 @@ echo $leftmenu;
 
                     </th>
 
-                    <th><i class="fa fa-envelope"></i> 
+<!--                    <th><i class="fa fa-envelope"></i> 
                      <a href="javascript:void(0);">Tag Name</a>
-                     </th>
+                     </th>-->
 
                     <th><i class="fa fa-fw fa-image"></i> 
                      <a href="javascript:void(0);">Image</a>
@@ -149,9 +149,9 @@ echo $leftmenu;
 
                     <td><?php echo $blog['title']; ?></td>
 
-                     <td>
+<!--                     <td>
                        <?php echo $blog['tag']; ?>
-                     </td>
+                     </td>-->
 
                     <td> 
                         <?php  if($blog['image']) 

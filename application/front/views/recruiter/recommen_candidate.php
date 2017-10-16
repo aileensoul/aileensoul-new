@@ -295,7 +295,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
             <?php
         } else {
             ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/recruiter/recommen_candidate.min.js?ver=' . time()); ?>"></script>
+            <script type="text/javascript"  src="<?php echo base_url('assets/js_min/webpage/recruiter/recommen_candidate.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
        
        
