@@ -179,10 +179,32 @@ class Dashboard extends MY_Controller {
 
 
             $this->session->unset_userdata('aileenuser');
+              $this->clear_all_cache();
             redirect(base_url(), 'refresh');
         }
         //LOGOUT END  
     }
+/**
+ * Clears all cache from the cache directory
+ */
+public function clear_all_cache()
+{
+    $CI =& get_instance();
+$path = $CI->config->item('cache_path');
+
+    $cache_path = ($path == '') ? APPPATH.'cache/' : $path;
+
+    $handle = opendir($cache_path);
+    while (($file = readdir($handle))!== FALSE) 
+    {
+        //Leave the directory protection alone
+        if ($file != '.htaccess' && $file != 'index.html')
+        {
+           @unlink($cache_path.'/'.$file);
+        }
+    }
+    closedir($handle);
+}
 
 // cover pic controller
     public function ajaxpro() {

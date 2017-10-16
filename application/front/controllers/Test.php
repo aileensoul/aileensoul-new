@@ -218,6 +218,12 @@ class Test extends MY_Controller {
        
         $this->load->view('dynamic/contact',$this->data);
     }
+    
+    public function caching_time(){
+       
+        $this->load->view('dynamic/caching',$this->data);
+    }
+     
 }
 
 

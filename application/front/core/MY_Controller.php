@@ -8,6 +8,10 @@ class MY_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
 
+        
+//        $this->output->cache(15);
+//        $this->output->enable_profiler(TRUE);
+           
         $segment_check = $this->uri->segment(2);
 
         $segment_dynamicpost = substr($segment_check, 0, strrpos($segment_check, "-"));
