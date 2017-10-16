@@ -116,7 +116,7 @@ $('#postedit').on('click', function () {
   
 
 function check_lengthedit(abc)
-   { //alert("hii");
+   { 
        maxLen = 50;
    
 
@@ -142,8 +142,7 @@ function check_lengthedit(abc)
          
        } else { 
            text_num = maxLen - product_name.length;
-
-           document.getElementById("text_num_").value = text_num;
+           document.getElementById("text_num_" + abc).value = text_num;
        }
    }
 
