@@ -4334,6 +4334,7 @@ div .comment {
 .video li .mejs__container.mejs__video .mejs__overlay{width:100% !important; height:100% !important;}
 .video li .mejs__container.mejs__video .mejs__mediaelement video{width:100% !important; height:100% !important;}
 .video .mejs__poster{width:100% !important; height:100% !important; background-size:100% !important;}
+.video .mejs__inner .mejs__mediaelement video{width:100% !important;}
 /*** end video css  ***/
 .acbutton{
     position: relative;
@@ -4383,7 +4384,6 @@ div .comment {
 .cancel-result:hover{color: #fff;background-color: #1b8ab9 !important;}
 .post-edit-popup .popup-text{padding:9px 0 7px 10px;}
 .post-edit-popup .camer_h i{padding-top:4px;}
-.post-edit-popup .camer_h i{padding-top:2px;}
 .krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon1.png'); background-size:100%;}
 .kv-file-content audio{margin-top:83px;}
 .file-drop-zone{}
@@ -5269,6 +5269,9 @@ div .comment {
 	.padd_img{padding:0;}
 	.buisness-menu .profile-pho-bui{border-radius:4px;}
 	.file-preview{width:520px;}
+	.post-edit-popup .camer_h i{padding-top:3px;}
+	.post-edit-popup .popup-text{padding-top:8px;}
+	.text_num{line-height:28px;}
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5909,6 +5912,7 @@ div .comment {
 	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
 	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 	.file-preview{width:260px;}
+	.post-edit-popup .popup-text{padding-top:9px;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {

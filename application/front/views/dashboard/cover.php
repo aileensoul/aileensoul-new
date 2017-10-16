@@ -254,40 +254,42 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                         
 						<section class="all-profile-custom">
-                            <div id="job-scroll" class="custom-box odd">
+                           
+                            <div id="free-scroll" class="custom-box odd">
                                 <div class="custom-width">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('job'); ?>"><img src="<?php echo base_url(); ?>assets/img/i1.png"></a>
+                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="<?php echo base_url(); ?>assets/img/i3.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
                                             <div class="right-box">
-                                                <h1><a href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
-                                                <p>Find best job options and connect with recruiters.</p>
+                                                <h1><a href="<?php echo base_url('freelancer'); ?>">Freelance Profile</a></h1>
+                                                <p>Hire freelancers and also find freelance work.</p>
                                                 <div class="btns">
 
-                                                    <?php if ($job[0]['job_step'] != 10) { ?>
-                                                    <a class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
-                                                    <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
+                                                    <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) {?>
+                                                        <a class="btn-1" id="free-hire-register-btn" href="<?php echo base_url('freelancer'); ?>">Register</a>
+                                                    <?php } elseif (($workdata[0]['status'] == '0' && $workdata[0]['free_post_step'] == 7) || ($hiredata[0]['free_hire_step'] == 3 && $hiredata[0]['status'] == '0')) {
                                                         ?>
 
-                                                        <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
+                                                        <a class="btn-1" id="free-hire-active-btn" href="<?php echo base_url('freelancer'); ?>">Active</a>
                                                     <?php } else {
-                                                        ?> 
+                                                        ?>
 
-                                                        <a class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
+                                                        <a class="btn-4" id="free-hire-take-btn" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
 
                                                     <?php } ?>
-                                                    <a data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                                    <a data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="rec-scroll" class="custom-box even">
+							<div id="rec-scroll" class="custom-box even">
                                 <div class="custom-width">
                                     <div class="row">
                                         <div class="col-md-4 pull-right col-sm-4 col-xs-12">
@@ -324,34 +326,33 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="free-scroll" class="custom-box odd">
+                             <div id="job-scroll" class="custom-box odd">
                                 <div class="custom-width">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="<?php echo base_url(); ?>assets/img/i3.jpg"></a>
+                                                <a href="<?php echo base_url('job'); ?>"><img src="<?php echo base_url(); ?>assets/img/i1.png"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
                                             <div class="right-box">
-                                                <h1><a href="<?php echo base_url('freelancer'); ?>">Freelance Profile</a></h1>
-                                                <p>Hire freelancers and also find freelance work.</p>
+                                                <h1><a href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
+                                                <p>Find best job options and connect with recruiters.</p>
                                                 <div class="btns">
 
-                                                    <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) {?>
-                                                        <a class="btn-1" id="free-hire-register-btn" href="<?php echo base_url('freelancer'); ?>">Register</a>
-                                                    <?php } elseif (($workdata[0]['status'] == '0' && $workdata[0]['free_post_step'] == 7) || ($hiredata[0]['free_hire_step'] == 3 && $hiredata[0]['status'] == '0')) {
+                                                    <?php if ($job[0]['job_step'] != 10) { ?>
+                                                    <a class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
+                                                    <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
                                                         ?>
 
-                                                        <a class="btn-1" id="free-hire-active-btn" href="<?php echo base_url('freelancer'); ?>">Active</a>
+                                                        <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
                                                     <?php } else {
-                                                        ?>
+                                                        ?> 
 
-                                                        <a class="btn-4" id="free-hire-take-btn" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
+                                                        <a class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
 
                                                     <?php } ?>
-                                                    <a data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
-
+                                                    <a data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
                                                 </div>
                                             </div>
                                         </div>

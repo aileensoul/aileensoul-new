@@ -3424,9 +3424,11 @@ public function followtwo() {
            $limit = $perpage;
            $offset = $start;
 
-            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'art_reg.status' => '1');
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+           // echo count($userlist1); die();
         } else { 
 
            $this->data['artisticdata'] = $artisticdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = 'art_id, user_id');
@@ -3439,7 +3441,7 @@ public function followtwo() {
            $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+            $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'art_reg.status' => 1);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } 
@@ -11915,7 +11917,7 @@ public function art_home_post() {
 
          /* FOLLOWER USER LIST START */
         $artregid = $this->data['artisticdata'][0]['art_id'];
-        $condition_array = array('follow_from' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
+        $condition_array = array('follow_from' => $artregid, 'follow_status' => '1', 'follow_type' => '1', 'art_reg.status' => '1', 'art_reg.is_delete' => 0);
         $join_str[0]['table'] = 'art_reg';
         $join_str[0]['join_table_id'] = 'art_reg.art_id';
         $join_str[0]['from_table_id'] = 'follow.follow_to';
@@ -11923,6 +11925,7 @@ public function art_home_post() {
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $condition_array, $data = 'GROUP_CONCAT(user_id) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         $follower_list = $followerdata[0]['follow_list'];
         $follower_list = explode(',', $follower_list);
+       // echo "<prer>"; print_r($follower_list); die();
         /* FOLLOWER USER LIST END */
 
         /* SKILL WISE DATA START */
@@ -11950,7 +11953,7 @@ public function art_home_post() {
 
 
         $condition_array = array('art_post.is_delete' => 0, 'art_post.status' => 1);
-        $search_condition = "`art_post_id` NOT IN ('$delete_post_id') AND (art_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND art_post.is_delete=0)";
+        $search_condition = "`art_post_id` NOT IN ('$delete_post_id') AND (art_post.user_id IN ('$total_user_list'))";
         $join_str[0]['table'] = 'art_reg';
         $join_str[0]['join_table_id'] = 'art_reg.user_id';
         $join_str[0]['from_table_id'] = 'art_post.user_id';

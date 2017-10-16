@@ -1247,10 +1247,10 @@ label.cameraButton input[accept*="camera"] {
     padding: 10px 0px 10px;
 }
 .progre_bar_text p {
-    color: #000;
     font-size: 12px;
     font-weight: 600;
     text-align: center;
+	line-height:1.5;
 }
 .circle-1 {
     width: 175px;
@@ -1281,7 +1281,7 @@ label.cameraButton input[accept*="camera"] {
     padding-left: 48px;
 }
 .circles {
-    padding-top: 10px;
+    padding-top: 5px;
 	text-align:center;
 }
 .circle-1 canvas {
