@@ -1605,12 +1605,17 @@ function setEndOfContenteditable(contentEditableElement)
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    
-           document.getElementById('editpostdata' + abc).style.display = 'block';
-           document.getElementById('editpostbox' + abc).style.display = 'none';
-            document.getElementById('khyati' + abc).style.display = 'block';
-           document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+           // document.getElementById('editpostdata' + abc).style.display = 'block';
+           // document.getElementById('editpostbox' + abc).style.display = 'none';
+           //  document.getElementById('khyati' + abc).style.display = 'block';
+           // document.getElementById('editpostdetailbox' + abc).style.display = 'none';
    
-           document.getElementById('editpostsubmit' + abc).style.display = 'none';
+           // document.getElementById('editpostsubmit' + abc).style.display = 'none';
+
+           document.getElementById('editpostdata' + abc).style.display = 'none';
+            document.getElementById('khyati' + abc).style.display = 'none';
+            document.getElementById('khyatii' + abc).style.display = 'none';
+            
        } else {
            $.ajax({
                type: 'POST',
