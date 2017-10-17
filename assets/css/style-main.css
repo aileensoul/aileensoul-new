@@ -1168,8 +1168,10 @@ section { overflow: hidden; }
     background: #1b8ab9;
     opacity: 1;
     color: white;
-    padding: 7px 10px;
+    padding: 4px 5px;
     border-radius: 100%;
+	width:30px;
+	height:30px;
 
 }
 /*** new hom page ***/
@@ -1565,6 +1567,11 @@ select:focus{ outline: none; }
 .no-login .login .form-group input{height:36px;}
 .cover footer{background:#fff;}
 body.cover{padding-bottom:60px;}
+/*** add post  ***/
+.tablate-add{display:none;}
+.tablate-potrat-add{display:none;}
+.mob-add{display:none;}
+/***  end add  ***/
 
 
 /***  media query  ***/
@@ -1579,11 +1586,11 @@ body.cover{padding-bottom:60px;}
   
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
 	.top-middle{padding-left:0;}
 	.bottom-middle{padding-left:0;}
 	.header-login .input{width:26%;}
-
+	.tablate-add{display:block; width:160px; position:fixed; margin-left:960px;}
 }
 
 @media screen and (max-width: 1199px) {
@@ -1595,7 +1602,12 @@ body.cover{padding-bottom:60px;}
 	.all-profile{width:100%;}
 	.profile-box-1.bus::before, .profile-box-1.art::before {height: 60px; left: 74%;}
 	.profile-box-1.art::after{height: 60px; left: 22%;}
-	
+	/***  add  ***/
+	.tablate-add{display:none;}
+	.tablate-potrat-add{display:block;}
+	.tablate-potrat-add .fw.text-center{text-align:center;}
+	.left_side_posrt{position:absolute;}
+	/***  end add  ***/
 }
 
 @media screen and (max-width: 1024px) {
@@ -1652,13 +1664,22 @@ body.cover{padding-bottom:60px;}
 	.top-middle h3{font-size:19px;}
 	.cover .middle-section .container{width:750px;}
 	.banner-box #row2 img{height:250px;}
-	
+	/***  addvertise  ***/
+	.tablate-potrat-add{display:none;}
+	.tablate-add{display:block; width:160px; position:fixed; margin-left:590px;}
+	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:580px; }
+	/*** end advertise  ***/
 	
 }
 
 @media screen and (max-width: 767px) {
+	header{}
 	body.cover{padding-bottom:90px;}
+	footer{padding:0; height:65px; text-align:center;}
+	footer .pt20{padding:10px 15px !important;}
+	footer ul{padding-bottom:5px; float:none; display:inline-block; padding-top:15px;}
 	footer ul li{padding-left:0;}
+	footer ul li:last-child a{padding-right:15px;}
 	.banner-box .upload-camera {
 		height: 34px;
 		width: 41px;
@@ -1685,10 +1706,8 @@ body.cover{padding-bottom:60px;}
 	.login-frm{width: 100%!important;}
     .title{width:100%;}
 	.inner-form .login{width:99%;}
-	footer{text-align:center;}
-	footer ul{float:none; display:inline-block; padding-top:15px;}
 	.btn-right{width:100%; float:left; padding-top:15px; padding-right:15px;}
-	footer{height:90px;}
+
 	.main-inner{padding-bottom:90px;}
 	.header-login .input{width:46%;}
 	.main-inner .btn-right.pull-right{text-align:center; padding-top:0;}
@@ -1738,6 +1757,12 @@ body.cover{padding-bottom:60px;}
 	.titlea h1{margin-bottom:0;}
 	.cover .middle-section .container{width:100%;}
 	.banner-box .upload-camera .cameraButton{padding:4px 7px 3px;}
+	/*** add ***/
+	.tablate-potrat-add{display:block;}
+	.tablate-add{display:none;}
+	.mian_middle_post_box{float:none;}
+	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
+	/*** end add  ***/
 }
 
 @media screen and (max-width: 640px) {
@@ -1808,6 +1833,11 @@ body.cover{padding-bottom:60px;}
 	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
 	.banner {padding-top: 10px;}
 	.how-it-popup .modal-body h3{font-size:22px; margin-bottom:12px;}
+	/***  add  ***/
+	.mob-add{margin-bottom:0; border:none;}
+	.padding-360{padding-left:1px; padding-right:1px;}
+	.contact-frnd-post{padding:10px 8px 0;}
+	/*** end add  ***/
 }
 
 @media screen and (max-width: 320px) {

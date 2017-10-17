@@ -254,41 +254,41 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                         
 						<section class="all-profile-custom">
-                           
-                            <div id="free-scroll" class="custom-box odd">
+							 <div id="job-scroll" class="custom-box odd">
                                 <div class="custom-width">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="<?php echo base_url(); ?>assets/img/i3.jpg"></a>
+                                                <a href="<?php echo base_url('job'); ?>"><img src="<?php echo base_url(); ?>assets/img/i1.png"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
                                             <div class="right-box">
-                                                <h1><a href="<?php echo base_url('freelancer'); ?>">Freelance Profile</a></h1>
-                                                <p>Hire freelancers and also find freelance work.</p>
+                                                <h1><a href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
+                                                <p>Find best job options and connect with recruiters.</p>
                                                 <div class="btns">
 
-                                                    <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) {?>
-                                                        <a class="btn-1" id="free-hire-register-btn" href="<?php echo base_url('freelancer'); ?>">Register</a>
-                                                    <?php } elseif (($workdata[0]['status'] == '0' && $workdata[0]['free_post_step'] == 7) || ($hiredata[0]['free_hire_step'] == 3 && $hiredata[0]['status'] == '0')) {
+                                                    <?php if ($job[0]['job_step'] != 10) { ?>
+                                                    <a class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
+                                                    <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
                                                         ?>
 
-                                                        <a class="btn-1" id="free-hire-active-btn" href="<?php echo base_url('freelancer'); ?>">Active</a>
+                                                        <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
                                                     <?php } else {
-                                                        ?>
+                                                        ?> 
 
-                                                        <a class="btn-4" id="free-hire-take-btn" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
+                                                        <a class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
 
                                                     <?php } ?>
-                                                    <a data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
-
+                                                    <a data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                           
+                            
 							<div id="rec-scroll" class="custom-box even">
                                 <div class="custom-width">
                                     <div class="row">
@@ -326,33 +326,34 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     </div>
                                 </div>
                             </div>
-                             <div id="job-scroll" class="custom-box odd">
+                            <div id="free-scroll" class="custom-box odd">
                                 <div class="custom-width">
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('job'); ?>"><img src="<?php echo base_url(); ?>assets/img/i1.png"></a>
+                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="<?php echo base_url(); ?>assets/img/i3.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
                                             <div class="right-box">
-                                                <h1><a href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
-                                                <p>Find best job options and connect with recruiters.</p>
+                                                <h1><a href="<?php echo base_url('freelancer'); ?>">Freelance Profile</a></h1>
+                                                <p>Hire freelancers and also find freelance work.</p>
                                                 <div class="btns">
 
-                                                    <?php if ($job[0]['job_step'] != 10) { ?>
-                                                    <a class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
-                                                    <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
+                                                    <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) {?>
+                                                        <a class="btn-1" id="free-hire-register-btn" href="<?php echo base_url('freelancer'); ?>">Register</a>
+                                                    <?php } elseif (($workdata[0]['status'] == '0' && $workdata[0]['free_post_step'] == 7) || ($hiredata[0]['free_hire_step'] == 3 && $hiredata[0]['status'] == '0')) {
                                                         ?>
 
-                                                        <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
+                                                        <a class="btn-1" id="free-hire-active-btn" href="<?php echo base_url('freelancer'); ?>">Active</a>
                                                     <?php } else {
-                                                        ?> 
+                                                        ?>
 
-                                                        <a class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
+                                                        <a class="btn-4" id="free-hire-take-btn" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
 
                                                     <?php } ?>
-                                                    <a data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                                    <a data-target="#fre-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -722,7 +723,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     </div>
 
-                    <div style="display:none;" class="modal how-it-popup" id="fre-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div style="display:none;" class="modal fade how-it-popup" id="fre-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
 								<button type="button" class="modal-close" data-dismiss="modal">×</button>
@@ -785,7 +786,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     </div>
 
-                    <div style="display:none;" class="modal how-it-popup" id="bus-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div style="display:none;" class="modal fade how-it-popup" id="bus-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
 								<button type="button" class="modal-close" data-dismiss="modal">×</button>
@@ -827,7 +828,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     </div>
 
-                    <div style="display:none;" class="modal how-it-popup" id="art-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div style="display:none;" class="modal fade how-it-popup" id="art-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
 								<button type="button" class="modal-close" data-dismiss="modal">×</button>
@@ -885,13 +886,13 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 
                                 <div class="user_profile"></div>
 
-                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
-                                    </div>
+                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                                </div>
                                     <div class="col-md-7 text-center">
                                         <div id="upload-demo-one" style="width:350px; display: none"></div>
                                     </div>
                                 <input type="submit"  class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save">
-                                </form>
+                            </form>
                             </div>
                         </span>
                     </div>
@@ -1049,8 +1050,6 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 
 
 							 $("#art-scroll").addClass("tabindex");
-
-
 							 $("#rec-scroll").removeClass("tabindex");
 							 $("#free-scroll").removeClass("tabindex");
 							 $("#bus-scroll").removeClass("tabindex");

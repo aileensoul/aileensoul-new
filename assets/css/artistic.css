@@ -5561,6 +5561,10 @@ div .comment {
     .post-edit-popup .popup-text textarea{width:70%; line-height:inherit;}
     .custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:100% !important;}
 	.file-preview{width:260px;}
+	.user-list .profile-job-post-location-name{padding:10px;}
+	.user-list .profile-job-post-location-name .user_lst ul li .user_btn{padding-top:5px;}
+	.user-list .profile-job-post-location-name .user_lst ul li .user_btn button{margin:0; }
+	.user-list .profile-job-post-location-name ul li.folle_text{padding-top:1px;}
 }
 
 @media screen and (max-width: 430px) {

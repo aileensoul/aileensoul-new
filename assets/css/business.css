@@ -4334,7 +4334,13 @@ div .comment {
 .video li .mejs__container.mejs__video .mejs__overlay{width:100% !important; height:100% !important;}
 .video li .mejs__container.mejs__video .mejs__mediaelement video{width:100% !important; height:100% !important;}
 .video .mejs__poster{width:100% !important; height:100% !important; background-size:100% !important;}
-.video .mejs__inner .mejs__mediaelement video{width:100% !important;}
+.mejs__mediaelement video{width:100% !important;}
+.mejs__container.mejs__video{width:100% !important;}
+.mejs__overlay.mejs__layer{width:100% !important;}
+.mejs__layers .mejs__poster.mejs__layer{width:100% !important;}
+
+
+
 /*** end video css  ***/
 .acbutton{
     position: relative;
@@ -5511,7 +5517,6 @@ div .comment {
 	.file-preview{width:380px;}
 }
 @media screen and (max-width: 479px) {
-    
     .slider_img{
         height: 280px;
     }
@@ -5913,6 +5918,10 @@ div .comment {
 	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 	.file-preview{width:260px;}
 	.post-edit-popup .popup-text{padding-top:9px;}
+	.user-list .profile-job-post-location-name{padding:10px;}
+	.user-list .profile-job-post-location-name .user_lst ul li .user_btn{padding-top:5px;}
+	.user-list .profile-job-post-location-name .user_lst ul li .user_btn button{margin:0; }
+	.user-list .profile-job-post-location-name ul li.folle_text{padding-top:1px;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {
