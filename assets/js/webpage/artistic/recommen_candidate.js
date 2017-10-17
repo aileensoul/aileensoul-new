@@ -919,8 +919,26 @@ function setEndOfContenteditable(contentEditableElement)
     
                         $('#editpostname' + abc).val(editposttitle);
                         $('#editpostdesc' + abc).html(editpostdesc);
+}
 
-                        }
+
+$('.editpost').on('click', function(){ 
+       var abc = $(this).attr('id');
+       var editposttitle = $('#editpostval' + abc).html();
+      var editpostdesc = $('#khyatii' + abc).html();
+
+      var n = editposttitle.length;
+       //alert(id);
+        document.getElementById('text_num_' + abc).value = 50 - n;
+
+        document.getElementById('editpostbox' + abc).style.display = 'block';
+       document.getElementById('editpostdetailbox' + abc).style.display = 'block';
+       document.getElementById('editpostsubmit' + abc).style.display = 'block';
+         $('#editpostname' + abc).val(editposttitle);
+         $('#editpostdesc' + abc).html(editpostdesc);
+    });
+
+
 
    function edit_postinsert(abc)
    {
@@ -938,7 +956,8 @@ function setEndOfContenteditable(contentEditableElement)
                         //alert(editpostdetails);
                         if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
                         $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
-                        $('#bidmodal').modal('show');
+                       $('button.editpost').attr('id', abc);
+                       $('#bidmodaleditpost').modal('show');
                         // document.getElementById('editpostdata' + abc).style.display = 'block';
                         // document.getElementById('editpostbox' + abc).style.display = 'none';
                         // document.getElementById('khyati' + abc).style.display = 'block';
