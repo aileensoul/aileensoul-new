@@ -1,4 +1,5 @@
  // for cursor pointer starts script
+
 $(document).ready(function () {
     var input = $(".editable_text");
     var len = input.val().length;
@@ -1381,62 +1382,62 @@ function commentall(clicked_id) {
                 }
             }         
 
- $(document).ready(function () {
-                $('.blocks').jMosaic({items_type: "li", margin: 0});
-                $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
-            });
+ // $(document).ready(function () {
+ //                $('.blocks').jMosaic({items_type: "li", margin: 0});
+ //                $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
+ //            });
 
-            //If this image without attribute WIDTH or HEIGH, you can use $(window).load
-            $(window).load(function () {
-                //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
-            });
+ //            //If this image without attribute WIDTH or HEIGH, you can use $(window).load
+ //            $(window).load(function () {
+ //                //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
+ //            });
 
-            //You can update on $(window).resize
-            $(window).resize(function () {
-                //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
-                //$('.blocks').jMosaic({items_type: "li", margin: 0});
-            });
+ //            //You can update on $(window).resize
+ //            $(window).resize(function () {
+ //                //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
+ //                //$('.blocks').jMosaic({items_type: "li", margin: 0});
+ //            });
 
-function openModal() {
-                document.getElementById('myModal1').style.display = "block";
-            }
+// function openModal() {
+//                 document.getElementById('myModal1').style.display = "block";
+//             }
 
-            function closeModal() {
-                document.getElementById('myModal1').style.display = "none";
-            }
+//             function closeModal() {
+//                 document.getElementById('myModal1').style.display = "none";
+//             }
 
-            var slideIndex = 1;
-            showSlides(slideIndex);
+//             var slideIndex = 1;
+//             showSlides(slideIndex);
 
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
+//             function plusSlides(n) {
+//                 showSlides(slideIndex += n);
+//             }
 
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
+//             function currentSlide(n) {
+//                 showSlides(slideIndex = n);
+//             }
 
-            function showSlides(n) {
-                var i;
-                var slides = document.getElementsByClassName("mySlides");
-                var dots = document.getElementsByClassName("demo");
-                var captionText = document.getElementById("caption");
-                if (n > slides.length) {
-                    slideIndex = 1
-                }
-                if (n < 1) {
-                    slideIndex = slides.length
-                }
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                }
-                slides[slideIndex - 1].style.display = "block";
-                dots[slideIndex - 1].className += " active";
-                captionText.innerHTML = dots[slideIndex - 1].alt;
-            }
+//             function showSlides(n) {
+//                 var i;
+//                 var slides = document.getElementsByClassName("mySlides");
+//                 var dots = document.getElementsByClassName("demo");
+//                 var captionText = document.getElementById("caption");
+//                 if (n > slides.length) {
+//                     slideIndex = 1
+//                 }
+//                 if (n < 1) {
+//                     slideIndex = slides.length
+//                 }
+//                 for (i = 0; i < slides.length; i++) {
+//                     slides[i].style.display = "none";
+//                 }
+//                 for (i = 0; i < dots.length; i++) {
+//                     dots[i].className = dots[i].className.replace(" active", "");
+//                 }
+//                 slides[slideIndex - 1].style.display = "block";
+//                 dots[slideIndex - 1].className += " active";
+//                 captionText.innerHTML = dots[slideIndex - 1].alt;
+//             }
 
 // delete post script start
 
@@ -1576,42 +1577,48 @@ function setEndOfContenteditable(contentEditableElement)
         editpostdesc = editpostdesc.trim()
         $('#editpostname' + abc).val(editposttitle);
         $('#editpostdesc' + abc).html(editpostdesc);
-   }
+   } 
+
+
+   $('.editpost').on('click', function(){   
+       var abc = $(this).attr('id');
+       var editposttitle = $('#editpostval' + abc).html();
+      var editpostdesc = $('#khyatii' + abc).html();
+      var n = editposttitle.length;
+     
+        document.getElementById('text_num_' + abc).value = 50 - n;
+        document.getElementById('editpostbox' + abc).style.display = 'block';
+       document.getElementById('editpostdetailbox' + abc).style.display = 'block';
+       document.getElementById('editpostsubmit' + abc).style.display = 'block';
+       //alert('#editpostname' + abc);
+       //alert('#editpostdesc' + abc);
+         $('#editpostname' + abc).val(editposttitle);
+         $('#editpostdesc' + abc).html(editpostdesc);
+    });
+
 
    function edit_postinsert(abc)
    {
-   
 
        var editpostname = document.getElementById("editpostname" + abc);
-       // var editpostdetails = document.getElementById("editpostdesc" + abc);
-       // start khyati code
        var $field = $('#editpostdesc' + abc);
-       //var data = $field.val();
        var editpostdetails = $('#editpostdesc' + abc).html();
-
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
-       
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
        editpostdetails = editpostdetails.replace(/div/gi, "p");
-       //editpostdetails = editpostdetails.replace(/"<div>"/gi, "</p>");
         editpostdetails = editpostdetails.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
-
-
-
-//alert(editpostdetails);
-
    
        if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
-           $('#bidmodal').modal('show');
+         
+          $('button.editpost').attr('id', abc);
+           $('#bidmodaleditpost').modal('show');
    
            // document.getElementById('editpostdata' + abc).style.display = 'block';
            // document.getElementById('editpostbox' + abc).style.display = 'none';
            //  document.getElementById('khyati' + abc).style.display = 'block';
            // document.getElementById('editpostdetailbox' + abc).style.display = 'none';
-   
            // document.getElementById('editpostsubmit' + abc).style.display = 'none';
-
            document.getElementById('editpostdata' + abc).style.display = 'none';
             document.getElementById('khyati' + abc).style.display = 'none';
             document.getElementById('khyatii' + abc).style.display = 'none';
@@ -1620,16 +1627,13 @@ function setEndOfContenteditable(contentEditableElement)
            $.ajax({
                type: 'POST',
                url: base_url + "artistic/edit_post_insert",
-               //url: '<?php echo base_url() . "artistic/edit_post_insert" ?>',
                data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + encodeURIComponent(editpostdetails),
                dataType: "json",
-               success: function (data) {
-                    
+               success: function (data) {                   
                      if(data.notavlpost == 'notavl'){
                $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
                $('#bidmodal').modal('show');
             }else{
-
                    document.getElementById('editpostdata' + abc).style.display = 'block';
                    document.getElementById('editpostbox' + abc).style.display = 'none';
                  //  document.getElementById('editpostdetails' + abc).style.display = 'block';
@@ -1641,13 +1645,11 @@ function setEndOfContenteditable(contentEditableElement)
                   // $('#' + 'editpostdetails' + abc).html(data.description);
                    $('#' + 'khyati' + abc).html(data.description);
                    $('#' + 'postname' + abc).html(data.postname);
-
                  }
                }
-           });
-       }
-   
-   }
+           }); 
+       }  
+   } 
 
 // save post script start
 
