@@ -1364,7 +1364,7 @@ label.cameraButton:active {
     border-top: 1px solid #efefef!important;
     display: inline-block;
     background-color: white;
-    width: 100%;
+    /*width: 100%;*/
     font-weight: 400;
     padding-left: 0px!important;
     padding: 1px;
