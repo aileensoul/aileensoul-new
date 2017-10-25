@@ -958,7 +958,7 @@
 </footer>
 
 <!-- Calender JS Start-->
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.js?ver='.time()) ?>"></script>
+<!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.js?ver='.time()) ?>"></script>-->
 <!--<script src="<?php// echo base_url('assets/js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
 
 <!-- This Js is used for call popup -->

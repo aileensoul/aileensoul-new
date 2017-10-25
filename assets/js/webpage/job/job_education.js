@@ -706,11 +706,15 @@ $(document).on('change', '#input2 .university', function (event) {
         $('#bidmodal').modal('show');
         //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni" onkeypress="return remove_validation()"><a id="univer" class="btn">OK</a></div>');
 
-        $('.message #univer').on('click', function () {
+        $('.message #univer').off('click').on('click', function () {
 
             $("#other_uni").removeClass("keyskill_border_active");
             $('#field_error').remove();
-
+             var x = $.trim(document.getElementById("other_uni").value);
+            if (x == '') {
+                $("#other_uni").addClass("keyskill_border_active");
+                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+            } else {
             var $textbox = $('.message').find('input[type="text"]'),
                     textVal = $textbox.val();
             $.ajax({
@@ -737,7 +741,7 @@ $(document).on('change', '#input2 .university', function (event) {
                     }
                 }
             });
-
+            }
         });
     }
 
@@ -758,7 +762,11 @@ $(document).on('change', '#input3 .university', function (event) {
 
             $("#other_uni").removeClass("keyskill_border_active");
             $('#field_error').remove();
-
+            var x = $.trim(document.getElementById("other_uni").value);
+            if (x == '') {
+                $("#other_uni").addClass("keyskill_border_active");
+                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+            } else {
             var $textbox = $('.message').find('input[type="text"]'),
                     textVal = $textbox.val();
             $.ajax({
@@ -785,7 +793,7 @@ $(document).on('change', '#input3 .university', function (event) {
                     }
                 }
             });
-
+            }
         });
     }
 
@@ -805,7 +813,11 @@ $(document).on('change', '#input4 .university', function (event) {
 
             $("#other_uni").removeClass("keyskill_border_active");
             $('#field_error').remove();
-
+            var x = $.trim(document.getElementById("other_uni").value);
+            if (x == '') {
+                $("#other_uni").addClass("keyskill_border_active");
+                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+            } else {
             var $textbox = $('.message').find('input[type="text"]'),
                     textVal = $textbox.val();
             $.ajax({
@@ -832,7 +844,7 @@ $(document).on('change', '#input4 .university', function (event) {
                     }
                 }
             });
-
+            }
         });
     }
 
@@ -852,7 +864,11 @@ $(document).on('change', '#input5 .university', function (event) {
 
             $("#other_uni").removeClass("keyskill_border_active");
             $('#field_error').remove();
-
+            var x = $.trim(document.getElementById("other_uni").value);
+            if (x == '') {
+                $("#other_uni").addClass("keyskill_border_active");
+                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+            } else {
             var $textbox = $('.message').find('input[type="text"]'),
                     textVal = $textbox.val();
             $.ajax({
@@ -879,7 +895,7 @@ $(document).on('change', '#input5 .university', function (event) {
                     }
                 }
             });
-
+            }
         });
     }
 
