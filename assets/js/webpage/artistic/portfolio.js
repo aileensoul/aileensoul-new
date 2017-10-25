@@ -91,7 +91,9 @@ function portfolio_form_submit(event){
                document.getElementById("submit").onclick = '';                    
                        //$(".portfolioloader").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                        //document.getElementById("loader").display = "block";
+                       if(bestofmine){
                        document.getElementById('loader').style.display = 'block';
+                        }
                     },
             success: function (response) {
                 $('#loader').hide();
