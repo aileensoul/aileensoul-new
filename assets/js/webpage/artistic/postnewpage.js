@@ -9,6 +9,26 @@
                         });
 
 
+
+$('.editpost').on('click', function(){ 
+       var abc = $(this).attr('id');
+       var editposttitle = $('#editpostval' + abc).html();
+      var editpostdesc = $('#khyatii' + abc).html();
+
+      //alert(editposttitle);
+     // alert(editpostdesc);
+
+      var n = editposttitle.length;
+       //alert(id);
+        document.getElementById('text_num').value = 50 - n;
+
+        document.getElementById('editpostbox' + abc).style.display = 'block';
+       document.getElementById('editpostdetailbox' + abc).style.display = 'block';
+       document.getElementById('editpostsubmit' + abc).style.display = 'block';
+         $('#editpostname' + abc).val(editposttitle);
+         $('#editpostdesc' + abc).html(editpostdesc);
+    });
+
  // for cursor pointer starts script
 $(document).ready(function () {
     var input = $(".editable_text");
@@ -381,26 +401,6 @@ $('body').on("click", "*", function (e) {
                             dots[slideIndex - 1].className += " active";
                             captionText.innerHTML = dots[slideIndex - 1].alt;
                         }
-
-
-// function myFunctionone(clicked_id) {
-//                             document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-
-
-
-//                               $( document ).on( 'keydown', function ( e ) {
-//                                         if ( e.keyCode === 27 ) { 
-
-//                                         document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-//                                          $(".dropdown-content1").removeClass('show');
-
-//                             }
-                           
-//                         }); 
-
-//                         }
-
-
 
         function check_perticular(input) {
                         var testData = input.replace(/\s/g, '');
@@ -810,20 +810,6 @@ var modal = document.getElementById('myModal');
                             }
                         }
 
- 
-                        // Close the dropdown if the user clicks outside of it
-                        // window.onclick = function (event) {
-                        //     if (!event.target.matches('.dropbtn1')) {
-                        //         var dropdowns = document.getElementsByClassName("dropdown-content1");
-                        //         var i;
-                        //         for (i = 0; i < dropdowns.length; i++) {
-                        //             var openDropdown = dropdowns[i];
-                        //             if (openDropdown.classList.contains('show')) {
-                        //                 openDropdown.classList.remove('show');
-                        //             }
-                        //         }
-                        //     }
-                        // }
 
 $(function () {
                             var showTotalChar = 200, showChar = "more", hideChar = "less";
@@ -978,6 +964,8 @@ function setEndOfContenteditable(contentEditableElement)
 
    }
 
+//alert("hii");
+
    function edit_postinsert(abc)
    {
    
@@ -998,14 +986,21 @@ function setEndOfContenteditable(contentEditableElement)
    
        if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
-           $('#bidmodal').modal('show');
+           $('button.editpost').attr('id', abc);
+
+           $('#bidmodaleditpost').modal('show');
    
-           document.getElementById('editpostdata' + abc).style.display = 'block';
-           document.getElementById('editpostbox' + abc).style.display = 'none';
-           document.getElementById('khyati' + abc).style.display = 'block';
-           document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+           // document.getElementById('editpostdata' + abc).style.display = 'block';
+           // document.getElementById('editpostbox' + abc).style.display = 'none';
+           // document.getElementById('khyati' + abc).style.display = 'block';
+           // document.getElementById('editpostdetailbox' + abc).style.display = 'none';
    
-           document.getElementById('editpostsubmit' + abc).style.display = 'none';
+           // document.getElementById('editpostsubmit' + abc).style.display = 'none';
+
+           document.getElementById('editpostdata' + abc).style.display = 'none';
+            document.getElementById('khyati' + abc).style.display = 'none';
+            document.getElementById('khyatii' + abc).style.display = 'none';
+            
        } else {
            $.ajax({
                type: 'POST',

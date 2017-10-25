@@ -196,20 +196,25 @@
 									}());
 									</script>
 								<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								<div class="fw pt10">
+									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+								</div>
 							</div>
-							<div class="fw pt20" style="text-align:center;">
-								<a target="_blank"  href="https://www.amazon.in/gp/product/B00KJGYB8M/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=B00KJGYB8M&linkCode=as2&tag=aileensoul-21&linkId=dc5e1b2815cc8b94d7f3d631af3cf96e"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=B00KJGYB8M&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=B00KJGYB8M" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-							</div>
+							
 						</div>
 				<div class="tablate-add">
-					
-					<script type="text/javascript" language="javascript">
-					  var aax_size='160x600';
-					  var aax_pubname = 'aileensoul-21';
-					  var aax_src='302';
-					</script>
-					<script type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-				</div>
+
+                            <script type="text/javascript">
+						  ( function() {
+							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
+							var placement_id = window.CHITIKA.units.length;
+							window.CHITIKA.units.push(unit);
+							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+						}());
+						</script>
+						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                        </div>
             </div>
         </div>
         </div>

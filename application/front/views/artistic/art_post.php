@@ -195,22 +195,28 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
 						}());
 						</script>
 <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+					
+						<div class="fw pt10">
+									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+								</div>
 					</div>
-					<div class="fw pt20" style="text-align:center;">
-						<a target="_blank"  href="https://www.amazon.in/gp/product/8192910962/ref=as_li_tl?ie=UTF8&camp=3638&creative=24630&creativeASIN=8192910962&linkCode=as2&tag=aileensoul-21&linkId=495259fda0add98d83251ff709493a3c"><img border="0" src="//ws-in.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=IN&ASIN=8192910962&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_&tag=aileensoul-21" ></a><img src="//ir-in.amazon-adsystem.com/e/ir?t=aileensoul-21&l=am2&o=31&a=8192910962" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-					</div>
+					
 					
      
       </div>
 	  <div class="tablate-add">
-					
-							<script type="text/javascript" language="javascript">
-							  var aax_size='160x600';
-							  var aax_pubname = 'aileensoul-21';
-							  var aax_src='302';
-							</script>
-							<script async type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-						</div>
+
+                            <script type="text/javascript">
+						  ( function() {
+							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
+							var placement_id = window.CHITIKA.units.length;
+							window.CHITIKA.units.push(unit);
+							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+						}());
+						</script>
+						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                        </div>
 
   <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
@@ -237,6 +243,18 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
          </div>
       </div>
       <!-- Model Popup Close -->
+
+       <div class="modal fade message-box biderror" id="bidmodaleditpost" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close editpost" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+
       <!-- Bid-modal-2  -->
       <div class="modal fade message-box" id="likeusermodal" role="dialog" >
          <div class="modal-dialog modal-lm">
