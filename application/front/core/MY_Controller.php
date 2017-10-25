@@ -9,8 +9,8 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
 
         
-//        $this->output->cache(15);
-//        $this->output->enable_profiler(TRUE);
+       //$this->output->cache(15);
+       //$this->output->enable_profiler(TRUE);
            
         $segment_check = $this->uri->segment(2);
 
