@@ -6286,7 +6286,7 @@ public function insert_comment_postnewpage() {
 
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         
-            $contition_array = array('user_id' => $id, 'is_delete' => '0');
+            $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'is_delete' => '0');
 
              $artisticpost = $this->data['artisticdatapost'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
