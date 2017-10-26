@@ -710,37 +710,37 @@ $(document).on('change', '#input2 .university', function (event) {
 
             $("#other_uni").removeClass("keyskill_border_active");
             $('#field_error').remove();
-             var x = $.trim(document.getElementById("other_uni").value);
+            var x = $.trim(document.getElementById("other_uni").value);
             if (x == '') {
                 $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
             } else {
-            var $textbox = $('.message').find('input[type="text"]'),
-                    textVal = $textbox.val();
-            $.ajax({
-                type: 'POST',
-                url: base_url + 'job/job_other_university',
-                dataType: 'json',
-                data: 'other_university=' + textVal,
-                success: function (response) {
+                var $textbox = $('.message').find('input[type="text"]'),
+                        textVal = $textbox.val();
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + 'job/job_other_university',
+                    dataType: 'json',
+                    data: 'other_university=' + textVal,
+                    success: function (response) {
 
-                    if (response.select == 0)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
-                    } else if (response.select == 1)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
-                    } else
-                    {
-                        //$.fancybox.close();
-                        $('#bidmodal').modal('hide');
-                        $('.university').html(response.select1);
-                        $('#input2 .university').html(response.select);
+                        if (response.select == 0)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
+                        } else if (response.select == 1)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                        } else
+                        {
+                            //$.fancybox.close();
+                            $('#bidmodal').modal('hide');
+                            $('.university').html(response.select1);
+                            $('#input2 .university').html(response.select);
+                        }
                     }
-                }
-            });
+                });
             }
         });
     }
@@ -765,34 +765,34 @@ $(document).on('change', '#input3 .university', function (event) {
             var x = $.trim(document.getElementById("other_uni").value);
             if (x == '') {
                 $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
             } else {
-            var $textbox = $('.message').find('input[type="text"]'),
-                    textVal = $textbox.val();
-            $.ajax({
-                type: 'POST',
-                url: base_url + 'job/job_other_university',
-                dataType: 'json',
-                data: 'other_university=' + textVal,
-                success: function (response) {
+                var $textbox = $('.message').find('input[type="text"]'),
+                        textVal = $textbox.val();
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + 'job/job_other_university',
+                    dataType: 'json',
+                    data: 'other_university=' + textVal,
+                    success: function (response) {
 
-                    if (response.select == 0)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
-                    } else if (response.select == 1)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
-                    } else
-                    {
-                        //$.fancybox.close();
-                        $('#bidmodal').modal('hide');
-                        $('.university').html(response.select1);
-                        $('#input3 .university').html(response.select);
+                        if (response.select == 0)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
+                        } else if (response.select == 1)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                        } else
+                        {
+                            //$.fancybox.close();
+                            $('#bidmodal').modal('hide');
+                            $('.university').html(response.select1);
+                            $('#input3 .university').html(response.select);
+                        }
                     }
-                }
-            });
+                });
             }
         });
     }
@@ -816,34 +816,34 @@ $(document).on('change', '#input4 .university', function (event) {
             var x = $.trim(document.getElementById("other_uni").value);
             if (x == '') {
                 $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
             } else {
-            var $textbox = $('.message').find('input[type="text"]'),
-                    textVal = $textbox.val();
-            $.ajax({
-                type: 'POST',
-                url: base_url + 'job/job_other_university',
-                dataType: 'json',
-                data: 'other_university=' + textVal,
-                success: function (response) {
+                var $textbox = $('.message').find('input[type="text"]'),
+                        textVal = $textbox.val();
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + 'job/job_other_university',
+                    dataType: 'json',
+                    data: 'other_university=' + textVal,
+                    success: function (response) {
 
-                    if (response.select == 0)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
-                    } else if (response.select == 1)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
-                    } else
-                    {
-                        //$.fancybox.close();
-                        $('#bidmodal').modal('hide');
-                        $('.university').html(response.select1);
-                        $('#input4 .university').html(response.select);
+                        if (response.select == 0)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
+                        } else if (response.select == 1)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                        } else
+                        {
+                            //$.fancybox.close();
+                            $('#bidmodal').modal('hide');
+                            $('.university').html(response.select1);
+                            $('#input4 .university').html(response.select);
+                        }
                     }
-                }
-            });
+                });
             }
         });
     }
@@ -867,34 +867,34 @@ $(document).on('change', '#input5 .university', function (event) {
             var x = $.trim(document.getElementById("other_uni").value);
             if (x == '') {
                 $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
             } else {
-            var $textbox = $('.message').find('input[type="text"]'),
-                    textVal = $textbox.val();
-            $.ajax({
-                type: 'POST',
-                url: base_url + 'job/job_other_university',
-                dataType: 'json',
-                data: 'other_university=' + textVal,
-                success: function (response) {
+                var $textbox = $('.message').find('input[type="text"]'),
+                        textVal = $textbox.val();
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + 'job/job_other_university',
+                    dataType: 'json',
+                    data: 'other_university=' + textVal,
+                    success: function (response) {
 
-                    if (response.select == 0)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
-                    } else if (response.select == 1)
-                    {
-                        $("#other_uni").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
-                    } else
-                    {
-                        //$.fancybox.close();
-                        $('#bidmodal').modal('hide');
-                        $('.university').html(response.select1);
-                        $('#input5 .university').html(response.select);
+                        if (response.select == 0)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_uni');
+                        } else if (response.select == 1)
+                        {
+                            $("#other_uni").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_uni');
+                        } else
+                        {
+                            //$.fancybox.close();
+                            $('#bidmodal').modal('hide');
+                            $('.university').html(response.select1);
+                            $('#input5 .university').html(response.select);
+                        }
                     }
-                }
-            });
+                });
             }
         });
     }
@@ -1305,37 +1305,42 @@ $(document).on('change', '.message #other_stream', function (event) {
         $('#bidmodal').modal('show');
 
         $('.message1 #univer1').on('click', function () {
-            var $textbox1 = $('.message1').find('input[type="text"]'),
-                    textVal1 = $textbox1.val();
 
             $(".message1 #other_degree1").removeClass("keyskill_border_active");
             $('#field_error').remove();
+            var $textbox1 = $('.message1').find('input[type="text"]'),
+                    textVal1 = $textbox1.val();
+            if (textVal1 == '') {
+                $(".message1 #other_degree1").addClass("keyskill_border_active");
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty stream is not valid</span>').insertAfter('.message1 #other_degree1');
 
-            $.ajax({
-                type: 'POST',
-                url: base_url + 'job/job_other_stream',
-                data: 'other_stream=' + textVal1,
-                success: function (response) {
+            } else {
 
-                    if (response == 0)
-                    {
-                        $(".message1 #other_degree1").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written stream already available in stream selection</span>').insertAfter('.message1 #other_degree1');
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + 'job/job_other_stream',
+                    data: 'other_stream=' + textVal1,
+                    success: function (response) {
 
-                    } else if (response == 1)
-                    {
-                        $(".message1 #other_degree1").addClass("keyskill_border_active");
-                        $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty stream is not valid</span>').insertAfter('.message1 #other_degree1');
+                        if (response == 0)
+                        {
+                            $(".message1 #other_degree1").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written stream already available in stream selection</span>').insertAfter('.message1 #other_degree1');
 
-                    } else
-                    {
-                        //$.fancybox.close();
-                        $('#bidmodal').modal('hide');
-                        $('.message #other_stream').html(response);
+                        } else if (response == 1)
+                        {
+                            $(".message1 #other_degree1").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty stream is not valid</span>').insertAfter('.message1 #other_degree1');
+
+                        } else
+                        {
+                            //$.fancybox.close();
+                            $('#bidmodal').modal('hide');
+                            $('.message #other_stream').html(response);
+                        }
                     }
-                }
-            });
-
+                });
+            }
         });
     }
 
