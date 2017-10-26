@@ -1193,7 +1193,7 @@ class Job extends MY_Controller {
 //        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
 //        $search_condition = "((status = '1'))";
 //        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         $contition_array = array('is_delete' => '0','status'=>'1');
+         $contition_array = array('is_delete' => '0','status'=>'1','industry_name !=' => "Others");
         $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1203,7 +1203,7 @@ class Job extends MY_Controller {
   
           $contition_array = array('is_delete' => '0','is_other' => '0', 'industry_name !=' => "Others");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        // $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       //  $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
  $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Others");
         $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
