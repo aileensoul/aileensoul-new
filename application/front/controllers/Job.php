@@ -3366,8 +3366,8 @@ class Job extends MY_Controller {
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
         if (count($postdetail) > 0) {
-            foreach ($postdetail1 as $postdetaildata) {
-                foreach ($postdetaildata as $post) {
+            foreach ($postdetail1 as $post) {
+              //  foreach ($postdetaildata as $post) {
                     $return_html .= '
                 <div class="profile-job-post-detail clearfix" id="applypost' . $post['app_id'] . '">
                 <div class = "profile-job-post-title clearfix">
@@ -3635,7 +3635,7 @@ class Job extends MY_Controller {
                     $return_html .= '</ul></div></div>';
                     $return_html .= '</div></div>';
                 }//foreach ($postdetail1 as $post) end
-            }//foreach ($postdetail as $post_key => $postdetail1) end
+           // }//foreach ($postdetail as $post_key => $postdetail1) end
         }//if (count($postdetail) > 0) end
         else {
 
