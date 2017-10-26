@@ -634,6 +634,7 @@ function expyear_change(){
   //Clone input type start
    $('#btnRemove').attr('disabled', 'disabled');
    $('#btnAdd').click(function () {
+       $('#btnAdd').removeAttr('disabled', 'disabled');
        var num = $('.clonedInput').length;
    
        var newNum = new Number(num + 1);
@@ -672,7 +673,7 @@ function expyear_change(){
    });
    
    $('#btnRemove').on('click', function () {
-   
+   $('#btnAdd').removeAttr('disabled', 'disabled');
        var num = $('.clonedInput').length;
        if (num - 1 == clone_mathod_count)
        {

@@ -126,7 +126,7 @@
                               <div class="circles">
                                  <div class="second circle-1 ">
                                     <div class="true_progtree">
-                                       <img src="<?php echo base_url("img/true.png"); ?>">
+                                       <img src="<?php echo base_url("assets/img/true.png"); ?>">
                                     </div>
                                     <div class="tr_text">
                                        Successfully Completed
