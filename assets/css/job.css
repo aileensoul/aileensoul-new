@@ -2070,7 +2070,7 @@ label.cameraButton input[accept*="camera"] {
     color: white;
 }
 /*.fancybox-slide > *{background-color:transparent;  }*/
-.flw_msg_btn ul li{margin-right: 10px!important;}
+.flw_msg_btn ul li{margin-right: 5px!important;}
 .profile-job-post-detail .profile-job-post-title .button.invited {
     float: none;
     margin-right: 0;
@@ -2183,6 +2183,8 @@ label.cameraButton input[accept*="camera"] {
 .modal-body .message1{width:100% !important;}
 .message1 .btn{background-color: #1B8AB9;color: #fff;}
 .message1 .btn:hover{background-color: #156f95 !important;color: #fff;}
+
+
 /***  media query  ***/
 
 
