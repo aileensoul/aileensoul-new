@@ -2054,7 +2054,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .message {
     text-align: center;
-    padding: 26px;
+    /*padding: 26px;*/
     background: white;
 }
 #radio-error.error {
@@ -2178,7 +2178,11 @@ label.cameraButton input[accept*="camera"] {
 #jobseeker_regform1 #experience_year + .error{top:60px;}
 #jobseeker_regform #datepicker + .error{top:65px;}
 .custom_footer_left ul li a:focus{color: #1B8AB9 !important;}
-
+.modal-content .modal-close:hover{color: #fff;background-color: #156f95 !important;}
+.modal-content .modal-close{top:-13px !important;right: -13px !important;}
+.modal-body .message1{width:100% !important;}
+.message1 .btn{background-color: #1B8AB9;color: #fff;}
+.message1 .btn:hover{background-color: #156f95 !important;color: #fff;}
 /***  media query  ***/
 
 

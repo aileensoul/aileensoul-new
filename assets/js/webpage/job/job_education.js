@@ -1301,10 +1301,10 @@ $(document).on('change', '.message #other_stream', function (event) {
 
         //$.fancybox.open('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
 
-        $('.biderror .mes').html('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
+        $('.biderror .mes').html('<div class="message1" style="width:300px;"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer" class="btn">OK</a></div>');
         $('#bidmodal').modal('show');
 
-        $('.message1 #univer1').on('click', function () {
+        $('.message1 #univer').on('click', function () {
 
             $(".message1 #other_degree1").removeClass("keyskill_border_active");
             $('#field_error').remove();
