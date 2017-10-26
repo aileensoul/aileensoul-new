@@ -3317,32 +3317,36 @@ class Job extends MY_Controller {
         if ($recskill != 0 && $reccity == 0 && $recindustry == 0 && $rectitle == 0) {
 
             $unique = $recommendata;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } elseif ($recskill == 0 && $reccity != 0 && $recindustry == 0 && $rectitle == 0) {
 
             $unique = $recommendata_city;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } elseif ($recskill == 0 && $reccity == 0 && $recindustry != 0 && $rectitle == 0) {
             $unique = $recommendata_industry;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } elseif ($recskill == 0 && $reccity == 0 && $recindustry == 0 && $rectitle != 0) {
 
             $unique = $recommendata_title;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } else {
 
             $unique = array_merge($recommendata, $recommendata_city, $recommendata_industry, $recommendata_title);
-            $newArray = array();
-            foreach ($unique as $key => $innerArr1) {
-                foreach ($innerArr1 as $key1 => $innerArr) {
-                    $newArray[][] = $innerArr;
-                }
-            }
-
+//            $newArray = array();
+//            foreach ($unique as $key => $innerArr1) {
+//                foreach ($innerArr1 as $key1 => $innerArr) {
+//                    $newArray[][] = $innerArr;
+//                }
+//            }
+            $newArray = array_reduce($unique, 'array_merge', array());
             $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         }
