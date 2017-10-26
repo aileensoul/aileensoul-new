@@ -2183,7 +2183,7 @@ label.cameraButton input[accept*="camera"] {
 .modal-body .message1{width:100% !important;}
 .message1 .btn{background-color: #1B8AB9;color: #fff;}
 .message1 .btn:hover{background-color: #156f95 !important;color: #fff;}
-
+#InboxBody #mCSB_2_container div ul{float: none!important;}
 
 /***  media query  ***/
 

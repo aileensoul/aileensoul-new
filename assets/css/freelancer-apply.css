@@ -1490,6 +1490,7 @@ label.cameraButton input[accept*="camera"] {
 .custom_footer_left ul li a:focus{color: #1b8ab9 !important}
 .modal-content .modal-close:hover{color: #fff;background-color: #156f95 !important;}
 .modal-content .modal-close{top:-13px !important;right: -13px !important;}
+#InboxBody  div ul.notification_data_in_h2{float: none!important;}
 
 /***  media query  ***/
 
