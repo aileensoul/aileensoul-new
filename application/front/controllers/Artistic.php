@@ -444,16 +444,24 @@ class Artistic extends MY_Controller {
           
           foreach($skills as $ski){
             if($ski != ' '){
-     $contition_array = array('skill' => $ski,'type' => 6);
-     //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+     //$contition_array = array('skill' => $ski,'type' => 6);
+     // $contition_array = array('skill' => $ski,'type' => 2);
+
+     // $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+     // $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+        $contition_array = array('skill' => $ski);
+        $search_condition = "(type = '2'  OR type = '6')";
+        $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
      if($skilldata){
          $skill[] = $skilldata[0]['skill_id'];
            }else{
                  $data = array(
                     'skill' => $ski,
                     'status' => '1',
-                    'type' => 3,
+                    'type' => 6,
                     'user_id' => $userid,
                  );
       $skill[] = $this->common->insert_data_getid($data, 'skill');
@@ -11979,6 +11987,7 @@ public function art_home_post() {
         $search_condition = "(art_skill IN ('$userselectskill'))";
         $data = "GROUP_CONCAT(user_id) as skilldata_userlist";
         $skilldata = $this->common->select_data_by_search('art_reg', $search_condition, $condition_array, $data, $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
+        //echo "<pre>"; print_r($skilldata); die();
         $skill_list = $skilldata[0]['skilldata_userlist'];
         $skill_list = explode(',', $skill_list);
         /* SKILL WISE DATA END */
