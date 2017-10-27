@@ -116,16 +116,16 @@ $this->db->select('city_name')->get_where('cities', array('city_id' => $artistic
                                     </div>
                                     <div class="profile-job-profile-menu">
                                         <ul class="clearfix">
-                                            <li> <b>Art </b> <span>
+                                            <li> <b>Art category </b> <span>
 <?php
-$aud = $artisticdata[0]['art_skill'];
-$aud_res = explode(',', $aud);
-foreach ($aud_res as $skill) {
-    $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skill))->row()->skill;
-    $skill1[] = $cache_time;
+$art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $artisticdata[0]['art_skill']))->row()->art_category;
+$art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $artisticdata[0]['other_skill']))->row()->other_category;
+if( $artisticdata[0]['art_skill'] != 17){
+echo $art_category; 
+}else{
+ echo $art_othercategory;  
 }
-$listFinal = implode(', ', $skill1);
-echo $listFinal;  
+ 
 ?>     
 </span>
  </li>
