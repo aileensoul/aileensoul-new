@@ -4615,7 +4615,15 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
 //add other_industry into database End 
     
     public function live_post($userid,$postid,$posttitle){
-       $this->load->view('recruiter/rec_post_login');
+       
+       $contition_array = array('post_id' => $postid, 'status' => 1, 'is_delete' => '0', 'user_id' => $userid);
+       $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+       $contition_array = array('post_id !=' => $postid, 'status' => 1, 'is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
+       $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      
+       
+       $this->load->view('recruiter/rec_post_login',$this->data);
     }
     //DELETE LOGO START
 public function delete_logo()

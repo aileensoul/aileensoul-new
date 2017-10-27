@@ -389,7 +389,7 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" onclick="login_profile();" tabindex="-1" 
+                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
 <div class="bg-images no-cover-upload"> 
                                                 <?php
@@ -414,7 +414,7 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
-                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="javascript:void(0);" onclick="login_profile();" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                     <?php
                                                     $image_profile = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
 
@@ -443,12 +443,12 @@
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
-                                                    <a href="javascript:void(0);" onclick="login_profile();" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
+                                                    <a href="<?php echo site_url('recruiter/rec_profile'); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
                                                 </span>
 
                                                 <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;  ?>
                                                 <div class="profile-boxProfile-name">
-                                                    <a href="javascript:void(0);" onclick="login_profile();" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
+                                                    <a href="<?php echo site_url('recruiter/rec_profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
                                                         <?php
                                                         if (ucfirst(strtolower($recdata[0]['designation']))) {
                                                             echo ucfirst(strtolower($recdata[0]['designation']));
@@ -458,11 +458,11 @@
                                                         ?></a>
                                                 </div>
                                                 <ul class=" left_box_menubar">
-                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="javascript:void(0);" onclick="login_profile();"> Details</a>
+                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="<?php echo base_url('recruiter/profile'); ?>"> Details</a>
                                                     </li>                                
-                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="javascript:void(0);" onclick="login_profile();">Post</a>
+                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
                                                     </li>
-                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" class="padding_less_right" href="javascript:void(0);" onclick="login_profile();">Saved </a>
+                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" class="padding_less_right" href="<?php echo base_url('recruiter/save-candidate'); ?>">Saved </a>
                                                     </li>
 
                                                 </ul>
@@ -771,10 +771,10 @@
                                                                             <li class=fr>
                                                                                 
                                                                                   
-                                                                                    <a href="javascript:void(0);" onclick="login_profile();" class= "applypost  button"> Apply</a>
+                                                                                    <a href="" class= "applypost  button"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                        <a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>
+                                                                                        <a  class="savedpost> button">Save</a>
 
                                                                             </li>                        
                                                                         </ul>
@@ -1077,10 +1077,10 @@
                                                                             <li class=fr>
                                                                                 
                                                                                   
-                                                                                    <a href="javascript:void(0);" onclick="login_profile();" class= "applypost  button"> Apply</a>
+                                                                                    <a href="" class= "applypost  button"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                        <a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>
+                                                                                        <a  class="savedpost> button">Save</a>
 
                                                                             </li>                        
                                                                         </ul>
