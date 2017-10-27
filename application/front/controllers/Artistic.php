@@ -15021,17 +15021,27 @@ public function get_artistic_name($id=''){
                                              $return_html .= '</a>
                                           </li>
                                           <li style="display: block;">';
+
+
+                                          $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $key['art_skill']))->row()->art_category;
+                                          $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
+                                        if( $key['art_skill'] != 17){
+                                              $return_html .= ucwords($art_category); 
+                                        }else{
+                                            $return_html .=  ucwords($art_othercategory);  
+                                        }
+
                                                             
-                                                   $aud = $key['art_skill'];
-                                                   $aud_res = explode(',', $aud);
-                                                   $skill1 = array();
-                                                   foreach ($aud_res as $skdata) {
-                                                     $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
-                                                     $skill1[] = $cache_time;
-                                                     }
-                                                  $listFinal = implode(',', $skill1);
+                                                  //  $aud = $key['art_skill'];
+                                                  //  $aud_res = explode(',', $aud);
+                                                  //  $skill1 = array();
+                                                  //  foreach ($aud_res as $skdata) {
+                                                  //    $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
+                                                  //    $skill1[] = $cache_time;
+                                                  //    }
+                                                  // $listFinal = implode(',', $skill1);
                                                   
-                                                   $return_html .= $listFinal;  
+                                                  //  $return_html .= $listFinal;  
                                                   
      
                                          $return_html .=  '</li>
