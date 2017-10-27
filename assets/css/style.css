@@ -1796,8 +1796,8 @@ input:-moz-placeholder {
 }
 #user_search:focus + #add_search{color: #1b8ab9;}
 .kv-file-content{width:156px;/* height:115px !important; overflow-x: hidden;
-    overflow-y: hidden;*/
-	pointer-events:none;
+    overflow-y: hidden;
+	pointer-events:none;*/
     position: relative;
 }
 .kv-file-content img{left: 50%;
@@ -1870,8 +1870,9 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 }
 
 .modal-content {
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   width:600px;
+  margin-top:20px;
 }
 .fade {
     opacity: 0;
@@ -1922,9 +1923,10 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	-webkit-transform: translate(0, 50%) !important; */
 }
 /*.fancybox-slide .modal-content{transform: inherit !important;}*/
-.hs-submit img{
-   display: none !important;
-   }
+.hs-submit img{display: none !important; }
+.banner #row1 .col-md-12{padding:0;}
+#popup-form #userimage{padding:13px 20px 0;}
+#upload-demo-one{padding-top:10px; width:350px; display: none}
 
 
 
@@ -2120,7 +2122,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
         padding-top: 0px;
     }
 	.xs-p0{padding:0;}
-	.profile-text1{top:30px;}
+	.profile-text1{top:26px;}
     .sticky-container{display: none;}
     .email-verify{padding-left: 2px; padding-right: 2px;}
     .vs-o{padding-left: 1px!important;}
@@ -2141,6 +2143,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	
 	.padd_set .change-password{padding: 0;}
 	.padd_set{padding:35px 0;}
+	.people-list {border-right: none;}
+	..change-password-box #basicinfo{padding:10px;}
 }
 
 @media screen and (max-width: 640px) {
@@ -2156,6 +2160,9 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	}
 	.profile-text1{width: 100%;}
     .profile-text1 .as-p{margin-bottom: 0px;   font-size: 11px; }
+	.modal.user-img span.mes{padding:0;}
+	.modal.user-img .modal-content {margin: 0 auto; width:100%;}
+	#upload-demo-one{width:343px;}
 }
 
 @media screen and (max-width: 540px) {
@@ -2262,7 +2269,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.profile-text1{width: 100%;}
     .profile-text1 .chng_email{font-size: 12px;}
     .profile-text1 .vert_email{font-size: 12px; margin: 0px;}
-    .profile-text1{top:16px; padding-top: 25px;}
+    .profile-text1{top:16px; padding-top: 20px;}
     .profile-text1 .as-p{letter-spacing: 0px;}
 	.cover-pic{bottom:60%;}
     .cover-pic .btn{font-size:13px; padding:3px 10px;}
@@ -2276,7 +2283,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.no-login .fw-479{text-align:center;}
 	.no-login .btn-right.pull-right{float:none !important;}
 	.no-login #paddingtop_fixed{padding-top:105px !important;}
-	
+	#upload-demo-one{width:284px; margin:0 auto;}
+	#upload-demo-one .cr-boundary{width:284px !important; height:284px !important;}
 	
 }
 
@@ -2295,6 +2303,10 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
         margin-bottom: 10px!important;
     }
 	.people-list .search input{width:92%;}
+	#upload-demo-one{width:239px;}
+	#upload-demo-one .cr-boundary{width:239px !important; height:239px !important;}
+	#upload-demo-one .cr-boundary .cr-viewport{margin:20px auto;}
+	
 }
 
 @media screen and (max-width: 320px){

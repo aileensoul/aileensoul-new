@@ -944,7 +944,7 @@ label.cameraButton:active {
     margin: 0px;
     font-size: 27px;
     cursor: default;
-    padding-top: 3px;
+    padding-top: 4px;
     color: #1b8ab9
 }
 .post-design-box {
@@ -1024,7 +1024,7 @@ label.cameraButton:active {
     vertical-align: bottom;
     /*overflow: hidden;
    /* white-space: nowrap;*/
-    line-height: 1.3;
+    /*line-height: 1.3;*/
     margin-bottom: 0px;
     font-size: 15px;
 }
@@ -1056,7 +1056,7 @@ label.cameraButton:active {
     color: #91949d;
     cursor: default;
 	font-size:12px; 
-	line-height:1.7;
+	line-height:1.4;
 	float:left;
 }
 .post-design-name ul li .datespan span:before {
@@ -2338,14 +2338,14 @@ label.cameraButton:active {
     width: 85%;
     padding-left: 0px;
     padding-right: 0px;
-    height: 32px;
+    height: 28px;
     font-size: 19px!important;
-    line-height: 1.3;
+    line-height: 1;
     resize: none;
     border: none;
     white-space: nowrap;
 	overflow: -moz-scrollbars-none;
-	padding-top:5px;
+	padding-top:6px;
 	padding-bottom:4px;
 }
 .popup-text textarea::-webkit-scrollbar { 
@@ -2540,6 +2540,7 @@ label.cameraButton:active {
     background: linear-gradient(to top, #e9e9e9 5%, #f9f9f9 100%);
     border: 1px solid #d9d9d9;
     font-size: 14px;
+	margin-right:0;
 }
 .user_btn button {
     margin-top: 10px;
@@ -4243,6 +4244,7 @@ div .comment {
 }
 .upload_span_icon {
     font-family: 'arial';
+	padding-left:2px;
 }
 #popup-form input[type="submit"] {
     width: auto;
@@ -4390,8 +4392,8 @@ div .comment {
 .cancel-result:hover{color: #fff;background-color: #1b8ab9 !important;}
 .post-edit-popup .popup-text{padding:9px 0 7px 10px;}
 .post-edit-popup .camer_h i{padding-top:4px;}
-.krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon1.png'); background-size:100%;}
-.kv-file-content audio{margin-top:83px;}
+.krajee-default[data-template="audio"] .file-preview-audio {height:125px; background-image: url('../images/music-icon2.jpg'); background-size:83%; background-position:center top;}
+.kv-file-content audio{margin-top:95px;}
 .file-drop-zone{}
 .file-preview{padding-top:0 !important; width:560px; overflow-x: auto; white-space: nowrap;}
 .krajee-default.file-preview-frame{margin:6px !important; display: inline-block; white-space:normal; float:none;}
@@ -4411,7 +4413,11 @@ div .comment {
 .custom-user-list .follow_left_box_main_btn button{margin-top:5px;}
 .custom-user-list .Follow_close{right:-5px;}
 /***  end custom user list css  ***/
-
+.editor-header .fa-video-camera:before{padding-right:1px;}
+.editor-header .fa-music:before{padding-right:1px;}
+.profile-job-post-location-name-rec .fl.search_button{float:right;}
+.profile-job-post-location-name-rec .fl.search_button button{margin-right:0;}
+#InboxBody ul.notification_data_in_h2{float: none!important;}
 
 
 /***  media query  ***/
@@ -5278,6 +5284,7 @@ div .comment {
 	.post-edit-popup .camer_h i{padding-top:3px;}
 	.post-edit-popup .popup-text{padding-top:8px;}
 	.text_num{line-height:28px;}
+	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5922,6 +5929,8 @@ div .comment {
 	.user-list .profile-job-post-location-name .user_lst ul li .user_btn{padding-top:5px;}
 	.user-list .profile-job-post-location-name .user_lst ul li .user_btn button{margin:0; }
 	.user-list .profile-job-post-location-name ul li.folle_text{padding-top:1px;}
+	.profile-job-post-location-name-rec .fl.search_button button{margin-right:10px; margin-bottom:0;}
+	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:100% !important;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {

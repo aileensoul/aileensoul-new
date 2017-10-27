@@ -1623,7 +1623,7 @@ header.animated {
     box-shadow: none;
 }
 .cover .modal-close {
-    line-height: 1 !important;
+    line-height: 22px !important;
 }
 #search .new-search-input {
     height: 215px;
@@ -2172,6 +2172,8 @@ footer {
 
 
 /***  end profile pic crop css  ***/
+#search .new-search-input .btn.btn-primary:focus{outline:none;}
+#loader{margin-left:0 !important; margin-right:0 !important;}
 	
 	
 	
@@ -2628,17 +2630,17 @@ footer {
         padding: 9px 10px 10px
     }
     #basicinfo .day {
-        width: 30% !important;
+        width: 31% !important;
         padding-left: 4px;
     }
     #basicinfo .month {
-        width: 31% !important;
+        width: 32% !important;
         padding-right: 0px;
-        padding-left: 0px;
+        padding-left: 4px;
     }
     #basicinfo .year {
-        width: 32% !important;
-        padding-left: 0px;
+        width: 33% !important;
+        padding-left: 4px;
         padding-right: 0px;
     }
     .reactivate_btn_n,

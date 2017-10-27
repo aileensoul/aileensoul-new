@@ -3,7 +3,7 @@
     <head>
         <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
         <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
-        <meta property="og:description" content="Aileensoul.com is the free platform where you can grow business, hire employees, freelancers & artists. Also find job, freelance work & artistic opportunities."/>
+        <meta property="og:description" content="Aileensoul provides completely free platform for career-related services, such as job, hiring, freelancing, business networking, artistic and much more."/>
         <meta property="og:image" content="<?php echo base_url('assets/images/meta-icon.png'); ?>" />
         <?php
         if($_SERVER['HTTP_HOST'] != "localhost"){

@@ -2482,9 +2482,10 @@ label.cameraButton input[accept*="camera"] {
 @media screen and (max-width: 767px) {
     .common-form input[type="radio"],
     .common-form input[type="checkbox"] {
-        height: 0px;
+        height: 15px;
         margin-top: 0px;
         margin-bottom: 0px;
+		margin-right:0;
     }
     .modal.in .modal-dialog .mes .pop_content {
         font-size: 18px;
@@ -2814,6 +2815,7 @@ label.cameraButton input[accept*="camera"] {
 	.mian_middle_post_box{float:none;}
 	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
 	/*** end add  ***/
+	.common-form  #jobseeker_regform1{padding:10px 0;}
 }
 @media screen and (max-width: 639px) {
 	.mian_middle_post_box{width:100%;}

@@ -343,7 +343,7 @@
                                                    <?php echo form_error('companyphn'); ?>&nbsp;&nbsp;
                                                  
                                                    <label style="      display: block;">Experience Certificate:</label>
-                                                   <input style="width: 50%; display: inline-block;" type="file" name="certificate[]" id="certificate" class="certificate" placeholder="CERTIFICATE" />
+                                                   <input style="display: inline-block;" type="file" name="certificate[]" id="certificate" class="certificate" placeholder="CERTIFICATE" />
                                                     <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>&nbsp;&nbsp;
 
                                                    <?php

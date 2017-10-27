@@ -16,7 +16,7 @@ color: #1b8ab9 !important;}
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="">
                             <div class="col-lg-3 col-md-4 col-sm-4">
                                 <div class="">
                                     <div class="left-side-bar" id="bs-collapse" >

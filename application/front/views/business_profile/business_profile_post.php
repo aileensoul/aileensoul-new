@@ -60,7 +60,8 @@ $mobile_agent = $this->agent->mobile;
                                 <!-- GET USER FOLLOE SUGESSION LIST START -->
                                 <!-- follower list end  -->
                             </div>
-                            <div class="tablate-potrat-add">
+                            
+							<div class="tablate-potrat-add">
                                 <div class="fw text-center pt10">
                                     <script type="text/javascript">
                                         (function () {
@@ -151,6 +152,24 @@ $mobile_agent = $this->agent->mobile;
                                     </div>
                                 </div>
                             </div>
+							<div class="custom-user-list">
+							<div class="full-box-module_follow fw">
+                                <!-- follower list start  -->  
+                                <div class="common-form">
+                                    <h3 class="user_list_head">User List
+                                    </h3>
+                                    <div class="seeall">
+                                        <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
+                                <div class="profile-boxProfileCard_follow fw  module">
+                                </div>
+                                <!-- GET USER FOLLOE SUGESSION LIST START -->
+                                <!-- follower list end  -->
+                            </div>
+							</div>
                             <div class="business-all-post">
                                 <?php
                                 if ($mobile_agent) {

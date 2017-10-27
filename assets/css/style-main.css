@@ -1097,13 +1097,13 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-transition: background-color 600s ease-in-out 0s;
+transition: background-color 60000000000000s ease-in-out 0s;
 }
 .header-login input:-webkit-autofill,
 .header-login input:-webkit-autofill:hover,
 .header-login input:-webkit-autofill:focus,
 .header-login input:-webkit-autofill:active {
-transition: background-color 600s ease-in-out 0s;
+transition: background-color 60000000000000s ease-in-out 0s;
 -webkit-text-fill-color:#fff !important;
 }
 .carousel.carousel-fade .item {
@@ -1351,7 +1351,7 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 	
 #fre-popup .card ul.nav-tabs li{width:50%; padding:0; border-right:1px solid #ddd;}
 #fre-popup .card ul.nav-tabs li a{font-size:18px; border:none; text-align:center; width:100%; padding:5px 15px; color:#777;}
-#fre-popup .card ul.nav-tabs li a:hover{background:none;; color:#1b8ab9;}
+#fre-popup .card ul.nav-tabs li a:hover{background:none; color:#1b8ab9;}
 #fre-popup .card ul.nav-tabs li.active a{color:#1b8ab9;}
 
 /*.header-login label.error{position:absolute;}*/
@@ -1529,14 +1529,14 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 .dob .error{
 	position: absolute;
 	left: 0;
-	bottom: -25px;
+	bottom: -20px;
 	
 }
 .gender-custom{position: relative;}
 .gender-custom .error{
 	position: absolute;
 	left: 0;
-	bottom: -25px;
+	bottom: -20px;
 	
 }
 
@@ -1572,6 +1572,7 @@ body.cover{padding-bottom:60px;}
 .tablate-potrat-add{display:none;}
 .mob-add{display:none;}
 /***  end add  ***/
+.header-login .btn-right a:focus{outline:none; background:none !important; color:#fff !important;}
 
 
 /***  media query  ***/
@@ -1744,9 +1745,9 @@ body.cover{padding-bottom:60px;}
 	/*.right-profile{width:40px;}
 	.right-profile .right-menu-box{width:40px; height:40px; background-size:100%;}
 	.right-profile .right-menu-box:hover{background-size:100%;}*/
-	footer .container{padding:20px 15px 0px;}
+	footer .container{padding:10px 15px !important;}
 	footer ul{padding-top:0;}
-	.banner{padding-top:16px;}
+	.banner{padding-top:12px;}
 	.cameraButton .fa.fa-camera{height:20px; width:24px; background-size:100%;}
 	.banner-box .upload-camera{height:34px; width:38px;}
 	.cameraButton .tooltiptext{padding:3px 0 !important; top:-9px !important;}
@@ -1763,6 +1764,9 @@ body.cover{padding-bottom:60px;}
 	.mian_middle_post_box{float:none;}
 	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
 	/*** end add  ***/
+	footer ul li:last-child a{padding-right:15px;}
+	.form-pd{padding:40px 0 33px;}
+	
 }
 
 @media screen and (max-width: 640px) {
@@ -1789,9 +1793,9 @@ body.cover{padding-bottom:60px;}
 	.profile-detail h2{font-size:22px;}
 	.banner-box .banner-img{max-height:200px;}
 	.banner-box img{height:200px;}
-	.left-profile .profile-photo{width: 97px; height: 91px;}
-	.left-profile .profile-photo img.main-pic{height: 81px; width: 93px;}
-	.upload-profile{width: 87px; height: 81px; padding:15px 4px; font-size:9px; line-height:1.5;}
+	.left-profile .profile-photo{width: 97px; height: 97px;}
+	.left-profile .profile-photo img.main-pic{height: 87px; width: 97px;}
+	.upload-profile{width: 87px; height: 87px; padding:15px 4px; font-size:9px; line-height:1.5;}
 	.upload-profile img{width:25px !important; height:25px !important;}
 	.banner-box #row2 img{height:200px;}
 	

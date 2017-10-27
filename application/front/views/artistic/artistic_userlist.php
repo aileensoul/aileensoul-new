@@ -24,7 +24,7 @@
 </div>
        <div class=" custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="">  
-                                <div class="right_side_posrt fl"> 
+        <div class="right_side_posrt fl"> 
         <div>
             <?php
             if ($this->session->flashdata('error')) {
@@ -41,27 +41,32 @@
                 <div class="contact-frnd-post">
                     <div class="job-contact-frnd ">
                     </div>
-                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
-                 <div class="col-md-1">
+					<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+					<div class="col-md-1">
                     </div>
                 </div>
-                 
             </div>
         </div>
     </div>
     </div>
     </div>
 		
-		<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+	<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 					
 						<div class="fw text-center">
-                        <script type="text/javascript" language="javascript">
-						  var aax_size='300x250';
-						  var aax_pubname = 'aileensoul-21';
-						  var aax_src='302';
-						</script>
-						<script  type="text/javascript" language="javascript" src="https://c.amazon-adsystem.com/aax2/assoc.js"></script>
-						</div>
+                        <script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+									<div class="fw pt10">
+									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+								</div>
                     </div>
 	
 	</div>
