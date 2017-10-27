@@ -423,6 +423,19 @@ class Artistic extends MY_Controller {
         $this->load->view('artistic/art_information', $this->data);
     }
 
+    public function check_category(){
+
+        $category = $_GET['category'];
+        $contition_array = array('status' => 1, 'type' => 1, 'art_category' => $category);
+         $checkvalue = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         if($checkvalue){
+            echo 'true';
+         }else{
+            echo 'false';
+         }
+
+    }
+
     public function art_information_insert() {
         //echo "<pre>"; print_r($this->input->post('skills')); die();
         $userid = $this->session->userdata('aileenuser');
@@ -435,48 +448,13 @@ class Artistic extends MY_Controller {
         {
              redirect('artistic/');
         }
-
             $this->form_validation->set_rules('skills', 'Skill', 'required');
             //$this->form_validation->set_rules('artname', 'Speciality in art', 'required');
             //$this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('artistic/art_information');
             } else {
-     //if user deactive profile then redirect to artistic/index untill active profile End
-          //$skills = $this->input->post('skills');
-     //      $skills = explode(',',$skills); 
-
-     //      if(count($skills) > 0){ 
-          
-     //      foreach($skills as $ski){
-     //        if($ski != ' '){
-     // //$contition_array = array('skill' => $ski,'type' => 6);
-     // // $contition_array = array('skill' => $ski,'type' => 2);
-
-     // // $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     // // $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-
-     //    $contition_array = array('skill' => $ski);
-     //    $search_condition = "(type = '2'  OR type = '6')";
-     //    $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-     // if($skilldata){
-     //     $skill[] = $skilldata[0]['skill_id'];
-     //       }else{
-     //             $data = array(
-     //                'skill' => $ski,
-     //                'status' => '1',
-     //                'type' => 6,
-     //                'user_id' => $userid,
-     //             );
-     //  $skill[] = $this->common->insert_data_getid($data, 'skill');
-     //       }
-     //      }
-     //    }
-          
-     //      $skills = implode(',',$skill); 
-     //  }
+     
        $other_category = $this->input->post('othercategory');
 
      $contition_array = array('other_category' => $other_category,'type' => 1, 'status' => 1);
@@ -532,19 +510,6 @@ class Artistic extends MY_Controller {
             );
         }
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
-
-        
-        // $skilldata = $this->common->select_data_by_id('skill', 'skill', $otherskill, $data = 'skill_id', $join_str = array());
-        // if ($skilldata || $otherskill == "") {
-            
-        // } else {
-        //     $data1 = array(
-        //         'skill' => $this->input->post('other_skill'),
-        //         'type' => 2,
-        //         'status' => 1
-        //     );
-        //     $insertid = $this->common->insert_data_getid($data1, 'skill');
-        // }
 
         if ($updatdata) {
             $this->session->set_flashdata('success', 'Information updated successfully');
