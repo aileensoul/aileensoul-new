@@ -445,8 +445,8 @@ li.fr a {
     height: 100%;
 }
 .message #field{
-    background: #fff; 
-    color: #1b8ab9; 
+    background: #1b8ab9; 
+    color: #fff; 
     margin-top: 20px;
  }
 .data_img_2 div {
@@ -1347,8 +1347,8 @@ label.cameraButton input[accept*="camera"] {
     font-size: inherit;
 }
 #univer {
-    background: #fff;
-    color: #1b8ab9;
+    background: #1b8ab9;
+    color: #fff;
     margin-top: 20px;
 }
 .editable_text {
@@ -1483,8 +1483,8 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .modal-content h2{font-size:20px; line-height:30px;} 
 /*.custom-message .modal-content input{margin-bottom:15px;} */
 /*.custom-message .modal-content select{margin-bottom:15px;} */
-.custom-message .modal-content .btn{background:#fff; color:#1b8ab9; border:1px solid #1b8ab9; padding:10px 20px;margin-top: 20px;} 
-.custom-message .modal-content .btn:hover{background:#1b8ab9 !important; color:#fff !important;}
+.custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;margin-top: 20px;} 
+.custom-message .modal-content .btn:hover{background:#156f95 !important; color:#fff !important;}
 .cancel-result:hover{color: #fff;background-color: #1b8ab9;border-color: #1b8ab9;}
 .date-dropdowns .error{margin-top:40px;}
 .custom_footer_left ul li a:focus{color: #1b8ab9 !important}
@@ -1492,6 +1492,7 @@ label.cameraButton input[accept*="camera"] {
 .modal-content .modal-close{top:-13px !important;right: -13px !important;}
 #InboxBody  div ul.notification_data_in_h2{float: none!important;}
 
+.modal-content .fw a.btn:hover{background-color: #156f95!important;color: #fff!important;}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {

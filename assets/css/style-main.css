@@ -1174,6 +1174,7 @@ section { overflow: hidden; }
 	height:30px;
 
 }
+.modal-header .close:hover{background:#156f95;color: #fff;}
 /*** new hom page ***/
 .ml20{margin-left:20px;}
 .mr20{margin-right:20px;}
