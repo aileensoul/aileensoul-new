@@ -2179,7 +2179,7 @@ function next_page()
 //edit time next page
 function next_page_edit() {
 
-    $('.biderror .mes').html('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' + base_url + 'job/project">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+    $('.biderror .mes').html('<div class="message"><div class="pop_content">Do you want to leave this page?<div class="model_ok_cancel"><a class="okbtn"  class="mesg_link" href="' +base_url+'job/project" >Ok</a><a class="cnclbtn" href="javascript:void(0);" data-dismiss="modal">Cancel</a></div></div></div>');
     $('#bidmodal').modal('show');
     // $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' +base_url+'job/project">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
 }
