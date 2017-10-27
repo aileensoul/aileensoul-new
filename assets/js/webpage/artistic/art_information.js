@@ -82,6 +82,9 @@ function removevalidation(){
 }
 function validation_other(){ 
 
+       var e = document.getElementById("skills");
+        var strUser = e.options[e.selectedIndex].value;
+        if(strUser == 17){
     var other_category = document.getElementById("othercategory").value;
     var category_trim = other_category.trim();
    if(category_trim == ''){
@@ -90,6 +93,7 @@ function validation_other(){
       return false;
       event.prevent();
        } 
+     }
 }
 
 // $(function() {
