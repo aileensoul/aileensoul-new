@@ -14,13 +14,13 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                   ignore: '*:not([name])',
                     rules: {
 
-                        artname: {
+                        // artname: {
 
-                            required: true,
-                            regx: /^[a-zA-Z\s]*[a-zA-Z]/,
-                            noSpace: true
+                        //     required: true,
+                        //     regx: /^[a-zA-Z\s]*[a-zA-Z]/,
+                        //     noSpace: true
                            
-                        },
+                        // },
 
                         skills: {
 
@@ -39,11 +39,11 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
                     messages: {
 
-                        artname: {
+                        // artname: {
 
-                            required: "Speciality is required.",
+                        //     required: "Speciality is required.",
                             
-                        },
+                        // },
 
                          skills: {
 

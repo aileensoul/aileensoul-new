@@ -66,10 +66,14 @@
                                     ?>   
                                 </td>
                             </tr>
+                            
+                            <?php if($artisticdata[0]['art_yourart']){?>
                             <tr>
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></td>
                                 <td class="business_data_td2"><span><?php echo $artisticdata[0]['art_yourart']; ?></span></td>
                             </tr>
+                             <?php }?>
+
                             <?php if($artisticdata[0]['art_desc_art']){?>
                             <tr>
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-file-text" aria-hidden="true"></i></td>
