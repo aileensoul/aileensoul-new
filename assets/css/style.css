@@ -1874,6 +1874,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
   width:600px;
   margin-top:20px;
 }
+.message-box .modal-content{margin:0 auto;}
 .fade {
     opacity: 0;
     -webkit-transition: opacity .05s linear;

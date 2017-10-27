@@ -1576,6 +1576,9 @@ body.cover{padding-bottom:60px;}
 
 
 /***  media query  ***/
+@media screen and (min-height: 540px){
+    .cover .modal-content {margin:0 auto;}
+}
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
 	footer > .container {padding-left:15px; padding-right:15px; width:1250px;}
 }
