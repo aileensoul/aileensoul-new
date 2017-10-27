@@ -14325,11 +14325,17 @@ $return_html .= '<div class="art-all-comment col-md-12">
         $search_condition = "(art_name LIKE '" . trim($searchTerm) . "%' OR art_lastname LIKE '" . trim($searchTerm) . "%' OR designation LIKE '" . trim($searchTerm) . "%'OR other_skill LIKE '" . trim($searchTerm) . "%')";
         $artistic_postdata = $this->common->select_data_by_search('art_reg', $search_condition,$contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = 'art_name,art_lastname,designation,other_skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_name,art_lastname,designation,other_skill');
 
-        $contition_array = array('status' => '1', 'type' => '2');
-        $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-        $skill = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
+        $contition_array = array('status' => '1', 'type' => '1');
+        $search_condition = "(art_category LIKE '" . trim($searchTerm) . "%')";
+        $skill = $this->common->select_data_by_search('art_category', $search_condition, $contition_array, $data = 'art_category', $sortby = 'art_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_category');
         }
-        $unique = array_merge($skill, $artistic_postdata);
+
+        $contition_array = array('status' => '1', 'type' => '1');
+        $search_condition = "(other_category LIKE '" . trim($searchTerm) . "%')";
+        $other_category = $this->common->select_data_by_search('art_other_category', $search_condition, $contition_array, $data = 'other_category', $sortby = 'other_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'other_category');
+       
+
+        $unique = array_merge($skill, $other_category, $artistic_postdata);
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
@@ -14831,17 +14837,24 @@ public function get_artistic_name($id=''){
         } elseif ($search_place == "") {
 
 
-            $contition_array = array('status' => 1, 'type' => '2');
+          //  $contition_array = array('status' => 1, 'type' => '1');
 
-            $search_condition = "(skill LIKE '%$searchskill%')";
+          //  $search_condition = "(art_category LIKE '%$searchskill%')";
             // echo $search_condition;
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->category_id;
+
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+
 
            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                    
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
-           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%'  or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
             $othercom  = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'GROUP_CONCAT(art_id) as user_data', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
           $othercom = str_replace(",", "','", $othercom[0]['user_data']);
 
@@ -14868,12 +14881,12 @@ public function get_artistic_name($id=''){
 
             $contition_array = array('art_reg.art_step' => 4, 'art_post.is_delete' => '0','art_reg.is_delete' => '0', 'art_reg.status' => '1');
 
-            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%' or art_reg.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%')";
 
 
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                  
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);               
@@ -14882,11 +14895,21 @@ public function get_artistic_name($id=''){
 
         } else {
             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+
+             $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+
+
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
             
             $contition_array = array('is_delete' => '0', 'status' => '1', 'art_step' => 4);
-            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or designation LIKE '%$searchskill%')";
             $othercom = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'GROUP_CONCAT(art_id) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $user_list = str_replace(",", "','", $othercom[0]['user_list']);
 
@@ -14916,13 +14939,13 @@ public function get_artistic_name($id=''){
             $join_str[0]['from_table_id'] = 'art_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%')";
 
 
             $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
              //echo "<pre>"; print_r($artposttwo); die();
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);
@@ -15777,18 +15800,24 @@ public function get_artistic_name($id=''){
         } elseif ($search_place == "") {
 
 
-              $contition_array = array('status' => 1, 'type' => '2');
+              //$contition_array = array('status' => 1, 'type' => '2');
 
-            $search_condition = "(skill LIKE '%$searchskill%')";
+            //$search_condition = "(skill LIKE '%$searchskill%')";
             // echo $search_condition;
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->category_id;
+
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
 
            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                    
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
-           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
 
             // echo $search_condition;
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -15829,12 +15858,12 @@ public function get_artistic_name($id=''){
 
             $contition_array = array('art_reg.art_step' => 4, 'art_post.is_delete' => '0','art_reg.is_delete' => '0', 'art_reg.status' => '1');
 
-            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%' or art_reg.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%')";
 
 
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                  
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);               
@@ -15842,11 +15871,20 @@ public function get_artistic_name($id=''){
 
         } else {
             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+
+
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+
+
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             
             $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
-            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or art_city LIKE '%$cache_time%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or art_city LIKE '%$cache_time%' or designation LIKE '%$searchskill%')";
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
              
             foreach ($othercom as $keydata => $valuedata) {
@@ -15886,7 +15924,7 @@ public function get_artistic_name($id=''){
             $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
              //echo "<pre>"; print_r($artposttwo); die();
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);
