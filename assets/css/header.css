@@ -1303,7 +1303,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     margin: 0;
     float: left;
 	font-size:12px;
-	padding: 5px 2px 0px;
+	padding: 0px 2px;
 }
 .custom_footer_left ul li a {
     padding: 0px;
