@@ -2185,6 +2185,9 @@ label.cameraButton input[accept*="camera"] {
 .message1 .btn:hover{background-color: #156f95 !important;color: #fff;}
 #InboxBody #mCSB_2_container div ul{float: none!important;}
 
+.modal-body .message a.btn{background-color: #1B8AB9;color: #fff;}
+.modal-body .message a.btn:hover{background-color: #156f95 !important;color: #fff!important;}
+
 /***  media query  ***/
 
 

@@ -199,7 +199,7 @@ function comlogo(event) {
 //DELETE LOGO START
 function delete_logo(id, logo) {
 
-    $('.biderror .mes').html('<div class="message"><h2>Are you sure you want to Remove this Logo?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+    $('.biderror .mes').html('<div class="message"><div class="pop_content">Are you sure you want to Remove this Logo?<div class="model_ok_cancel"><a class="okbtn" id="delete"  href="javascript:void(0);" data-dismiss="modal">Ok</a><a class="cnclbtn" href="javascript:void(0);" data-dismiss="modal">Cancel</a></div></div></div>');
     $('#bidmodal').modal('show');
     //$.fancybox.open('<div class="message"><h2>Are you sure you want to Remove this Logo?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
 
