@@ -109,7 +109,7 @@
                                      <?php echo form_error('state'); ?>
 								</fieldset>
                                 <fieldset>
-								    <label> City:</label>
+								    <label> City(optional):</label>
 									<select name="city" id="city" tabindex="3">
     								<?php
                                          if($city1)
@@ -141,7 +141,7 @@
                                     <?php echo form_error('city'); ?>
 								</fieldset>
                                 <fieldset <?php if($pincode) {  ?> class="error-msg" <?php } ?>>
-									<label>Pincode:</label>
+									<label>Pincode(optional):</label>
 									<input name="pincode"  type="text" id="pincode" tabindex="4" placeholder="Enter pincode" value="<?php if($pincode1){ echo $pincode1; } ?>"/><span id="pincode-error"></span>
                                     <?php echo form_error('pincode'); ?>
 									</fieldset>								
