@@ -4614,6 +4614,32 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
 
 //add other_industry into database End 
     
+    public function live_post($userid,$postid,$posttitle){
+       $this->load->view('recruiter/rec_post_login');
+    }
+    //DELETE LOGO START
+public function delete_logo()
+{
+        $id=$_POST['id'];
+        $logo= $_POST['logo'];
+        
+           $data = array(
+                'comp_logo' => ''
+                
+            );
+
+           $updatedata = $this->common->update_data($data, 'recruiter','rec_id',$id);
     
+        //FOR DELETE IMAGE AND PDF IN FOLDER START
+            $path='uploads/recruiter_profile/main/'.$logo;
+            $path1='uploads/recruiter_profile/thumbs/'.$logo;
+           
+            unlink($path); 
+            unlink($path1); 
+        //FOR DELETE IMAGE AND PDF IN FOLDER END
+            echo 1;             
+            die();
+}
+//DELETE LOGO END
 
 }
