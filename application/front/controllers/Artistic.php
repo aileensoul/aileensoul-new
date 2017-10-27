@@ -388,17 +388,22 @@ class Artistic extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,art_skill,art_yourart,art_desc_art,art_inspire,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
          $work_skill = explode(',', $userdata[0]['art_skill']); 
-        
-    foreach($work_skill as $skill){
-     $contition_array = array('skill_id' => $skill);
-     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-     $detailes[] = $skilldata[0]['skill'];
-  } 
 
-   $this->data['work_skill'] = implode(',', $detailes); 
-   $contition_array = array('status' => 1, 'type' => 2);
-   $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+         $contition_array = array('status' => 1, 'type' => 1);
+         $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         
+  //   foreach($work_skill as $skill){
+  //    $contition_array = array('skill_id' => $skill);
+  //    $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+  //    $detailes[] = $skilldata[0]['skill'];
+  // } 
+
+  //  $this->data['work_skill'] = implode(',', $detailes); 
+  //  $contition_array = array('status' => 1, 'type' => 2);
+  //  $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          $contition_array = array('other_category_id' => $userdata[0]['other_skill']);
+         $other_category = $this->common->select_data_by_condition('art_other_category', $contition_array, $data = 'other_category_id, other_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($userdata) {
             $step = $userdata[0]['art_step'];
@@ -407,18 +412,19 @@ class Artistic extends MY_Controller {
                 $this->data['artname1'] = $userdata[0]['art_yourart'];
                 $this->data['desc_art1'] = $userdata[0]['art_desc_art'];
                 $this->data['inspire1'] = $userdata[0]['art_inspire'];
-                $this->data['skills1'] = $userdata[0]['art_skill'];
-                $this->data['otherskill1'] = $userdata[0]['other_skill'];
+                $this->data['art_category1'] = $userdata[0]['art_skill'];
+                $this->data['othercategory1'] = $other_category[0]['other_category'];
             }
         }
 
-        $skildata = explode(',', $userdata[0]['art_skill']);
-        $this->data['selectdata'] = $skildata;
+       // $skildata = explode(',', $userdata[0]['art_skill']);
+        //$this->data['selectdata'] = $skildata;
         $this->data['title'] = 'Artistic Profile'.TITLEPOSTFIX;
         $this->load->view('artistic/art_information', $this->data);
     }
 
     public function art_information_insert() {
+        //echo "<pre>"; print_r($this->input->post('skills')); die();
         $userid = $this->session->userdata('aileenuser');
 
          //if user deactive profile then redirect to artistic/index untill active profile start
@@ -437,76 +443,108 @@ class Artistic extends MY_Controller {
                 $this->load->view('artistic/art_information');
             } else {
      //if user deactive profile then redirect to artistic/index untill active profile End
-          $skills = $this->input->post('skills');
-          $skills = explode(',',$skills); 
+          //$skills = $this->input->post('skills');
+     //      $skills = explode(',',$skills); 
 
-          if(count($skills) > 0){ 
+     //      if(count($skills) > 0){ 
           
-          foreach($skills as $ski){
-            if($ski != ' '){
-     //$contition_array = array('skill' => $ski,'type' => 6);
-     // $contition_array = array('skill' => $ski,'type' => 2);
+     //      foreach($skills as $ski){
+     //        if($ski != ' '){
+     // //$contition_array = array('skill' => $ski,'type' => 6);
+     // // $contition_array = array('skill' => $ski,'type' => 2);
 
-     // $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     // $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+     // // $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+     // // $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
-        $contition_array = array('skill' => $ski);
-        $search_condition = "(type = '2'  OR type = '6')";
-        $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+     //    $contition_array = array('skill' => $ski);
+     //    $search_condition = "(type = '2'  OR type = '6')";
+     //    $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-     if($skilldata){
-         $skill[] = $skilldata[0]['skill_id'];
-           }else{
-                 $data = array(
-                    'skill' => $ski,
-                    'status' => '1',
-                    'type' => 6,
-                    'user_id' => $userid,
-                 );
-      $skill[] = $this->common->insert_data_getid($data, 'skill');
+     // if($skilldata){
+     //     $skill[] = $skilldata[0]['skill_id'];
+     //       }else{
+     //             $data = array(
+     //                'skill' => $ski,
+     //                'status' => '1',
+     //                'type' => 6,
+     //                'user_id' => $userid,
+     //             );
+     //  $skill[] = $this->common->insert_data_getid($data, 'skill');
+     //       }
+     //      }
+     //    }
+          
+     //      $skills = implode(',',$skill); 
+     //  }
+       $other_category = $this->input->post('othercategory');
+
+     $contition_array = array('other_category' => $other_category,'type' => 1, 'status' => 1);
+     $exist_other = $this->common->select_data_by_condition('art_other_category',$contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+        if($other_category){
+
+            if($exist_other){
+                $insertid = $exist_other[0]['other_category_id'];
+            }else{
+
+            $data1 = array(
+                'other_category' => $this->input->post('othercategory'),
+                'type' => 1,
+                'status' => 1,
+                'is_delete' => 0,
+                'user_id' => $userid,
+                'created_date' => date('Y-m-d', time()),
+
+            );
+            $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
            }
-          }
         }
-          
-          $skills = implode(',',$skill); 
-      }
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $artuserdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        if ($artuserdata[0]['art_step'] == 4) {
+
+        if($this->input->post('skills') == 17){
+            $otherid = $insertid;
+            }else{
+                 $otherid = '';
+            }
+
+         if ($artuserdata[0]['art_step'] == 4) {
 
             $data = array(
                 'art_yourart' => $this->input->post('artname'),
-                'art_skill' => $skills,
+                'art_skill' => $this->input->post('skills'),
                 'art_desc_art' => $this->input->post('desc_art'),
                 'art_inspire' => $this->input->post('inspire'),
                 'modified_date' => date('Y-m-d', time()),
+                'other_skill' => $otherid,
             );
         } else {
-
             $data = array(
                 'art_yourart' => $this->input->post('artname'),
                 'art_skill' => $skills,
                 'art_desc_art' => $this->input->post('desc_art'),
                 'art_inspire' => $this->input->post('inspire'),
                 'modified_date' => date('Y-m-d', time()),
-                'art_step' => 3
+                'art_step' => 3,
+                'other_skill' => $otherid,
             );
         }
-
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
-        $skilldata = $this->common->select_data_by_id('skill', 'skill', $otherskill, $data = 'skill_id', $join_str = array());
-        if ($skilldata || $otherskill == "") {
+
+        
+        // $skilldata = $this->common->select_data_by_id('skill', 'skill', $otherskill, $data = 'skill_id', $join_str = array());
+        // if ($skilldata || $otherskill == "") {
             
-        } else {
-            $data1 = array(
-                'skill' => $this->input->post('other_skill'),
-                'type' => 2,
-                'status' => 1
-            );
-            $insertid = $this->common->insert_data_getid($data1, 'skill');
-        }
+        // } else {
+        //     $data1 = array(
+        //         'skill' => $this->input->post('other_skill'),
+        //         'type' => 2,
+        //         'status' => 1
+        //     );
+        //     $insertid = $this->common->insert_data_getid($data1, 'skill');
+        // }
 
         if ($updatdata) {
             $this->session->set_flashdata('success', 'Information updated successfully');

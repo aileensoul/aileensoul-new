@@ -76,23 +76,55 @@
                             Art Information
                         </h3>
                         
-                            <?php echo form_open(base_url('artistic/art_information_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "imgval()")); ?>
+                            <?php echo form_open(base_url('artistic/art_information_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
                           
                                 <?php
                                  $artname =  form_error('artname');
+                                 $othercategory =  form_error('othercategory');
                                  $skills =  form_error('skills');
                                  //$desc_art =  form_error('desc_art');
                                   
                                  ?>
 
                                     <fieldset class="full-width <?php if($skills) {  ?> error-msg <?php } ?>">
-                                        <label>Art:<span style="color:red">*</span></label>
+                                        <label>Art category:<span style="color:red">*</span></label>
+
+                          <select name="skills" id="skills" tabindex="1" autofocus>
+                          <option value="">Ex:- Dancer, Photographer, Writer, Singer, Actor</option>
+                          <?php
+                                  if(count($art_category) > 0){
+                                                foreach($art_category as $cnt){
+                                                    if($art_category1)
+                                            {
+                                              ?>
+                                                 <option value="<?php echo $cnt['category_id']; ?>" <?php if($cnt['category_id']==$art_category1) echo 'selected';?>><?php echo $cnt['art_category'];?></option>              
+                                                 <?php
+                                                }
+                                                else
+                                                {
+                                            ?>
+                            <option value="<?php echo $cnt['category_id']; ?>"><?php echo $cnt['art_category'];?></option>
+                                <?php    }       
+                                            }}
+                                            ?>
+                      </select>
                                     
-                                      <input placeholder="Ex:- Dancing, Photography, Writing, Singing, Acting" id="skills2" value="<?php echo $work_skill; ?>" name="skills" tabindex="1" size="90">
+                                      <!-- <input placeholder="Ex:- Dancing, Photography, Writing, Singing, Acting" id="skills2" value="<?php echo $work_skill; ?>" name="skills" tabindex="1" size="90"> -->
 
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
 
+                                    <?php if($othercategory1){?>
+                                    <div id="other_category" class="other_category" style="display: block;">
+                                      <?php }else{ ?>
+                                      <div id="other_category" class="other_category" style="display: none;">
+                                      <?php }?>
+                                    <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
+                                    <label>Other category:<span style="color:red">*</span></label>
+                                    <input name="othercategory"  type="text" id="othercategory" tabindex="2" placeholder="Other category" value="<?php if($othercategory1){ echo $othercategory1; } ?>" onkeyup= "return removevalidation();"/><!-- <span id="artname-error"></span> -->
+                                     <?php echo form_error('othercategory'); ?>
+                                   </fieldset>
+                                 </div>
 
                                 <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
                                     <label>Speciality in art(optional):</label>

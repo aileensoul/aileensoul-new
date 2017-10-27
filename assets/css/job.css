@@ -2187,7 +2187,7 @@ label.cameraButton input[accept*="camera"] {
 
 .modal-body .message a.btn{background-color: #1B8AB9;color: #fff;}
 .modal-body .message a.btn:hover{background-color: #156f95 !important;color: #fff!important;}
-
+.profile-boxProfileCard-cover a img{min-height:88px;}
 /***  media query  ***/
 
 
