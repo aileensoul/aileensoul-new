@@ -1193,7 +1193,7 @@ class Job extends MY_Controller {
 //        $contition_array = array('is_delete' => '0', 'industry_name !=' => "Other");
 //        $search_condition = "((status = '1'))";
 //        $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         $contition_array = array('is_delete' => '0','status'=>'1');
+         $contition_array = array('is_delete' => '0','status'=>'1','industry_name !=' => "Others");
         $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1203,7 +1203,7 @@ class Job extends MY_Controller {
   
           $contition_array = array('is_delete' => '0','is_other' => '0', 'industry_name !=' => "Others");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        // $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       //  $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
  $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Others");
         $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3317,32 +3317,36 @@ class Job extends MY_Controller {
         if ($recskill != 0 && $reccity == 0 && $recindustry == 0 && $rectitle == 0) {
 
             $unique = $recommendata;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } elseif ($recskill == 0 && $reccity != 0 && $recindustry == 0 && $rectitle == 0) {
 
             $unique = $recommendata_city;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } elseif ($recskill == 0 && $reccity == 0 && $recindustry != 0 && $rectitle == 0) {
             $unique = $recommendata_industry;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } elseif ($recskill == 0 && $reccity == 0 && $recindustry == 0 && $rectitle != 0) {
 
             $unique = $recommendata_title;
-            $qbc = array_unique($unique, SORT_REGULAR);
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         } else {
 
             $unique = array_merge($recommendata, $recommendata_city, $recommendata_industry, $recommendata_title);
-            $newArray = array();
-            foreach ($unique as $key => $innerArr1) {
-                foreach ($innerArr1 as $key1 => $innerArr) {
-                    $newArray[][] = $innerArr;
-                }
-            }
-
+//            $newArray = array();
+//            foreach ($unique as $key => $innerArr1) {
+//                foreach ($innerArr1 as $key1 => $innerArr) {
+//                    $newArray[][] = $innerArr;
+//                }
+//            }
+            $newArray = array_reduce($unique, 'array_merge', array());
             $qbc = array_unique($newArray, SORT_REGULAR);
             $qbc = array_filter($qbc);
         }
@@ -3362,8 +3366,8 @@ class Job extends MY_Controller {
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
         if (count($postdetail) > 0) {
-            foreach ($postdetail1 as $postdetaildata) {
-                foreach ($postdetaildata as $post) {
+            foreach ($postdetail1 as $post) {
+              //  foreach ($postdetaildata as $post) {
                     $return_html .= '
                 <div class="profile-job-post-detail clearfix" id="applypost' . $post['app_id'] . '">
                 <div class = "profile-job-post-title clearfix">
@@ -3631,7 +3635,7 @@ class Job extends MY_Controller {
                     $return_html .= '</ul></div></div>';
                     $return_html .= '</div></div>';
                 }//foreach ($postdetail1 as $post) end
-            }//foreach ($postdetail as $post_key => $postdetail1) end
+           // }//foreach ($postdetail as $post_key => $postdetail1) end
         }//if (count($postdetail) > 0) end
         else {
 

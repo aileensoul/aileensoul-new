@@ -30,7 +30,15 @@
             type: 'canvas',
             size: 'viewport'
         }).then(function (resp) {
-
+             var aa = resp.length;
+             if(aa == 11350) {
+            document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
+            return false;
+        }else{
             $.ajax({
                 url: base_url +"job/ajaxpro",
                 type: "POST",
@@ -47,6 +55,7 @@
                   }
                 }
             });
+        }
 
         });
     });

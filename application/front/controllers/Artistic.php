@@ -444,16 +444,24 @@ class Artistic extends MY_Controller {
           
           foreach($skills as $ski){
             if($ski != ' '){
-     $contition_array = array('skill' => $ski,'type' => 6);
-     //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+     //$contition_array = array('skill' => $ski,'type' => 6);
+     // $contition_array = array('skill' => $ski,'type' => 2);
+
+     // $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+     // $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+        $contition_array = array('skill' => $ski);
+        $search_condition = "(type = '2'  OR type = '6')";
+        $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
      if($skilldata){
          $skill[] = $skilldata[0]['skill_id'];
            }else{
                  $data = array(
                     'skill' => $ski,
                     'status' => '1',
-                    'type' => 3,
+                    'type' => 6,
                     'user_id' => $userid,
                  );
       $skill[] = $this->common->insert_data_getid($data, 'skill');
@@ -3226,7 +3234,19 @@ public function followtwo() {
 
             $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'follow_status' => 1);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+           $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => '1', 'follow_type' => '1');
+          $followerdata = $this->data['followingdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to,follow_status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+      foreach ($followerdata as $followkey) {
+          $contition_array = array('art_id' => $followkey['follow_from'], 'status' => '1');
+          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           if ($artaval) {
+
+             $userlist1[] = $artaval;
+           }
+        }
+
         } else {
         
             $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = 'art_id');
@@ -3241,7 +3261,18 @@ public function followtwo() {
 
             $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'follow_status' => 1,);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            
+            $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => '1', 'follow_type' => '1');
+          $followerdata = $this->data['followingdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to,follow_status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+      foreach ($followerdata as $followkey) {
+          $contition_array = array('art_id' => $followkey['follow_from'], 'status' => '1');
+          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           if ($artaval) {
+
+             $userlist1[] = $artaval;
+           }
+        }
         }
         
         if (empty($_GET["total_record"])) {
@@ -3426,9 +3457,19 @@ public function followtwo() {
 
             $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'art_reg.status' => '1');
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-           // echo count($userlist1); die();
+           $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => '1', 'follow_type' => '1');
+          $followingdata = $this->data['followingdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to,follow_status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+      foreach ($followingdata as $followkey) {
+          $contition_array = array('art_id' => $followkey['follow_to'], 'status' => '1');
+          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           if ($artaval) {
+
+             $userlist1[] = $artaval;
+           }
+        }
+
         } else { 
 
            $this->data['artisticdata'] = $artisticdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = 'art_id, user_id');
@@ -3443,7 +3484,19 @@ public function followtwo() {
 
             $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'art_reg.status' => 1);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-           $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+           $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => '1', 'follow_type' => '1');
+          $followingdata = $this->data['followingdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to,follow_status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+      foreach ($followingdata as $followkey) {
+          $contition_array = array('art_id' => $followkey['follow_to'], 'status' => '1');
+          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           if ($artaval) {
+
+             $userlist1[] = $artaval;
+           }
+        }
+
         } 
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($userlist1);
@@ -6241,7 +6294,7 @@ public function insert_comment_postnewpage() {
 
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         
-            $contition_array = array('user_id' => $id, 'is_delete' => '0');
+            $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'is_delete' => '0');
 
              $artisticpost = $this->data['artisticdatapost'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -11934,6 +11987,7 @@ public function art_home_post() {
         $search_condition = "(art_skill IN ('$userselectskill'))";
         $data = "GROUP_CONCAT(user_id) as skilldata_userlist";
         $skilldata = $this->common->select_data_by_search('art_reg', $search_condition, $condition_array, $data, $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
+        //echo "<pre>"; print_r($skilldata); die();
         $skill_list = $skilldata[0]['skilldata_userlist'];
         $skill_list = explode(',', $skill_list);
         /* SKILL WISE DATA END */

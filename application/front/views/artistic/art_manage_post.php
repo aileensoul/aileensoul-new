@@ -322,7 +322,9 @@ if ($info) { ?>
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                <div class="col-md-5">
 
-                                <div class="user_profile"></div>
+                               <!--  <div class="user_profile"></div> -->
+
+                               <div class="fw" id="loaderfollow" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
 
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -400,6 +402,19 @@ if ($info) { ?>
                     </div>
                 </div>
             </div>  
+
+             <div class="modal fade message-box biderror" id="bidmodaleditpost" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close editpost" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      
 <footer>
 <?php echo $footer; ?>
 </footer>

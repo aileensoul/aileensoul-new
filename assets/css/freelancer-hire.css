@@ -26,6 +26,7 @@
     background: #fff; 
     color: #1b8ab9; 
     margin-top: 20px;
+    padding: 8px 36px;
  }
 .saved,
 .applied {
@@ -1451,7 +1452,7 @@ label.cameraButton input[accept*="camera"] {
 	border: 1px solid red !important;
 	border-radius: 2px;
 }
-.add-post-textarea{height:250px; resize: none; overflow: auto;}
+.add-post-textarea{height:188px; resize: none; overflow: auto;}
 /*** new add form design  ***/
 .custom-form h3{background:none; color:#1b8ab9; font-size:25px; font-weight:bold; text-align:center;}
 .custom-form .form_addedit{border:none !important; background:none;}
@@ -1491,7 +1492,7 @@ label.cameraButton input[accept*="camera"] {
 .mob-add{display:none;}
 .custom-message .message{padding:20px 30px;;}
 .custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;} 
-.custom-message .modal-content .btn:hover{background:#1b8ab9 !important; color:#fff !important;}
+.custom-message .modal-content .btn:hover{background:#156f95 !important; color:#fff !important;}
 input[type=number] {
     -moz-appearance:textfield;
 }
@@ -1501,6 +1502,14 @@ input[type=number] {
 background-color: #1b8ab9 !important;
 pointer-events: none;}
 .custom_footer_left ul li a:focus{color: #1b8ab9 !important;}
+.modal-content .modal-close:hover{color: #fff;background-color: #156f95 !important;}
+.modal-content .modal-close{top:-13px !important;right: -13px !important;}
+.fw .btn{color:#fff!important;background-color: #1b8ab9 !important; }
+.modal-content{border:none;}
+.btn:focus, .btn.focus{color: #fff!important;}
+
+#InboxBody  div ul.notification_data_in_h2{float: none!important;}
+
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
     .common-form fieldset.mgrd input[type="radio"] {

@@ -149,7 +149,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
 
                             <div class="profile-left">
-         <h4 class="profile-head-text"><a href="<?php echo site_url('artistic/dashboard/' . $artisticdata[0]['user_id']); ?>">
+         <h4 class="profile-head-text"><a href="<?php echo site_url('artistic/dashboard/' . $artisticdata[0]['slug']); ?>">
                 <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
 </h4>
             <!-- text head start -->

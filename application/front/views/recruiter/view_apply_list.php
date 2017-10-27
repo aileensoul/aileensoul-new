@@ -94,7 +94,7 @@
                                                                                     <?php echo ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])); ?></a>
                                                                             </li>
                                                                             <li class="show">
-                                                                                <a  style="font-size: 19px;" href="javascript: void(0)">
+                                                                                <a  style="font-size: 13px;" href="javascript: void(0)">
                                                                                     <?php
                                                                                     if ($row['designation']) {
                                                                                         ?>

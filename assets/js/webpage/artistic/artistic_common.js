@@ -345,15 +345,17 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                 data: {"image": resp},
 
                  beforeSend: function () {
+
+                        $('#loaderfollow').show();
                         //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('assets/images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
-                        $(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                        //$(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
                 success: function (data) {
                   $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
                     document.getElementById('upload-demo-one').style.display = 'none';
-                     $('.loader').remove();
+                     $('.fw').remove();
                    //$('.cr-image').attr('src', '#');
                    
                 }

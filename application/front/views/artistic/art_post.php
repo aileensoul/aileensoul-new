@@ -243,6 +243,18 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
          </div>
       </div>
       <!-- Model Popup Close -->
+
+       <div class="modal fade message-box biderror" id="bidmodaleditpost" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close editpost" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+
       <!-- Bid-modal-2  -->
       <div class="modal fade message-box" id="likeusermodal" role="dialog" >
          <div class="modal-dialog modal-lm">
