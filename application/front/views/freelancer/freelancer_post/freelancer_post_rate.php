@@ -76,13 +76,13 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3><?php echo $this->lang->line("rate"); ?></h3>
+                                    <h3><?php echo $this->lang->line("rate"); ?>></h3>
                                     <?php echo form_open(base_url('freelancer/freelancer_post_rate_insert'), array('id' => 'freelancer_post_rate', 'name' => 'freelancer_post_rate', 'class' => 'clearfix')); ?>
                                     <?php
                                     $hourly = form_error('hourly');
                                     ?>
                                     <fieldset <?php if ($hourly) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("hourly"); ?>:</label>
+                                        <label><?php echo $this->lang->line("hourly"); ?>:<span class="optional">(optional)</span</label>
                                         <input type="number" name="hourly" min="1" id="hourly" tabindex="1" autofocus placeholder="Enter hourly rate"  value="<?php
                                         if ($hourly1) {
                                             echo $hourly1;
@@ -91,7 +91,7 @@
                                                <?php echo form_error('hourly'); ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label><?php echo $this->lang->line("currency"); ?>:</label>
+                                        <label><?php echo $this->lang->line("currency"); ?>:<span class="optional">(optional)</span></label>
                                         <select name="state" tabindex="2">
                                             <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
 

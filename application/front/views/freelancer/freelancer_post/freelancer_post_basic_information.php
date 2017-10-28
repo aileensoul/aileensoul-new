@@ -132,7 +132,7 @@
                                                <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label><?php echo $this->lang->line("skype_id"); ?>:</label>
+                                        <label><?php echo $this->lang->line("skype_id"); ?>:<span class="optional">(optional)</span></label>
                                         <input type="text" name="skypeid" placeholder="Enter skype id" tabindex="4" value="<?php
                                         if ($skypeid1) {
                                             echo $skypeid1;
@@ -141,7 +141,7 @@
                                                <?php ?>
                                     </fieldset>
                                     <fieldset <?php if ($phoneno) { ?> class="error-msg " <?php } ?> class="full-width">
-                                        <label><?php echo $this->lang->line("phone_number"); ?>:</label>
+                                        <label><?php echo $this->lang->line("phone_number"); ?>:<span class="optional">(optional)</span></label>
                                         <input type="text" name="phoneno" id="phoneno" tabindex="5" placeholder="Enter phone number" value="<?php
                                         if ($phoneno1) {
                                             echo $phoneno1;
