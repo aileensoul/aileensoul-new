@@ -3919,15 +3919,14 @@ Your browser does not support the audio tag.
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
             }
             // end notoification
-
+            $follow = '';
             if ($update) {
-
-                $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
+                $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')">
                               <span>Following</span>
                       </button>';
                 $follow .= '</div>';
-                echo $follow;
+                //echo $follow;
             }
         } else {
             $data = array(
@@ -3956,13 +3955,20 @@ Your browser does not support the audio tag.
 
             $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
             // end notoification
+            $follow = '';
             if ($insert) {
-                $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
+                $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
-                echo $follow;
+                //echo $follow;
             }
         }
+        echo json_encode(
+                array("follow_html" => $follow,
+                    "following_count" => $this->business_user_following_count(),
+                    "follower_count" => $this->business_user_follower_count(),
+                    "contacts_count" => $this->business_user_contacts_count(),
+        ));
     }
 
     public function unfollow_two() {
@@ -3997,16 +4003,20 @@ Your browser does not support the audio tag.
                 'follow_status' => 0,
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
+            $unfollow = '';
             if ($update) {
 
-                $unfollow = '<div class="user_btn follow_btn_' . $business_id . '" id="followdiv">';
-// $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
-//                <span>Following</span>
-//       </button>';
+                $unfollow .= '<div class="user_btn follow_btn_' . $business_id . '" id="followdiv">';
                 $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_two(' . $business_id . ')"><span>Follow</span></button>';
                 $unfollow .= '</div>';
-                echo $unfollow;
+                //echo $unfollow;
             }
+            echo json_encode(
+                    array("unfollow_html" => $unfollow,
+                        "unfollowing_count" => $this->business_user_following_count(),
+                        "unfollower_count" => $this->business_user_follower_count(),
+                        "uncontacts_count" => $this->business_user_contacts_count(),
+            ));
         }
     }
 
