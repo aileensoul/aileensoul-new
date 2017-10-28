@@ -69,7 +69,7 @@
                                              <div class="panel-body">
                                                 <?php echo form_open_multipart(base_url('job/job_work_exp_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>
                                 
-                                                <label for="Fresher">
+                                                <label for="Fresher" class="lbpos">
                                                 <input type="checkbox" id="fresher" tabindex="1" name="radio" value="Fresher" <?php echo ($userdata[0]['experience'] == 'Fresher') ? 'checked' : '' ?>>
                                                 Fresher&nbsp;&nbsp;
                                                 </label>
