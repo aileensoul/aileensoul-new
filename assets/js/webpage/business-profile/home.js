@@ -782,7 +782,7 @@ function followuser_two(clicked_id)
                     .done(function () {
                         $('.fad' + clicked_id).remove();
                         var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
-                        if (liCount == 1) {
+                        if (liCount == 0) {
                             $('.full-box-module_follow').hide();
                         }
                     });
@@ -809,7 +809,7 @@ function followclose(clicked_id)
                                 .done(function () {
                                     $('.fad' + clicked_id).remove();
                                     var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
-                                    if (liCount == 1) {
+                                    if (liCount == 0) {
                                         $('.full-box-module_follow').hide();
                                     }
                                 });
