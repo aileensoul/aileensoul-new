@@ -37,7 +37,7 @@
             .fs12{font-size:12px;}
             .red{color:#ff0000;}
             .ttc{text-transform:capitalize !important;}
-            .login-frm{width:480px !important;}
+            /*.login-frm{width:480px !important;}*/
             /***  buttons  ***/
             .btn1{
                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); 
@@ -367,10 +367,10 @@
      <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-3">
+                    <div class="col-md-4 col-sm-3 col-xs-4 left-header fw-479">
                         <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
                     </div>
-                    <div class="col-md-8 col-sm-9">
+                    <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
                             <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
@@ -382,7 +382,7 @@
 
       <div class="user-midd-section" id="paddingtop_fixed">
       <div class="container">
-      <div class="row row4">
+      <div class="row4">
           
            <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
 
@@ -1131,7 +1131,7 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
                                         <div class="title">

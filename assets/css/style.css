@@ -1928,8 +1928,14 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .banner #row1 .col-md-12{padding:0;}
 #popup-form #userimage{padding:13px 20px 0;}
 #upload-demo-one{padding-top:10px; width:350px; display: none}
-.no-login .modal{border:none; border-radius:0 !important;}
 
+.no-login .modal{border:none; border-radius:0 !important;}
+.no-login .login-frm{padding:15px 0;}
+.no-login .login-frm .title h1{text-align:center;}
+.no-login .login-frm .form-group{margin-bottom:15px;}
+.no-login .login-frm p{padding-top:5px;}
+.no-login .login form{padding:0;}
+.no-login .modal-content{padding:20px;}
 
 
 
@@ -2149,7 +2155,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.padd_set .change-password{padding: 0;}
 	.padd_set{padding:35px 0;}
 	.people-list {border-right: none;}
-	..change-password-box #basicinfo{padding:10px;}
+	.change-password-box #basicinfo{padding:10px;}
+	.no-login .login-frm .title h1{font-size:26px;}
 }
 
 @media screen and (max-width: 640px) {
