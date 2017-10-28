@@ -54,6 +54,7 @@ function removevalidation(){
 
 function validation_other(event){ 
 
+      event.preventDefault();
        var e = document.getElementById("skills");
         var strUser = e.options[e.selectedIndex].value;
 
@@ -66,27 +67,28 @@ function validation_other(event){
       return false;
       event.preventDefault();
        } 
-       //else{
+       else{
 
-         // var other_category = document.getElementById("othercategory").value;
-        // var category_trim = other_category.trim();
-        // if(category_trim){
-        //       $.ajax({
-        //          type: 'GET',
-        //          url: base_url + "artistic/check_category",
-        //          data: 'category=' + category_trim,
-        //          success: function (data) { 
-        //           if(data == 'true'){ 
-        //           $("#othercategory").addClass("othercategory_require");
-        //          $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Art category already exists in dropdown. </span>').insertAfter('#othercategory');
-        //         return false;
-        //          } else{
-        //           return true;
-        //          }                 
-        //          }
-        //      });
-        //  }
-       //}
+         var other_category = document.getElementById("othercategory").value;
+        var category_trim = other_category.trim();
+        if(category_trim){
+              $.ajax({                
+                 type: 'GET',
+                 url: base_url + "artistic/check_category",
+                 data: 'category=' + category_trim,
+                 success: function (data) { 
+                  if(data == 'true'){ 
+                  $("#othercategory").addClass("othercategory_require");
+                 $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Art category already exists in art category field. </span>').insertAfter('#othercategory');
+                 } else{
+                   $("#artinfo")[0].submit();                  
+                 }                 
+                 }
+             });
+         }
+       }
+     }else{
+       $("#artinfo")[0].submit();     
      }
 }
 
