@@ -1354,9 +1354,11 @@
 
 
  <script>
-          var base_url = '<?php echo base_url(); ?>';
-          var skill = '<?php echo  $this->input->get('skills'); ?>';
-          var place = '<?php echo  $this->input->get('searchplace'); ?>';
+      var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+      var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+      var base_url = '<?php echo base_url(); ?>';
+      var skill = '<?php echo  $this->input->get('skills'); ?>';
+      var place = '<?php echo  $this->input->get('searchplace'); ?>';
                                               
 </script>
 

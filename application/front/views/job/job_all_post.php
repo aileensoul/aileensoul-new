@@ -198,6 +198,13 @@
 					</div>
                   </div>
                </div>
+                <div>
+                                <?php
+                                if ($this->uri->segment(3) == 'live-post') {
+                                    echo '<div class="alert alert-danger">Applied successfully...!</div>';
+                                }
+                                ?>
+                            </div>
                <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                   <div class="common-form">
                      <div class="job-saved-box">
@@ -293,6 +300,8 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
 
 <script>
+    $(".alert").delay(3200).fadeOut(300);
+
     var base_url = '<?php echo base_url(); ?>';
     var count_profile_value='<?php echo $count_profile_value;?>';
     var count_profile='<?php echo $count_profile;?>';

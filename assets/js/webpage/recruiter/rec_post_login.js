@@ -120,9 +120,9 @@
                         },
                         success: function (response)
                         {
-                            if (response.data == "ok") {
+                            if (response.data == "ok") { alert("hi");
                                 $("#btn1").html('<img src="' +base_url +'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                window.location = base_url +"job/search?skills=" + skill + '&searchplace=' + place;
+                                window.location = base_url +"job/home";
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
@@ -311,7 +311,7 @@
                         {
                             if (response == "ok") {
                                 $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                                window.location = base_url + "job/search?skills=" + skill + '&searchplace=' + place;
+                                window.location = base_url +"job/home";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
