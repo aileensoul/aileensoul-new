@@ -949,6 +949,68 @@ label.cameraButton input[accept*="camera"] {
 .modal-content .modal-close{top:-13px !important;right: -13px !important;}
 #InboxBody #mCSB_2_container div ul{float: none!important;}
 
+fieldset.fresher_radio label {
+    display: inline-block;
+}
+.main_raio {
+    display: inline-block;
+    padding: 6px 5px 0px;
+}
+.main_raio [type="radio"]:checked,
+.main_raio [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.main_raio [type="radio"]:checked + .point_radio,
+.main_raio [type="radio"]:not(:checked) + .point_radio {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+.main_raio [type="radio"]:checked + .point_radio:before,
+.main_raio [type="radio"]:not(:checked) + .point_radio:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+.main_raio {
+    display: inline-block;
+    padding: 6px 5px 0px;
+}
+.main_raio [type="radio"]:checked + .point_radio:after,
+[type="radio"]:not(:checked) + .point_radio:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #1b8ab9;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.main_raio [type="radio"]:not(:checked) + .point_radio:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.main_raio [type="radio"]:checked + .point_radio:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+
 
 /***  media query  ***/
 

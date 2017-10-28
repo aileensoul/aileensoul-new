@@ -1928,11 +1928,15 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .banner #row1 .col-md-12{padding:0;}
 #popup-form #userimage{padding:13px 20px 0;}
 #upload-demo-one{padding-top:10px; width:350px; display: none}
+.no-login .modal{border:none; border-radius:0 !important;}
 
 
 
 
 /***  media query  ***/
+@media screen and (min-height: 540px){
+    .no-login .modal-content {margin:0 auto;}
+}
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   select:focus,
   textarea:focus,
