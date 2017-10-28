@@ -26,6 +26,11 @@
                <div class="col-md-3"></div>
                <div class="clearfix">
                   <div class="job_reg_page_fprm">
+                      <?php
+                                if ($this->uri->segment(3) == 'live-post') {
+                                    echo '<div class="alert alert-danger">Your post will apply successfully after complete this one more step...!</div>';
+                                }
+                                ?>
                      <div class="common-form job_reg_main">
                         <h3>Welcome In Job Profile</h3>
                         <?php echo form_open(base_url('job/job_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>

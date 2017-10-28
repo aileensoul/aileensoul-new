@@ -228,7 +228,7 @@ $route['blog/(:any)'] = "blog/index/$1";
 
 //JOB ROUTES SETTINGS
 $route['job/home'] = "job/job_all_post";
-//$route['job/home/live-post'] = "job/job_all_post/$1";
+$route['job/home/live-post'] = "job/job_all_post/$1";
 
 $route['job/resume'] = "job/job_printpreview";
 $route['job/resume/(:any)'] = "job/job_printpreview/$1";
@@ -244,6 +244,7 @@ $route['job/project'] = "job/job_project_update";
 $route['job/work-area'] = "job/job_skill_update";
 $route['job/work-experience'] = "job/job_work_exp_update";
 $route['job/profile'] = "job/job_reg";
+$route['job/profile/live-post'] = "job/job_reg/$1";
 $route['job/search'] = "job/job_search";
 $route['job/post-(:any)/(:any)'] = "job/post/$1/$2";
 $route['job/recruiter-profile/(:any)'] = "job/rec_profile/$1";

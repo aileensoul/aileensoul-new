@@ -522,6 +522,7 @@ function rec_post(pagenum) {
                                 if(response.jobuser==1)
                                 {
                                     var alldata = 'all';
+                                    var id = response.id;
                                     $.ajax({
                                                 type: 'POST',
                                                 url: base_url +'job/job_apply_post',

@@ -771,12 +771,12 @@
                                                                             <li class=fr>
                                                                                 
                                                                                   
-                                                                                    <a href="javascript:void(0);" onclick="login_profile();" class= "applypost  button"> Apply</a>
+                                                                                    <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
                                                                                 </li> 
-                                                                                <li>
+<!--                                                                                <li>
                                                                                         <a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>
 
-                                                                            </li>                        
+                                                                            </li>                        -->
                                                                         </ul>
                                                                     </div>
 
@@ -1077,10 +1077,10 @@
                                                                             <li class=fr>
                                                                                 
                                                                                   
-                                                                                    <a href="javascript:void(0);" onclick="login_profile();" class= "applypost  button"> Apply</a>
+                                                                                      <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
                                                                                 </li> 
                                                                                 <li>
-                                                                                        <a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>
+                                                                                        <!--<a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>-->
 
                                                                             </li>                        
                                                                         </ul>
@@ -1161,6 +1161,69 @@
                                                     ?>
                                                 </div>
                                                 <div id="errorpass"></div> 
+                                            </div>
+
+                                            <p class="pt-20 ">
+                                                <button class="btn1" onclick="login()">Login</button>
+                                            </p>
+
+                                            <p class=" text-center">
+                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            </p>
+
+                                            <p class="pt15 text-center">
+                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            </p>
+                                        </form>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login -->
+        
+            <!-- Login  For Apply Post-->
+        <div class="modal fade login" id="login_apply" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <div class="col-sm-12 right-main">
+                            <div class="right-main-inner">
+                                <div class="login-frm">
+                                        <div class="title">
+                                            <h1 class="ttc">Welcome To Aileensoul</h1>
+                                        </div>
+
+                                        <form role="form" name="login_form_apply" id="login_form_apply" method="post">
+
+                                            <div class="form-group">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" class="form-control input-sm email_login" placeholder="Email Address*">
+                                                <div id="error2" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('erroremail')) {
+                                                        echo $this->session->flashdata('erroremail');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorlogin_apply"></div> 
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password_login_apply" id="password_login_apply" class="form-control input-sm password_login" placeholder="Password*">
+                                                <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                                <div id="error1" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('errorpass')) {
+                                                        echo $this->session->flashdata('errorpass');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorpass_apply"></div> 
                                             </div>
 
                                             <p class="pt-20 ">
@@ -1333,7 +1396,7 @@
                                         </p>
                                     </form>
 									</div>
-									<div class="sub-form" >
+									<div class="sub-form" id="subform" style="display:none">
 									<div class="common-form job_reg_main">
                         <?php echo form_open(base_url('job/job_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>
                         <fieldset>
