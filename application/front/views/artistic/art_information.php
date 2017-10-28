@@ -127,14 +127,14 @@
                                  </div>
 
                                 <fieldset class="full-width <?php if($artname) {  ?> error-msg <?php } ?>">
-                                    <label>Speciality in art(optional):</label>
+                                    <label>Speciality in art<span class="optional">(optional)</span>:</label>
                                     <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Ex:- Classical dancing, Contemporary, Zumba, Hip Hop " value="<?php if($artname1){ echo $artname1; } ?>"/><!-- <span id="artname-error"></span> -->
                                      <?php echo form_error('artname'); ?>
                                 </fieldset>
               
                               
                                 <fieldset  class="full-width">
-                                    <label>Description of your artistic career(optional):<!-- <span style="color:red">*</span> --></label>
+                                    <label>Description of your artistic career<span class="optional">(optional)</span>:<!-- <span style="color:red">*</span> --></label>
 
                                  <textarea id="textarea" name ="desc_art" id="desc_art" tabindex="3" rows="4" cols="50" placeholder="Enter description of your art" style="resize: none;"><?php if($desc_art1){ echo $desc_art1; } ?></textarea>
                                    
@@ -143,7 +143,7 @@
                                
 
                                 <fieldset class="full-width">
-                                    <label>How you are inspire(optional):</label>
+                                    <label>How you are inspire<span class="optional">(optional)</span>:</label>
                                 
                                     <input name="inspire"  type="text" id="inspire" placeholder="Enter inspire" tabindex="4" value="<?php if($inspire1){ echo $inspire1; } ?>"/><span ></span>
                                  
