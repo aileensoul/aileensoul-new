@@ -175,7 +175,7 @@ $(function () {
                         this.value = terms.split(", ");
                     }//if end
                     else {
-                        if (terms.length <= 20) {
+                        if (terms.length <= 15) {
                             // remove the current input
                             terms.pop();
                             // add the selected item

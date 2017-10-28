@@ -298,7 +298,7 @@ $(function () {
                     }//if end
 
                     else {
-                        if (terms.length <= 10) {
+                        if (terms.length <= 15) {
                             // remove the current input
                             terms.pop();
                             // add the selected item
