@@ -390,7 +390,7 @@
 
                                                                         if ($business_data['user_id'] == $userid) {
                                                                             ?>
-                                                                            <a href="<?php echo base_url('business-profile/image') ?>">Add Images</a>
+                                                                        <a href="javascript:void(0);" onclick="login_profile();">Add Images</a>
 
                                                                         <?php } ?>
 
@@ -728,12 +728,7 @@
 
                         <!-- Model Popup Close -->
                         <?php echo $footer; ?>
-                        <!-- script for skill textbox automatic start (option 2)-->
-                        <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());    ?>"></script>-->
-                        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-1.9.1.js?ver='.time());    ?>"></script>-->
-                        <!--<script src="<?php // echo base_url('assets/js/demo/jquery-ui-1.9.1.js?ver='.time());    ?>"></script>-->
                         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-                        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
                         <!-- script for business autofill -->
