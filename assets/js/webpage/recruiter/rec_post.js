@@ -70,7 +70,7 @@ function rec_post(pagenum) {
 function removepopup(id) 
 {
             $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-            $('#bidmodal').modal('show').fadeIn();
+            $('#bidmodal').modal('show');
 }
   
 function checkvalue() 

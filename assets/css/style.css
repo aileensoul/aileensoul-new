@@ -1852,13 +1852,13 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
     float:left;
 }
 .modal.in .modal-dialog{
-    position:absolute;
+   /* position:absolute;
     top: 50%; left: 50%;
     -ms-transform: translate(-50%,-50%) !important;
     -webkit-transform: translate(-50%,-50%) !important;
     -moz-transform: translate(-50%,-50%) !important;
     -o-transform: translate(-50%,-50%) !important;
-    transform: translate(-50%,-50%) !important;
+    transform: translate(-50%,-50%) !important;*/
 }
 
 .modal-dialog {
@@ -1877,15 +1877,15 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .message-box .modal-content{margin:0 auto;}
 .fade {
     opacity: 0;
-    -webkit-transition: opacity .05s linear;
-    transition: opacity .05s linear;
+    -webkit-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
 }
 
-.cover .modal .modal-dialog{
+.modal .modal-dialog{
 	transform: scale(0.8) !important;
 
 }
-.cover .modal.in .modal-dialog {
+.modal.in .modal-dialog {
 	transform: scale(1) !important;
 }
 /*** end new popup  ***/
