@@ -14,7 +14,7 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
         <?php } ?>
-
+		
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -235,6 +235,7 @@ if ($returnpage == '') {
                             <a class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                         <?php } ?>
                     </div>
+					
                 </div>
                 <div class="col-md-7 col-sm-12 mob-clear ">
                     <div class="common-form">

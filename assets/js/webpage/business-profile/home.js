@@ -778,14 +778,15 @@ function followuser_two(clicked_id)
             $('ul.home_three_follow_ul').append(data.third_user);
 
             $('.left_box_following_count').html('(' + data.following_count + ')')
-            $.when($('.fad' + clicked_id).fadeOut(1500))
+            $.when($('.fad' + clicked_id).fadeOut(2000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
+                        var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+                        if (liCount == 0) {
+                            $('.full-box-module_follow').hide();
+                        }
                     });
-            var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
-            if (liCount == 1) {
-                $('.full-box-module_follow').hide();
-            }
+
         }
     });
 }
@@ -804,14 +805,14 @@ function followclose(clicked_id)
                     dataType: 'html',
                     success: function (data) {
                         $('ul.home_three_follow_ul').append(data);
-                        $.when($('.fad' + clicked_id).fadeOut(2000))
+                        $.when($('.fad' + clicked_id).fadeOut(1500))
                                 .done(function () {
                                     $('.fad' + clicked_id).remove();
+                                    var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+                                    if (liCount == 0) {
+                                        $('.full-box-module_follow').hide();
+                                    }
                                 });
-                        var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
-                        if (liCount == 1) {
-                            $('.full-box-module_follow').hide();
-                        }
                     }
                 });
             }
@@ -1672,7 +1673,7 @@ jQuery(document).ready(function ($) {
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
             check_no_post_data();
-            
+
         }
     };
     // Submit the form

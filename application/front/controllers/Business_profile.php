@@ -3679,7 +3679,7 @@ Your browser does not support the audio tag.
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
         $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
+        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '2', $join_str_contact = array(), $groupby = '');
         
         
         $third_user_html = '';
@@ -9684,7 +9684,7 @@ Your browser does not support the audio tag.
         } else {
             $seeall = '<div class="fw"><div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url() . 'img/No_Contact_Request.png">
+                                                    <img src="' . base_url('assets/img/No_Contact_Request.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text_c">
                                                     No Contact Request Available.
@@ -9847,7 +9847,7 @@ Your browser does not support the audio tag.
 
             $contactdata = '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url() . 'img/No_Contact_Request.png">
+                                                    <img src="' . base_url('assets/img/No_Contact_Request.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text_c">
                                                     No Contact Request Available
@@ -9985,9 +9985,9 @@ Your browser does not support the audio tag.
                                                         </div>
                                                         <div class="fw">
                                                             <p class="connect-link">
-                                                                <a href="#" class="cr-accept acbutton  ani" onclick = "return contactapprove1(' . $friend['contact_from_id'] . ', 1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i>
+                                                                <a href="javascript:void(0);" class="cr-accept acbutton  ani" onclick = "return contactapprove1(' . $friend['contact_from_id'] . ', 1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i>
                                                                     </span></a>
-                                                                <a href="#" class="cr-decline" onclick = "return contactapprove1(' . $friend['contact_from_id'] . ', 0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i>
+                                                                <a href="javascript:void(0);" class="cr-decline" onclick = "return contactapprove1(' . $friend['contact_from_id'] . ', 0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i>
                                                                     </span></a>
                                                             </p>
                                                         </div>

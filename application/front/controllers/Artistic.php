@@ -423,6 +423,19 @@ class Artistic extends MY_Controller {
         $this->load->view('artistic/art_information', $this->data);
     }
 
+    public function check_category(){
+
+        $category = $_GET['category'];
+        $contition_array = array('status' => 1, 'type' => 1, 'art_category' => $category);
+         $checkvalue = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         if($checkvalue){
+            echo 'true';
+         }else{
+            echo 'false';
+         }
+
+    }
+
     public function art_information_insert() {
         //echo "<pre>"; print_r($this->input->post('skills')); die();
         $userid = $this->session->userdata('aileenuser');
@@ -435,48 +448,13 @@ class Artistic extends MY_Controller {
         {
              redirect('artistic/');
         }
-
             $this->form_validation->set_rules('skills', 'Skill', 'required');
             //$this->form_validation->set_rules('artname', 'Speciality in art', 'required');
             //$this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('artistic/art_information');
             } else {
-     //if user deactive profile then redirect to artistic/index untill active profile End
-          //$skills = $this->input->post('skills');
-     //      $skills = explode(',',$skills); 
-
-     //      if(count($skills) > 0){ 
-          
-     //      foreach($skills as $ski){
-     //        if($ski != ' '){
-     // //$contition_array = array('skill' => $ski,'type' => 6);
-     // // $contition_array = array('skill' => $ski,'type' => 2);
-
-     // // $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     // // $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-
-     //    $contition_array = array('skill' => $ski);
-     //    $search_condition = "(type = '2'  OR type = '6')";
-     //    $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-     // if($skilldata){
-     //     $skill[] = $skilldata[0]['skill_id'];
-     //       }else{
-     //             $data = array(
-     //                'skill' => $ski,
-     //                'status' => '1',
-     //                'type' => 6,
-     //                'user_id' => $userid,
-     //             );
-     //  $skill[] = $this->common->insert_data_getid($data, 'skill');
-     //       }
-     //      }
-     //    }
-          
-     //      $skills = implode(',',$skill); 
-     //  }
+     
        $other_category = $this->input->post('othercategory');
 
      $contition_array = array('other_category' => $other_category,'type' => 1, 'status' => 1);
@@ -532,19 +510,6 @@ class Artistic extends MY_Controller {
             );
         }
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
-
-        
-        // $skilldata = $this->common->select_data_by_id('skill', 'skill', $otherskill, $data = 'skill_id', $join_str = array());
-        // if ($skilldata || $otherskill == "") {
-            
-        // } else {
-        //     $data1 = array(
-        //         'skill' => $this->input->post('other_skill'),
-        //         'type' => 2,
-        //         'status' => 1
-        //     );
-        //     $insertid = $this->common->insert_data_getid($data1, 'skill');
-        // }
 
         if ($updatdata) {
             $this->session->set_flashdata('success', 'Information updated successfully');
@@ -1158,6 +1123,8 @@ class Artistic extends MY_Controller {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdataposted[0]['slug']) . '">';
 
                             if (IMAGEPATHFROM == 'upload') {
+
+                                    if($artdataposted[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdataposted[0]['art_user_image'])) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -1165,6 +1132,9 @@ class Artistic extends MY_Controller {
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdataposted[0]['art_user_image'].'" alt="" >';
                                     }
+                                 }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                 }
                                 } else{
 
                              $filename = $this->config->item('art_profile_thumb_upload_path') . $artdataposted[0]['art_user_image'];
@@ -1183,6 +1153,8 @@ class Artistic extends MY_Controller {
                         
                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
                             if (IMAGEPATHFROM == 'upload') {
+
+                                if($artdata[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -1190,6 +1162,9 @@ class Artistic extends MY_Controller {
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
                                     }
+                                  }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                  }
                                 } else{
 
                             $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
@@ -1666,6 +1641,8 @@ class Artistic extends MY_Controller {
                                 
 
                           if (IMAGEPATHFROM == 'upload') {
+
+                                if($art_userimage){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -1673,6 +1650,9 @@ class Artistic extends MY_Controller {
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                  }else{
+                                    $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                  }
                                 } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -1801,6 +1781,8 @@ class Artistic extends MY_Controller {
                          $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artdata[0]['slug']) . '">';
                   
                     if (IMAGEPATHFROM == 'upload') {
+
+                        if($artdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -1808,6 +1790,9 @@ class Artistic extends MY_Controller {
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
                                     }
+                                  }else{
+                                       $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                   }
                                 } else{
 
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
@@ -2158,16 +2143,18 @@ public function ajax_userlist() {
                 $return_html .= '<a href="' . base_url('artistic/dashboard/' . $user['slug']) . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
+                    if($user['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'])) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                                         
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'].'" alt="" >';
+                                    }  }else{
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
                                     }
                                 } else{
-
-
+                    
                 $filename = $this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -2645,6 +2632,7 @@ public function follow_home() {
                         $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                           if (IMAGEPATHFROM == 'upload') {
+                            if($userlist['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                        
                                         $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -2652,6 +2640,9 @@ public function follow_home() {
                                      } else { 
                                         $third_user_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'].'" alt="" >';
                                     }
+                                 }else{
+                                     $third_user_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                 }
                                 } else{
 
 
@@ -3341,6 +3332,7 @@ public function followtwo() {
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artaval[0]['slug']) . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
+                        if($artaval[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -3348,6 +3340,10 @@ public function followtwo() {
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'].'" alt="" >';
                                     }
+                                 }else{
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -3561,6 +3557,7 @@ public function followtwo() {
                     $return_html .= '<a href="' . base_url('artistic/dashboard/' .$artaval[0]['slug']) . '" title="' . ucfirst(strtolower($artaval[0]['art_name'])) .' '. ucfirst(strtolower($artaval[0]['art_lastname'])) .'">';
 
                      if (IMAGEPATHFROM == 'upload') {
+                        if($artaval[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'])) {
                                        
                                         $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -3568,6 +3565,8 @@ public function followtwo() {
                                      } else { 
                                         $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artaval[0]['art_user_image'].'" alt="" >';
                                     }
+                                 }else{
+                                        $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">'; }
                                 } else{
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artaval[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4131,6 +4130,7 @@ public function followtwo() {
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
                 
                      if (IMAGEPATHFROM == 'upload') {
+                        if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -4138,6 +4138,10 @@ public function followtwo() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -4282,6 +4286,7 @@ public function delete_comment_postnewpage() {
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
+                        if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -4289,6 +4294,10 @@ public function delete_comment_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -4479,6 +4488,7 @@ public function delete_comment_postnewpage() {
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
+                        if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -4486,6 +4496,10 @@ public function delete_comment_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
 
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -4644,6 +4658,7 @@ public function delete_commenttwo_postnewpage() {
                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
                    if (IMAGEPATHFROM == 'upload') {
+                    if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -4651,7 +4666,12 @@ public function delete_commenttwo_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
+                    
 
                     $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -5169,6 +5189,7 @@ public function delete_commenttwo_postnewpage() {
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
                       if (IMAGEPATHFROM == 'upload') {
+                        if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -5176,6 +5197,10 @@ public function delete_commenttwo_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -5339,6 +5364,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
+                    if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -5346,6 +5372,10 @@ public function insert_comment_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -5563,6 +5593,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
+                    if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -5570,6 +5601,10 @@ public function insert_comment_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -6977,6 +7012,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_slug . '') . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
+                    if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -6984,6 +7020,10 @@ public function insert_comment_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                    $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+
+                                 }
                                 } else{
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -7205,6 +7245,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $artslug . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
+                        if($art_userimage){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                        
                                         $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
@@ -7212,6 +7253,10 @@ public function insert_comment_postnewpage() {
                                      } else { 
                                         $cmtinsert .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" alt="" >';
                                     }
+                                 }else{
+                                        $cmtinsert .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    
+                                 }
                                 } else{
                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -14325,11 +14370,17 @@ $return_html .= '<div class="art-all-comment col-md-12">
         $search_condition = "(art_name LIKE '" . trim($searchTerm) . "%' OR art_lastname LIKE '" . trim($searchTerm) . "%' OR designation LIKE '" . trim($searchTerm) . "%'OR other_skill LIKE '" . trim($searchTerm) . "%')";
         $artistic_postdata = $this->common->select_data_by_search('art_reg', $search_condition,$contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = 'art_name,art_lastname,designation,other_skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_name,art_lastname,designation,other_skill');
 
-        $contition_array = array('status' => '1', 'type' => '2');
-        $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-        $skill = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
+        $contition_array = array('status' => '1', 'type' => '1');
+        $search_condition = "(art_category LIKE '" . trim($searchTerm) . "%')";
+        $skill = $this->common->select_data_by_search('art_category', $search_condition, $contition_array, $data = 'art_category', $sortby = 'art_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_category');
         }
-        $unique = array_merge($skill, $artistic_postdata);
+
+        $contition_array = array('status' => '1', 'type' => '1');
+        $search_condition = "(other_category LIKE '" . trim($searchTerm) . "%')";
+        $other_category = $this->common->select_data_by_search('art_other_category', $search_condition, $contition_array, $data = 'other_category', $sortby = 'other_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'other_category');
+       
+
+        $unique = array_merge($skill, $other_category, $artistic_postdata);
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
@@ -14831,17 +14882,24 @@ public function get_artistic_name($id=''){
         } elseif ($search_place == "") {
 
 
-            $contition_array = array('status' => 1, 'type' => '2');
+          //  $contition_array = array('status' => 1, 'type' => '1');
 
-            $search_condition = "(skill LIKE '%$searchskill%')";
+          //  $search_condition = "(art_category LIKE '%$searchskill%')";
             // echo $search_condition;
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->category_id;
+
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+
 
            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                    
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
-           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%'  or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
             $othercom  = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'GROUP_CONCAT(art_id) as user_data', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
           $othercom = str_replace(",", "','", $othercom[0]['user_data']);
 
@@ -14868,12 +14926,12 @@ public function get_artistic_name($id=''){
 
             $contition_array = array('art_reg.art_step' => 4, 'art_post.is_delete' => '0','art_reg.is_delete' => '0', 'art_reg.status' => '1');
 
-            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%' or art_reg.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%')";
 
 
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                  
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);               
@@ -14882,11 +14940,21 @@ public function get_artistic_name($id=''){
 
         } else {
             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+
+             $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+
+
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
             
             $contition_array = array('is_delete' => '0', 'status' => '1', 'art_step' => 4);
-            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or designation LIKE '%$searchskill%')";
             $othercom = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'GROUP_CONCAT(art_id) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $user_list = str_replace(",", "','", $othercom[0]['user_list']);
 
@@ -14916,13 +14984,13 @@ public function get_artistic_name($id=''){
             $join_str[0]['from_table_id'] = 'art_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%')";
 
 
             $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
              //echo "<pre>"; print_r($artposttwo); die();
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);
@@ -14998,17 +15066,27 @@ public function get_artistic_name($id=''){
                                              $return_html .= '</a>
                                           </li>
                                           <li style="display: block;">';
+
+
+                                          $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $key['art_skill']))->row()->art_category;
+                                          $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
+                                        if( $key['art_skill'] != 17){
+                                              $return_html .= ucwords($art_category); 
+                                        }else{
+                                            $return_html .=  ucwords($art_othercategory);  
+                                        }
+
                                                             
-                                                   $aud = $key['art_skill'];
-                                                   $aud_res = explode(',', $aud);
-                                                   $skill1 = array();
-                                                   foreach ($aud_res as $skdata) {
-                                                     $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
-                                                     $skill1[] = $cache_time;
-                                                     }
-                                                  $listFinal = implode(',', $skill1);
+                                                  //  $aud = $key['art_skill'];
+                                                  //  $aud_res = explode(',', $aud);
+                                                  //  $skill1 = array();
+                                                  //  foreach ($aud_res as $skdata) {
+                                                  //    $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
+                                                  //    $skill1[] = $cache_time;
+                                                  //    }
+                                                  // $listFinal = implode(',', $skill1);
                                                   
-                                                   $return_html .= $listFinal;  
+                                                  //  $return_html .= $listFinal;  
                                                   
      
                                          $return_html .=  '</li>
@@ -15777,18 +15855,24 @@ public function get_artistic_name($id=''){
         } elseif ($search_place == "") {
 
 
-              $contition_array = array('status' => 1, 'type' => '2');
+              //$contition_array = array('status' => 1, 'type' => '2');
 
-            $search_condition = "(skill LIKE '%$searchskill%')";
+            //$search_condition = "(skill LIKE '%$searchskill%')";
             // echo $search_condition;
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->category_id;
+
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
 
            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                    
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
-           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+           $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
 
             // echo $search_condition;
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -15829,12 +15913,12 @@ public function get_artistic_name($id=''){
 
             $contition_array = array('art_reg.art_step' => 4, 'art_post.is_delete' => '0','art_reg.is_delete' => '0', 'art_reg.status' => '1');
 
-            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%' or art_reg.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%')";
 
 
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
                  
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);               
@@ -15842,11 +15926,20 @@ public function get_artistic_name($id=''){
 
         } else {
             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+
+
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+
+
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             
             $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
-            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or art_city LIKE '%$cache_time%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%' or art_city LIKE '%$cache_time%' or designation LIKE '%$searchskill%')";
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
              
             foreach ($othercom as $keydata => $valuedata) {
@@ -15886,7 +15979,7 @@ public function get_artistic_name($id=''){
             $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
              //echo "<pre>"; print_r($artposttwo); die();
-                $unique = array_merge((array) $artskillpost, (array) $otherdata);
+                $unique = array_merge((array) $artskillpost, (array) $otherdata, (array) $artskillotherpost);
                 $new = array_unique($unique, SORT_REGULAR);
 
                 $uniquedata = array_merge((array) $artposttwo, (array) $posttwo);

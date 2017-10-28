@@ -128,7 +128,7 @@ function job_apply(pagenum)
  //Remove Post Start
 function removepopup(id) {
        $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this job?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-       $('#bidmodal').modal('show').fadeIn("slow");
+       $('#bidmodal').modal('show');
    }
 
     function remove_post(abc)

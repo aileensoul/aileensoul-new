@@ -87,7 +87,7 @@
                                      <?php echo form_error('email'); ?>
                                 </fieldset>                             
                                 <fieldset <?php if($phoneno) {  ?> class="error-msg" <?php } ?>>
-                                    <label>Phone number(optional):</label>
+                                    <label>Phone number<span class="optional">(optional)</span>:</label>
                                     <input name="phoneno"  type="text" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php if($phoneno1){ echo $phoneno1; } ?>">
                                     <?php echo form_error('phoneno'); ?><br/>
                                 </fieldset> 

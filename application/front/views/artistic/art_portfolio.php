@@ -90,7 +90,7 @@
     
                        <input  type="file" name="bestofmine" id="bestofmine" style="display:block;display:none;"/>
 
- <label for="bestofmine"  tabindex="1" ><i class="fa fa-plus action-buttons btn-group"  aria-hidden="true" style=" margin: 8px; cursor:pointer ; color: #fff; float: initial;"> </i> Attachment(optional)</label> <span id="datav" class="attach-file-name"></span>   <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /> 
+ <label for="bestofmine"  tabindex="1" ><i class="fa fa-plus action-buttons btn-group"  aria-hidden="true" style=" margin: 8px; cursor:pointer ; color: #fff; float: initial;"> </i> Attachment<span class="optional">(optional)</span></label> <span id="datav" class="attach-file-name"></span>   <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /> 
                </div>
  
 <!--  <span id ="filename" style="color: #8c8c8c; font-size: 17px; padding-left: 10px;visibility:show;"><?php echo $userdata[0]['art_bestofmine']; ?></span><span class="file_name"></span>
@@ -116,7 +116,7 @@
 
 
                                 <fieldset class="full-width">
-                                 <label>Enter portfolio description(optional):</label>
+                                 <label>Enter portfolio description<span class="optional">(optional)</span>:</label>
                               <div tabindex="2" style="min-height: 100px;"  class="editable_text"  contenteditable="true" name ="artportfolio" id="artportfolio123" rows="4" cols="50" placeholder="Enter portfolio detail" onpaste="OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(event);"><?php if($art_portfolio1){ echo $art_portfolio1; } ?></div>
                                          <?php echo form_error('artportfolio'); ?></fieldset>
                                 

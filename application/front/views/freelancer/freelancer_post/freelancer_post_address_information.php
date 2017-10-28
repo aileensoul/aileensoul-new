@@ -137,7 +137,7 @@
                                         <?php echo form_error('state'); ?> 
                                     </fieldset>
                                     <fieldset>
-                                        <label><?php echo $this->lang->line("city"); ?>:</label>
+                                        <label><?php echo $this->lang->line("city"); ?>:<span class="optional">(optional)</span></label>
                                         <select name="city" tabindex="3" id="city">
                                             <?php
                                             if ($city1) {
@@ -165,7 +165,7 @@
                                         </select>
                                     </fieldset>
                                     <fieldset>
-                                        <label><?php echo $this->lang->line("pincode"); ?>:</label>
+                                        <label><?php echo $this->lang->line("pincode"); ?>:<span class="optional">(optional)</span></label>
                                         <input type="text" name="pincode" tabindex="4" placeholder="Enter pincode" value="<?php
                                         if ($pincode1) {
                                             echo $pincode1;

@@ -30,15 +30,15 @@
 				-o-transform: inherit !important;
 				transform: inherit !important;
 			}
-			/*.modal-dialog {
+			.modal-dialog {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
-}*/
+}
 
 .modal-content {
-
+  /*margin: 0 auto;*/
   width:600px;
 }
 

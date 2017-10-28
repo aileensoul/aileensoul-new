@@ -186,14 +186,18 @@ $loginuser = $userdata[0]['art_id'];
                  <?php 
 
                         if (IMAGEPATHFROM == 'upload') {
-                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
+
+                                if($artisticdata[0]['art_user_image']){
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
                                        
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                         
                                     <?php } else { ?>
-                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
                                    <?php }
-                                } else{
+                                } else{ ?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') .$userimageposted;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -232,7 +236,9 @@ $loginuser = $userdata[0]['art_id'];
                             <div class="popup-img-in "> 
                            
                              <?php 
-                             if (IMAGEPATHFROM == 'upload') {
+                              if (IMAGEPATHFROM == 'upload') {
+
+                                if($artisticdata[0]['art_user_image']){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) { ?>
                                        
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
@@ -240,8 +246,10 @@ $loginuser = $userdata[0]['art_id'];
                                     <?php } else { ?>
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>"  alt="">
                                    <?php }
-                                } else{
-
+                                } else{ ?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
+                                
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'];
                       $s3 = new S3(awsAccessKey, awsSecretKey);
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
