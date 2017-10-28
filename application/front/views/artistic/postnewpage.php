@@ -60,14 +60,16 @@
                                                 <?php 
 
                                                  if (IMAGEPATHFROM == 'upload') {
+                                                  if($userimageposted){
                                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
                                        
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                         
                                     <?php } else { ?>
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
-                                   <?php }
-                                } else{
+                                   <?php } }else{?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -95,14 +97,16 @@
                                             <?php 
 
                                              if (IMAGEPATHFROM == 'upload') {
+                                              if($art_userimage){
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                         
                                     <?php } else { ?>
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
-                                   <?php }
-                                } else{
+                                   <?php } } else{?>
+                                    <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -578,14 +582,17 @@
                                      <?php 
 
                                       if (IMAGEPATHFROM == 'upload') {
+                                        if($art_userimage){
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
-                                       
+                                                                           
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                         
                                     <?php } else { ?>
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
-                                   <?php }
-                                } else{
+                                   <?php } }else{ ?>
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                              <?php }  } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -758,14 +765,17 @@
                                               <?php 
 
                                                if (IMAGEPATHFROM == 'upload') {
+                                                if($art_userimage){
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                         
                                     <?php } else { ?>
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
-                                   <?php }
-                                } else{
+                                   <?php } }else{ ?>
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                                <?php } }  else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -1078,14 +1088,17 @@
                                 <?php 
 
                                  if (IMAGEPATHFROM == 'upload') {
+                                   if($art_userimage){
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                         
                                     <?php } else { ?>
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
-                                   <?php }
-                                } else{
+                                   <?php } }else{ ?>
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                                <?php } } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -1239,14 +1252,17 @@
                                 <?php 
 
                                  if (IMAGEPATHFROM == 'upload') {
+                                    if($art_userimage){
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                         
                                     <?php } else { ?>
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
-                                   <?php }
-                                } else{
+                                   <?php } }else{ ?>
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                   
+                                <?php } } else{
 
                       $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                       $s3 = new S3(awsAccessKey, awsSecretKey);
