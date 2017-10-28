@@ -3647,7 +3647,7 @@ Your browser does not support the audio tag.
         }
     }
 
-    public function third_follow_user_data($from='') {
+    public function third_follow_user_data($from = '') {
         $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
@@ -3680,8 +3680,8 @@ Your browser does not support the audio tag.
         $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '2', $join_str_contact = array(), $groupby = '');
-        
-        
+
+
         $third_user_html = '';
         if (count($userlistview) > 0) {
             foreach ($userlistview as $userlist) {
@@ -9752,7 +9752,7 @@ Your browser does not support the audio tag.
         array_multisort($post, SORT_DESC, $new);
 
         $contactperson = $new;
-        
+
         if ($contactperson) {
             foreach ($contactperson as $contact) {
                 $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
@@ -10612,11 +10612,11 @@ No Contacts Available.
 
     public function contact_count() {
         $userid = $this->session->userdata('aileenuser');
-        
+
         $contition_array = array('not_read' => 2);
         $search_condition = "((contact_to_id = '$userid' AND status = 'pending') OR (contact_from_id = '$userid' AND status = 'confirm'))";
         $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'contact_id', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-        
+
 //        $contition_array = array('contact_to_id' => $userid, 'status' => 'pending', 'not_read' => '2');
 //        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //
@@ -12839,8 +12839,8 @@ Your browser does not support the audio tag.
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
         //$search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
         $search_condition = "(business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list'))";
-
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '0', $join_str_contact = array(), $groupby = '');
+
         $return_html = '';
         $return_html .= '<ul class="home_three_follow_ul">';
         if (count($userlistview) > 0) {
