@@ -9,28 +9,22 @@ class Business_userprofile extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->library('user_agent');
+        $this->load->model('email_model');
+        $this->lang->load('message', 'english');
+        $this->load->helper('smiley');
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
-        $this->load->library('form_validation');
-        $this->load->model('email_model');
-        $this->lang->load('message', 'english');
-        include ('include.php');
-
-// DEACTIVATE PROFILE START
 
         $userid = $this->session->userdata('aileenuser');
+        include ('business_profile_include.php');
 
-// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
+        // FIX BUSINESS PROFILE NO POST DATA
 
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '	business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($business_deactive) {
-            redirect('business-profile/');
-        }
-// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
-// DEACTIVATE PROFILE END
+        $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Business Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/bui-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
+        $this->data['no_business_contact_html'] = '<div class="art-img-nn"><div class="art_no_post_img"><img src="' . base_url('assets/img/No_Contact_Request.png') . '"></div><div class="art_no_post_text">No Contacts Available.</div></div>';
     }
 
     public function index() {

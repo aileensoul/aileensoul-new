@@ -79,7 +79,8 @@ function followuser(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fruser' + clicked_id).html(data.follow);
-            $('#countfollow').html(data.count);
+            //$('#countfollow').html(data.count);
+            $('.left_box_following_count').html(data.count);
         }
     });
 }
@@ -92,7 +93,8 @@ function unfollowuser(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fruser' + clicked_id).html(data.follow);
-            $('#countfollow').html(data.count);
+            //$('#countfollow').html(data.count);
+            $('.left_box_following_count').html(data.count);
         }
     });
 }

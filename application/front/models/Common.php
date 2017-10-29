@@ -112,9 +112,7 @@ class Common extends CI_Model {
 
     function select_data_by_condition($tablename, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '') {
 
-        //print_r($join_str);
-        //die();
-
+        $this->db->simple_query('SET SESSION group_concat_max_len=15000');
         $this->db->select($data);
 
         if (!empty($join_str)) {
