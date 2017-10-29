@@ -2150,13 +2150,14 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.por_content ul li .pro-text{width:85% !important;}
 	.common-form_border h3{display:none;}
 	.modal.in .modal-dialog{width:80%;}
-	
-	
 	.padd_set .change-password{padding: 0;}
 	.padd_set{padding:35px 0;}
 	.people-list {border-right: none;}
 	.change-password-box #basicinfo{padding:10px;}
 	.no-login .login-frm .title h1{font-size:26px;}
+	.no-login .login h4{padding:0; font-size:26px;}
+	.no-login .dob .d_o_b{width:100%; margin-bottom:0; margin-top:10px;}
+	.no-login .login .form-group select{margin-right:5px; width:50px;}
 }
 
 @media screen and (max-width: 640px) {
@@ -2259,10 +2260,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 		transform: scale(0.5);
 	}
 	.post-edit-popup .popup-text textarea{padding-right: 15px;}
-	.mian_box_num {
-		right: -9px;
-	}
-	  .cover-pic {
+	.mian_box_num {right: -9px;}
+	.cover-pic {
 		right: -6%;
 		bottom: 61%;
 	}
@@ -2291,13 +2290,14 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.modal.message-box span.mes{padding:0;}
 	.modal.in .modal-dialog{font-size:88%;}
 	.modal.in .modal-dialog .mes .pop_content{font-size:18px;}
-	
+	#upload-demo-one{width:284px; margin:0 auto;}
+	#upload-demo-one .cr-boundary{width:284px !important; height:284px !important;}
+	/********/
 	.no-login .fw-479{text-align:center;}
 	.no-login .btn-right.pull-right{float:none !important;}
 	.no-login #paddingtop_fixed{padding-top:105px !important;}
-	#upload-demo-one{width:284px; margin:0 auto;}
-	#upload-demo-one .cr-boundary{width:284px !important; height:284px !important;}
-	
+	.no-login .login-frm .title h1{font-size:22px;}
+	.no-login .login h4{font-size:22px;}
 }
 
 @media screen and (max-width: 360px) {
@@ -2329,7 +2329,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.created_date {font-size: 8px; letter-spacing: 0.5px;}
 }
 
-/*zalak start 28-8  media*/
+
 
 @keyframes bounce_floatBarsG {
     0% {
