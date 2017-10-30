@@ -62,14 +62,19 @@
                                     $category = explode(',' , $category);
 
                                     foreach ($category as $catkey => $catval) {
-                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $artisticdata[0]['art_skill']))->row()->art_category;
-                                       
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
                                      } 
 
-
-                                    if($artisticdata[0]['art_skill'] != 17){
-                                      echo $art_category; 
-                                   }else{
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode(',', $listfinal1);
+                                       
+                                    if(!in_array(17, $category)){
+                                     echo $listFinal;
+                                   }else if($artisticdata[0]['art_skill'] && $artisticdata[0]['other_skill']){
+                                    echo $listFinal; echo ","; echo $art_othercategory;
+                                   }
+                                   else{
                                      echo $art_othercategory;  
                                   }
                                     ?>   

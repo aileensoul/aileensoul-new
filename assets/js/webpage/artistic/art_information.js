@@ -14,7 +14,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                   ignore: '*:not([name])',
                     rules: {
 
-                        skills: {
+                        "skills[]": {
 
                     required: true,
 
@@ -23,7 +23,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
                     messages: {
 
-                         skills: {
+                         "skills[]": {
 
                     required: "Skill is required.",
                    
