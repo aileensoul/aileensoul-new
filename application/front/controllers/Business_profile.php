@@ -2978,7 +2978,9 @@ Your browser does not support the audio tag.
             $this->business_profile_active_check();
             $this->is_business_profile_register();
         }
-
+        if (!$this->session->userdata('aileenuser')) {
+            include ('business_profile_include.php');
+        }
         if ($id != '') {
             $contition_array = array('business_profile.business_slug' => $id, 'business_profile.is_deleted' => '0', 'business_profile.status' => 1, 'business_profile.business_step' => 4);
             $join_str[0]['table'] = 'countries';
@@ -3068,7 +3070,6 @@ Your browser does not support the audio tag.
             if ($this->session->userdata('aileenuser')) {
                 $this->load->view('business_profile/business_resume', $this->data);
             } else {
-                include ('business_profile_include.php');
                 $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
                 $this->load->view('business_profile/business_details', $this->data);
             }
