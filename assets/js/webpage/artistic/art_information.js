@@ -44,11 +44,14 @@ $(function(){
 // other category input open start
 
 $('#skills').change(function other_category(){
-        var e = document.getElementById("skills");
-        var strUser = e.options[e.selectedIndex].value;
-        if(strUser == 17){
+        // var e = document.getElementById("skills");
+        // var strUser = e.options[e.selectedIndex].value;
+       var strUser = $('#skills').val();
+       var strUser =  "'" + strUser + "'";
+       var n = strUser.includes(17);
+        if(n == true){ 
             document.getElementById('other_category').style.display = "block";
-        }else{
+        }else{ 
             document.getElementById('other_category').style.display = "none"; 
         }
     });
