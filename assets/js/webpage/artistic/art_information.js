@@ -64,11 +64,11 @@ function removevalidation(){
 
 function validation_other(event){ 
 
-      event.preventDefault();
-       var e = document.getElementById("skills");
-        var strUser = e.options[e.selectedIndex].value;
+       var strUser = $('#skills').val();
+       var strUser =  "'" + strUser + "'";
+       var n = strUser.includes(17);
 
-    if(strUser == 17){
+    if(n == true){
        var other_category = document.getElementById("othercategory").value;
        var category_trim = other_category.trim();
    if(category_trim == ''){
