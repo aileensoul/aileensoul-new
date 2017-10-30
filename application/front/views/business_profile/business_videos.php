@@ -1,3 +1,6 @@
+<?php
+$s3 = new S3(awsAccessKey, awsSecretKey);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,9 +71,7 @@
                                                                     if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
                                                                         ?>
                                                                         <video preload="none" poster="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $post_poster); ?>" controls playsinline webkit-playsinline>
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
+                                                                        <?php } else { ?>
                                                                             <video preload="none" controls playsinline webkit-playsinline>
                                                                                 <?php
                                                                             }
@@ -176,7 +177,7 @@
                                                                     </div>
                                                                     <!-- Model Popup Close -->
                                                                     <?php echo $footer; ?>
-                                                                    <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver='.time());         ?>"></script>-->
+                                                                    <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver='.time());                ?>"></script>-->
                                                                     <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
                                                                     <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                                                                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>

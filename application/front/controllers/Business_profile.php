@@ -14078,7 +14078,6 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </div>
 <div class = "post-design-mid col-md-12 padding_adust" >
 <div>';
-
                 $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
                 $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
