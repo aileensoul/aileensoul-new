@@ -513,15 +513,21 @@ if ($returnpage == '') {
                                                                     <div class="profile-job-details col-md-12">
                                                                         <ul><li class="job_all_post ">
                                                                                                                                           </li>
-                                                                            <li class=fr>
-                                                                                
-                                                                                  
-                                                                                    <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
-                                                                                </li> 
-<!--                                                                                <li>
-                                                                                        <a  href="javascript:void(0);" onclick="login_profile();" class="savedpost> button">Save</a>
+                                                                            <li class="fr">';
+                       <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
+                 <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="button">Edit</a>
+                   <?php     $join_str[0]['table'] = 'job_reg';
+                        $join_str[0]['join_table_id'] = 'job_reg.user_id';
+                        $join_str[0]['from_table_id'] = 'job_apply.user_id';
+                        $join_str[0]['join_type'] = '';
 
-                                                                            </li>                        -->
+                        $condition_array = array('post_id' => $post['post_id'], 'job_apply.job_delete' => '0', 'job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.job_step' => 10);
+                        $data = "job_apply.*,job_reg.job_id";
+                        $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
+                        $countt = count($apply_candida); ?>
+
+                     <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="button">Applied  Candidate : <?php echo  $countt ?></a>
+                                                                    </li>
                                                                         </ul>
                                                                     </div>
 
