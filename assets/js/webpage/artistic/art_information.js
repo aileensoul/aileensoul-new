@@ -34,6 +34,13 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                    });
 
 
+
+// multiple skill start
+
+$(function(){
+        $('#skills').multiSelect();
+    });
+    
 // other category input open start
 
 $('#skills').change(function other_category(){
