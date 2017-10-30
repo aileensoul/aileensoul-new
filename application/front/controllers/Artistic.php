@@ -448,12 +448,12 @@ class Artistic extends MY_Controller {
         {
              redirect('artistic/');
         }
-            $this->form_validation->set_rules('skills', 'Skill', 'required');
+            //$this->form_validation->set_rules('skills', 'Skill', 'required');
             //$this->form_validation->set_rules('artname', 'Speciality in art', 'required');
             //$this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
-            if ($this->form_validation->run() == FALSE) {
-                $this->load->view('artistic/art_information');
-            } else {
+            // if ($this->form_validation->run() == FALSE) {
+            //     $this->load->view('artistic/art_information');
+            // } else {
      
        $other_category = $this->input->post('othercategory');
 
@@ -488,11 +488,14 @@ class Artistic extends MY_Controller {
                  $otherid = '';
             }
 
+             $category = $this->input->post('skills');
+             $category = implode(',' , $category); 
+
          if ($artuserdata[0]['art_step'] == 4) {
 
             $data = array(
                 'art_yourart' => $this->input->post('artname'),
-                'art_skill' => $this->input->post('skills'),
+                'art_skill' =>  $category,
                 'art_desc_art' => $this->input->post('desc_art'),
                 'art_inspire' => $this->input->post('inspire'),
                 'modified_date' => date('Y-m-d', time()),
@@ -501,7 +504,7 @@ class Artistic extends MY_Controller {
         } else {
             $data = array(
                 'art_yourart' => $this->input->post('artname'),
-                'art_skill' => $skills,
+                'art_skill' =>  $category,
                 'art_desc_art' => $this->input->post('desc_art'),
                 'art_inspire' => $this->input->post('inspire'),
                 'modified_date' => date('Y-m-d', time()),
@@ -519,7 +522,7 @@ class Artistic extends MY_Controller {
             redirect('artistic/artistic-information', refresh);
         }
 
-       }
+      // }
     }
 
     public function art_portfolio() {
@@ -15011,18 +15014,24 @@ public function get_artistic_name($id=''){
 
 
           //  $contition_array = array('status' => 1, 'type' => '1');
+            //echo $searchskill; die();
 
           //  $search_condition = "(art_category LIKE '%$searchskill%')";
             // echo $search_condition;
-            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->category_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->category_id;
+            //echo "<pre>"; print_r($temp); die();
 
-            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+            
+            //echo "<pre>"; print_r($other_temp); die();
 
 
-           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+          // echo "<pre>"; print_r($artskillpost); die();
+
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", other_skill) != ' => '0');
            $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                    
@@ -15067,16 +15076,18 @@ public function get_artistic_name($id=''){
 
 
         } else {
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            // $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
 
-             $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->category_id;
+
+             $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
 
 
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", other_skill) != ' => '0');
            $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -15196,28 +15207,43 @@ public function get_artistic_name($id=''){
                                           <li style="display: block;">';
 
 
-                                          $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $key['art_skill']))->row()->art_category;
-                                          $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
-                                        if( $key['art_skill'] != 17){
-                                              $return_html .= ucwords($art_category); 
-                                        }else{
-                                            $return_html .=  ucwords($art_othercategory);  
-                                        }
+                                        //   $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $key['art_skill']))->row()->art_category;
+                                        //   $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
+                                        // if( $key['art_skill'] != 17){
+                                        //       $return_html .= ucwords($art_category); 
+                                        // }else{
+                                        //     $return_html .=  ucwords($art_othercategory);  
+                                        // }
 
-                                                            
-                                                  //  $aud = $key['art_skill'];
-                                                  //  $aud_res = explode(',', $aud);
-                                                  //  $skill1 = array();
-                                                  //  foreach ($aud_res as $skdata) {
-                                                  //    $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
-                                                  //    $skill1[] = $cache_time;
-                                                  //    }
-                                                  // $listFinal = implode(',', $skill1);
-                                                  
-                                                  //  $return_html .= $listFinal;  
-                                                  
-     
-                                         $return_html .=  '</li>
+
+                                 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
+
+                                    $category = $key['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    $categorylist = [];
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = ucwords($art_category);
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('Other'));
+                                    //echo "<pre>"; print_r($listfinal1); die();
+
+                                    $listFinal = implode(',', $listfinal1);
+                                       
+                                    if(!in_array(17, $category)){
+                                     $return_html .= $listFinal;
+                                   }else if($key['art_skill'] && $key['other_skill']){ 
+                                    $trimdata = $listFinal .','. ucwords($art_othercategory);
+                                    $return_html .= trim($trimdata, ",");
+                                   }
+                                   else{ 
+                                     $return_html .= ucwords($art_othercategory);  
+                                  }
+                                                                                                  
+                                       $return_html .=  '</li>
                                           <li style="display: block;">
                                              <a  class="color-search" href="">';
                                               $country = $this->db->select('country_name')->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
@@ -15512,12 +15538,12 @@ public function get_artistic_name($id=''){
                       </audio>
                     </div>';
                  } 
-                   } elseif (count($artmultiimage) == 2) { 
+                   } elseif (count($artmultiimage) == 2) {  
                                                
-                                                foreach ($artmultiimage as $multiimage) {
+                                                foreach ($artmultiimage as $multiimage) { //echo "<pre>"; print_r($multiimage); die();
                                                                                                   
                     $return_html .= '<div class="two-images">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'>
+                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
                                                         <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
                                                          </a>
                                                     </div>';                                                    
@@ -16002,14 +16028,14 @@ public function get_artistic_name($id=''){
 
             //$search_condition = "(skill LIKE '%$searchskill%')";
             // echo $search_condition;
-            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->category_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->category_id;
 
-            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
 
-           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", other_skill) != ' => '0');
            $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                    
@@ -16068,16 +16094,18 @@ public function get_artistic_name($id=''){
                 $artpost = array_unique($uniquedata, SORT_REGULAR);         
 
         } else {
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            // $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->category_id;
 
 
-            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $search_skill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => 1, 'type' => '1'))->row()->other_category_id;
 
 
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
             $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", art_skill) != ' => '0');
+           $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $other_temp . '", other_skill) != ' => '0');
            $artskillotherpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             

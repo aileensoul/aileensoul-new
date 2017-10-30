@@ -794,7 +794,20 @@
 
             </div>
          </div>
-      
+		<div class="mob-add">
+								<div class="fw text-center pt10 pb5">
+									<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								</div>
+							</div>
          <!--recommen candidate start-->
              <div class="common-form">
             <div class="job-saved-box">
@@ -1105,7 +1118,38 @@
          <!--recommen candidate end-->
       </div>  
           
-             
+        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+					
+							<div class="fw text-center">
+								<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+								<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								<div class="fw pt10">
+									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+								</div>
+							</div>
+							
+						</div>
+					<div class="tablate-add">
+
+                            <script type="text/javascript">
+						  ( function() {
+							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
+							var placement_id = window.CHITIKA.units.length;
+							window.CHITIKA.units.push(unit);
+							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+						}());
+						</script>
+						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                    </div>
       </section>
       <!-- Model Popup Open -->
       <!-- Bid-modal  -->
@@ -1193,7 +1237,7 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
                                         <div class="title">
@@ -1235,7 +1279,7 @@
                                             </p>
 
                                             <p class="pt15 text-center">
-                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                                Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                             </p>
                                         </form>
 
@@ -1392,7 +1436,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-											<p class="next">Next</p>
+											<!--<p class="next">Next</p>-->
                                         </p>
                                     </form>
 									</div>
@@ -1473,8 +1517,8 @@
 <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
-         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <?php
         } else {
             ?>
@@ -1484,6 +1528,7 @@
 
 
  <script>
+     
       var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
       var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
       var base_url = '<?php echo base_url(); ?>';

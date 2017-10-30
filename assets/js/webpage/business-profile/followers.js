@@ -93,7 +93,7 @@ function followuser_two(clicked_id)
         data: 'follow_to=' + clicked_id,
         dataType: 'json',
         success: function (data) {
-            $('#' + 'frfollow' + clicked_id).html(data.follow_html);
+            $('.' + 'fr' + clicked_id).html(data.follow_html);
             $('#' + 'countfollow').html('(' + data.following_count + ')');
             $('#' + 'countfollower').html('(' + data.follower_count + ')');
            // $('#' + 'frfollow' + clicked_id).html(data);
@@ -111,7 +111,7 @@ function unfollowuser_two(clicked_id)
         data: 'follow_to=' + clicked_id,
         dataType: 'json',
         success: function (data) {
-            $('#' + 'frfollow' + clicked_id).html(data.unfollow_html);
+            $('.' + 'fr' + clicked_id).html(data.unfollow_html);
             $('#' + 'countfollow').html('(' + data.unfollowing_count + ')');
             $('#' + 'countfollower').html('(' + data.unfollower_count + ')');
             //            $('#' + 'frfollow' + clicked_id).html(data);
@@ -119,6 +119,48 @@ function unfollowuser_two(clicked_id)
     });
 }
 /* UNFOLLOW USER END */
+
+
+/* FOLLOW USER START */
+function followuser_list_two(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/follow_two",
+        data: 'follow_to=' + clicked_id + '&profile_slug=' + slug_id + '&is_listing=1',
+        dataType: 'json',
+        success: function (data) {
+            //$('.' + 'fr' + clicked_id).html(data.follow_html);
+            $('#' + 'countfollow').html('(' + data.following_count + ')');
+            $('#' + 'countfollower').html('(' + data.follower_count + ')');
+            $('#' + 'frfollow' + clicked_id).html(data.follow_html);
+        }
+    });
+}
+/* FOLLOW USER END */
+
+/* UNFOLLOW USER START */
+function unfollowuser_list_two(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/unfollow_two",
+        data: 'follow_to=' + clicked_id + '&profile_slug=' + slug_id + '&is_listing=1',
+        dataType: 'json',
+        success: function (data) {
+            //$('.' + 'fr' + clicked_id).html(data.unfollow_html);
+            $('#' + 'countfollow').html('(' + data.unfollowing_count + ')');
+            $('#' + 'countfollower').html('(' + data.unfollower_count + ')');
+            $('#' + 'frfollow' + clicked_id).html(data.unfollow_html);
+        }
+    });
+}
+/* UNFOLLOW USER END */
+
+
+
+
+
 $(document).ready(function () {
     $('html,body').animate({scrollTop: 330}, 500);
 });

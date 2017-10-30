@@ -1217,18 +1217,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
 .right-profile{/*width:56px; height:276px; position:fixed; right:0; top:100px; z-index:9;*/}
 .right-profile ul{padding-left:0;}
 .right-profile ul li{list-style-type:none; padding:0; margin:0;}
-.right-profile .right-menu-box{height:56px; display:block; border:1px solid #c2dce7; background-color:#fff; border-bottom:0;}
+.right-profile .right-menu-box{ display:block;  background-color:#fff; }
 .right-profile .sticky-right li:last-child .right-menu-box{border-bottom:1px solid #c2dce7;}
-.right-profile .job-r{background:#fff url("../img/fi1.png") no-repeat scroll 0 0;}
-.right-profile .job-r:hover{background:#1b8ab9 url("../img/fi1_hover.png") no-repeat scroll 0 0; border:1px solid #1b8ab9;}
-.right-profile .rec-r{background:#fff url("../img/fi2.png") no-repeat scroll 0 0;}
-.right-profile .rec-r:hover{background:#1b8ab9 url("../img/fi2_hover.png") no-repeat scroll 0 0; border:1px solid #1b8ab9;}
-.right-profile .free-r{background:#fff url("../img/fi3.png") no-repeat scroll 0 0;}
-.right-profile .free-r:hover{background:#1b8ab9 url("../img/fi3_hover.png") no-repeat scroll 0 0; border:1px solid #1b8ab9;}
-.right-profile .bus-r{background:#fff url("../img/fi4.png") no-repeat scroll 0 0;}
-.right-profile .bus-r:hover{background:#1b8ab9 url("../img/fi4_hover.png") no-repeat scroll 0 0; border:1px solid #1b8ab9;}
-.right-profile .art-r{background:#fff url("../img/fi5.png") no-repeat scroll 0 0;}
-.right-profile .art-r:hover{background:#1b8ab9 url("../img/fi5_hover.png") no-repeat scroll 0 0; border:1px solid #1b8ab9;}
+
+
+.right-profile .right-menu-box{height:56px; display:block; border:1px solid #c2dce7;  background:#fff url('../img/download.png') no-repeat; overflow: hidden; text-align: left; border-bottom:0;}
+.right-profile .right-menu-box:hover{background:#1b8ab9 url('../img/download.png') no-repeat;     border: 1px solid #1b8ab9;}
+.right-profile .job-r{background-position: -0px -0px;}
+.right-profile .job-r:hover{background-position: 0 -54px;}
+.right-profile .rec-r{background-position: 0 -108px;}
+.right-profile .rec-r:hover{background-position: 0 -162px;}
+.right-profile .free-r{background-position: 0 -216px;}
+.right-profile .free-r:hover{background-position: 0 -270px;}
+.right-profile .bus-r{background-position: 0 -324px;}
+.right-profile .bus-r:hover{background-position: 0 -378px;}
+.right-profile .art-r{background-position: 0 -432px;}
+.right-profile .art-r:hover{background-position: 0 -486px;}
+
 
 .custom-box{padding:50px 0; }
 .custom-box.even-custom{border-bottom:none;}

@@ -874,7 +874,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 
 
                     <!-- Bid-modal-2  -->
-                    <div class="modal message-box user-img" id="bidmodal-2" role="dialog">
+                    <div class="modal fade message-box user-img" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         

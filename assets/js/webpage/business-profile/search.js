@@ -1145,10 +1145,13 @@ function followuser_two(clicked_id)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/follow_two",
-        data: 'follow_to=' + clicked_id,
+        data: 'follow_to=' + clicked_id + '&profile_slug=' + slug_id,
+        dataType: 'json',
         success: function (data) {
-
-            $('.' + 'fruser' + clicked_id).html(data);
+            $('.' + 'fruser' + clicked_id).html(data.follow_html);
+            $('.' + 'left_box_following_count').html('(' + data.following_count + ')');
+            $('.' + 'left_box_follower_count').html('(' + data.follower_count + ')');
+            //$('.' + 'fruser' + clicked_id).html(data);
         }
     });
 }
@@ -1162,10 +1165,13 @@ function unfollowuser_two(clicked_id)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/unfollow_two",
-        data: 'follow_to=' + clicked_id,
+        data: 'follow_to=' + clicked_id + '&profile_slug=' + slug_id,
+        dataType: 'json',
         success: function (data) {
-
-            $('.' + 'fruser' + clicked_id).html(data);
+            $('.' + 'fruser' + clicked_id).html(data.unfollow_html);
+            $('.' + 'left_box_following_count').html('(' + data.unfollowing_count + ')');
+            $('.' + 'left_box_follower_count').html('(' + data.unfollower_count + ')');
+            //$('.' + 'fruser' + clicked_id).html(data);
         }
     });
 }

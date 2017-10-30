@@ -1278,7 +1278,7 @@ label.cameraButton input[accept*="camera"] {
     margin-left: -37px;
 }
 .edit_pr_bar .circles {
-    padding-left: 48px;
+    /*padding-left: 48px;*/
 }
 .circles {
     padding-top: 5px;
