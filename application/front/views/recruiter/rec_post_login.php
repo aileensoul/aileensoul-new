@@ -11,6 +11,7 @@
         if (IS_REC_CSS_MINIFY == '0') {
             ?>
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+		   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
             <?php
         } else {
@@ -379,7 +380,7 @@
                 </div>
             </div>
         </header>
-
+	<section>
       <div class="user-midd-section" id="paddingtop_fixed">
       <div class="container">
       <div class="row4">
@@ -561,8 +562,8 @@
               </li>
               <li class="fw"><a class="display_inline" title="Recruiter Name" href="javascript:void(0)"> <?php echo ucfirst(strtolower($post['rec_firstname'])).' '. ucfirst(strtolower($post['rec_lastname'])); ?> </a></li>
                                                 <!-- vishang 14-4 end -->    
-                                            </ul>
-                                        </div>
+         </ul>
+        </div>
                                     </div>
                                     <div class="profile-job-profile-menu">
                                         <ul class="clearfix">
@@ -1150,7 +1151,11 @@
 						</script>
 						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                     </div>
-      </section>
+      
+		</div>
+		</div>
+		</div>
+	  </section>
       <!-- Model Popup Open -->
       <!-- Bid-modal  -->
       <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -1165,9 +1170,9 @@
       </div>
       <!-- Model Popup Close -->
       
-<footer>        
-<?php echo $footer;  ?>
-</footer>
+<!--footer>        
+<?php //echo $footer;  ?>
+</footer-->
 
 <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
@@ -1216,7 +1221,7 @@
                                             </p>
 
                                             <p class="pt15 text-center">
-                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                                Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                             </p>
                                         </form>
 
