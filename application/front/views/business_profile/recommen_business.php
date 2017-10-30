@@ -276,6 +276,7 @@
     var base_url = '<?php echo base_url(); ?>';
     var keyword = '<?php echo $keyword; ?>';
     var keyword1 = '<?php echo $keyword1; ?>';
+    var slug_id = '<?php echo $slug_id; ?>';
 </script>
 <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
     <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>

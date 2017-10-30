@@ -766,7 +766,7 @@ function save_post(abc)
 }
 /* SAVEPOST END */
 /* FOLLOW USER SCRIPT START */
-function followuser_two(clicked_id)
+function followuser(clicked_id)
 {
     $.ajax({
         type: 'POST',
