@@ -1517,8 +1517,8 @@
 <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
-         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <?php
         } else {
             ?>
