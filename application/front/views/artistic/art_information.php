@@ -64,7 +64,7 @@
 
                     <!-- middle section start -->
  
-                    <div class="col-md-6 col-sm-8">
+                <div class="col-md-6 col-sm-8">
 
                      <div class="art-alert">
                         <?php

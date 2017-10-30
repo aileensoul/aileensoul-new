@@ -4150,12 +4150,10 @@ div .comment {
 }
 
 .multi-select-container--positioned .multi-select-menu {
-    /* Avoid border/padding on menu messing with JavaScript width calculation */
     box-sizing: border-box;
 }
 
 .multi-select-container--positioned .multi-select-menu label {
-    /* Allow labels to line wrap when menu is artificially narrowed */
     white-space: normal;
 }
 /***  end select dropdown  ***/

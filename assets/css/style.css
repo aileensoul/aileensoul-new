@@ -1929,6 +1929,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 #popup-form #userimage{padding:13px 20px 0;}
 #upload-demo-one{padding-top:10px; width:350px; display: none}
 
+.no-login header h2{font-weight:normal; line-height:1;}
+.no-login header h2 a{line-height:1;}
 .no-login .modal{border:none; border-radius:0 !important;}
 .no-login .login-frm{padding:15px 0;}
 .no-login .login-frm .title h1{text-align:center;}
@@ -1936,6 +1938,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .no-login .login-frm p{padding-top:5px;}
 .no-login .login form{padding:0;}
 .no-login .modal-content{padding:20px;}
+.no-login .right-header{padding-top:3px;}
 
 
 
@@ -2222,6 +2225,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 }
 
 @media screen and (max-width: 479px) {
+	.db-479{display:block;}
 	.fw-479{width:100%;}
 	ul li,
     ol li {
@@ -2296,7 +2300,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.no-login .fw-479{text-align:center;}
 	.no-login .btn-right.pull-right{float:none !important;}
 	.no-login #paddingtop_fixed{padding-top:105px !important;}
-	.no-login .login-frm .title h1{font-size:22px;}
+	.no-login .login-frm .title h1{font-size:20px; line-height:1.1;}
 	.no-login .login h4{font-size:22px;}
 }
 
