@@ -63,7 +63,7 @@
 
                                     foreach ($category as $catkey => $catval) {
                                        $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
-                                       $categorylist[] = $art_category;
+                                       $categorylist[] = ucwords($art_category);
                                      } 
 
                                     $listfinal1 = array_diff($categorylist, array('other'));
