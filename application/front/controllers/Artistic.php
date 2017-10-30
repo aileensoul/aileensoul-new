@@ -15199,28 +15199,43 @@ public function get_artistic_name($id=''){
                                           <li style="display: block;">';
 
 
-                                          $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $key['art_skill']))->row()->art_category;
-                                          $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
-                                        if( $key['art_skill'] != 17){
-                                              $return_html .= ucwords($art_category); 
-                                        }else{
-                                            $return_html .=  ucwords($art_othercategory);  
-                                        }
+                                        //   $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $key['art_skill']))->row()->art_category;
+                                        //   $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
+                                        // if( $key['art_skill'] != 17){
+                                        //       $return_html .= ucwords($art_category); 
+                                        // }else{
+                                        //     $return_html .=  ucwords($art_othercategory);  
+                                        // }
 
-                                                            
-                                                  //  $aud = $key['art_skill'];
-                                                  //  $aud_res = explode(',', $aud);
-                                                  //  $skill1 = array();
-                                                  //  foreach ($aud_res as $skdata) {
-                                                  //    $cache_time = $this->db->select('skill')->get_where('skill', array('skill_id' => $skdata))->row()->skill;
-                                                  //    $skill1[] = $cache_time;
-                                                  //    }
-                                                  // $listFinal = implode(',', $skill1);
-                                                  
-                                                  //  $return_html .= $listFinal;  
-                                                  
-     
-                                         $return_html .=  '</li>
+
+                                 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $key['other_skill']))->row()->other_category;
+
+                                    $category = $key['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    $categorylist = [];
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = ucwords($art_category);
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('Other'));
+                                    //echo "<pre>"; print_r($listfinal1); die();
+
+                                    $listFinal = implode(',', $listfinal1);
+                                       
+                                    if(!in_array(17, $category)){
+                                     $return_html .= $listFinal;
+                                   }else if($key['art_skill'] && $key['other_skill']){ 
+                                    $trimdata = $listFinal .','. ucwords($art_othercategory);
+                                    $return_html .= trim($trimdata, ",");
+                                   }
+                                   else{ 
+                                     $return_html .= ucwords($art_othercategory);  
+                                  }
+                                                                                                  
+                                       $return_html .=  '</li>
                                           <li style="display: block;">
                                              <a  class="color-search" href="">';
                                               $country = $this->db->select('country_name')->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
@@ -15515,12 +15530,12 @@ public function get_artistic_name($id=''){
                       </audio>
                     </div>';
                  } 
-                   } elseif (count($artmultiimage) == 2) { 
+                   } elseif (count($artmultiimage) == 2) {  
                                                
-                                                foreach ($artmultiimage as $multiimage) {
+                                                foreach ($artmultiimage as $multiimage) { //echo "<pre>"; print_r($multiimage); die();
                                                                                                   
                     $return_html .= '<div class="two-images">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'>
+                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
                                                         <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
                                                          </a>
                                                     </div>';                                                    

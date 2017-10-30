@@ -66,16 +66,18 @@
                                        $categorylist[] = ucwords($art_category);
                                      } 
 
-                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listfinal1 = array_diff($categorylist, array('Other'));
                                     $listFinal = implode(',', $listfinal1);
                                        
                                     if(!in_array(17, $category)){
                                      echo $listFinal;
                                    }else if($artisticdata[0]['art_skill'] && $artisticdata[0]['other_skill']){
-                                    echo $listFinal; echo ","; echo $art_othercategory;
+
+                                    $trimdata = $listFinal .','.ucwords($art_othercategory);
+                                    echo trim($trimdata, ',');
                                    }
                                    else{
-                                     echo $art_othercategory;  
+                                     echo ucwords($art_othercategory);  
                                   }
                                     ?>   
                                 </td>
