@@ -246,6 +246,7 @@ if ($returnpage == '') {
                                     AJAX DATA START FOR RECOMMAND CANDIDATE
                                 </div>-->
                      <?php
+                     if(count($postdata) > 0){
           foreach ($postdata as $post) {
                         ?>
                         <div class="job-contact-frnd ">
@@ -512,7 +513,14 @@ if ($returnpage == '') {
                                      <div class="profile-job-profile-button clearfix">
                                                                     <div class="profile-job-details col-md-12">
                                                                         <ul><li class="job_all_post ">
-                                                                                                                                          </li>
+                                                                                       <li class="job_all_post last_date">
+                                                                        Last Date :
+                       <?php if ($post['post_last_date'] != "0000-00-00") {
+                         echo  date('d-M-Y', strtotime($post['post_last_date']));
+                        } else {
+                         echo   PROFILENA;
+                        } ?>
+                        </li>                                                   </li>
                                                                             <li class="fr">';
                        <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
                  <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="button">Edit</a>
@@ -538,6 +546,18 @@ if ($returnpage == '') {
                         </div>
                         <?php
                     }
+                    }else{ ?>
+                        
+                        <div class="art-img-nn">
+                                            <div class="art_no_post_img">
+                                                <img src="' . base_url() . 'img/job-no.png">
+
+                                           </div>
+                                            <div class="art_no_post_text">
+                                                No  Post Available.
+                                            </div>
+                                        </div>
+                   <?php  }
                     ?>
                                 <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
                             </div>
@@ -608,6 +628,44 @@ if ($returnpage == '') {
                                     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                     var id = '<?php echo $this->uri->segment(3); ?>';
                                     var return_page = '<?php echo $_GET['page']; ?>';
+      
+        
+        
+        
+        function removepopup(id) 
+{
+            $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+            $('#bidmodal').modal('show');
+}
+
+//remove post start
+
+         
+                function remove_post(abc)
+                {
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url +'recruiter/remove_post',
+                        data: 'post_id=' + abc,
+                        success: function (data) {
+
+                            $('#' + 'removepost' + abc).html(data);
+                            $('#' + 'removepost' + abc).removeClass();
+                            var numItems = $('.contact-frnd-post .job-contact-frnd .profile-job-post-detail').length;
+
+                            if (numItems == '0') {
+                            
+                                var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "img/job-no.png'/></div><div class='art_no_post_text'> No Post Available.</div></div>";
+                                $('.contact-frnd-post').html(nodataHtml);
+                            }
+
+                        }
+                    });
+
+                }
+          
         </script>
 
 

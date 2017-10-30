@@ -225,7 +225,8 @@
                 });
                 /* register submit */
                 function submitRegisterForm()
-                {
+                {  
+                    var postid = '';
                     var first_name = $("#first_name").val();
                     var last_name = $("#last_name").val();
                     var email_reg = $("#email_reg").val();
@@ -234,6 +235,7 @@
                     var selmonth = $("#selmonth").val();
                     var selyear = $("#selyear").val();
                     var selgen = $("#selgen").val();
+                    var postid = $(".post_id_login").val();
 
                     var post_data = {
                         'first_name': first_name,
@@ -309,7 +311,7 @@
                             $("#btn1").html('Create an account ...');
                         },
                         success: function (response)
-                        { var userid = response.userid;
+                        {  alert(postid); var userid = response.userid;
                 if (response.okmsg == "ok") { 
                                 $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                                 window.location = base_url +"job/profile/live-post";
@@ -354,6 +356,11 @@
                 $('#login').modal('hide');
                 $('#register').modal('show');
             }
+//            function register_profile_apply(postid) {
+//                $('#login').modal('hide');
+//                $(".post_id_login").val(postid);
+//                $('#register_apply').modal('show');
+//            }
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
             }
@@ -394,7 +401,10 @@ function sendmail(userid){
                 $(".password_login").val('');
             $(".email_login").val('');
             $(".post_id_login").val(postid);
+//            $(".regpostval").val(postid);
+$('.pt15').html(" Don't have an account? <a class='db-479' href='javascript:void(0);' data-toggle='modal' onclick='register_profile(" + postid + ");'>Create an account</a>");
                 $('#login_apply').modal('show');
+               
             }
          //validation for edit email formate form
             $(document).ready(function () {
@@ -489,3 +499,5 @@ alert(postid)
                 /* login submit */
             });
 //For Apply Button Click Process End
+
+// for registration apply only
