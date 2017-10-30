@@ -14,7 +14,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                   ignore: '*:not([name])',
                     rules: {
 
-                        skills: {
+                        "skills[]": {
 
                     required: true,
 
@@ -23,7 +23,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
                     messages: {
 
-                         skills: {
+                         "skills[]": {
 
                     required: "Skill is required.",
                    
@@ -34,6 +34,13 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                    });
 
 
+
+// multiple skill start
+
+$(function(){
+        $('#skills').multiSelect();
+    });
+    
 // other category input open start
 
 $('#skills').change(function other_category(){

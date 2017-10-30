@@ -448,12 +448,12 @@ class Artistic extends MY_Controller {
         {
              redirect('artistic/');
         }
-            $this->form_validation->set_rules('skills', 'Skill', 'required');
+            //$this->form_validation->set_rules('skills', 'Skill', 'required');
             //$this->form_validation->set_rules('artname', 'Speciality in art', 'required');
             //$this->form_validation->set_rules('desc_art', 'Description of your art', 'required');
-            if ($this->form_validation->run() == FALSE) {
-                $this->load->view('artistic/art_information');
-            } else {
+            // if ($this->form_validation->run() == FALSE) {
+            //     $this->load->view('artistic/art_information');
+            // } else {
      
        $other_category = $this->input->post('othercategory');
 
@@ -488,11 +488,14 @@ class Artistic extends MY_Controller {
                  $otherid = '';
             }
 
+             $category = $this->input->post('skills');
+             $category = implode(',' , $category); 
+
          if ($artuserdata[0]['art_step'] == 4) {
 
             $data = array(
                 'art_yourart' => $this->input->post('artname'),
-                'art_skill' => $this->input->post('skills'),
+                'art_skill' =>  $category,
                 'art_desc_art' => $this->input->post('desc_art'),
                 'art_inspire' => $this->input->post('inspire'),
                 'modified_date' => date('Y-m-d', time()),
@@ -501,7 +504,7 @@ class Artistic extends MY_Controller {
         } else {
             $data = array(
                 'art_yourart' => $this->input->post('artname'),
-                'art_skill' => $skills,
+                'art_skill' =>  $category,
                 'art_desc_art' => $this->input->post('desc_art'),
                 'art_inspire' => $this->input->post('inspire'),
                 'modified_date' => date('Y-m-d', time()),
@@ -519,7 +522,7 @@ class Artistic extends MY_Controller {
             redirect('artistic/artistic-information', refresh);
         }
 
-       }
+      // }
     }
 
     public function art_portfolio() {

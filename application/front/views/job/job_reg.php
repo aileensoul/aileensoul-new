@@ -69,7 +69,7 @@
                         <fieldset class="full-width fresher_select main_select_data" >
                            <label for="skills"> Skills<font  color="red">*</font> : </label>
                            <input id="skills2" style="text-transform: capitalize;" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
-                           <?php echo form_error('skills');; ?>
+                           <?php echo form_error('skills'); ?>
                         </fieldset>
                         <fieldset class="full-width main_select_data">
                            <label>Industry <font  color="red">*</font> :</label>
