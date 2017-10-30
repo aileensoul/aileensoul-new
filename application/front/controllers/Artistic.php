@@ -482,7 +482,8 @@ class Artistic extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $artuserdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if($this->input->post('skills') == 17){
+        $checkval = $this->input->post('skills');
+        if(in_array(17, $checkval)){
             $otherid = $insertid;
             }else{
                  $otherid = '';
