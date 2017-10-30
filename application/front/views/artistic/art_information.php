@@ -96,25 +96,22 @@
 
                           <select name="skills[]" id="skills" tabindex="1" autofocus multiple>
                          <!--  <option value="">Ex:- Dancer, Photographer, Writer, Singer, Actor</option> -->
-                          <?php
-                                  if(count($art_category) > 0){
-                                              foreach($art_category as $cnt){ 
+                            <?php                             
+                                      foreach($art_category as $cnt){ 
                                           if($art_category1)
-                                            {
-                                              $category = explode(',' , $art_category1); 
-
-                                              foreach ($category as $key => $catval) {
-                                                                                                      
+                                            { 
+                                              $category = explode(',' , $art_category1);  
                                               ?>
-                                                 <option value="<?php echo $cnt['category_id']; ?>" <?php if($cnt['category_id']==$catval) echo 'selected';?>><?php echo $cnt['art_category'];?></option>              
+                                                 <option value="<?php echo $cnt['category_id']; ?>"
+                                                  <?php if(in_array($cnt['category_id'], $category)) echo 'selected';?>><?php echo $cnt['art_category'];?></option>              
                                                  <?php
-                                                } }
+                                                }
                                                 else
-                                                {
+                                                {  
                                             ?>
                             <option value="<?php echo $cnt['category_id']; ?>"><?php echo $cnt['art_category'];?></option>
                                 <?php    }       
-                                            }}
+                                            }
                                             ?>
                       </select>
                                     
