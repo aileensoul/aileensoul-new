@@ -2249,15 +2249,13 @@ Your browser does not support the audio tag.
 //                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //            }
 
-            $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-
             $likeuser = $post_business_like_user;
             $countlike = $post_business_likes_count - 1;
             $likelistarray = explode(',', $likeuser);
 
             $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
             $return_html .= '<div class = "like_one_other">';
-
+            $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
             if (in_array($userid, $likelistarray)) {
                 $return_html .= "You";
                 $return_html .= "&nbsp;";
@@ -2273,8 +2271,7 @@ Your browser does not support the audio tag.
                 $return_html .= "&nbsp;";
                 $return_html .= "others";
             }
-            $return_html .= '</div>
-</a>
+            $return_html .= '</a></div>
 </div>';
         }
 
@@ -2285,7 +2282,7 @@ Your browser does not support the audio tag.
 //        foreach ($likelistarray as $key => $value) {
 //            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //        }
-        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+        
         $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
         $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2296,7 +2293,7 @@ Your browser does not support the audio tag.
         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
         $return_html .= '<div class = "like_one_other">';
-
+        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
         $return_html .= ucfirst($business_fname1);
         $return_html .= "&nbsp;";
 
@@ -2308,8 +2305,7 @@ Your browser does not support the audio tag.
             $return_html .= "&nbsp;";
             $return_html .= "others";
         }
-        $return_html .= '</div>
-</a>
+        $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">
@@ -11207,9 +11203,9 @@ Your browser does not support the audio tag.
 //                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                    }
 
-                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
                     $return_html .= '<div class = "like_one_other">';
-
+                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+                    
                     /* if ($userid == $value) {
                       $return_html .= "You";
                       $return_html .= "&nbsp;";
@@ -11232,8 +11228,7 @@ Your browser does not support the audio tag.
                         $return_html .= "&nbsp;";
                         $return_html .= "others";
                     }
-                    $return_html .= '</div>
-</a>
+                    $return_html .= '</a></div>
 </div>';
                 }
 
@@ -11245,8 +11240,7 @@ Your browser does not support the audio tag.
 //                foreach ($likelistarray as $key => $value) {
 //                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                }
-                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-
+                
                 $likeuser = $post_business_like_user;
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
@@ -11254,7 +11248,7 @@ Your browser does not support the audio tag.
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
                 $return_html .= '<div class = "like_one_other">';
-
+                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
                 $return_html .= ucfirst($business_fname1);
                 $return_html .= "&nbsp;";
 
@@ -11266,8 +11260,7 @@ Your browser does not support the audio tag.
                     $return_html .= "&nbsp;";
                     $return_html .= "others";
                 }
-                $return_html .= '</div>
-</a>
+                $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">
@@ -12153,7 +12146,6 @@ Your browser does not support the audio tag.
                             $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                         }
 
-                        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
                         $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                         $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -12163,7 +12155,8 @@ Your browser does not support the audio tag.
 
                         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                         $return_html .= '<div class = "like_one_other">';
-
+                        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
+                        
                         if ($userid == $value) {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
@@ -12179,8 +12172,7 @@ Your browser does not support the audio tag.
                             $return_html .= "&nbsp;";
                             $return_html .= "others";
                         }
-                        $return_html .= '</div>
-</a>
+                        $return_html .= '</a></div>
 </div>';
                     }
 
@@ -12193,7 +12185,6 @@ Your browser does not support the audio tag.
                     foreach ($likelistarray as $key => $value) {
                         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                     }
-                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
                     $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                     $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -12204,7 +12195,8 @@ Your browser does not support the audio tag.
                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
                     $return_html .= '<div class = "like_one_other">';
-
+                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
+                    
                     $return_html .= ucfirst($business_fname1);
                     $return_html .= "&nbsp;";
 
@@ -12216,8 +12208,7 @@ Your browser does not support the audio tag.
                         $return_html .= "&nbsp;";
                         $return_html .= "others";
                     }
-                    $return_html .= '</div>
-</a>
+                    $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">
@@ -14303,9 +14294,9 @@ Your browser does not support the audio tag.
 //                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                    }
 
-                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
                     $return_html .= '<div class = "like_one_other">';
-
+                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+                    
                     /* if ($userid == $value) {
                       $return_html .= "You";
                       $return_html .= "&nbsp;";
@@ -14328,8 +14319,7 @@ Your browser does not support the audio tag.
                         $return_html .= "&nbsp;";
                         $return_html .= "others";
                     }
-                    $return_html .= '</div>
-</a>
+                    $return_html .= '</a></div>
 </div>';
                 }
 
@@ -14341,8 +14331,7 @@ Your browser does not support the audio tag.
 //                foreach ($likelistarray as $key => $value) {
 //                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                }
-                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-
+                
                 $likeuser = $post_business_like_user;
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
@@ -14350,6 +14339,7 @@ Your browser does not support the audio tag.
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
                 $return_html .= '<div class = "like_one_other">';
+                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
 
                 $return_html .= ucfirst($business_fname1);
                 $return_html .= "&nbsp;";
@@ -14362,8 +14352,7 @@ Your browser does not support the audio tag.
                     $return_html .= "&nbsp;";
                     $return_html .= "others";
                 }
-                $return_html .= '</div>
-</a>
+                $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">
