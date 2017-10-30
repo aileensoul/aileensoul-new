@@ -700,7 +700,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     <div class="post-design-menu">
         <ul class="col-md-6">
             <li class="likepost' . $row['business_profile_post_id'] . '">
-                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="post_like(this.id)">';
+                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="login_profile();">';
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
                 $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -726,7 +726,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<a class="ripple like_h_w" onClick="commentall(this.id)" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
+                $return_html .= '<a class="ripple like_h_w" onClick="login_profile();" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
                 $return_html .= '</i> 
                 </a>
             </li> 
@@ -887,7 +887,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 </div>
                 <div class="art-comment-menu-design"> 
                     <div class="comment-details-menu" id="likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
-                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="comment_like1(this.id)">';
+                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="login_profile();">';
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
                         $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
