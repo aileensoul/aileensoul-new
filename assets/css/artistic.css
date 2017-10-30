@@ -4234,7 +4234,7 @@ div .comment {
         left: 0;
     }
     .post_detailbox {
-        padding: 0px 15px;
+       /* padding: 0px 15px;*/
     }
     #InboxContainer::before {
         right: 15px;
