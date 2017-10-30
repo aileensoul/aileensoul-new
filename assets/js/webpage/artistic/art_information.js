@@ -63,6 +63,7 @@ function removevalidation(){
 }
 
 function validation_other(event){ 
+  
   $('#othercategory_error').remove(); 
        event.preventDefault();
        var strUser = $('#skills').val();
