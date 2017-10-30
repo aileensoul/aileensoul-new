@@ -55,9 +55,19 @@
                                 <td class="business_data_td1"><i class="fa fa-trophy" aria-hidden="true"></i></td>
                                 <td class="business_data_td2">
                                     <?php
-                                    $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $artisticdata[0]['art_skill']))->row()->art_category;
+                                   
                                     $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $artisticdata[0]['other_skill']))->row()->other_category;
-                                    if( $artisticdata[0]['art_skill'] != 17){
+
+                                    $category = $artisticdata[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $artisticdata[0]['art_skill']))->row()->art_category;
+                                       
+                                     } 
+
+
+                                    if($artisticdata[0]['art_skill'] != 17){
                                       echo $art_category; 
                                    }else{
                                      echo $art_othercategory;  
