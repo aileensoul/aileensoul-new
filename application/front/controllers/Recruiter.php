@@ -2218,8 +2218,10 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
                                                                     <li class="fr date_re">';
                         $rec_post .= 'Created Date :' . date('d-M-Y', strtotime($post['created_date']));
                         $rec_post .= '</li>
-                                                                    <li class="">
-                                                                        <a class="post_title" href="javascript:void(0)" title="Post Title">';
+                                                                    <li class="">';
+//                                                                        <a class="post_title" href="javascript:void(0)" title="Post Title">';
+                 $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . $post['user_id'] . '/' . $post['post_id'] .  '" title="Post Tit44le">'; 
+
 
                         $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
                         if ($cache_time) {
@@ -4623,7 +4625,12 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
        $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
       
      //  echo '<pre>'; print_r($this->data); die();
+       if($this->session->userdata('aileenuser')){
+       $this->load->view('recruiter/recpost_live',$this->data);
+       }else{
        $this->load->view('recruiter/rec_post_login',$this->data);
+         
+       }
     }
     //DELETE LOGO START
 public function delete_logo()
