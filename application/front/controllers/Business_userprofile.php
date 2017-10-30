@@ -605,8 +605,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if (count($businessmultiimage) == 1) {
 
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                    //$allowed = VALID_IMAGE;
                     $allowespdf = array('pdf');
-                    $allowesvideo = array('mp4', 'webm');
+                    $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                     $allowesaudio = array('mp3');
                     $filename = $businessmultiimage[0]['file_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
