@@ -82,7 +82,7 @@ jQuery(document).ready(function ($) {
 //                    $('#progress_div').fadeOut('5000').remove();
             document.getElementById("progress_div").style.display = "none";
             $(".business-all-post").prepend(response.responseText);
-
+            $('video, audio').mediaelementplayer();
             GetBusPhotos();
             GetBusVideos();
             GetBusAudios();
