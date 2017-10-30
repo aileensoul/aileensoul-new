@@ -15,6 +15,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile.min.css?ver=' . time()); ?>">
             <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');      ?>" />-->
         <?php } ?>
+            
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -448,21 +449,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             }
                             ?>
                             <div class="fw">
-                                <!--                                <div class='progress' id="progress_div" style="display: none">
-                                                                    <div class='bar' id='bar'></div>
-                                                                    <div class='percent' id='percent'>0%</div>
-                                                                </div>-->
-
-                                <div class="bs-example">
-                                    <div class="progress progress-striped" id="progress_div">
-                                        <div class="progress-bar" style="width: 0%;">
-                                            <span class="sr-only">0%</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="business-all-post">
-                                    <!--                                    <div class="nofoundpost"> 
-                                                                        </div>-->
                                 </div>
                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <!-- middle section start -->
@@ -476,28 +464,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
         </section>
 
-        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <span class="mes">
-                            <div id="popup-form">
-                                <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                <input type="hidden" name="hitext" id="hitext" value="5">
-                                <!--<input type="submit" name="cancel3" id="cancel3" value="Cancel">-->
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                <div class="popup_previred">
-                                    <img id="preview" src="#" alt="your image" />
-                                </div>
-                                <?php echo form_close(); ?>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="modal fade message-box" id="likeusermodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -753,7 +719,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
+        <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
         <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());         ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
