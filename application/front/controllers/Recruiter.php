@@ -4622,7 +4622,7 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
        $contition_array = array('post_id !=' => $postid, 'status' => 1, 'is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
        $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
       
-       
+     //  echo '<pre>'; print_r($this->data); die();
        $this->load->view('recruiter/rec_post_login',$this->data);
     }
     //DELETE LOGO START

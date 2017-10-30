@@ -1392,7 +1392,7 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-											<p class="next">Next</p>
+											<!--<p class="next">Next</p>-->
                                         </p>
                                     </form>
 									</div>
@@ -1484,6 +1484,7 @@
 
 
  <script>
+     
       var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
       var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
       var base_url = '<?php echo base_url(); ?>';
