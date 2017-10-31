@@ -63,12 +63,12 @@
                     <div class="" id="row2">
 <?php
 $userid = $this->session->userdata('aileenuser');
-if ($this->uri->segment(3) == $userid) {
+if ($recliveid == $userid) {
     $user_id = $userid;
-} elseif ($this->uri->segment(3) == "") {
+} elseif ($recliveid == "") {
     $user_id = $userid;
 } else {
-    $user_id = $this->uri->segment(3);
+    $user_id = $recliveid;
 }
 
 $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');

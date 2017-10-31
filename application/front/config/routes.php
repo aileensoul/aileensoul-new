@@ -265,6 +265,9 @@ $route['recruiter/save-candidate'] = "recruiter/save_candidate";
 $route['recruiter/post'] = "recruiter/rec_post";
 $route['recruiter/post/(:any)'] = "recruiter/rec_post/$1";
 
+$route['recruiter/jobpost'] = "recruiter/live_post";
+$route['recruiter/jobpost/(:any)'] = "recruiter/live_post/$1";
+
 $route['recruiter/add-post'] = "recruiter/add_post";
 
 $route['recruiter/post-insert'] = "recruiter/add_post";

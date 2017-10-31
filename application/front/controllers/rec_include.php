@@ -24,6 +24,7 @@ $this->data['job_header2_border'] = $this->load->view('job/job_header2_border', 
 
 $id = $this->uri->segment(3);
 
+
 if (($id == $userid || $id == '') || $this->uri->segment(2) == 'edit-post') {
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 're_status' => '1');
 $data = "rec_id,rec_firstname,rec_lastname,rec_email,re_status,rec_phone,re_comp_name,re_comp_email,re_comp_site,re_comp_url,re_comp_address,re_comp_country,re_comp_state,re_comp_city,user_id,re_comp_profile,re_comp_sector,	re_comp_activities,re_step,re_comp_phone,recruiter_user_image,profile_background,profile_background_main,designation,comp_logo";

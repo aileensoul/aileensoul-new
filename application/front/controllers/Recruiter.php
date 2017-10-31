@@ -2219,8 +2219,31 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
                         $rec_post .= 'Created Date :' . date('d-M-Y', strtotime($post['created_date']));
                         $rec_post .= '</li>
                                                                     <li class="">';
-//                                                                        <a class="post_title" href="javascript:void(0)" title="Post Title">';
-                 $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . $post['user_id'] . '/' . $post['post_id'] .  '" title="Post Tit44le">'; 
+                        
+                    $cache_time = $this->db->get_where('job_title', array(
+                                'title_id' => $post['post_name']
+                            ))->row()->name;
+
+                    if ($cache_time) {
+                        $cache_time1 = $cache_time;
+                    } else {
+                        $cache_time1 = $post['post_name'];
+                    }
+
+                    $text = str_replace(" ", "-", $cache_time1);
+                    $text = preg_replace("/[.!$#%()]+/i", "", $text);
+                    $text=strtolower($text);
+
+                    $cache_time1 = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+
+                    $cityname = str_replace(" ", "-", $cache_time1);
+                    $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
+                    $cityname=strtolower($cityname);
+                    
+          
+    // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/ri' . $post['user_id'] . '/po' . $post['post_id'] . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
+    // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . base64_encode($post['user_id']) . '/' . base64_encode($post['post_id']) . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
+     $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . '-vacancy-in-'.$cityname . '-' . $post['user_id'] . '-' .  $post['post_id'] . '" title="Post Tit44le">'; 
 
 
                         $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
@@ -4617,6 +4640,15 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
 //add other_industry into database End 
     
     public function live_post($userid,$postid,$posttitle){
+  
+     $segment3 = explode('-', $this->uri->segment(3)); 
+     $slugdata = array_reverse($segment3);
+     $postid=$slugdata[0];
+    $this->data['recliveid'] =  $userid=$slugdata[1];
+   
+     $contition_array = array('user_id' => $userid, 'is_delete' => 0, 're_status' => 1);
+$data = "rec_id,rec_firstname,rec_lastname,rec_email,re_status,rec_phone,re_comp_name,re_comp_email,re_comp_site,re_comp_url,re_comp_address,re_comp_country,re_comp_state,re_comp_city,user_id,re_comp_profile,re_comp_sector,	re_comp_activities,re_step,re_comp_phone,recruiter_user_image,profile_background,profile_background_main,designation,comp_logo";
+$recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
        
         $join_str[0]['table'] = 'recruiter';
         $join_str[0]['join_table_id'] = 'recruiter.user_id';
