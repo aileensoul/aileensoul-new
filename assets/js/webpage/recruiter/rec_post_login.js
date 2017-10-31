@@ -121,7 +121,7 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.data == "ok") {
-                    alert("login");
+                  //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     window.location = base_url + "job/home/live-post";
                 } else if (response.data == "password") {
@@ -313,7 +313,7 @@ $(document).ready(function () {
             },
             success: function (response)
             {
-                alert(postid);
+               // alert(postid);
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
                     if (postid == '') {
@@ -462,7 +462,7 @@ $(document).ready(function () {
         var email_login = $("#email_login_apply").val();
         var password_login = $("#password_login_apply").val();
         var postid = $("#password_login_postid").val();
-        alert(postid)
+       // alert(postid)
         var post_data = {
             'email_login': email_login,
             'password_login': password_login,
@@ -493,7 +493,7 @@ $(document).ready(function () {
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
                             success: function (data)
                             {
-                                alert("KHYTAI");
+                             //   alert("KHYTAI");
                                 window.location = base_url + "job/home/live-post";
                             }
                         });
@@ -504,7 +504,7 @@ $(document).ready(function () {
                     }
 
                 } else if (response.data == "password") {
-                    alert("hi");
+                  //  alert("hi");
                     $("#errorpass_apply").html('<label for="email_login_apply" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login_apply").classList.add('error');
                     document.getElementById("password_login_apply").classList.add('error');
