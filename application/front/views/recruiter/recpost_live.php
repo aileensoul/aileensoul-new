@@ -93,7 +93,7 @@ if (file_exists($image_ori) && $image[0]['profile_background'] != '') {
                 </div>
             </div>
             <div class="container tablate-container art-profile">    
-<?php if ($returnpage == '') { ?>
+<?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                     <div class="upload-img">
                         <label class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
@@ -186,15 +186,15 @@ if ($recdata[0]['user_id'] == $userid) {
                                 </ul>
                                 <div class="flw_msg_btn fr">
                                     <ul>
-<?php if ($this->uri->segment(3) != "" && $this->uri->segment(3) != $userid) { ?>
+<?php if ($this->uri->segment(3) != "" && $this->session->userdata('aileenuser') != $recliveid) { ?>
                                             <li>
                                             <?php
                                             $returnpage = $_GET['page'];
-                                            if ($returnpage == "job") {
+                                            if ($this->session->userdata('aileenuser') != $recliveid) {
                                                 ?>
-                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/1/2/' . $recliveid); ?>">Message</a>
                                                 <?php } else { ?>
-                                                    <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>">Message</a>
+                                                    <!--<a href="<?php echo base_url('chat/abc/2/1/' . $recliveid); ?>">Message</a>-->
                                                 <?php } ?>
                                             </li>  <?php } ?>
                                     </ul>
@@ -204,7 +204,7 @@ if ($recdata[0]['user_id'] == $userid) {
                     <!-- menubar -->    
                 </div>                       
             </div> <div  class="add-post-button mob-block">
-<?php if ($returnpage == '') { ?>
+<?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                     <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                 <?php } ?>
             </div>
@@ -231,7 +231,7 @@ if ($returnpage == '') {
                         ?>
                     </div>
                     <div  class="add-post-button">
-<?php if ($returnpage == '') { ?>
+<?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                             <a class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                         <?php } ?>
                     </div>
@@ -521,6 +521,7 @@ if ($returnpage == '') {
                          echo   PROFILENA;
                         } ?>
                         </li>                                                   </li>
+                                                                       <?php if($this->session->userdata('aileenuser') == $recliveid){?>
                                                                             <li class="fr">';
                        <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
                  <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="button">Edit</a>
@@ -536,6 +537,7 @@ if ($returnpage == '') {
 
                      <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="button">Applied  Candidate : <?php echo  $countt ?></a>
                                                                     </li>
+                                                                    <?php } ?>
                                                                         </ul>
                                                                     </div>
 
