@@ -209,6 +209,7 @@
                 color: #1b8ab9;
             }
             /*second*/
+			.login{width:100%;}
 
         </style>
     </head>
@@ -216,10 +217,10 @@
         <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-3 col-xs-4 fw-479">
+                    <div class="col-md-4 col-sm-3 col-xs-4 fw-479 left-header">
                         <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
                     </div>
-                    <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
+                    <div class="col-md-8 col-sm-9 col-xs-8 fw-479 right-header">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
                             <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
@@ -513,9 +514,9 @@
 
 
                         <!-- Login  -->
-                        <div class="modal fade" id="login" role="dialog">
+                        <div class="modal fade login" id="login" role="dialog">
                             <div class="modal-dialog">
-                                <div class="modal-content login">
+                                <div class="modal-content">
                                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                                     <div class="modal-body">
                                         <div class="col-sm-12 right-main">
@@ -559,7 +560,7 @@
                                                         </p>
 
                                                         <p class="pt15 text-center">
-                                                            Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                                            Don't have an account? <a href="javascript:void(0);" class="db-479" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                                         </p>
                                                     </form>
 
@@ -575,9 +576,9 @@
                         <!-- Login -->
 
                         <!-- model for forgot password start -->
-                        <div class="modal fade" id="forgotPassword" role="dialog">
+                        <div class="modal fade login" id="forgotPassword" role="dialog">
                             <div class="modal-dialog">
-                                <div class="modal-content login">
+                                <div class="modal-content">
                                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                                     <div class="modal-body">
                                         <div class="col-sm-12 right-main">
@@ -624,9 +625,9 @@
 
                         <!-- register -->
 
-                        <div class="modal fade register-model" id="register" role="dialog">
+                        <div class="modal login fade register-model" id="register" role="dialog">
                             <div class="modal-dialog">
-                                <div class="modal-content login">
+                                <div class="modal-content">
                                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                                     <div class="modal-body">
                                         <div class="clearfix">

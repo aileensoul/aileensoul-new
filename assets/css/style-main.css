@@ -1579,7 +1579,7 @@ body.cover{padding-bottom:60px;}
 .mob-add{display:none;}
 /***  end add  ***/
 .header-login .btn-right a:focus{outline:none; background:none !important; color:#fff !important;}
-
+.no-login .modal .forgot_password .form-control.error{border:none; border-bottom:1px solid #ff000;}
 
 /***  media query  ***/
 @media screen and (min-height: 540px){

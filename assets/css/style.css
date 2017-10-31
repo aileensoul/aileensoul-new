@@ -1928,6 +1928,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .banner #row1 .col-md-12{padding:0;}
 #popup-form #userimage{padding:13px 20px 0;}
 #upload-demo-one{padding-top:10px; width:350px; display: none}
+body.modal-open{padding-left:0 !important;}
 
 .no-login header h2{font-weight:normal; line-height:1;}
 .no-login header h2 a{line-height:1;}
@@ -1946,10 +1947,16 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .no-login .dob .error{bottom:-25px;}
 .no-login .gender-custom .error{bottom:-25px;}
 .no-login .job-saved-box{margin-bottom:15px;}
+.no-login .job-post-detail{margin-bottom:0;}
+
 
 
 
 /***  media query  ***/
+@media screen and (max-height: 540px){
+    .no-login .modal-dialog{margin-bottom:20px !important; height:auto !important;}
+	
+}
 @media screen and (min-height: 540px){
     .no-login .modal-content {margin:0 auto;}
 	
@@ -2171,7 +2178,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.no-login .login .form-group select{margin-right:5px; width:50px;}
 	.no-login .btn-right{padding-top:0; text-align:right;}
 	.no-login .right-header{padding-top:0;}
-	.modal-dialog{margin-bottom:100px !important;}
+	
 }
 
 @media screen and (max-width: 640px) {
@@ -2314,6 +2321,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	.no-login .login-frm .title h1{font-size:20px; line-height:1.1;}
 	.no-login .login h4{font-size:22px;}
 	.no-login .btn-right{padding-top:3px; text-align:center;}
+	.no-login .modal.in .modal-dialog{margin:auto;}
 }
 
 @media screen and (max-width: 360px) {

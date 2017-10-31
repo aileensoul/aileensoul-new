@@ -216,6 +216,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 color: #1b8ab9;
             }
             /*second*/
+			.login{width:100%;}
 
         </style>
     </head>
@@ -253,12 +254,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     </a>
                 </div>
             </div>
-            <div class="user-midd-section">
-                <div class="container">
-                    <div class="row">
-                    </div>
-                </div>
-            </div>
+            
             <div class="user-midd-section">
                 <div class="container">
                     <div class="row">
@@ -440,12 +436,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </div>
 
         <!-- Login  -->
-        <div class="modal fade" id="login" role="dialog">
+        <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content login">
+                <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
                                     <div class="title">
@@ -486,7 +482,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 
@@ -502,9 +498,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- Login -->
 
         <!-- model for forgot password start -->
-        <div class="modal fade" id="forgotPassword" role="dialog">
+        <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content login">
+                <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="col-sm-12 right-main">
@@ -551,9 +547,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
         <!-- register -->
 
-        <div class="modal fade register-model" id="register" role="dialog">
+        <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content login">
+                <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="clearfix">
