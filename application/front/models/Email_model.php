@@ -1,23 +1,52 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Email_model extends CI_Model {
-    
-    function __construct()
-    {
+
+    function __construct() {
         parent::__construct();
     }
 
-    
-    
+    function send_email() {
+        $this->load->library('email');
+
+        $config['protocol'] = PROTOCOL;
+        $config['smtp_host'] = SMTP_HOST;
+        $config['smtp_port'] = SMTP_PORT;
+        $config['smtp_user'] = SMTP_USER;
+        $config['smtp_pass'] = SMTP_PASS;
+        $config['charset'] = CHARSET;
+        $config['mailtype'] = MAILTYPE;
+        $config['newline'] = NEWLINE;
+        
+        $this->email->from('noreply@aileensoul.com', 'Aileensoul');
+
+        $this->email->to($to_email);
+        //$this->email->reply_to('no-replay@aileensoul.com', 'Explendid Videos');
+        $this->email->subject($subject);
+        $this->email->message($mail_html);
+        $this->email->set_mailtype("html");
+        $this->email->send();
+
+        //echo '<pre>'; print_r($this->email->print_debugger()); die();
+        if ($this->email->send()) {
+            return true;
+        } else {  
+            return FALSE;
+        }
+    }
+
     function sendEmail($app_name = '', $app_email = '', $to_email = '', $subject = '', $mail_body = '', $cc = '', $bcc = '') {
 
 //echo "<pre>"; print_r($to_email); die();
-         //Loading E-mail Class
-         $this->load->library('email');
+        //Loading E-mail Class
+        $this->load->library('email');
 
-         $emailsetting = $this->common->select_data_by_condition('email_settings', array(), '*');
+        $emailsetting = $this->common->select_data_by_condition('email_settings', array(), '*');
         //echo '<pre>';        print_r($emailsetting); die();
-         $mail_html = '<!DOCTYPE html>
+        $mail_html = '<!DOCTYPE html>
 <html>
 <head>
 <title>Mail</title>
@@ -62,8 +91,8 @@ class Email_model extends CI_Model {
             <tr>
                 <td style="border-bottom:1px solid #ddd;">
                     <table width="100%" cellpadding="0" cellspacing="0">';
-                        $mail_html .= $mail_body;
-                       $mail_html .= '</table>
+        $mail_html .= $mail_body;
+        $mail_html .= '</table>
                 </td>
             </tr>
             <tr>
@@ -71,27 +100,27 @@ class Email_model extends CI_Model {
                     <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="'.base_url() .'img/m1.png">
+                                <img src="' . base_url() . 'img/m1.png">
                                 <h3 style="font-size:13px; font-family:arial;">Job Profile</h3>
                                 <p style="font-size:9px;">Find best job options and connect with recruiters.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="'.base_url() .'img/m2.png">
+                                <img src="' . base_url() . 'img/m2.png">
                                 <h3 style="font-size:13px; font-family:arial;">Recruiter Profile</h3>
                                 <p style="font-size:9px;">Hire quality employees here.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="'.base_url() .'img/m3.png">
+                                <img src="' . base_url() . 'img/m3.png">
                                 <h3 style="font-size:13px; font-family:arial; ">Freelance Profile</h3>
                                 <p style="font-size:9px;">Hire freelancers and also find freelance work.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="'.base_url() .'img/m4.png">
+                                <img src="' . base_url() . 'img/m4.png">
                                 <h3 style="font-size:13px; font-family:arial;">Business Profile</h3>
                                 <p style="font-size:9px;">Grow your business network.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
-                                <img src="'.base_url() .'img/m5.png">
+                                <img src="' . base_url() . 'img/m5.png">
                                 <h3 style="font-size:13px; font-family:arial;">Artistic Profile</h3>
                                 <p style="font-size:9px;">Show your art & talent to the world.</p>
                             </td>
@@ -112,8 +141,8 @@ class Email_model extends CI_Model {
 </body>
 </html>';
 
-      //   echo $mail_html; 
-         //Loading E-mail Class
+        //   echo $mail_html; 
+        //Loading E-mail Class
 //         $config['protocol'] = "smtp";
 //         $config['smtp_host'] = $emailsetting[0]['host_name'];
 //         $config['smtp_port'] = $emailsetting[0]['out_going_port'];
@@ -123,7 +152,7 @@ class Email_model extends CI_Model {
 //         $config['charset'] = "utf-8";
 //         $config['mailtype'] = "html";
 //         $config['newline'] = "\r\n";
-         
+
         $config['protocol'] = "SMTP";
         //$config['smtp_host'] = "email-smtp.us-west-2.amazonaws.com";
         $config['smtp_host'] = "Smtp.gmail.com";
@@ -140,12 +169,10 @@ class Email_model extends CI_Model {
 //          $this->email->cc($cc);
 //         $this->email->bcc($bcc);
         //    $this->email->cc($cc);
-
 //         $this->email->subject($subject);
 //         $this->email->message(html_entity_decode($mail_body));
         //$to = "falguni.aileensoul@gmail.com";
         //$sub = "khytiii";
-
         //$this->email->from('aileensoul@gmail.com', 'Aileensoul');
         $this->email->from('noreply@aileensoul.com', 'Aileensoul');
 
@@ -155,26 +182,24 @@ class Email_model extends CI_Model {
         $this->email->message($mail_html);
         $this->email->set_mailtype("html");
         $this->email->send();
-   
+
 //echo '<pre>'; print_r($this->email->print_debugger()); die();
-         if ($this->email->send()) {
+        if ($this->email->send()) {
             //echo "111"; die();
-             return true;
-         } else {  //echo "222"; die();
-             return FALSE;
+            return true;
+        } else {  //echo "222"; die();
+            return FALSE;
         }
     }
 
-
-    function do_email($msg=NULL, $sub=NULL, $to=NULL, $from=NULL, $attachment_url=NULL)
-    { 
-         //echo $msg; echo "<br/>";
-               //   echo $sub;  echo "<br/>";
-               //   echo $to; echo "<br/>";
-               //   echo $from; die();
-       $this->load->library('email');
+    function do_email($msg = NULL, $sub = NULL, $to = NULL, $from = NULL, $attachment_url = NULL) {
+        //echo $msg; echo "<br/>";
+        //   echo $sub;  echo "<br/>";
+        //   echo $to; echo "<br/>";
+        //   echo $from; die();
+        $this->load->library('email');
         /* THIS CODE IS COMMENTED */
-       
+
 //        $config['protocol'] = "SMTP";
 //        $config['smtp_host'] = "SMTP.gmail.com";
 //        $config['smtp_port'] = "465";
@@ -183,9 +208,9 @@ class Email_model extends CI_Model {
 //        $config['charset'] = "utf-8";
 //        $config['mailtype'] = "html";
 //        $config['newline'] = "\r\n";
-       
-       /* THIS CODE IS COMMENTED */ 
- 
+
+        /* THIS CODE IS COMMENTED */
+
         $config['protocol'] = "SMTP";
         $config['smtp_host'] = "Smtp.gmail.com";
         $config['smtp_port'] = "25";
@@ -200,21 +225,19 @@ class Email_model extends CI_Model {
         // $system_name    =   $this->db->get_where('settings' , array('type' => 'system_name'))->row()->description;
         // if ($from == NULL)
         //     $from       =   $this->db->get_where('settings' , array('type' => 'system_email'))->row()->description;
-        $system_name ="aileensoul";
+        $system_name = "aileensoul";
         // attachment
         //if ($attachment_url != NULL)
         //  $this->email->attach( $attachment_url );
-            
-         $this->email->from('aileensoul@gmail.com', 'Aileensoul');
+
+        $this->email->from('aileensoul@gmail.com', 'Aileensoul');
         $this->email->to($to);
         $this->email->reply_to('no-replay@aileensoul.com', 'Explendid Videos');
         $this->email->subject($sub);
         $this->email->message($msg);
         $this->email->send();
-   
+
         //echo $this->email->print_debugger(); die();
     }
-    
 
 }
-
