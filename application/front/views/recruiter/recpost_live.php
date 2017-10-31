@@ -20,7 +20,7 @@
         <?php echo $header; ?>
         <?php
         $returnpage = $_GET['page'];
-        if ($returnpage == 'job') {
+        if ($this->session->userdata('aileenuser') != $recliveid) {
             echo $job_header2_border;
         } elseif ($recdata[0]['re_step'] == 3) {
             echo $recruiter_header2_border;
@@ -67,9 +67,9 @@ if ($recliveid == $userid) {
     $user_id = $userid;
 } elseif ($recliveid == "") {
     $user_id = $userid;
-} else {
+} else { 
     $user_id = $recliveid;
-}
+} 
 
 $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');
 $image = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -131,7 +131,7 @@ if (file_exists($imageee) && $recdata[0]['recruiter_user_image'] != '') {
 
                     <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
-                        <a href="javascript:void(0);" title="<?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?>"><h3><?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?></h3></a>
+                        <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
                         <div class="profile-text" >
 <?php
 if ($returnpage == '') {

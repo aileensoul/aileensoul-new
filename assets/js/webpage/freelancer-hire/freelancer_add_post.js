@@ -516,3 +516,12 @@ $("form").submit(function () {
         }
     }
 });
+//ALL POPUP CLOSE USING ESC START
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
+        $('#bidmodal2').modal('hide');
+         $('#other_field').val('');
+    }
+});
+//ALL POPUP CLOSE USING ESC END

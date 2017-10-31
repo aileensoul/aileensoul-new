@@ -245,7 +245,7 @@ input[type="submit"] {
     -webkit-appearance: button;
     cursor: pointer;
     border-radius: 3px;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
 }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -1946,6 +1946,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 #popup-form #userimage{padding:13px 20px 0;}
 #upload-demo-one{padding-top:10px; width:350px; display: none}
 body.modal-open{padding-left:0 !important;}
+.optional-custom .optional{float: none; padding-left: 10px;}
 .optional{font-size:12px; float:right;}
 
 
@@ -1953,11 +1954,10 @@ body.modal-open{padding-left:0 !important;}
 .no-login header h2 a{line-height:1;}
 .no-login .modal{border:none; border-radius:0 !important;}
 .no-login .login-frm{padding:5px 0 15px;}
-.no-login .login-frm .title h1{text-align:center;}
+.no-login .title h1{text-align:center; margin-top:20px; line-height:1.2;}
 .no-login .login-frm .form-group{margin-bottom:15px;}
-.no-login .login-frm p{padding-top:5px;}
-.no-login .login form{padding: 10px 0 0;}
-.no-login .modal-content{padding:20px;}
+.no-login .login form#login_form{padding: 16px 60px 15px;}
+.no-login .modal-content{padding:0px;}
 .no-login .right-header{padding-top:3px;}
 .no-login .form-group label.error {
     padding-left: 0 !important;
@@ -1967,6 +1967,9 @@ body.modal-open{padding-left:0 !important;}
 .no-login .gender-custom .error{bottom:-25px;}
 .no-login .job-saved-box{margin-bottom:15px;}
 .no-login .job-post-detail{margin-bottom:0;}
+.no-login .login p{font-size:14px; margin-bottom:9px;}
+.no-login .btn1{padding: 5px 20px; font-size:16px !important;}
+.no-login .inner-form1{width:560px;}
 
 
 
@@ -2186,17 +2189,17 @@ body.modal-open{padding-left:0 !important;}
 	/* cover page */
 	.por_content ul li .pro-text{width:85% !important;}
 	.common-form_border h3{display:none;}
-	.modal.in .modal-dialog{width:80%;}
+	.modal.in .modal-dialog{width:100%; padding:0 15px;}
 	.padd_set .change-password{padding: 0;}
 	.padd_set{padding:35px 0;}
 	.people-list {border-right: none;}
 	.change-password-box #basicinfo{padding:10px;}
-	.no-login .login-frm .title h1{font-size:26px;}
 	.no-login .login h4{padding:0; font-size:26px;}
 	.no-login .dob .d_o_b{width:100%; margin-bottom:0; margin-top:10px;}
 	.no-login .login .form-group select{margin-right:5px; width:50px;}
 	.no-login .btn-right{padding-top:0; text-align:right;}
 	.no-login .right-header{padding-top:0;}
+	.no-login .login p.pt15{padding-top:0;}
 	
 }
 
@@ -2285,7 +2288,7 @@ body.modal-open{padding-left:0 !important;}
 		padding-right: 20px;
     }
 	.modal.in .modal-dialog {
-        width: 90%;
+       /* width: 90%;*/
         margin: 20px auto;
     }
 	#row2 img{height: 200px;}
@@ -2341,6 +2344,7 @@ body.modal-open{padding-left:0 !important;}
 	.no-login .login h4{font-size:22px;}
 	.no-login .btn-right{padding-top:3px; text-align:center;}
 	.no-login .modal.in .modal-dialog{margin:auto;}
+	.no-login .login form#login_form{padding:16px 20px 15px;}
 }
 
 @media screen and (max-width: 360px) {

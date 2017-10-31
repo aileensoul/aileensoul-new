@@ -132,6 +132,7 @@
  
 
    <script>
+       $(".alert").delay(3200).fadeOut(300);
      var base_url = '<?php echo base_url(); ?>';
   </script>
 

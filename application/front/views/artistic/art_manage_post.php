@@ -69,7 +69,7 @@
                                     $listfinal1 = array_diff($categorylist, array('Other'));
                                     $listFinal = implode(',', $listfinal1);
                                        
-                                    if(!in_array(17, $category)){
+                                    if(!in_array(26, $category)){
                                      echo $listFinal;
                                    }else if($artisticdata[0]['art_skill'] && $artisticdata[0]['other_skill']){
 

@@ -438,12 +438,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- Login  -->
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content login-frm">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
-                                <div class="login-frm">
+                                <div class="">
                                     <div class="title">
                                         <h1 class="ttc">Welcome To Aileensoul</h1>
                                     </div>
@@ -499,13 +499,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
         <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog login-frm">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
-                                <div class="login-frm">
+                                <div class="">
                                     <div class="title">
                                         <h1 class="ttc">Forgot Password</h1>
                                     </div>
@@ -525,8 +525,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <div id="errorlogin"></div> 
                                     </div>
 
-                                    <p class="pt-20 ">
-                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                                    <p class="pt-20 text-center">
+                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
                                     </p>
 
 
@@ -549,7 +549,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content inner-form1">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="clearfix">
