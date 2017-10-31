@@ -1017,7 +1017,8 @@ label.cameraButton:active {
     font-size: 15px;
     display: inline-block;
 	float:left;
-	padding-right:5px;
+	padding-right:4px;
+        
     font-weight: 600;
     color: #1b8ab9;
     /*text-overflow: ellipsis;*/
@@ -3247,7 +3248,8 @@ label.cameraButton:active {
 .color-search {
     color: #999!important;
 }
-.color-search:hover{color:#1b8ab9 !important;}
+/*.color-search:hover{color:#1b8ab9 !important;}*/
+.websir-se:hover{color:#1b8ab9 !important;}
 .images_add_bui {
     display: block;
     text-align: center;
@@ -3785,7 +3787,7 @@ label.cameraButton input[accept*="camera"] {
     color: #1b8ab9;
 }
 .posted_with {
-    padding-left: 4px!important;
+/*    padding-left: 4px!important;*/
     padding-right: 4px!important;
     word-spacing: 2px;
     font-weight: 500!important;
@@ -4168,10 +4170,10 @@ div .comment {
     color: black;
     font-size: 14px;
 }
-.post-design-box .post-design-desc a:hover {
+/*.post-design-box .post-design-desc a:hover {
 	color:#1b8ab9;
 	text-decoration:underline;
-}
+}*/
 .profile-job-post-location-name-rec .designation_rec ul li {
     margin-bottom: 0px;
 }

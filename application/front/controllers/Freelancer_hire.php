@@ -451,14 +451,14 @@ class Freelancer_hire extends MY_Controller {
 
 
 
-            $this->form_validation->set_rules('professional_info', ' Please Enter Your professional info', 'required');
+//            $this->form_validation->set_rules('professional_info', ' Please Enter Your professional info', 'required');
 
 
 
-            if ($this->form_validation->run() == FALSE) {
-
-                $this->load->view('freelancer/freelancer_hire/freelancer_hire_professional_info');
-            } else {
+//            if ($this->form_validation->run() == FALSE) {
+//
+//                $this->load->view('freelancer/freelancer_hire/freelancer_hire_professional_info');
+//            } else {
 
                 $data = array(
                     'professional_info' => trim($this->input->post('professional_info')),
@@ -486,7 +486,7 @@ class Freelancer_hire extends MY_Controller {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('freelancer-hire/professional-information', refresh);
                 }
-            }
+           // }
         }
     }
 
