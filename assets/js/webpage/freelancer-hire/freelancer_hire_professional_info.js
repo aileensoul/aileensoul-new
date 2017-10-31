@@ -16,16 +16,16 @@ function check() {
 // CHECK SEARCH KEYWORD AND LOCATION BLANK END
 
 
-//CODE FOR PRELOADER START
-jQuery(document).ready(function ($) {
-    // site preloader -- also uncomment the div in the header and the css style for #preloader
-    $(window).load(function () {
-        $('#preloader').fadeOut('slow', function () {
-            $(this).remove();
-        });
-    });
-});
-//CODE FOR PRELOADER END  
+////CODE FOR PRELOADER START
+//jQuery(document).ready(function ($) {
+//    // site preloader -- also uncomment the div in the header and the css style for #preloader
+//    $(window).load(function () {
+//        $('#preloader').fadeOut('slow', function () {
+//            $(this).remove();
+//        });
+//    });
+//});
+////CODE FOR PRELOADER END  
 
 // FORM FILL UP VALIDATION START
 jQuery.validator.addMethod("noSpace", function (value, element) {
@@ -33,13 +33,18 @@ jQuery.validator.addMethod("noSpace", function (value, element) {
 }, "No space please and don't leave it empty");
 
 $.validator.addMethod("regx", function (value, element, regexpr) {
-    return regexpr.test(value);
+    if(!value){
+    return true;
+}else{
+   
+     return regexpr.test(value);
+}
 }, "Only space, only number and only special characters are not allow");
 $(document).ready(function () {
     $("#professional_info1").validate({
         rules: {
             professional_info: {
-                required: true,
+               // required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/ 
             },
         },
