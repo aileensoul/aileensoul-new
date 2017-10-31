@@ -243,6 +243,7 @@ $route['job/qualification/(:any)'] = "job/job_education_update/$1";
 $route['job/project'] = "job/job_project_update";
 $route['job/work-area'] = "job/job_skill_update";
 $route['job/work-experience'] = "job/job_work_exp_update";
+
 $route['job/profile'] = "job/job_reg";
 $route['job/profile/live-post'] = "job/job_reg";
 $route['job/profile/live-post/(:any)'] = "job/job_reg/$1";

@@ -325,7 +325,7 @@ alert(postid);
                                       alert(postid);
                      alert(8888)
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                      alert(base_url + 'job/profile/live-post?postid=' + postid);
+                    //  alert(base_url + 'job/profile/live-post?postid=' + postid);
                         window.location = base_url + 'job/profile/live-post/' + postid;
                        sendmail(userid);
                         

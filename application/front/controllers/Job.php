@@ -2903,13 +2903,11 @@ class Job extends MY_Controller {
  // job aply wothout login start
       
  if($postid != ''){
-        $this->job_apply_check();
+        //$this->job_apply_check();
         $this->job_deactive_profile();
 
         
-        $notid = $this->session->userdata('aileenuser');
-
-        $userid = $this->session->userdata('aileenuser');
+        $userid = $notid = $this->session->userdata('aileenuser');
 
         $contition_array = array('post_id' => $postid, 'user_id' => $userid, 'is_delete' => 0);
         $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id,count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
