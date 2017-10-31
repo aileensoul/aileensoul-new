@@ -84,7 +84,7 @@ footer ul li a:focus{text-decoration: none!important;}
 	padding:5px 25px;
 	text-align:center;
 	border-radius: 4px;
-	border:2px solid #1b8ab9;
+	border:2px solid #1b8ab9 !important;
 
 	
 	/*-webkit-border-radius: 4px!important;
@@ -430,7 +430,7 @@ a:hover{
 	border-bottom:1px solid #d9d9d9;
 	border-radius:0px;
 	box-shadow:none;
-	font-size:16px;
+	font-size:16px !important;
 	color:#848484;
 	height:35px;
     padding-left: 6px;
@@ -1560,7 +1560,6 @@ select:focus{ outline: none; }
 	-webkit-box-shadow:none;
 	-moz-box-shadow:none;
 }
-.no-login .login-frm{width:100% !important;}
 .no-login input[type=submit]:hover, .no-login input[type=button]:hover {background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
 	background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
 	background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%);
@@ -1569,7 +1568,6 @@ select:focus{ outline: none; }
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
 	border:none;
 	}
-.no-login .title h1{font-size:28px; margin-bottom:0;}
 .no-login .login .form-group input{height:36px;}
 .cover footer{background:#fff;}
 body.cover{padding-bottom:60px;}
