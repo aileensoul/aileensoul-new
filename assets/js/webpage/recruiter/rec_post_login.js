@@ -237,7 +237,7 @@ $(document).ready(function () {
         var selyear = $("#selyear").val();
         var selgen = $("#selgen").val();
         var postid = $(".post_id_login").val();
-alert(postid);
+//alert(postid);
         var post_data = {
             'first_name': first_name,
             'last_name': last_name,
@@ -312,18 +312,18 @@ alert(postid);
                 $("#btn1").html('Create an account ...');
             },
             success: function (response)
-            { alert("ksjkskjds");
-              alert(postid);
+            { //alert("ksjkskjds");
+              //alert(postid);
                 var userid = response.userid;
-                if (response.okmsg == "ok") { alert(1111);
-                    if (postid == '') { alert(777);
+                if (response.okmsg == "ok") {// alert(1111);
+                    if (postid == '') { //alert(777);
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                         window.location = base_url + "job/profile/live-post";
                         sendmail(userid);
-                    } else {alert('aaaaa');
+                    } else {//alert('aaaaa');
                        
-                                      alert(postid);
-                     alert(8888)
+                                    //  alert(postid);
+                   //  alert(8888)
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                     //  alert(base_url + 'job/profile/live-post?postid=' + postid);
                         window.location = base_url + 'job/profile/live-post/' + postid;
