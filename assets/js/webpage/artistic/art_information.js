@@ -50,6 +50,8 @@ $('#skills').change(function other_category(){
        var strUser =  "'" + strUser + "'";
        var n = strUser.includes(26);
         if(n == true){ 
+            var active = document.querySelector(".multi-select-container");
+            active.classList.remove("multi-select-container--open");
             document.getElementById('other_category').style.display = "block";
         }else{ 
             document.getElementById('other_category').style.display = "none"; 
@@ -89,7 +91,7 @@ function validation_other(event){
                  success: function (data) { 
                   if(data == 'true'){ 
                   $("#othercategory").addClass("othercategory_require");
-                 $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Art category already exists in art category field. </span>').insertAfter('#othercategory');
+                 $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">This category already exists in art category field. </span>').insertAfter('#othercategory');
                  } else{ 
                    $("#artinfo")[0].submit();                  
                  }                 
