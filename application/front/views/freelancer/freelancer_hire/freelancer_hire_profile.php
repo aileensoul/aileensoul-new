@@ -437,9 +437,14 @@ if ($returnpage == 'freelancer_post') {
                                                     </div>
                                                     <div class="profile-job-profile-menu">
                                                         <ul class="clearfix">
-                                                            <li> <b><?php echo $this->lang->line("professional_information"); ?> </b> <span> 
+                                                            <li> <b><?php echo $this->lang->line("professional_information"); ?> </b> <span>
+                                                                <?php if($freelancerhiredata[0]['professional_info']){ ?>
+                                                                 
                                                                     <pre>  <?php echo $this->common->make_links($freelancerhiredata[0]['professional_info']); ?> 
-                                                                    </pre></span>
+                                                                    </pre>
+                                                                <?php }else{ 
+                                                                    echo PROFILENA; }?>
+                                                                    </span>
                                                             </li>
                                                         </ul>
                                                     </div>

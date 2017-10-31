@@ -15237,7 +15237,7 @@ public function get_artistic_name($id=''){
 
                                     $listFinal = implode(',', $listfinal1);
                                        
-                                    if(!in_array(17, $category)){
+                                    if(!in_array(26, $category)){
                                      $return_html .= $listFinal;
                                    }else if($key['art_skill'] && $key['other_skill']){ 
                                     $trimdata = $listFinal .','. ucwords($art_othercategory);
