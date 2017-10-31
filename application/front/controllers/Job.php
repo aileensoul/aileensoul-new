@@ -2899,7 +2899,85 @@ class Job extends MY_Controller {
 //THIS JOB REGISTRATION IS USED FOR FIRST TIME REGISTARTION VIEW START
 
     public function job_reg() {
+ $postid = $_GET['postid']; 
+ // job aply wothout login start
+ if($postid != ''){
+        $this->job_apply_check();
+        $this->job_deactive_profile();
 
+        
+        $notid = $this->session->userdata('aileenuser');
+
+        $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('post_id' => $postid, 'user_id' => $userid, 'is_delete' => 0);
+        $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id,count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $app_id = $userdata[0]['app_id'];
+
+        if ($userdata[0]['total'] != 0) {
+
+            $contition_array = array('job_delete' => 1);
+            $jobdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $data = array(
+                'job_delete' => 0,
+                'modify_date' => date('Y-m-d h:i:s', time()),
+            );
+
+
+            $updatedata = $this->common->update_data($data, 'job_apply', 'app_id', $app_id);
+
+
+            // insert notification
+
+            $data = array(
+                'not_type' => 3,
+                'not_from_id' => $userid,
+                'not_to_id' => $notid,
+                'not_read' => 2,
+                'not_from' => 2,
+                'not_product_id' => $app_id,
+                'not_active' => 1
+            );
+
+            $updatedata = $this->common->insert_data_getid($data, 'notification');
+            // end notoification
+        } else {
+
+            $data = array(
+                'post_id' => $id,
+                'user_id' => $userid,
+                'status' => 1,
+                'created_date' => date('Y-m-d h:i:s', time()),
+                'modify_date' => date('Y-m-d h:i:s', time()),
+                'is_delete' => 0,
+                'job_delete' => 0
+            );
+
+
+            $insert_id = $this->common->insert_data_getid($data, 'job_apply');
+
+
+            // insert notification
+
+            $data = array(
+                'not_type' => 3,
+                'not_from_id' => $userid,
+                'not_to_id' => $notid,
+                'not_read' => 2,
+                'not_from' => 2,
+                'not_product_id' => $insert_id,
+                'not_active' => 1,
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+
+            $updatedata = $this->common->insert_data_getid($data, 'notification');
+            // end notoification
+
+        }
+ }
+ // job apply without login end
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         //Retrieve Data from main user registartion table start
         $data='first_name,last_name,user_email';
