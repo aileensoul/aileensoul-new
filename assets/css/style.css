@@ -245,7 +245,7 @@ input[type="submit"] {
     -webkit-appearance: button;
     cursor: pointer;
     border-radius: 3px;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
 }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -1954,7 +1954,7 @@ body.modal-open{padding-left:0 !important;}
 .no-login header h2 a{line-height:1;}
 .no-login .modal{border:none; border-radius:0 !important;}
 .no-login .login-frm{padding:5px 0 15px;}
-.no-login .login-frm .title h1{text-align:center; margin-top:20px; line-height:1.2;}
+.no-login .title h1{text-align:center; margin-top:20px; line-height:1.2;}
 .no-login .login-frm .form-group{margin-bottom:15px;}
 .no-login .login form#login_form{padding: 16px 60px 15px;}
 .no-login .modal-content{padding:0px;}
