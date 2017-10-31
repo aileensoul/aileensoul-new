@@ -1006,7 +1006,6 @@ label.cameraButton:active {
     display: inline-block;
     float:left;
     padding-right:5px;
-    
     font-weight: 600;
     color: #1b8ab9;
     /*text-overflow: ellipsis;*/
