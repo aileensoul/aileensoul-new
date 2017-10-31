@@ -1357,8 +1357,8 @@
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
                         <div class="clearfix">
-                            <div class="col-md-12 col-sm-12">
-                                    <h4>Join Aileensoul - It's Free</h4>
+                            <div class="">
+                                    <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
 									<div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -1440,13 +1440,18 @@
                                         </div>
 
                                         <p class="form-text">
-                                            By Clicking on create an account button you agree our<br class="mob-none">
+                                            By Clicking on create an account button you agree our
                                             <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
 											<!--<p class="next">Next</p>-->
                                         </p>
+										<div class="sign_in pt10">
+                                        <p>
+                                            Already have an account ? <a tabindex="12" href="https://www.aileensoul.com/login"> Log In </a>
+                                        </p>
+                                    </div>
                                     </form>
 									</div>
 							

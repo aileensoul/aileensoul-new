@@ -442,8 +442,8 @@ a:hover{
    -moz-appearance:    none;
    appearance:         none;
    position:relative;
-   background:url('../img/down-arrow.png') no-repeat;
-   background-position:right;   
+   background:url('../img/down-arrow.png') no-repeat !important;
+   background-position:right !important;   
   
 }
 .login .form-group select:focus{
@@ -464,10 +464,10 @@ a:hover{
 	width:100px;
 }
 .form-text{
-	font-size:12px;
+	font-size:12px !important;
 	color:#3b3a3a;
 	padding-top:10px;
-	padding-bottom:10px;
+	padding-bottom:0px !important;
 }
 .form-text a{
 	color:#b5b5b5;
