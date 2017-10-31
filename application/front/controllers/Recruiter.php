@@ -2218,8 +2218,10 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
                                                                     <li class="fr date_re">';
                         $rec_post .= 'Created Date :' . date('d-M-Y', strtotime($post['created_date']));
                         $rec_post .= '</li>
-                                                                    <li class="">
-                                                                        <a class="post_title" href="javascript:void(0)" title="Post Title">';
+                                                                    <li class="">';
+//                                                                        <a class="post_title" href="javascript:void(0)" title="Post Title">';
+                 $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . $post['user_id'] . '/' . $post['post_id'] .  '" title="Post Tit44le">'; 
+
 
                         $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
                         if ($cache_time) {
@@ -4616,14 +4618,25 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
     
     public function live_post($userid,$postid,$posttitle){
        
-       $contition_array = array('post_id' => $postid, 'status' => 1, 'is_delete' => '0', 'user_id' => $userid);
-       $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-       
-       $contition_array = array('post_id !=' => $postid, 'status' => 1, 'is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
-       $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $join_str[0]['table'] = 'recruiter';
+        $join_str[0]['join_table_id'] = 'recruiter.user_id';
+        $join_str[0]['from_table_id'] = 'rec_post.user_id';
+        $join_str[0]['join_type'] = '';
+
+            $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_month,max_year,,min_month,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
+       $contition_array = array('post_id' => $postid, 'status' => 1, 'rec_post.is_delete' => '0', 'rec_post.user_id' => $userid);
+       $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
       
        
+       $contition_array = array('post_id !=' => $postid, 'status' => 1, 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
+       $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+      
+       if($this->session->userdata('aileenuser')){
+       $this->load->view('recruiter/recpost_live',$this->data);
+       }else{
        $this->load->view('recruiter/rec_post_login',$this->data);
+         
+       }
     }
     //DELETE LOGO START
 public function delete_logo()

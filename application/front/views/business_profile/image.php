@@ -88,7 +88,7 @@
 
 
                                 <fieldset class="full-width">
-                                    <label>Business images:</label>
+                                    <label>Business images<span class="optional">(optional)</span>:</label>
                                     <input type="file" tabindex="1" onclick = "removemsg()" onchange="validate(event)" autofocus name="image1[]" id="image1" multiple/> 
 
                                     <div class="bus_image" style="color:#f00; display: block;"></div> 

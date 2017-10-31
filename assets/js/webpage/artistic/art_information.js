@@ -14,7 +14,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                   ignore: '*:not([name])',
                     rules: {
 
-                        skills: {
+                        "skills[]": {
 
                     required: true,
 
@@ -23,7 +23,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
                     messages: {
 
-                         skills: {
+                         "skills[]": {
 
                     required: "Skill is required.",
                    
@@ -34,14 +34,24 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
                    });
 
 
+
+// multiple skill start
+
+$(function(){
+        $('#skills').multiSelect();
+    });
+    
 // other category input open start
 
 $('#skills').change(function other_category(){
-        var e = document.getElementById("skills");
-        var strUser = e.options[e.selectedIndex].value;
-        if(strUser == 17){
+        // var e = document.getElementById("skills");
+        // var strUser = e.options[e.selectedIndex].value;
+       var strUser = $('#skills').val();
+       var strUser =  "'" + strUser + "'";
+       var n = strUser.includes(17);
+        if(n == true){ 
             document.getElementById('other_category').style.display = "block";
-        }else{
+        }else{ 
             document.getElementById('other_category').style.display = "none"; 
         }
     });
@@ -53,24 +63,24 @@ function removevalidation(){
 }
 
 function validation_other(event){ 
+  
+  $('#othercategory_error').remove(); 
+       event.preventDefault();
+       var strUser = $('#skills').val();
+       var strUser =  "'" + strUser + "'";
+       var n = strUser.includes(17);
 
-      event.preventDefault();
-       var e = document.getElementById("skills");
-        var strUser = e.options[e.selectedIndex].value;
-
-    if(strUser == 17){
-       var other_category = document.getElementById("othercategory").value;
+        var other_category = document.getElementById("othercategory").value;
        var category_trim = other_category.trim();
+
+  if(n == true){     
    if(category_trim == ''){
      $("#othercategory").addClass("othercategory_require");
      $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </span>').insertAfter('#othercategory');
       return false;
       event.preventDefault();
        } 
-       else{
-
-         var other_category = document.getElementById("othercategory").value;
-        var category_trim = other_category.trim();
+       else{ 
         if(category_trim){
               $.ajax({                
                  type: 'GET',
@@ -80,14 +90,14 @@ function validation_other(event){
                   if(data == 'true'){ 
                   $("#othercategory").addClass("othercategory_require");
                  $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Art category already exists in art category field. </span>').insertAfter('#othercategory');
-                 } else{
+                 } else{ 
                    $("#artinfo")[0].submit();                  
                  }                 
                  }
              });
          }
        }
-     }else{
+     }else if((n == false && category_trim != '') || n == false && category_trim == ''){ 
        $("#artinfo")[0].submit();     
      }
 }

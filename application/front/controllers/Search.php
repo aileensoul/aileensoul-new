@@ -35,6 +35,7 @@ class Search extends MY_Controller {
     public function business_search() {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $this->data['slug_id'] = $slug_id = $patient = $this->db->select('business_slug')->get_where('business_profile', array('user_id' => $userid))->row()->business_slug; 
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home', refresh);
         }
@@ -139,7 +140,7 @@ class Search extends MY_Controller {
 
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
-
+        
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {

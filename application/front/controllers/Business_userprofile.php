@@ -9,28 +9,22 @@ class Business_userprofile extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->library('user_agent');
+        $this->load->model('email_model');
+        $this->lang->load('message', 'english');
+        $this->load->helper('smiley');
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
-        $this->load->library('form_validation');
-        $this->load->model('email_model');
-        $this->lang->load('message', 'english');
-        include ('include.php');
-
-// DEACTIVATE PROFILE START
 
         $userid = $this->session->userdata('aileenuser');
+        include ('business_profile_include.php');
 
-// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
+        // FIX BUSINESS PROFILE NO POST DATA
 
-        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '	business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if ($business_deactive) {
-            redirect('business-profile/');
-        }
-// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
-// DEACTIVATE PROFILE END
+        $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Business Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/bui-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
+        $this->data['no_business_contact_html'] = '<div class="art-img-nn"><div class="art_no_post_img"><img src="' . base_url('assets/img/No_Contact_Request.png') . '"></div><div class="art_no_post_text">No Contacts Available.</div></div>';
     }
 
     public function index() {
@@ -611,8 +605,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if (count($businessmultiimage) == 1) {
 
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+                    //$allowed = VALID_IMAGE;
                     $allowespdf = array('pdf');
-                    $allowesvideo = array('mp4', 'webm');
+                    $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                     $allowesaudio = array('mp3');
                     $filename = $businessmultiimage[0]['file_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -706,7 +701,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     <div class="post-design-menu">
         <ul class="col-md-6">
             <li class="likepost' . $row['business_profile_post_id'] . '">
-                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="post_like(this.id)">';
+                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="login_profile();">';
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
                 $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -732,7 +727,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<a class="ripple like_h_w" onClick="commentall(this.id)" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
+                $return_html .= '<a class="ripple like_h_w" onClick="login_profile();" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
                 $return_html .= '</i> 
                 </a>
             </li> 
@@ -893,7 +888,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 </div>
                 <div class="art-comment-menu-design"> 
                     <div class="comment-details-menu" id="likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
-                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="comment_like1(this.id)">';
+                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="login_profile();">';
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
                         $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -970,6 +965,119 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $return_html .= '<div class="nofoundpost">
 </div>';
         echo $return_html;
+    }
+    public function business_profile_active_check() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+        if (!$userid) {
+            redirect('login');
+        }
+        // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
+
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business-profile');
+        }
+
+
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
+// DEACTIVATE PROFILE END
+    }
+
+    public function is_business_profile_register() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
+        $business_check = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+        if ($business_check) {
+
+            if ($business_check[0]['business_step'] == 1) {
+                redirect('business-profile/contact-information', refresh);
+            } else if ($business_check[0]['business_step'] == 2) {
+                redirect('business-profile/description', refresh);
+            } else if ($business_check[0]['business_step'] == 3) {
+                redirect('business-profile/image', refresh);
+            }
+        } else {
+            redirect('business-profile/business-information-update', refresh);
+        }
+
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
+// DEACTIVATE PROFILE END
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWING COUNT START
+
+    public function business_user_following_count($business_profile_id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id == '') {
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        }
+
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_following[0]['table'] = 'follow';
+        $join_str_following[0]['join_table_id'] = 'follow.follow_to';
+        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_following[0]['join_type'] = '';
+
+        $bus_user_f_ing_count = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as following_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
+
+        $following_count = $bus_user_f_ing_count[0]['following_count'];
+
+        return $following_count;
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWING COUNT END
+    // BUSIENSS PROFILE USER FOLLOWER COUNT START
+
+    public function business_user_follower_count($business_profile_id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id == '') {
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        }
+
+        $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_following[0]['table'] = 'follow';
+        $join_str_following[0]['join_table_id'] = 'follow.follow_from';
+        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_following[0]['join_type'] = '';
+
+        $bus_user_f_er_count = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as follower_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
+
+        $follower_count = $bus_user_f_er_count[0]['follower_count'];
+
+        return $follower_count;
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWER COUNT END
+    // 
+    public function business_user_contacts_count($business_profile_id = '') {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id != '') {
+            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
+        }
+
+        $contition_array = array('contact_type' => 2, 'contact_person.status' => 'confirm', 'business_profile.status' => 1);
+        $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
+
+        $join_str_contact[0]['table'] = 'business_profile';
+        $join_str_contact[0]['join_table_id'] = 'business_profile.user_id';
+        $join_str_contact[0]['from_table_id'] = 'contact_person.contact_from_id';
+        $join_str_contact[0]['join_type'] = '';
+
+        $contacts_count = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as contact_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_contact, $groupby = '');
+
+        $contacts_count = $contacts_count[0]['contact_count'];
+
+        return $contacts_count;
     }
 
 }

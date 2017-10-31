@@ -9,6 +9,11 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
       
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
+        <style type="text/css">
+          
+          
+
+        </style>
       
     </head>
     <body class="page-container-bg-solid page-boxed">
@@ -59,7 +64,7 @@
 
                     <!-- middle section start -->
  
-                    <div class="col-md-6 col-sm-8">
+                <div class="col-md-6 col-sm-8">
 
                      <div class="art-alert">
                         <?php
@@ -89,23 +94,24 @@
                                     <fieldset class="full-width <?php if($skills) {  ?> error-msg <?php } ?>">
                                         <label>Art category:<span style="color:red">*</span></label>
 
-                          <select name="skills" id="skills" tabindex="1" autofocus>
-                          <option value="">Ex:- Dancer, Photographer, Writer, Singer, Actor</option>
-                          <?php
-                                  if(count($art_category) > 0){
-                                                foreach($art_category as $cnt){
-                                                    if($art_category1)
-                                            {
+                          <select name="skills[]" id="skills" tabindex="1" autofocus multiple>
+                         <!--  <option value="">Ex:- Dancer, Photographer, Writer, Singer, Actor</option> -->
+                            <?php                             
+                                      foreach($art_category as $cnt){ 
+                                          if($art_category1)
+                                            { 
+                                              $category = explode(',' , $art_category1);  
                                               ?>
-                                                 <option value="<?php echo $cnt['category_id']; ?>" <?php if($cnt['category_id']==$art_category1) echo 'selected';?>><?php echo $cnt['art_category'];?></option>              
+                                                 <option value="<?php echo $cnt['category_id']; ?>"
+                                                  <?php if(in_array($cnt['category_id'], $category)) echo 'selected';?>><?php echo $cnt['art_category'];?></option>              
                                                  <?php
                                                 }
                                                 else
-                                                {
+                                                {  
                                             ?>
                             <option value="<?php echo $cnt['category_id']; ?>"><?php echo $cnt['art_category'];?></option>
                                 <?php    }       
-                                            }}
+                                            }
                                             ?>
                       </select>
                                     
@@ -174,6 +180,8 @@
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/jquery.multi-select.js?ver=' . time()); ?>"></script>
+
 
 <script type="text/javascript">
  var base_url = '<?php echo base_url(); ?>';   

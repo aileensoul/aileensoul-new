@@ -1008,6 +1008,7 @@ class Business_profile extends MY_Controller {
             if ($this->session->userdata('aileenuser')) {
                 $this->load->view('business_profile/business_profile_manage_post', $this->data);
             } else {
+                include ('business_profile_include.php');
                 $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
                 $this->load->view('business_profile/business_dashboard', $this->data);
             }
@@ -2248,15 +2249,13 @@ Your browser does not support the audio tag.
 //                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //            }
 
-            $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-
             $likeuser = $post_business_like_user;
             $countlike = $post_business_likes_count - 1;
             $likelistarray = explode(',', $likeuser);
 
             $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
             $return_html .= '<div class = "like_one_other">';
-
+            $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
             if (in_array($userid, $likelistarray)) {
                 $return_html .= "You";
                 $return_html .= "&nbsp;";
@@ -2272,8 +2271,7 @@ Your browser does not support the audio tag.
                 $return_html .= "&nbsp;";
                 $return_html .= "others";
             }
-            $return_html .= '</div>
-</a>
+            $return_html .= '</a></div>
 </div>';
         }
 
@@ -2284,7 +2282,7 @@ Your browser does not support the audio tag.
 //        foreach ($likelistarray as $key => $value) {
 //            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //        }
-        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+        
         $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
         $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2295,7 +2293,7 @@ Your browser does not support the audio tag.
         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
         $return_html .= '<div class = "like_one_other">';
-
+        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
         $return_html .= ucfirst($business_fname1);
         $return_html .= "&nbsp;";
 
@@ -2307,8 +2305,7 @@ Your browser does not support the audio tag.
             $return_html .= "&nbsp;";
             $return_html .= "others";
         }
-        $return_html .= '</div>
-</a>
+        $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">
@@ -2977,7 +2974,9 @@ Your browser does not support the audio tag.
             $this->business_profile_active_check();
             $this->is_business_profile_register();
         }
-
+        if (!$this->session->userdata('aileenuser')) {
+            include ('business_profile_include.php');
+        }
         if ($id != '') {
             $contition_array = array('business_profile.business_slug' => $id, 'business_profile.is_deleted' => '0', 'business_profile.status' => 1, 'business_profile.business_step' => 4);
             $join_str[0]['table'] = 'countries';
@@ -3333,20 +3332,14 @@ Your browser does not support the audio tag.
 //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
-
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
-
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
         $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
-
         $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 
         $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 
         if ($follow) {
             $data = array(
@@ -3359,11 +3352,8 @@ Your browser does not support the audio tag.
 
 // insert notification
 
-
-
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//echo "<pre>"; print_r($busnotification); die();
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
                 $datafollow = array(
@@ -3400,18 +3390,6 @@ Your browser does not support the audio tag.
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
             }
 
-
-// $data = array(
-//     'not_type' => 8,
-//     'not_from_id' => $userid,
-//     'not_to_id' => $busdatatoid[0]['user_id'],
-//     'not_read' => 2,
-//     'not_product_id' => $follow[0]['follow_id'],
-//     'not_from' => 6,
-//     'not_created_date' => date('Y-m-d H:i:s'),
-//     'not_active' => 1
-// );
-// $insert_id = $this->common->insert_data_getid($data, 'notification');
 // end notoification
 
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
@@ -3865,6 +3843,7 @@ Your browser does not support the audio tag.
         //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
+        $is_listing = $_POST["is_listing"];
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
 
@@ -3922,9 +3901,15 @@ Your browser does not support the audio tag.
             $follow = '';
             if ($update) {
                 $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
-                $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')">
+                if ($is_listing == 1) {
+                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_list_two(' . $business_id . ')">
                               <span>Following</span>
                       </button>';
+                } else {
+                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')">
+                              <span>Following</span>
+                      </button>';
+                }
                 $follow .= '</div>';
                 //echo $follow;
             }
@@ -3958,15 +3943,24 @@ Your browser does not support the audio tag.
             $follow = '';
             if ($insert) {
                 $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
-                $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
+                if($is_listing == '1'){
+                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_list_two(' . $business_id . ')"><span>Following</span></button>';
+                }else{
+                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
+                }
+                
                 $follow .= '</div>';
                 //echo $follow;
             }
         }
+        $profile_slug = $_POST["profile_slug"];
+        if ($profile_slug) {
+            $business_id = $this->db->select('business_profile_id')->get_where('business_profile', array('business_slug' => $profile_slug))->row()->business_profile_id;
+        }
         echo json_encode(
                 array("follow_html" => $follow,
-                    "following_count" => $this->business_user_following_count(),
-                    "follower_count" => $this->business_user_follower_count(),
+                    "following_count" => $this->business_user_following_count($business_id),
+                    "follower_count" => $this->business_user_follower_count($business_id),
                     "contacts_count" => $this->business_user_contacts_count(),
         ));
     }
@@ -3976,7 +3970,6 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($business_deactive) {
@@ -3985,15 +3978,13 @@ Your browser does not support the audio tag.
 //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
+        $is_listing = $_POST["is_listing"];
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
-
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
-
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 
         if ($follow) {
             $data = array(
@@ -4007,14 +3998,22 @@ Your browser does not support the audio tag.
             if ($update) {
 
                 $unfollow .= '<div class="user_btn follow_btn_' . $business_id . '" id="followdiv">';
-                $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_two(' . $business_id . ')"><span>Follow</span></button>';
+                if($is_listing == 1){
+                    $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_list_two(' . $business_id . ')"><span>Follow</span></button>';
+                }else{
+                    $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_two(' . $business_id . ')"><span>Follow</span></button>';
+                }
                 $unfollow .= '</div>';
                 //echo $unfollow;
             }
+            $profile_slug = $_POST["profile_slug"];
+            if ($profile_slug) {
+                $business_id = $this->db->select('business_profile_id')->get_where('business_profile', array('business_slug' => $profile_slug))->row()->business_profile_id;
+            }
             echo json_encode(
                     array("unfollow_html" => $unfollow,
-                        "unfollowing_count" => $this->business_user_following_count(),
-                        "unfollower_count" => $this->business_user_follower_count(),
+                        "unfollowing_count" => $this->business_user_following_count($business_id),
+                        "unfollower_count" => $this->business_user_follower_count($business_id),
                         "uncontacts_count" => $this->business_user_contacts_count(),
             ));
         }
@@ -4215,13 +4214,13 @@ Your browser does not support the audio tag.
                 if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_from'] != $busdatauser[0]['business_profile_id']) {
 
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "followdiv">
-                                                                                    <button id="follow' . $user['follow_from'] . '" onClick="followuser_two(' . $user['follow_from'] . ')"><span>Follow</span></button>
+                                                                                    <button id="follow' . $user['follow_from'] . '" onClick="followuser_list_two(' . $user['follow_from'] . ')"><span>Follow</span></button>
                                                                                 </div>';
                 } else if ($user['follow_from'] == $busdatauser[0]['business_profile_id']) {
                     
                 } else {
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
-                                                                                    <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>Following</span></button>
+                                                                                    <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_list_two(' . $user['follow_from'] . ')"><span>Following</span></button>
                                                                                 </div>';
                 }
                 $return_html .= '</li>
@@ -4401,13 +4400,13 @@ Your browser does not support the audio tag.
                     $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_to'] != $busdatauser[0]['business_profile_id']) {
                         $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "followdiv">
-                                            <button id="follow' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')"><span>Follow</span></button>
+                                            <button id="follow' . $user['follow_to'] . '" onClick="followuser_list_two(' . $user['follow_to'] . ')"><span>Follow</span></button>
                             </div>';
                     } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) {
                         
                     } else {
                         $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
-                                <button class="bg_following" id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
+                                <button class="bg_following" id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_list_two(' . $user['follow_to'] . ')"><span>Following</span></button>
                                                     </div>';
                     }
                     $return_html .= '</li>';
@@ -11204,9 +11203,9 @@ Your browser does not support the audio tag.
 //                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                    }
 
-                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
                     $return_html .= '<div class = "like_one_other">';
-
+                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+                    
                     /* if ($userid == $value) {
                       $return_html .= "You";
                       $return_html .= "&nbsp;";
@@ -11229,8 +11228,7 @@ Your browser does not support the audio tag.
                         $return_html .= "&nbsp;";
                         $return_html .= "others";
                     }
-                    $return_html .= '</div>
-</a>
+                    $return_html .= '</a></div>
 </div>';
                 }
 
@@ -11242,8 +11240,7 @@ Your browser does not support the audio tag.
 //                foreach ($likelistarray as $key => $value) {
 //                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                }
-                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-
+                
                 $likeuser = $post_business_like_user;
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
@@ -11251,7 +11248,7 @@ Your browser does not support the audio tag.
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
                 $return_html .= '<div class = "like_one_other">';
-
+                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
                 $return_html .= ucfirst($business_fname1);
                 $return_html .= "&nbsp;";
 
@@ -11263,8 +11260,7 @@ Your browser does not support the audio tag.
                     $return_html .= "&nbsp;";
                     $return_html .= "others";
                 }
-                $return_html .= '</div>
-</a>
+                $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">
@@ -12150,7 +12146,6 @@ Your browser does not support the audio tag.
                             $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                         }
 
-                        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
                         $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                         $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -12160,7 +12155,8 @@ Your browser does not support the audio tag.
 
                         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                         $return_html .= '<div class = "like_one_other">';
-
+                        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
+                        
                         if ($userid == $value) {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
@@ -12176,8 +12172,7 @@ Your browser does not support the audio tag.
                             $return_html .= "&nbsp;";
                             $return_html .= "others";
                         }
-                        $return_html .= '</div>
-</a>
+                        $return_html .= '</a></div>
 </div>';
                     }
 
@@ -12190,7 +12185,6 @@ Your browser does not support the audio tag.
                     foreach ($likelistarray as $key => $value) {
                         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                     }
-                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
                     $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                     $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -12201,7 +12195,8 @@ Your browser does not support the audio tag.
                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
                     $return_html .= '<div class = "like_one_other">';
-
+                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $row['business_profile_post_id'] . ')">';
+                    
                     $return_html .= ucfirst($business_fname1);
                     $return_html .= "&nbsp;";
 
@@ -12213,8 +12208,7 @@ Your browser does not support the audio tag.
                         $return_html .= "&nbsp;";
                         $return_html .= "others";
                     }
-                    $return_html .= '</div>
-</a>
+                    $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">
@@ -12908,7 +12902,7 @@ Your browser does not support the audio tag.
       </a></div></li></ul></div>
       <div class = "follow_left_box_main_btn">';
                     $return_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
@@ -14075,7 +14069,6 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </div>
 <div class = "post-design-mid col-md-12 padding_adust" >
 <div>';
-
                 $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
                 $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -14301,9 +14294,9 @@ Your browser does not support the audio tag.
 //                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                    }
 
-                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
                     $return_html .= '<div class = "like_one_other">';
-
+                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+                    
                     /* if ($userid == $value) {
                       $return_html .= "You";
                       $return_html .= "&nbsp;";
@@ -14326,8 +14319,7 @@ Your browser does not support the audio tag.
                         $return_html .= "&nbsp;";
                         $return_html .= "others";
                     }
-                    $return_html .= '</div>
-</a>
+                    $return_html .= '</a></div>
 </div>';
                 }
 
@@ -14339,8 +14331,7 @@ Your browser does not support the audio tag.
 //                foreach ($likelistarray as $key => $value) {
 //                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                }
-                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-
+                
                 $likeuser = $post_business_like_user;
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
@@ -14348,6 +14339,7 @@ Your browser does not support the audio tag.
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 
                 $return_html .= '<div class = "like_one_other">';
+                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
 
                 $return_html .= ucfirst($business_fname1);
                 $return_html .= "&nbsp;";
@@ -14360,8 +14352,7 @@ Your browser does not support the audio tag.
                     $return_html .= "&nbsp;";
                     $return_html .= "others";
                 }
-                $return_html .= '</div>
-</a>
+                $return_html .= '</a></div>
 </div>
 
 <div class = "art-all-comment col-md-12">

@@ -13,8 +13,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile.min.css?ver=' . time()); ?>">
-           <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');     ?>" />-->
+            <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');      ?>" />-->
         <?php } ?>
+            
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -215,6 +216,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 color: #1b8ab9;
             }
             /*second*/
+			.login{width:100%;}
 
         </style>
     </head>
@@ -252,12 +254,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     </a>
                 </div>
             </div>
-            <div class="user-midd-section">
-                <div class="container">
-                    <div class="row">
-                    </div>
-                </div>
-            </div>
+            
             <div class="user-midd-section">
                 <div class="container">
                     <div class="row">
@@ -271,13 +268,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <table class="business_data_table">
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-user"></i></td>
-                                            <td class="business_data_td2"><?php echo ucfirst(strtolower($businessdata1[0]['contact_person'])); ?></td>
+                                            <td class="business_data_td2"><?php echo ucfirst(strtolower($business_data[0]['contact_person'])); ?></td>
                                         </tr>
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-mobile"></i></td>
                                             <td class="business_data_td2"><span><?php
-                                                    if ($businessdata1[0]['contact_mobile'] != '0') {
-                                                        echo $businessdata1[0]['contact_mobile'];
+                                                    if ($business_data[0]['contact_mobile'] != '0') {
+                                                        echo $business_data[0]['contact_mobile'];
                                                     } else {
                                                         echo '-';
                                                     }
@@ -286,41 +283,41 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </tr>
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-                                            <td class="business_data_td2"><span><?php echo $businessdata1[0]['contact_email']; ?></span></td>
+                                            <td class="business_data_td2"><span><?php echo $business_data[0]['contact_email']; ?></span></td>
                                         </tr>
                                         <tr>
                                             <td class="business_data_td1 detaile_map"><i class="fa fa-map-marker"></i></td>
                                             <td class="business_data_td2"><span>
                                                     <?php
-                                                    if ($businessdata1[0]['address']) {
-                                                        echo $businessdata1[0]['address'];
+                                                    if ($business_data[0]['address']) {
+                                                        echo $business_data[0]['address'];
                                                         echo ",";
                                                     }
                                                     ?> 
                                                     <?php
-                                                    if ($businessdata1[0]['city']) {
-                                                        echo $this->db->get_where('cities', array('city_id' => $businessdata1[0]['city']))->row()->city_name;
+                                                    if ($business_data[0]['city']) {
+                                                        echo $this->db->get_where('cities', array('city_id' => $business_data[0]['city']))->row()->city_name;
                                                         echo",";
                                                     }
                                                     ?> 
                                                     <?php
-                                                    if ($businessdata1[0]['country']) {
-                                                        echo $this->db->get_where('countries', array('country_id' => $businessdata1[0]['country']))->row()->country_name;
+                                                    if ($business_data[0]['country']) {
+                                                        echo $this->db->get_where('countries', array('country_id' => $business_data[0]['country']))->row()->country_name;
                                                     }
                                                     ?> 
                                                 </span></td>
                                         </tr>
                                         <?php
-                                        if ($businessdata1[0]['contact_website']) {
+                                        if ($business_data[0]['contact_website']) {
                                             ?>
                                             <tr>
                                                 <td class="business_data_td1"><i class="fa fa-globe"></i></td>
-                                                <td class="business_data_td2 website"><span><a href="javascript:void(0);" onclick="login_profile();"> <?php echo $businessdata1[0]['contact_website']; ?></a></span></td>
+                                                <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $business_data[0]['contact_website']; ?>"> <?php echo $business_data[0]['contact_website']; ?></a></span></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
                                             <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
-                                            <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($businessdata1[0]['details'])); ?></span></td>
+                                            <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($business_data[0]['details'])); ?></span></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -383,86 +380,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </div>
                         <div class="col-md-6 custom-right-business">
                             <?php
-                            $userid = $this->session->userdata('aileenuser');
-                            $other_user = $businessdata1[0]['business_profile_id'];
-                            $other_user_id = $businessdata1[0]['user_id'];
-
-                            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-                            $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                            $loginuser = $userdata[0]['business_profile_id'];
-                            $contition_array = array('follow_type' => 2, 'follow_status' => 1);
-                            $search_condition = "((follow_from  = '$loginuser' AND follow_to  = ' $other_user') OR (follow_from  = '$other_user' AND follow_to  = '$loginuser'))";
-                            $followperson = $this->common->select_data_by_search('follow', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
-                            $contition_array = array('contact_type' => 2);
-                            $search_condition = "((contact_from_id  = '$userid' AND contact_to_id = ' $other_user_id') OR (contact_from_id  = '$other_user_id' AND contact_to_id = '$userid'))";
-                            $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
-                            if ((count($followperson) == 2) || ($businessdata1[0]['user_id'] == $userid) || (count($contactperson) == 1)) {
-                                ?>
-                                <div class="post-editor col-md-12">
-                                    <div class="main-text-area col-md-12">
-                                        <div class="popup-img"> 
-                                            <?php if ($businessdata[0]['business_user_image']) { ?>
-                                                <?php
-                                                if (IMAGEPATHFROM == 'upload') {
-                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                        ?>
-                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                    <?php } else {
-                                                        ?>
-                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
-                                                        <?php
-                                                    }
-                                                } else {
-                                                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'];
-                                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                    if (!$info) {
-                                                        ?>
-                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                    <?php } else {
-                                                        ?>
-                                                        <img  src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
-                                                        <?php
-                                                    }
-                                                }
-                                            } else {
-                                                ?>
-                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                            <?php } ?>
-                                        </div>
-                                        <div id="myBtn1"  class="editor-content popup-text">
-                                            <span>Post Your Product....</span>
-                                            <div class="padding-left padding_les_left camer_h">
-                                                <i class=" fa fa-camera">
-                                                </i> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                            <?php
                             if ($this->session->flashdata('error')) {
                                 echo $this->session->flashdata('error');
                             }
                             ?>
                             <div class="fw">
-                                <!--                                <div class='progress' id="progress_div" style="display: none">
-                                                                    <div class='bar' id='bar'></div>
-                                                                    <div class='percent' id='percent'>0%</div>
-                                                                </div>-->
-
-                                <div class="bs-example">
-                                    <div class="progress progress-striped" id="progress_div">
-                                        <div class="progress-bar" style="width: 0%;">
-                                            <span class="sr-only">0%</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="business-all-post">
-                                    <!--                                    <div class="nofoundpost"> 
-                                                                        </div>-->
                                 </div>
                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <!-- middle section start -->
@@ -476,28 +400,6 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
         </section>
 
-        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <span class="mes">
-                            <div id="popup-form">
-                                <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                <input type="hidden" name="hitext" id="hitext" value="5">
-                                <!--<input type="submit" name="cancel3" id="cancel3" value="Cancel">-->
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                <div class="popup_previred">
-                                    <img id="preview" src="#" alt="your image" />
-                                </div>
-                                <?php echo form_close(); ?>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="modal fade message-box" id="likeusermodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -534,12 +436,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </div>
 
         <!-- Login  -->
-        <div class="modal fade" id="login" role="dialog">
+        <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content login">
+                <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
                                     <div class="title">
@@ -580,7 +482,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 
@@ -596,9 +498,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- Login -->
 
         <!-- model for forgot password start -->
-        <div class="modal fade" id="forgotPassword" role="dialog">
+        <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content login">
+                <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="col-sm-12 right-main">
@@ -645,9 +547,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
         <!-- register -->
 
-        <div class="modal fade register-model" id="register" role="dialog">
+        <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content login">
+                <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="clearfix">
@@ -753,8 +655,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());        ?>"></script>-->
+        <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());         ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>

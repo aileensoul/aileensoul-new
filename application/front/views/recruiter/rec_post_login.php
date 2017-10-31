@@ -11,6 +11,7 @@
         if (IS_REC_CSS_MINIFY == '0') {
             ?>
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+		   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
             <?php
         } else {
@@ -379,7 +380,7 @@
                 </div>
             </div>
         </header>
-
+	<section>
       <div class="user-midd-section" id="paddingtop_fixed">
       <div class="container">
       <div class="row4">
@@ -561,8 +562,8 @@
               </li>
               <li class="fw"><a class="display_inline" title="Recruiter Name" href="javascript:void(0)"> <?php echo ucfirst(strtolower($post['rec_firstname'])).' '. ucfirst(strtolower($post['rec_lastname'])); ?> </a></li>
                                                 <!-- vishang 14-4 end -->    
-                                            </ul>
-                                        </div>
+         </ul>
+        </div>
                                     </div>
                                     <div class="profile-job-profile-menu">
                                         <ul class="clearfix">
@@ -794,7 +795,20 @@
 
             </div>
          </div>
-      
+		<div class="mob-add">
+								<div class="fw text-center pt10 pb5">
+									<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								</div>
+							</div>
          <!--recommen candidate start-->
              <div class="common-form">
             <div class="job-saved-box">
@@ -1105,8 +1119,43 @@
          <!--recommen candidate end-->
       </div>  
           
-             
-      </section>
+        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+					
+							<div class="fw text-center">
+								<script type="text/javascript">
+									  ( function() {
+										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+								<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								<div class="fw pt10">
+									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+								</div>
+							</div>
+							
+						</div>
+					<div class="tablate-add">
+
+                            <script type="text/javascript">
+						  ( function() {
+							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
+							var placement_id = window.CHITIKA.units.length;
+							window.CHITIKA.units.push(unit);
+							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+						}());
+						</script>
+						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                    </div>
+      
+		</div>
+		</div>
+		</div>
+	  </section>
       <!-- Model Popup Open -->
       <!-- Bid-modal  -->
       <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -1121,9 +1170,9 @@
       </div>
       <!-- Model Popup Close -->
       
-<footer>        
-<?php echo $footer;  ?>
-</footer>
+<!--footer>        
+<?php //echo $footer;  ?>
+</footer-->
 
 <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
@@ -1172,7 +1221,7 @@
                                             </p>
 
                                             <p class="pt15 text-center">
-                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                                Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                             </p>
                                         </form>
 
@@ -1193,7 +1242,7 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
                                         <div class="title">
@@ -1216,6 +1265,7 @@
                                             <div class="form-group">
                                                 <input type="password" name="password_login_apply" id="password_login_apply" class="form-control input-sm password_login" placeholder="Password*">
                                                 <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                               
                                                 <div id="error1" style="display:block;">
                                                     <?php
                                                     if ($this->session->flashdata('errorpass')) {
@@ -1235,7 +1285,7 @@
                                             </p>
 
                                             <p class="pt15 text-center">
-                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                                Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                             </p>
                                         </form>
 
@@ -1259,6 +1309,7 @@
                         <div class="col-sm-12 right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
+                                    <div id="forgotbuton"></div> 
                                         <div class="title">
                                             <h1 class="ttc">Forgot Password</h1>
                                         </div>
@@ -1327,6 +1378,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                         <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
@@ -1392,75 +1444,11 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-											<p class="next">Next</p>
+											<!--<p class="next">Next</p>-->
                                         </p>
                                     </form>
 									</div>
-									<div class="sub-form" id="subform" style="display:none">
-									<div class="common-form job_reg_main">
-                        <?php echo form_open(base_url('job/job_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>
-                        <fieldset>
-                           <label >First Name <font  color="red">*</font> :</label>
-                           <input type="text" name="first_name" id="first_name" tabindex="1" placeholder="Enter your First Name" style="text-transform: capitalize;" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" value="<?php echo $job[0]['first_name'];?>" maxlength="35">
-                           <?php echo form_error('first_name');; ?>
-                        </fieldset>
-                        <fieldset>
-                           <label >Last Name <font  color="red">*</font>:</label>
-                           <input type="text" name="last_name" id="last_name" tabindex="2" placeholder="Enter your Last Name" style="text-transform: capitalize;" onfocus="this.value = this.value;" value="<?php echo $job[0]['last_name'];?>" maxlength="35">
-                           <?php echo form_error('last_name');; ?>
-                        </fieldset>
-                        <fieldset class="full-width">
-                           <label >Email Address <font  color="red">*</font> :</label>
-                           <input type="email" name="email" id="email" tabindex="3" placeholder="Enter your Email Address" value="<?php echo $job[0]['user_email'];?>" maxlength="255">
-                           <?php echo form_error('email');; ?>
-                        </fieldset>
-                        <fieldset class="fresher_radio col-xs-12" >
-                           <label>Fresher <font  color="red">*</font> : </label>
-                           <div class="main_raio">
-                              <input type="radio" value="Fresher" tabindex="4" id="test1" name="fresher" class="radio_job" id="fresher">
-                              <label for="test1" class="point_radio" >Yes</label>
-                           </div>
-                           <div class="main_raio">
-                              <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" checked>
-                              <label for="test2" class="point_radio">No</label>
-                           </div>
-                           <?php echo form_error('Fresher');; ?>
-                        </fieldset>
-                        <fieldset class="full-width">
-                           <label >Job Title<font  color="red">*</font> :</label>
-                           <input type="search" tabindex="6" id="job_title" name="job_title" value="" placeholder="Ex:- Sr. Engineer, Jr. Engineer, Software Developer, Account Manager" style="text-transform: capitalize;" onfocus="this.value = this.value;" maxlength="255">
-                           <?php echo form_error('job_title');; ?>
-                        </fieldset>
-                        <fieldset class="full-width fresher_select main_select_data" >
-                           <label for="skills"> Skills<font  color="red">*</font> : </label>
-                           <input id="skills2" style="text-transform: capitalize;" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
-                           <?php echo form_error('skills');; ?>
-                        </fieldset>
-                        <fieldset class="full-width main_select_data">
-                           <label>Industry <font  color="red">*</font> :</label>
-                           <select name="industry" id="industry" tabindex="8">
-                              <option value="" selected="selected">Select industry</option>
-                              <?php foreach ($industry as $indu) { ?>
-                              <option value="<?php echo $indu['industry_id']; ?>"><?php echo $indu['industry_name']; ?></option>
-                              <?php } ?>
-                               <option value="<?php echo $other_industry[0]['industry_id']; ?>"><?php echo $other_industry[0]['industry_name']; ?></option>
-                           </select>
-                           <?php echo form_error('industry');; ?>
-                        </fieldset>
-                        <fieldset class="full-width fresher_select main_select_data" >
-                           <label for="cities">Preffered location for job<font  color="red">*</font> : </label>
-                           <input id="cities2" name="cities"  style="text-transform: capitalize;" size="90" tabindex="9" placeholder="Enter Preferred Cites">
-                           <?php echo form_error('cities');; ?>
-                        </fieldset>
-                        <fieldset class=" full-width">
-                           <div class="job_reg">
-                              <!--<input type="reset">-->
-                              <input type="submit" id="submit" name="" value="Register" tabindex="10">
-                           </div>
-                        </fieldset>
-                        <?php echo form_close();?>
-                     </div>
-									</div>
+							
                             </div>
                         </div>
                     </div>
@@ -1468,13 +1456,122 @@
             </div>
         </div>
         <!-- register -->
+        
+         <!-- register for apply start-->
+
+        <div class="modal fade register-model login" id="register_apply" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <div class="clearfix">
+                            <div class="col-md-12 col-sm-12">
+                                    <h4>Join Aileensoul - It's Free</h4>
+									<div class="main-form">
+                                    <form role="form" name="register_form" id="register_form" method="post">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                      <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                        </div>
+                                        <div class="form-group dob">
+                                            <label class="d_o_b"> Date Of Birth :</label>
+                                            <select tabindex="9" class="day" name="selday" id="selday">
+                                                <option value="" disabled selected value>Day</option>
+                                                <?php
+                                                for ($i = 1; $i <= 31; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                                <option value="" disabled selected value>Month</option>
+                                                //<?php
+//                  for($i = 1; $i <= 12; $i++){
+//                  
+                                                ?>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">Mar</option>
+                                                <option value="4">Apr</option>
+                                                <option value="5">May</option>
+                                                <option value="6">Jun</option>
+                                                <option value="7">Jul</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                                //<?php
+//                  }
+//                  
+                                                ?>
+                                            </select>
+                                            <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <option value="" disabled selected value>Year</option>
+                                                <?php
+                                                for ($i = date('Y'); $i >= 1900; $i--) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="dateerror" style="color:#f00; display: block;"></div>
+
+                                        <div class="form-group gender-custom">
+                                            <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                                <option value="" disabled selected value>Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select>
+                                        </div>
+
+                                        <p class="form-text">
+                                            By Clicking on create an account button you agree our<br class="mob-none">
+                                            <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                        </p>
+                                        <p>
+                                            <button tabindex="13" class="btn1">Create an account</button>
+											<!--<p class="next">Next</p>-->
+                                        </p>
+                                    </form>
+									</div>
+							
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- register for apply end -->
 
 <!-- script for skill textbox automatic start-->
 <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
-         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
             <?php
         } else {
             ?>
@@ -1484,6 +1581,7 @@
 
 
  <script>
+     
       var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
       var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
       var base_url = '<?php echo base_url(); ?>';

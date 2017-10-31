@@ -1,3 +1,6 @@
+<?php
+$s3 = new S3(awsAccessKey, awsSecretKey);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,28 +36,38 @@
                                             <div class="all-box">
                                                 <ul class="video">
                                                     <?php
-                                                    $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-                                                    $busvideo = $this->data['busvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                    foreach ($busvideo as $val) {
-                                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
-                                                        $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                        $multiplevideo[] = $busmultivideo;
-                                                    }
+                                                    $join_str[0]['table'] = 'post_files';
+                                                    $join_str[0]['join_table_id'] = 'post_files.post_id';
+                                                    $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
+                                                    $join_str[0]['join_type'] = '';
+
+                                                    $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'video');
+                                                    $busvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
+
+//                                                    $contition_array = array('user_id' => $businessdata1[0]['user_id']);
+//                                                    $busvideo = $this->data['busvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//                                                    foreach ($busvideo as $val) {
+//                                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
+//                                                        $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//                                                        $multiplevideo[] = $busmultivideo;
+//                                                    }
                                                     ?>
                                                     <?php
-                                                    $allowesvideo = array('mp4', '3gp', 'webm', 'mov', 'MP4');
-                                                    foreach ($multiplevideo as $mke => $mval) {
-                                                        foreach ($mval as $mke1 => $mval1) {
-                                                            $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
-                                                            if (in_array($ext, $allowesvideo)) {
-                                                                $singlearray1[] = $mval1;
-                                                            }
-                                                        }
-                                                    }
+//                                                    $allowesvideo = array('mp4', '3gp', 'webm', 'mov', 'MP4');
+//                                                    foreach ($multiplevideo as $mke => $mval) {
+//                                                        foreach ($mval as $mke1 => $mval1) {
+//                                                            $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
+//                                                            if (in_array($ext, $allowesvideo)) {
+//                                                                $singlearray1[] = $mval1;
+//                                                            }
+//                                                        }
+//                                                    }
                                                     ?>
                                                     <?php
-                                                    if ($singlearray1) {
-                                                        foreach ($singlearray1 as $videov) {
+//                                                    if ($singlearray1) {
+//                                                        foreach ($singlearray1 as $videov) {
+                                                    if ($busvideo) {
+                                                        foreach ($busvideo as $videov) {
                                                             ?>
                                                             <li>
                                                             <td class="vidoe_tag">
@@ -68,9 +81,7 @@
                                                                     if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
                                                                         ?>
                                                                         <video preload="none" poster="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $post_poster); ?>" controls playsinline webkit-playsinline>
-                                                                            <?php
-                                                                        } else {
-                                                                            ?>
+                                                                        <?php } else { ?>
                                                                             <video preload="none" controls playsinline webkit-playsinline>
                                                                                 <?php
                                                                             }
@@ -176,7 +187,7 @@
                                                                     </div>
                                                                     <!-- Model Popup Close -->
                                                                     <?php echo $footer; ?>
-                                                                    <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver='.time());         ?>"></script>-->
+                                                                    <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver='.time());                ?>"></script>-->
                                                                     <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
                                                                     <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                                                                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>

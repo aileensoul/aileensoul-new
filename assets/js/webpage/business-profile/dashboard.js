@@ -82,7 +82,7 @@ jQuery(document).ready(function ($) {
 //                    $('#progress_div').fadeOut('5000').remove();
             document.getElementById("progress_div").style.display = "none";
             $(".business-all-post").prepend(response.responseText);
-
+            $('video, audio').mediaelementplayer();
             GetBusPhotos();
             GetBusVideos();
             GetBusAudios();
@@ -1263,8 +1263,12 @@ function followuser_two(clicked_id)
         type: 'POST',
         url: base_url + "business_profile/follow_two",
         data: 'follow_to=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
-            $('.' + 'fr' + clicked_id).html(data);
+            $('.' + 'fr' + clicked_id).html(data.follow_html);
+            $('#' + 'countfollow').html('(' + data.following_count + ')');
+            $('#' + 'countfollower').html('(' + data.follower_count + ')');
+            //$('.' + 'fr' + clicked_id).html(data);
         }
     });
 }
@@ -1281,8 +1285,12 @@ function unfollowuser_two(clicked_id)
         type: 'POST',
         url: base_url + "business_profile/unfollow_two",
         data: 'follow_to=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
-            $('.' + 'fr' + clicked_id).html(data);
+            $('.' + 'fr' + clicked_id).html(data.unfollow_html);
+            $('#' + 'countfollow').html('(' + data.unfollowing_count + ')');
+            $('#' + 'countfollower').html('(' + data.unfollower_count + ')');
+            //$('.' + 'fr' + clicked_id).html(data);
         }
     });
 }
