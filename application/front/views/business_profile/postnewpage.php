@@ -96,23 +96,23 @@
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <?php echo $business_left; ?>
-								<div class="tablate-potrat-add">
-                                <div class="fw text-center pt10">
-                                    <script type="text/javascript">
-                                        (function () {
+                                <div class="tablate-potrat-add">
+                                    <div class="fw text-center pt10">
+                                        <script type="text/javascript">
+                                            (function () {
                                             if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
+                                            window.CHITIKA = {'units': []};
                                             }
                                             ;
                                             var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
                                             var placement_id = window.CHITIKA.units.length;
                                             window.CHITIKA.units.push(unit);
                                             document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                            }());
+                                        </script>
+                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                         <!-- Trigger/Open The Modal -->
@@ -120,23 +120,23 @@
                         <div class=" custom-right-art post_detailbox mian_middle_post_box animated fadeInUp" >
                             <!-- body content start-->
                             <?php if (count($busienss_data) > 0) { ?>
-								<div class="mob-add">
-                                        <div class="fw text-center pt10 pb5">
-                                            <script type="text/javascript">
+                                <div class="mob-add">
+                                    <div class="fw text-center pt10 pb5">
+                                        <script type="text/javascript">
                                             (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []};
-                                                }
-                                                ;
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            if (window.CHITIKA === undefined) {
+                                            window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
                                             }());
-                                            </script>
-                                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                        </div>
+                                        </script>
+                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
+                                </div>
                                 <div class="col-md-12 col-sm-12 post-design-box">
                                     <!-- pop up box start-->
                                     <div id="popup1" class="overlay">
@@ -147,7 +147,7 @@
                                             </div>
                                         </div>
                                     </div>
-									
+
                                     <!-- pop up box end-->
                                     <div  class="">
                                         <div class="post-design-top col-md-12" >
@@ -331,34 +331,34 @@
                                                             <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 2) { ?>
                                                             <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 3) { ?>
                                                             <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 4) { ?>
                                                             <!-- two image start -->
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } else { ?>
                                                             <div class="one-image" >
                                                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
-                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+                                                                                    currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <?php
                                                         }
@@ -485,18 +485,19 @@
                                                 }
                                                 ?>
                                                 <!-- pop up box end-->
-                                                <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $busienss_data[0]['business_profile_post_id']; ?>);">
-                                                    <?php
-                                                    $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
-                                                    $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                                                    $likeuser = $commnetcount[0]['business_like_user'];
-                                                    $countlike = $commnetcount[0]['business_likes_count'] - 1;
-                                                    $likelistarray = explode(',', $likeuser);
+                                                <?php
+                                                $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                                                $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                                                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-                                                    ?>
-                                                    <div class="like_one_other">
+                                                $likeuser = $commnetcount[0]['business_like_user'];
+                                                $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                                                $likelistarray = explode(',', $likeuser);
+
+                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                                                ?>
+                                                <div class="like_one_other">
+                                                    <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $busienss_data[0]['business_profile_post_id']; ?>);">
                                                         <?php
                                                         if ($userid == $value) {
                                                             echo "You";
@@ -516,8 +517,9 @@
                                                             echo "others";
                                                             ?> 
                                                         <?php } ?>
-                                                    </div>
-                                                </a>
+                                                    </a>
+                                                </div>
+
                                             </div>
                                             <?php
                                         }
@@ -534,18 +536,19 @@
                                             }
                                             ?>
                                             <!-- pop up box end-->
-                                            <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $busienss_data[0]['business_profile_post_id']; ?>);">
-                                                <?php
-                                                $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
-                                                $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                                                $likeuser = $commnetcount[0]['business_like_user'];
-                                                $countlike = $commnetcount[0]['business_likes_count'] - 1;
-                                                $likelistarray = explode(',', $likeuser);
+                                            <?php
+                                            $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                                            $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-                                                ?>
-                                                <div class="like_one_other">
+                                            $likeuser = $commnetcount[0]['business_like_user'];
+                                            $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                                            $likelistarray = explode(',', $likeuser);
+
+                                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                                            ?>
+                                            <div class="like_one_other">
+                                                <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $busienss_data[0]['business_profile_post_id']; ?>);">
                                                     <?php
                                                     echo ucfirst(strtolower($business_fname1));
                                                     echo "&nbsp;";
@@ -560,8 +563,9 @@
                                                         echo "others";
                                                         ?> 
                                                     <?php } ?>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            </div>
+
                                         </div>
                                         <!-- like user list end -->
                                         <!-- all comment start-->
@@ -744,42 +748,42 @@
                             <!-- body content end-->
                         </div>
                     </div>
-					
-					
-					<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+
+                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
                         <div class="fw text-center">
                             <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
+                                (function () {
+                                if (window.CHITIKA === undefined) {
+                                window.CHITIKA = {'units': []};
+                                }
+                                ;
+                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                var placement_id = window.CHITIKA.units.length;
+                                window.CHITIKA.units.push(unit);
+                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                }());
                             </script>
                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-							<div class="fw pt10">
-									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
-								</div>
+                            <div class="fw pt10">
+                                <a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
+                            </div>
                         </div>
-                       
+
                     </div>
                     <div class="tablate-add">
 
-                            <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                        <script type="text/javascript">
+                                (function() {
+                                if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+                                var unit = {"calltype":"async[2]", "publisher":"Aileensoul", "width":160, "height":600, "sid":"Chitika Default"};
+                                var placement_id = window.CHITIKA.units.length;
+                                window.CHITIKA.units.push(unit);
+                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                }());
+                        </script>
+                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                     </div>
                 </div>
             </div>
@@ -896,14 +900,15 @@
                                             }
                                             ?>
                                             <!-- pop up box end-->
-                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
-                                                <?php
-                                                $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
-                                                $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                $countlike = count($commneteduser) - 1;
-                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
-                                                ?>
-                                                <div class="like_one_other_img">
+
+                                            <?php
+                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
+                                            $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                            $countlike = count($commneteduser) - 1;
+                                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
+                                            ?>
+                                            <div class="like_one_other_img">
+                                                <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
                                                     <?php
                                                     if ($userid == $commneteduser[0]['user_id']) {
                                                         echo "You";
@@ -923,8 +928,9 @@
                                                         echo "others";
                                                         ?> 
                                                     <?php } ?>
-                                                </div>
-                                            </a>
+                                                </a>
+                                            </div>
+
                                         </div>
                                         <?php
                                     }
@@ -939,14 +945,15 @@
                                         }
                                         ?>
                                         <!-- pop up box end-->
-                                        <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
-                                            <?php
-                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
-                                            $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                            $countlike = count($commneteduser) - 1;
-                                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
-                                            ?>
-                                            <div class="like_one_other_img" style="">
+
+                                        <?php
+                                        $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
+                                        $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                        $countlike = count($commneteduser) - 1;
+                                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
+                                        ?>
+                                        <div class="like_one_other_img" style="">
+                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
                                                 <?php
                                                 echo ucfirst(strtolower($business_fname1));
                                                 echo "&nbsp;";
@@ -961,8 +968,9 @@
                                                     echo "others";
                                                     ?> 
                                                 <?php } ?>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
+
                                     </div>
                                     <!-- show comment div start -->
                                     <div class="art-all-comment">
@@ -1175,14 +1183,14 @@
             </div>
         </div>
         <?php echo $footer; ?>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());  ?>"></script>--> 
+        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());      ?>"></script>--> 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());  ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());      ?>"></script>-->
         <!-- script for business autofill -->
         <script>
-                                        var base_url = '<?php echo base_url(); ?>';
-                                        var post_id = '<?php echo $post_id; ?>';
+                                                var base_url = '<?php echo base_url(); ?>';
+                                                var post_id = '<?php echo $post_id; ?>';
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/post_detail.js?ver=' . time()); ?>"></script>

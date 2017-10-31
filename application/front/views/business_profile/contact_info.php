@@ -143,7 +143,7 @@
                                            <?php echo form_error('email'); ?>
                                 </fieldset>
                                 <fieldset>
-                                    <label>Contact website:</label>
+                                    <label>Contact website<span class="optional">(optional)</span>:</label>
                                     <input name="contactwebsite" type="url" id="contactwebsite" tabindex="4"  placeholder="Enter contact website" value="<?php
                                     if ($contactwebsite1) {
                                         echo $contactwebsite1;
