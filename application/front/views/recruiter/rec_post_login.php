@@ -815,7 +815,7 @@
             <div class="job-saved-box">
                <h3>
                  Recommended job
-
+				</h3>
                <div class="contact-frnd-post">
                             <div class="job-contact-frnd ">
                               <!--.........AJAX DATA START......-->  
