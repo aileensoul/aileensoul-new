@@ -3691,7 +3691,7 @@ class Job extends MY_Controller {
                     if ($jobsave) {
                         $return_html .= '<a href="javascript:void(0);" class="button applied">Applied</a>';
                     } else {
-                        $return_html .= '<li class="fr"><a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a></li>';
+                        $return_html .= '<li class="fr"><a title="Apply" href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a></li>';
                         $return_html .= '<li class="fr">';
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array(
@@ -3704,7 +3704,7 @@ class Job extends MY_Controller {
                         if ($jobsave) {
                             $return_html .= '<a class="button saved save_saved_btn">Saved</a>';
                         } else {
-                            $return_html .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
+                            $return_html .= '<a title="Save" id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
                         }
 
                         $return_html .= '</li>';
@@ -3990,8 +3990,8 @@ class Job extends MY_Controller {
                 if ($jobsave[0]['job_save'] == 1) {
                     $return_html .= '<button  class="button" disabled>Applied</button>';
                 } else {
-                    $return_html .= '<li class="fr"> <a href="javascript:void(0);" class="button" onclick="applypopup(' . $post['post_id'] . ',' . $post['app_id'] . ')">Apply</a> </li>';
-                    $return_html .= '<li class="fr"><a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['app_id'] . ')">Remove</a></li>';
+                    $return_html .= '<li class="fr"> <a title="Apply" href="javascript:void(0);" class="button" onclick="applypopup(' . $post['post_id'] . ',' . $post['app_id'] . ')">Apply</a> </li>';
+                    $return_html .= '<li class="fr"><a  title="Remove" href="javascript:void(0);" class="button" onclick="removepopup(' . $post['app_id'] . ')">Remove</a></li>';
                 }
 
                 $return_html .= '</ul></div></div>';
@@ -4245,7 +4245,7 @@ class Job extends MY_Controller {
                 $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
                 $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<li class="fr"><a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['app_id'] . ')">Remove</a></li> ';
+                $return_html .= '<li class="fr"><a title="Remove" href="javascript:void(0);" class="button" onclick="removepopup(' . $post['app_id'] . ')">Remove</a></li> ';
 
 
 
@@ -4677,7 +4677,7 @@ class Job extends MY_Controller {
 
                         $return_html .= '<a href="javascript:void(0);" class="button saved save_saved_btn">Saved</a>';
                     } else {
-                        $return_html .= '<a id="' . $post['post_id'] . '"';
+                        $return_html .= '<a title="Save" id="' . $post['post_id'] . '"';
 
                         if ($this->session->userdata('aileenuser')) {
                             $return_html .= 'onClick="savepopup(' . $post['post_id'] . ')"';
@@ -4686,7 +4686,7 @@ class Job extends MY_Controller {
                         }
 
 
-                        $return_html .= 'href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
+                        $return_html .= 'href="javascript:void(0);"  class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
                     }
                     $return_html .= '</li>';
                 }
@@ -5099,7 +5099,7 @@ echo "hi";die();
                         if ($jobsave) {
                             $return_html .= '<a class="button saved save_saved_btn">Saved</a>';
                         } else {
-                            $return_html .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
+                            $return_html .= '<a title="Save" id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
                         }
 
                         $return_html .= '</li>';
