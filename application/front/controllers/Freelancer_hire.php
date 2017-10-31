@@ -322,7 +322,7 @@ class Freelancer_hire extends MY_Controller {
                 if ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
-                    redirect('freelancer_hire/freelancer_hire/freelancer_hire_address_info');
+                    redirect('freelancer-hire/address-information');
                 }
             } elseif ($hire_step[0]['free_hire_step'] == '2') {
                 if ($this->uri->segment(2) == 'professional-information') {
@@ -330,11 +330,11 @@ class Freelancer_hire extends MY_Controller {
                 } elseif ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
-                    redirect('freelancer_hire/freelancer_hire/freelancer_hire_professional_info');
+                    redirect('freelancer-hire/professional-information');
                 }
             }
         } else {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
+            redirect('freelancer-hire/basic-information');
         }
     }
 
