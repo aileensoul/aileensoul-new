@@ -367,8 +367,43 @@ $(document).ready(function () { //aletr("hii");
                 required: "Email address is required.",
             }
         },
+        submitHandler: submitforgotForm
     });
     /* validation */
+    
+      function submitforgotForm()
+    {
+
+        var email_login = $("#forgot_email").val();
+        
+        var post_data = {
+            'forgot_email': email_login,
+            csrf_token_name: csrf_hash
+        }
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'profile/forgot_live',
+            data: post_data,
+            dataType: "json",
+            beforeSend: function ()
+            {
+                $("#error").fadeOut();
+                $("#forgotbuton").html('Your credential has been send in your register email id');
+            },
+            success: function (response)
+            {
+                if (response.data == "success") {
+                  //  alert("login");
+                    $("#forgotbuton").html(response.data);
+                    //window.location = base_url + "job/home/live-post";
+                } else {
+                    $("#forgotbuton").html(response.message);
+                    
+                }
+            }
+        });
+        return false;
+    }
 
 });
 

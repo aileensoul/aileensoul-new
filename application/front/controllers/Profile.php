@@ -398,5 +398,108 @@ public function check_emailforget() { //echo "hello"; die();
         die();
         }
         }
+        
+        public function forgot_live() { 
+      $forgot_email = $this->input->post('forgot_email'); 
+
+
+        if ($forgot_email != '') {
+
+            $forgot_email_check = $this->common->select_data_by_id('user', 'user_email', $forgot_email, '*', '');
+
+          //echo '<pre>'; print_r($forgot_email_check); die();
+              
+            if (count($forgot_email_check) > 0) {
+                
+           // $rand_password = rand(100000, 999999);
+           
+           $rand_password = $this->random_string(6);
+
+
+         $email= $forgot_email_check[0]['user_email'];
+         $username= $forgot_email_check[0]['user_name'];
+         $firstname= $forgot_email_check[0]['first_name'];
+         $lastname= $forgot_email_check[0]['last_name'];
+            
+            $toemail= $forgot_email; 
+
+            
+            
+           // $msg .= "Hey !" . $username ."<br/>"; 
+           // $msg .=  " " . $firstname . " " . $lastname . ",";
+           // $msg .= "This is your code.";
+           // $msg .= "<br>"; 
+           // $msg .= " " . $rand_password . " "; 
+           // $msg .= "<a href=" .  base_url('profile/change_password/' . $forgot_email_check[0]['user_id']) . ">Change password</a>"; 
+
+
+                 
+        $msg .= '<tr>
+              <td style="text-align:center; padding:10px 0 30px; font-size:15px;">';
+        $msg .= '<p style="margin:0; font-family:arial;">Hi,' . ucwords($firstname) .' '.ucwords($lastname) . '</p>
+                <p style="padding:25px 0 ; font-family:arial; margin:0;">This is your code: '.$rand_password .'</p>
+                <p><a style="background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
+        background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
+        background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
+        background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
+        background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
+        font-size:16px;
+           color:#fff;
+      padding: 7px 12px;
+    text-decoration: none;
+    font-family: arial;
+    letter-spacing: 1px;" class="btn" href="' . base_url() . 'profile/changepassword/' . $forgot_email_check[0]['user_id'] . '">Reset password</a></p>
+              </td>
+            </tr>';
+
+
+          
+           //echo $msg; die();
+            $subject = "Forgot password";
+
+
+   //$mail = $this->email_model->do_email($msg, $subject,$toemail,'');
+   $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail , $subject, $msg);
+//die();
+   $data = array(
+                'password_code' => $rand_password
+                 );
+
+     
+    $updatdata =   $this->common->update_data($data,'user','user_id',$forgot_email_check[0]['user_id']);
+             
+              
+                        echo json_encode(
+                            array(
+                                "data" => 'success',
+                                "message" => '<div class="alert alert-success">We have successfully sent a code in provided email address.</div>',
+                    ));
+           // $this->session->set_flashdata('success', '<div class="alert alert-success">We have successfully sent a code in provided email address.</div>');
+                //redirect('login', 'refresh');
+            } else {
+                
+                 echo json_encode(
+                            array(
+                                "data" => 'error',
+                                "message" => '<div class="alert alert-danger">Code for new password successfully not send in your email id.</div>',
+                    ));
+             //  echo "2222"; die();
+                //$this->session->set_flashdata('error', '<div class="alert alert-danger">Code for new password successfully not send in your email id.</div>');
+               // redirect('login', 'refresh');
+            }
+        } else {
+            
+            echo json_encode(
+                            array(
+                                "data" => 'error',
+                                "message" => '<div class="alert alert-danger">Please enter email id.</div>',
+                    ));
+//            $this->session->set_flashdata('error', '<div class="alert alert-danger">Please enter email id.</div>');
+//            redirect('login', 'refresh');
+        }
+    }
+
 
 }

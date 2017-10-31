@@ -1309,6 +1309,7 @@
                         <div class="col-sm-12 right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
+                                    <div id="forgotbuton"></div> 
                                         <div class="title">
                                             <h1 class="ttc">Forgot Password</h1>
                                         </div>
