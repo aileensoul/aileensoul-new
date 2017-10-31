@@ -810,11 +810,11 @@
 								</div>
 							</div>
          <!--recommen candidate start-->
+         <?php if(count($recommandedpost) > 0) { ?>
              <div class="common-form">
             <div class="job-saved-box">
                <h3>
-                 Recommended from aileensoul
-               </h3>
+                 Recommended job
 
                <div class="contact-frnd-post">
                             <div class="job-contact-frnd ">
@@ -1116,6 +1116,7 @@
          </div>
       </div>
       </div>
+         <?php } ?>
          <!--recommen candidate end-->
       </div>  
           
