@@ -149,7 +149,7 @@
                                
 
                                 <fieldset class="full-width">
-                                    <label>How you are inspire<span class="optional">(optional)</span>:</label>
+                                    <label>How you are inspire?<span class="optional">(optional)</span>:</label>
                                 
                                     <input name="inspire"  type="text" id="inspire" placeholder="Enter inspire" tabindex="4" value="<?php if($inspire1){ echo $inspire1; } ?>"/><span ></span>
                                  

@@ -274,14 +274,7 @@
                                 }
                                 ?>
 
-                                <fieldset>
-
-                                    <input type="hidden" name="image_hidden_logo" value="<?php
-                                    if ($complogo1) {
-                                        echo $complogo1;
-                                    }
-                                    ?>">
-                                </fieldset>
+                               
 
                                 <fieldset class="hs-submit full-width">
 

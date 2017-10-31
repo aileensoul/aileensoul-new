@@ -1867,6 +1867,15 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
   display: flex;
   align-items: center;
   margin:0 auto;
+ /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;*/
 }
 
 .modal-content {
@@ -1883,10 +1892,18 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 
 .modal .modal-dialog{
 	transform: scale(0.8) !important;
+	-ms-transform: scale (0.8) !important;
+	-webkit-transform:scale(0.8) !important;
+	-moz-transform: scale(0.8) !important;
+	-o-transform: scale(0.8) !important;
 
 }
 .modal.in .modal-dialog {
 	transform: scale(1) !important;
+	-ms-transform: scale (1) !important;
+	-webkit-transform:scale(1) !important;
+	-moz-transform: scale(1) !important;
+	-o-transform: scale(1) !important;
 }
 /*** end new popup  ***/
 

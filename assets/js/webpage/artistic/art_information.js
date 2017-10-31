@@ -48,7 +48,7 @@ $('#skills').change(function other_category(){
         // var strUser = e.options[e.selectedIndex].value;
        var strUser = $('#skills').val();
        var strUser =  "'" + strUser + "'";
-       var n = strUser.includes(17);
+       var n = strUser.includes(26);
         if(n == true){ 
             document.getElementById('other_category').style.display = "block";
         }else{ 
@@ -68,7 +68,7 @@ function validation_other(event){
        event.preventDefault();
        var strUser = $('#skills').val();
        var strUser =  "'" + strUser + "'";
-       var n = strUser.includes(17);
+       var n = strUser.includes(26);
 
         var other_category = document.getElementById("othercategory").value;
        var category_trim = other_category.trim();
