@@ -2898,9 +2898,10 @@ class Job extends MY_Controller {
 //DELETE WORK EXPERIENCE CERIFICATE & PDF END
 //THIS JOB REGISTRATION IS USED FOR FIRST TIME REGISTARTION VIEW START
 
-    public function job_reg() {
- $postid = $_GET['postid']; 
+    public function job_reg($postid='') {
+ //$postid = $_GET['postid']; 
  // job aply wothout login start
+      
  if($postid != ''){
         $this->job_apply_check();
         $this->job_deactive_profile();
@@ -2946,7 +2947,7 @@ class Job extends MY_Controller {
         } else {
 
             $data = array(
-                'post_id' => $id,
+                'post_id' => $postid,
                 'user_id' => $userid,
                 'status' => 1,
                 'created_date' => date('Y-m-d h:i:s', time()),
