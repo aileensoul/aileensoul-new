@@ -2432,6 +2432,7 @@ label.cameraButton:active {
 .post-editor .fr button {
     padding: 7px 30px;
     font-size: 15px;
+    margin-right: 0px;
     margin-bottom: 4px;
 }
 .close {
@@ -4156,6 +4157,7 @@ div .comment {
 .multi-select-container--positioned .multi-select-menu label {
     white-space: normal;
 }
+
 /***  end select dropdown  ***/
 
 /***  media query  ***/

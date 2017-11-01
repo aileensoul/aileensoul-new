@@ -15618,9 +15618,9 @@ public function get_artistic_name($id=''){
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
                                 if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
-                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].');">';
                                 } else {
-                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].');">';
                                 }
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -15632,9 +15632,9 @@ public function get_artistic_name($id=''){
                                 $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if ($info) {
-                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].');">';
                                 } else {
-                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$key['art_post_id'].');">';
                                 }
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -15754,8 +15754,32 @@ public function get_artistic_name($id=''){
                                                 </a>
                                              </li>
                                           </ul>
-                                          <ul class="col-md-6 like_cmnt_count">
-                                             <li>
+                                          <ul class="col-md-6 like_cmnt_count">';
+
+
+                                          $contition_array = array('post_id' => $key['art_post_id'], 'insert_profile' => '1');
+   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    //echo "<pre>"; print_r($postformat); die();
+                    if($postformat[0]['post_format'] == 'video'){
+                    $return_html .= '<li id="viewvideouser'.$key['art_post_id'].'">';
+
+                    $contition_array = array('post_id' => $key['art_post_id'], 'insert_profile' => '1');
+   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata); 
+
+                    if($user_data > 0){
+
+                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+
+                    $return_html .= $user_data . ' '. 'Views'; 
+
+                    $return_html .= '</span></div></li>';
+
+                      }
+
+                   }
+
+                                             $return_html .= '<li>
                                                 <div class="like_count_ext   comment_count'.$key['art_post_id'].'">
                                                    <span class="comment_count">';
                                                     
