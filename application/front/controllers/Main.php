@@ -28,13 +28,40 @@ class Main extends CI_Controller {
     public function index() {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         
-        $contition_array = array();
+        /*$contition_array = array();
         $site_visit = $this->common->select_data_by_condition('site_settings', $contition_array, $data = 'site_visit', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $site_visit = $site_visit[0]['site_visit'];
         $update_site_visit = $site_visit + 1;
+        */
+        
+        /* visitor counter */
+
+        $counter_name = "counter.txt";
+// Check if a text file exists. If not create one and initialize it to zero.
+        if (!file_exists($counter_name)) {
+            $f = fopen($counter_name, "w");
+            fwrite($f, "0");
+            fclose($f);
+        }
+// Read the current value of our counter file
+        $f = fopen($counter_name, "r");
+        $counterVal = fread($f, filesize($counter_name));
+        fclose($f);
+// Has visitor been counted in this session?
+// If not, increase counter value by one
+        if (!isset($_SESSION['hasVisited'])) {
+            $_SESSION['hasVisited'] = "yes";
+            $counterVal++;
+            $f = fopen($counter_name, "w");
+            fwrite($f, $counterVal);
+            fclose($f);
+        }
+
+        /* visitor counter */
+
         
         $data = array(
-            'site_visit' => $update_site_visit
+            'site_visit' => $counterVal
         );
         $updatdata = $this->common->update_data($data, 'site_settings', 'site_id', '1');
         

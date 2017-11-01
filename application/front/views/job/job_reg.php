@@ -28,7 +28,7 @@
                   <div class="job_reg_page_fprm">
                       <?php
                                 if ($this->uri->segment(3) == 'live-post') {
-                                    echo '<div class="alert alert-danger">Your post will apply successfully after complete this one more step...!</div>';
+                                    echo '<div class="alert alert-danger">Your post will be automatically apply successfully after completing this step...!</div>';
                                 }
                                 ?>
                      <div class="common-form job_reg_main">

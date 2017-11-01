@@ -1343,7 +1343,7 @@ class Business_profile extends MY_Controller {
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
 
-                        
+
                         if ($count == '3') {
                             /* RESIZE 4 */
 
@@ -2803,7 +2803,7 @@ Your browser does not support the audio tag.
         );
 
         $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
-        
+
         if ($update) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
@@ -3243,6 +3243,24 @@ Your browser does not support the audio tag.
                     'not_active' => 1
                 );
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
+                if ($insert_id) {
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                    $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
+                }
             }
 
 // end notoification
@@ -3292,6 +3310,24 @@ Your browser does not support the audio tag.
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+            if ($insert_id) {
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
+            }
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3401,8 +3437,9 @@ Your browser does not support the audio tag.
             // insert notification
 
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
-            $busnotification = $this->common->select_data_by_condition('notification1', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($busnotification[0]['not_read'] == 2) {
+                
             } elseif ($busnotification[0]['not_read'] == 1) {
                 $datafollow = array(
                     'not_read' => 2
@@ -3428,19 +3465,19 @@ Your browser does not support the audio tag.
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="'.BUS_PROFILE_THUMB_UPLOAD_URL.$this->data['business_login_user_image'].'" width="60" height="60"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
                                             <td style="padding:5px;">
-						<p><b>'.$this->data['business_login_company_name'].'</b> Started following you in business profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">'. date('Y-m-d H:i:s') .'</span>
+						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="'.BASEURL.'business-profile/details/'.$this->data['business_login_slug'].'">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
-                    
-                    $subject = $this->data['business_login_company_name'] .'Started following you in Aileensoul.';
-                    $send_email = $this->email_model->send_email($subject=$subject, $templ=$email_html, $to_email=$busdatatoid[0]['contact_email']);
+
+                    $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
                 }
             }
             // end notoification
@@ -3478,27 +3515,25 @@ Your browser does not support the audio tag.
                 'not_created_date' => date('Y-m-d H:i:s'),
                 'not_active' => 1
             );
-            
-            
 
             $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
             if ($insert_id) {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="'.BUS_PROFILE_THUMB_UPLOAD_URL.$this->data['business_login_user_image'].'" width="60" height="60"></td>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
                                             <td style="padding:5px;">
-						<p><b>'.$this->data['business_login_company_name'].'</b> Started following you in business profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">'. date('Y-m-d H:i:s') .'</span>
+						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="'.BASEURL.'business-profile/details/'.$this->data['business_login_slug'].'">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['business_login_company_name'] .'Started following you in Aileensoul.';
-                
-                $send_email = $this->email_model->send_email($subject=$subject, $templ=$email_html, $to_email=$busdatatoid[0]['contact_email']);
+                $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
             }
 
             // end notoification
@@ -3787,6 +3822,24 @@ Your browser does not support the audio tag.
                 );
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
+                if ($insert_id) {
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                    $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
+                }
             }
             // end notoification
             $follow = '';
@@ -3830,6 +3883,24 @@ Your browser does not support the audio tag.
             );
 
             $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
+            if ($insert_id) {
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
+            }
             // end notoification
             $follow = '';
             if ($insert) {
@@ -4604,11 +4675,11 @@ Your browser does not support the audio tag.
         $post_id = $_POST["post_id"];
         $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        
         $business_comment_likes_count = $businessprofiledata[0]['business_comment_likes_count'];
         $likeuserarray = explode(',', $businessprofiledata[0]['business_comment_like_user']);
 
-        if (!in_array($userid, $likeuserarray)) { //echo "falguni"; die();
+        if (!in_array($userid, $likeuserarray)) { 
             $user_array = array_push($likeuserarray, $userid);
 
             if ($businessprofiledata[0]['business_comment_likes_count'] == 0) {
@@ -4659,6 +4730,27 @@ Your browser does not support the audio tag.
 
 
                     $insert_id = $this->common->insert_data_getid($datacmlike, 'notification');
+                    if ($insert_id) {
+                        
+                        $to_email_id = $this->db->select('contact_email')->get_where('business_profile',array('user_id'=>$businessprofiledata[0]['user_id']))->row()->contact_email;
+                        
+                        $email_html = '';
+                        $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> like your comment in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                        $subject = $this->data['business_login_company_name'] . ' Like your comment in Aileensoul.';
+
+                        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
+                    }
                 }
             }
 // end notoification
@@ -11134,7 +11226,7 @@ Your browser does not support the audio tag.
 </div></div>';
             }
         }
-        
+
         echo $return_html;
 // return html        
     }
@@ -11555,6 +11647,7 @@ Your browser does not support the audio tag.
 
         echo $fetch_video;
     }
+
     public function bus_audio() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
@@ -12681,4 +12774,5 @@ Your browser does not support the audio tag.
 
         return $contacts_count;
     }
+
 }
