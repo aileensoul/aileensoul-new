@@ -2127,12 +2127,12 @@ label.cameraButton:active {
     color: #000;
 }
 .business_data_table .business_data_td1 {
-    width: 50px;
+    width: 30px;
 }
 .business_data_td1 {
-    padding-bottom: 13px;
-    padding-left: 10px;
-    padding-right: 12px;
+    padding-bottom: 8px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 .business_data_td1 i {
     color: #1b8ab9;
@@ -2142,7 +2142,7 @@ label.cameraButton:active {
     text-align: center;
 }
 .business_data_td2 {
-    padding-bottom: 12px;
+    padding-bottom: 8px;
     word-wrap: break-word;
     font-size: 14px;
 }
@@ -2178,10 +2178,10 @@ label.cameraButton:active {
     position: relative;
     margin-bottom: 10px;
     overflow: hidden;
-    height: 120px;
+    height: 95px;
     float: left;
-    width: 120px;
-    padding: 20px;
+    width: 95px;
+    padding: 10px;
     margin: 1px;
 }
 .image_profile img {
@@ -4421,7 +4421,12 @@ div .comment {
 .profile-job-post-location-name-rec .fl.search_button button{margin-right:0;}
 #InboxBody ul.notification_data_in_h2{float: none!important;}
     
-.left_side_posrt.left-side-custom{position:absoult;}
+.manage-post-custom .left_side_posrt{position:relative;}
+.manage-post-custom .mian_middle_post_box{left:inherit;}
+.manage-post-custom .right_middle_side_posrt{position:relative; margin-left:10px;}
+
+
+
 
 
 /***  media query  ***/
