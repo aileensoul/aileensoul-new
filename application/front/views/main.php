@@ -2,6 +2,7 @@
 <html lang="en" class="custom-main">
     <head>
         <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
+        <meta name="description" content="Aileensoul provides completely free platform for career-related services, such as job, hiring, freelancing, business networking, artistic and much more.">
         <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
         <meta property="og:description" content="Aileensoul provides completely free platform for career-related services, such as job, hiring, freelancing, business networking, artistic and much more."/>
         <meta property="og:image" content="<?php echo base_url('assets/images/meta-icon.png'); ?>" />

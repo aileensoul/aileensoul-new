@@ -1948,7 +1948,10 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 body.modal-open{padding-left:0 !important;}
 .optional-custom .optional{float: none; padding-left: 10px;}
 .optional{font-size:12px; float:right;}
-.main-menu-right #atittle a{padding-top:0px !important;}
+.custom-right-art .alert.alert-danger{width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+    margin-top: 0px;}
 
 
 .no-login header h2{font-weight:normal; line-height:1;}

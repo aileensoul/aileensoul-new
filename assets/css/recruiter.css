@@ -70,6 +70,7 @@ li.fr a {text-decoration: none !important;}
 .profile-job-details ul {padding: 0px;}
 .profile-job-details ul li {list-style: none; position: relative; padding-left: 0px; margin: 0;}
 .profile-job-details ul li a {padding-left: 0px; font-weight: bold; display: block; color: #5b5b5b;}
+.profile-job-details ul li a.display_inline{cursor:text;}
 .profile-job-details ul li a:hover { padding-left: 0px; display: block; text-decoration: none;}
 .profile-job-details ul li p {margin-bottom: 0;display: inline-block; font-size: 15px; font-weight: 600;}
 .profile-job-details ul li .lction p{font-weight: normal; font-size: 13px;}
