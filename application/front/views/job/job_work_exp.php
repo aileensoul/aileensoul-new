@@ -89,6 +89,8 @@
                                                 </a>
                                              </h4>
                                           </div>
+                                           <input type="hidden" name="exp_year" id="exp_year" value="">
+                                                <input type="hidden" name="exp_month" id="exp_month" value="">
                                           <div id="two"   <?php if($userdata[0]['experience'] == 'Fresher'){ ?> class="panel-collapse collapse" <?php } else if($userdata[0]['experience'] == ''){?> class="panel-collapse collapse"<?php }else{?> class="panel-collapse collapse in" <?php } ?>>
                                              <div class="panel-body">
                                                 <?php echo form_open_multipart(base_url('job/job_work_exp_insert'), array('id' => 'jobseeker_regform1', 'name' => 'jobseeker_regform1', 'class' => 'clearfix')); ?>       
@@ -120,6 +122,7 @@
                                                            $y = $x + 1;
                                                    
                                                            ?>
+                                                
                                                 <input type="hidden" name="exp_data[]" value="old" class="exp_data" id="exp_data<?php echo $y; ?>">
                                                 <div id="input<?php echo $y; ?>" style="margin-bottom:4px;position: relative;" class="clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
                                                    <div class="job_work_experience_main_div">
