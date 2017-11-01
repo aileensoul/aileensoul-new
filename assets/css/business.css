@@ -4420,6 +4420,8 @@ div .comment {
 .profile-job-post-location-name-rec .fl.search_button{float:right;}
 .profile-job-post-location-name-rec .fl.search_button button{margin-right:0;}
 #InboxBody ul.notification_data_in_h2{float: none!important;}
+    
+.left_side_posrt.left-side-custom{position:absoult;}
 
 
 /***  media query  ***/
