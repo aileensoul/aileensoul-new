@@ -553,26 +553,38 @@ public function sendmail(){
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $jobuser=$jobdata[0]['total'];
         //For live link need this code End
+        
+        //For live link of freelancer aplly user code start
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
+        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $freelancer_apply_user=$free_work_result[0]['total'];
+      
+        //For live link of freelancer aplly user code end
 
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
+                echo "1111";die();
                 echo 'Sorry, user is Inactive.';
             } else {
+                echo "123";die();
                 $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
                 $data = 'ok';
             }
         } else if ($email_login == $result[0]['user_email']) {
+            echo "3333";die();
             $data = 'password';
             $id = $result[0]['user_id'];
         } else {
+            echo "444";die();
             $data = 'email';
         }
-        
+        echo $result[0]['user_id'];die();
         echo json_encode(
                 array(
                     "data" => $data,
                     "id" => $id,
                     "jobuser"=> $jobuser,
+                    "freelancerapply"=>$freelancer_apply_user,
         ));
 
     }
