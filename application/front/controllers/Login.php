@@ -43,6 +43,7 @@ class Login extends CI_Controller {
             }
         }
 
+
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->load->view('login/index', $this->data);
     }
