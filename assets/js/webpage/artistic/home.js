@@ -2100,8 +2100,6 @@ function seemorediv(abc) {
 
  function count_videouser(file_id, post_id){ 
 
-
-  
   var vid = document.getElementById("show_video" + file_id);
 
       if (vid.paused) {
