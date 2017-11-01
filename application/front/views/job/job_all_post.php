@@ -199,13 +199,14 @@
                   </div>
                </div>
                 <div>
-                                <?php
+                               
+                            </div>
+               <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                    <?php
                                 if ($this->uri->segment(3) == 'live-post') {
                                     echo '<div class="alert alert-danger">Applied successfully...!</div>';
                                 }
                                 ?>
-                            </div>
-               <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                   <div class="common-form">
                      <div class="job-saved-box">
                         <h3>Recommended Job</h3>

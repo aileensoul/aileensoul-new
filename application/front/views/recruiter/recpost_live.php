@@ -537,6 +537,8 @@ if ($returnpage == '') {
 
                      <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="button">Applied  Candidate : <?php echo  $countt ?></a>
                                                                     </li>
+                                                                    <?php } else { ?>
+      
                                                                     <?php } ?>
                                                                         </ul>
                                                                     </div>
