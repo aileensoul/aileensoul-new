@@ -38,9 +38,9 @@
                         <div id="upload-demo" style="width:100%"></div>
                     </div>
                     <div class="col-md-12 cover-pic" >
-                        <button class="btn btn-success  cancel-result" onclick="">Cancel</button>
+                        <button title="Cancel" class="btn btn-success  cancel-result" onclick="">Cancel</button>
 
-                        <button class="btn btn-success set-btn upload-result " onclick="myFunction()">Save</button>
+                        <button title="Save" class="btn btn-success set-btn upload-result " onclick="myFunction()">Save</button>
 
                         <div id="message1" style="display:none;">
                             <div id="floatBarsG">
@@ -95,7 +95,7 @@ if (file_exists($image_ori) && $image[0]['profile_background'] != '') {
             <div class="container tablate-container art-profile">    
 <?php if ($returnpage == '') { ?>
                     <div class="upload-img">
-                        <label class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
+                        <label  class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                         </label>
                     </div>
@@ -232,7 +232,7 @@ if ($returnpage == '') {
                     </div>
                     <div  class="add-post-button">
 <?php if ($returnpage == '') { ?>
-                            <a class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                            <a title="Post  a Job" class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                         <?php } ?>
                     </div>
 					

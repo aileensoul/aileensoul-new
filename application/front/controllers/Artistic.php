@@ -12115,6 +12115,39 @@ public function art_home_postold() {
 
 // all post fatch using aajx end
 
+
+    //video show user count start
+
+public function showuser(){
+
+    $userid = $this->session->userdata('aileenuser');
+    $file_id = $_POST['file_id'];
+    $post_id = $_POST['post_id']; 
+
+   $contition_array = array('post_files_id' => $file_id, 'insert_profile' => '1', 'user_id' => $userid, 'post_id' => $post_id);
+   $existvideouser = $this->common->select_data_by_condition('showvideo', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if(!$existvideouser){
+
+                $data = array(
+                            'post_files_id' => $file_id,
+                            'insert_profile' => '1',
+                            'user_id' => $userid,
+                            'created_date' => date('Y-m-d H:i:s', time()),
+                            'post_id' => $post_id,
+                        );                 
+    $insert_id = $this->common->insert_data_getid($data, 'showvideo');
+   }
+
+   $contition_array = array('post_files_id' => $file_id, 'insert_profile' => '1');
+   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata);
+
+    $return_html = '';
+    $return_html .= $user_data . ' ' .'Views';
+    echo $return_html;
+ }
+
 public function art_home_post() {
         // return html
 
@@ -12526,9 +12559,9 @@ public function art_home_post() {
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
                                 if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
-                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
                                 } else {
-                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
                                 }
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -12540,9 +12573,9 @@ public function art_home_post() {
                                 $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if ($info) {
-                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
                                 } else {
-                                    $return_html .= '<video width = "100%" height = "350" controls">';
+                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
                                 }
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -12701,8 +12734,25 @@ public function art_home_post() {
                     }
                     $return_html .= '</span> 
 
-                        </div></li>
-                    </ul>
+                        </div></li>';
+
+                         $contition_array = array('post_id' => $row['art_post_id'], 'insert_profile' => '1');
+   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    //echo "<pre>"; print_r($postformat); die();
+                    if($postformat[0]['post_format'] == 'video'){
+                    $return_html .= '<li id="viewvideouser'.$row['art_post_id'].'">';
+
+                    $contition_array = array('post_id' => $row['art_post_id'], 'insert_profile' => '1');
+   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata); 
+
+                    $return_html .= $user_data . ' '. 'Views'; 
+
+                    $return_html .= '</li>';
+
+                   }
+
+                    $return_html .= '</ul>
                     </div>
                     </div>';
 

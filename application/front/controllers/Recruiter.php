@@ -1856,12 +1856,12 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
                 if ($userid != $row['iduser']) {
                     if (!$data) {
 
-                        $postdata .= '<a href="' . base_url() . 'chat/abc/2/1/' . $row['iduser'] . '">Message</a>';
+                        $postdata .= '<a title="Message" href="' . base_url() . 'chat/abc/2/1/' . $row['iduser'] . '">Message</a>';
 
 
                         $postdata .= '<input type="hidden" id="hideenuser' . $row['iduser'] . '" value= "' . $data[0]['save_id'] . '">';
 
-                        $postdata .= '<a id="' . $row['iduser'] . '" onClick="savepopup(' . $row['iduser'] . ')" href="javascript:void(0);" class="saveduser' . $row['iduser'] . '">Save</a>';
+                        $postdata .= '<a title="Save" id="' . $row['iduser'] . '" onClick="savepopup(' . $row['iduser'] . ')" href="javascript:void(0);" class="saveduser' . $row['iduser'] . '">Save</a>';
                     } else {
                         $postdata .= '<a href="' . base_url() . 'chat/abc/2/1/' . $row['iduser'] . '">Message</a>';
                         $postdata .= '<a class="saved">Saved</a>';
@@ -1880,7 +1880,7 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
             $postdata .= '<h4 class="page-heading  product-listing" style="border:0px;"> It will takes only few minutes.</h4>';
             $postdata .= '</div>';
             $postdata .= '<div  class="add-post-button add-post-custom">';
-            $postdata .= '<a class="btn btn-3 btn-3b"  href="' . base_url() . 'recruiter/add_post"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>';
+            $postdata .= '<a title="Post a Job" class="btn btn-3 btn-3b"  href="' . base_url() . 'recruiter/add_post"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>';
             $postdata .= '</div>';
             $postdata .= '</div>';
         } else {
@@ -2168,7 +2168,7 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
                             $rec_post .= '<a href="javascript:void(0);" class="button applied">Applied</a>';
                         } else {
                             //$rec_post .= '<li class="fr">';
-                            $rec_post .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . ' button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a>';
+                            $rec_post .= '<a title="Apply" href="javascript:void(0);"  class= "applypost' . $post['post_id'] . ' button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a>';
                             //$rec_post .= '</li><li class="fr">';
                             $userid = $this->session->userdata('aileenuser');
                             $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
@@ -2178,7 +2178,7 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
 
                                 $rec_post .= '<a class="button saved">Saved</a>';
                             } else {
-                                $rec_post .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">Save</a>';
+                                $rec_post .= '<a title="Save" id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">Save</a>';
                             }
                             //$rec_post .= '</li>';
                         }
@@ -2451,8 +2451,8 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
                                                                     <li class="fr">';
 
 
-                        $rec_post .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">Remove</a>';
-                        $rec_post .= '<a href="' . base_url() . 'recruiter/edit-post/' . $post['post_id'] . '" class="button">Edit</a>';
+                        $rec_post .= '<a title="Remove" href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">Remove</a>';
+                        $rec_post .= '<a title="Edit" href="' . base_url() . 'recruiter/edit-post/' . $post['post_id'] . '" class="button">Edit</a>';
                         $join_str[0]['table'] = 'job_reg';
                         $join_str[0]['join_table_id'] = 'job_reg.user_id';
                         $join_str[0]['from_table_id'] = 'job_apply.user_id';
@@ -2463,7 +2463,7 @@ $candidatejob = array_intersect_key($candidatejob, $tempArr);
                         $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
                         $countt = count($apply_candida);
 
-                        $rec_post .= '<a href="' . base_url() . 'recruiter/apply-list/' . $post['post_id'] . '" class="button">Applied  Candidate :' . $countt . '</a>
+                        $rec_post .= '<a title="Applied Candidate" href="' . base_url() . 'recruiter/apply-list/' . $post['post_id'] . '" class="button">Applied  Candidate :' . $countt . '</a>
                                                                     </li>
                                                             </div>
                                                         </div>
@@ -3097,7 +3097,7 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
                         }
                         $return_html .= 'href="javascript:void(0);" class="saveduser' . $p['job_id'] . '">Save</a>';
                     } else {
-                        $return_html .= '<a href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">Message</a> 
+                        $return_html .= '<a title="Message" href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">Message</a> 
                                         <a class="saved">Saved </a>';
                     }
                 }
@@ -3697,9 +3697,9 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
                     $userid = $this->session->userdata('aileenuser');
                     if ($userid != $rec['userid']) {
 
-                        $return_html .= '<a href="' . base_url() . 'chat/abc/2/1/' . $rec['userid'] . '">Message</a>';
+                        $return_html .= '<a title="Message" href="' . base_url() . 'chat/abc/2/1/' . $rec['userid'] . '">Message</a>';
 
-                        $return_html .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $rec['save_id'] . ')">Remove</a>';
+                        $return_html .= '<a title="Remove" href="javascript:void(0);" class="button" onclick="removepopup(' . $rec['save_id'] . ')">Remove</a>';
                     }
 
                     $return_html .= '</div>

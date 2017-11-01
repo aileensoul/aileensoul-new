@@ -165,7 +165,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
 							  
 							  
 							  
-							  <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+							  <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
 							</ul>
 						  </div>
 				

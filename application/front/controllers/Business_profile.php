@@ -4675,11 +4675,11 @@ Your browser does not support the audio tag.
         $post_id = $_POST["post_id"];
         $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $business_comment_likes_count = $businessprofiledata[0]['business_comment_likes_count'];
         $likeuserarray = explode(',', $businessprofiledata[0]['business_comment_like_user']);
 
-        if (!in_array($userid, $likeuserarray)) { 
+        if (!in_array($userid, $likeuserarray)) {
             $user_array = array_push($likeuserarray, $userid);
 
             if ($businessprofiledata[0]['business_comment_likes_count'] == 0) {
@@ -4700,7 +4700,6 @@ Your browser does not support the audio tag.
             if ($businessprofiledata[0]['user_id'] == $userid) {
                 
             } else {
-
                 $contition_array = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => 6, 'not_img' => 3);
                 $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($busnotification[0]['not_read'] == 2) {
@@ -4731,9 +4730,8 @@ Your browser does not support the audio tag.
 
                     $insert_id = $this->common->insert_data_getid($datacmlike, 'notification');
                     if ($insert_id) {
-                        
-                        $to_email_id = $this->db->select('contact_email')->get_where('business_profile',array('user_id'=>$businessprofiledata[0]['user_id']))->row()->contact_email;
-                        
+
+                        $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $businessprofiledata[0]['user_id']))->row()->contact_email;
                         $email_html = '';
                         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
@@ -4743,13 +4741,13 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post/' . $post_id . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
                         $subject = $this->data['business_login_company_name'] . ' Like your comment in Aileensoul.';
 
-                        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
+                        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
                     }
                 }
             }
@@ -4849,7 +4847,6 @@ Your browser does not support the audio tag.
                 if ($busnotification[0]['not_read'] == 2) {
                     
                 } elseif ($busnotification[0]['not_read'] == 1) {
-
                     $datalike = array(
                         'not_read' => 2
                     );
@@ -4858,7 +4855,6 @@ Your browser does not support the audio tag.
                     $this->db->where($where);
                     $updatdata = $this->db->update('notification', $datalike);
                 } else {
-
                     $data = array(
                         'not_type' => 5,
                         'not_from_id' => $userid,
@@ -4872,6 +4868,26 @@ Your browser does not support the audio tag.
                     );
 
                     $insert_id = $this->common->insert_data_getid($data, 'notification');
+                    if ($insert_id) {
+
+                        $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $businessprofiledata[0]['user_id']))->row()->contact_email;
+                        $email_html = '';
+                        $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> like your comment in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post/' . $post_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                        $subject = $this->data['business_login_company_name'] . ' Like your comment in Aileensoul.';
+
+                        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                    }
                 }
             }
 // end notoification
