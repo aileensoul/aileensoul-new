@@ -273,10 +273,9 @@ function comment_deleted(clicked_id)
         data: 'post_id=' + clicked_id + '&post_delete=' + post_delete.value,
         dataType: "json",
         success: function (data) {
-            //                alert(data.comment_count);
             $('.' + 'insertcomment' + post_delete.value).html(data.comment);
-            //$('#' + 'insertcount' + post_delete.value).html(data.count);
-            $('.comment_count' + post_delete.value).html(data.comment_count + ' Comment');
+            //$('.comment_count' + post_delete.value).html(data.comment_count + ' Comment');
+            $('.comment_count' + post_delete.value).html(data.comment_count);
             $('.post-design-commnet-box').show();
         }
     });
@@ -301,7 +300,8 @@ function comment_deletedtwo(clicked_id)
         dataType: "json",
         success: function (data) {
             $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
-            $('.comment_count' + post_delete1.value).html(data.comment_count + '<span> Comment</span>');
+            //$('.comment_count' + post_delete1.value).html(data.comment_count + '<span> Comment</span>');
+            $('.comment_count' + post_delete1.value).html(data.comment_count);
             $('.post-design-commnet-box').show();
         }
     });

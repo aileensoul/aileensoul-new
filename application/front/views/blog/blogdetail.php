@@ -102,6 +102,9 @@
             <div class="blog-mid-section user-midd-section">
                <div class="container">
                   <div class="row">
+                      <?php
+                      if(count($blog_detail) > 0){
+                      ?>
                      <div class="blog_post_outer col-md-9 col-sm-8 pr0">
                         <div class="date_blog_right2">
                            <div class="blog_post_main">
@@ -281,8 +284,24 @@
                            </form>
                         </div>
                      </div>
+                      <?php
+                      }else{ ?>
+                      <div class="blog_post_outer col-md-9 col-sm-8 pr0">
+                          <div class="art_no_post_avl">
+                                    <div class="art-img-nn">
+                                        <div class="art_no_post_img">
+                                            <img src="<?php echo base_url('assets/img/bui-no.png') ?>">
+                                        </div>
+                                        <div class="art_no_post_text">
+                                            Sorry, this content isn't available at the moment
+                                        </div>
+                                    </div>
+                                </div>
+                      </div>
+                      <?php }
+                      ?>
                      <div class="col-md-3 col-sm-4 hidden-xs">
-                        <div class="blog_latest_post " >
+                        <div class="blog_latest_post" >
                            <h3>Latest Post</h3>
                            <?php
                               foreach($blog_last as $blog)
