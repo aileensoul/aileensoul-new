@@ -5780,4 +5780,25 @@ public function rec_profile($id="")
 
 //add other_industry into database End 
 
+    
+    public function apply_email(){
+        
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $this->data['recruiter_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p>Job seeker<b>' . ucwords($this->data['fname']) . ' ' . ucwords($this->data['lname']) . '</b> Applied on your jobpost.
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'job/resume/' . $job_slug . '?page=recruiter">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                    
+                    $subject = ucwords($this->data['fname']) . ' ' . ucwords($this->data['lname']) . ' Applied on your jobpost - Aileensoul.';
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
+               
+    }
 }

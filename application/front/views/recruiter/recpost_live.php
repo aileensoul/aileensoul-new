@@ -538,7 +538,37 @@ if ($returnpage == '') {
                      <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="button">Applied  Candidate : <?php echo  $countt ?></a>
                                                                     </li>
                                                                     <?php } else { ?>
-      
+                   <li class="fr">
+              <?php           $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                    $contition_array = array(
+                        'post_id' => $post['post_id'],
+                        'job_delete' => 0,
+                        'user_id' => $userid
+                    );
+                    $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if ($jobsave) { ?>
+                       <a href="javascript:void(0);" class="button applied">Applied</a>
+                  <?php  } else { ?>
+                      <li class="fr"><a title="Apply" href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a></li>
+                      <li class="fr">
+                  <?php      $userid = $this->session->userdata('aileenuser');
+                        $contition_array = array(
+                            'user_id' => $userid,
+                            'job_save' => '2',
+                            'post_id ' => $post['post_id'],
+                            'job_delete' => '1'
+                        );
+                        $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        if ($jobsave) { ?>
+                         <a class="button saved save_saved_btn">Saved</a>
+                  <?php      } else { ?>
+
+                      <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> button save_saved_btn">Save</a>
+                    <?php    } ?>
+
+                     </li>
+                   <?php } ?>
+                                                                    </li>
                                                                     <?php } ?>
                                                                         </ul>
                                                                     </div>
@@ -602,6 +632,20 @@ if ($returnpage == '') {
                 </div>
             </div>
         </div>
+        
+         <!-- Model Popup Open -->
+      <!-- Bid-modal  -->
+      <div class="modal message-box biderror" id="bidmodal" role="dialog">
+         <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
         <footer>
@@ -670,6 +714,53 @@ if ($returnpage == '') {
 
                 }
           
+          
+          //apply post start
+ function applypopup(postid, userid) 
+ {
+       $('.biderror .mes').html("<div class='pop_content'>Do you want to apply this job?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+       $('#bidmodal').modal('show');
+  }
+
+ function apply_post(abc, xyz) {
+       var alldata = 'all';
+       var user = xyz;
+   
+       $.ajax({
+           type: 'POST',
+           url: base_url +'job/job_apply_post',
+           data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
+           success: function (data) {
+               $('.savedpost' + abc).hide();
+               $('.applypost' + abc).html(data);
+               $('.applypost' + abc).attr('disabled', 'disabled');
+               $('.applypost' + abc).attr('onclick', 'myFunction()');
+               $('.applypost' + abc).addClass('applied');
+           }
+       });
+   }
+//apply post end
+
+//save post start 
+  function savepopup(id) {
+       save_post(id);
+       $('.biderror .mes').html("<div class='pop_content'>Job successfully saved.");
+       $('#bidmodal').modal('show');
+   }
+
+  function save_post(abc)
+   {
+       $.ajax({
+           type: 'POST',
+           url: base_url +'job/job_save',
+           data: 'post_id=' + abc,
+           success: function (data) {
+               $('.' + 'savedpost' + abc).html(data).addClass('saved');
+           }
+       });
+   
+   }
+//save post End
         </script>
 
 

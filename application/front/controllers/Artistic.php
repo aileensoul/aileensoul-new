@@ -2252,7 +2252,7 @@ public function ajax_userlist() {
      //if user deactive profile then redirect to artistic/index untill active profile End
 
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
@@ -2319,6 +2319,30 @@ public function ajax_userlist() {
                 'not_created_date' => date('Y-m-d H:i:s')
             );
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+
+            if($insert_id){
+
+
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'artistic/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                    $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+
+                }
+
             // end notoification
 
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
@@ -2391,7 +2415,7 @@ public function follow_home() {
         $userid = $this->session->userdata('aileenuser');
     
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2453,6 +2477,29 @@ public function follow_home() {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+                if($insert_id){
+
+
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'artistic/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                    $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+
+                }
+
+
             // end notoification
 
 
@@ -2893,7 +2940,7 @@ public function follow_home() {
      //if user deactive profile then redirect to artistic/index untill active profile End
 
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
@@ -2956,6 +3003,28 @@ public function follow_home() {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+            if($insert_id){
+
+
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'artistic/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                    $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+
+                }
             // end notoification
 
             if ($insert) {
@@ -2982,7 +3051,7 @@ public function followtwo() {
      //if user deactive profile then redirect to artistic/index untill active profile End
 
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
@@ -3057,6 +3126,28 @@ public function followtwo() {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+            if($insert_id){
+
+
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'artistic/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                    $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+
+                }
             // end notoification
 
 
@@ -3754,6 +3845,9 @@ public function followtwo() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
         $post_id = $_POST["post_id"];
         $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id,user_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3836,6 +3930,27 @@ public function followtwo() {
                     );
 
                     $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                    if($insert_id){
+
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                    $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname']. ' Like your comment in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+
+                  }
                 }
             }
             // end notoification
@@ -3913,6 +4028,11 @@ public function followtwo() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
+
+         $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
+
         $post_id = $_POST["post_id"];
         $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id,user_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4007,6 +4127,28 @@ public function followtwo() {
                     );
 
                     $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                    if($insert_id){
+
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                    $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname']. 'Like your comment in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+
+                }
+
                 }
             }
             // end notoification
@@ -4826,6 +4968,10 @@ public function delete_commenttwo_postnewpage() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
+
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
         $post_id = $_POST["post_id"];
 
 
@@ -4871,7 +5017,7 @@ public function delete_commenttwo_postnewpage() {
         
 
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_likes_count,art_like_user,is_delete,user_id,', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_likes_count,art_like_user,is_delete,user_id,art_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $art_likes_count = $artdata[0]['art_likes_count'];
         $likeuserarray = explode(',', $artdata[0]['art_like_user']);
@@ -4929,6 +5075,26 @@ public function delete_commenttwo_postnewpage() {
                     );
 
                     $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                    if ($insert_id) {
+
+                        $email_html = '';
+                        $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your post in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                        $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' like your post in Aileensoul.';
+
+                        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                    }
                 }
             }
             // end notoification
@@ -5123,6 +5289,8 @@ public function delete_commenttwo_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
         $post_id = $_POST["post_id"];
 
         $condition_array = array('art_post_id' => $post_id);
@@ -5165,7 +5333,7 @@ public function delete_commenttwo_postnewpage() {
         
         $post_comment = $_POST["comment"];
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'user_id,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'user_id,is_delete,art_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $data = array(
             'user_id' => $userid,
             'art_post_id' => $post_id,
@@ -5192,6 +5360,27 @@ public function delete_commenttwo_postnewpage() {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+            if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+            }
+
         }
         // end notoification
 
@@ -5344,11 +5533,13 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
+         $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
         $post_id = $_POST["post_id"];
         $post_comment = $_POST["comment"];
 
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
-        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'user_id,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'user_id,is_delete,art_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $data = array(
             'user_id' => $userid,
@@ -5374,6 +5565,27 @@ public function insert_comment_postnewpage() {
                 'not_created_date' => date('Y-m-d H:i:s')
             );
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+            if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+            }
+
         }
         // end notoification
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
@@ -5508,6 +5720,9 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
     $post_id = $_POST["post_id"];
 
 
@@ -5589,6 +5804,25 @@ public function insert_comment_postnewpage() {
             );
          
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
+            if ($insert_id_notification) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+            }
         }
         // end notoification
 
@@ -6615,6 +6849,7 @@ public function insert_comment_postnewpage() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
 
 
         $contition_array = array('post_image_id' => $post_image, 'user_id' => $userid);
@@ -6659,6 +6894,27 @@ public function insert_comment_postnewpage() {
                 );
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $likepostid[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+              }
+
             }
             // end notoification
 
@@ -6870,6 +7126,27 @@ public function insert_comment_postnewpage() {
                         );
 
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                        if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $likepostid[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+              }
+
                     }
                 }
                 // end notoification
@@ -6970,6 +7247,9 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
 
@@ -7010,6 +7290,27 @@ public function insert_comment_postnewpage() {
             );
             //echo "<pre>"; print_r($datanotification); die();
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
+
+            if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post image in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+              }
+
         }
         // end notoification
 
@@ -7203,6 +7504,9 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
     $post_id = $_POST["post_id"];
       $post_comment = $_POST["comment"];
 //die();
@@ -7241,6 +7545,26 @@ public function insert_comment_postnewpage() {
             );
             //echo "<pre>"; print_r($notificationdata); 
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
+
+            if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+              }
         }
         // end notoification
 
@@ -7412,6 +7736,9 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
 
@@ -7450,6 +7777,27 @@ public function insert_comment_postnewpage() {
             );
 
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
+
+             if ($insert_id_notification) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post image in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+              }
+
         }
         // end notoification
 
@@ -7619,6 +7967,11 @@ public function insert_comment_postnewpage() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
+
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
+
         $post_image_comment_id = $_POST["post_image_comment_id"];
 
         $contition_array = array('post_image_comment_id' => $post_image_comment_id, 'user_id' => $userid);
@@ -7668,6 +8021,28 @@ public function insert_comment_postnewpage() {
                 );
                 //echo "<pre>"; print_r($data); die();
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+              }
+
+
             }
             // end notoification
 
@@ -7771,6 +8146,28 @@ public function insert_comment_postnewpage() {
                         );
                         //echo "<pre>"; print_r($data); die();
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                         if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                          
+                          }
+
                     }
                 }
                 // end notoification
@@ -7816,6 +8213,9 @@ public function insert_comment_postnewpage() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
+
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
 
         $post_image_comment_id = $_POST["post_image_comment_id"];
 
@@ -7864,6 +8264,27 @@ public function insert_comment_postnewpage() {
                 );
                 //echo "<pre>"; print_r($data); die();
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image comment in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                          
+                          }
             }
             // end notoification
 
@@ -7967,6 +8388,28 @@ public function insert_comment_postnewpage() {
                         );
                         //echo "<pre>"; print_r($data); die();
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                        if ($insert_id) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image comment in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                          
+                          }
+
                     }
                 }
                 // end notoification
@@ -9029,6 +9472,9 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
+        $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+
+
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
 
@@ -9069,6 +9515,28 @@ public function insert_comment_postnewpage() {
             );
             //echo "<pre>"; print_r($datanotification); die();
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
+
+            if ($insert_id_notification) {
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+                        <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
+                                            </td>
+                    </tr>
+                                    </table>';
+                $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post image in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                          
+                          }
+
         }
         // end notoification
 
