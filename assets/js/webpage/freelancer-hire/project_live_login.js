@@ -525,7 +525,7 @@ $(document).ready(function () {
                     {
                         var alldata = 'all';
                         var id = response.id;
-                        alert(id);
+                       // alert(id);
                         $.ajax({
                             type: 'POST',
                             url: base_url + 'freelancer/apply_insert',
@@ -533,7 +533,7 @@ $(document).ready(function () {
                             success: function (data)
                             {
                                 alert("sucess");
-                                window.location = base_url + "freelancer-hire/home";
+                                window.location = base_url + "freelancer-hire/home/live-post";
                             }
                         });
 
