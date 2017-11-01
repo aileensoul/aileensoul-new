@@ -2906,8 +2906,8 @@ class Job extends MY_Controller {
         //$this->job_apply_check();
         $this->job_deactive_profile();
 
-        
-        $userid = $notid = $this->session->userdata('aileenuser');
+        $notid = $this->db->select('user_id')->get_where('rec_post', array('post_id' => $postid))->row()->user_id;
+        $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('post_id' => $postid, 'user_id' => $userid, 'is_delete' => 0);
         $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id,count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3356,16 +3356,16 @@ class Job extends MY_Controller {
 // Retrieve data according to industry match start
 
         $work_job_industry = $jobdata[0]['work_job_industry'];
-        foreach ($postdata as $post) {
+//        foreach ($postdata as $post) {
             $data = '*';
             $contition_array = array(
                 'industry_type' => $work_job_industry,
                 'is_delete' => 0,
                 'status' => 1
             );
-            $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $recommendata_industry[] = $data1;
-        }
+          $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           $recommendata_industry[] = $data1;
+//        }
 
 // Retrieve data according to industry match End
 // Retrieve data according to Job Title match start
@@ -3416,7 +3416,7 @@ class Job extends MY_Controller {
             $qbc = array_filter($qbc);
         } else {
 
-            $unique = array_merge($recommendata, $recommendata_city, $recommendata_industry, $recommendata_title);
+            $unique = array_merge((array)$recommendata, (array)$recommendata_city, (array)$recommendata_industry, (array)$recommendata_title);
 //            $newArray = array();
 //            foreach ($unique as $key => $innerArr1) {
 //                foreach ($innerArr1 as $key1 => $innerArr) {
