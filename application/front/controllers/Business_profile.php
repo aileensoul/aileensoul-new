@@ -5626,7 +5626,7 @@ Your browser does not support the audio tag.
                 'not_active' => 1
             );
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
-            
+
             if ($insert_id_notification) {
 
                 $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $busdatacomment[0]['user_id']))->row()->contact_email;
@@ -6251,6 +6251,27 @@ Your browser does not support the audio tag.
                 );
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                if ($insert_id) {
+
+                    $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $likepostid[0]['user_id']))->row()->contact_email;
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $likepostid[0]['business_profile_post_id'] . '/' . $post_image . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                    $subject = $this->data['business_login_company_name'] . ' is like your photo in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                }
             }
 // end notoification
 
@@ -6430,6 +6451,27 @@ Your browser does not support the audio tag.
                         );
 
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+                        if ($insert_id) {
+
+                            $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $likepostid[0]['user_id']))->row()->contact_email;
+                            $email_html = '';
+                            $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $likepostid[0]['business_profile_post_id'] . '/' . $post_image . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                            $subject = $this->data['business_login_company_name'] . ' is like your photo in Aileensoul.';
+
+                            $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                        }
                     }
                 }
 // end notoification
@@ -6498,327 +6540,6 @@ Your browser does not support the audio tag.
 //multiple iamges like end 
 //multiple images comment strat
 
-    public function mulimg_commentthree() {
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $userid = $this->session->userdata('aileenuser');
-
-        $post_image_id = $_POST["post_image_id"];
-        $post_comment = $_POST["comment"];
-
-        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
-        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
-        $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $data = array(
-            'user_id' => $userid,
-            'post_image_id' => $post_image_id,
-            'comment' => $post_comment,
-            'created_date' => date('Y-m-d H:i:s', time()),
-            'is_delete' => 0
-        );
-        $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
-
-// insert notification
-
-        if ($buspostid[0]['user_id'] == $userid) {
-            
-        } else {
-            $datanotification = array(
-                'not_type' => 6,
-                'not_from_id' => $userid,
-                'not_to_id' => $buspostid[0]['user_id'],
-                'not_read' => 2,
-                'not_product_id' => $insert_id,
-                'not_from' => 6,
-                'not_img' => 4,
-                'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
-            );
-            $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
-        }
-// end notoification
-
-        $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
-        $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-// count for comment
-        $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
-        $buscmtcnt = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($businesscomment as $bus_comment) {
-            $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
-            $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
-            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
-
-            $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            if ($business_userimage != '') {
-                if (IMAGEPATHFROM == 'upload') {
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
-                    } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
-                    }
-                } else {
-                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
-                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                    if (!$info) {
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
-                    } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
-                    }
-                }
-                $cmtinsert .= '</div>';
-            } else {
-                $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
-                $cmtinsert .= '</div>';
-            }
-            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
-            $cmtinsert .= '</div>';
-
-            $cmtinsert .= '<div class="comment-details" id= "showcomment' . $bus_comment['post_image_comment_id'] . '"" >';
-            $cmtinsert .= $this->common->make_links($bus_comment['comment']);
-            $cmtinsert .= '</div>';
-            $cmtinsert .= '<div contenteditable="true" class="editable_text" name="' . $bus_comment['post_image_comment_id'] . '" id="editcomment' . $bus_comment['post_image_comment_id'] . '" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" onClick="commentedit(' . $bus_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
-            $cmtinsert .= $bus_comment['comment'];
-            $cmtinsert .= '</div>';
-
-            $cmtinsert .= '<button id="editsubmit' . $bus_comment['post_image_comment_id'] . '" style="display:none;" onClick="edit_comment(' . $bus_comment['post_image_comment_id'] . ')">Save</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment' . $bus_comment['post_image_comment_id'] . '">';
-            $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-            $cmtinsert .= 'onClick="imgcomment_like(this.id)">';
-
-            $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
-            $businesscommentlike1 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            if (count($businesscommentlike1) == 0) {
-                $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
-            } else {
-                $cmtinsert .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
-            }
-            $cmtinsert .= '<span>';
-
-            $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'is_unlike' => '0');
-            $mulcountlike = $this->data['mulcountlike'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if (count($mulcountlike) > 0) {
-                
-            }
-            $cmtinsert .= '</span>';
-            $cmtinsert .= '</a></div>';
-
-            $userid = $this->session->userdata('aileenuser');
-            if ($bus_comment['user_id'] == $userid) {
-
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
-                $cmtinsert .= '<div class="comment-details-menu">';
-                $cmtinsert .= '<div id="editcommentbox' . $bus_comment['post_image_comment_id'] . '"style="display:block;">';
-                $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editbox(this.id)">';
-                $cmtinsert .= 'Edit';
-                $cmtinsert .= '</a></div>';
-                $cmtinsert .= '<div id="editcancle' . $bus_comment['post_image_comment_id'] . '"style="display:none;">';
-                $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editcancle(this.id)">';
-                $cmtinsert .= 'Cancel';
-                $cmtinsert .= '</a></div>';
-
-                $cmtinsert .= '</div>';
-            }
-            $userid = $this->session->userdata('aileenuser');
-            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
-
-            if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
-
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
-                $cmtinsert .= '<div class="comment-details-menu">';
-                $cmtinsert .= '<input type="hidden" name="post_delete"';
-                $cmtinsert .= 'id="post_delete' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'value= "' . $bus_comment['post_image_id'] . '">';
-                $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_delete(this.id)">';
-                $cmtinsert .= 'Delete';
-                $cmtinsert .= '</a></div>';
-            }
-
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
-            $cmtinsert .= '<div class="comment-details-menu">';
-            $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div>';
-
-// comment aount variable start
-// $idpost = $business_profile['business_profile_post_id'];
-            $cmtcount = '<a onClick="commentall(this.id)" id="' . $post_image_id . '">';
-            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-            $cmtcount .= ' ' . count($buscmtcnt) . '';
-            $cmtcount .= '</i></a>';
-
-// comment count variable end 
-        }
-        echo json_encode(
-                array("comment" => $cmtinsert,
-                    "count" => $cmtcount,
-                    "comment_count" => count($buscmtcnt)
-        ));
-    }
-
-    public function mulimg_comment() {
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $userid = $this->session->userdata('aileenuser');
-
-        $post_image_id = $_POST["post_image_id"];
-        $post_comment = $_POST["comment"];
-
-        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
-        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
-        $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $data = array(
-            'user_id' => $userid,
-            'post_image_id' => $post_image_id,
-            'comment' => $post_comment,
-            'created_date' => date('Y-m-d H:i:s', time()),
-            'is_delete' => 0
-        );
-        $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
-
-// insert notification
-
-        if ($buspostid[0]['user_id'] == $userid) {
-            
-        } else {
-            $datanotification = array(
-                'not_type' => 6,
-                'not_from_id' => $userid,
-                'not_to_id' => $buspostid[0]['user_id'],
-                'not_read' => 2,
-                'not_product_id' => $insert_id,
-                'not_from' => 6,
-                'not_img' => 4,
-                'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
-            );
-
-            $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
-        }
-// end notoification
-
-        $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
-        $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// count for comment
-        $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
-        $buscmtcnt = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($businesscomment as $bus_comment) {
-            $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
-            $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
-            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
-            $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            if ($business_userimage != '') {
-                if (IMAGEPATHFROM == 'upload') {
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
-                    } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
-                    }
-                } else {
-                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
-                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                    if (!$info) {
-                        $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
-                    } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
-                    }
-                }
-                $cmtinsert .= '</div>';
-            } else {
-                $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
-            }
-            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
-            $cmtinsert .= '</div>';
-
-            $cmtinsert .= '<div class="comment-details" id= "showcomment' . $bus_comment['post_image_comment_id'] . '"" >';
-            $cmtinsert .= $this->common->make_links($bus_comment['comment']);
-            $cmtinsert .= '</div>';
-            $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $bus_comment['post_image_comment_id'] . '"  id="editcomment' . $bus_comment['post_image_comment_id'] . '" placeholder="Type Message ..."  onkeyup="commentedittwo(' . $bus_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $bus_comment['comment'] . '</div>';
-            $cmtinsert .= '<button id="editsubmit' . $bus_comment['post_image_comment_id'] . '" style="display:none;" onClick="edit_commenttwo(' . $bus_comment['post_image_comment_id'] . ')">Save</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment' . $bus_comment['post_image_comment_id'] . '">';
-
-            $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-            $cmtinsert .= 'onClick="imgcomment_liketwo(this.id)">';
-
-            $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
-
-            $businesscommentlike1 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            if (count($businesscommentlike1) == 0) {
-                $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
-            } else {
-
-                $cmtinsert .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
-            }
-
-            $cmtinsert .= '<span>';
-
-            $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'is_unlike' => '0');
-            $mulcountlike = $this->data['mulcountlike'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-            if (count($mulcountlike) > 0) {
-                
-            }
-            $cmtinsert .= '</span>';
-            $cmtinsert .= '</a></div>';
-
-            $userid = $this->session->userdata('aileenuser');
-            if ($bus_comment['user_id'] == $userid) {
-
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
-                $cmtinsert .= '<div class="comment-details-menu">';
-                $cmtinsert .= '<div id="editcommentbox' . $bus_comment['post_image_comment_id'] . '"style="display:block;">';
-                $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editbox(this.id)">';
-                $cmtinsert .= 'Edit';
-                $cmtinsert .= '</a></div>';
-                $cmtinsert .= '<div id="editcancle' . $bus_comment['post_image_comment_id'] . '"style="display:none;">';
-                $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editcancle(this.id)">';
-                $cmtinsert .= 'Cancel';
-                $cmtinsert .= '</a></div>';
-                $cmtinsert .= '</div>';
-            }
-            $userid = $this->session->userdata('aileenuser');
-            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
-            if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
-
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
-                $cmtinsert .= '<div class="comment-details-menu">';
-                $cmtinsert .= '<input type="hidden" name="post_deletetwo"';
-                $cmtinsert .= 'id="post_deletetwo' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'value= "' . $bus_comment['post_image_id'] . '">';
-                $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_delete(this.id)">';
-                $cmtinsert .= 'Delete';
-                $cmtinsert .= '</a></div>';
-            }
-
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
-            $cmtinsert .= '<div class="comment-details-menu">';
-            $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div>';
-
-// comment aount variable start
-            $cmtcount = '<a onClick="commentall(this.id)" id="' . $post_image_id . '">';
-            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
-            $cmtcount .= ' ' . count($buscmtcnt) . '';
-            $cmtcount .= '</i></a>';
-
-// comment count variable end 
-        }
-        echo json_encode(
-                array("comment" => $cmtinsert,
-                    "count" => $cmtcount,
-                    "comment_count" => count($buscmtcnt)
-        ));
-    }
-
     public function pnmulimg_comment() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -6859,8 +6580,27 @@ Your browser does not support the audio tag.
             );
 
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
+            if ($insert_id_notification) {
+                $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $buspostid[0]['user_id']))->row()->contact_email;
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is comment on your photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buspostid[0]['business_profile_post_id'] . '/' . $insert_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['business_login_company_name'] . ' is comment on your photo in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+            }
         }
-// end notoification
+// end notification
 
 
         $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
@@ -7038,6 +6778,25 @@ Your browser does not support the audio tag.
             );
 //echo "<pre>"; print_r($datanotification); die();
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
+            if ($insert_id_notification) {
+                $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $buspostid[0]['user_id']))->row()->contact_email;
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is comment on your photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buspostid[0]['business_profile_post_id'] . '/' . $insert_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['business_login_company_name'] . ' is comment on your photo in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+            }
         }
 // end notoification
 
@@ -7230,6 +6989,25 @@ Your browser does not support the audio tag.
                     'not_active' => 1
                 );
                 $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
+                if ($insert_id) {
+                    $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $busimglike[0]['user_id']))->row()->contact_email;
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                    $subject = $this->data['business_login_company_name'] . ' is like your comment of photo in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                }
             }
 // end notoification
 
@@ -7325,6 +7103,25 @@ Your browser does not support the audio tag.
                             'not_active' => 1
                         );
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
+                        if ($insert_id) {
+                            $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $busimglike[0]['user_id']))->row()->contact_email;
+                            $email_html = '';
+                            $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                            $subject = $this->data['business_login_company_name'] . ' is like your comment of photo in Aileensoul.';
+
+                            $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                        }
                     }
                 }
 // end notoification 
@@ -7403,6 +7200,25 @@ Your browser does not support the audio tag.
                 );
 //echo "<pre>"; print_r($datanotification); die();
                 $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
+                if ($insert_id) {
+                    $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $busimglike[0]['user_id']))->row()->contact_email;
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                    $subject = $this->data['business_login_company_name'] . ' is like your comment of photo in Aileensoul.';
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                }
             }
 // end notoification
 
@@ -7504,15 +7320,31 @@ Your browser does not support the audio tag.
                         );
 
                         $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
+                        if ($insert_id) {
+                            $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $busimglike[0]['user_id']))->row()->contact_email;
+                            $email_html = '';
+                            $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is like your comment of photo in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                            $subject = $this->data['business_login_company_name'] . ' is like your comment of photo in Aileensoul.';
+
+                            $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                        }
                     }
                 }
 // end notoification
 
-
                 $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
                 $bdata2 = $this->data['bdata2'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
 
                 if ($updatdata) {
 
@@ -8172,9 +8004,8 @@ Your browser does not support the audio tag.
     }
 
 //postnews page controller start
-
 //Business_profile comment delete start
-   
+
     public function pnmulimagefourcomment() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $postid = $_POST['bus_img_id'];
