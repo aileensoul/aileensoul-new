@@ -388,7 +388,7 @@ class Recruiter extends MY_Controller {
             if ($error) {
 
                 $this->session->set_flashdata('error', $error[0]);
-                $redirect_url = site_url('job');
+                $redirect_url = site_url('recrutier');
                 redirect($redirect_url, 'refresh');
             } else {
 
@@ -4067,7 +4067,7 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
             if ($error) {
 
                 $this->session->set_flashdata('error', $error[0]);
-                $redirect_url = site_url('job');
+                $redirect_url = site_url('recrutier');
                 redirect($redirect_url, 'refresh');
             } else {
                // $contition_array = array('user_id' => $userid);
