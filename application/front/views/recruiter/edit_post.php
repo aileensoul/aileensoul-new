@@ -451,7 +451,7 @@
                                   
 
 
-                                    <input type="submit" id="submit" class="add_post_btns" tabindex="22" name="submit" value="save">                    
+                                    <input type="submit" title="Save" id="submit" class="add_post_btns" tabindex="22" name="submit" value="save">                    
                                 </fieldset>
 								</div>
 								</div>
