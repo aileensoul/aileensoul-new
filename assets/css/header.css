@@ -1793,7 +1793,7 @@ footer {
     cursor: default;
 }
 #userimage label.error {
-    right: 33px;
+    right: 15px;
 }
 .user_lst li a .post-img-userlist {
     color: #fff;
@@ -2175,7 +2175,7 @@ footer {
 #search .new-search-input .btn.btn-primary:focus{outline:none;}
 #loader{margin-left:0 !important; margin-right:0 !important;}
 	
-	
+.main-menu-right #atittle a{padding-top:0px !important;}
 	
 
 /***  media query  ***/
