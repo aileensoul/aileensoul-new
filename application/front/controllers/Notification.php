@@ -197,7 +197,6 @@ class Notification extends MY_Controller {
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
         $this->data['busienss_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
 
         $this->load->view('notification/business_post', $this->data);
@@ -274,27 +273,12 @@ class Notification extends MY_Controller {
         $industriyal = $this->data['business_common_data'][0]['industriyal'];
         $other_industrial = $this->data['business_common_data'][0]['other_industrial'];
 
-//        $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1', 'is_delete' => 0);
-//        $business_profile_post = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-//        $condition_array = array('business_profile_post_id' => $post_id, 'business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
-//        $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND is_delete=0)";
-//        $join_str[0]['table'] = 'business_profile';
-//        $join_str[0]['join_table_id'] = 'business_profile.user_id';
-//        $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
-//        $join_str[0]['join_type'] = '';
-//        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
-//        $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
-//        $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
-
         $condition_array = array('business_profile_post.business_profile_post_id' => $post_id, 'business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
-//        $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $return_html = '';

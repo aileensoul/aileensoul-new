@@ -53,9 +53,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
             <div class="user-midd-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 profile-box-custom">
+                <div class="container art_container padding-360 manage-post-custom">
+                  
+                        <div class="profile-box-custom left_side_posrt">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
@@ -175,7 +175,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </a>
                             <!-- user pdf  end-->
                         </div>
-                        <div class="col-md-6 custom-right-business">
+                        <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business">
                             <?php
                             if ($is_eligable_for_post == 1) {
                                 ?>
@@ -326,6 +326,23 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </div>
                                     </div>
                                 </div>
+								 <div class="mob-add">
+                                        <div class="fw text-center pt10 pb10">
+                                            <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                            </script>
+                                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                        </div>
+                                    </div>
                                 <div class="business-all-post">
                                     <!--                                    <div class="nofoundpost"> 
                                                                         </div>-->
@@ -337,7 +354,42 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
                             <!-- business_profile _manage_post end -->
                         </div>
+						
+						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                        <div class="fw text-center">
+                            <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                            </script>
+                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+							<div class="fw pt10">
+									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
+								</div>
+                        </div>
+                       
                     </div>
+					<div class="tablate-add">
+
+                            <script type="text/javascript">
+						  ( function() {
+							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
+							var placement_id = window.CHITIKA.units.length;
+							window.CHITIKA.units.push(unit);
+							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+						}());
+						</script>
+						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                        </div>
                 </div>
             </div>
         </section>
@@ -425,6 +477,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     var slug = '<?php echo $slugid; ?>';
                                                     var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
+	
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>

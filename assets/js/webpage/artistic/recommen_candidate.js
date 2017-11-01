@@ -1369,3 +1369,56 @@ function likeuserlist(post_id) {
     }
 });  
 
+
+
+// video user show list
+
+ function count_videouser(file_id, post_id){ 
+
+
+  
+  var vid = document.getElementById("show_video" + file_id);
+
+      if (vid.paused) {
+         vid.play(); 
+
+         document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+         function myHandler(e) { 
+          $.ajax({
+            type: 'POST',
+            url: base_url + "artistic/showuser",
+            data: 'post_id=' + post_id + '&file_id=' + file_id,
+            dataType: "html",
+            success: function (data) { 
+              $('#' + 'viewvideouser' + post_id).html(data);       
+            }
+        });
+
+      }
+
+       }
+    else {
+      vid.pause(); 
+    }
+ 
+ 
+ }
+
+function playtime(file_id, post_id){
+
+       document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+      function myHandler(e) { 
+
+               $.ajax({
+                        type: 'POST',
+                        url: base_url + "artistic/showuser",
+                        data: 'post_id=' + post_id + '&file_id=' + file_id,
+                        dataType: "html",
+                        success: function (data) { 
+                          $('#' + 'viewvideouser' + post_id).html(data);       
+                        }
+                    });
+
+    }
+   
+}

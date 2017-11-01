@@ -60,14 +60,11 @@ function ajax_business_home_post(pagenum) {
         beforeSend: function () {
             if (pagenum == 'undefined') {
             } else {
-//                $('#loader').show();
             }
         },
         complete: function () {
-//            $('#loader').hide();
         },
         success: function (data) {
-//            $('.loader').remove();
             $('.business-all-post').append(data);
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -91,11 +88,8 @@ function ajax_business_home_three_user_list() {
         data: '',
         dataType: "html",
         beforeSend: function () {
-//            $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
         },
         success: function (data) {
-//            $('.loader').remove();
-
             $('.profile-boxProfileCard_follow').html(data);
             var liCount = $(data).find("li.follow_box_ul_li").length;
             if (liCount == 0) {
@@ -104,8 +98,6 @@ function ajax_business_home_three_user_list() {
         }
     });
 }
-
-
 
 $('#content').on('change keyup keydown paste cut', 'textarea', function () {
     $(this).height(0).height(this.scrollHeight);

@@ -375,7 +375,7 @@
                                     <fieldset  class="hs-submit full-width">
 
 
-                                        <input type="submit" id="submit" class="add_post_btns" tabindex="22" name="submit" value="Post">
+                                        <input type="submit" title="Post" id="submit" class="add_post_btns" tabindex="22" name="submit" value="Post">
 
                                     </fieldset>
 									</div>

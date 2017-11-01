@@ -1,3 +1,6 @@
+$(document).ready(function () {
+    ajax_business_home_post(post_id);
+});
 $('#file-1').on('click', function () {
     var a = document.getElementById('test-upload-product').value;
     var b = document.getElementById('test-upload-des').value;
@@ -22,9 +25,6 @@ function check() {
     }
 }
 
-$(document).ready(function () {
-    ajax_business_home_post(post_id);
-});
 var isProcessing = false;
 function ajax_business_home_post(post_id) {
     if (isProcessing) {
@@ -53,6 +53,7 @@ function ajax_business_home_post(post_id) {
             }
             isProcessing = false;
             check_no_post_data();
+            $('video, audio').mediaelementplayer();
         }
     });
 }
