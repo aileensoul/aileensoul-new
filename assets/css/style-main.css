@@ -236,7 +236,7 @@ header h2{
 	background:none;
 	color:#fff;
 	width: 90px;
-	border:1px solid #fff;
+	border:1px solid #fff !important;
 }
 .header-login .btn1:hover{
 	background:#fff;
@@ -244,9 +244,9 @@ header h2{
 	border:1px solid #fff;
 }
 .header-login .btn1:focus{
-		background:#fff;
+	background:#fff;
 	color:#1b8ab9;
-	border:1px solid #fff
+	border:1px solid #fff;
 }
 .form-text a:focus{text-decoration: underline;
 color: #337ab7;}
@@ -456,7 +456,6 @@ a:hover{
     background:url('../img/down-arrow-hover.png') no-repeat;
     background-position:right;  
 }
-
 .login .form-group select.year{
 	width:70px;
 }

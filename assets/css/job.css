@@ -2190,6 +2190,11 @@ label.cameraButton input[accept*="camera"] {
 .profile-boxProfileCard-cover a img{min-height:88px;}
 .lbpos{position: relative;}
 .error-msg p, label.error{left: -5px;}
+
+.job_reg_page_fprm .alert.alert-danger{
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;}
 /***  media query  ***/
 
 
