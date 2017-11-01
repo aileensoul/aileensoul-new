@@ -67,6 +67,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
     </head>
     <body class="blog">
         <div class="main-inner">
@@ -352,18 +353,20 @@ foreach ($blog_last as $blog) {
                                         <div class="latest_post_posts">
                                             <ul>
                                                 <li>
+                                                    <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> 
                                                     <div class="post_inside_data">
                                                         <div class="post_latest_left">
                                                             <div class="lateaqt_post_img">
-                                                                <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" alt=""></a>
+                                                                <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" alt="">
                                                             </div>
                                                         </div>
                                                         <div class="post_latest_right">
                                                             <div class="desc_post">
-                                                                <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <span class="rifght_fname"> <?php echo $blog['title']; ?> </span></a>
+                                                                <span class="rifght_fname"> <?php echo $blog['title']; ?> </span>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>
