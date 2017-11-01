@@ -74,7 +74,7 @@
                                                 Fresher&nbsp;&nbsp;
                                                 </label>
                                                 <fieldset class="hs-submit full-width left_nest">
-                                                   <input type="submit" id="next" tabindex="2" name="next" value="Save">
+                                                   <input type="submit" id="next" tabindex="2" name="next" value="Submit">
                                                 </fieldset>
                                                 <?php echo form_close(); ?>
                                              </div>
@@ -261,7 +261,7 @@
                                                 </div>
                                              
                                                 <fieldset class="hs-submit full-width"> 
-                                                   <input style="" type="submit"  tabindex="8" id="next" name="next" value="Save"  >
+                                                   <input style="" type="submit"  tabindex="8" id="next" name="next" value="Submit"  >
                                                 </fieldset>
                                                
                                                 <?php
@@ -383,7 +383,7 @@
                                                    <input type="button" id="btnRemove" value=" - " disabled="disabled">
                                                 </div>
                                                 <fieldset class="hs-submit full-width"> 
-                                                   <input style="" type="submit" id="next" name="next" value="Save">
+                                                   <input style="" type="submit" id="next" name="next" value="Submit">
                                                 </fieldset>
                                                 <?php echo form_close(); ?> 
                                              </div>
