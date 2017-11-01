@@ -5228,10 +5228,13 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post/' . $businessprofiledata[0]['	business_profile_post_id'] . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post/' . $post_id . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
+                        // $businessprofiledata[0]['	business_profile_post_id']
+                        
+                        
                         $subject = $this->data['business_login_company_name'] . ' like your post in Aileensoul.';
 
                         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
@@ -6591,7 +6594,7 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buspostid[0]['business_profile_post_id'] . '/' . $insert_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buspostid[0]['business_profile_post_id'] . '/' . $post_image_id . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -6789,7 +6792,7 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buspostid[0]['business_profile_post_id'] . '/' . $insert_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buspostid[0]['business_profile_post_id'] . '/' . $post_image_id . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -7000,7 +7003,7 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buslikeimg[0]['post_id'] . '/' . $busimglike[0]['post_image_id'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -7114,7 +7117,7 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buslikeimg[0]['post_id'] . '/' . $busimglike[0]['post_image_id'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -7211,7 +7214,7 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buslikeimg[0]['post_id'] . '/' . $busimglike[0]['post_image_id'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -7331,7 +7334,7 @@ Your browser does not support the audio tag.
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $busimglike[0]['business_profile_post_id'] . '/' . $post_image_comment_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'notification/business-profile-post-detail/' . $buslikeimg[0]['post_id'] . '/' . $busimglike[0]['post_image_id'] . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
