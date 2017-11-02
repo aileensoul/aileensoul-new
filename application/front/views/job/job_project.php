@@ -53,30 +53,30 @@
                               <h5 class="head_title">Project</h5>
                            </div>
                            <fieldset class="full-width">
-                              <label>Project Name (Title):</label>
+                              <label>Project Name (Title):<span class="optional">(optional)</span></label>
                               <input type="text" tabindex="1" autofocus name="project_name"  id="project_name" placeholder="Enter Project Name" value="<?php if($project_name1){ echo $project_name1; } else { echo $job[0]['project_name']; }?>" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/>
                            </fieldset>
                            <fieldset class="full-width">
-                              <label>Duration (in Month)</label>
+                              <label>Duration (in Month):<span class="optional">(optional)</span></label>
                               <input type="text" name="project_duration" tabindex="2"  id="project_duration" placeholder="Enter Duration" maxlength="2"   value="<?php if($project_duration1){ echo $project_duration1; } else { echo $job[0]['project_duration']; }?>" />
                            </fieldset>
                            <fieldset class="full-width">
-                              <label>Project Description</label>
+                              <label>Project Description:<span class="optional">(optional)</span></label>
                               <textarea name="project_description"  onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" id="project_description" tabindex="3" onpaste="OnPaste_StripFormatting(this, event);" style="resize: none;" placeholder="Enter Project Description" maxlength="4000"><?php if($project_description1){ echo $project_description1; } else { echo $job[0]['project_description']; }?></textarea>
                            </fieldset>
                            <div class="text-center">
                               <h5 class="head_title">Training / Internship</h5>
                            </div>
                            <fieldset class="full-width">
-                              <label>Intern / Trainee as</label>
+                              <label>Intern / Trainee as:<span class="optional">(optional)</span></label>
                               <input type="text" tabindex="4" name="training_as"  id="training_as" placeholder="Intern / Trainee as" value="<?php if($training_as1){ echo $training_as1; } else { echo $job[0]['training_as']; }?>" maxlength="255"/>
                            </fieldset>
                            <fieldset class="full-width">
-                              <label>Duration (in Month)</label>
+                              <label>Duration (in Month):<span class="optional">(optional)</span></label>
                               <input type="text" name="training_duration" tabindex="5"  id="training_duration" placeholder="Enter Duration"   value="<?php if($training_duration1){ echo $training_duration1; } else { echo $job[0]['training_duration']; }?>" maxlength="2"/>
                            </fieldset>
                            <fieldset class="full-width">
-                              <label>Name of Organization</label>
+                              <label>Name of Organization:<span class="optional">(optional)</span> </label>
                               <input type="text" name="training_organization" tabindex="6"  id="training_organization" placeholder="Enter Name of Organization" value="<?php if($training_organization1){ echo $training_organization1; } else { echo $job[0]['training_organization']; }?>" maxlength="255"/>
                            </fieldset>
                            <fieldset class="hs-submit full-width">

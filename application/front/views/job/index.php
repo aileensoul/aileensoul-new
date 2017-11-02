@@ -83,7 +83,7 @@
                               <?php echo form_error('email'); ?>
                            </fieldset>
                            <fieldset <?php if ($phnno) { ?> class="error-msg" <?php } ?>>
-                              <label>Phone Number :</label>
+                              <label>Phone Number :<span class="optional">(optional)</span></label>
                               <input type="text" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" name="phnno" id="phnno" tabindex="4" placeholder="Enter Phone Number" value="<?php if ($phnno1) {
                                  echo $phnno1;
                                  } ?>" maxlength="15" tabindex="4"/> <span id="phnno-error"> </span>
@@ -118,7 +118,7 @@
                               <?php echo form_error('city'); ?>
                            </fieldset>
                            <fieldset <?php if ($pincode_error) { ?> class="error-msg" <?php } ?>>
-                              <label>Pincode :</label>
+                              <label>Pincode :<span class="optional">(optional)</span></label>
                               <input type="text" tabindex="10" name="pincode" id="pincode" placeholder="Enter Pincode" value="<?php
                                  if ($pincode1) {
                                      echo $pincode1;

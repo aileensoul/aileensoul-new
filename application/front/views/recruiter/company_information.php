@@ -104,7 +104,7 @@
                                 <?php echo form_error('comp_email'); ?>
 
                                 <fieldset <?php if ($comp_num) { ?> class="error-msg" <?php } ?>>
-                                    <label>Company Number:</label>
+                                    <label>Company Number:<span class="optional">(optional)</span></label>
                                     <input name="comp_num"  type="text" id="comp_num" tabindex="3" placeholder="Enter Comapny Number" value="<?php
                                     if ($compnum) {
                                         echo $compnum;
@@ -114,7 +114,7 @@
                                 <?php echo form_error('comp_num'); ?>
 
                                 <fieldset>
-                                    <label>Company Website:</span></label>        
+                                    <label>Company Website:<span class="optional">(optional)</span></span></label>        
                                     <input name="comp_site"  type="url" id="comp_url" tabindex="4" placeholder="Enter Comapny Website" value="<?php
                                     if ($compweb) {
                                         echo $compweb;
@@ -210,7 +210,7 @@
 
 
                                 <fieldset class="full-width">
-                                    <label for="country-suggestions">Sector/Skill You hire for:</span></label>
+                                    <label for="country-suggestions">Sector/Skill You hire for:<span class="optional">(optional)</span></span></label>
 
 
                                     <textarea name ="comp_sector" id="comp_sector" rows="4" cols="50" tabindex="8" placeholder=" Ex.php, java, information technology ,automobile ,construction" style="resize: none;"><?php
@@ -222,7 +222,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($comp_profile) { ?> class="error-msg" <?php } ?> class="full-width">
-                                    <label>Company Profile:<!-- <span style="color:red">*</span> -->
+                                    <label>Company Profile:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> -->
 
                                         <textarea tabindex="9" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;"><?php
                                             if ($comp_profile1) {
@@ -235,7 +235,7 @@
 
 
                                 <fieldset <?php if ($other_activities) { ?> class="error-msg" <?php } ?> class="full-width">
-                                    <label>Other activities:<!-- <span style="color:red">*</span> --></label>
+                                    <label>Other activities:<!-- <span style="color:red">*</span> --><span class="optional">(optional)</span></label>
 
 
                                     <textarea name ="other_activities" tabindex="10" id="other_activities" rows="4" cols="50" placeholder="Enter Other Activities" style="resize: none;"><?php
@@ -246,7 +246,7 @@
 
                                 </fieldset>
                                 <fieldset id="logo_remove">
-                                    <label>Company Logo:</label>
+                                    <label>Company Logo:<span class="optional">(optional)</span></label>
                                     <input  type="file" name="comp_logo" tabindex="11" id="comp_logo" class="comp_logo" placeholder="Company Logo" multiple="" onchange=" return comlogo();" />
 
                                     <div id="com_logo" class="com_logo" style="color:#f00; display: block;"></div>
