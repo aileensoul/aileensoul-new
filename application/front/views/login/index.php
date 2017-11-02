@@ -230,7 +230,6 @@ echo form_open('profile/forgot_password', $form_attribute);
 
          <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript">
-
                                             function login()
                                             {
                                                 document.getElementById('error1').style.display = 'none';
@@ -262,12 +261,13 @@ echo form_open('profile/forgot_password', $form_attribute);
                                                 /* login submit */
                                                 function submitForm()
                                                 {
-
                                                     var email_login = $("#email_login").val();
                                                     var password_login = $("#password_login").val();
+                                                    var redirect_url = '<?php echo $redirect_url; ?>';
                                                     var post_data = {
                                                         'email_login': email_login,
                                                         'password_login': password_login,
+                                                        'redirect_url': redirect_url,
                                                         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
                                                     }
                                                     $.ajax({
@@ -284,9 +284,11 @@ echo form_open('profile/forgot_password', $form_attribute);
                                                         {
                                                             if (response.data == "ok") {
                                                                 $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-
-                                                                window.location = "<?php echo base_url() ?>dashboard";
-
+                                                                if(redirect_url == ''){
+                                                                    window.location = "<?php echo base_url() ?>dashboard";
+                                                                }else{
+                                                                    window.location = redirect_url;
+                                                                }
                                                                 //setTimeout(' window.location.href = "<?php //echo base_url()  ?>home"; ', 4000);
                                                                 // setTimeout(' window.location.href = ""; ', 4000);
                                                             } else if (response.data == "password") {
