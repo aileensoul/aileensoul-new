@@ -132,6 +132,7 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
+             $('video, audio').mediaelementplayer();
         }
     });
 }
@@ -274,6 +275,7 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
 
             //$('.job-contact-frnd div:first').remove();
             $(".art-all-post").prepend(response.responseText);
+             $('video, audio').mediaelementplayer();
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {

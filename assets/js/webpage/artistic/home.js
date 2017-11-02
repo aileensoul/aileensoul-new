@@ -376,6 +376,8 @@ var isProcessing = false;
                              $('.art-all-post').html(no_artistic_post_html);
                              }
 
+                              $('video, audio').mediaelementplayer();
+
                     }
                 });
             }
@@ -2070,6 +2072,9 @@ function seemorediv(abc) {
             document.getElementById("progress_div").style.display = "none";
             $('.art-all-post div:first').remove();
             $(".art-all-post").prepend(response.responseText);
+
+             $('video, audio').mediaelementplayer();
+             
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             //alert(nb);
