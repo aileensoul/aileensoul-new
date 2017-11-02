@@ -3478,11 +3478,11 @@ class Job extends MY_Controller {
                          }else{
                             $text = ''; 
                          }
-                    $cache_time1 = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
-                    $cityname = str_replace(" ", "-", $cache_time1);
-                    $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
-                    $cityname=strtolower($cityname);
+                  //  $cityname = str_replace(" ", "-", $cache_time1);
+                   // $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
+                   // $cityname=strtolower($cityname);
                     if($cityname != ''){
                            $cityname =  '-vacancy-in-' . strtolower($this->clean($cityname));
                          }else{
@@ -3795,7 +3795,34 @@ class Job extends MY_Controller {
                 $return_html .= '<li class="fr date_re">
                                 Created Date : ' . date('d-M-Y', strtotime($post['created_date'])) . '
                             </li>';
-                $return_html .= '<li><a  class=" post_title" href="javascript:void(0);" title="Post Title" >';
+                 $cache_time = $this->db->get_where('job_title', array(
+                                'title_id' => $post['post_name']
+                            ))->row()->name;
+
+                    if ($cache_time) {
+                        $cache_time1 = $cache_time;
+                    } else {
+                        $cache_time1 = $post['post_name'];
+                    }
+                  
+              
+                      if($cache_time1 != ''){ 
+                         $text =  strtolower($this->clean($cache_time1));
+                         }else{
+                            $text = ''; 
+                         }
+                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+
+                 
+                    if($cityname != ''){
+                           $cityname =  '-vacancy-in-' . strtolower($this->clean($cityname));
+                         }else{
+                             $cityname = '';
+                         }
+                  
+                    $contition_array = array('user_id' => $post['user_id'], 're_status' => '1','is_delete'=> '0');
+                    $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $return_html .= '<li><a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
 
                 $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
                 if ($cache_time) {
@@ -4071,8 +4098,34 @@ class Job extends MY_Controller {
                                        <ul>';
 
                 $return_html .= '<li class="fr date_re"> Created Date :' . date('d-M-Y', strtotime($post['created_date'])) . '</li>';
+ $cache_time = $this->db->get_where('job_title', array(
+                                'title_id' => $post['post_name']
+                            ))->row()->name;
 
-                $return_html .= '<li><a title="Post Title" class=" post_title" href="javascript:void(0);">';
+                    if ($cache_time) {
+                        $cache_time1 = $cache_time;
+                    } else {
+                        $cache_time1 = $post['post_name'];
+                    }
+                  
+              
+                      if($cache_time1 != ''){ 
+                         $text =  strtolower($this->clean($cache_time1));
+                         }else{
+                            $text = ''; 
+                         }
+                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+
+                 
+                    if($cityname != ''){
+                           $cityname =  '-vacancy-in-' . strtolower($this->clean($cityname));
+                         }else{
+                             $cityname = '';
+                         }
+                  
+                    $contition_array = array('user_id' => $post['user_id'], 're_status' => '1','is_delete'=> '0');
+                    $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $return_html .= '<li><a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
                 $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
                 if ($cache_time) {
                     $return_html .= $cache_time;
@@ -4454,7 +4507,33 @@ class Job extends MY_Controller {
                 $return_html .= '<li class="text_overflow">';
 
                 if ($this->session->userdata('aileenuser')) {
-                    $return_html .= '<a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" class="post_title" >';
+                    
+                     $cache_time = $this->db->get_where('job_title', array(
+                                'title_id' => $post['post_name']
+                            ))->row()->name;
+
+                    if ($cache_time) {
+                        $cache_time1 = $cache_time;
+                    } else {
+                        $cache_time1 = $post['post_name'];
+                    }
+                    if($cache_time1 != ''){ 
+                         $text =  strtolower($this->clean($cache_time1));
+                         }else{
+                            $text = ''; 
+                         }
+                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                  
+if($cityname != ''){
+                           $cityname =  '-vacancy-in-' . strtolower($this->clean($cityname));
+                         }else{
+                             $cityname = '';
+                         }
+                  
+                    $contition_array = array('user_id' => $post['user_id'], 're_status' => '1','is_delete'=> '0');
+                    $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+ $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
+//  $return_html .= '<a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" class="post_title" >';
                 } else {
                     $return_html .= '<a  href="javascript:void(0);" onClick="login_profile()" class="post_title" >';
                 }
