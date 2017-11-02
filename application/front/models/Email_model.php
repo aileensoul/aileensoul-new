@@ -43,6 +43,7 @@ line-height: 1;}
 		color:#fff;
 		padding:10px 25px;
 		text-decoration:none;
+                border-radius:5px;
 	}
 	.btn:hover{/*opacity:0.8;*/}
 </style></head>
