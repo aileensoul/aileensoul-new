@@ -4734,4 +4734,55 @@ public function delete_logo()
 }
 //DELETE LOGO END
 
+//LIVE LOCATION START
+   public function postlocation($posttitle = 'ahmedabad'){
+  
+     $segment3 = explode('-', $this->uri->segment(3)); 
+     $slugdata = array_reverse($segment3);
+     $postid=$slugdata[0];
+    $this->data['recliveid'] =  $userid=$slugdata[1];
+  
+     $contition_array = array('user_id' => $userid, 'is_delete' => 0, 're_status' => 1);
+$data = "rec_id,rec_firstname,rec_lastname,rec_email,re_status,rec_phone,re_comp_name,re_comp_email,re_comp_site,re_comp_url,re_comp_address,re_comp_country,re_comp_state,re_comp_city,user_id,re_comp_profile,re_comp_sector,	re_comp_activities,re_step,re_comp_phone,recruiter_user_image,profile_background,profile_background_main,designation,comp_logo";
+$recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+        $join_str[0]['table'] = 'recruiter';
+        $join_str[0]['join_table_id'] = 'recruiter.user_id';
+        $join_str[0]['from_table_id'] = 'rec_post.user_id';
+        $join_str[0]['join_type'] = '';
+
+            $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_month,max_year,,min_month,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
+       $contition_array = array('post_id' => $postid, 'status' => 1, 'rec_post.is_delete' => '0', 'rec_post.user_id' => $userid);
+    $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+      
+      
+              $cache_time = $this->db->get_where('job_title', array(
+                                'title_id' => $this->data['postdata'][0]['post_name']
+                            ))->row()->name;
+
+                    if ($cache_time) {
+                        $cache_time1 = $cache_time;
+                    } else {
+                        $cache_time1 = $this->data['postdata'][0]['post_name'];
+                    }
+
+                    
+                    $cityname = $this->db->get_where('cities', array('city_id' => $this->data['postdata'][0]['city']))->row()->city_name;
+
+                    
+                $this->data['title'] =  $cache_time1 . ' Job Vacancy in ' . $cityname . ' - Aileensoul.com'; 
+                    
+       $contition_array = array('post_id !=' => $postid, 'status' => 1, 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
+       $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+      
+       if($this->session->userdata('aileenuser')){
+       $this->load->view('recruiter/recpost_live',$this->data);
+       }else{
+       $this->load->view('recruiter/rec_post_login',$this->data);
+         
+       }
+    }
+   
+//LIVE LOCATION END
+
 }
