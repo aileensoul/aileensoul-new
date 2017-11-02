@@ -2327,7 +2327,38 @@ public function ajax_userlist() {
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+
+                                             // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60">
+                                        $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -2483,7 +2514,38 @@ public function follow_home() {
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60">
+
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -3010,7 +3072,39 @@ public function follow_home() {
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60">
+                                           $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -3133,7 +3227,38 @@ public function followtwo() {
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -3936,7 +4061,38 @@ public function followtwo() {
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -4133,7 +4289,37 @@ public function followtwo() {
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                           $email_html .=  '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -5081,7 +5267,39 @@ public function delete_commenttwo_postnewpage() {
                         $email_html = '';
                         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your post in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -5366,7 +5584,40 @@ public function delete_commenttwo_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -5571,7 +5822,39 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -5809,7 +6092,39 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -6900,7 +7215,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+                      
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                           $email_html .= ' </td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -7132,7 +7478,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -7296,7 +7673,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                           $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -7551,7 +7959,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -7783,7 +8222,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                              if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -8027,7 +8497,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -8152,7 +8653,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -8270,7 +8802,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                            if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -8394,7 +8957,37 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+                                             if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
@@ -9521,7 +10114,38 @@ public function insert_comment_postnewpage() {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td style="padding:5px;"><img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">';
+
+                                    if (IMAGEPATHFROM == 'upload') {
+
+                            if($artuserdata[0]['art_user_image']){
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
+                                       
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        
+                                     } else { 
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                    }
+                                  }else{
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                  }
+                                } else{
+
+                     $filename = $this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'];
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+
+                        if ($info) {
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                    }else{
+
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                        }
+                      }
+
+                                            // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
+                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
