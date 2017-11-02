@@ -1945,7 +1945,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .banner #row1 .col-md-12{padding:0;}
 #popup-form #userimage{padding:13px 20px 0;}
 #upload-demo-one{padding-top:10px; width:350px; display: none}
-body.modal-open{padding-left:0 !important;}
+body.modal-open{padding-left:0 !important; padding-right:0 !important;}
 .optional-custom .optional{float: none; padding-left: 10px;}
 .optional{font-size:12px; float:right;}
 .custom-right-art .alert.alert-danger{width: 100%;
