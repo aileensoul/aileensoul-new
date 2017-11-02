@@ -3471,17 +3471,22 @@ class Job extends MY_Controller {
                     $text = str_replace(" ", "-", $cache_time1);
                     $text = preg_replace("/[.!$#%()]+/i", "", $text);
                     $text=strtolower($text);
-
+                      if($text != ''){
+                           $text =  $text;
+                         }else{
+                            $text = ''; 
+                         }
                     $cache_time1 = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
                     $cityname = str_replace(" ", "-", $cache_time1);
                     $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
                     $cityname=strtolower($cityname);
-
+                  
                     $contition_array = array('user_id' => $post['user_id'], 're_status' => '1','is_delete'=> '0');
                     $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    $return_html .= '<a href="' . base_url('job/post-' . $post['post_id'].'/'. $text.'-vacancy-in-'.$cityname) . '" title="' . $cache_time . '" class=" post_title">';
+//                    $return_html .= '<a href="' . base_url('job/post-' . $post['post_id'].'/'. $text.'-vacancy-in-'.$cityname) . '" title="' . $cache_time . '" class=" post_title">';
+                   $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
                     if ($cache_time) {
                         $return_html .= $cache_time;
                     } else {
