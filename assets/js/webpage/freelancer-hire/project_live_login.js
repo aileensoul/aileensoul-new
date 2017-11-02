@@ -326,7 +326,7 @@ $(document).ready(function () {
                    //  alert(8888)
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                     //  alert(base_url + 'job/profile/live-post?postid=' + postid);
-                        window.location = base_url + 'freelancer-work/home/live-post' + postid;
+                        window.location = base_url + 'freelancer-work/home/live-post/' + postid;
                        sendmail(userid);
                         
 //                        var alldata = 'all';

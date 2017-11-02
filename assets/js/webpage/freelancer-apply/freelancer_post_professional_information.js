@@ -282,7 +282,7 @@ $("#freelancer_post_professional").submit(function () {
     var month = $('.experience_month').val();
 
     if (year == null && month == null) {
-        alert(1111);
+        
         $('.experience_year').addClass('error');
         $('.experience_month').addClass('error');
         $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
