@@ -696,14 +696,19 @@ class Artist extends MY_Controller {
         }
      //if user deactive profile then redirect to artist/index untill active profile End
         $user_name = $this->session->userdata('user_name');
-        $artisticslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->slug;
 
-        if ($id == '' || $id == $artisticslug[0]['slug']) {
+        $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0];      
+        $artisticslug = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_id;
+        //echo "<pre>"; print_r($artisticslug); die();
+
+        if ($regid == '' || $regid == $artisticslug) { //echo "1"; die();
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,user_id,art_user_image,art_name,art_lastname,designation,slug,art_id,art_skill,art_yourart,art_desc_art,art_email,art_city,art_country,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $this->data['artid'] = $userid;
-        } else {
-            $contition_array = array('slug' => $id, 'status' => '1' , 'art_step' => 4);
+        } else { //echo "12"; die();
+            $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,user_id,art_user_image,art_name,art_lastname,designation,slug,art_id,art_skill,art_yourart,art_desc_art,art_email,art_city,art_country,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $this->data['artid'] = $this->data['artisticdata'][0]['user_id'];
         }
@@ -1123,8 +1128,9 @@ class Artist extends MY_Controller {
 
                     if ($row['posted_user_id']) {
 
-                       
-                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $artdataposted[0]['slug']) . '">';
+                            $geturl = $this->get_url($row['posted_user_id']);
+
+                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                             if (IMAGEPATHFROM == 'upload') {
 
@@ -1155,7 +1161,9 @@ class Artist extends MY_Controller {
                         
                     } else {
                         
-                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $artdata[0]['slug']) . '">';
+                        $geturl = $this->get_url($row['user_id']);
+
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
                             if (IMAGEPATHFROM == 'upload') {
 
                                 if($artdata[0]['art_user_image']){
@@ -1194,19 +1202,25 @@ class Artist extends MY_Controller {
                     $return_html .= '<li>
                                         </li>';
                     if ($row['posted_user_id']) {
+
+                        $geturl = $this->get_url($artdataposted[0]['user_id']);
+
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artist/dashboard/' . $artdataposted[0]['slug']) . '">' . ucfirst(strtolower($artdataposted[0]['art_name'])) .' '. ucfirst(strtolower($artdataposted[0]['art_lastname'])) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artist/dashboard/' . $geturl) . '">' . ucfirst(strtolower($artdataposted[0]['art_name'])) .' '. ucfirst(strtolower($artdataposted[0]['art_lastname'])) . '</a>
                                                         <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artist/dashboard/' . $artdata[0]['slug']) . '">' . ucfirst(strtolower($artdata[0]['art_name'])) .' '. ucfirst(strtolower($artdata[0]['art_lastname'])) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
                                             </li>';
                     } else {
+
+                        $geturl = $this->get_url($artdata[0]['user_id']);
+
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artist/dashboard/' . $artdata[0]['slug']) . '" title="' . ucfirst(strtolower($artdata[0]['art_name'])) .' '. ucfirst(strtolower($artdata[0]['art_lastname'])) . '">
+                                                    <a class="post_dot"  href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($artdata[0]['art_name'])) .' '. ucfirst(strtolower($artdata[0]['art_lastname'])) . '">
                     ' . ucfirst(strtolower($artdata[0]['art_name'])) .' '.ucfirst(strtolower($artdata[0]['art_lastname'])). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
@@ -1661,9 +1675,11 @@ class Artist extends MY_Controller {
                              $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                              $art_userid = $this->db->select('user_id')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->user_id;
 
+                             $geturl = $this->get_url($rowdata['user_id']);
+
                             $return_html .= '<div class="all-comment-comment-box">
                                             <div class="post-design-pro-comment-img">';
-                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug) . '">';
+                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
                           $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                 
 
@@ -1702,7 +1718,7 @@ class Artist extends MY_Controller {
                             
                             $return_html .= '</div>
                                             <div class="comment-name">';
-                                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug) . '">
+                                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">
                                                 <b title="' . ucfirst(strtolower($artname)) .' '.ucfirst(strtolower($artlastname)).'">';
                             $return_html .= $artname;
                             $return_html .= ' ';
@@ -1805,7 +1821,8 @@ class Artist extends MY_Controller {
                     <div class="post-design-commnet-box col-md-12">
                         <div class="post-design-proo-img hidden-mob">';
 
-                         $return_html .= '<a href="' . base_url('artist/dashboard/' . $artdata[0]['slug']) . '">';
+                        $geturl = $this->get_url($artdata[0]['user_id']);
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
                   
                     if (IMAGEPATHFROM == 'upload') {
 
@@ -2167,7 +2184,9 @@ public function ajax_userlist() {
                                                                 <li class="fl padding_less_left">
                                                                         <div class="follow-img">';
            
-                $return_html .= '<a href="' . base_url('artist/dashboard/' . $user['slug']) . '">';
+                 $geturl = $this->get_url($user['user_id']);
+
+                $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
                     if($user['art_user_image']){
@@ -2623,8 +2642,13 @@ public function follow_home() {
 
 //echo '<pre>'; print_r($userlistview); 
 
+
+
             $third_user_html = '';
             $userlist = $userlistview[2];
+
+            $geturl = $this->get_url($userlist['user_id']);
+
             if (count($userlist) > 0) {
                 //$userlist = $userlistview[2];
                //foreach ($userlistview as $userlist) {
@@ -2639,7 +2663,7 @@ public function follow_home() {
                                                                     <div class=" col-md-12 follow_left_box_main">                   
                                                                         <div class="post-design-pro-img_follow">';
                     
-                        $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
 
                         if (IMAGEPATHFROM == 'upload') {
@@ -2677,7 +2701,7 @@ public function follow_home() {
                                 <div class="post-design-name_follow fl">
                                      <ul><li>
                                     <div class="post-design-product_follow">';
-                    $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
+                    $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
                             <h6>' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                             </a> 
                             </div>
@@ -2685,7 +2709,7 @@ public function follow_home() {
                     
                     $third_user_html .= '<li>
                         <div class="post-design-product_follow_main" style="display:block;">
-                           <a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
+                           <a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
                     <p>';
                     if ($userlist['designation']) {
                         $third_user_html .= $userlist['designation'];
@@ -2757,6 +2781,9 @@ public function follow_home() {
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
                 $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
 
+                 $geturl = $this->get_url($userlist['user_id']);
+
+
                     if (!$artfollow) {
 
                         $third_user_html .= '<li class="follow_box_ul_li fad' . $userlist['art_id'] . '" id = "fad' . $userlist['art_id'] . '">
@@ -2765,7 +2792,7 @@ public function follow_home() {
                                                                         <div class="post-design-pro-img_follow">';
                   
 
-                        $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                           if (IMAGEPATHFROM == 'upload') {
                             if($userlist['art_user_image']){
@@ -2805,7 +2832,7 @@ public function follow_home() {
                                 <div class="post-design-name_follow fl">
                                      <ul><li>
                                     <div class="post-design-product_follow">';
-                    $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
+                    $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
                             <h6>' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                             </a> 
                             </div>
@@ -2813,7 +2840,7 @@ public function follow_home() {
                     
                     $third_user_html .= '<li>
                         <div class="post-design-product_follow_main" style="display:block;">
-                           <a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
+                           <a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
                     <p>';
                     if ($userlist['designation']) {
                         $third_user_html .= $userlist['designation'];
@@ -2893,6 +2920,10 @@ public function follow_home() {
         $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id, slug', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
         //echo "<pre>"; print_r($userlistview); die();
         $userlist = $userlistview[2];
+
+        $geturl = $this->get_url($userlist['user_id']);
+
+
             $third_user_html = '';
             if (count($userlist) > 0) {
                // foreach ($userlistview as $userlist) {
@@ -2909,7 +2940,7 @@ public function follow_home() {
                                                                         <div class="post-design-pro-img_follow">';
                    
 
-                        $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
 
                          if (IMAGEPATHFROM == 'upload') {
@@ -2945,7 +2976,7 @@ public function follow_home() {
                                 <div class="post-design-name_follow fl">
                                      <ul><li>
                                     <div class="post-design-product_follow">';
-                    $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
+                    $third_user_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
                             <h6>' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                             </a> 
                             </div>
@@ -2953,7 +2984,7 @@ public function follow_home() {
                     
                     $third_user_html .= '<li>
                         <div class="post-design-product_follow_main" style="display:block;">
-                           <a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
+                           <a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
                     <p>';
                     if ($userlist['designation']) {
                         $third_user_html .= $userlist['designation'];
@@ -3561,6 +3592,9 @@ public function followtwo() {
 
               $contition_array = array('art_id' => $user['follow_from'], 'status' => '1');
               $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+              $geturl = $this->get_url($artaval[0]['user_id']);
+
                 if($artaval){
 
                 $return_html .= '<div class="profile-job-post-detail clearfix">
@@ -3572,7 +3606,7 @@ public function followtwo() {
                                                                             <div class="follow-img">';
                 
                 
-                    $return_html .= '<a href="' . base_url('artist/dashboard/' . $artaval[0]['slug']) . '">';
+                    $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
                         if($artaval[0]['art_user_image']){
@@ -3608,7 +3642,7 @@ public function followtwo() {
                                      <li class="folle_text">
                                         <div class="">
                                             <div class="follow-li-text " style="padding: 0;">
-                                                <a href="' . base_url('artist/dashboard/' . $artaval[0]['slug']) . '">' . ucfirst(strtolower($artaval[0]['art_name'])) .'&nbsp;'.ucfirst(strtolower($artaval[0]['art_lastname'])). '</a></div>
+                                                <a href="' . base_url('artist/dashboard/' . $geturl) . '">' . ucfirst(strtolower($artaval[0]['art_name'])) .'&nbsp;'.ucfirst(strtolower($artaval[0]['art_lastname'])). '</a></div>
                                         <div>';
                 $return_html .= '<a>';
                 if ($artaval[0]['designation']) {
@@ -3785,7 +3819,10 @@ public function followtwo() {
         if (count($userlist1) > 0) {
             foreach ($userlist as $user) {
             $contition_array = array('art_id' => $user['follow_to'], 'status' => '1');
-              $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image,art_name,art_lastname,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+              $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image,art_name,art_lastname,designation,slug,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+              $geturl = $this->get_url($artaval[0]['user_id']);
+
                 if($artaval){
                 $return_html .= '
     <div class = "profile-job-post-detail clearfix" id = "removefollow' . $user['follow_to'] . '">
@@ -3797,7 +3834,7 @@ public function followtwo() {
                             <div class = "follow-img">';
 
             
-                    $return_html .= '<a href="' . base_url('artist/dashboard/' .$artaval[0]['slug']) . '" title="' . ucfirst(strtolower($artaval[0]['art_name'])) .' '. ucfirst(strtolower($artaval[0]['art_lastname'])) .'">';
+                    $return_html .= '<a href="' . base_url('artist/dashboard/' .$geturl) . '" title="' . ucfirst(strtolower($artaval[0]['art_name'])) .' '. ucfirst(strtolower($artaval[0]['art_lastname'])) .'">';
 
                      if (IMAGEPATHFROM == 'upload') {
                         if($artaval[0]['art_user_image']){
@@ -4480,9 +4517,12 @@ public function followtwo() {
 
                  $art_slug = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->slug;
 
+                 $geturl = $this->get_url($art['user_id']);
+
+
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
                 
                      if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -4515,7 +4555,7 @@ public function followtwo() {
                    $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="comment-name">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' .  $art_slug . '') . '">
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' .  $geturl . '') . '">
 
                 <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
                 $cmtinsert .= '</div>';              
@@ -4636,9 +4676,12 @@ public function delete_comment_postnewpage() {
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
                 $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->slug;
 
+                 $geturl = $this->get_url($art['user_id']);
+
+
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -4674,7 +4717,7 @@ public function delete_comment_postnewpage() {
 
 
                 $cmtinsert .= '<div class="comment-name">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
                 <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id="showcomment' . $art['artistic_post_comment_id'] . '" >';
@@ -4838,9 +4881,12 @@ public function delete_comment_postnewpage() {
 
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
+                 $geturl = $this->get_url($art['user_id']);
+
+
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -4876,7 +4922,7 @@ public function delete_comment_postnewpage() {
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-name">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
                 <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
                 $cmtinsert .= '</div>';
@@ -5008,9 +5054,12 @@ public function delete_commenttwo_postnewpage() {
                 $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
                   $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+
+                 $geturl = $this->get_url($art['user_id']);
+
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                    if (IMAGEPATHFROM == 'upload') {
                     if($art_userimage){
@@ -5042,7 +5091,7 @@ public function delete_commenttwo_postnewpage() {
                 $cmtinsert .= '</a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-name">';
-                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+                $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
                 <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
                 $cmtinsert .= '</div>';
@@ -5650,10 +5699,13 @@ public function delete_commenttwo_postnewpage() {
 
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+                 
+            $geturl = $this->get_url($art['user_id']);
+
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                       if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -5686,7 +5738,7 @@ public function delete_commenttwo_postnewpage() {
               $cmtinsert .=  '</div>';
 
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
             <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art['artistic_post_comment_id'] . '" >';
@@ -5881,9 +5933,12 @@ public function insert_comment_postnewpage() {
             $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
             $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art['user_id']))->row()->slug;
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+
+            $geturl = $this->get_url($art['user_id']);
+
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
                     if($art_userimage){
@@ -5913,7 +5968,7 @@ public function insert_comment_postnewpage() {
               $cmtinsert .= '</a>';
              $cmtinsert .=  '</div>';
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
             <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
             $cmtinsert .= '</div>';
            
@@ -6164,9 +6219,12 @@ public function insert_comment_postnewpage() {
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
+            $geturl = $this->get_url($art['user_id']);
+
+
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
                     if($art_userimage){
@@ -6199,7 +6257,7 @@ public function insert_comment_postnewpage() {
              $cmtinsert .= '</a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
             <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
             $cmtinsert .= '</div>';
@@ -7743,9 +7801,12 @@ public function insert_comment_postnewpage() {
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
+            $geturl = $this->get_url($art_comment['user_id']);
+
+
             $cmtinsert = '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                 if (IMAGEPATHFROM == 'upload') {
                     if($art_userimage){
@@ -7777,7 +7838,7 @@ public function insert_comment_postnewpage() {
               $cmtinsert .=  '</div>';
 
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
             <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
             $cmtinsert .= '</div>';
@@ -8030,9 +8091,12 @@ public function insert_comment_postnewpage() {
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
+            $geturl = $this->get_url($art['user_id']);
+
+
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -8067,7 +8131,7 @@ public function insert_comment_postnewpage() {
 
 
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
             <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
             $cmtinsert .= '</div>';
@@ -8286,9 +8350,12 @@ public function insert_comment_postnewpage() {
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
+            $geturl = $this->get_url($art_comment['user_id']);
+
+
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
 
              if (IMAGEPATHFROM == 'upload') {
@@ -8325,7 +8392,7 @@ public function insert_comment_postnewpage() {
            // $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">'; 
             $cmtinsert .= '</a> </div>';
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
             <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
             $cmtinsert .= '</div>';
@@ -9121,9 +9188,12 @@ public function insert_comment_postnewpage() {
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
+            $geturl = $this->get_url($art_comment['user_id']);
+
+
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -9158,7 +9228,7 @@ public function insert_comment_postnewpage() {
            $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
             <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lname)). '</b></a>';
             $cmtinsert .= '</div>';
@@ -9323,10 +9393,13 @@ public function insert_comment_postnewpage() {
 
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
+                 $geturl = $this->get_url($art_comment['user_id']);
+
+
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
-                 $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">';
+                 $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -9358,7 +9431,7 @@ public function insert_comment_postnewpage() {
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="comment-name">';
-                 $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">
+                 $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
                 <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
                 $cmtinsert .= '</div>';
@@ -9557,9 +9630,12 @@ public function insert_comment_postnewpage() {
                 $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                  $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
+                 $geturl = $this->get_url($rowdata['user_id']);
+
+
                 $fourdata .= '<div class="all-comment-comment-box">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
-                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
                 
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                
@@ -9595,7 +9671,7 @@ public function insert_comment_postnewpage() {
                 $fourdata .= '</div>';
 
                 $fourdata .= '<div class="comment-name">';
-                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                 $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br></a> </div>';
                 
@@ -9717,11 +9793,12 @@ public function insert_comment_postnewpage() {
             $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid))->row()->art_lastname;
             $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid))->row()->slug;
 
+            $geturl = $this->get_url($userid);
 
 
             $fourdata .= '<div class="all-comment-comment-box">';
             $fourdata .= '<div class="post-design-pro-comment-img">';
-            $fourdata .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+            $fourdata .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
@@ -9758,7 +9835,7 @@ public function insert_comment_postnewpage() {
               $fourdata .=  '</div>';
 
             $fourdata .= '<div class="comment-name">';
-            $fourdata .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+            $fourdata .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
             $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br> </a></div>';
             
@@ -9987,10 +10064,13 @@ public function insert_comment_postnewpage() {
      $art_image = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_user_image;
 
      $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->slug;
+
+     $geturl = $this->get_url($value);
+
    
        $modal .=  '<li>';
        $modal .=  '<div class="like_user_listq">';
-       $modal .=  '<a href="' . base_url('artist/dashboard/' . $art_slug) . '" title="' . ucfirst(strtolower($art_name1)) .' '. ucfirst(strtolower($art_lastname)) .'" class="head_main_name" >';
+       $modal .=  '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($art_name1)) .' '. ucfirst(strtolower($art_lastname)) .'" class="head_main_name" >';
        $modal .=  '<div class="like_user_list_img">';
        
                  if (IMAGEPATHFROM == 'upload') {
@@ -10184,9 +10264,12 @@ public function insert_comment_postnewpage() {
 
             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
+            $geturl = $this->get_url($art_comment['user_id']);
+
+
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                      if (IMAGEPATHFROM == 'upload') {
                         if($art_userimage){
@@ -10220,7 +10303,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-name">';
-            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $art_slug . '') . '">
+            $cmtinsert .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
 
             <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
             $cmtinsert .= '</div>';
@@ -12171,6 +12254,9 @@ public function art_home_three_user_list() {
                 $followfrom = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
                 $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
                 $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+
+               $geturl = $this->get_url($userlist['user_id']);
+
               
                 if (!$artfollow) {
 
@@ -12180,7 +12266,7 @@ public function art_home_three_user_list() {
                                                                         <div class="post-design-pro-img_follow">';
                     
 
-                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ' '.ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ' '.ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
 
                         if (IMAGEPATHFROM == 'upload') {
@@ -12217,7 +12303,7 @@ public function art_home_three_user_list() {
                                 <div class="post-design-name_follow fl">
                                      <ul><li>
                                     <div class="post-design-product_follow">';
-                    $return_html .= '<a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
+                    $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
                             <h6>' . ucfirst(strtolower($userlist['art_name'])) .' ' . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                             </a> 
                             </div>
@@ -12225,7 +12311,7 @@ public function art_home_three_user_list() {
                     
                     $return_html .= '<li>
                         <div class="post-design-product_follow_main" style="display:block;">
-                           <a href="' . base_url('artist/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
+                           <a href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
                     <p>';
                     if ($userlist['designation']) {
                         $return_html .= $userlist['designation'];
@@ -13396,8 +13482,10 @@ public function art_home_post() {
                     
                     if ($row['posted_user_id']) {
 
-                        
-                    $return_html .= '<a href="' . base_url('artist/dashboard/' . $userslug) . '">';
+                     
+                     $geturl = $this->get_url($row['posted_user_id']);
+   
+                    $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                     if (IMAGEPATHFROM == 'upload') {
                         if($userimageposted){
@@ -13430,8 +13518,10 @@ public function art_home_post() {
 
                        
                     } else {
-                       
-                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $slug) . '">';
+
+                     
+                      $geturl = $this->get_url($row['user_id']);
+                      $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                             if (IMAGEPATHFROM == 'upload') {
                                 if($art_userimage){
@@ -13496,6 +13586,10 @@ public function art_home_post() {
 
                     $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
 
+                    $geturl_post = $this->get_url($row['posted_user_id']);
+                    $geturl = $this->get_url($row['user_id']);
+
+
 
                     $return_html .= '<li>
                                         </li>';
@@ -13503,8 +13597,8 @@ public function art_home_post() {
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artist/dashboard/' . $slugposted) . '">' . ucfirst(strtolower($firstnameposted)) .' '. ucfirst(strtolower($lastnameposted)) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artist/dashboard/' . $slug) . '">' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artist/dashboard/' . $geturl_post) . '">' . ucfirst(strtolower($firstnameposted)) .' '. ucfirst(strtolower($lastnameposted)) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artist/dashboard/' . $geturl) . '">' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -13513,7 +13607,7 @@ public function art_home_post() {
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artist/dashboard/' . $slug) . '" title="' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '">
+                                                    <a class="post_dot"  href="' . base_url('artist/dashboard/' . $geturl) . '" title="' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '">
                     ' . ucfirst(strtolower($firstname)) .' '.ucfirst(strtolower($lastname)). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
@@ -14001,9 +14095,12 @@ public function art_home_post() {
                             $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                             $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
+                            $geturl = $this->get_url($rowdata['user_id']);
+
+
                             $return_html .= '<div class="all-comment-comment-box">
                                             <div class="post-design-pro-comment-img">';
-                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug) . '">';
+                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
                           $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                            if (IMAGEPATHFROM == 'upload') {
@@ -14036,7 +14133,7 @@ public function art_home_post() {
                             $return_html .= '</a>';
                             $return_html .= '</div>
                                             <div class="comment-name">';
-                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug) . '">
+                            $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">
 
                                                 <b title="' . ucfirst(strtolower($artname)) .' '.ucfirst(strtolower($artlastname)).'">';
                             $return_html .= ucfirst(strtolower($artname));
@@ -14145,7 +14242,7 @@ public function art_home_post() {
 
                          $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
-                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $art_slug) . '">';
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                     $userid = $this->session->userdata('aileenuser');
                     $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
@@ -14781,7 +14878,6 @@ public function art_home_post() {
        // $id = $_GET['slug'];
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
-
         $contition_array = array('user_id' => $userid, 'status' => '1');
             $artisticslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -15468,7 +15564,10 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
     $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
-                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $art_slug) . '">';
+    $geturl = $this->get_url($userid);
+
+
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
@@ -15574,11 +15673,14 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                 $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
+               $geturl = $this->get_url($rowdata['user_id']);
+
+
 
                 $fourdata .= '<div class="all-comment-comment-box">';
                 
                 $fourdata .= '<div class="post-design-pro-comment-img">';
-                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
                 $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                
                if (IMAGEPATHFROM == 'upload') {
@@ -15614,7 +15716,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 $fourdata .= '</div>';
 
                 $fourdata .= '<div class="comment-name">';
-                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                $fourdata .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
 
                 $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br></a> </div>';
                
@@ -17004,10 +17106,13 @@ public function get_artistic_name($id=''){
                                                             $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
                                                             $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+
+                                                    $geturl = $this->get_url($rowdata['user_id']);
+
                                                             
                                                 $return_html .= '<div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img">';
-                                                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                                                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
                                                           
                                                               $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
@@ -17050,7 +17155,7 @@ public function get_artistic_name($id=''){
                                             $return_html .= '</a>';
                                             $return_html .= '</div>
                                                         <div class="comment-name">';
-                                                           $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                                                           $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
                                                          $return_html .= '<b>';
 
                                                           $return_html .= ucfirst(strtolower($artname));
@@ -17150,7 +17255,10 @@ public function get_artistic_name($id=''){
 
                                       $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
-                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $art_slug) . '">';
+                                      $geturl = $this->get_url($userid);
+
+
+                        $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl) . '">';
 
                             if (IMAGEPATHFROM == 'upload') {
                                 if($art_userimage){
@@ -18012,9 +18120,12 @@ public function get_artistic_name($id=''){
 
                                                             $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
                                                             
+                                                       $geturl = $this->get_url($rowdata['user_id']);
+
+
                                                 $return_html .= '<div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img">';
-                                                         $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">';
+                                                         $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">';
                                                           
                                                               $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                               
@@ -18056,7 +18167,7 @@ public function get_artistic_name($id=''){
                             //                                    }
                                             $return_html .= '</a></div>
                                                         <div class="comment-name">';
-                                                         $return_html .= '<a href="' . base_url('artist/dashboard/' . $artslug . '') . '">
+                                                         $return_html .= '<a href="' . base_url('artist/dashboard/' . $geturl . '') . '">
                                                             <b title="'.ucfirst(strtolower($artname)).'&nbsp;'.ucfirst(strtolower($artlastname)).'>';
                                                           
                                                           $return_html .= ucfirst(strtolower($artname));
@@ -18210,5 +18321,48 @@ public function get_artistic_name($id=''){
 
         echo $return;
     }
+
+public function clean($string) { 
+      
+   $string = str_replace(' ', '-', $string);  // Replaces all spaces with hyphens.
+   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // replace double --- in single -
+  
+   return preg_replace('/-+/', '-', $string); // Removes special chars.
+}
+
+public function get_url($userid){
+
+              $contition_array = array('user_id' => $userid, 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->clean($listFinal) .'-'.$this->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->clean($art_othercategory);  
+                                  }
+
+                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+                 return $url;                           
+  }
 
 }
