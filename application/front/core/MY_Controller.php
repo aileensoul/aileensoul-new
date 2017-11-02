@@ -30,7 +30,7 @@ class MY_Controller extends CI_Controller {
         $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile');
 
         $actual_link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-        $actual_link = str_replace('index.php/', '', $actual_link);
+        $actual_link = base64_encode(str_replace('index.php/', '', $actual_link));
         
         if ((!in_array($segment2, $segment2_names)) || (!in_array($segment1, $segment1_names))) {
             if (!$this->session->userdata('aileenuser')) {

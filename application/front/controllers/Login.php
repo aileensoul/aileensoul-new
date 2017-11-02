@@ -30,7 +30,7 @@ class Login extends CI_Controller {
             $this->data['error_msg'] = $error_msg = 0;
         }
         if($_GET['redirect_url'] != ''){
-            $this->data['redirect_url'] = $_GET['redirect_url'];
+            $this->data['redirect_url'] = base64_decode($_GET['redirect_url']);
         }
         if ($this->input->get()) {
             if ($_GET['lwc'] != " ") {
