@@ -116,6 +116,7 @@ function business_dashboard_post(slug, pagenum) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
+            $('video, audio').mediaelementplayer();
         }
     });
 }

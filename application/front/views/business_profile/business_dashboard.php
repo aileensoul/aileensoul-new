@@ -11,11 +11,25 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link href="<?php echo base_url('assets/dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/business.css?ver=' . time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile.min.css?ver=' . time()); ?>">
-            <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');      ?>" />-->
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');      ?>" />
         <?php } ?>
-            
+            <style type="text/css">
+            .two-images, .three-image, .four-image{
+                height: auto !important;
+            }
+            .mejs__overlay-button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__overlay-loading-bg-img {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__button > button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+        </style>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -697,7 +711,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
-
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+        
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
