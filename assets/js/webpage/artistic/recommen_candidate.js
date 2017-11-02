@@ -90,6 +90,7 @@ function artistic_search_post(pagenum) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
+             $('video, audio').mediaelementplayer();
         }
     });
 }
