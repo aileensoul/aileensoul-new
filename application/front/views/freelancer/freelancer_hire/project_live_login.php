@@ -522,7 +522,7 @@
                               <?php
           foreach ($postdata as $post) {
                         ?>
-                       
+						<div class="job-contact-frnd">
                                             <div class="profile-job-post-detail clearfix" id="<?php echo "removeapply" . $post['post_id']; ?>">
                                                 <div class="profile-job-post-title-inside clearfix">
                                                     <div class="profile-job-post-title clearfix margin_btm" >
@@ -713,7 +713,7 @@
                     ?>
                               <!--.........AJAX DATA END......-->           
                          <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>-->
-             
+						</div>
 
             </div>
          </div>
@@ -996,7 +996,7 @@
          <?php } ?>
          <!--recommen candidate end-->
       </div>  
-          
+        </div>
         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 					
 							<div class="fw text-center">
