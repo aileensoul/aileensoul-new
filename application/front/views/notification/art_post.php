@@ -27,7 +27,7 @@
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
                <div class="seeall">
-                  <a href="<?php //echo base_url('artistic/userlist'); ?>">All User</a>
+                  <a href="<?php //echo base_url('artist/userlist'); ?>">All User</a>
                </div>
                <div class="profile-boxProfileCard_follow_mobile  module">     
                </div>
@@ -147,12 +147,12 @@
                           if (IMAGEPATHFROM == 'upload') {
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
                                        
-                                        <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                                        <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                       </a>
                                         
                                     <?php } else { ?>
-                                     <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                                     <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
                                       </a>
                                    <?php }
@@ -164,13 +164,13 @@
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) { ?>
 
-                                                 <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                                                 <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
 
                                                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
                                               </a>
                           <?php }else{?>
 
-                          <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $art_slug); ?>">
+                          <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
 
                          <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>">  
 
@@ -182,7 +182,7 @@
 
                                         <?php } else { ?>
 
-                                          <a  class="post_dot" title="" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>">
+                                          <a  class="post_dot" title="" href="<?php echo base_url('artist/dashboard/' . $slugid); ?>">
 
                <?php
 
@@ -251,9 +251,9 @@
 
                                                                 <?php if ($art_data[0]['posted_user_id']) { ?>
                                                                     <div class="else_post_d">
-                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/dashboard/' . $slugposted); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
+                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $slugposted); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
                                                                         <p class="posted_with" > Posted With </p>
-                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artist/dashboard/' . $slugid); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
 
                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                         <span class="ctre_date"> 
@@ -268,7 +268,7 @@
                                                                     echo ucfirst(strtolower($firstname));
                                                                     print "&nbsp;&nbsp;";
                                                                     echo ucfirst(strtolower($lastname));
-                                                                    ?>" class="post_dot" href="<?php echo base_url('artistic/dashboard/' . $slugid); ?>"><?php
+                                                                    ?>" class="post_dot" href="<?php echo base_url('artist/dashboard/' . $slugid); ?>"><?php
                                                                        echo ucfirst(strtolower($firstname));
                                                                        print "&nbsp;&nbsp;";
                                                                        echo ucfirst(strtolower($lastname));
@@ -315,7 +315,7 @@
 
                                                                 <!--<a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>-->
 
-                                                             <!--    <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
+                                                             <!--    <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
 
                                                             <?php
                                                             }
@@ -338,7 +338,7 @@
                 <?php } else { ?>
 
                                                     <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
-                                                                <!-- <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
+                                                                <!-- <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
                                                             <?php
                                                             }
                                                         }
@@ -412,7 +412,7 @@
 
                                                             <!-- one image start -->
                                                             <div class="one-image">
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img  src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img  src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>" > </a>
                                                             </div>
                                                             <!-- one image end -->
 
@@ -420,7 +420,7 @@
 
                                                             <!-- one pdf start -->
                                                             <div>
-                                                                <a href="<?php echo base_url('artistic/creat_pdf/' . $artmultiimage[0]['post_files_id']) ?>"><div class="pdf_img">
+                                                                <a href="<?php echo base_url('artist/creat_pdf/' . $artmultiimage[0]['post_files_id']) ?>"><div class="pdf_img">
                                                                         <img src="<?php echo base_url('assets/images/PDF.jpg') ?>">
                                                                     </div></a>
                                                             </div>
@@ -472,7 +472,7 @@
 
                                             <!-- two image start -->
                                               <div class="two-images" >
-                                            <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="two-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
+                                            <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="two-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
                                             </div>
 
                                             <!-- two image end -->
@@ -484,13 +484,13 @@
 
                                                             <!-- three image start -->
                                                             <div class="three-image-top" >
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>"> </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>"> </a>
                                                             </div>
                                                               <div class="three-image" >
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['file_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['file_name']) ?>" > </a>
                                                             </div>
                                                             <div class="three-image" >
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['file_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['file_name']) ?>" > </a>
                                                             </div>
 
                                                             <!-- three image end -->
@@ -503,7 +503,7 @@
 
                                                                 <!-- four image start -->
                                                               <div class="four-image" >
-                                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="breakpoint" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
+                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="breakpoint" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
 
                                                                 </div>
 
@@ -523,7 +523,7 @@
                             <!-- five image start -->
                             <div>
                              <div class="four-image" >
-                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
+                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
                                 </div>
                                  </div>
 
@@ -539,9 +539,9 @@
 
                                                                                         <div>
                                                                  <div class="four-image" >
-                                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['file_name']) ?>"> </a></div>
+                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['file_name']) ?>"> </a></div>
 
-                                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>" >
+                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>" >
 
                                                                 <div class="more-image" >
 
@@ -797,12 +797,12 @@
                               if (IMAGEPATHFROM == 'upload') {
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
-                                         <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                         <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                       </a>
                                         
                                     <?php } else { ?>
-                                     <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                     <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                                       </a>
                                    <?php }
@@ -814,14 +814,14 @@
 
                               if ($info) { ?>
 
-                               <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                               <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
 
                                     <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage; ?>"  alt="">
                                   </a>
                         <?php
                     } else {
                         ?>
-                          <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                          <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
 
                            <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="">
                          </a>
@@ -834,7 +834,7 @@
 
                               <div class="comment-name">
                                       <b title=" <?php echo ucfirst(strtolower($artname)); echo "&nbsp;"; echo ucfirst(strtolower($artlastname)); ?>">
-                                      <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                      <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
                                               <?php
                                                echo ucfirst(strtolower($artname));
                                                 echo "&nbsp;";
@@ -966,12 +966,12 @@
                                                      if (IMAGEPATHFROM == 'upload') {
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
-                                        <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                        <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                       </a>
                                         
                                     <?php } else { ?>
-                                    <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                    <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                                       </a>
                                    <?php }
@@ -982,13 +982,13 @@
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                             if ($info) { ?>
-                                                     <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                                     <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
                                                         <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage; ?>" name="image_src" id="image_src" />
                                                       </a>
                                                         <?php
                                                     } else {
                                                         ?>
-                                                         <a href="<?php echo base_url('artistic/dashboard/' . $artslug . ''); ?>">
+                                                         <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
                                                         <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="No Image"></a>
                 <?php
             } }
@@ -1048,7 +1048,7 @@
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
                <div class="seeall">
-                  <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
+                  <a href="<?php echo base_url('artist/userlist'); ?>">All User</a>
                </div>
                <div class="profile-boxProfileCard_follow  module">     
                </div>
@@ -1125,7 +1125,7 @@
             <div class="modal-content-post">
                <span class="close1">&times;</span>
                   <div class="post-editor col-md-12 post-edit-popup" id="close">
-                  <?php echo form_open_multipart(base_url('artistic/art_post_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
+                  <?php echo form_open_multipart(base_url('artist/art_post_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
                   <div class="main-text-area " >
                      <div class="popup-img-in "> 
                      <?php 
@@ -1214,8 +1214,8 @@ var textarea = document.getElementById("textarea");
 </script>
 
 
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/notification-home.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/search.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/notification-home.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/search.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

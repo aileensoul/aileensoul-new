@@ -100,7 +100,7 @@
                                                 <img src="<?php echo base_url(USERIMAGE . $art['user_image']); ?>" >
                                             </div>
                                             <div class="notification-data-inside" id="notification_inside">
-                                                <a href="<?php echo base_url('artistic/artistic_profile/' . $art['user_id']); ?>"><h6><?php echo "HI.. !  <font color='#4e6db1'><b><i> Artistic</i></font></b><b>" . "  " . $art['first_name'] . ' ' . $art['last_name'] . "</b> started to following you"; ?></h6></a>
+                                                <a href="<?php echo base_url('artist/artistic_profile/' . $art['user_id']); ?>"><h6><?php echo "HI.. !  <font color='#4e6db1'><b><i> Artistic</i></font></b><b>" . "  " . $art['first_name'] . ' ' . $art['last_name'] . "</b> started to following you"; ?></h6></a>
                                                 <div ><i class="fa fa-comment" aria-hidden="true" style="margin-right:8px;"></i>
                                                     <?php echo $this->common->time_elapsed_string($art['not_created_date'], $full = false); ?>
                                                 </div>

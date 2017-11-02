@@ -474,7 +474,7 @@ public function sendmail(){
     // khjyati end
     // public function mailredirect()
     // { 
-    //     redirect('artistic/art_post', 'refresh'); die();
+    //     redirect('artist/art_post', 'refresh'); die();
     //   $user_email =  $_POST["user_email"];
     //    $allowedgmail = 'gmail.com';
     //    $allowedyahoo = 'yahoo.com';

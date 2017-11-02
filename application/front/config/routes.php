@@ -182,44 +182,44 @@ $route['freelancer-work/home/live-post/(:any)'] = "freelancer/freelancer_apply_p
 //ARTISTIC ROUTES SETTINGS
 
 
-$route['artistic'] = "artistic/index";
-$route['artistic/artistic-basic-information-insert'] = "artistic/art_basic_information_insert";
-$route['artistic/artistic-information-update'] = "artistic/art_basic_information_update";
+$route['artistic'] = "artist/index";
+$route['artist/artistic-basic-information-insert'] = "artist/art_basic_information_insert";
+$route['artist/artistic-information-update'] = "artist/art_basic_information_update";
 
-$route['artistic/artistic-address'] = "artistic/art_address";
-$route['artistic/artistic-address-insert'] = "artistic/art_address_insert";
+$route['artist/artistic-address'] = "artist/art_address";
+$route['artist/artistic-address-insert'] = "artist/art_address_insert";
 
-$route['artistic/artistic-information'] = "artistic/art_information";
-$route['artistic/artistic-information-insert'] = "artistic/art_information_insert";
+$route['artist/artistic-information'] = "artist/art_information";
+$route['artist/artistic-information-insert'] = "artist/art_information_insert";
 
-$route['artistic/artistic-portfolio'] = "artistic/art_portfolio";
-$route['artistic/artistic-portfolio-insert'] = "artistic/art_portfolio_insert";
+$route['artist/artistic-portfolio'] = "artist/art_portfolio";
+$route['artist/artistic-portfolio-insert'] = "artist/art_portfolio_insert";
 
-$route['artistic/home'] = "artistic/art_post";
-$route['artistic/dashboard'] = "artistic/art_manage_post";
-$route['artistic/dashboard/(:any)'] = "artistic/art_manage_post/$1";
-
-
-$route['artistic/details/(:any)'] = "artistic/artistic_profile/$1";
-$route['artistic/details'] = "artistic/artistic_profile";
-
-$route['artistic/photos'] = "artistic/art_photos";
-$route['artistic/photos/(:any)'] = "artistic/art_photos/$1";
-
-$route['artistic/videos'] = "artistic/art_videos";
-$route['artistic/videos/(:any)'] = "artistic/art_videos/$1";
-
-$route['artistic/audios'] = "artistic/art_audios";
-$route['artistic/audios/(:any)'] = "artistic/art_audios/$1";
+$route['artist/home'] = "artist/art_post";
+$route['artist/dashboard'] = "artist/art_manage_post";
+$route['artist/dashboard/(:any)'] = "artist/art_manage_post/$1";
 
 
-$route['artistic/pdf'] = "artistic/art_pdf";
-$route['artistic/pdf/(:any)'] = "artistic/art_pdf/$1";
+$route['artist/details/(:any)'] = "artist/artistic_profile/$1";
+$route['artist/details'] = "artist/artistic_profile";
 
-$route['artistic/post-detail'] = "artistic/postnewpage";
-$route['artistic/post-detail/(:any)'] = "artistic/postnewpage/$1";
+$route['artist/photos'] = "artist/art_photos";
+$route['artist/photos/(:any)'] = "artist/art_photos/$1";
 
-$route['artistic/creat-pdf'] = "artistic/creat_pdf";
+$route['artist/videos'] = "artist/art_videos";
+$route['artist/videos/(:any)'] = "artist/art_videos/$1";
+
+$route['artist/audios'] = "artist/art_audios";
+$route['artist/audios/(:any)'] = "artist/art_audios/$1";
+
+
+$route['artist/pdf'] = "artist/art_pdf";
+$route['artist/pdf/(:any)'] = "artist/art_pdf/$1";
+
+$route['artist/post-detail'] = "artist/postnewpage";
+$route['artist/post-detail/(:any)'] = "artist/postnewpage/$1";
+
+$route['artist/creat-pdf'] = "artist/creat_pdf";
 
 //BLOG ROUTES SETTINGS
 $route['blog/popular'] = "blog/popular";

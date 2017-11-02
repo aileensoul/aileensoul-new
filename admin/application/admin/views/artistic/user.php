@@ -52,7 +52,7 @@ echo $leftmenu;
                         <h3 class="box-title">Art User</h3>      
                     
                     <div class="box-tools">
-                       <?php echo form_open('artistic/search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
+                       <?php echo form_open('artist/search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
                            <div class="input-group input-group-sm" >
 
 
@@ -67,7 +67,7 @@ echo $leftmenu;
                             { 
                     ?>
 
-                            <a href="<?php echo base_url('artistic/clear_search') ?>">Clear Search</a>
+                            <a href="<?php echo base_url('artist/clear_search') ?>">Clear Search</a>
 
                         <?php 
                                 } 
@@ -245,7 +245,7 @@ echo $leftmenu;
                         <i class="fa fa-trash-o"></i>
                         </button>
 
-                        <a class="btn btn-success btn-xs" href="<?php echo base_url('artistic/profile/'.$user['art_id'] ); ?>">
+                        <a class="btn btn-success btn-xs" href="<?php echo base_url('artist/profile/'.$user['art_id'] ); ?>">
                          <i class="fa fa-fw fa-eye"></i>
                         </a>
                       <!--   <button class="btn btn-success btn-xs onclick="<?php //echo base_url('job/profile');?>">
@@ -368,7 +368,7 @@ echo $leftmenu;
         {
             $.ajax({
                          type: 'POST',
-                          url: '<?php echo base_url() . "artistic/deactive_user" ?>',
+                          url: '<?php echo base_url() . "artist/deactive_user" ?>',
                           data: 'art_id=' + art_id,
                           success: function (response) 
                           {    
@@ -390,7 +390,7 @@ echo $leftmenu;
         {
             $.ajax({
                          type: 'POST',
-                          url: '<?php echo base_url() . "artistic/active_user" ?>',
+                          url: '<?php echo base_url() . "artist/active_user" ?>',
                           data: 'art_id=' + art_id,
                           success: function (response) 
                           {        
@@ -412,7 +412,7 @@ echo $leftmenu;
         {
             $.ajax({
                          type: 'POST',
-                          url: '<?php echo base_url() . "artistic/delete_user" ?>',
+                          url: '<?php echo base_url() . "artist/delete_user" ?>',
                           data: 'art_id=' + art_id,
                           success: function (response) 
                           {          

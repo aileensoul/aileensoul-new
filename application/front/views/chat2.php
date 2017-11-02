@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 }
                                 if ($message_from_profile == 6) {
                                     $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'artistic/art_manage_post/' . $id;
+                                    $profile_url = base_url() . 'artist/art_manage_post/' . $id;
                                 }
                                 ?>
                                 <a href="<?php echo $profile_url; ?>">
@@ -1508,7 +1508,7 @@ $(function () {
             minLength: 2,
             source: function( request, response ) { 
                 // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "artistic/artistic_search_keyword", { term : extractLast( request.term )},response);
+                $.getJSON(base_url + "artist/artistic_search_keyword", { term : extractLast( request.term )},response);
             },
             focus: function() {
                 // prevent value inserted on focus
@@ -1560,7 +1560,7 @@ $(function () {
             minLength: 2,
             source: function( request, response ) { 
                 // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "artistic/artistic_search_city", { term : extractLast( request.term )},response);
+                $.getJSON(base_url + "artist/artistic_search_city", { term : extractLast( request.term )},response);
             },
             focus: function() {
                 // prevent value inserted on focus
@@ -2241,7 +2241,7 @@ $(function () {
             minLength: 2,
             source: function( request, response ) { 
                 // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "artistic/artistic_search_keyword", { term : extractLast( request.term )},response);
+                $.getJSON(base_url + "artist/artistic_search_keyword", { term : extractLast( request.term )},response);
             },
             focus: function() {
                 // prevent value inserted on focus
@@ -2293,7 +2293,7 @@ $(function () {
             minLength: 2,
             source: function( request, response ) { 
                 // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "artistic/artistic_search_city", { term : extractLast( request.term )},response);
+                $.getJSON(base_url + "artist/artistic_search_city", { term : extractLast( request.term )},response);
             },
             focus: function() {
                 // prevent value inserted on focus

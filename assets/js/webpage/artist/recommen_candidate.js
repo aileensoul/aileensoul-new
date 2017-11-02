@@ -1,263 +1,174 @@
-var modal = document.getElementById('myModal');
+function myFunctionone(clicked_id) {
+                 var dropDownClass = document.getElementById('myDropdown' + clicked_id).className;
+    dropDownClass = dropDownClass.split(" ").pop(-1);
+    if (dropDownClass != 'show') {
+        $('.dropdown-content1').removeClass('show');
+        $('#myDropdown' + clicked_id).addClass('show');
+    } else {
+        $('.dropdown-content1').removeClass('show');
+    }
 
-                        // Get the button that opens the modal
-                        var btn = document.getElementById("myBtn");
 
-                        // Get the <span> element that closes the modal
-                        var span = document.getElementsByClassName("close")[0];
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
 
-                        // When the user clicks the button, open the modal 
-                        btn.onclick = function () {
-                            modal.style.display = "block";
-                        }
+            document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+            $(".dropdown-content1").removeClass('show');
+        }
 
-                        // When the user clicks on <span> (x), close the modal
-                        span.onclick = function () {
-                            modal.style.display = "none";
-                        }
+    });
+            }
 
-                        // When the user clicks anywhere outside of the modal, close it
-                        window.onclick = function (event) {
-                            if (event.target == modal) {
-                                modal.style.display = "none";
-                            }
-                        } 
+
+ $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           $('#likeusermodal').modal('hide');
+       }
+   });  
+ 
+$(document).ready(function () { 
+    artistic_search_post();
+
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    artistic_search_post(pagenum);
+                }
+            }
+        }
+    });
+});
+var isProcessing = false;
+function artistic_search_post(pagenum) { 
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "artist/ajax_artistic_search?page=" + pagenum + "&skills=" + keyword + "&searchplace=" + keyword1,
+        data: {total_record: $("#total_record").val()},
+        dataType: "html",
+        beforeSend: function () {
+            if (pagenum == 'undefined') {
+                // $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            } else {
+                $('#loader').show();
+            }
+        },
+        complete: function () {
+            $('#loader').hide();
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.job-contact-frnd').append(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            isProcessing = false;
+             $('video, audio').mediaelementplayer();
+        }
+    });
+}
+
 
 $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-        $('#likeusermodal').modal('hide');
-    }
-});  
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         $('.my_text').attr('readonly', false);
+         $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
+
+       }
+   });  
+
+
+$('#postedit').on('click', function () {
+   // $('#myModal').modal('show');
+    $(".my_text").prop("readonly", false);
+     $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
+    });
+  
+
+function check_lengthedit(abc)
+   { 
+       maxLen = 50;
    
-$(document).on('keydown', function (e) { 
-    if (e.keyCode === 27) {
-        if($('.modal-post').show()){
 
-          $( document ).on( 'keydown', function ( e ) {
-          if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-       $('.modal-post').hide();
-        }
-       });  
-     
+       var product_name = document.getElementById("editpostname" +abc).value;
+       //alert(product_name);
+      
+ 
+       if (product_name.length > maxLen) { 
 
-        }
-         document.getElementById('myModal').style.display = "none";
-         }
- });
+           
+           text_num = maxLen - product_name.length;
+           var msg = "You have reached your maximum limit of characters allowed";
 
-//all popup close close using esc end
-
- //validation for edit email formate form
-
-                        $(document).ready(function () {
-
-                            $("#artpostform").validate({
-
-                                rules: {
-
-                                    postname: {
-
-                                        required: true,
-                                    },
+            $("#editpostname" + abc).prop("readonly", true);
+             document.getElementById("editpostdesc" + abc).contentEditable = false;
+           document.getElementById("editpostsubmit"+abc).setAttribute("disabled","disabled");
+              
+           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+           $('#postedit').modal('show');
+           
+           var substrval = product_name.substring(0, maxLen);
+           $('#editpostname' + abc).val(substrval);
+         
+       } else { 
+           text_num = maxLen - product_name.length;
+           document.getElementById("text_num_" + abc).value = text_num;
+       }
+   }
 
 
-                                    description: {
-                                        required: true,
-
-                                    },
-
-                                },
-
-                                messages: {
-
-                                    postname: {
-
-                                        required: "Post name Is Required.",
-
-                                    },
-
-                                   
-                                    description: {
-                                        required: "Description is required",
-
-                                    },
-                                   
-                                },
-
-                            });
-                        });
-
-
- $(document).ready(function ()
-            {
-
-                /* Uploading Profile BackGround Image */
-                $('body').on('change', '#bgphotoimg', function ()
-                {
-
-                    $("#bgimageform").ajaxForm({target: '#timelineBackground',
-                        beforeSubmit: function () {},
-                        success: function () {
-
-                            $("#timelineShade").hide();
-                            $("#bgimageform").hide();
-                        },
-                        error: function () {
-
-                        }}).submit();
-                });
-
-
-                /* Banner position drag */
-                $("body").on('mouseover', '.headerimage', function ()
-                {
-                    var y1 = $('#timelineBackground').height();
-                    var y2 = $('.headerimage').height();
-                    $(this).draggable({
-                        scroll: false,
-                        axis: "y",
-                        drag: function (event, ui) {
-                            if (ui.position.top >= 0)
-                            {
-                                ui.position.top = 0;
-                            } else if (ui.position.top <= y1 - y2)
-                            {
-                                ui.position.top = y1 - y2;
-                            }
-                        },
-                        stop: function (event, ui)
-                        {
-                        }
-                    });
-                });
-
-                /* Bannert Position Save*/
-                $("body").on('click', '.bgSave', function ()
-                {
-                    var id = $(this).attr("id");
-                    var p = $("#timelineBGload").attr("style");
-                    var Y = p.split("top:");
-                    var Z = Y[1].split(";");
-                    var dataString = 'position=' + Z[0];
-                    $.ajax({
-                        type: "POST",
-                        url: base_url + "artist/image_saveBG_ajax",
-                        //url: "<?php echo base_url('artist/image_saveBG_ajax'); ?>",
-                        data: dataString,
-                        cache: false,
-                        beforeSend: function () { },
-                        success: function (html)
-                        {
-                            if (html)
-                            {
-                                window.location.reload();
-                                $(".bgImage").fadeOut('slow');
-                                $(".bgSave").fadeOut('slow');
-                                $("#timelineShade").fadeIn("slow");
-                                $("#timelineBGload").removeClass("headerimage");
-                                $("#timelineBGload").css({'margin-top': html});
-                                return false;
-                            }
-                        }
-                    });
-                    return false;
-                });
-
-            });
-
-
- $(document).ready(function () {
-                $('video').mediaelementplayer({
-                    alwaysShowControls: false,
-                    videoVolume: 'horizontal',
-                    features: ['playpause', 'progress', 'volume', 'fullscreen']
-                });
-            });
-
- $(function () {
-                var showTotalChar = 200, showChar = "Read More", hideChar = "";
-                $('.show').each(function () {
-                    var content = $(this).html();
-                    if (content.length > showTotalChar) {
-                        var con = content.substr(0, showTotalChar);
-                        var hcon = content.substr(showTotalChar, content.length - showTotalChar);
-                        var txt = con + '<span class="dots">...</span><span class="morectnt"><span>' + hcon + '</span>&nbsp;&nbsp;<a href="" class="showmoretxt">' + showChar + '</a></span>';
-                        $(this).html(txt);
-                    }
-                });
-                $(".showmoretxt").click(function () {
-                    if ($(this).hasClass("sample")) {
-                        $(this).removeClass("sample");
-                        $(this).text(showChar);
-                    } else {
-                        $(this).addClass("sample");
-                        $(this).text(hideChar);
-                    }
-                    $(this).parent().prev().toggle();
-                    $(this).prev().toggle();
-                    return false;
-                });
-            });
-
- $('#file-fr').fileinput({
-                            language: 'fr',
-                            uploadUrl: '#',
-                            allowedFileExtensions: ['jpg', 'png', 'gif']
-                        });
-                        $('#file-es').fileinput({
-                            language: 'es',
-                            uploadUrl: '#',
-                            allowedFileExtensions: ['jpg', 'png', 'gif']
-                        });
-
-                        $("#file-1").fileinput({
-                            uploadUrl: '#', // you must set a valid URL here else you will get an error
-                            allowedFileExtensions: ['jpg', 'png', 'gif'],
-                            overwriteInitial: false,
-                            maxFileSize: 1000,
-                            maxFilesNum: 10,
-                            //allowedFileTypes: ['image', 'video', 'flash'],
-                            slugCallback: function (filename) {
-                                return filename.replace('(', '_').replace(']', '_');
-                            }
-                        });
-                       
-
-                        $(".btn-warning").on('click', function () {
-                            var $el = $("#file-4");
-                            if ($el.attr('disabled')) {
-                                $el.fileinput('enable');
-                            } else {
-                                $el.fileinput('disable');
-                            }
-                        });
-                        
-                        $(document).ready(function () {
-                            $("#test-upload").fileinput({
-                                'showPreview': false,
-                                'allowedFileExtensions': ['jpg', 'png', 'gif'],
-                                'elErrorContainer': '#errorBlock'
-                            });
-                            $("#kv-explorer").fileinput({
-                                'theme': 'explorer',
-                                'uploadUrl': '#',
-                                overwriteInitial: false,
-                                initialPreviewAsData: true,
-
-                            });
-                        });
-
-function checkvalue() {
+ function checkvalue() {
+                            //alert("hi");
                             var searchkeyword =$.trim(document.getElementById('tags').value);
                             var searchplace =$.trim(document.getElementById('searchplace').value);
+                            // alert(searchkeyword);
+                            // alert(searchplace);
                             if (searchkeyword == "" && searchplace == "") {
+                                //alert('Please enter Keyword');
                                 return false;
                             }
                         }
 
+function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
 
+ 
 function post_like(clicked_id)
                         {
                             $.ajax({
@@ -267,15 +178,10 @@ function post_like(clicked_id)
                                 dataType: 'json',
                                 data: 'post_id=' + clicked_id,
                                 success: function (data) {
-
-                                    if(data.notavlpost == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
                                     $('.' + 'likepost' + clicked_id).html(data.like);
                                     $('.likeusername' + clicked_id).html(data.likeuser);
                                     $('.comnt_count_ext' + clicked_id).html(data.like_user_count);
-                                    
+
                                     $('.likeduserlist' + clicked_id).hide();
                                     if (data.likecount == '0') {
                                         document.getElementById('likeusername' + clicked_id).style.display = "none";
@@ -284,11 +190,10 @@ function post_like(clicked_id)
                                     }
                                     $('#likeusername' + clicked_id).addClass('likeduserlist1');
                                 }
-                               }
                             });
                         }
 
-function comment_like(clicked_id)
+ function comment_like(clicked_id)
                         {
 
                             $.ajax({
@@ -297,18 +202,13 @@ function comment_like(clicked_id)
                                 //url: '<?php echo base_url() . "artist/like_comment" ?>',
                                 data: 'post_id=' + clicked_id,
                                 success: function (data) {
-
-                                    if(data == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
                                     $('#' + 'likecomment' + clicked_id).html(data);
-                                       } 
+
                                 }
                             });
                         }
 
-function comment_like1(clicked_id)
+ function comment_like1(clicked_id)
                         {
 
                             $.ajax({
@@ -317,24 +217,19 @@ function comment_like1(clicked_id)
                                 //url: '<?php echo base_url() . "artist/like_comment1" ?>',
                                 data: 'post_id=' + clicked_id,
                                 success: function (data) {
-                                     if(data == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
                                     $('#' + 'likecomment1' + clicked_id).html(data);
-                                  }
+
                                 }
                             });
                         }
-
  function comment_delete(clicked_id) {
-                            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deleted(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deleted(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
                         }
 
                         function comment_deleted(clicked_id)
                         {
-                           var post_delete = document.getElementById("post_delete" + clicked_id);
+                            var post_delete = document.getElementById("post_delete" + clicked_id);
                             //alert(post_delete.value);
                             $.ajax({
                                 type: 'POST',
@@ -343,27 +238,22 @@ function comment_like1(clicked_id)
                                 data: 'post_id=' + clicked_id + '&post_delete=' + post_delete.value,
                                 dataType: "json",
                                 success: function (data) {
-                                    if(data.notavlpost == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
                                     //alert('.' + 'insertcomment' + clicked_id);
                                     $('.' + 'insertcomment' + post_delete.value).html(data.comment);
-                                    //$('#' + 'insertcount' + post_delete.value).html(data.count);
-                                     $('.like_count_ext' + post_delete.value).html(data.commentcount);
-                                    $('.post-design-commnet-box').show();
+                                  //  $('#' + 'insertcount' + post_delete.value).html(data.count);
+                                     $('.comment_count' + post_delete.value).html(data.commentcount);
+                                        $('.post-design-commnet-box').show();
                                 }
-                              }
                             });
                         }
 
                         function comment_deletetwo(clicked_id)
                         {
-                            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deletedtwo(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deletedtwo(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
                         }
 
- function comment_deletedtwo(clicked_id)
+function comment_deletedtwo(clicked_id)
                         {
                             var post_delete1 = document.getElementById("post_deletetwo");
                             $.ajax({
@@ -374,21 +264,24 @@ function comment_like1(clicked_id)
                                 dataType: "json",
                                 success: function (data) {
 
-                                    if(data.notavlpost == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
                                     // $('.' + 'insertcomment' + post_delete.value).html(data);
                                     $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
-                                 //   $('#' + 'insertcount' + post_delete1.value).html(data.count);
-                                  $('.like_count_ext' + post_delete1.value).html(data.commentcount);
-                                    $('.post-design-commnet-box').show();
-                                   }
+                                //    $('#' + 'insertcount' + post_delete1.value).html(data.count);
+                                       $('.comment_count' + post_delete1.value).html(data.commentcount);
+                                      $('.post-design-commnet-box').show();
+
                                 }
                             });
                         }
 
- function insert_comment(clicked_id)
+function check_perticular(input) {
+                        var testData = input.replace(/\s/g, '');
+                        var regex = /^(<br>)*$/;
+                        var isValid = regex.test(testData);
+                        return isValid;
+                    }
+
+function insert_comment(clicked_id)
                         {
                             $("#post_comment" + clicked_id).click(function () {
                                 $(this).prop("contentEditable", true);
@@ -397,13 +290,9 @@ function comment_like1(clicked_id)
 
                             var sel = $("#post_comment" + clicked_id);
                             var txt = sel.html();
-                            txt = txt.replace(/&nbsp;/gi, " ");
-                            txt = txt.replace(/<br>$/, '');
-                            if (txt == '' || txt == '<br>') {
-                                return false;
-                            }
-                            if (/^\s+$/gi.test(txt))
-                            {
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 return false;
                             }
 
@@ -417,22 +306,16 @@ function comment_like1(clicked_id)
                                     type: 'POST',
                                     url: base_url + "artist/insert_commentthree",
                                     //url: '<?php echo base_url() . "artist/insert_commentthree" ?>',
-                                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                                    data: 'post_id=' + clicked_id + '&comment=' + txt,
                                     dataType: "json",
                                     success: function (data) {
-
-                                        if(data.notavlpost == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
-
                                         $('textarea').each(function () {
                                             $(this).val('');
                                         });
-                                       // $('#' + 'insertcount' + clicked_id).html(data.count);
+                                  //      $('#' + 'insertcount' + clicked_id).html(data.count);
                                         $('.insertcomment' + clicked_id).html(data.comment);
-                                        $('.like_count_ext' + clicked_id).html(data.commentcount);
-                                      }
+                                        $('.comment_count' + clicked_id).html(data.commentcount);
+
                                     }
                                 });
 
@@ -442,28 +325,21 @@ function comment_like1(clicked_id)
                                     type: 'POST',
                                     url: base_url + "artist/insert_comment",
                                     //url: '<?php echo base_url() . "artist/insert_comment" ?>',
-                                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                                    data: 'post_id=' + clicked_id + '&comment=' + txt,
                                     dataType: "json",
                                     success: function (data) {
-
-                                        if(data.notavlpost == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
-
                                         $('textarea').each(function () {
                                             $(this).val('');
                                         });
-                                   //     $('#' + 'insertcount' + clicked_id).html(data.count);
+                              //   $('#' + 'insertcount' + clicked_id).html(data.count);
                                         $('#' + 'fourcomment' + clicked_id).html(data.comment);
-                                        $('.like_count_ext' + clicked_id).html(data.commentcount);
+                                        $('.comment_count' + clicked_id).html(data.commentcount);
                                     }
-                                   }
                                 });
                             }
                         }
 
- function entercomment(clicked_id)
+function entercomment(clicked_id)
                         {
                             $("#post_comment" + clicked_id).click(function () {
                                 $(this).prop("contentEditable", true);
@@ -475,17 +351,12 @@ function comment_like1(clicked_id)
                                     e.preventDefault();
                                     var sel = $("#post_comment" + clicked_id);
                                     var txt = sel.html();
+                                    txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
 
-                                    txt = txt.replace(/&nbsp;/gi, " ");
-                                    txt = txt.replace(/<br>$/, '');
-                                    if (txt == '' || txt == '<br>') {
+
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         return false;
                                     }
-                                    if (/^\s+$/gi.test(txt))
-                                    {
-                                        return false;
-                                    }
-
                                     $('#post_comment' + clicked_id).html("");
 
                                     if (window.preventDuplicateKeyPresses)
@@ -506,45 +377,32 @@ function comment_like1(clicked_id)
                                             type: 'POST',
                                             url: base_url + "artist/insert_commentthree",
                                             //url: '<?php echo base_url() . "artist/insert_commentthree" ?>',
-                                            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                                            data: 'post_id=' + clicked_id + '&comment=' + txt,
                                             dataType: "json",
-                                            success: function (data) { //alert(123); alert(data.commentcount);
-                                                if(data.notavlpost == 'notavl'){
-                      $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-                       $('#bidmodal').modal('show');
-                      }else{
-
+                                            success: function (data) {
                                                 $('textarea').each(function () {
                                                     $(this).val('');
                                                 });
                                               //  $('#' + 'insertcount' + clicked_id).html(data.count);
                                                 $('.insertcomment' + clicked_id).html(data.comment);
-                                                $('.like_count_ext' + clicked_id).html(data.commentcount);
-                                            }
-                                           }
+                                               $('.comment_count' + clicked_id).html(data.commentcount);
+                                       }
                                         });
                                     } else {
                                         $.ajax({
                                             type: 'POST',
                                             url: base_url + "artist/insert_comment",
                                             //url: '<?php echo base_url() . "artist/insert_comment" ?>',
-                                            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                                            data: 'post_id=' + clicked_id + '&comment=' + txt,
                                             dataType: "json",
                                             success: function (data) {
-
-                                                if(data.notavlpost == 'notavl'){
-                      $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-                       $('#bidmodal').modal('show');
-                      }else{
-
                                                 $('textarea').each(function () {
                                                     $(this).val('');
                                                 });
                                              //   $('#' + 'insertcount' + clicked_id).html(data.count);
                                                 $('#' + 'fourcomment' + clicked_id).html(data.comment);
-                                                $('.like_count_ext' + clicked_id).html(data.commentcount);
-                                               }
-                                           }
+                                                $('.comment_count' + clicked_id).html(data.commentcount);
+                                            }
                                         });
                                     }
                                 }
@@ -555,7 +413,7 @@ function comment_like1(clicked_id)
                             });
                         }
 
-function comment_editbox(clicked_id) {
+ function comment_editbox(clicked_id) {
                             document.getElementById('editcomment' + clicked_id).style.display = 'inline-block';
                             document.getElementById('showcomment' + clicked_id).style.display = 'none';
                             document.getElementById('editsubmit' + clicked_id).style.display = 'inline-block';
@@ -563,6 +421,8 @@ function comment_editbox(clicked_id) {
                             document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                             document.getElementById('editcancle' + clicked_id).style.display = 'block';
                             $('.post-design-commnet-box').hide();
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
                         }
 
 
@@ -574,11 +434,13 @@ function comment_editbox(clicked_id) {
                             document.getElementById('editsubmit' + clicked_id).style.display = 'none';
 
                             $('.post-design-commnet-box').show();
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                         }
 
                         function comment_editboxtwo(clicked_id) {
-                            //                            alert('editcommentboxtwo' + clicked_id);
-                            //                            return false;
+//                            alert('editcommentboxtwo' + clicked_id);
+//                            return false;
                             $('div[id^=editcommenttwo]').css('display', 'none');
                             $('div[id^=showcommenttwo]').css('display', 'block');
                             $('button[id^=editsubmittwo]').css('display', 'none');
@@ -591,6 +453,8 @@ function comment_editbox(clicked_id) {
                             document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                             document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                             $('.post-design-commnet-box').hide();
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
                         }
 
 
@@ -602,6 +466,8 @@ function comment_editbox(clicked_id) {
                             document.getElementById('editcommenttwo' + clicked_id).style.display = 'none';
                             document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
                             document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                             $('.post-design-commnet-box').show();
                         }
 
@@ -654,7 +520,7 @@ function comment_editbox(clicked_id) {
 
                         }
 
-  function edit_comment(abc)
+function edit_comment(abc)
                         {
                             $("#editcomment" + abc).click(function () {
                                 $(this).prop("contentEditable", true);
@@ -662,29 +528,20 @@ function comment_editbox(clicked_id) {
 
                             var sel = $("#editcomment" + abc);
                             var txt = sel.html();
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
 
-                            txt = txt.replace(/&nbsp;/gi, " ");
-                            txt = txt.replace(/<br>$/, '');
-                            if (txt == '' || txt == '<br>') {
-                                $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
+                                $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
                                 return false;
                             }
-                            if (/^\s+$/gi.test(txt))
-                            {
-                                return false;
-                            }
-
                             $.ajax({
                                 type: 'POST',
                                 url: base_url + "artist/edit_comment_insert",
                                 //url: '<?php echo base_url() . "artist/edit_comment_insert" ?>',
-                                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                                data: 'post_id=' + abc + '&comment=' + txt,
                                 success: function (data) {
-                                    if(data == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
                                     document.getElementById('editcomment' + abc).style.display = 'none';
                                     document.getElementById('showcomment' + abc).style.display = 'block';
                                     document.getElementById('editsubmit' + abc).style.display = 'none';
@@ -692,8 +549,9 @@ function comment_editbox(clicked_id) {
                                     document.getElementById('editcancle' + abc).style.display = 'none';
                                     $('#' + 'showcomment' + abc).html(data);
                                     $('.post-design-commnet-box').show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                 }
-                              }
                             });
                             $(".scroll").click(function (event) {
                                 event.preventDefault();
@@ -701,7 +559,7 @@ function comment_editbox(clicked_id) {
                             });
                         }
 
- function commentedit(abc)
+function commentedit(abc)
                         {
                             $("#editcomment" + abc).click(function () {
                                 $(this).prop("contentEditable", true);
@@ -711,20 +569,14 @@ function comment_editbox(clicked_id) {
                                     event.preventDefault();
                                     var sel = $("#editcomment" + abc);
                                     var txt = sel.html();
+                                    txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
 
-                                    txt = txt.replace(/&nbsp;/gi, " ");
-                                    txt = txt.replace(/<br>$/, '');
-                                    if (txt == '' || txt == '<br>') {
-                                        $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
+                                        $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
                                         return false;
                                     }
-                                    if (/^\s+$/gi.test(txt))
-                                    {
-                                        return false;
-                                    }
-//                                       
-
                                     if (window.preventDuplicateKeyPresses)
                                         return;
                                     window.preventDuplicateKeyPresses = true;
@@ -734,15 +586,9 @@ function comment_editbox(clicked_id) {
                                     $.ajax({
                                         type: 'POST',
                                         url: base_url + "artist/edit_comment_insert",
-                                       // url: '<?php echo base_url() . "artist/edit_comment_insert" ?>',
-                                        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                                        //url: '<?php echo base_url() . "artist/edit_comment_insert" ?>',
+                                        data: 'post_id=' + abc + '&comment=' + txt,
                                         success: function (data) {
-
-                                            if(data == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
-
                                             document.getElementById('editcomment' + abc).style.display = 'none';
                                             document.getElementById('showcomment' + abc).style.display = 'block';
                                             document.getElementById('editsubmit' + abc).style.display = 'none';
@@ -750,8 +596,9 @@ function comment_editbox(clicked_id) {
                                             document.getElementById('editcancle' + abc).style.display = 'none';
                                             $('#' + 'showcomment' + abc).html(data);
                                             $('.post-design-commnet-box').show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                         }
-                                      }
                                     });
                                 }
                             });
@@ -769,30 +616,19 @@ function comment_editbox(clicked_id) {
 
                             var sel = $("#editcommenttwo" + abc);
                             var txt = sel.html();
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
 
-                            txt = txt.replace(/&nbsp;/gi, " ");
-                            txt = txt.replace(/<br>$/, '');
-                            if (txt == '' || txt == '<br>') {
-                                $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
+                                $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
                                 return false;
                             }
-                            if (/^\s+$/gi.test(txt))
-                            {
-                                return false;
-                            }
-
-
                             $.ajax({
                                 type: 'POST',
                                 url: base_url + "artist/edit_comment_insert",
-                               // url: '<?php echo base_url() . "artist/edit_comment_insert" ?>',
-                                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                                //url: '<?php echo base_url() . "artist/edit_comment_insert" ?>',
+                                data: 'post_id=' + abc + '&comment=' + txt,
                                 success: function (data) {
-                                    if(data == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
                                     document.getElementById('editcommenttwo' + abc).style.display = 'none';
                                     document.getElementById('showcommenttwo' + abc).style.display = 'block';
                                     document.getElementById('editsubmittwo' + abc).style.display = 'none';
@@ -800,8 +636,9 @@ function comment_editbox(clicked_id) {
                                     document.getElementById('editcancletwo' + abc).style.display = 'none';
                                     $('#' + 'showcommenttwo' + abc).html(data);
                                     $('.post-design-commnet-box').show();
+                                    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                 }
-                              }
                             });
                             $(".scroll").click(function (event) {
                                 event.preventDefault();
@@ -809,7 +646,7 @@ function comment_editbox(clicked_id) {
                             });
                         }
 
-function commentedittwo(abc)
+ function commentedittwo(abc)
                         {
                             $("#editcommenttwo" + abc).click(function () {
                                 $(this).prop("contentEditable", true);
@@ -820,16 +657,11 @@ function commentedittwo(abc)
                                     event.preventDefault();
                                     var sel = $("#editcommenttwo" + abc);
                                     var txt = sel.html();
+                                    txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
 
-                                    txt = txt.replace(/&nbsp;/gi, " ");
-                                    txt = txt.replace(/<br>$/, '');
-                                    if (txt == '' || txt == '<br>') {
-                                        $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
+                                        $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
-                                        return false;
-                                    }
-                                    if (/^\s+$/gi.test(txt))
-                                    {
                                         return false;
                                     }
 
@@ -845,15 +677,8 @@ function commentedittwo(abc)
                                         type: 'POST',
                                         url: base_url + "artist/edit_comment_insert",
                                         //url: '<?php echo base_url() . "artist/edit_comment_insert" ?>',
-                                        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                                        data: 'post_id=' + abc + '&comment=' + txt,
                                         success: function (data) {
-
-
-                     if(data == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{
-
                                             document.getElementById('editcommenttwo' + abc).style.display = 'none';
                                             document.getElementById('showcommenttwo' + abc).style.display = 'block';
                                             document.getElementById('editsubmittwo' + abc).style.display = 'none';
@@ -863,7 +688,9 @@ function commentedittwo(abc)
 
                                             $('#' + 'showcommenttwo' + abc).html(data);
                                             $('.post-design-commnet-box').show();
-                                          }
+                                    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                            
+
                                         }
                                     });
                                 }
@@ -874,46 +701,38 @@ function commentedittwo(abc)
                             });
                         }
 
-function commentall(clicked_id) {
+                        function commentall(clicked_id) {
                             var x = document.getElementById('threecomment' + clicked_id);
                             var y = document.getElementById('fourcomment' + clicked_id);
                             var z = document.getElementById('insertcount' + clicked_id);
 
                             if (x.style.display === 'block' && y.style.display === 'none') {
-                               
+                                x.style.display = 'none';
+                                y.style.display = 'block';
+                                z.style.visibility = 'show';
                                 $.ajax({
                                     type: 'POST',
                                     url: base_url + "artist/fourcomment",
-                                    //url: '<?php echo base_url() . "artist/fourcomment" ?>',
+                                   // url: '<?php echo base_url() . "artist/fourcomment" ?>',
                                     data: 'art_post_id=' + clicked_id,
                                     //alert(data);
                                     success: function (data) {
-
-                                        if(data == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-       $('#bidmodal').modal('show');
-            }else{              
-                                         x.style.display = 'none';
-                                y.style.display = 'block';
-                                z.style.visibility = 'show';
                                         $('#' + 'fourcomment' + clicked_id).html(data);
-
-                                      }
                                     }
                                 });
                             }
                            
                         }
 
- function myFunction(clicked_id) {
+    function myFunction(clicked_id) {
+                            document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
 
-                             document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-                         
-                              $( document ).on( 'keydown', function ( e ) {
-                                        if ( e.keyCode === 27 ) { 
 
-                                        document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                                         $(".dropdown-content1").removeClass('show');
+                            $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) { 
+
+                    document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+                    $(".dropdown-content1").removeClass('show');
 
                             }
                            
@@ -935,8 +754,34 @@ function commentall(clicked_id) {
                                 }
                             }
                         }
+                        
+$(function () {
+                            var showTotalChar = 200, showChar = "More", hideChar = "less";
+                            $('.show').each(function () {
+                                //var content = $(this).text();
+                                var content = $(this).html();
+                                if (content.length > showTotalChar) {
+                                    var con = content.substr(0, showTotalChar);
+                                    var hcon = content.substr(showTotalChar, content.length - showTotalChar);
+                                    var txt = con + '<span class="dots">...</span><span class="morectnt"><span>' + hcon + '</span>&nbsp;&nbsp;<a href="" class="showmoretxt">' + showChar + '</a></span>';
+                                    $(this).html(txt);
+                                }
+                            });
+                            $(".showmoretxt").click(function () {
+                                if ($(this).hasClass("sample")) {
+                                    $(this).removeClass("sample");
+                                    $(this).text(showChar);
+                                } else {
+                                    $(this).addClass("sample");
+                                    $(this).text(hideChar);
+                                }
+                                $(this).parent().prev().toggle();
+                                $(this).prev().toggle();
+                                return false;
+                            });
+                        });
 
- var $fileUpload = $("#files"),
+var $fileUpload = $("#files"),
                                 $list = $('#list'),
                                 thumbsArray = [],
                                 maxUpload = 10;
@@ -985,7 +830,9 @@ function commentall(clicked_id) {
                             thumbsArray.splice(idx, 1); // Remove from array
                         });
 
- $(document).ready(function () {
+
+
+$(document).ready(function () {
 
                             $('.alert-danger').delay(3000).hide('700');
 
@@ -993,7 +840,11 @@ function commentall(clicked_id) {
 
                         });
 
-function khdiv(abc) {
+function khdiv(abc) { 
+
+
+      document.getElementById('khyati' + abc).style.display = 'none';
+      document.getElementById('khyatii' + abc).style.display = 'block';//alert(abc);
          
          $.ajax({
                type: 'POST',
@@ -1020,69 +871,129 @@ function khdiv(abc) {
    
    }
 
-   function editpost(abc)
-   {
-       document.getElementById('editpostdata' + abc).style.display = 'none';
-       document.getElementById('editpostbox' + abc).style.display = 'block';
-       //document.getElementById('editpostdetails' + abc).style.display = 'none', 'display:inline !important';
+
+function cursorpointer(abc){
+
+   elem = document.getElementById('editpostdesc' + abc);
+   elem.focus();
+  setEndOfContenteditable(elem);
+}
+
+function setEndOfContenteditable(contentEditableElement)
+{
+    var range,selection;
+    if(document.createRange)
+    {
+        range = document.createRange();//Create a range (a range is a like the selection but invisible)
+        range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        selection = window.getSelection();//get the selection object (allows you to change selection)
+        selection.removeAllRanges();//remove any selections already made
+        selection.addRange(range);//make the range you have just created the visible selection
+    }
+    else if(document.selection)
+    { 
+        range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+        range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        range.select();//Select the range (make it the visible selection
+    }
+}
+
+     function editpost(abc)
+                        {
+                            var editposttitle = $('#editpostval' + abc).html();
+                            var editpostdesc = $('#khyatii' + abc).html();
+
+                            $("#myDropdown" + abc).removeClass('show');
+
+                        document.getElementById('editpostdata' + abc).style.display = 'none';
+                        document.getElementById('editpostbox' + abc).style.display = 'block';
+                        //document.getElementById('editpostdetails' + abc).style.display = 'none', 'display:inline !important';
+                        document.getElementById('editpostdetailbox' + abc).style.display = 'block';
+                        document.getElementById('editpostsubmit' + abc).style.display = 'block';
+                        document.getElementById('khyati' + abc).style.display = 'none';
+                        document.getElementById('khyatii' + abc).style.display = 'none';
+
+                         editposttitle = editposttitle.trim()
+                         editpostdesc = editpostdesc.trim()
+    
+                        $('#editpostname' + abc).val(editposttitle);
+                        $('#editpostdesc' + abc).html(editpostdesc);
+}
+
+
+$('.editpost').on('click', function(){ 
+       var abc = $(this).attr('id');
+       var editposttitle = $('#editpostval' + abc).html();
+      var editpostdesc = $('#khyatii' + abc).html();
+
+      var n = editposttitle.length;
+       //alert(id);
+        document.getElementById('text_num_' + abc).value = 50 - n;
+
+        document.getElementById('editpostbox' + abc).style.display = 'block';
        document.getElementById('editpostdetailbox' + abc).style.display = 'block';
        document.getElementById('editpostsubmit' + abc).style.display = 'block';
-       document.getElementById('khyati' + abc).style.display = 'none';
-       document.getElementById('khyatii' + abc).style.display = 'none';
+         $('#editpostname' + abc).val(editposttitle);
+         $('#editpostdesc' + abc).html(editpostdesc);
+    });
 
-   }
 
-    function edit_postinsert(abc)
+
+   function edit_postinsert(abc)
    {
    
        var editpostname = document.getElementById("editpostname" + abc);
-       // var editpostdetails = document.getElementById("editpostdesc" + abc);
-       // start khyati code
-       var $field = $('#editpostdesc' + abc);
-       //var data = $field.val();
-       var editpostdetails = $('#editpostdesc' + abc).html();
-       // end khyati code
-   
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
-           $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
-           $('#bidmodal').modal('show');
-   
-           document.getElementById('editpostdata' + abc).style.display = 'block';
-           document.getElementById('editpostbox' + abc).style.display = 'none';
-         //  document.getElementById('editpostdetails' + abc).style.display = 'block';
-           document.getElementById('editpostdetailbox' + abc).style.display = 'none';
-   
-           document.getElementById('editpostsubmit' + abc).style.display = 'none';
-       } else {
-           $.ajax({
-               type: 'POST',
-               url: base_url + "artist/edit_post_insert",
-               //url: '<?php echo base_url() . "artist/edit_post_insert" ?>',
-               data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + editpostdetails,
-               dataType: "json",
-               success: function (data) {
-                    if(data.notavlpost == 'notavl'){
-               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
-               $('#bidmodal').modal('show');
-            }else{
-                   document.getElementById('editpostdata' + abc).style.display = 'block';
-                   document.getElementById('editpostbox' + abc).style.display = 'none';
-                 //  document.getElementById('editpostdetails' + abc).style.display = 'block';
-                   document.getElementById('editpostdetailbox' + abc).style.display = 'none';
-                   document.getElementById('editpostsubmit' + abc).style.display = 'none';
-                   //alert(data.description);
-                   document.getElementById('khyati' + abc).style.display = 'block';
-                   $('#' + 'editpostdata' + abc).html(data.title);
-                  // $('#' + 'editpostdetails' + abc).html(data.description);
-                   $('#' + 'khyati' + abc).html(data.description);
-                 }
-               }
-           });
-       }
-   
-   }
+       var editpostname = document.getElementById("editpostname" + abc);
+                        // var editpostdetails = document.getElementById("editpostdesc" + abc);
+                        // start khyati code
+                        var $field = $('#editpostdesc' + abc);
+                        //var data = $field.val();
+                        var editpostdetails = $('#editpostdesc' + abc).html();
+                        editpostdetails = editpostdetails.replace(/&gt;/gi, ">");
+                        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+                        // end khyati code
+                        //alert(editpostdetails);
+                        if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
+                        $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
+                       $('button.editpost').attr('id', abc);
+                       $('#bidmodaleditpost').modal('show');
+                        // document.getElementById('editpostdata' + abc).style.display = 'block';
+                        // document.getElementById('editpostbox' + abc).style.display = 'none';
+                        // document.getElementById('khyati' + abc).style.display = 'block';
+                        // document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+                        // document.getElementById('editpostsubmit' + abc).style.display = 'none';
 
-    function save_post(abc)
+                        document.getElementById('editpostdata' + abc).style.display = 'none';
+                        document.getElementById('khyati' + abc).style.display = 'none';
+                        document.getElementById('khyatii' + abc).style.display = 'none';
+
+                        } else {
+                            $.ajax({
+                            type: 'POST',
+                            url: base_url + "artist/edit_post_insert",
+                            data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + encodeURIComponent(editpostdetails),
+                            dataType: "json",
+                            success: function (data) {
+
+                                document.getElementById('editpostdata' + abc).style.display = 'block';
+                                document.getElementById('editpostbox' + abc).style.display = 'none';
+                                //  document.getElementById('editpostdetails' + abc).style.display = 'block';
+                                document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+                                document.getElementById('editpostsubmit' + abc).style.display = 'none';
+                                //alert(data.description);
+                                document.getElementById('khyati' + abc).style.display = 'block';
+                                $('#' + 'editpostdata' + abc).html(data.title);
+                                // $('#' + 'editpostdetails' + abc).html(data.description);
+                                $('#' + 'khyati' + abc).html(data.description);
+                                $('#' + 'postname' + abc).html(data.postname);
+                                }
+                        });
+                        }
+    }
+
+   function save_post(abc)
                         {
 
                             $.ajax({
@@ -1100,102 +1011,108 @@ function khdiv(abc) {
 
                         }
 
-                 function deleteownpostmodel(abc) {
+function deleteownpostmodel(abc) {
 
 
-                            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this post?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='remove_post(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            $('.biderror .mes').html("<div class='pop_content'>Are you sure want to Delete Your post?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='remove_post(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
                         }
 
  function remove_post(abc)
-                         { 
-   
-       $.ajax({
-           type: 'POST',
-           url: base_url + "artist/art_delete_post",
-           //url: '<?php echo base_url() . "artist/art_delete_post" ?>',
-           dataType: 'json',
-           data: 'art_post_id=' + abc,
-           //alert(data);
-           success: function (data) { 
-   
-               $('#' + 'removepost' + abc).remove();
-               if(data.notcount == 'count'){
-                    $('.' + 'nofoundpost').html(data.notfound);
-                   }
-
-   
-   
-           }
-       });
-   
-   }
-
-
-   function deletepostmodel(abc) {
-
-
-                            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this post from your profile?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='del_particular_userpost(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                            $('#bidmodal').modal('show');
-                        }
-
-
-function del_particular_userpost(abc)
-   {
-       $.ajax({
-           type: 'POST',
-           url: base_url + "artist/del_particular_userpost",
-           //url: '<?php echo base_url() . "artist/del_particular_userpost" ?>',
-           dataType: 'json',
-           data: 'art_post_id=' + abc,
-           //alert(data);
-           success: function (data) {
-   
-               $('#' + 'removepost' + abc).remove();
-               if(data.notcount == 'count'){
-                    $('.' + 'nofoundpost').html(data.notfound);
-                   }
-
-   
-   
-           }
-       });
-   
-   }
-
-   function followuser(clicked_id)
                         {
-
-                            $("#fad" + clicked_id).fadeOut(6000);
-
 
                             $.ajax({
                                 type: 'POST',
-                                url: base_url + "artist/follow",
-                                //url: '<?php echo base_url() . "artist/follow" ?>',
-                                data: 'follow_to=' + clicked_id,
+                                url: base_url + "artist/art_delete_post",
+                                //url: '<?php echo base_url() . "artist/art_deletepost" ?>',
+                                dataType: 'json',
+                                data: 'art_post_id=' + abc,
+                                //alert(data);
                                 success: function (data) {
 
-                                    $('.' + 'fr' + clicked_id).html(data);
+                                    $('#' + 'removepost' + abc).html(data);
+
+
 
                                 }
-
-
                             });
 
                         }
 
-function followclose(clicked_id)
+function deletepostmodel(abc) {
+
+
+                            $('.biderror .mes').html("<div class='pop_content'>Are you sure want to Delete this post From Your Profile?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='del_particular_userpost(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            $('#bidmodal').modal('show');
+                        }
+
+function del_particular_userpost(abc)
+                        {
+                            $.ajax({
+                                type: 'POST',
+                                url: base_url + "artist/del_particular_userpost",
+                                //url: '<?php echo base_url() . "artist/del_particular_userpost" ?>',
+                                dataType: 'json',
+                                data: 'art_post_id=' + abc,
+                                //alert(data);
+                                success: function (data) {
+
+                                    $('#' + 'removepost' + abc).html(data);
+                                    //window.location = base_url + "artist/home";
+
+
+
+                                }
+                            });
+
+                        }
+
+function followuser(clicked_id)
+    {
+      //alert(clicked_id);
+        $.ajax({
+            type: 'POST',
+            url: base_url + "artist/follow",
+            //url: '<?php echo base_url() . "artist/follow_two" ?>',
+            dataType: 'json',
+            data: 'follow_to=' + clicked_id,
+            success: function (data) {
+
+                $('.' + 'fruser' + clicked_id).html(data.follow);
+                $('#countfollow').html(data.count);
+
+            }
+        });
+    }
+
+    function unfollowuser(clicked_id)
+    {
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + "artist/unfollow",
+            //url: '<?php echo base_url() . "artist/unfollow_two" ?>',
+            dataType: 'json',
+            data: 'follow_to=' + clicked_id,
+            success: function (data) {
+
+                $('#countfollow').html(data.count);
+                $('.' + 'fruser' + clicked_id).html(data.follow);
+
+            }
+        });
+    }
+
+    function followclose(clicked_id)
                         {
                             $("#fad" + clicked_id).fadeOut(3000);
                         }
-
 function imgval(event) {
                             //var fileInput = document.getElementById('test-upload');
-                            var fileInput = document.getElementById("file-1").files;
+                            var fileInput = document.getElementById("test-upload").files;
                             var product_name = document.getElementById("test-upload_product").value;
                             var product_description = document.getElementById("test-upload_des").value;
-                            var product_fileInput = document.getElementById("file-1").value;
+                            var product_fileInput = document.getElementById("test-upload").value;
 
 
                             if (product_fileInput == '' && product_name == '' && product_description == '')
@@ -1203,18 +1120,8 @@ function imgval(event) {
 
                                 $('.biderror .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
                                 $('#bidmodal').modal('show');
-                                // setInterval('window.location.reload()', 10000);
+                                setInterval('window.location.reload()', 10000);
                                 // window.location='';
-
-                                 $( document ).on( 'keydown', function ( e ) {
-                                          if ( e.keyCode === 27 ) {
-                                        //$( "#bidmodal" ).hide();
-                                        $('#bidmodal').modal('hide');
-                                        $('.modal-post').show();
-
-                                       }
-                                    });  
-
                                 event.preventDefault();
                                 return false;
 
@@ -1244,22 +1151,21 @@ function imgval(event) {
                                         if (foundPresent1 == true && fileInput.length <= 10) {
                                         } else {
 
-                                            $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                                            $('.biderror .mes').html("<div class='pop_content'>sorry this is not valid file for this post please try to uplode in new post.");
                                             $('#bidmodal').modal('show');
                                             setInterval('window.location.reload()', 10000);
                                             // window.location='';
-                                             $( document ).on( 'keydown', function ( e ) {
-                                          if ( e.keyCode === 27 ) {
-                                        //$( "#bidmodal" ).hide();
-                                        $('#bidmodal').modal('hide');
-                                        $('.modal-post').show();
-
-                                       }
-                                    });  
-
                                             event.preventDefault();
                                             return false;
                                         }
+
+                                    } else if (foundPresentvideo == false) {
+
+                                        $('.biderror .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
+                                        $('#bidmodal').modal('show');
+                                        setInterval('window.location.reload()', 10000);
+                                        event.preventDefault();
+                                        return false;
 
                                     } else if (foundPresentvideo == true)
                                     {
@@ -1268,19 +1174,9 @@ function imgval(event) {
 
                                         if (foundPresent1 == true && fileInput.length == 1) {
                                         } else {
-                                            $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                                            $('.biderror .mes').html("<div class='pop_content'>sorry this is not valid file for this post please try to uplode in new post.");
                                             $('#bidmodal').modal('show');
                                             setInterval('window.location.reload()', 10000);
-
-                                             $( document ).on( 'keydown', function ( e ) {
-                                          if ( e.keyCode === 27 ) {
-                                        //$( "#bidmodal" ).hide();
-                                        $('#bidmodal').modal('hide');
-                                        $('.modal-post').show();
-
-                                       }
-                                    });  
-
                                             event.preventDefault();
                                             return false;
                                         }
@@ -1291,20 +1187,9 @@ function imgval(event) {
 
                                         if (foundPresent1 == true && fileInput.length == 1) {
                                         } else {
-                                            $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                                            $('.biderror .mes').html("<div class='pop_content'>sorry this is not valid file for this post please try to uplode in new post.");
                                             $('#bidmodal').modal('show');
                                             setInterval('window.location.reload()', 10000);
-
-                                             $( document ).on( 'keydown', function ( e ) {
-                                          if ( e.keyCode === 27 ) {
-                                        //$( "#bidmodal" ).hide();
-                                        $('#bidmodal').modal('hide');
-                                        $('.modal-post').show();
-
-                                       }
-                                    });  
-
-
                                             event.preventDefault();
                                             return false;
                                         }
@@ -1319,53 +1204,16 @@ function imgval(event) {
                                                 $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
                                                 $('#bidmodal').modal('show');
                                                 setInterval('window.location.reload()', 10000);
-                                                 $( document ).on( 'keydown', function ( e ) {
-                                          if ( e.keyCode === 27 ) {
-                                        //$( "#bidmodal" ).hide();
-                                        $('#bidmodal').modal('hide');
-                                        $('.modal-post').show();
-
-                                       }
-                                    });  
-
                                                 event.preventDefault();
                                                 return false;
                                             }
                                         } else {
-                                            $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
+                                            $('.biderror .mes').html("<div class='pop_content'>sorry this is not valid file for this post please try to uplode in new post.");
                                             $('#bidmodal').modal('show');
                                             setInterval('window.location.reload()', 10000);
-
-                                             $( document ).on( 'keydown', function ( e ) {
-                                          if ( e.keyCode === 27 ) {
-                                        //$( "#bidmodal" ).hide();
-                                        $('#bidmodal').modal('hide');
-                                        $('.modal-post').show();
-
-                                       }
-                                    });  
-
                                             event.preventDefault();
                                             return false;
                                         }
-                                    } else if (foundPresentvideo == false) {
-
-                                        $('.biderror .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
-                                        $('#bidmodal').modal('show');
-                                        setInterval('window.location.reload()', 10000);
-
-                                         $( document ).on( 'keydown', function ( e ) {
-                                          if ( e.keyCode === 27 ) {
-                                        //$( "#bidmodal" ).hide();
-                                        $('#bidmodal').modal('hide');
-                                        $('.modal-post').show();
-
-                                       }
-                                    });  
-
-                                        event.preventDefault();
-                                        return false;
-
                                     }
 
                                 }
@@ -1374,15 +1222,12 @@ function imgval(event) {
 
  $(document).ready(function () {
                             $('.modal-close').on('click', function () {
-                                $('.modal-post').show();
+                                $('.modal-post').hide();
                             });
                         });
 
-  function contentedit(clicked_id) {
-                            //var $field = $('#post_comment' + clicked_id);
-                            //var data = $field.val();
-                            // var post_comment = $('#post_comment' + clicked_id).html();
-                            //$(document).ready(function($) {
+ function contentedit(clicked_id) {
+                            
                             $("#post_comment" + clicked_id).click(function () {
                                 $(this).prop("contentEditable", true);
                                 $(this).html("");
@@ -1409,7 +1254,7 @@ function imgval(event) {
                                                 type: 'POST',
                                                 url: base_url + "artist/insert_commentthree",
                                                 //url: '<?php echo base_url() . "artist/insert_commentthree" ?>',
-                                                data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                                                data: 'post_id=' + clicked_id + '&comment=' + txt,
                                                 dataType: "json",
                                                 success: function (data) {
 
@@ -1426,7 +1271,7 @@ function imgval(event) {
                                                 type: 'POST',
                                                 url: base_url + "artist/insert_comment",
                                                 //url: '<?php echo base_url() . "artist/insert_comment" ?>',
-                                                data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                                                data: 'post_id=' + clicked_id + '&comment=' + txt,
                                                 // dataType: "json",
                                                 success: function (data) {
                                                     $('#' + 'fourcomment' + clicked_id).html(data);
@@ -1449,12 +1294,63 @@ function imgval(event) {
 
                         }
 
+
+                          $('#file-fr').fileinput({
+                            language: 'fr',
+                            uploadUrl: '#',
+                            allowedFileExtensions: ['jpg', 'png', 'gif']
+                        });
+                        $('#file-es').fileinput({
+                            language: 'es',
+                            uploadUrl: '#',
+                            allowedFileExtensions: ['jpg', 'png', 'gif']
+                        });
+                        $("#file-0").fileinput({
+                            'allowedFileExtensions': ['jpg', 'png', 'gif']
+                        });
+                        $("#file-1").fileinput({
+                            uploadUrl: '#', // you must set a valid URL here else you will get an error
+                            allowedFileExtensions: ['jpg', 'png', 'gif'],
+                            overwriteInitial: false,
+                            maxFileSize: 1000,
+                            maxFilesNum: 10,
+                            //allowedFileTypes: ['image', 'video', 'flash'],
+                            slugCallback: function (filename) {
+                                return filename.replace('(', '_').replace(']', '_');
+                            }
+                        });
+
+                        $(document).ready(function () {
+                            $("#test-upload").fileinput({
+                                'showPreview': false,
+                                'allowedFileExtensions': ['jpg', 'png', 'gif'],
+                                'elErrorContainer': '#errorBlock'
+                            });
+                            $("#kv-explorer").fileinput({
+                                'theme': 'explorer',
+                                'uploadUrl': '#',
+                                overwriteInitial: false,
+                                initialPreviewAsData: true,
+                                initialPreview: [
+                                    "http://lorempixel.com/1920/1080/nature/1",
+                                    "http://lorempixel.com/1920/1080/nature/2",
+                                    "http://lorempixel.com/1920/1080/nature/3",
+                                ],
+                                initialPreviewConfig: [
+                                    {caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
+                                    {caption: "nature-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2},
+                                    {caption: "nature-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3},
+                                ]
+                            });
+
+                        });
+
 function likeuserlist(post_id) {
 
                             $.ajax({
                                 type: 'POST',
                                 url: base_url + "artist/likeuserlist",
-                               // url: '<?php echo base_url() . "artist/likeuserlist" ?>',
+                                //url: '<?php echo base_url() . "artist/likeuserlist" ?>',
                                 data: 'post_id=' + post_id,
                                 dataType: "html",
                                 success: function (data) {
@@ -1467,110 +1363,63 @@ function likeuserlist(post_id) {
 
                         }
 
- $('body').on("click", "*", function (e) {
-                            var classNames = $(e.target).attr("class").toString().split(' ').pop();
-                            if (classNames != 'fa-ellipsis-v') {
-                                $('div[id^=myDropdown]').hide().removeClass('show');
-                            }
-
-                        });
-
-function check_length(my_form)
-                        {
-                            maxLen = 50;
-
-                            // max number of characters allowed
-                            if (my_form.my_text.value.length >= maxLen) {
-                                // Alert message if maximum limit is reached. 
-                                // If required Alert can be removed. 
-                                var msg = "You have reached your maximum limit of characters allowed";
-                                //    alert(msg);
-                                my_form.text_num.value = maxLen - my_form.my_text.value.length;
-                                $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
-                                $('#bidmodal').modal('show');
-                                // Reached the Maximum length so trim the textarea
-                                my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
-                            } else { //alert("1");
-                                // Maximum length not reached so update the value of my_text counter
-                                my_form.text_num.value = maxLen - my_form.my_text.value.length;
-                            }
-                        }
+    $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#bidmodal').modal('hide');
+    }
+});  
 
 
- // pop up open & close aarati code start 
-jQuery(document).mouseup(function (e) {
-            
-             var container1 = $("#myModal");
-            
-                    jQuery(document).mouseup(function (e)
-                      {
-                        var container = $("#close");
 
-          
-                if (!container.is(e.target) // if the target of the click isn't the container...
-                && container.has(e.target).length === 0) // ... nor a descendant of the container
-            {
-              
-                container1.hide();
+// video user show list
+
+ function count_videouser(file_id, post_id){ 
+
+
+  
+  var vid = document.getElementById("show_video" + file_id);
+
+      if (vid.paused) {
+         vid.play(); 
+
+         document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+         function myHandler(e) { 
+          $.ajax({
+            type: 'POST',
+            url: base_url + "artist/showuser",
+            data: 'post_id=' + post_id + '&file_id=' + file_id,
+            dataType: "html",
+            success: function (data) { 
+              $('#' + 'viewvideouser' + post_id).html(data);       
             }
         });
-               
-        });
 
- (function ($) {
+      }
 
-                            $(function () {
-                                // alert('hi');
-                                $("#tags").autocomplete({
-                                    source: function (request, response) {
-                                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                        response($.grep(data, function (item) {
-                                            return matcher.test(item.label);
-                                        }));
-                                    },
-                                    minLength: 1,
-                                    select: function (event, ui) {
-                                        event.preventDefault();
-                                        $("#tags").val(ui.item.label);
-                                        $("#selected-tag").val(ui.item.label);
-                                        // window.location.href = ui.item.value;
-                                    }
-                                    ,
-                                    focus: function (event, ui) {
-                                        event.preventDefault();
-                                        $("#tags").val(ui.item.label);
-                                    }
-                                });
-                            });
+       }
+    else {
+      vid.pause(); 
+    }
+ 
+ 
+ }
 
-                        })(jQuery);
+function playtime(file_id, post_id){
 
+       document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+      function myHandler(e) { 
 
-(function ($) {
+               $.ajax({
+                        type: 'POST',
+                        url: base_url + "artist/showuser",
+                        data: 'post_id=' + post_id + '&file_id=' + file_id,
+                        dataType: "html",
+                        success: function (data) { 
+                          $('#' + 'viewvideouser' + post_id).html(data);       
+                        }
+                    });
 
-                        
-                            $(function () {
-                                // alert('hi');
-                                $("#searchplace").autocomplete({
-                                    source: function (request, response) {
-                                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                        response($.grep(data1, function (item) {
-                                            return matcher.test(item.label);
-                                        }));
-                                    },
-                                    minLength: 1,
-                                    select: function (event, ui) {
-                                        event.preventDefault();
-                                        $("#searchplace").val(ui.item.label);
-                                        $("#selected-tag").val(ui.item.label);
-                                        // window.location.href = ui.item.value;
-                                    }
-                                    ,
-                                    focus: function (event, ui) {
-                                        event.preventDefault();
-                                        $("#searchplace").val(ui.item.label);
-                                    }
-                                });
-                            });
-
-                        })(jQuery);
+    }
+   
+}

@@ -71,11 +71,11 @@ public function user()
         //This if and else use for asc and desc while click on any field start
         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 
-            $this->paging['base_url'] = site_url("artistic/user/" . $short_by . "/" . $order_by);
+            $this->paging['base_url'] = site_url("artist/user/" . $short_by . "/" . $order_by);
 
         } else {
 
-            $this->paging['base_url'] = site_url("artistic/user/");
+            $this->paging['base_url'] = site_url("artist/user/");
 
         }
 
@@ -103,7 +103,7 @@ public function user()
         $this->data['search_keyword'] = '';
 
 
-        $this->load->view('artistic/user', $this->data);
+        $this->load->view('artist/user', $this->data);
 }
 //for list of all user End
 
@@ -209,11 +209,11 @@ public function search()
         //This if and else use for asc and desc while click on any field start
         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 
-                $this->paging['base_url'] = site_url("artistic/search/" . $sortby . "/" . $orderby);
+                $this->paging['base_url'] = site_url("artist/search/" . $sortby . "/" . $orderby);
 
             } else {
 
-                $this->paging['base_url'] = site_url("artistic/search/");
+                $this->paging['base_url'] = site_url("artist/search/");
 
             }
 
@@ -278,11 +278,11 @@ public function search()
         //This if and else use for asc and desc while click on any field start
         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 
-                $this->paging['base_url'] = site_url("artistic/search/" . $sortby . "/" . $orderby);
+                $this->paging['base_url'] = site_url("artist/search/" . $sortby . "/" . $orderby);
 
             } else {
 
-                $this->paging['base_url'] = site_url("artistic/search/");
+                $this->paging['base_url'] = site_url("artist/search/");
 
             }
 
@@ -309,7 +309,7 @@ public function search()
             $this->pagination->initialize($this->paging);
     }
 
-        $this->load->view('artistic/user', $this->data);
+        $this->load->view('artist/user', $this->data);
 }
 
 //clear search is used for unset session start
@@ -321,7 +321,7 @@ public function clear_search()
           
             $this->session->unset_userdata('user_search_keyword');
               
-             redirect('artistic/user','refresh');          
+             redirect('artist/user','refresh');          
     } 
 }
 //clear search is used for unset session End
@@ -342,7 +342,7 @@ public function profile($id)
       $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array,$data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         
 
-    $this->load->view('artistic/profile',$this->data);
+    $this->load->view('artist/profile',$this->data);
 }
 //view function is used for view profile of user End
 

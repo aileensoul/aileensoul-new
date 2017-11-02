@@ -35,7 +35,7 @@ class MY_Controller extends CI_Controller {
 
       $segment1 = $this->uri->segment(1);
        
-        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile', $segjobloc);
+        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artist', 'search', 'freelancer-work', 'recruiter', 'business_userprofile', $segjobloc);
 
         $actual_link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
         $actual_link = base64_encode(str_replace('index.php/', '', $actual_link));

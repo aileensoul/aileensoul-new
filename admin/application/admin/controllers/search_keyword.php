@@ -493,11 +493,11 @@ class Search_keyword extends CI_Controller {
         //This if and else use for asc and desc while click on any field start
         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 
-            $this->paging['base_url'] = site_url("search_keyword/artistic/" . $short_by . "/" . $order_by);
+            $this->paging['base_url'] = site_url("search_keyword/artist/" . $short_by . "/" . $order_by);
 
         } else {
 
-            $this->paging['base_url'] = site_url("search_keyword/artistic/");
+            $this->paging['base_url'] = site_url("search_keyword/artist/");
 
         }
 
