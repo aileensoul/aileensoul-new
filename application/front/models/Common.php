@@ -626,5 +626,13 @@ class Common extends CI_Model {
     function rec_profile_links($text, $class = 'content_link', $target = '_blank') {
         return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Z?-??-?()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1" class="' . $class . '" target="' . $target . '">$1</a>', $text);
     }
+   // for remove unexpected special character from slug 
+  public function clean($string) { 
+      
+   $string = str_replace(' ', '-', $string);  // Replaces all spaces with hyphens.
+   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // replace double --- in single -
+  
+   return preg_replace('/-+/', '-', $string); // Removes special chars.
+}
 
 }
