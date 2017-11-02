@@ -185,13 +185,13 @@
                                                          }
                                                          ?>" maxlength="255"/>&nbsp;&nbsp;&nbsp; 
                                                       <?php echo form_error('companyname'); ?>
-                                                      <label style="  margin-top: 6px;  ">Organization Email:</label>
+                                                      <label style="  margin-top: 6px;  ">Organization Email:<span class="optional">(optional)</span></label>
                                                       <input type="text" name="companyemail[]" tabindex="5" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
                                                          if ($companyemail1) {
                                                              echo $companyemail1;
                                                          }
                                                          ?>" maxlength="255"/>&nbsp;&nbsp;&nbsp; 
-                                                      <label style="  margin-top: 6px;  ">Organization Phone:</label>
+                                                      <label style="  margin-top: 6px;  ">Organization Phone:<span class="optional">(optional)</span></label>
                                                       <input type="text" name="companyphn[]" id="companyphn" class="companyphn" placeholder="Enter Organization Phone" tabindex="6" value="<?php
                                                          if ($companyphn1) {
                                                              echo $companyphn1;
@@ -330,14 +330,14 @@
                                                       }
                                                       ?>" maxlength="255"/>&nbsp;&nbsp;
                                                    <?php echo form_error('companyname[]'); ?>
-                                                   <label style="   margin-top: 6px; ">Organization Email:</label>
+                                                   <label style="   margin-top: 6px; ">Organization Email:<span class="optional">(optional)</span></label>
                                                    <input type="text" name="companyemail[]" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
                                                       if ($companyemail1) {
                                                           echo $companyemail1;
                                                       }
                                                       ?>" maxlength="255"/>&nbsp;&nbsp; <span id="companyemail-error"> </span>
                                                   
-                                                   <label style="  margin-top: 6px; ">Organization Phone:</label>
+                                                   <label style="  margin-top: 6px; ">Organization Phone:<span class="optional">(optional)</span></label>
                                                    <input type="text" name="companyphn[]" id="companyphn" class="companyphn" placeholder="Enter Organization Phone" value="<?php
                                                       if ($companyphn1) {
                                                           echo $companyphn1;

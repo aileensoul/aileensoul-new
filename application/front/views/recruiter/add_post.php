@@ -109,7 +109,7 @@
                                     </fieldset>
                                                                             
                                                                             <fieldset class="form-group full-width">
-                                        <label class="control-label">Interview process:</label>
+                                        <label class="control-label">Interview process:<span class="optional">(optional)</span></label>
 
 
 
@@ -194,10 +194,10 @@
                                     </fieldset>
 
                                     <fieldset class="rec_check form-group full-width">
-                                        <input  type="checkbox" tabindex="7" id="fresher_nme" name="fresher" value="1"><label for="fresher_nme">Fresher can also apply..!</label> 
+                                        <input  type="checkbox" tabindex="7" id="fresher_nme" name="fresher" value="1"><label for="fresher_nme">Fresher can also apply..!   </label> 
                                     </fieldset>
 									<fieldset id="erroe_nn" class="full-width" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
-                                        <label>Required Education:</label> 
+                                        <label>Required Education:<span class="optional">(optional)</span></label> 
 
                                         <input type="search" tabindex="8" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                         <span id="fullname-error"></span>
@@ -239,7 +239,7 @@
 									<div class="p15 fw">
 									<fieldset <?php if ($salary_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
 
-                                        <label style="cursor:pointer;" class="control-label">Salary Type:</label>
+                                        <label style="cursor:pointer;" class="control-label">Salary Type:<span class="optional">(optional)</span></label>
 
 
                                         <select name="salary_type" style="cursor:pointer;" class="keyskil" id="salary_type" tabindex="14">
@@ -257,7 +257,7 @@
 
                                     </fieldset>
 									<fieldset class="" <?php if ($currency) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
-                                        <label>Currency:</label>
+                                        <label>Currency:<span class="optional">(optional)</span></label>
                                         <select name="currency" id="currency" tabindex="15">
 
                                             <option value="" selected option disabled>Select Currency</option>
@@ -271,13 +271,13 @@
                                         <?php echo form_error('currency'); ?>
                                     </fieldset>
 									<fieldset class=" " <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
-                                        <label class="control-label">Minimum Salary:</label>
+                                        <label class="control-label">Minimum Salary:<span class="optional">(optional)</span></label>
                                         <input name="minsal" type="text" id="minsal" placeholder="Enter Minimum Salary" tabindex="16" /><span id="fullname-error"></span>
                                         <?php echo form_error('minsal'); ?>
                                     </fieldset>
 
                                     <fieldset class="" <?php if ($maxsal) { ?> class="error-msg " <?php } ?>>
-                                        <label class="control-label">Maximum Salary:</label>
+                                        <label class="control-label">Maximum Salary:<span class="optional">(optional)</span></label>
                                         <input name="maxsal" type="text" id="maxsal" tabindex="17" placeholder="Enter Maximum Salary" /><span id="fullname-error"></span>
                                         <?php echo form_error('maxsal'); ?>
                                     </fieldset>
