@@ -128,6 +128,11 @@
                         </div>
                         <!-- cover pic end -->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                            <?php
+                                if ($this->uri->segment(3) == 'live-post') {
+                                    echo '<div class="alert alert-danger">Applied successfully...!</div>';
+                                }
+                                ?>
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_project"); ?></h3>
@@ -213,6 +218,7 @@
         <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
         <script type="text/javascript">
+            $(".alert").delay(3200).fadeOut(300);
             var base_url = '<?php echo base_url(); ?>';
 
         </script>
