@@ -4775,12 +4775,10 @@ $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('rec
        $contition_array = array('post_id !=' => $postid, 'status' => 1, 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
        $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
       
-       if($this->session->userdata('aileenuser')){
-       $this->load->view('recruiter/recpost_live',$this->data);
-       }else{
-       $this->load->view('recruiter/rec_post_login',$this->data);
+      
+       $this->load->view('recruiter/rec_location_login',$this->data);
          
-       }
+       
     }
    
 //LIVE LOCATION END
