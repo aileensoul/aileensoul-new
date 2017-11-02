@@ -14,9 +14,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } else { ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business_profile.min.css?ver=' . time()); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css');      ?>" />
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <?php } ?>
-            <style type="text/css">
+        <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
             }
@@ -230,7 +230,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 color: #1b8ab9;
             }
             /*second*/
-			.login{width:100%;}
+            .login{width:100%;}
 
         </style>
     </head>
@@ -268,183 +268,186 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     </a>
                 </div>
             </div>
-            
+
             <div class="user-midd-section">
                 <div class="container art_container padding-360 manage-post-custom">
-                    
-                        <div class="profile-box-custom left_side_posrt">
+
+                    <div class="profile-box-custom left_side_posrt">
+                        <div class="full-box-module business_data">
+                            <div class="profile-boxProfileCard  module">
+                                <div class="head_details1">
+                                    <span><a href="javascript:void(0);" onclick="login_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
+                                    </span>      
+                                </div>
+                                <table class="business_data_table">
+                                    <tr>
+                                        <td class="business_data_td1"><i class="fa fa-user"></i></td>
+                                        <td class="business_data_td2"><?php echo ucfirst(strtolower($business_data[0]['contact_person'])); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="business_data_td1"><i class="fa fa-mobile"></i></td>
+                                        <td class="business_data_td2"><span><?php
+                                                if ($business_data[0]['contact_mobile'] != '0') {
+                                                    echo $business_data[0]['contact_mobile'];
+                                                } else {
+                                                    echo '-';
+                                                }
+                                                ?></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="business_data_td1"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
+                                        <td class="business_data_td2"><span><?php echo $business_data[0]['contact_email']; ?></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="business_data_td1 detaile_map"><i class="fa fa-map-marker"></i></td>
+                                        <td class="business_data_td2"><span>
+                                                <?php
+                                                if ($business_data[0]['address']) {
+                                                    echo $business_data[0]['address'];
+                                                    echo ",";
+                                                }
+                                                ?> 
+                                                <?php
+                                                if ($business_data[0]['city']) {
+                                                    echo $this->db->get_where('cities', array('city_id' => $business_data[0]['city']))->row()->city_name;
+                                                    echo",";
+                                                }
+                                                ?> 
+                                                <?php
+                                                if ($business_data[0]['country']) {
+                                                    echo $this->db->get_where('countries', array('country_id' => $business_data[0]['country']))->row()->country_name;
+                                                }
+                                                ?> 
+                                            </span></td>
+                                    </tr>
+                                    <?php
+                                    if ($business_data[0]['contact_website']) {
+                                        ?>
+                                        <tr>
+                                            <td class="business_data_td1"><i class="fa fa-globe"></i></td>
+                                            <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $business_data[0]['contact_website']; ?>"> <?php echo $business_data[0]['contact_website']; ?></a></span></td>
+                                        </tr>
+                                    <?php } ?>
+                                    <tr>
+                                        <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
+                                        <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($business_data[0]['details'])); ?></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- user iamges start-->
+                        <a href="javascript:void(0);" onclick="login_profile();">
+                            <div class="full-box-module business_data">
+                                <div class="profile-boxProfileCard  module buisness_he_module" >
+                                    <div class="head_details">
+                                        <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5>
+                                    </div>
+                                    <div class="bus_photos">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- user images end-->
+                        <!-- user video start-->
+                        <a href="javascript:void(0);" onclick="login_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
-                                    <div class="head_details1">
-                                        <span><a href="javascript:void(0);" onclick="login_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
-                                        </span>      
-                                    </div>
                                     <table class="business_data_table">
-                                        <tr>
-                                            <td class="business_data_td1"><i class="fa fa-user"></i></td>
-                                            <td class="business_data_td2"><?php echo ucfirst(strtolower($business_data[0]['contact_person'])); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="business_data_td1"><i class="fa fa-mobile"></i></td>
-                                            <td class="business_data_td2"><span><?php
-                                                    if ($business_data[0]['contact_mobile'] != '0') {
-                                                        echo $business_data[0]['contact_mobile'];
-                                                    } else {
-                                                        echo '-';
-                                                    }
-                                                    ?></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="business_data_td1"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-                                            <td class="business_data_td2"><span><?php echo $business_data[0]['contact_email']; ?></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="business_data_td1 detaile_map"><i class="fa fa-map-marker"></i></td>
-                                            <td class="business_data_td2"><span>
-                                                    <?php
-                                                    if ($business_data[0]['address']) {
-                                                        echo $business_data[0]['address'];
-                                                        echo ",";
-                                                    }
-                                                    ?> 
-                                                    <?php
-                                                    if ($business_data[0]['city']) {
-                                                        echo $this->db->get_where('cities', array('city_id' => $business_data[0]['city']))->row()->city_name;
-                                                        echo",";
-                                                    }
-                                                    ?> 
-                                                    <?php
-                                                    if ($business_data[0]['country']) {
-                                                        echo $this->db->get_where('countries', array('country_id' => $business_data[0]['country']))->row()->country_name;
-                                                    }
-                                                    ?> 
-                                                </span></td>
-                                        </tr>
-                                        <?php
-                                        if ($business_data[0]['contact_website']) {
-                                            ?>
-                                            <tr>
-                                                <td class="business_data_td1"><i class="fa fa-globe"></i></td>
-                                                <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $business_data[0]['contact_website']; ?>"> <?php echo $business_data[0]['contact_website']; ?></a></span></td>
-                                            </tr>
-                                        <?php } ?>
-                                        <tr>
-                                            <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
-                                            <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($business_data[0]['details'])); ?></span></td>
-                                        </tr>
+                                        <div class="head_details">
+                                            <h5><i class="fa fa-video-camera" aria-hidden="true"></i>Video</h5>
+                                        </div>
+                                        <div class="bus_videos">
+                                        </div>
                                     </table>
                                 </div>
                             </div>
-                            <!-- user iamges start-->
-                            <a href="javascript:void(0);" onclick="login_profile();">
-                                <div class="full-box-module business_data">
-                                    <div class="profile-boxProfileCard  module buisness_he_module" >
-                                        <div class="head_details">
-                                            <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5>
+                        </a>
+                        <!-- user video emd-->
+                        <!-- user audio start-->
+                        <a href="javascript:void(0);" onclick="login_profile();">
+                            <div class="full-box-module business_data">
+                                <div class="profile-boxProfileCard  module">
+                                    <div class="head_details1">
+                                        <h5><i class="fa fa-music" aria-hidden="true"></i>Audio</h5>
+                                    </div>
+                                    <table class="business_data_table">
+                                        <div class="bus_audios"> 
                                         </div>
-                                        <div class="bus_photos">
-                                        </div>
-                                    </div>
+                                    </table>
                                 </div>
-                            </a>
-                            <!-- user images end-->
-                            <!-- user video start-->
-                            <a href="javascript:void(0);" onclick="login_profile();">
-                                <div class="full-box-module business_data">
-                                    <div class="profile-boxProfileCard  module">
-                                        <table class="business_data_table">
-                                            <div class="head_details">
-                                                <h5><i class="fa fa-video-camera" aria-hidden="true"></i>Video</h5>
-                                            </div>
-                                            <div class="bus_videos">
-                                            </div>
-                                        </table>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- user video emd-->
-                            <!-- user audio start-->
-                            <a href="javascript:void(0);" onclick="login_profile();">
-                                <div class="full-box-module business_data">
-                                    <div class="profile-boxProfileCard  module">
-                                        <div class="head_details1">
-                                            <h5><i class="fa fa-music" aria-hidden="true"></i>Audio</h5>
-                                        </div>
-                                        <table class="business_data_table">
-                                            <div class="bus_audios"> 
-                                            </div>
-                                        </table>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- user audio end-->
-                            <!-- user pdf  start-->
-                            <a href="javascript:void(0);" onclick="login_profile();">
-                                <div class="full-box-module business_data">
-                                    <div class="profile-boxProfileCard  module buisness_he_module" >
-                                        <div class="head_details">
-                                            <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  PDF</h5>
-                                        </div>      
-                                        <div class="bus_pdf"></div>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- user pdf  end-->
-                        </div>
-                        <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business">
-                            <?php
-                            if ($this->session->flashdata('error')) {
-                                echo $this->session->flashdata('error');
-                            }
-                            ?>
-                            <div class="fw">
-                                
-                                <div class="business-all-post">
-                                </div>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                                <!-- middle section start -->
-                                <!--                                <div class="nofoundpost">
-                                                                </div>-->
                             </div>
-                            <!-- business_profile _manage_post end -->
+                        </a>
+                        <!-- user audio end-->
+                        <!-- user pdf  start-->
+                        <a href="javascript:void(0);" onclick="login_profile();">
+                            <div class="full-box-module business_data">
+                                <div class="profile-boxProfileCard  module buisness_he_module" >
+                                    <div class="head_details">
+                                        <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  PDF</h5>
+                                    </div>      
+                                    <div class="bus_pdf"></div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- user pdf  end-->
+                    </div>
+                    <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business">
+                        <?php
+                        if ($this->session->flashdata('error')) {
+                            echo $this->session->flashdata('error');
+                        }
+                        ?>
+                        <div class="fw">
+
+                            <div class="business-all-post">
+                            </div>
+                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <!-- middle section start -->
+                            <!--                                <div class="nofoundpost">
+                                                            </div>-->
                         </div>
-                    
-						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+                        <!-- business_profile _manage_post end -->
+                    </div>
+
+                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
                         <div class="fw text-center">
                             <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
+                                (function () {
+                                    if (window.CHITIKA === undefined) {
+                                        window.CHITIKA = {'units': []};
+                                    }
+                                    ;
+                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                    var placement_id = window.CHITIKA.units.length;
+                                    window.CHITIKA.units.push(unit);
+                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                }());
                             </script>
                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-							<div class="fw pt10">
-									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
-								</div>
+                            <div class="fw pt10">
+                                <a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
+                            </div>
                         </div>
-                       
-                    </div>
-					<div class="tablate-add">
 
-                            <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                        </div>
+                    </div>
+                    <div class="tablate-add">
+
+                        <script type="text/javascript">
+                                (function () {
+                                    if (window.CHITIKA === undefined) {
+                                        window.CHITIKA = {'units': []};
+                                    }
+                                    ;
+                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                    var placement_id = window.CHITIKA.units.length;
+                                    window.CHITIKA.units.push(unit);
+                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                }());
+                        </script>
+                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                    </div>
                 </div>
             </div>
         </section>
@@ -632,16 +635,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             for ($i = 1; $i <= 31; $i++) {
                                                 ?>
                                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                <?php
-                                            }
-                                            ?>
+    <?php
+}
+?>
                                         </select>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
                                             //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-                                            ?>
+?>
                                             <option value="1">Jan</option>
                                             <option value="2">Feb</option>
                                             <option value="3">Mar</option>
@@ -657,7 +660,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             //<?php
 //                  }
 //                  
-                                            ?>
+?>
                                         </select>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
@@ -665,9 +668,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             for ($i = date('Y'); $i >= 1900; $i--) {
                                                 ?>
                                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                <?php
-                                            }
-                                            ?>
+    <?php
+}
+?>
 
                                         </select>
 
@@ -699,13 +702,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());         ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());          ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -713,7 +716,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
-        
+
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
@@ -1027,7 +1030,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <?php } else { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/user_dashboard.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
+<?php } ?>
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
@@ -1040,6 +1043,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     }
                 });
             });
+            $(document).ready(function () {
+                setTimeout(function () {
+                    $('#login').modal('show');
+                }, 2000);
+            });
         </script>
+
     </body>
 </html>

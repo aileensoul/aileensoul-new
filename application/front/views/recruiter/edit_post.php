@@ -125,7 +125,7 @@
                                 </fieldset>
                                                                     
                                                                      <fieldset class="full-width">
-                                      <label>Interview process:<!-- <span style="color:red">*</span> --></label>
+                                      <label>Interview process:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> --></label>
 
                                     <textarea name="interview" id="interview" tabindex="5" rows="4" placeholder="Enter Interview Process"><?php echo $postdata[0]['interview_process']; ?></textarea>
 
@@ -228,7 +228,7 @@
                                     ?>
                                 </fieldset>
 								<fieldset id="erroe_nn" class="fw" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
-                                    <label>Required Education:</label> 
+                                    <label>Required Education:<span class="optional">(optional)</span></label> 
 
                                     <input type="search" tabindex="10" autofocus id="education" name="education" value="<?php echo $degree_data; ?>" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                     <span id="fullname-error"></span>
@@ -271,15 +271,15 @@
 								</div>
 							</div>
 							<div class="custom-add-box">
-								<h3>Salary Information</h3>
+								<h3>Salary Information </h3>
 								<div class="p15 fw">
 									<fieldset <?php if ($salary_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
-                                    <label class="control-label">Salary Type:</label>
+                                    <label class="control-label">Salary Type:<span class="optional">(optional)</span></label>
 
 
                                     <select style="cursor:pointer;" tabindex="15" name="salary_type" id="salary_type" class="keyskil">
 
-                                        <option value="" selected option disabled>Salary Type</option>
+                                        <option value="" selected option disabled>Salary Type </option>
 
                                         <option value="Per Year" <?php if ($postdata[0]['salary_type'] == "Per Year") echo 'selected="selected"'; ?>>Per Year</option>
                                         <option value="Per Month" <?php if ($postdata[0]['salary_type'] == "Per Month") echo 'selected="selected"'; ?>>Per Month</option>
@@ -289,7 +289,7 @@
                                     </select>
                                 </fieldset>
 								<fieldset class=" half-width pad_right"> 
-                                    <label>Currency:</label>
+                                    <label>Currency:<span class="optional">(optional)</span></label>
                                     <select name="currency" id="currency" tabindex="16">
                                         <option value="" selected option disabled>Select Currency</option>
 
@@ -316,14 +316,14 @@
 
                                 </fieldset>
 								<fieldset class="half-width  pad_left" <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
-                                          <label class="control-label">Minimum Salary:<!-- <span style="color:red">*</span> --></label>
+                                          <label class="control-label">Minimum Salary:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> --></label>
                                     <input name="minsal" tabindex="17" type="text" id="minsal" value="<?php echo $postdata[0]['min_sal']; ?>"  placeholder="Enter Minimum Salary" /><span id="fullname-error"></span>
 <?php echo form_error('minsal'); ?>
                                 </fieldset>
                              
 
                                 <fieldset class="half-width " <?php if ($maxsal) { ?> class="error-msg" <?php } ?>>
-                                   <label class="control-label">Maximum Salary:<!-- <span style="color:red">*</span> --></label>
+                                   <label class="control-label">Maximum Salary:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> --></label>
                                     <input name="maxsal" type="text" tabindex="18" id="maxsal" value="<?php echo $postdata[0]['max_sal']; ?>"  placeholder="Enter Maximum Salary" /><span id="fullname-error"></span>
 <?php echo form_error('maxsal'); ?>
                                 </fieldset>

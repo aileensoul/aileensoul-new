@@ -138,7 +138,7 @@
                                                <?php echo form_error('pass_year_primary'); ?>
                                           </fieldset>
                                           <fieldset class="full-width" id="primary_remove">
-                                             <h6>Education Certificate:</h6>
+                                             <h6>Education Certificate: <span class="optional">(optional)</span>  </h6>
                                              <input  type="file" name="edu_certificate_primary" tabindex="5" id="edu_certificate_primary" class="edu_certificate_primary" placeholder="CERTIFICATE" multiple="" />
                                              <div class="bestofmine_image_primary" style="color:#f00; display: block;"></div>
                                              <?php
@@ -271,7 +271,7 @@
                                           <?php echo form_error('pass_year_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width" id="secondary_remove">
-                                          <h6>Education Certificate:</h6>
+                                          <h6>Education Certificate:<span class="optional">(optional)</span></h6>
                                           <input type="file" tabindex="6" name="edu_certificate_secondary" id="edu_certificate_secondary" class="edu_certificate_secondary" placeholder="CERTIFICATE" multiple="" />
                                           <div class="bestofmine_image_secondary" style="color:#f00; display: block;"></div>
 
@@ -416,7 +416,7 @@
                                            <?php echo form_error('pass_year_higher_secondary'); ?>
                                        </fieldset>
                                        <fieldset class="full-width" id="higher_secondary_remove">
-                                          <h6>Education Certificate:</h6>
+                                          <h6>Education Certificate:<span class="optional">(optional)</span></h6>
                                           <input type="file" name="edu_certificate_higher_secondary" id="edu_certificate_higher_secondary" class="edu_certificate_higher_secondary" placeholder="CERTIFICATE" multiple="" tabindex="6" />
                                           <div class="bestofmine_image_higher_secondary" style="color:#f00; display: block;"></div>
                                           <?php
@@ -659,7 +659,7 @@
                                              </select>
                                              <?php echo form_error('pass_year[]'); ?>
                                            
-                                             <h6>Education Certificate:</h6>
+                                             <h6>Education Certificate:<span class="optional">(optional)</span></h6>
                                              <input style="" type="file" name="certificate[]" id="certificate1" tabindex="8" class="certificate" placeholder="CERTIFICATE" multiple="" />&nbsp;&nbsp;&nbsp; <span id="certificate-error"> </span>
                                              <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
                                               <?php
@@ -864,7 +864,7 @@
                                           </select>
                                           <?php echo form_error('pass_year[]'); ?>
                                      
-                                          <h6>Education Certificate:</h6>
+                                          <h6>Education Certificate:<span class="optional">(optional)</span></h6>
                                           <input type="file" name="certificate[]" id="certificate1" class="certificate" placeholder="CERTIFICATE" multiple="" />&nbsp;&nbsp;&nbsp; <span id="certificate-error"> </span>
                                           <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
                                            <?php

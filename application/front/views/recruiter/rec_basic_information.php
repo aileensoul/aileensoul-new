@@ -120,7 +120,7 @@
                                     </fieldset>
 
                                     <fieldset>
-                                        <label>Phone number:</label>
+                                        <label>Phone number:<span class="optional">(optional)</span></label>
                                         <input name="phoneno" placeholder="Enter Phone Number" tabindex="4" value="<?php
                                         if ($phone) {
                                             echo $phone;

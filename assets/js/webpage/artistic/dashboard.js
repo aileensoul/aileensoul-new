@@ -175,6 +175,7 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
                     success: function (data) {
                        $('#loader').hide();
                         $('.art_videos').html(data);
+                        $('video, audio').mediaelementplayer();
                     }
                 });
 

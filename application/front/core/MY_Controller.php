@@ -8,10 +8,10 @@ class MY_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        
-   //    $this->output->cache(1);
-       //$this->output->enable_profiler(TRUE);
-           
+
+        //    $this->output->cache(1);
+        //$this->output->enable_profiler(TRUE);
+
         $segment_check = $this->uri->segment(2);
 
         $segment_dynamicpost = substr($segment_check, 0, strrpos($segment_check, "-"));
@@ -21,20 +21,28 @@ class MY_Controller extends CI_Controller {
             $segment2 = $segment_dynamicpost;
         } else {
             $segment2 = $this->uri->segment(2);
-            
         }
-       
-        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post','jobpost','project','postlocation');
+                    
+         $jobin = explode('-', $this->uri->segment(1));
+        //  $slug1 = $jobin[0] . '-' . $jobin[1];
+
+        if ($jobin[0] == 'job' && $jobin[1] == 'in') {
+            $segment2 = $this->uri->segment(1);
+            $segjobloc = $this->uri->segment(1);
+        }
+
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc);
 
       $segment1 = $this->uri->segment(1);
-        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile');
+       
+        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile', $segjobloc);
 
-        $actual_link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+        $actual_link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
         $actual_link = base64_encode(str_replace('index.php/', '', $actual_link));
-        
+
         if ((!in_array($segment2, $segment2_names)) || (!in_array($segment1, $segment1_names))) {
-            if (!$this->session->userdata('aileenuser')) {
-                redirect('login?redirect_url='.$actual_link, 'refresh');
+           if (!$this->session->userdata('aileenuser')) {
+                redirect('login?redirect_url=' . $actual_link, 'refresh');
             } else {
                 $this->data['userid'] = $this->session->userdata('aileenuser');
             }
