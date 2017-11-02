@@ -20,6 +20,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function index() {  //echo "falguni"; die();
+      //  echo "<pre>"; print_r($this->data);die();
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('freelancer/freelancer_main', $this->data);
     }
@@ -2410,7 +2411,9 @@ class Freelancer extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
         $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        
+        $contition_array = array('user_id' => $userid);
+        $hiredata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'email', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $app_id = $userdata[0]['app_id'];
 
         if ($userdata) {
@@ -2440,6 +2443,22 @@ class Freelancer extends MY_Controller {
                 if ($para == 'all') {
                     $applypost = 'Applied';
                 }
+                 $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL .$this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p>Freelancer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username']. ' Applied on your Project.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
             }
             echo $applypost;
         } else {
@@ -2470,6 +2489,22 @@ class Freelancer extends MY_Controller {
             // end notoification
             if ($insert_id) {
                 $applypost = 'Applied';
+                 $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p>Employer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $user_id . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username']. ' Applied on your Project.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
             }
             echo $applypost;
         }
@@ -3723,26 +3758,6 @@ class Freelancer extends MY_Controller {
         $insert_id = $this->common->insert_data_getid($data, 'notification');
         // end notoification
 
-        if ($insert_id) {
-                $email_html = '';
-                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
-					<tr>
-                                            <td style="padding:5px;"><img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
-                                            <td style="padding:5px;">
-						<p><b>' . $this->data['business_login_company_name'] . '</b> Started following you in business profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
-                                            </td>
-                                            <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'business-profile/details/' . $this->data['business_login_slug'] . '">view</a></p>
-                                            </td>
-					</tr>
-                                    </table>';
-                $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
-
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
-            }
-        
-        
         redirect('freelancer/freelancer_apply_list/' . $postid, 'refresh');
     }
 
@@ -4107,7 +4122,7 @@ class Freelancer extends MY_Controller {
     public function free_invite_user() {
         $postid = $_POST['post_id'];
         $invite_user = $_POST['invited_user'];
-
+        //echo $invite_user;die();
         $userid = $this->session->userdata('aileenuser');
         $data = array(
             'user_id' => $userid,
@@ -4116,7 +4131,9 @@ class Freelancer extends MY_Controller {
             'profile' => "freelancer"
         );
         $insert_id = $this->common->insert_data_getid($data, 'user_invite');
-
+        $applydata = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $invite_user, $data = 'freelancer_post_email');
+        $projectdata = $this->common->select_data_by_id('freelancer_post', 'post_id', $postid, $data = 'post_name');
+      
         if ($insert_id) {
             $data = array(
                 'not_type' => 4,
@@ -4131,6 +4148,24 @@ class Freelancer extends MY_Controller {
             );
             $insert_id = $this->common->insert_data_getid($data, 'notification');
             echo 'Selected';
+            if ($insert_id) {
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p>Employer <b>' . $this->data['freehiredata'][0]['username'] ." ".$this->data['freehiredata'][0]['fullname'] . '</b> Selected you for '. $projectdata[0]["post_name"] .' project in freelancer profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['freehiredata'][0]['username'] ." ".$this->data['freehiredata'][0]['fullname']. ' Selected you for '. $projectdata[0]["post_name"] .' project in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
+            }
         } else {
             echo 'error';
         }
