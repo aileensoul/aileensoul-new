@@ -169,11 +169,11 @@ $route['freelancer-work/avability'] = "freelancer/freelancer_post_avability";
 $route['freelancer-work/education'] = "freelancer/freelancer_post_education";
 $route['freelancer-work/portfolio'] = "freelancer/freelancer_post_portfolio";
 $route['freelancer-work/search'] = "search/freelancer_post_search";
-
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
 $route['freelancer-work/reactivate'] = "freelancer/reactivate";
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 $route['freelancer-work'] = "freelancer/freelancer_post";
+$route['freelancer-work/home/live-post'] = "freelancer/freelancer_apply_post/$1";
 
 /* Report Route end */
 
