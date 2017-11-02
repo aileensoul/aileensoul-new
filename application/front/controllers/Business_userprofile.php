@@ -111,104 +111,263 @@ class Business_userprofile extends CI_Controller {
 
     public function bus_user_videos() {
 
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
+// manage post start
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
 
-        $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
-        $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('user_id' => $userid, 'status' => '1');
+        $slug_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
-        $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $slug_id = $slug_data[0]['business_slug'];
 
-        $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-        $busvideo = $this->data['busvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if ($id == $slug_id || $id == '') {
 
-        foreach ($busvideo as $val) {
-            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
-            $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'created_date', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('business_slug' => $slug_id, 'status' => '1');
+            $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
 
-            $multiplevideo[] = $busmultivideo;
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-        $allowesvideo = array('mp4', 'webm');
-        foreach ($multiplevideo as $mke => $mval) {
-            foreach ($mval as $mke1 => $mval1) {
-                $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
+        $join_str[0]['table'] = 'post_files';
+        $join_str[0]['join_table_id'] = 'post_files.post_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
+        $join_str[0]['join_type'] = '';
 
-                if (in_array($ext, $allowesvideo)) {
-                    $singlearray1[] = $mval1;
-                }
-            }
-        }
-        if ($singlearray1) {
+        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'video');
+        $businessvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
+
+        if ($businessvideo) {
             $fetch_video .= '<tr>';
 
-            if ($singlearray1[0]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video controls>';
+            if ($businessvideo[0]['file_name']) {
 
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+                $post_poster = $businessvideo[0]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
 
-            if ($singlearray1[1]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[1]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+            if ($businessvideo[1]['file_name']) {
+                $post_poster = $businessvideo[1]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
-            if ($singlearray1[2]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[2]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+            if ($businessvideo[2]['file_name']) {
+
+                $post_poster = $businessvideo[2]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             $fetch_video .= '</tr>';
             $fetch_video .= '<tr>';
 
-            if ($singlearray1[3]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[3]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+            if ($businessvideo[3]['file_name']) {
+
+                $post_poster = $businessvideo[3]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
-            if ($singlearray1[4]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[4]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+            if ($businessvideo[4]['file_name']) {
+
+                $post_poster = $businessvideo[4]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
-            if ($singlearray1[5]['file_name']) {
-                $fetch_video .= '<td class="image_profile">';
-                $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[5]['file_name'] . '" type="video/mp4">';
-                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
-                $fetch_video .= 'Your browser does not support the video tag.';
-                $fetch_video .= '</video>';
-                $fetch_video .= '</td>';
+            if ($businessvideo[5]['file_name']) {
+
+                $post_poster = $businessvideo[5]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
+                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                    if ($info) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
             }
             $fetch_video .= '</tr>';
         } else {
-
-
-            $fetch_video .= '<div class="not_available">  <p>     Video Not Available </p></div>';
+            //$fetch_video .= '<div class = "not_available"> <p> Video Not Available </p></div>';
         }
 
-        $fetch_video .= '<div class="dataconvideo"></div>';
+        $fetch_video .= '<div class = "dataconvideo"></div>';
 
 
         echo $fetch_video;
@@ -329,6 +488,7 @@ class Business_userprofile extends CI_Controller {
     }
 
     public function bus_user_pdf() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
         $userid = $this->session->userdata('aileenuser');
@@ -345,33 +505,20 @@ class Business_userprofile extends CI_Controller {
             $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-        $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-        $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        foreach ($businessimage as $val) {
-            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
-            $busmultipdf = $this->data['busmultipdf'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $multiplepdf[] = $busmultipdf;
-        }
-        $allowed = array('pdf');
-        foreach ($multiplepdf as $mke => $mval) {
+        $join_str[0]['table'] = 'post_files';
+        $join_str[0]['join_table_id'] = 'post_files.post_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
+        $join_str[0]['join_type'] = '';
 
-            foreach ($mval as $mke1 => $mval1) {
-                $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
+        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'pdf');
+        $businesspdf = $this->data['businessaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
-                if (in_array($ext, $allowed)) {
-                    $singlearray3[] = $mval1;
-                }
-            }
-        }
-
-        if ($singlearray3) {
-
+        if ($businesspdf) {
             $i = 0;
-            foreach ($singlearray3 as $mi) {
-
+            foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
-                $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['file_name'] . '"><div class = "pdf_img">';
-                $fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['file_name'] . '"/>';
+                $fetch_pdf .= '<a href = "javascript:void(0)" target="_blank" onclick="login_profile();"><div class = "pdf_img">';
+                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -380,9 +527,9 @@ class Business_userprofile extends CI_Controller {
                     break;
             }
         } else {
-            $fetch_pdf .= '<div class="not_available">  <p> Pdf Not Available </p></div>';
+            
         }
-        $fetch_pdf .= '<div class="dataconpdf"></div>';
+        $fetch_pdf .= '<div class = "dataconpdf"></div>';
         echo $fetch_pdf;
     }
 

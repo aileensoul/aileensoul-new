@@ -10457,7 +10457,7 @@ Your browser does not support the audio tag.
 
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
-                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
                         $fetch_video .= '<video controls>';
@@ -10493,7 +10493,7 @@ Your browser does not support the audio tag.
 
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
-                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
                         $fetch_video .= '<video controls>';
@@ -10532,7 +10532,7 @@ Your browser does not support the audio tag.
 
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
-                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
                         $fetch_video .= '<video controls>';
@@ -10568,7 +10568,7 @@ Your browser does not support the audio tag.
 
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
-                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
                         $fetch_video .= '<video controls>';
@@ -10604,7 +10604,7 @@ Your browser does not support the audio tag.
 
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
-                    if (file_exists(BUS_POST_MAIN_UPLOAD_URL . $post_poster)) {
+                    if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_poster)) {
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
                         $fetch_video .= '<video controls>';
