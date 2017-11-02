@@ -248,7 +248,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <a href="#bus-scroll" class="right-menu-box bus-r" onclick="return tabindexbus();"> <span>Business Profile</span></a>
                                 </li>
                                 <li>
-                                    <a href="#art-scroll" class="right-menu-box art-r" onclick="return tabindexart();"> <span>Artistic Profile</span></a>
+                                    <a href="#art-scroll" class="right-menu-box art-r" onclick="return tabindexart();"> <span>Artist Profile</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -397,24 +397,24 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('artistic'); ?>"><img src="<?php echo base_url(); ?>assets/img/i5.jpg"></a>
+                                                <a href="<?php echo base_url('artist'); ?>"><img src="<?php echo base_url(); ?>assets/img/i5.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
                                             <div class="right-box">
-                                                <h1><a href="<?php echo base_url('artistic'); ?>">Artistic Profile</a></h1>
+                                                <h1><a href="<?php echo base_url('artist'); ?>">Artist Profile</a></h1>
                                                 <p>Show your art & talent to the world.</p>
                                                 <div class="btns">
 
                                                     <?php if ($artdata[0]['art_step'] != 4) { ?>
-                                                        <a class="btn-1" id="artistic-register-btn" href="<?php echo base_url('artistic'); ?>">Register</a> 
+                                                        <a class="btn-1" id="artistic-register-btn" href="<?php echo base_url('artist'); ?>">Register</a> 
                                                     <?php } elseif ($artdata[0]['status'] == '0' && $artdata[0]['art_step'] == 4) {
                                                         ?>
 
-                                                        <a class="btn-1" id="artistic-active-btn" href="<?php echo base_url('artistic'); ?>">Active</a>
+                                                        <a class="btn-1" id="artistic-active-btn" href="<?php echo base_url('artist'); ?>">Active</a>
                                                     <?php } else {
                                                         ?>
-                                                        <a class="btn-4" id="artistic-take-btn" href="<?php echo base_url('artistic'); ?>">Take me in</a>
+                                                        <a class="btn-4" id="artistic-take-btn" href="<?php echo base_url('artist'); ?>">Take me in</a>
                                                     <?php } ?>
                                                     <a data-target="#art-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 
@@ -858,12 +858,12 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                 </div>
                                 <div class="modal-footer">
                                     <?php if ($artdata[0]['art_step'] != 4) { ?>
-                                        <a class="btn-4" href="<?php echo base_url('artistic'); ?>">Register Now</a>
+                                        <a class="btn-4" href="<?php echo base_url('artist'); ?>">Register Now</a>
                                     <?php } elseif ($artdata[0]['status'] == '0' && $artdata[0]['art_step'] == 4) { ?>
-                                        <a class="btn-4" href="<?php echo base_url('artistic'); ?>">Active</a>
+                                        <a class="btn-4" href="<?php echo base_url('artist'); ?>">Active</a>
 
                                         <?php }else { ?>
-                                        <a class="btn-4" href="<?php echo base_url('artistic'); ?>">Take me in</a>
+                                        <a class="btn-4" href="<?php echo base_url('artist'); ?>">Take me in</a>
 
                                     <?php } ?>
 
