@@ -329,7 +329,8 @@
 <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
     <div class="modal-dialog modal-lm deactive">
         <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+            <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->       
+            <button type="button" class="posterror-modal-close" data-dismiss="modal">&times;</button>       
             <div class="modal-body">
                 <span class="mes"></span>
             </div>

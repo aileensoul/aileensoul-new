@@ -393,7 +393,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
         </section>
-
+<!--        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="posterror-modal-close" data-dismiss="modal">&times;
+                    </button>       
+                    <div class="modal-body">
+                        <span class="mes"></span>
+                    </div>
+                </div>
+            </div>
+        </div>-->
         <div class="modal fade message-box" id="likeusermodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -454,6 +464,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 </div>
             </div>
         </div>
+        
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
             <?php echo $footer; ?>
