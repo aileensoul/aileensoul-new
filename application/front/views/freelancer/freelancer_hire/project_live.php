@@ -4,6 +4,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -11,9 +12,9 @@
         $returnpage = $_GET['page'];
         //echo $returnpage;die();
         if ($this->session->userdata('aileenuser') != $recliveid) {
-            echo $job_header2_border;
+            echo $freelancer_post_header2_border;
         } elseif ($freelancr_user_data[0]['free_hire_step'] == 3) {
-            echo $freelancer_hire_header2_border;
+            echo $freelancer_post_header2_border;
         } elseif ($this->session->userdata('aileenuser') == $recliveid) {
            echo $freelancer_hire_header2_border;
         }else{
@@ -420,7 +421,7 @@
 
 
                                                                     <li>
-                                                                        <?php if ($returnpage == '') { ?><a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
+                                                                        <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?><a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
                                                                         </li>  
                                                                         <li>
                                                                             <a class="button" href="<?php echo base_url('freelancer-hire/edit-projects/' . $post['post_id']); ?>" >Edit </a>
@@ -442,7 +443,7 @@
 
                                                                                 <input type="hidden" id="<?php echo 'userid' . $post['post_id']; ?>" value="<?php echo $post['user_id']; ?>">
                                                                                                <!-- <a class="applypost button" href="javascript:void(0);"  class= "<?php echo 'applypost' . $post['post_id']; ?>  button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a> -->
-                                                                                <a href="javascript:void(0);"  class= "<?php echo 'applypost' . $post['post_id']; ?>  button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $this->uri->segment(3); ?>)">Apply</a>
+                                                                                <a href="javascript:void(0);"  class= "<?php echo 'applypost' . $post['post_id']; ?>  button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $this->session->userdata('aileenuser'); ?>)">Apply</a>
                                                                             </li> 
                                                                             <li>
                                                                                 <?php
@@ -559,6 +560,7 @@
 
 <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <!-- FIELD VALIDATION JS START -->
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/project_live.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <?php
         if (IS_REC_JS_MINIFY == '0') {
@@ -585,7 +587,7 @@
 
 
                                                                                         function removepopup(id) {
-                                                                                            alert(123);
+                                                                                         
                                                                                             $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                                                                             $('#bidmodal').modal('show');
                                                                                         }
