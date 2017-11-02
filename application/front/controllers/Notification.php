@@ -104,7 +104,7 @@ class Notification extends MY_Controller {
         $contition_array = array('art_post_id' => $id, 'status' => '1', 'is_delete' => '0');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo '<pre>'; print_r($this->data['art_data']); die();
-        $this->data['left_artistic'] = $this->load->view('artistic/left_artistic', $this->data, true);
+        $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
         $this->load->view('notification/art_post', $this->data);
     }
 
@@ -1447,7 +1447,7 @@ Your browser does not support the audio tag.
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('artistic/details/' . $total['slug']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('artist/details/' . $total['slug']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
 
@@ -2676,7 +2676,7 @@ Your browser does not support the audio tag.
             if ($message_from_profile == 6) {
                 $image_path = FCPATH . 'uploads/artistic_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/artistic_profile/thumbs/' . $msg['user_image'];
-                $profile_url = base_url() . 'artistic/art_manage_post/' . $id;
+                $profile_url = base_url() . 'artist/art_manage_post/' . $id;
             }
 
 
@@ -3205,7 +3205,7 @@ Your browser does not support the audio tag.
         </a>
     </li>
     <li class="">
-        <a href="http://localhost/aileensoul/artistic/artistic_profile/318" onclick="not_active(1126)">
+        <a href="http://localhost/aileensoul/artist/artistic_profile/318" onclick="not_active(1126)">
             <div class="notification-database">
                 <div class="notification-pic">
                     <div class="post-img-div">DP</div>
@@ -3612,7 +3612,7 @@ Your browser does not support the audio tag.
                 //   2
                 if ($total['not_from'] == 3 && $total['not_img'] == 0) {
 
-                    $return_html .= '<a href="' . base_url() . 'artistic/dashboard/' . $total['slug'] . '">';
+                    $return_html .= '<a href="' . base_url() . 'artist/dashboard/' . $total['slug'] . '">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';

@@ -3766,7 +3766,7 @@ class Chat extends MY_Controller {
             if ($message_from_profile == 6) {
                 $image_path = FCPATH . 'uploads/artistic_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/artistic_profile/thumbs/' . $msg['user_image'];
-                $profile_url = base_url() . 'artistic/art_manage_post/' . $id;
+                $profile_url = base_url() . 'artist/art_manage_post/' . $id;
             }
 
 

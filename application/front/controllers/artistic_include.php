@@ -9,7 +9,7 @@ $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $con
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
-$this->data['artistic_search'] = $this->load->view('artistic/artistic_search', $this->data, true);
+$this->data['artistic_search'] = $this->load->view('artist/artistic_search', $this->data, true);
 $artregid = $this->data['artdata'][0]['art_id'];
 $contition_array = array('follow_to' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
 $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to,follow_status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -33,5 +33,5 @@ foreach ($followingdata as $followkey) {
     }
 }
 $this->data['countfr'] = $countfr = count($countlfu);
-$this->data['art_header2_border'] = $this->load->view('artistic/art_header2_border', $this->data, true);
+$this->data['art_header2_border'] = $this->load->view('artist/art_header2_border', $this->data, true);
 ?>

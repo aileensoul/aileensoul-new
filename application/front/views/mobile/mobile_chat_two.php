@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 }
                                 if ($message_from_profile == 6) {
                                     $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'artistic/art_manage_post/' . $id;
+                                    $profile_url = base_url() . 'artist/art_manage_post/' . $id;
                                 }
                                 ?>
                                 <a href="<?php echo $profile_url; ?>">

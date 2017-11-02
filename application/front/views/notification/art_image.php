@@ -70,11 +70,11 @@
                                         $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
-                                            <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $row['posted_user_id']); ?>">
+                                            <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artist/art_manage_post/' . $row['posted_user_id']); ?>">
                                                 <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" /> </a>
 
                                         <?php } else { ?>
-                                            <a class="post_dot"  href="<?php echo base_url('artistic/art_manage_post/' . $row['user_id']); ?>">
+                                            <a class="post_dot"  href="<?php echo base_url('artist/art_manage_post/' . $row['user_id']); ?>">
                                                 <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" /> </a>
 
                                         <?php } ?>
@@ -104,8 +104,8 @@
                                             <li><?php if ($art_data[0]['posted_user_id']) { ?>
 
                                                     <div class="else_post_d">
-                                                        <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
-                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
+                                                        <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artist/art_manage_post/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
+                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artist/art_manage_post/' . $art_data[0]['user_id']); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
                                                         <span role="presentation" aria-hidden="true" style="color: #91949d; font-size: 14px;"> · </span>
                                                         <span class="ctre_date"> 
          <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>
@@ -116,7 +116,7 @@
                                                     <!-- other user post time name end-->
                                                 <?php } else { ?>
 
-                                                    <a  class="post_dot" title="<?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>"   href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
+                                                    <a  class="post_dot" title="<?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>"   href="<?php echo base_url('artist/art_manage_post/' . $art_data[0]['user_id']); ?>">
                                                         <?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>
 
                                                     </a>
@@ -161,7 +161,7 @@
 
                                                     <!--<a id="<?php //echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>-->
 
-                                                    <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
+                                                    <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
 
                                                     <?php
                                                 }
@@ -180,7 +180,7 @@
                                                 <?php } else { ?>
                                                     <!--<a href="<?php echo "#popup5" . $row['art_post_id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>-->
 
-                                                    <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
+                                                    <a href="<?php echo base_url('artist/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
                                                     <?php
                                                 }
                                             }
@@ -1087,5 +1087,5 @@ var data = <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($de); ?>;
 var count = '<?php echo $count; ?>';                                       
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artistic/art_image_notification.js?ver='.time()); ?>"></script>  
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/art_image_notification.js?ver='.time()); ?>"></script>  

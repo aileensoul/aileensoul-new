@@ -115,7 +115,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('artistic/user'); ?>"><i class="fa fa-users"></i>List Artistic User</a></li>
+                    <li><a href="<?php echo base_url('artist/user'); ?>"><i class="fa fa-users"></i>List Artistic User</a></li>
                 </ul>
             </li>
             <!--End Artistic Management-->

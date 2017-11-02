@@ -166,7 +166,7 @@ function showDiv() {
 
            $.ajax({
                             url: base_url + "dashboard/ajaxpro",
-                            //url: "<?php echo base_url() ?>artistic/ajaxpro",
+                            //url: "<?php echo base_url() ?>artist/ajaxpro",
                             type: "POST",
                             data: {"image": resp},
                             success: function (data) { 
@@ -226,7 +226,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         $.ajax({
 
             url: base_url + "dashboard/image",
-            //url: "<?php echo base_url(); ?>artistic/image",
+            //url: "<?php echo base_url(); ?>artist/image",
             type: "POST",
             data: fd,
             processData: false,
