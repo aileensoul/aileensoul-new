@@ -10,7 +10,23 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
-   
+  
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+ <style type="text/css">
+            .two-images, .three-image, .four-image{
+                height: auto !important;
+            }
+            .mejs__overlay-button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__overlay-loading-bg-img {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__button > button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+</style>
+
 <body>
 <?php echo $header; ?>
  <?php echo $art_header2_border; ?>
@@ -174,6 +190,9 @@
 <script src="<?php echo base_url('assets/js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
 
  <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';      

@@ -12,6 +12,22 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver='.time()); ?>">
        
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/artistic.css?ver='.time()); ?>">
+
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
+        <style type="text/css">
+            .two-images, .three-image, .four-image{
+                height: auto !important;
+            }
+            .mejs__overlay-button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__overlay-loading-bg-img {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__button > button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+       </style>
           
     </head>
 <!-- END HEADER -->
@@ -456,6 +472,9 @@ if ($info) { ?>
 <script src="<?php echo base_url('assets/dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
 
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';   
