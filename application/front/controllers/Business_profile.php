@@ -1192,14 +1192,11 @@ class Business_profile extends MY_Controller {
 
     public function business_profile_addpost_insert($id = "", $para = "") {
         $s3 = new S3(awsAccessKey, awsSecretKey);
-
         $userid = $this->session->userdata('aileenuser');
-
         $business_login_slug = $this->data['business_login_slug'];
 
         $this->business_profile_active_check();
         $this->is_business_profile_register();
-
 
         $contition_array = array('user_id' => $para, 'status' => '1');
         $this->data['businessdataposted'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1274,20 +1271,14 @@ class Business_profile extends MY_Controller {
                 }
 
                 if ($_FILES['postattach']['error'] == 0) {
-
                     $store = $_FILES['postattach']['name'];
-
                     $store_ext = explode('.', $store);
                     $store_ext = end($store_ext);
-
                     $fileName = 'file_' . $title . '_' . $this->random_string() . '.' . $store_ext;
-
                     $images[] = $fileName;
                     $config['file_name'] = $fileName;
-
                     $this->upload->initialize($config);
 //                  $this->upload->do_upload();
-
                     $imgdata = $this->upload->data();
 
                     if ($this->upload->do_upload('postattach')) {
@@ -1920,9 +1911,15 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </div>';
             } elseif (in_array($ext, $allowespdf)) {
 
+                /*    $return_html .= '<div>
+                  <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+                  <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+                  </div>
+                  </a>
+                  </div>'; */
                 $return_html .= '<div>
-<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
-    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
 </div>';
@@ -5233,8 +5230,8 @@ Your browser does not support the audio tag.
 					</tr>
                                     </table>';
                         // $businessprofiledata[0]['	business_profile_post_id']
-                        
-                        
+
+
                         $subject = $this->data['business_login_company_name'] . ' like your post in Aileensoul.';
 
                         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
@@ -9799,9 +9796,15 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
+                        /*    $return_html .= '<div>
+                          <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+                          <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+                          </div>
+                          </a>
+                          </div>'; */
                         $return_html .= '<div>
-<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
-    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
 </div>';
@@ -11101,9 +11104,15 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
+                        /*    $return_html .= '<div>
+                          <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+                          <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+                          </div>
+                          </a>
+                          </div>'; */
                         $return_html .= '<div>
-<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
-    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
 </div>';
