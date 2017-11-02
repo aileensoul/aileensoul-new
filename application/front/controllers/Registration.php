@@ -563,22 +563,18 @@ public function sendmail(){
 
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
-                echo "1111";die();
                 echo 'Sorry, user is Inactive.';
             } else {
-                echo "123";die();
                 $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
                 $data = 'ok';
             }
         } else if ($email_login == $result[0]['user_email']) {
-            echo "3333";die();
             $data = 'password';
             $id = $result[0]['user_id'];
         } else {
-            echo "444";die();
             $data = 'email';
         }
-        echo $result[0]['user_id'];die();
+//        echo $result[0]['user_id'];die();
         echo json_encode(
                 array(
                     "data" => $data,

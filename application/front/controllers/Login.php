@@ -29,6 +29,9 @@ class Login extends CI_Controller {
         } else {
             $this->data['error_msg'] = $error_msg = 0;
         }
+        if($_GET['redirect_url'] != ''){
+            $this->data['redirect_url'] = $_GET['redirect_url'];
+        }
         if ($this->input->get()) {
             if ($_GET['lwc'] != " ") {
                 $emaildata = $this->common->select_data_by_id('user', 'user_id', $_GET['lwc'], $data = 'user_email', $join_str = array());

@@ -123,7 +123,7 @@ $(document).ready(function () {
                 if (response.data == "ok") {
                   //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "job/home/live-post";
+                    window.location = base_url + "freelancer-work/home/live-post";
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
@@ -318,7 +318,7 @@ $(document).ready(function () {
                 if (response.okmsg == "ok") {// alert(1111);
                     if (postid == '') { //alert(777);
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                        window.location = base_url + "job/profile/live-post";
+                        window.location = base_url + "freelancer-work/home/live-post";
                         sendmail(userid);
                     } else {//alert('aaaaa');
                        
@@ -326,7 +326,7 @@ $(document).ready(function () {
                    //  alert(8888)
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                     //  alert(base_url + 'job/profile/live-post?postid=' + postid);
-                        window.location = base_url + 'job/profile/live-post/' + postid;
+                        window.location = base_url + 'freelancer-work/home/live-post' + postid;
                        sendmail(userid);
                         
 //                        var alldata = 'all';
@@ -518,22 +518,22 @@ $(document).ready(function () {
             },
             success: function (response)
             {
-                alert(3333);
+               // alert(3333);
                 if (response.data == "ok") {
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     if (response.freelancerapply == 1)
                     {
                         var alldata = 'all';
                         var id = response.id;
-                        alert(id);
+                       // alert(id);
                         $.ajax({
                             type: 'POST',
                             url: base_url + 'freelancer/apply_insert',
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
                             success: function (data)
                             {
-                                alert("sucess");
-                                window.location = base_url + "freelancer-hire/home";
+                              //  alert("sucess");
+                                window.location = base_url + "freelancer-work/home/live-post";
                             }
                         });
 

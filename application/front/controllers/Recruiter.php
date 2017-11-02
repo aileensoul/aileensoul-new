@@ -4283,27 +4283,28 @@ $postdetail = array_intersect_key($postdetail, $tempArr);
             $insert_not = $this->common->insert_data_getid($data, 'notification');
             
            $jobemail = $this->db->get_where('job_reg', array('user_id' => $invite_user, 'status' => 1))->row()->email;
-              
-//             if ($insert_not) {
-//                    $email_html = '';
-//                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
-//					<tr>
-//                                            <td style="padding:5px;"><img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $this->data['recruiter_user_image'] . '" width="60" height="60"></td>
-//                                            <td style="padding:5px;">
-//						<p><b>' . ucwords($this->data['rec_firstname']) . ' ' . ucwords($this->data['rec_lastname']) . '</b> From ' . ucwords($this->data['re_comp_name']) . 'Invited you for an interview.</p>
-//						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
-//                                            </td>
-//                                            <td style="padding:5px;">
-//                                                <p><a class="btn" href="' . BASEURL . 'notification/recruiter_post/' . $postid . '">view</a></p>
-//                                            </td>
-//					</tr>
-//                                    </table>';
-//                  
-//                    $subject = $this->data['re_comp_name'] . ' invited for an interview - Aileensoul.';
-//                    
-//                  $jobemail = 'khyati.aileensoul@gmail.com'; 
-//                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
-//                }
+           $jobid = $this->session->userdata('aileenuser');
+        $recdata = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = 'recruiter_user_image,rec_firstname,rec_lastname,re_comp_name', $join_str = array());
+             if ($insert_not) {
+                    $email_html = '';
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . ucwords($recdata[0]['rec_firstname']) . ' ' . ucwords($recdata[0]['rec_lastname']) . '</b> From ' . ucwords($recdata[0]['re_comp_name']) . 'Invited you for an interview.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/recruiter_post/' . $postid . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                  
+                    $subject = $recdata[0]['re_comp_name'] . ' invited for an interview - Aileensoul.';
+                    
+                  $jobemail = 'khyati.aileensoul@gmail.com'; 
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
+                }
             echo'invited';
         } else {
             echo 'error';
