@@ -268,7 +268,7 @@
                     </div>
                 </div>
             </div>
-			<div style="opacity:0; position:absolute; left:0; top:0;">
+			<div style="opacity:0; position:absolute; left:0; top:0; pointer-events:none;">
 				<script type="text/javascript">
 						  ( function() {
 							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };

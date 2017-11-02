@@ -23,7 +23,7 @@
             <div class="user-midd-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                         </div>
                         <div class="col-md-8 col-sm-12">
                             <div class="common-form">

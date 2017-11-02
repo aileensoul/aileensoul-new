@@ -1468,7 +1468,7 @@ label.cameraButton input[accept*="camera"] {
 .mian_middle_post_box {
     float: left;
     width: 600px;
-    margin-left: 15px;
+    margin-left: 14px;
     left: 320px;
     position: relative;
 }
