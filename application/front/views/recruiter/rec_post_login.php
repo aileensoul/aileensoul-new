@@ -496,7 +496,17 @@
          <div class="common-form">
             <div class="job-saved-box">
                <h3>
-                 Web developer
+               <?php 
+               $cache_time = $this->db->get_where('job_title', array('title_id' => $postdata[0]['post_name']))->row()->name;
+                                              if($cache_time)
+                                              {
+                                                  echo  $cache_time;
+                                              }
+                                              else
+                                              {
+                                                echo $postdata[0]['post_name'];
+                                              }
+               ?>
                </h3>
 
                <div class="contact-frnd-post">
