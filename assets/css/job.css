@@ -1243,7 +1243,7 @@ label.cameraButton input[accept*="camera"] {
     background-color: white;
     border: 1px solid #d9d9d9;
     border-radius: 3px;
-    margin: 0px;
+    margin: 0px 0 10px;
     padding: 10px 0px 10px;
 }
 .progre_bar_text p {
@@ -1263,9 +1263,6 @@ label.cameraButton input[accept*="camera"] {
 .edit_profile_progress:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
-}
-.custom_footer_left {
-    margin-top: 10px;
 }
 .progre_bar_text {
     padding: 0px 17px;
@@ -2133,7 +2130,7 @@ label.cameraButton input[accept*="camera"] {
 .mian_middle_post_box {
     float: left;
     width: 600px;
-    margin-left: 15px;
+    margin-left: 14px;
     left: 320px;
     position: relative;
 }

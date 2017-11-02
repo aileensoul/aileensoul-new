@@ -4885,7 +4885,7 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
 //$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedit(this.name)">' . $business_profile['comments'] . '</textarea>';
-                $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $business_profile['business_profile_post_comment_id'] . '"  id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" placeholder="Type Message ..." onkeyup="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $business_profile['comments'] . '</div>';
+                $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $business_profile['business_profile_post_comment_id'] . '"  id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" placeholder="Type Message ..." onkeyup="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onclick="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $business_profile['comments'] . '</div>';
                 $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $business_profile['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $business_profile['business_profile_post_comment_id'] . ')">Save</button></span>';
                 $cmtinsert .= '</div></div>';
 //                $cmtinsert .= '<input type="text" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '"style="display:none;" value="' . $business_profile['comments'] . ' " onClick="commentedit(this.name)">';
@@ -5505,7 +5505,7 @@ Your browser does not support the audio tag.
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-            $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $business_profile['business_profile_post_comment_id'] . '"  id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" placeholder="Type Message ..." onkeyup="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $business_profile['comments'] . '</div>';
+            $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $business_profile['business_profile_post_comment_id'] . '"  id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" placeholder="Type Message ..." onkeyup="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onclick="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $business_profile['comments'] . '</div>';
             $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $business_profile['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $business_profile['business_profile_post_comment_id'] . ')">Save</button></span>';
             $cmtinsert .= '</div></div>';
 
@@ -10099,7 +10099,7 @@ Your browser does not support the audio tag.
                         $return_html .= '</div>
 <div class = "edit-comment-box">
 <div class = "inputtype-edit-comment">
-<div contenteditable = "true" class = "editable_text editav_2" name = "' . $rowdata['business_profile_post_comment_id'] . '" id = "editcomment' . $rowdata['business_profile_post_comment_id'] . '" placeholder = "Enter Your Comment " value = "" onkeyup = "commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+<div contenteditable = "true" class = "editable_text editav_2" name = "' . $rowdata['business_profile_post_comment_id'] . '" id = "editcomment' . $rowdata['business_profile_post_comment_id'] . '" placeholder = "Enter Your Comment " value = "" onkeyup = "commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onclick="commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
 <span class = "comment-edit-button"><button id = "editsubmit' . $rowdata['business_profile_post_comment_id'] . '" style = "display:none" onClick = "edit_comment(' . $rowdata['business_profile_post_comment_id'] . ')">Save</button></span>
 </div>
 </div>
@@ -11426,7 +11426,7 @@ Your browser does not support the audio tag.
                         $return_html .= '</div>
 <div class = "edit-comment-box">
 <div class = "inputtype-edit-comment">
-<div contenteditable = "true" class = "editable_text editav_2" name = "' . $rowdata['business_profile_post_comment_id'] . '" id = "editcomment' . $rowdata['business_profile_post_comment_id'] . '" placeholder = "Enter Your Comment " value = "" onkeyup = "commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+<div contenteditable = "true" class = "editable_text editav_2" name = "' . $rowdata['business_profile_post_comment_id'] . '" id = "editcomment' . $rowdata['business_profile_post_comment_id'] . '" placeholder = "Enter Your Comment " value = "" onkeyup="commentedit(' . $rowdata['business_profile_post_comment_id'] . ')"  onclick="commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
 <span class = "comment-edit-button"><button id = "editsubmit' . $rowdata['business_profile_post_comment_id'] . '" style = "display:none" onClick = "edit_comment(' . $rowdata['business_profile_post_comment_id'] . ')">Save</button></span>
 </div>
 </div>
@@ -11580,8 +11580,50 @@ Your browser does not support the audio tag.
         } else {
             $return = 0;
         }
+        echo $return;
+    }
 
+    public function check_post_comment_available() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $post_comment_id = $_POST['post_id'];
 
+        $condition_array = array('business_profile_post_comment_id' => $post_comment_id);
+        $post_comment_data = $this->common->select_data_by_condition('business_profile_post_comment', $condition_array, $data = 'status,user_id,is_delete,business_profile_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if ($post_comment_data[0]['status'] == 1 && $post_comment_data[0]['is_delete'] == 0) {
+            $return = 1;
+            
+            $post_id = $post_comment_data[0]['business_profile_post_id'];
+            
+            $condition_array = array('business_profile_post_id' => $post_id);
+            $profile_data = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
+                $return = 1;
+
+                $condition_array = array('user_id' => $profile_data[0]['user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+                if ($profile_data[0]['posted_user_id'] != '0') {
+                    $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                    $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                        $return = 1;
+                    } else {
+                        $return = 0;
+                    }
+                }
+            } else {
+                $return = 0;
+            }
+        } else {
+            $return = 0;
+        }
         echo $return;
     }
 

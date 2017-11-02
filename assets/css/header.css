@@ -1290,7 +1290,6 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     padding: 8px;
     border-radius: 2px;
     margin-bottom: 10px;
-    margin-top: 10px;
 }
 .custom_footer_left ul {
     float: left;

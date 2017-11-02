@@ -708,7 +708,7 @@ label.cameraButton:active {
 .full-box-module_follow {
     border: 1px solid #d9d9d9;
     border-radius: 2px;
-    /*margin-top: 10px;*/
+    margin-bottom: 10px;
     width: 100%;
     float: left;
 }
@@ -884,8 +884,8 @@ label.cameraButton:active {
     height: auto;
     background-color: #e8f3f8;
     padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 5px;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -897,7 +897,7 @@ label.cameraButton:active {
     background-color: #ffffff;
     margin: 4px 0px 4px 0px;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: 10px 10px 10px 12px;
     width: 100%;
     float: left;
 }
@@ -1466,15 +1466,15 @@ label.cameraButton:active {
 }
 .post-design-pro-comment-img .post-img-div {
     height: 37px;
-    width: 38px;
+    width: 37px;
     font-size: 15px;
     padding: 12px 0;
 }
 .post-design-pro-comment-img {
     margin-top: 3px;
     display: inline-block;
-    width: 40px;
-    height: 39px;
+    width: 37px;
+    height: 37px;
     float: left;
 }
 .post-design-pro-comment-img img {
@@ -1493,7 +1493,7 @@ label.cameraButton:active {
     margin-left: 10px;
 }
 .comment-details {
-    padding-left: 51px;
+    padding-left: 48px;
     padding-right: 10px;
     font-weight: 400;
     word-break: break-word !important;
@@ -3137,7 +3137,7 @@ label.cameraButton:active {
 .mian_middle_post_box {
     float: left;
     width: 600px;
-    margin-left: 10px;
+    margin-left: 14px;
     left: 320px;
     position: relative;
 }
@@ -3771,7 +3771,7 @@ div[class^="likeduserlist"] {
     transform: translate(-50%, -50%);
 }
 .custom-right-art {
-    margin-left: 10px;
+   /* margin-left: 10px;*/
 }
 .tab-block {
     display: none;
