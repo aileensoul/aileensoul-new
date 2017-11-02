@@ -3467,12 +3467,14 @@ class Job extends MY_Controller {
                     } else {
                         $cache_time1 = $post['post_name'];
                     }
-
-                    $text = str_replace(" ", "-", $cache_time1);
-                    $text = preg_replace("/[.!$#%()]+/i", "", $text);
-                    $text=strtolower($text);
-                      if($text != ''){
-                           $text =  $text;
+                  
+              //    $text = str_replace("-", "", $cache_time1);
+              //    $text = str_replace(" ", "-", $text);
+               //    $text = $str = preg_replace('/-+/', '-', $text);
+                  // echo  $text = preg_replace("/[.!$#%()]+/i", "", $text);
+                  // echo  $text=strtolower($text); 
+                      if($cache_time1 != ''){ 
+                         $text =  strtolower($this->clean($cache_time1));
                          }else{
                             $text = ''; 
                          }
@@ -3481,6 +3483,11 @@ class Job extends MY_Controller {
                     $cityname = str_replace(" ", "-", $cache_time1);
                     $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
                     $cityname=strtolower($cityname);
+                    if($cityname != ''){
+                           $cityname =  '-vacancy-in-' . strtolower($this->clean($cityname));
+                         }else{
+                             $cityname = '';
+                         }
                   
                     $contition_array = array('user_id' => $post['user_id'], 're_status' => '1','is_delete'=> '0');
                     $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4742,7 +4749,7 @@ class Job extends MY_Controller {
 
     // CREATE SLUG END
  public function ajax_recommen_job1() {
-echo "hi";die();
+
         $perpage = 5;
         $page = 1;
 
@@ -5826,4 +5833,12 @@ public function rec_profile($id="")
                     $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
                
     }
+    
+   public function clean($string) { 
+      
+   $string = str_replace(' ', '-', $string);  // Replaces all spaces with hyphens.
+   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // replace double --- in single -
+  
+   return preg_replace('/-+/', '-', $string); // Removes special chars.
+}
 }
