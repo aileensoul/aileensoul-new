@@ -281,7 +281,7 @@ $route['recruiter/edit-post/(:any)'] = "recruiter/edit_post/$1";
 $route['recruiter/apply-list/(:any)'] = "recruiter/view_apply_list/$1";
 
 $route['recruiter/search'] = "recruiter/recruiter_search";
-$route['(:any)'] = "recruiter/postlocation/$1";
+$route['job-in-(:any)'] = "recruiter/postlocation/$1";
 
 // NOTIFICATION ROUTES SETTINGS
 $route['notification/details/(:any)'] = "business_profile/business_resume/$1";
