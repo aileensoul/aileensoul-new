@@ -505,7 +505,7 @@
          <div class="common-form">
             <div class="job-saved-box">
                <h3>
-                 Web developer
+              <?php    echo $postdata[0]['post_name']; ?>
                </h3>
 
                                 <?php
