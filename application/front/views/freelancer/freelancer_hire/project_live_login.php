@@ -517,7 +517,7 @@
                                     return $text;
                                 }
                                 ?>      
-               <div class="contact-frnd-post">
+            <div class="contact-frnd-post">
                               <!--.........AJAX DATA START......-->  
                               <?php
           foreach ($postdata as $post) {
