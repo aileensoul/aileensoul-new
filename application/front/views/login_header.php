@@ -8,8 +8,8 @@
                 <div class="btn-right pull-right">
 
                     <?php if(!$this->session->userdata('aileenuser')) {?>
-                    <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-                    <a href="<?php echo base_url('registration'); ?>" class="btn3">Creat an account</a>
+                    <a title="Login" href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
+                    <a title="Creat an account" href="<?php echo base_url('registration'); ?>" class="btn3">Creat an account</a>
 
                     <?php }?>
                 </div>

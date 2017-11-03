@@ -86,9 +86,75 @@
                                         $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->slug;
                                          $slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->slug;
 
+
+                                         // url changes start
+              $contition_array = array('user_id' => $art_data[0]['user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                 $url_postid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+
+                                            // url changes start
+              $contition_array = array('user_id' => $art_data[0]['posted_user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                 $url_postwithid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+
+
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
-                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $slugposted); ?>">
+                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postwithid); ?>">
 
                                              
                                                 <?php 
@@ -125,7 +191,7 @@
 
                                         <?php } else if($art_data[0]['user_id']){ ?>
 
-                                         <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $slug); ?>">
+                                         <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>">
 
                                     
                                             <?php 
@@ -177,8 +243,8 @@
                                             <li><div class="post-design-product"><?php if ($art_data[0]['posted_user_id']) { ?>
 
                                                     <div class="else_post_d">
-                                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $slugposted); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
-                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artist/dashboard/' . $slug); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postwithid); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
+                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                         <span role="presentation" aria-hidden="true" style="color: #91949d; font-size: 14px;"> · </span>
                                                         <span class="ctre_date"> 
          <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>
@@ -189,7 +255,7 @@
                                                     <!-- other user post time name end-->
                                                 <?php } else { ?>
 
-                                                    <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>"   href="<?php echo base_url('artist/dashboard/' . $slug); ?>">
+                                                    <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>"   href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>">
                                                         <?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>
 
                                                     </a>
@@ -600,11 +666,43 @@
                                                     $artname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
                                                     $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                                                     $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+
+             $contition_array = array('user_id' => $rowdata['user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                 $url_art = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+
                                                     ?>
                                                     <div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img"> 
 
-                                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $artslug); ?>"> 
+                                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_art); ?>"> 
 
                                                             <?php
                                                             $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
@@ -642,7 +740,7 @@
                                                         </a>
                                                         </div>
                                                         <div class="comment-name">
-                                                             <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $artslug); ?>"> 
+                                                             <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_art); ?>"> 
                                                             <b title=" <?php
                                                             echo ucfirst(strtolower($artname));
                                                             echo "&nbsp;";
@@ -791,10 +889,42 @@
                                     $art_last = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
                                     $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
 
+
+                                    $contition_array = array('user_id' => $userid, 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                 $url_get = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+
                                     ?>
 
                                     <div class="post-design-proo-img  hidden-mob">
-                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($art_first)) . ' ' . ucfirst(strtolower($art_last)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
+                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($art_first)) . ' ' . ucfirst(strtolower($art_last)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_get); ?>">
 
                                               <?php 
 

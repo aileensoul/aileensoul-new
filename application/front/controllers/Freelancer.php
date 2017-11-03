@@ -20,7 +20,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function index() {  //echo "falguni"; die();
-      //  echo "<pre>"; print_r($this->data);die();
+        //  echo "<pre>"; print_r($this->data);die();
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('freelancer/freelancer_main', $this->data);
     }
@@ -2407,11 +2407,11 @@ class Freelancer extends MY_Controller {
         $id = $_POST['post_id'];
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
-        
+
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
         $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $contition_array = array('user_id' => $userid);
         $hiredata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'email', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $app_id = $userdata[0]['app_id'];
@@ -2443,20 +2443,43 @@ class Freelancer extends MY_Controller {
                 if ($para == 'all') {
                     $applypost = 'Applied';
                 }
-                 $email_html = '';
+                $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL .$this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>
-                                            <td style="padding:5px;">
-						<p>Freelancer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+                                            <td style="padding:5px;">';
+                if ($this->data['freepostdata'][0]['freelancer_post_user_image'] == '') {
+                    $fname = $this->data['freepostdata'][0]['freelancer_post_fullname'];
+                    $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
+                    $sub_fname = substr($fname, 0, 1);
+                    $sub_lname = substr($lname, 0, 1);
+                    $email_html .= '<div style="color:#fff;
+    width:50px;
+    height:50px;
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
+    font-size: 20px;
+    padding: 16px 0;
+    text-align: center;
+    text-transform: uppercase;
+    line-height:1;">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                } else {
+                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                }
+                $email_html .= '<td style="padding:5px;">
+						<p>Freelancer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username']. ' Applied on your Project.';
+                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . ' Applied on your Project.';
 
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
             }
@@ -2489,12 +2512,37 @@ class Freelancer extends MY_Controller {
             // end notoification
             if ($insert_id) {
                 $applypost = 'Applied';
-                 $email_html = '';
+                $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>
-                                            <td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+                                            <td style="padding:5px;">';
+                if ($this->data['freepostdata'][0]['freelancer_post_user_image'] == '') {
+                    
+                    $fname = $this->data['freepostdata'][0]['freelancer_post_fullname'];
+                    $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
+                    $sub_fname = substr($fname, 0, 1);
+                    $sub_lname = substr($lname, 0, 1);
+                    $email_html .= '<div style="color:#fff;
+    width:50px;
+    height:50px;
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
+    font-size: 20px;
+    padding: 16px 0;
+    text-align: center;
+    text-transform: uppercase;
+    line-height:1;">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    
+                } else {
+                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                }
+                $email_html .= '<td style="padding:5px;">
+						<p>Employer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -2502,7 +2550,7 @@ class Freelancer extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] ." ".$this->data['freepostdata'][0]['freelancer_post_username']. ' Applied on your Project.';
+                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . ' Applied on your Project.';
 
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
             }
@@ -4133,7 +4181,7 @@ class Freelancer extends MY_Controller {
         $insert_id = $this->common->insert_data_getid($data, 'user_invite');
         $applydata = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $invite_user, $data = 'freelancer_post_email');
         $projectdata = $this->common->select_data_by_id('freelancer_post', 'post_id', $postid, $data = 'post_name');
-      
+
         if ($insert_id) {
             $data = array(
                 'not_type' => 4,
@@ -4152,9 +4200,19 @@ class Freelancer extends MY_Controller {
                 $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
-                                            <td style="padding:5px;"><img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>
-                                            <td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freehiredata'][0]['username'] ." ".$this->data['freehiredata'][0]['fullname'] . '</b> Selected you for '. $projectdata[0]["post_name"] .' project in freelancer profile.</p>
+                                            <td style="padding:5px;">';
+                if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
+                    $email_html .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
+                } else {
+                    $fname = $this->data['freehiredata'][0]['fullname'];
+                    $lname = $this->data['freehiredata'][0]['username'];
+                    $sub_fname = substr($fname, 0, 1);
+                    $sub_lname = substr($lname, 0, 1);
+                    $email_html .= '<div class="post-img-div">
+                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> ';
+                }
+                $email_html .= '<td style="padding:5px;">
+						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -4162,7 +4220,7 @@ class Freelancer extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['freehiredata'][0]['username'] ." ".$this->data['freehiredata'][0]['fullname']. ' Selected you for '. $projectdata[0]["post_name"] .' project in Aileensoul.';
+                $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . ' Selected you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
 
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
             }
@@ -4602,36 +4660,32 @@ class Freelancer extends MY_Controller {
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
         $this->data['recliveid'] = $userid = $slugdata[1];
-        
-           $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
-            $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
-            $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-        
-            $join_str[0]['table'] = 'freelancer_hire_reg';
-            $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
-            $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
-            $join_str[0]['join_type'] = '';
 
-            $contition_array = array('post_id' => $postid,'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => 3);
-            $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image,freelancer_hire_reg.country,freelancer_hire_reg.city';
-            $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-            
-          //  echo "<pre>"; print_r($this->data['postdata']);die();
-            
-           // $contition_array = array('post_id !=' => $postid, 'status' => 1, 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
-            $contition_array = array('post_id !=' => $postid,'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => 3,'freelancer_post.post_name' => $this->data['postdata'][0]['post_name']);
-           $this->data['recommandedpost'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-          
-          // echo "<pre>"; print_r($this->data['recommandedpost']);die();
-           
-       if($this->session->userdata('aileenuser')){
-       $this->load->view('freelancer/freelancer_hire/project_live',$this->data);
-       }else{
-       $this->load->view('freelancer/freelancer_hire/project_live_login',$this->data);
-         
-       }
-       
-               
+        $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
+        $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
+        $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        $join_str[0]['table'] = 'freelancer_hire_reg';
+        $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
+        $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
+        $join_str[0]['join_type'] = '';
+
+        $contition_array = array('post_id' => $postid, 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => 3);
+        $data = 'freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_field_req,freelancer_post.post_est_time,freelancer_post.post_skill,freelancer_post.post_other_skill,freelancer_post.post_rate,freelancer_post.post_last_date,freelancer_post.post_description,freelancer_post.user_id,freelancer_post.created_date,freelancer_post.post_currency,freelancer_post.post_rating_type,freelancer_post.post_exp_month,freelancer_post.post_exp_year,freelancer_hire_reg.username,freelancer_hire_reg.fullname,freelancer_hire_reg.designation,freelancer_hire_reg.freelancer_hire_user_image,freelancer_hire_reg.country,freelancer_hire_reg.city';
+        $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        //  echo "<pre>"; print_r($this->data['postdata']);die();
+        // $contition_array = array('post_id !=' => $postid, 'status' => 1, 'rec_post.is_delete' => '0', 'post_name' => $this->data['postdata'][0]['post_name']);
+        $contition_array = array('post_id !=' => $postid, 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => 3, 'freelancer_post.post_name' => $this->data['postdata'][0]['post_name']);
+        $this->data['recommandedpost'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        // echo "<pre>"; print_r($this->data['recommandedpost']);die();
+
+        if ($this->session->userdata('aileenuser')) {
+            $this->load->view('freelancer/freelancer_hire/project_live', $this->data);
+        } else {
+            $this->load->view('freelancer/freelancer_hire/project_live_login', $this->data);
+        }
     }
 
 }
