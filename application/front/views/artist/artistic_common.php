@@ -149,7 +149,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
 
                             <div class="profile-left">
-         <h4 class="profile-head-text"><a href="<?php echo site_url('artist/dashboard/' . $artisticdata[0]['slug']); ?>">
+         <h4 class="profile-head-text"><a href="<?php echo site_url('artist/dashboard/' . $get_url); ?>">
                 <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
 </h4>
             <!-- text head start -->
@@ -203,7 +203,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
                  <ul class="pro-fw4">
                    <?php } ?>  
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artist/dashboard/' . $artisticdata[0]['slug']); ?>"> Dashboard</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artist/dashboard/' . $get_url); ?>"> Dashboard</a>
                     </li>
 
                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artist/details/' . $artisticdata[0]['slug']); ?>"> Details</a>
