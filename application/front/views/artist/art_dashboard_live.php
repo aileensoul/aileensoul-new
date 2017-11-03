@@ -405,48 +405,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </a>
                         <!-- user pdf  end-->
                     </div>
+
+                      <div class="col-md-6 col-sm-12">
                             <div class="art-all-post">
                             </div>
                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-
-                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-
-                        <div class="fw text-center">
-                            <script type="text/javascript">
-                                (function () {
-                                    if (window.CHITIKA === undefined) {
-                                        window.CHITIKA = {'units': []};
-                                    }
-                                    ;
-                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                    var placement_id = window.CHITIKA.units.length;
-                                    window.CHITIKA.units.push(unit);
-                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                }());
-                            </script>
-                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                            <div class="fw pt10">
-                                <a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
-                            </div>
                         </div>
-
-                    </div>
-                    <div class="tablate-add">
-
-                        <script type="text/javascript">
-                                (function () {
-                                    if (window.CHITIKA === undefined) {
-                                        window.CHITIKA = {'units': []};
-                                    }
-                                    ;
-                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                    var placement_id = window.CHITIKA.units.length;
-                                    window.CHITIKA.units.push(unit);
-                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                }());
-                        </script>
-                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                    </div>
                   </div>
                 </div>
             </div>
@@ -720,7 +684,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                             var base_url = '<?php echo base_url(); ?>';
-                                            var slug = '<?php echo $slugid; ?>';
+                                            var slug = '<?php echo $artid; ?>';
         </script>
         <!-- script for login  user valoidtaion start -->
         <script>

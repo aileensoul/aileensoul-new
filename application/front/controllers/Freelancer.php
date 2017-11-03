@@ -2039,6 +2039,17 @@ class Freelancer extends MY_Controller {
         // $this->data['postdetail'] = $unique;
         if (count($unique) > 0) {
             foreach ($postdetail as $post) {
+                $cache_time1 = $post['post_name'];
+                $text = str_replace(" ", "-", $cache_time1);
+                $text = preg_replace("/[!$#%()]+/i", "", $text);
+                $text = strtolower($text);
+
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+
+                $cityname1 = str_replace(" ", "-", $cityname);
+                $cityname1 = preg_replace("/[!$#%()]+/i", "", $cityname1);
+                $cityname1 = strtolower($cityname1);
+                
                 $return_html .= '<div class="job-post-detail clearfix">
                                                         <div class="job-contact-frnd ">';
                 $return_html .= '<div class="profile-job-post-detail clearfix margin_btm"  id="removeapply' . $post['post_id'] . '">';
@@ -2053,12 +2064,12 @@ class Freelancer extends MY_Controller {
                 $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                 $return_html .= '</li>
                                                                                     <li>';
-                $return_html .= '<a href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
+                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . '-vacancy-in-' . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
                 $return_html .= ucwords($post['post_name']);
                 $return_html .= '</a> </li>';
                 $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
                 $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
-                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+               // $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
                 $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
                 $return_html .= '<li>';
                 if ($cityname || $countryname) {
@@ -2452,21 +2463,7 @@ class Freelancer extends MY_Controller {
                     $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div style="color:#fff;
-    width:50px;
-    height:50px;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
-    font-size: 20px;
-    padding: 16px 0;
-    text-align: center;
-    text-transform: uppercase;
-    line-height:1;">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    $email_html .= '<div class="post-img-div>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
@@ -2522,21 +2519,7 @@ class Freelancer extends MY_Controller {
                     $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div style="color:#fff;
-    width:50px;
-    height:50px;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
-    font-size: 20px;
-    padding: 16px 0;
-    text-align: center;
-    text-transform: uppercase;
-    line-height:1;">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
                     
                 } else {
                     $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
@@ -4662,7 +4645,7 @@ class Freelancer extends MY_Controller {
         $this->data['recliveid'] = $userid = $slugdata[1];
 
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
-        $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
+        $data = 'username,fullname,designation,freelancer_hire_user_image,user_id,profile_background';
         $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $join_str[0]['table'] = 'freelancer_hire_reg';
