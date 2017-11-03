@@ -118,11 +118,11 @@
 <?php
 if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
     ?>
-                                            <a href="<?php echo base_url('blog/'); ?>">Recent Post </a>
+                                            <a title="Recent Post" href="<?php echo base_url('blog/'); ?>">Recent Post </a>
                                             <?php
                                         } else {
                                             ?>
-                                            <a href="javascript:void(0)">Recent Post </a>
+                                            <a title="Recent Post" href="javascript:void(0)">Recent Post </a>
                                             <?php
                                         }
                                         ?>
@@ -131,11 +131,11 @@ if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri-
                                         <?php
                                         if ($this->uri->segment(3) == 'popular') {
                                             ?>
-                                            <a href="javascript:void(0)">Most Popular</a>
+                                            <a title="Most Popular" href="javascript:void(0)">Most Popular</a>
                                             <?php
                                         } else {
                                             ?>
-                                            <a href="<?php echo base_url('blog/popular'); ?>">Most Popular</a>
+                                            <a title="Most Popular" href="<?php echo base_url('blog/popular'); ?>">Most Popular</a>
                                             <?php
                                         }
                                         ?>
@@ -318,7 +318,7 @@ else {
                                                                     </ul>
                                                                 </div>
                                                                 <div class="fr blog_view_link">
-                                                                    <a onclick="read_more('<?php echo $blog['id']; ?>', '<?php echo $blog['blog_slug']; ?>')"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                                                    <a title="Read more" onclick="read_more('<?php echo $blog['id']; ?>', '<?php echo $blog['blog_slug']; ?>')"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                                                                     </a>
                                                                 </div>
                                                             </div>

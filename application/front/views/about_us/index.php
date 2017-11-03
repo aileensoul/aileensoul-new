@@ -52,9 +52,9 @@
                         <p class="text-center"><img src="<?php echo base_url('assets/img/message.png'); ?>"></p>
                         <div class="text-center">
                             <ul class="mail-sent">
-                                <li><a href="mailto:hr@aileensoul.com">hr@aileensoul.com</a></li>
-                                <li><a href="mailto:info@aileensoul.com">info@aileensoul.com</a></li>
-                                <li><a href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></li>
+                                <li><a title="Email us" href="mailto:hr@aileensoul.com">hr@aileensoul.com</a></li>
+                                <li><a title="Email us" href="mailto:info@aileensoul.com">info@aileensoul.com</a></li>
+                                <li><a title="Email us" href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></li>
                             </ul>
                         </div>
                     </div>

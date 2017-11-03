@@ -77,7 +77,7 @@
                                         <span class="red">*</span>All fields are mendatory
                                     </p>
                                     <p>
-                                        <button class="btn1">Submit</button>
+                                        <button title="Submit" class="btn1">Submit</button>
                                     </p>
                                 </form>
                             </div>
