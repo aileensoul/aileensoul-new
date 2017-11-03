@@ -310,6 +310,7 @@
       <!-- Model Popup Close -->
 
         <!-- BEGIN FOOTER -->
+        <?php echo $login_footer ?>
         <?php echo $footer; ?>
         <!-- END FOOTER -->
         <!-- FIELD VALIDATION JS START -->

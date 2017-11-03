@@ -187,6 +187,7 @@
             </div>
         </section>
         <footer>
+            <?php echo $login_footer ?>
 <?php echo $footer; ?>
         </footer>
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
