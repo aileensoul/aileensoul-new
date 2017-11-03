@@ -1015,7 +1015,7 @@ fieldset.fresher_radio label {
 
 /***  city location  ***/
 .city-location .mian_middle_post_box{left:0; width:920px;}
-#logo .full-width input{margin-top:28px}
+#logo .hs-submit input{margin-top:28px !important;}
 
 
 /***  media query  ***/
