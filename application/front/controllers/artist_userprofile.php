@@ -864,9 +864,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                             if (IMAGEPATHFROM == 'upload') {
                                 $return_html .= '<div>';
                                 if (file_exists(ART_POST_MAIN_UPLOAD_URL . $post_poster)) {
-                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="login_profile();" onClick="login_profile();">';
                                 } else {
-                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
+                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'"  onClick="login_profile();" onplay="login_profile();">';
                                 }
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -878,9 +878,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                                 $filename = $this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name'];
                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                 if ($info) {
-                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
+                                    $return_html .= '<video width = "100%" height = "350" controls poster="' . ART_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="login_profile();" onClick="login_profile();">';
                                 } else {
-                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="playtime('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].')" onClick="count_videouser('.$artmultiimage[0]['post_files_id'].','.$row['art_post_id'].');">';
+                                    $return_html .= '<video width = "100%" height = "350" controls id="show_video'.$artmultiimage[0]['post_files_id'].'" onplay="login_profile();" onClick="login_profile();">';
                                 }
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">';
                                 $return_html .= '<source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">';
