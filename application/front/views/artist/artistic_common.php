@@ -31,18 +31,13 @@
         <div class="">
             <div class="" id="row2">
                 <?php
-                $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-                $slugid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $segment3 = explode('-', $this->uri->segment(3));
+                $slugdata = array_reverse($segment3);
+                $regid = $slugdata[0];     
 
-                if ($this->uri->segment(3) == $slugid[0]['slug']) {
-                    $user_id = $slugid[0]['slug'];
-                } elseif ($this->uri->segment(3) == "") {
-                    $user_id = $slugid[0]['slug'];
-                } else {
-                    $user_id = $this->uri->segment(3);
-                }
-                $contition_array = array('slug' => $user_id, 'is_delete' => '0', 'status' => '1');
+                $userid = $this->db->select('user_id')->get_where('art_reg', array('art_id' => $regid))->row()->user_id;
+
+                $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
                 $image = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $image_ori = $image[0]['profile_background'];
