@@ -1976,7 +1976,7 @@ class Job extends MY_Controller {
 
 
             if ($insert_id) {
-                 $this->apply_email();
+                 $this->apply_email($notid);
                 $applypost = 'Applied';
             }
             echo $applypost;
@@ -5843,9 +5843,11 @@ class Job extends MY_Controller {
 //add other_industry into database End 
 
 
-    public function apply_email() {
+    public function apply_email($notid) {
+        
         $jobid = $this->session->userdata('aileenuser');
         $jobdata = $this->common->select_data_by_id('job_reg', 'user_id', $jobid, $data = 'job_user_image,fname,lname,slug', $join_str = array());
+        $recemail = $this->common->select_data_by_id('recruiter', 'user_id', $notid, $data = 'rec_email', $join_str = array());
         $email_html = '';
         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
@@ -5877,9 +5879,9 @@ class Job extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-        $jobemail = 'ankit.aileensoul@gmail.com';
+        $recemail = "raval.khyati13@gmail.com";
         $subject = ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . ' Applied on your jobpost - Aileensoul.';
-        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
+        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail);
     }
 
     public function clean($string) {
