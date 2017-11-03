@@ -670,7 +670,7 @@ class Artist extends MY_Controller {
         $this->data['crosscount'] = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r(count($this->data['crosscount'])); die();
         // for three userlist box condition_array end
-
+         $this->data['get_url'] =  $this->get_url($userid);
 
 
             if(!$this->data['artisticdata']){ 
@@ -707,10 +707,13 @@ class Artist extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,user_id,art_user_image,art_name,art_lastname,designation,slug,art_id,art_skill,art_yourart,art_desc_art,art_email,art_city,art_country,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $this->data['artid'] = $userid;
+            $this->data['get_url'] =  $this->get_url($userid);
         } else { //echo "12"; die();
             $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,user_id,art_user_image,art_name,art_lastname,designation,slug,art_id,art_skill,art_yourart,art_desc_art,art_email,art_city,art_country,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $this->data['artid'] = $this->data['artisticdata'][0]['user_id'];
+            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+            //echo "<pre>"; print_r($this->data['get_url']); die();
         }
        if(!$this->data['artisticdata'] && !$this->data['artsdata']){ //echo "22222222"; die();
            $this->load->view('artist/notavalible');       
@@ -2072,10 +2075,15 @@ $datacount = count($otherdata);
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+
         } else {
 
             $contition_array = array('slug' => $id, 'status' => '1' , 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
         }
 
         if($this->data['artisticdata']){
@@ -2138,7 +2146,10 @@ $datacount = count($otherdata);
              redirect('artist/');
         }
      //if user deactive profile then redirect to artist/index untill active profile End
-        $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_name,art_lastname,profile_background,art_user_image,designation,slug');
+        $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_name,art_lastname,profile_background,art_user_image,designation,slug,user_id');
+
+        $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
         if($this->data['artdata']){
        $this->data['left_artistic'] =  $this->load->view('artist/left_artistic', $this->data, true);
        $artistic_name = $this->get_artistic_name($id);
@@ -3494,9 +3505,16 @@ public function followtwo() {
         if ($id == '' || $id == $artslug) {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+
+
         } else {
             $contition_array = array('slug' => $id, 'status' => '1', 'is_delete' => '0', 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+
         }
 
     if($this->data['artisticdata']){
@@ -3719,9 +3737,15 @@ public function followtwo() {
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+
+
         } else {
             $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+
         }
 
         if($this->data['artisticdata']){
@@ -6994,6 +7018,9 @@ public function insert_comment_postnewpage() {
 
            $this->data['artistic_data'] = $art_data; 
 
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
+
     
         } else {
 
@@ -7023,6 +7050,9 @@ public function insert_comment_postnewpage() {
            }
 
            $art_data = array_unique($art_data, SORT_REGULAR);
+
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
 
            $this->data['artistic_data'] = $art_data; 
         }
@@ -7069,10 +7099,16 @@ public function insert_comment_postnewpage() {
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>"; print_r($artisticdata); die();
+
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
         } else {
 
             $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
         }
 
         
@@ -7121,6 +7157,9 @@ public function insert_comment_postnewpage() {
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
 
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
         } else {
 
             $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
@@ -7129,6 +7168,9 @@ public function insert_comment_postnewpage() {
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
 
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
         }
 
 
@@ -7180,6 +7222,9 @@ public function insert_comment_postnewpage() {
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
 
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
         } else { 
 
             $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
@@ -7188,6 +7233,9 @@ public function insert_comment_postnewpage() {
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
 
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+            
         }
 
         if($this->data['artisticdata']){ 

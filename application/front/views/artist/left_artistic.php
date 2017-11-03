@@ -2,7 +2,7 @@
          <div class="full-box-module">
             <div class="profile-boxProfileCard  module">
                <div class="profile-boxProfileCard-cover">
-                  <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artist/dashboard'); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>">
+                  <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artist/dashboard/'.$get_url); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>">
                      <?php if ($artisticdata[0]['profile_background']) { ?>
                      <div class="data_img">
                      <?php 
@@ -25,7 +25,7 @@ if (!file_exists($this->config->item('art_bg_thumb_upload_path') . $artisticdata
                </div>
                <div class="profile-boxProfileCard-content clearfix">
                   <div class="left_side_box_img buisness-profile-txext">
-                     <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artist/dashboard'); ?>" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                     <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artist/dashboard/'.$get_url); ?>" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                         <!-- box image start -->
                        
                         <div class="data_img_2"> 
@@ -64,11 +64,11 @@ if (!file_exists($this->config->item('art_bg_thumb_upload_path') . $artisticdata
                   </div>
                   <div class="right_left_box_design ">
                      <span class="profile-company-name ">
-                     <a   href="<?php echo site_url('artist/dashboard'); ?>"> <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
+                     <a   href="<?php echo site_url('artist/dashboard/'.$get_url); ?>"> <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
                      </span>
                     
                      <div class="profile-boxProfile-name">
-                        <a  href="<?php echo site_url('artist/dashboard'); ?>">
+                        <a  href="<?php echo site_url('artist/dashboard/'.$get_url); ?>">
                         <?php
                            if ($artisticdata[0]['designation']) {
                                echo ucfirst(strtolower($artisticdata[0]['designation']));
@@ -79,7 +79,7 @@ if (!file_exists($this->config->item('art_bg_thumb_upload_path') . $artisticdata
                         </a>
                      </div>
                      <ul class=" left_box_menubar">
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_savepost') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Dashboard" href="<?php echo base_url('artist/dashboard'); ?>"> Dashboard</a>
+                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_savepost') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Dashboard" href="<?php echo base_url('artist/dashboard/'.$get_url); ?>"> Dashboard</a>
                         </li>
                         <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artist/followers'); ?>">Followers <br>(<?php echo $flucount; ?>)</a>
                         </li>
