@@ -500,7 +500,7 @@ $(document).ready(function () {
         var email_login = $("#email_login_apply").val();
         var password_login = $("#password_login_apply").val();
         var postid = $("#password_login_postid").val();
-        alert(postid)
+      
         var post_data = {
             'email_login': email_login,
             'password_login': password_login,

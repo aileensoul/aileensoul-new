@@ -15,7 +15,7 @@ $this->data['freepostdata'] = $this->common->select_data_by_condition('freelance
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
-
+$this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
 
 $this->data['freelancer_post_search'] = $this->load->view('freelancer/freelancer_post/freelancer_post_search', $this->data, true);
 $this->data['freelancer_hire_search'] = $this->load->view('freelancer/freelancer_hire/freelancer_hire_search', $this->data, true);
