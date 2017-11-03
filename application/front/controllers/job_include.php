@@ -18,6 +18,7 @@ $this->data['job_left'] = $this->load->view('job/job_left', $this->data, true);
 $this->data['job_search'] = $this->load->view('job/job_search', $this->data, true);
 $this->data['job_menubar'] = $this->load->view('job/menubar', $this->data, true);
 $this->data['job_header2_border'] = $this->load->view('job/job_header2_border', $this->data, true);
+$this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
 // End Job
 // Start Recruiter
 ?>
