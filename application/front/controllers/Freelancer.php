@@ -2449,26 +2449,31 @@ class Freelancer extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s')
             );
             $updatedata = $this->common->insert_data_getid($data, 'notification');
+           
+            $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+         
+            $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
             // end notoification
             if ($updatedata) {
+                echo "123"; die();
                 if ($para == 'all') {
-                    $applypost = 'Applied';
-                }
-                $email_html = '';
+                    
+                    // apply mail start
+                     $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
                                             <td style="padding:5px;">';
-                if ($this->data['freepostdata'][0]['freelancer_post_user_image'] == '') {
-                    $fname = $this->data['freepostdata'][0]['freelancer_post_fullname'];
-                    $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
+                if ($postuser[0]['freelancer_post_user_image'] == '') {
+                    $fname = $postuser[0]['freelancer_post_fullname'];
+                    $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
                     $email_html .= '<div class="post-img-div>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
                 } else {
-                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
                 $email_html .= '<td style="padding:5px;">
-						<p>Freelancer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -2476,9 +2481,13 @@ class Freelancer extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . ' Applied on your Project.';
+                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
+                    // mail end
+                    $applypost = 'Applied';
+                }
+               
             }
             echo $applypost;
         } else {
@@ -2508,34 +2517,40 @@ class Freelancer extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
             if ($insert_id) {
-                $applypost = 'Applied';
-                $email_html = '';
+                
+            $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+         
+            $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
+                  // apply mail start
+                     $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
                                             <td style="padding:5px;">';
-                if ($this->data['freepostdata'][0]['freelancer_post_user_image'] == '') {
-                    
-                    $fname = $this->data['freepostdata'][0]['freelancer_post_fullname'];
-                    $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
+                if ($postuser[0]['freelancer_post_user_image'] == '') {
+                    $fname = $postuser[0]['freelancer_post_fullname'];
+                    $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
-                    
+                    $email_html .= '<div class="post-img-div>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
                 } else {
-                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
                 $email_html .= '<td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $user_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . ' Applied on your Project.';
+                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
+                    // mail end
+                
+                $applypost = 'Applied';
+               
             }
             echo $applypost;
         }

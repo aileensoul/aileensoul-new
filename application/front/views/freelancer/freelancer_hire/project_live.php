@@ -367,7 +367,7 @@
                                                                         }
                                                                         ?>                                                          </li>
 
-                                                                    <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
+                                                                    <a href="javascript:void(0);" onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $this->session->userdata('aileenuser'); ?>)" class= "applypost  button"> Apply</a>
                         
                                                             </div>
 
