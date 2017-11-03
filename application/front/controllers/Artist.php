@@ -16111,7 +16111,8 @@ public function get_artistic_name($id=''){
         $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
         $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        
+        $this->data['get_url'] = $this->get_url($this->data['artisticdata'][0]['user_id']);
+
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
             redirect('artist/art_post', refresh);
 
@@ -16514,12 +16515,17 @@ public function get_artistic_name($id=''){
                            <div class="inner_search">';
       
                               foreach ($artuserdata as $key) { 
+
+                                $geturl = $this->get_url($key['user_id']);
+
                                 if($key['art_id']){
 
                              $return_html .=  '<div class="profile-job-profile-button clearfix box_search_module">
                                  <div class="profile-job-post-location-name-rec">
                                     <div class="module_Ssearch" style="display: inline-block; float: left;">
                                        <div class="search_img" style="height: 110px; width: 108px;">';
+
+                                      $return_html .= '<a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
 
                                        if (IMAGEPATHFROM == 'upload') {
 
@@ -16547,15 +16553,15 @@ public function get_artistic_name($id=''){
                                                  $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
                                 } 
                              }
-                                       $return_html .= '</div>
+                                       $return_html .= '</a></div>
                                     </div>
                                     <div class="designation_rec">
                                        <ul>
                                           <li >
-                                             <a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'</a>
+                                             <a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'</a>
                                           </li>
                                           <li style="display: block;">
-                                             <a  class="color-search" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'">';
+                                             <a  class="color-search" href="'.base_url('artist/dashboard/' . $geturl . '').'">';
                                                  if($key['designation']){ //echo "hii";  die();
                                                     $return_html .= $key['designation'];
                                                 } else{
@@ -16671,6 +16677,9 @@ public function get_artistic_name($id=''){
 
                            // loop start for post 
                            foreach ($artpostdata as $key) {
+
+                            $geturl = $this->get_url($key['user_id']);
+
                              
                               $return_html .= '<div id="removepost'. $key['art_post_id'].'">
                               <div class="col-md-12 col-sm-12 post-design-box"  style="box-shadow: none; ">
@@ -16678,7 +16687,7 @@ public function get_artistic_name($id=''){
                                     <div class="post-design-search-top col-md-12" style="background-color: none!important;">
                                        <div class="post-design-pro-img ">
                                             
-                                          <a class="post_dot" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
+                                          <a class="post_dot" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
                                          
                                          if (IMAGEPATHFROM == 'upload') {
                                             if($key['art_user_image']){
@@ -16716,7 +16725,7 @@ public function get_artistic_name($id=''){
                                            
                                              <li>
                                                 <div class="post-design-product">
-                                                   <a class="post_dot" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'" >'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'
+                                                   <a class="post_dot" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'" >'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'
                                                    </a>
                                                    <span role="presentation" aria-hidden="true"> · </span>
                                                    <div class="datespan"> 
