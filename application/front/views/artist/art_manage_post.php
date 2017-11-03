@@ -193,7 +193,7 @@
                 </a>
             </div>
             <!-- popup start -->
-            <div class="col-md-6 col-sm-12 "  >
+            <div class="col-md-6 col-sm-12 ">
 <?php 
 $userid = $this->session->userdata('aileenuser');
 $other_user = $artisticdata[0]['art_id'];
