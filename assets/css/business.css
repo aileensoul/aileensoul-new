@@ -5296,6 +5296,7 @@ div .comment {
 	.text_num{line-height:28px;}
 	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
 	.no-login #paddingtop_fixed{padding-top:64px !important;}
+	.ctre_date{line-height:1.5;}
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5614,10 +5615,11 @@ div .comment {
         font-size: 11px;
     }
     .post-design-pro-img {
-        padding-left: 7px;
+        padding-left: 0px;
     }
     .post-design-desc {
         font-style: 12px;
+		padding-left:0;
     }
     .profile-text-bui-user {
         padding-top: 5px;
@@ -5678,8 +5680,8 @@ div .comment {
         margin-left: 0;
     }
     .post-design-top {
-        padding-left: 9px;
-        padding-right: 9px;
+        padding-left: 10px;
+        padding-right: 10px;
         width: 100%;
     }
     .post-design-mid {
