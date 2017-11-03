@@ -287,7 +287,8 @@ if ($returnpage == '') {
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
         <footer>
-<?php echo $footer; ?>
+            <?php echo $login_footer ?>
+            <?php echo $footer; ?>
         </footer>
         <!-- END FOOTER -->
 

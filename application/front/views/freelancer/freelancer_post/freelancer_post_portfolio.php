@@ -84,8 +84,8 @@
                                             ?>">
                                         </fieldset>   
                                         <fieldset class="full-width">
-                                            <label><?php echo $this->lang->line("descri"); ?>:<span class="optional">(optional)</span</label>
-                                            <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter portfolio detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
+                                            <label><?php echo $this->lang->line("descri"); ?>:<span class="optional">(optional)</span></label>
+                                            <div tabindex="2" style="width: 100%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter portfolio detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                                 if ($portfolio1) {
                                                     echo $portfolio1;
                                                 }
@@ -105,6 +105,7 @@
                 </div>
             </section>
             <footer>
+                <?php echo $login_footer ?>
                 <?php echo $footer; ?>
             </footer>
           

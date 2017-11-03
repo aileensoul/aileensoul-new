@@ -147,6 +147,7 @@
         </section>
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
+        <?php echo $login_footer ?>
         <?php echo $footer; ?>
         <!-- END FOOTER -->
 
