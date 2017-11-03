@@ -1857,3 +1857,15 @@ $('.editor-content').click(function () {
 $('.close1').click(function () {
     $('body').removeClass('modal-open');
 });
+
+
+function removeimage() {
+    var fileInput = document.getElementById("file-1").files;
+    var ab = $(this).index();
+    alert(ab);
+    for (var i = 0; i < fileInput.length; i++)
+    {
+        var vname = fileInput[i].name;
+        
+    }
+}

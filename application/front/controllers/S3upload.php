@@ -19,7 +19,7 @@ class S3upload extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
 
-        $main_image = $this->config->item('bus_post_main_upload_path') . 'file_1506596466_HMnrY.png';
+        $main_image = $this->config->item('bus_post_thumb_upload_path') . 'nobusimage.jpg';
         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
     }
 

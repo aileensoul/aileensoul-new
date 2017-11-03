@@ -5847,7 +5847,7 @@ class Job extends MY_Controller {
         
         $jobid = $this->session->userdata('aileenuser');
         $jobdata = $this->common->select_data_by_id('job_reg', 'user_id', $jobid, $data = 'job_user_image,fname,lname,slug', $join_str = array());
-        $recemail = $this->common->select_data_by_id('recruiter', 'user_id', $notid, $data = 'rec_email', $join_str = array());
+        $recemail = $this->common->select_data_by_id('recruiter', 'user_id', $notid, $data = 'rec_comp_email', $join_str = array());
       
         $email_html = '';
         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
@@ -5882,7 +5882,7 @@ class Job extends MY_Controller {
                                     </table>';
         
         $subject = ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . ' Applied on your jobpost - Aileensoul.';
-        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail[0]['rec_email']);
+        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail[0]['rec_comp_email']);
     }
 
     public function clean($string) {

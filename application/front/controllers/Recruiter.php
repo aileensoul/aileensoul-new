@@ -4296,7 +4296,7 @@ class Recruiter extends MY_Controller {
 
                 $subject = $recdata[0]['re_comp_name'] . ' invited for an interview - Aileensoul.';
 
-                $jobemail = 'khyati.aileensoul@gmail.com';
+                //$jobemail = 'khyati.aileensoul@gmail.com';
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
             }
             echo'invited';

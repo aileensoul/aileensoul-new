@@ -1,6 +1,6 @@
 
                          <!-- <?php //echo form_open('search/recruiter_search');  ?> -->
-                         <form action=<?php echo base_url('recruiter/search')?> method="get">
+                         <form  class="searchrec">
                             <fieldset class="col-md-3 col-sm-5 col-xs-5 sec_h2">
 
                               <!--<input type="text" id="tags" name="skills" placeholder="Job Title, Skills, Industries">-->
@@ -37,3 +37,23 @@
                             </fieldset>
                        <?php echo form_close();?>
                   
+                            <script>
+                                jQuery('.searchrec').submit( function() { alert("hi");
+
+                                $.ajax({
+    type: 'POST',
+    url: '<?php echo base_url('recruiter/search')?>',
+    data: {
+        
+    },
+    dataType: 'application/x-www-form-urlencoded',
+    success: function(response) { alert("kkkrrr");
+        console.log( response );
+    },
+    error: function(errorThrown) {
+        console.log( errorThrown );
+    },
+});
+});
+                                </script>
+                             

@@ -1952,6 +1952,7 @@ body.modal-open{padding-left:0 !important; padding-right:0 !important;}
     position: relative;
     margin-bottom: 15px;
     margin-top: 0px;}
+.form_addedit #post_desc{height:188px;}
 
 
 .no-login header h2{font-weight:normal; line-height:1;}

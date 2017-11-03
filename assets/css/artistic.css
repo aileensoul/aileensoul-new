@@ -5060,6 +5060,7 @@ div .comment {
 	.buisness-menu .profile-pho-bui{border-radius:4px;}
 	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
 	.file-preview{width:520px;}
+	.ctre_date{line-height:1.5;}
 }
 
 @media screen and (max-width: 639px) {

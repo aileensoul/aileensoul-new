@@ -441,6 +441,12 @@
         <style type="text/css">
             #example2-error{margin-top: 42px!important;}
         </style>
+		<script>
+			
+			var SearchTextarea = $('#post_desc');
+			var strLength= SearchTextarea.val().length;
+			SearchTextarea[0].setSelectionRange(strLength, strLength);
+		</script>
 
 
     </body>

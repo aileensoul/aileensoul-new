@@ -63,11 +63,11 @@ line-height: 1;}
 			</td></tr>
 			<tr><td style="padding:25px 0px;">
                         <table width="100%" cellpadding="0" cellspacing="0">
-                            <tr><td style="text-align:center; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m1.png"><h3 style="font-size:13px;">Job Profile</h3><p style="font-size:11px;">Find best job options and connect with recruiters.</p></td>
-				<td style="text-align:center; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m2.png"><h3 style="font-size:13px;">Recruiter Profile</h3><p style="font-size:11px;">Hire quality employees here.</p></td>
-				<td style="text-align:center; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m3.png"><h3 style="font-size:13px; ">Freelance Profile</h3><p style="font-size:11px;">Hire freelancers and also find freelance work.</p></td>
-                                <td style="text-align:center; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m4.png"><h3 style="font-size:13px;">Business Profile</h3><p style="font-size:11px;">Grow your business network.</p></td>
-				<td style="text-align:center; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m5.png"><h3 style="font-size:13px;">Artistic Profile</h3><p style="font-size:11px;">Show your art & talent to the world.</p></td>
+                            <tr><td style="text-align:center; vertical-align:top; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m1.png"><h3 style="font-size:13px;">Job Profile</h3><p style="font-size:11px;">Find best job options and connect with recruiters.</p></td>
+				<td style="text-align:center; vertical-align:top; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m2.png"><h3 style="font-size:13px;">Recruiter Profile</h3><p style="font-size:11px;">Hire quality employees here.</p></td>
+				<td style="text-align:center; vertical-align:top; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m3.png"><h3 style="font-size:13px; ">Freelance Profile</h3><p style="font-size:11px;">Hire freelancers and also find freelance work.</p></td>
+                                <td style="text-align:center; vertical-align:top; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m4.png"><h3 style="font-size:13px;">Business Profile</h3><p style="font-size:11px;">Grow your business network.</p></td>
+				<td style="text-align:center; vertical-align:top; padding:0 10px;" width="20%"><img src="https://www.aileensoul.com/assets/img/m5.png"><h3 style="font-size:13px;">Artistic Profile</h3><p style="font-size:11px;">Show your art & talent to the world.</p></td>
                             </tr>
 			</table>
 			</td></tr>
