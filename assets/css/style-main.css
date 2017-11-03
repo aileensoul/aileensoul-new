@@ -1713,7 +1713,7 @@ body.cover{padding-bottom:60px;}
 	.login-frm{width: 100%!important;}
     .title{width:100%;}
 	.inner-form .login{width:99%;}
-	.btn-right{width:100%; float:left; padding-top:15px; padding-right:15px;}
+	.btn-right{width:100%; float:left; padding-top:15px; padding-right:0px;}
 
 	.main-inner{padding-bottom:90px;}
 	.header-login .input{width:46%;}
