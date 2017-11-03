@@ -35,11 +35,17 @@
 			<div class="container padding-360">
             <!-- MIDDLE SECTION START -->
 		<div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
-         <div class="full-box-module">   
+         <!--left bar box start-->
+                    <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
+                                          <?php  if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                             <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
+                                              <?php  }else{ ?>
+                                                <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $this->session->userdata('aileenuser') . '?page=job') ?>" title="' . $cache_time1" tabindex="-1" 
+                                               aria-hidden="true" rel="noopener">
+                                            <?php    } ?>
 <div class="bg-images no-cover-upload"> 
                                                 <?php
                                                 $image_ori = $this->config->item('rec_bg_thumb_upload_path') . $recdata[0]['profile_background'];
@@ -92,13 +98,21 @@
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
+                                                    <?php  if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                     <a href="<?php echo site_url('recruiter/profile'); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
+                                                    <?php } else { ?>
+                                                      <a href="<?php echo site_url('recruiter/profile/' . $this->session->userdata('aileenuser') . '?page=job'); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
+                                                    <?php } ?>
                                                 </span>
 
                                                 <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;  ?>
                                                 <div class="profile-boxProfile-name">
+                                                      <?php  if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                     <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
-                                                        <?php
+                                                      <?php } else { ?>
+                                                     <a href="<?php echo site_url('recruiter/profile/' . $this->session->userdata('aileenuser') . '?page=job'); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">    
+                                                      <?php } ?>
+                                                      <?php
                                                         if (ucfirst(strtolower($recdata[0]['designation']))) {
                                                             echo ucfirst(strtolower($recdata[0]['designation']));
                                                         } else {
@@ -106,6 +120,7 @@
                                                         }
                                                         ?></a>
                                                 </div>
+                                                <?php  if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                 <ul class=" left_box_menubar">
                                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="<?php echo base_url('recruiter/profile'); ?>"> Details</a>
                                                     </li>                                
@@ -115,12 +130,21 @@
                                                     </li>
 
                                                 </ul>
+                                                <?php } else { ?>
+                                                 <ul class=" left_box_menubar">
+                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="<?php echo base_url('recruiter/profile/' . $this->session->userdata('aileenuser') . '?page=job'); ?>"> Details</a>
+                                                    </li>                                
+                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="<?php echo base_url('recruiter/post/' . $this->session->userdata('aileenuser') . '?page=job'); ?>">Post</a>
+                                                    </li>
+                                                    
+                                                </ul>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>                             
                                 </div>
              
-			 
+			 <!--left bar box end-->
 			 <div  class="add-post-button mob-block">
 <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                     <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
