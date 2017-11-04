@@ -126,7 +126,7 @@ $(document).ready(function () {
                     $("#feedback_subject").val('');
                     $("#feedback_message").val('');
 
-                    $('.biderror .mes').html("<div class='pop_content'>Your feedback send successfully.</div>");
+                    $('.biderror .mes').html("<div class='pop_content'>Dear Valuable User , You recently gave us some really helpful comments about our service.we hope that this will help you better. We really appreciate the time you took to help us.thanks for being awesome User..!!</div>");
                      $('#bidmodal').modal('show');
 
                 } else {
