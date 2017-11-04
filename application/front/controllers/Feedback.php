@@ -28,6 +28,8 @@ class Feedback extends CI_Controller {
         $feedback_email = $_POST['feedback_email'];
         $subject = $_POST['feedback_subject'];
         $message = $_POST['feedback_message'];
+        $toemail = "dshah1341@gmail.com";
+        
 
         $data = array(
             'first_name' => $feedback_firstname,
@@ -40,6 +42,30 @@ class Feedback extends CI_Controller {
         );
         $insert_id = $this->common->insert_data_getid($data, 'feedback');
         if ($insert_id) {
+
+                    $email_html = '';
+
+                    $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+                    <tr><td>Hi admin!
+                     You have recevied a new feedback  from user  while you were away..</td><td>The user feedback detail follows:</td>';
+                     
+                     $email_html .= '<td>';
+                     $email_html .= 'Name:'. $feedback_firstname .' '. $feedback_lastname;
+                      $email_html .= '</td>';
+                       $email_html .= '<td>';
+                     $email_html .= 'Email Address:'. $feedback_email;
+                      $email_html .= '</td>';
+                       $email_html .= '<td>';
+                     $email_html .= 'Message:'. $message;
+                      $email_html .= '</td>';
+
+                    $email_html .= '</tr>
+                                    </table>';
+                
+                   // echo $email_html;
+
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $toemail);
+
             echo "ok";
         }
     }
