@@ -1716,9 +1716,7 @@ fieldset.fresher_radio label {
 }
 
 @media screen and (max-width: 360px) {
-    .back {
-    width: 73%;
-    }
+    .back {width: 73%;}
 	#paddingtop_fixed{padding-top:70px !important;}
     .profile-job-post-location-name-rec .designation_rec {
 		width: 70% !important;
@@ -1742,7 +1740,7 @@ fieldset.fresher_radio label {
         padding: 10px 7px;
     }
 	.date_re {
-        font-size: 10px;
+        font-size: 12px;
     }
 	.profile-box-art .right-side-menu li a {
         font-size: 14px;
@@ -1750,9 +1748,9 @@ fieldset.fresher_radio label {
     }
 	#industry option{width:100%;}
 	.hout_noti{font-size: 11px;}
-	.profile-job-details .display_inline{font-size: 10px;}
+	.profile-job-details .display_inline{font-size: 12px;}
     .profile-job-details .job_companyname {font-size: 10px;}
-    .profile-job-details ul li .lction p {font-size: 10px;}
+    .profile-job-details ul li .lction p {font-size: 12px;}
 	.created_date{font-size: 10px;}
 	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
 		width: 42%;
@@ -1772,7 +1770,7 @@ fieldset.fresher_radio label {
     }
 	.profile-job-details .post_title {
         width: 50%;
-        font-size: 12px;
+        font-size: 14px;
     }
 	.profile-job-details .job_companyname {
         width: 140px;
