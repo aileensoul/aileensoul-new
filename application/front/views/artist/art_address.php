@@ -156,6 +156,7 @@
         </div>
     </section>
 <footer>        
+  <?php echo $login_footer ?>
 <?php echo $footer;  ?>
 </footer>
 </div>

@@ -156,7 +156,7 @@ $userid = $this->session->userdata('aileenuser');
 
 
  <footer>
-        
+        <?php echo $login_footer ?>
 <?php echo $footer;  ?>
 </footer>
 </div>
