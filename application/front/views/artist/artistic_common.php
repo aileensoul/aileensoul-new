@@ -201,7 +201,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
                     <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artist/dashboard/' . $get_url); ?>"> Dashboard</a>
                     </li>
 
-                    <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artist/details/' . $artisticdata[0]['slug']); ?>"> Details</a>
+                    <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artist/details/' . $get_url); ?>"> Details</a>
                     </li>
 
 
