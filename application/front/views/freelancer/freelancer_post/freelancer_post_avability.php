@@ -79,7 +79,7 @@
                                     $work_hour = form_error('work_hour');
                                     ?>
                                     <fieldset class="col-md-5" <?php if ($inweek) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("work_as"); ?></label>
+                                        <label><?php echo $this->lang->line("work_as"); ?><span class="optional">(optional)</span></label>
                                         <input type="radio" tabindex="1" autofocus name="job_type" id="job_type" checked="checked" value="Full Time" <?php
                                         if ($job_type1 == 'Full Time') {
                                             echo 'checked';
@@ -93,7 +93,7 @@
                                                <?php echo form_error('job_type'); ?>
                                     </fieldset>
                                     <fieldset class=""<?php if ($work_hour) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("working_hours_week"); ?>:</label>
+                                        <label><?php echo $this->lang->line("working_hours_week"); ?>:<span class="optional">(optional)</span></label>
                                         <input type="text" name="work_hour" tabindex="2" placeholder="Enter working hour" value="<?php
                                         if ($work_hour1) {
                                             echo $work_hour1;
