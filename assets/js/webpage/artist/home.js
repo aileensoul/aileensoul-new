@@ -2110,8 +2110,8 @@ function seemorediv(abc) {
       if (vid.paused) {
          vid.play(); 
 
-         document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
-         function myHandler(e) { 
+         // document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+         // function myHandler(e) { 
           $.ajax({
             type: 'POST',
             url: base_url + "artist/showuser",
@@ -2122,7 +2122,7 @@ function seemorediv(abc) {
             }
         });
 
-      }
+     // }
 
        }
     else {
@@ -2134,8 +2134,8 @@ function seemorediv(abc) {
 
 function playtime(file_id, post_id){
 
-       document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
-      function myHandler(e) { 
+      //  document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+      // function myHandler(e) { 
 
                $.ajax({
                         type: 'POST',
@@ -2147,7 +2147,7 @@ function playtime(file_id, post_id){
                         }
                     });
 
-    }
+   // }
    
 }
 // var vid = document.getElementById("show_video");
