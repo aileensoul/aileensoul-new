@@ -19,7 +19,6 @@ class Email_model extends CI_Model {
             p{margin:0;}h3{margin:0;}
             .post-img-div, .post-img-profile{color: #fff;
 width: 60px;
-height: 60px;
 background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
 background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);

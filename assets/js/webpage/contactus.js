@@ -185,7 +185,7 @@ $(document).ready(function () {
             {
                 if (response == "ok") { 
 
-                    $('.biderror .mes').html("<div class='pop_content'>Your message send successfully.</div>");
+                    $('.biderror .mes').html("<div class='pop_content'>Thank you for being awesome user. We really appreciate the time you took to help us.</div>");
                      $('#bidmodal').modal('show');
 
                     $("#contact_name").val('');
@@ -196,7 +196,7 @@ $(document).ready(function () {
                     
                 } else {
 
-                    $('.biderror .mes').html("<div class='pop_content'>Your conatct not send successfully.</div>");
+                    $('.biderror .mes').html("<div class='pop_content'>Your contact not send successfully.</div>");
                      $('#bidmodal').modal('show');
                 }
             }

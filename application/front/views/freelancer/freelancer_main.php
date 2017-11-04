@@ -28,6 +28,7 @@
             </div>
         </section>
         <footer>
+            <?php echo $login_footer ?>
             <?php echo $footer; ?>
             <!--            <div class="copyright">
                             <div class="container">

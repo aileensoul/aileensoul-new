@@ -117,7 +117,8 @@
       <!-- Model Popup Close -->
 
 
-<footer>        
+<footer>       
+<?php echo $login_footer ?> 
 <?php echo $footer;  ?>
 </footer>
 

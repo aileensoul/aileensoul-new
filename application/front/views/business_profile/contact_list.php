@@ -214,7 +214,10 @@
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <!-- BEGIN INNER FOOTER -->
+        <footer>
+            <?php echo $login_footer ?>
         <?php echo $footer; ?>
+    </footer>
         <!-- script for update all read notification start-->
         <script type="text/javascript">
 //            function contactperson() {

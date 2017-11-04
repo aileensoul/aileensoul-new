@@ -64,7 +64,10 @@ class Freelancer extends MY_Controller {
 
     //freelancer workexp first  info page controller start
 
-    public function freelancer_post_basic_information() {
+    public function freelancer_post_basic_information($postid = '') {
+        if ($postid != '') {
+            $this->data['livepostid'] = $postid;
+        }
         $userid = $this->session->userdata('aileenuser');
         //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
@@ -105,6 +108,12 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE DESIGNATION END
 //FREELANCER_APPLY POST_BASIC_INFORMATION PAGE DATA INSERT START
     public function freelancer_post_basic_information_insert() {
+        
+        
+        if ($this->input->post('livepostid')) {
+            $postid = trim($this->input->post('livepostid'));
+        }
+       
         $userid = $this->session->userdata('aileenuser');
 
 
@@ -152,10 +161,21 @@ class Freelancer extends MY_Controller {
                 $updatedata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
                 if ($updatedata) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
+                   if($postid){
+                    redirect('freelancer-work/address-information/' . $postid, refresh);
+                   }else{
                     redirect('freelancer-work/address-information', refresh);
+                       
+                   }
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
+                    if($postid){
+                    redirect('freelancer-work/basic-information/' . $postid, refresh);
+                   }else{
                     redirect('freelancer-work/basic-information', refresh);
+                       
+                   }
+                   
                 }
             } else {
 
@@ -176,10 +196,24 @@ class Freelancer extends MY_Controller {
                 $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
+                   
+                    if($postid){
+                    redirect('freelancer-work/address-information/' . $postid, refresh);
+                   }else{
                     redirect('freelancer-work/address-information', refresh);
+                       
+                   }
+                   
                 } else {
+                    
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    if($postid){
+                    redirect('freelancer-work/basic-information/' . $postid, refresh);
+                   }else{
                     redirect('freelancer-work/basic-information', refresh);
+                       
+                   }
+                    
                 }
             }
         }
@@ -268,7 +302,12 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_APPLY USER DEACTIAVTE CHECK START
 //FREELANCER_APPLY ADDRESS PAGE START
-    public function freelancer_post_address_information() {
+    public function freelancer_post_address_information($postid = '') {
+       
+        if ($postid != '') {
+            $this->data['livepostid'] = $postid;
+        }
+        
         $userid = $this->session->userdata('aileenuser');
         //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
@@ -361,6 +400,11 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY ADDRESS INFORMATION INSERT CODE START
     public function freelancer_post_address_information_insert() {
         $userid = $this->session->userdata('aileenuser');
+        
+        if ($this->input->post('livepostid')) {
+            $postid = trim($this->input->post('livepostid'));
+        }
+        
         if ($this->input->post('next')) {
             $this->form_validation->set_rules('country', 'Country', 'required');
             $this->form_validation->set_rules('state', 'State', 'required');
@@ -396,10 +440,22 @@ class Freelancer extends MY_Controller {
                 $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
                 if ($updatdata) {
                     $this->session->set_flashdata('success', 'Address information updated successfully');
+                   if($postid){
+                    redirect('freelancer-work/professional-information/' . $postid, refresh);
+                   }else{
                     redirect('freelancer-work/professional-information', refresh);
+                       
+                   }
+                   
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
+                    if($postid){
+                    redirect('freelancer-work/address-information/' . $postid, refresh);
+                   }else{
                     redirect('freelancer-work/address-information', refresh);
+                       
+                   }
+                    
                 }
             }
         }
@@ -408,7 +464,12 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY ADDRESS INFORMATION INSERT CODE END
 //FREELANCER_APPLY POST_PROFESSIONAL_INFORMATION PAGE START
 //freelancer professional page controller Start
-    public function freelancer_post_professional_information() {
+    public function freelancer_post_professional_information($postid = '') {
+        
+        if ($postid != '') {
+            $this->data['livepostid'] = $postid;
+        }
+        
         $userid = $this->session->userdata('aileenuser');
         //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
@@ -462,6 +523,10 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY POST_PROFESSIONAL_INFORMATION PAGE START
 //FREELANCER_APPLY POST_PROFESSIONAL_INFORMATION INSERT DATA START
     public function freelancer_post_professional_information_insert() {
+        if ($this->input->post('livepostid')) {
+            $postid = trim($this->input->post('livepostid'));
+        }
+        
         $userid = $this->session->userdata('aileenuser');
         $skill1 = $this->input->post('skills');
         $skills = explode(',', $skill1);
@@ -531,10 +596,22 @@ class Freelancer extends MY_Controller {
                 $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
                 if ($updatdata) {
                     $this->session->set_flashdata('success', 'professional information updated successfully');
+                   if($postid){
+                    redirect('freelancer-work/rate/' . $postid, refresh);
+                   }else{
                     redirect('freelancer-work/rate', refresh);
+                       
+                   }
+                   
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('freelancer-work/professional-information', refresh);
+                    if($postid){
+                    redirect('freelancer-work/rate/' . $postid, refresh);
+                   }else{
+                    redirect('freelancer-work/rate', refresh);
+                       
+                   }
+                   
                 }
             }
         }
@@ -543,7 +620,11 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY POST_PROFESSIONAL_INFORMATION INSERT DATA END
 //FREELANCER_APPLY RATE PAGE START
 //freelancer rate page controller Start 
-    public function freelancer_post_rate() {
+    public function freelancer_post_rate($postid = '') {
+        
+         if ($postid != '') {
+            $this->data['livepostid'] = $postid;
+        }
         $userid = $this->session->userdata('aileenuser');
 //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
@@ -571,6 +652,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY RATE PAGE END
 //FREELANCER_APPLY RATE PAGE DATA INSERT START
     public function freelancer_post_rate_insert() {
+        if ($this->input->post('livepostid')) {
+            $postid = trim($this->input->post('livepostid'));
+        }
         $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->post('next')) {
@@ -611,10 +695,22 @@ class Freelancer extends MY_Controller {
             $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
             if ($updatdata) {
                 $this->session->set_flashdata('success', 'Rate information updated successfully');
-                redirect('freelancer-work/avability', refresh);
+               if($postid){
+                    redirect('freelancer-work/avability/' . $postid, refresh);
+                   }else{
+                    redirect('freelancer-work/avability', refresh);
+                       
+                   }
+               
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('freelancer-work/rate', refresh);
+                if($postid){
+                    redirect('freelancer-work/rate/' . $postid, refresh);
+                   }else{
+                    redirect('freelancer-work/rate', refresh);
+                       
+                   }
+               
             }
         }
     }
@@ -622,7 +718,10 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY RATE PAGE DATA INSERT END
 //FREELANCER_APPLY AVABILITY PAGE START
 //freelancer avability page controller Start
-    public function freelancer_post_avability() {
+    public function freelancer_post_avability($postid = '') {
+        if ($postid != '') {
+            $this->data['livepostid'] = $postid;
+        }
         $userid = $this->session->userdata('aileenuser');
 //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
@@ -648,7 +747,9 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY AVABILITY PAGE END
 //FREELANCER_APPLY AVABILITY PAGE DATA INSERT START
     public function freelancer_post_avability_insert() {
-
+if ($this->input->post('livepostid')) {
+            $postid = trim($this->input->post('livepostid'));
+        }
         $userid = $this->session->userdata('aileenuser');
         if ($this->input->post('previous')) {
             redirect('freelancer/freelancer_post_rate', refresh);
@@ -682,17 +783,32 @@ class Freelancer extends MY_Controller {
             $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
             if ($updatdata) {
                 $this->session->set_flashdata('success', 'Avability information updated successfully');
-                redirect('freelancer-work/education', refresh);
+            if($postid){
+                    redirect('freelancer-work/education/' . $postid, refresh);
+                   }else{
+                    redirect('freelancer-work/education', refresh);
+                       
+                   }
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('freelancer-work/avability', refresh);
+                if($postid){
+                    redirect('freelancer-work/avability/' . $postid, refresh);
+                   }else{
+                    redirect('freelancer-work/avability', refresh);
+                       
+                   }
             }
         }
     }
 
 //FREELANCER_APPLY AVABILITY PAGE DATA INSERT END
 //FREELANCER_APPLY EDUCATION PAGE START
-    public function freelancer_post_education() {
+    public function freelancer_post_education($postid = '') {
+        
+        if ($postid != '') {
+            $this->data['livepostid'] = $postid;
+        }
+        
         $userid = $this->session->userdata('aileenuser');
 //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
@@ -798,6 +914,11 @@ class Freelancer extends MY_Controller {
 //ADD OTHER UNIVERSITY INTO DATABASE END
 //FREELANCER_APPLY EDUCATION PAGE DATA INSERT START
     public function freelancer_post_education_insert() {
+        
+        if ($this->input->post('livepostid')) {
+            $postid = trim($this->input->post('livepostid'));
+        }
+        
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
@@ -830,16 +951,32 @@ class Freelancer extends MY_Controller {
         $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
         if ($updatdata) {
             $this->session->set_flashdata('success', 'Education information updated successfully');
-            redirect('freelancer-work/portfolio', refresh);
+            if($postid){
+                    redirect('freelancer-work/portfolio/' . $postid, refresh);
+                   }else{
+                    redirect('freelancer-work/portfolio', refresh);
+                       
+                   }
+           
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('freelancer-work/education', refresh);
+               if($postid){
+                    redirect('freelancer-work/education/' . $postid, refresh);
+                   }else{
+                    redirect('freelancer-work/education', refresh);
+                       
+                   }
+           
         }
     }
 
 //FREELANCER_APPLY EDUCATION PAGE DATA INSERT END
 //FREELANCER_APPLY PORTFOLIO PAGE START
-    public function freelancer_post_portfolio() {
+    public function freelancer_post_portfolio($postid = '') {
+        if ($postid != '') {
+            $this->data['livepostid'] = $postid;
+        }
+        
         $userid = $this->session->userdata('aileenuser');
 //code for check user deactivate start
         $this->freelancer_apply_deactivate_check();
@@ -862,7 +999,84 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_APPLY PORTFOLIO PAGE END
 //FREELANCER_APPLY PORTFOLIO PAGE DATA INSERT START
-    public function freelancer_post_portfolio_insert() {
+    public function freelancer_post_portfolio_insert($postliveid) {
+          // echo 123; die();
+        if ($postliveid) {
+             
+            $id = trim($postliveid);
+             $userid = $this->session->userdata('aileenuser');
+             $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $id))->row()->user_id;
+            
+        $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
+        $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           
+        if($userdata){
+        }else{
+             $data = array(
+                'post_id' => $id,
+                'user_id' => $userid,
+                'status' => 1,
+                'created_date' => date('Y-m-d h:i:s', time()),
+                'modify_date' => date('Y-m-d h:i:s', time()),
+                'is_delete' => 0,
+                'job_delete' => 0,
+                'job_save' => 3
+            );
+            $insert_id = $this->common->insert_data_getid($data, 'freelancer_apply');
+            // insert notification
+            $data = array(
+                'not_type' => 3,
+                'not_from_id' => $userid,
+                'not_to_id' => $notid,
+                'not_read' => 2,
+                'not_from' => 4,
+                'not_product_id' => $insert_id,
+                "not_active" => 1,
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_id = $this->common->insert_data_getid($data, 'notification');
+            // end notoification
+            if ($insert_id) {
+                
+            $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+         
+            $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
+                  // apply mail start
+                     $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;">';
+                if ($postuser[0]['freelancer_post_user_image'] == '') {
+                    $fname = $postuser[0]['freelancer_post_fullname'];
+                    $lname = $postuser[0]['freelancer_post_username'];
+                    $sub_fname = substr($fname, 0, 1);
+                    $sub_lname = substr($lname, 0, 1);
+                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                } else {
+                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                }
+                $email_html .= '<td style="padding:5px;">
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
+                    // mail end
+                
+                $applypost = 'Applied';
+               
+            }
+            echo $applypost;
+        }
+        }
+     
         $portfolio = $_POST['portfolio'];
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
@@ -2039,6 +2253,17 @@ class Freelancer extends MY_Controller {
         // $this->data['postdetail'] = $unique;
         if (count($unique) > 0) {
             foreach ($postdetail as $post) {
+                $cache_time1 = $post['post_name'];
+                $text = str_replace(" ", "-", $cache_time1);
+                $text = preg_replace("/[!$#%()]+/i", "", $text);
+                $text = strtolower($text);
+
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+
+                $cityname1 = str_replace(" ", "-", $cityname);
+                $cityname1 = preg_replace("/[!$#%()]+/i", "", $cityname1);
+                $cityname1 = strtolower($cityname1);
+                
                 $return_html .= '<div class="job-post-detail clearfix">
                                                         <div class="job-contact-frnd ">';
                 $return_html .= '<div class="profile-job-post-detail clearfix margin_btm"  id="removeapply' . $post['post_id'] . '">';
@@ -2053,12 +2278,12 @@ class Freelancer extends MY_Controller {
                 $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                 $return_html .= '</li>
                                                                                     <li>';
-                $return_html .= '<a href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
+                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . '-vacancy-in-' . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
                 $return_html .= ucwords($post['post_name']);
                 $return_html .= '</a> </li>';
                 $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
                 $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
-                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+               // $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
                 $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
                 $return_html .= '<li>';
                 if ($cityname || $countryname) {
@@ -2438,40 +2663,30 @@ class Freelancer extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s')
             );
             $updatedata = $this->common->insert_data_getid($data, 'notification');
+           
+            $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+         
+            $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
             // end notoification
             if ($updatedata) {
+             //   echo "123"; die();
                 if ($para == 'all') {
-                    $applypost = 'Applied';
-                }
-                $email_html = '';
+                    // apply mail start
+                     $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
                                             <td style="padding:5px;">';
-                if ($this->data['freepostdata'][0]['freelancer_post_user_image'] == '') {
-                    $fname = $this->data['freepostdata'][0]['freelancer_post_fullname'];
-                    $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
+                if ($postuser[0]['freelancer_post_user_image'] == '') {
+                    $fname = $postuser[0]['freelancer_post_fullname'];
+                    $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div style="color:#fff;
-    width:50px;
-    height:50px;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
-    font-size: 20px;
-    padding: 16px 0;
-    text-align: center;
-    text-transform: uppercase;
-    line-height:1;">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
                 } else {
-                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
                 $email_html .= '<td style="padding:5px;">
-						<p>Freelancer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -2479,9 +2694,13 @@ class Freelancer extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . ' Applied on your Project.';
+                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
+                    // mail end
+                    $applypost = 'Applied';
+                }
+               
             }
             echo $applypost;
         } else {
@@ -2511,48 +2730,40 @@ class Freelancer extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
             if ($insert_id) {
-                $applypost = 'Applied';
-                $email_html = '';
+                
+            $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+         
+            $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
+                  // apply mail start
+                     $email_html = '';
                 $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
                                             <td style="padding:5px;">';
-                if ($this->data['freepostdata'][0]['freelancer_post_user_image'] == '') {
-                    
-                    $fname = $this->data['freepostdata'][0]['freelancer_post_fullname'];
-                    $lname = $this->data['freepostdata'][0]['freelancer_post_username'];
+                if ($postuser[0]['freelancer_post_user_image'] == '') {
+                    $fname = $postuser[0]['freelancer_post_fullname'];
+                    $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div style="color:#fff;
-    width:50px;
-    height:50px;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
-    font-size: 20px;
-    padding: 16px 0;
-    text-align: center;
-    text-transform: uppercase;
-    line-height:1;">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
-                    
+                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
                 } else {
-                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $this->data['freepostdata'][0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
                 $email_html .= '<td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $user_id . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $this->data['freepostdata'][0]['freelancer_post_fullname'] . " " . $this->data['freepostdata'][0]['freelancer_post_username'] . ' Applied on your Project.';
+                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiredata[0]['email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
+                    // mail end
+                
+                $applypost = 'Applied';
+               
             }
             echo $applypost;
         }
@@ -4662,7 +4873,7 @@ class Freelancer extends MY_Controller {
         $this->data['recliveid'] = $userid = $slugdata[1];
 
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
-        $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
+        $data = 'username,fullname,designation,freelancer_hire_user_image,user_id,profile_background';
         $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $join_str[0]['table'] = 'freelancer_hire_reg';
@@ -4687,5 +4898,40 @@ class Freelancer extends MY_Controller {
             $this->load->view('freelancer/freelancer_hire/project_live_login', $this->data);
         }
     }
+    
+//   public function freelancer_apply_reg(){
+//       if ($postid != '') {
+//           //code for check user deactivate start
+//        $this->freelancer_apply_deactivate_check();
+//        //code for check user deactivate end
+//           
+//           $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $postid))->row()->user_id;
+//            $userid = $this->session->userdata('aileenuser');
+//            
+//            $contition_array = array('post_id' => $postid, 'user_id' => $userid, 'is_delete' => 0);
+//            $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'app_id,count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//         
+//             $app_id = $userdata[0]['app_id'];
+//             if ($userdata[0]['total'] != 0) {
+//            $contition_array = array('job_delete' => 1);
+//            $jobdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'app_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//                 
+//                 $data = array(
+//                'job_delete' => 0,
+//                'job_save' => 3,
+//                'modify_date' => date('Y-m-d h:i:s', time())
+//            );
+//                  $updatedata = $this->common->update_data($data, 'freelancer_apply', 'app_id', $app_id);
+//                 
+//                 
+//                 
+//             }
+//            
+//       }
+//       
+//       
+//       
+//       
+//       
+   } 
 
-}

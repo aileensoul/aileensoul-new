@@ -66,7 +66,12 @@
                                     <form name="freelancer_post_portfolio" method="post" id="freelancer_post_portfolio" 
                                           class="clearfix"  enctype="multipart/form-data" >
                                         <fieldset> 
+<<<<<<< HEAD
                                             <label><?php echo $this->lang->line("attach"); ?>:<span class="optional">(optional)</span</label>
+                                           
+=======
+                                            <label><?php echo $this->lang->line("attach"); ?>:<span class="optional">(optional)</span></label>
+>>>>>>> ed5da57c97c34fcf477e3e88962ba13899e19e5a
                                             <input type="file" name="portfolio_attachment" id="portfolio_attachment" class="portfolio_attachment" tabindex="1" autofocus placeholder="Portfolio attachment" multiple="" />&nbsp;&nbsp;&nbsp; 
                                             <span id ="filename" class="file_name_pdf"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
                                             <div class="portfolio_image" style="color:#f00; display: block;"></div>
@@ -84,8 +89,8 @@
                                             ?>">
                                         </fieldset>   
                                         <fieldset class="full-width">
-                                            <label><?php echo $this->lang->line("descri"); ?>:<span class="optional">(optional)</span</label>
-                                            <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter portfolio detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
+                                            <label><?php echo $this->lang->line("descri"); ?>:<span class="optional">(optional)</span></label>
+                                            <div tabindex="2" style="width: 100%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter portfolio detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                                 if ($portfolio1) {
                                                     echo $portfolio1;
                                                 }
@@ -105,12 +110,21 @@
                 </div>
             </section>
             <footer>
+                <?php echo $login_footer ?>
                 <?php echo $footer; ?>
             </footer>
           
             </script>
             <script>
                 var base_url = '<?php echo base_url(); ?>';
+                var postid = '<?php echo $livepostid; ?>';
+                
+                if(postid != ''){
+                    
+                 var prourl =   "freelancer/freelancer_post_portfolio_insert/" + postid;
+                }else{
+                 var prourl =   "freelancer/freelancer_post_portfolio_insert";
+                }
                
             </script>
             <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver='.time()); ?>"></script>

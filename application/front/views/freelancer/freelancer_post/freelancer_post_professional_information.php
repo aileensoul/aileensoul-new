@@ -99,6 +99,10 @@
                                 $experience_year = form_error('experience_year');
                                 ?>
                                 <fieldset class="full-width" <?php if ($field) { ?> class="error-msg" <?php } ?>>
+                                    <?php     if ($livepostid) { ?>
+                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
+                                    <?php    }
+                                        ?>
                                     <label><?php echo $this->lang->line("your_field"); ?>:<span class="red">*</span></label> 
 
                                     <select tabindex="1" autofocus name="field" id="field" class="field_other">
@@ -208,6 +212,7 @@
             </div>
         </section>
         <footer>
+            <?php echo $login_footer ?>
 <?php echo $footer; ?>
         </footer>
 

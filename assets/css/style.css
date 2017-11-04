@@ -4,10 +4,9 @@ html {
     position: relative;
 }
 body {
-    position: relative;
     font-size: 16px;
     color: #000;
-    padding: 0;
+    padding: 0 0 60px;
     background-color: #f3f9fb;
     margin: 0;
     line-height: 22px;
@@ -515,6 +514,7 @@ hr {
     padding-left: 0px!important;
 }
 #paddingtop_fixed{padding-top: 83px!important; overflow:hidden;}
+.no-login #paddingtop_fixed{padding-top: 70px!important;}
 
 /***  form css  ***/
 form {
@@ -1953,6 +1953,7 @@ body.modal-open{padding-left:0 !important; padding-right:0 !important;}
     margin-bottom: 15px;
     margin-top: 0px;}
 .form_addedit #post_desc{height:188px;}
+body.freelancer_home{padding-bottom:0;}
 
 
 .no-login header h2{font-weight:normal; line-height:1;}

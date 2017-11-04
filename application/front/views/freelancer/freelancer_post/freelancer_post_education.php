@@ -81,7 +81,15 @@
                                     $address = form_error('address');
                                     ?>
                                     <fieldset <?php if ($degree) { ?> class="error-msg" <?php } ?>>
+<<<<<<< HEAD
                                         <label><?php echo $this->lang->line("higher_degree"); ?>:<span class="optional">(optional)</span</label>
+                                       <?php     if ($livepostid) { ?>
+                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
+                                    <?php    }
+                                        ?>
+=======
+                                        <label><?php echo $this->lang->line("higher_degree"); ?>:<span class="optional">(optional)</span></label>
+>>>>>>> ed5da57c97c34fcf477e3e88962ba13899e19e5a
                                         <select name="degree" tabindex="1" autofocus id="degree">
                                             <option value="">Select your degree</option>
                                             <?php
@@ -111,7 +119,7 @@
                                     $stream_data = $this->data['$stream_data'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
                                     ?>
                                     <fieldset <?php if ($stream) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("stream"); ?>:<span class="optional">(optional)</span</label>
+                                        <label><?php echo $this->lang->line("stream"); ?>:<span class="optional">(optional)</span></label>
                                         <select name="stream" id="stream" tabindex="2">
                                             <?php
                                             if ($stream1) {
@@ -131,7 +139,7 @@
 <?php echo form_error('stream'); ?>  
                                     </fieldset>
                                     <fieldset <?php if ($univercity) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("university"); ?>:<span class="optional">(optional)</span</label>
+                                        <label><?php echo $this->lang->line("university"); ?>:<span class="optional">(optional)</span></label>
                                         <select name="university" id="university" tabindex="3" class="university_1">
                                             <option value="" selected option disabled>Select your University</option>
                                             <?php
@@ -156,7 +164,7 @@
 <?php echo form_error('university'); ?> 
                                     </fieldset>
                                     <fieldset <?php if ($college) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("college"); ?>:<span class="optional">(optional)</span</label>
+                                        <label><?php echo $this->lang->line("college"); ?>:<span class="optional">(optional)</span></label>
                                         <input type="text" name="college" id="college" tabindex="4" placeholder="Enter college"  value="<?php
                                         if ($college1) {
                                             echo $college1;
@@ -165,7 +173,7 @@
 <?php echo form_error('college'); ?> 
                                     </fieldset>
                                     <fieldset <?php if ($percentage) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("percentage"); ?>:<span class="optional">(optional)</span</label>
+                                        <label><?php echo $this->lang->line("percentage"); ?>:<span class="optional">(optional)</span></label>
                                         <input type="text" name="percentage" placeholder="Enter percentage" tabindex="5" value="<?php
                                         if ($percentage1) {
                                             echo $percentage1;
@@ -174,7 +182,7 @@
 <?php echo form_error('percentage'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($passingyear) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("year_passing"); ?>:<span class="optional">(optional)</span</label>
+                                        <label><?php echo $this->lang->line("year_passing"); ?>:<span class="optional">(optional)</span></label>
                                         <select name="passingyear" tabindex="6">
                                             <option value="" selected option disabled><?php echo $this->lang->line("year_passing"); ?></option>
                                             <?php
@@ -206,6 +214,7 @@
                 </div>
             </section>
             <footer>
+                <?php echo $login_footer ?>
 <?php echo $footer; ?>
             </footer>
                    <!-- Bid-modal  -->

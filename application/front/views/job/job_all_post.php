@@ -284,9 +284,9 @@
          </div>
       </div>
       <!-- Model Popup Close -->
-<footer>        
+      
 <?php echo $footer;  ?>
-</footer>
+
 
 <!-- script for skill textbox automatic start-->
 

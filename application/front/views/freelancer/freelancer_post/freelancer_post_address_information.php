@@ -93,6 +93,10 @@
                                     $pincode = form_error('pincode');
                                     ?> 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
+                                        <?php     if ($livepostid) { ?>
+                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
+                                    <?php    }
+                                        ?>
                                         <label><?php echo $this->lang->line("country"); ?>:<span class="red">*</span></label>
                                         <select tabindex="1" autofocus name="country" id="country">
                                             <option value=""><?php echo $this->lang->line("select_country"); ?></option>
@@ -184,6 +188,7 @@
                 </div>
             </section>
             <footer>
+                <?php echo $login_footer ?>
                 <?php echo $footer; ?>
             </footer>
             <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
