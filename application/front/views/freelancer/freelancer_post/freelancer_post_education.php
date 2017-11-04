@@ -82,6 +82,10 @@
                                     ?>
                                     <fieldset <?php if ($degree) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("higher_degree"); ?>:<span class="optional">(optional)</span</label>
+                                       <?php     if ($livepostid) { ?>
+                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
+                                    <?php    }
+                                        ?>
                                         <select name="degree" tabindex="1" autofocus id="degree">
                                             <option value="">Select your degree</option>
                                             <?php

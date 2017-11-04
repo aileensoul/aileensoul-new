@@ -83,6 +83,7 @@ jQuery(document).ready(function ($) {
 
 
                     if (foundPresentpdf == false) {
+                      
                         $(".portfolio_image").html("Please select only pdf file.");
                         event.preventDefault();
                         return false;
@@ -94,22 +95,30 @@ jQuery(document).ready(function ($) {
                         fd.append('portfolio', portfolio);
                         fd.append('image_hidden_portfolio', image_hidden_portfolio);
                         $.ajax({
-                            url:  base_url + "freelancer/freelancer_post_portfolio_insert",
+                            url:  base_url + prourl,
                             type: "POST",
                             data: fd,
                             processData: false,
                             contentType: false,
                             success: function (data) {
+                               
                                 if (free_post_step == 7) {
+                                   
                                     window.location =  base_url + "freelancer-work/freelancer-details";
                                 } else {
+                                    if(postid != ''){
+                                        
+                                    window.location =  base_url + "freelancer-work/home/live-post";
+                                    
+                                }else{
                                     window.location =  base_url + "freelancer-work/home";
+                                }
                                 }
                             }
                         });
 
                     }
-
+                  
                     event.preventDefault();
                     return false;
                 }

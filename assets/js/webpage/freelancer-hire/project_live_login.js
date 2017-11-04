@@ -315,18 +315,16 @@ $(document).ready(function () {
             { //alert("ksjkskjds");
               //alert(postid);
                 var userid = response.userid;
-                if (response.okmsg == "ok") {// alert(1111);
-                    if (postid == '') { //alert(777);
+                if (response.okmsg == "ok") { 
+                    if (postid == '') { 
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                        window.location = base_url + "freelancer-work/home/live-post";
+                        window.location = base_url + "freelancer-work/profile";
                         sendmail(userid);
-                    } else {//alert('aaaaa');
-                       
-                                    //  alert(postid);
-                   //  alert(8888)
+                    } else {
+                      
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                     //  alert(base_url + 'job/profile/live-post?postid=' + postid);
-                        window.location = base_url + 'freelancer-work/home/live-post/' + postid;
+                        window.location = base_url + 'freelancer-work/profile/live-post/' + postid;
                        sendmail(userid);
                         
 //                        var alldata = 'all';
@@ -539,7 +537,7 @@ $(document).ready(function () {
 
                     } else
                     {
-                        window.location = base_url + "freelancer-hire/";
+                        window.location = base_url + "freelancer-work/";
                     }
 
                 } else if (response.data == "password") {

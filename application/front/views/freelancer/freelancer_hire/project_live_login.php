@@ -355,7 +355,7 @@
             /*second*/
 
         </style>
-   <body class="page-container-bg-solid page-boxed no-login">
+   <body class="page-container-bg-solid page-boxed no-login freeh3">
 
      <header>
             <div class="container">

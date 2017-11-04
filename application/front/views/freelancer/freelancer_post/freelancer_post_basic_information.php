@@ -100,6 +100,10 @@
                                     ?>
                                     <fieldset <?php if ($firstname) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("first_name"); ?>:<span class="red">*</span></label>
+                                   <?php     if ($livepostid) { ?>
+                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
+                                    <?php    }
+                                        ?>
                                         <input tabindex="1" autofocus type="text" name="firstname" id="firstname" placeholder="Enter full name" value="<?php
                                         if ($firstname1) {
                                             echo $firstname1;

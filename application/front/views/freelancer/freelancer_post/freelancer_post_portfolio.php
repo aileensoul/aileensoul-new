@@ -67,6 +67,7 @@
                                           class="clearfix"  enctype="multipart/form-data" >
                                         <fieldset> 
                                             <label><?php echo $this->lang->line("attach"); ?>:<span class="optional">(optional)</span</label>
+                                           
                                             <input type="file" name="portfolio_attachment" id="portfolio_attachment" class="portfolio_attachment" tabindex="1" autofocus placeholder="Portfolio attachment" multiple="" />&nbsp;&nbsp;&nbsp; 
                                             <span id ="filename" class="file_name_pdf"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
                                             <div class="portfolio_image" style="color:#f00; display: block;"></div>
@@ -112,6 +113,14 @@
             </script>
             <script>
                 var base_url = '<?php echo base_url(); ?>';
+                var postid = '<?php echo $livepostid; ?>';
+                
+                if(postid != ''){
+                    
+                 var prourl =   "freelancer/freelancer_post_portfolio_insert/" + postid;
+                }else{
+                 var prourl =   "freelancer/freelancer_post_portfolio_insert";
+                }
                
             </script>
             <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver='.time()); ?>"></script>

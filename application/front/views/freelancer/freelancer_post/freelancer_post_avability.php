@@ -80,6 +80,10 @@
                                     ?>
                                     <fieldset class="col-md-5" <?php if ($inweek) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("work_as"); ?></label>
+                                       <?php     if ($livepostid) { ?>
+                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
+                                    <?php    }
+                                        ?>
                                         <input type="radio" tabindex="1" autofocus name="job_type" id="job_type" checked="checked" value="Full Time" <?php
                                         if ($job_type1 == 'Full Time') {
                                             echo 'checked';
