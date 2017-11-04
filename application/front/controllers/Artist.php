@@ -2254,7 +2254,7 @@ public function ajax_userlist() {
                                                 <li class="folle_text">
                                                      <div class="">
                                                      <div class="follow-li-text " style="padding: 0;">
-                                                <a title="' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) . '" href="' . base_url('artist/dashboard/' . $user['slug']) . '">' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) .'</a>
+                                                <a title="' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) . '" href="' . base_url('artist/dashboard/' . $geturl) . '">' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) .'</a>
                                                                             </div>
                                                                             <div>';            
             $return_html .= '<a>';
