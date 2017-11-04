@@ -2681,7 +2681,7 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    $email_html .= '<div class="post-img-user">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
@@ -2744,7 +2744,7 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
@@ -4420,7 +4420,7 @@ if ($this->input->post('livepostid')) {
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
                     $email_html .= '<div class="post-img-div">
-                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> ';
+                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
                 }
                 $email_html .= '<td style="padding:5px;">
 						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
