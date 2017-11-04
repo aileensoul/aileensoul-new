@@ -314,7 +314,10 @@
                                                     </div>
                                                 </div>-->
                         <!-- Model Popup Close -->
-                        <?php echo $footer; ?>
+                        <footer>
+                            <?php echo $login_footer ?>
+                            <?php echo $footer; ?>
+                    </footer>
                         <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js');    ?>"></script>-->
                         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
                         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>

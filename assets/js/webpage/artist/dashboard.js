@@ -2171,8 +2171,8 @@ $(document).ready(function(){
       if (vid.paused) {
          vid.play(); 
 
-         document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
-         function myHandler(e) { 
+         // document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+         // function myHandler(e) { 
           $.ajax({
             type: 'POST',
             url: base_url + "artist/showuser",
@@ -2183,7 +2183,7 @@ $(document).ready(function(){
             }
         });
 
-      }
+     // }
 
        }
     else {
@@ -2195,8 +2195,8 @@ $(document).ready(function(){
 
 function playtime(file_id, post_id){
 
-       document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
-      function myHandler(e) { 
+      //  document.getElementById('show_video' + file_id).addEventListener('ended',myHandler,false);
+      // function myHandler(e) { 
 
                $.ajax({
                         type: 'POST',
@@ -2208,6 +2208,6 @@ function playtime(file_id, post_id){
                         }
                     });
 
-    }
+   // }
    
 }

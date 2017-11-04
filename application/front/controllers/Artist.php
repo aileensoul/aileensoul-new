@@ -2076,12 +2076,16 @@ $datacount = count($otherdata);
              redirect('artist/');
         }
      //if user deactive profile then redirect to artist/index untill active profile End
-        $this->data['id'] = $id;
+        $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0];      
+        $artisticslug = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_id;
+        
 
         $contition_array = array('user_id' => $userid, 'status' => '1');
             $artslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($id == '' || $id == $artslug[0]['slug']) {
+        if ($regid == '' || $regid == $artslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2090,12 +2094,13 @@ $datacount = count($otherdata);
 
         } else {
 
-            $contition_array = array('slug' => $id, 'status' => '1' , 'art_step' => 4);
+            $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
         }
 
+    if($userid){
         if($this->data['artisticdata']){
             $artistic_name = $this->get_artistic_name($id);
       $this->data['title'] = ucfirst(strtolower($artistic_name)).TITLEPOSTFIX;
@@ -2107,7 +2112,13 @@ $datacount = count($otherdata);
         else if(!$this->data['artisticdata'] && ($id == $userid || $id == "")){
        redirect('artist/');
        }
-    }
+     }else{
+
+        include ('artistic_include.php');
+        $this->data['artistic_common_profile'] = $this->load->view('artist/artistic_common_profile', $this->data, true);
+        $this->load->view('artist/art_profile_live', $this->data);
+     }
+ }
 
 //keyskill automatic retrieve cobtroller start
     public function keyskill() {
