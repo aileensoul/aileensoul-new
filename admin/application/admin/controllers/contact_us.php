@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))
 
 
 
-class Feedback extends CI_Controller {
+class Contact_us extends CI_Controller {
 
     public $data;
 
@@ -24,8 +24,8 @@ public function __construct()
         }
    
         // Get Site Information
-        $this->data['title'] = 'Feedback | Aileensoul';
-        $this->data['module_name'] = 'Feedback Management';
+        $this->data['title'] = 'Contact Us | Aileensoul';
+        $this->data['module_name'] = 'Contact us Management';
 
          //Loadin Pagination Custome Config File
          $this->config->load('paging', TRUE);
@@ -34,76 +34,6 @@ public function __construct()
         include('include.php');
 
 }
-
-//     public function index() {
-
-//        // This is userd for pagination offset and limoi start
-//           $limit = $this->paging['per_page'];
-//         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
-
-//             $offset = ($this->uri->segment(5) != '') ? $this->uri->segment(5) : 0;
-
-//             $sortby = $this->uri->segment(3);
-
-//             $orderby = $this->uri->segment(4);
-
-//         } else {
-
-//             $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
-
-//             $sortby = 'feedback_id';
-
-//             $orderby = 'asc';
-
-//         }
-  
-//         $this->data['offset'] = $offset;
-
-//        $data='feedback_id,first_name,last_name,user_email,subject,description,created_date,is_delete';
-//        $contition_array = array('is_delete' => '0');
-//         $this->data['users'] = $this->common->select_data_by_condition('feedback', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
-// // This is userd for pagination offset and limoi End
-
-//       //echo "<pre>";print_r($this->data['users'] );die();
-
-//         //This if and else use for asc and desc while click on any field start
-//         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
-
-//             $this->paging['base_url'] = site_url("feedback/" . $short_by . "/" . $order_by);
-
-//         } else {
-
-//             $this->paging['base_url'] = site_url("feedback/");
-
-//         }
-
-//         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
-
-//             $this->paging['uri_segment'] = 5;
-
-//         } else {
-
-//             $this->paging['uri_segment'] = 3;
-
-//         }
-//         //This if and else use for asc and desc while click on any field End
-
-
-//         $contition_array = array( 'is_delete =' => '0');
-//         $this->paging['total_rows'] = count($this->common->select_data_by_condition('feedback', $contition_array, 'feedback_id'));
-
-//         $this->data['total_rows'] = $this->paging['total_rows'];
-
-//         $this->data['limit'] = $limit;
-
-//         $this->pagination->initialize($this->paging);
-
-//         $this->data['search_keyword'] = '';
-        
-//         $this->load->view('feedback/index', $this->data);
-//     }
-
-
     public function user() {
 
        // This is userd for pagination offset and limoi start
@@ -120,7 +50,7 @@ public function __construct()
 
             $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
 
-            $sortby = 'feedback_id';
+            $sortby = 'contact_id';
 
             $orderby = 'desc';
 
@@ -128,9 +58,9 @@ public function __construct()
   
         $this->data['offset'] = $offset;
 
-       $data='feedback_id,first_name,last_name,user_email,subject,description,created_date,is_delete';
+       $data='contact_id,contact_name,contact_lastname,contact_email,contact_subject,contact_message';
        $contition_array = array('is_delete' => '0');
-        $this->data['users'] = $this->common->select_data_by_condition('feedback', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
+        $this->data['users'] = $this->common->select_data_by_condition('contact_us', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 // This is userd for pagination offset and limoi End
 
       //echo "<pre>";print_r($this->data['users'] );die();
@@ -138,11 +68,11 @@ public function __construct()
         //This if and else use for asc and desc while click on any field start
         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 
-            $this->paging['base_url'] = site_url("feedback/user" . $short_by . "/" . $order_by);
+            $this->paging['base_url'] = site_url("contact_us/user" . $short_by . "/" . $order_by);
 
         } else {
 
-            $this->paging['base_url'] = site_url("feedback/user");
+            $this->paging['base_url'] = site_url("contact_us/user");
 
         }
 
@@ -159,7 +89,7 @@ public function __construct()
 
 
         $contition_array = array( 'is_delete =' => '0');
-        $this->paging['total_rows'] = count($this->common->select_data_by_condition('feedback', $contition_array, 'feedback_id'));
+        $this->paging['total_rows'] = count($this->common->select_data_by_condition('contact_us', $contition_array, 'contact_id'));
 
         $this->data['total_rows'] = $this->paging['total_rows'];
 
@@ -177,10 +107,10 @@ public function profile($id)
 {
   
     //FOR GETTING ALL DATA OF JOB_REG
-     $contition_array = array('feedback_id' => $id);           
-    $this->data['user'] = $this->common->select_data_by_condition('feedback', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+     $contition_array = array('contact_id' => $id);           
+    $this->data['user'] = $this->common->select_data_by_condition('contact_us', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-    $this->load->view('feedback/profile',$this->data);
+    $this->load->view('contact_us/profile',$this->data);
 }
 //view function is used for view profile of user End
 
@@ -193,7 +123,7 @@ public function clear_search()
           
             $this->session->unset_userdata('user_search_keyword');
               
-             redirect('feedback/user','refresh');          
+             redirect('contact_us/user','refresh');          
     } 
 }
 //clear search is used for unset session End
@@ -225,7 +155,7 @@ public function search()
 
             $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
 
-            $sortby = 'feedback_id';
+            $sortby = 'contact_id';
 
             $orderby = 'desc';
 
@@ -233,10 +163,10 @@ public function search()
   
         $this->data['offset'] = $offset;
         
-          $data='feedback_id,first_name,last_name,user_email,subject,description,created_date,is_delete';
-           $search_condition = "(first_name LIKE '%$search_keyword%' OR user_email LIKE '%$search_keyword%')";
+          $data='contact_id,contact_name,contact_lastname,contact_email,contact_subject,contact_message,created_date,is_delete';
+           $search_condition = "(contact_name LIKE '%$search_keyword%' OR contact_email LIKE '%$search_keyword%')";
             $contition_array = array('is_delete' => '0');
-            $this->data['users'] = $this->common->select_data_by_search('feedback', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
+            $this->data['users'] = $this->common->select_data_by_search('contact_us', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
  //echo "<pre>";print_r( $this->data['users']);die();
 // This is userd for pagination offset and limoi End
 
@@ -245,11 +175,11 @@ public function search()
         //This if and else use for asc and desc while click on any field start
         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 
-                $this->paging['base_url'] = site_url("feedback/search/" . $sortby . "/" . $orderby);
+                $this->paging['base_url'] = site_url("contact_us/search/" . $sortby . "/" . $orderby);
 
             } else {
 
-                $this->paging['base_url'] = site_url("feedback/search/");
+                $this->paging['base_url'] = site_url("contact_us/search/");
 
             }
 
@@ -265,7 +195,7 @@ public function search()
 
             }
 
-            $this->paging['total_rows'] = count($this->common->select_data_by_search('feedback', $search_condition, $contition_array, 'feedback_id'));
+            $this->paging['total_rows'] = count($this->common->select_data_by_search('contact_us', $search_condition, $contition_array, 'contact_id'));
 
             //for record display
 
@@ -294,7 +224,7 @@ public function search()
 
             $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
 
-            $sortby = 'feedback_id';
+            $sortby = 'contact_id';
 
             $orderby = 'desc';
 
@@ -302,10 +232,10 @@ public function search()
   
         $this->data['offset'] = $offset;
         
-          $data='feedback_id,first_name,last_name,user_email,subject,description,created_date,is_delete';
-           $search_condition = "(first_name LIKE '%$search_keyword%' OR user_email LIKE '%$search_keyword%')";
+          $data='contact_id,contact_name,contact_lastname,contact_email,contact_subject,contact_message,created_date,is_delete';
+           $search_condition = "(contact_name LIKE '%$search_keyword%' OR contact_email LIKE '%$search_keyword%')";
             $contition_array = array('is_delete' => '0');
-            $this->data['users'] = $this->common->select_data_by_search('feedback', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
+            $this->data['users'] = $this->common->select_data_by_search('contact_us', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
  //echo "<pre>";print_r( $this->data['users']);die();
 // This is userd for pagination offset and limoi End
 
@@ -314,11 +244,11 @@ public function search()
         //This if and else use for asc and desc while click on any field start
         if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
 
-                $this->paging['base_url'] = site_url("feedback/search/" . $sortby . "/" . $orderby);
+                $this->paging['base_url'] = site_url("contact_us/search/" . $sortby . "/" . $orderby);
 
             } else {
 
-                $this->paging['base_url'] = site_url("feedback/search/");
+                $this->paging['base_url'] = site_url("contact_us/search/");
 
             }
 
@@ -334,7 +264,7 @@ public function search()
 
             }
 
-            $this->paging['total_rows'] = count($this->common->select_data_by_search('feedback', $search_condition, $contition_array, 'feedback_id'));
+            $this->paging['total_rows'] = count($this->common->select_data_by_search('contact_us', $search_condition, $contition_array, 'contact_id'));
 
             //for record display
 
@@ -345,18 +275,18 @@ public function search()
             $this->pagination->initialize($this->paging);
     }
 
-        $this->load->view('feedback/index', $this->data);
+        $this->load->view('contact_us/index', $this->data);
 }
 
 //Delete feedback with ajax Start
 public function delete_user() 
 {
-     $feedback_id = $_POST['feedback_id'];
+     $contact_id = $_POST['contact_id'];
       $data = array(
             'is_delete' => 1
         );
 
-        $update = $this->common->update_data($data, 'feedback', 'feedback_id', $feedback_id);
+        $update = $this->common->update_data($data, 'contact_us', 'contact_id', $contact_id);
 }
 //Delete feedback with ajax End
 
