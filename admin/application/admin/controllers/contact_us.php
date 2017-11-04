@@ -58,8 +58,8 @@ public function __construct()
   
         $this->data['offset'] = $offset;
 
-       $data='contact_id,contact_name,contact_lastname,contact_email,contact_subject,contact_message';
-       $contition_array = array('is_delete' => '0');
+       $data='contact_id,contact_name,contact_lastname,contact_email,contact_subject,contact_message,created_date';
+       $contition_array = array('is_delete' => 0);
         $this->data['users'] = $this->common->select_data_by_condition('contact_us', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 // This is userd for pagination offset and limoi End
 
@@ -99,7 +99,7 @@ public function __construct()
 
         $this->data['search_keyword'] = '';
         
-        $this->load->view('feedback/index', $this->data);
+        $this->load->view('contact_us/index', $this->data);
     }
 
 //view function is used for view details of user Start

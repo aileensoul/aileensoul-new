@@ -19,7 +19,7 @@
                     Home
                 </a>
             </li>
-            <li class="active">Feedback</li>
+            <li class="active">Contact Us</li>
         </ol>
     </section>
 
@@ -35,7 +35,7 @@
           <div class="box box-primary mt0">
             <div class="box-body box-profile">
 
-              <h3 class="profile-username text-center"><?php echo ucfirst($user[0]['first_name']); echo ' ';echo ucfirst($user[0]['last_name']);  ?></h3>
+              <h3 class="profile-username text-center"><?php echo ucfirst($user[0]['contact_name']); echo ' ';echo ucfirst($user[0]['contact_lastname']);  ?></h3>
 
             </div>
             <!-- /.box-body -->
@@ -52,7 +52,7 @@
            
               <strong><i class="fa fa-map-marker margin-r-5"></i> Email Address</strong>
 
-            <p> <?php echo $user[0]['user_email']; ?> </p> 
+            <p> <?php echo $user[0]['contact_email']; ?> </p> 
             </div>
             <!-- /.box-body -->
           </div>
@@ -63,7 +63,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
 
-              <li class="active"><a href="#basic_information" data-toggle="tab"><i class="fa fa-fw fa-info-circle margin-r-5"></i>Feedback</a>
+              <li class="active"><a href="#basic_information" data-toggle="tab"><i class="fa fa-fw fa-info-circle margin-r-5"></i>Contact Us</a>
               </li>
 
             </ul>
@@ -79,14 +79,14 @@
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-2 control-label">
-                     <?php echo ucfirst($user[0]['first_name']); echo ' ';echo ucfirst($user[0]['last_name']);  ?>
+                     <?php echo ucfirst($user[0]['contact_name']); echo ' ';echo ucfirst($user[0]['contact_lastname']);  ?>
                     </div>
                   </div>
 
                   <div class="form-group">
                      <label for="inputName" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-2 control-label">
-                     <?php echo $user[0]['user_email']; ?> 
+                     <?php echo $user[0]['contact_email']; ?> 
                     </div>
                   </div>
 
@@ -95,7 +95,7 @@
                     <div class="col-sm-2 control-label">
 
                   <?php 
-                          echo $user[0]['subject'];
+                          echo $user[0]['contact_subject'];
                         
                   ?>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="col-sm-2 control-label">
 
                   <?php 
-                          echo $user[0]['description'];
+                          echo $user[0]['contact_message'];
                         
                   ?>
                     </div>

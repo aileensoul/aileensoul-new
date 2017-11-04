@@ -9,6 +9,8 @@ class Contact_us extends CI_Controller {
         parent::__construct();
         //AWS access info start
         $this->load->library('S3');
+        $this->load->library('form_validation');
+        $this->load->model('email_model');
         //AWS access info end
         include ('include.php');
     }
