@@ -1510,7 +1510,7 @@ pointer-events: none;}
 
 #InboxBody  div ul.notification_data_in_h2{float: none!important;}
 .freelancer_editpost_title #post_desc{height:188px;}
-
+.freeh3 h3{font-size: 23px;font-weight: 500;color: #5c5c5c;}
 
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
