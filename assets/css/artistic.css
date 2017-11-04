@@ -4157,7 +4157,7 @@ div .comment {
 .multi-select-container--positioned .multi-select-menu label {
     white-space: normal;
 }
-
+.post-design-commnet-box .comment-edit-butn{right: 20px;}
 /***  end select dropdown  ***/
 
 /***  media query  ***/
