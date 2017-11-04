@@ -2221,24 +2221,18 @@ class Recruiter extends MY_Controller {
                             $cache_time1 = $post['post_name'];
                         }
 
-                        $text = str_replace(" ", "-", $cache_time1);
-                        $text = preg_replace("/[.!$#%()]+/i", "", $text);
-                        $text = strtolower($text);
-                         if($text != ''){
-                           $text =  $text;
-                         }else{
-                            $text = ''; 
-                         }
-                        $cache_time1 = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                        if ($cache_time1 != '') {
+                        $text = strtolower($this->common->clean($cache_time1));
+                    } else {
+                        $text = '';
+                    }
+                        $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
-                        $cityname = str_replace(" ", "-", $cache_time1);
-                        $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
-                        $cityname = strtolower($cityname);
-                         if($cityname != ''){
-                           $cityname =  '-vacancy-in-' . $cityname;
-                         }else{
-                             $cityname = '';
-                         }
+                        if ($cityname != '') {
+                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                    } else {
+                        $cityname = '';
+                    }
 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/ri' . $post['user_id'] . '/po' . $post['post_id'] . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . base64_encode($post['user_id']) . '/' . base64_encode($post['post_id']) . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 

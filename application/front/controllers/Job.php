@@ -3231,14 +3231,24 @@ class Job extends MY_Controller {
 //Get All data for search End
 //Search Result Retrieve Start
     public function job_search() {
-
+        
+    $searchvalue = $this->uri->segment(1); 
+      
+     $skill = explode('jobs', $searchvalue);
+   
+      $location = explode('in-', $searchvalue);
+          
+          $search_job =  trim($skill[0]); 
+           $search_job =  trim($skill[0],'-'); 
+           $search_place =  $location[1];
+     
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         // search keyword insert into database start
 
-        $search_job = trim($this->input->get('skills'));
+       // $search_job = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_job;
-        $search_place = trim($this->input->get('searchplace'));
+      //  $search_place = trim($this->input->get('searchplace'));
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
@@ -4346,6 +4356,14 @@ class Job extends MY_Controller {
 
         $search_job = trim($_GET["skill"]);
         $search_place = trim($_GET["place"]);
+        
+//        $searchvalue = $this->uri->segment(1); 
+//      
+//        $skill = explode('-jobs', $searchvalue);
+//        $location = explode('in-', $searchvalue);
+//          
+//           $search_job =  $skill[0]; 
+//           $search_place =  $location[1]; 
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 

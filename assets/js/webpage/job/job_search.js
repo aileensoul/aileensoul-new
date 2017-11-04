@@ -36,22 +36,24 @@ function job_search(pagenum)
         return;
     }
     isProcessing = true;
+    
     $.ajax({
         type: 'POST',
          url: base_url + "job/ajax_job_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place,
+         //url: base_url + searchurl,
         data: {total_record:$("#total_record").val()},
         dataType: "html",
-        beforeSend: function () {
+        beforeSend: function () { 
             if (pagenum == 'undefined') {
                 $(".job-contact-frnd ").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
-            } else {
+            } else { 
                 $('#loader').show();
             }
         },
         complete: function () {
             $('#loader').hide();
         },
-        success: function (data) {
+        success: function (data) { 
 
             $('.loader').remove();
             $('.job-contact-frnd ').append(data);

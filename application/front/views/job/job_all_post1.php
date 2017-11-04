@@ -226,8 +226,23 @@
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
-    var skill = '<?php echo  $this->input->get('skills'); ?>';
-    var place = '<?php echo  $this->input->get('searchplace'); ?>';
+    var skill = '<?php echo  $keyword; ?>';
+    var place = '<?php echo  $keyword1; ?>';
+    
+    
+           
+//           if(skill == ""){
+//            var  searchurl = 'jobs-in-' + place;
+//             
+//           } else if(place == ""){
+//             var  searchurl = skill + '-jobs';
+//              
+//           }else{ 
+//             var  searchurl =  skill + '-jobs-in-' + place;
+//              
+//           }
+       
+       
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search.js?ver='.time()); ?>"></script>
