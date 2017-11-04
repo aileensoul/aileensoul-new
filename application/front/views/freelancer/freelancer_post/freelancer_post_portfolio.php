@@ -66,8 +66,12 @@
                                     <form name="freelancer_post_portfolio" method="post" id="freelancer_post_portfolio" 
                                           class="clearfix"  enctype="multipart/form-data" >
                                         <fieldset> 
+<<<<<<< HEAD
                                             <label><?php echo $this->lang->line("attach"); ?>:<span class="optional">(optional)</span</label>
                                            
+=======
+                                            <label><?php echo $this->lang->line("attach"); ?>:<span class="optional">(optional)</span></label>
+>>>>>>> ed5da57c97c34fcf477e3e88962ba13899e19e5a
                                             <input type="file" name="portfolio_attachment" id="portfolio_attachment" class="portfolio_attachment" tabindex="1" autofocus placeholder="Portfolio attachment" multiple="" />&nbsp;&nbsp;&nbsp; 
                                             <span id ="filename" class="file_name_pdf"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
                                             <div class="portfolio_image" style="color:#f00; display: block;"></div>

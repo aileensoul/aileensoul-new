@@ -39,16 +39,24 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             $image = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $image_ori = $image[0]['profile_background'];
-            if ($image_ori) {
+             if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['profile_background'])) {  ?>
+
+                <div class="bg-images no-cover-upload">
+                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                </div>
+
+            <?php  }else{
+
+            if ($image_ori) { 
                 ?>                                                    
                 <img src="<?php echo ART_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
                 <?php
-            } else {
+            } else { 
                 ?>
                 <div class="bg-images no-cover-upload">
                     <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                 </div>
-            <?php }
+            <?php } }
             ?>
         </div>
     </div>

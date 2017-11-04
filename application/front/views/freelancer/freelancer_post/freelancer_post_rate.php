@@ -82,11 +82,15 @@
                                     $hourly = form_error('hourly');
                                     ?>
                                     <fieldset <?php if ($hourly) { ?> class="error-msg" <?php } ?>>
+<<<<<<< HEAD
                                       <?php     if ($livepostid) { ?>
                                          <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
                                     <?php    }
                                         ?>
                                         <label><?php echo $this->lang->line("hourly"); ?>:<span class="optional">(optional)</span</label>
+=======
+                                        <label><?php echo $this->lang->line("hourly"); ?>:<span class="optional">(optional)</span></label>
+>>>>>>> ed5da57c97c34fcf477e3e88962ba13899e19e5a
                                         <input type="number" name="hourly" min="1" id="hourly" tabindex="1" autofocus placeholder="Enter hourly rate"  value="<?php
                                         if ($hourly1) {
                                             echo $hourly1;

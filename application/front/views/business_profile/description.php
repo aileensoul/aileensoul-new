@@ -247,7 +247,8 @@
                 </div>
             </div>
         </section>
-        <footer>
+        <footer>    
+            <?php echo $login_footer ?>
             <?php echo $footer; ?>
         </footer>
         <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());   ?>"></script>-->
