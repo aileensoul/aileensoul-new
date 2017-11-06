@@ -67,7 +67,7 @@
                                           class="clearfix"  enctype="multipart/form-data" >
                                         <fieldset> 
 
-                                            <label><?php echo $this->lang->line("attach"); ?>:<span class="optional">(optional)</span</label>
+                                          
                                            
 
                                             <label><?php echo $this->lang->line("attach"); ?>:<span class="optional">(optional)</span></label>

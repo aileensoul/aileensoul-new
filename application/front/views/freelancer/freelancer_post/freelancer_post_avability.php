@@ -79,15 +79,15 @@
                                     $work_hour = form_error('work_hour');
                                     ?>
                                     <fieldset class="col-md-5" <?php if ($inweek) { ?> class="error-msg" <?php } ?>>
-<<<<<<< HEAD
-                                        <label><?php echo $this->lang->line("work_as"); ?></label>
+
+                                       
                                        <?php     if ($livepostid) { ?>
                                          <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
                                     <?php    }
                                         ?>
-=======
+
                                         <label><?php echo $this->lang->line("work_as"); ?><span class="optional">(optional)</span></label>
->>>>>>> ed5da57c97c34fcf477e3e88962ba13899e19e5a
+
                                         <input type="radio" tabindex="1" autofocus name="job_type" id="job_type" checked="checked" value="Full Time" <?php
                                         if ($job_type1 == 'Full Time') {
                                             echo 'checked';
