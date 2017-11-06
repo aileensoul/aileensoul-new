@@ -74,7 +74,7 @@
                                                 Fresher&nbsp;&nbsp;
                                                 </label>
                                                 <fieldset class="hs-submit full-width left_nest">
-                                                   <input type="submit" id="next" tabindex="2" name="next" value="Submit">
+                                                   <input title="Submit" type="submit" id="next" tabindex="2" name="next" value="Submit">
                                                 </fieldset>
                                                 <?php echo form_close(); ?>
                                              </div>
@@ -261,7 +261,7 @@
                                                 </div>
                                              
                                                 <fieldset class="hs-submit full-width"> 
-                                                   <input style="" type="submit"  tabindex="8" id="next" name="next" value="Submit"  >
+                                                   <input title="Submit" style="" type="submit"  tabindex="8" id="next" name="next" value="Submit"  >
                                                 </fieldset>
                                                
                                                 <?php
@@ -379,11 +379,11 @@
                                                 </div>
                                                
                                                 <div class="hs-submit full-width fl" style="width: 100%; text-align: center;">
-                                                   <input type="button" id="btnAdd" value=" + ">
-                                                   <input type="button" id="btnRemove" value=" - " disabled="disabled">
+                                                   <input title="Add more Experience" type="button" id="btnAdd" value=" + ">
+                                                   <input title="Remove Experience" type="button" id="btnRemove" value=" - " disabled="disabled">
                                                 </div>
                                                 <fieldset class="hs-submit full-width"> 
-                                                   <input style="" type="submit" id="next" name="next" value="Submit">
+                                                   <input title="Submit" style="" type="submit" id="next" name="next" value="Submit">
                                                 </fieldset>
                                                 <?php echo form_close(); ?> 
                                              </div>
