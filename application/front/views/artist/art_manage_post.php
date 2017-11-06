@@ -459,9 +459,9 @@ if ($info) { ?>
       </div>
 
       
-<footer>
+
 <?php echo $footer; ?>
-</footer>
+
 
 <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>

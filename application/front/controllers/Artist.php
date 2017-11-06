@@ -334,7 +334,7 @@ class Artist extends MY_Controller {
 
             $this->form_validation->set_rules('country', 'Country', 'required');
             $this->form_validation->set_rules('state', 'State', 'required');
-           // $this->form_validation->set_rules('pincode', 'Pincode', 'numeric');
+            $this->form_validation->set_rules('city', 'City', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('artist/art_address');
             } else {
@@ -1329,10 +1329,10 @@ class Artist extends MY_Controller {
                                                                             $counter = $row['art_post'];
                                                                             $a = strlen($counter);
 
-                                      $return_html .= '<input size=1 id="text_num" class="text_num" value="'.(50 - $a).'" name=text_num disabled="disabled">';
+                                      $return_html .= '<input size=1 id="text_num_' . $row['art_post_id'] . '" class="text_num" value="'.(50 - $a).'" name=text_num disabled="disabled">';
 
                                       } else {
-                                       $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num disabled="disabled">';
+                                       $return_html .= '<input size=1 id="text_num_' . $row['art_post_id'] . '" class="text_num" value=50 name=text_num disabled="disabled">';
 
                                          } 
                                        $return_html .= '</div>

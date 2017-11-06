@@ -60,8 +60,8 @@ $mobile_agent = $this->agent->mobile;
                                 <!-- GET USER FOLLOE SUGESSION LIST START -->
                                 <!-- follower list end  -->
                             </div>
-                            
-							<div class="tablate-potrat-add">
+
+                            <div class="tablate-potrat-add">
                                 <div class="fw text-center pt10">
                                     <script type="text/javascript">
                                         (function () {
@@ -152,24 +152,24 @@ $mobile_agent = $this->agent->mobile;
                                     </div>
                                 </div>
                             </div>
-							<div class="custom-user-list">
-							<div class="full-box-module_follow fw">
-                                <!-- follower list start  -->  
-                                <div class="common-form">
-                                    <h3 class="user_list_head">User List
-                                    </h3>
-                                    <div class="seeall">
-                                        <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
-                                        </a>
+                            <div class="custom-user-list">
+                                <div class="full-box-module_follow fw">
+                                    <!-- follower list start  -->  
+                                    <div class="common-form">
+                                        <h3 class="user_list_head">User List
+                                        </h3>
+                                        <div class="seeall">
+                                            <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
+                                            </a>
+                                        </div>
                                     </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
+                                    <div class="profile-boxProfileCard_follow fw  module">
+                                    </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START -->
+                                    <!-- follower list end  -->
                                 </div>
-                                <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
-                                <div class="profile-boxProfileCard_follow fw  module">
-                                </div>
-                                <!-- GET USER FOLLOE SUGESSION LIST START -->
-                                <!-- follower list end  -->
                             </div>
-							</div>
                             <div class="business-all-post">
                                 <?php
                                 if ($mobile_agent) {
@@ -177,16 +177,16 @@ $mobile_agent = $this->agent->mobile;
                                     <div class="mob-add">
                                         <div class="fw text-center pt10 pb5">
                                             <script type="text/javascript">
-                                            (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []};
-                                                }
-                                                ;
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                            }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                                             </script>
                                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                         </div>
@@ -214,25 +214,28 @@ $mobile_agent = $this->agent->mobile;
                                         }());
                             </script>
                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-							<div class="fw pt10">
-									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
-								</div>
+                            <div class="fw pt10">
+                                <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
+                            </div>
                         </div>
-                       
+
                     </div>
                     <div class="tablate-add">
 
-                            <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                        </div>
+                        <script type="text/javascript">
+                                    (function () {
+                                        if (window.CHITIKA === undefined) {
+                                            window.CHITIKA = {'units': []};
+                                        }
+                                        ;
+                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                        var placement_id = window.CHITIKA.units.length;
+                                        window.CHITIKA.units.push(unit);
+                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                    }());
+                        </script>
+                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                    </div>
                 </div>
             </div>
         </section>
@@ -387,10 +390,8 @@ $mobile_agent = $this->agent->mobile;
                 </div>
             </div>
         </div>
-        <footer>
-            <?php echo $footer; ?>
-        </footer>
-        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver=' . time());              ?>"></script>-->
+        <?php echo $footer; ?>
+     <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver=' . time());               ?>"></script>-->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
         <!-- POST BOX JAVASCRIPT START --> 
