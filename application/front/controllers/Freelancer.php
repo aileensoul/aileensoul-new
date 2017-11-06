@@ -2717,6 +2717,7 @@ if ($this->input->post('livepostid')) {
             }
             echo $applypost;
         } else {
+            
             $data = array(
                 'post_id' => $id,
                 'user_id' => $userid,
