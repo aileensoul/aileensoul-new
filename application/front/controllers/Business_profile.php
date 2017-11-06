@@ -3522,7 +3522,7 @@ Your browser does not support the audio tag.
       </a></div></li></ul></div>
       <div class = "follow_left_box_main_btn">';
                     $third_user_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
@@ -3623,7 +3623,7 @@ Your browser does not support the audio tag.
       </a></div></li></ul></div>
       <div class = "follow_left_box_main_btn">';
                     $third_user_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
