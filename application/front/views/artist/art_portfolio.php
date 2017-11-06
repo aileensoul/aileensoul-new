@@ -57,7 +57,7 @@
 
                                 <li class="custom-none"><a href="<?php echo base_url('artist/artistic-information'); ?>">Art Information</a></li>
 
-                                <li <?php if($this->uri->segment(1) == 'artistic'){?> class="active init" <?php } ?>><a href="javascript:void(0);">Portfolio</a></li>
+                                <li <?php if($this->uri->segment(1) == 'artist'){?> class="active init" <?php } ?>><a href="javascript:void(0);">Portfolio</a></li>
   
                             </ul>
                         </div>

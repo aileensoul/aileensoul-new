@@ -1447,7 +1447,10 @@ Your browser does not support the audio tag.
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('artist/details/' . $total['slug']) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+
+                 $geturl = $this->get_url($total['user_id']);
+
+                $notification .= '><a href="' . base_url('artist/details/' . $geturl) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
 
@@ -3612,7 +3615,9 @@ Your browser does not support the audio tag.
                 //   2
                 if ($total['not_from'] == 3 && $total['not_img'] == 0) {
 
-                    $return_html .= '<a href="' . base_url() . 'artist/dashboard/' . $total['slug'] . '">';
+                     $geturl = $this->get_url($total['user_id']);
+
+                    $return_html .= '<a href="' . base_url() . 'artist/dashboard/' . $geturl . '">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
@@ -4420,5 +4425,41 @@ Your browser does not support the audio tag.
 
         return $contacts_count;
     }
+
+    // for artistic url start function
+    public function get_url($userid){
+
+              $contition_array = array('user_id' => $userid, 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+                 return $url;                           
+  }
 
 }

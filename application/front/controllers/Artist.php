@@ -2304,7 +2304,7 @@ public function ajax_userlist() {
      //if user deactive profile then redirect to artist/index untill active profile End
 
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email,user_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
@@ -2372,6 +2372,7 @@ public function ajax_userlist() {
             );
             $insert_id = $this->common->insert_data_getid($data, 'notification');
 
+                 $geturl = $this->get_url($artdata[0]['user_id']);
 
             if($insert_id){
 
@@ -2386,13 +2387,13 @@ public function ajax_userlist() {
                             if($artdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -2401,10 +2402,10 @@ public function ajax_userlist() {
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -2416,7 +2417,7 @@ public function ajax_userlist() {
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
                                             </td>
                     </tr>
                                     </table>';
@@ -2498,7 +2499,7 @@ public function follow_home() {
         $userid = $this->session->userdata('aileenuser');
     
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email,user_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2560,6 +2561,9 @@ public function follow_home() {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+            $geturl = $this->get_url($artdata[0]['user_id']);
+
                 if($insert_id){
 
 
@@ -2573,13 +2577,13 @@ public function follow_home() {
                             if($artdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -2588,10 +2592,10 @@ public function follow_home() {
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -2603,7 +2607,7 @@ public function follow_home() {
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
                                             </td>
                     </tr>
                                     </table>';
@@ -3066,7 +3070,7 @@ public function follow_home() {
      //if user deactive profile then redirect to artist/index untill active profile End
 
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email,user_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
@@ -3130,6 +3134,9 @@ public function follow_home() {
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
 
+
+            $geturl = $this->get_url($artdata[0]['user_id']);
+
             if($insert_id){
 
 
@@ -3144,13 +3151,13 @@ public function follow_home() {
                             if($artdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -3159,10 +3166,10 @@ public function follow_home() {
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -3174,7 +3181,7 @@ public function follow_home() {
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
                                             </td>
                     </tr>
                                     </table>';
@@ -3209,7 +3216,7 @@ public function followtwo() {
      //if user deactive profile then redirect to artist/index untill active profile End
 
         $art_id = $_POST["follow_to"];
-        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email,user_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
@@ -3285,6 +3292,8 @@ public function followtwo() {
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
 
+            $geturl = $this->get_url($artdata[0]['user_id']);
+
             if($insert_id){
 
 
@@ -3298,13 +3307,13 @@ public function followtwo() {
                             if($artdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -3313,10 +3322,10 @@ public function followtwo() {
                      $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -3328,7 +3337,7 @@ public function followtwo() {
                         <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $artdata[0]['slug'] . '">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
                                             </td>
                     </tr>
                                     </table>';
@@ -4151,13 +4160,13 @@ public function followtwo() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -4168,10 +4177,10 @@ public function followtwo() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
                                             // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
@@ -4378,13 +4387,13 @@ public function followtwo() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -4395,10 +4404,10 @@ public function followtwo() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
                                             // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
@@ -5369,13 +5378,13 @@ public function delete_commenttwo_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -5386,10 +5395,10 @@ public function delete_commenttwo_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -5686,13 +5695,13 @@ public function delete_commenttwo_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -5703,10 +5712,10 @@ public function delete_commenttwo_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -5927,13 +5936,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -5944,10 +5953,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -6200,13 +6209,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -6217,10 +6226,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -7352,13 +7361,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -7368,10 +7377,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
                       
@@ -7615,13 +7624,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -7631,10 +7640,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -7810,13 +7819,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -7826,10 +7835,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -8099,13 +8108,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -8115,10 +8124,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -8365,13 +8374,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -8381,10 +8390,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -8643,13 +8652,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -8659,10 +8668,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -8799,13 +8808,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -8815,10 +8824,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -8948,13 +8957,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -8964,10 +8973,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -9102,13 +9111,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -9118,10 +9127,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
@@ -10273,13 +10282,13 @@ public function insert_comment_postnewpage() {
                             if($artuserdata[0]['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artuserdata[0]['art_user_image'])) {
                                        
-                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                        $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                                         
                                      } else { 
-                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" >';
+                                        $email_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'].'" alt="" width="60" height="60">';
                                     }
                                   }else{
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                   
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';                                   
                                   }
                                 } else{
 
@@ -10289,10 +10298,10 @@ public function insert_comment_postnewpage() {
 
 
                         if ($info) {
-                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="">';
+                                   $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
                         }
                       }
 
