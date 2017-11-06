@@ -1052,7 +1052,7 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
+                    $email_html .= '<div class="post-img-user">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
@@ -2757,7 +2757,7 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
+                    $email_html .= '<div class="post-img-user">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
