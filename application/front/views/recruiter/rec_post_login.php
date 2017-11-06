@@ -37,7 +37,7 @@
 
             .fs12{font-size:12px;}
             .red{color:#ff0000;}
-            .ttc{text-transform:capitalize !important;}
+            .ttc{text-transform:capitalize !important; text-align: center;}
             /*.login-frm{width:480px !important;}*/
             /***  buttons  ***/
             .btn1{

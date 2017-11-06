@@ -77,7 +77,7 @@
 
 //for search validation 
 
-   function checkvalue() { alert(123);
+   function checkvalue() {
      
        var searchkeyword = $.trim(document.getElementById('tags').value);
        var searchkeyword = searchkeyword.replace(' ', '-');

@@ -4546,7 +4546,8 @@ class Job extends MY_Controller {
                     $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
 //  $return_html .= '<a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" class="post_title" >';
                 } else {
-                    $return_html .= '<a  href="javascript:void(0);" onClick="login_profile()" class="post_title" >';
+                     $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
+                  //  $return_html .= '<a  href="javascript:void(0);" onClick="login_profile()" class="post_title" >';
                 }
 
 
@@ -4765,7 +4766,7 @@ class Job extends MY_Controller {
                     if ($this->session->userdata('aileenuser')) {
                         $return_html .= 'onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')"';
                     } else {
-                        $return_html .= 'onClick="login_profile()"';
+                        $return_html .= 'onClick="login_profile_apply(' . $post['post_id'] . ')"';
                     }
                     $return_html .= '>Apply</a>
                               </li>
