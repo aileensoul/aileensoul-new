@@ -2349,6 +2349,7 @@ Your browser does not support the audio tag.
     }
 
     public function freelancer_post_search() {
+        echo "hi";die();
         $userid = $this->session->userdata('aileenuser');
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
             redirect('freelancer/freelancer_apply_post', refresh);
