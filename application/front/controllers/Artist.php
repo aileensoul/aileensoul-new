@@ -16547,7 +16547,7 @@ public function get_artistic_name($id=''){
                                     <div class="module_Ssearch" style="display: inline-block; float: left;">
                                        <div class="search_img" style="height: 110px; width: 108px;">';
 
-                                      $return_html .= '<a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
+                                      $return_html .= '<a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'">';
 
                                        if (IMAGEPATHFROM == 'upload') {
 
@@ -16580,12 +16580,12 @@ public function get_artistic_name($id=''){
                                     <div class="designation_rec">
                                        <ul>
                                           <li >
-                                             <a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'</a>
+                                             <a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'">'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'</a>
                                           </li>
                                           <li style="display: block;">
                                              <a  class="color-search" href="'.base_url('artist/dashboard/' . $geturl . '').'">';
                                                  if($key['designation']){ //echo "hii";  die();
-                                                    $return_html .= $key['designation'];
+                                                    $return_html .= ucfirst(strtolower($key['designation']));
                                                 } else{
                                                    $return_html .= 'Current work';
                                                 } 
@@ -16708,9 +16708,11 @@ public function get_artistic_name($id=''){
                                  <div class="post_radius_box">
                                     <div class="post-design-search-top col-md-12" style="background-color: none!important;">
                                        <div class="post-design-pro-img ">
+
+
                                             
-                                          <a class="post_dot" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
-                                         
+                                          <a class="post_dot" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'">';
+                                           
                                          if (IMAGEPATHFROM == 'upload') {
                                             if($key['art_user_image']){
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image'])) {
@@ -16747,7 +16749,7 @@ public function get_artistic_name($id=''){
                                            
                                              <li>
                                                 <div class="post-design-product">
-                                                   <a class="post_dot" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'" >'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'
+                                                   <a class="post_dot" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'" >'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'
                                                    </a>
                                                    <span role="presentation" aria-hidden="true"> · </span>
                                                    <div class="datespan"> 
