@@ -35,7 +35,7 @@ class Search extends MY_Controller {
     public function business_search() {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-        $this->data['slug_id'] = $slug_id = $patient = $this->db->select('business_slug')->get_where('business_profile', array('user_id' => $userid))->row()->business_slug; 
+        $this->data['slug_id'] = $slug_id = $patient = $this->db->select('business_slug')->get_where('business_profile', array('user_id' => $userid))->row()->business_slug;
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home', refresh);
         }
@@ -140,7 +140,7 @@ class Search extends MY_Controller {
 
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
-        
+
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
         if ($this->session->userdata('aileenuser')) {
@@ -2137,18 +2137,17 @@ Your browser does not support the audio tag.
                         $filename = $this->config->item('free_post_profile_main_upload_path') . $row['freelancer_post_user_image'];
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if($info){
+                        if ($info) {
                             $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
-                    $return_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
-                        }else{
+                            $return_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $row['freelancer_post_user_image'] . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
+                        } else {
                             $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
-                    $return_html .= '<div class = "post-img-div">';
-                    $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
-                    $return_html .= '</div>
+                            $return_html .= '<div class = "post-img-div">';
+                            $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
+                            $return_html .= '</div>
                 </a>';
                         }
                     }
-                    
                 } else {
                     $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                     $return_html .= '<div class = "post-img-div">';
@@ -2349,14 +2348,21 @@ Your browser does not support the audio tag.
     }
 
     public function freelancer_post_search() {
-        echo "hi";die();
+        // echo "hi";die();
+
+        $searchvalue = $this->uri->segment(1);
+        $skill = explode('project', $searchvalue);
+        $location = explode('in-', $searchvalue);
+
+        $search_skill = trim($skill[0]);
+        $search_skill = trim($skill[0], '-');
+        $search_place = $location[1];
+
         $userid = $this->session->userdata('aileenuser');
-        if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-            redirect('freelancer/freelancer_apply_post', refresh);
-        }
-        $search_skill = trim($this->input->get('skills'));
-        $this->data['keyword'] = $search_skill;
-        $search_place = trim($this->input->get('searchplace'));
+      $this->data['keyword'] = $search_skill;
+//        $search_skill = trim($this->input->get('skills'));
+//        $this->data['keyword'] = $search_skill;
+//        $search_place = trim($this->input->get('searchplace'));
 // code for insert search keyword into database start
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
@@ -2525,21 +2531,21 @@ Your browser does not support the audio tag.
                     $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                     $return_html .= ' </li>
                                                                                     <li>';
-                    
-                    $cache_time1=$post['post_name'];
-                      if ($cache_time1 != '') {
-                    $text = strtolower($this->common->clean($cache_time1));
-                } else {
-                    $text = '';
-                }
-                
-                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
-                if ($cityname != '') {
-                    $cityname1 =  '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                } else {
-                    $cityname1 = '';
-                }
-                    $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text  . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="Post Title" class="post_title " >';
+
+                    $cache_time1 = $post['post_name'];
+                    if ($cache_time1 != '') {
+                        $text = strtolower($this->common->clean($cache_time1));
+                    } else {
+                        $text = '';
+                    }
+
+                    $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                    if ($cityname != '') {
+                        $cityname1 = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                    } else {
+                        $cityname1 = '';
+                    }
+                    $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="Post Title" class="post_title " >';
                     $return_html .= ucwords($this->text2link($post['post_name']));
                     $return_html .= '</a> </li>';
 
@@ -2558,7 +2564,7 @@ Your browser does not support the audio tag.
                     }
                     $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
                     $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
-                    
+
                     $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
 
                     if ($cityname || $countryname) {

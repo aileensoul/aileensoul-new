@@ -11,22 +11,22 @@ jQuery(document).ready(function ($) {
                     });
                 });
 //CODE FOR PREELOADER END
-//CHECK SEARCH KEYWORD AND LOCATION BLANK START
- function checkvalue() {
-                    var searchkeyword = $.trim(document.getElementById('tags').value);
-                    var searchplace = $.trim(document.getElementById('searchplace').value);
-                    if (searchkeyword == "" && searchplace == "") {
-                        return  false;
-                    }
-                }
-                function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
-//CHECK SEARCH KEYWORD AND LOCATION BLANK END
+////CHECK SEARCH KEYWORD AND LOCATION BLANK START
+// function checkvalue() {
+//                    var searchkeyword = $.trim(document.getElementById('tags').value);
+//                    var searchplace = $.trim(document.getElementById('searchplace').value);
+//                    if (searchkeyword == "" && searchplace == "") {
+//                        return  false;
+//                    }
+//                }
+//                function check() {
+//    var keyword = $.trim(document.getElementById('tags1').value);
+//    var place = $.trim(document.getElementById('searchplace1').value);
+//    if (keyword == "" && place == "") {
+//        return false;
+//    }
+//}
+////CHECK SEARCH KEYWORD AND LOCATION BLANK END
 //COPY-PASTE CODE START
   var _onPaste_StripFormatting_IEPaste = false;
                 function OnPaste_StripFormatting(elem, e) {

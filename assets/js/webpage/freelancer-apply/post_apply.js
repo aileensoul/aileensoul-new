@@ -92,22 +92,22 @@ function freelancerwork_home(pagenum)
             }
 //CODE FOR SAVE USER END             
 
-//CODE FOR CHECK SEARCH KEYWORD AND LOCATION BLANK START
-            function checkvalue() {
-                var searchkeyword = $.trim(document.getElementById('tags').value);
-                var searchplace = $.trim(document.getElementById('searchplace').value);
-                if (searchkeyword == "" && searchplace == "") {
-                    return false;
-                }
-            }
-            function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
-//CODE FOR CHECK SEARCH KEYWORD AND LOCATION BLANK END
+////CODE FOR CHECK SEARCH KEYWORD AND LOCATION BLANK START
+//            function checkvalue() {
+//                var searchkeyword = $.trim(document.getElementById('tags').value);
+//                var searchplace = $.trim(document.getElementById('searchplace').value);
+//                if (searchkeyword == "" && searchplace == "") {
+//                    return false;
+//                }
+//            }
+//            function check() {
+//    var keyword = $.trim(document.getElementById('tags1').value);
+//    var place = $.trim(document.getElementById('searchplace1').value);
+//    if (keyword == "" && place == "") {
+//        return false;
+//    }
+//}
+////CODE FOR CHECK SEARCH KEYWORD AND LOCATION BLANK END
 //CODE FOR APPLY POST START
             function apply_post(abc, xyz) {
                 var alldata = 'all';
