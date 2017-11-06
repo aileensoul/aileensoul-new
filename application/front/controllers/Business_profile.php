@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -8369,6 +8370,7 @@ Your browser does not support the audio tag.
             $contact_id = $contactperson[0]['contact_id'];
 
             if ($status == 'pending') {
+
                 $data = array(
                     'modify_date' => date('Y-m-d H:i:s'),
                     'status' => 'cancel'
@@ -8396,6 +8398,7 @@ Your browser does not support the audio tag.
                                                 </div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'cancel') {
+
                 $data = array(
                     'contact_from_id' => $userid,
                     'contact_to_id' => $to_id,
@@ -8425,8 +8428,7 @@ Your browser does not support the audio tag.
                                                       Cancel request </span>
                                                     </div> 
 
-                                                </div>
-';
+                                                </div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'confirm') {
                 $data = array(
@@ -8487,7 +8489,6 @@ Your browser does not support the audio tag.
                 $contactdata .= '</a>';
             }
         } else {
-
             $data = array(
                 'contact_from_id' => $userid,
                 'contact_to_id' => $to_id,
@@ -8497,9 +8498,27 @@ Your browser does not support the audio tag.
                 'not_read' => 2
             );
 
-// echo "<pre>"; print_r($data); die();
-
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
+            if ($insert_id) {
+                $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $to_id))->row()->contact_email;
+
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> send contact request in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/contact-list/' . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['business_login_company_name'] . ' send contact request you in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+            }
 
             $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
             $contactdata .= '<div class="cance_req_main_box">   
@@ -9016,6 +9035,27 @@ Your browser does not support the audio tag.
             );
 
             $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contactid);
+
+            if ($updatdata) {
+
+                $to_email_id = $this->db->select('contact_email')->get_where('business_profile', array('user_id' => $toid))->row()->contact_email;
+                $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;"><img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->data['business_login_user_image'] . '" width="60" height="60"></td>
+                                            <td style="padding:5px;">
+						<p><b>' . $this->data['business_login_company_name'] . '</b> is approved your contact request in business profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'business-profile/contact-list/' . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+                $subject = $this->data['business_login_company_name'] . ' is approved your contact request in Aileensoul.';
+
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+            }
         } else {
 
             $data = array(
@@ -11590,9 +11630,9 @@ Your browser does not support the audio tag.
         $post_comment_data = $this->common->select_data_by_condition('business_profile_post_comment', $condition_array, $data = 'status,user_id,is_delete,business_profile_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($post_comment_data[0]['status'] == 1 && $post_comment_data[0]['is_delete'] == 0) {
             $return = 1;
-            
+
             $post_id = $post_comment_data[0]['business_profile_post_id'];
-            
+
             $condition_array = array('business_profile_post_id' => $post_id);
             $profile_data = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 

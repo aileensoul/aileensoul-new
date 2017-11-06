@@ -88,6 +88,7 @@ line-height: 1;}
         
         $this->email->from('noreply@aileensoul.com', 'Aileensoul');
         $this->email->to($to_email);
+//        $this->email->bcc('ankit.aileensoul@gmail.com');
         $this->email->bcc('ankit.aileensoul@gmail.com');
         //$this->email->reply_to('no-replay@aileensoul.com', 'Explendid Videos');
         $this->email->subject($subject);

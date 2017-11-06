@@ -6,6 +6,8 @@ $this->data['userdata'] = $this->common->select_data_by_condition('user', $conti
 // artistics detail
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
 $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
