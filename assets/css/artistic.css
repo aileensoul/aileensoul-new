@@ -4153,6 +4153,18 @@ div .comment {
 }
 .post-design-commnet-box .comment-edit-butn{right: 20px;}
 /***  end select dropdown  ***/
+/*** video css  ***/
+.video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
+.video li .mejs__container.mejs__video .mejs__overlay{width:100% !important; height:100% !important;}
+.video li .mejs__container.mejs__video .mejs__mediaelement video{width:100% !important; height:100% !important;}
+.video .mejs__poster{width:100% !important; height:100% !important; background-size:100% !important;}
+.mejs__mediaelement video{width:100% !important;}
+.mejs__container.mejs__video{width:100% !important;}
+.mejs__overlay.mejs__layer{width:100% !important;}
+.mejs__layers .mejs__poster.mejs__layer{width:100% !important;}
+
+
+
 
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
