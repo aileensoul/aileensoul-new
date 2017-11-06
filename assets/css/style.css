@@ -1161,6 +1161,7 @@ label.cameraButton input[accept*="camera"] {
 #noti_pc img{border-radius: none;}
 #notification_inside h6{font-size: 17px;}
 
+#notification_inside h6 + b{font-weight:normal;}
 
 /***  blog css  ***/
 body.blog{height:auto;}
