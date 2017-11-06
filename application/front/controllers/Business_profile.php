@@ -520,7 +520,7 @@ class Business_profile extends MY_Controller {
         $this->business_profile_active_check();
 
         if ($this->input->post('next')) {
-
+            
             $this->form_validation->set_rules('business_type', 'Business type', 'required');
             $this->form_validation->set_rules('industriyal', 'Industriyal', 'required');
             $this->form_validation->set_rules('business_details', 'Details', 'required');
@@ -547,7 +547,7 @@ class Business_profile extends MY_Controller {
                         $this->data['business_type1'] = $userdata[0]['business_type'];
                         $this->data['industriyal1'] = $userdata[0]['industriyal'];
                         $this->data['subindustriyal1'] = $userdata[0]['subindustriyal'];
-                        $this->data['business_details1'] = $userdata[0]['details'];
+                        $this->data['business_details1'] = trim($userdata[0]['details']);
                         $this->data['other_business'] = $userdata[0]['other_business_type'];
                         $this->data['other_industry'] = $userdata[0]['other_industrial'];
                     }
@@ -11856,7 +11856,7 @@ Your browser does not support the audio tag.
     }
     
     public function mail_test(){
-        $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
+        $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
 
 }
