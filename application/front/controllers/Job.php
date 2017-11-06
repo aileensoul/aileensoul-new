@@ -4787,9 +4787,10 @@ class Job extends MY_Controller {
                             $return_html .= 'onClick="login_profile()"';
                         }
 
-
+if ($this->session->userdata('aileenuser')) {
                         $return_html .= 'href="javascript:void(0);"  class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
-                    }
+}
+                        }
                     $return_html .= '</li>';
                 }
 

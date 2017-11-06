@@ -22,14 +22,14 @@ class MY_Controller extends CI_Controller {
         } else {
             $segment2 = $this->uri->segment(2);
         }
-                    
+         $jobs = array('0'=> 'jobs');   
          $jobin = explode('-', $this->uri->segment(1));
-        //  $slug1 = $jobin[0] . '-' . $jobin[1];
-
-        if ($jobin[0] == 'job' && $jobin[1] == 'in') {
-            $segment2 = $this->uri->segment(1);
-            $segjobloc = $this->uri->segment(1);
-        }
+        $jobsearchresult = array_intersect((array)$jobs, (array)$jobin);
+  if(count($jobsearchresult) > 0){
+   $segment2 = $this->uri->segment(1); 
+   $segjobloc = $this->uri->segment(1); 
+  }         
+       
 
         $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc);
 
