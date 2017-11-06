@@ -71,11 +71,12 @@ line-height: 1;}
 			</table>
 			</td></tr>
 		</table>
-		<table width="100%" cellpadding="0" cellspacing="0">
-			<tr><td style="text-align:center; padding:10px 0;"><a style="color:#505050; padding:5px 15px; text-decoration:none;" href="#">Unsubscribe</a>|<a style="color:#505050; padding:5px 15px; text-decoration:none;" href="#">Help</a></td></tr>
-		</table>
 	</div></body></html>';
-
+//        </table>
+//        <table width="100%" cellpadding="0" cellspacing="0">
+//			<tr><td style="text-align:center; padding:10px 0;"><a style="color:#505050; padding:5px 15px; text-decoration:none;" href="#">Unsubscribe</a>|<a style="color:#505050; padding:5px 15px; text-decoration:none;" href="#">Help</a></td></tr>
+//		</table>
+//</div></body></html>';
         /*
           $config['protocol'] = PROTOCOL;
           $config['smtp_host'] = SMTP_HOST;
