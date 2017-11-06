@@ -62,7 +62,8 @@
                             <?php echo form_open(base_url('artist/art_address_insert'), array('id' => 'address','name' => 'address', 'class' => 'clearfix')); ?>
                             <?php
                              $country =  form_error('country');
-                             $state =  form_error('state');                           
+                             $state =  form_error('state');
+                             $city =  form_error('city');                           
                          ?>
                                 <fieldset <?php if($country) {  ?> class="error-msg" <?php } ?>>
 								<label>Country:<span style="color:red">*</span></label>								
@@ -108,8 +109,8 @@
 								    </select><span id="state-error"></span>
                                      <?php echo form_error('state'); ?>
 								</fieldset>
-                                <fieldset>
-								    <label> City<span class="optional">(optional)</span>:</label>
+                                <fieldset <?php if($city) {  ?> class="error-msg" <?php } ?>>
+								    <label> City:<span style="color:red">*</label>
 									<select name="city" id="city" tabindex="3">
     								<?php
                                          if($city1)

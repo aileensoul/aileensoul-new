@@ -57,6 +57,12 @@ $(document).ready(function () {
                             
                           
                         },
+                        city: {
+
+                            required: true,
+                            
+                          
+                        },
                       
                         
                     },
@@ -72,6 +78,11 @@ $(document).ready(function () {
                         state: {
 
                             required: "State is required.",
+                            
+                        },
+                        city: {
+
+                            required: "City is required.",
                             
                         },
                        

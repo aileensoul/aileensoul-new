@@ -68,40 +68,55 @@ function validation_other(event){
   
   $('#othercategory_error').remove(); 
        event.preventDefault();
-       var strUser = $('#skills').val();
-       var strUser =  "'" + strUser + "'";
-       var n = strUser.includes(26);
+       var strUser1 = $('#skills').val();
+       var strUser =  "'" + strUser1 + "'";
 
+       var length_ele = strUser.split(',');
+       var n = strUser.includes(26);
         var other_category = document.getElementById("othercategory").value;
        var category_trim = other_category.trim();
 
-  if(n == true){     
-   if(category_trim == ''){
-     $("#othercategory").addClass("othercategory_require");
-     $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </span>').insertAfter('#othercategory');
-      return false;
-      event.preventDefault();
-       } 
-       else{ 
-        if(category_trim){
-              $.ajax({                
-                 type: 'GET',
-                 url: base_url + "artist/check_category",
-                 data: 'category=' + category_trim,
-                 success: function (data) { 
-                  if(data == 'true'){ 
-                  $("#othercategory").addClass("othercategory_require");
-                 $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">This category already exists in art category field. </span>').insertAfter('#othercategory');
-                 } else{ 
-                   $("#artinfo")[0].submit();                  
-                 }                 
-                 }
-             });
+    if(strUser1 != ''){ 
+      if(length_ele.length <= 10){
+          if(n == true){     
+        if(category_trim == ''){
+       $("#othercategory").addClass("othercategory_require");
+       $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </span>').insertAfter('#othercategory');
+        return false;
+        event.preventDefault();
+         } 
+         else{ 
+          if(category_trim){
+                $.ajax({                
+                   type: 'GET',
+                   url: base_url + "artist/check_category",
+                   data: 'category=' + category_trim,
+                   success: function (data) { 
+                    if(data == 'true'){ 
+                    $("#othercategory").addClass("othercategory_require");
+                   $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">This category already exists in art category field. </span>').insertAfter('#othercategory');
+                   } else{ 
+                     $("#artinfo")[0].submit();                  
+                   }                 
+                   }
+               });
+           }
          }
+       }else if((n == false && category_trim != '') || n == false && category_trim == ''){ 
+         $("#artinfo")[0].submit();     
        }
-     }else if((n == false && category_trim != '') || n == false && category_trim == ''){ 
-       $("#artinfo")[0].submit();     
-     }
+   }else{
+       $("#skills").addClass("othercategory_require");
+       $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">You can select at max 10 Art category. </span>').insertAfter('#skills');
+        return false;
+        event.preventDefault();
+   }
+ }else{ 
+      return false;
+        event.preventDefault();
+   }
+
+ 
 }
 
 

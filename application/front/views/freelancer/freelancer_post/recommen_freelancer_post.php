@@ -221,9 +221,9 @@
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var skill = '<?php echo $this->input->get('skills'); ?>';
-            var place = '<?php echo $this->input->get('searchplace'); ?>';
-            var button = '<?php echo $this->input->get('search_submit'); ?>';
+            var skill = '<?php echo $keyword; ?>';
+            var place = '<?php echo $keyword1;?>';
+           // var button = '<?php //echo $this->input->get('search_submit'); ?>';
 
         </script>
         <!-- script for skill textbox automatic end -->

@@ -182,6 +182,8 @@ $route['freelancer-work/reactivate'] = "freelancer/reactivate";
 //$route['freelancer-work/search'] = "search/freelancer_post_search";
 
 $route['(:any)-project'] = "search/freelancer_post_search";
+$route['project-in-(:any)'] = "search/freelancer_post_search";
+$route['(:any)-project-in-(:any)'] = "search/freelancer_post_search";
 
 $route['freelancer-work'] = "freelancer/freelancer_post";
 //$route['freelancer-work/home/'] = "freelancer/freelancer_apply_post";
@@ -201,7 +203,7 @@ $route['freelancer-work/profile/live-post/(:any)'] = "freelancer/freelancer_post
 //ARTISTIC ROUTES SETTINGS
 
 
-$route['artistic'] = "artist/index";
+$route['artist'] = "artist/index";
 $route['artist/artistic-basic-information-insert'] = "artist/art_basic_information_insert";
 $route['artist/artistic-information-update'] = "artist/art_basic_information_update";
 

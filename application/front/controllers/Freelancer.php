@@ -1052,7 +1052,7 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
+                    $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
@@ -1065,7 +1065,7 @@ if ($this->input->post('livepostid')) {
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
+                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Apply on your Project.';
 
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
                     // mail end
@@ -2694,12 +2694,12 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
+                    $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
                 $email_html .= '<td style="padding:5px;">
-						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applie on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -2758,12 +2758,12 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
+                    $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
                 $email_html .= '<td style="padding:5px;">
-						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Appl on your Project.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -2771,7 +2771,7 @@ if ($this->input->post('livepostid')) {
                                             </td>
 					</tr>
                                     </table>';
-                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
+                $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Appl on your Project.';
 
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
                     // mail end
@@ -4939,41 +4939,6 @@ if ($this->input->post('livepostid')) {
             $this->load->view('freelancer/freelancer_hire/project_live_login', $this->data);
         }
     }
-    
-//   public function freelancer_apply_reg(){
-//       if ($postid != '') {
-//           //code for check user deactivate start
-//        $this->freelancer_apply_deactivate_check();
-//        //code for check user deactivate end
-//           
-//           $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $postid))->row()->user_id;
-//            $userid = $this->session->userdata('aileenuser');
-//            
-//            $contition_array = array('post_id' => $postid, 'user_id' => $userid, 'is_delete' => 0);
-//            $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'app_id,count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//         
-//             $app_id = $userdata[0]['app_id'];
-//             if ($userdata[0]['total'] != 0) {
-//            $contition_array = array('job_delete' => 1);
-//            $jobdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'app_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//                 
-//                 $data = array(
-//                'job_delete' => 0,
-//                'job_save' => 3,
-//                'modify_date' => date('Y-m-d h:i:s', time())
-//            );
-//                  $updatedata = $this->common->update_data($data, 'freelancer_apply', 'app_id', $app_id);
-//                 
-//                 
-//                 
-//             }
-//            
-//       }
-//       
-//       
-//       
-//       
-//       
     
     public function email_view(){
           $userid = 140; 

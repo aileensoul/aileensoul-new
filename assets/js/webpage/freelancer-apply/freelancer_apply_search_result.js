@@ -43,7 +43,8 @@ function freelancerapply_search(pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "search/ajax_freelancer_post_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place + "&button=" + button ,
+//        url: base_url + "search/ajax_freelancer_post_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place + "&button=" + button ,
+        url: base_url + "search/ajax_freelancer_post_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place ,
         data: {total_record:$("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
@@ -73,22 +74,22 @@ function freelancerapply_search(pagenum)
 
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
-//FUNCTION FOR CHECK VALUE OF SEARCH KEYWORD AND PLACE ARE BLANK START
-function checkvalue() {
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
-    if (searchkeyword == "" && searchplace == "") {
-        return false;
-    }
-}
-function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
-//FUNCTION FOR CHECK VALUE OF SEARCH KEYWORD AND PLACE ARE BLANK END
+////FUNCTION FOR CHECK VALUE OF SEARCH KEYWORD AND PLACE ARE BLANK START
+//function checkvalue() {
+//    var searchkeyword = $.trim(document.getElementById('tags').value);
+//    var searchplace = $.trim(document.getElementById('searchplace').value);
+//    if (searchkeyword == "" && searchplace == "") {
+//        return false;
+//    }
+//}
+//function check() {
+//    var keyword = $.trim(document.getElementById('tags1').value);
+//    var place = $.trim(document.getElementById('searchplace1').value);
+//    if (keyword == "" && place == "") {
+//        return false;
+//    }
+//}
+////FUNCTION FOR CHECK VALUE OF SEARCH KEYWORD AND PLACE ARE BLANK END
 //CODE FOR SAVE USER START
 function save_post(abc)
 {
