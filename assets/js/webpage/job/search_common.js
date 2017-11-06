@@ -100,7 +100,7 @@
            }
        }
    }
-  function check() { alert(123456);
+  function check() { 
        var keyword = $.trim(document.getElementById('tags1').value);
        var place = $.trim(document.getElementById('searchplace1').value);
        if (keyword == "" && place == "") {
