@@ -81,8 +81,11 @@
      
        var searchkeyword = $.trim(document.getElementById('tags').value);
        var searchkeyword = searchkeyword.replace(' ', '-');
-       var searchkeyword = searchkeyword.replace('/[^A-Za-z0-9\-]/', '');
+       var searchkeyword = searchkeyword.replace(/[^a-zA-Z0-9\-]/g, '');
+       
        var searchplace = $.trim(document.getElementById('searchplace').value);
+       var searchplace = searchplace.replace(' ', '-');
+       var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
    
        if (searchkeyword == "" && searchplace == "") {
            return false;
