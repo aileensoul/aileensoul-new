@@ -82,7 +82,7 @@
                               <?php echo form_error('cities'); ?>
                            </fieldset>
                            <fieldset class="hs-submit full-width">
-                              <input type="submit"  id="next" name="next" tabindex="5" value="Save">
+                              <input title="Save" type="submit" title="Save"  id="next" name="next" tabindex="5" value="Save">
                            </fieldset>
                            </form>
                         </div>

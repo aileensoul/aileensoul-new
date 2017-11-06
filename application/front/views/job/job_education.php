@@ -188,7 +188,7 @@
                                                      ?>">
                                              <br>
 
-                                             <button class="submit_btn" tabindex="6">Save</button>
+                                             <button title="Save" class="submit_btn" tabindex="6">Save</button>
                                              <fieldset class="hs-submit full-width" style="">
                                               
                                              </fieldset>
@@ -322,7 +322,7 @@
                                                   echo $edu_certificate_secondary1;
                                                   }
                                                  ?>">
-                                          <button class="submit_btn" tabindex="7">Save</button>
+                                          <button title="Save" class="submit_btn" tabindex="7">Save</button>
                                           <br>
                                           <fieldset class="hs-submit full-width" style="">
                                            
@@ -476,7 +476,7 @@
                                                  echo $edu_certificate_higher_secondary1;
                                              }
                                              ?>">
-                                          <button class="submit_btn" tabindex="9">Save</button>
+                                          <button title="Save" class="submit_btn" tabindex="9">Save</button>
                                           <br>
                                           <fieldset class="hs-submit full-width" style="">
                                             
@@ -728,7 +728,7 @@
                                           ?>
                                        
                                        <div class="fr img_remove">
-                                          <input  style="font-size: 14px;" class="job_edu_graduation_submit_btn" tabindex="11" type="Submit"  id="next" name="next" value="Save">
+                                          <input title="Save" style="font-size: 14px;" class="job_edu_graduation_submit_btn" tabindex="11" type="Submit"  id="next" name="next" value="Save">
                                           
                                        </div>
                                        <div class="display_inline_block" >
@@ -893,13 +893,13 @@
                                        </div>
                                        <!--clone div End-->
                                        <div class="fl job_edu_graduation_addbtnbox" >
-                                          <input type="button" id="btnAdd" class="job_edu_graduation_addbtn" value=" + " /><br>
+                                          <input title="Add more Degree" type="button" id="btnAdd" class="job_edu_graduation_addbtn" value=" + " /><br>
                                        </div>
                                        <div class="fl">
-                                          <input type="button" id="btnRemove" class="job_edu_graduation_removebtn" value=" - "   />
+                                          <input title="Remove Degree" type="button" id="btnRemove" class="job_edu_graduation_removebtn" value=" - "   />
                                        </div>
                                        <div class="fr job_edu_graduation_submitposition">
-                                          <input type="Submit"  id="next" name="next" value="Save" class="job_edu_graduation_submitbtn" style="padding: 5px 9px;margin-right: 0px;">
+                                          <input title="Next" title="Save" type="Submit"  id="next" name="next" value="Save" class="job_edu_graduation_submitbtn" style="padding: 5px 9px;margin-right: 0px;">
                                        </div>
                                        <br>
                                        <?php
@@ -916,13 +916,13 @@
                               <?php if( $jobdata || $jobgrad)
                                  {
                                  ?>
-                              <input type="button" id="next" name="next" value="Next" style="font-size: 16px;min-width: 120px;margin-right: 0px;"  onclick="next_page_edit()">
+                              <input title="Next"  type="button" id="next" name="next" value="Next" style="font-size: 16px;min-width: 120px;margin-right: 0px;"  onclick="next_page_edit()">
                               <?php
                                  }
                                  else
                                  {
                                      ?>
-                              <input type="button" id="next" name="next" value="Next" style="font-size: 16px;min-width: 120px;margin-right: 0px;" onclick="next_page()">
+                              <input title="Next" type="button" id="next" name="next" value="Next" style="font-size: 16px;min-width: 120px;margin-right: 0px;" onclick="next_page()">
                               <?php } ?>
                            </fieldset>
                         </div>

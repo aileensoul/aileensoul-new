@@ -137,7 +137,7 @@
                            </fieldset>
                           
                            <fieldset class="hs-submit full-width">
-                              <input type="submit"  id="next" name="next" value="Save" tabindex="12">
+                              <input title="Save" type="submit"  id="next" name="next" value="Save" tabindex="12">
                            </fieldset>
                            </form>
                         </div>

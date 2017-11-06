@@ -80,7 +80,7 @@
                               <input type="text" name="training_organization" tabindex="6"  id="training_organization" placeholder="Enter Name of Organization" value="<?php if($training_organization1){ echo $training_organization1; } else { echo $job[0]['training_organization']; }?>" maxlength="255"/>
                            </fieldset>
                            <fieldset class="hs-submit full-width">
-                              <input type="submit"  id="next" name="next" value="Save" tabindex="7">
+                              <input title="Save" type="submit"  id="next" name="next" value="Save" tabindex="7">
                            </fieldset>
                            </form>
                         </div>
