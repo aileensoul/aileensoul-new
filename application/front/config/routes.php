@@ -179,7 +179,10 @@ $route['freelancer-work/portfolio/(:any)'] = "freelancer/freelancer_post_portfol
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
 $route['freelancer-work/reactivate'] = "freelancer/reactivate";
-$route['freelancer-work/search'] = "search/freelancer_post_search";
+//$route['freelancer-work/search'] = "search/freelancer_post_search";
+
+$route['(:any)-project'] = "search/freelancer_post_search";
+
 $route['freelancer-work'] = "freelancer/freelancer_post";
 //$route['freelancer-work/home/'] = "freelancer/freelancer_apply_post";
 //$route['freelancer-work/home/live-post'] = "freelancer/freelancer_apply_post";

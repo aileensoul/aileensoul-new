@@ -389,9 +389,9 @@ if(count($usercount) != count($followcount) + count($crosscount)){?>
                </div>
             </div>
          </div>
-<footer>
+
 <?php echo $footer; ?>
-</footer>
+
 
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver='.time()); ?>"></script>

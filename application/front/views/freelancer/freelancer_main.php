@@ -27,7 +27,7 @@
                 </div>
             </div>
         </section>
-        <footer>
+        
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
             <!--            <div class="copyright">
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                         </div>-->
-        </footer>
+       
 
         <script>
             var base_url = '<?php echo base_url(); ?>';

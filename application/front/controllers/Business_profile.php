@@ -11850,10 +11850,13 @@ Your browser does not support the audio tag.
         $join_str_contact[0]['join_type'] = '';
 
         $contacts_count = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as contact_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_contact, $groupby = '');
-
         $contacts_count = $contacts_count[0]['contact_count'];
 
         return $contacts_count;
+    }
+    
+    public function mail_test(){
+        $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
 
 }
