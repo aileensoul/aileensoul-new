@@ -198,7 +198,7 @@ $route['freelancer-work/profile/live-post/(:any)'] = "freelancer/freelancer_post
 //ARTISTIC ROUTES SETTINGS
 
 
-$route['artistic'] = "artist/index";
+$route['artist'] = "artist/index";
 $route['artist/artistic-basic-information-insert'] = "artist/art_basic_information_insert";
 $route['artist/artistic-information-update'] = "artist/art_basic_information_update";
 
