@@ -4974,5 +4974,47 @@ if ($this->input->post('livepostid')) {
 //       
 //       
 //       
+    
+    public function email_view(){
+          $userid = 140; 
+          $notid = 103; 
+            $postuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_user_image', $join_str = array());
+      
+            $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $notid, $data = 'email', $join_str = array());
+          
+            // apply mail start
+                     $email_html = '';
+                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;">';
+                if ($postuser[0]['freelancer_post_user_image'] == '') {
+                    $fname = $postuser[0]['freelancer_post_fullname'];
+                    $lname = $postuser[0]['freelancer_post_username'];
+                    $sub_fname = substr($fname, 0, 1);
+                    $sub_lname = substr($lname, 0, 1);
+                    $email_html .= '<div class="post-img-div">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
+                } else {
+                   $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
+                }
+                $email_html .= '<td style="padding:5px;">
+						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+              
+                $this->data['templ'] = $email_html;
+               // $subject = $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . ' Applied on your Project.';
+
+                //$send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hireuser[0]['email']);
+                    // mail end
+                
+              //  $applypost = 'Applied';
+               $this->load->view('email_view',$this->data);
+            
+    }
    } 
 
