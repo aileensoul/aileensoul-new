@@ -977,12 +977,8 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $likeuser = $this->data['artlike'][0]['art_like_user'];
                 $likeuserarray = explode(',', $artlike[0]['art_like_user']);
 
-                if (!in_array($userid, $likeuserarray)) {
-                    $return_html .= '<i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>';
-                } else {
-                    $return_html .= '<i class="fa fa-thumbs-up fa-1x main_color" aria-hidden="true"></i>';
-                }
-
+                $return_html .= '<i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>';
+               
                 $return_html .= '<span class="like_As_count">';
                 
                 $return_html .= '</span>
@@ -1075,13 +1071,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
                      $return_html .= '<a href = "javascript:void(0)" target="_blank" onclick="login_profile();">';
 
-                    if (in_array($userid, $likelistarray)) {
-                        $return_html .= "You";
-                        $return_html .= "&nbsp;";
-                    } else {
                         $return_html .= ucfirst(strtolower($art_fname)).' '.ucfirst(strtolower($art_lname));
                         $return_html .= "&nbsp;";
-                    }
+                   
                     if (count($likelistarray) > 1) {
                         $return_html .= "and".' ';
                         $return_html .= $countlike;

@@ -67,7 +67,7 @@ echo $leftmenu;
                             { 
                     ?>
 
-                            <a href="<?php echo base_url('feedback/clear_search') ?>">Clear Search</a>
+                            <a href="<?php echo base_url('contact_us/clear_search') ?>">Clear Search</a>
 
                         <?php 
                                 } 
@@ -320,7 +320,7 @@ echo $leftmenu;
 
 <script type="text/javascript">
   //Delete feedback Start
-   function delete_user(feedback_id) 
+   function delete_user(contact_id) 
    {
    
        $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this contact_us?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
@@ -333,7 +333,7 @@ echo $leftmenu;
                           data: 'contact_id=' + contact_id,
                           success: function (response) 
                           {          
-                                 $('#' + 'feedbackdel' + feedback_id).remove();
+                                 $('#' + 'contact_usdel' + contact_id).remove();
                                   $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this contact_us?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
                           }
             });   

@@ -52,7 +52,7 @@ line-height: 1;}
 			<tr><td style="border-bottom:1px solid #ddd;">
                         <table width="100%" cellpadding="0" cellspacing="0">
 						<tr><td style="text-align:center"><h2>
-						<a style="color:#1b8ab9; text-decoration:none; font-size:23px;" href="https://www.aileensoul.com/" target="_blank"><img src="https://www.aileensoul.com/assets/images/favicon.png" alt="Aileensoul" style="   vertical-align: middle;" /> <span class="sitename">Aileensoul</span></a>
+						<a style="color:#1b8ab9; text-decoration:none; font-size:23px;" href="https://www.aileensoul.com/" target="_blank"><img src="https://www.aileensoul.com/assets/images/favicon.png" style="   vertical-align: middle;" /> <span class="sitename">Aileensoul</span></a>
 						</h2></td></tr></table>
 			</td></tr>
 			<tr><td style="border-bottom:1px solid #ddd;">

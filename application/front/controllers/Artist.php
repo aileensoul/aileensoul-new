@@ -1217,12 +1217,13 @@ class Artist extends MY_Controller {
                     if ($row['posted_user_id']) {
 
                         $geturl = $this->get_url($artdataposted[0]['user_id']);
+                        $geturl_user = $this->get_url($artdata[0]['user_id']);
 
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
                                                         <a class="post_dot" href="' . base_url('artist/dashboard/' . $geturl) . '">' . ucfirst(strtolower($artdataposted[0]['art_name'])) .' '. ucfirst(strtolower($artdataposted[0]['art_lastname'])) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artist/dashboard/' . $artdata[0]['slug']) . '">' . ucfirst(strtolower($artdata[0]['art_name'])) .' '. ucfirst(strtolower($artdata[0]['art_lastname'])) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artist/dashboard/' . $geturl_user) . '">' . ucfirst(strtolower($artdata[0]['art_name'])) .' '. ucfirst(strtolower($artdata[0]['art_lastname'])) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -2254,7 +2255,7 @@ public function ajax_userlist() {
                                                 <li class="folle_text">
                                                      <div class="">
                                                      <div class="follow-li-text " style="padding: 0;">
-                                                <a title="' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) . '" href="' . base_url('artist/dashboard/' . $user['slug']) . '">' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) .'</a>
+                                                <a title="' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) . '" href="' . base_url('artist/dashboard/' . $geturl) . '">' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) .'</a>
                                                                             </div>
                                                                             <div>';            
             $return_html .= '<a>';

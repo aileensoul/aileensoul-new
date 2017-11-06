@@ -70,6 +70,9 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
             }
             isProcessing = false;
              $('video, audio').mediaelementplayer();
+
+             $('.all-comment-comment-box').css('border-bottom','0px');
+
         }
     });
 }

@@ -123,7 +123,7 @@ $(document).ready(function () {
                 if (response.data == "ok") {
                   //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "freelancer-work/home/live-post";
+                    window.location = base_url + "freelancer-work/home";
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
@@ -318,7 +318,7 @@ $(document).ready(function () {
                 if (response.okmsg == "ok") { 
                     if (postid == '') { 
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                        window.location = base_url + "freelancer-work/profile";
+                        window.location = base_url + "freelancer-work/profile/live-post";
                         sendmail(userid);
                     } else {
                       

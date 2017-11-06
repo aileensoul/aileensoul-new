@@ -690,7 +690,7 @@ label.error {
 .modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
 .modal-content {
     background-color: #fefefe;
-    margin: auto;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #888;  
     width: 100%;
@@ -1954,6 +1954,7 @@ body.modal-open{padding-left:0 !important; padding-right:0 !important;}
     margin-top: 0px;}
 .form_addedit #post_desc{height:188px;}
 body.freelancer_home{padding-bottom:0;}
+body.no-login{padding-bottom:0;}
 
 
 .no-login header h2{font-weight:normal; line-height:1;}
@@ -2203,10 +2204,13 @@ body.freelancer_home{padding-bottom:0;}
 	.change-password-box #basicinfo{padding:10px;}
 	.no-login .login h4{padding:0; font-size:26px;}
 	.no-login .dob .d_o_b{width:100%; margin-bottom:0; margin-top:10px;}
-	.no-login .login .form-group select{margin-right:5px; width:50px;}
+	.no-login .login .form-group select{margin-right:5px !important; /*width:50px;*/}
 	.no-login .btn-right{padding-top:0; text-align:right;}
 	.no-login .right-header{padding-top:0;}
 	.no-login .login p.pt15{padding-top:0;}
+	.no-login .title h1{margin-top:10px; margin-bottom:10px; }
+	.no-login .form-group{margin-bottom:10px;}
+	.no-login .sign_in.pt10{padding-top:0;}
 	
 }
 
@@ -2365,8 +2369,8 @@ body.freelancer_home{padding-bottom:0;}
 	/****/
 	.prev, .next{top: 215px;}
 	.job_all_post {
-        width: 100%;
-        margin-bottom: 10px!important;
+       /* width: 100%;
+        margin-bottom: 10px!important;*/
     }
 	.people-list .search input{width:92%;}
 	#upload-demo-one{width:239px;}

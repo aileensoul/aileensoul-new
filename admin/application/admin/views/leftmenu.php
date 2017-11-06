@@ -182,6 +182,22 @@
            <!--End Feedback-->
 
 
+           <!--Start Contact us-->
+            <li <?php if ($this->uri->segment(1) == 'contact_us' || $this->uri->segment(1) == '') { ?> class="active treeview" <?php } else { ?> class="treeview"   <?php } ?>>
+                <a href="#">
+                    <i class="fa fa-rss" aria-hidden="true"></i><span>Contact Us</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">     
+
+                 <!--    <li><a href="<?php //echo base_url('blog_tag/blog_list'); ?>"><i class="fa fa-tag" aria-hidden="true"></i></i>Tag List</a></li>
+ -->
+                    <li><a href="<?php echo base_url('contact_us/user'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Contact Us List</a></li>
+                </ul>
+            </li>
+           <!--End contact us-->
+
+
            <!--Start Blog-->
             <li <?php if ($this->uri->segment(1) == 'email' || $this->uri->segment(1) == '') { ?> class="active treeview" <?php } else { ?> class="treeview"   <?php } ?>>
                 <a href="#">

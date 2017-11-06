@@ -2524,8 +2524,21 @@ Your browser does not support the audio tag.
                     $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                     $return_html .= ' </li>
                                                                                     <li>';
-
-                    $return_html .= '<a href="#" title="Post Title" class="post_title " >';
+                    
+                    $cache_time1=$post['post_name'];
+                      if ($cache_time1 != '') {
+                    $text = strtolower($this->common->clean($cache_time1));
+                } else {
+                    $text = '';
+                }
+                
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                if ($cityname != '') {
+                    $cityname1 =  '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname1 = '';
+                }
+                    $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text  . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="Post Title" class="post_title " >';
                     $return_html .= ucwords($this->text2link($post['post_name']));
                     $return_html .= '</a> </li>';
 
@@ -2544,7 +2557,7 @@ Your browser does not support the audio tag.
                     }
                     $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
                     $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
-                    $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                    
                     $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
 
                     if ($cityname || $countryname) {

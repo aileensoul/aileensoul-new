@@ -2254,15 +2254,28 @@ if ($this->input->post('livepostid')) {
         if (count($unique) > 0) {
             foreach ($postdetail as $post) {
                 $cache_time1 = $post['post_name'];
-                $text = str_replace(" ", "-", $cache_time1);
-                $text = preg_replace("/[!$#%()]+/i", "", $text);
-                $text = strtolower($text);
-
+                
+                 if ($cache_time1 != '') {
+                    $text = strtolower($this->common->clean($cache_time1));
+                } else {
+                    $text = '';
+                }
+                
+//                $text = str_replace(" ", "-", $cache_time1);
+//                $text = preg_replace("/[!$#%()]+/i", "", $text);
+//                $text = strtolower($text);
+                
                 $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-
-                $cityname1 = str_replace(" ", "-", $cityname);
-                $cityname1 = preg_replace("/[!$#%()]+/i", "", $cityname1);
-                $cityname1 = strtolower($cityname1);
+                
+                if ($cityname != '') {
+                    $cityname1 =  '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname1 = '';
+                }
+                
+//                $cityname1 = str_replace(" ", "-", $cityname);
+//                $cityname1 = preg_replace("/[!$#%()]+/i", "", $cityname1);
+//                $cityname1 = strtolower($cityname1);
                 
                 $return_html .= '<div class="job-post-detail clearfix">
                                                         <div class="job-contact-frnd ">';
@@ -2278,7 +2291,7 @@ if ($this->input->post('livepostid')) {
                 $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                 $return_html .= '</li>
                                                                                     <li>';
-                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . '-vacancy-in-' . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
+                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text  . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
                 $return_html .= ucwords($post['post_name']);
                 $return_html .= '</a> </li>';
                 $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
@@ -2681,7 +2694,7 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    $email_html .= '<div class="post-img-user">' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
@@ -2744,7 +2757,7 @@ if ($this->input->post('livepostid')) {
                     $lname = $postuser[0]['freelancer_post_username'];
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div>';
+                    $email_html .= '<div class="post-img-user>' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div></td>';
                 } else {
                    $email_html .= '<img src="' . FREE_POST_PROFILE_THUMB_UPLOAD_URL . $postuser[0]['freelancer_post_user_image'] . '" width="60" height="60"></td>';
                 }
@@ -2852,7 +2865,21 @@ if ($this->input->post('livepostid')) {
 
                 $return_html .= '</li>
                                                                         <li>';
-                $return_html .= '<a href="#" title="' . ucwords($this->common->make_links($post['post_name'])) . '" class="post_title">';
+                
+                $cache_time1 = $post['post_name'];
+                  if ($cache_time1 != '') {
+                    $text = strtolower($this->common->clean($cache_time1));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                 if ($cityname != '') {
+                    $cityname1 =  '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname1 = '';
+                }
+                
+                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text  . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="' . ucwords($this->common->make_links($post['post_name'])) . '" class="post_title">';
                 $return_html .= ucwords($this->common->make_links($post['post_name']));
                 $return_html .= '</a>   
                                                                         </li>';
@@ -2866,7 +2893,7 @@ if ($this->input->post('livepostid')) {
                 $return_html .= '</a>';
                 $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
                 $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
-                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                
                 $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;
 
                 if ($cityname || $countryname) {
@@ -3502,7 +3529,20 @@ if ($this->input->post('livepostid')) {
                     $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                     $return_html .= '</li>
                                                     <li>';
-                    $return_html .= '<a href="#" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title">';
+                    $cache_time1= $post['post_name'];
+                      if ($cache_time1 != '') {
+                    $text = strtolower($this->common->clean($cache_time1));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
+                
+                 if ($cityname != '') {
+                    $cityname1 =  '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname1 = '';
+                }
+                    $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text  . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title">';
                     $return_html .= ucwords($this->text2link($post['post_name']));
                     $return_html .= '</a> </li>';
                     $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
@@ -4420,7 +4460,7 @@ if ($this->input->post('livepostid')) {
                     $sub_fname = substr($fname, 0, 1);
                     $sub_lname = substr($lname, 0, 1);
                     $email_html .= '<div class="post-img-div">
-                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> ';
+                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
                 }
                 $email_html .= '<td style="padding:5px;">
 						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
