@@ -1835,7 +1835,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 }
 /***  image crop for profile picture  ***/
 #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
-#userimage .col-md-5{width:100%; float:left; padding-bottom:20px;}
+#userimage .col-md-5{width:100%; float:left; padding-bottom:20px;padding-right: 0px;}
 #userimage .col-md-7{width:100%; float:left; padding-bottom:20px;}
 #popup-form input[type="submit"]#profilepicsubmit{margin-top: 0px;}
 /*** end image crop  ***/
