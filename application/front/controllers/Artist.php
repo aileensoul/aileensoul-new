@@ -15891,9 +15891,11 @@ $return_html .= '<div class="art-all-comment col-md-12">
         $search_condition = "(art_name LIKE '" . trim($searchTerm) . "%' OR art_lastname LIKE '" . trim($searchTerm) . "%' OR designation LIKE '" . trim($searchTerm) . "%'OR other_skill LIKE '" . trim($searchTerm) . "%')";
         $artistic_postdata = $this->common->select_data_by_search('art_reg', $search_condition,$contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = 'art_name,art_lastname,designation,other_skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_name,art_lastname,designation,other_skill');
 
+
         $contition_array = array('status' => '1', 'type' => '1');
         $search_condition = "(art_category LIKE '" . trim($searchTerm) . "%')";
         $skill = $this->common->select_data_by_search('art_category', $search_condition, $contition_array, $data = 'art_category', $sortby = 'art_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_category');
+
         }
 
         $contition_array = array('status' => '1', 'type' => '1');
@@ -15913,6 +15915,8 @@ $return_html .= '<div class="art-all-comment col-md-12">
             $result1[$key]['value'] = $value;
         }
         $result1 = array_values($result1);
+
+        $result1 = array_unique($result1);
 
         echo json_encode($result1);
     }
@@ -17657,7 +17661,7 @@ public function get_artistic_name($id=''){
                                              <a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'</a>
                                           </li>
                                           <li style="display: block;">
-                                             <a  class="color-search" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'">';
+                                             <a  class="color-search">';
                                                  if($key['designation']){
                                                     $return_html .= $key['designation'];
                                                 } else{
@@ -17665,7 +17669,7 @@ public function get_artistic_name($id=''){
                                                 } 
                                              $return_html .= '</a>
                                           </li>
-                                          <li style="display: block;">';
+                                          <li style="display: block;"> <a  class="color-search">';
                                                             
                                                    $aud = $key['art_skill'];
                                                    $aud_res = explode(',', $aud);
@@ -17687,9 +17691,9 @@ public function get_artistic_name($id=''){
                                                    $return_html .= $listFinal;  
                                                 }    
      
-                                         $return_html .=  '</li>
+                                         $return_html .=  '</a></li>
                                           <li style="display: block;">
-                                             <a  class="color-search" href="">';
+                                             <a  class="color-search">';
                                               $country = $this->db->select('country_name')->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
                                                $city = $this->db->select('city_name')->get_where('cities', array('city_id' => $key['art_city']))->row()->city_name;
                                                 
