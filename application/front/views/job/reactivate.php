@@ -34,9 +34,9 @@
          </div>
       </div>
 
-<footer>        
+<!-- <footer>     -->    
 <?php echo $footer;  ?>
-</footer>
+<!-- </footer> -->
     
      <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 

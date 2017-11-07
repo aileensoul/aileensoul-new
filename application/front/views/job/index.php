@@ -149,10 +149,10 @@
          </div>
       </section>
       <!-- END CONTAINER -->
-<footer>   
+<!-- <footer>    -->
 <?php echo $login_footer ?>     
 <?php echo $footer;  ?>
-</footer>
+<!-- </footer> -->
 
 
 

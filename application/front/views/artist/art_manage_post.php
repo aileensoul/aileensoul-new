@@ -52,6 +52,8 @@
         </a>
     </div>
 </div>
+
+
 <div class="user-midd-section">
     <div class="container">
         <div class="row">
@@ -134,7 +136,12 @@
                                         ?>
                                     </span></td>
                                     </tr>
+
+                                    <td>
+                                        
+                                    </td>
                         </table>
+
                     </div>
                 </div>
                 <a href="<?php echo base_url('artist/photos/' . $artisticdata[0]['slug']) ?>">
@@ -191,6 +198,27 @@
                     </div>
                 </div>
                 </a>
+                <div class="custom_footer_left col-md-12">
+          <div class="fl">
+             <ul>
+             <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
+              
+              <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
+              
+              <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
+              
+              <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+              
+              <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
+        
+              <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+            </ul>
+          </div>
+        <div>
+          
+        </div>
+
+        </div>
             </div>
             <!-- popup start -->
             <div class="col-md-6 col-sm-12 "  >
