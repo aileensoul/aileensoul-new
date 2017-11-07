@@ -5905,12 +5905,4 @@ if ($this->session->userdata('aileenuser')) {
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail[0]['rec_comp_email']);
     }
 
-    public function clean($string) {
-
-        $string = str_replace(' ', '-', $string);  // Replaces all spaces with hyphens.
-        $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // replace double --- in single -
-
-        return preg_replace('/-+/', '-', $string); // Removes special chars.
-    }
-
 }
