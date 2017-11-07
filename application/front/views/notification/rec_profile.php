@@ -669,6 +669,7 @@ function text2link($text){
         </div>
         </div>
     </section>
+    
     <div class="modal fade message-box" id="bidmodal-2" role="dialog">
     <div class="modal-dialog modal-lm">
         <div class="modal-content">

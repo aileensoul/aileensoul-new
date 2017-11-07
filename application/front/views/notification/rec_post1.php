@@ -311,10 +311,10 @@
 				</div>
 			</div>
 		</div>
-	<footer>
-
+	<!-- <footer> -->
+       <?php echo $login_footer ?>
        <?php echo $footer; ?>
-	</footer>
+	<!-- </footer> -->
 
 
 </body>
