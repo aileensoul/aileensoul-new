@@ -709,9 +709,7 @@
             </div>
         </div>
         <!-- register -->
-         <footer>
             <?php echo $footer; ?>
-        </footer>
       
         <!-- script for skill textbox automatic end (option 2)-->
         

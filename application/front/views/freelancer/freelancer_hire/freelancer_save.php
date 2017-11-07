@@ -197,10 +197,8 @@
 
 
     </section>
-    <footer>
-        <?php echo $login_footer ?>
-        <?php echo $footer; ?>
-    </footer>
+    <?php echo $login_footer ?>
+    <?php echo $footer; ?>
     <!-- model for popup start -->
     <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
         <div class="modal-dialog modal-lm">
@@ -231,7 +229,7 @@
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >-->
-                                <div class="col-md-5">
+                                <div class="fw">
                                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                 </div>
                                 <div class="col-md-7 text-center">

@@ -92,20 +92,23 @@
                                         </div>
                                     </div>                             
                                 </div>
-								<div class="tablate-potrat-add">
-									<div class="fw text-center pt10">
-									<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script async type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-									</div>
-								</div>
+                                <div class="tablate-potrat-add">
+                                    <div class="fw text-center pt10">
+                                        <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                        </script>
+                                        <script async type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    </div>
+                                </div>
                                 <div class="custom_footer_left fw">
                                     <div class="fl">
                                         <ul>
@@ -114,10 +117,10 @@
                                             <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
 
                                             <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-											<li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+                                            <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
                                             <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
 
-                                            
+
 
                                             <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
                                         </ul>
@@ -129,78 +132,85 @@
                         <!-- cover pic end -->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <?php
-                                if ($this->uri->segment(3) == 'live-post') {
-                                    echo '<div class="alert alert-success">Applied successfully...!</div>';
-                                }
-                                ?>
+                            if ($this->uri->segment(3) == 'live-post') {
+                                echo '<div class="alert alert-success">Applied successfully...!</div>';
+                            }
+                            ?>
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_project"); ?></h3>
                                     <div class="contact-frnd-post">
-									<div class="mob-add">
-										<div class="fw text-center pt10 pb5">
-											<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-										</div>
-									</div>
+                                        <div class="mob-add">
+                                            <div class="fw text-center pt10 pb5">
+                                                <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                                </script>
+                                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                            </div>
+                                        </div>
                                         <!--.............AJAX DATA............-->
-                                    <div class="fw" id="loader" style="text-align:center;">
-										<img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" />
-									</div>
+                                        <div class="fw" id="loader" style="text-align:center;">
+                                            <img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    
-						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-					
-							<div class="fw text-center">
-								<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-									
-								<div class="fw pt10">
-									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-								</div>
-							</div>
-							
-							
-						</div>
-						<div class="tablate-add">
+
+                        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                            <div class="fw text-center">
+                                <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                </script>
+                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+
+                                <div class="fw pt10">
+                                    <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tablate-add">
 
                             <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                            </script>
+                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                         </div>
-					</div>
+                    </div>
                 </div>
             </div>
         </section>
-        <footer>
-            <?php echo $footer; ?>
-        </footer>
+<?php echo $footer; ?>
 
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -214,7 +224,7 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        
+
         <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
         <script type="text/javascript">
