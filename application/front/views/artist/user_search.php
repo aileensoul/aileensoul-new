@@ -647,9 +647,9 @@
             </div>
         </div>
         <!-- register -->
-         <footer>
+         
             <?php echo $footer; ?>
-        </footer>
+       
 
 <!-- <script src="<?php //echo base_url('assets/js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script> -->
 <!-- 

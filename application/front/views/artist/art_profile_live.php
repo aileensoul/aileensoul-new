@@ -735,9 +735,9 @@ echo PROFILENA;
 
 
 <!-- Model Popup Close -->
-<footer>
+
 <?php echo $footer; ?>
-</footer>
+
 <!-- script for skill textbox automatic start (option 2)-->
 
 <script>
