@@ -2578,7 +2578,7 @@ Your browser does not support the audio tag.
                         $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                         $return_html .= '</a>';
                     } else {
-                        $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="javascript:void(0);" onclick="login_profile();"> ';
+                        $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="javascript:void(0);" onclick="register_profile();"> ';
                         $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                         $return_html .= '</a>';
                     }
@@ -2777,13 +2777,13 @@ Your browser does not support the audio tag.
                             $return_html .= '</a>';
                         }
                     } else {
-                        $return_html .= '<a href="javascript:void(0);"  class= "applypost button" onclick="login_profile();">';
+                        $return_html .= '<a href="javascript:void(0);"  class= "applypost button" onclick="create_profile_apply('. $post['post_id'].');">';
                         $return_html .= $this->lang->line("apply");
                         $return_html .= ' </a> </li> <li>';
 
-                        $return_html .= ' <a id="" onClick="login_profile();" class="savedpost button">';
-                        $return_html .= $this->lang->line("save");
-                        $return_html .= '</a>';
+//                        $return_html .= ' <a id="" onClick="login_profile();" class="savedpost button">';
+//                        $return_html .= $this->lang->line("save");
+//                        $return_html .= '</a>';
                     }
                     $return_html .= ' </li>                        
                                                                                 </ul>

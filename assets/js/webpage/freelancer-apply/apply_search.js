@@ -388,7 +388,7 @@ function sendmail(userid) {
 
 //For Apply Button Click Process Start
 function create_profile_apply(postid) {
-
+alert(333);
 //    $(".password_login").val('');
 //    $(".email_login").val('');
     $(".post_id_login").val(postid);
