@@ -130,7 +130,7 @@
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <?php
                                 if ($this->uri->segment(3) == 'live-post') {
-                                    echo '<div class="alert alert-danger">Applied successfully...!</div>';
+                                    echo '<div class="alert alert-success">Applied successfully...!</div>';
                                 }
                                 ?>
                             <div class="common-form">
@@ -175,7 +175,7 @@
 									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 									
 								<div class="fw pt10">
-									<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
 								</div>
 							</div>
 							

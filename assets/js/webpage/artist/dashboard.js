@@ -241,7 +241,10 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
             uploadProgress: function (event, position, total, percentComplete) { 
             var percentVal = percentComplete + '%';
             bar.width(percentVal)
-                    percent.html(percentVal);
+            percent.html(percentVal);
+
+            document.body.classList.remove('modal-open');
+             //$("body").removeClass("modal-open");
             },
             success: function () {
             var percentVal = '100%';
@@ -285,6 +288,7 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
             $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
+
             }
     };
     // Submit the form

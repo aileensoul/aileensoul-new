@@ -190,10 +190,11 @@
                                             <div class="post-design-name fl col-xs-8 col-md-10">
                                                 <ul>
                                                     <?php
-                                                    $slugname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_slug;
-                                                    $categoryid = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->industriyal;
-                                                    $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
-                                                    $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => 1))->row()->business_slug;
+                                                    $slugname = $this->db->select('business_slug')->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_slug;
+                                                    $categoryid = $this->db->select('industriyal')->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->industriyal;
+                                                    $other_category = $this->db->select('other_industrial')->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->other_industrial;
+                                                    $category = $this->db->select('industry_name')->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
+                                                    $slugnameposted = $this->db->select('business_slug')->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => 1))->row()->business_slug;
                                                     ?>
                                                     <?php if ($busienss_data[0]['posted_user_id']) { ?>
                                                         <li>
@@ -225,7 +226,7 @@
                                                                 if ($category) {
                                                                     echo ucfirst(strtolower($category));
                                                                 } else {
-                                                                    echo ucfirst(strtolower($busienss_data[0]['other_industrial']));
+                                                                    echo ucfirst(strtolower($other_category));
                                                                 }
                                                                 ?>
                                                             </a>
@@ -1183,10 +1184,10 @@
             </div>
         </div>
         <?php echo $footer; ?>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());      ?>"></script>--> 
+        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());       ?>"></script>--> 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());      ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());       ?>"></script>-->
         <!-- script for business autofill -->
         <script>
                                                 var base_url = '<?php echo base_url(); ?>';

@@ -183,7 +183,7 @@
 								<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
 							</div>
 							<div class="fw pt20" style="text-align:center;">
-								<a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+								<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
 							</div>
 						</div>
 						<div class="tablate-add">

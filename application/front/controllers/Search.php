@@ -2449,10 +2449,10 @@ Your browser does not support the audio tag.
             $join_str[0]['from_table_id'] = 'freelancer_hire_reg.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('freelancer_post.city' => $cache_time, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.user_id !=' => $userid, 'freelancer_hire_reg.free_hire_step' => 3);
+            $contition_array = array('freelancer_hire_reg.city' => $cache_time, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.user_id !=' => $userid, 'freelancer_hire_reg.free_hire_step' => 3);
             $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            //echo "<pre>"; print_r($unique);die();
+          
         } elseif ($search_place == "") {
 
             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '1'))->row()->skill_id;
@@ -2474,19 +2474,39 @@ Your browser does not support the audio tag.
             }
         } else {
 
+            
+            
             $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'city' => $cache_time, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
-            $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+            
+            $join_str[0]['table'] = 'freelancer_hire_reg';
+            $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
+            $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
+            $join_str[0]['join_type'] = '';
+            
+            $contition_array = array('freelancer_post.status' => '1', 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
+            $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+          //  echo "<pre>"; print_r($freeskillpost);die();
+            
+            $join_str[0]['table'] = 'freelancer_hire_reg';
+            $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
+            $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
+            $join_str[0]['join_type'] = '';
+            
             $category_temp = $this->db->select('category_id')->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
-            // echo $category_temp;die();
-            $contition_array = array('post_field_req' => $category_temp, 'user_id !=' => $userid, 'status' => '1', 'is_delete' => 0, 'city' => $cache_time);
+            $contition_array = array('freelancer_post.post_field_req' => $category_temp, 'freelancer_post.user_id !=' => $userid, 'freelancer_post.status' => '1', 'freelancer_post.is_delete' => 0, 'freelancer_hire_reg.city' => $cache_time);
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 
             //  echo "<pre>"; print_r($fieldfound);die();
-            $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
-            $contion_array = array('city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
-            $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+            $join_str[0]['table'] = 'freelancer_hire_reg';
+            $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
+            $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
+            $join_str[0]['join_type'] = '';
+            
+            
+            $search_condition = "(freelancer_post.post_name LIKE '%$search_skill%' or freelancer_post.post_other_skill LIKE '%$search_skill%' or freelancer_post.post_est_time LIKE '%$search_skill%' or freelancer_post.post_rate LIKE '%$search_skill%' or  freelancer_post.post_exp_year LIKE '%$search_skill%' or  freelancer_post.post_exp_month LIKE '%$search_skill%')";
+            $contion_array = array('freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
+            $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $unique = array_merge((array) $freeskillpost, (array) $freeldata, (array) $fieldfound);
             $new = array();
@@ -2538,7 +2558,7 @@ Your browser does not support the audio tag.
                     } else {
                         $text = '';
                     }
-
+                    $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
                     $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
                     if ($cityname != '') {
                         $cityname1 = '-vacancy-in-' . strtolower($this->common->clean($cityname));
@@ -2562,7 +2582,7 @@ Your browser does not support the audio tag.
                         $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                         $return_html .= '</a>';
                     }
-                    $city = $this->db->select('city')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->city;
+                    
                     $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
 
                     $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $country))->row()->country_name;

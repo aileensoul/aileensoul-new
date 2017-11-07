@@ -269,9 +269,9 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
         </div>
         <!-- BID MODAL END-->
         <!-- START FOOTER -->
-        <footer>
+        
             <?php echo $footer; ?>
-        </footer>
+        
         <!-- END FOOTER -->
         
 

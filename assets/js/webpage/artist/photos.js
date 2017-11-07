@@ -1,4 +1,12 @@
+$( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$('#myModal1').hide();
+          if(document.getElementById('myModal1').style.display === "block"){ alert("falguni");
 
+                 document.getElementById('myModal1').style.display = 'none';
+           }$('#myModal1').model('hide');
+       }
+   });  
  
 
 
@@ -949,3 +957,6 @@ var _onPaste_StripFormatting_IEPaste = false;
   $(document).ready(function(){    
        $('html,body').animate({scrollTop:265}, 100);
    });
+
+
+

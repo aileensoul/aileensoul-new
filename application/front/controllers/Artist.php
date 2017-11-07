@@ -2414,7 +2414,7 @@ public function ajax_userlist() {
                                         $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -2604,7 +2604,7 @@ public function follow_home() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -3178,7 +3178,7 @@ public function follow_home() {
                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -3334,7 +3334,7 @@ public function followtwo() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -4187,7 +4187,7 @@ public function followtwo() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
@@ -4414,7 +4414,7 @@ public function followtwo() {
                                            $email_html .=  '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') .  '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
@@ -5406,7 +5406,7 @@ public function delete_commenttwo_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
@@ -5724,7 +5724,7 @@ public function delete_commenttwo_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -5964,7 +5964,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -6237,7 +6237,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -7388,7 +7388,7 @@ public function insert_comment_postnewpage() {
                                            $email_html .= ' </td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $likepostid[0]['art_post_id'] . '">view</a></p>
@@ -7651,7 +7651,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $likepostid[0]['art_post_id'] . '">view</a></p>
@@ -7846,7 +7846,7 @@ public function insert_comment_postnewpage() {
                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
@@ -8135,7 +8135,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -8401,7 +8401,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
@@ -8679,7 +8679,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -8835,7 +8835,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -8984,7 +8984,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -9138,7 +9138,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -10309,7 +10309,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
@@ -15891,9 +15891,11 @@ $return_html .= '<div class="art-all-comment col-md-12">
         $search_condition = "(art_name LIKE '" . trim($searchTerm) . "%' OR art_lastname LIKE '" . trim($searchTerm) . "%' OR designation LIKE '" . trim($searchTerm) . "%'OR other_skill LIKE '" . trim($searchTerm) . "%')";
         $artistic_postdata = $this->common->select_data_by_search('art_reg', $search_condition,$contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = 'art_name,art_lastname,designation,other_skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_name,art_lastname,designation,other_skill');
 
+
         $contition_array = array('status' => '1', 'type' => '1');
         $search_condition = "(art_category LIKE '" . trim($searchTerm) . "%')";
         $skill = $this->common->select_data_by_search('art_category', $search_condition, $contition_array, $data = 'art_category', $sortby = 'art_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_category');
+
         }
 
         $contition_array = array('status' => '1', 'type' => '1');
@@ -15913,6 +15915,8 @@ $return_html .= '<div class="art-all-comment col-md-12">
             $result1[$key]['value'] = $value;
         }
         $result1 = array_values($result1);
+
+        $result1 = array_unique($result1);
 
         echo json_encode($result1);
     }
@@ -16588,11 +16592,11 @@ public function get_artistic_name($id=''){
                                     </div>
                                     <div class="designation_rec">
                                        <ul>
-                                          <li >
+                                          <li>
                                              <a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $geturl . '').'" title="'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'">'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'</a>
                                           </li>
                                           <li style="display: block;">
-                                             <a  class="color-search" href="'.base_url('artist/dashboard/' . $geturl . '').'">';
+                                             <a  class="color-search">';
                                                  if($key['designation']){ //echo "hii";  die();
                                                     $return_html .= ucfirst(strtolower($key['designation']));
                                                 } else{
@@ -16600,7 +16604,7 @@ public function get_artistic_name($id=''){
                                                 } 
                                              $return_html .= '</a>
                                           </li>
-                                          <li style="display: block;">';
+                                          <li style="display: block;"> <a  class="color-search">';
 
 
                                         //   $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $key['art_skill']))->row()->art_category;
@@ -16639,9 +16643,9 @@ public function get_artistic_name($id=''){
                                      $return_html .= ucwords($art_othercategory);  
                                   }
                                                                                                   
-                                       $return_html .=  '</li>
+                                       $return_html .=  '</a></li>
                                           <li style="display: block;">
-                                             <a  class="color-search" href="">';
+                                             <a  class="color-search">';
                                               $country = $this->db->select('country_name')->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
                                                $city = $this->db->select('city_name')->get_where('cities', array('city_id' => $key['art_city']))->row()->city_name;
                                                 
@@ -17657,7 +17661,7 @@ public function get_artistic_name($id=''){
                                              <a style="  font-size: 19px;font-weight: 600;" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">'.ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname'])).'</a>
                                           </li>
                                           <li style="display: block;">
-                                             <a  class="color-search" href="'.base_url('artist/dashboard/' . $key['slug'] . '').'">';
+                                             <a  class="color-search">';
                                                  if($key['designation']){
                                                     $return_html .= $key['designation'];
                                                 } else{
@@ -17665,7 +17669,7 @@ public function get_artistic_name($id=''){
                                                 } 
                                              $return_html .= '</a>
                                           </li>
-                                          <li style="display: block;">';
+                                          <li style="display: block;"> <a  class="color-search">';
                                                             
                                                    $aud = $key['art_skill'];
                                                    $aud_res = explode(',', $aud);
@@ -17687,9 +17691,9 @@ public function get_artistic_name($id=''){
                                                    $return_html .= $listFinal;  
                                                 }    
      
-                                         $return_html .=  '</li>
+                                         $return_html .=  '</a></li>
                                           <li style="display: block;">
-                                             <a  class="color-search" href="">';
+                                             <a  class="color-search">';
                                               $country = $this->db->select('country_name')->get_where('countries', array('country_id' => $key['art_country']))->row()->country_name;
                                                $city = $this->db->select('city_name')->get_where('cities', array('city_id' => $key['art_city']))->row()->city_name;
                                                 
