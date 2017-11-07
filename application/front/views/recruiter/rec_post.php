@@ -268,7 +268,7 @@ if ($returnpage == '') {
 
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <div class="col-md-5">
+                                    <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
                                     </div>
 
@@ -286,10 +286,10 @@ if ($returnpage == '') {
         </div>
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
-        <footer>
+        <!-- <footer> -->
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
-        </footer>
+        <!-- </footer> -->
         <!-- END FOOTER -->
 
 

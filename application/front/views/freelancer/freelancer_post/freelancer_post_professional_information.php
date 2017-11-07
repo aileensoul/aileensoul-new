@@ -90,7 +90,7 @@
                                 <h3><?php echo $this->lang->line("professional_info"); ?></h3>
                                 <?php echo form_open(base_url('freelancer/freelancer_post_professional_information_insert'), array('id' => 'freelancer_post_professional', 'name' => 'freelancer_post_professional', 'class' => 'clearfix')); ?>
                                 <!-- <div>
-                                    <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required");   ?></span>
+                                    <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required");    ?></span>
                                 </div> -->
                                 <?php
                                 $field = form_error('field');
@@ -99,10 +99,10 @@
                                 $experience_year = form_error('experience_year');
                                 ?>
                                 <fieldset class="full-width" <?php if ($field) { ?> class="error-msg" <?php } ?>>
-                                    <?php     if ($livepostid) { ?>
-                                         <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid;?>">
-                                    <?php    }
-                                        ?>
+                                    <?php if ($livepostid) { ?>
+                                        <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid; ?>">
+                                    <?php }
+                                    ?>
                                     <label><?php echo $this->lang->line("your_field"); ?>:<span class="red">*</span></label> 
 
                                     <select tabindex="1" autofocus name="field" id="field" class="field_other">
@@ -135,7 +135,7 @@
                                         echo $skill_2;
                                     }
                                     ?>">
-<?php echo form_error('area'); ?>
+                                           <?php echo form_error('area'); ?>
                                 </fieldset>
                                 <!--                                    <fieldset>
                                                                         <label><?php echo $this->lang->line("other_skill"); ?> :</label>          
@@ -150,7 +150,7 @@
                                         }
                                         ?></textarea>
 
-<?php echo form_error('skill_description'); ?>
+                                    <?php echo form_error('skill_description'); ?>
                                 </fieldset>
                                 <fieldset  class="" <?php if ($experience_year) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="4" id="experience_year" class="experience_year col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
@@ -198,23 +198,21 @@
                                         <option value="12 month"  <?php if ($experience_month1 == "12 month") echo 'selected'; ?>>12 Month</option>
 
                                     </select>  
-<?php echo form_error('experience_year'); ?>
+                                    <?php echo form_error('experience_year'); ?>
 
                                 </fieldset>
                                 <fieldset class="hs-submit full-width">
                                     <input type="submit"  id="next" name="next" tabindex="6" value="Next">
                                 </fieldset>
-<?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <footer>
-            <?php echo $login_footer ?>
-<?php echo $footer; ?>
-        </footer>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
 
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
@@ -232,7 +230,7 @@
         <!-- Model Popup Close -->
 
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
 
 
         <script>

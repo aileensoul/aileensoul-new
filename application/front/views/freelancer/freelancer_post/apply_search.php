@@ -702,9 +702,7 @@
             </div>
         </div>
         <!-- register -->
-        <footer>
             <?php echo $footer; ?>
-        </footer>
         <!-- script for skill textbox automatic start (option 2)-->
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
