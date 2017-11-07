@@ -286,10 +286,10 @@ if ($returnpage == '') {
         </div>
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
-        <footer>
+        <!-- <footer> -->
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
-        </footer>
+        <!-- </footer> -->
         <!-- END FOOTER -->
 
 
