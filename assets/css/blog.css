@@ -124,7 +124,7 @@ border-bottom: 1px solid #d9d9d9;}
 .fancybox-close-small:hover::after{background-color: #1b8ab9!important; color: #fff!important;}
 .fancybox-close-small{background: none !important; outline: inherit!important;	}
 .blog_post_outer{margin-bottom: 50px;}
-  footer > .container{border:1px solid transparent!important;}
+  footer > .container{border-top:1px solid #dbdada !important;}
   .footer{border:1px solid #d9d9d9;background-color: #f3f3f3!important;}
 
 .social_icon_bloag li a p{font-style: 14px;color: #272222; cursor: default;}
