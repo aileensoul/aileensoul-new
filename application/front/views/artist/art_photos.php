@@ -195,7 +195,7 @@
                         <span class="mes">
                             <div id="popup-form">
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                               <div class="col-md-5">
+                               <div class=" ">
 
                                 <!-- <div class="user_profile"></div> -->
 
