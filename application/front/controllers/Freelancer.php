@@ -4350,7 +4350,7 @@ class Freelancer extends MY_Controller {
                 }
                 $email_html .= '<td style="padding:5px;">
 						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i')  . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
@@ -4846,7 +4846,7 @@ class Freelancer extends MY_Controller {
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $applydata[0]['freelancer_post_fullname'] . " " . $applydata[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i')  . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
@@ -4882,7 +4882,7 @@ class Freelancer extends MY_Controller {
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i')  . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
