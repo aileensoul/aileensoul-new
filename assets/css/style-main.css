@@ -1568,7 +1568,7 @@ select:focus{ outline: none; }
 	border:none;
 	}
 .no-login .login .form-group input{height:36px;}
-.cover footer{background:#fff;}
+.cover footer{background:#fff !important;}
 body.cover{padding-bottom:60px;}
 /*** add post  ***/
 .tablate-add{display:none;}
