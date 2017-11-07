@@ -116,8 +116,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
                                         <?php
                                         $bus_detail = nl2br($this->common->make_links($business_data[0]['details']));
+                                        $bus_detail = preg_replace('[^(<br( \/)?>)*|(<br( \/)?>)*$]', '', $bus_detail);
                                         ?>
-                                        <td class="business_data_td2"><span><?php echo $bus_detail; ?></span></td>
+                                        <td class="business_data_td2"><span><?php echo $bus_detail ; ?></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -362,16 +363,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                         <div class="fw text-center">
                             <script type="text/javascript">
-                                                (function () {
-                                                    if (window.CHITIKA === undefined) {
-                                                        window.CHITIKA = {'units': []};
-                                                    }
-                                                    ;
-                                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                    var placement_id = window.CHITIKA.units.length;
-                                                    window.CHITIKA.units.push(unit);
-                                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                                }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                             </script>
                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                             <div class="fw pt10">
@@ -383,14 +384,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <div class="tablate-add">
 
                         <script type="text/javascript">
-                                            (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []}; };
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                            }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                         </script>
                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                     </div>
@@ -467,7 +470,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());       ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());        ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -477,9 +480,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var slug = '<?php echo $slugid; ?>';
-                                                var no_business_post_html = '<?php echo $no_business_post_html ?>';
+                                        var base_url = '<?php echo base_url(); ?>';
+                                        var slug = '<?php echo $slugid; ?>';
+                                        var no_business_post_html = '<?php echo $no_business_post_html ?>';
         </script>
 
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
