@@ -231,7 +231,7 @@
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >-->
-                                <div class="col-md-5">
+                                <div class="fw">
                                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                 </div>
                                 <div class="col-md-7 text-center">
