@@ -2895,6 +2895,11 @@ class Job extends MY_Controller {
 //THIS JOB REGISTRATION IS USED FOR FIRST TIME REGISTARTION VIEW START
 
     public function job_reg($postid = '') {
+        
+       
+       $this->data['livepost'] = $this->uri->segment(3);
+        
+        
         //$postid = $_GET['postid']; 
         // job aply wothout login start
 
@@ -3007,7 +3012,9 @@ class Job extends MY_Controller {
     }
 
     public function job_insert() {
-
+if($this->input->post('livepost')){
+    $poslivtid = $this->input->post('livepost');
+}
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         $firstname = $this->input->post('first_name');
@@ -3117,10 +3124,19 @@ class Job extends MY_Controller {
 
         if ($insert_id) {
             $this->session->set_flashdata('success', 'Basic information updated successfully');
-            redirect('job/home');
+           if($poslivtid){
+               redirect('job/home/' . $poslivtid, 'refresh');
+           }else{
+            redirect('job/home', 'refresh');
+           }
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-            redirect('job/profile', 'refresh');
+            if($poslivtid){
+               redirect('job/profile/' . $poslivtid);
+           }else{
+            redirect('job/profile');
+           }
+            
         }
     }
 
