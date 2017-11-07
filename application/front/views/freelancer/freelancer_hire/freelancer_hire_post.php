@@ -104,11 +104,11 @@
                                         <div class="post-img-user">
                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
-                                        <?php } else {
+                                    <?php } else {
                                         ?>
                                         <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
 
-                                    <?php
+                                        <?php
                                     }
                                 } else {
                                     $filename = $this->config->item('free_hire_profile_main_upload_path') . $freelancr_user_data[0]['freelancer_hire_user_image'];
@@ -117,22 +117,22 @@
                                     if ($info) {
                                         ?>
                                         <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
-                                        <?php } else { ?>
+                                    <?php } else { ?>
                                         <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
-                                    <?php
+                                        <?php
                                     }
                                 }
                             } else {
                                 ?>
                                 <div class="post-img-user">
-                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                                 <a href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img src="<?php echo base_url('assets/img/cam.png'); ?>"><?php echo $this->lang->line("update_profile_picture"); ?></a>
-<?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -171,19 +171,19 @@
                             if ($freelancr_user_data[0]['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
-                                    <?php } else { ?>
+                                <?php } else { ?>
                                     <ul class="pro-fw4">
-                                        <?php } ?>  
+                                    <?php } ?>  
                                     <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>>
                                         <?php if ($returnpage == 'freelancer_post') { ?><a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><?php echo $this->lang->line("employer_details"); ?></a> <?php } ?>
                                     </li>
                                     <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>>
-                                    <?php if ($returnpage == 'freelancer_post') { ?><a title="Projects" href="<?php echo base_url('freelancer-hire/projects/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>"> Projects</a> <?php } else { ?> <a title="Projects" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a> <?php } ?>
+                                        <?php if ($returnpage == 'freelancer_post') { ?><a title="Projects" href="<?php echo base_url('freelancer-hire/projects/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>"> Projects</a> <?php } else { ?> <a title="Projects" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a> <?php } ?>
                                     </li>
                                     <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects' || $this->uri->segment(2) == 'employer-details' || $this->uri->segment(2) == 'add-projects' || $this->uri->segment(2) == 'freelancer-save') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
                                         <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved_freelancer"); ?></a>
                                         </li>
-<?php } ?>
+                                    <?php } ?>
 
 
                                 </ul>
@@ -208,12 +208,12 @@
                                                     <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
-    <?php }
-    ?>
-    <!--                                                    <a href="<?php //echo base_url('chat/abc/3/4/' . $id);     ?>"><?php //echo $this->lang->line("message");     ?></a>-->
+                                                <?php }
+                                                ?>
+    <!--                                                    <a href="<?php //echo base_url('chat/abc/3/4/' . $id);      ?>"><?php //echo $this->lang->line("message");      ?></a>-->
                                             </li>
 
-<?php } ?>
+                                        <?php } ?>
                                     </ul>
                                 </div>
                         </div>
@@ -226,7 +226,7 @@
                 <div  class="add-post-button mob-block">
                     <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                         <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-<?php } ?>
+                    <?php } ?>
                 </div> 
                 <div class="middle-part container">
                     <div class="job-menu-profile mob-none pt20">
@@ -257,7 +257,7 @@
                         <div  class="add-post-button">
                             <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                                 <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-<?php } ?>
+                            <?php } ?>
                         </div> 
                     </div>
                     <div class="col-md-7 col-sm-12 mob-clear">
@@ -284,10 +284,8 @@
                     </div>
                 </div>
         </section>
-        <footer>
-            <?php echo $login_footer ?>
-<?php echo $footer; ?>
-        </footer>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- model for popup start -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -311,7 +309,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));    ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));    ?>
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -320,7 +318,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-<?php //echo form_close();    ?>
+                                <?php //echo form_close();    ?>
                             </div>
                         </span>
                     </div>
@@ -340,12 +338,12 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        
+
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
         <script  src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
-    </script>
+        </script>
 
         <script>
             var base_url = '<?php echo base_url(); ?>';

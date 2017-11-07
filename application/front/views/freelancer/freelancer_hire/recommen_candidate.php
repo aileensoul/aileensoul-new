@@ -61,18 +61,18 @@
                                                             if ($info) {
                                                                 ?>
                                                                 <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freehiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>" >
-                                                                <?php } else {
+                                                            <?php } else {
                                                                 ?>
                                                                 <div class="post-img-profile">
                                                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                 </div> 
-                                                            <?php
+                                                                <?php
                                                             }
                                                         }
                                                     } else {
                                                         ?>
                                                         <div class="post-img-profile">
-                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                         </div>
                                                         <?php
                                                     }
@@ -83,7 +83,7 @@
                                                 <span class="profile-company-name ">
                                                     <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>"> <?php echo ucwords($freehiredata[0]['fullname']) . ' ' . ucwords($freehiredata[0]['username']); ?></a>  
                                                 </span>
-<?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
+                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>"><?php
                                                         if ($freehiredata[0]['designation']) {
@@ -105,15 +105,18 @@
                                 <div class="tablate-potrat-add">
                                     <div class="fw text-center pt10">
                                         <script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script  type="text/javascript" src="//cdn.chitika.net/getads.js" ></script>
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                        </script>
+                                        <script  type="text/javascript" src="//cdn.chitika.net/getads.js" ></script>
                                     </div>
                                 </div>
 
@@ -157,20 +160,23 @@
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
                                     <div class="contact-frnd-post">
-										<div class="mob-add">
-										<div class="fw text-center pt10 pb5">
-                                        <script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js"></script>
-									</div>
-									</div>
+                                        <div class="mob-add">
+                                            <div class="fw text-center pt10 pb5">
+                                                <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                                </script>
+                                                <script type="text/javascript" src="//cdn.chitika.net/getads.js"></script>
+                                            </div>
+                                        </div>
                                         <div class="job-contact-frnd">
                                             <!--AJAX DATA...........-->
 
@@ -189,42 +195,46 @@
 
                             <div class="fw text-center">
                                 <script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js"></script>
-									<div class="fw pt10">
-									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-								</div>
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                </script>
+                                <script type="text/javascript" src="//cdn.chitika.net/getads.js"></script>
+                                <div class="fw pt10">
+                                    <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                                </div>
                             </div>
-                            
+
                         </div>
                         <div class="tablate-add">
 
                             <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                            </script>
+                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                         </div>
 
                     </div>
                 </div>
             </div>
         </section>
-        <footer>
-<?php echo $footer; ?>
-        </footer>
+        <?php echo $footer; ?>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">

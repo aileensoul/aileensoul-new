@@ -57,7 +57,7 @@
                                 <h3><?php echo $this->lang->line("professional_info"); ?></h3>
                                 <?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_professional_info_insert'), array('id' => 'professional_info1', 'name' => 'professional_info', 'class' => 'clearfix')); ?>
                                 <!--                                     <div>
-                                                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required");  ?></span>
+                                                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php // echo $this->lang->line("filed_required");   ?></span>
                                                                     </div> -->
                                 <?php
                                 $professional_info = form_error('professional_info');
@@ -81,10 +81,8 @@
                 </div>
             </div>
         </section>
-        <footer>
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
-        </footer>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver=' . time()); ?>"></script>-->
         <script type="text/javascript">
