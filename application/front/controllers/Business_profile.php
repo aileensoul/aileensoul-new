@@ -939,7 +939,6 @@ class Business_profile extends MY_Controller {
 
         $this->data['follow_user_suggest_count'] = $userlistview[0]['total'];
 
-
         /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
 
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
