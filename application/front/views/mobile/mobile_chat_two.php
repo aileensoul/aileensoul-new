@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="container">
             <div class="" id="paddingtop_fixed">
                 <div class="backdiv-mob">
-                    <a href="<?php echo base_url() . 'chat/abc/' . $message_from_profile . '/' . $message_to_profile . '/' . $id; ?>" class="pull-left"><img src="<?php echo base_url(); ?>img/back-arrow.png"></a>
+                    <a href="<?php echo base_url() . 'chat/abc/' . $message_from_profile . '/' . $message_to_profile . '/' . $id; ?>" class="pull-left"><img src="<?php echo base_url(); ?>assets/img/back-arrow.png"></a>
                     <a href="#" class="pull-right"><img src="<?php echo base_url(); ?>img/chat-frd.png"></a>
                 </div>
                 <div class="chat_nobcx">
