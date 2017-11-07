@@ -458,9 +458,9 @@
                     </div>
                     <!-- Model Popup Close -->
 
-                    <footer>        
+                    <!-- <footer>  -->       
                         <?php echo $footer; ?>
-                    </footer>
+                    <!-- </footer> -->
 
                     <!-- Login  -->
                     <div class="modal fade login" id="login" role="dialog">

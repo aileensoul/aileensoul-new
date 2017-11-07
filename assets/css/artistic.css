@@ -5755,7 +5755,7 @@ div .comment {
     }
     .cmy_2 {
         width: 100%;
-        padding-left: 6px !important;
+        /*padding-left: 6px !important;*/
     }
     .post-design-name {
         padding-right: 0;

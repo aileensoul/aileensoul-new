@@ -227,6 +227,7 @@ $(document).ready(function () {
     /* register submit */
     function submitRegisterForm()
     {
+        alert(123);
         var postid = '';
         var first_name = $("#first_name").val();
         var last_name = $("#last_name").val();
@@ -237,7 +238,7 @@ $(document).ready(function () {
         var selyear = $("#selyear").val();
         var selgen = $("#selgen").val();
         var postid = $(".post_id_login").val();
-//alert(postid);
+alert(postid);
         var post_data = {
             'first_name': first_name,
             'last_name': last_name,
@@ -455,15 +456,23 @@ function sendmail(userid) {
 }
 
 //For Apply Button Click Process Start
-function login_profile_apply(postid) {
+function create_profile_apply(postid) {
 
-    $(".password_login").val('');
-    $(".email_login").val('');
+//    $(".password_login").val('');
+//    $(".email_login").val('');
     $(".post_id_login").val(postid);
 //            $(".regpostval").val(postid);
     $('.pt15').html(" Don't have an account? <a class='db-479' href='javascript:void(0);' data-toggle='modal' onclick='register_profile(" + postid + ");'>Create an account</a>");
-    $('#login_apply').modal('show');
+    $('#register').modal('show');
 
+}
+function login_profile_apply(postid) {
+    $('#register').modal('hide');
+    $(".password_login").val('');
+    $(".email_login").val('');
+    $(".post_id_login").val(postid);
+    $('.pt15').html(" Don't have an account? <a class='db-479' href='javascript:void(0);' data-toggle='modal' onclick='register_profile(" + postid + ");'>Create an account</a>");
+    $('#login_apply').modal('show');
 }
 //validation for edit email formate form
 $(document).ready(function () {

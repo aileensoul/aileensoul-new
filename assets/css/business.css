@@ -5423,7 +5423,7 @@ div .comment {
     }
 	
 	/*** follow , unfollow div  ***/
-	.folle_text{width:75%;}
+	.folle_text{width:72%;}
 	.user_lst #unfollowdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
 	.user_lst #unfollowdiv button span{background:url('../img/icon_following.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
 	.user_lst #followdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
@@ -5559,8 +5559,10 @@ div .comment {
         width: 49%;
     }
     .folle_text {
-        width: 42%;
+        width: 64%;
     }
+	.profile-job-post-location-name .user_lst ul li .user_btn{padding-top:0;}
+	.user_lst ul li button{margin-bottom:0; margin-top:5px;}
     .popup-text textarea {
         font-size: 12px!important;
     }
@@ -5869,8 +5871,9 @@ div .comment {
         line-height: 1;
     }
     .profile-job-post-location-name {
-        padding: 6px 0px;
+        padding: 6px 8px;
     }
+	.user_lst ul li button{margin-right:0;}
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
         width: 32%;
     }
@@ -5956,7 +5959,7 @@ div .comment {
         padding-top: 70px !important;
     }
     .folle_text {
-        width: 37%;
+        /*width: 37%;*/
     }
     .four-image img {
         height: 120px;
@@ -5996,7 +5999,7 @@ div .comment {
         width: 30%;
     }
     .user_lst ul li button {
-        margin-right: 14px;
+        /*margin-right: 14px;*/
         width: 83px;
     }
     .cq_latest_right {

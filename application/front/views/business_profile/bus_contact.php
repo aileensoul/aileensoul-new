@@ -41,10 +41,10 @@
                 </div> 
             </div>
         </section>
-        <footer>
+        <!-- <footer> -->
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
-        </footer>
+        <!-- </footer> -->
 
 
         <!-- Bid-modal for this modal appear or not start -->

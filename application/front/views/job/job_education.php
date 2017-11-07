@@ -953,10 +953,10 @@
       <!-- Model Popup Close -->
 
 
-<footer>   
+<!-- <footer>  -->  
 <?php echo $login_footer ?>     
 <?php echo $footer;  ?>
-</footer>
+<!-- </footer> -->
 
 <!-- Calender JS Start-->
 <!--<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.js?ver='.time()) ?>"></script>-->

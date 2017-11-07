@@ -254,16 +254,16 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             <?php echo $business_common_profile; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="open_profile();">
                         Photo
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="open_profile();">
                         Video
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="open_profile();">
                         Audio
                     </a>
-                    <a href="javascript:void(0);" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="open_profile();">
                         PDf
                     </a>
                 </div>
@@ -276,7 +276,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module">
                                 <div class="head_details1">
-                                    <span><a href="javascript:void(0);" onclick="login_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
+                                    <span><a href="javascript:void(0);" onclick="open_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
                                     </span>      
                                 </div>
                                 <table class="business_data_table">
@@ -337,7 +337,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
                         </div>
                         <!-- user iamges start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
                                     <div class="head_details">
@@ -350,7 +350,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </a>
                         <!-- user images end-->
                         <!-- user video start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <table class="business_data_table">
@@ -365,7 +365,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </a>
                         <!-- user video emd-->
                         <!-- user audio start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
@@ -380,7 +380,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </a>
                         <!-- user audio end-->
                         <!-- user pdf  start-->
-                        <a href="javascript:void(0);" onclick="login_profile();">
+                        <a href="javascript:void(0);" onclick="open_profile();">
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module buisness_he_module" >
                                     <div class="head_details">
@@ -701,9 +701,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             </div>
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
-        <footer>
+        <!-- <footer> -->
 <?php echo $footer; ?>
-        </footer>
+        <!-- </footer> -->
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
@@ -724,8 +724,12 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
         <!-- script for login  user valoidtaion start -->
         <script>
+            function open_profile(){
+                register_profile();
+            }
             function login_profile() {
                 $('#login').modal('show');
+                $('#register').modal('hide');
             }
             function register_profile() {
                 $('#login').modal('hide');
@@ -1045,7 +1049,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             });
             $(document).ready(function () {
                 setTimeout(function () {
-                    $('#login').modal('show');
+                    $('#register').modal('show');
                 }, 2000);
             });
         </script>

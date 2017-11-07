@@ -733,10 +733,10 @@
         <!-- register -->
 
         <!-- Model Popup Close -->
-        <footer>
+        <!-- <footer> -->
             <?php echo $login_footer ?>
         <?php echo $footer; ?>
-    </footer>
+    <!-- </footer> -->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
@@ -1036,6 +1036,9 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/followers.js?ver=' . time()); ?>"></script>
         <script>
+            function open_profile(){
+                register_profile();
+            }
             function login_profile() {
                 $('#login').modal('show');
             }
@@ -1061,7 +1064,7 @@
             });
             $(document).ready(function () {
                 setTimeout(function () {
-                    $('#login').modal('show');
+                    $('#register').modal('show');
                 }, 2000);
             });
         </script>

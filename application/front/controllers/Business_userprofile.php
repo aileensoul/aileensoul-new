@@ -517,7 +517,7 @@ class Business_userprofile extends CI_Controller {
             $i = 0;
             foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
-                $fetch_pdf .= '<a href = "javascript:void(0)" target="_blank" onclick="login_profile();"><div class = "pdf_img">';
+                $fetch_pdf .= '<a href = "javascript:void(0)" target="_blank" onclick="open_profile();"><div class = "pdf_img">';
                 $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -761,7 +761,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     if (in_array($ext, $allowed)) {
 
 
-                        $return_html .= '<a href="javascript:void(0);"  onclick="login_profile();">
+                        $return_html .= '<a href="javascript:void(0);"  onclick="open_profile();">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
@@ -774,7 +774,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 //</div>';
                         
                 $return_html .= '<div>
-<a title = "click to open" href = "javascript:void(0);" onclick="login_profile();"><div class = "pdf_img">
+<a title = "click to open" href = "javascript:void(0);" onclick="open_profile();"><div class = "pdf_img">
     <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
 </div>
 </a>
@@ -808,24 +808,24 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 } elseif (count($businessmultiimage) == 2) {
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
-            <a href="javascript:void(0);"  onclick="login_profile();"><img class="two-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
+            <a href="javascript:void(0);"  onclick="open_profile();"><img class="two-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
                     $return_html .= '<div class="three-image-top" >
-            <a href="javascript:void(0);"  onclick="login_profile();"><img class="three-columns" src="' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> </a>
+            <a href="javascript:void(0);"  onclick="open_profile();"><img class="three-columns" src="' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="javascript:void(0);"  onclick="login_profile();"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '"> </a>
+            <a href="javascript:void(0);"  onclick="open_profile();"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="javascript:void(0);"  onclick="login_profile();"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '"> </a>
+            <a href="javascript:void(0);"  onclick="open_profile();"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '"> </a>
         </div>';
                 } elseif (count($businessmultiimage) == 4) {
 
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="javascript:void(0);"  onclick="login_profile();"><img class="breakpoint" src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
+            <a href="javascript:void(0);"  onclick="open_profile();"><img class="breakpoint" src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) > 4) {
@@ -833,15 +833,15 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $i = 0;
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="javascript:void(0);"  onclick="login_profile();"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" > </a>
+            <a href="javascript:void(0);"  onclick="open_profile();"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" > </a>
         </div>';
                         $i++;
                         if ($i == 3)
                             break;
                     }
                     $return_html .= '<div class="four-image">
-            <a href="javascript:void(0);"  onclick="login_profile();"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '"> </a>
-            <a href="javascript:void(0);"  onclick="login_profile();">
+            <a href="javascript:void(0);"  onclick="open_profile();"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '"> </a>
+            <a href="javascript:void(0);"  onclick="open_profile();">
                 <div class="more-image" >
                     <span> View All (+' . (count($businessmultiimage) - 4) . ')
                     </span></div>
@@ -856,7 +856,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     <div class="post-design-menu">
         <ul class="col-md-6">
             <li class="likepost' . $row['business_profile_post_id'] . '">
-                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="login_profile();">';
+                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="open_profile();">';
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
                 $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -882,7 +882,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<a class="ripple like_h_w" onClick="login_profile();" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
+                $return_html .= '<a class="ripple like_h_w" onClick="open_profile();" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
                 $return_html .= '</i> 
                 </a>
             </li> 
@@ -923,7 +923,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     foreach ($likelistarray as $key => $value) {
                         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                     }
-                    $return_html .= '<a href="javascript:void(0);"  onclick="login_profile();">';
+                    $return_html .= '<a href="javascript:void(0);"  onclick="open_profile();">';
                     $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                     $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -960,7 +960,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 foreach ($likelistarray as $key => $value) {
                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                 }
-                $return_html .= '<a href="javascript:void(0);"  onclick="login_profile();">';
+                $return_html .= '<a href="javascript:void(0);"  onclick="open_profile();">';
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1014,7 +1014,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         }
                         $return_html .= '</div>
                 <div class="comment-name">
-                    <a href="javascript:void(0);"  onclick="login_profile();"><b>';
+                    <a href="javascript:void(0);"  onclick="open_profile();"><b>';
                         $return_html .= '' . ucfirst(strtolower($companyname)) . '';
                         $return_html .= '</br>';
 
@@ -1043,7 +1043,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 </div>
                 <div class="art-comment-menu-design"> 
                     <div class="comment-details-menu" id="likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
-                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="login_profile();">';
+                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="open_profile();">';
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
                         $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');

@@ -1385,13 +1385,21 @@ class Artist extends MY_Controller {
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
+                            // $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
 
-                                                <div class="pdf_img">
-                                                       <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-                                                    </div>
-                                                </a>
-                                            </div>';
+                            //                     <div class="pdf_img">
+                            //                            <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+                            //                         </div>
+                            //                     </a>
+                            //                 </div>';
+
+                            $return_html .= '<div>
+<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
+</div>
+</a>
+</div>';
+
                         } elseif (in_array($ext, $allowesvideo)) {
 
 
@@ -1873,7 +1881,7 @@ class Artist extends MY_Controller {
                       
                       ' . form_error('post_comment') . ' 
                         <div class="mob-comment">       
-                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="../img/send.png">
+                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>
                           </div>
@@ -13347,7 +13355,7 @@ public function art_home_postold() {
                       
                       ' . form_error('post_comment') . ' 
                         <div class="mob-comment">       
-                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="../img/send.png">
+                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>  </div>
                         <div class=" comment-edit-butn hidden-mob" >   
@@ -13838,16 +13846,23 @@ public function art_home_post() {
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
+                            // $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
 
-                            <a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
+                            // <a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
 
-                                               <div class="pdf_img">
+                            //                    <div class="pdf_img">
 
-                                                         <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-                                                    </div>
-                                                </a>
-                                            </div>';
+                            //                              <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+                            //                         </div>
+                            //                     </a>
+                            //                 </div>';
+
+                             $return_html .= '<div>
+                                 <a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+                                  <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
+                                  </div>
+                                   </a></div>';
+
                         } elseif (in_array($ext, $allowesvideo)) {
 
 
@@ -14366,7 +14381,7 @@ public function art_home_post() {
                       
                       ' . form_error('post_comment') . ' 
                         <div class="mob-comment">       
-                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="../img/send.png">
+                            <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('assets/img/send.png') . '">
                             </button>
                         </div>  </div>
                         <div class=" comment-edit-butn hidden-mob" >   
@@ -15024,6 +15039,10 @@ public function art_home_post() {
                 $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
                 $slugposted = $this->db->select('slug')->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->slug;
 
+                $geturl_post = $this->get_url($row['posted_user_id']);
+
+                $geturl = $this->get_url($row['user_id']);
+
                 if ($row['posted_user_id']) {
 
                     if (IMAGEPATHFROM == 'upload') {
@@ -15053,7 +15072,7 @@ public function art_home_post() {
 
                         } else {
 
-                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)).'" href="'.base_url('artist/dashboard/' . $slugposted).'">';
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)).'" href="'.base_url('artist/dashboard/' . $geturl_post).'">';
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';                                    
                              $return_html .= '</a>';
                         }
@@ -15081,14 +15100,14 @@ public function art_home_post() {
 
                         if ($info) {
 
-                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artist/dashboard/' . $slug).'">';
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artist/dashboard/' . $geturl).'">';
 
                             $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
                               
                             $return_html .= '</a>';
                         } else {
 
-                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artist/dashboard/' . $slug).'">';
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artist/dashboard/' . $geturl).'">';
                             $return_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "">';   
 
                             $return_html .= '</a>';
@@ -15116,14 +15135,14 @@ public function art_home_post() {
                     $return_html .= '<li>
 <div class = "else_post_d">
 <div class = "post-design-product">
-<a style = "max-width: 40%;" class = "post_dot" title = "' . ucfirst(strtolower($firstnameposted)) .'&nbsp;'. ucfirst(strtolower($lastnameposted)) . '" href = "' . base_url('artist/dashboard/' . $slugposted) . '">' . ucfirst(strtolower($firstnameposted)). '&nbsp;' .ucfirst(strtolower($lastnameposted)).  '</a>
+<a style = "max-width: 40%;" class = "post_dot" title = "' . ucfirst(strtolower($firstnameposted)) .'&nbsp;'. ucfirst(strtolower($lastnameposted)) . '" href = "' . base_url('artist/dashboard/' . $geturl_post) . '">' . ucfirst(strtolower($firstnameposted)). '&nbsp;' .ucfirst(strtolower($lastnameposted)).  '</a>
 <p class = "posted_with" > Posted With</p>
-<a class = "other_name post_dot" href = "' . base_url('artist/details/' . $slug) . '">' .ucfirst(strtolower($firstname)).'&nbsp;'.ucfirst(strtolower($lastname)).'</a>
+<a class = "other_name post_dot" href = "' . base_url('artist/details/' . $geturl) . '">' .ucfirst(strtolower($firstname)).'&nbsp;'.ucfirst(strtolower($lastname)).'</a>
 <span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
 </div></div>
 </li>';
                 } else {
-                    $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($firstname)) .'&nbsp;'.ucfirst(strtolower($lastname)).'" href = "'.base_url('artist/dashboard/'. $slug).'">'.ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)).'</a>
+                    $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($firstname)) .'&nbsp;'.ucfirst(strtolower($lastname)).'" href = "'.base_url('artist/dashboard/'. $geturl).'">'.ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)).'</a>
 <span role = "presentation" aria-hidden = "true"> · </span>
 <div class = "datespan">
 <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
@@ -15249,12 +15268,20 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
         </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
-                        $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'"> 
+        //                 $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'"> 
 
-           <div class="pdf_img">
-                   <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-                </div></a>
-        </div>';
+        //    <div class="pdf_img">
+        //            <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+        //         </div></a>
+        // </div>';
+
+                         $return_html .= '<div>
+<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
+</div>
+</a>
+</div>';
+
                     } elseif (in_array($ext, $allowesvideo)) {
 
 
@@ -16893,11 +16920,19 @@ public function get_artistic_name($id=''){
               </a>
           </div>';
            } elseif (in_array($ext, $allowespdf)) {                                                
+            // $return_html .= '<div>
+            // <a href="'.base_url('artist/creat-pdf/' . $artmultiimage[0]['post_files_id']).'"><div class="pdf_img">
+            //     <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+            //         </div></a>
+            //         </div>';
+
             $return_html .= '<div>
-            <a href="'.base_url('artist/creat-pdf/' . $artmultiimage[0]['post_files_id']).'"><div class="pdf_img">
-                <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
-                    </div></a>
-                    </div>';
+<a title = "click to open" href = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" target="_blank"><div class = "pdf_img">
+    <img src="' . base_url('assets/images/PDF.jpg') . '" alt="PDF">
+</div>
+</a>
+</div>';
+
                    } elseif (in_array($ext, $allowesvideo)) { 
 
                             $post_poster = $artmultiimage[0]['file_name'];
@@ -18418,13 +18453,13 @@ public function get_artistic_name($id=''){
         echo $return;
     }
 
-public function clean($string) { 
+// public function clean($string) { 
       
-   $string = str_replace(' ', '-', $string);  // Replaces all spaces with hyphens.
-   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // replace double --- in single -
+//    $string = str_replace(' ', '-', $string);  // Replaces all spaces with hyphens.
+//    $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // replace double --- in single -
   
-   return preg_replace('/-+/', '-', $string); // Removes special chars.
-}
+//    return preg_replace('/-+/', '-', $string); // Removes special chars.
+// }
 
 public function get_url($userid){
 
@@ -18447,17 +18482,19 @@ public function get_url($userid){
                                     $listFinal = implode('-', $listfinal1);
 
                                     if(!in_array(26, $category)){
-                                     $category_url =  $this->clean($listFinal);
+                                     $category_url =  $this->common->clean($listFinal);
                                    }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
 
-                                    $trimdata = $this->clean($listFinal) .'-'.$this->clean($art_othercategory);
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
                                     $category_url = trim($trimdata, '-');
                                    }
                                    else{
-                                     $category_url = $this->clean($art_othercategory);  
+                                     $category_url = $this->common->clean($art_othercategory);  
                                   }
 
-                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+                                  $city_get =  $this->common->clean($city_url); 
+
+                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
                  return $url;                           
   }
 

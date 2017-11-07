@@ -1564,9 +1564,9 @@
          </div>
       </div>
       
-<footer>
+
 <?php echo $footer; ?>
-</footer>
+
 
 
 

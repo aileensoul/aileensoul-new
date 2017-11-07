@@ -111,9 +111,9 @@
     </div>
 </div>
 <!-- Model Popup Close -->
-<footer>
+
 <?php echo $footer; ?>
-</footer>
+
 
 <script  src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 

@@ -155,10 +155,10 @@ $userid = $this->session->userdata('aileenuser');
  $art_reg_data = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = ''); ?>
 
 
- <footer>
+
         <?php echo $login_footer ?>
 <?php echo $footer;  ?>
-</footer>
+
 </div>
   
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>

@@ -148,6 +148,7 @@
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <!-- BEGIN INNER FOOTER -->
+<?php echo $login_footer ?>
 <?php echo $footer; ?>
  <script>
                                                                                 var base_url = '<?php echo base_url(); ?>';

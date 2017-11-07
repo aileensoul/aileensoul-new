@@ -108,10 +108,10 @@
       </div>
       <!-- Model Popup Close -->
 
-<footer>      
+<!-- <footer>       -->
 <?php echo $login_footer ?>  
 <?php echo $footer;  ?>
-</footer>
+<!-- </footer> -->
 
        
       <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>

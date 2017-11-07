@@ -240,6 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php } ?>
                     <!-- chat start -->
                 </div>
+<?php echo $login_footer ?>
 <?php echo $footer; ?>
                 </body>
                 </html>

@@ -82,9 +82,9 @@
                     </div>
                 </div>
         </section>
-        <footer>
+        <!-- <footer> -->
             <?php echo $footer; ?>
-        </footer>
+        <!-- </footer> -->
     </body>
 </html>
 <!-- script for business autofill -->

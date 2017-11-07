@@ -353,14 +353,14 @@ var isProcessing = false;
                     data: {total_record: $("#total_record").val()},                  
                     dataType: "html",
                     beforeSend: function () {                     
-                        $('#loader').show();       
+                        $('#loader_post').show();       
                     },
                     complete: function () { //alert("hii");
-                    $('#loader').hide();
+                    $('#loader_post').hide();
                     },
                     success: function (data) {
                         //$('.fw').hide();
-                         $('#loader').hide();
+                         $('#loader_post').hide();
                         $('.art-all-post').append(data);
 
                         // second header class add for scroll
