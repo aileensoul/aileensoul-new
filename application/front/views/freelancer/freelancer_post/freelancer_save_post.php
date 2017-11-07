@@ -96,19 +96,19 @@
                                     if ($info) {
                                         ?>
                                         <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="" >
-                                        <?php } else { ?>
+                                    <?php } else { ?>
                                         <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
-                                    <?php
+                                        <?php
                                     }
                                 }
                             } else {
                                 ?>
                                 <div class="post-img-user">
-                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
-<?php } ?>
+                            <?php } ?>
                             <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url('assets/img/cam.png'); ?>"> <?php echo $this->lang->line("update_profile_picture"); ?></a>
                         </div>
                     </div>      
@@ -123,7 +123,7 @@
                             } else {
                                 ?> 
                                 <a id="designation" class="designation" title="<?php echo ucwords($freepostdata[0]['designation']); ?>"><?php echo ucwords($freepostdata[0]['designation']); ?></a>
-<?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
@@ -133,17 +133,17 @@
                             if ($freepostdata[0]['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
-                                    <?php } else { ?>
+                                <?php } else { ?>
                                     <ul class="pro-fw4">
                                     <?php } ?>  
                                     <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details')) { ?> class="active" <?php } ?>><a title="Freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php echo $this->lang->line("freelancer_details"); ?></a>
                                     </li>
-<?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'saved-projects' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
+                                    <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'saved-projects' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
                                         <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved" href="<?php echo base_url('freelancer-work/saved-projects'); ?>"><?php echo $this->lang->line("saved_projects"); ?></a>
                                         </li>
                                         <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied Post" href="<?php echo base_url('freelancer-work/applied-projects'); ?>"><?php echo $this->lang->line("applied_projects"); ?></a>
                                         </li>
-<?php } ?>
+                                    <?php } ?>
                                 </ul>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                             } else {
                                 ?> 
                                 <a id="designation" class="designation" title="<?php echo ucwords($freepostdata[0]['designation']); ?>"><?php echo ucwords($freepostdata[0]['designation']); ?></a>
-<?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="col-md-8 col-sm-12 col-xs-12 mob-clear">
@@ -178,10 +178,8 @@
                     </div>
                 </div>
         </section>
-        <footer>
-            <?php echo $login_footer ?>
-<?php echo $footer; ?>
-        </footer>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -205,7 +203,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));     ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));     ?>
 <!--                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
                                     <input type="hidden" name="hitext" id="hitext" value="2">
                                     <div class="popup_previred">
@@ -220,7 +218,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-<?php //echo form_close();     ?>
+                                <?php //echo form_close();     ?>
                             </div>
                         </span>
                     </div>

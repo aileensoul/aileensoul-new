@@ -82,7 +82,7 @@
                         </label>
                     </div>
                 <?php } ?>
-                
+
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
@@ -92,22 +92,21 @@
                             $sub_fname = substr($fname, 0, 1);
                             $sub_lname = substr($lname, 0, 1);
                             if ($freelancerpostdata[0]['freelancer_post_user_image']) {
-                              
+
                                 if (IMAGEPATHFROM == 'upload') {
-                                 
-                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'])) { 
+
+                                    if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'])) {
                                         ?>
                                         <div class="post-img-user">
                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                         </div>
                                     <?php } else {
-                                      
                                         ?>
                                         <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="user_image" >        
                                         <?php
                                     }
                                 } else {
-                                  
+
                                     $filename = $this->config->item('free_post_profile_main_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image'];
                                     $s3 = new S3(awsAccessKey, awsSecretKey);
                                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -122,7 +121,6 @@
                                     }
                                 }
                             } else {
-                                 
                                 ?>
                                 <div class="post-img-user">
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
@@ -955,10 +953,8 @@
                 </div>
             </div>
         </section>
-        <footer>
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
-        </footer>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -981,7 +977,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));       ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));        ?>
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -990,7 +986,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                                <?php //echo form_close();       ?>
+                                <?php //echo form_close();        ?>
                             </div>
                         </span>
                     </div>

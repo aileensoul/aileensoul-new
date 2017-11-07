@@ -32,13 +32,13 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                         <?php
-                            if ($this->uri->segment(3) == 'live-post') {
-                                echo '<div class="alert alert-danger">You  will be automatically apply successfully after completing of Freelancer profile ...!</div>';
-                            }
-                            ?>
+                        <?php
+                        if ($this->uri->segment(3) == 'live-post') {
+                            echo '<div class="alert alert-danger">You  will be automatically apply successfully after completing of Freelancer profile ...!</div>';
+                        }
+                        ?>
                         <div class="col-md-3 col-sm-3">
-                           
+
                             <div class="left-side-bar">
                                 <ul  class="left-form-each">
                                     <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="javascript:void(0);"><?php echo $this->lang->line("basic_info"); ?></a></li>
@@ -168,10 +168,8 @@
                 </div>
             </div>
         </section>
-        <footer>
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
-        </footer>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
 
         <script>
