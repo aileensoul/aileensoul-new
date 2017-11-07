@@ -4083,10 +4083,11 @@ div .comment {
 .multi-select-menuitem {
 	width:100%; float:left;
     display: block;
-    font-size: 0.875em;
+    font-size: 13.33px;
     padding: 0.6em 1em 0.6em 30px;
     white-space: nowrap;
 	margin:0 !important;
+	color:#1b8ab9;
 }
 
 .multi-select-menuitem + .multi-select-menuitem {
@@ -5091,7 +5092,7 @@ div .comment {
         font-size: 13px;
     }
     .modal.in .modal-dialog {
-        width: 80%;
+       /* width: 80%;*/
     }
     .profile-job-post-location-name ul li.folle_text {
         padding-top: 10px;
