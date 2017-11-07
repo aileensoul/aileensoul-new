@@ -91,7 +91,7 @@ line-height: 1;}
         $config['mailtype'] = MAILTYPE;
         $config['newline'] = '\r\n';
         
-        $this->email->initialize($config);
+        //$this->email->initialize($config);
         $this->email->from('noreply@aileensoul.com', 'Aileensoul');
         $this->email->to($to_email);
         $this->email->bcc('dm.aileensoul@gmail.com');

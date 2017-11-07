@@ -3145,7 +3145,7 @@ Your browser does not support the audio tag.
                 }
             }
 
-// end notoification
+// end notification
 
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3213,7 +3213,7 @@ Your browser does not support the audio tag.
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-// end notoification
+// end notification
             if ($insertdata) {
                 $follow = '<div id="unfollowdiv" class="user_btn">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
@@ -3361,7 +3361,7 @@ Your browser does not support the audio tag.
                     $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
                 }
             }
-            // end notoification
+            // end notification
 
             if ($update) {
 
@@ -3417,7 +3417,7 @@ Your browser does not support the audio tag.
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
             }
 
-            // end notoification
+            // end notification
             if ($insert) {
                 $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
@@ -3722,7 +3722,7 @@ Your browser does not support the audio tag.
                     $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
                 }
             }
-            // end notoification
+            // end notification
             $follow = '';
             if ($update) {
                 $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
@@ -3782,7 +3782,7 @@ Your browser does not support the audio tag.
 
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
             }
-            // end notoification
+            // end notification
             $follow = '';
             if ($insert) {
                 $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
@@ -4632,7 +4632,7 @@ Your browser does not support the audio tag.
                     }
                 }
             }
-// end notoification
+// end notification
 
 
             $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
@@ -4771,7 +4771,7 @@ Your browser does not support the audio tag.
                     }
                 }
             }
-// end notoification
+// end notification
             $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
             $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -5238,7 +5238,7 @@ Your browser does not support the audio tag.
                     }
                 }
             }
-// end notoification
+// end notification
 
             $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
             $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5463,7 +5463,7 @@ Your browser does not support the audio tag.
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
             }
         }
-// end notoification
+// end notification
 
         $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -5648,7 +5648,7 @@ Your browser does not support the audio tag.
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
             }
         }
-// end notoification
+// end notification
 
 
 
@@ -6273,7 +6273,7 @@ Your browser does not support the audio tag.
                     $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
                 }
             }
-// end notoification
+// end notification
 
 
             $contition_array = array('post_image_id' => $_POST["post_image_id"], 'is_unlike' => '0');
@@ -6474,7 +6474,7 @@ Your browser does not support the audio tag.
                         }
                     }
                 }
-// end notoification
+// end notification
 
                 $contition_array = array('post_image_id' => $_POST["post_image_id"], 'is_unlike' => '0');
                 $bdata2 = $this->data['bdata2'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6798,7 +6798,7 @@ Your browser does not support the audio tag.
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
             }
         }
-// end notoification
+// end notification
 
         $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
         $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -7009,7 +7009,7 @@ Your browser does not support the audio tag.
                     $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
                 }
             }
-// end notoification
+// end notification
 
             $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
             $bdatacm = $this->data['bdatacm'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7124,7 +7124,7 @@ Your browser does not support the audio tag.
                         }
                     }
                 }
-// end notoification 
+// end notification 
 
 
                 $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
@@ -7220,7 +7220,7 @@ Your browser does not support the audio tag.
                     $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
                 }
             }
-// end notoification
+// end notification
 
             $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
             $bdatacm = $this->data['bdatacm'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7341,7 +7341,7 @@ Your browser does not support the audio tag.
                         }
                     }
                 }
-// end notoification
+// end notification
 
                 $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
                 $bdata2 = $this->data['bdata2'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
