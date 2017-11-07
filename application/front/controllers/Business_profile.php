@@ -3020,7 +3020,8 @@ Your browser does not support the audio tag.
             if ($category) {
                 $return_html .= $category;
             } else {
-                $return_html .= $user['other_industrial'];
+                $return_html .= ucfirst($user['other_industrial']);
+                //$return_html .= $user['other_industrial'];
             }
             $return_html .= '</a>
                                                                             </div>
