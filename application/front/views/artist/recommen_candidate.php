@@ -181,9 +181,9 @@
       </div>
 
 
-<footer>
+
 <?php echo $footer; ?>
-        </footer>
+
 
 
 

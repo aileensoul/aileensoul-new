@@ -317,10 +317,10 @@ echo PROFILENA;
             </div>
         </div>
 <!-- Model Popup Close -->
-<footer>
+
   <?php echo $login_footer ?>
 <?php echo $footer; ?>
-</footer>
+
 <!-- script for skill textbox automatic start (option 2)-->
 <script  src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
