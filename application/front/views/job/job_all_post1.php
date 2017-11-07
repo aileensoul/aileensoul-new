@@ -227,7 +227,9 @@
 <script>
     var base_url = '<?php echo base_url(); ?>';
     var skill = '<?php echo  $keyword; ?>';
+    var skill = skill.replace('-', ' ');
     var place = '<?php echo  $keyword1; ?>';
+    var place = place.replace('-', ' ');
     
     
            

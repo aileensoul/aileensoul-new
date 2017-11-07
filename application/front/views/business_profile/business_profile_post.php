@@ -44,23 +44,28 @@ $mobile_agent = $this->agent->mobile;
                     <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
                         <div class="left_fixed">
                             <?php echo $business_left; ?>
-                            <div class="full-box-module_follow fw">
-                                <!-- follower list start  -->  
-                                <div class="common-form">
-                                    <h3 class="user_list_head">User List
-                                    </h3>
-                                    <div class="seeall">
-                                        <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
-                                        </a>
+                            <?php
+                            if ($follow_user_suggest_count > 0) {
+                                ?>
+                                <div class="full-box-module_follow fw">
+                                    <!-- follower list start  -->  
+                                    <div class="common-form">
+                                        <h3 class="user_list_head">User List
+                                        </h3>
+                                        <div class="seeall">
+                                            <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
+                                            </a>
+                                        </div>
                                     </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
+                                    <div class="profile-boxProfileCard_follow fw  module">
+                                    </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START -->
+                                    <!-- follower list end  -->
                                 </div>
-                                <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
-                                <div class="profile-boxProfileCard_follow fw  module">
-                                </div>
-                                <!-- GET USER FOLLOE SUGESSION LIST START -->
-                                <!-- follower list end  -->
-                            </div>
-
+                                <?php
+                            }
+                            ?>
                             <div class="tablate-potrat-add">
                                 <div class="fw text-center pt10">
                                     <script type="text/javascript">
@@ -153,22 +158,28 @@ $mobile_agent = $this->agent->mobile;
                                 </div>
                             </div>
                             <div class="custom-user-list">
-                                <div class="full-box-module_follow fw">
-                                    <!-- follower list start  -->  
-                                    <div class="common-form">
-                                        <h3 class="user_list_head">User List
-                                        </h3>
-                                        <div class="seeall">
-                                            <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
-                                            </a>
+                                <?php
+                                if ($follow_user_suggest_count > 0) {
+                                    ?>
+                                    <div class="full-box-module_follow fw">
+                                        <!-- follower list start  -->  
+                                        <div class="common-form">
+                                            <h3 class="user_list_head">User List
+                                            </h3>
+                                            <div class="seeall">
+                                                <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
+                                                </a>
+                                            </div>
                                         </div>
+                                        <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
+                                        <div class="profile-boxProfileCard_follow fw  module">
+                                        </div>
+                                        <!-- GET USER FOLLOE SUGESSION LIST START -->
+                                        <!-- follower list end  -->
                                     </div>
-                                    <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
-                                    <div class="profile-boxProfileCard_follow fw  module">
-                                    </div>
-                                    <!-- GET USER FOLLOE SUGESSION LIST START -->
-                                    <!-- follower list end  -->
-                                </div>
+                                    <?php
+                                }
+                                ?>
                             </div>
                             <div class="business-all-post">
                                 <?php
@@ -223,16 +234,16 @@ $mobile_agent = $this->agent->mobile;
                     <div class="tablate-add">
 
                         <script type="text/javascript">
-                                    (function () {
-                                        if (window.CHITIKA === undefined) {
-                                            window.CHITIKA = {'units': []};
-                                        }
-                                        ;
-                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                        var placement_id = window.CHITIKA.units.length;
-                                        window.CHITIKA.units.push(unit);
-                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                    }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                         </script>
                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                     </div>
@@ -391,7 +402,7 @@ $mobile_agent = $this->agent->mobile;
             </div>
         </div>
         <?php echo $footer; ?>
-     <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver=' . time());               ?>"></script>-->
+     <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver=' . time());                 ?>"></script>-->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
         <!-- POST BOX JAVASCRIPT START --> 
