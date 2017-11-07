@@ -238,7 +238,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
+                            <a href="javascript:void(0);" onclick="login_data();" class="btn2">Login</a>
                             <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
                         </div>
                     </div>
@@ -656,6 +656,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
                                     </p>
+                                    <div class="sign_in pt10">
+                                        <p>
+                                            Already have an account ? <a tabindex="12" onclick="login_data();" href="javascript:void(0);"> Log In </a>
+                                        </p>
+                                    </div>
                                 </form>
 
                             </div>
@@ -691,7 +696,15 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <!-- script for login  user valoidtaion start -->
         <script>
             function login_profile() {
+                //$('#login').modal('show');
+                $('#register').modal('show');
+
+            }
+            function login_data() { 
+                //$('#login').modal('show');
                 $('#login').modal('show');
+                $('#register').modal('hide');
+
             }
             function register_profile() {
                 $('#login').modal('hide');
@@ -701,6 +714,20 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 $('#forgotPassword').modal('show');
             }
         </script>
+
+<script type="text/javascript">
+    
+    $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#register').modal('hide');
+         $('#login').modal('hide');
+    }
+});
+
+</script>
+
+
         <script type="text/javascript">
             function login()
             {
@@ -1009,7 +1036,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             });
             $(document).ready(function () {
                 setTimeout(function () {
-                    $('#login').modal('show');
+                    $('#register').modal('show');
                 }, 2000);
             });
         </script>
