@@ -407,7 +407,7 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
-                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="javascript:void(0);" onclick="login_profile();" title="<?php echo $freelancr_user_data[0]['rec_firstname'] . ' ' . $freelancr_user_data[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="javascript:void(0);" onclick="register_profile();" title="<?php echo $freelancr_user_data[0]['rec_firstname'] . ' ' . $freelancr_user_data[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                      <?php
                                                     $fname = $freelancr_user_data[0]['fullname'];
                                                     $lname = $freelancr_user_data[0]['username'];
@@ -453,12 +453,12 @@
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
-                                                    <a href="javascript:void(0);" onclick="login_profile();" title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
+                                                    <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                 </span>
 
                                                 <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;  ?>
                                                 <div class="profile-boxProfile-name">
-                                                    <a href="javascript:void(0);" onclick="login_profile();" title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
+                                                    <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                         <?php
                                                         if (ucfirst(strtolower($freelancr_user_data[0]['designation']))) {
                                                             echo ucfirst(strtolower($freelancr_user_data[0]['designation']));
@@ -468,11 +468,11 @@
                                                         ?></a>
                                                 </div>
                                                 <ul class=" left_box_menubar">
-                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'employer-details') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="javascript:void(0);" onclick="login_profile();"> <?php echo $this->lang->line("details"); ?></a>
+                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'employer-details') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="javascript:void(0);" onclick="register_profile();"> <?php echo $this->lang->line("details"); ?></a>
                                                     </li>                                
-                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Projects" href="javascript:void(0);" onclick="login_profile();"><?php echo $this->lang->line("Projects"); ?></a>
+                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Projects" href="javascript:void(0);" onclick="register_profile();"><?php echo $this->lang->line("Projects"); ?></a>
                                                     </li>
-                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer-save') { ?> class="active" <?php } ?>><a title="Saved Freelancer" class="padding_less_right" href="javascript:void(0);" onclick="login_profile();"><?php echo $this->lang->line("saved_freelancer"); ?></a>
+                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer-save') { ?> class="active" <?php } ?>><a title="Saved Freelancer" class="padding_less_right" href="javascript:void(0);" onclick="register_profile();"><?php echo $this->lang->line("saved_freelancer"); ?></a>
                                                     </li>
 
                                                 </ul>
@@ -699,7 +699,7 @@
                                                                         }
                                                                         ?>                                                          </li>
 
-                                                                    <a href="javascript:void(0);" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
+                                                                    <a href="javascript:void(0);" onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  button"> Apply</a>
                         
                                                             </div>
 
@@ -1329,7 +1329,7 @@
                                         </p>
 										<div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" href="https://www.aileensoul.com/login"> Log In </a>
+                                            Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                     </form>
