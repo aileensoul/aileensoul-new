@@ -4280,7 +4280,7 @@ class Recruiter extends MY_Controller {
                                             <td style="padding:5px;"><img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image'] . '" width="60" height="60"></td>
                                             <td style="padding:5px;">
 						<p><b>' . ucwords($recdata[0]['rec_firstname']) . ' ' . ucwords($recdata[0]['rec_lastname']) . '</b> From ' . ucwords($recdata[0]['re_comp_name']) . 'Invited you for an interview.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">'  . date('j F') . ' at ' . date('H:i') .  '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/recruiter_post/' . $postid . '">view</a></p>

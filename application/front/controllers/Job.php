@@ -5893,7 +5893,7 @@ if ($this->session->userdata('aileenuser')) {
         $email_html .= '</td>
                                             <td style="padding:5px;">
 						<p>Job seeker<b> ' . ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . '</b> Applied on your jobpost.
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('Y-m-d H:i:s') . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'job/resume/' . $jobdata[0]['slug'] . '?page=recruiter">view</a></p>
