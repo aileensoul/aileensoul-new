@@ -18492,7 +18492,9 @@ public function get_url($userid){
                                      $category_url = $this->common->clean($art_othercategory);  
                                   }
 
-                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+                                  $city_get =  $this->common->clean($city_url); 
+
+                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
                  return $url;                           
   }
 
