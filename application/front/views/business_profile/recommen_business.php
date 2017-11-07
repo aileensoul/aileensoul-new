@@ -260,9 +260,9 @@
     </div>
 </div>
 <!-- Model Popup Close -->
-<footer>
+<!-- <footer> -->
     <?php echo $footer ?>
-</footer>
+<!-- </footer> -->
 <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());   ?>"></script>-->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.highlite.js?ver=' . time()); ?>">

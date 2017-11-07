@@ -387,9 +387,9 @@ $mobile_agent = $this->agent->mobile;
                 </div>
             </div>
         </div>
-        <footer>
+        <!-- <footer> -->
             <?php echo $footer; ?>
-        </footer>
+        <!-- </footer> -->
         <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver=' . time());              ?>"></script>-->
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 

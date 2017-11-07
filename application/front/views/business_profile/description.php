@@ -247,7 +247,7 @@
                 </div>
             </div>
         </section>
-        <footer>    
+        <!-- <footer>     -->
             <?php echo $login_footer ?>
             <?php echo $footer; ?>
         </footer>
