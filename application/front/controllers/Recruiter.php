@@ -1985,8 +1985,37 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '<li class="fr date_re">';
                         $rec_post .= 'Created Date : ' . date('d-M-Y', strtotime($post['created_date'])) . '';
                         $rec_post .= '</li>
-                             <li class="">
-                             <a class="post_title" href="javascript:void(0)" title="Post Title">';
+                             <li class="">';
+                             
+
+                        $cache_time = $this->db->get_where('job_title', array(
+                                    'title_id' => $post['post_name']
+                                ))->row()->name;
+
+                        if ($cache_time) {
+                            $cache_time1 = $cache_time;
+                        } else {
+                            $cache_time1 = $post['post_name'];
+                        }
+
+                        if ($cache_time1 != '') {
+                        $text = strtolower($this->common->clean($cache_time1));
+                    } else {
+                        $text = '';
+                    }
+                        $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+
+                        if ($cityname != '') {
+                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                    } else {
+                        $cityname = '';
+                    }
+
+                        
+                        $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post Tit44le">';
+
+
+//                             <a class="post_title" href="javascript:void(0)" title="Post Title">';
                         $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
                         if ($cache_time) {
                             $rec_post .= '' . $cache_time . '';

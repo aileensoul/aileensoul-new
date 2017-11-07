@@ -80,11 +80,12 @@
    function checkvalue() {
      
        var searchkeyword = $.trim(document.getElementById('tags').value);
-       var searchkeyword = searchkeyword.replace(' ', '-');
+//       var searchkeyword = searchkeyword.replace(/[^' ']/g, '-');
+        var searchkeyword = searchkeyword.replace(/\s/g, '-');
        var searchkeyword = searchkeyword.replace(/[^a-zA-Z0-9\-]/g, '');
-       
+        
        var searchplace = $.trim(document.getElementById('searchplace').value);
-       var searchplace = searchplace.replace(' ', '-');
+        var searchplace = searchplace.replace(/\s/g, '-');
        var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
    
        if (searchkeyword == "" && searchplace == "") {
