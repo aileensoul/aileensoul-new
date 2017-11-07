@@ -459,10 +459,19 @@ function sendmail(userid) {
     });
     return false;
 }
+function create_profile_apply(postid) {
 
+//    $(".password_login").val('');
+//    $(".email_login").val('');
+    $(".post_id_login").val(postid);
+//            $(".regpostval").val(postid);
+    $('.pt15').html(" Don't have an account? <a class='db-479' href='javascript:void(0);' data-toggle='modal' onclick='register_profile(" + postid + ");'>Create an account</a>");
+    $('#register').modal('show');
+
+}
 //For Apply Button Click Process Start
 function login_profile_apply(postid) {
-
+     $('#register').modal('hide');
     $(".password_login").val('');
     $(".email_login").val('');
     $(".post_id_login").val(postid);

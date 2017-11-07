@@ -421,6 +421,9 @@
 <?php echo $login_footer ?>        
 <?php echo $footer;  ?>
 
+<!--footer>        
+<?php //echo $footer;  ?>
+</footer-->
 
 <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
@@ -696,7 +699,7 @@
                                         </p>
 										<div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" href="https://www.aileensoul.com/login"> Log In </a>
+                                            Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                     </form>
@@ -826,8 +829,13 @@
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
+    
     var skill = '<?php echo  $keyword; ?>';
+    var skill = skill.replace('-', ' ');
+    
     var place = '<?php echo  $keyword1; ?>';
+    var place = place.replace('-', ' ');
+    
     var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
     var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
