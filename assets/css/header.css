@@ -2762,7 +2762,7 @@ footer ul li a:hover{
     .search-mob-block label {
         /*margin-top:7px; margin-left: 0px;*/
     }
-	footer ul li a{font-size:11px; padding:5px 8px;}
+	footer ul li a{font-size:11px; padding:5px;}
 }
 @media screen and (max-width: 360px) {
     .header ul {
