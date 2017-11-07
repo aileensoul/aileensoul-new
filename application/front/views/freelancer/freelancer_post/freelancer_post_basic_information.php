@@ -20,6 +20,11 @@
                     <div class="common-form1">
                         <div class="col-md-3 col-sm-4"></div>
                         <?php
+                                if ($this->uri->segment(3) == 'live-post') {
+                                    echo '<div class="alert alert-danger">You  will be automatically apply successfully after completing of Freelancer profile ...!</div>';
+                                }
+                                ?>
+                        <?php
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('user_id' => $userid, 'status' => '1');
                         $freepostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
