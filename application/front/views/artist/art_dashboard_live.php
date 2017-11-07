@@ -1009,7 +1009,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             });
             $(document).ready(function () {
                 setTimeout(function () {
-                    //$('#login').modal('show');
+                    $('#login').modal('show');
                 }, 2000);
             });
         </script>

@@ -1067,5 +1067,25 @@ var slug = '<?php echo $artid; ?>';
 </script>
 <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
 <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/details.js?ver='.time()); ?>"></script>
+
+ <script>
+            $(document).on('click', '[data-toggle*=modal]', function () {
+                $('[role*=dialog]').each(function () {
+                    switch ($(this).css('display')) {
+                        case('block'):
+                        {
+                            $('#' + $(this).attr('id')).modal('hide');
+                            break;
+                        }
+                    }
+                });
+            });
+            $(document).ready(function () {
+                setTimeout(function () {
+                    $('#login').modal('show');
+                }, 2000);
+            });
+        </script>
+        
  </body>
 </html>
