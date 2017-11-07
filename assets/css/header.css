@@ -1679,6 +1679,7 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
+	background-color:#f3f9fb !important;
 }
 .footer-bottom {
     position: absolute;
@@ -2185,8 +2186,7 @@ footer{
 	bottom:0;
 	height:60px;
 	width:100%;
-        background-color: #f3f3f3;
-	
+    background-color: #f3f3f3;
 }
 footer > .container {
 	border-top:1px solid #dbdada;
