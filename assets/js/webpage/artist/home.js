@@ -2055,7 +2055,8 @@ function seemorediv(abc) {
             uploadProgress: function (event, position, total, percentComplete) { 
             var percentVal = percentComplete + '%';
             bar.width(percentVal)
-                    percent.html(percentVal);
+            percent.html(percentVal);
+            document.body.classList.remove('modal-open');
             },
             success: function () {
             var percentVal = '100%';
@@ -2086,6 +2087,8 @@ function seemorediv(abc) {
             $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
+
+
             }
     };
     // Submit the form
