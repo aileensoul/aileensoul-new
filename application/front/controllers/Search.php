@@ -2717,14 +2717,14 @@ Your browser does not support the audio tag.
                                                  <div class="profile-job-profile-button clearfix">
                                                    <div class="profile-job-details col-md-12">
                                                      <ul><li class="job_all_post last_date">';
-                    $return_html .= $this->lang->line("last_date");
-                    $return_html .= ':';
-
-                    if ($post['post_last_date']) {
-                        $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                    } else {
-                        $return_html .= PROFILENA;
-                    }
+//                    $return_html .= $this->lang->line("last_date");
+//                    $return_html .= ':';
+//
+//                    if ($post['post_last_date']) {
+//                        $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                    } else {
+//                        $return_html .= PROFILENA;
+//                    }
 
                     $return_html .= '</li>';
                     $return_html .= '<input type="hidden" name="search" id="search" value="' . $keyword . '">';

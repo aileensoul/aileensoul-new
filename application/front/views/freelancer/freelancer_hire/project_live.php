@@ -360,13 +360,13 @@
                                                             <div class="profile-job-profile-button clearfix">
                                                                 <div class="profile-job-details col-md-12">
                                                                     <ul><li class="job_all_post last_date">
-                                                                            Last Date : <?php
+<!--                                                                            Last Date : <?php
                                                                             if ($post['post_last_date']) {
                                                                                 echo date('d-M-Y', strtotime($post['post_last_date']));
                                                                             } else {
                                                                                 echo PROFILENA;
                                                                             }
-                                                                            ?>                                                          </li>
+                                                                            ?>                                                          </li>-->
 
                                                                         <a href="javascript:void(0);" onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $this->session->userdata('aileenuser'); ?>)" class= "applypost  button"> Apply</a>
 

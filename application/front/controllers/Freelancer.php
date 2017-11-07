@@ -2389,14 +2389,14 @@ class Freelancer extends MY_Controller {
                                                                         <div class="profile-job-profile-button clearfix">
                                                                             <div class="profile-job-details col-md-12">
                                                                                 <ul><li class="job_all_post last_date">';
-                $return_html .= $this->lang->line("last_date");
-                $return_html .= ':';
-
-                if ($post['post_last_date']) {
-                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                } else {
-                    $return_html .= PROFILENA;
-                }
+//                $return_html .= $this->lang->line("last_date");
+//                $return_html .= ':';
+//
+//                if ($post['post_last_date']) {
+//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                } else {
+//                    $return_html .= PROFILENA;
+//                }
                 $return_html .= '</li>
                                                                                     <li class=fr>';
 
@@ -2920,14 +2920,14 @@ class Freelancer extends MY_Controller {
                                                                 <div class="profile-job-details col-md-12">
                                                                     <ul>
                                                                         <li class="job_all_post last_date">';
-                $return_html .= $this->lang->line("last_date");
-                $return_html .= ':';
-
-                if ($post['post_last_date']) {
-                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                } else {
-                    $return_html .= PROFILENA;
-                }
+//                $return_html .= $this->lang->line("last_date");
+//                $return_html .= ':';
+//
+//                if ($post['post_last_date']) {
+//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                } else {
+//                    $return_html .= PROFILENA;
+//                }
                 $return_html .= '</li>
                                                                         <li class=fr>';
                 $return_html .= '<a href="javascript:void(0);" class="button fr" onclick="removepopup(' . $post['app_id'] . ')">' . $this->lang->line("remove") . '</a>';
@@ -3574,14 +3574,14 @@ class Freelancer extends MY_Controller {
                                             <div class="profile-job-details col-md-12">
                                                 <ul>
                                           <li class="job_all_post last_date">';
-                    $return_html .= $this->lang->line("last_date");
-                    $return_html .= ':';
-
-                    if ($post['post_last_date']) {
-                        $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                    } else {
-                        $return_html .= PROFILENA;
-                    }
+//                    $return_html .= $this->lang->line("last_date");
+//                    $return_html .= ':';
+//
+//                    if ($post['post_last_date']) {
+//                        $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                    } else {
+//                        $return_html .= PROFILENA;
+//                    }
                     $return_html .= '</li>
                                        <li class=fr>
                                       <a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['app_id'] . ')">';
