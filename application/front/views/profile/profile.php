@@ -168,9 +168,10 @@ color: #1b8ab9 !important;}
             </div>
         </section>
         <!-- Calender JS Start-->
-        <footer>
+        <!-- <footer> -->
+            <?php echo $login_footer ?>
             <?php echo $footer; ?>
-        </footer>
+        <!-- </footer> -->
         <script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
        
         <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>

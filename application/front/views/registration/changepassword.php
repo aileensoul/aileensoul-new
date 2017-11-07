@@ -67,6 +67,7 @@ color: #1b8ab9 !important;}
                 </div>
             </div>
         </div>
+        <?php echo $login_footer ?>
         <?php echo $footer; ?>
 
        <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
