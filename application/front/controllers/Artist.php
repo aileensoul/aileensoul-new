@@ -14077,8 +14077,7 @@ public function art_home_post() {
                             $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                          }
 
-                        $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
-
+                    
                          $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
                         $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -14092,6 +14091,7 @@ public function art_home_post() {
                         $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                         $return_html .= '<div class="like_one_other">';
+                         $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ')">';
 
                         if (in_array($userid, $likelistarray)) {
                             $return_html .= "You";
@@ -14111,8 +14111,8 @@ public function art_home_post() {
                             $return_html .= "&nbsp;";
                             $return_html .= "others";
                         }
-                        $return_html .= '</div>
-                            </a>
+                        $return_html .= '</a></div>
+                            
                         </div>';
                     }
 
