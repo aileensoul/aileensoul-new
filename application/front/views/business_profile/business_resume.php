@@ -281,7 +281,7 @@
                         <div class="modal fade message-box" id="query" role="dialog">
                             <div class="modal-dialog modal-lm">
                                 <div class="modal-content">
-                                    <button type="button" class="modal-close" id="query" data-dismiss="modal">&times;</button>       
+                                    <button type="button" class="profile-modal-close" id="query" data-dismiss="modal">&times;</button>       
                                     <div class="modal-body">
                                         <span class="mes">
                                         </span>
