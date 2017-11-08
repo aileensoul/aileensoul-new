@@ -16,8 +16,15 @@
         <?php } ?>
  <!-- <div class="js">
   <div id="preloader"></div> -->
-      <section>  
+      <section> 
+        <?php 
+                       
+             if($artdata[0]['art_step'] == 4){ ?>
         <div class="user-midd-section" id="paddingtop_fixed">
+          <?php }else{?>
+          <div class="user-midd-section" id="paddingtop_make_fixed">
+          <?php }?>
+
            <div class="common-form1">
            <div class="row">
              <div class="col-md-3 col-sm-4"></div>
