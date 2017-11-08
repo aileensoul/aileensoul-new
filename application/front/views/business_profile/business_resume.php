@@ -194,7 +194,7 @@
                                                                         <!-- Modal content-->
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <button type="button" class="model-close" data-dismiss="modal">&times;</button>
+                                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                                 <h4 class="modal-title">Business Images</h4>
                                                                             </div>
                                                                             <div class="modal-body popup-img-popup">

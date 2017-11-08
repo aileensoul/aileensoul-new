@@ -2,10 +2,12 @@
 html{
 	min-height:100%;
 	position:relative;
-	background:#f3f3f3;
+	/*background:#f3f3f3;*/
 	width:100%;
 }
+html.login-custom{background:#f3f3f3;}
 html.custom-main{background:#fff;}
+
 body{
 	/*background:#f7f6f6 !important;
 	padding-bottom:60px;*/

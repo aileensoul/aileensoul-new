@@ -5179,6 +5179,7 @@ div .comment {
     .custom-none {
         display: none;
     }
+	.custom-none.active{display:block;}
     .left-side-bar {
         position: relative
     }
