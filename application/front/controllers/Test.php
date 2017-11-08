@@ -13,7 +13,7 @@ class Test extends MY_Controller {
          //AWS access info start
         $this->load->library('S3');
         //AWS access info end
-        
+        include_once('simple_html_dom.php');
         include ('include.php');
         include ('test_include.php');
     }
@@ -224,6 +224,14 @@ class Test extends MY_Controller {
         $this->load->view('dynamic/caching',$this->data);
     }
      
+    public function scraping_data(){
+  //  echo  $html =    file_get_html('https://data.gov.in/ogpl_apis'); 
+   // echo  $html =    file_get_html('http://www.freshersworld.com/jobs/category/govt-sector-job-vacancies'); 
+    echo  $html =    file_get_html('http://www.marugujarat.in/'); 
+    
+     die();
+       $this->load->view('scraping');
+    }
 }
 
 
