@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="login-custom">
     <head>
         <title>Login into Aileensoul.com</title>
         <meta name="description" content="Login to Aileensoul.com dashboard and get updates on your profiles." />
