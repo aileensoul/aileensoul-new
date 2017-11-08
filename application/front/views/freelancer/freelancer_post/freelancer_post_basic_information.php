@@ -16,6 +16,11 @@
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="common-form1">
+                        <div style="width: 74%;text-align: center;margin: 0 auto;"> <?php
+                        if ($this->uri->segment(3) == 'live-post') {
+                            echo '<div class="alert alert-success">You  will be automatically apply successfully after completing of Freelancer profile ...!</div>';
+                        }
+                        ?></div>
                     <div class="col-md-3 col-sm-4"></div>
 
                     <?php
@@ -30,14 +35,11 @@
                         <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("apply-regi-title"); ?></h3></div>
                     <?php } ?>
                 </div>
+
                 <div class="container">
+
                     <div class="row">
-                        <?php
-                        if ($this->uri->segment(3) == 'live-post') {
-                            echo '<div class="alert alert-danger">You  will be automatically apply successfully after completing of Freelancer profile ...!</div>';
-                        }
-                        ?>
-                        <div class="col-md-3 col-sm-3">
+                                               <div class="col-md-3 col-sm-3">
 
                             <div class="left-side-bar">
                                 <ul  class="left-form-each">
@@ -80,7 +82,9 @@
                                 </ul>
                             </div>
                         </div>
+                        
                         <div class="col-md-6 col-sm-8">
+                        
                             <div>
                                 <?php
                                 if ($this->session->flashdata('error')) {
@@ -91,6 +95,8 @@
                                 }
                                 ?>
                             </div>
+
+
                             <div class="common-form common-form_border">
                                 <h3><?php echo $this->lang->line("basic_info"); ?></h3>
                                 <?php echo form_open(base_url('freelancer/freelancer_post_basic_information_insert'), array('id' => 'freelancer_post_basicinfo', 'name' => 'freelancer_post_basicinfo', 'class' => 'clearfix')); ?>
