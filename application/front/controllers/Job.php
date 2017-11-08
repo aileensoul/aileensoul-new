@@ -3132,7 +3132,32 @@ if($this->input->post('livepost')){
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             if($poslivtid){
-               redirect('job/profile/' . $poslivtid);
+             $postdata =   $this->common->select_data_by_id('rec_post', 'post_id',$poslivtid, $data = 'user_id,post_id', $join_str = array());
+           
+                 $cache_time = $this->db->get_where('job_title', array(
+                                    'title_id' => $postdata[0]['post_name']
+                                ))->row()->name;
+
+                        if ($cache_time) {
+                            $cache_time1 = $cache_time;
+                        } else {
+                            $cache_time1 = $postdata[0]['post_name'];
+                        }
+
+                        if ($cache_time1 != '') {
+                        $text = strtolower($this->common->clean($cache_time1));
+                    } else {
+                        $text = '';
+                    }
+                        $cityname = $this->db->get_where('cities', array('city_id' => $postdata[0]['city']))->row()->city_name;
+
+                        if ($cityname != '') {
+                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                    } else {
+                        $cityname = '';
+                    }
+             
+             redirect('recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id']);
            }else{
             redirect('job/profile');
            }

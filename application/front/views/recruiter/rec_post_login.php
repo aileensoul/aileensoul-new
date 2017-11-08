@@ -1617,6 +1617,8 @@
       var base_url = '<?php echo base_url(); ?>';
       var skill = '<?php echo  $this->input->get('skills'); ?>';
       var place = '<?php echo  $this->input->get('searchplace'); ?>';
+      var postslug = '<?php echo  $this->uri->segment(3); ?>';
+      
                                               
 </script>
 

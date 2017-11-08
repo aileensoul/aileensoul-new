@@ -123,7 +123,8 @@ $(document).ready(function () {
                 if (response.data == "ok") {
                   //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "job/home";
+                 // 8-11   window.location = base_url + "job/home";
+                    window.location = base_url + "recruiter/jobpost/" + postslug;
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');

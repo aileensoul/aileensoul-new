@@ -106,8 +106,8 @@ line-height: 1;}
         if ($this->email->send()) {
             return TRUE;
         } else {
-            echo '<pre>';
-            print_r($this->email->print_debugger());
+//            echo '<pre>';
+//            print_r($this->email->print_debugger());
             return FALSE;
         }
 //        
