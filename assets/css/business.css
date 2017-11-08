@@ -1860,6 +1860,7 @@ label.cameraButton:active {
 }
 .profile-head-text a {
     font-size: 26px;
+    pointer-events: none;
     word-break: break-word;
     word-wrap: break-word;
 }
@@ -1876,6 +1877,7 @@ label.cameraButton:active {
 }
 .profile-head-text_dg a {
     font-size: 22px;
+    pointer-events: none;
 }
 .profile-main-box-buis-menu li a {
     display: block;
