@@ -388,15 +388,15 @@
                                 <?php
                                 if ($freepostdata[0]['profile_background'] != '') {
                                     ?>
-                                                                                                                <div class="data_img">
-                                                                                                                    <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freepostdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
-                                                                                                                </div>
+                                                                                                                    <div class="data_img">
+                                                                                                                        <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freepostdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                                                                                    </div>
                                     <?php
                                 } else {
                                     ?>
-                                                                                                                <div class="data_img">
-                                                                                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>"  >
-                                                                                                                </div>
+                                                                                                                    <div class="data_img">
+                                                                                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>"  >
+                                                                                                                    </div>
                                     <?php
                                 }
                                 ?>
@@ -409,9 +409,9 @@
                                 <?php
                                 if ($freelancerdata[0]['freelancer_post_user_image']) {
                                     ?>
-                                                                                                                    <div class="data_img_2">
-                                                                                                                        <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freepostdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
-                                                                                                                    </div>
+                                                                                                                        <div class="data_img_2">
+                                                                                                                            <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freepostdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                                                                                        </div>
                                     <?php
                                 } else {
                                     $fname = $freepostdata[0]['freelancer_post_fullname'];
@@ -419,9 +419,9 @@
                                     $sub_fname = substr($fname, 0, 1);
                                     $sub_lname = substr($lname, 0, 1);
                                     ?>
-                                                                                                                    <div class="post-img-profile">
+                                                                                                                        <div class="post-img-profile">
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                                                                                    </div> 
+                                                                                                                        </div> 
                                     <?php
                                 }
                                 ?>
@@ -714,7 +714,7 @@
         <script  src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 
         <!-- forgot password script end -->
-                <!-- model for forgot password start -->
+        <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -724,39 +724,39 @@
                             <div class="right-main-inner">
                                 <div class="">
                                     <div id="forgotbuton"></div> 
-                                        <div class="title">
-                                            <h1 class="ttc">Forgot Password</h1>
+                                    <div class="title">
+                                        <h1 class="ttc">Forgot Password</h1>
+                                    </div>
+                                    <?php
+                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                    echo form_open('profile/forgot_password', $form_attribute);
+                                    ?>
+                                    <div class="form-group">
+                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
                                         </div>
-                                        <?php
-                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                        echo form_open('profile/forgot_password', $form_attribute);
-                                        ?>
-                                        <div class="form-group">
-                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
-                                            <div id="error2" style="display:block;">
-                                                <?php
-                                                if ($this->session->flashdata('erroremail')) {
-                                                    echo $this->session->flashdata('erroremail');
-                                                }
-                                                ?>
-                                            </div>
-                                            <div id="errorlogin"></div> 
-                                        </div>
-                                        
-                                        <p class="pt-20 text-center">
-                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
-                                        </p>
+                                        <div id="errorlogin"></div> 
+                                    </div>
 
-                                        </form>
+                                    <p class="pt-20 text-center">
+                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
+                                    </p>
+
+                                    </form>
 
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                <!-- register -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- register -->
 
         <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
@@ -765,8 +765,8 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
-                                    <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
-									<div class="main-form">
+                                <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                                <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
@@ -786,7 +786,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                         <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                            <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
@@ -852,16 +852,16 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-											<!--<p class="next">Next</p>-->
+                                                                                        <!--<p class="next">Next</p>-->
                                         </p>
-										<div class="sign_in pt10">
-                                        <p>
-                                            Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
-                                        </p>
-                                    </div>
+                                        <div class="sign_in pt10">
+                                            <p>
+                                                Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                            </p>
+                                        </div>
                                     </form>
-									</div>
-							
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -869,7 +869,7 @@
             </div>
         </div>
         <!-- register -->
-         <!-- register for apply start-->
+        <!-- register for apply start-->
 
         <div class="modal fade register-model login" id="register_apply" role="dialog">
             <div class="modal-dialog">
@@ -878,8 +878,8 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                    <h4>Join Aileensoul - It's Free</h4>
-									<div class="main-form">
+                                <h4>Join Aileensoul - It's Free</h4>
+                                <div class="main-form">
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
@@ -899,7 +899,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                      <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                            <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
@@ -965,11 +965,11 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-											<!--<p class="next">Next</p>-->
+                                                                                        <!--<p class="next">Next</p>-->
                                         </p>
                                     </form>
-									</div>
-							
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -977,7 +977,7 @@
             </div>
         </div>
         <!-- register for apply end -->
- 
+
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
@@ -995,6 +995,9 @@
             var base_url = '<?php echo base_url(); ?>';
             var skill = '<?php echo $keyword; ?>';
             var place = '<?php echo $keyword1; ?>';
+            var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+            var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
 //            var skill = '<?php echo $this->input->get('skills'); ?>';
 //            var place = '<?php echo $this->input->get('searchplace'); ?>';
 //            var button = '<?php echo $this->input->get('search_submit'); ?>';

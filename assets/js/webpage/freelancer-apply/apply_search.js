@@ -158,7 +158,7 @@ $(document).ready(function () {
     /* register submit */
     function submitRegisterForm()
     {
-        alert(123);
+        
         var postid = '';
         var first_name = $("#first_name").val();
         var last_name = $("#last_name").val();
@@ -169,7 +169,7 @@ $(document).ready(function () {
         var selyear = $("#selyear").val();
         var selgen = $("#selgen").val();
         var postid = $(".post_id_login").val();
-alert(postid);
+
         var post_data = {
             'first_name': first_name,
             'last_name': last_name,
@@ -388,7 +388,7 @@ function sendmail(userid) {
 
 //For Apply Button Click Process Start
 function create_profile_apply(postid) {
-alert(333);
+
 //    $(".password_login").val('');
 //    $(".email_login").val('');
     $(".post_id_login").val(postid);
