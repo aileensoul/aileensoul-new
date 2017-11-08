@@ -38,16 +38,16 @@
 <?php echo $artistic_common; ?>
 <div class="text-center tab-block">
     <div class="container mob-inner-page">
-       <a href="<?php echo base_url('artist/photos/' . $artisticdata[0]['slug']) ?>">
+       <a href="<?php echo base_url('artist/photos/' . $get_url) ?>">
             Photo
         </a>
-       <a href="<?php echo base_url('artist/videos/' . $artisticdata[0]['slug']) ?>">
+       <a href="<?php echo base_url('artist/videos/' . $get_url) ?>">
             Video
         </a>
-       <a href="<?php echo base_url('artist/audios/' . $artisticdata[0]['slug']) ?>">
+       <a href="<?php echo base_url('artist/audios/' . $get_url) ?>">
             Audio
         </a>
-        <a href="<?php echo base_url('artist/pdf/' . $artisticdata[0]['slug']) ?>">
+        <a href="<?php echo base_url('artist/pdf/' . $get_url) ?>">
             PDf
         </a>
     </div>
@@ -137,7 +137,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="<?php echo base_url('artist/photos/' . $artisticdata[0]['slug']) ?>">
+                <a href="<?php echo base_url('artist/photos/' . $get_url) ?>">
                 <div class="full-box-module business_data" id="autorefresh">
                     <div class="profile-boxProfileCard  module buisness_he_module" style="">
                         <div class="head_details">
@@ -149,7 +149,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artist/videos/' . $artisticdata[0]['slug']) ?>">
+                <a href="<?php echo base_url('artist/videos/' . $get_url) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artist/audios/' . $artisticdata[0]['slug']) ?>">
+                <a href="<?php echo base_url('artist/audios/' . $get_url) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artist/pdf/' . $artisticdata[0]['slug']) ?>">
+                <a href="<?php echo base_url('artist/pdf/' . $get_url) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module pdf_box">
                         <table class="business_data_table">
