@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH'))    exit('No direct script access allowed');
 
-class Test extends MY_Controller {
+class Test extends CI_Controller {
 
     public $data;
 
@@ -227,10 +227,60 @@ class Test extends MY_Controller {
     public function scraping_data(){
   //  echo  $html =    file_get_html('https://data.gov.in/ogpl_apis'); 
    // echo  $html =    file_get_html('http://www.freshersworld.com/jobs/category/govt-sector-job-vacancies'); 
-    echo  $html =    file_get_html('http://www.marugujarat.in/'); 
-    
-     die();
+   // echo  $html =    file_get_html('http://www.marugujarat.in/'); 
+   // Create DOM from URL
+ $html = file_get_html('http://slashdot.org/'); 
+//echo file_get_html('http://slashdot.org/')->plaintext;
+ //$data = file_get_html('http://slashdot.org/')->find('div.article');
+ 
+// echo '<pre>'; print_r($data); die();
+
+// Find all article blocks
+foreach($html->find('div.article') as $article) { echo 1; die();
+//    $item['title']     = $article->find('div.title', 0)->plaintext;
+//    $item['intro']    = $article->find('div.intro', 0)->plaintext;
+//    $item['details'] = $article->find('div.details', 0)->plaintext;
+//    $articles[] = $item;
+}
+
+print_r($articles);
+    die();
        $this->load->view('scraping');
+    }
+    
+    public function srappingcurl() {
+        //base url
+//$base = 'http://slashdot.org/';
+$base = 'http://www.marugujarat.in/';
+//$base = 'https://ojas.gujarat.gov.in/AdvtList.aspx?type=lCxUjNjnTp8%3d';
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($curl, CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+curl_setopt($curl, CURLOPT_URL, $base);
+curl_setopt($curl, CURLOPT_REFERER, $base);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+$str = curl_exec($curl);
+curl_close($curl);
+
+// Create a DOM object
+$html_base = new simple_html_dom();
+// Load HTML from a string
+ echo $html_base->load($str); die();
+$i = 0;
+//get all category links
+foreach($html_base->find('table') as $element) {
+    
+    
+    echo "<pre>";
+    print_r( $element);
+    echo "</pre>";
+    die();
+}
+
+$html_base->clear(); 
+unset($html_base);
     }
 }
 
