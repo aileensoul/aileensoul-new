@@ -4783,7 +4783,7 @@ if($this->input->post('livepost')){
                     if ($this->session->userdata('aileenuser')) {
                         $return_html .= 'onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')"';
                     } else {
-                        $return_html .= 'onClick="login_profile_apply(' . $post['post_id'] . ')"';
+                        $return_html .= 'onClick="create_profile_apply(' . $post['post_id'] . ')"';
                     }
                     $return_html .= '>Apply</a>
                               </li>
@@ -5736,7 +5736,7 @@ if ($this->session->userdata('aileenuser')) {
                 if ($this->session->userdata('aileenuser')) {
                     $rec_post .= 'onclick="applypopup(' . $rec_postdata[0]['post_id'] . ',' . $rec_postdata[0]['user_id'] . ')"';
                 } else {
-                    $rec_post .= 'onClick="login_profile_apply()"';
+                    $rec_post .= 'onClick="create_profile_apply()"';
                 }
 
                 $rec_post .= '>Apply</a>';
