@@ -104,6 +104,8 @@ class Notification extends MY_Controller {
         $contition_array = array('art_post_id' => $id, 'status' => '1', 'is_delete' => '0');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo '<pre>'; print_r($this->data['art_data']); die();
+        $this->data['get_url'] =  $this->get_url($userid);
+
         $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
         $this->load->view('notification/art_post', $this->data);
     }
@@ -4458,8 +4460,12 @@ Your browser does not support the audio tag.
                                      $category_url = $this->common->clean($art_othercategory);  
                                   }
 
-                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+                                   $city_get =  $this->common->clean($city_url);
+
+                 $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
                  return $url;                           
   }
+
+  
 
 }
