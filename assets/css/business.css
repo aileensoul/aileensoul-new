@@ -50,9 +50,9 @@
     width: 100%;
     float: left;
 }
-input[type="file"] {
+/*input[type="file"] {
     border: none;
-}
+}*/
 select.day:focus {
     border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
@@ -2465,6 +2465,7 @@ label.cameraButton:active {
     height: 129px;
     width: 129px;
     padding: 3px;
+    cursor: pointer;
 }
 .bui_popup_img img {
     width: 100%;

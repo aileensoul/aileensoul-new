@@ -232,7 +232,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
                     $userid = $this->session->userdata('aileenuser');
                     if ($artisticdata[0]['user_id'] == $userid) {
                         ?>
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artist/followers'); ?>">Followers <br> (<?php echo $flucount; ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artist/followers/'.$get_url); ?>">Followers <br> (<?php echo $flucount; ?>)</a>
                         </li>
                         <?php
                     } else {
@@ -255,14 +255,14 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
 
                         ?> 
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  title="Followers" href="<?php echo base_url('artist/followers/' . $artisticdata[0]['slug']); ?>">Followers <br> (<?php echo ($count); ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  title="Followers" href="<?php echo base_url('artist/followers/' . $get_url); ?>">Followers <br> (<?php echo ($count); ?>)</a>
                         </li>
 
                     <?php } ?> 
                     <?php
                     if ($artisticdata[0]['user_id'] == $userid) {
                         ?>        
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following'); ?>">Following <br> <div id="countfollow">(<?php echo $countfr; ?>)</div></a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following/'. $get_url); ?>">Following <br> <div id="countfollow">(<?php echo $countfr; ?>)</div></a>
                         </li>
                         <?php
                     } else {
@@ -284,7 +284,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
                        
                         ?>
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following/' . $artisticdata[0]['slug']); ?>">Following <br>  (<?php echo $countfo; ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following/' . $get_url); ?>">Following <br>  (<?php echo $countfo; ?>)</a>
                         </li> 
                     <?php } ?>  
 

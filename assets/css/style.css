@@ -725,7 +725,7 @@ label.error {
 .modal-open .modal {
     z-index: 10002;
 }
-.modal.message-box span.mes{padding:10px 34px 0;}
+.modal.message-box span.mes{padding:10px 0px 0;}
 #popup-form input#upload-one{
     width: 100%;
 

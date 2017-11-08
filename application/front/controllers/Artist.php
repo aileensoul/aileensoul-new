@@ -2088,26 +2088,12 @@ $datacount = count($otherdata);
         $segment3 = explode('-', $this->uri->segment(3));
         $slugdata = array_reverse($segment3);
         $regid = $slugdata[0];      
-        $artisticslug = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_id;
         
+        $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => 4);
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-            $artslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
 
-        if ($regid == '' || $regid == $artslug[0]['slug']) {
-
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
-
-        } else {
-
-            $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => 4);
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
-        }
 
     if($userid){
         if($this->data['artisticdata']){
@@ -3539,23 +3525,17 @@ public function followtwo() {
         }
      //if user deactive profile then redirect to artist/index untill active profile End
 
-            $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid))->row()->slug;
-
-        if ($id == '' || $id == $artslug) {
-            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+        $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0]; 
 
 
-        } else {
-            $contition_array = array('slug' => $id, 'status' => '1', 'is_delete' => '0', 'art_step' => 4);
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('art_id' => $regid, 'status' => '1', 'is_delete' => '0', 'art_step' => 4);
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+        $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
 
-        }
-
+       
     if($this->data['artisticdata']){
             $artistic_name = $this->get_artistic_name($id);
       $this->data['title'] = ucfirst(strtolower($artistic_name)).TITLEPOSTFIX;
@@ -3770,22 +3750,17 @@ public function followtwo() {
              redirect('artist/');
         }
      //if user deactive profile then redirect to artist/index untill active profile End
-        $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid))->row()->slug;
-        if ($id == '' || $id == $artslug[0]['slug']) {
 
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0];  
+       
+        $contition_array = array('art_id' => $regid, 'status' => '1','art_step' => 4);
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
+        $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
 
-
-        } else {
-            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
-
-        }
+      
 
         if($this->data['artisticdata']){
             $artistic_name = $this->get_artistic_name($id);
@@ -7024,48 +6999,12 @@ public function insert_comment_postnewpage() {
              redirect('artist/');
         }
      //if user deactive profile then redirect to artist/index untill active profile End
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0];  
 
-        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
-
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-
-            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           
-            $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-
-             $artisticpost = $this->data['artisticdatapost'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           
-             foreach ($artisticpost as $value) {
-                
-            
-            $contition_array = array('insert_profile' => 1, 'is_deleted' => '1', 'post_id' => $value['art_post_id']);
-
-            $art_data = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $a_d[] =  $art_data;
-           }
-
-           foreach ($a_d as $key_ad => $value_ad) {
-               foreach ($value_ad as $art_fn => $v) {
-
-
-                $art_data[] = $v;
-                   
-               }
-           }//die();
-
-           $art_data = array_unique($art_data, SORT_REGULAR);
-
-           $this->data['artistic_data'] = $art_data; 
-
-          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
-
-
-    
-        } else {
-
-           $contition_array = array('slug' => $id, 'status' => '1');
+           $contition_array = array('art_id' => $regid, 'status' => '1');
 
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         
@@ -7096,7 +7035,7 @@ public function insert_comment_postnewpage() {
 
 
            $this->data['artistic_data'] = $art_data; 
-        }
+    
 
 
         if($this->data['artisticdata']){
@@ -7132,28 +7071,17 @@ public function insert_comment_postnewpage() {
              redirect('artist/');
         }
      //if user deactive profile then redirect to artist/index untill active profile End
-         $contition_array = array('user_id' => $userid, 'status' => '1');
-        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($id == '' || $id == $artisticslug[0]['slug']) {
-
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($artisticdata); die();
-
-          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
-
-        } else {
-
-            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
-            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
-
-        }
-
+         $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0];  
         
+            $contition_array = array('art_id' => $regid, 'status' => '1','art_step' => 4);
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
+
+    
         if($this->data['artisticdata']){
         $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
         $artistic_name = $this->get_artistic_name($id);
@@ -7187,23 +7115,12 @@ public function insert_comment_postnewpage() {
              redirect('artist/');
         }
      //if user deactive profile then redirect to artist/index untill active profile End
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0];  
 
-        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
-
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($artisticdata); die();
-            $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
-            $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
-
-        } else {
-
-            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
+            $contition_array = array('art_id' => $regid, 'status' => '1','art_step' => 4);
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
@@ -7212,11 +7129,7 @@ public function insert_comment_postnewpage() {
 
           $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
 
-        }
-
-
-
-
+        
         if($this->data['artisticdata']){
         $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
         $artistic_name = $this->get_artistic_name($id);
@@ -7251,24 +7164,12 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artist/index untill active profile End
 
-       $contition_array = array('user_id' => $userid, 'status' => '1');
-        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $segment3 = explode('-', $this->uri->segment(3));
+        $slugdata = array_reverse($segment3);
+        $regid = $slugdata[0];  
 
 
-        if ($id == $userid || $id == '' || $id ==  $artisticslug[0]['slug']) {
-
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           //echo "<pre>"; print_r($artisticdata); die();
-            $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
-            $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-          $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
-
-        } else { 
-
-            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
+            $contition_array = array('art_id' => $regid, 'status' => '1','art_step' => 4);
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
@@ -7277,8 +7178,7 @@ public function insert_comment_postnewpage() {
 
           $this->data['get_url'] =  $this->get_url($artisticdata[0]['user_id']);
 
-        }
-
+       
         if($this->data['artisticdata']){ 
         $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
         $artistic_name = $this->get_artistic_name($id);

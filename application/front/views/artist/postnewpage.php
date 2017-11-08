@@ -117,7 +117,9 @@
                                      $category_url = $this->common->clean($art_othercategory);  
                                   }
 
-                 $url_postid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+                                   $city_get =  $this->common->clean($city_url);
+
+                 $url_postid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
 
                                             // url changes start
               $contition_array = array('user_id' => $art_data[0]['posted_user_id'], 'status' => 1);
@@ -149,7 +151,9 @@
                                      $category_url = $this->common->clean($art_othercategory);  
                                   }
 
-                 $url_postwithid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_url.'-'.$arturl[0]['art_id'];
+                                   $city_get =  $this->common->clean($city_url);
+                                  
+                 $url_postwithid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
 
 
                                         ?>
