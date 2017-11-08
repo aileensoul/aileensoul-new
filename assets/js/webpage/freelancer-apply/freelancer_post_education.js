@@ -390,4 +390,12 @@ function remove_validation_stream() {
 }
 //Click on Degree other option process End
 
-
+//ALL POPUP CLOSE USING ESC START
+$(document).on('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    $('#bidmodal2').modal('hide');
+                    $('#bidmodal_degree').modal('hide');
+                    $('#bidmodal_stream').modal('hide');
+                }
+            });
+//ALL POPUP CLOSE USING ESC END
