@@ -86,7 +86,7 @@
                                     <?php    }
                                         ?>
 
-                                        <label><?php echo $this->lang->line("work_as"); ?><span class="optional">(optional)</span></label>
+                                        <label class="custom-opt"><?php echo $this->lang->line("work_as"); ?><span class="optional">(optional)</span></label>
 
                                         <input type="radio" tabindex="1" autofocus name="job_type" id="job_type" checked="checked" value="Full Time" <?php
                                         if ($job_type1 == 'Full Time') {
