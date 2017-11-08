@@ -251,8 +251,9 @@ print_r($articles);
     public function srappingcurl() {
         //base url
 //$base = 'http://slashdot.org/';
-$base = 'http://www.marugujarat.in/';
+//$base = 'http://www.marugujarat.in/';
 //$base = 'https://ojas.gujarat.gov.in/AdvtList.aspx?type=lCxUjNjnTp8%3d';
+$base = 'https://www.freshersworld.com/jobs/category/govt-sector-job-vacancies';
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -267,16 +268,15 @@ curl_close($curl);
 // Create a DOM object
 $html_base = new simple_html_dom();
 // Load HTML from a string
- echo $html_base->load($str); die();
-$i = 0;
+  $html_base->load($str); 
+
 //get all category links
-foreach($html_base->find('table') as $element) {
-    
+foreach($html_base->find('//*[@id="all-jobs-append"]') as $element) {
     
     echo "<pre>";
     print_r( $element);
     echo "</pre>";
-    die();
+    
 }
 
 $html_base->clear(); 
