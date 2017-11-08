@@ -34,13 +34,19 @@
                 $segment3 = explode('-', $this->uri->segment(3));
                 $slugdata = array_reverse($segment3);
                 $regid = $slugdata[0];
-                              
+            
                 $regslug = $this->uri->segment(3);
+
                 if(is_numeric($regid)) {  
 
                 $userid = $this->db->select('user_id')->get_where('art_reg', array('art_id' => $regid))->row()->user_id;
                }else{
+
+                  if($regslug){
                 $userid = $this->db->select('user_id')->get_where('art_reg', array('slug' => $regslug))->row()->user_id;
+                  }else{
+                    $userid = $this->session->userdata('aileenuser');
+                  }
                }
 
                 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
@@ -226,7 +232,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
                     $userid = $this->session->userdata('aileenuser');
                     if ($artisticdata[0]['user_id'] == $userid) {
                         ?>
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artist/followers'); ?>">Followers <br> (<?php echo $flucount; ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artist/followers/'.$get_url); ?>">Followers <br> (<?php echo $flucount; ?>)</a>
                         </li>
                         <?php
                     } else {
@@ -249,14 +255,14 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
 
                         ?> 
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  title="Followers" href="<?php echo base_url('artist/followers/' . $artisticdata[0]['slug']); ?>">Followers <br> (<?php echo ($count); ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  title="Followers" href="<?php echo base_url('artist/followers/' . $get_url); ?>">Followers <br> (<?php echo ($count); ?>)</a>
                         </li>
 
                     <?php } ?> 
                     <?php
                     if ($artisticdata[0]['user_id'] == $userid) {
                         ?>        
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following'); ?>">Following <br> <div id="countfollow">(<?php echo $countfr; ?>)</div></a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following/'. $get_url); ?>">Following <br> <div id="countfollow">(<?php echo $countfr; ?>)</div></a>
                         </li>
                         <?php
                     } else {
@@ -278,7 +284,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
                        
                         ?>
-                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following/' . $artisticdata[0]['slug']); ?>">Following <br>  (<?php echo $countfo; ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artist/following/' . $get_url); ?>">Following <br>  (<?php echo $countfo; ?>)</a>
                         </li> 
                     <?php } ?>  
 

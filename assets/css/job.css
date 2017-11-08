@@ -2186,7 +2186,7 @@ label.cameraButton input[accept*="camera"] {
 .modal-body .message a.btn:hover{background-color: #156f95 !important;color: #fff!important;}
 .profile-boxProfileCard-cover a img{min-height:88px;}
 .lbpos{position: relative;}
-.error-msg p, label.error{left: -5px;}
+/*.error-msg p, label.error{left: -5px;}*/
 
 .job_reg_page_fprm .alert.alert-danger{
     position: relative;

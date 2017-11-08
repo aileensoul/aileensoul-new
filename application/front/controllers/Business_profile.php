@@ -986,11 +986,11 @@ class Business_profile extends MY_Controller {
             $contition_array = array('follow_type' => 2, 'follow_status' => 1);
             $search_condition = "((follow_from  = '$loginuser' AND follow_to  = ' $other_user') OR (follow_from  = '$other_user' AND follow_to  = '$loginuser'))";
             $followperson = $this->common->select_data_by_search('follow', $search_condition, $contition_array, $data = 'count(*) as follow_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
-            $contition_array = array('contact_type' => 2);
+            
+            $contition_array = array('contact_type' => 2, 'status'=> 'confirm');
             $search_condition = "((contact_from_id  = '$userid' AND contact_to_id = ' $other_user_id') OR (contact_from_id  = '$other_user_id' AND contact_to_id = '$userid'))";
             $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as contact_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
+            
             if ($followperson[0]['follow_count'] == 2 || $contactperson[0]['contact_count'] == 1) {
                 $this->data['is_eligable_for_post'] = 1;
             }
@@ -1017,13 +1017,13 @@ class Business_profile extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST["business_profile_post_id"];
         $data = array(
-            'is_delete' => 1,
+            'is_delete' => '1',
             'modify_date' => date('Y-m-d', time())
         );
         $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $id);
         $dataimage = array(
-            'is_deleted' => 0,
-            'modify_date' => date('Y-m-d', time())
+            'is_deleted' => '0',
+            'modify_date' => date('Y-m-d H:i:s', time())
         );
         $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -1054,14 +1054,14 @@ class Business_profile extends MY_Controller {
 
         $id = $_POST["business_profile_post_id"];
         $data = array(
-            'is_delete' => 1,
+            'is_delete' => '1',
             'modify_date' => date('Y-m-d', time())
         );
         $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $id);
 
         $dataimage = array(
-            'is_deleted' => 0,
-            'modify_date' => date('Y-m-d', time())
+            'is_deleted' => '0',
+            'modify_date' => date('Y-m-d H:i:s', time())
         );
         $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
 
@@ -1205,8 +1205,8 @@ class Business_profile extends MY_Controller {
                 'product_name' => $this->input->post('my_text'),
                 'product_description' => $this->input->post('product_desc'),
                 'created_date' => date('Y-m-d H:i:s', time()),
-                'status' => 1,
-                'is_delete' => 0,
+                'status' => '1',
+                'is_delete' => '0',
                 'user_id' => $userid
             );
         } else {
@@ -1214,8 +1214,8 @@ class Business_profile extends MY_Controller {
                 'product_name' => $this->input->post('my_text'),
                 'product_description' => $this->input->post('product_desc'),
                 'created_date' => date('Y-m-d H:i:s', time()),
-                'status' => 1,
-                'is_delete' => 0,
+                'status' => '1',
+                'is_delete' => '0',
                 'user_id' => $para,
                 'posted_user_id' => $userid
             );
@@ -2729,7 +2729,7 @@ Your browser does not support the audio tag.
             $join_str[2]['table'] = 'cities';
             $join_str[2]['join_table_id'] = 'cities.city_id';
             $join_str[2]['from_table_id'] = 'business_profile.city';
-            $join_str[2]['join_type'] = '';
+            $join_str[2]['join_type'] = 'LEFT';
             $join_str[3]['table'] = 'business_type';
             $join_str[3]['join_table_id'] = 'business_type.type_id';
             $join_str[3]['from_table_id'] = 'business_profile.business_type';
@@ -4695,7 +4695,7 @@ Your browser does not support the audio tag.
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
-        $post_id = $_POST["post_id"];
+        $post_id = $_POST['post_id'];
         $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 

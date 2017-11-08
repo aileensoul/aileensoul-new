@@ -136,6 +136,75 @@
 
                                         $slugid = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->slug;
 
+
+              $contition_array = array('user_id' => $art_data[0]['user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                                   $city_get =  $this->common->clean($city_url);
+
+                 $url_id = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+
+
+              $contition_array = array('user_id' => $art_data[0]['posted_user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                                   $city_get =  $this->common->clean($city_url);
+
+
+                 $url_postid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+
                                                     ?>
 
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
@@ -147,12 +216,12 @@
                           if (IMAGEPATHFROM == 'upload') {
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
                                        
-                                        <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
+                                        <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>">
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                       </a>
                                         
                                     <?php } else { ?>
-                                     <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
+                                     <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>">
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
                                       </a>
                                    <?php }
@@ -164,13 +233,13 @@
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) { ?>
 
-                                                 <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
+                                                 <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>">
 
                                                 <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
                                               </a>
                           <?php }else{?>
 
-                          <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $art_slug); ?>">
+                          <a class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>">
 
                          <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>">  
 
@@ -182,7 +251,7 @@
 
                                         <?php } else { ?>
 
-                                          <a  class="post_dot" title="" href="<?php echo base_url('artist/dashboard/' . $slugid); ?>">
+                                          <a  class="post_dot" title="" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
 
                <?php
 
@@ -251,9 +320,9 @@
 
                                                                 <?php if ($art_data[0]['posted_user_id']) { ?>
                                                                     <div class="else_post_d">
-                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $slugposted); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
+                                                                        <a style="max-width: 30%;" class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_postid); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
                                                                         <p class="posted_with" > Posted With </p>
-                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artist/dashboard/' . $slugid); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                        <a  class="post_dot1 padding_less_left" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
 
                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                         <span class="ctre_date"> 
@@ -268,7 +337,7 @@
                                                                     echo ucfirst(strtolower($firstname));
                                                                     print "&nbsp;&nbsp;";
                                                                     echo ucfirst(strtolower($lastname));
-                                                                    ?>" class="post_dot" href="<?php echo base_url('artist/dashboard/' . $slugid); ?>"><?php
+                                                                    ?>" class="post_dot" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>"><?php
                                                                        echo ucfirst(strtolower($firstname));
                                                                        print "&nbsp;&nbsp;";
                                                                        echo ucfirst(strtolower($lastname));
@@ -781,6 +850,40 @@
                                            $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
                                             $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                                             $artslug = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
+
+              $contition_array = array('user_id' => $rowdata['user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                                  $city_get =  $this->common->clean($city_url); 
+
+                                  $url_data = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+
                                         ?>
 
 
@@ -795,17 +898,26 @@
                               <?php 
 
                               if (IMAGEPATHFROM == 'upload') {
+
+                                  if($art_userimage){
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
-                                         <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                                         <a href="<?php echo base_url('artist/dashboard/' . $url_data . ''); ?>">
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                       </a>
                                         
                                     <?php } else { ?>
-                                     <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                                     <a href="<?php echo base_url('artist/dashboard/' . $url_data . ''); ?>">
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                                       </a>
                                    <?php }
+                                 }else{ ?>
+
+                                  <a href="<?php echo base_url('artist/dashboard/' . $url_data . ''); ?>">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                      </a>
+
+                                 <?php }
                                 } else{
 
                               $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
@@ -814,14 +926,14 @@
 
                               if ($info) { ?>
 
-                               <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                               <a href="<?php echo base_url('artist/dashboard/' . $url_data . ''); ?>">
 
                                     <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage; ?>"  alt="">
                                   </a>
                         <?php
                     } else {
                         ?>
-                          <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                          <a href="<?php echo base_url('artist/dashboard/' . $url_data . ''); ?>">
 
                            <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="">
                          </a>
@@ -834,7 +946,7 @@
 
                               <div class="comment-name">
                                       <b title=" <?php echo ucfirst(strtolower($artname)); echo "&nbsp;"; echo ucfirst(strtolower($artlastname)); ?>">
-                                      <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                                      <a href="<?php echo base_url('artist/dashboard/' . $url_data . ''); ?>">
                                               <?php
                                                echo ucfirst(strtolower($artname));
                                                 echo "&nbsp;";
@@ -966,12 +1078,12 @@
                                                      if (IMAGEPATHFROM == 'upload') {
                                           if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
                                        
-                                        <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                                        <a href="<?php echo base_url('artist/dashboard/' . $get_url . ''); ?>">
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
                                       </a>
                                         
                                     <?php } else { ?>
-                                    <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                                    <a href="<?php echo base_url('artist/dashboard/' . $get_url . ''); ?>">
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                                       </a>
                                    <?php }
@@ -982,13 +1094,13 @@
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
 
                             if ($info) { ?>
-                                                     <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                                                     <a href="<?php echo base_url('artist/dashboard/' . $get_url . ''); ?>">
                                                         <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage; ?>" name="image_src" id="image_src" />
                                                       </a>
                                                         <?php
                                                     } else {
                                                         ?>
-                                                         <a href="<?php echo base_url('artist/dashboard/' . $artslug . ''); ?>">
+                                                         <a href="<?php echo base_url('artist/dashboard/' . $get_url . ''); ?>">
                                                         <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="No Image"></a>
                 <?php
             } }

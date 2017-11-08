@@ -194,7 +194,7 @@
                                                                         <!-- Modal content-->
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
-                                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
                                                                                 <h4 class="modal-title">Business Images</h4>
                                                                             </div>
                                                                             <div class="modal-body popup-img-popup">
@@ -281,7 +281,7 @@
                         <div class="modal fade message-box" id="query" role="dialog">
                             <div class="modal-dialog modal-lm">
                                 <div class="modal-content">
-                                    <button type="button" class="modal-close" id="query" data-dismiss="modal">&times;</button>       
+                                    <button type="button" class="profile-modal-close" id="query" data-dismiss="modal">&times;</button>       
                                     <div class="modal-body">
                                         <span class="mes">
                                         </span>

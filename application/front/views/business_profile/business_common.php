@@ -326,6 +326,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
                 <div class="modal-body">
                     <span class="mes">
+                        <div id="popup-form">
                         <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                         <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                             <div class="col-md-5">
@@ -337,6 +338,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
                             <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                         </form>
+                    </div>
                     </span>
                 </div>
             </div>
