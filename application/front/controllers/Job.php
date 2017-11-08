@@ -4627,7 +4627,7 @@ if($this->input->post('livepost')){
 
                 if (!$post['post_skill']) {
                     $return_html .= $post['other_skill'];
-                } else if (!$post['other_skill']) {
+                 } else if (!$post['other_skill']) {
                     foreach ($aud_res as $skill) {
                         if ($k != 0) {
                             $return_html .= $comma;
