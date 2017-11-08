@@ -2650,7 +2650,7 @@ Your browser does not support the audio tag.
                     $return_html .= '</b><span><p>';
 
                     if ($post['post_description']) {
-                        $return_html .= $this->text2link($post['post_description']);
+                        $return_html .= $this->common->make_links(['post_description']);
                     } else {
                         $return_html .= PROFILENA;
                     }

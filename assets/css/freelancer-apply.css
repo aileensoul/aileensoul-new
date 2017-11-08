@@ -1351,7 +1351,7 @@ label.cameraButton input[accept*="camera"] {
     margin-top: 20px;
 }
 .editable_text {
-    min-height: 40px;
+    min-height: 100px;
     background: white;
     border: 1px solid #cacaca;
     outline: none;
@@ -1491,6 +1491,7 @@ label.cameraButton input[accept*="camera"] {
 #InboxBody  div ul.notification_data_in_h2{float: none!important;}
 
 .modal-content .fw a.btn:hover{background-color: #156f95!important;color: #fff!important;}
+.custom-opt .optional{float: none;padding-left: 10px;}
 
 /***  media query  ***/
 

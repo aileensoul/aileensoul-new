@@ -359,7 +359,7 @@
                                                             </div>
                                                             <div class="profile-job-profile-button clearfix">
                                                                 <div class="profile-job-details col-md-12">
-                                                                    <ul><li class="job_all_post last_date">
+                                                                    <ul><li class="fr">
 <!--                                                                            Last Date : <?php
                                                                             if ($post['post_last_date']) {
                                                                                 echo date('d-M-Y', strtotime($post['post_last_date']));

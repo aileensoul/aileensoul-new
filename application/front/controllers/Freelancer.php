@@ -805,9 +805,10 @@ class Freelancer extends MY_Controller {
         //for getting degree data End
         //For getting all Stream Strat
         $contition_array = array('is_delete' => '0', 'stream_name !=' => "Other");
-        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1')) AND stream_name != 'Others'";
         $stream_alldata = $this->data['stream_alldata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
 
+        
         $contition_array = array('status' => 1, 'is_delete' => 0, 'stream_name' => "Other");
         $stream_otherdata = $this->data['stream_otherdata'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
         //For getting all Stream End
