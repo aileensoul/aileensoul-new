@@ -2088,26 +2088,12 @@ $datacount = count($otherdata);
         $segment3 = explode('-', $this->uri->segment(3));
         $slugdata = array_reverse($segment3);
         $regid = $slugdata[0];      
-        $artisticslug = $this->db->select('art_id')->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_id;
         
+        $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => 4);
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-            $artslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
 
-        if ($regid == '' || $regid == $artslug[0]['slug']) {
-
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
-
-        } else {
-
-            $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => 4);
-            $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
-        }
 
     if($userid){
         if($this->data['artisticdata']){
