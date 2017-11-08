@@ -50,9 +50,9 @@
     width: 100%;
     float: left;
 }
-input[type="file"] {
+/*input[type="file"] {
     border: none;
-}
+}*/
 select.day:focus {
     border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
