@@ -2315,15 +2315,15 @@ class Freelancer extends MY_Controller {
                                                                                 </li>
                                                                                 <li><b>';
                 $return_html .= $this->lang->line("project_description");
-                $return_html .= '</b><span><p>';
+                $return_html .= '</b><span><pre>';
 
                 if ($post['post_description']) {
-                    $return_html .= $post['post_description'];
+                    $return_html .= $this->common->make_links($post['post_description']);
                 } else {
                     $return_html .= PROFILENA;
                 }
 
-                $return_html .= '</p></span>
+                $return_html .= '</pre></span>
                                                                                 </li>
                                                                                 <li><b>';
                 $return_html .= $this->lang->line("rate");
@@ -2848,7 +2848,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= $this->lang->line("project_description");
                 $return_html .= '</b>
                                                                         <span>
-                                                                            <p>';
+                                                                            <pre>';
 
                 if ($post['post_description']) {
                     $return_html .= $this->common->make_links($post['post_description']);
@@ -2856,7 +2856,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= PROFILENA;
                 }
 
-                $return_html .= '</p>
+                $return_html .= '</pre>
                                                                         </span>
                                                                     </li>
                                                                     <li><b>';
@@ -3502,14 +3502,14 @@ class Freelancer extends MY_Controller {
                                                 </li>
                                                 <li><b>';
                     $return_html .= $this->lang->line("project_description");
-                    $return_html .= '</b><span><p>';
+                    $return_html .= '</b><span><pre>';
 
                     if ($post['post_description']) {
-                        $return_html .= $this->text2link($post['post_description']);
+                        $return_html .= $this->common->make_links($post['post_description']);
                     } else {
                         $return_html .= PROFILENA;
                     }
-                    $return_html .= ' </p></span>
+                    $return_html .= ' </pre></span>
                                                 </li>
                                                 <li><b>';
                     $return_html .= $this->lang->line("rate");

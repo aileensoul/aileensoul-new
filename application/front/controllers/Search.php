@@ -2647,10 +2647,10 @@ Your browser does not support the audio tag.
                     $return_html .= '</span>
                                                                                 <li><b>';
                     $return_html .= $this->lang->line("project_description");
-                    $return_html .= '</b><span><p>';
+                    $return_html .= '</b><span><pre>';
 
                     if ($post['post_description']) {
-                        $return_html .= $this->common->make_links(['post_description']);
+                        $return_html .= $this->common->make_links($post['post_description']);
                     } else {
                         $return_html .= PROFILENA;
                     }
