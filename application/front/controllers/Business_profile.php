@@ -3432,7 +3432,7 @@ Your browser does not support the audio tag.
         }
     }
 
-    public function third_follow_user_data($from = '') {
+    public function third_follow_user_data() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
 
         $userid = $this->session->userdata('aileenuser');
@@ -3524,7 +3524,7 @@ Your browser does not support the audio tag.
       <div class = "follow_left_box_main_btn">';
                     $third_user_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
       <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
-      </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      </button></div></div><span class = "Follow_close" id="Follow_close' . $userlist['business_profile_id'] . '" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
                 }
@@ -3566,7 +3566,7 @@ Your browser does not support the audio tag.
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
         $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '2', $join_str_contact = array(), $groupby = '');
+        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
 
         $third_user_html = '';
         if (count($userlistview) > 0) {
@@ -3625,7 +3625,7 @@ Your browser does not support the audio tag.
       <div class = "follow_left_box_main_btn">';
                     $third_user_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
       <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
-      </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      </button></div></div><span class = "Follow_close" id="Follow_close' . $userlist['business_profile_id'] . '" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
                 }
@@ -10358,7 +10358,7 @@ Your browser does not support the audio tag.
       <div class = "follow_left_box_main_btn">';
                     $return_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
       <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
-      </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      </button></div></div><span class = "Follow_close" id="Follow_close' . $userlist['business_profile_id'] . '" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
                 }
