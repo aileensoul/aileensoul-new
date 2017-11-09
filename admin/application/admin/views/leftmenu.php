@@ -166,6 +166,27 @@
            <!--End Blog-->
 
 
+           <!--Start Goverment job-->
+            <li <?php if ($this->uri->segment(1) == 'goverment' || $this->uri->segment(1) == '') { ?> class="active treeview" <?php } else { ?> class="treeview"   <?php } ?>>
+                <a href="#">
+                    <i class="fa fa-rss" aria-hidden="true"></i><span>Goverment</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">     
+                    <li><a href="<?php echo base_url('goverment/add_gov_category'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Add Goverment category</a></li>
+
+                     <li><a href="<?php echo base_url('goverment/view_gov_category'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>View Goverment category</a></li>
+
+
+                     <li><a href="<?php echo base_url('goverment/add_gov_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Add Goverment post</a></li>
+
+                     <li><a href="<?php echo base_url('goverment/view_gov_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>View Goverment post</a></li>
+
+                </ul>
+            </li>
+           <!--End Goverment job -->
+
+
             <!--Start Feedback-->
             <li <?php if ($this->uri->segment(1) == 'feedback' || $this->uri->segment(1) == '') { ?> class="active treeview" <?php } else { ?> class="treeview"   <?php } ?>>
                 <a href="#">
