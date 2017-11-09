@@ -68,13 +68,85 @@
                                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
 
                                         $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
+
+
+               $contition_array = array('user_id' => $art_data[0]['posted_user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                                   $city_get =  $this->common->clean($city_url);
+
+                 $url_post_id = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+
+
+              $contition_array = array('user_id' => $art_data[0]['user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                                   $city_get =  $this->common->clean($city_url);
+
+                 $url_id = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+
+
+
+
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
-                                            <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artist/art_manage_post/' . $row['posted_user_id']); ?>">
+                                            <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artist/dashboard/' . $url_post_id); ?>">
                                                 <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" /> </a>
 
                                         <?php } else { ?>
-                                            <a class="post_dot"  href="<?php echo base_url('artist/art_manage_post/' . $row['user_id']); ?>">
+                                            <a class="post_dot"  href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
                                                 <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" /> </a>
 
                                         <?php } ?>
@@ -104,8 +176,8 @@
                                             <li><?php if ($art_data[0]['posted_user_id']) { ?>
 
                                                     <div class="else_post_d">
-                                                        <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artist/art_manage_post/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
-                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artist/art_manage_post/' . $art_data[0]['user_id']); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
+                                                        <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artist/dashboard/' . $url_post_id); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
+                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artist/dashboard/' . $url_id); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
                                                         <span role="presentation" aria-hidden="true" style="color: #91949d; font-size: 14px;"> · </span>
                                                         <span class="ctre_date"> 
          <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>
@@ -116,7 +188,7 @@
                                                     <!-- other user post time name end-->
                                                 <?php } else { ?>
 
-                                                    <a  class="post_dot" title="<?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>"   href="<?php echo base_url('artist/art_manage_post/' . $art_data[0]['user_id']); ?>">
+                                                    <a  class="post_dot" title="<?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>"   href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
                                                         <?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>
 
                                                     </a>
@@ -491,49 +563,125 @@
 
                                                             <!-- khyati changes start -->
 
-                                                            <div  id="<?php echo "threecommentimg" . $artdata['post_files_id']; ?>" style="display:block">
-                                                                <div class="<?php echo 'insertcommentimg' . $artdata['post_files_id']; ?>">
-                                                                    <?php
-                                                                    $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_delete' => '0');
-                                                                    $artmulimage = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                                                                    if ($artmulimage) {
-                                                                        foreach ($artmulimage as $rowdata) {
-                                                                            $companyname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
-                                                                            ?>
-                                                                            <div class="all-comment-comment-box">
-                                                                                <div class="post-design-pro-comment-img"> 
-                                                                                    <?php
-                                                                                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
-                                                                                    ?>
+            <div  id="<?php echo "threecommentimg" . $artdata['post_files_id']; ?>" style="display:block">
+                <div class="<?php echo 'insertcommentimg' . $artdata['post_files_id']; ?>">
+                <?php
+                    $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_delete' => '0');
+                    $artmulimage = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+                                if ($artmulimage) {
+                                            foreach ($artmulimage as $rowdata) {
+                                              $firstname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
 
-                                                                                    <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
-                                                                                </div>
-                                                                                <div class="comment-name">
-                                                                                    <b>  <?php
-                                                                                        echo ucwords($companyname);
-                                                                                        echo '</br>';
-                                                                                        ?>
-                                                                                    </b>
-                                                                                </div>
-
-                                                                                <div class="comment-details" id= "<?php echo "showcommentimg" . $rowdata['post_image_comment_id']; ?>">
-                                                                                    <?php
-                                                                                    echo $this->common->make_links($rowdata['comment']);
-                                                                                    echo '</br>';
-                                                                                    ?>
-                                                                                </div>
-
-                                                                                <div class="edit-comment-box">
-                                                                                    <div class="inputtype-edit-comment">
-                                                                                        <div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="<?php echo $rowdata['post_image_comment_id']; ?>"  id="editcommentimg<?php echo $rowdata['post_image_comment_id']; ?>" placeholder="Enter Your Comment " value= ""  onkeyup="commenteditimg(<?php echo $rowdata['post_image_comment_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $rowdata['comment']; ?></div>
-                                                                                        <span class="comment-edit-button"><button id="<?php echo "editsubmitimg" . $rowdata['post_image_comment_id']; ?>" style="display:none" onClick="edit_commentimg(<?php echo $rowdata['post_image_comment_id']; ?>)">Save</button></span>
-                                                                                    </div>
-                                                                                </div>
+                                              $lastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+                        ?>
+                            <div class="all-comment-comment-box">
+                                <div class="post-design-pro-comment-img"> 
+                                    <?php
+                                        $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
 
+              $contition_array = array('user_id' => $rowdata['user_id'], 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                                                                                <div class="art-comment-menu-design"> 
-                                                                                    <div class="comment-details-menu" id="<?php echo 'likecommentimg' . $rowdata['post_image_comment_id']; ?>">
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                                   $city_get =  $this->common->clean($city_url);
+
+
+                 $url_id = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+
+                ?>
+
+                          <?php 
+
+                          if (IMAGEPATHFROM == 'upload') {
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <a class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                      </a>
+                                        
+                                    <?php } else { ?>
+                                     <a class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                      </a>
+                                   <?php }
+                                } else{
+
+
+                            $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                            $s3 = new S3(awsAccessKey, awsSecretKey);
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if ($info) { ?>
+
+                                                 <a class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
+
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                              </a>
+                          <?php }else{?>
+
+                          <a class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
+
+                         <img src="<?php echo base_url(NOARTIMAGE); ?>" alt="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>">  
+
+                          </a>
+
+                          <?php } }?>
+
+
+                             <!-- <img  src="<?php //echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt=""> -->
+                                    </div>
+                            <div class="comment-name">
+                            <b> 
+                                <a class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
+
+                             <?php
+                                 echo ucfirst(strtolower($firstname)).' '. ucfirst(strtolower($lastname));
+                                  echo '</br>'; ?>
+
+                              </a>
+                            </b>
+                            </div>
+
+                            <div class="comment-details" id= "<?php echo "showcommentimg" . $rowdata['post_image_comment_id']; ?>">
+                                <?php
+                                    echo $this->common->make_links($rowdata['comment']);
+                                    echo '</br>';
+                                ?>
+                            </div>
+
+                        <div class="edit-comment-box">
+                        <div class="inputtype-edit-comment">
+                        <div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="<?php echo $rowdata['post_image_comment_id']; ?>"  id="editcommentimg<?php echo $rowdata['post_image_comment_id']; ?>" placeholder="Enter Your Comment " value= ""  onkeyup="commenteditimg(<?php echo $rowdata['post_image_comment_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $rowdata['comment']; ?></div>
+                        <span class="comment-edit-button"><button id="<?php echo "editsubmitimg" . $rowdata['post_image_comment_id']; ?>" style="display:none" onClick="edit_commentimg(<?php echo $rowdata['post_image_comment_id']; ?>)">Save</button></span>
+                        </div></div>
+
+                       <div class="art-comment-menu-design"> 
+                        <div class="comment-details-menu" id="<?php echo 'likecommentimg' . $rowdata['post_image_comment_id']; ?>">
                                                                                         <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="comment_likeimg(this.id)">
 
                                                                                             <?php
