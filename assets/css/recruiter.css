@@ -1254,7 +1254,7 @@ fieldset.fresher_radio label {
         display: inline-block;
         margin: 0px;
         margin-top: 0px;
-        margin-top: 10px;
+        margin-bottom: 0px;  /*d*/
         text-align: center;
         width: 100%;
     }

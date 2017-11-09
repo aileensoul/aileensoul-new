@@ -1786,7 +1786,7 @@ pointer-events: none;}
         display: inline-block;
         margin: 0px;
         margin-top: 0px;
-        margin-top: 10px;
+        margin-bottom: 15px;/*d*/
         text-align: center;
         width: 100%;
     }
