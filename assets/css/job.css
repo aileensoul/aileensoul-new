@@ -2508,7 +2508,7 @@ label.cameraButton input[accept*="camera"] {
         margin: 0px;
     }
     .header2 .mob-width {
-        padding-right: 8px;
+        padding-right: 15px; /*d*/
     }
     .header2 ul#dropdownclass {
         padding-right: 0;
@@ -3120,7 +3120,7 @@ label.cameraButton input[accept*="camera"] {
         font-size: 10px;
     }
     .job_con #InboxContainer::before {
-        right: 118px;
+        right: 103px; /*d*/
     }
     .profile-box-art .right-side-menu .pro-fw li a {
         padding-left: 1px !important;

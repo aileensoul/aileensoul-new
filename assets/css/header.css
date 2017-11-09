@@ -159,7 +159,7 @@
 .header .mCSB_container .day-text {
     padding-top: 1px;
     font-size: 11px!important;
-	color:#646464;
+    color:#646464;
 }
 .header ul .Setting a i {
     color: #787878;
@@ -600,7 +600,7 @@
     line-height: 16px;
 }
 .dropdown-menu {
-    right: 0px;
+    right: -11px;
     left: inherit !important;
     position: absolute;
     border: none;
@@ -1057,7 +1057,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     width: 100%;
     border-bottom: 1px solid #dddddd;
     color: black;
-	color:#4c4c4c;
+    color:#4c4c4c;
 }
 #addcontactTitle a {
     color: black;
@@ -1071,7 +1071,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     padding: 0px 0px 0px 0px !important;
     overflow: hidden!important;
     border-radius: 3px;
-	height: 315px;
+    height: 315px;
 }
 #addcontactBody ul,
 #addcontactBody li {
@@ -1145,7 +1145,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 .addcontact-text span {
     color: #404040;
     font-size: 13px;
-	display: block;
+    display: block;
     line-height: 1;
     white-space: nowrap;
     overflow: hidden;
@@ -1301,8 +1301,8 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     padding: 0;
     margin: 0;
     float: left;
-	font-size:12px;
-	padding: 0px 2px;
+    font-size:12px;
+    padding: 0px 2px;
 }
 .custom_footer_left ul li a {
     padding: 0px;
@@ -1333,7 +1333,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 .profile-boxProfileCard_follow ul li {
     width: 100%!important;
     border-bottom: none;
-	
+    
 }
 .profile-boxProfileCard_follow ul li .contact-frnd-post {
     padding: 5px 10px;
@@ -1679,7 +1679,7 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
-	background-color:#f3f9fb !important;
+    background-color:#f3f9fb !important;
 }
 
 .footer-bottom {
@@ -1993,58 +1993,58 @@ footer {
  /*div.panel {
         display: none;
     }*/
-	
+    
 /***  profile pic crop css  ***/
 .croppie-container {
-/*	padding: 30px;*/
+/*  padding: 30px;*/
 }
 .croppie-container .cr-image {
-	z-index: -1;
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform-origin: 0 0;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
     max-width: none;
 }
 
 .croppie-container .cr-boundary {
-	position: relative;
-	overflow: hidden;
-	margin: 0 auto;
-	z-index: 0;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    z-index: 0;
 }
 
 .croppie-container .cr-viewport {
-	position: absolute;
-	/*border: 1px solid #d9d9d9;*/
+    position: absolute;
+    /*border: 1px solid #d9d9d9;*/
         /*border-top: none;*/
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     box-shadow: 0 0 2000px 2000px rgba(0, 0, 0, 0.5);
-	z-index: 0;
+    z-index: 0;
 }
 .croppie-container .cr-vp-circle {
-	/*border-radius: 50%;*/
+    /*border-radius: 50%;*/
 }
 .croppie-container .cr-overlay {
-	z-index: 1;
-	position: absolute;
-	cursor: move;
+    z-index: 1;
+    position: absolute;
+    cursor: move;
 }
 .croppie-container .cr-slider-wrap {
-	width: 75%;
-	margin: 0 auto;
-	margin-top: 25px;
-	text-align: center;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 25px;
+    text-align: center;
 }
 .croppie-result {
-	position: relative; 
-	overflow: hidden;
+    position: relative; 
+    overflow: hidden;
 }
 .croppie-result img {
-	position: absolute;
+    position: absolute;
 }
 .croppie-container .cr-image,
 .croppie-container .cr-overlay, 
@@ -2175,44 +2175,44 @@ footer {
 /***  end profile pic crop css  ***/
 #search .new-search-input .btn.btn-primary:focus{outline:none;}
 #loader{margin-left:0 !important; margin-right:0 !important;}
-	
+    
 .main-menu-right #atittle a{padding-top:0px !important;}
 
 
 /***  footer  ***/
 footer{
-	padding:0 0 20px;
-	color:#353535;
-	position:absolute;
-	bottom:0;
-	height:60px;
-	width:100%;
+    padding:0 0 20px;
+    color:#353535;
+    position:absolute;
+    bottom:0;
+    height:60px;
+    width:100%;
     background-color: #f3f3f3;
 }
 footer > .container {
-	border-top:1px solid #dbdada;
-	/*padding-left:0;
-	padding-right:0;*/
+    border-top:1px solid #dbdada;
+    /*padding-left:0;
+    padding-right:0;*/
 }
 footer ul{
-	float:right;
-	padding-left:0;
-	margin-bottom:0;
+    float:right;
+    padding-left:0;
+    margin-bottom:0;
 }
 footer ul li{
-	float:left;
-	list-style-type:none;
+    float:left;
+    list-style-type:none;
 }
 footer ul li a{
-	color:#353535;
-	padding:5px 15px;
+    color:#353535;
+    padding:5px 15px;
 }
 footer ul li:last-child a{padding-right:0;}
 footer ul li a:hover{
-	color:#353535;
-	text-decoration:underline;
+    color:#353535;
+    text-decoration:underline;
 }
-	
+    
 
 /***  media query  ***/
 
@@ -2255,7 +2255,7 @@ footer ul li a:hover{
     .main-menu-right {
         padding-right: 11px;
     }
-	
+    
 }
 @media screen and (max-width: 1024px) {
     .post-img-user {
@@ -2334,13 +2334,13 @@ footer ul li a:hover{
         margin: 0 auto;
     }
     .header2 .dropdown_hover {
-        padding: 8px 10px 3px 8px;
+        padding: 8px 3px 3px 8px;
     }
     .header2 .dropdown_hover .dropdown-content_hover {
         left: -41px;
     }
     .header2 ul {
-        padding-right: 11px;
+        padding-right: 20px; /*d*/
     }
     .header2 .dropdown_hover .dropdown-content_hover {
         left: inherit;
@@ -2349,14 +2349,15 @@ footer ul li a:hover{
     .post-img-mainuser {
         padding: 4px 0;
     }
+    .dropdown-content_hover::before{right: 0px !important;}
 }
 @media screen and (max-width: 767px) {
-	.mob-block{display:block;}
+    .mob-block{display:block;}
     .header2 .mob-width {
         padding-left: 5px;
     }
     .header2 .dropdown_hover .dropdown-content_hover {
-        right: -3px !important;
+        right: -4px !important; /*d*/
     }
     #InboxContainer::before {
         /*display:none;*/
@@ -2416,7 +2417,7 @@ footer ul li a:hover{
         width: 96%;
     }
     #notificationContainer::before {
-        right: 74px;
+        right: 46px;
         top: 3px;
     }
     #InboxContainer::before {
@@ -2550,9 +2551,10 @@ footer ul li a:hover{
         padding-left: 0;
         padding-right: 0;
     }
-    .header2 ul#dropdownclass {
+    /*d*/
+    /*.header2 ul#dropdownclass {
         padding-right: 8px;
-    }
+    }*/
     .bg-search .header2 {
         margin-top: -6px;
     }
@@ -2623,15 +2625,15 @@ footer ul li a:hover{
     .dropdown_hover span i {
         margin-right: 0;
     }
-	footer{padding:0; height:65px; text-align:center;}
-	footer .pt20{padding:10px 15px !important;}
-	footer ul{float:none; display:inline-block; padding-top:15px;}
-	footer ul li{padding-left:0; margin-bottom:0;}
-	footer ul li:last-child a{padding-right:15px;}
-	footer .container{padding:10px 15px !important;}
-	footer ul{padding-top:0;}
-	footer .col-md-6{width:100%; float:left; font-size: 12px;}
-	footer ul li:last-child a{padding-right:15px;}
+    footer{padding:0; height:65px; text-align:center;}
+    footer .pt20{padding:10px 15px !important;}
+    footer ul{float:none; display:inline-block; padding-top:15px;}
+    footer ul li{padding-left:0; margin-bottom:0;}
+    footer ul li:last-child a{padding-right:15px;}
+    footer .container{padding:10px 15px !important;}
+    footer ul{padding-top:0;}
+    footer .col-md-6{width:100%; float:left; font-size: 12px;}
+    footer ul li:last-child a{padding-right:15px;}
 }
 @media screen and (max-width: 640px) {
     .back {
@@ -2644,7 +2646,7 @@ footer ul li a:hover{
         padding: 9px 8px!important;
     }
     #notificationContainer::before {
-        right: 75px;
+        right: 51px;
     }
     .post-img-mainuser {
         padding: 5px 0;
@@ -2656,7 +2658,7 @@ footer ul li a:hover{
         width: 93%!important;
     }
     #notificationContainer::before {
-        right: 77px;
+        right: 52px; /*d*/
     }
     .back {
         width: 40%;
@@ -2748,7 +2750,7 @@ footer ul li a:hover{
         margin-top: 21px!important;
     }
     #notificationContainer::before {
-        right: 80px;
+        right: 56px; /*d*/
         border: 9px solid black;
         margin-top: -18px;
         border-color: transparent transparent #fff;
@@ -2762,7 +2764,8 @@ footer ul li a:hover{
     .search-mob-block label {
         /*margin-top:7px; margin-left: 0px;*/
     }
-	footer ul li a{font-size:11px; padding:5px;}
+    footer ul li a{font-size:11px; padding:5px;}
+
 }
 @media screen and (max-width: 360px) {
     .header ul {
@@ -2772,7 +2775,7 @@ footer ul li a:hover{
         padding-top: 70px !important;
     }
     #InboxContainer::before {
-        right: 155px;
+        right: 152px; /*d*/
     }
     #acon {
         margin-top: 30px !important;
@@ -2798,6 +2801,7 @@ footer ul li a:hover{
     }
     .header ul {
         margin: 9px 0px 1px;
+        top: 31px;
     }
     #notificationContainer {
         top: 31px;
@@ -2822,7 +2826,7 @@ footer ul li a:hover{
         right: 131px;
     }
     #acon::before {
-        right: 129px!important;
+        right: 105px!important; /*d*/
     }
     .header2 ul li a#addcontactLink {
         padding-top: 6px !important;
@@ -2831,7 +2835,7 @@ footer ul li a:hover{
         padding: 12px 8px 4px;
     }
     #notificationContainer::before {
-        right: 83px;
+        right: 56px; /*d*/
     }
     .logo h2 {
         padding: 0;
@@ -2848,6 +2852,7 @@ footer ul li a:hover{
     .search-mob-block label {
         margin-top: 4px;
     }
+    .dropdown-content_hover::before{right: 0px !important;} /*d*/
 }
 @media screen and (max-width: 320px) {
     .header2 ul li.active a {
@@ -2863,7 +2868,7 @@ footer ul li a:hover{
         padding-left: 0;
     }
     .header2 .dropdown_hover {
-        padding-right: 0;
+        padding-right: 0px; /*d*/
     }
     .header2 .mob-width {
         padding-left: 15px;
