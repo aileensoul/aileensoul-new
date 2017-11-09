@@ -2797,7 +2797,7 @@ footer ul li a:hover{
         padding: 7px 6px !important;
     }
     .header ul {
-        margin: 16px 0px 1px;
+        margin: 9px 0px 1px;
     }
     #notificationContainer {
         top: 31px;
@@ -2835,7 +2835,6 @@ footer ul li a:hover{
     }
     .logo h2 {
         padding: 0;
-        line-height: 27px;
     }
     .alert {
         float: left;
