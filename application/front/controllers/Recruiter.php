@@ -4671,7 +4671,7 @@ class Recruiter extends MY_Controller {
 
 //add other_industry into database End 
 
-    public function live_post($userid, $postid, $posttitle) {
+    public function live_post($userid = '', $postid = '', $posttitle = '') {
 
         $segment3 = explode('-', $this->uri->segment(3));
         $slugdata = array_reverse($segment3);
