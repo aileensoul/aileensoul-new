@@ -1734,7 +1734,7 @@ label.cameraButton input[accept*="camera"] {
     }
     .common-form input[type="radio"],
     .common-form input[type="checkbox"] {
-        height: 0px;
+        height: 15px;
         margin-top: 0px;
         margin-bottom: 0px;
     }

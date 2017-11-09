@@ -2625,8 +2625,8 @@ footer ul li a:hover{
     }
 	footer{padding:0; height:65px; text-align:center;}
 	footer .pt20{padding:10px 15px !important;}
-	footer ul{padding-bottom:5px; float:none; display:inline-block; padding-top:15px;}
-	footer ul li{padding-left:0;}
+	footer ul{float:none; display:inline-block; padding-top:15px;}
+	footer ul li{padding-left:0; margin-bottom:0;}
 	footer ul li:last-child a{padding-right:15px;}
 	footer .container{padding:10px 15px !important;}
 	footer ul{padding-top:0;}
