@@ -915,7 +915,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     </div>
                     <!-- model for popup -->
 					<!--a class="initialism fadeandscale_open btn btn-success" href="#fadeandscale">Fade &amp; scale</a-->
-					<div id="fadeandscale" class="well">
+<!--					<div id="fadeandscale" class="well">
 						<h4>Fade &amp; scale example</h4>
 						<pre class="prettyprint">
 						<code>$('#fadeandscale').popup({
@@ -932,7 +932,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 						</pre>
 						<button class="fadeandscale_close slide_open btn btn-default">Next example</button>
 						<button class="fadeandscale_close btn btn-default">Close</button>
-					</div>
+					</div>-->
 					
 					<?php echo $login_footer ?>
                     <?php echo $footer ?>

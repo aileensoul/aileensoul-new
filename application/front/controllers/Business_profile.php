@@ -80,8 +80,8 @@ class Business_profile extends MY_Controller {
 // GET CITY DATA
             $contition_array = array('status' => 1);
             $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name,state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if (count($userdata) > 0) {
 
+            if (count($userdata) > 0) {
                 if ($userdata[0]['business_step'] == 1) {
                     redirect('business-profile/contact-information', refresh);
                 } else if ($userdata[0]['business_step'] == 2) {
@@ -98,6 +98,74 @@ class Business_profile extends MY_Controller {
                 $this->load->view('business_profile/ng_business_info', $this->data);
             }
         }
+    }
+
+    public function getCountry() {
+        $this->load->model('User_model');
+        echo json_encode($this->User_model->getCountry());
+    }
+
+    public function getStateByCountryId() {
+
+        $this->load->model('User_model');
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if ($request->countryId != '') {
+            $stateList = $this->User_model->getStateByCountryId($request->countryId);
+            $statearray = array();
+            for ($i = 0; $i < count($stateList); $i++) {
+                $statearray[] = array('id' => $stateList[$i]->stateId, 'stateName' => $stateList[$i]->stateName, 'complete' => 'true');
+            }
+            echo json_encode($statearray);
+        } else {
+            echo json_encode(array('status' => 'failure'));
+        }
+    }
+
+    public function getCityByStateId() {
+
+        $this->load->model('User_model');
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        if ($request->stateId != '') {
+            $cityList = $this->User_model->getCityByStateId($request->stateId);
+            $array = array();
+            for ($i = 0; $i < count($cityList); $i++) {
+                $array[] = array('id' => $cityList[$i]->cityId, 'cityName' => $cityList[$i]->cityName, 'complete' => 'true');
+            }
+            echo json_encode($array);
+        } else {
+            echo json_encode(array('status' => 'failure'));
+        }
+    }
+
+    public function ng_bus_info_insert() {
+        $errors = array();
+        $data = array();
+
+        // Getting posted data and decodeing json
+        $_POST = json_decode(file_get_contents('php://input'), true);
+
+// checking for blank values.
+        if (empty($_POST['companyname']))
+            $errors['companyname'] = 'Companyname is required.';
+
+        if (empty($_POST['country']))
+            $errors['country'] = 'Country is required.';
+
+        if (empty($_POST['state']))
+            $errors['state'] = 'State is required.';
+
+        if (empty($_POST['business_address']))
+            $errors['business_address'] = 'Business address is required.';
+
+        if (!empty($errors)) {
+            $data['errors'] = $errors;
+        } else {
+            $data['message'] = 'Form data is going well';
+        }
+// response back.
+        echo json_encode($data);
     }
 
     public function minify_css() {
