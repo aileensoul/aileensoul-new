@@ -53,7 +53,7 @@ if($_SERVER['HTTP_HOST']=="localhost")
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = '';
-	$db['default']['database'] = 'aileensoul';
+	$db['default']['database'] = 'aileensoul-new';
 	$db['default']['dbdriver'] = 'mysqli';
 	$db['default']['dbprefix'] = 'ailee_';
 	$db['default']['pconnect'] = TRUE;

@@ -2750,7 +2750,7 @@ footer ul li a:hover{
         margin-top: 21px!important;
     }
     #notificationContainer::before {
-        right: 56px; /*d*/
+        right: 57px; /*d*/
         border: 9px solid black;
         margin-top: -18px;
         border-color: transparent transparent #fff;
@@ -2835,7 +2835,7 @@ footer ul li a:hover{
         padding: 12px 8px 4px;
     }
     #notificationContainer::before {
-        right: 56px; /*d*/
+        right: 57px; /*d*/
     }
     .logo h2 {
         padding: 0;
