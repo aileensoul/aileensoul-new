@@ -1202,6 +1202,7 @@ fieldset.fresher_radio label {
 	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
 	/*** end advertise  ***/
 	.city-location .mian_middle_post_box{width:550px;}
+    .cancel-result{margin-right: 30px;}/*d*/
 }
 
 @media screen and (max-width: 767px){
@@ -1535,6 +1536,7 @@ fieldset.fresher_radio label {
         margin-top: -63px;
     }
 	.profile-job-post-location-name-rec .post_designation{font-size: 12px;}
+
 }
 
 @media screen and (max-width: 540px) {
@@ -1578,6 +1580,8 @@ fieldset.fresher_radio label {
         width: 88px;
         padding: 7px 5px 7px 5px !important;
     }
+    
+
 }
 
 @media screen and (max-width: 479px) {
@@ -1796,6 +1800,7 @@ fieldset.fresher_radio label {
 	.mob-add{margin-bottom:0; border:none;}
 	.padding-360{padding-left:1px; padding-right:1px;}
 	.contact-frnd-post{padding:10px 8px 0;}
+    
 	/*** end add  ***/
 }
 

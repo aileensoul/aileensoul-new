@@ -1725,6 +1725,7 @@ pointer-events: none;}
         text-align: center;
         padding-top: 5px !important;
     }
+    .cancel-result{margin-right: 30px;}  /*d*/
     .profile-boxProfileCard-content::before {
         top: 74px !important;
     }
