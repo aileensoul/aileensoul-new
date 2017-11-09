@@ -20,198 +20,203 @@
             <?php echo $business_header2_border; ?>
         <?php } ?>
         <section>
-            <div class="user-midd-section" id="paddingtop_fixed">
-                <div class="common-form1">
-                    <div class="col-md-3 col-sm-4"></div>
-                    <?php
-                    $userid = $this->session->userdata('aileenuser');
-                    $contition_array = array('user_id' => $userid, 'status' => '1');
-                    $busdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if ($busdata[0]['business_step'] == 4) {
-                        ?>
-                        <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_edit_title"); ?></h3></div>
-                    <?php } else {
-                        ?>
-                        <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_title"); ?></h3></div>
+            <?php
+            $userid = $this->session->userdata('aileenuser');
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $busdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($busdata[0]['business_step'] == 4) {
+                ?> <div class="user-midd-section" id="paddingtop_fixed">
+            <?php } else { ?>
+                    <div class="user-midd-section" id="paddingtop_make_fixed">
                     <?php } ?>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-4">
-                            <div class="left-side-bar">
-                                <ul class="left-form-each">
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("business_information"); ?></a></li>
-                                    <?php if ($business_common_data[0]['business_step'] > '0' && $business_common_data[0]['business_step'] != '') { ?>
-                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/contact-information'); ?>"><?php echo $this->lang->line("contact_information"); ?></a></li>
-                                    <?php } else { ?>
-                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("contact_information"); ?></a></li>
-                                    <?php } ?>
-                                    <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/description'); ?>"><?php echo $this->lang->line("description"); ?></a></li>
-                                    <?php } else { ?>
-                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("description"); ?></a></li>
-                                    <?php } ?>
-                                    <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                        <li class="custom-none"><a href="<?php echo base_url('business-profile/image'); ?>"><?php echo $this->lang->line("business_images"); ?></a></li>
-                                    <?php } else {
+                    <div class="common-form1">
+                        <div class="col-md-3 col-sm-4"></div>
+                        <?php
+                        if ($busdata[0]['business_step'] == 4) {
+                            ?>
+                            <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_edit_title"); ?></h3></div>
+                        <?php } else {
+                            ?>
+                            <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_title"); ?></h3></div>
+                        <?php } ?>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-4">
+                                <div class="left-side-bar">
+                                    <ul class="left-form-each">
+                                        <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("business_information"); ?></a></li>
+                                        <?php if ($business_common_data[0]['business_step'] > '0' && $business_common_data[0]['business_step'] != '') { ?>
+                                            <li class="custom-none"><a href="<?php echo base_url('business-profile/contact-information'); ?>"><?php echo $this->lang->line("contact_information"); ?></a></li>
+                                        <?php } else { ?>
+                                            <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("contact_information"); ?></a></li>
+                                        <?php } ?>
+                                        <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
+                                            <li class="custom-none"><a href="<?php echo base_url('business-profile/description'); ?>"><?php echo $this->lang->line("description"); ?></a></li>
+                                        <?php } else { ?>
+                                            <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("description"); ?></a></li>
+                                        <?php } ?>
+                                        <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
+                                            <li class="custom-none"><a href="<?php echo base_url('business-profile/image'); ?>"><?php echo $this->lang->line("business_images"); ?></a></li>
+                                        <?php } else {
+                                            ?>
+                                            <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("business_images"); ?></a></li>
+                                        <?php }
                                         ?>
-                                        <li class="custom-none"><a href="javascript:void(0);"><?php echo $this->lang->line("business_images"); ?></a></li>
-                                    <?php }
-                                    ?>
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <!-- middle section start -->
-                        <div class="col-md-6 col-sm-8">
-                            <div>
-                                <?php
-                                if ($this->session->flashdata('error')) {
-                                    echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-                                }
-                                if ($this->session->flashdata('success')) {
-                                    echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-                                }
-                                ?>
-                            </div>
-                            <div class="common-form common-form_border">
-                                <h3>
-                                    <?php echo $this->lang->line("business_information"); ?>
-                                </h3>
-                                <?php echo form_open(base_url('business-profile/business-information-insert'), array('id' => 'businessinfo', 'name' => 'businessinfo', 'class' => 'clearfix')); ?>
-                                <!--  <div>
-                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                 </div> -->
-                                <?php
-                                $companyname = form_error('companyname');
-                                $country = form_error('country');
-                                $state = form_error('state');
-                                $business_address = form_error('business_address');
-                                ?>
-                                <fieldset class="full-width <?php if ($companyname) { ?> error-msg <?php } ?>">
-                                    <label><?php echo $this->lang->line("company_name"); ?>:<span style="color:red">*</span></label>
-                                    <input name="companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="<?php echo $this->lang->line("enter_company_name"); ?>" value="<?php
-                                    if ($companyname1) {
-                                        echo $companyname1;
+                            <!-- middle section start -->
+                            <div class="col-md-6 col-sm-8">
+                                <div>
+                                    <?php
+                                    if ($this->session->flashdata('error')) {
+                                        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
                                     }
-                                    ?>"/>
-                                    <span id="companyname-error"></span><?php echo form_error('companyname'); ?>
-                                </fieldset>
-                                <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
-                                    <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
-                                    <select name="country" id="country" tabindex="2" >
-                                        <option value=""><?php echo $this->lang->line("country"); ?></option>
-                                        <?php
-                                        if (count($countries) > 0) {
-                                            foreach ($countries as $cnt) {
+                                    if ($this->session->flashdata('success')) {
+                                        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+                                    }
+                                    ?>
+                                </div>
+                                <div class="common-form common-form_border">
+                                    <h3>
+                                        <?php echo $this->lang->line("business_information"); ?>
+                                    </h3>
+                                    <?php echo form_open(base_url('business-profile/business-information-insert'), array('id' => 'businessinfo', 'name' => 'businessinfo', 'class' => 'clearfix')); ?>
+                                    <!--  <div>
+                                         <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
+                                     </div> -->
+                                    <?php
+                                    $companyname = form_error('companyname');
+                                    $country = form_error('country');
+                                    $state = form_error('state');
+                                    $business_address = form_error('business_address');
+                                    ?>
+                                    <fieldset class="full-width <?php if ($companyname) { ?> error-msg <?php } ?>">
+                                        <label><?php echo $this->lang->line("company_name"); ?>:<span style="color:red">*</span></label>
+                                        <input name="companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="<?php echo $this->lang->line("enter_company_name"); ?>" value="<?php
+                                        if ($companyname1) {
+                                            echo $companyname1;
+                                        }
+                                        ?>"/>
+                                        <span id="companyname-error"></span><?php echo form_error('companyname'); ?>
+                                    </fieldset>
+                                    <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
+                                        <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
+                                        <select name="country" id="country" tabindex="2" >
+                                            <option value=""><?php echo $this->lang->line("country"); ?></option>
+                                            <?php
+                                            if (count($countries) > 0) {
+                                                foreach ($countries as $cnt) {
 
-                                                if ($country1) {
+                                                    if ($country1) {
+                                                        ?>
+                                                        <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
+
+                                                        <?php
+                                                    }
+                                                    else {
+                                                        ?>
+                                                        <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name']; ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </select><span id="country-error"></span>
+                                        <?php echo form_error('country'); ?> 
+                                    </fieldset>
+
+                                    <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
+                                        <label><?php echo $this->lang->line("state"); ?>:<span style="color:red">*</span></label>
+                                        <select name="state" id="state" tabindex="3" >
+                                            <?php
+                                            foreach ($states as $cnt) {
+                                                if ($state1) {
                                                     ?>
-                                                    <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
-
+                                                    <option value="<?php echo $cnt['state_id']; ?>" <?php if ($cnt['state_id'] == $state1) echo 'selected'; ?>><?php echo $cnt['state_name']; ?></option>
                                                     <?php
                                                 }
                                                 else {
                                                     ?>
-                                                    <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name']; ?></option>
+                                                    <option value=""><?php echo $this->lang->line("select_country_first"); ?></option>
                                                     <?php
                                                 }
                                             }
-                                        }
-                                        ?>
-                                    </select><span id="country-error"></span>
-                                    <?php echo form_error('country'); ?> 
-                                </fieldset>
-
-                                <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
-                                    <label><?php echo $this->lang->line("state"); ?>:<span style="color:red">*</span></label>
-                                    <select name="state" id="state" tabindex="3" >
-                                        <?php
-                                        foreach ($states as $cnt) {
-                                            if ($state1) {
-                                                ?>
-                                                <option value="<?php echo $cnt['state_id']; ?>" <?php if ($cnt['state_id'] == $state1) echo 'selected'; ?>><?php echo $cnt['state_name']; ?></option>
-                                                <?php
-                                            }
-                                            else {
-                                                ?>
-                                                <option value=""><?php echo $this->lang->line("select_country_first"); ?></option>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                    </select><span id="state-error"></span>
-                                    <?php echo form_error('state'); ?>
-                                </fieldset>
-                                <fieldset>
-                                    <label> <?php echo $this->lang->line("city"); ?><span class="optional">(optional)</span>:</label>
-                                    <select name="city" id="city" tabindex="4" >
-                                        <?php
-                                        if ($city1) {
-                                            foreach ($cities as $cnt) {
-                                                ?>
-
-                                                <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
-
-                                                <?php
-                                            }
-                                        }
-
-                                        else if ($state1) {
                                             ?>
-                                            <option value=""><?php echo $this->lang->line("select_city"); ?></option>
+                                        </select><span id="state-error"></span>
+                                        <?php echo form_error('state'); ?>
+                                    </fieldset>
+                                    <fieldset>
+                                        <label> <?php echo $this->lang->line("city"); ?><span class="optional">(optional)</span>:</label>
+                                        <select name="city" id="city" tabindex="4" >
                                             <?php
-                                            foreach ($cities as $cnt) {
-                                                ?>
+                                            if ($city1) {
+                                                foreach ($cities as $cnt) {
+                                                    ?>
 
-                                                <option value="<?php echo $cnt['city_id']; ?>"><?php echo $cnt['city_name']; ?></option>
+                                                    <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
 
-                                                <?php
+                                                    <?php
+                                                }
                                             }
-                                        } else {
+
+                                            else if ($state1) {
+                                                ?>
+                                                <option value=""><?php echo $this->lang->line("select_city"); ?></option>
+                                                <?php
+                                                foreach ($cities as $cnt) {
+                                                    ?>
+
+                                                    <option value="<?php echo $cnt['city_id']; ?>"><?php echo $cnt['city_name']; ?></option>
+
+                                                    <?php
+                                                }
+                                            } else {
+                                                ?>
+                                                <option value=""><?php echo $this->lang->line("select_state_first"); ?></option>
+
+                                            <?php }
                                             ?>
-                                            <option value=""><?php echo $this->lang->line("select_state_first"); ?></option>
+                                        </select><span id="city-error"></span>
 
-                                        <?php }
-                                        ?>
-                                    </select><span id="city-error"></span>
+                                    </fieldset>
+                                    <fieldset>
+                                        <label><?php echo $this->lang->line("pincode"); ?><span class="optional">(optional)</span>:</label>
+                                        <input name="pincode" tabindex="5"   type="text" id="pincode" placeholder="<?php echo $this->lang->line("enter_pincode"); ?>" value="<?php
+                                        if ($pincode1) {
+                                            echo $pincode1;
+                                        }
+                                        ?>">
 
-                                </fieldset>
-                                <fieldset>
-                                    <label><?php echo $this->lang->line("pincode"); ?><span class="optional">(optional)</span>:</label>
-                                    <input name="pincode" tabindex="5"   type="text" id="pincode" placeholder="<?php echo $this->lang->line("enter_pincode"); ?>" value="<?php
-                                    if ($pincode1) {
-                                        echo $pincode1;
-                                    }
-                                    ?>">
+                                    </fieldset>
 
-                                </fieldset>
-
-                                <fieldset class="full-width <?php if ($business_address) { ?> error-msg <?php } ?>">
-                                    <label><?php echo $this->lang->line("postal_address"); ?>:<span style="color:red">*</span></label>
-                                    <!--<textarea name ="business_address" tabindex="6"  id="business_address" rows="4" cols="50" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;"> -->
-                                    <input name="business_address" tabindex="6" autofocus type="text" id="business_address" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;" value="<?php
+                                    <fieldset class="full-width <?php if ($business_address) { ?> error-msg <?php } ?>">
+                                        <label><?php echo $this->lang->line("postal_address"); ?>:<span style="color:red">*</span></label>
+                                        <!--<textarea name ="business_address" tabindex="6"  id="business_address" rows="4" cols="50" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;"> -->
+                                        <input name="business_address" tabindex="6" autofocus type="text" id="business_address" placeholder="<?php echo $this->lang->line("enter_address"); ?>" style="resize: none;" value="<?php
                                         if ($address1) {
                                             echo $address1;
                                         }
                                         ?>"/>
-                                    <span id="business_address-error"></span><?php echo form_error('business_address'); ?>
-                                    <?php echo form_error('business_address'); ?>
-                                </fieldset>
-                                
-                                <fieldset class="hs-submit full-width">
-                                    <input type="submit"  id="next" name="next" tabindex="7"  value="<?php echo $this->lang->line("next"); ?>">
-                                </fieldset>
-                                </form>
-                            </div>
-                        </div>
+                                        <span id="business_address-error"></span><?php echo form_error('business_address'); ?>
+                                        <?php echo form_error('business_address'); ?>
+                                    </fieldset>
 
+                                    <fieldset class="hs-submit full-width">
+                                        <input type="submit"  id="next" name="next" tabindex="7"  value="<?php echo $this->lang->line("next"); ?>">
+                                    </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
         <!-- <footer> -->
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- </footer> -->
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script>
@@ -228,7 +233,7 @@
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-            <?php } else {
+        <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>

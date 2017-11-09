@@ -29,15 +29,22 @@
     <body class="page-container-bg-solid page-boxed">
         <!--<div id="preloader"></div>-->
         <section>
-            <div class="user-midd-section" id="paddingtop_fixed">
+            <?php
+            $userid = $this->session->userdata('aileenuser');
+
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $busdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($busdata[0]['business_step'] == 4) {
+                ?>
+                <div class="user-midd-section" id="paddingtop_fixed">
+                    <?php } else {
+                    ?>
+            <div class="user-midd-section" id="paddingtop_make_fixed">
+                <?php }
+                ?>
                 <div class="common-form1">
                     <div class="col-md-3 col-sm-4"></div>
                     <?php
-                    $userid = $this->session->userdata('aileenuser');
-
-                    $contition_array = array('user_id' => $userid, 'status' => '1');
-                    $busdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                     if ($busdata[0]['business_step'] == 4) {
                         ?>
 
@@ -109,7 +116,7 @@
                                                 <div class="img_bui_data"> 
                                                     <div class="edit_bui_img">
                                                         <img id="imageold" src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name'] ?>" >
-                                                        <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['file_name'])      ?>" >-->
+                                                        <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['file_name'])       ?>" >-->
                                                     </div>
 
                                                     <?php // if ($y != 1) {
@@ -145,10 +152,10 @@
         </section>
         <!--</div>-->
         <!-- <footer> -->
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <!-- </footer> -->
-        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver='.time());      ?>"></script>-->
+        <!--<script src="<?php // echo base_url('assets/js/jquery.wallform.js?ver='.time());       ?>"></script>-->
 
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
