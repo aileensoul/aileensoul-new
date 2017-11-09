@@ -70,7 +70,7 @@
                                         if ($freepostdata[0]['free_post_step'] < '6') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="custom-none <?php echo base_url('freelancer-work/portfolio'); ?>"><?php echo $this->lang->line("portfolio"); ?></a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>" class="custom-none"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>

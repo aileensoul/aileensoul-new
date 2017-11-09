@@ -1365,15 +1365,15 @@ class Freelancer extends MY_Controller {
 
                 if ($retur == '' && $id == 'null') {
 
-                    $return_html .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">';
+                    $return_html .= '<li class=fr><a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">';
                     $return_html .= $this->lang->line("remove");
                     $return_html .= '</a>
-                                                          <li>';
+                                                          ';
                     $return_html .= '<a class="button" href="' . base_url('freelancer-hire/edit-projects/' . $post['post_id']) . '" >';
                     $return_html .= $this->lang->line("edit");
                     $return_html .= '</a>
-                                                          </li> 
-                                                       <li class=fr>';
+                                                          
+                                                       ';
                     $return_html .= '<a class="button" href="' . base_url('freelancer-hire/freelancer-applied/' . $post['post_id']) . '" >';
                     $return_html .= $this->lang->line("applied_person");
                     $return_html .= ':';
