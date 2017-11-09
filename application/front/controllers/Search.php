@@ -2357,9 +2357,12 @@ Your browser does not support the audio tag.
         $searchvalue = $this->uri->segment(1);
         $skill = explode('project', $searchvalue);
         $location = explode('in-', $searchvalue);
-
+        
         $search_skill = trim($skill[0]);
         $search_skill = trim($skill[0], '-');
+       
+        $search_skill = str_replace('-', ' ', $search_skill);
+       
         $search_place = $location[1];
 
         $userid = $this->session->userdata('aileenuser');

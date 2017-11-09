@@ -3282,6 +3282,7 @@ if($this->input->post('livepost')){
           
           $search_job =  trim($skill[0]); 
            $search_job =  trim($skill[0],'-'); 
+           $search_job = str_replace('-', ' ', $search_job);
            $search_place =  $location[1];
      
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
