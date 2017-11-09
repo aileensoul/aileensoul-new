@@ -3120,7 +3120,7 @@ label.cameraButton input[accept*="camera"] {
         font-size: 10px;
     }
     .job_con #InboxContainer::before {
-        right: 103px; /*d*/
+        right: 110px; /*d*/
     }
     .profile-box-art .right-side-menu .pro-fw li a {
         padding-left: 1px !important;

@@ -460,7 +460,7 @@
     border-color: transparent transparent #fff;
     margin-top: -20px;
     margin-left: 18px;
-    right: 16px;
+    right: 15px; /*d*/
 }
 #notificationsBody {
     padding: 0px 0px 0px 0px !important;
