@@ -181,6 +181,29 @@ $mobile_agent = $this->agent->mobile;
                                 }
                                 ?>
                             </div>
+							<!-- user slider  -->
+							<!--div class="custom-user-list">
+                                <?php
+                                if ($follow_user_suggest_count > 0) {
+                                    ?>
+                                    <div class="full-box-module_follow fw">
+                                        
+                                        <div class="common-form">
+                                            <h3 class="user_list_head">User List
+                                            </h3>
+                                            <div class="seeall">
+                                                <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
+                                                </a>
+                                            </div>
+                                        </div>
+										
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div-->
+							
+							
                             <div class="business-all-post">
                                 <?php
                                 if ($mobile_agent) {
