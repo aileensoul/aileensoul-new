@@ -808,7 +808,7 @@ class Freelancer extends MY_Controller {
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1')) AND stream_name != 'Others'";
         $stream_alldata = $this->data['stream_alldata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
 
-        
+
         $contition_array = array('status' => 1, 'is_delete' => 0, 'stream_name' => "Other");
         $stream_otherdata = $this->data['stream_otherdata'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
         //For getting all Stream End
@@ -1838,12 +1838,11 @@ class Freelancer extends MY_Controller {
                     $return_html .= '</b><span>';
                     if ($cityname || $countryname) {
                         if ($cityname) {
-                        $return_html .= $cityname . ",";
-                    }
-                    if ($countryname) {
-                        $return_html .= $countryname;
-                    }
-                        
+                            $return_html .= $cityname . ",";
+                        }
+                        if ($countryname) {
+                            $return_html .= $countryname;
+                        }
                     }
                     $return_html .= '</span></li>
                 <li><b>';
@@ -2632,7 +2631,7 @@ class Freelancer extends MY_Controller {
                 //   echo "123"; die();
                 if ($para == 'all') {
                     // apply mail start
-                   $this->apply_email($notid);
+                    $this->apply_email($notid);
                     $applypost = 'Applied';
                 }
             }
@@ -3240,11 +3239,11 @@ class Freelancer extends MY_Controller {
                 $return_html .= $this->lang->line("location");
                 $return_html .= '</b><span>';
 
-                 if ($cityname || $countryname) {
-                  if ($cityname) {
+                if ($cityname || $countryname) {
+                    if ($cityname) {
                         $return_html .= $cityname . ",";
                     }
-                 if ($countryname) {
+                    if ($countryname) {
                         $return_html .= $countryname;
                     }
                 }
@@ -4360,7 +4359,7 @@ class Freelancer extends MY_Controller {
                 }
                 $email_html .= '<td style="padding:5px;">
 						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i')  . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
@@ -4802,7 +4801,7 @@ class Freelancer extends MY_Controller {
     }
 
 //FREELANCER_APPLY BOTH OTHER END
-    public function live_post($userid, $postid, $posttitle) {
+    public function live_post($userid = '', $postid = '', $posttitle = '') {
         $segment3 = explode('-', $this->uri->segment(3));
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
@@ -4856,7 +4855,7 @@ class Freelancer extends MY_Controller {
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $applydata[0]['freelancer_post_fullname'] . " " . $applydata[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i')  . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
@@ -4892,7 +4891,7 @@ class Freelancer extends MY_Controller {
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i')  . '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
