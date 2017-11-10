@@ -11,8 +11,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed">
     <?php echo $header; ?>
-        
-  <?php echo $login_footer ?>
+     <?php echo $job_header2_border;?>   
      <?php echo $footer;  ?>
 
     </div>
