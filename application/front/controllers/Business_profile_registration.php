@@ -195,21 +195,21 @@ class Business_profile_registration extends MY_Controller {
 
         // Getting posted data and decodeing json
         $_POST = json_decode(file_get_contents('php://input'), true);
-        
+
 // checking for blank values.
-        if (empty($_POST['contactname'])){
+        if (empty($_POST['contactname'])) {
             $errors['contactname'] = 'Person name is required.';
         }
-        if (empty($_POST['contactmobile'])){
+        if (empty($_POST['contactmobile'])) {
             $errors['contactmobile'] = 'Mobile number is required.';
-        }
-        elseif(!is_numeric($_POST['contactmobile'])){
+        } elseif (!is_numeric($_POST['contactmobile'])) {
             $errors['contactmobile'] = 'Mobile number should be numeric.';
         }
-        if (empty($_POST['email'])){
+        if (empty($_POST['email'])) {
             $errors['email'] = 'Email id is required.';
+        } elseif ($this->is_validate_email() != '1') {
+            $errors['email'] = 'Please enter valid email id.';
         }
-        
         if (!empty($errors)) {
             $data['errors'] = $errors;
         } else {

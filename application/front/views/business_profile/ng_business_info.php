@@ -156,7 +156,7 @@
 
                         $http({
                             method: 'GET',
-                            url: base_url + 'business_profile/getCountry',
+                            url: base_url + 'business_profile_registration/getCountry',
                         }).success(function (data) {
                             // console.log(data);
                             $scope.countryList = data;
@@ -167,7 +167,7 @@
                             // console.log(“data state processing”+$scope.stateIdVal);
                             $http({
                                 method: 'POST',
-                                url: base_url + 'business_profile/getStateByCountryId',
+                                url: base_url + 'business_profile_registration/getStateByCountryId',
                                 data: {countryId: $scope.countryIdVal}
                             }).success(function (data) {
                                 //console.log(data);
@@ -179,7 +179,7 @@
                             // console.log(“data state processing”+$scope.stateIdVal);
                             $http({
                                 method: 'POST',
-                                url: base_url + 'business_profile/getCityByStateId',
+                                url: base_url + 'business_profile_registration/getCityByStateId',
                                 data: {stateId: $scope.stateIdVal}
                             }).success(function (data) {
                                 //console.log(data);
