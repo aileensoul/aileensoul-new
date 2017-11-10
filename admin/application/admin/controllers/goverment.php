@@ -671,5 +671,50 @@ public function clear_postsearch()
 
 
 
+public function edit_gov_post($id) 
+ {
+
+        $this->data['title'] = 'Goverment Edit Job Post| Aileensoul';
+        $this->data['module_name'] = 'Goverment Edit Job Post';
+        $this->data['section_title'] = 'Goverment Edit Job Post';
+
+       $data='id,title,category_id,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+       $contition_array = array('id' => $id);
+        $this->data['post'] = $this->common->select_data_by_condition('gov_post', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
+
+        $this->data['id'] = $id;
+
+
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+         $this->data['job_category'] = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
+
+
+        //echo "<pre>"; print_r($this->data['category']); die();
+
+        $this->load->view('goverment/edit_gov_post', $this->data);
+}
+
+
+    public function edit_gov_post_insert($id) 
+ {
+        //echo "<pre>"; print_r($this->input->post()); die();
+         $data = array(
+                'name' => $this->input->post('gov_name'),
+                'status' => $this->input->post('status'),
+                'modified_date' => date('Y-m-d H:i:s', time()),
+            );
+
+            $updatdata = $this->common->update_data($data, 'gov_category', 'id', $id);
+
+            if ($updatdata) {
+                $this->session->set_flashdata('success', 'Category updated successfully');
+                 redirect('goverment/view_gov_category');
+            } else {
+                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                redirect('goverment/edit_gov_category/'.$id);
+            }
+           
+}
+
 }
 

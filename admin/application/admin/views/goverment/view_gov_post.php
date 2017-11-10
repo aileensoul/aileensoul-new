@@ -178,7 +178,7 @@ echo $leftmenu;
                         <i class="fa fa-trash-o"></i>
                         </button>
 
-                        <a class="btn btn-success btn-xs" href="<?php echo base_url('goverment1/edit_gov_post/'.$cat['id'] ); ?>">
+                        <a class="btn btn-success btn-xs" href="<?php echo base_url('goverment/edit_gov_post/'.$cat['id'] ); ?>">
                          <i class="fa fa-fw fa-eye"></i>
                         </a>
                     </td>
