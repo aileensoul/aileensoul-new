@@ -163,7 +163,7 @@
     {
         $.ajax({
             type: "GET",
-            url: "<?php echo base_url(); ?>notification/select_msg_noti/3",
+            url: "<?php echo base_url(); ?>notification/select_msg_noti/4",
 
             async: true,
             cache: false,

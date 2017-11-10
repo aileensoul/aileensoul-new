@@ -1029,7 +1029,7 @@ Your browser does not support the audio tag.
 
 //Notification count select & update for apply,save,like,comment,contact and follow End
 //Notification count select & update for Message start
-    public function select_msg_noti($not_from = '') { //echo "hello"; die();
+    public function select_msg_noti($not_from = '') { 
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('not_read' => 2, 'not_to_id' => $userid, 'not_type' => 2, 'not_from' => $not_from);
         $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'COUNT(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'not_from_id');

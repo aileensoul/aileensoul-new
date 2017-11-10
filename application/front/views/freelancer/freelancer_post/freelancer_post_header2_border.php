@@ -224,7 +224,7 @@ var images = new Array()
         {
             $.ajax({
                 type: "GET",
-                url: "<?php echo base_url(); ?>notification/select_msg_noti/3",
+                url: "<?php echo base_url(); ?>notification/select_msg_noti/5",
 
                 async: true,
                 cache: false,
