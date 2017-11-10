@@ -138,3 +138,10 @@ define('NOIMAGE', 'uploads/avatar.png');
 define('WHITEIMAGE', 'uploads/white.png');
 
 define('PROFILENA', '--');
+
+
+// GOVERMENT MAIN IMAGE
+    define('GOV_MAIN_UPLOAD_URL', BASEURL . 'uploads/goverment/main/');
+
+// GOVERMENT THUMB THUMB
+    define('GOV_THUMB_UPLOAD_URL', BASEURL . 'uploads/goverment/thumbs/');

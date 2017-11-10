@@ -687,3 +687,16 @@ $config['blog_thumb_height'] = '350';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+
+
+// GOVERMENT MAIN IMAGE
+$config['gov_post_main_upload_path'] = '../uploads/goverment/main/';
+$config['gov_post_main_allowed_types'] = '*';
+$config['gov_post_main_max_size'] = '100000000'; //in KB
+$config['gov_post_main_max_width'] = '5000';
+$config['gov_post_main_max_height'] = '5000';
+
+// GOVERMENT THUMB THUMB
+$config['gov_post_thumb_upload_path'] = '../uploads/goverment/thumbs/';
+$config['gov_post_thumb_width'] = '150';
+$config['gov_post_thumb_height'] = '150';

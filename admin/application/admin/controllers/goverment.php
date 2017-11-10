@@ -409,6 +409,8 @@ public function add_gov_post_insert()
         //Load upload library and initialize configuration
         $images = array();
         $files = $_FILES;
+
+        //echo "<pre>"; print_r($files); die();
         $this->load->library('upload');
 
             $fileName = $_FILES['post_image']['name'];
@@ -437,7 +439,7 @@ public function add_gov_post_insert()
                 $this->load->library('image_lib', $gov_post_thumb, $instanse);
                 $dataimage = $response['result']['file_name'];
 
-                echo "<pre>"; print_r($dataimage); die();
+               // echo "<pre>"; print_r($dataimage); die();
 
                 //Creating Thumbnail
                 $this->$instanse->resize();
