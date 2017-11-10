@@ -683,6 +683,7 @@ ul.dropdown-menu li a i {
 .header2 ul li a {
     font-size: 15px;
     color: #fff;
+    position: relative;
     padding: 8px 14px;
     display: inline-block;
 }
@@ -1009,7 +1010,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     font-weight: 600;
     height: 16px;
     position: absolute;
-    right: 3px;
+    right: 10px;
     top: 3px;
     line-height: 1;
     font-size: 10px;
@@ -2549,7 +2550,7 @@ footer ul li a:hover{
     }
     .header2 ul {
         padding-left: 0;
-        padding-right: 14px;
+        padding-right: 15px;
     }
     /*d*/
     /*.header2 ul#dropdownclass {
