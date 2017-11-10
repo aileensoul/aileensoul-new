@@ -166,7 +166,18 @@
                 <div class="mob-clear ">
                     <div class="common-form">
                         <div class="job-saved-box">
-                            <h3>Post</h3>
+                            <h3>
+                                <?php 
+               $cache_time = $this->db->get_where('job_title', array('title_id' => $postdata[0]['post_name']))->row()->name;
+                                              if($cache_time)
+                                              {
+                                                  echo  $cache_time;
+                                              }
+                                              else
+                                              {
+                                                echo $postdata[0]['post_name'];
+                                              }
+               ?></h3>
                             <div class="contact-frnd-post">
 <!--                                <div class = "job-contact-frnd">
                                     AJAX DATA START FOR RECOMMAND CANDIDATE
