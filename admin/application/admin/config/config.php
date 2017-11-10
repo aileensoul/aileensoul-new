@@ -698,5 +698,5 @@ $config['gov_post_main_max_height'] = '5000';
 
 // GOVERMENT THUMB THUMB
 $config['gov_post_thumb_upload_path'] = '../uploads/goverment/thumbs/';
-$config['gov_post_thumb_width'] = '150';
-$config['gov_post_thumb_height'] = '150';
+$config['gov_post_thumb_width'] = '60';
+$config['gov_post_thumb_height'] = '60';

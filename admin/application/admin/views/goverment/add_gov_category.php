@@ -82,13 +82,21 @@ echo $leftmenu;
 <script type="text/javascript">
 
     var base_url = '<?php echo base_url(); ?>'; 
-
     //validation for edit email formate form
     $(document).ready(function () {
         $("#add_gov_frm").validate({
             rules: {
                 gov_name: {
                     required: true,
+            //         remote: { 
+            //         url: base_url + "admin/goverment/check_category",
+            //         type: "post",
+            //         data: { 
+            //            gov_name: function() {
+            //            return $( "#gov_name" ).val();
+            //       }
+            //    }
+            // }
                 //     remote: {
                 //     url: base_url + "admin/goverment/check_category",
                 //     type: "post",
