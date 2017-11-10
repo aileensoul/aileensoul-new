@@ -119,6 +119,10 @@ echo $leftmenu;
                     </th>
 
                     <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Post Image</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
                     <a href="javascript:void(0);">Sector</a>
                     </th>
 
@@ -180,7 +184,9 @@ echo $leftmenu;
                     <td><?php echo $cat['pay_scale']; ?></td>
                     <td><?php echo $cat['job_location']; ?></td>
                     <td><?php echo $cat['req_exp']; ?></td>
-                    
+                    <td>
+                      <img src="<?php echo GOV_MAIN_UPLOAD_URL . $cat['post_image']; ?>">
+                    </td>
                     <td><?php echo $cat['sector']; ?></td>
                     <td><?php echo $cat['eligibility']; ?></td>
                     <td><?php echo $cat['last_date']; ?></td>
