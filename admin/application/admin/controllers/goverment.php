@@ -737,7 +737,7 @@ public function edit_gov_post($id)
         $this->data['module_name'] = 'Goverment Edit Job Post';
         $this->data['section_title'] = 'Goverment Edit Job Post';
 
-       $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+       $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,post_image,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
        $contition_array = array('id' => $id);
         $this->data['post'] = $this->common->select_data_by_condition('gov_post', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 
@@ -752,7 +752,114 @@ public function edit_gov_post($id)
 
         $this->load->view('goverment/edit_gov_post', $this->data);
 }
+public function edit_gov_post_insert($id ='') 
+ {
+        $date = $this->input->post('selday');
+        $month = $this->input->post('selmonth');
+        $year = $this->input->post('selyear');
+        $last_date = $year . '-' . $month . '-' . $date;
+        
+        if (empty($_FILES['post_image']['name'])) {
+         
+           $dataimage= $this->input->post('old_image');
+          // echo $userimage;die();
+           
+        } else {
+       
+             $gov_image = '';
+            $user['upload_path'] = $this->config->item('gov_post_main_upload_path');
+            $user['allowed_types'] = $this->config->item('gov_post_main_allowed_types');
+            $user['max_size'] = $this->config->item('gov_post_main_max_size');
+            $user['max_width'] = $this->config->item('gov_post_main_max_width');
+            $user['max_height'] = $this->config->item('gov_post_main_max_height');
+            $this->load->library('upload');
+            $this->upload->initialize($user);
+            //Uploading Image
+            $this->upload->do_upload('post_image');
+            //Getting Uploaded Image File Data
+            $imgdata = $this->upload->data();
+            $imgerror = $this->upload->display_errors();
+          
+            
+             if ($imgerror == '') {
+               
+                //Configuring Thumbnail 
+                $gov_thumb['image_library'] = 'gd2';
+                $gov_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
+                $gov_thumb['new_image'] = $this->config->item('gov_post_thumb_upload_path') . $imgdata['file_name'];
+                $gov_thumb['create_thumb'] = TRUE;
+                $gov_thumb['maintain_ratio'] = TRUE;
+                $gov_thumb['thumb_marker'] = '';
+                $gov_thumb['width'] = $this->config->item('gov_post_thumb_width');
+                //$user_thumb['height'] = $this->config->item('user_thumb_height');
+                $gov_thumb['height'] = 2;
+                $gov_thumb['master_dim'] = 'width';
+                $gov_thumb['quality'] = "100%";
+                $gov_thumb['x_axis'] = '0';
+                $gov_thumb['y_axis'] = '0';
+                //Loading Image Library
+                $this->load->library('image_lib', $gov_thumb);
+                $dataimage = $imgdata['file_name'];
+                //Creating Thumbnail
+                $this->image_lib->resize();
+                $thumberror = $this->image_lib->display_errors();
+            } else {
+                $thumberror = '';
+             
+            }
+            if ($imgerror != '' || $thumberror != '') {
+                $error[0] = $imgerror;
+                $error[1] = $thumberror;
+            } else {
+                $error = array();
+            }
+            if ($error) {
+                $this->session->set_flashdata('error', $error[0]);
+                $redirect_url = site_url('goverment/edit_gov_post/'.$id);
+                redirect($redirect_url, 'refresh');
+            } else {
+                $gov_image = $imgdata['file_name'];
+            }
+            
+   
+        
+        }   
+        
+        $data = array(
+                'title' => $this->input->post('post_title'),
+                'category_id' => $this->input->post('category'),
+                'post_name' => $this->input->post('postname'),
+                'no_vacancies' => $this->input->post('novacan'),
+                'pay_scale' => $this->input->post('payscale'),
+                'job_location' => $this->input->post('jobloc'),
+                'req_exp' => $this->input->post('reqexp'),
+                'post_image' => $gov_image,
+                'sector' => $this->input->post('gov_sector'),
+                'eligibility' => $this->input->post('gov_elg'),
+                'last_date' => $last_date,
+                'description' => $this->input->post('gov_des'),
+                'apply_link' => $this->input->post('gov_link'),
+                'status' => $this->input->post('status'),
+                'created_date' => date('Y-m-d H:i:s', time()),
+                'is_delete' => '0',
+                'modified_date'=> date('Y-m-d H:i:s', time())
+            );
+        
+        
+      //  echo "<pre>"; print_r($this->input->post()); die();
+         
 
+            $updatdata = $this->common->update_data($data, 'gov_post', 'id', $id);
+
+            if ($updatdata) {
+                $this->session->set_flashdata('success', 'Category updated successfully');
+                 redirect('goverment/view_gov_post');
+            } else {
+                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                redirect('goverment/edit_gov_post/'.$id);
+            }
+           
+}
 
 
 }
