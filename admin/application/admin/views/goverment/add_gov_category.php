@@ -89,7 +89,7 @@ echo $leftmenu;
                 gov_name: {
                     required: true,
                     remote: { 
-                    url: base_url + "admin/goverment/check_category",
+                    url: base_url + "goverment/check_category",
                     type: "post",
                     data: { 
                        gov_name: function() {
@@ -97,16 +97,6 @@ echo $leftmenu;
                   }
                }
             }
-                //     remote: {
-                //     url: base_url + "admin/goverment/check_category",
-                //     type: "post",
-                //     data: { 
-                //         gov_name: function () {
-                //             return $("#gov_name").val();
-                //         },
-                //     },
-                // },
-
                 },
                
             },

@@ -66,13 +66,13 @@ public function add_gov_category_insert()
 public function check_category()
 {
 
-        $category = $_POST['category'];
+        $category = trim($_POST['gov_name']);
         $contition_array = array('name' => $category);
          $checkvalue = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
          if($checkvalue){
-            echo 'true';
+            echo 'false'; die();
          }else{
-            echo 'false';
+            echo 'true'; die();
          }
 
 }
