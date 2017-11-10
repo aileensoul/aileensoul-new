@@ -102,6 +102,14 @@ echo $leftmenu;
                     </div>
                     </div>
 
+
+                     <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="postim" name="postim" id="postim">Post Image</label>
+                            <input type="file" class="form-control" name="post_image" id="post_image" value="">
+                    </div>
+                    </div>
+
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govtitle" name="govsector" id="govsector">Sector</label>
