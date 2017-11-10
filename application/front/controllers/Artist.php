@@ -15451,7 +15451,7 @@ public function get_artistic_name($id=''){
                                        $return_html .= '</div>
                                     </div>
                                     <div class="designation_rec" style="    float: left;
-                                       width: 60%;
+                                       width: 59%;
                                        padding-top: 10px; padding-bottom: 10px;">
                                        <ul>
                                           <li style="padding-top: 0px;">
