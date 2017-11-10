@@ -186,17 +186,13 @@ class Business_profile_registration extends MY_Controller {
     }
 
     public function ng_contact_info_insert() {
-
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $errors = array();
         $data = array();
-
-        // Getting posted data and decodeing json
         $_POST = json_decode(file_get_contents('php://input'), true);
 
-// checking for blank values.
         if (empty($_POST['contactname'])) {
             $errors['contactname'] = 'Person name is required.';
         }
@@ -207,9 +203,15 @@ class Business_profile_registration extends MY_Controller {
         }
         if (empty($_POST['email'])) {
             $errors['email'] = 'Email id is required.';
-        } elseif ($this->is_validate_email() != '1') {
+        } elseif ($this->is_validate_email($_POST['email']) != '1') {
             $errors['email'] = 'Please enter valid email id.';
         }
+        if(!empty($_POST['contactwebsite'])){
+            if($this->is_validate_url($_POST['contactwebsite']) != '1'){
+                $errors['contactwebsite'] = 'Please enter valid website.';
+            }
+        }
+        
         if (!empty($errors)) {
             $data['errors'] = $errors;
         } else {
@@ -218,7 +220,7 @@ class Business_profile_registration extends MY_Controller {
                 'contact_mobile' => $_POST['contactmobile'],
                 'contact_email' => $_POST['email'],
                 'contact_website' => $_POST['contactwebsite'],
-                'modified_date' => date('Y-m-d', time()),
+                'modified_date' => date('Y-m-d H:i:s', time()),
                 'business_step' => 2
             );
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
@@ -231,6 +233,109 @@ class Business_profile_registration extends MY_Controller {
 // response back.
         echo json_encode($data);
     }
+    
+    public function description() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+
+        $this->business_profile_active_check();
+
+        $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
+        $this->load->view('business_profile/ng_description', $this->data);
+    }
+    
+    public function getBusinessType(){
+        $this->load->model('User_model');
+        echo json_encode($this->User_model->getBusinessType());
+    }
+    
+    public function getCategory(){
+        $this->load->model('User_model');
+        echo json_encode($this->User_model->getCategory());
+    }
+    
+    public function description_insert() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+
+        $this->business_profile_active_check();
+
+        if ($this->input->post('next')) {
+            
+            $this->form_validation->set_rules('business_type', 'Business type', 'required');
+            $this->form_validation->set_rules('industriyal', 'Industriyal', 'required');
+            $this->form_validation->set_rules('business_details', 'Details', 'required');
+
+            $this->form_validation->set_message('required', '%s is required.');
+
+            if ($this->form_validation->run() == FALSE) {
+
+                // GET BUSINESS PROFILE DATA
+                $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+                $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,subindustriyal,details,other_business_type,other_industrial,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET INDUSTRIAL TYPE DATA
+                $contition_array = array('status' => 1);
+                $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GEY BUSINESS TYPE DATA
+                $this->data['businesstypedata'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($userdata) {
+                    $step = $userdata[0]['business_step'];
+
+                    if ($step == 3 || ($step >= 1 && $step <= 3) || $step > 3) {
+                        $this->data['business_type1'] = $userdata[0]['business_type'];
+                        $this->data['industriyal1'] = $userdata[0]['industriyal'];
+                        $this->data['subindustriyal1'] = $userdata[0]['subindustriyal'];
+                        $this->data['business_details1'] = trim($userdata[0]['details']);
+                        $this->data['other_business'] = $userdata[0]['other_business_type'];
+                        $this->data['other_industry'] = $userdata[0]['other_industrial'];
+                    }
+                }
+                $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
+
+                $this->load->view('business_profile/description');
+            } else {
+
+                $contition_array = array('user_id' => $userid, 'status' => '1');
+                $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($userdata[0]['business_step'] == 4) {
+                    $data = array(
+                        'business_type' => $this->input->post('business_type'),
+                        'industriyal' => $this->input->post('industriyal'),
+                        'subindustriyal' => $this->input->post('subindustriyal'),
+                        'other_business_type' => $this->input->post('bustype'),
+                        'other_industrial' => $this->input->post('indtype'),
+                        'details' => $this->input->post('business_details'),
+                        'modified_date' => date('Y-m-d', time()),
+                            //'business_step' => 3
+                    );
+                } else {
+                    $data = array(
+                        'business_type' => $this->input->post('business_type'),
+                        'industriyal' => $this->input->post('industriyal'),
+                        'subindustriyal' => $this->input->post('subindustriyal'),
+                        'other_business_type' => $this->input->post('bustype'),
+                        'other_industrial' => $this->input->post('indtype'),
+                        'details' => $this->input->post('business_details'),
+                        'modified_date' => date('Y-m-d', time()),
+                        'business_step' => 3
+                    );
+                }
+                $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+
+                if ($updatdata) {
+                    $this->session->set_flashdata('success', 'Description updated successfully');
+                    redirect('business-profile/image', refresh);
+                } else {
+                    $this->session->flashdata('error', 'Your data not inserted');
+                    redirect('business-profile/description', refresh);
+                }
+            }
+        }
+    }
 
     public function get_company_name($id = '') {
         $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -238,61 +343,6 @@ class Business_profile_registration extends MY_Controller {
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         return $company_name = $businessdata[0]['company_name'];
-    }
-
-    public function ajax_business_skill() {
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $term = $_GET['term'];
-        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
-        $search_condition = "(company_name LIKE '" . trim($term) . "%' OR other_industrial LIKE '" . trim($term) . "%' OR other_business_type LIKE '" . trim($term) . "%')";
-        $businessdata = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// GET BUSINESS TYPE
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $search_condition = "(business_name LIKE '" . trim($term) . "%' )";
-        $businesstype = $this->data['results'] = $this->common->select_data_by_search('business_type', $search_condition, $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// GET INDUSTRIAL TYPE
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $search_condition = "(industry_name LIKE '" . trim($term) . "%' )";
-        $industrytype = $this->data['results'] = $this->common->select_data_by_search('industry_type', $search_condition, $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// GET PRODUCT
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $search_condition = "(product_name LIKE '" . trim($term) . "%' OR product_description LIKE '" . trim($term) . "%')";
-        $productdata = $this->data['results'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'product_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $unique = array_merge($businessdata, $businesstype, $industrytype, $productdata);
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $result[] = $val;
-                }
-            }
-        }
-
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['value'] = $value;
-        }
-
-        echo json_encode($result1);
-    }
-
-    public function ajax_location_data() {
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $term = $_GET['term'];
-        if (!empty($term)) {
-            $contition_array = array('status' => '1', 'state_id !=' => '0');
-            $search_condition = "(city_name LIKE '" . trim($term) . "%')";
-            $location_list = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
-            foreach ($location_list as $key1 => $value) {
-                foreach ($value as $ke1 => $val1) {
-                    $location[] = $val1;
-                }
-            }
-            foreach ($location as $key => $value) {
-                $city_data[$key]['value'] = $value;
-            }
-            echo json_encode($city_data);
-        }
     }
 
     public function business_home_follow_ignore() {
