@@ -99,6 +99,26 @@ echo $leftmenu;
                     </th>
 
                     <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Post Name</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">No Vacancies</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Pay Scale</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Job Location</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Require Experience</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
                     <a href="javascript:void(0);">Sector</a>
                     </th>
 
@@ -154,6 +174,13 @@ echo $leftmenu;
                          echo $category; ?>
                             
                     </td>
+
+                    <td><?php echo $cat['post_name']; ?></td>
+                    <td><?php echo $cat['no_vacancies']; ?></td>
+                    <td><?php echo $cat['pay_scale']; ?></td>
+                    <td><?php echo $cat['job_location']; ?></td>
+                    <td><?php echo $cat['req_exp']; ?></td>
+                    
                     <td><?php echo $cat['sector']; ?></td>
                     <td><?php echo $cat['eligibility']; ?></td>
                     <td><?php echo $cat['last_date']; ?></td>
