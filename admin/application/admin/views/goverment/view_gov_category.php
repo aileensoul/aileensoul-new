@@ -36,7 +36,7 @@ echo $leftmenu;
                         <h3 class="box-title">Goverment Job Category List</h3>      
                     
                     <div class="box-tools">
-                       <?php echo form_open('goverment/search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
+                       <?php echo form_open('goverment/category_search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
                            <div class="input-group input-group-sm" >
 
 
@@ -51,7 +51,7 @@ echo $leftmenu;
                             { 
                     ?>
 
-                            <a href="<?php echo base_url('goverment/clear_search') ?>">Clear Search</a>
+                            <a href="<?php echo base_url('goverment/clear_categorysearch') ?>">Clear Search</a>
 
                         <?php 
                                 } 

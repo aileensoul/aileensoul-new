@@ -36,7 +36,7 @@ echo $leftmenu;
                         <h3 class="box-title">Goverment Job Post List</h3>      
                     
                     <div class="box-tools">
-                       <?php echo form_open('goverment/search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
+                       <?php echo form_open('goverment/post_search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
                            <div class="input-group input-group-sm" >
 
 
@@ -51,7 +51,7 @@ echo $leftmenu;
                             { 
                     ?>
 
-                            <a href="<?php echo base_url('goverment/clear_search') ?>">Clear Search</a>
+                            <a href="<?php echo base_url('goverment/clear_postsearch') ?>">Clear Search</a>
 
                         <?php 
                                 } 
@@ -86,7 +86,7 @@ echo $leftmenu;
                     <a href="javascript:void(0);">ID.</a></th>
 
                     <th><i class="fa fa-user"></i>
-                    <a href="<?php echo ( $this->uri->segment(3) == 'fname' && $this->uri->segment(4) == 'ASC') ? site_url($this->uri->segment(1) . '/' . $segment2 . '/fname/DESC/' . $offset) : site_url($this->uri->segment(1) . '/' . $segment2 . '/fname/ASC/' . $offset); ?>"> 
+                    <a href="<?php echo ( $this->uri->segment(3) == 'title' && $this->uri->segment(4) == 'ASC') ? site_url($this->uri->segment(1) . '/' . $segment2 . '/title/DESC/' . $offset) : site_url($this->uri->segment(1) . '/' . $segment2 . '/title/ASC/' . $offset); ?>"> 
                      Title
                      </a>
 
@@ -128,6 +128,10 @@ echo $leftmenu;
                      <th><i class=" fa fa-edit"></i> 
                      <a href="javascript:void(0);">Status</a>
                      </th>
+
+                     <th><i class=" fa fa-edit"></i> 
+                     <a href="javascript:void(0);">Action</a>
+                     </th>
                 </tr>
 
                  <?php
@@ -138,18 +142,23 @@ echo $leftmenu;
                         foreach ($post as $cat) {
                 ?>
 
-                <tr id="category_del<?php echo $cat['id']?>">
+                <tr id="post_del<?php echo $cat['id']?>">
                     <td><?php echo $i++; ?></td>
                     <td><?php echo ucfirst($cat['title']); ?></td>
                     <td>
-                        <?php echo $cat['category_id']; ?>
+                        <?php
+
+                        $category = $this->db->select('name')->get_where('gov_category', array('id' => $cat['id']))->row()->name;
+
+
+                         echo $category; ?>
                             
                     </td>
                     <td><?php echo $cat['sector']; ?></td>
                     <td><?php echo $cat['eligibility']; ?></td>
                     <td><?php echo $cat['last_date']; ?></td>
                     <td><?php echo $cat['description']; ?></td>
-                    <td><?php echo $cat['apply_link']; ?></td>
+                    <td><?php echo $this->common->make_links($cat['apply_link']); ?></td>
                     <td><?php echo $cat['created_date']; ?></td>
                     <td><?php echo $cat['modified_date']; ?></td>
 
@@ -280,21 +289,21 @@ echo $leftmenu;
 
 <script>
 //Delete user Start
-   function delete_category(id) 
+   function delete_post(id) 
    {
    
-       $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this Category?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
+       $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this Post?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
 
         $('.message #delete').on('click', function () 
         {
             $.ajax({
                          type: 'POST',
-                          url: '<?php echo base_url() . "goverment/delete_category" ?>',
+                          url: '<?php echo base_url() . "goverment/delete_post" ?>',
                           data: 'id=' + id,
                           success: function (response) 
                           {          
-                                 $('#' + 'category_del' + id).remove();
-                                  $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this Category?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
+                                 $('#' + 'post_del' + id).remove();
+                                  $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this Post?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
                           }
             });   
         });
