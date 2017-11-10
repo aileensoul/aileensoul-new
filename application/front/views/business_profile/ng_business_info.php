@@ -2,7 +2,7 @@
 <html>
     <head>
         <title><?php echo $title; ?></title>
-        <?php echo $head; ?>  
+        <?php echo $head_profile_reg; ?>  
         <?php
         if (IS_BUSINESS_CSS_MINIFY == '0') {
             ?>
@@ -123,6 +123,7 @@
         <?php //echo $login_footer ?>
         <?php //echo $footer; ?>
         <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+        
         <script>
                                                         var base_url = '<?php echo base_url(); ?>';
                                                         var slug = '<?php echo $slugid; ?>';
@@ -135,7 +136,6 @@
         <script>
 
                     var postApp = angular.module('postApp', []);
-                    
                     postApp.controller('postController', ['$http', '$scope', function ($http, $scope) {
 
                             $scope.countryList = undefined;
@@ -151,8 +151,8 @@
                             });
 
                             $scope.onCountryChange = function () {
-                                $scope.countryIdVal = $scope.countryId;
-                                // console.log(“data state processing”+$scope.stateIdVal);
+                                $scope.countryIdVal = $scope.country;
+                                console.log("data state processing"+$scope.stateIdVal);
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile/getStateByCountryId',
@@ -164,7 +164,7 @@
                             };
                             $scope.onStateChange = function () {
                                 $scope.stateIdVal = $scope.stateId;
-                                // console.log(“data state processing”+$scope.stateIdVal);
+                                // console.log("data state processing"+$scope.stateIdVal);
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile/getCityByStateId',

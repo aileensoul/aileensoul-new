@@ -549,12 +549,12 @@ class Business_userprofile extends CI_Controller {
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
+        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => '1');
         $slug_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $slug_id = $slug_data[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
-            $contition_array = array('business_slug' => $slug_id, 'status' => '1');
+            $contition_array = array('business_slug' => $slug_id, 'is_deleted' => 0, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $limit = $perpage;

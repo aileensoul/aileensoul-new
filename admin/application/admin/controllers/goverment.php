@@ -167,6 +167,172 @@ public function delete_category()
 //Delete category with ajax End
 
 
+
+public function category_search() 
+{ 
+
+      if ($this->input->post('search_keyword')) {//echo "222"; die();
+
+          $this->data['search_keyword'] = $search_keyword = trim($this->input->post('search_keyword'));
+
+         $this->session->set_userdata('user_search_keyword', $search_keyword);
+    
+        $this->data['user_search_keyword'] = $this->session->userdata('user_search_keyword');
+      
+       
+             // This is userd for pagination offset and limoi start
+          $limit = $this->paging['per_page'];
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $offset = ($this->uri->segment(5) != '') ? $this->uri->segment(5) : 0;
+
+            $sortby = $this->uri->segment(3);
+
+            $orderby = $this->uri->segment(4);
+
+        } else {
+
+            $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
+
+            $sortby = 'id';
+
+            $orderby = 'asc';
+
+        }
+  
+        $this->data['offset'] = $offset;
+        
+          $data='id,name,created_date,modified_date,status';
+           $search_condition = "(name LIKE '%$search_keyword%')";
+            $contition_array = array('is_delete' => '0');
+            $this->data['category'] = $this->common->select_data_by_search('gov_category', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
+ //echo "<pre>";print_r( $this->data['users']);die();
+// This is userd for pagination offset and limoi End
+
+       // echo "<pre>";print_r($this->userdata['users'] );die();
+
+        //This if and else use for asc and desc while click on any field start
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['base_url'] = site_url("goverment/category_search/" . $sortby . "/" . $orderby);
+
+            } else {
+
+                $this->paging['base_url'] = site_url("goverment/category_search/");
+
+            }
+
+
+
+            if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['uri_segment'] = 5;
+
+            } else {
+
+                $this->paging['uri_segment'] = 3;
+
+            }
+
+            $this->paging['total_rows'] = count($this->common->select_data_by_search('gov_category', $search_condition, $contition_array, 'id'));
+
+            //for record display
+
+            $this->data['total_rows'] = $this->paging['total_rows'];
+
+            $this->data['limit'] = $limit;
+
+            $this->pagination->initialize($this->paging);
+
+    }
+    else if ($this->session->userdata('user_search_keyword')) {//echo "jii"; die();
+            $this->data['search_keyword'] = $search_keyword = trim($this->session->userdata('user_search_keyword'));
+
+// echo "<pre>";print_r($search_keyword);die();
+              // This is userd for pagination offset and limoi start
+          $limit = $this->paging['per_page'];
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $offset = ($this->uri->segment(5) != '') ? $this->uri->segment(5) : 0;
+
+            $sortby = $this->uri->segment(3);
+
+            $orderby = $this->uri->segment(4);
+
+        } else {
+
+            $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
+
+            $sortby = 'id';
+
+            $orderby = 'asc';
+
+        }
+  
+        $this->data['offset'] = $offset;
+        
+          $data='id,name,created_date,modified_date,status';
+           $search_condition = "(name LIKE '%$search_keyword%')";
+            $contition_array = array('is_delete' => '0');
+            $this->data['category'] = $this->common->select_data_by_search('gov_category', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
+ //echo "<pre>";print_r( $this->data['users']);die();
+// This is userd for pagination offset and limoi End
+
+       // echo "<pre>";print_r($this->userdata['users'] );die();
+
+        //This if and else use for asc and desc while click on any field start
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['base_url'] = site_url("goverment/category_search/" . $sortby . "/" . $orderby);
+
+            } else {
+
+                $this->paging['base_url'] = site_url("goverment/category_search/");
+
+            }
+
+
+
+            if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['uri_segment'] = 5;
+
+            } else {
+
+                $this->paging['uri_segment'] = 3;
+
+            }
+
+            $this->paging['total_rows'] = count($this->common->select_data_by_search('gov_category', $search_condition, $contition_array, 'id'));
+
+            //for record display
+
+            $this->data['total_rows'] = $this->paging['total_rows'];
+
+            $this->data['limit'] = $limit;
+
+            $this->pagination->initialize($this->paging);
+    }
+
+        $this->load->view('goverment/view_gov_category', $this->data);
+}
+
+//clear search is used for unset session start
+public function clear_categorysearch() 
+{ 
+  
+    if ($this->session->userdata('user_search_keyword')) 
+    {
+          
+            $this->session->unset_userdata('user_search_keyword');
+              
+             redirect('goverment/view_gov_category','refresh');          
+    } 
+}
+//clear search is used for unset session End
+
+
+
  public function edit_gov_category($id) 
  {
 
@@ -236,6 +402,11 @@ public function add_gov_post_insert()
          $data = array(
                 'title' => $this->input->post('post_title'),
                 'category_id' => $this->input->post('category'),
+                'post_name' => $this->input->post('postname'),
+                'no_vacancies' => $this->input->post('novacan'),
+                'pay_scale' => $this->input->post('payscale'),
+                'job_location' => $this->input->post('jobloc'),
+                'req_exp' => $this->input->post('reqexp'),
                 'sector' => $this->input->post('gov_sector'),
                 'eligibility' => $this->input->post('gov_elg'),
                 'last_date' => $last_date,
@@ -261,6 +432,274 @@ public function add_gov_post_insert()
 }
 
 
+public function view_gov_post(){
+
+
+        $this->data['title'] = 'Goverment Job Post List| Aileensoul';
+        $this->data['module_name'] = 'Goverment Job Post List';
+        $this->data['section_title'] = 'Goverment Job Post List';
+
+
+         $limit = $this->paging['per_page'];
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $offset = ($this->uri->segment(5) != '') ? $this->uri->segment(5) : 0;
+
+            $sortby = $this->uri->segment(3);
+
+            $orderby = $this->uri->segment(4);
+
+        } else {
+
+            $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
+
+            $sortby = 'id';
+
+            $orderby = 'asc';
+
+        }
+  
+        $this->data['offset'] = $offset;
+
+       $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+       $contition_array = array('is_delete' => '0');
+        $this->data['post'] = $this->common->select_data_by_condition('gov_post', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
+// This is userd for pagination offset and limoi End
+
+      //echo "<pre>";print_r($this->data['users'] );die();
+
+        //This if and else use for asc and desc while click on any field start
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $this->paging['base_url'] = site_url("goverment/view_gov_post/" . $short_by . "/" . $order_by);
+
+        } else {
+
+            $this->paging['base_url'] = site_url("goverment/view_gov_post/");
+
+        }
+
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $this->paging['uri_segment'] = 5;
+
+        } else {
+
+            $this->paging['uri_segment'] = 3;
+
+        }
+        //This if and else use for asc and desc while click on any field End
+
+
+        $contition_array = array( 'is_delete =' => '0');
+        $this->paging['total_rows'] = count($this->common->select_data_by_condition('gov_post', $contition_array, 'id'));
+
+        $this->data['total_rows'] = $this->paging['total_rows'];
+
+        $this->data['limit'] = $limit;
+
+        $this->pagination->initialize($this->paging);
+
+        $this->data['search_keyword'] = '';
+
+ 
+        $this->load->view('goverment/view_gov_post', $this->data);
+
 }
 
-?>
+
+//Delete category with ajax Start
+public function delete_post() 
+{
+     $id = $_POST['id'];
+      $data = array(
+            'is_delete' => '1'
+        );
+
+        $update = $this->common->update_data($data, 'gov_post', 'id', $id);
+        die();
+}
+//Delete category with ajax End
+
+
+
+public function post_search() 
+{ 
+
+      if ($this->input->post('search_keyword')) {//echo "222"; die();
+
+          $this->data['search_keyword'] = $search_keyword = trim($this->input->post('search_keyword'));
+
+         $this->session->set_userdata('user_search_keyword', $search_keyword);
+    
+        $this->data['user_search_keyword'] = $this->session->userdata('user_search_keyword');
+      
+       
+             // This is userd for pagination offset and limoi start
+          $limit = $this->paging['per_page'];
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $offset = ($this->uri->segment(5) != '') ? $this->uri->segment(5) : 0;
+
+            $sortby = $this->uri->segment(3);
+
+            $orderby = $this->uri->segment(4);
+
+        } else {
+
+            $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
+
+            $sortby = 'id';
+
+            $orderby = 'asc';
+
+        }
+  
+        $this->data['offset'] = $offset;
+        
+          $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+           $search_condition = "(title LIKE '%$search_keyword%')";
+            $contition_array = array('is_delete' => '0');
+            $this->data['post'] = $this->common->select_data_by_search('gov_post', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
+
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['base_url'] = site_url("goverment/post_search/" . $sortby . "/" . $orderby);
+
+            } else {
+
+                $this->paging['base_url'] = site_url("goverment/post_search/");
+
+            }
+
+
+
+            if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['uri_segment'] = 5;
+
+            } else {
+
+                $this->paging['uri_segment'] = 3;
+
+            }
+
+            $this->paging['total_rows'] = count($this->common->select_data_by_search('gov_post', $search_condition, $contition_array, 'id'));
+
+            //for record display
+
+            $this->data['total_rows'] = $this->paging['total_rows'];
+
+            $this->data['limit'] = $limit;
+
+            $this->pagination->initialize($this->paging);
+
+    }
+    else if ($this->session->userdata('user_search_keyword')) {//echo "jii"; die();
+            $this->data['search_keyword'] = $search_keyword = trim($this->session->userdata('user_search_keyword'));
+
+// echo "<pre>";print_r($search_keyword);die();
+              // This is userd for pagination offset and limoi start
+          $limit = $this->paging['per_page'];
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $offset = ($this->uri->segment(5) != '') ? $this->uri->segment(5) : 0;
+
+            $sortby = $this->uri->segment(3);
+
+            $orderby = $this->uri->segment(4);
+
+        } else {
+
+            $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
+
+            $sortby = 'id';
+
+            $orderby = 'asc';
+
+        }
+  
+        $this->data['offset'] = $offset;
+        
+          $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+           $search_condition = "(title LIKE '%$search_keyword%')";
+            $contition_array = array('is_delete' => '0');
+            $this->data['post'] = $this->common->select_data_by_search('gov_post', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
+ 
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['base_url'] = site_url("goverment/post_search/" . $sortby . "/" . $orderby);
+
+            } else {
+
+                $this->paging['base_url'] = site_url("goverment/post_search/");
+
+            }
+
+
+
+            if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+                $this->paging['uri_segment'] = 5;
+
+            } else {
+
+                $this->paging['uri_segment'] = 3;
+
+            }
+
+            $this->paging['total_rows'] = count($this->common->select_data_by_search('gov_post', $search_condition, $contition_array, 'id'));
+
+            $this->data['total_rows'] = $this->paging['total_rows'];
+
+            $this->data['limit'] = $limit;
+
+            $this->pagination->initialize($this->paging);
+    }
+
+        $this->load->view('goverment/view_gov_post', $this->data);
+}
+
+//clear search is used for unset session start
+public function clear_postsearch() 
+{ 
+  
+    if ($this->session->userdata('user_search_keyword')) 
+    {
+          
+            $this->session->unset_userdata('user_search_keyword');
+              
+             redirect('goverment/view_gov_post','refresh');          
+    } 
+}
+//clear search is used for unset session End
+
+
+
+public function edit_gov_post($id) 
+ {
+
+        $this->data['title'] = 'Goverment Edit Job Post| Aileensoul';
+        $this->data['module_name'] = 'Goverment Edit Job Post';
+        $this->data['section_title'] = 'Goverment Edit Job Post';
+
+       $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+       $contition_array = array('id' => $id);
+        $this->data['post'] = $this->common->select_data_by_condition('gov_post', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
+
+        $this->data['id'] = $id;
+
+
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+         $this->data['job_category'] = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
+
+
+        //echo "<pre>"; print_r($this->data['category']); die();
+
+        $this->load->view('goverment/edit_gov_post', $this->data);
+}
+
+
+
+}
+

@@ -42,77 +42,40 @@ echo $leftmenu;
                     </div>
                     <!-- form start -->
                     <?php
-                    $form_attr = array('id' => 'add_gov_post', 'enctype' => 'multipart/form-data');
+                    $form_attr = array('id' => 'edit_gov_post', 'enctype' => 'multipart/form-data');
                     echo form_open_multipart('goverment/add_gov_post_insert', $form_attr);
                     ?>
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="posttitle" name="posttitle" id="posttitle">Title*</label>
-                            <input type="text" class="form-control" name="post_title" id="post_title" value="" placeholder="Enter Job Title">
+                            <input type="text" class="form-control" name="post_title" id="post_title" value="<?php echo $post[0]['title']?>" placeholder="Enter Job Title">
                     </div>
                     </div>
 
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govcat" name="govcat" id="govcat">Category*</label>
-                             <select name="category" id="category" tabindex="1" class="form-control">
+                             <select name="category" id="category" tabindex="1">
                                <option value="">Select job Category</option> 
                             <?php                             
                                       foreach($job_category as $cnt){ 
                                               ?>
-                                    <option value="<?php echo $cnt['id']; ?>"><?php echo $cnt['name'];?></option>    <?php  } ?>
+                                    <option value="<?php echo $cnt['id']; ?>" <?php if($cnt['id'] == $post[0]['category_id']){ echo 'selected'; } ?>><?php echo $cnt['name'];?></option>    <?php  } ?>
                       </select>
-                    </div>
-                    </div>
-
-
-                    <div class="box-body">                   
-                    <div class="form-group col-sm-10">
-                            <label for="post_name" name="post_name" id="post_name">Post Name</label>
-                            <input type="text" class="form-control" name="postname" id="postname" value="" placeholder="Enter post Name">
-                    </div>
-                    </div>
-
-
-                    <div class="box-body">                   
-                    <div class="form-group col-sm-10">
-                            <label for="novac" name="novac" id="novac">No Vacancies</label>
-                            <input type="text" class="form-control" name="novacan" id="novacan" value="" placeholder="Enter No Vacancies">
-                    </div>
-                    </div>
-
-                    <div class="box-body">                   
-                    <div class="form-group col-sm-10">
-                            <label for="paysc" name="paysc" id="paysc">pay Scale</label>
-                            <input type="text" class="form-control" name="payscale" id="payscale" value="" placeholder="Enter pay Scale">
-                    </div>
-                    </div>
-
-                    <div class="box-body">                   
-                    <div class="form-group col-sm-10">
-                            <label for="paysc" name="jobl" id="jobl">Job Location</label>
-                            <input type="jobl" class="form-control" name="jobloc" id="jobloc" value="" placeholder="Enter Job Location">
-                    </div>
-                    </div>
-
-                    <div class="box-body">                   
-                    <div class="form-group col-sm-10">
-                            <label for="reqe" name="reqe" id="reqe">Require Experience</label>
-                            <input type="text" class="form-control" name="reqexp" id="reqexp" value="" placeholder="Enter require experience">
                     </div>
                     </div>
 
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govtitle" name="govsector" id="govsector">Sector</label>
-                            <input type="text" class="form-control" name="gov_sector" id="gov_sector" value="" placeholder="Enter Post Sector">
+                            <input type="text" class="form-control" name="gov_sector" id="gov_sector" value="<?php echo $post[0]['sector']; ?>" placeholder="Enter Job Sector">
                     </div>
                     </div>
 
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govelg" name="govelg" id="govelg">Eligibility</label>
-                            <input type="text" class="form-control" name="gov_elg" id="gov_elg" value="" placeholder="Enter Eligibility">
+                            <input type="text" class="form-control" name="gov_elg" id="gov_elg" value="<?php echo $post[0]['eligibility']; ?>" placeholder="Enter Eligibility">
                     </div>
                     </div>
 
@@ -163,6 +126,8 @@ echo $leftmenu;
                             <label for="govdes" name="govdes" id="govelg">Description</label>
 
                              <textarea id="gov_des" name="gov_des" rows="10" cols="80">
+
+                                <?php echo $post[0]['description']; ?>
                              </textarea>
                     </div>
                     </div>
@@ -171,7 +136,7 @@ echo $leftmenu;
                      <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govlink" name="govlink" id="govlink">Apply Link</label>
-                            <input type="text" class="form-control" name="gov_link" id="gov_link" value="" placeholder="Enter Apply Link">
+                            <input type="text" class="form-control" name="gov_link" id="gov_link" value=" <?php echo $post[0]['apply_link']; ?>" placeholder="Enter Apply Link">
                     </div>
                     </div>
 

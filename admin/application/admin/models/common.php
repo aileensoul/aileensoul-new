@@ -312,5 +312,11 @@ class Common extends CI_Model {
         }  
         return $slug;  
     }
+
+
+    function make_links($text, $class='content_link', $target='_blank'){ 
+         return preg_replace('!((http\:\/\/|ftp\:\/\/|https\:\/\/)|www\.)([-a-zA-Z?-??-?0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism','<a href="//$3" class="' . $class . '" target="'.$target.'">$1$3</a>', 
+             $text);
+     }
     
 }

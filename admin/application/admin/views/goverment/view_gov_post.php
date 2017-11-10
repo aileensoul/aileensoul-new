@@ -19,7 +19,7 @@ echo $leftmenu;
                     Home
                 </a>
             </li>
-            <li class="active">Goverment Job Category List</li>
+            <li class="active">Goverment Job Post List</li>
         </ol>
         <!-- <div class="fr">
                          <button name="Add" class="btn bg-orange btn-flat margin" ><i class="fa fa-fw fa-user-plus" aria-hidden="true"></i> Add User</button>
@@ -33,10 +33,10 @@ echo $leftmenu;
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Goverment Job Category List</h3>      
+                        <h3 class="box-title">Goverment Job Post List</h3>      
                     
                     <div class="box-tools">
-                       <?php echo form_open('goverment/category_search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
+                       <?php echo form_open('goverment/post_search', array('method' => 'post', 'id' => 'search_frm', 'class' => 'form-inline','autocomplete' => 'off')); ?>
                            <div class="input-group input-group-sm" >
 
 
@@ -51,7 +51,7 @@ echo $leftmenu;
                             { 
                     ?>
 
-                            <a href="<?php echo base_url('goverment/clear_categorysearch') ?>">Clear Search</a>
+                            <a href="<?php echo base_url('goverment/clear_postsearch') ?>">Clear Search</a>
 
                         <?php 
                                 } 
@@ -67,10 +67,10 @@ echo $leftmenu;
                 <tr>
                  <?php
 
-                        if ($this->uri->segment(2) == '' || $this->uri->segment(2) == 'view_gov_category') 
+                        if ($this->uri->segment(2) == '' || $this->uri->segment(2) == 'view_gov_post') 
                         {
 
-                                $segment2 = 'view_gov_category';
+                                $segment2 = 'view_gov_post';
 
                         } 
                         else 
@@ -86,8 +86,8 @@ echo $leftmenu;
                     <a href="javascript:void(0);">ID.</a></th>
 
                     <th><i class="fa fa-user"></i>
-                    <a href="<?php echo ( $this->uri->segment(3) == 'fname' && $this->uri->segment(4) == 'ASC') ? site_url($this->uri->segment(1) . '/' . $segment2 . '/fname/DESC/' . $offset) : site_url($this->uri->segment(1) . '/' . $segment2 . '/fname/ASC/' . $offset); ?>"> 
-                     Name
+                    <a href="<?php echo ( $this->uri->segment(3) == 'title' && $this->uri->segment(4) == 'ASC') ? site_url($this->uri->segment(1) . '/' . $segment2 . '/title/DESC/' . $offset) : site_url($this->uri->segment(1) . '/' . $segment2 . '/title/ASC/' . $offset); ?>"> 
+                     Title
                      </a>
 
                      <?php echo ( $this->uri->segment(3) == 'fname' && $this->uri->segment(4) == 'ASC' ) ? '<i class="glyphicon glyphicon-arrow-up">' : (( $this->uri->segment(3) == 'fname' && $this->uri->segment(4) == 'DESC' ) ? '<i class="glyphicon glyphicon-arrow-down">' : '' ); ?>
@@ -95,18 +95,61 @@ echo $leftmenu;
                     </th>
 
                     <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Created Date</a>
+                    <a href="javascript:void(0);">Category</a>
                     </th>
 
                     <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Modify Date</a>
+                    <a href="javascript:void(0);">Post Name</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">No Vacancies</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Pay Scale</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Job Location</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Require Experience</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Sector</a>
                     </th>
 
                      <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Status</a>
+                    <a href="javascript:void(0);">Eligibility</a>
                     </th>
 
                     <th><i class=" fa fa-edit"></i> 
+                     <a href="javascript:void(0);">last_date</a>
+                     </th>
+
+                     <th><i class=" fa fa-edit"></i> 
+                     <a href="javascript:void(0);">Description</a>
+                     </th>
+
+                     <th><i class=" fa fa-edit"></i> 
+                     <a href="javascript:void(0);">Apply_link</a>
+                     </th>
+
+                     <th><i class=" fa fa-edit"></i> 
+                     <a href="javascript:void(0);">Created_date</a>
+                     </th>
+                     <th><i class=" fa fa-edit"></i> 
+                     <a href="javascript:void(0);">Modified_date</a>
+                     </th>
+
+                     <th><i class=" fa fa-edit"></i> 
+                     <a href="javascript:void(0);">Status</a>
+                     </th>
+
+                     <th><i class=" fa fa-edit"></i> 
                      <a href="javascript:void(0);">Action</a>
                      </th>
                 </tr>
@@ -116,14 +159,36 @@ echo $leftmenu;
                 {
 
                         $i = $offset + 1; 
-                        foreach ($category as $cat) {
+                        foreach ($post as $cat) {
                 ?>
 
-                <tr id="category_del<?php echo $cat['id']?>">
+                <tr id="post_del<?php echo $cat['id']?>">
                     <td><?php echo $i++; ?></td>
-                    <td><?php echo ucfirst($cat['name']); ?></td>
+                    <td><?php echo ucfirst($cat['title']); ?></td>
+                    <td>
+                        <?php
+
+                        $category = $this->db->select('name')->get_where('gov_category', array('id' => $cat['id']))->row()->name;
+
+
+                         echo $category; ?>
+                            
+                    </td>
+
+                    <td><?php echo $cat['post_name']; ?></td>
+                    <td><?php echo $cat['no_vacancies']; ?></td>
+                    <td><?php echo $cat['pay_scale']; ?></td>
+                    <td><?php echo $cat['job_location']; ?></td>
+                    <td><?php echo $cat['req_exp']; ?></td>
+                    
+                    <td><?php echo $cat['sector']; ?></td>
+                    <td><?php echo $cat['eligibility']; ?></td>
+                    <td><?php echo $cat['last_date']; ?></td>
+                    <td><?php echo $cat['description']; ?></td>
+                    <td><?php echo $this->common->make_links($cat['apply_link']); ?></td>
                     <td><?php echo $cat['created_date']; ?></td>
                     <td><?php echo $cat['modified_date']; ?></td>
+
                     <td>
                         <?php if($cat['status']=="1")
                         {
@@ -136,11 +201,11 @@ echo $leftmenu;
                         ?>
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-xs" onclick="delete_category(<?php echo $cat['id']; ?>);">
+                        <button class="btn btn-danger btn-xs" onclick="delete_post(<?php echo $cat['id']; ?>);">
                         <i class="fa fa-trash-o"></i>
                         </button>
 
-                        <a class="btn btn-success btn-xs" href="<?php echo base_url('goverment/edit_gov_category/'.$cat['id'] ); ?>">
+                        <a class="btn btn-success btn-xs" href="<?php echo base_url('goverment/edit_gov_post/'.$cat['id'] ); ?>">
                          <i class="fa fa-fw fa-eye"></i>
                         </a>
                     </td>
@@ -251,21 +316,21 @@ echo $leftmenu;
 
 <script>
 //Delete user Start
-   function delete_category(id) 
+   function delete_post(id) 
    {
    
-       $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this Category?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
+       $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this Post?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
 
         $('.message #delete').on('click', function () 
         {
             $.ajax({
                          type: 'POST',
-                          url: '<?php echo base_url() . "goverment/delete_category" ?>',
+                          url: '<?php echo base_url() . "goverment/delete_post" ?>',
                           data: 'id=' + id,
                           success: function (response) 
                           {          
-                                 $('#' + 'category_del' + id).remove();
-                                  $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this Category?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
+                                 $('#' + 'post_del' + id).remove();
+                                  $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this Post?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
                           }
             });   
         });
