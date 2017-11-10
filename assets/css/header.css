@@ -2349,7 +2349,7 @@ footer ul li a:hover{
     .post-img-mainuser {
         padding: 4px 0;
     }
-    .dropdown-content_hover::before{right: 0px !important;}
+    .dropdown-content_hover::before{right: 1px !important;}/*d*/
 }
 @media screen and (max-width: 767px) {
     .mob-block{display:block;}
@@ -2549,7 +2549,7 @@ footer ul li a:hover{
     }
     .header2 ul {
         padding-left: 0;
-        padding-right: 0;
+        padding-right: 14px;
     }
     /*d*/
     /*.header2 ul#dropdownclass {
@@ -2652,6 +2652,7 @@ footer ul li a:hover{
         padding: 5px 0;
         line-height: 2.3;
     }
+    .dropdown-content_hover::before{right: 3px !important;}
 }
 @media screen and (max-width: 540px) {
     #InboxContainer {
@@ -2718,7 +2719,7 @@ footer ul li a:hover{
     /*.header ul li.dropdown-user a{padding-top: 10px!important;}*/
     
     #notificationContainer::before {
-        right: 90px;
+        right: 56px;
     }
     #floatBarsG {
         margin-left: -167px;
@@ -2744,13 +2745,13 @@ footer ul li a:hover{
         position: inherit !important;
     }
     #acon::before {
-        right: 125px !important;
+        right: 104px !important;
     }
     #acon {
         margin-top: 21px!important;
     }
     #notificationContainer::before {
-        right: 57px; /*d*/
+        right: 57 px; /*d*/
         border: 9px solid black;
         margin-top: -18px;
         border-color: transparent transparent #fff;
@@ -2835,8 +2836,8 @@ footer ul li a:hover{
         padding: 12px 8px 4px;
     }
     #notificationContainer::before {
-        right: 57px; /*d*/
-    }
+        right: 56px; /*d*/
+  }
     .logo h2 {
         padding: 0;
     }
@@ -2852,7 +2853,7 @@ footer ul li a:hover{
     .search-mob-block label {
         margin-top: 4px;
     }
-    .dropdown-content_hover::before{right: 0px !important;} /*d*/
+    .dropdown-content_hover::before{right: 3px !important;} /*d*/
 }
 @media screen and (max-width: 320px) {
     .header2 ul li.active a {
@@ -2874,6 +2875,6 @@ footer ul li a:hover{
         padding-left: 15px;
     }
     ul#dropdownclass {
-        padding-right: 2px;
+        padding-right: 17px; /*d*/
     }
 }

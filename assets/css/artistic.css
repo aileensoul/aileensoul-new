@@ -4167,7 +4167,7 @@ div .comment {
 .mejs__layers .mejs__poster.mejs__layer{width:100% !important;}
 
 
-
+.search_button button{margin-left: 0px;}
 
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
@@ -5101,7 +5101,7 @@ div .comment {
         line-height: 17px;
     }
     #InboxContainer::before {
-        right: 143px;
+        right: 150px; /*d*/ 
     }
     .user_lst ul li button {
         margin-top: 14px;
@@ -5203,7 +5203,7 @@ div .comment {
 
 @media screen and (max-width: 540px) {
     #InboxContainer::before {
-        right: 143px;
+        right: 150px; /*d*/ 
     }
     .editor-content {
         /*width: 84%;*/
@@ -5858,7 +5858,7 @@ div .comment {
         font-size: 9px;
     }
     #InboxContainer::before {
-        right: 134px;
+        right: 150px;
     }
 }
 /*media zalak end*/
