@@ -975,7 +975,7 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_APPLY PORTFOLIO PAGE END
 //FREELANCER_APPLY PORTFOLIO PAGE DATA INSERT START
-    public function freelancer_post_portfolio_insert($postliveid) {
+    public function freelancer_post_portfolio_insert($postliveid = '') {
         // echo 123; die();
         if ($postliveid) {
 
