@@ -36,7 +36,7 @@ class Artist extends MY_Controller {
          $this->data['no_artistic_post_html'] = '<div class="art_no_post_avl"><h3>Artistic Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/art-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
     }
 
-    public function index() {
+    public function index() { 
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => '0');
