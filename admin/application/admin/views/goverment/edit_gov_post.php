@@ -42,6 +42,7 @@ echo $leftmenu;
                         ?>
                     </div>
                     <!-- form start -->
+                    
                     <?php
                     $form_attr = array('id' => 'edit_gov_post', 'enctype' => 'multipart/form-data');
                     echo form_open_multipart('goverment/edit_gov_post_insert/'.$post[0]['id'], $form_attr);
