@@ -42,7 +42,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['SERVER_ADDR'] == '127.0.0.1
 	$db_password = '';
 	$db_name 	 = 'laceberry';
         
-    define('SITEURL','http://localhost/aileensoul/');
+    define('SITEURL','http://localhost/aileensoul-new/');
 	define('SITEPATH',$_SERVER['DOCUMENT_ROOT'].'/aileensoul/');
 	define('SITEMAPPATH',$_SERVER['DOCUMENT_ROOT'].'/laceberry/');
 	define('NEWSITEURL','http://localhost/laceberry/');
@@ -138,3 +138,10 @@ define('NOIMAGE', 'uploads/avatar.png');
 define('WHITEIMAGE', 'uploads/white.png');
 
 define('PROFILENA', '--');
+
+
+// GOVERMENT MAIN IMAGE
+    define('GOV_MAIN_UPLOAD_URL', SITEURL . 'uploads/goverment/main/');
+
+// GOVERMENT THUMB THUMB
+    define('GOV_THUMB_UPLOAD_URL', SITEURL . 'uploads/goverment/thumbs/');

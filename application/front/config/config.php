@@ -899,3 +899,5 @@ $config['blog_main_max_height'] = '5000';
 $config['blog_thumb_upload_path'] = 'uploads/blog/thumbs/';
 $config['blog_thumb_width'] = '150';
 $config['blog_thumb_height'] = '150';
+
+
