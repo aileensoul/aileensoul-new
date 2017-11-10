@@ -212,10 +212,8 @@ echo $leftmenu;
                             }   }      
 
                         ?>
-</div><!-- dta_left col-md-6--> 
-
+</div>
 <!-- /pagination Start-->
-
 <?php
                         if ($this->pagination->create_links()) 
                         {
@@ -232,9 +230,7 @@ echo $leftmenu;
                         <?php } ?>
 <!-- /pagination End-->
 
-</div><!-- /.row -->
-
-
+</div>
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
@@ -314,9 +310,5 @@ function category_deleted(id)
     }  
   });
 });
-//Enable search button when user write something on textbox End
 
-// $(function() {
- 
-// });
 </script>
