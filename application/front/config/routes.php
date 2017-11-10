@@ -70,27 +70,22 @@ $route['privacy-policy'] = "main/privacy_policy";
 
 $route['business-profile'] = "business_profile/index";
 $route['business-profile/reactivate'] = "business_profile/reactivate";
+
 $route['business-profile/business-information'] = "business_profile/business_information";
 $route['business-profile/business-information-insert'] = "business_profile/business_information_insert";
 $route['business-profile/business-information-update'] = "business_profile/business_information_update";
 $route['business-profile/business-information-edit'] = "business_profile/business_information_update";
-
 $route['business-profile/contact-information'] = "business_profile/contact_information";
 $route['business-profile/contact-information-insert'] = "business_profile/contact_information_insert";
-
 $route['business-profile/description'] = "business_profile/description";
 $route['business-profile/description-insert'] = "business_profile/description_insert";
-
 $route['business-profile/image'] = "business_profile/image";
 $route['business-profile/image-insert'] = "business_profile/image_insert";
-
 $route['business-profile/details/(:any)'] = "business_profile/business_resume/$1";
 $route['business-profile/details'] = "business_profile/business_resume";
-
 $route['business-profile/home'] = "business_profile/business_profile_post";
 $route['business-profile/bussiness-profile-post-add'] = "business_profile/business_profile_addpost_insert";
 $route['business-profile/bussiness-profile-post-add/manage/(:any)'] = "business_profile/business_profile_addpost_insert/manage/$1";
-
 $route['business-profile/dashboard'] = "business_profile/business_profile_manage_post";
 $route['business-profile/dashboard/(:any)'] = "business_profile/business_profile_manage_post/$1";
 $route['business-profile/followers'] = "business_profile/followers";
@@ -100,35 +95,31 @@ $route['business-profile/following/(:any)'] = "business_profile/following/$1";
 $route['business-profile/userlist'] = "business_profile/userlist";
 $route['business-profile/userlist/(:any)'] = "business_profile/userlist/$1";
 $route['business-profile/contact-list'] = "business_profile/contact_list";
-
 $route['business-profile/contacts'] = "business_profile/bus_contact";
 $route['business-profile/contacts/(:any)'] = "business_profile/bus_contact/$1";
-
 $route['business-profile/user-image-change'] = "business_profile/user_image_insert";
 $route['business-profile/business-profile-save-post'] = "business_profile/business_profile_save_post";
 $route['business-profile/business-profile-addpost'] = "business_profile/business_profile_addpost";
 $route['business-profile/photos'] = "business_profile/business_photos";
 $route['business-profile/photos/(:any)'] = "business_profile/business_photos/$1";
-
 $route['business-profile/videos'] = "business_profile/business_videos";
 $route['business-profile/videos/(:any)'] = "business_profile/business_videos/$1";
-
 $route['business-profile/audios'] = "business_profile/business_audios";
 $route['business-profile/audios/(:any)'] = "business_profile/business_audios/$1";
-
-
 $route['business-profile/pdf'] = "business_profile/business_pdf";
 $route['business-profile/pdf/(:any)'] = "business_profile/business_pdf/$1";
-
 $route['business-profile/business-profile-contactperson'] = "business_profile/business_profile_contactperson";
 $route['business-profile/contact-person/(:any)'] = "business_profile/business_profile_contactperson/$1";
 $route['business-profile/post-detail'] = "business_profile/postnewpage";
 $route['business-profile/post-detail/(:any)/(:any)'] = "business_profile/postnewpage/$1/$2";
 $route['business-profile/creat-pdf'] = "business_profile/creat_pdf";
 $route['business-profile/business-profile-editpost'] = "business_profile/business_profile_editpost";
-
 $route['notification/business-profile-post/(:any)'] = "notification/business_post/$1";
 $route['notification/business-profile-post-detail/(:any)/(:any)'] = "notification/bus_post_img/$1/$2";
+
+
+$route['business-profile/signup/business-information'] = "business_profile_registration/business_information";
+$route['business-profile/signup/contact-information'] = "business_profile_registration/contact_information";
 
 
 //FREELANCER HIRE ROUTES SETTINGS

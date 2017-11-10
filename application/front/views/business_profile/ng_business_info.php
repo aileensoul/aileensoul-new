@@ -13,9 +13,22 @@
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/business_profile/business-common.min.css?ver=' . time()); ?>">
         <?php } ?>
+        <style type="text/css">
+            span.error{
+                background: none;
+                color: red !important;
+                padding: 0px 10px !important;
+                position: absolute;
+                right: 8px;
+                z-index: 8;
+                line-height: 15px;
+                padding-right: 0px!important;
+                font-size: 11px!important;
+            }
+        </style>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="postApp" ng-controller="postController">
-        <?php echo  $header; ?>
+    <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="busInfoApp" ng-controller="busInfoController">
+        <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
@@ -75,39 +88,38 @@
                                         <fieldset class="full-width ">
                                             <label>Company name:<span style="color:red">*</span></label>
                                             <input name="companyname" ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value=""/>
-                                            <span ng-show="errorCompanyName">{{errorCompanyName}}</span>
+                                            <span ng-show="errorCompanyName" class="error">{{errorCompanyName}}</span>
                                         </fieldset>
                                         <fieldset>
                                             <label>Country:<span style="color:red">*</span></label>
-                                            <select name="country" ng-model="user.country" ng-change="onCountryChange()" ng-options="countryItem.id as countryItem.countryName for countryItem in countryList" id="country" tabindex="2" >
-                                                <option value="">Country</option>
-                                                <option value="1">Afghanistan</option>
+                                            <select name="country" ng-model="user.country_id" ng-change="onCountryChange()" ng-options="countryItem.country_name for countryItem in countryList" id="country" tabindex="2">
+                                                <option value="" selected="selected">Country</option>
                                             </select>
-                                            <span ng-show="errorCountry">{{errorCountry}}</span>
+                                            <span ng-show="errorCountry" class="error">{{errorCountry}}</span>
                                         </fieldset>
                                         <fieldset>
                                             <label>State:<span style="color:red">*</span></label>
-                                            <select name="state" ng-model="user.state" id="state" tabindex="3" >
+                                            <select name="state" ng-model="user.state_id" ng-change="onStateChange()"  ng-options="stateItem.state_name for stateItem in stateList" id="state" tabindex="3">
                                                 <option value="">Select country first</option>
                                             </select>
-                                            <span ng-show="errorState">{{errorState}}</span>
+                                            <span ng-show="errorState" class="error">{{errorState}}</span>
                                         </fieldset>
                                         <fieldset>
                                             <label> City<span class="optional">(optional)</span>:</label>
-                                            <select name="city" ng-model="user.city" id="city" tabindex="4" >
+                                            <select name="city" ng-model="user.city_id"  ng-options="cityItem.city_name for cityItem in cityList" id="city" tabindex="4">
                                                 <option value="">Select State First</option>
                                             </select>
-                                            <span ng-show="errorCity">{{errorCity}}</span>
+                                            <span ng-show="errorCity" class="error">{{errorCity}}</span>
                                         </fieldset>
                                         <fieldset>
                                             <label>Pincode<span class="optional">(optional)</span>:</label>
                                             <input name="pincode" ng-model="user.pincode" tabindex="5"   type="text" id="pincode" placeholder="Enter pincode" value="">
-                                            <span ng-show="errorPincode">{{errorPincode}}</span>
+                                            <span ng-show="errorPincode" class="error">{{errorPincode}}</span>
                                         </fieldset>
                                         <fieldset class="full-width ">
                                             <label>Postal address:<span style="color:red">*</span></label>
                                             <input name="business_address" ng-model="user.business_address" tabindex="6" autofocus type="text" id="business_address" placeholder="Enter address" style="resize: none;" value=""/>
-                                            <span ng-show="errorPostalAddress">{{errorPostalAddress}}</span>                                                                        
+                                            <span ng-show="errorPostalAddress" class="error">{{errorPostalAddress}}</span>                                                                        
                                         </fieldset>
                                         <fieldset class="hs-submit full-width">
                                             <input type="submit"  id="next" name="next" tabindex="7"  value="Next">
@@ -120,75 +132,67 @@
                     </div>
                 </div>
         </section>
-        <?php //echo $login_footer ?>
-        <?php //echo $footer; ?>
-        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
-        
+        <?php echo $login_footer ?>
+        <?php echo $footer; ?>
         <script>
-                                                        var base_url = '<?php echo base_url(); ?>';
-                                                        var slug = '<?php echo $slugid; ?>';
-
-                                                        var company_name_validation = '<?php echo $this->lang->line('company_name_validation') ?>';
-                                                        var country_validation = '<?php echo $this->lang->line('country_validation') ?>';
-                                                        var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
-                                                        var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
-        </script>
-        <script>
-
-                    var postApp = angular.module('postApp', []);
-                    postApp.controller('postController', ['$http', '$scope', function ($http, $scope) {
-
-                            $scope.countryList = undefined;
-                            $scope.stateList = undefined;
-                            $scope.cityList = undefined;
-
-                            $http({
-                                method: 'GET',
-                                url: base_url + 'business_profile/getCountry',
-                            }).success(function (data) {
-                                console.log(data);
-                                $scope.countryList = data;
-                            });
-
-                            $scope.onCountryChange = function () {
-                                $scope.countryIdVal = $scope.country;
-                                console.log("data state processing"+$scope.stateIdVal);
-                                $http({
-                                    method: 'POST',
-                                    url: base_url + 'business_profile/getStateByCountryId',
-                                    data: {countryId: $scope.countryIdVal}
-                                }).success(function (data) {
-                                    console.log(data);
-                                    $scope.stateList = data;
-                                });
-                            };
-                            $scope.onStateChange = function () {
-                                $scope.stateIdVal = $scope.stateId;
-                                // console.log("data state processing"+$scope.stateIdVal);
-                                $http({
-                                    method: 'POST',
-                                    url: base_url + 'business_profile/getCityByStateId',
-                                    data: {stateId: $scope.stateIdVal}
-                                }).success(function (data) {
-                                    console.log(data);
-                                    $scope.cityList = data;
-                                });
-                            };
-                        }]);
+                    var base_url = '<?php echo base_url(); ?>';
+                    var slug = '<?php echo $slugid; ?>';
+                    var company_name_validation = '<?php echo $this->lang->line('company_name_validation') ?>';
+                    var country_validation = '<?php echo $this->lang->line('country_validation') ?>';
+                    var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
+                    var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
         <script>
                     // Defining angularjs application.
-                    var postApp = angular.module('postApp', []);
+                    var busInfoApp = angular.module('busInfoApp', []);
                     // Controller function and passing $http service and $scope var.
-                    postApp.controller('postController', function ($scope, $http) {
+                    busInfoApp.controller('busInfoController', function ($scope, $http) {
                         // create a blank object to handle form data.
                         $scope.user = {};
+
+                        $scope.countryList = undefined;
+                        $scope.stateList = undefined;
+                        $scope.cityList = undefined;
+
+                        $http({
+                            method: 'GET',
+                            url: base_url + 'business_profile/getCountry',
+                        }).success(function (data) {
+                            // console.log(data);
+                            $scope.countryList = data;
+                        });
+
+                        $scope.onCountryChange = function () {
+                            $scope.countryIdVal = $scope.user.country_id;
+                            // console.log(“data state processing”+$scope.stateIdVal);
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile/getStateByCountryId',
+                                data: {countryId: $scope.countryIdVal}
+                            }).success(function (data) {
+                                //console.log(data);
+                                $scope.stateList = data;
+                            });
+                        };
+                        $scope.onStateChange = function () {
+                            $scope.stateIdVal = $scope.user.state_id;
+                            // console.log(“data state processing”+$scope.stateIdVal);
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile/getCityByStateId',
+                                data: {stateId: $scope.stateIdVal}
+                            }).success(function (data) {
+                                //console.log(data);
+                                $scope.cityList = data;
+                            });
+                        };
+
                         // calling our submit function.
                         $scope.submitForm = function () {
                             // Posting data to php file
                             $http({
                                 method: 'POST',
-                                url: base_url + 'business_profile/ng_bus_info_insert',
+                                url: base_url + 'business_profile_registration/ng_bus_info_insert',
                                 data: $scope.user, //forms user object
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
@@ -202,7 +206,12 @@
                                             $scope.errorPincode = data.errors.pincode;
                                             $scope.errorPostalAddress = data.errors.business_address;
                                         } else {
-                                            $scope.message = data.message;
+                                            if(data.is_success == '1'){
+                                                window.location.href = base_url + 'business-profile/contact-information';
+                                            }else{
+                                                return false;
+                                            }
+                                            //$scope.message = data.message;
                                         }
                                     });
                         };
@@ -211,8 +220,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-<!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>

@@ -40,37 +40,6 @@ class Business_profile extends MY_Controller {
 // GET BUSINESS PROFILE DATA
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if (count($userdata) > 0) {
-                if ($userdata[0]['business_step'] == 1) {
-                    redirect('business-profile/contact-information', refresh);
-                } else if ($userdata[0]['business_step'] == 2) {
-                    redirect('business-profile/description', refresh);
-                } else if ($userdata[0]['business_step'] == 3) {
-                    redirect('business-profile/image', refresh);
-                } else if ($userdata[0]['business_step'] == 4) {
-                    redirect('business-profile/home', refresh);
-                } else if ($userdata[0]['business_step'] == 5) {
-                    redirect('business-profile/home', refresh);
-                }
-            } else {
-                redirect('business-profile/business-information', refresh);
-            }
-        }
-    }
-
-    public function business_information() {
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $userid = $this->session->userdata('aileenuser');
-
-        $contition_array = array('user_id' => $userid, 'status' => '0');
-        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        if ($businessdata) {
-            $this->load->view('business_profile/reactivate', $this->data);
-        } else {
-            $userid = $this->session->userdata('aileenuser');
-// GET BUSINESS PROFILE DATA
-            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-            $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // GET COUNTRY DATA
             $contition_array = array('status' => 1);
             $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -80,8 +49,8 @@ class Business_profile extends MY_Controller {
 // GET CITY DATA
             $contition_array = array('status' => 1);
             $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name,state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
             if (count($userdata) > 0) {
+
                 if ($userdata[0]['business_step'] == 1) {
                     redirect('business-profile/contact-information', refresh);
                 } else if ($userdata[0]['business_step'] == 2) {
@@ -95,77 +64,9 @@ class Business_profile extends MY_Controller {
                 }
             } else {
                 //$this->load->view('business_profile/business_info', $this->data);
-                $this->load->view('business_profile/ng_business_info', $this->data);
+                redirect('business-profile/signup/business-information', refresh);
             }
         }
-    }
-
-    public function getCountry() {
-        $this->load->model('User_model');
-        echo json_encode($this->User_model->getCountry());
-    }
-
-    public function getStateByCountryId() {
-
-        $this->load->model('User_model');
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        if ($request->countryId != '') {
-            $stateList = $this->User_model->getStateByCountryId($request->countryId);
-            $statearray = array();
-            for ($i = 0; $i < count($stateList); $i++) {
-                $statearray[] = array('id' => $stateList[$i]->stateId, 'stateName' => $stateList[$i]->stateName, 'complete' => 'true');
-            }
-            echo json_encode($statearray);
-        } else {
-            echo json_encode(array('status' => 'failure'));
-        }
-    }
-
-    public function getCityByStateId() {
-
-        $this->load->model('User_model');
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        if ($request->stateId != '') {
-            $cityList = $this->User_model->getCityByStateId($request->stateId);
-            $array = array();
-            for ($i = 0; $i < count($cityList); $i++) {
-                $array[] = array('id' => $cityList[$i]->cityId, 'cityName' => $cityList[$i]->cityName, 'complete' => 'true');
-            }
-            echo json_encode($array);
-        } else {
-            echo json_encode(array('status' => 'failure'));
-        }
-    }
-
-    public function ng_bus_info_insert() {
-        $errors = array();
-        $data = array();
-
-        // Getting posted data and decodeing json
-        $_POST = json_decode(file_get_contents('php://input'), true);
-
-// checking for blank values.
-        if (empty($_POST['companyname']))
-            $errors['companyname'] = 'Companyname is required.';
-
-        if (empty($_POST['country']))
-            $errors['country'] = 'Country is required.';
-
-        if (empty($_POST['state']))
-            $errors['state'] = 'State is required.';
-
-        if (empty($_POST['business_address']))
-            $errors['business_address'] = 'Business address is required.';
-
-        if (!empty($errors)) {
-            $data['errors'] = $errors;
-        } else {
-            $data['message'] = 'Form data is going well';
-        }
-// response back.
-        echo json_encode($data);
     }
 
     public function minify_css() {
@@ -620,7 +521,7 @@ class Business_profile extends MY_Controller {
         $this->business_profile_active_check();
 
         if ($this->input->post('next')) {
-
+            
             $this->form_validation->set_rules('business_type', 'Business type', 'required');
             $this->form_validation->set_rules('industriyal', 'Industriyal', 'required');
             $this->form_validation->set_rules('business_details', 'Details', 'required');
@@ -1086,11 +987,11 @@ class Business_profile extends MY_Controller {
             $contition_array = array('follow_type' => 2, 'follow_status' => 1);
             $search_condition = "((follow_from  = '$loginuser' AND follow_to  = ' $other_user') OR (follow_from  = '$other_user' AND follow_to  = '$loginuser'))";
             $followperson = $this->common->select_data_by_search('follow', $search_condition, $contition_array, $data = 'count(*) as follow_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
-            $contition_array = array('contact_type' => 2, 'status' => 'confirm');
+            
+            $contition_array = array('contact_type' => 2, 'status'=> 'confirm');
             $search_condition = "((contact_from_id  = '$userid' AND contact_to_id = ' $other_user_id') OR (contact_from_id  = '$other_user_id' AND contact_to_id = '$userid'))";
             $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as contact_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-
+            
             if ($followperson[0]['follow_count'] == 2 || $contactperson[0]['contact_count'] == 1) {
                 $this->data['is_eligable_for_post'] = 1;
             }
@@ -10985,7 +10886,7 @@ Your browser does not support the audio tag.
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
-
+       
         $return_html = '';
 
         if (empty($_GET["total_record"])) {
@@ -11954,10 +11855,10 @@ Your browser does not support the audio tag.
 
         return $contacts_count;
     }
-
-    public function mail_test() {
+    
+    public function mail_test(){
         $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
-        //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
+    //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
 
 }

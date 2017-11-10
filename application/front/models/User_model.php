@@ -6,7 +6,7 @@ if (!defined('BASEPATH'))
 class User_model extends CI_Model {
 
     public function getCountry() {
-        $this->db->select('country_id,countryName')->from('countries');
+        $this->db->select('country_id,country_name')->from('countries');
 
         $query = $this->db->get();
 

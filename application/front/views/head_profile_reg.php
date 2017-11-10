@@ -66,6 +66,7 @@ if(IS_CSS_MINIFY == '0'){
 <link rel="stylesheet"  type="text/css" href="<?php echo base_url('assets/css_min/common-header.min.css?ver=' . time()); ?>">    
 <?php }
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 <?php
 if ($this->uri->segment(1) == 'dashboard') {
     ?>
