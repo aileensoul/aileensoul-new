@@ -177,7 +177,7 @@
     </script>
     <!-- all popup close close using esc end -->
 
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
     $(document).ready(function() {
 var images = new Array()
             function preload(image) {
@@ -197,7 +197,7 @@ var images = new Array()
                    
             )
 });
-</script>
+</script>-->
 
     <script type="text/javascript" charset="utf-8">
 

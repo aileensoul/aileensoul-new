@@ -206,29 +206,7 @@
 
 </script>
 <!-- script for fetch all unread message notification end-->
-<!--SCRIPT FOR LOAD IMAGES BEFORE PAGE LOAD START-->
-<script type="text/javascript">
-    $(document).ready(function() {
-var images = new Array()
-            function preload(image) {
-              
-                for (i = 0; i < preload.arguments.length; i++) {
-                    images[i] = new Image()
-                    images[i].src = preload.arguments[i]
-                }
-            }
-            preload(
-                    
-                
-                      <?php echo base_url('assets/img/h3.png'); ?>,
-                      <?php echo base_url('assets/img/index.png'); ?>,
-                      <?php echo base_url('assets/img/edit_profile.png'); ?>,
 
-                   
-            )
-});
-</script>
-<!--SCRIPT FOR LOAD IMAGES BEFORE PAGE LOAD END-->
 <!-- script for update all read msg notification start-->
 <script type="text/javascript">
     
