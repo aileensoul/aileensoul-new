@@ -1,7 +1,7 @@
 /***  Business Profile  ***/
 
 .bui_bcon {
-    width: 67%;
+    width: 63%;
 	padding-left:10px !important;
 }
 .job-saved-box {
@@ -1131,7 +1131,7 @@ label.cameraButton:active {
     text-align: justify;
     font-size: 13px;
     color: black;
-    word-break: break-all;
+    /*word-break: break-all;*/
 }
 .post-design-mid {
     padding-top: 5px;
@@ -2925,7 +2925,7 @@ label.cameraButton:active {
     color: #000;
     padding: 15px 14px;
     border-bottom: 1px solid #d9d9d9;
-    font-family: robotoregular;
+    font-family: arial;
 }
 .contact-list .list-title2 {
     padding: 15px 30px !important;
@@ -2933,6 +2933,7 @@ label.cameraButton:active {
 .all-list {
     width: 100%;
     text-align: center;
+    float: left;
     background-color: white;
 }
 .all-list ul {
@@ -2967,7 +2968,7 @@ label.cameraButton:active {
     height: 110px;
 }
 .profile-content a {
-    font-family: robotoregular;
+    font-family: arial;
     width: 100%;
     padding-top: 15px;
     color: #000;
@@ -4327,7 +4328,7 @@ div .comment {
 	
 .post-design-product .ctre_date:before{content:"·"; }
 .animated.fadeInUp{animation-fill-mode: none;}
-.user_btn .contact_user_list{width:130px; margin-bottom:0; margin-right:0;}
+.user_btn .contact_user_list{width:120px; margin-bottom:0; margin-right:0;}
 .profile-job-post-location-name .user_lst ul li .user_btn{padding-top:7px;}
 #followdiv button{margin-right:0;}
 /*** add post  ***/
