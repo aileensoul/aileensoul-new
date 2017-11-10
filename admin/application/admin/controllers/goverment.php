@@ -683,7 +683,7 @@ public function edit_gov_post($id)
         $this->data['module_name'] = 'Goverment Edit Job Post';
         $this->data['section_title'] = 'Goverment Edit Job Post';
 
-       $data='id,title,category_id,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+       $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
        $contition_array = array('id' => $id);
         $this->data['post'] = $this->common->select_data_by_condition('gov_post', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 
