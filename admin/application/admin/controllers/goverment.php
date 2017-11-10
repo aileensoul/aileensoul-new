@@ -761,7 +761,7 @@ public function edit_gov_post_insert($id ='')
         
         if (empty($_FILES['post_image']['name'])) {
          
-           $dataimage= $this->input->post('old_image');
+           $gov_image= $this->input->post('old_image');
           // echo $userimage;die();
            
         } else {
