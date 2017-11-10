@@ -42,6 +42,7 @@ echo $leftmenu;
                         ?>
                     </div>
                     <!-- form start -->
+                    
                     <?php
                     $form_attr = array('id' => 'edit_gov_post', 'enctype' => 'multipart/form-data');
                     echo form_open_multipart('goverment/edit_gov_post_insert/'.$post[0]['id'], $form_attr);
@@ -180,6 +181,20 @@ echo $leftmenu;
                         </div>
                     </div>
 
+                    <div class="box-body">                   
+                        <div class="form-group col-sm-10">
+                            <label  name="goveimg" id="govelg">Post Image</label>
+                            <?php if($post[0]['post_image']){ ?>
+                            <img src="<?php echo GOV_THUMB_UPLOAD_URL . $post[0]['post_image']; ?>" alt=""  style="height: 70px; width: 70px;">
+                            <?php }else{?>
+                            <img alt="" style="height: 70px; width: 70px;" class="img-circle" src="<?php echo SITEURL.(NOIMAGE); ?>" alt="" />
+                            <?php } ?>
+                            <input type="hidden" class="form-control" name="old_image" id="old_image" value=" <?php echo $post[0]['post_image']; ?>" >
+                        </div>
+                        <div class="col-sm-10">
+                        <input type="file" class="form-control" name="post_image" id="post_image" value="<?php $post[0]['post_image']; ?>">
+                        </div>
+                    </div>
 
                     <div class="box-body">                   
                         <div class="form-group col-sm-10">

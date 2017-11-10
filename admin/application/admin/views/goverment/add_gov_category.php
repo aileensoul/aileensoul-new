@@ -48,7 +48,7 @@ echo $leftmenu;
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govtitle" name="govtitle" id="govtitle">Name*</label>
-                            <input type="text" class="form-control" name="gov_name" id="gov_name" value="">
+                            <input type="text" class="form-control" name="gov_name" id="gov_name" value="" placeholder="Enter Category Name">
                     </div>
                     </div>
 
@@ -88,25 +88,15 @@ echo $leftmenu;
             rules: {
                 gov_name: {
                     required: true,
-            //         remote: { 
-            //         url: base_url + "admin/goverment/check_category",
-            //         type: "post",
-            //         data: { 
-            //            gov_name: function() {
-            //            return $( "#gov_name" ).val();
-            //       }
-            //    }
-            // }
-                //     remote: {
-                //     url: base_url + "admin/goverment/check_category",
-                //     type: "post",
-                //     data: { 
-                //         gov_name: function () {
-                //             return $("#gov_name").val();
-                //         },
-                //     },
-                // },
-
+                    remote: { 
+                    url: base_url + "goverment/check_category",
+                    type: "post",
+                    data: { 
+                       gov_name: function() {
+                       return $( "#gov_name" ).val();
+                  }
+               }
+            }
                 },
                
             },
@@ -114,7 +104,7 @@ echo $leftmenu;
                     {
                         gov_name: {
                             required: "Please enter goverment category name",
-                            //remote: "Goverment category already exists",
+                            remote: "Goverment category already exists",
                         },
                        
                     },
