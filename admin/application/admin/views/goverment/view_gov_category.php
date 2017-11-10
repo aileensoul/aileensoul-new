@@ -238,9 +238,27 @@ echo $leftmenu;
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
+
+
+<!-- Bid-modal  -->
+      <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+
+
+
 <!-- Footer start -->
 <?php echo $footer; ?>
 <!-- Footer End -->
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
@@ -252,12 +270,14 @@ echo $leftmenu;
 <script>
 //Delete user Start
    function delete_category(id) 
-   {
-   
-       $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this Category?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
+   { 
+        $('.biderror .mes').html("<div class='pop_content'>Are you Sure you want to Delete this Category?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='category_deleted(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('#bidmodal').modal('show');
 
-        $('.message #delete').on('click', function () 
-        {
+}
+
+function category_deleted(id)
+   {
             $.ajax({
                          type: 'POST',
                           url: '<?php echo base_url() . "goverment/delete_category" ?>',
@@ -265,10 +285,9 @@ echo $leftmenu;
                           success: function (response) 
                           {          
                                  $('#' + 'category_del' + id).remove();
-                                  $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this Category?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
                           }
             });   
-        });
+      
     }
 //Delete user End
 
