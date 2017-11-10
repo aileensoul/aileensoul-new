@@ -237,7 +237,7 @@
                     $('#seemsg').html(data.seeall);
                  setTimeout(
                         chatmsg,
-                       100000
+                       10000000000000
                         );
                 },
              error: function (XMLHttpRequest, textStatus, errorThrown) {

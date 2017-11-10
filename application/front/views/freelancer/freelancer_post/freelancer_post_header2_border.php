@@ -300,7 +300,7 @@ var images = new Array()
                     $('#seemsg').html(data.seeall);
                     setTimeout(
                             chatmsg,
-                            100000
+                            100
                             );
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
