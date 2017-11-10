@@ -43,7 +43,7 @@ public function add_gov_category_insert()
  {
         //echo "<pre>"; print_r($this->input->post()); die();
          $data = array(
-                'name' => $this->input->post('gov_name'),
+                'name' => trim($this->input->post('gov_name')),
                 'status' => $this->input->post('status'),
                 'created_date' => date('Y-m-d H:i:s', time()),
                 'is_delete' => '0'
@@ -453,19 +453,19 @@ public function add_gov_post_insert()
 
 
          $data = array(
-                'title' => $this->input->post('post_title'),
+                'title' => trim($this->input->post('post_title')),
                 'category_id' => $this->input->post('category'),
-                'post_name' => $this->input->post('postname'),
-                'no_vacancies' => $this->input->post('novacan'),
-                'pay_scale' => $this->input->post('payscale'),
-                'job_location' => $this->input->post('jobloc'),
-                'req_exp' => $this->input->post('reqexp'),
-                'post_image' => $dataimage,
-                'sector' => $this->input->post('gov_sector'),
-                'eligibility' => $this->input->post('gov_elg'),
+                'post_name' => trim($this->input->post('postname')),
+                'no_vacancies' => trim($this->input->post('novacan')),
+                'pay_scale' => trim($this->input->post('payscale')),
+                'job_location' => trim($this->input->post('jobloc')),
+                'req_exp' => trim($this->input->post('reqexp')),
+                'post_image' => trim($dataimage),
+                'sector' => trim($this->input->post('gov_sector')),
+                'eligibility' => trim($this->input->post('gov_elg')),
                 'last_date' => $last_date,
                 'description' => $this->input->post('gov_des'),
-                'apply_link' => $this->input->post('gov_link'),
+                'apply_link' => trim($this->input->post('gov_link')),
                 'status' => $this->input->post('status'),
                 'created_date' => date('Y-m-d H:i:s', time()),
                 'is_delete' => '0'

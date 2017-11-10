@@ -48,7 +48,7 @@ echo $leftmenu;
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govtitle" name="govtitle" id="govtitle">Name*</label>
-                            <input type="text" class="form-control" name="gov_name" id="gov_name" value="">
+                            <input type="text" class="form-control" name="gov_name" id="gov_name" value="" placeholder="Enter Category Name">
                     </div>
                     </div>
 

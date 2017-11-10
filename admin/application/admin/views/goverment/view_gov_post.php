@@ -103,39 +103,11 @@ echo $leftmenu;
                     </th>
 
                     <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">No Vacancies</a>
-                    </th>
-
-                    <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Pay Scale</a>
-                    </th>
-
-                    <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Job Location</a>
-                    </th>
-
-                    <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Require Experience</a>
-                    </th>
-
-                    <th><i class="fa fa-fw fa-pencil"></i> 
                     <a href="javascript:void(0);">Post Image</a>
-                    </th>
-
-                    <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Sector</a>
-                    </th>
-
-                     <th><i class="fa fa-fw fa-pencil"></i> 
-                    <a href="javascript:void(0);">Eligibility</a>
                     </th>
 
                     <th><i class=" fa fa-edit"></i> 
                      <a href="javascript:void(0);">last_date</a>
-                     </th>
-
-                     <th><i class=" fa fa-edit"></i> 
-                     <a href="javascript:void(0);">Description</a>
                      </th>
 
                      <th><i class=" fa fa-edit"></i> 
@@ -144,9 +116,6 @@ echo $leftmenu;
 
                      <th><i class=" fa fa-edit"></i> 
                      <a href="javascript:void(0);">Created_date</a>
-                     </th>
-                     <th><i class=" fa fa-edit"></i> 
-                     <a href="javascript:void(0);">Modified_date</a>
                      </th>
 
                      <th><i class=" fa fa-edit"></i> 
@@ -180,21 +149,13 @@ echo $leftmenu;
                     </td>
 
                     <td><?php echo $cat['post_name']; ?></td>
-                    <td><?php echo $cat['no_vacancies']; ?></td>
-                    <td><?php echo $cat['pay_scale']; ?></td>
-                    <td><?php echo $cat['job_location']; ?></td>
-                    <td><?php echo $cat['req_exp']; ?></td>
                     <td>
-                      <img src="<?php echo GOV_THUMB_UPLOAD_URL . $cat['post_image']; ?>">
+                      <img src="<?php echo GOV_THUMB_UPLOAD_URL . trim($cat['post_image']); ?>">
                     </td>
-                    <td><?php echo $cat['sector']; ?></td>
-                    <td><?php echo $cat['eligibility']; ?></td>
                     <td><?php echo $cat['last_date']; ?></td>
-                    <td><?php echo $cat['description']; ?></td>
                     <td><?php echo $this->common->make_links($cat['apply_link']); ?></td>
                     <td><?php echo $cat['created_date']; ?></td>
-                    <td><?php echo $cat['modified_date']; ?></td>
-
+                    
                     <td>
                         <?php if($cat['status']=="1")
                         {
