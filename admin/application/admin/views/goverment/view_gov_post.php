@@ -141,7 +141,10 @@ echo $leftmenu;
                 <tr id="category_del<?php echo $cat['id']?>">
                     <td><?php echo $i++; ?></td>
                     <td><?php echo ucfirst($cat['title']); ?></td>
-                    <td><?php echo $cat['category_id']; ?></td>
+                    <td>
+                        <?php echo $cat['category_id']; ?>
+                            
+                    </td>
                     <td><?php echo $cat['sector']; ?></td>
                     <td><?php echo $cat['eligibility']; ?></td>
                     <td><?php echo $cat['last_date']; ?></td>
@@ -166,7 +169,7 @@ echo $leftmenu;
                         <i class="fa fa-trash-o"></i>
                         </button>
 
-                        <a class="btn btn-success btn-xs" href="<?php echo base_url('goverment/edit_gov_post/'.$cat['id'] ); ?>">
+                        <a class="btn btn-success btn-xs" href="<?php echo base_url('goverment1/edit_gov_post/'.$cat['id'] ); ?>">
                          <i class="fa fa-fw fa-eye"></i>
                         </a>
                     </td>
