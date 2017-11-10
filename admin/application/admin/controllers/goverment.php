@@ -515,7 +515,7 @@ public function view_gov_post(){
   
         $this->data['offset'] = $offset;
 
-       $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+       $data='id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,post_image,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
        $contition_array = array('is_delete' => '0');
         $this->data['post'] = $this->common->select_data_by_condition('gov_post', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 // This is userd for pagination offset and limoi End
