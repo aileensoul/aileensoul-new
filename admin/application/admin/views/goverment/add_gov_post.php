@@ -55,7 +55,7 @@ echo $leftmenu;
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govcat" name="govcat" id="govcat">Category*</label>
-                             <select name="category" id="category" tabindex="1">
+                             <select name="category" id="category" tabindex="1" class="form-control">
                                <option value="">Select job Category</option> 
                             <?php                             
                                       foreach($job_category as $cnt){ 
@@ -65,10 +65,47 @@ echo $leftmenu;
                     </div>
                     </div>
 
+
+                    <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="post_name" name="post_name" id="post_name">Post Name</label>
+                            <input type="text" class="form-control" name="postname" id="postname" value="" placeholder="Enter post Name">
+                    </div>
+                    </div>
+
+
+                    <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="novac" name="novac" id="novac">No Vacancies</label>
+                            <input type="text" class="form-control" name="novacan" id="novacan" value="" placeholder="Enter No Vacancies">
+                    </div>
+                    </div>
+
+                    <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="paysc" name="paysc" id="paysc">pay Scale</label>
+                            <input type="text" class="form-control" name="payscale" id="payscale" value="" placeholder="Enter pay Scale">
+                    </div>
+                    </div>
+
+                    <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="paysc" name="jobl" id="jobl">Job Location</label>
+                            <input type="jobl" class="form-control" name="jobloc" id="jobloc" value="" placeholder="Enter Job Location">
+                    </div>
+                    </div>
+
+                    <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="reqe" name="reqe" id="reqe">Require Experience</label>
+                            <input type="text" class="form-control" name="reqexp" id="reqexp" value="" placeholder="Enter require experience">
+                    </div>
+                    </div>
+
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govtitle" name="govsector" id="govsector">Sector</label>
-                            <input type="text" class="form-control" name="gov_sector" id="gov_sector" value="" placeholder="Enter Job Sector">
+                            <input type="text" class="form-control" name="gov_sector" id="gov_sector" value="" placeholder="Enter Post Sector">
                     </div>
                     </div>
 

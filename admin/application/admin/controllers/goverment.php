@@ -402,6 +402,11 @@ public function add_gov_post_insert()
          $data = array(
                 'title' => $this->input->post('post_title'),
                 'category_id' => $this->input->post('category'),
+                'post_name' => $this->input->post('postname'),
+                'no_vacancies' => $this->input->post('novacan'),
+                'pay_scale' => $this->input->post('payscale'),
+                'job_location' => $this->input->post('jobloc'),
+                'req_exp' => $this->input->post('reqexp'),
                 'sector' => $this->input->post('gov_sector'),
                 'eligibility' => $this->input->post('gov_elg'),
                 'last_date' => $last_date,
