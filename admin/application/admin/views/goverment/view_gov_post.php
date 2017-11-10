@@ -185,7 +185,7 @@ echo $leftmenu;
                     <td><?php echo $cat['job_location']; ?></td>
                     <td><?php echo $cat['req_exp']; ?></td>
                     <td>
-                      <img src="<?php echo GOV_MAIN_UPLOAD_URL . $cat['post_image']; ?>">
+                      <img src="<?php echo GOV_THUMB_UPLOAD_URL . $cat['post_image']; ?>">
                     </td>
                     <td><?php echo $cat['sector']; ?></td>
                     <td><?php echo $cat['eligibility']; ?></td>
