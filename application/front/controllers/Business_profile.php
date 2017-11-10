@@ -1070,10 +1070,10 @@ class Business_profile extends MY_Controller {
         $business_main_profile = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
 
         if ($id != '') {
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => '1', 'business_step' => 4);
             $business_data = $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'user_id,business_profile_id,company_name,contact_email,contact_person,contact_mobile,contact_website,details,address,city,country', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
-            $contition_array = array('user_id' => $userid, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => '1', 'business_step' => 4);
             $business_data = $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'user_id,business_profile_id,company_name,contact_email,contact_person,contact_mobile,contact_website,details,address,city,country', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         if ($business_main_slug == $id) {
