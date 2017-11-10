@@ -3643,7 +3643,7 @@ class Chat extends MY_Controller {
         $userlist = $this->data['userlist'] = array_merge($return_arraysel, $userlist);
         $userlist = $this->aasort($userlist, "id");
 
-        foreach ($userlist as $user) {
+        foreach ($userlist as $user) {   
             if ($user['user_id'] != $toid) {
 
                 $usrsrch .= '<a href="' . base_url() . 'chat/' . $function . '/' . $message_from_profile . '/' . $message_to_profile . '/' . $user['user_id'] . '">';
@@ -3776,6 +3776,9 @@ class Chat extends MY_Controller {
             $notmsg .= '<li class="';
             if ($not[0]['not_active'] == 1 && ($this->uri->segment(3) != $msg['user_id'])) {
                 $notmsg .= 'active2';
+            }else{
+                $notmsg .= 'active';
+                
             }
             $notmsg .= '">';
             $notmsg .= '<a href="' . base_url() . 'chat/abc/' . $message_from_profile . '/' . $message_to_profile . '/' . $msg['user_id'] . '/' . $not[0]['not_id'] . '" class="clearfix msg_dot" style="padding:0px!important;">';
