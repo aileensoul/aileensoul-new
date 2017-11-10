@@ -88,15 +88,15 @@ echo $leftmenu;
             rules: {
                 gov_name: {
                     required: true,
-            //         remote: { 
-            //         url: base_url + "admin/goverment/check_category",
-            //         type: "post",
-            //         data: { 
-            //            gov_name: function() {
-            //            return $( "#gov_name" ).val();
-            //       }
-            //    }
-            // }
+                    remote: { 
+                    url: base_url + "admin/goverment/check_category",
+                    type: "post",
+                    data: { 
+                       gov_name: function() {
+                       return $( "#gov_name" ).val();
+                  }
+               }
+            }
                 //     remote: {
                 //     url: base_url + "admin/goverment/check_category",
                 //     type: "post",
@@ -114,7 +114,7 @@ echo $leftmenu;
                     {
                         gov_name: {
                             required: "Please enter goverment category name",
-                            //remote: "Goverment category already exists",
+                            remote: "Goverment category already exists",
                         },
                        
                     },
