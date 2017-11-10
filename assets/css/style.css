@@ -1980,7 +1980,7 @@ body.no-login{padding-bottom:0;}
 .no-login.modal-open{overflow-y:auto;}
 
 li.active2 .notification-data-inside h6 i{font-weight: normal;}
-.notification_main_in div .notification_data_in li:active{background-color: #e9f6fc; }
+#notification_main_in .notification_data_in_h2 li.active{background-color: #e9f6fc;}
 
 
 /***  media query  ***/
