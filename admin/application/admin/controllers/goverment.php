@@ -261,6 +261,81 @@ public function add_gov_post_insert()
 }
 
 
+public function view_gov_post(){
+
+
+        $this->data['title'] = 'Goverment Job Post List| Aileensoul';
+        $this->data['module_name'] = 'Goverment Job Post List';
+        $this->data['section_title'] = 'Goverment Job Post List';
+
+
+         $limit = $this->paging['per_page'];
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $offset = ($this->uri->segment(5) != '') ? $this->uri->segment(5) : 0;
+
+            $sortby = $this->uri->segment(3);
+
+            $orderby = $this->uri->segment(4);
+
+        } else {
+
+            $offset = ($this->uri->segment(3) != '') ? $this->uri->segment(3) : 0;
+
+            $sortby = 'id';
+
+            $orderby = 'asc';
+
+        }
+  
+        $this->data['offset'] = $offset;
+
+       $data='id,title,category_id,sector,eligibility,last_date,description,apply_link,created_date,modified_date,status';
+       $contition_array = array('is_delete' => '0');
+        $this->data['post'] = $this->common->select_data_by_condition('gov_post', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
+// This is userd for pagination offset and limoi End
+
+      //echo "<pre>";print_r($this->data['users'] );die();
+
+        //This if and else use for asc and desc while click on any field start
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $this->paging['base_url'] = site_url("goverment/view_gov_post/" . $short_by . "/" . $order_by);
+
+        } else {
+
+            $this->paging['base_url'] = site_url("goverment/view_gov_post/");
+
+        }
+
+        if ($this->uri->segment(3) != '' && $this->uri->segment(4) != '') {
+
+            $this->paging['uri_segment'] = 5;
+
+        } else {
+
+            $this->paging['uri_segment'] = 3;
+
+        }
+        //This if and else use for asc and desc while click on any field End
+
+
+        $contition_array = array( 'is_delete =' => '0');
+        $this->paging['total_rows'] = count($this->common->select_data_by_condition('gov_post', $contition_array, 'id'));
+
+        $this->data['total_rows'] = $this->paging['total_rows'];
+
+        $this->data['limit'] = $limit;
+
+        $this->pagination->initialize($this->paging);
+
+        $this->data['search_keyword'] = '';
+
+ 
+        $this->load->view('goverment/view_gov_post', $this->data);
+
+}
+
 }
 
 ?>
