@@ -212,7 +212,7 @@ li.fr a {
     word-break: break-word;
     word-wrap: break-word !important;
     word-break: break-word !important;
-    cursor: default;
+    cursor: pointer;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
