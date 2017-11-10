@@ -4559,10 +4559,7 @@ if($this->input->post('livepost')){
                 $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
 
                 $return_html .= '<li class="text_overflow">';
-
-                if ($this->session->userdata('aileenuser')) {
-
-                    $cache_time = $this->db->get_where('job_title', array(
+$cache_time = $this->db->get_where('job_title', array(
                                 'title_id' => $post['post_name']
                             ))->row()->name;
 
@@ -4586,6 +4583,8 @@ if($this->input->post('livepost')){
 
                     $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
                     $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if ($this->session->userdata('aileenuser')) {
+
                     $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
 //  $return_html .= '<a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" class="post_title" >';
                 } else {

@@ -226,9 +226,14 @@
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
+   var skill = '<?php echo  $keyword; ?>';
+    var skill = skill.replace('-', ' ');
+    
     var place = '<?php echo  $keyword1; ?>';
     var place = place.replace('-', ' ');
     
+    var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
+    var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';  
     
            
 //           if(skill == ""){

@@ -3253,14 +3253,16 @@ class Recruiter extends MY_Controller {
         $data = "job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.slug,job_reg.designation,job_reg.phnno,job_reg.keyskill,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.job_user_image,job_add_edu.*,job_graduation.*,save.status,save.save_id";
         $contition_array1 = array('save.from_id' => $userid, 'save.status' => 0, 'save.save_type' => 1);
         $recdata1 = $this->common->select_data_by_condition('save', $contition_array1, $data, $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
-
         foreach ($recdata1 as $ke => $arr) {
             $recdata2[] = $arr;
         }
+
         $new = array();
         foreach ($recdata2 as $value) {
-            $new[$value['user_id']] = $value;
+            
+           $new[$value['userid']] = $value;
         }
+
         $savedata = $new;
 
 
