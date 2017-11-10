@@ -44,7 +44,7 @@ echo $leftmenu;
                     <!-- form start -->
                     <?php
                     $form_attr = array('id' => 'edit_gov_post', 'enctype' => 'multipart/form-data');
-                    echo form_open_multipart('goverment/add_gov_post_insert', $form_attr);
+                    echo form_open_multipart('goverment/edit_gov_post_insert/'.$post[0]['id'], $form_attr);
                     ?>
                     <div class="box-body">                   
                         <div class="form-group col-sm-10">
@@ -56,7 +56,7 @@ echo $leftmenu;
                     <div class="box-body">                   
                         <div class="form-group col-sm-10">
                             <label for="govcat" name="govcat" id="govcat">Category*</label>
-                            <select name="category" id="category" tabindex="1">
+                            <select name="category" id="category" tabindex="1" class="form-control">
                                 <option value="">Select job Category</option> 
                                 <?php
                                 foreach ($job_category as $cnt) {
