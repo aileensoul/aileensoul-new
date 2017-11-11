@@ -3204,7 +3204,7 @@ if($this->input->post('livepost')){
                 echo '<option value="">Select stream</option>';
                 foreach ($stream as $st) {
                     echo '<option value="' . $st['stream_id'] . '">' . $st['stream_name'] . '</option>';
-                    die();
+                    
                 }
             } else {
                 echo '<option value="">Stream not available</option>';
