@@ -2131,7 +2131,7 @@ class Recruiter extends MY_Controller {
                                     $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
 
 
-                                    $rec_post .= '' . $cache_time . '';
+                                    $rec_post .= '' . ucfirst($cache_time) . '';
                                     $k++;
                                 }
                             } else if ($post['degree_name'] && $post['other_education']) {
@@ -2142,7 +2142,7 @@ class Recruiter extends MY_Controller {
                                     $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
 
 
-                                    $rec_post .= '' . $cache_time . '';
+                                    $rec_post .= '' . ucfirst($cache_time) . '';
                                     $k++;
                                 } $rec_post .= '","' . $post['other_education'] . '';
                             }
@@ -2408,18 +2408,18 @@ class Recruiter extends MY_Controller {
                                         $rec_post .= $comma;
                                     }
                                     $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
-                                    $rec_post .= $cache_time;
+                                    $rec_post .= ucfirst($cache_time);
                                     $k++;
                                 }
                             } else if ($post['degree_name'] && $post['other_education']) {
                                 foreach ($edu_nm as $edun) {
                                     if ($k != 0) {
-                                        $rec_post .= $comma;
+                                        $rec_post .= ucfirst($comma);
                                     }
                                     $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
                                     $rec_post .= $cache_time;
                                     $k++;
-                                } $rec_post .= "," . $post['other_education'];
+                                } $rec_post .= "," . ucfirst($post['other_education']);
                             }
 
                             $rec_post .= '</span>
