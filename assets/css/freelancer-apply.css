@@ -1492,7 +1492,7 @@ label.cameraButton input[accept*="camera"] {
 
 .modal-content .fw a.btn:hover{background-color: #156f95!important;color: #fff!important;}
 .custom-opt .optional{float: none;padding-left: 10px;}
-
+.portfolio_attachment{border: 1px solid #cacaca !important;}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {

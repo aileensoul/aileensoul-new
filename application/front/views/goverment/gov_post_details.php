@@ -67,7 +67,7 @@ SBI Life Insurance Company Limited is a joint venture between the State Bank of 
 					<h3>Government job<a href="#" class="pull-right">All Job</a></h3>
 				</div>
 				<div class="gov-job-list">
-					<marquee direction="up" scrollamount="3" onmouseover="this.setAttribute('scrollamount', 0, 0);" onmouseout="this.setAttribute('scrollamount', 6, 0);">
+					
 						<ul>
 							<li><a href="#">Bank Job</a></li>
 							<li><a href="#">ONGC Job</a></li>
@@ -78,23 +78,9 @@ SBI Life Insurance Company Limited is a joint venture between the State Bank of 
 							<li><a href="#">Bank Job</a></li>
 							<li><a href="#">ONGC Job</a></li>
 							<li><a href="#">Railways Job</a></li>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
+							
 						</ul>
-					</marquee>
+					
 				</div>
 			</div>
 		</div>

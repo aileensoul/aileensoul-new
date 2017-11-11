@@ -4169,6 +4169,7 @@ div .comment {
 
 .search_button button{margin-left: 0px;}
 .post-design-mid .mejs__audio{width: 300px !important;}     
+.multi-select-container span.custom-mini-select{color:#999;}
 
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
