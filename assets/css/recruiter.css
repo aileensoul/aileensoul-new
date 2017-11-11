@@ -1112,7 +1112,7 @@ fieldset.fresher_radio label {
     .custom_footer_dot{ padding: 0px 1px 0px; }
     .custom_footer_left ul li{padding: 0 6px;}
     .art_no_post_text{font-size: 23px;}
-    .but1{font-size: 16px; padding: 7px 4px 7px 0px; margin-left: 29px;}
+    .but1{font-size: 16px; padding: 8px 4px 8px 0px; margin-left: 29px;}
 	.custom-right{margin-left: 5%;}
 	 .profile-box{width:300px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
@@ -1721,7 +1721,7 @@ fieldset.fresher_radio label {
 }
 
 @media screen and (max-width: 360px) {
-    .back {width: 73%;}
+    .back {width: 55%;}
 	#paddingtop_fixed{padding-top:70px !important;}
     .profile-job-post-location-name-rec .designation_rec {
 		width: 70% !important;
