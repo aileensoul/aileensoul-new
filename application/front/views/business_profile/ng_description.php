@@ -85,19 +85,28 @@
                                     <h3>
                                         Description
                                     </h3>
-                                    <?php echo form_open(base_url('business-profile/description-insert'), array('id' => 'businessdis', 'name' => 'businessdis', 'class' => 'clearfix')); ?>
                                     <form name="businessdis" ng-submit="submitForm()" id="businessdis" class="clearfix">
                                         <fieldset>
                                             <label>Business type:<span style="color:red">*</span></label>
-                                            <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" ng-options="business_typeItem.business_name for business_typeItem in businessTypeList" id="business_type" tabindex="1">
+                                            <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                 <option value="" selected="selected">Select Business type</option>
+                                                <?php
+                                                foreach ($business_type as $key => $type) { ?>
+                                                    <option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                <?php } ?>
+                                                <option value="">Other</option>    
                                             </select>
                                             <span ng-show="errorBusinessType" class="error">{{errorBusinessType}}</span>
                                         </fieldset>  
                                         <fieldset>
                                             <label>Category:<span style="color:red">*</span></label>
-                                            <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" ng-options="industriyalItem.industry_name for industriyalItem in industriyalList" id="industriyal" tabindex="2">
+                                            <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                 <option value="" selected="selected">Select Industry type</option>
+                                                <?php
+                                                foreach ($category_list as $key => $category) { ?>
+                                                    <option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                <?php } ?>
+                                                    <option value="">Other</option>
                                             </select>
                                             <span ng-show="errorCategory" class="error">{{errorCategory}}</span>
                                         </fieldset>  
@@ -126,7 +135,7 @@
                         // create a blank object to handle form data.
                         $scope.user = {};
 
-                        $scope.businessTypeList = undefined;
+                        /*$scope.businessTypeList = undefined;
                         $scope.industriyalList = undefined;
 
                         $http({
@@ -144,7 +153,7 @@
                             // console.log(data);
                             $scope.industriyalList = data;
                         });
-
+                        */
 
                         // calling our submit function.
                         $scope.submitForm = function () {
@@ -177,8 +186,8 @@
                     });
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-                <!--        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
-                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                        <!--        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
+                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/description.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>

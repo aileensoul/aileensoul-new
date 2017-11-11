@@ -31,13 +31,13 @@
         <?php
         }
         ?>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({
                 google_ad_client: "ca-pub-6060111582812113",
                 enable_page_level_ads: true
             });
-        </script>
+        </script>-->
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
@@ -51,7 +51,7 @@
        
 </head>
 <body>
-    <script type="application/ld+json">
+<!--    <script type="application/ld+json">
         {
         "@context": "http://schema.org",
         "@type": "Organization",
@@ -65,7 +65,7 @@
         "https://plus.google.com/+Aileensoul",
         ]
         }
-    </script>
+    </script>-->
     <div class="main-login">
         <header>
             <div class="container">
@@ -279,12 +279,12 @@
         <?php echo $login_footer ?>
     </div>
     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
                                             var loader = document.getElementById('adsense-loader');
                                             document.getElementById("adsense").appendChild(loader);
-    </script>
+    </script>-->
 
-    <div id="adsense-loader" style="display:block;">
+<!--    <div id="adsense-loader" style="display:block;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script type="text/javascript">
                                             (adsbygoogle = window.adsbygoogle || []).push({
@@ -292,7 +292,7 @@
                                                 enable_page_level_ads: true
                                             });
         </script>
-    </div>
+    </div>-->
     <script>
         var base_url = '<?php echo base_url(); ?>';
         var data = <?php echo json_encode($demo); ?>;

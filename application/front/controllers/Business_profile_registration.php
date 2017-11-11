@@ -239,19 +239,11 @@ class Business_profile_registration extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
-
+        $this->load->model('User_model');
+        $this->data['business_type'] = $this->User_model->getBusinessType();
+        $this->data['category_list'] = $this->User_model->getCategory();
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/ng_description', $this->data);
-    }
-    
-    public function getBusinessType(){
-        $this->load->model('User_model');
-        echo json_encode($this->User_model->getBusinessType());
-    }
-    
-    public function getCategory(){
-        $this->load->model('User_model');
-        echo json_encode($this->User_model->getCategory());
     }
     
     public function description_insert() {
