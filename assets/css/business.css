@@ -4439,6 +4439,7 @@ div .comment {
 .onebyone-carosel .prev { left: -33.33%; }
 .post-design-name ul li .other_name{line-height: 1.3;}
 
+.post-design-mid .mejs__audio{width: 300px !important;}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {
