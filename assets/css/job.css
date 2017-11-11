@@ -2192,9 +2192,30 @@ label.cameraButton input[accept*="camera"] {
     position: relative;
     width: 100%;
     margin-bottom: 25px;}
+/***  gov job css  ***/
+.gov-job-detail-left{width:918px; position:relative; float:left; border:1px solid #d9d9d9; background:#fff; border-radius:4px;}
+.gov-job-title{padding:15px; border-bottom:1px solid #d9d9d9;}
+.gov-job-title h3{font-size:17px; color:#5b5b5b; font-weight:bold; line-height:1.5;}
+.job-field{font-size:14px; color:#5b5b5b;}
+.gov-job-field{padding:12px 15px; border-bottom:1px solid #d9d9d9; width:100%; float:left;}
+.gov-job-field ul{padding-left:0;}
+.gov-job-field ul li{width:50%; float:left; list-style-type:none; margin-bottom:0; padding:3px 0;}
+.gov-job-detail{padding:15px; width:100%; float:left;}
+.gov-job-detail ul li{font-size:16px; margin-bottom:0; padding:3px;}
+.gov-job-detail ul{padding-top:5px;}
+.gov-job-detail p{padding-top:10px;}
+
+.gov-job-detail-right{border:1px solid #d9d9d9; background:#fff; border-radius:4px; width:315px; position:fixed; margin-left:935px; height:260px; overflow:hidden;}
+.gov-job-right-title{padding:15px; border-bottom:1px solid #d9d9d9;}
+.gov-job-right-title h3{font-size:17px; color:#5b5b5b; font-weight:bold; line-height:1.5;}
+.gov-job-right-title h3 a{font-size:14px; font-weight:normal; line-height:2;}
+.gov-job-list ul li{font-size:16px; padding:3px 0; margin-bottom:0;}
+.gov-job-list ul li a{font-size:16px; color:#5b5b5b;}
+.gov-job-list{padding-left:8px;}
+	
+	
+	
 /***  media query  ***/
-
-
 @media screen and (min-width: 768px) {
     .mob-progressbar.temp {
         display: none;
