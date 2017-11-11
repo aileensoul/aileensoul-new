@@ -4831,6 +4831,13 @@ class Freelancer extends MY_Controller {
     }
 
 //FREELANCER_APPLY BOTH OTHER END
+//FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE START
+public function save_shortlist($post_id = '',$saveuserid = ''){
+    
+    
+}
+//FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE END
+ // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE START
   public function freelancer_shortlist_list($post_id = ''){
       //echo $post_id;die();
       
@@ -4860,6 +4867,7 @@ class Freelancer extends MY_Controller {
       
       $this->load->view('freelancer/freelancer_hire/freelancer_shortlist', $this->data);
   }  
+  // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE END
 //FREELANCER HIRE POST LIVE LINK START
     public function live_post($userid = '', $postid = '', $posttitle = '') {
         $segment3 = explode('-', $this->uri->segment(3));
