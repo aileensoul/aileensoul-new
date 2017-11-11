@@ -23,7 +23,11 @@
         <div id="preloader"></div>
         <!-- START CONTAINER -->
         <section>
-            <div class="user-midd-section" id="paddingtop_fixed">
+               <?php if ($recdata[0]['re_step'] == 3) { ?>
+            <div class="user-midd-section" id="paddingtop_fixed" >
+                    <?php }else{ ?>
+                <div class="user-midd-section" id="paddingtop_make_fixed">
+                    <?php } ?>
                 <div class="common-form1">
                     <div class="col-md-3 col-sm-4"></div>
 
