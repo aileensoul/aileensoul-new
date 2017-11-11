@@ -161,7 +161,9 @@ function checkvalue() {
 
 $(document).ready(function () {
  var strUser1 = $('#skills').val();
- $("span").removeClass("custom-mini-select");
+ if(strUser1 != ''){
+  $("span").removeClass("custom-mini-select");
+ }
  });
 
 $(".alert").delay(3200).fadeOut(300);
