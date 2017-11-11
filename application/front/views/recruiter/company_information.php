@@ -24,6 +24,7 @@
         <!-- START CONTAINER -->
         <section>
                <?php if ($recdata[0]['re_step'] == 3) { ?>
+            
             <div class="user-midd-section" id="paddingtop_fixed" >
                     <?php }else{ ?>
                 <div class="user-midd-section" id="paddingtop_make_fixed">
