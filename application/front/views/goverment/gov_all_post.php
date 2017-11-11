@@ -16,32 +16,76 @@
 
 	<div class="user-midd-section" id="paddingtop_fixed">
 		<div class="container padding-360">
-			<div class="job-saved-box">
+			<div class="gov-job-detail-left">
+			<div class="gov-job-saved-box">
 				<h3>All Government Job</h3>
-				<div class="contact-frnd-post text-center">
+				<div class="contact-frnd-post">
 					<ul class="all-job-cat">
 						<li>
-							<div class="all-job-box">
-								<div class="job-box-left">
-									<img src="<?php echo base_url('assets/img/bank.png'); ?>">
+							<a href="#">
+								<div class="all-job-box">
+									<div class="job-box-left">
+										<img src="<?php echo base_url('assets/img/bank.png'); ?>">
+									</div>
+									<div class="all-job-right">
+										<span class="job-name">Bank Job</span>
+									</div>
 								</div>
-								<div class="all-job-right">
-									<span class="job-name">Bank Job</span>
-								</div>
-							</div>
+							</a>
 						</li>
 						<li>
-							<div class="all-job-box">
-								2
-							</div>
+							<a href="#">
+								<div class="all-job-box">
+									<div class="job-box-left">
+										<img src="<?php echo base_url('assets/img/bank.png'); ?>">
+									</div>
+									<div class="all-job-right">
+										<span class="job-name">Bank Job</span>
+									</div>
+								</div>
+							</a>
 						</li>
 						<li>
-							<div class="all-job-box">
-								3
-							</div>
+							<a href="#">
+								<div class="all-job-box">
+									<div class="job-box-left">
+										<img src="<?php echo base_url('assets/img/bank.png'); ?>">
+									</div>
+									<div class="all-job-right">
+										<span class="job-name">Bank Job</span>
+									</div>
+								</div>
+							</a>
 						</li>
+						<li>
+							<a href="#">
+								<div class="all-job-box">
+									<div class="job-box-left">
+										<img src="<?php echo base_url('assets/img/bank.png'); ?>">
+									</div>
+									<div class="all-job-right">
+										<span class="job-name">Bank Job</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="all-job-box">
+									<div class="job-box-left">
+										<img src="<?php echo base_url('assets/img/bank.png'); ?>">
+									</div>
+									<div class="all-job-right">
+										<span class="job-name">Bank Job</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						
 					</ul>
 				</div>
+			</div>
+			
 			</div>
 		</div>
 		

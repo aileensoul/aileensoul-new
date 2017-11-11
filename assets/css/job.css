@@ -2213,15 +2213,21 @@ label.cameraButton input[accept*="camera"] {
 .gov-job-list ul li a{font-size:16px; color:#5b5b5b;}
 .gov-job-list{padding-left:8px;}
 
-.gov-all-post .job-saved-box h3{color:#5c5c5c; font-weight:normal;}
+
+.gov-all-post .gov-job-saved-box h3{color:#5c5c5c; font-weight:normal; padding:15px; text-align:center; border-bottom:1px solid #d9d9d9; }
+.gov-all-post .contact-frnd-post{border:none; padding-bottom:5px;}
 .all-job-cat{display:inline-block; width:100%; padding:0;}
 .all-job-cat li{width:33.33%; padding:5px; float:left; list-style-type:none; margin:0;}
-.all-job-cat li .all-job-box{border:1px solid #d9d9d9; border-radius:4px; padding:15px; display: -webkit-flex; /* Safari */
+.all-job-cat li a{color:#5c5c5c;}
+.all-job-cat li .all-job-box{border:1px solid #d9d9d9; border-radius:4px; padding:10px; display: -webkit-flex; /* Safari */
     -webkit-align-items: center; /* Safari 7.0+ */
     display: flex;
     align-items: center;}
 .all-job-cat li .all-job-box div{-webkit-flex: 1; /* Safari 6.1+ */
    flex: 1;}
+.all-job-box .job-box-left{width: 70px; float: left; max-width: 70px; padding-right: 10px;}
+.all-job-box .all-job-right{text-align:center;}
+.all-job-box .all-job-right .job-name{font-size:24px; line-height:1;}
 	
 	
 	
