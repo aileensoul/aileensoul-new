@@ -135,9 +135,9 @@ function validation_other(event){
  
 }
 
-textarea.onkeyup = function(evt) {
-    this.scrollTop = this.scrollHeight;
-}
+// textarea.onkeyup = function(evt) {
+//     this.scrollTop = this.scrollHeight;
+// }
 
 function checkvalue() {
                            
@@ -166,3 +166,56 @@ input[0].focus();
 input[0].setSelectionRange(len, len);
  });
 $(".alert").delay(3200).fadeOut(300);
+
+
+function cursorpointer(){
+
+   elem = document.getElementById('desc_art');
+   elem.focus();
+  setEndOfContenteditable(elem);
+}
+
+function setEndOfContenteditable(contentEditableElement)
+{
+    var range,selection;
+    if(document.createRange)
+    {
+        range = document.createRange();//Create a range (a range is a like the selection but invisible)
+        range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        selection = window.getSelection();//get the selection object (allows you to change selection)
+        selection.removeAllRanges();//remove any selections already made
+        selection.addRange(range);//make the range you have just created the visible selection
+    }
+    else if(document.selection)
+    { 
+        range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+        range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        range.select();//Select the range (make it the visible selection
+    }
+}
+
+
+var _onPaste_StripFormatting_IEPaste = false;
+            function OnPaste_StripFormatting(elem, e) { 
+                if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+                    e.preventDefault();
+                    var text = e.originalEvent.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (e.clipboardData && e.clipboardData.getData) {                   
+                    e.preventDefault();
+                    var text = e.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (window.clipboardData && window.clipboardData.getData) {
+                    if (!_onPaste_StripFormatting_IEPaste) {
+                        _onPaste_StripFormatting_IEPaste = true;
+                        e.preventDefault();
+                        window.document.execCommand('ms-pasteTextOnly', false);
+                    }
+                    _onPaste_StripFormatting_IEPaste = false;
+                }
+            }
+
+
+
