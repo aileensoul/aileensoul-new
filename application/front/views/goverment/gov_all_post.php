@@ -16,7 +16,9 @@
 
 	<div class="user-midd-section" id="paddingtop_fixed">
 		<div class="container padding-360">
-			<div class="gov-job-detail-left">
+			<div class="job-saved-box">
+				<h3>All Government Job</h3>
+			</div>
 				<div class="gov-job-title">
 					<table>
 						<tr>
@@ -62,7 +64,7 @@ SBI Life Insurance Company Limited is a joint venture between the State Bank of 
 					<p>State Bank of India enjoys the largest banking franchise in India. Along with its 6 Associate Banks, SBI Group has the unrivalled strength of over 16,000 branches across the country, arguably the largest in the world. </p>
 				</div>
 			</div>
-			<div class="gov-job-detail-right">
+			
 				<div class="gov-job-right-title">
 					<h3>Government job<a href="#" class="pull-right">All Job</a></h3>
 				</div>
