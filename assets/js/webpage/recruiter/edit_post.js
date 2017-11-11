@@ -315,7 +315,9 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
                 post_name: {
 
                     required: true,
-                    regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                    regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
+                    minlength: 10,
+                    maxlength: 100
 
                 },
                 skills: {
