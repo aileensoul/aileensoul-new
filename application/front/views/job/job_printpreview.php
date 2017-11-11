@@ -390,7 +390,7 @@
                                               {
                                           ?>
                                        <li> <b>Gender</b><span>  
-                                          <?php echo $job[0]['gender']; ?>
+                                          <?php echo ucfirst($job[0]['gender']); ?>
                                           </span>
                                        </li>
                                        <?php
@@ -408,7 +408,7 @@
                                           <?php 
                                              if($job[0]['gender'])
                                              {
-                                                   echo $job[0]['gender']; 
+                                                   echo ucfirst($job[0]['gender']); 
                                              }
                                              else
                                               echo PROFILENA;
