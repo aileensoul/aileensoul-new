@@ -160,11 +160,10 @@ function checkvalue() {
 
 
 $(document).ready(function () {
-var input = $("#skills2");
-var len = input.val().length;
-input[0].focus();
-input[0].setSelectionRange(len, len);
+ var strUser1 = $('#skills').val();
+ $("span").removeClass("custom-mini-select");
  });
+
 $(".alert").delay(3200).fadeOut(300);
 
 
