@@ -206,12 +206,12 @@ class Business_profile_registration extends MY_Controller {
         } elseif ($this->is_validate_email($_POST['email']) != '1') {
             $errors['email'] = 'Please enter valid email id.';
         }
-        if(!empty($_POST['contactwebsite'])){
-            if($this->is_validate_url($_POST['contactwebsite']) != '1'){
+        if (!empty($_POST['contactwebsite'])) {
+            if ($this->is_validate_url($_POST['contactwebsite']) != '1') {
                 $errors['contactwebsite'] = 'Please enter valid website.';
             }
         }
-        
+
         if (!empty($errors)) {
             $data['errors'] = $errors;
         } else {
@@ -233,7 +233,7 @@ class Business_profile_registration extends MY_Controller {
 // response back.
         echo json_encode($data);
     }
-    
+
     public function description() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -245,88 +245,73 @@ class Business_profile_registration extends MY_Controller {
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/ng_description', $this->data);
     }
-    
-    public function description_insert() {
+
+    public function ng_description_insert() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
 
-        if ($this->input->post('next')) {
-            
-            $this->form_validation->set_rules('business_type', 'Business type', 'required');
-            $this->form_validation->set_rules('industriyal', 'Industriyal', 'required');
-            $this->form_validation->set_rules('business_details', 'Details', 'required');
-
-            $this->form_validation->set_message('required', '%s is required.');
-
-            if ($this->form_validation->run() == FALSE) {
-
-                // GET BUSINESS PROFILE DATA
-                $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-                $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,subindustriyal,details,other_business_type,other_industrial,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-// GET INDUSTRIAL TYPE DATA
-                $contition_array = array('status' => 1);
-                $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-// GEY BUSINESS TYPE DATA
-                $this->data['businesstypedata'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                if ($userdata) {
-                    $step = $userdata[0]['business_step'];
-
-                    if ($step == 3 || ($step >= 1 && $step <= 3) || $step > 3) {
-                        $this->data['business_type1'] = $userdata[0]['business_type'];
-                        $this->data['industriyal1'] = $userdata[0]['industriyal'];
-                        $this->data['subindustriyal1'] = $userdata[0]['subindustriyal'];
-                        $this->data['business_details1'] = trim($userdata[0]['details']);
-                        $this->data['other_business'] = $userdata[0]['other_business_type'];
-                        $this->data['other_industry'] = $userdata[0]['other_industrial'];
-                    }
-                }
-                $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
-
-                $this->load->view('business_profile/description');
-            } else {
-
-                $contition_array = array('user_id' => $userid, 'status' => '1');
-                $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                if ($userdata[0]['business_step'] == 4) {
-                    $data = array(
-                        'business_type' => $this->input->post('business_type'),
-                        'industriyal' => $this->input->post('industriyal'),
-                        'subindustriyal' => $this->input->post('subindustriyal'),
-                        'other_business_type' => $this->input->post('bustype'),
-                        'other_industrial' => $this->input->post('indtype'),
-                        'details' => $this->input->post('business_details'),
-                        'modified_date' => date('Y-m-d', time()),
-                            //'business_step' => 3
-                    );
-                } else {
-                    $data = array(
-                        'business_type' => $this->input->post('business_type'),
-                        'industriyal' => $this->input->post('industriyal'),
-                        'subindustriyal' => $this->input->post('subindustriyal'),
-                        'other_business_type' => $this->input->post('bustype'),
-                        'other_industrial' => $this->input->post('indtype'),
-                        'details' => $this->input->post('business_details'),
-                        'modified_date' => date('Y-m-d', time()),
-                        'business_step' => 3
-                    );
-                }
-                $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
-
-                if ($updatdata) {
-                    $this->session->set_flashdata('success', 'Description updated successfully');
-                    redirect('business-profile/image', refresh);
-                } else {
-                    $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('business-profile/description', refresh);
-                }
+        $errors = array();
+        $data = array();
+        $_POST = json_decode(file_get_contents('php://input'), true);
+        if (empty($_POST['business_type']) && $_POST['business_type'] != '0') {
+            $errors['business_type'] = 'Business type is required.';
+        }
+        if (empty($_POST['industriyal'])  && $_POST['industriyal'] != '0') {
+            $errors['industriyal'] = 'Industrial type is required.';
+        }
+        if (empty($_POST['business_details'])) {
+            $errors['business_details'] = 'Business details is required.';
+        }
+        if ($_POST['business_type'] == '0') {
+            if (empty($_POST['bustype'])) {
+                $errors['bustype'] = 'Please enter other business type.';
             }
         }
+        if ($_POST['industriyal'] == '0') {
+            if (empty($_POST['indtype'])) {
+                $errors['indtype'] = 'Please enter other industrial type.';
+            }
+        }
+
+        if (!empty($errors)) {
+            $data['errors'] = $errors;
+        } else {
+            $data['business_type'] = $_POST['business_type'];
+            $data['industriyal'] = $_POST['industriyal'];
+            if ($data['business_type'] == '0') {
+                $data['other_business_type'] = $_POST['bustype'];
+            } else {
+                $data['other_business_type'] = '';
+            }
+            if ($data['industriyal'] == '0') {
+                $data['other_industrial'] = $_POST['indtype'];
+            } else {
+                $data['other_industrial'] = '';
+            }
+            $data['details'] = $_POST['business_details'];
+            $data['modified_date'] = date('Y-m-d H:i:s', time());
+            $data['business_step'] = 3;
+
+            $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+            if ($updatdata) {
+                $data['is_success'] = 1;
+            } else {
+                $data['is_success'] = 0;
+            }
+        }
+        echo json_encode($data);
+    }
+
+    public function image() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+
+        $this->business_profile_active_check();
+
+        $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
+        $this->load->view('business_profile/ng_image', $this->data);
     }
 
     public function get_company_name($id = '') {

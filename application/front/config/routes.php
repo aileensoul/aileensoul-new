@@ -121,6 +121,7 @@ $route['notification/business-profile-post-detail/(:any)/(:any)'] = "notificatio
 $route['business-profile/signup/business-information'] = "business_profile_registration/business_information";
 $route['business-profile/signup/contact-information'] = "business_profile_registration/contact_information";
 $route['business-profile/signup/description'] = "business_profile_registration/description";
+$route['business-profile/signup/image'] = "business_profile_registration/image";
 
 
 //FREELANCER HIRE ROUTES SETTINGS

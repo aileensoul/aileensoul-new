@@ -89,28 +89,44 @@
                                         <fieldset>
                                             <label>Business type:<span style="color:red">*</span></label>
                                             <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
-                                                <option value="" selected="selected">Select Business type</option>
-                                                <?php
-                                                foreach ($business_type as $key => $type) { ?>
-                                                    <option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                <option ng-option value="" selected="selected">Select Business type</option>
+                                                <?php foreach ($business_type as $key => $type) { ?>
+                                                    <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
                                                 <?php } ?>
-                                                <option value="">Other</option>    
+                                                <option ng-option value="0" id="busOption">Other</option>    
                                             </select>
                                             <span ng-show="errorBusinessType" class="error">{{errorBusinessType}}</span>
                                         </fieldset>  
                                         <fieldset>
                                             <label>Category:<span style="color:red">*</span></label>
                                             <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
-                                                <option value="" selected="selected">Select Industry type</option>
-                                                <?php
-                                                foreach ($category_list as $key => $category) { ?>
-                                                    <option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                <option ng-option value="" selected="selected">Select Industry type</option>
+                                                <?php foreach ($category_list as $key => $category) { ?>
+                                                    <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
                                                 <?php } ?>
-                                                    <option value="">Other</option>
+                                                <option ng-option value="0" id="indOption">Other</option>
                                             </select>
                                             <span ng-show="errorCategory" class="error">{{errorCategory}}</span>
                                         </fieldset>  
-
+                                        <div id="busDivCheck" ng-if="user.business_type == '0'">
+                                            <fieldset class="half-width" id="other-business">
+                                                <label> Other business type: <span style="color:red;" >*</span></label>
+                                                <input type="text" name="bustype" ng-model="user.bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>">
+                                                <span ng-show="errorOtherBusinessType" class="error">{{errorOtherBusinessType}}</span>
+                                            </fieldset>
+                                        </div>
+                                        <div id="indDivCheck" ng-if="user.industriyal == '0'">
+                                            <fieldset class="half-width" id="other-category">
+                                                <label> Other category:<span style="color:red;" >*</span></label>
+                                                <input type="text" name="indtype" ng-model="user.indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>">
+                                                <span ng-show="errorOtherCategory" class="error">{{errorOtherCategory}}</span>
+                                            </fieldset>
+                                        </div>
+                                        <fieldset class="full-width">
+                                            <label>Details of your business:<span style="color:red">*</span></label>
+                                            <textarea name="business_details" ng-model="user.business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter business detail" style="resize: none;"></textarea>
+                                            <span ng-show="errorBusinessDetails" class="error">{{errorBusinessDetails}}</span>
+                                        </fieldset>
                                         <fieldset class="hs-submit full-width">
                                             <input type="submit"  id="next" name="next" value="Next" tabindex="6" >
                                         </fieldset>
@@ -135,47 +151,26 @@
                         // create a blank object to handle form data.
                         $scope.user = {};
 
-                        /*$scope.businessTypeList = undefined;
-                        $scope.industriyalList = undefined;
-
-                        $http({
-                            method: 'GET',
-                            url: base_url + 'business_profile_registration/getBusinessType',
-                        }).success(function (data) {
-                            // console.log(data);
-                            $scope.businessTypeList = data;
-                        });
-
-                        $http({
-                            method: 'GET',
-                            url: base_url + 'business_profile_registration/getCategory',
-                        }).success(function (data) {
-                            // console.log(data);
-                            $scope.industriyalList = data;
-                        });
-                        */
-
                         // calling our submit function.
                         $scope.submitForm = function () {
                             // Posting data to php file
                             $http({
                                 method: 'POST',
-                                url: base_url + 'business_profile_registration/ng_bus_info_insert',
+                                url: base_url + 'business_profile_registration/ng_description_insert',
                                 data: $scope.user, //forms user object
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
                                     .success(function (data) {
                                         if (data.errors) {
                                             // Showing errors.
-                                            $scope.errorCompanyName = data.errors.companyname;
-                                            $scope.errorCountry = data.errors.country;
-                                            $scope.errorState = data.errors.state;
-                                            $scope.errorCity = data.errors.city;
-                                            $scope.errorPincode = data.errors.pincode;
-                                            $scope.errorPostalAddress = data.errors.business_address;
+                                            $scope.errorBusinessType = data.errors.business_type;
+                                            $scope.errorCategory = data.errors.industriyal;
+                                            $scope.errorOtherBusinessType = data.errors.bustype;
+                                            $scope.errorOtherCategory = data.errors.indtype;
+                                            $scope.errorBusinessDetails = data.errors.business_details;
                                         } else {
                                             if (data.is_success == '1') {
-                                                window.location.href = base_url + 'business-profile/contact-information';
+                                                window.location.href = base_url + 'business-profile/signup/image';
                                             } else {
                                                 return false;
                                             }
@@ -186,11 +181,11 @@
                     });
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-                        <!--        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
-                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                        <!--        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/description.js?ver=' . time()); ?>"></script>
+                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/description.min.js?ver=' . time()); ?>"></script>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
+        <!--            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/description.min.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>-->
         <?php } ?>
     </body>
 </html>
