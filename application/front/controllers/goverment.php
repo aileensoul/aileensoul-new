@@ -22,4 +22,14 @@ class Goverment extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('goverment/gov_post_details', $this->data);     
     }
+
+    public function all_post() { 
+        $userid = $this->session->userdata('aileenuser');
+        $this->load->view('goverment/gov_all_post', $this->data);     
+    }
+
+    public function all_post_detail() { 
+        $userid = $this->session->userdata('aileenuser');
+        $this->load->view('goverment/gov_all_post_detail', $this->data);     
+    }
 }
