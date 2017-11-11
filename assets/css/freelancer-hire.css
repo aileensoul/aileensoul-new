@@ -232,8 +232,8 @@ li.fr a {
 .profile-job-post-detail .profile-job-post-title .button {
     font-size: 15px;
     padding: 3px 13px !important;
-    margin-right: 4px;
-    margin-left: 4px;
+    margin-right: 2px;
+    margin-left: 2px;
     background-color: #ffffff;
     text-transform: capitalize;
     color: #1b8ab9;
@@ -2109,7 +2109,7 @@ pointer-events: none;}
         font-size: 12px;
     }
     .profile-job-post-detail .profile-job-post-title .button {
-        font-size: 13px;
+        font-size: 11px;
         padding: 2px 8px !important;
     }
     .profile-box-art .right-menu-jr ul li a {
@@ -2327,13 +2327,13 @@ pointer-events: none;}
         font-size: 11px;
     }
     .profile-job-details .display_inline {
-        font-size: 10px;
+        font-size: 11px;
     }
     .profile-job-details .job_companyname {
         font-size: 10px;
     }
     .profile-job-details ul li .lction p {
-        font-size: 10px;
+        font-size: 11px;
     }
     .created_date {
         font-size: 10px;
@@ -2375,8 +2375,8 @@ pointer-events: none;}
         font-size: 12px;
     }
     .profile-job-post-detail .profile-job-post-title .button {
-        font-size: 12px;
-        padding: 3px 8px !important;
+        font-size: 9px;
+        padding: 3px 6px !important;
     }
     .right-side-menu {
         width: 100%;
