@@ -4806,6 +4806,7 @@ class Freelancer extends MY_Controller {
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
         $this->data['recliveid'] = $userid = $slugdata[1];
+        echo $userid;
 
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
         $data = 'username,fullname,designation,freelancer_hire_user_image,user_id,profile_background';
@@ -4825,7 +4826,49 @@ class Freelancer extends MY_Controller {
         $contition_array = array('post_id !=' => $postid, 'freelancer_post.is_delete' => '0', 'freelancer_hire_reg.user_id' => $userid, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.free_hire_step' => 3, 'freelancer_post.post_name' => $this->data['postdata'][0]['post_name']);
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        // echo "<pre>"; print_r($this->data['recommandedpost']);die();
+      //   echo "<pre>"; print_r($this->data['recommandedpost']);die();
+        $join_str = array(array(
+                    'join_type' => '',
+                    'table' => 'freelancer_apply',
+                    'join_table_id' => 'freelancer_post_reg.user_id',
+                    'from_table_id' => 'freelancer_apply.user_id'),
+                array(
+                    'join_type' => '',
+                    'table' => 'save',
+                    'join_table_id' => 'freelancer_post_reg.user_id',
+                    'from_table_id' => 'save.to_id')
+            );
+
+            $contition_array = array('freelancer_apply.post_id' => $postid, 'freelancer_apply.is_delete' => 0,'save.from_id' => $userid,  'save.save_type' => '2', 'save.status' => '0');
+            $data = 'freelancer_post_reg.user_id, freelancer_post_reg.freelancer_apply_slug, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month, freelancer_post_reg.freelancer_post_user_image';
+            $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+
+          //  echo "<pre>"; print_r($shortlist);die();
+                
+//        $join_str[0]['table'] = 'freelancer_apply';
+//        $join_str[0]['join_table_id'] = 'freelancer_apply.user_id';
+//        $join_str[0]['from_table_id'] = 'freelancer_post_reg.user_id';
+//        $join_str[0]['join_type'] = '';
+//
+//
+//        $contition_array = array('freelancer_apply.post_id' => $postid, 'freelancer_apply.is_delete' => 0);
+//        $data = 'freelancer_post_reg.user_id';
+//        $applydata = $this->data['applydata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+//       
+//        foreach ($applydata as $applyid) {
+//            $join_str[0]['table'] = 'save';
+//            $join_str[0]['join_table_id'] = 'save.to_id';
+//            $join_str[0]['from_table_id'] = 'freelancer_post_reg.user_id';
+//            $join_str[0]['join_type'] = '';
+//
+//
+//            $contition_array = array('save.from_id' => $userid, 'save.to_id' => $applyid['user_id'], 'save.save_type' => '2', 'save.status' => '0');
+//            $data = 'freelancer_post_reg.user_id, freelancer_post_reg.freelancer_apply_slug, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month, freelancer_post_reg.freelancer_post_user_image';
+//            $shortlist[] = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+//        }
+//$shortlist = array_reduce($shortlist, 'array_merge', array());
+
+
 
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('freelancer/freelancer_hire/project_live', $this->data);
