@@ -2356,6 +2356,7 @@ footer ul li a:hover{
     .mob-block{display:block;}
     .header2 .mob-width {
         padding-left: 5px;
+        padding-right: 0px;/*d*/
     }
     .header2 .dropdown_hover .dropdown-content_hover {
         right: -4px !important; /*d*/
@@ -2444,7 +2445,7 @@ footer ul li a:hover{
         margin-top: -16px;
     }
     .action-button #message_count {
-        right: 168px;
+        right: 3px; /*d*/
     }
     .search-mob-block {
         display: block;
@@ -2812,7 +2813,7 @@ footer ul li a:hover{
         margin-top: -7px;
     }
     .action-button #message_count {
-        right: 163px;
+        right: 0px; /*d*/
     }
     .job-saved-box .notification-box ul li {
         padding: 0;
@@ -2874,7 +2875,7 @@ footer ul li a:hover{
     }
     .header2 .mob-width {
         padding-left: 15px;
-        padding-right: 0px;
+        padding-right: 0px;/*d*/
     }
     ul#dropdownclass {
         padding-right: 15px; /*d*/
