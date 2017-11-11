@@ -1,3 +1,11 @@
+jQuery(document).ready(function($) {  
+$(window).load(function(){
+  $('#preloader').fadeOut('slow',function(){$(this).remove();});
+});
+});
+
+
+
 jQuery.validator.addMethod("noSpace", function(value, element) { 
       return value == '' || value.trim().length != 0;  
     }, "No space please and don't leave it empty");
@@ -46,14 +54,22 @@ $(function(){
 $('#skills').change(function other_category(){
         // var e = document.getElementById("skills");
         // var strUser = e.options[e.selectedIndex].value;
-       var strUser = $('#skills').val();
-       var strUser =  "'" + strUser + "'";
+       var strUser1 = $('#skills').val();
+       var strUser =  "'" + strUser1 + "'";
        var n = strUser.includes(26);
+      
         if(n == true){ 
-            var active = document.querySelector(".multi-select-container");
+
+            $("span").removeClass("custom-mini-select");
+            var active = document.querySelector(".multi-select-container");        
             active.classList.remove("multi-select-container--open");
             document.getElementById('other_category').style.display = "block";
-        }else{ 
+        }else if(strUser1 == ''){
+          $("span").addClass("custom-mini-select");
+        }
+
+        else{ 
+            $("span").removeClass("custom-mini-select");
             document.getElementById('other_category').style.display = "none"; 
         }
     });
@@ -118,13 +134,6 @@ function validation_other(event){
 
  
 }
-
-
-jQuery(document).ready(function($) {  
-$(window).load(function(){
-  $('#preloader').fadeOut('slow',function(){$(this).remove();});
-});
-});
 
 textarea.onkeyup = function(evt) {
     this.scrollTop = this.scrollHeight;
