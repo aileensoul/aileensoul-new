@@ -80,56 +80,35 @@ line-height: 1;}
 //			<tr><td style="text-align:center; padding:10px 0;"><a style="color:#505050; padding:5px 15px; text-decoration:none;" href="#">Unsubscribe</a>|<a style="color:#505050; padding:5px 15px; text-decoration:none;" href="#">Help</a></td></tr>
 //		</table>
 //</div></body></html>';
-    
-        
-        $config['protocol'] = 'smtp';
-        $config['smtp_host'] = SMTP_HOST;
-        $config['smtp_port'] = SMTP_PORT;
-        $config['smtp_user'] = SMTP_USER;
-        $config['smtp_pass'] = SMTP_PASS;
-        $config['charset'] = CHARSET;
-        $config['mailtype'] = MAILTYPE;
+
+
+        $config['protocol'] = 'sendmail';
+        $config['smtp_host'] = 'smtpout.secureserver.net';
+        $config['smtp_user'] = 'noreply@aileensoul.com';
+        $config['smtp_pass'] = 'aileensoul@123';
+        $config['smtp_port'] = '465';
+        $config['smtp_timeout'] = 5;
+        $config['smtp_keepalive'] = ''; 
+        $config['smtp_crypto'] = '';
+        $config['wordwrap'] = '1';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'UTF-8';
         $config['newline'] = '\r\n';
-        
+
         //$this->email->initialize($config);
         $this->email->from('noreply@aileensoul.com', 'Aileensoul');
         $this->email->to($to_email);
         $this->email->bcc('dm.aileensoul@gmail.com');
-        //$this->email->reply_to('no-replay@aileensoul.com', 'Explendid Videos');
         $this->email->subject($subject);
         $this->email->message($email_html);
         $this->email->set_mailtype("html");
-        
-       
-        //$this->email->send();
-        //echo '<pre>'; print_r($this->email->print_debugger()); die();
+
+
         if ($this->email->send()) {
             return TRUE;
         } else {
-//            echo '<pre>';
-//            print_r($this->email->print_debugger());
             return FALSE;
         }
-//        
-//        $to = $to_email;
-//        $subject = $subject;
-//        $txt = $email_html;
-//
-//        // To send HTML mail, the Content-type header must be set
-//        $headers = 'MIME-Version: 1.0' . "\r\n";
-//        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-//        
-//        // Additional headers
-//        //$headers .= 'To: Ankit<ankit.aileensoul@gmail.com>' . "\r\n";
-//        $headers .= 'From: Aileensoul <noreply@aileensoul.com>' . "\r\n";
-//        // $headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
-//        $headers .= 'Bcc: dm.aileensoul@gmail.com' . "\r\n";
-//
-//        if (mail($to, $subject, $txt, $headers)) {
-//            //echo 'success';
-//        } else {
-//            //echo 'error';
-//        }
     }
 
     function sendEmail($app_name = '', $app_email = '', $to_email = '', $subject = '', $mail_body = '', $cc = '', $bcc = '') {
@@ -333,30 +312,37 @@ line-height: 1;}
 
         //echo $this->email->print_debugger(); die();
     }
-    
+
     function test_email($subject = '', $templ = '', $to_email = '') {
         $this->load->library('email');
 
         $email_html = 'This is test mail from smtp';
-        
-        $config['protocol'] = 'smtp';
-        $config['smtp_host'] = SMTP_HOST;
-        $config['smtp_port'] = SMTP_PORT;
-        $config['smtp_user'] = SMTP_USER;
-        $config['smtp_pass'] = SMTP_PASS;
-        $config['charset'] = CHARSET;
-        $config['mailtype'] = MAILTYPE;
+
+        $config['useragent'] = 'CodeIgniter';
+        $config['protocol'] = 'sendmail';
+        $config['smtp_host'] = 'smtpout.secureserver.net';
+        $config['smtp_user'] = 'noreply@aileensoul.com';
+        $config['smtp_pass'] = 'aileensoul@123';
+        $config['smtp_port'] = '465';
+        $config['smtp_timeout'] = 5;
+        $config['smtp_keepalive'] = ''; 
+        $config['smtp_crypto'] = '';
+        $config['wordwrap'] = '1';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'UTF-8';
         $config['newline'] = '\r\n';
         
         $this->email->initialize($config);
         $this->email->from('noreply@aileensoul.com', 'Aileensoul');
         $this->email->to($to_email);
         $this->email->bcc('dm.aileensoul@gmail.com');
-        //$this->email->reply_to('no-replay@aileensoul.com', 'Explendid Videos');
         $this->email->subject($subject);
         $this->email->message($email_html);
         $this->email->set_mailtype("html");
-        //echo '<pre>'; print_r($this->email->print_debugger()); die();
+
+        echo '<pre>';
+        print_r($this->email);
+        exit;
         if ($this->email->send()) {
             return TRUE;
         } else {
@@ -364,28 +350,6 @@ line-height: 1;}
             print_r($this->email->print_debugger());
             return FALSE;
         }
-        
-//        $to = $to_email;
-//        $subject = $subject;
-//        $txt = $email_html;
-//
-//        // To send HTML mail, the Content-type header must be set
-//        $headers = 'MIME-Version: 1.0' . "\r\n";
-//        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-//        
-//        // Additional headers
-//        //$headers .= 'To: Ankit<ankit.aileensoul@gmail.com>' . "\r\n";
-//        $headers .= 'From: Aileensoul <noreply@aileensoul.com>' . "\r\n";
-//        // $headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
-//        $headers .= 'Bcc: dm.aileensoul@gmail.com' . "\r\n";
-
-//        if (mail($to, $subject, $txt, $headers)) {
-//            echo 'success';
-//        } else {
-//            echo 'error';
-//        }
-        
-
     }
 
 }
