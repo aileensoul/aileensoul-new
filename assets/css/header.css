@@ -2874,6 +2874,7 @@ footer ul li a:hover{
     }
     .header2 .mob-width {
         padding-left: 15px;
+        padding-right: 0px;
     }
     ul#dropdownclass {
         padding-right: 15px; /*d*/
