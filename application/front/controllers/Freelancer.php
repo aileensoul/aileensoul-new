@@ -1211,11 +1211,27 @@ class Freelancer extends MY_Controller {
                 $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . '-vacancy-in-' . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title ">
                                                     ' . ucwords($this->text2link($post['post_name'])) . '</a> </li>';
 
+
+
+               $return_html .= ' <li class="fr">';
+                $return_html .= $this->lang->line("last_date");
+                $return_html .= ':';
+
+                if ($post['post_last_date']) {
+                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+                } else {
+                    $return_html .= PROFILENA;
+                }
+                $return_html .= '</li>';
+
                 $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                 $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
 
                 $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<li>';
+
+
+
                 if ($retur == 'freelancer_post') {
                     $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . '"> ' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '</a>';
                     if ($cityname || $countryname) {
@@ -1231,7 +1247,10 @@ class Freelancer extends MY_Controller {
                 } else {
 
                     $return_html .= ' <a class="display_inline" title="' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id']) . '"> ' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '</a>';
-                    if ($cityname || $countryname) {
+                   
+                }
+                $return_html .= '</li><li>';
+                 if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction display_inline">
                                                             <p title="Location">
                                                                 <i class="fa fa-map-marker" aria-hidden="true"></i>';
@@ -1239,11 +1258,9 @@ class Freelancer extends MY_Controller {
                             $return_html .= $cityname . ",";
                         }
                         $return_html .= $countryname;
-                        $return_html .= '</p></div>';
+                        $return_html .= '</p></div></li>';
                     }
-                }
-                $return_html .= '</li>
-                                     </ul>
+                              $return_html .= ' </ul>
                                     </div>
                                 </div>
                                 <div class="profile-job-profile-menu">
@@ -1350,22 +1367,13 @@ class Freelancer extends MY_Controller {
                                                                     </div>
                                                                        <div class="profile-job-profile-button clearfix">
                                                                          <div class="profile-job-details col-md-12">
-                                                                             <ul>
-                                                                    <li class="job_all_post last_date">';
-                $return_html .= $this->lang->line("last_date");
-                $return_html .= ':';
+                                                                             <ul>';
 
-                if ($post['post_last_date']) {
-                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                } else {
-                    $return_html .= PROFILENA;
-                }
-                $return_html .= '</li>';
 
 
                 if ($retur == '' && $id == 'null') {
 
-                    $return_html .= '<li class=fr><a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">';
+                    $return_html .= '<li><a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">';
                     $return_html .= $this->lang->line("remove");
                     $return_html .= '</a>
                                                           ';
@@ -1379,6 +1387,14 @@ class Freelancer extends MY_Controller {
                     $return_html .= ':';
                     $return_html .= count($this->common->select_data_by_id('freelancer_apply', 'post_id', $post['post_id'], $data = '*', $join_str = array()));
                     $return_html .= '</a>';
+
+                      $return_html .= '<a class="button" href="' . base_url('freelancer-hire/freelancer-applied/' . $post['post_id']) . '" >';
+                    $return_html .= 'Short list';
+                    $return_html .= ':';
+                    $return_html .= count($this->common->select_data_by_id('freelancer_apply', 'post_id', $post['post_id'], $data = '*', $join_str = array()));
+                    $return_html .= '</a>';
+
+
                 } else {
 
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
