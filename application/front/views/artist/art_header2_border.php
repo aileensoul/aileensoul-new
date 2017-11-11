@@ -1,5 +1,5 @@
 
-<?php if(($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home')){?>
+<?php if(($this->uri->segment(1) == 'artist' && $this->uri->segment(2) == 'home')){?>
 
 <header class="">
     <div class="bg-search">
@@ -66,7 +66,51 @@
                                         <div class="my_S">Account</div>
                                             
       </span>
-      <a href="<?php echo site_url('artist/details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
+
+            <?php 
+
+              $userid = $this->session->userdata('aileenuser');
+
+              $contition_array = array('user_id' => $userid, 'status' => 1);
+              $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+
+                $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
+
+                                    $category = $arturl[0]['art_skill'];
+                                    $category = explode(',' , $category);
+
+                                    foreach ($category as $catkey => $catval) {
+                                       $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
+                                       $categorylist[] = $art_category;
+                                     } 
+
+                                    $listfinal1 = array_diff($categorylist, array('other'));
+                                    $listFinal = implode('-', $listfinal1);
+
+                                    if(!in_array(26, $category)){
+                                     $category_url =  $this->common->clean($listFinal);
+                                   }else if($arturl[0]['art_skill'] && $arturl[0]['other_skill']){
+
+                                    $trimdata = $this->common->clean($listFinal) .'-'.$this->common->clean($art_othercategory);
+                                    $category_url = trim($trimdata, '-');
+                                   }
+                                   else{
+                                     $category_url = $this->common->clean($art_othercategory);  
+                                  }
+
+                                   $city_get =  $this->common->clean($city_url);
+
+                 $url_id = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+                 //echo "<pre>"; print_r($url_id); die();
+                 
+
+
+      ?>
+
+
+      <a href="<?php echo site_url('artist/details/'.$url_id); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
      <a href="<?php echo base_url('artist/artistic-information-update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
 
      <?php
