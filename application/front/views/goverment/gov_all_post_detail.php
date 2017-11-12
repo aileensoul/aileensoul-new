@@ -67,8 +67,7 @@ SBI Life Insurance Company Limited is a joint venture between the State Bank of 
 					<h3>Government job<a href="#" class="pull-right">All Job</a></h3>
 				</div>
 				<div class="gov-job-list">
-					<marquee direction="up" scrollamount="3" onmouseover="this.setAttribute('scrollamount', 0, 0);" onmouseout="this.setAttribute('scrollamount', 6, 0);">
-						<ul>
+					<ul>
 							<li><a href="#">Bank Job</li>
 							<li><a href="#">ONGC Job</li>
 							<li><a href="#">Railways Job</li>
@@ -80,21 +79,9 @@ SBI Life Insurance Company Limited is a joint venture between the State Bank of 
 							<li><a href="#">Railways Job</li>
 							<li><a href="#">Bank Job</li>
 							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
+						
 						</ul>
-					</marquee>
+					
 				</div>
 			</div>
 		</div>
