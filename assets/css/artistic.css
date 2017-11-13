@@ -992,6 +992,8 @@ label.cameraButton:active {
 }
 .post-design-product {
     padding-left:10px;
+    line-height: 1;
+    float: left;
 }
 .post-design-name ul li .post_dot {
     /*max-width: 80%;*/
@@ -1040,10 +1042,10 @@ label.cameraButton:active {
     color: #91949d;
     cursor: default;
 }
-.post-design-name ul li .datespan span:before {
+/*.post-design-name ul li .datespan span:before {
     content: "  ";
     font-size: 17px;
-}
+}*/
 .post-design-name ul li .post-design-product .in_desc_cw {
     padding-left: 10px;
     display: inline-block;
@@ -2482,6 +2484,7 @@ label.cameraButton:active {
     border: 1px solid #d9d9d9;
     height: 60px;
     margin-bottom: 14px;
+    margin-left: 10px;
     width: 60px;
 }
 .user_lst li a {
@@ -4172,10 +4175,7 @@ div .comment {
 .search_button button{margin-left: 0px;}
 .post-design-mid .mejs__audio{width: 300px !important;}     
 .multi-select-container span.custom-mini-select{color:#999;}
-.profile-job-post-location-name .user_lst ul li .bg_following {margin:0px;margin-right: 10px !important;} 
-.profile-job-post-location-name .user_lst ul li.fr {padding-left: 0px;}
-.profile-job-post-location-name .user_lst ul li #followdiv button{margin: 0px;margin-right: 10px;}
-
+.post-design-product .ctre_date::before {content: ".";}
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
     .mian_middle_post_box {
@@ -5077,6 +5077,10 @@ div .comment {
 	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
 	.file-preview{width:520px;}
 	.ctre_date{line-height:1.5;}
+    .profile-job-post-location-name .user_lst ul li .bg_following {margin:0px;margin-right: 10px !important;} 
+.profile-job-post-location-name .user_lst ul li.fr {padding-left: 0px;}
+.profile-job-post-location-name .user_lst ul li #followdiv button{margin: 0px;margin-right: 10px;}
+
 }
 
 @media screen and (max-width: 639px) {
@@ -5867,5 +5871,6 @@ div .comment {
     #InboxContainer::before {
         right: 150px;
     }
+
 }
 /*media zalak end*/
