@@ -126,6 +126,124 @@ function validation_other(event){
       return false;
         event.preventDefault();
    }
-
- 
 }
+
+jQuery.validator.addMethod("noSpace", function(value, element) { 
+      return value == '' || value.trim().length != 0;  
+    }, "No space please and don't leave it empty");
+
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    return regexpr.test(value);
+}, "Only space and only number are not allow.");
+
+
+            $(document).ready(function () { 
+
+                $("#artist_regform").validate({
+
+                    rules: {
+
+                        firstname: {
+
+                            required: true,
+                            regx: /^[a-zA-Z\s]*[a-zA-Z]/,
+                            noSpace: true
+                        },
+
+
+                        lastname: {
+
+                            required: true,
+                            regx: /^[a-zA-Z\s]*[a-zA-Z]/,
+                            noSpace: true
+                        },
+
+
+                        email: {
+                            required: true,
+                            email: true,
+                        },
+
+                        phoneno: {
+
+                            number: true,
+                             minlength: 8,
+                           maxlength:15
+                           
+                            
+                        },
+
+                        country: {
+
+                            required: true,
+                         
+                        },
+
+                         state: {
+
+                            required: true,
+                            
+                          
+                        },
+                        city: {
+
+                            required: true,
+                            
+                          
+                        },
+
+                        "skills[]": {
+
+                    required: true,
+
+                },          
+
+                    },
+
+                    messages: {
+
+                        firstname: {
+
+                            required: "First name is required.",
+                            
+                        },
+
+                        lastname: {
+
+                            required: "Last name is required.",
+                            
+                        },
+
+                        email: {
+                            required: "Email id is required",
+                            email: "Please enter valid email id",
+                            remote: "Email already exists"
+                        },
+
+                         country: {
+
+                            required: "Country is required.",
+                            
+                        },
+
+                        state: {
+
+                            required: "State is required.",
+                            
+                        },
+                        city: {
+
+                            required: "City is required.",
+                            
+                        },
+
+                         "skills[]": {
+
+                        required: "Skill is required.",
+                   
+                    },
+                        
+                    },
+
+                });
+                   });
