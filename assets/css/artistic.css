@@ -1772,6 +1772,7 @@ label.cameraButton:active {
     width:150px;
     height:150px;
     top:5px;
+    left: 5px;
     border-radius:4px;
     text-align:center;
 }
