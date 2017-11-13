@@ -17,7 +17,7 @@ class Registration extends CI_Controller {
     }
 
     //Show main registratin page insert Start
-    public function index($id = " ") {  echo "123456"; die();
+    public function index($id = " ") { 
         if ($this->session->userdata('fbuser')) {
 
             $fbid = $this->session->userdata('fbuser');
