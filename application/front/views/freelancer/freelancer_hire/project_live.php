@@ -291,10 +291,10 @@
 
 
                                                                     <!--  <?php if ($post['post_other_skill']) { ?>
-                                                                                                 <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
-                                                                                                 </li>
+                                                                                                                                     <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
+                                                                                                                                     </li>
                                                                     <?php } else { ?>
-                                                                                                 <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
+                                                                                                                                     <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
 
                                                                     <li><b>Post Description</b><span><pre>
                                                                                 <?php
@@ -360,7 +360,7 @@
                                                             <div class="profile-job-profile-button clearfix">
                                                                 <div class="profile-job-details col-md-12">
                                                                     <ul><li class="fr">
-<!--                                                                            Last Date : <?php
+                                                                            <!--                                                                            Last Date : <?php
                                                                             if ($post['post_last_date']) {
                                                                                 echo date('d-M-Y', strtotime($post['post_last_date']));
                                                                             } else {
@@ -368,285 +368,250 @@
                                                                             }
                                                                             ?>                                                          </li>-->
 
-                                                                        <a href="javascript:void(0);" onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $this->session->userdata('aileenuser'); ?>)" class= "applypost  button"> Apply</a>
+                                                                            <a href="javascript:void(0);" onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $this->session->userdata('aileenuser'); ?>)" class= "applypost  button"> Apply</a>
 
-                                                                </div>
+                                                                            </div>
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                                            </div>
+                                                                            </div>
+                                                                            </div>
+                                                                            </div>
 
-                                                <?php
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                </div>
-								<!-- sortlisted employe -->
-								<div class="sort-emp-mainbox">
-                                    <h3>
-                                        Sortlisted Employe
-                                    </h3>
-									<div class="sort-emp">
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-										<div class="sort-emp-box">
-											<div class="sort-emp-img">
-												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
-											</div>
-											<div class="sort-emp-detail">
-												<h4><a href="#">Employe Name</a></h4>
-												<p>Employe Designation</p>
-											</div>
-											<div class="sort-emp-msg">
-												<a href="#" class="btn1">Message</a>
-											</div>
-										</div>
-									
-                                    </div>
-								</div>
-								<!-- end sortlisted employe -->
-                            </div>
-                        </div>
-							
-						
-                        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+                                                                            <?php
+                                                                        }
+                                                                        ?>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <!-- sortlisted employe -->
+                                                                        <div class="sort-emp-mainbox">
+                                                                            <?php if ($shortlist) {
+                                                                                ?>
+                                                                                <h3>
+                                                                                    Shortlisted Freelancer
+                                                                                </h3>
 
-                            <div class="fw text-center">
-                                <script type="text/javascript">
-                                    (function () {
-                                        if (window.CHITIKA === undefined) {
-                                            window.CHITIKA = {'units': []};
-                                        }
-                                        ;
-                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                        var placement_id = window.CHITIKA.units.length;
-                                        window.CHITIKA.units.push(unit);
-                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                    }());
-                                </script>
-                                <script type="text/javascript" src="//cdn.chitika.net/getads.js"></script>
-                                <div class="fw pt10">
-                                    <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-                                </div>
-                            </div>
+                                                                                <div class="sort-emp">
+                                                                                    <?php foreach ($shortlist as $user) { ?>
+                                                                                        <div class="sort-emp-box">
+                                                                                            <div class="sort-emp-img">
+                                                                                                <?php
+                                                                                                $fname = $user['freelancer_post_fullname'];
+                                                                                                $lname = $user['freelancer_post_username'];
+                                                                                                $sub_fname = substr($fname, 0, 1);
+                                                                                                $sub_lname = substr($lname, 0, 1);
+                                                                                                if ($user['freelancer_post_user_image']) {
+                                                                                                    if (IMAGEPATHFROM == 'upload') {
+                                                                                                        if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
+                                                                                                            ?>
+                                                                                                            <div class="post-img-user">
+                                                                                                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                            </div>
+                                                                                                        <?php } ?>
+                                                                                                        <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                        <?php
+                                                                                                    } else {
+                                                                                                        $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
+                                                                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                                                        if ($info) {
+                                                                                                            ?>
+                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freelancr_user_data[0]['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                        <?php } else { ?>
+                                                                                                            <div class="post-img-user">
+                                                                                                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                            </div>
+                                                                                                            <?php
+                                                                                                        }
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    ?>
+                                                                                                    <div class="post-img-user">
+                                                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                    </div>
+                                                                                                <?php } ?>
+                                                                                            <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
+                                                                                            </div>
+                                                                                            <div class="sort-emp-detail">
+                                                                                                <h4><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></h4>
+                                                                                                <p><?php
+                                                                                                    if ($user['designation']) {
+                                                                                                        echo $user['designation'];
+                                                                                                    } else {
+                                                                                                        echo "Designation";
+                                                                                                    }
+                                                                                                    ?></p>
+                                                                                            </div>
+                                                                                            <div class="sort-emp-msg">
+                                                                                                <a class="btn1" href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">
+                                                                                                     Message
+                                                                                                    </a>
+<!--                                                                                                <a href="#" class="btn1">Message</a>-->
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    <?php } ?>
+                                                                                </div>
+                                                                            <?php } ?>
+                                                                        </div>
+                                                                        <!-- end sortlisted employe -->
+                                                                        </div>
+                                                                        </div>
 
-                        </div>
-                        <div class="tablate-add">
 
-                            <script type="text/javascript">
-                                    (function () {
-                                        if (window.CHITIKA === undefined) {
-                                            window.CHITIKA = {'units': []};
-                                        }
-                                        ;
-                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                        var placement_id = window.CHITIKA.units.length;
-                                        window.CHITIKA.units.push(unit);
-                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                    }());
-                            </script>
-                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                        </div>
-                    </div>
+                                                                        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                                                                            <div class="fw text-center">
+                                                                                <script type="text/javascript">
+                                                                                    (function () {
+                                                                                        if (window.CHITIKA === undefined) {
+                                                                                            window.CHITIKA = {'units': []};
+                                                                                        }
+                                                                                        ;
+                                                                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                                                        var placement_id = window.CHITIKA.units.length;
+                                                                                        window.CHITIKA.units.push(unit);
+                                                                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                                                                    }());
+                                                                                </script>
+                                                                                <script type="text/javascript" src="//cdn.chitika.net/getads.js"></script>
+                                                                                <div class="fw pt10">
+                                                                                    <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="tablate-add">
+
+                                                                            <script type="text/javascript">
+                                                                                    (function () {
+                                                                                        if (window.CHITIKA === undefined) {
+                                                                                            window.CHITIKA = {'units': []};
+                                                                                        }
+                                                                                        ;
+                                                                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                                                                        var placement_id = window.CHITIKA.units.length;
+                                                                                        window.CHITIKA.units.push(unit);
+                                                                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                                                                    }());
+                                                                            </script>
+                                                                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                                                        </div>
+                                                                        </div>
 
 
 
 
-                    <!-- MIDDLE SECTION END -->
-                    </section>
-                    <!-- END CONTAINER -->
+                                                                        <!-- MIDDLE SECTION END -->
+                                                                        </section>
+                                                                        <!-- END CONTAINER -->
 
-                    <!-- BEGIN FOOTER -->
-                    <!--PROFILE PIC MODEL START-->
-                    <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
-                                <div class="modal-body">
-                                    <span class="mes">
-                                        <div id="popup-form">
+                                                                        <!-- BEGIN FOOTER -->
+                                                                        <!--PROFILE PIC MODEL START-->
+                                                                        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+                                                                            <div class="modal-dialog modal-lm">
+                                                                                <div class="modal-content">
+                                                                                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
+                                                                                    <div class="modal-body">
+                                                                                        <span class="mes">
+                                                                                            <div id="popup-form">
 
-                                            <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                                            <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                                <div class="col-md-5">
-                                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
-                                                </div>
+                                                                                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                                                                                <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                                                                                                    <div class="col-md-5">
+                                                                                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
+                                                                                                    </div>
 
-                                                <div class="col-md-7 text-center">
-                                                    <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
-                                                </div>
-                                                <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                            </form>
+                                                                                                    <div class="col-md-7 text-center">
+                                                                                                        <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
+                                                                                                    </div>
+                                                                                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                                                                                </form>
 
-                                        </div>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--PROFILE PIC MODEL END-->
-                    <!-- Bid-modal  -->
-                    <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
-                                <div class="modal-body">
-                                    <span class="mes"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Model Popup Close -->
-                    <!-- START FOOTER -->
-                    <?php echo $footer; ?>
-                    </body>
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--PROFILE PIC MODEL END-->
+                                                                        <!-- Bid-modal  -->
+                                                                        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+                                                                            <div class="modal-dialog modal-lm">
+                                                                                <div class="modal-content">
+                                                                                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                                                                                    <div class="modal-body">
+                                                                                        <span class="mes"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Model Popup Close -->
+                                                                        <!-- START FOOTER -->
+                                                                        <?php echo $footer; ?>
+                                                                        </body>
 
-                    <!-- END FOOTER -->
+                                                                        <!-- END FOOTER -->
 
-                    <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-                    <!-- FIELD VALIDATION JS START -->
-                    <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/project_live.js?ver=' . time()); ?>"></script>
-                    <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
-                    <?php
-                    if (IS_REC_JS_MINIFY == '0') {
-                        ?>
-                        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
+                                                                        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+                                                                        <!-- FIELD VALIDATION JS START -->
+                                                                        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/project_live.js?ver=' . time()); ?>"></script>
+                                                                        <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
+                                                                        <?php
+                                                                        if (IS_REC_JS_MINIFY == '0') {
+                                                                            ?>
+                                                                            <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
 
-                        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-                        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-                        <?php
-                    } else {
-                        ?>
-                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-                    <?php } ?>
+                                                                            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+                                                                            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
+                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
+                                                                        <?php } ?>
 
-                    <script>
-                                    var base_url = '<?php echo base_url(); ?>';
-                                    var data1 = <?php echo json_encode($de); ?>;
-                                    var data = <?php echo json_encode($demo); ?>;
-                                    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-                                    var id = '<?php echo $this->uri->segment(3); ?>';
-                                    var return_page = '<?php echo $_GET['page']; ?>';
-
-
-
-                                    function removepopup(id) {
-
-                                        $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                                        $('#bidmodal').modal('show');
-                                    }
-
-                                    //remove post start
-
-                                    function remove_post(abc)
-                                    {
-
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: '<?php echo base_url() . "freelancer/remove_post" ?>',
-                                            data: 'post_id=' + abc,
-                                            success: function (data) {
-                                                $('#' + 'removeapply' + abc).html(data);
-                                                $('#' + 'removeapply' + abc).parent().removeClass();
-
-                                                var numItems = $('.contact-frnd-post .job-contact-frnd').length;
-                                                if (numItems == '0') {
-                                                    // var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Project Found.</h4></div>";
-                                                    var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
-                                                    $('.contact-frnd-post').html(nodataHtml);
-
-                                                }
+                                                                        <script>
+                                                                                    var base_url = '<?php echo base_url(); ?>';
+                                                                                    var data1 = <?php echo json_encode($de); ?>;
+                                                                                    var data = <?php echo json_encode($demo); ?>;
+                                                                                    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                                                    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                                                    var id = '<?php echo $this->uri->segment(3); ?>';
+                                                                                    var return_page = '<?php echo $_GET['page']; ?>';
 
 
-                                            }
-                                        });
 
-                                    }
-                    </script>
+                                                                                    function removepopup(id) {
 
-                    </html>    
+                                                                                        $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                                                        $('#bidmodal').modal('show');
+                                                                                    }
+
+                                                                                    //remove post start
+
+                                                                                    function remove_post(abc)
+                                                                                    {
+
+                                                                                        $.ajax({
+                                                                                            type: 'POST',
+                                                                                            url: '<?php echo base_url() . "freelancer/remove_post" ?>',
+                                                                                            data: 'post_id=' + abc,
+                                                                                            success: function (data) {
+                                                                                                $('#' + 'removeapply' + abc).html(data);
+                                                                                                $('#' + 'removeapply' + abc).parent().removeClass();
+
+                                                                                                var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+                                                                                                if (numItems == '0') {
+                                                                                                    // var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Project Found.</h4></div>";
+                                                                                                    var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
+                                                                                                    $('.contact-frnd-post').html(nodataHtml);
+
+                                                                                                }
+
+
+                                                                                            }
+                                                                                        });
+
+                                                                                    }
+                                                                        </script>
+
+                                                                        </html>    
