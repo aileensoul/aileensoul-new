@@ -992,8 +992,8 @@ label.cameraButton:active {
 }
 .post-design-product {
     padding-left:10px;
-    line-height: 1;
-    float: left;
+   /* line-height: 1;
+    float: left;*/
 }
 .post-design-name ul li .post_dot {
     /*max-width: 80%;*/
