@@ -1951,7 +1951,7 @@ class Freelancer extends MY_Controller {
                         $return_html .= '<a href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">';
                         $return_html .= $this->lang->line("message");
                         $return_html .= '</a>';
-                        if ($data[0]['status'] == 1) {
+                        if ($data[0]['status'] == 1 || $data[0]['status'] == '') {
                             $return_html .= '<input type = "hidden" id = "hideenuser' . $row['user_id'] . '" value = "' . $data[0]['save_id'] . '">';
                             $return_html .= '<a id = "' . $row['user_id'] . '" onClick = "savepopup(' . $row['user_id'] . ')" href = "javascript:void(0);" class = "saveduser' . $row['user_id'] . '">';
 

@@ -184,15 +184,15 @@
                                     $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
                                 }
                                 $userid = $this->session->userdata('aileenuser');
-                                $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => 2, 'status' => '0');
-                                $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => 2);
+                                $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 if ($userid != $this->uri->segment(3)) {
                                     if ($this->uri->segment(3) != "") {
                                         ?>
                                         <div class="flw_msg_btn fr">
                                             <ul>
                                                 <?php
-                                                if (!$data) {
+                                                if ($data[0]['status'] == '1' || $data[0]['status'] == '') {
                                                     ?> 
 
                                                     <li>
@@ -200,11 +200,15 @@
                                                             <?php echo $this->lang->line("save"); ?>
                                                         </a> 
 
-                                                    </li> <?php } else { ?>
+                                                    </li> <?php } elseif($data[0]['status'] == '0') { ?>
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                     </li> <?php
-                                                }
+                                                }else{ ?>
+                                                     <li> 
+                                                        <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> ">shortlisted</a>
+                                                    </li> 
+                                               <?php }
                                                 ?>
                                                 <li>
                                                     <?php
