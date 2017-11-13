@@ -2205,7 +2205,7 @@ label.cameraButton input[accept*="camera"] {
 .gov-job-detail ul{padding-top:5px;}
 .gov-job-detail p{padding-top:10px;}
 
-.gov-job-detail-right{border:1px solid #d9d9d9; background:#fff; border-radius:4px; width:315px; position:fixed; margin-left:935px; height:260px; overflow:hidden;}
+.gov-job-detail-right{border:1px solid #d9d9d9; background:#fff; border-radius:4px; width:305px; position:fixed; margin-left:945px; height:260px; overflow:hidden;}
 .gov-job-right-title{padding:15px; border-bottom:1px solid #d9d9d9;}
 .gov-job-right-title h3{font-size:17px; color:#5b5b5b; font-weight:bold; line-height:1.5;}
 .gov-job-right-title h3 a{font-size:14px; font-weight:normal; line-height:2;}
