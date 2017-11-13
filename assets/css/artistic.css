@@ -5077,9 +5077,9 @@ div .comment {
 	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
 	.file-preview{width:520px;}
 	.ctre_date{line-height:1.5;}
-    .profile-job-post-location-name .user_lst ul li .bg_following {margin:0px;margin-right: 10px !important;} 
+    .profile-job-post-location-name .user_lst ul li .bg_following {margin:0px;margin-right: 9px !important;} 
 .profile-job-post-location-name .user_lst ul li.fr {padding-left: 0px;}
-.profile-job-post-location-name .user_lst ul li #followdiv button{margin: 0px;margin-right: 10px;}
+.profile-job-post-location-name .user_lst ul li #followdiv button{margin: 0px;margin-right: 9px;}
 
 }
 
