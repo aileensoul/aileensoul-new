@@ -78,7 +78,24 @@
 				<div class="gov-job-detail">
 					<p><b>Job Discription :</b></p>
 					<ul>
-						<li> <?php echo $post_value['description']; ?></li>
+						<li> 
+							<?php
+							 $num_words = 29;
+                             $words = array();
+                                       $words = explode(" ",  $post_value['description'], $num_words);
+                                       $shown_string = "";
+                                        if(count($words) == 29){
+                                          $words[28] ='.....';
+                                        }
+
+                                         $shown_string = implode(" ", $words); 
+                                          //echo "<pre>"; print_r($shown_string); die();
+                                         echo $this->common->make_links($shown_string);
+                              ?>
+
+							<!-- <?php //echo $post_value['description']; ?> -->
+
+							</li>
 					</ul>
 					<div class="gov-read-more">
 						<span>Read More</span>
