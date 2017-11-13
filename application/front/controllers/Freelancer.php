@@ -4832,11 +4832,50 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_APPLY BOTH OTHER END
 //FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE START
-public function save_shortlist($post_id = '',$saveuserid = ''){
+public function shortlist_user($post_id = '',$saveuserid = ''){
+        $post_id = $_POST['post_id'];
+        $saveuser_id = $_POST['user_id'];
+      
+        $userid = $this->session->userdata('aileenuser');
+
+        //this condition for prevent dublicate entry of save
+        $contition_array = array('from_id' => $userid, 'to_id' => $saveuser_id,'save_type' => 2);
+        $usershortlist = $this->common->select_data_by_condition('save', $contition_array, $data = 'save_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $save_id = $usershortlist[0]['save_id']; 
+      
+        if ($usershortlist) {
+            
+             $data = array(
+                    'status' => 2,
+                    'post_id'=> $post_id,
+                    'modify_date'=> date('Y-m-d', time())
+                );
+           
+            $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+            $saveuser = 'shortlisted';
+            echo $saveuser;
+        } else {
+                $data = array(
+                    'from_id' => $userid,
+                    'to_id' => $saveuser_id,
+                    'status' => 2,
+                    'save_type' => 2,
+                    'post_id'=> $post_id,
+                    'created_date' =>date('Y-m-d', time())
+                );
+                $insert_id = $this->common->insert_data($data, 'save');
+                if ($insert_id) {
+                    $saveuser = 'shortlisted';
+                    echo $saveuser;
+                }
+                
+        }
+    
     
     
 }
 //FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE END
+
  // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE START
   public function freelancer_shortlist_list($post_id = ''){
       //echo $post_id;die();

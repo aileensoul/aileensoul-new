@@ -17,17 +17,20 @@ function check() {
 // CHECK SEARCH KEYWORD AND LOCATION BLANK END
 
 //SAVE USER START
-function savepopup(id) {
-    save_user(id);
-    $('.biderror .mes').html("<div class='pop_content'>Freelancer successfully saved.");
+function shortlistpopup(id) {
+    short_user(id);
+    $('.biderror .mes').html("<div class='pop_content'>Freelancer successfully Shortlisted.");
     $('#bidmodal').modal('show');
 }
-function save_user(abc) {
-    var saveid = document.getElementById("hideenuser" + abc);
+function short_user(abc) {
+
+//    var saveid = document.getElementById("hideenuser" + abc);
+//    alert(saveid.value);
+    var postid = document.getElementById("hideenpostid");
     $.ajax({
         type: 'POST',
-        url:  base_url + "freelancer/save_user1",
-        data: 'user_id=' + abc + '&save_id=' + saveid.value,
+        url:  base_url + "freelancer/shortlist_user",
+        data: 'user_id=' + abc  + '&post_id=' + postid.value,
         success: function (data) {
             $('.' + 'saveduser' + abc).html(data).addClass('saved');
         }
