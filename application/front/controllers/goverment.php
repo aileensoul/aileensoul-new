@@ -25,6 +25,10 @@ class Goverment extends MY_Controller {
 
     public function allpost() { 
         $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+         $this->data['govjob_category'] = $govjob_category = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name,image', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
         $this->load->view('goverment/gov_all_post', $this->data);     
     }
 

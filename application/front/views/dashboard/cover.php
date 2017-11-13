@@ -435,10 +435,11 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 					<?php if ($userdata[0]['user_slider'] == 1) { ?>
                         <div id="onload-Modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
+                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
                                 <div class="main_sl">
                                     <div class="main_box">
                                         <div class="imagesl">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            
                                             <div id="first-slider">
                                                 <div id="carousel-example-generic" class="carousel slide carousel-fade" data-interval="false">
                                                     <div id="inner" class="carousel-inner" role="listbox">

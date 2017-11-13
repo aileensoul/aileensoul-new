@@ -21,67 +21,23 @@
 				<h3>All Government Jobs</h3>
 				<div class="contact-frnd-post">
 					<ul class="all-job-cat">
-						<li>
-							<a href="#">
+
+						<?php
+
+							foreach ($govjob_category as $gov_key => $gov_value) { ?>
+							<li>
+							<a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>">
 								<div class="all-job-box">
 									<div class="job-box-left">
-										<img src="<?php echo base_url('assets/img/bank.png'); ?>">
+										<img src="<?php echo GOV_CATE_IMAGE . $gov_value['image']; ?>">
 									</div>
 									<div class="all-job-right">
-										<span class="job-name">Bank Job</span>
+										<span class="job-name"><?php echo $gov_value['name']?></span>
 									</div>
 								</div>
 							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="all-job-box">
-									<div class="job-box-left">
-										<img src="<?php echo base_url('assets/img/train.png'); ?>">
-									</div>
-									<div class="all-job-right">
-										<span class="job-name">Railway Job</span>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="all-job-box">
-									<div class="job-box-left">
-										<img src="<?php echo base_url('assets/img/cs.png'); ?>">
-									</div>
-									<div class="all-job-right">
-										<span class="job-name">Civil Jobs</span>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="all-job-box">
-									<div class="job-box-left">
-										<img src="<?php echo base_url('assets/img/gj.png'); ?>">
-									</div>
-									<div class="all-job-right">
-										<span class="job-name">UPAC Job</span>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="all-job-box">
-									<div class="job-box-left">
-										<img src="<?php echo base_url('assets/img/agj.png'); ?>">
-									</div>
-									<div class="all-job-right">
-										<span class="job-name">Sub Inspector Job</span>
-									</div>
-								</div>
-							</a>
-						</li>
-						
+						</li>							
+							<?php } ?>						
 					</ul>
 				</div>
 			</div>
