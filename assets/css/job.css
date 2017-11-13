@@ -2037,7 +2037,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .message h2 {
     font-size: 20px;
-    text-align: left;
+    text-align: center;
 }
 #univer {
     background: #1b8ab9;
@@ -2230,7 +2230,7 @@ label.cameraButton input[accept*="camera"] {
 .all-job-box .all-job-right .job-name{font-size:24px; line-height:1;}
 .job_reg #submit{margin-left:0px;}
 .modal.message-box span.mes{padding:0px}
-.message h2{taxt-align:center}
+
 	
 	
 	
