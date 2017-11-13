@@ -78,8 +78,11 @@
 					<ul>
 						<li> <?php echo $post_value['description']; ?></li>
 					</ul>
-					<a href="<?php echo base_url('goverment/postdetails/'.$post_value['id']); ?>">Read More</a>
+					<div class="gov-read-more">
+						<span>Read More</span>
+					</div>
 				</div>
+				
 			</div>
 
 			<?php }?>

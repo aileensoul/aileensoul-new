@@ -2227,9 +2227,11 @@ label.cameraButton input[accept*="camera"] {
    flex: 1;}
 .all-job-box .job-box-left{width: 70px; float: left; max-width: 70px; padding-right: 10px;}
 .all-job-box .all-job-right{text-align:center;}
-.all-job-box .all-job-right .job-name{font-size:24px; line-height:1;}
+.all-job-box .all-job-right .job-name{font-size:20px; line-height:1;}
 .job_reg #submit{margin-left:0px;}
 .modal.message-box span.mes{padding:0px}
+.gov-read-more{width:100%; float:left; padding:0 15px; text-align:right;}
+.gov-read-more span{border:1px solid #1b8ab9; color:#1b8ab9; padding: 7px 15px; border-radius: 4px;}
 
 	
 	
