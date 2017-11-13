@@ -35,7 +35,7 @@
 							</td>
 							<td class="pl10">
 								<h3><?php echo ucwords(ucfirst($post_value['title'])); ?></h3>
-								<p class="job-field"><b>Last Date:</b> <?php echo $post_value['last_date']; ?></p>
+								<p class="job-field"><b>Last Date:</b> <?php echo date('d-M-Y', strtotime($post_value['last_date'])); ?></p>
 							</td>
 						</tr>
 					</table>

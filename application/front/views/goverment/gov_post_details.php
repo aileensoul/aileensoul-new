@@ -29,7 +29,7 @@
 							</td>
 							<td class="pl10">
 								<h3><?php echo ucwords(ucfirst($govjob_post[0]['title'])); ?></h3>
-								<p class="job-field"><b>Last Date:</b> <?php echo $govjob_post[0]['last_date']; ?></p>
+								<p class="job-field"><b>Last Date:</b> <?php echo date('d-M-Y', strtotime($govjob_post[0]['last_date'])); ?></p>
 							</td>
 						</tr>
 					</table>
@@ -88,6 +88,9 @@
 SBI Life Insurance Company Limited is a joint venture between the State Bank of India and BNP Paribas Assurance. SBI Life Insurance is registered with an authorized capital of Rs 2000 crores and a Paid-up capital of Rs 1000 Crores. SBI owns 74% of the total capital and BNP Paribas Assurance the remaining 26%. </p>
 					<p>State Bank of India enjoys the largest banking franchise in India. Along with its 6 Associate Banks, SBI Group has the unrivalled strength of over 16,000 branches across the country, arguably the largest in the world. </p>
 					<p>State Bank of India enjoys the largest banking franchise in India. Along with its 6 Associate Banks, SBI Group has the unrivalled strength of over 16,000 branches across the country, arguably the largest in the world. </p> -->
+				</div>
+				<div class="gov-job-apply-btn">
+					<a href="<?php echo $govjob_post[0]['apply_link']; ?>">Apply</a>
 				</div>
 			</div>
 			<div class="gov-job-detail-right">
