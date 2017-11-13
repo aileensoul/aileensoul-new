@@ -42,8 +42,32 @@ class Goverment extends MY_Controller {
 public function add_gov_category_insert() 
  {
         //echo "<pre>"; print_r($this->input->post()); die();
+
+         $config = array(
+            'upload_path' => $this->config->item('gov_cat_main_upload_path'),
+            'max_size' => 2500000000000,
+            'allowed_types' => $this->config->item('gov_cat_main_allowed_types'),
+            'file_name' => $_FILES['cat_image']['name']
+               
+        );
+
+        //Load upload library and initialize configuration
+        $images = array();
+        $files = $_FILES;
+
+        //echo "<pre>"; print_r($files); die();
+        $this->load->library('upload');
+
+            $fileName = $_FILES['cat_image']['name'];
+            $images[] = $fileName;
+            $config['file_name'] = $fileName;
+
+         $this->upload->initialize($config);
+        $this->upload->do_upload();     
+        
          $data = array(
                 'name' => trim($this->input->post('gov_name')),
+                'image' => $fileName,
                 'status' => $this->input->post('status'),
                 'created_date' => date('Y-m-d H:i:s', time()),
                 'is_delete' => '0'

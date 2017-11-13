@@ -54,6 +54,13 @@ echo $leftmenu;
 
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
+                            <label for="cat_img" name="cat_img" id="cat_img">Image*</label>
+                            <input type="file" class="form-control" name="cat_image" id="cat_image" value="">
+                    </div>
+                    </div>
+
+                    <div class="box-body">                   
+                    <div class="form-group col-sm-10">
                             <label for="govstatus" name="govstatus" id="govstatus">Status*</label>
                             <input type="radio"  name="status" id="status" value="1" checked="checked"> Publish
                             <input type="radio"  name="status" id="status" value="2"> Draft
@@ -98,6 +105,9 @@ echo $leftmenu;
                }
             }
                 },
+                cat_image: {
+                      required: true,
+                },
                
             },
             messages:
@@ -105,6 +115,10 @@ echo $leftmenu;
                         gov_name: {
                             required: "Please enter goverment category name",
                             remote: "Goverment category already exists",
+                        },
+
+                        cat_image: {
+                            required: "Please select category image",
                         },
                        
                     },
