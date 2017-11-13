@@ -43,39 +43,10 @@
                 float: none;
             }
 
-            .tabs-left > .nav-tabs > li > a {
-                min-width: 74px;
-                margin-right: 0;
-                margin-bottom: 3px;
-            }
 
-            .tabs-left > .nav-tabs {
-                float: left;
-                margin-right: 19px;
-                border-right: 1px solid #ddd;
-            }
-
-            .tabs-left > .nav-tabs > li > a {
-                margin-right: -1px;
-                -webkit-border-radius: 4px 0 0 4px;
-                -moz-border-radius: 4px 0 0 4px;
-                border-radius: 4px 0 0 4px;
-            }
-
-            .tabs-left > .nav-tabs > li > a:hover,
-            .tabs-left > .nav-tabs > li > a:focus {
-                border-color: #eeeeee #dddddd #eeeeee #eeeeee;
-            }
-
-            .tabs-left > .nav-tabs .active > a,
-            .tabs-left > .nav-tabs .active > a:hover,
-            .tabs-left > .nav-tabs .active > a:focus {
-                border-color: #ddd transparent #ddd #ddd;
-                *border-right-color: #ffffff;
-            }
         </style>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="busInfoApp" ng-controller="busInfoController">
+    <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="busRegApp" ng-controller="busRegController">
         <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
@@ -107,21 +78,21 @@
                                 <div class="left-side-bar">
                                     <div class="col-md-3 col-sm-4">
                                         <ul class="left-form-each">
-                                            <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-                                            <li><a href="#about" data-toggle="tab">About</a></li>
-                                            <li><a href="#services" data-toggle="tab">Services</a></li>
-                                            <li><a href="#contact" data-toggle="tab">Contact</a></li>
+                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
+                                            <li><a href="#contact_information" ng-click="tab_active(2)" data-toggle="tab">Contact Information</a></li>
+                                            <li><a href="#description" ng-click="tab_active(3)" data-toggle="tab">Description</a></li>
+                                            <li><a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">Business Images</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-8">
                                         <div class="common-form common-form_border">
                                             <div class="tab-content">
-                                                <div class="tab-pane active" id="home">                
+                                                <div class="tab-pane" id="business_information">                
                                                     <div class="">
                                                         <h3>
                                                             <?php echo $this->lang->line("business_information"); ?>
                                                         </h3>
-                                                        <form name="businessinfo" ng-submit="submitForm()" id="businessinfo" class="clearfix">
+                                                        <form name="businessinfo" ng-submit="submitbusinessinfoForm()" id="businessinfo" class="clearfix">
                                                             <fieldset class="full-width ">
                                                                 <label>Company name:<span style="color:red">*</span></label>
                                                                 <input name="companyname" ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value=""/>
@@ -164,12 +135,12 @@
                                                         </form>
                                                     </div>
                                                 </div> 
-                                                <div class="tab-pane" id="about"> 
+                                                <div class="tab-pane" id="contact_information"> 
                                                     <div class="">
                                                         <h3>
                                                             Contact Information
                                                         </h3>
-                                                        <form name="contactinfo" ng-submit="submitForm()" id="contactinfo" class="clearfix">
+                                                        <form name="contactinfo" ng-submit="submitcontactinfoForm()" id="contactinfo" class="clearfix">
                                                             <fieldset>
                                                                 <label>Contact person:<span style="color:red">*</span></label>
                                                                 <input name="contactname" ng-model="user.contactname" tabindex="1" autofocus type="text" id="contactname" placeholder="Enter contact name" value=""/>
@@ -198,12 +169,12 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="tab-pane" id="services"> 
+                                                <div class="tab-pane" id="description"> 
                                                     <div class="">
                                                         <h3>
                                                             Description
                                                         </h3>
-                                                        <form name="businessdis" ng-submit="submitForm()" id="businessdis" class="clearfix">
+                                                        <form name="businessdis" ng-submit="submitdescriptionForm()" id="businessdis" class="clearfix">
                                                             <fieldset>
                                                                 <label>Business type:<span style="color:red">*</span></label>
                                                                 <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
@@ -252,10 +223,10 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="tab-pane" id="contact"> 
+                                                <div class="tab-pane" id="business_image"> 
                                                     <div class="">
                                                         <h3>Business Images</h3>
-                                                        <form name="businessimage" ng-submit="submitForm()" id="businessimage" class="clearfix">
+                                                        <form name="businessimage" ng-submit="submitbusImageForm()" id="businessimage" class="clearfix">
                                                             <fieldset class="full-width">
                                                                 <label>Business images<span class="optional">(optional)</span>:</label>
                                                                 <input type="file" file-input="files" ng-file-model="user.image1" tabindex="1" name="image1[]" accept="image/*" id="image1" multiple/> 
@@ -282,21 +253,72 @@
         <script>
                     var base_url = '<?php echo base_url(); ?>';
                     var slug = '<?php echo $slugid; ?>';
-                    var company_name_validation = '<?php echo $this->lang->line('company_name_validation') ?>';
-                    var country_validation = '<?php echo $this->lang->line('country_validation') ?>';
-                    var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
-                    var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
+                    var reg_uri = '<?php echo $reg_uri ?>';
         </script>
         <script>
                     // Defining angularjs application.
-                    var busInfoApp = angular.module('busInfoApp', []);
+                    var busRegApp = angular.module('busRegApp', []);
+                    busRegApp.directive("fileInput", function ($parse) {
+                        return{
+                            link: function ($scope, element, attrs) {
+                                element.on("change", function (event) {
+                                    var files = event.target.files;
+                                    $parse(attrs.fileInput).assign($scope, element[0].files);
+                                    $scope.$apply();
+                                });
+                            }
+                        }
+                    });
                     // Controller function and passing $http service and $scope var.
-                    busInfoApp.controller('busInfoController', function ($scope, $http) {
+                    busRegApp.controller('busRegController', function ($scope, $http) {
                         // create a blank object to handle form data.
                         $scope.user = {};
                         $scope.countryList = undefined;
                         $scope.stateList = undefined;
                         $scope.cityList = undefined;
+                        $scope.tab_active = function (data) {
+                            if (data == 1) {
+                                history.pushState('Business information', 'Business information', 'business-information');
+                            } else if (data == 2) {
+                                history.pushState('Contact information', 'Contact information', 'contact-information');
+                            } else if (data == 3) {
+                                history.pushState('Description', 'Description', 'description');
+                            } else if (data == 4) {
+                                history.pushState('Business image', 'Business image', 'image');
+                            }
+
+                            if (typeof (history.pushState) != "undefined") {
+                                var obj = {Title: title, Url: url};
+                                history.pushState(obj, obj.Title, obj.Url);
+                                $(".common-form_border").load(url);
+                            } else {
+                                alert("Browser does not support HTML5.");
+                            }
+
+                        }
+                        
+                        if (reg_uri == 'business-information') {
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li:nth-child(1)').addClass('active');
+                            $('.tab-content .tab-pane').removeClass('active');
+                            $('.tab-content .tab-pane:nth-child(1)').addClass('active');
+                        } else if (reg_uri == 'contact-information') {
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li:nth-child(2)').addClass('active');
+                            $('.tab-content .tab-pane').removeClass('active');
+                            $('.tab-content .tab-pane:nth-child(2)').addClass('active');
+                        } else if (reg_uri == 'description') {
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li:nth-child(3)').addClass('active');
+                            $('.tab-content .tab-pane').removeClass('active');
+                            $('.tab-content .tab-pane:nth-child(3)').addClass('active');
+                        } else if (reg_uri == 'image') {
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li:nth-child(4)').addClass('active');
+                            $('.tab-content .tab-pane').removeClass('active');
+                            $('.tab-content .tab-pane:nth-child(4)').addClass('active');
+                        }
+                        
                         $http({
                             method: 'GET',
                             url: base_url + 'business_profile_registration/getCountry',
@@ -329,7 +351,7 @@
                             });
                         };
                         // calling our submit function.
-                        $scope.submitForm = function () {
+                        $scope.submitbusinessinfoForm = function () {
                             // Posting data to php file
                             $http({
                                 method: 'POST',
@@ -356,13 +378,88 @@
                                         }
                                     });
                         };
+                        $scope.submitcontactinfoForm = function () {
+                            // Posting data to php file
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/ng_contact_info_insert',
+                                data: $scope.user, //forms user object
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .success(function (data) {
+                                        if (data.errors) {
+                                            // Showing errors.
+                                            $scope.errorContactName = data.errors.contactname;
+                                            $scope.errorContactMobile = data.errors.contactmobile;
+                                            $scope.errorEmail = data.errors.email;
+                                            $scope.errorCity = data.errors.city;
+                                            $scope.errorContactWebsite = data.errors.contactwebsite;
+                                        } else {
+                                            if (data.is_success == '1') {
+                                                window.location.href = base_url + 'business-profile/signup/description';
+                                            } else {
+                                                return false;
+                                            }
+                                            //$scope.message = data.message;
+                                        }
+                                    });
+                        };
+                        $scope.submitdescriptionForm = function () {
+                            // Posting data to php file
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/ng_description_insert',
+                                data: $scope.user, //forms user object
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .success(function (data) {
+                                        if (data.errors) {
+                                            // Showing errors.
+                                            $scope.errorBusinessType = data.errors.business_type;
+                                            $scope.errorCategory = data.errors.industriyal;
+                                            $scope.errorOtherBusinessType = data.errors.bustype;
+                                            $scope.errorOtherCategory = data.errors.indtype;
+                                            $scope.errorBusinessDetails = data.errors.business_details;
+                                        } else {
+                                            if (data.is_success == '1') {
+                                                window.location.href = base_url + 'business-profile/signup/image';
+                                            } else {
+                                                return false;
+                                            }
+                                            //$scope.message = data.message;
+                                        }
+                                    });
+                        };
+                        $scope.submitbusImageForm = function () {
+                            var form_data = new FormData();
+                            angular.forEach($scope.files, function (file) {
+//                                console.log(file);
+                                form_data.append('image1[]', file);
+                            });
+                            $http.post(base_url + 'business_profile_registration/ng_image_insert', form_data,
+                                    {
+                                        transformRequest: angular.identity,
+                                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                                    }).success(function (data) {
+                                if (data.errors) {
+                                    // Showing errors.
+                                    $scope.errorImage = data.errors.image1;
+                                } else {
+                                    if (data.is_success == '1') {
+                                        window.location.href = base_url + 'business-profile/home';
+                                    } else {
+                                        return false;
+                                    }
+                                }
+                            });
+                        }
                     });
         </script>
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                            <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>

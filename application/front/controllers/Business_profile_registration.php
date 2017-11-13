@@ -31,6 +31,26 @@ class Business_profile_registration extends MY_Controller {
         
     }
 
+    public function business_registration() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+        
+        $this->data['reg_uri'] = $reg_uri = $this->uri->segment(3);
+        
+        $contition_array = array('user_id' => $userid, 'status' => '0');
+        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if ($businessdata) {
+            $this->load->view('business_profile/reactivate', $this->data);
+        } else {
+            $userid = $this->session->userdata('aileenuser');
+// GET BUSINESS PROFILE DATA
+            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+            $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $this->load->view('business_profile/ng_business_registration', $this->data);
+        }
+    }
+
     public function business_information() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -44,7 +64,7 @@ class Business_profile_registration extends MY_Controller {
 // GET BUSINESS PROFILE DATA
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    
+
             if (count($userdata) > 0) {
                 if ($userdata[0]['business_step'] == 1) {
                     redirect('business-profile/signup/contact-information', refresh);
@@ -62,7 +82,7 @@ class Business_profile_registration extends MY_Controller {
             }
         }
     }
-    
+
     public function business_information_edit() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
