@@ -668,7 +668,7 @@ li.fr a {
 }
 .flw_msg_btn {
     margin-top: 4px;
-    margin-right: 10px;
+    margin-right: 0px;
 }
 .flw_msg_btn ul li a:hover {
     border: 1px solid #d9d9d9;
@@ -2067,7 +2067,7 @@ label.cameraButton input[accept*="camera"] {
     color: white;
 }
 /*.fancybox-slide > *{background-color:transparent;  }*/
-.flw_msg_btn ul li{margin-right: 5px!important;}
+.flw_msg_btn ul li{margin-right: 5px!important;margin-right: 5px;}
 .profile-job-post-detail .profile-job-post-title .button.invited {
     float: none;
     margin-right: 0;
