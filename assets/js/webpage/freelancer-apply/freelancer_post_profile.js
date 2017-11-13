@@ -121,4 +121,24 @@ $(document).ready(function () {
 });
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS END
 
+//SHAORTLIST USER START
+function shortlistpopup(id) {
+    short_user(id);
+    $('.biderror .mes').html("<div class='pop_content'>Freelancer successfully Shortlisted.");
+    $('#bidmodal').modal('show');
+}
+function short_user(abc) {
 
+//    var saveid = document.getElementById("hideenuser" + abc);
+//    alert(saveid.value);
+    var postid = document.getElementById("hideenpostid");
+    $.ajax({
+        type: 'POST',
+        url:  base_url + "freelancer/shortlist_user",
+        data: 'user_id=' + abc  + '&post_id=' + postid.value,
+        success: function (data) {
+            $('.' + 'saveduser' + abc).html(data).addClass('butt_rec');
+        }
+    });
+}
+//SHAORTLIST USER END

@@ -193,14 +193,19 @@
                                             <ul>
                                                 <?php
                                                 if ($data[0]['status'] == '1' || $data[0]['status'] == '') {
+                                                    if($_GET['post_id']){
                                                     ?> 
+                                                    <li>
+                                                        <a id="<?php echo $id; ?>" onClick="shortlistpopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>"> Shortlist </a> 
 
+                                                    </li>
+                                                    <?php }else{?>
                                                     <li>
                                                         <a id="<?php echo $id; ?>" onClick="savepopup(<?php echo $id; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $id ?>">
                                                             <?php echo $this->lang->line("save"); ?>
                                                         </a> 
 
-                                                    </li> <?php } elseif($data[0]['status'] == '0') { ?>
+                                                </li> <?php }} elseif($data[0]['status'] == '0') { ?>
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                     </li> <?php
@@ -211,6 +216,7 @@
                                                <?php }
                                                 ?>
                                                 <li>
+                                                    <input type="hidden" id="<?php echo 'hideenpostid'; ?>" value= "<?php echo $_GET['page']; ?>">
                                                     <?php
                                                     $returnpage = $_GET['page'];
                                                     if ($returnpage == 'freelancer_hire') {

@@ -16,7 +16,7 @@ function check() {
 }
 // CHECK SEARCH KEYWORD AND LOCATION BLANK END
 
-//SAVE USER START
+//SHAORTLIST USER START
 function shortlistpopup(id) {
     short_user(id);
     $('.biderror .mes').html("<div class='pop_content'>Freelancer successfully Shortlisted.");
@@ -36,7 +36,7 @@ function short_user(abc) {
         }
     });
 }
-//SAVE USER END
+//SHAORTLIST USER END
 
 //INVITE USER START
  // function inviteuserpopup(abc){
