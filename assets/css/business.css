@@ -4445,6 +4445,8 @@ div .comment {
 .profile-job-post-location-name .user_lst ul li .bg_following {margin-left: 0px;}
 .profile-job-post-location-name .user_lst ul li #followdiv button{margin-left: 10px;}
 .profile-job-post-location-name .user_lst ul li .contact_user_list{margin-left: 0px;}
+.art-all-comment .comment-name {padding: 2px 0;}
+
 
 /***  media query  ***/
 
@@ -4535,7 +4537,7 @@ div .comment {
         margin-top: 0px!important;
     }
     .post-design-name ul li .post-design-product a {
-        word-break: break-all;
+        /*word-break: break-all;*/
     }
     .prev,
     .next {
