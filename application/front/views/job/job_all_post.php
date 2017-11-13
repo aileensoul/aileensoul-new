@@ -238,24 +238,15 @@
 			   </div>
 			   <div class="gov-job-detail-right">
 				<div class="gov-job-right-title">
-					<h3>Government job<a href="#" class="pull-right">All Job</a></h3>
+					<h3>Government job<a href="<?php echo base_url('goverment/allpost/'); ?>" class="pull-right">All Job</a></h3>
 				</div>
 				<div class="gov-job-list">
 					<ul>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-							<li><a href="#">Railways Job</li>
-							<li><a href="#">Bank Job</li>
-							<li><a href="#">ONGC Job</li>
-						
-						</ul>
-					
+            <?php 
+            foreach ($govjob_category as $gov_key => $gov_value) { ?>
+              <li><a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>"><?php echo $gov_value['name']?></li>
+           <?php } ?>						
+						</ul>					
 				</div>
 			</div>
 

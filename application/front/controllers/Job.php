@@ -1886,6 +1886,12 @@ class Job extends MY_Controller {
 
         $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
         // echo "<pre>";print_r($this->data['job_reg'][0]['progressbar']);die();
+         $contition_array = array('status' => '1', 'is_delete' => '0');
+         $this->data['govjob_category'] = $govjob_category = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($govjob_category); die();
+
+
         $this->load->view('job/job_all_post', $this->data);
     }
 

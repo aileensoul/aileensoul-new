@@ -18,17 +18,17 @@ class Goverment extends MY_Controller {
         include ('include.php');
     }
 
-    public function post_details() { 
+    public function postdetails() { 
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('goverment/gov_post_details', $this->data);     
     }
 
-    public function all_post() { 
+    public function allpost() { 
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('goverment/gov_all_post', $this->data);     
     }
 
-    public function all_post_detail() { 
+    public function allpostdetail() { 
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('goverment/gov_all_post_detail', $this->data);     
     }
