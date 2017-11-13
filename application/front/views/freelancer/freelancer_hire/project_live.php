@@ -383,10 +383,116 @@
                                         </div>
                                     </div>
                                 </div>
+								<!-- sortlisted employe -->
+								<div class="sort-emp-mainbox">
+                                    <h3>
+                                        Sortlisted Employe
+                                    </h3>
+									<div class="sort-emp">
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+										<div class="sort-emp-box">
+											<div class="sort-emp-img">
+												<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">
+											</div>
+											<div class="sort-emp-detail">
+												<h4><a href="#">Employe Name</a></h4>
+												<p>Employe Designation</p>
+											</div>
+											<div class="sort-emp-msg">
+												<a href="#" class="btn1">Message</a>
+											</div>
+										</div>
+									
+                                    </div>
+								</div>
+								<!-- end sortlisted employe -->
                             </div>
                         </div>
-
-
+							
+						
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
                             <div class="fw text-center">
