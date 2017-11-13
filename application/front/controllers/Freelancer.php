@@ -4373,32 +4373,8 @@ class Freelancer extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'notification');
             echo 'Selected';
             if ($insert_id) {
-                $email_html = '';
-                $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
-					<tr>
-                                            <td style="padding:5px;">';
-                if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
-                    $email_html .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
-                } else {
-                    $fname = $this->data['freehiredata'][0]['fullname'];
-                    $lname = $this->data['freehiredata'][0]['username'];
-                    $sub_fname = substr($fname, 0, 1);
-                    $sub_lname = substr($lname, 0, 1);
-                    $email_html .= '<div class="post-img-div">
-                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
-                }
-                $email_html .= '<td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
-                                            </td>
-                                            <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
-                                            </td>
-					</tr>
-                                    </table>';
-                $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . ' Selected you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
-
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
+                $word = 'Selected';
+                $this->selectemail_user($invite_user, $postid, $word);
             }
         } else {
             echo 'error';
@@ -4832,63 +4808,63 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_APPLY BOTH OTHER END
 //FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE START
-public function shortlist_user($post_id = '',$saveuserid = ''){
+    public function shortlist_user($post_id = '', $saveuserid = '') {
         $post_id = $_POST['post_id'];
         $saveuser_id = $_POST['user_id'];
-      
+        $word = 'Shortlisted';
         $userid = $this->session->userdata('aileenuser');
 
         //this condition for prevent dublicate entry of save
-        $contition_array = array('from_id' => $userid, 'to_id' => $saveuser_id,'save_type' => 2);
+        $contition_array = array('from_id' => $userid, 'to_id' => $saveuser_id, 'save_type' => 2);
         $usershortlist = $this->common->select_data_by_condition('save', $contition_array, $data = 'save_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $save_id = $usershortlist[0]['save_id']; 
-      
-        if ($usershortlist) {
-            
-             $data = array(
-                    'status' => 2,
-                    'post_id'=> $post_id,
-                    'modify_date'=> date('Y-m-d', time())
-                );
-           
-            $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
-            $saveuser = 'shortlisted';
-            echo $saveuser;
-        } else {
-                $data = array(
-                    'from_id' => $userid,
-                    'to_id' => $saveuser_id,
-                    'status' => 2,
-                    'save_type' => 2,
-                    'post_id'=> $post_id,
-                    'created_date' =>date('Y-m-d', time())
-                );
-                $insert_id = $this->common->insert_data($data, 'save');
-                if ($insert_id) {
-                    $saveuser = 'shortlisted';
-                    echo $saveuser;
-                }
-                
-        }
-    
-    
-    
-}
-//FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE END
+        $save_id = $usershortlist[0]['save_id'];
 
- // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE START
-  public function freelancer_shortlist_list($post_id = ''){
-      //echo $post_id;die();
-      
-       $userid = $this->session->userdata('aileenuser');
+        if ($usershortlist) {
+
+            $data = array(
+                'status' => 2,
+                'post_id' => $post_id,
+                'modify_date' => date('Y-m-d', time())
+            );
+
+            $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+            if ($updatedata) {
+                $this->selectemail_user($saveuser_id, $post_id, $word);
+                $saveuser = 'shortlisted';
+                echo $saveuser;
+            }
+        } else {
+            $data = array(
+                'from_id' => $userid,
+                'to_id' => $saveuser_id,
+                'status' => 2,
+                'save_type' => 2,
+                'post_id' => $post_id,
+                'created_date' => date('Y-m-d', time())
+            );
+            $insert_id = $this->common->insert_data($data, 'save');
+            if ($insert_id) {
+                $this->selectemail_user($saveuser_id, $post_id, $word);
+                $saveuser = 'shortlisted';
+                echo $saveuser;
+            }
+        }
+    }
+
+//FREELANCER HIRE SAVE FOR SHORTLISTED CANDIDATE END
+    // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE START
+    public function freelancer_shortlist_list($post_id = '') {
+        //echo $post_id;die();
+
+        $userid = $this->session->userdata('aileenuser');
 //check user deactivate start
         $this->freelancer_hire_deactivate_check();
         //check user deactivate end
 // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
-      
-      $join_str = array(array(
+
+        $join_str = array(array(
                 'join_type' => '',
                 'table' => 'freelancer_apply',
                 'join_table_id' => 'freelancer_post_reg.user_id',
@@ -4903,17 +4879,18 @@ public function shortlist_user($post_id = '',$saveuserid = ''){
         $contition_array = array('freelancer_apply.post_id' => $post_id, 'freelancer_apply.is_delete' => 0, 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '0');
         $data = 'freelancer_post_reg.user_id, freelancer_post_reg.freelancer_apply_slug, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month, freelancer_post_reg.freelancer_post_user_image';
         $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-      
-      $this->load->view('freelancer/freelancer_hire/freelancer_shortlist', $this->data);
-  }  
-  // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE END
+
+        $this->load->view('freelancer/freelancer_hire/freelancer_shortlist', $this->data);
+    }
+
+    // FREELANCER HIRE SHORTLISTED CANDIDATE PAGE END
 //FREELANCER HIRE POST LIVE LINK START
     public function live_post($userid = '', $postid = '', $posttitle = '') {
         $segment3 = explode('-', $this->uri->segment(3));
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
         $this->data['recliveid'] = $userid = $slugdata[1];
-      
+
 
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
         $data = 'username,fullname,designation,freelancer_hire_user_image,user_id,profile_background';
@@ -4980,7 +4957,9 @@ public function shortlist_user($post_id = '',$saveuserid = ''){
             $this->load->view('freelancer/freelancer_hire/project_live_login', $this->data);
         }
     }
+
 //FREELANCER HIRE POST LIVE LINK END
+    //FREELANCER APPLY AS APPLIED ON POST SEND MAIL START
     public function apply_email($notid) {
 
         $userid = $this->session->userdata('aileenuser');
@@ -5013,6 +4992,68 @@ public function shortlist_user($post_id = '',$saveuserid = ''){
 
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $hiremail[0]['email']);
         // mail end  
+    }
+
+//FREELANCER APPLY AS APPLIED ON POST SEND MAIL END
+    public function selectemail_user($select_user = '', $post_id = '', $word = '') {
+        $invite_user = $select_user;
+        $postid = $post_id;
+        $writting_word = $word;
+        $userid = $this->session->userdata('aileenuser');
+        $applydata = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $invite_user, $data = 'freelancer_post_email');
+        $projectdata = $this->common->select_data_by_id('freelancer_post', 'post_id', $postid, $data = 'post_name');
+        $email_html = '';
+        $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;">';
+        if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
+            $email_html .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
+        } else {
+            $fname = $this->data['freehiredata'][0]['fullname'];
+            $lname = $this->data['freehiredata'][0]['username'];
+            $sub_fname = substr($fname, 0, 1);
+            $sub_lname = substr($lname, 0, 1);
+            $email_html .= '<div class="post-img-div">
+                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
+        }
+        $email_html .= '<td style="padding:5px;">
+						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " " . $writting_word . '</b> you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . ' Selected you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
+
+        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
+        $email_html = '';
+        $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
+					<tr>
+                                            <td style="padding:5px;">';
+        if ($this->data['freehiredata'][0]['freelancer_hire_user_image']) {
+            $email_html .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $this->data['freehiredata'][0]['freelancer_hire_user_image'] . '" width="60" height="60"></td>';
+        } else {
+            $fname = $this->data['freehiredata'][0]['fullname'];
+            $lname = $this->data['freehiredata'][0]['username'];
+            $sub_fname = substr($fname, 0, 1);
+            $sub_lname = substr($lname, 0, 1);
+            $email_html .= '<div class="post-img-div">
+                          ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
+        }
+        $email_html .= '<td style="padding:5px;">
+						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                                            </td>
+                                            <td style="padding:5px;">
+                                                <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
+                                            </td>
+					</tr>
+                                    </table>';
+        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . ' Selected you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
+
+        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
     }
 
     public function email_view() {
