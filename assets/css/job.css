@@ -2228,6 +2228,9 @@ label.cameraButton input[accept*="camera"] {
 .all-job-box .job-box-left{width: 70px; float: left; max-width: 70px; padding-right: 10px;}
 .all-job-box .all-job-right{text-align:center;}
 .all-job-box .all-job-right .job-name{font-size:24px; line-height:1;}
+.job_reg #submit{margin-left:0px;}
+.modal.message-box span.mes{padding:0px}
+.message h2{taxt-align:center}
 	
 	
 	
