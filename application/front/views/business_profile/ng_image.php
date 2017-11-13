@@ -27,7 +27,7 @@
             }
         </style>
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="ImageApp" ng-controller="ImageController">
+    <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="busImageApp" ng-controller="busImageController">
         <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
@@ -66,14 +66,15 @@
                             <div class="col-md-6 col-sm-8">
                                 <div class="common-form common-form_border"> 
                                     <h3>Business Images</h3>
-                                    <?php echo form_open_multipart(base_url('business-profile/image-insert'), array('id' => 'businessimage', 'name' => 'businessimage', 'class' => 'clearfix')); ?>
-                                    <fieldset class="full-width">
-                                        <label>Business images<span class="optional">(optional)</span>:</label>
-                                        <input type="file" ng-model="user.image1" tabindex="1" name="image1[]" accept="image/*" id="image1" onchange="angular.element(this).scope().uploadedFile(this)" multiple/> 
-                                    </fieldset>
-                                    <fieldset class="hs-submit full-width">
-                                        <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">
-                                    </fieldset>
+                                    <form name="businessimage" ng-submit="submitForm()" id="businessimage" class="clearfix">
+                                        <fieldset class="full-width">
+                                            <label>Business images<span class="optional">(optional)</span>:</label>
+                                            <input type="file" file-input="files" ng-file-model="user.image1" tabindex="1" name="image1[]" accept="image/*" id="image1" multiple/> 
+                                            <span ng-show="errorImage" class="error">{{errorImage}}</span>                                                                        
+                                        </fieldset>
+                                        <fieldset class="hs-submit full-width">
+                                            <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">
+                                        </fieldset>
                                     </form>
                                 </div>
                             </div>
@@ -84,49 +85,67 @@
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var slug = '<?php echo $slugid; ?>';
+                    var base_url = '<?php echo base_url(); ?>';
+                    var slug = '<?php echo $slugid; ?>';
         </script>
         <script>
-            var ImageApp = angular.module('ImageApp', []);
-            ImageApp.controller('ImageController', function ($scope, $http) {
-                $scope.user = {};
 
-                $scope.files = [];
-                $scope.submitForm = function () {
-                    $scope.user.image1 = $scope.files[0];
-                    alert($scope.user.image1);
-                    return false;
-                    $http({
-                        method: 'POST',
-                        url: base_url + 'business_profile_registration/ng_image_insert',
-                        data: $scope.user, //forms user object
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    })
-                            .success(function (data) {
+                    var busImageApp = angular.module('busImageApp', []);
+                    busImageApp.directive("fileInput", function ($parse) {
+                        return{
+                            link: function ($scope, element, attrs) {
+                                element.on("change", function (event) {
+                                    var files = event.target.files;
+                                    $parse(attrs.fileInput).assign($scope, element[0].files);
+                                    $scope.$apply();
+                                });
+                            }
+                        }
+                    });
+                    busImageApp.controller("busImageController", function ($scope, $http) {
+                        $scope.user = {};
+                        $scope.submitForm = function () {
+                            var form_data = new FormData();
+                            angular.forEach($scope.files, function (file) {
+//                                console.log(file);
+                                form_data.append('image1[]', file);
+                            });
+                            $http.post(base_url + 'business_profile_registration/ng_image_insert', form_data,
+                                    {
+                                        transformRequest: angular.identity,
+                                        headers: {'Content-Type': undefined, 'Process-Data': false}
+                                    }).success(function (data) {
                                 if (data.errors) {
                                     // Showing errors.
-                                    $scope.errorCompanyName = data.errors.companyname;
-                                    $scope.errorPincode = data.errors.pincode;
-                                    $scope.errorPostalAddress = data.errors.business_address;
+                                    $scope.errorImage = data.errors.image1;
                                 } else {
                                     if (data.is_success == '1') {
-                                        window.location.href = base_url + 'business-profile/contact-information';
+                                        window.location.href = base_url + 'business-profile/home';
                                     } else {
                                         return false;
                                     }
                                     //$scope.message = data.message;
                                 }
+
+                                //alert(response);
+                                //$scope.show_images();
                             });
-                };
-            });
+                        }
+                        /*$scope.show_images = function () {
+                         $http.get("show_images.php")
+                         .success(function (data) {
+                         $scope.uploaded_images = data;
+                         });
+                         } */
+                    });
+
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
-                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/image.js?ver=' . time()); ?>"></script>
-                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/image.js?ver=' . time()); ?>"></script>
+                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else { ?>
-                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/image.min.js?ver=' . time()); ?>"></script>
-                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>-->
+                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/image.min.js?ver=' . time()); ?>"></script>
+                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>-->
         <?php } ?>
     </body>
 </html>

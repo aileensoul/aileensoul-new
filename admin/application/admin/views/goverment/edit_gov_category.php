@@ -52,6 +52,21 @@ echo $leftmenu;
                     </div>
                     </div>
 
+                     <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="cat_img" name="cat_img" id="cat_img">Image*</label>
+
+                             <?php if($category[0]['image']){ ?>
+                            <img src="<?php echo GOV_CAT_UPLOAD_URL . $category[0]['image']; ?>" alt=""  style="height: 70px; width: 70px;">
+                            <?php }else{?>
+                            <img alt="" style="height: 70px; width: 70px;" class="img-circle" src="<?php echo SITEURL.(NOIMAGE); ?>" alt="" />
+                            <?php } ?>
+                            <input type="hidden" class="form-control" name="old_image" id="old_image" value=" <?php echo $category[0]['image']; ?>" >
+
+                            <input type="file" class="form-control" name="cat_image" id="cat_image" value="">
+                    </div>
+                    </div>
+
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govstatus" name="govstatus" id="govstatus">Status*</label>

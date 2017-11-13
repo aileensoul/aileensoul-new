@@ -112,6 +112,35 @@ class Business_profile_registration extends MY_Controller {
         }
     }
 
+    // BUSINESS PROFILE SLUG START
+
+    public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $slugname = $oldslugname = $this->create_slug($slugname);
+        $i = 1;
+        while ($this->comparecategory_slug($slugname, $filedname, $tablename, $notin_id) > 0) {
+            $slugname = $oldslugname . '-' . $i;
+            $i++;
+        }return $slugname;
+    }
+
+    public function comparecategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $this->db->where($filedname, $slugname);
+        if (isset($notin_id) && $notin_id != "" && count($notin_id) > 0 && !empty($notin_id)) {
+            $this->db->where($notin_id);
+        }
+        $num_rows = $this->db->count_all_results($tablename);
+        return $num_rows;
+    }
+
+    public function create_slug($string) {
+        $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower(stripslashes($string)));
+        $slug = preg_replace('/[-]+/', '-', $slug);
+        $slug = trim($slug, '-');
+        return $slug;
+    }
+
+// BUSINESS PROFILE SLUG END
+
     public function ng_bus_info_insert() {
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -139,20 +168,19 @@ class Business_profile_registration extends MY_Controller {
         if (!empty($errors)) {
             $data['errors'] = $errors;
         } else {
-            $data = array(
-                'company_name' => $_POST['companyname'],
-                'country' => $_POST['country_id']['country_id'],
-                'state' => $_POST['state_id']['state_id'],
-                'city' => $_POST['city_id']['city_id'],
-                'pincode' => $_POST['pincode'],
-                'address' => $_POST['business_address'],
-                'user_id' => $userid,
-                'business_slug' => $this->setcategory_slug($companyname, 'business_slug', 'business_profile'),
-                'created_date' => date('Y-m-d H:i:s', time()),
-                'status' => 1,
-                'is_deleted' => 0,
-                'business_step' => 1
-            );
+            $data['company_name'] = $_POST['companyname'];
+            $data['country'] = $_POST['country_id']['country_id'];
+            $data['state'] = $_POST['state_id']['state_id'];
+            $data['city'] = $_POST['city_id']['city_id'];
+            $data['pincode'] = $_POST['pincode'];
+            $data['address'] = $_POST['business_address'];
+            $data['user_id'] = $userid;
+            $data['business_slug'] = $this->setcategory_slug($data['company_name'], 'business_slug', 'business_profile');
+            $data['created_date'] = date('Y-m-d H:i:s', time());
+            $data['status'] = 1;
+            $data['is_deleted'] = 0;
+            $data['business_step'] = 1;
+
             $insert_id = $this->common->insert_data_getid($data, 'business_profile');
             if ($insert_id) {
                 $data['is_success'] = 1;
@@ -206,6 +234,7 @@ class Business_profile_registration extends MY_Controller {
         } elseif ($this->is_validate_email($_POST['email']) != '1') {
             $errors['email'] = 'Please enter valid email id.';
         }
+
         if (!empty($_POST['contactwebsite'])) {
             if ($this->is_validate_url($_POST['contactwebsite']) != '1') {
                 $errors['contactwebsite'] = 'Please enter valid website.';
@@ -258,7 +287,7 @@ class Business_profile_registration extends MY_Controller {
         if (empty($_POST['business_type']) && $_POST['business_type'] != '0') {
             $errors['business_type'] = 'Business type is required.';
         }
-        if (empty($_POST['industriyal'])  && $_POST['industriyal'] != '0') {
+        if (empty($_POST['industriyal']) && $_POST['industriyal'] != '0') {
             $errors['industriyal'] = 'Industrial type is required.';
         }
         if (empty($_POST['business_details'])) {
@@ -312,6 +341,195 @@ class Business_profile_registration extends MY_Controller {
 
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/ng_image', $this->data);
+    }
+
+    public function ng_image_insert() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+
+        $this->business_profile_active_check();
+
+        $errors = array();
+        $data = array();
+        $_POST = json_decode(file_get_contents('php://input'), true);
+
+        $config = array(
+            'upload_path' => $this->config->item('bus_profile_main_upload_path'),
+            'max_size' => 1024 * 100,
+            'allowed_types' => array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg')
+        );
+
+        $images = array();
+        $this->load->library('upload');
+
+        $files = $_FILES;
+        $count = count($_FILES['image1']['name']);
+        if ($count > 0) {
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+            $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+
+            for ($i = 0; $i < $count; $i++) {
+                $_FILES['image1']['name'] = $files['image1']['name'][$i];
+                $_FILES['image1']['type'] = $files['image1']['type'][$i];
+                $_FILES['image1']['tmp_name'] = $files['image1']['tmp_name'][$i];
+                $_FILES['image1']['error'] = $files['image1']['error'][$i];
+                $_FILES['image1']['size'] = $files['image1']['size'][$i];
+
+                $fileName = $_FILES['image1']['name'];
+                $images[] = $fileName;
+                $config['file_name'] = $fileName;
+
+                $this->upload->initialize($config);
+                $this->upload->do_upload();
+
+                if ($this->upload->do_upload('image1')) {
+                    $response['result'][] = $this->upload->data();
+                    $main_image_size = $_FILES['image1']['size'];
+
+                    if ($main_image_size > '1000000') {
+                        $quality = "50%";
+                    } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                        $quality = "55%";
+                    } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                        $quality = "60%";
+                    } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                        $quality = "65%";
+                    } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                        $quality = "70%";
+                    } else {
+                        $quality = "100%";
+                    }
+
+                    /* RESIZE */
+
+                    $business_profile_detail_main[$i]['image_library'] = 'gd2';
+                    $business_profile_detail_main[$i]['source_image'] = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_main[$i]['new_image'] = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_main[$i]['quality'] = $quality;
+                    $instanse10 = "image10_$i";
+                    $this->load->library('image_lib', $business_profile_detail_main[$i], $instanse10);
+                    $this->$instanse10->watermark();
+
+                    /* RESIZE */
+
+                    $main_image = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+                    $image_width = $response['result'][$i]['image_width'];
+                    $image_height = $response['result'][$i]['image_height'];
+
+                    $thumb_image_width = $this->config->item('bus_detail_thumb_width');
+                    $thumb_image_height = $this->config->item('bus_detail_thumb_height');
+
+                    if ($image_width > $image_height) {
+                        $n_h = $thumb_image_height;
+                        $image_ratio = $image_height / $n_h;
+                        $n_w = round($image_width / $image_ratio);
+                    } else if ($image_width < $image_height) {
+                        $n_w = $thumb_image_width;
+                        $image_ratio = $image_width / $n_w;
+                        $n_h = round($image_height / $image_ratio);
+                    } else {
+                        $n_w = $thumb_image_width;
+                        $n_h = $thumb_image_height;
+                    }
+
+                    $business_profile_detail_thumb[$i]['image_library'] = 'gd2';
+                    $business_profile_detail_thumb[$i]['source_image'] = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_thumb[$i]['new_image'] = $this->config->item('bus_detail_thumb_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_thumb[$i]['create_thumb'] = TRUE;
+                    $business_profile_detail_thumb[$i]['maintain_ratio'] = FALSE;
+                    $business_profile_detail_thumb[$i]['thumb_marker'] = '';
+                    $business_profile_detail_thumb[$i]['width'] = $n_w;
+                    $business_profile_detail_thumb[$i]['height'] = $n_h;
+                    $business_profile_detail_thumb[$i]['quality'] = "100%";
+                    $business_profile_detail_thumb[$i]['x_axis'] = '0';
+                    $business_profile_detail_thumb[$i]['y_axis'] = '0';
+                    $instanse = "image_$i";
+                    //Loading Image Library
+                    $this->load->library('image_lib', $business_profile_detail_thumb[$i], $instanse);
+                    $dataimage = $response['result'][$i]['file_name'];
+                    //Creating Thumbnail
+                    $this->$instanse->resize();
+                    /* CROP */
+                    // reconfigure the image lib for cropping
+                    $conf_new[$i] = array(
+                        'image_library' => 'gd2',
+                        'source_image' => $business_profile_detail_thumb[$i]['new_image'],
+                        'create_thumb' => FALSE,
+                        'maintain_ratio' => FALSE,
+                        'width' => $thumb_image_width,
+                        'height' => $thumb_image_height
+                    );
+
+                    $conf_new[$i]['new_image'] = $this->config->item('bus_detail_thumb_upload_path') . $response['result'][$i]['file_name'];
+
+                    $left = ($n_w / 2) - ($thumb_image_width / 2);
+                    $top = ($n_h / 2) - ($thumb_image_height / 2);
+
+                    $conf_new[$i]['x_axis'] = $left;
+                    $conf_new[$i]['y_axis'] = $top;
+
+                    $instanse1 = "image1_$i";
+                    //Loading Image Library
+                    $this->load->library('image_lib', $conf_new[$i], $instanse1);
+                    $dataimage = $response['result'][$i]['file_name'];
+                    //Creating Thumbnail
+                    $this->$instanse1->crop();
+
+                    $resize_image = $this->config->item('bus_detail_thumb_upload_path') . $response['result'][$i]['file_name'];
+                    $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
+
+                    /* CROP */
+
+                    $response['error'][] = $thumberror = $this->$instanse->display_errors();
+                    $return['data'][] = $imgdata;
+                    $return['status'] = "success";
+                    $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+                } else {
+                    $dataimage = '';
+                }
+                if (count($response['error']) > 0) {
+                    $data['errors'] = $errors;
+                }
+                if ($dataimage) {
+                    $data = array(
+                        'image_name' => $dataimage,
+                        'user_id' => $userid,
+                        'created_date' => date('Y-m-d H:i:s'),
+                        'is_delete' => 0
+                    );
+                    $insert_id = $this->common->insert_data_getid($data, 'bus_image');
+                }
+
+                if ($dataimage) {
+                    $data = array(
+                        'modified_date' => date('Y-m-d H:i:s', time()),
+                        'business_step' => 4
+                    );
+                    $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+                } else {
+                    $data = array(
+                        'modified_date' => date('Y-m-d H:i:s', time()),
+                        'business_step' => 4
+                    );
+                    $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+                }
+            }
+        } else {
+            $data = array(
+                'modified_date' => date('Y-m-d H:i:s', time()),
+                'business_step' => 4
+            );
+            $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+        }
+        if ($updatdata) {
+            $data['is_success'] = 1;
+        } else {
+            $data['is_success'] = 0;
+        }
+
+        echo json_encode($data);
     }
 
     public function get_company_name($id = '') {

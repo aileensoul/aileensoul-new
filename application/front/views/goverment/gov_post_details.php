@@ -90,7 +90,7 @@ SBI Life Insurance Company Limited is a joint venture between the State Bank of 
 					<p>State Bank of India enjoys the largest banking franchise in India. Along with its 6 Associate Banks, SBI Group has the unrivalled strength of over 16,000 branches across the country, arguably the largest in the world. </p> -->
 				</div>
 				<div class="gov-job-apply-btn">
-					<a href="<?php echo $govjob_post[0]['apply_link']; ?>">Apply</a>
+					<a href="<?php echo $govjob_post[0]['apply_link']; ?>" target="blank">Apply</a>
 				</div>
 			</div>
 			<div class="gov-job-detail-right">

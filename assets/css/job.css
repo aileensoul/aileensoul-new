@@ -2193,7 +2193,7 @@ label.cameraButton input[accept*="camera"] {
     width: 100%;
     margin-bottom: 25px;}
 /***  gov job css  ***/
-.gov-job-detail-left{width:918px; position:relative; float:left; border:1px solid #d9d9d9; background:#fff; border-radius:4px;}
+.gov-job-detail-left{width:918px; position:relative; float:left; border:1px solid #d9d9d9; background:#fff; border-radius:4px; margin-bottom:15px;}
 .gov-job-title{padding:15px; border-bottom:1px solid #d9d9d9;}
 .gov-job-title h3{font-size:17px; color:#5b5b5b; font-weight:bold; line-height:1.5;}
 .job-field{font-size:14px; color:#5b5b5b;}
@@ -2216,7 +2216,7 @@ label.cameraButton input[accept*="camera"] {
 
 .gov-all-post .gov-job-saved-box h3{color:#5c5c5c; font-weight:normal; padding:15px; text-align:center; border-bottom:1px solid #d9d9d9; }
 .gov-all-post .contact-frnd-post{border:none; padding-bottom:5px;}
-.all-job-cat{display:inline-block; width:100%; padding:0;}
+.all-job-cat{display:inline-block; width:100%; padding:0; }
 .all-job-cat li{width:33.33%; padding:5px; float:left; list-style-type:none; margin:0;}
 .all-job-cat li a{color:#5c5c5c;}
 .all-job-cat li .all-job-box{border:1px solid #d9d9d9; border-radius:4px; padding:10px; display: -webkit-flex; /* Safari */
@@ -2227,9 +2227,14 @@ label.cameraButton input[accept*="camera"] {
    flex: 1;}
 .all-job-box .job-box-left{width: 70px; float: left; max-width: 70px; padding-right: 10px;}
 .all-job-box .all-job-right{text-align:center;}
-.all-job-box .all-job-right .job-name{font-size:24px; line-height:1;}
+.all-job-box .all-job-right .job-name{font-size:20px; line-height:1;}
 .job_reg #submit{margin-left:0px;}
 .modal.message-box span.mes{padding:0px}
+.gov-read-more{width:100%; float:left; padding:0 15px; text-align:right;}
+.gov-read-more span{border:1px solid #1b8ab9; color:#1b8ab9; padding: 7px 15px; border-radius: 4px;}
+.gov-job-apply-btn{width:100%; border-top:1px solid #d9d9d9; float:left; padding:15px; text-align:right;}
+.gov-job-apply-btn a{border:1px solid #1b8ab9; color:#1b8ab9; padding: 7px 15px; border-radius: 4px; display:inline-block;}
+.gov-job-apply-btn a:hover{background:#1b8ab9; color:#fff;}
 
 	
 	
@@ -3156,6 +3161,8 @@ label.cameraButton input[accept*="camera"] {
 	.tablate-potrat-add iframe img{width:100% !important}
 	/***  end add  ***/
 	.all-job-cat li{width:100%;}
+	.gov-job-field ul li{width:100%;}
+	.gov-job-field ul li.text-right{text-align:left;}
 }
 @media screen and (max-width: 360px) {
     .art_no_post_text {

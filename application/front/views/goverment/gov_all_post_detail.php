@@ -22,6 +22,8 @@
 			foreach ($govjob_post as $post_key => $post_value) {
 				
 			?>
+			<a href="<?php echo base_url('goverment/postdetails/'.$post_value['id']); ?>">
+
 			<div class="gov-job-detail-left">
 				<div class="gov-job-title">
 					<table>
@@ -78,10 +80,13 @@
 					<ul>
 						<li> <?php echo $post_value['description']; ?></li>
 					</ul>
-					<a href="<?php echo base_url('goverment/postdetails/'.$post_value['id']); ?>">Read More</a>
+					<div class="gov-read-more">
+						<span>Read More</span>
+					</div>
 				</div>
+				
 			</div>
-
+		    </a>
 			<?php }?>
 			<!-- all post end -->
 			<div class="gov-job-detail-right">
@@ -92,7 +97,7 @@
 				<ul>
             <?php 
             foreach ($govjob_category as $gov_key => $gov_value) { ?>
-              <li><a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>"><?php echo $gov_value['name']?></li>
+              <li><a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>"><?php echo $gov_value['name']?></a></li>
            <?php } ?>						
 				</ul>					
 				</div>
