@@ -95,6 +95,10 @@ echo $leftmenu;
                     </th>
 
                     <th><i class="fa fa-fw fa-pencil"></i> 
+                    <a href="javascript:void(0);">Category Image</a>
+                    </th>
+
+                    <th><i class="fa fa-fw fa-pencil"></i> 
                     <a href="javascript:void(0);">Created Date</a>
                     </th>
 
@@ -122,6 +126,16 @@ echo $leftmenu;
                 <tr id="category_del<?php echo $cat['id']?>">
                     <td><?php echo $i++; ?></td>
                     <td><?php echo ucfirst($cat['name']); ?></td>
+
+                      <td>
+                        <?php if($cat['image']){ ?>
+                      <img style="height: 70px; width: 70px;" src="<?php echo GOV_CAT_UPLOAD_URL . trim($cat['image']); ?>">
+
+                      <?php }else{?>
+                      <img style="height: 70px; width: 70px;" src="<?php echo GOV_CAT_NOUPLOAD; ?>">
+                      <?php }?>
+                    </td>
+
                     <td><?php echo $cat['created_date']; ?></td>
                     <td><?php echo $cat['modified_date']; ?></td>
                     <td>

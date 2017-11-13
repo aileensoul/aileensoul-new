@@ -63,7 +63,8 @@ public function add_gov_category_insert()
             $config['file_name'] = $fileName;
 
          $this->upload->initialize($config);
-        $this->upload->do_upload();     
+        $this->upload->do_upload();  
+        if($this->upload->do_upload('cat_image')){ 
         
          $data = array(
                 'name' => trim($this->input->post('gov_name')),
@@ -74,6 +75,8 @@ public function add_gov_category_insert()
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'gov_category');
+
+         }
 
 
             if ($insert_id) {
@@ -130,7 +133,7 @@ public function view_gov_category(){
   
         $this->data['offset'] = $offset;
 
-       $data='id,name,created_date,modified_date,status,is_delete';
+       $data='id,name,image,created_date,modified_date,status,is_delete';
        $contition_array = array('is_delete' => '0');
         $this->data['category'] = $this->common->select_data_by_condition('gov_category', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 // This is userd for pagination offset and limoi End
@@ -226,7 +229,7 @@ public function category_search()
   
         $this->data['offset'] = $offset;
         
-          $data='id,name,created_date,modified_date,status';
+          $data='id,name,image,created_date,modified_date,status';
            $search_condition = "(name LIKE '%$search_keyword%')";
             $contition_array = array('is_delete' => '0');
             $this->data['category'] = $this->common->select_data_by_search('gov_category', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
@@ -295,7 +298,7 @@ public function category_search()
   
         $this->data['offset'] = $offset;
         
-          $data='id,name,created_date,modified_date,status';
+          $data='id,name,image,created_date,modified_date,status';
            $search_condition = "(name LIKE '%$search_keyword%')";
             $contition_array = array('is_delete' => '0');
             $this->data['category'] = $this->common->select_data_by_search('gov_category', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
@@ -364,7 +367,7 @@ public function clear_categorysearch()
         $this->data['module_name'] = 'Goverment Edit Job Category';
         $this->data['section_title'] = 'Goverment Edit Job Category';
 
-       $data='id,name,created_date,modified_date,status,is_delete';
+       $data='id,name,image,created_date,modified_date,status,is_delete';
        $contition_array = array('id' => $id);
         $this->data['category'] = $this->common->select_data_by_condition('gov_category', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 
@@ -376,15 +379,45 @@ public function clear_categorysearch()
 }
 
 
-    public function edit_gov_category_insert($id) 
+public function edit_gov_category_insert($id) 
  {
         //echo "<pre>"; print_r($this->input->post()); die();
+
+        if (empty($_FILES['cat_image']['name'])) {
+           $fileName= $this->input->post('old_image');
+           
+        } else {
+
+            $config = array(
+            'upload_path' => $this->config->item('gov_cat_main_upload_path'),
+            'max_size' => 2500000000000,
+            'allowed_types' => $this->config->item('gov_cat_main_allowed_types'),
+            'file_name' => $_FILES['cat_image']['name']
+               
+        );
+
+        //Load upload library and initialize configuration
+        $images = array();
+        $files = $_FILES;
+
+        //echo "<pre>"; print_r($files); die();
+        $this->load->library('upload');
+
+            $fileName = $_FILES['cat_image']['name'];
+            $images[] = $fileName;
+            $config['file_name'] = $fileName;
+
+         $this->upload->initialize($config);
+         $this->upload->do_upload('cat_image');  
+
+        }        
          $data = array(
                 'name' => $this->input->post('gov_name'),
+                'image' => trim($fileName),
                 'status' => $this->input->post('status'),
                 'modified_date' => date('Y-m-d H:i:s', time()),
             );
-
+//echo "<pre>"; print_r($data); die();
             $updatdata = $this->common->update_data($data, 'gov_category', 'id', $id);
 
             if ($updatdata) {
