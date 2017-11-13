@@ -44,16 +44,7 @@ class Business_profile_registration extends MY_Controller {
 // GET BUSINESS PROFILE DATA
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// GET COUNTRY DATA
-            $contition_array = array('status' => 1);
-            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// GET STATE DATA
-            $contition_array = array('status' => 1);
-            $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id,state_name,country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// GET CITY DATA
-            $contition_array = array('status' => 1);
-            $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name,state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+    
             if (count($userdata) > 0) {
                 if ($userdata[0]['business_step'] == 1) {
                     redirect('business-profile/signup/contact-information', refresh);
@@ -67,10 +58,48 @@ class Business_profile_registration extends MY_Controller {
                     redirect('business-profile/home', refresh);
                 }
             } else {
-                //$this->load->view('business_profile/business_info', $this->data);
                 $this->load->view('business_profile/ng_business_info', $this->data);
             }
         }
+    }
+    
+    public function business_information_edit() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $userid = $this->session->userdata('aileenuser');
+
+        $this->business_profile_active_check();
+
+// GET BUSINESS PROFILE DATA
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'country,state,city,company_name,pincode,address,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET COUNTRY DATA
+        $contition_array = array('status' => 1);
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id, country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET STATE DATA
+        $contition_array = array('status' => '1', 'country_id' => $userdata[0]['country']);
+        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id, state_name, country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET CITY DATA
+        $contition_array = array('status' => '1', 'state_id' => $userdata[0]['state']);
+        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id, city_name, state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if ($userdata) {
+            $step = $userdata[0]['business_step'];
+
+            if ($step == 1 || $step > 1) {
+
+                $this->data['country1'] = $userdata[0]['country'];
+                $this->data['state1'] = $userdata[0]['state'];
+                $this->data['city1'] = $userdata[0]['city'];
+                $this->data['companyname1'] = $userdata[0]['company_name'];
+                $this->data['pincode1'] = $userdata[0]['pincode'];
+                $this->data['address1'] = $userdata[0]['address'];
+            }
+        }
+        $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
+        $this->load->view('business_profile/ng_business_info_edit', $this->data);
     }
 
     public function getCountry() {
