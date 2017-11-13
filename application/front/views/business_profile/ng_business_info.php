@@ -207,7 +207,7 @@
                                             $scope.errorPostalAddress = data.errors.business_address;
                                         } else {
                                             if(data.is_success == '1'){
-                                                window.location.href = base_url + 'business-profile/contact-information';
+                                                window.location.href = base_url + 'business-profile/signup/contact-information';
                                             }else{
                                                 return false;
                                             }
