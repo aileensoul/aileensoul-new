@@ -1400,7 +1400,7 @@ class Freelancer extends MY_Controller {
                             'from_table_id' => 'save.to_id')
                     );
 
-                    $contition_array = array('freelancer_apply.post_id' => $post['post_id'], 'freelancer_apply.is_delete' => 0, 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '0');
+                    $contition_array = array('freelancer_apply.post_id' => $post['post_id'], 'freelancer_apply.is_delete' => 0, 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '2');
                     $data = 'freelancer_post_reg.user_id';
                     $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -1945,18 +1945,24 @@ class Freelancer extends MY_Controller {
                 <div class = "profile-job-profile-button clearfix">
                 <div class = "apply-btn fr">';
                     $userid = $this->session->userdata('aileenuser');
-                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
-                    $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2);
+                    $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($userid != $row['user_id']) {
                         $return_html .= '<a href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">';
                         $return_html .= $this->lang->line("message");
                         $return_html .= '</a>';
-                        if (!$data) {
+                        if ($data[0]['status'] == 1) {
                             $return_html .= '<input type = "hidden" id = "hideenuser' . $row['user_id'] . '" value = "' . $data[0]['save_id'] . '">';
                             $return_html .= '<a id = "' . $row['user_id'] . '" onClick = "savepopup(' . $row['user_id'] . ')" href = "javascript:void(0);" class = "saveduser' . $row['user_id'] . '">';
 
                             $return_html .= $this->lang->line("save");
                             $return_html .= '</a>';
+                        } elseif($data[0]['status'] == 2){
+                            
+                            $return_html .= '<a class = "saved">';
+                            $return_html .= 'Shortlisted';
+                            $return_html .= '</a>';
+                            
                         } else {
 
                             $return_html .= '<a class = "saved">';
@@ -3906,6 +3912,7 @@ class Freelancer extends MY_Controller {
 //FREELANCER_HIRE REMOVE SAVED FREELANCER START
     public function remove_save() {
         $saveid = $_POST['save_id'];
+        
         $userid = $this->session->userdata('aileenuser');
         $data = array(
             'status' => 1
@@ -4876,7 +4883,7 @@ class Freelancer extends MY_Controller {
                 'from_table_id' => 'save.to_id')
         );
 
-        $contition_array = array('freelancer_apply.post_id' => $post_id, 'freelancer_apply.is_delete' => 0, 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '0');
+        $contition_array = array('freelancer_apply.post_id' => $post_id, 'freelancer_apply.is_delete' => 0, 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '2');
         $data = 'freelancer_post_reg.user_id, freelancer_post_reg.freelancer_apply_slug, freelancer_post_reg.freelancer_post_fullname, freelancer_post_reg.freelancer_post_username, freelancer_post_reg.designation, freelancer_post_reg.freelancer_post_area, freelancer_post_reg.freelancer_post_otherskill, freelancer_post_reg.freelancer_post_city, freelancer_post_reg.freelancer_post_skill_description, freelancer_post_reg.freelancer_post_work_hour, freelancer_post_reg.freelancer_post_hourly, freelancer_post_reg.freelancer_post_ratestate, freelancer_post_reg.freelancer_post_fixed_rate, freelancer_post_reg.freelancer_post_exp_year, freelancer_post_reg.freelancer_post_exp_month, freelancer_post_reg.freelancer_post_user_image';
         $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
