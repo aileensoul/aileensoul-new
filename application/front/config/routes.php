@@ -126,6 +126,7 @@ $route['business-profile/signup/edit/business-information'] = "business_profile_
 $route['business-profile/signup/edit/contact-information'] = "business_profile_registration/contact_informatio_edit";
 $route['business-profile/signup/edit/description'] = "business_profile_registration/description_edit";
 $route['business-profile/signup/edit/image'] = "business_profile_registration/image_edit";
+$route['business-profile/signup/business-registration'] = "business_profile_registration/business_registration";
 
 
 //FREELANCER HIRE ROUTES SETTINGS
