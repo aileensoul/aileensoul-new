@@ -965,8 +965,7 @@
                     </div>
       
 		</div>
-		</div>
- <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+           <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 					
 							<div class="fw text-center">
 								<script type="text/javascript">
@@ -985,6 +984,8 @@
 							</div>
 							
 						</div>
+		</div>
+
 		</div>
 		</div>
 	
