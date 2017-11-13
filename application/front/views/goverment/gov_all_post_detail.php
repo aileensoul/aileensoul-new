@@ -22,6 +22,8 @@
 			foreach ($govjob_post as $post_key => $post_value) {
 				
 			?>
+			<a href="<?php echo base_url('goverment/postdetails/'.$post_value['id']); ?>">
+
 			<div class="gov-job-detail-left">
 				<div class="gov-job-title">
 					<table>
@@ -84,7 +86,7 @@
 				</div>
 				
 			</div>
-
+		    </a>
 			<?php }?>
 			<!-- all post end -->
 			<div class="gov-job-detail-right">
