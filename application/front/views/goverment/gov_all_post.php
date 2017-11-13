@@ -29,7 +29,11 @@
 							<a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>">
 								<div class="all-job-box">
 									<div class="job-box-left">
+										<?php if($gov_value['image']){ ?>
 										<img src="<?php echo GOV_CATE_IMAGE . $gov_value['image']; ?>">
+										<?php }else{?>
+										<img src="<?php echo GOV_CATE_NOIMAGE; ?>">
+										<?php }?>
 									</div>
 									<div class="all-job-right">
 										<span class="job-name"><?php echo $gov_value['name']?></span>

@@ -101,7 +101,7 @@ SBI Life Insurance Company Limited is a joint venture between the State Bank of 
 				 <ul>
 							 <?php 
             foreach ($govjob_category as $gov_key => $gov_value) { ?>
-							<li><a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>"><?php echo $gov_value['name']?></li>
+							<li><a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>"><?php echo $gov_value['name']?></a></li>
                <?php } ?>		
 					</ul>					
 				</div>
