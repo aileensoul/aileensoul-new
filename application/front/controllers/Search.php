@@ -2546,7 +2546,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<div class="job-post-detail clearfix search">
                                                         <div class="job-contact-frnd ">';
                     $return_html .= '<div class="profile-job-post-detail clearfix" id="removeapply' . $post['post_id'] . '">';
-                    $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                    $return_html .= '<div class="profile-job-post-title clearfix">
                                                                     <div class="profile-job-post-title clearfix  margin_btm" >
                                                                         <div class="profile-job-profile-button clearfix">
                                                                             <div class="profile-job-details col-md-12">
