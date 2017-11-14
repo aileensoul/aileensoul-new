@@ -102,8 +102,8 @@
                                         <?php echo form_error('state'); ?>
                                     </fieldset> 
 
-                                    <fieldset <?php if ($city) { ?> class="error-msg" <?php } ?>>
-                                        <label> City:</label>
+                                    <fieldset class="fw" <?php if ($city) { ?> class="error-msg" <?php } ?>>
+                                        <label> City:<span style="color:red">*</span></label>
                                         <select name="city" id="city" tabindex="3">
                                             <?php
                                             if ($city1) {

@@ -384,7 +384,7 @@ class Freelancer extends MY_Controller {
                     echo '<option value="' . $cit['city_id'] . '">' . $cit['city_name'] . '</option>';
                 }
             } else {
-                echo '<option value="">City not available</option>';
+                echo '<option value="0">City not available</option>';
             }
         }
         // ajax for state end
