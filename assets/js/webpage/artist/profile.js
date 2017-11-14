@@ -54,7 +54,10 @@ $(document).ready(function () {
 
 function validate(){
 
+  var strUser1 = $('#skills').val();
+   if(strUser1 == ''){
   $("#multidropdown").addClass("error");
+  }
   //alert("falguni123");
 }
 

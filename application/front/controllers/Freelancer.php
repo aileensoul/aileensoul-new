@@ -37,10 +37,10 @@ class Freelancer extends MY_Controller {
         } else {
 
             $userid = $this->session->userdata('aileenuser');
-          
+
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $jobdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-      
+
             if ($jobdata[0]['free_post_step'] == 1) {
                 redirect('freelancer-work/address-information', refresh);
             } else if ($jobdata[0]['free_post_step'] == 2) {
@@ -57,7 +57,7 @@ class Freelancer extends MY_Controller {
                 redirect('freelancer-work/home', refresh);
             } else {
                 redirect('freelancer-work/registation', refresh);
-              //  redirect('freelancer-work/basic-information', refresh);
+                //  redirect('freelancer-work/basic-information', refresh);
                 // $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information',$this->data);
             }
         }
@@ -5063,6 +5063,54 @@ class Freelancer extends MY_Controller {
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
     }
 
+    //FREELANCER HIRE NEW REGISTRATION PROFILE START
+    public function hire_registation($postid = '') {
+        $contition_array = array('status' => 1);
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->load->view('freelancer/freelancer_hire/hire_registration', $this->data);
+    }
+
+    //FREELANCER HIRE NEW REGISTRATION PROFILE END
+    public function hire_registation_insert() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $this->form_validation->set_rules('firstname', 'Full Name', 'required');
+        $this->form_validation->set_rules('lastname', 'Last Name', 'required');
+        $this->form_validation->set_rules('email', 'EmailId', 'required|valid_email');
+        $this->form_validation->set_rules('country', 'country', 'required');
+        $this->form_validation->set_rules('state', 'state', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('freelancer/freelancer_hire/hire_registration');
+        } else {
+            $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->input->post('lastname'));
+            $data = array(
+                'fullname' => trim($this->input->post('firstname')),
+                'username' => trim($this->input->post('lastname')),
+                'email' => trim($this->input->post('email')),
+                'freelancer_hire_slug' => $this->setcategory_slug($first_lastname, 'freelancer_hire_slug', 'freelancer_hire_reg'),
+                'phone' => trim($this->input->post('phoneno')),
+                'country' => trim($this->input->post('country')),
+                'state' => trim($this->input->post('state')),
+                'city' => trim($this->input->post('city')),
+                'professional_info' => trim($this->input->post('professional_info')),
+                'status' => 1,
+                'is_delete' => 0,
+                'created_date' => date('Y-m-d h:i:s'),
+                'user_id' => $userid,
+                'free_hire_step' => 3
+            );
+             $insert_id = $this->common->insert_data($data, 'freelancer_hire_reg');
+                if ($insert_id) {
+                    $this->session->set_flashdata('success', 'Basic information updated successfully');
+                    redirect('freelancer-hire/home', refresh);
+                } else {
+                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    redirect('freelancer/hire_registation', refresh);
+                }
+        }
+    }
+
     //FREELANCER APPLY NEW REGISTATION PROFILE START
     public function registation($postid = '') {
 
@@ -5094,9 +5142,9 @@ class Freelancer extends MY_Controller {
         }
 
         $userid = $this->session->userdata('aileenuser');
-         $skill1 = $this->input->post('skills');
+        $skill1 = $this->input->post('skills');
         $skills = explode(',', $skill1);
-   
+
         $this->form_validation->set_rules('firstname', 'Full Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
         $this->form_validation->set_rules('email', 'EmailId', 'required|valid_email');
@@ -5109,35 +5157,35 @@ class Freelancer extends MY_Controller {
             $this->load->view('freelancer/freelancer_post/registation');
         } else {
 
-            
+
             if (count($skills) > 0) {
-                    foreach ($skills as $ski) {
-                        if ($ski != " ") {
-                            $contition_array = array('skill' => trim($ski), 'type' => 1);
+                foreach ($skills as $ski) {
+                    if ($ski != " ") {
+                        $contition_array = array('skill' => trim($ski), 'type' => 1);
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        if (count($skilldata) < 0) {
+                            $contition_array = array('skill' => trim($ski), 'type' => 5);
                             $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                            if (count($skilldata) < 0) {
-                                $contition_array = array('skill' => trim($ski), 'type' => 5);
-                                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                            }
-                            if ($skilldata) {
-                                $skill[] = $skilldata[0]['skill_id'];
-                            } else {
-                                $data = array(
-                                    'skill' => trim($ski),
-                                    'status' => '1',
-                                    'type' => 5,
-                                    'user_id' => $userid,
-                                );
-                                $skill[] = $this->common->insert_data_getid($data, 'skill');
-                            }
+                        }
+                        if ($skilldata) {
+                            $skill[] = $skilldata[0]['skill_id'];
+                        } else {
+                            $data = array(
+                                'skill' => trim($ski),
+                                'status' => '1',
+                                'type' => 5,
+                                'user_id' => $userid,
+                            );
+                            $skill[] = $this->common->insert_data_getid($data, 'skill');
                         }
                     }
-                    $skill = array_unique($skill, SORT_REGULAR);
-                    $skills = implode(',', $skill);
                 }
-            
-            
-            
+                $skill = array_unique($skill, SORT_REGULAR);
+                $skills = implode(',', $skill);
+            }
+
+
+
             $data = array(
                 'freelancer_post_fullname' => trim($this->input->post('firstname')),
                 'freelancer_post_username' => trim($this->input->post('lastname')),
@@ -5157,24 +5205,24 @@ class Freelancer extends MY_Controller {
                 'free_post_step' => 7
             );
             $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
-            
-             if ($insert_id) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
 
-                    if ($postid) {
-                        redirect('freelancer-work/home/' . $postid, refresh);
-                    } else {
-                        redirect('freelancer-work/home', refresh);
-                    }
+            if ($insert_id) {
+                $this->session->set_flashdata('success', 'Basic information updated successfully');
+
+                if ($postid) {
+                    redirect('freelancer-work/home/' . $postid, refresh);
                 } else {
-
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    if ($postid) {
-                        redirect('freelancer/registation' . $postid, refresh);
-                    } else {
-                        redirect('freelancer/registation', refresh);
-                    }
+                    redirect('freelancer-work/home', refresh);
                 }
+            } else {
+
+                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                if ($postid) {
+                    redirect('freelancer-work/registation' . $postid, refresh);
+                } else {
+                    redirect('freelancer-work/registation', refresh);
+                }
+            }
         }
     }
 

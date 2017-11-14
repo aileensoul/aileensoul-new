@@ -159,6 +159,7 @@ $route['notification/freelancer-hire/(:any)'] = "notification/freelancer_hire_po
 $route['freelancer-hire/project'] = "freelancer/live_post";
 $route['freelancer-hire/project/(:any)'] = "freelancer/live_post/$1";
 $route['freelancer-hire/freelancer-shortlisted/(:any)'] = "freelancer/freelancer_shortlist_list/$1";
+$route['freelancer-hire/registation'] = "freelancer/hire_registation";
 
 
 
