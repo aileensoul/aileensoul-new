@@ -4075,7 +4075,7 @@ div .comment {
     position: absolute;
     left: 0;
     top: 1.1em;
-    z-index: 1;
+    z-index: 9;
     float: left;
     min-width: 100%;
     background: #fff;
@@ -4162,10 +4162,12 @@ div .comment {
 }
 .post-design-commnet-box .comment-edit-butn{right: 20px;}
 .art-cat-custom .multi-select-button.error{border:1px solid #ff0000;}
-#artist_regform label.error{right:1px;}
+#artist_regform label.error{right:3px;}
 .art-cat-custom label.error{top:65px;}
 .common-form fieldset .job_reg input:focus{color:#fff !important;}
-
+.job_reg_page_fprm .job_reg_main h3{background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
 /***  end select dropdown  ***/
 /*** video css  ***/
 .video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
