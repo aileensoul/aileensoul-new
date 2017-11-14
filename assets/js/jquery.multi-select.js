@@ -10,7 +10,7 @@
     defaults = {
       'containerHTML': '<div class="multi-select-container">',
       'menuHTML': '<div class="multi-select-menu">',
-      'buttonHTML': '<span class="multi-select-button custom-mini-select">',
+      'buttonHTML': '<span class="multi-select-button custom-mini-select" id="multidropdown">',
       'menuItemsHTML': '<div class="multi-select-menuitems">',
       'menuItemHTML': '<label class="multi-select-menuitem">',
       'presetsHTML': '<div class="multi-select-presets">',

@@ -169,7 +169,7 @@
                               <!-- <input tabindex="9" title="Register" type="submit" id="submit" name="btnsubmit" value="Register">
  -->
 
-                                    <input type="submit"  id="next" name="next" value="Register" tabindex="9">
+                                    <input type="submit"  id="next" name="next" value="Register" tabindex="9" onclick="return validate();">
 
                            </div>
                         </fieldset>
