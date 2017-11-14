@@ -123,8 +123,10 @@ function validation_other(event){
         event.preventDefault();
    }
  }else{ 
+
+     $(".multi-select-button").addClass("error");
       return false;
-        event.preventDefault();
+      event.preventDefault();
    }
 }
 

@@ -85,7 +85,7 @@
       this.$button.attr({
         'role': 'button',
         'aria-haspopup': 'true',
-        'tabindex': 0,
+        'tabindex': 8,
         'aria-label': this.$labels.eq(0).text()
       })
       .on('keydown.multiselect', function(e) {
