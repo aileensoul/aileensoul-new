@@ -4169,6 +4169,7 @@ div .comment {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;}
 /***  end select dropdown  ***/
+.job_reg_page_fprm .job_reg input{margin-left:0px;}
 /*** video css  ***/
 .video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
 .video li .mejs__container.mejs__video .mejs__overlay{width:100% !important; height:100% !important;}
