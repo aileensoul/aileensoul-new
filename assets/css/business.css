@@ -5979,7 +5979,7 @@ div .comment {
 }
 @media screen and (max-width: 360px) {
     #paddingtop_fixed {
-        padding-top: 70px !important;
+        padding-top: 20px !important; /*d*/
     }
     .folle_text {
         /*width: 37%;*/
