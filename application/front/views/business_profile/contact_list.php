@@ -22,7 +22,12 @@
         <?php echo $business_header2_border; ?><!-- start head -->
         <?php echo $dash_header; ?>
         <?php echo $dash_header_menu; ?>
-        <div class="col-md-4 col-xs-12  hidden-md hidden-sm hidden-lg pt1201 ">
+        
+        <div class="user-midd-section" id="paddingtop_fixed">
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12  hidden-md hidden-sm hidden-lg pb20 ">
             <div class="common-form ">
                 <div class="main_cqlist-1"> 
                     <div class="contact-list ">
@@ -93,9 +98,6 @@
                 </div>
             </div>
         </div>
-        <div class="user-midd-section" id="paddingtop_fixed">
-            <div class="container">
-                <div class="row">
                     <div class="col-md-8 col-sm-7 pt_mn2">
                         <div class="common-form main_cqlist">
                             <div class="contact-list">

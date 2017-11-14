@@ -80,17 +80,17 @@
                                         <ul class="left-form-each">
                                             <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li><a href="#contact_information" ng-click="tab_active(2)" data-toggle="tab">Contact Information</a></li>
+                                                <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
                                             <?php } else { ?>
                                                 <li><a href="javascript:void(0);">Contact Information</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li><a href="#description" ng-click="tab_active(3)" data-toggle="tab">Description</a></li>
+                                                <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
                                             <?php } else { ?>
                                                 <li><a href="javascript:void(0);">Description</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                                <li><a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                                <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
                                             <?php } else { ?>
                                                 <li><a href="javascript:void(0);">Business Images</a></li>
                                             <?php } ?>
@@ -107,27 +107,33 @@
                                                         <form name="businessinfo" ng-submit="submitbusinessinfoForm()" id="businessinfo" class="clearfix">
                                                             <fieldset class="full-width ">
                                                                 <label>Company name:<span style="color:red">*</span></label>
-                                                                <input name="companyname" ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value=""/>
+                                                                <input name="companyname"  ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value=""/>
                                                                 <span ng-show="errorCompanyName" class="error">{{errorCompanyName}}</span>
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>Country:<span style="color:red">*</span></label>
-                                                                <select name="country" ng-model="user.country_id" ng-change="onCountryChange()" ng-options="countryItem.country_name for countryItem in countryList" id="country" tabindex="2">
+                                                                <!--<select name="country" ng-model="user.country_id" ng-change="onCountryChange()" ng-options="countryItem.country_name for countryItem in countryList" id="country" tabindex="2">-->
+                                                                <select name="country" ng-model="user.country_id" ng-change="onCountryChange()" id="country" tabindex="2">
                                                                     <option value="" selected="selected">Country</option>
+                                                                    <option ng-repeat='countryItem in countryList' value='{{countryItem.country_id}}'>{{countryItem.country_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorCountry" class="error">{{errorCountry}}</span>
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>State:<span style="color:red">*</span></label>
-                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()"  ng-options="stateItem.state_name for stateItem in stateList" id="state" tabindex="3">
+                                                                <!--<select name="state" ng-model="user.state_id" ng-change="onStateChange()"  ng-options="stateItem.state_name for stateItem in stateList" id="state" tabindex="3">-->
+                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3">
                                                                     <option value="">Select country first</option>
+                                                                    <option ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}'>{{stateItem.state_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorState" class="error">{{errorState}}</span>
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label> City<span class="optional">(optional)</span>:</label>
-                                                                <select name="city" ng-model="user.city_id"  ng-options="cityItem.city_name for cityItem in cityList" id="city" tabindex="4">
+                                                                <!--<select name="city" ng-model="user.city_id"  ng-options="cityItem.city_name for cityItem in cityList" id="city" tabindex="4">-->
+                                                                <select name="city" ng-model="user.city_id" id="city" tabindex="4">
                                                                     <option value="">Select State First</option>
+                                                                    <option ng-repeat='cityItem in cityList' value='{{cityItem.city_id}}'>{{cityItem.city_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorCity" class="error">{{errorCity}}</span>
                                                             </fieldset>
@@ -140,6 +146,10 @@
                                                                 <label>Postal address:<span style="color:red">*</span></label>
                                                                 <input name="business_address" ng-model="user.business_address" tabindex="6" autofocus type="text" id="business_address" placeholder="Enter address" style="resize: none;" value=""/>
                                                                 <span ng-show="errorPostalAddress" class="error">{{errorPostalAddress}}</span>                                                                        
+                                                            </fieldset>
+                                                            <fieldset class="full-width" ng-hide="1">
+                                                                <label>registration step:<span style="color:red">*</span></label>
+                                                                <input type="hide" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             </fieldset>
                                                             <fieldset class="hs-submit full-width">
                                                                 <input type="submit"  id="next" name="next" tabindex="7"  value="Next">
@@ -318,6 +328,7 @@
                             $('ul.left-form-each li:nth-child(2)').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
+                            getContactInformation();
                         } else if (reg_uri == 'description') {
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li:nth-child(3)').addClass('active');
@@ -329,17 +340,19 @@
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                         }
-
+                        $(window).bind('popstate', function () {
+                            window.location.href = window.location.href;
+                        });
                         $http({
                             method: 'GET',
                             url: base_url + 'business_profile_registration/getCountry',
+                            headers: {'Content-Type': 'application/json'},
                         }).success(function (data) {
-//                            console.log(data);
                             $scope.countryList = data;
                         });
+                        
                         $scope.onCountryChange = function () {
                             $scope.countryIdVal = $scope.user.country_id;
-                            // console.log(“data state processing”+$scope.stateIdVal);
                             $http({
                                 method: 'POST',
                                 url: base_url + 'business_profile_registration/getStateByCountryId',
@@ -367,13 +380,75 @@
                         $http({
                             method: 'POST',
                             url: base_url + 'business_profile_registration/getBusinessInformation',
+                            headers: {'Content-Type': 'application/json'},
                         }).success(function (data) {
-                            alert(data.company_name);
-                            $scope.user.companyname = data.company_name;
+                            $scope.user.companyname = data[0].company_name;
+                            $scope.user.country_id = data[0].country;
+                            $scope.user.state_id = data[0].state;
+                            $scope.user.city_id = data[0].city;
+                            $scope.user.pincode = data[0].pincode;
+                            $scope.user.business_address = data[0].address;
+                            //$scope.user.business_step = data[0].business_step;
                         });
                         //};
 
+                        function getContactInformation() {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/getContactInformation',
+                                headers: {'Content-Type': 'application/json'},
+                            }).success(function (data) {
+                                $scope.user.contactname = data[0].contact_person;
+                                $scope.user.contactmobile = data[0].contact_mobile;
+                                $scope.user.email = data[0].contact_email;
+                                $scope.user.contactwebsite = data[0].contact_website;
+                                //$scope.user.business_step = data[0].business_step;
+                            });
+                        }
+                        ;
 
+                        $scope.getContactInformation = function () {
+                            getContactInformation();
+                        };
+
+                        function getDescription() {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/getDescription',
+                                headers: {'Content-Type': 'application/json'},
+                            }).success(function (data) {
+                                $scope.user.contactname = data[0].business_type;
+                                $scope.user.contactmobile = data[0].industriyal;
+                                $scope.user.email = data[0].details;
+                                $scope.user.contactwebsite = data[0].other_business_type;
+                                $scope.user.business_step = data[0].other_industrial;
+                                $scope.user.business_step = data[0].business_step;
+                            });
+                        }
+                        ;
+
+                        $scope.getDescription = function () {
+                            getDescription();
+                        };
+
+                        function getImage() {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/getContactInformation',
+                                headers: {'Content-Type': 'application/json'},
+                            }).success(function (data) {
+                                $scope.user.contactname = data[0].contact_person;
+                                $scope.user.contactmobile = data[0].contact_mobile;
+                                $scope.user.email = data[0].contact_email;
+                                $scope.user.contactwebsite = data[0].contact_website;
+                                //$scope.user.business_step = data[0].business_step;
+                            });
+                        }
+                        ;
+
+                        $scope.getImage = function () {
+                            getImage();
+                        };
 
 
                         // calling our submit function.
@@ -499,8 +574,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                        <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
