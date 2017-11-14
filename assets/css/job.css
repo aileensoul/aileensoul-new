@@ -2235,7 +2235,8 @@ label.cameraButton input[accept*="camera"] {
 .gov-job-apply-btn{width:100%; border-top:1px solid #d9d9d9; float:left; padding:15px; text-align:right;}
 .gov-job-apply-btn a{border:1px solid #1b8ab9; color:#1b8ab9; padding: 7px 15px; border-radius: 4px; display:inline-block;}
 .gov-job-apply-btn a:hover{background:#1b8ab9; color:#fff;}
-
+.Add_edu {font-size: 14px;}
+}
 	
 	
 	

@@ -57,7 +57,7 @@
             <div class="common-form">
                <div class="job-saved-boxe_2" >
                   <div class="edu_tab fw">
-                     <h3>Educational  Qualification</h3>
+                     <h3>Educational  Qualification <span class="Add_edu">(Add Last Education)</span></h3>
 
 
                      <div class="col-md-12 col-sm-12 col-xs-12">

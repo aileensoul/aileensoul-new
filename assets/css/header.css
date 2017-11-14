@@ -2826,7 +2826,7 @@ footer ul li a:hover{
         margin-left: 7px !important;
     }
     .job_con #InboxContainer::before {
-        right: 131px;
+        right: 105px; /*d*/
     }
     #acon::before {
         right: 125px!important; /*d*/
