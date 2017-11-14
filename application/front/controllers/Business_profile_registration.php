@@ -143,11 +143,7 @@ class Business_profile_registration extends MY_Controller {
         $request = json_decode($postdata);
         if ($request->countryId != '') {
             $stateList = $this->User_model->getStateByCountryId($request->countryId);
-            $statearray = array();
-            for ($i = 0; $i < count($stateList); $i++) {
-                $statearray[] = array('state_id' => $stateList[$i]->state_id, 'state_name' => $stateList[$i]->state_name, 'complete' => 'true');
-            }
-            echo json_encode($statearray);
+            echo json_encode($stateList);
         } else {
             echo json_encode(array('status' => 'failure'));
         }
@@ -159,12 +155,8 @@ class Business_profile_registration extends MY_Controller {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         if ($request->stateId != '') {
-            $cityList = $this->User_model->getCityByStateId($request->stateId->state_id);
-            $array = array();
-            for ($i = 0; $i < count($cityList); $i++) {
-                $array[] = array('city_id' => $cityList[$i]->city_id, 'city_name' => $cityList[$i]->city_name, 'complete' => 'true');
-            }
-            echo json_encode($array);
+            $cityList = $this->User_model->getCityByStateId($request->stateId);
+            echo json_encode($cityList);
         } else {
             echo json_encode(array('status' => 'failure'));
         }

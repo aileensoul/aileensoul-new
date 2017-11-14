@@ -112,7 +112,6 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>Country:<span style="color:red">*</span></label>
-                                                                <!--<select name="country" ng-model="user.country_id" ng-change="onCountryChange()" ng-options="countryItem.country_name for countryItem in countryList" id="country" tabindex="2">-->
                                                                 <select name="country" ng-model="user.country_id" ng-change="onCountryChange()" id="country" tabindex="2">
                                                                     <option value="" selected="selected">Country</option>
                                                                     <option ng-repeat='countryItem in countryList' value='{{countryItem.country_id}}'>{{countryItem.country_name}}</option>             
@@ -121,7 +120,6 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>State:<span style="color:red">*</span></label>
-                                                                <!--<select name="state" ng-model="user.state_id" ng-change="onStateChange()"  ng-options="stateItem.state_name for stateItem in stateList" id="state" tabindex="3">-->
                                                                 <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3">
                                                                     <option value="">Select country first</option>
                                                                     <option ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}'>{{stateItem.state_name}}</option>             
@@ -130,7 +128,6 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label> City<span class="optional">(optional)</span>:</label>
-                                                                <!--<select name="city" ng-model="user.city_id"  ng-options="cityItem.city_name for cityItem in cityList" id="city" tabindex="4">-->
                                                                 <select name="city" ng-model="user.city_id" id="city" tabindex="4">
                                                                     <option value="">Select State First</option>
                                                                     <option ng-repeat='cityItem in cityList' value='{{cityItem.city_id}}'>{{cityItem.city_name}}</option>             
@@ -350,29 +347,37 @@
                         }).success(function (data) {
                             $scope.countryList = data;
                         });
-                        
-                        $scope.onCountryChange = function () {
-                            $scope.countryIdVal = $scope.user.country_id;
+
+                        function onCountryChange(country_id = '') {
                             $http({
                                 method: 'POST',
                                 url: base_url + 'business_profile_registration/getStateByCountryId',
-                                data: {countryId: $scope.countryIdVal}
+                                data: {countryId: country_id}
                             }).success(function (data) {
                                 //console.log(data);
                                 $scope.stateList = data;
                             });
+                        }
+
+                        $scope.onCountryChange = function () {
+                            $scope.countryIdVal = $scope.user.country_id;
+                            onCountryChange($scope.countryIdVal);
+                            $scope.user.city_id = '0';
                         };
-                        $scope.onStateChange = function () {
-                            $scope.stateIdVal = $scope.user.state_id;
-                            // console.log(“data state processing”+$scope.stateIdVal);
+
+                        function onStateChange(state_id = '') {
                             $http({
                                 method: 'POST',
                                 url: base_url + 'business_profile_registration/getCityByStateId',
-                                data: {stateId: $scope.stateIdVal}
+                                data: {stateId: state_id}
                             }).success(function (data) {
-                                //console.log(data);
                                 $scope.cityList = data;
                             });
+                        }
+
+                        $scope.onStateChange = function () {
+                            $scope.stateIdVal = $scope.user.state_id;
+                            onStateChange($scope.stateIdVal);
                         };
 
                         // business information data
@@ -382,6 +387,9 @@
                             url: base_url + 'business_profile_registration/getBusinessInformation',
                             headers: {'Content-Type': 'application/json'},
                         }).success(function (data) {
+                            onCountryChange(data[0].country);
+                            onStateChange(data[0].state);
+
                             $scope.user.companyname = data[0].company_name;
                             $scope.user.country_id = data[0].country;
                             $scope.user.state_id = data[0].state;
@@ -574,8 +582,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                        <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
