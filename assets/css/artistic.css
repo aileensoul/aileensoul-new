@@ -4072,17 +4072,18 @@ div .comment {
 }
 
 .multi-select-menu {
-    position: relativ;
+    position: absolute;
     left: 0;
-    top: -1px;
+    top: 1.1em;
     z-index: 1;
     float: left;
     min-width: 100%;
     background: #fff;
+    margin: 1em 0;
     border: 1px solid #aaa;
     /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);*/
     display: none;
-	height:300px;
+	height:98px;
 	overflow-y:scroll;
 }
 
@@ -4112,7 +4113,7 @@ div .comment {
 .multi-select-button {
     display: inline-block;
     font-size: 0.875em;
-    padding: 0.2em 0.6em;
+    padding: 0.4em 0.6em;
     max-width: 100%;
 	width:100%;
     white-space: nowrap;
@@ -4120,11 +4121,12 @@ div .comment {
     text-overflow: ellipsis;
     vertical-align: -0.5em;
     background-color: #fff;
-    border: 1px solid #aaa;
+    border: 1px solid #cacaca;
     border-radius: 4px;
     /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);*/
     cursor: default;
 	padding-right:25px;
+	height:35px;
 }
 
 .multi-select-button:after {
@@ -4138,7 +4140,7 @@ div .comment {
     margin-left: 0.4em;
     vertical-align: 0.1em;
 	position:absolute;
-	top:13px;
+	top:15px;
 	right:10px;
 }
 
@@ -4159,6 +4161,10 @@ div .comment {
     white-space: normal;
 }
 .post-design-commnet-box .comment-edit-butn{right: 20px;}
+.art-cat-custom .multi-select-button.error{border:1px solid #ff0000;}
+#artist_regform label.error{right:1px;}
+.art-cat-custom label.error{top:65px;}
+
 /***  end select dropdown  ***/
 /*** video css  ***/
 .video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
