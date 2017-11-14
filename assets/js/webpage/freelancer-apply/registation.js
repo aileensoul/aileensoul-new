@@ -127,9 +127,13 @@ $(document).ready(function () {
             state: {
                 required: true,
             },
+             city:{
+                required: true,
+            },
             field: {
                 required: true
             },
+            
             skills: {
                 required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
@@ -156,13 +160,15 @@ $(document).ready(function () {
             state: {
                 required: "State is required.",
             },
+            city:{
+                required:"City is required.",
+            },
              field: {
                 required: "Field is required",
             },
              skills: {
                 required: "Skill is required"
             }
-
         },
     });
 });

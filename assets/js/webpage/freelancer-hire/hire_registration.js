@@ -76,6 +76,9 @@ $(document).ready(function () {
             state: {
                 required: true,
             },
+            city:{
+                required: true,
+            },
              professional_info: {
                // required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/ 
@@ -106,6 +109,9 @@ $(document).ready(function () {
             },
             state: {
                 required: "State is required.",
+            },
+            city:{
+                required:"City is required.",
             },
              professional_info: {
                 required: "Professional information is required."

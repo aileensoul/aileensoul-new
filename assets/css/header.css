@@ -2768,6 +2768,7 @@ footer ul li a:hover{
         /*margin-top:7px; margin-left: 0px;*/
     }
     footer ul li a{font-size:11px; padding:5px;}
+    #addcontact_count{right: 5px;}
 
 }
 @media screen and (max-width: 360px) {

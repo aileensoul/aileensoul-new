@@ -12,7 +12,7 @@ class User_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query->result();
+        return $query->result_array();
     }
 
     public function getStateByCountryId($id) {
@@ -23,7 +23,7 @@ class User_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query->result();
+        return $query->result_array();
     }
 
     public function getCityByStateId($id) {
@@ -34,7 +34,7 @@ class User_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query->result();
+        return $query->result_array();
     }
     
     public function getBusinessType(){
@@ -45,7 +45,7 @@ class User_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query->result();
+        return $query->result_array();
     }
     
     public function getCategory(){
@@ -56,7 +56,7 @@ class User_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query->result();
+        return $query->result_array();
     }
 
 }

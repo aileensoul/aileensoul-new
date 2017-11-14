@@ -30,7 +30,7 @@
                   <div class="job_reg_page_fprm">
                       
                      <div class="common-form job_reg_main">
-                        <h3>Welcome In Artist Profile</h3>
+                        <h3>Welcome In Artistic Profile</h3>
 
                         <?php echo form_open(base_url('artist/profile_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
 
@@ -55,77 +55,8 @@
                            <?php echo form_error('email');; ?>
                         </fieldset>
 
-                        <fieldset <?php if($country) {  ?> class="error-msg" <?php } ?>>
-								<label>Country:<span style="color:red">*</span></label>								
-        								<select name="country" id="country" tabindex="5">
-            							<option value="">Select country</option>
-            							<?php
-                                            if(count($countries) > 0){
-                                                foreach($countries as $cnt){  ?>
-                            <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name'];?></option>
-                                    <?php                                            
-                                          }       
-                                            }
-                                            ?>
-        							</select><span id="country-error"></span>
-							     <?php echo form_error('country'); ?>
-    					</fieldset> 
 
-    					<fieldset <?php if($state) {  ?> class="error-msg" <?php } ?>>
-								    <label>state:<span style="color:red">*</span></label>
-    								<select name="state" id="state" tabindex="6">
-        							<?php
-                                          if($state1)
-                                            {
-                                            foreach($states as $cnt){  ?>
-                                                 <option value="<?php echo $cnt['state_id']; ?>" <?php if($cnt['state_id']==$state1) echo 'selected';?>><?php echo $cnt['state_name'];?></option>
-                                                <?php
-                                                } }                                             
-                                               else
-                                                {
-                                            ?>
-                                                 <option value="">Select country first</option>
-                                                  <?php                                            
-                                            }
-                                            ?>
-								    </select><span id="state-error"></span>
-                                     <?php echo form_error('state'); ?>
-						</fieldset> 
-
-						<fieldset <?php if($city) {  ?> class="error-msg" <?php } ?>>
-								    <label> City:<span style="color:red">*</label>
-									<select name="city" id="city" tabindex="7">
-    								<?php
-                                         if($city1)
-                                            {
-                                          foreach($cities as $cnt){                                              
-                                              ?>
-                                               <option value="<?php echo $cnt['city_id']; ?>" <?php if($cnt['city_id']==$city1) echo 'selected';?>><?php echo $cnt['city_name'];?></option>
-                                                <?php
-                                                } }
-                                                else if($state1)
-                                             {
-                                            ?>
-                                            <option value="">Select city</option>
-                                            <?php
-                                            foreach ($cities as $cnt) {
-                                                ?>
-                                                <option value="<?php echo $cnt['city_id']; ?>"><?php echo $cnt['city_name']; ?></option>
-                                                <?php
-                                            }
-                                        }                                              
-                                                else
-                                                {
-                                            ?>
-                                        <option value="">Select state first</option>
-                                         <?php                                          
-                                            }
-                                            ?>
-									</select><span id="city-error"></span>
-                                    <?php echo form_error('city'); ?>
-								</fieldset>                              
-                
-                					<fieldset class="full-width art-cat-custom <?php if($skills) {  ?> error-msg <?php } ?>">
+                         <fieldset class="full-width art-cat-custom <?php if($skills) {  ?> error-msg <?php } ?>">
                                         <label>Art category:<span style="color:red">*</span></label>
 
                           <select name="skills[]" id="skills" multiple>
@@ -162,6 +93,79 @@
                                      <?php echo form_error('othercategory'); ?>
                                  </div>
                                    </fieldset>
+
+
+                        <fieldset <?php if($country) {  ?> class="error-msg" <?php } ?>>
+                <label>Country:<span style="color:red">*</span></label>               
+                        <select name="country" id="country" tabindex="5">
+                          <option value="">Select country</option>
+                          <?php
+                                            if(count($countries) > 0){
+                                                foreach($countries as $cnt){  ?>
+                            <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name'];?></option>
+                                    <?php                                            
+                                          }       
+                                            }
+                                            ?>
+                      </select><span id="country-error"></span>
+                   <?php echo form_error('country'); ?>
+              </fieldset> 
+
+              <fieldset <?php if($state) {  ?> class="error-msg" <?php } ?>>
+                    <label>state:<span style="color:red">*</span></label>
+                    <select name="state" id="state" tabindex="6">
+                      <?php
+                                          if($state1)
+                                            {
+                                            foreach($states as $cnt){  ?>
+                                                 <option value="<?php echo $cnt['state_id']; ?>" <?php if($cnt['state_id']==$state1) echo 'selected';?>><?php echo $cnt['state_name'];?></option>
+                                                <?php
+                                                } }                                             
+                                               else
+                                                {
+                                            ?>
+                                                 <option value="">Select country first</option>
+                                                  <?php                                            
+                                            }
+                                            ?>
+                    </select><span id="state-error"></span>
+                                     <?php echo form_error('state'); ?>
+            </fieldset> 
+
+            <fieldset class="full-width" <?php if($city) {  ?> class="error-msg" <?php } ?>>
+                    <label> City:<span style="color:red">*</label>
+                  <select name="city" id="city" tabindex="7">
+                    <?php
+                                         if($city1)
+                                            {
+                                          foreach($cities as $cnt){                                              
+                                              ?>
+                                               <option value="<?php echo $cnt['city_id']; ?>" <?php if($cnt['city_id']==$city1) echo 'selected';?>><?php echo $cnt['city_name'];?></option>
+                                                <?php
+                                                } }
+                                                else if($state1)
+                                             {
+                                            ?>
+                                            <option value="">Select city</option>
+                                            <?php
+                                            foreach ($cities as $cnt) {
+                                                ?>
+                                                <option value="<?php echo $cnt['city_id']; ?>"><?php echo $cnt['city_name']; ?></option>
+                                                <?php
+                                            }
+                                        }                                              
+                                                else
+                                                {
+                                            ?>
+                                        <option value="">Select state first</option>
+                                         <?php                                          
+                                            }
+                                            ?>
+                  </select><span id="city-error"></span>
+                                    <?php echo form_error('city'); ?>
+                </fieldset>                              
+                
+                         
 
                         <fieldset class=" full-width">
                            <div class="job_reg">

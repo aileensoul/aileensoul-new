@@ -142,12 +142,8 @@ class Business_profile_registration extends MY_Controller {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         if ($request->countryId != '') {
-            $stateList = $this->User_model->getStateByCountryId($request->countryId->country_id);
-            $statearray = array();
-            for ($i = 0; $i < count($stateList); $i++) {
-                $statearray[] = array('state_id' => $stateList[$i]->state_id, 'state_name' => $stateList[$i]->state_name, 'complete' => 'true');
-            }
-            echo json_encode($statearray);
+            $stateList = $this->User_model->getStateByCountryId($request->countryId);
+            echo json_encode($stateList);
         } else {
             echo json_encode(array('status' => 'failure'));
         }
@@ -159,12 +155,8 @@ class Business_profile_registration extends MY_Controller {
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
         if ($request->stateId != '') {
-            $cityList = $this->User_model->getCityByStateId($request->stateId->state_id);
-            $array = array();
-            for ($i = 0; $i < count($cityList); $i++) {
-                $array[] = array('city_id' => $cityList[$i]->city_id, 'city_name' => $cityList[$i]->city_name, 'complete' => 'true');
-            }
-            echo json_encode($array);
+            $cityList = $this->User_model->getCityByStateId($request->stateId);
+            echo json_encode($cityList);
         } else {
             echo json_encode(array('status' => 'failure'));
         }
@@ -271,6 +263,15 @@ class Business_profile_registration extends MY_Controller {
         $this->load->view('business_profile/ng_contact_info', $this->data);
     }
 
+    public function getContactInformation() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->business_profile_active_check();
+        // GET BUSINESS PROFILE DATA
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step,contact_person,contact_mobile,contact_email,contact_website', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        echo json_encode($userdata);
+    }
+
     public function ng_contact_info_insert() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -303,7 +304,7 @@ class Business_profile_registration extends MY_Controller {
             $data['errors'] = $errors;
         } else {
             $data = array(
-                'contact_person' => $_POST['contactmobile'],
+                'contact_person' => $_POST['contactname'],
                 'contact_mobile' => $_POST['contactmobile'],
                 'contact_email' => $_POST['email'],
                 'contact_website' => $_POST['contactwebsite'],
@@ -331,6 +332,24 @@ class Business_profile_registration extends MY_Controller {
         $this->data['category_list'] = $this->User_model->getCategory();
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/ng_description', $this->data);
+    }
+
+    public function getDescription() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->business_profile_active_check();
+        // GET BUSINESS PROFILE DATA
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,details,other_business_type,other_industrial,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        // GET INDUSTRIAL TYPE DATA
+        $contition_array = array('status' => 1);
+        $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        // GEY BUSINESS TYPE DATA
+        $this->data['businesstypedata'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        echo json_encode($userdata);
     }
 
     public function ng_description_insert() {

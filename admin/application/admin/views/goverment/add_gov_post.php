@@ -68,23 +68,18 @@ echo $leftmenu;
 
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
+                            <label for="govcat" name="govcat" id="govcat">Vacancy Details:</label>
+
                             <label for="post_name" name="post_name" id="post_name">Post Name</label>
                             <input type="text" class="form-control" name="postname" id="postname" value="" placeholder="Enter post Name">
-                    </div>
-                    </div>
-
-
-                    <div class="box-body">                   
-                    <div class="form-group col-sm-10">
-                            <label for="novac" name="novac" id="novac">No Vacancies</label>
+                             <label for="novac" name="novac" id="novac">No Vacancies</label>
                             <input type="text" class="form-control" name="novacan" id="novacan" value="" placeholder="Enter No Vacancies">
-                    </div>
-                    </div>
-
-                    <div class="box-body">                   
-                    <div class="form-group col-sm-10">
-                            <label for="paysc" name="paysc" id="paysc">pay Scale</label>
+                             <label for="paysc" name="paysc" id="paysc">pay Scale</label>
                             <input type="text" class="form-control" name="payscale" id="payscale" value="" placeholder="Enter pay Scale">
+                             <label for="gradepay" name="gradepay" id="gradepay">Grade pay</label>
+                            <input type="text" class="form-control" name="gpay" id="gpay" value="" placeholder="Enter grade pay">
+                             
+                             <button id="addmore">+</button>
                     </div>
                     </div>
 
@@ -120,48 +115,15 @@ echo $leftmenu;
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govelg" name="govelg" id="govelg">Eligibility</label>
-                            <input type="text" class="form-control" name="gov_elg" id="gov_elg" value="" placeholder="Enter Eligibility">
+                            <textarea name="gov_elg" id="gov_elg" placeholder="Enter Eligibility" rows="10" cols="100"></textarea>
+                            
                     </div>
                     </div>
 
                     <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govdate" name="govdate" id="govdate">Last_date</label>
-                            <select tabindex="9" class="day" name="selday" id="selday">
-                                            <option value="" disabled selected value>Day</option>
-                                            <?php
-                                            for ($i = 1; $i <= 31; $i++) {
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                        <select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                            <option value="" disabled selected value>Month</option>
-                                            <option value="1">Jan</option>
-                                            <option value="2">Feb</option>
-                                            <option value="3">Mar</option>
-                                            <option value="4">Apr</option>
-                                            <option value="5">May</option>
-                                            <option value="6">Jun</option>
-                                            <option value="7">Jul</option>
-                                            <option value="8">Aug</option>
-                                            <option value="9">Sep</option>
-                                            <option value="10">Oct</option>
-                                            <option value="11">Nov</option>
-                                            <option value="12">Dec</option>
-                                        </select>
-                                        <select tabindex="11" class="year" name="selyear" id="selyear">
-                                            <option value="" disabled selected value>Year</option>
-                                            <?php
-                                            for ($i = date('Y'); $i >= 1900; $i--) {
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
+                            <input type="text" class="form-control" name="last_date" id="last_date" value="" placeholder="Enter Last date">
                     </div>
                     </div>
 
@@ -175,11 +137,25 @@ echo $leftmenu;
                     </div>
                     </div>
 
+                    <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="postim" name="postim" id="postim">File</label>
+                            <input type="file" class="form-control" name="post_file" id="post_file" value="">
+                    </div>
+                    </div>
+
 
                      <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govlink" name="govlink" id="govlink">Apply Link</label>
                             <input type="text" class="form-control" name="gov_link" id="gov_link" value="" placeholder="Enter Apply Link">
+                    </div>
+                    </div>
+
+                     <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="govlink" name="govlink" id="govlink">How to apply</label>
+                            <input type="text" class="form-control" name="how_apply" id="how_apply" value="" placeholder="Enter how to apply">
                     </div>
                     </div>
 
