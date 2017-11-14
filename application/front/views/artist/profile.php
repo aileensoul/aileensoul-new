@@ -31,7 +31,9 @@
                       
                      <div class="common-form job_reg_main">
                         <h3>Welcome In Artist Profile</h3>
-                        <?php echo form_open(base_url('artist/profile_insert'), array('id' => 'artist_regform', 'name' => 'artist_regform', 'class' => 'clearfix')); ?>
+
+                        <?php echo form_open(base_url('artist/profile_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
+
                         <fieldset>
                            <label >First Name <font  color="red">*</font> :</label>                          
                            <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" value="<?php echo $userdata[0]['first_name']; ?>" maxlength="35">
@@ -164,7 +166,11 @@
                         <fieldset class=" full-width">
                            <div class="job_reg">
                               <!--<input type="reset">-->
-                              <input tabindex="9" title="Register" type="submit" id="submit" name="" value="Register">
+                              <!-- <input tabindex="9" title="Register" type="submit" id="submit" name="btnsubmit" value="Register">
+ -->
+
+                                    <input type="submit"  id="next" name="next" value="Register" tabindex="9">
+
                            </div>
                         </fieldset>
                         <?php echo form_close();?>
@@ -198,6 +204,8 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.multi-select.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>
+
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/profile.js?ver='.time()); ?>"></script>
  <script>
      var base_url = '<?php echo base_url(); ?>';  

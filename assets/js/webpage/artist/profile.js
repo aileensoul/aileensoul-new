@@ -45,6 +45,12 @@ $(function(){
     });
     
 // other category input open start
+$(document).ready(function () {
+ var strUser1 = $('#skills').val();
+ if(strUser1 != ''){
+  $("span").removeClass("custom-mini-select");
+ }
+ });
 
 $('#skills').change(function other_category(){
         // var e = document.getElementById("skills");
@@ -123,10 +129,8 @@ function validation_other(event){
         event.preventDefault();
    }
  }else{ 
-
-     $(".multi-select-button").addClass("error");
       return false;
-      event.preventDefault();
+        event.preventDefault();
    }
 }
 
@@ -141,7 +145,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
             $(document).ready(function () { 
 
-                $("#artist_regform").validate({
+                $("#artinfo").validate({
 
                    ignore: '*:not([name])',
                     rules: {
