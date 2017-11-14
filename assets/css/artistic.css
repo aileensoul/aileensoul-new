@@ -4083,7 +4083,7 @@ div .comment {
     border: 1px solid #aaa;
     /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);*/
     display: none;
-	height:98px;
+	height:135px;
 	overflow-y:scroll;
 }
 
@@ -5703,6 +5703,7 @@ div .comment {
 	.user-list .profile-job-post-location-name .user_lst ul li .user_btn button{margin:0; }
 	.user-list .profile-job-post-location-name ul li.folle_text{padding-top:1px;}
 	.profile-job-post-location-name-rec .fl.search_button button{margin-right:10px; margin-bottom:0;}
+    .business-profile-right .bui-menu-profile{min-height: 106px;}/*d*/
 }
 
 @media screen and (max-width: 430px) {

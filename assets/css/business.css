@@ -5317,6 +5317,7 @@ div .comment {
 	.no-login #paddingtop_fixed{padding-top:64px !important;}
 	.ctre_date{line-height:1.5;}
     .posterror-modal-close {margin:-33px -33px 0px 0px;}
+    .cameraButton .tooltiptext {top:-5px !important;}
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -6153,7 +6154,7 @@ div .comment {
 	.padding-360{padding-left:1px; padding-right:1px;}
 	.contact-frnd-post{padding:10px 8px 0;}
 	/*** end add  ***/
-	.business-profile-right .bui-menu-profile{min-height:100px ;}
+	.business-profile-right .bui-menu-profile{min-height:106px ;}/*d*/
 	.buisness-menu.other-profile-menu::before{bottom:89px;}
 	.file-preview{width:194px;}
 }
