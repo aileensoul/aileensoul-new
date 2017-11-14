@@ -141,6 +141,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 
                 $("#artist_regform").validate({
 
+                   ignore: '*:not([name])',
                     rules: {
 
                         firstname: {
