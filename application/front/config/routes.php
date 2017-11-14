@@ -185,7 +185,7 @@ $route['freelancer-work/portfolio/(:any)'] = "freelancer/freelancer_post_portfol
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
 $route['freelancer-work/reactivate'] = "freelancer/reactivate";
-//$route['freelancer-work/search'] = "search/freelancer_post_search";
+$route['freelancer-work/registation'] = "freelancer/registation";
 
 $route['(:any)-project'] = "search/freelancer_post_search";
 $route['project-in-(:any)'] = "search/freelancer_post_search";
