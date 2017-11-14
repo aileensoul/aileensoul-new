@@ -50,7 +50,8 @@
                       echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
                   }
                   if ($this->session->flashdata('success')) {
-                      echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+                      echo '<div class="aler
+                      t alert-success">' . $this->session->flashdata('success') . '</div>';
                   }
                   ?>
             </div>
