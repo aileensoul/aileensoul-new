@@ -4164,6 +4164,7 @@ div .comment {
 .art-cat-custom .multi-select-button.error{border:1px solid #ff0000;}
 #artist_regform label.error{right:1px;}
 .art-cat-custom label.error{top:65px;}
+.common-form fieldset .job_reg input:focus{color:#fff !important;}
 
 /***  end select dropdown  ***/
 /*** video css  ***/
