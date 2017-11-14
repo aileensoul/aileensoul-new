@@ -5100,14 +5100,14 @@ class Freelancer extends MY_Controller {
                 'user_id' => $userid,
                 'free_hire_step' => 3
             );
-             $insert_id = $this->common->insert_data($data, 'freelancer_hire_reg');
-                if ($insert_id) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('freelancer-hire/home', refresh);
-                } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('freelancer/hire_registation', refresh);
-                }
+            $insert_id = $this->common->insert_data($data, 'freelancer_hire_reg');
+            if ($insert_id) {
+                $this->session->set_flashdata('success', 'Basic information updated successfully');
+                redirect('freelancer-hire/home', refresh);
+            } else {
+                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                redirect('freelancer/hire_registation', refresh);
+            }
         }
     }
 
@@ -5227,6 +5227,7 @@ class Freelancer extends MY_Controller {
     }
 
     //FREELANCER APPLY NEW REGISTATION INSERT END
+    //CHECK FOR MAIL DESIGNING START
     public function email_view() {
         $userid = 140;
         $notid = 103;
@@ -5266,4 +5267,90 @@ class Freelancer extends MY_Controller {
         $this->load->view('email_view', $this->data);
     }
 
+//CHECK FOR MAIL DESIGNING END
+    //FOR FREELANCER APPLY PROGRESSBAR START
+    public function progressbar() {
+        $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $this->data['apply_reg'] = $apply_reg = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = array());
+        $count = 0;
+        if ($apply_reg[0]['freelancer_post_fullname'] != '') {
+            $count++;
+        }
+        if ($apply_reg[0]['freelancer_post_username'] != '') {
+            $count++;
+        }
+        if ($apply_reg[0]['freelancer_post_skypeid'] != '') {
+            $count++;
+        }
+        if ($apply_reg[0]['freelancer_post_email'] != '') {
+            $count++;
+        }
+        if ($apply_reg[0]['freelancer_post_phoneno'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_country'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_state'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_city'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_field'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_area'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_skill_description'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_hourly'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_ratestate'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_fixed_rate'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_job_type'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_work_hour'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_degree'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_stream'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_univercity'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_collage'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_percentage'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_passingyear'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_eduaddress'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_portfolio_attachment'] != '') {
+            $count++;
+        }
+         if ($apply_reg[0]['freelancer_post_portfolio'] != '') {
+            $count++;
+        }
+        echo $count;die();
+    }
+
+    //FOR FREELANCER APPLY PROGRESSBAR END
 }
