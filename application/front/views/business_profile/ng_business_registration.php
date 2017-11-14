@@ -79,9 +79,21 @@
                                     <div class="col-md-3 col-sm-4">
                                         <ul class="left-form-each">
                                             <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
-                                            <li><a href="#contact_information" ng-click="tab_active(2)" data-toggle="tab">Contact Information</a></li>
-                                            <li><a href="#description" ng-click="tab_active(3)" data-toggle="tab">Description</a></li>
-                                            <li><a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                            <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
+                                                <li><a href="#contact_information" ng-click="tab_active(2)" data-toggle="tab">Contact Information</a></li>
+                                            <?php } else { ?>
+                                                <li><a href="javascript:void(0);">Contact Information</a></li>
+                                            <?php } ?>
+                                            <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
+                                                <li><a href="#description" ng-click="tab_active(3)" data-toggle="tab">Description</a></li>
+                                            <?php } else { ?>
+                                                <li><a href="javascript:void(0);">Description</a></li>
+                                            <?php } ?>
+                                            <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
+                                                <li><a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                            <?php } else { ?>
+                                                <li><a href="javascript:void(0);">Business Images</a></li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-8">
@@ -296,7 +308,6 @@
                             }
 
                         }
-                        
                         if (reg_uri == 'business-information') {
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li:nth-child(1)').addClass('active');
@@ -318,12 +329,12 @@
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                         }
-                        
+
                         $http({
                             method: 'GET',
                             url: base_url + 'business_profile_registration/getCountry',
                         }).success(function (data) {
-                            // console.log(data);
+//                            console.log(data);
                             $scope.countryList = data;
                         });
                         $scope.onCountryChange = function () {
@@ -350,6 +361,21 @@
                                 $scope.cityList = data;
                             });
                         };
+
+                        // business information data
+                        //$scope.getBusinessInformation = function () {
+                        $http({
+                            method: 'POST',
+                            url: base_url + 'business_profile_registration/getBusinessInformation',
+                        }).success(function (data) {
+                            alert(data.company_name);
+                            $scope.user.companyname = data.company_name;
+                        });
+                        //};
+
+
+
+
                         // calling our submit function.
                         $scope.submitbusinessinfoForm = function () {
                             // Posting data to php file
@@ -370,7 +396,12 @@
                                             $scope.errorPostalAddress = data.errors.business_address;
                                         } else {
                                             if (data.is_success == '1') {
-                                                window.location.href = base_url + 'business-profile/signup/contact-information';
+                                                //window.location.href = base_url + 'business-profile/signup/contact-information';
+                                                $('ul.left-form-each li').removeClass('active');
+                                                $('ul.left-form-each li:nth-child(2)').addClass('active');
+                                                $('.tab-content .tab-pane').removeClass('active');
+                                                $('.tab-content .tab-pane:nth-child(2)').addClass('active');
+                                                $scope.tab_active(2);
                                             } else {
                                                 return false;
                                             }
@@ -396,7 +427,12 @@
                                             $scope.errorContactWebsite = data.errors.contactwebsite;
                                         } else {
                                             if (data.is_success == '1') {
-                                                window.location.href = base_url + 'business-profile/signup/description';
+                                                //window.location.href = base_url + 'business-profile/signup/description';
+                                                $('ul.left-form-each li').removeClass('active');
+                                                $('ul.left-form-each li:nth-child(3)').addClass('active');
+                                                $('.tab-content .tab-pane').removeClass('active');
+                                                $('.tab-content .tab-pane:nth-child(3)').addClass('active');
+                                                $scope.tab_active(3);
                                             } else {
                                                 return false;
                                             }
@@ -422,7 +458,12 @@
                                             $scope.errorBusinessDetails = data.errors.business_details;
                                         } else {
                                             if (data.is_success == '1') {
-                                                window.location.href = base_url + 'business-profile/signup/image';
+                                                //window.location.href = base_url + 'business-profile/signup/image';
+                                                $('ul.left-form-each li').removeClass('active');
+                                                $('ul.left-form-each li:nth-child(4)').addClass('active');
+                                                $('.tab-content .tab-pane').removeClass('active');
+                                                $('.tab-content .tab-pane:nth-child(4)').addClass('active');
+                                                $scope.tab_active(4);
                                             } else {
                                                 return false;
                                             }
@@ -458,8 +499,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                            <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>

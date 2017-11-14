@@ -34,9 +34,9 @@ class Business_profile_registration extends MY_Controller {
     public function business_registration() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
-        
-        $this->data['reg_uri'] = $reg_uri = $this->uri->segment(3);
-        
+
+        $this->data['reg_uri'] = $reg_uri = $this->uri->segment(2);
+
         $contition_array = array('user_id' => $userid, 'status' => '0');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($businessdata) {
@@ -81,6 +81,15 @@ class Business_profile_registration extends MY_Controller {
                 $this->load->view('business_profile/ng_business_info', $this->data);
             }
         }
+    }
+
+    public function getBusinessInformation() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->business_profile_active_check();
+        // GET BUSINESS PROFILE DATA
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'country,state,city,company_name,pincode,address,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        echo json_encode($userdata);
     }
 
     public function business_information_edit() {

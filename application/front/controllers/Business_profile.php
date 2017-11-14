@@ -62,8 +62,8 @@ class Business_profile extends MY_Controller {
                 }
             } else {
                 //$this->load->view('business_profile/business_info', $this->data);
-                //redirect('business-profile/signup/business-information', refresh);
-                redirect('business-profile/signup/business-registration', refresh);
+                redirect('business-profile/business-information', refresh);
+                //redirect('business-profile/signup/business-registration', refresh);
             }
         }
     }
