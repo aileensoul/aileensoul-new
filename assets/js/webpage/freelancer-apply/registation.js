@@ -98,20 +98,14 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
 $(document).ready(function () {
 
     $("#freelancer_regform").validate({
-     
-        ignore: '*:not([name])',
-        ignore: ":hidden",
-
         rules: {
             firstname: {
                 required: true
             },
-
             lastname: {
                 required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
-
             email: {
                 required: true,
                 email: true,
@@ -125,12 +119,13 @@ $(document).ready(function () {
                         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
                     },
                 },
+
             },
             country: {
-                required: true
+                required: true,
             },
             state: {
-                required: true
+                required: true,
             },
             field: {
                 required: true
@@ -144,31 +139,31 @@ $(document).ready(function () {
         },
 
         messages: {
-
-            firstname: {
+             firstname: {
                 required: "First name is required."
             },
-
-            lastname: {
+             lastname: {
                 required: "Last name is required."
             },
             email: {
                 required: "Email id is required.",
                 email: "Please enter valid email id.",
-                remote: "Email already exists."
+               // remote: "Email already exists."
             },
-
             country: {
-                required: "Country is required."
+                required: "Country is required.",
             },
             state: {
-                require_from_group: "State is required."
+                required: "State is required.",
             },
-            skills: {
-                require_from_group: "Skill is required"
+             field: {
+                required: "Field is required",
+            },
+             skills: {
+                required: "Skill is required"
             }
-        }
 
+        },
     });
 });
 //FORM FILL UP VALIDATION END
@@ -179,7 +174,7 @@ function remove_validation() {
     $('#field_error').remove();
 
 }
-$("#freelancer_post_professional").submit(function () {
+$("#freelancer_regform").submit(function () {
     $('#experience_error').remove();
     $('.experience_month').removeClass('error');
     $('.experience_year').removeClass('error');
@@ -188,12 +183,12 @@ $("#freelancer_post_professional").submit(function () {
     var month = $('.experience_month').val();
 
     if (year == null && month == null) {
-        
+
         $('.experience_year').addClass('error');
         $('.experience_month').addClass('error');
         $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
         return false;
-    }else{
+    } else {
         return true;
     }
 //    $('.experience_month').append('<label for="year-month" class="year-month" style="display: block;">Experiance is required.</label>');
