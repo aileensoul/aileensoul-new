@@ -49,7 +49,7 @@
     <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="busRegApp" ng-controller="busRegController">
         <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
-            <?php echo $business_header2_border; ?>
+            <?php //echo $business_header2_border; ?>
         <?php } ?>
         <section>
             <?php
@@ -122,7 +122,7 @@
                                                                 <label>State:<span style="color:red">*</span></label>
                                                                 <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3">
                                                                     <option value="">Select country first</option>
-                                                                    <option ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}'>{{stateItem.state_name}}</option>             
+                                                                    <option ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}' ng-selected="user.state_id == stateItem.state_id">{{stateItem.state_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorState" class="error">{{errorState}}</span>
                                                             </fieldset>
@@ -144,10 +144,7 @@
                                                                 <input name="business_address" ng-model="user.business_address" tabindex="6" autofocus type="text" id="business_address" placeholder="Enter address" style="resize: none;" value=""/>
                                                                 <span ng-show="errorPostalAddress" class="error">{{errorPostalAddress}}</span>                                                                        
                                                             </fieldset>
-                                                            <fieldset class="full-width" ng-hide="1">
-                                                                <label>registration step:<span style="color:red">*</span></label>
-                                                                <input type="hide" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
-                                                            </fieldset>
+                                                            <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width">
                                                                 <input type="submit"  id="next" name="next" tabindex="7"  value="Next">
                                                             </fieldset>
@@ -181,6 +178,7 @@
                                                                 <span class="website_hint" style="font-size: 13px; color: #1b8ab9;">Note : <i>Enter website url with http or https</i></span>                                 
                                                                 <span ng-show="errorContactWebsite" class="error">{{errorContactWebsite}}</span>                      
                                                             </fieldset>
+                                                            <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width">
                                                                 <input type="submit"  id="next" name="next" tabindex="5"  value="Next">
                                                             </fieldset>
@@ -196,22 +194,32 @@
                                                         <form name="businessdis" ng-submit="submitdescriptionForm()" id="businessdis" class="clearfix">
                                                             <fieldset>
                                                                 <label>Business type:<span style="color:red">*</span></label>
-                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
+<!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option ng-option value="" selected="selected">Select Business type</option>
-                                                                    <?php foreach ($business_type as $key => $type) { ?>
-                                                                        <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
-                                                                    <?php } ?>
+                                                                <?php foreach ($business_type as $key => $type) { ?>
+                                                                                        <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                                <?php } ?>
+                                                                    <option ng-option value="0" id="busOption">Other</option>    
+                                                                </select>-->
+                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
+                                                                    <option value="" selected="selected">Select Business type</option>
+                                                                    <option ng-repeat='businessType in business_type' value='{{businessType.type_id}}'>{{businessType.business_name}}</option>             
                                                                     <option ng-option value="0" id="busOption">Other</option>    
                                                                 </select>
                                                                 <span ng-show="errorBusinessType" class="error">{{errorBusinessType}}</span>
                                                             </fieldset>  
                                                             <fieldset>
                                                                 <label>Category:<span style="color:red">*</span></label>
+<!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
+                                                                    <option ng-option value="" selected="selected">Select Industry type</option>
+                                                                <?php foreach ($category_list as $key => $category) { ?>
+                                                                                        <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                                <?php } ?>
+                                                                    <option ng-option value="0" id="indOption">Other</option>
+                                                                </select>-->
                                                                 <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
-                                                                    <?php foreach ($category_list as $key => $category) { ?>
-                                                                        <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
-                                                                    <?php } ?>
+                                                                    <option ng-repeat='caegoryType in industry_type' value='{{caegoryType.industry_id}}'>{{caegoryType.industry_name}}</option>             
                                                                     <option ng-option value="0" id="indOption">Other</option>
                                                                 </select>
                                                                 <span ng-show="errorCategory" class="error">{{errorCategory}}</span>
@@ -235,6 +243,7 @@
                                                                 <textarea name="business_details" ng-model="user.business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter business detail" style="resize: none;"></textarea>
                                                                 <span ng-show="errorBusinessDetails" class="error">{{errorBusinessDetails}}</span>
                                                             </fieldset>
+                                                            <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width">
                                                                 <input type="submit"  id="next" name="next" value="Next" tabindex="6" >
                                                             </fieldset>
@@ -251,6 +260,7 @@
                                                                 <input type="file" file-input="files" ng-file-model="user.image1" tabindex="1" name="image1[]" accept="image/*" id="image1" multiple/> 
                                                                 <span ng-show="errorImage" class="error">{{errorImage}}</span>                                                                        
                                                             </fieldset>
+                                                            <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width">
                                                                 <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">
                                                             </fieldset>
@@ -313,7 +323,6 @@
                             } else {
                                 alert("Browser does not support HTML5.");
                             }
-
                         }
                         if (reg_uri == 'business-information') {
                             $('ul.left-form-each li').removeClass('active');
@@ -331,6 +340,7 @@
                             $('ul.left-form-each li:nth-child(3)').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
+                            getDescription();
                         } else if (reg_uri == 'image') {
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li:nth-child(4)').addClass('active');
@@ -354,14 +364,16 @@
                                 url: base_url + 'business_profile_registration/getStateByCountryId',
                                 data: {countryId: country_id}
                             }).success(function (data) {
-                                //console.log(data);
                                 $scope.stateList = data;
+                                $("#state").find("option").eq(0).remove();
+                                //$scope.user.business_step = data[0].business_step;
                             });
                         }
 
                         $scope.onCountryChange = function () {
                             $scope.countryIdVal = $scope.user.country_id;
                             onCountryChange($scope.countryIdVal);
+                            $("#city").find("option").eq(0).remove();
                             $scope.user.city_id = '0';
                         };
 
@@ -380,8 +392,6 @@
                             onStateChange($scope.stateIdVal);
                         };
 
-                        // business information data
-                        //$scope.getBusinessInformation = function () {
                         $http({
                             method: 'POST',
                             url: base_url + 'business_profile_registration/getBusinessInformation',
@@ -396,9 +406,8 @@
                             $scope.user.city_id = data[0].city;
                             $scope.user.pincode = data[0].pincode;
                             $scope.user.business_address = data[0].address;
-                            //$scope.user.business_step = data[0].business_step;
+                            $scope.user.businfo_step = data[0].business_step;
                         });
-                        //};
 
                         function getContactInformation() {
                             $http({
@@ -410,7 +419,7 @@
                                 $scope.user.contactmobile = data[0].contact_mobile;
                                 $scope.user.email = data[0].contact_email;
                                 $scope.user.contactwebsite = data[0].contact_website;
-                                //$scope.user.business_step = data[0].business_step;
+                                $scope.user.busreg_step = data[0].business_step;
                             });
                         }
                         ;
@@ -425,12 +434,15 @@
                                 url: base_url + 'business_profile_registration/getDescription',
                                 headers: {'Content-Type': 'application/json'},
                             }).success(function (data) {
-                                $scope.user.contactname = data[0].business_type;
-                                $scope.user.contactmobile = data[0].industriyal;
-                                $scope.user.email = data[0].details;
-                                $scope.user.contactwebsite = data[0].other_business_type;
-                                $scope.user.business_step = data[0].other_industrial;
-                                $scope.user.business_step = data[0].business_step;
+                                $scope.user.business_type = data['userdata'][0].business_type;
+                                $scope.user.industriyal = data['userdata'][0].industriyal;
+                                $scope.user.business_details = data['userdata'][0].details;
+                                $scope.user.bustype = data['userdata'][0].other_business_type;
+                                $scope.user.indtype = data['userdata'][0].other_industrial;
+                                $scope.user.busreg_step = data['userdata'][0].business_step;
+
+                                $scope.business_type = data['business_type'];
+                                $scope.industry_type = data['industriyaldata'];
                             });
                         }
                         ;
@@ -485,6 +497,7 @@
                                                 $('.tab-content .tab-pane').removeClass('active');
                                                 $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                                                 $scope.tab_active(2);
+                                                getContactInformation();
                                             } else {
                                                 return false;
                                             }
@@ -516,6 +529,7 @@
                                                 $('.tab-content .tab-pane').removeClass('active');
                                                 $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                                                 $scope.tab_active(3);
+                                                getDescription();
                                             } else {
                                                 return false;
                                             }
@@ -547,6 +561,7 @@
                                                 $('.tab-content .tab-pane').removeClass('active');
                                                 $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                                                 $scope.tab_active(4);
+                                                getImage();
                                             } else {
                                                 return false;
                                             }
@@ -582,8 +597,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                                            <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
