@@ -373,7 +373,7 @@ class Artist extends MY_Controller {
                     echo '<option value="' . $cit['city_id'] . '">' . $cit['city_name'] . '</option>';
                 }
             } else {
-                echo '<option value="">City not available</option>';
+                echo '<option value="0">City not available</option>';
             }
         }
     }
@@ -443,7 +443,7 @@ class Artist extends MY_Controller {
         }
      //if user deactive profile then redirect to artist/index untill active profile End
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,art_skill,art_yourart,art_desc_art,art_inspire,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,art_skill,art_yourart,art_desc_art,art_inspire,other_skill,art_bestofmine', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
          $work_skill = explode(',', $userdata[0]['art_skill']); 
          $contition_array = array('status' => 1, 'type' => 1);
          $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
@@ -452,14 +452,17 @@ class Artist extends MY_Controller {
         if ($userdata) {
             $step = $userdata[0]['art_step'];
 
-            if ($step == 3 || ($step >= 1 && $step <= 3) || $step > 3) {
+            if ($step == 2 || ($step >= 1 && $step <= 2) || $step > 2) {
                 $this->data['artname1'] = $userdata[0]['art_yourart'];
                 $this->data['desc_art1'] = $userdata[0]['art_desc_art'];
                 $this->data['inspire1'] = $userdata[0]['art_inspire'];
                 $this->data['art_category1'] = $userdata[0]['art_skill'];
                 $this->data['othercategory1'] = $other_category[0]['other_category'];
+                 $this->data['bestofmine1'] = $userdata[0]['art_bestofmine'];
             }
         }
+        $this->data['get_url'] =  $this->get_url($userid);
+
         $this->data['title'] = 'Artistic Profile'.TITLEPOSTFIX;
         $this->load->view('artist/art_information', $this->data);
     }
@@ -475,7 +478,7 @@ class Artist extends MY_Controller {
          }
     }
 
-    public function art_information_insert() {
+    public function art_information_insert() { 
         $userid = $this->session->userdata('aileenuser');
          //if user deactive profile then redirect to artist/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
@@ -485,24 +488,46 @@ class Artist extends MY_Controller {
         {
              redirect('artist/');
         }
-       $other_category = $this->input->post('othercategory');
+
+        $art_category  = $this->input->post('skills');
+        $category_trim = trim($this->input->post('othercategory'));
+        $speciality =  $this->input->post('artname');
+        $bestmine = $this->input->post('bestmine');
+
+
+        $config = array(
+            'upload_path' => $this->config->item('art_portfolio_main_upload_path'),
+            'max_size' => 2500000000000,
+            'allowed_types' => $this->config->item('art_portfolio_main_allowed_types'),
+            'file_name' => $_FILES['bestofmine']['name']
+               
+        );
+        $images = array();
+        $files = $_FILES;
+        $this->load->library('upload');
+
+        $fileName = $_FILES['bestofmine']['name'];
+        $images[] = $fileName;
+        $config['file_name'] = $fileName;
+         $this->upload->initialize($config);
+         $this->upload->do_upload('bestofmine');    
+
+     $other_category = $category_trim;
      $contition_array = array('other_category' => $other_category,'type' => 1, 'status' => 1);
      $exist_other = $this->common->select_data_by_condition('art_other_category',$contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
-        if($other_category){
-
-            if($exist_other){
+        if($other_category){ 
+            if($exist_other){ 
                 $insertid = $exist_other[0]['other_category_id'];
-            }else{
+            }else{ 
 
             $data1 = array(
-                'other_category' => $this->input->post('othercategory'),
+                'other_category' => $other_category,
                 'type' => 1,
                 'status' => 1,
                 'is_delete' => 0,
                 'user_id' => $userid,
                 'created_date' => date('Y-m-d', time()),
-
             );
             $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
            }
@@ -511,161 +536,34 @@ class Artist extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $artuserdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $checkval = $this->input->post('skills');
-        if(in_array(26, $checkval)){
+        $checkval = $art_category;
+        if(in_array(26, $art_category)){ 
             $otherid = $insertid;
             }else{
                  $otherid = '';
             }
 
-             $category = $this->input->post('skills');
-             $category = implode(',' , $category); 
-
-         if ($artuserdata[0]['art_step'] == 4) {
-
+             $category = $art_category;
+             $category = implode(",",$category);
+             
             $data = array(
-                'art_yourart' => $this->input->post('artname'),
+                'art_yourart' => $speciality,
                 'art_skill' =>  $category,
-                'art_desc_art' => $this->input->post('desc_art'),
-                'art_inspire' => $this->input->post('inspire'),
+                'art_bestofmine' => $fileName,
                 'modified_date' => date('Y-m-d', time()),
+                'art_step' => 4,
                 'other_skill' => $otherid,
             );
-        } else {
-            $data = array(
-                'art_yourart' => $this->input->post('artname'),
-                'art_skill' =>  $category,
-                'art_desc_art' => $this->input->post('desc_art'),
-                'art_inspire' => $this->input->post('inspire'),
-                'modified_date' => date('Y-m-d', time()),
-                'art_step' => 3,
-                'other_skill' => $otherid,
-            );
-        }
+
+           // echo "<pre>"; print_r($data); die();
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
+         $this->data['get_url'] = $get_url = $this->get_url($userid);
 
-        if ($updatdata) {
-            $this->session->set_flashdata('success', 'Information updated successfully');
-            redirect('artist/artistic-portfolio', refresh);
-        } else {
-            $this->session->flashdata('error', 'Your data not inserted');
-            redirect('artist/artistic-information', refresh);
-        }
-
-      // }
+         if ($updatdata) {
+                        redirect('artist/details/'.$get_url, refresh);                    
+                } 
     }
 
-    public function art_portfolio() {
-
-        $userid = $this->session->userdata('aileenuser');
-
-         //if user deactive profile then redirect to artist/index untill active profile start
-        $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if($artistic_deactive)
-        {
-             redirect('artist/');
-        }
-     //if user deactive profile then redirect to artist/index untill active profile End
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,art_bestofmine,art_achievement,art_portfolio', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        if ($userdata) {
-            $step = $userdata[0]['art_step'];
-
-            if ($step == 4 || ($step >= 1 && $step <= 4) || $step > 4) {
-                $this->data['bestofmine1'] = $userdata[0]['art_bestofmine'];
-                $this->data['achievmeant1'] = $userdata[0]['art_achievement'];
-                $this->data['art_portfolio1'] = $userdata[0]['art_portfolio'];
-            }
-        }
-
-        $this->data['title'] = 'Artistic Profile'.TITLEPOSTFIX;
-        $this->load->view('artist/art_portfolio', $this->data);
-    }
-
-    public function art_portfolio_insert() {
-
-        $userid = $this->session->userdata('aileenuser');
-
-         //if user deactive profile then redirect to artist/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        if($artistic_deactive)
-        {
-             redirect('artist/');
-        }
-     //if user deactive profile then redirect to artist/index untill active profile End
-        $artportfolio = $_POST['artportfolio'];
-        $bestmine = $_POST['bestmine'];
-        $contition_array = array('user_id' => $userid);
-        $art_reg_data = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_bestofmine', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $art_bestofmine = $art_reg_data[0]['art_bestofmine'];
-         $config = array(
-            'upload_path' => $this->config->item('art_portfolio_main_upload_path'),
-            'max_size' => 2500000000000,
-            'allowed_types' => $this->config->item('art_portfolio_main_allowed_types'),
-            'file_name' => $_FILES['bestofmine']['name']
-               
-        );
-
-        //Load upload library and initialize configuration
-        $images = array();
-        $files = $_FILES;
-        $this->load->library('upload');
-
-            $fileName = $_FILES['image']['name'];
-            $images[] = $fileName;
-            $config['file_name'] = $fileName;
-
-         $this->upload->initialize($config);
-        $this->upload->do_upload();     
-        if ($this->upload->do_upload('image')) {
-
-             $response['result']= $this->upload->data();
-                $art_post_thumb['image_library'] = 'gd2';
-                $art_post_thumb['source_image'] = $this->config->item('art_portfolio_main_upload_path') . $response['result']['file_name'];
-                $art_post_thumb['new_image'] = $this->config->item('art_portfolio_thumb_upload_path') . $response['result']['file_name'];
-                $art_post_thumb['create_thumb'] = TRUE;
-                $art_post_thumb['maintain_ratio'] = TRUE;
-                $art_post_thumb['thumb_marker'] = '';
-                $art_post_thumb['width'] = $this->config->item('art_portfolio_thumb_width');
-                $art_post_thumb['height'] = 2;
-                $art_post_thumb['master_dim'] = 'width';
-                $art_post_thumb['quality'] = "100%";
-                $art_post_thumb['x_axis'] = '0';
-                $art_post_thumb['y_axis'] = '0';
-                $instanse = "image_$i";
-                //Loading Image Library
-                $this->load->library('image_lib', $art_post_thumb, $instanse);
-                $dataimage = $response['result']['file_name'];
-
-                //Creating Thumbnail
-                $this->$instanse->resize();
-                $response['error'][] = $thumberror = $this->$instanse->display_errors();
-                
-                
-                $return['data'][] = $this->upload->data();
-                $return['status'] = "success";
-                $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
-        } 
-
-        else {
-
-            $dataimage = $bestmine;
-        }
-            $data = array(
-                'art_bestofmine' => $dataimage,
-                'art_portfolio' => $artportfolio,
-                'modified_date' => date('Y-m-d', time()),
-                'art_step' => 4
-            );
-            $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
-    }
 
     public function art_post() { 
 

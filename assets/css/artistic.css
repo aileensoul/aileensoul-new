@@ -2327,7 +2327,7 @@ label.cameraButton:active {
     width: 85%;
     padding-left: 0px;
     padding-right: 0px;
-    height: 28px;
+    height: 31px;/*d*/
     font-size: 19px!important;
     line-height: 1;
     resize: none;
@@ -4036,9 +4036,7 @@ div .comment {
 .krajee-default.file-preview-frame{margin:6px !important; display: inline-block; white-space:normal; float:none;}
 .post-editor .popup-social-icon ul.editor-header li{padding:0;}
 .editor-header .form-group .file-input{margin-left:8px;}
-.popup-text textarea::-webkit-scrollbar { 
-    display: none; 
-}
+.popup-text textarea::-webkit-scrollbar {display: none; }
 .editor-header .form-group .file-input{margin-left:0;}
 /***  custom user list css  ***/
 .full-box-module_follow .seeall{margin-top:-28px;}
@@ -4184,6 +4182,11 @@ div .comment {
 .post-design-mid .mejs__audio{width: 300px !important;}     
 .multi-select-container span.custom-mini-select{color:#999;}
 .post-design-product .ctre_date::before {content: ".";}
+#paddingtop_fixed label.optional-custom{margin-top: 8px;} 
+
+
+
+
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
     .mian_middle_post_box {

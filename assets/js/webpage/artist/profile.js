@@ -62,9 +62,10 @@ function validate(){
 }
 
 $('#skills').change(function other_category(){
-        // var e = document.getElementById("skills");
-        // var strUser = e.options[e.selectedIndex].value;
+      
        $("#multidropdown").removeClass("error");
+       $("#othercategory").removeClass("error");
+
        var strUser1 = $('#skills').val();
        var strUser =  "'" + strUser1 + "'";
        var n = strUser.includes(26);
@@ -109,6 +110,7 @@ function validation_other(event){
         if(category_trim == ''){
        $("#othercategory").addClass("othercategory_require");
        $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </span>').insertAfter('#othercategory');
+        $("#othercategory").addClass("error");
         return false;
         event.preventDefault();
          } 
@@ -122,6 +124,8 @@ function validation_other(event){
                     if(data == 'true'){ 
                     $("#othercategory").addClass("othercategory_require");
                    $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">This category already exists in art category field. </span>').insertAfter('#othercategory');
+                   $("#othercategory").addClass("error");
+
                    } else{ 
                      $("#artinfo")[0].submit();                  
                    }                 

@@ -58,13 +58,8 @@
                         <div class="left-side-bar">
                             <ul class="left-form-each">
                                 <li class="custom-none"><a href="<?php echo base_url('artist/artistic-information-update'); ?>">Basic Information</a></li>
-
                                 <li class="custom-none"><a href="<?php echo base_url('artist/artistic-address'); ?>">Address</a></li>
-
                                 <li <?php if($this->uri->segment(1) == 'artist'){?> class="active init" <?php } ?>><a href="javascript:void(0);">Art Information</a></li>
-
-                                <li class="custom-none <?php if($artdata[0]['art_step'] < '3'){echo "khyati";}?>"><a href="<?php echo base_url('artist/artistic-portfolio'); ?>">Portfolio</a></li>
-
                             </ul>
                         </div>
                     </div>
@@ -88,7 +83,9 @@
                             Art Information
                         </h3>
                         
-                            <?php echo form_open(base_url('artist/art_information_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
+                            <?php echo form_open_multipart(base_url('artist/art_information_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
+
+                            <!-- <form name="artinfo" method="post" id="artinfo" class="clearfix"  enctype="multipart/form-data" onsubmit="portfolio_form_submit(event);"> -->
                           
                                 <?php
                                  $artname =  form_error('artname');
@@ -97,7 +94,6 @@
                                  //$desc_art =  form_error('desc_art');
                                   
                                  ?>
-
                                     <fieldset class="full-width <?php if($skills) {  ?> error-msg <?php } ?>">
                                         <label>Art category:<span style="color:red">*</span></label>
 
@@ -121,9 +117,7 @@
                                             }
                                             ?>
                       </select>
-                                    
-                                      <!-- <input placeholder="Ex:- Dancing, Photography, Writing, Singing, Acting" id="skills2" value="<?php echo $work_skill; ?>" name="skills" tabindex="1" size="90"> -->
-
+                                  
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
 
@@ -144,27 +138,34 @@
                                     <input name="artname"  type="text" id="artname" tabindex="2" placeholder="Ex:- Classical dancing, Contemporary, Zumba, Hip Hop " value="<?php if($artname1){ echo $artname1; } ?>"/><!-- <span id="artname-error"></span> -->
                                      <?php echo form_error('artname'); ?>
                                 </fieldset>
+
+
+                                 <input type="file" value="" name="bestofmine" id="bestofmine" style="display:block;display:none;"/>
+
+                                 <label for="bestofmine" class="optional-custom"  tabindex="1" ><i class="fa fa-plus action-buttons btn-group"  aria-hidden="true" style=" margin: 8px; cursor:pointer ; color: #fff; float: initial;"> </i> Attachment<span class="optional">(optional)</span></label> <span id="datav" class="attach-file-name"></span>   
+                                 <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /> 
+                                 </div> 
+                                <div class="bestofmine_image" style="color:#f00; display: block;"></div>
+           
+                               <?php if($userdata[0]['art_bestofmine']){?>
+                                <div style="visibility:show;" id ="pdffile">
+
+                                 <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $userdata[0]['art_bestofmine']) ?>">
+
+                              <i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+
+                              <a style="position: absolute; cursor:pointer;" onclick="delpdf();"><i class="fa fa-times" aria-hidden="true"></i></a>
+                              <span id ="filename" style="color: #8c8c8c; font-size: 17px; padding-left: 10px;visibility:show;"><?php echo $userdata[0]['art_bestofmine']; ?></span><span class="file_name"></span>
+ 
+                              </div>
+                              <?php }?>
+
+                              <input type="hidden" name="bestmine" id="bestmine" value="<?php echo $bestofmine1; ?>"><span id="bestofmine-error"></span>
+
               
-                              
-                                <fieldset  class="full-width">
-                                    <label>Description of your artistic career<span class="optional">(optional)</span>:<!-- <span style="color:red">*</span> --></label>
-
-                                 <textarea id="textarea" name ="desc_art" id="desc_art" tabindex="3" rows="4" cols="50" placeholder="Enter description of your art" style="resize: none;"><?php if($desc_art1){ echo $desc_art1; } ?></textarea>
-                                   
-                                  <?php echo form_error('desc_art'); ?><br/> 
-                                </fieldset>
-                               
-
-                                <fieldset class="full-width">
-                                    <label>How you are inspire?<span class="optional">(optional)</span>:</label>
-                                
-                                    <input name="inspire"  type="text" id="inspire" placeholder="Enter inspire" tabindex="4" value="<?php if($inspire1){ echo $inspire1; } ?>"/><span ></span>
-                                 
-                                </fieldset>
-
                                  <fieldset class="hs-submit full-width">
                                    
-                                    <input type="submit"  id="next" name="next" value="Next" tabindex="6" onclick="return validate();">
+                              <input type="submit"  id="next" name="next" value="Submit" tabindex="6" onclick="return validate();">
                                    
                                 </fieldset>
                                 
@@ -176,16 +177,18 @@
             </div>
         </div>
     </section>
-  
+
+
+     <?php
+$userid = $this->session->userdata('aileenuser');
+ $contition_array = array('user_id' => $userid);
+       
+ $art_reg_data = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = ''); ?>
+
 
   <?php echo $login_footer ?>
   <?php echo $footer;  ?>
-
-
 </div>
-
-  
-
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.multi-select.js?ver=' . time()); ?>"></script>
@@ -202,6 +205,8 @@ var data1 = <?php echo json_encode($city_data); ?>;
 var complex = <?php echo json_encode($selectdata); ?>;
 
 var textarea = document.getElementById("textarea");
+var art_step = "<?php echo $art_reg_data[0]['art_step']; ?>";
+var art_id = "<?php echo $get_url; ?>";
 
 </script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/artist/artistic_common.js?ver='.time()); ?>"></script>

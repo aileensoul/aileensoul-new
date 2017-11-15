@@ -4,6 +4,7 @@
         <title> <?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -92,6 +93,59 @@
                                         </div>
                                     </div>                             
                                 </div>
+                                <div class="edi_origde">
+                        <?php
+                       
+                        if($count_profile == 100)
+                        {
+                            if($freepostdata[0]['progressbar']==0)
+                            {
+                           ?>
+                        <div class="edit_profile_progress complete_profile">
+                           <div class="progre_bar_text">
+                              <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                           </div>
+                           <div class="count_main_progress">
+                              <div class="circles">
+                                 <div class="second circle-1 ">
+                                    <div class="true_progtree">
+                                       <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                                    </div>
+                                    <div class="tr_text">
+                                       Successfully Completed
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <?php
+                           }
+                         }
+                              
+                           else
+                           {
+                               ?>
+                        <div class="edit_profile_progress">
+                           <div class="progre_bar_text">
+                              <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                           </div>
+                           <div class="count_main_progress">
+                              <div class="circles">
+                                 <div class="second circle-1">
+                                    <div>
+                                       <strong></strong>
+ 
+    <a href="<?php echo base_url('job/basic-information')?>" class="edit_profile_job">Edit Profile</a>
+                                      
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <?php
+                           }
+                           ?>
+                     </div>
                                 <div class="tablate-potrat-add">
                                     <div class="fw text-center pt10">
                                         <script type="text/javascript">
@@ -226,6 +280,7 @@
         <!-- Model Popup Close -->
 
         <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
+        <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
         </script>
         <script type="text/javascript">
             $(".alert").delay(3200).fadeOut(300);
@@ -234,5 +289,6 @@
         </script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/post_apply.js?ver=' . time()); ?>"></script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
     </body>               
 </html>
