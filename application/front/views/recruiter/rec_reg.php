@@ -40,20 +40,47 @@
                                  
                      <div class="common-form job_reg_main">
                         <h3>Welcome In Recruiter Profile</h3>
-                       
-                        <fieldset>
-                           <label >First Name <font  color="red">*</font> :</label>
+                         <fieldset>
+                                        <label>First Name<span class="red">*</span>:</label>
+                                        <input name="first_name" tabindex="1" autofocus type="text" id="first_name"  placeholder="Enter First Name" value="<?php
+                                        if ($firstname) {
+                                            echo trim(ucfirst(strtolower($firstname)));
+                                        } else {
+                                            echo trim(ucfirst(strtolower($userdata[0]['first_name'])));
+                                        }
+                                        ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/><span id="fullname-error "></span>
+                                               <?php echo form_error('first_name'); ?>
+                                    </fieldset>
+
+
+                                    <fieldset>
+                                        <label>Last Name<span class="red">*</span> :</label>
+                                        <input name="last_name" type="text" tabindex="2" placeholder="Enter Last Name"
+                                               value="<?php
+                                               if ($lastname) {
+                                                   echo trim(ucfirst(strtolower($lastname)));
+                                               } else {
+                                                   echo trim(ucfirst(strtolower($userdata[0]['last_name'])));
+                                               }
+                                               ?>" id="last_name" /><span id="fullname-error" ></span>
+                                               <?php echo form_error('last_name'); ?>
+                                    </fieldset>
+                                </div>
+                                <div class="fw">
+
+                                    <fieldset>
+                                        <label>Email address:<span class="red">*</span></label>
+                                        <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter Email"  value="<?php
+                                        if ($email) {
+                                            echo $email;
+                                        } else {
+                                            echo $userdata[0]['user_email'];
+                                        }
+                                        ?>" /><span id="email-error" ></span>
+                                               <?php echo form_error('email'); ?>
+                                    </fieldset>
                         
-                                         
-                                    
-                           <input type="text" name="first_name" id="first_name" tabindex="1" placeholder="Enter your First Name" style="text-transform: capitalize;"  maxlength="35">
-                           
-                        </fieldset>
-                        <fieldset>
-                           <label >Last Name <font  color="red">*</font>:</label>
-                           <input type="text" name="last_name" id="last_name" tabindex="2" placeholder="Enter your Last Name" style="text-transform: capitalize;"  maxlength="35">
-                          
-                        </fieldset>
+                       
 
                          <h3>Company Information</h3>
                           <fieldset>
