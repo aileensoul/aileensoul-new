@@ -1503,6 +1503,61 @@ label.cameraButton input[accept*="camera"] {
     margin: 0px 0 10px;
     padding: 10px 0px 10px;
 }
+.edit_profile_progress {
+    float: right;
+}
+.progre_bar_text {
+    padding: 0px 17px;
+}
+.progre_bar_text p {
+    color: #8c8c8c;
+}
+.progre_bar_text p {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    line-height:1.5;
+}
+.circles {
+    padding-top: 5px;
+    text-align:center;
+}
+.circle-1 {
+    width: 175px;
+    margin: 0px 6px 6px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    line-height: 1.2;
+}
+.circle-1 canvas {
+    vertical-align: middle;
+    width: 175px;
+    height: 175px;
+    border: 1px solid transparent;
+    display: black;
+}
+.circle-1 strong {
+    color: #8c8c8c;
+}
+.circle-1 strong {
+    position: absolute;
+    top: 54px;
+    left: 5px;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+}
+.edit_profile_job {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: 80px;
+    margin-left: -37px;
+}
+/*Complete circle*/
+
 
 /***  media query  ***/
 
