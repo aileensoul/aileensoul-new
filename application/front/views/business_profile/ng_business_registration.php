@@ -78,22 +78,31 @@
                                 <div class="left-side-bar">
                                     <div class="col-md-3 col-sm-4">
                                         <ul class="left-form-each">
-                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
+                                            <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
+                                            <!--<li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
+                                                            <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
                                             <?php } else { ?>
-                                                <li><a href="javascript:void(0);">Contact Information</a></li>
+                                                            <li><a href="javascript:void(0);">Contact Information</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
+                                                            <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
                                             <?php } else { ?>
-                                                <li><a href="javascript:void(0);">Description</a></li>
+                                                            <li><a href="javascript:void(0);">Description</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                                <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                                            <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
                                             <?php } else { ?>
-                                                <li><a href="javascript:void(0);">Business Images</a></li>
-                                            <?php } ?>
+                                                            <li><a href="javascript:void(0);">Business Images</a></li>
+                                            <?php } ?> -->
+                                            <!--                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-if="busRegStep >= '0'">Business Information</a></li>
+                                                                                        <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab" ng-if="busRegStep >= '1'">Contact Information</a></li>
+                                                                                        <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab" ng-if="busRegStep >= '2'">Description</a></li>
+                                                                                        <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab" ng-if="busRegStep >= '3'">Business Images</a></li>-->
+                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-disabled="">Business Information</a></li>
+                                            <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" ng-disabled="" data-toggle="tab">Contact Information</a></li>
+                                            <li><a href="#description" ng-click="getDescription(); tab_active(3)" ng-disabled="" data-toggle="tab">Description</a></li>
+                                            <li><a href="#business_image" ng-click="getImage(); tab_active(4)" ng-disabled="" data-toggle="tab">Business Images</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-8">
@@ -104,10 +113,14 @@
                                                         <h3>
                                                             <?php echo $this->lang->line("business_information"); ?>
                                                         </h3>
-                                                        <form name="businessinfo" ng-submit="submitbusinessinfoForm()" id="businessinfo" class="clearfix">
+                                                        <form name="businessinfo" ng-submit="submitbusinessinfoForm()" id="businessinfo" class="clearfix" novalidate>
                                                             <fieldset class="full-width ">
                                                                 <label>Company name:<span style="color:red">*</span></label>
-                                                                <input name="companyname"  ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value=""/>
+                                                                <input name="companyname"  ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value="" ng-required="true" validation-max-length="10"
+        validation-min-length="5"
+        validation-no-space="true"
+        validation-field-required="true"
+        validation-no-special-chars="true"/>
                                                                 <span ng-show="errorCompanyName" class="error">{{errorCompanyName}}</span>
                                                             </fieldset>
                                                             <fieldset>
@@ -197,7 +210,7 @@
 <!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option ng-option value="" selected="selected">Select Business type</option>
                                                                 <?php foreach ($business_type as $key => $type) { ?>
-                                                                                        <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                                                                                        <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="busOption">Other</option>    
                                                                 </select>-->
@@ -213,7 +226,7 @@
 <!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
                                                                 <?php foreach ($category_list as $key => $category) { ?>
-                                                                                        <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                                                                                        <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="indOption">Other</option>
                                                                 </select>-->
@@ -261,8 +274,12 @@
                                                                 <span ng-show="errorImage" class="error">{{errorImage}}</span>                                                                        
                                                             </fieldset>
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
-                                                            <fieldset class="hs-submit full-width">
-                                                                <input type="submit"  id="submit" name="submit" tabindex="2"  value="Submit">
+                                                            <fieldset class="full-width">
+                                                                <div class="bus_image" style="color:#f00; display: block;"></div> 
+                                                                <div class="bus_image_prev"></div> 
+                                                            </fieldset>
+                                                            <fieldset class = "hs-submit full-width">
+                                                                <input type = "submit" id = "submit" name = "submit" tabindex = "2" value = "Submit">
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -271,14 +288,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /tabs -->
+                                <!--/tabs -->
                             </div>
                         </div>
                     </div>
                 </div>
         </section>
-        <?php echo $login_footer ?>
+        <?php echo $login_footer   ?>
         <?php echo $footer; ?>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script>
                     var base_url = '<?php echo base_url(); ?>';
                     var slug = '<?php echo $slugid; ?>';
@@ -346,6 +364,7 @@
                             $('ul.left-form-each li:nth-child(4)').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
+                            getImage();
                         }
                         $(window).bind('popstate', function () {
                             window.location.href = window.location.href;
@@ -392,6 +411,7 @@
                             onStateChange($scope.stateIdVal);
                         };
 
+
                         $http({
                             method: 'POST',
                             url: base_url + 'business_profile_registration/getBusinessInformation',
@@ -407,6 +427,7 @@
                             $scope.user.pincode = data[0].pincode;
                             $scope.user.business_address = data[0].address;
                             $scope.user.businfo_step = data[0].business_step;
+                            $scope.busRegStep = data[0].business_step;
                         });
 
                         function getContactInformation() {
@@ -454,14 +475,9 @@
                         function getImage() {
                             $http({
                                 method: 'POST',
-                                url: base_url + 'business_profile_registration/getContactInformation',
-                                headers: {'Content-Type': 'application/json'},
+                                url: base_url + 'business_profile_registration/getImage',
                             }).success(function (data) {
-                                $scope.user.contactname = data[0].contact_person;
-                                $scope.user.contactmobile = data[0].contact_mobile;
-                                $scope.user.email = data[0].contact_email;
-                                $scope.user.contactwebsite = data[0].contact_website;
-                                //$scope.user.business_step = data[0].business_step;
+                                $('.bus_image_prev').html(data);
                             });
                         }
                         ;
@@ -572,7 +588,7 @@
                         $scope.submitbusImageForm = function () {
                             var form_data = new FormData();
                             angular.forEach($scope.files, function (file) {
-//                                console.log(file);
+                                //                                console.log(file);
                                 form_data.append('image1[]', file);
                             });
                             $http.post(base_url + 'business_profile_registration/ng_image_insert', form_data,
@@ -593,12 +609,25 @@
                             });
                         }
                     });
+                    function delete_bus_image(image_id) {
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url + "business_profile_registration/bus_img_delete",
+                            data: 'image_id=' + image_id,
+                            success: function (data) {
+                                if (data) {
+                                    $('.job_work_edit_' + image_id).remove();
+                                }
+                            }
+                        });
+                    }
+
         </script>
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                                            <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                                                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
