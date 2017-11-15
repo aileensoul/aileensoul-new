@@ -54,28 +54,34 @@
                            <input type="text" name="last_name" id="last_name" tabindex="2" placeholder="Enter your Last Name" style="text-transform: capitalize;"  maxlength="35">
                           
                         </fieldset>
-
+                        
+                          <fieldset class="full-width">
+                           <label >Email Address <font  color="red">*</font> :</label>
+                           <input type="email" name="email" id="email" tabindex="3" placeholder="Enter your Email Address"  maxlength="255">
+                      
+                        </fieldset>
+                        
                          <h3>Company Information</h3>
                           <fieldset>
                                     <label>Company Name :<span class="red">*</span> </label>
-                                    <input name="comp_name" tabindex="3" autofocus type="text" id="comp_name" placeholder="Enter your Company Name">
+                                    <input name="comp_name" tabindex="4" autofocus type="text" id="comp_name" placeholder="Enter your Company Name">
                                 </fieldset>
 
                         <fieldset class="half-width">
                            <label >Email Address <font  color="red">*</font> :</label>
-                           <input type="email" name="email" id="email" tabindex="4" placeholder="Enter your Email Address"  maxlength="255">
+                           <input type="email" name="email" id="email" tabindex="5" placeholder="Enter your Email Address"  maxlength="255">
                       
                         </fieldset>
                        
                         <fieldset class="full-width">
                            <label >Number<font  color="red">*</font> :</label>
-                           <input type="search" tabindex="5" id="job_title" name="job_title" value="" placeholder="Enter Your Number" style="text-transform: capitalize;"  maxlength="255">
+                           <input type="search" tabindex="6" id="job_title" name="job_title" value="" placeholder="Enter Your Number" style="text-transform: capitalize;"  maxlength="255">
                         
                         </fieldset>
                         <fieldset class="">
                                     <label>Country:<span class="red">*</span></label>
 
-                                    <select tabindex="5" autofocus name="country" id="country">
+                                    <select tabindex="7" autofocus name="country" id="country">
                                         <option value="">Select Country</option>
                                        
                                                     <option value=""></option>
@@ -87,7 +93,7 @@
 
                                 <fieldset class="">
                                     <label>State:<span class="red">*</span> </label>
-                                    <select name="state" id="state" tabindex="6" >
+                                    <select name="state" id="state" tabindex="8" >
                                         
 
                                                 <option value=""></option>
@@ -99,7 +105,7 @@
 
                                 <fieldset class="full-width">
                                     <label> City:<span class="optional">(optional)</span></label>
-                                    <select name="city" id="city" tabindex="7">
+                                    <select name="city" id="city" tabindex="9">
                                     
                                                 <option value=""></option>
                                             <option value="">Select City</option>
@@ -113,7 +119,7 @@
                                   <fieldset class="full-width">
                                     <label>Company Profile:<span class="optional">(optional)</span>
 
-                                        <textarea tabindex="8" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;">
+                                        <textarea tabindex="10" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;">
                                           </textarea>
                                     
                                 </fieldset>
@@ -121,7 +127,7 @@
                         <fieldset class=" full-width">
                            <div class="job_reg">
                               <!--<input type="reset">-->
-                              <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="9">
+                              <input title="Register" type="submit" id="submit" name="" value="Register" tabindex="11">
                            </div>
                         </fieldset>
    
