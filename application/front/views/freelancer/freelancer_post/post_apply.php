@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="edi_origde">
                         <?php
-                       
+                       //echo $count_profile;
                         if($count_profile == 100)
                         {
                             if($freepostdata[0]['progressbar']==0)
