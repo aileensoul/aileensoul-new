@@ -158,41 +158,9 @@ $this->db->select('city_name')->get_where('cities', array('city_id' => $artistic
                                     <?php } else{ ?>
 
                                     <?php } }?>
-                                    
-                                <?php if($artisticdata[0]['art_desc_art']){ ?>
-                                          <li><b> Description of your art</b> <span><?php echo $this->common->make_links($artisticdata[0]['art_desc_art']); ?></span> </li>
-                                            <?php } else {
-           if($artisticdata[0]['user_id'] == $userid){ 
-                  ?>  
-      <li><b>Description of your art</b> <span>
-             <?php echo PROFILENA;?></span></li><?php  }else{}?>               
-          <?php }?>
-                                        <?php if($artisticdata[0]['art_inspire']){?>
-                                         <li><b> How You are Inspire</b> <span><?php echo $artisticdata[0]['art_inspire']; ?></span> </li>
-                                         <?php } else {
-           if($artisticdata[0]['user_id'] == $userid){ 
-                  ?>  
-      <li><b>How You are Inspire</b> <span>
-             <?php echo PROFILENA;?></span></li><?php  }else{}?>               
-          <?php }?>  
-</ul>
-                                    </div>
-                                </div> 
-                            </div> 
-                            <?php if($artisticdata[0]['user_id'] == $userid){?>
-                            <div class="profile-job-post-title clearfix">
-                                <div class="profile-job-profile-button clearfix">
-                                    <div class="profile-job-details">
-                                        <ul>
-                                            <li>
-                <p class="details_all_tital ">Portfolio</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="profile-job-profile-menu">
-                                    <ul class="clearfix">
-                                      <li><b>Attachment</b> 
+
+
+                                                   <li><b>Attachment</b> 
                                         <span>
                                          <?php
 if ($artisticdata[0]['art_bestofmine']) {
@@ -217,60 +185,12 @@ if ($artisticdata[0]['art_bestofmine']) {
     } ?>
     </span>
     </li>
-<li> <b>Details of Portfolio </b> 
-<span> 
-<?php if($artisticdata[0]['art_portfolio']){?>
- <?php echo $this->common->make_links($artisticdata[0]['art_portfolio']); ?>
-<?php } else{
-echo PROFILENA;
-} ?>
-</span></li>
-</ul></div>
-</div>
-<?php }else{
-   if(trim($artisticdata[0]['art_bestofmine']) == '' && trim($artisticdata[0]['art_portfolio']) == '') {}else{ ?>
-    <div class="profile-job-post-title clearfix">
-                                <div class="profile-job-profile-button clearfix">
-                                    <div class="profile-job-details">
-                                        <ul>
-                                            <li>
-                <p class="details_all_tital ">Portfolio</p>
-                                            </li>
-                                        </ul>
+                                                                     
+</ul>
                                     </div>
-                                </div>
-                                <div class="profile-job-profile-menu">
-                                    <ul class="clearfix">
-                                    <?php if ($artisticdata[0]['art_bestofmine']) {
-    ?>  
- <li><b>Attachment</b>                                          
-<span>
-<div class="buisness-profile-pic">
-    <?php 
-    $allowespdf = array('pdf');
-    $filename = $artisticdata[0]['art_bestofmine'];
-    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-    if (in_array($ext, $allowespdf)) { ?>
-<?php if (!file_exists($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine'])) {
-   echo "Pdf not available."
-    ?>
-<?php }else{ ?>
-        <a href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine']) ?>">PDF</a>
-<?php }?>
-         <?php
-         } ?></div></span></li>
-<?php }?>          
- <li> <b>Details of Portfolio </b> 
-<span> 
-    <?php if($artisticdata[0]['art_portfolio']){?>
-    <?php echo $this->common->make_links($artisticdata[0]['art_portfolio']); ?>
-    <?php }else{
-       echo PROFILENA;
-                    } ?>
-</span></li>
-</ul></div>
-</div>
-<?php } }?></div> 
+                                </div> 
+                            </div> 
+</div> 
 </div></div></div>
 </div></div></div>
 </div>

@@ -560,14 +560,7 @@ class Artist extends MY_Controller {
          $this->data['get_url'] = $get_url = $this->get_url($userid);
 
          if ($updatdata) {
-
-                    if($artuserdata[0]['art_step'] == 4){
-
-                        redirect('artist/details/'.$get_url, refresh);
-                    }else{
-                        redirect('artist/home', refresh);
-                    }
-                    
+                        redirect('artist/details/'.$get_url, refresh);                    
                 } 
     }
 

@@ -17,7 +17,7 @@ class Recruiter extends MY_Controller {
     }
 
     public function index() {
-        $userid = $this->session->userdata('aileenuser');
+       $userid = $this->session->userdata('aileenuser'); 
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE START  
         // $this->recruiter_apply_check();
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE END  
@@ -42,9 +42,9 @@ class Recruiter extends MY_Controller {
             } else if ($this->data['recdata'][0]['re_step'] == 3) {
                 redirect('recruiter/home', refresh);
             } else if ($this->data['recdata'][0]['re_step'] == 0) {
-                redirect('recruiter/basic-information', refresh);
+                redirect('recruiter/rec_reg', refresh);
             } else {
-                redirect('recruiter/basic-information', refresh);
+                redirect('recruiter/rec_reg', refresh);
             }
         }
     }
@@ -52,21 +52,22 @@ class Recruiter extends MY_Controller {
 // recruiter apply check 
     public function recruiter_apply_check() {
 
-        $userid = $this->session->userdata('aileenuser');
+       $userid = $this->session->userdata('aileenuser'); 
 
 // REDIRECT USER TO REMAIN PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
         $apply_step = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
 // REDIRECT USER TO REMAIN PROFILE END
 
         if (count($apply_step) >= 0) {
-            if ($apply_step[0]['re_step'] == 1) {
+            if ($apply_step[0]['re_step'] == 1) { 
                 redirect('recruiter/company-information');
             }
-            if ($apply_step[0]['re_step'] == 0) {
+            if ($apply_step[0]['re_step'] == 0) { 
                 redirect('recruiter/basic-information');
             }
-        } else {
+        } else { 
             redirect('recruiter/basic-information');
         }
     }
@@ -538,9 +539,9 @@ class Recruiter extends MY_Controller {
 // RECRUITER RECOMMANDED FUNCTION START
     public function recommen_candidate() {
 
+         $userid = $this->session->userdata('aileenuser'); 
         $this->recruiter_apply_check();
 
-        $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -4771,7 +4772,104 @@ class Recruiter extends MY_Controller {
 //LIVE LOCATION END
     
     public function rec_reg(){
-        
+            $userid = $this->session->userdata('aileenuser');
+
+//IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
+        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
+        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        if ($recruiter_deactive) {
+            redirect('recruiter/');
+        }
+
+// FETCH COUNTRY DATA    
+        $contition_array = array('status' => 1);
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// FETCH STATE DATA  
+        $contition_array = array('status' => 1, 'country_id' => $this->data['recdata'][0]['re_comp_country']);
+        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_id,state_name,country_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// FETCH CITY DATA
+        $contition_array = array('status' => '1', 'state_id' => $this->data['recdata'][0]['re_comp_state']);
+        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
         $this->load->view('recruiter/rec_reg', $this->data);
     }
+    
+    public function reg_insert(){
+        
+       $userid = $this->session->userdata('aileenuser');
+
+//IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
+        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
+        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        if ($recruiter_deactive) {
+            redirect('recruiter/');
+        }
+//IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
+
+      //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
+
+        $this->form_validation->set_rules('first_name', 'first Name', 'required');
+        $this->form_validation->set_rules('last_name', 'last Name', 'required');
+        $this->form_validation->set_rules('email', ' EmailId', 'required|valid_email');
+        $this->form_validation->set_rules('country', 'Country', 'required');
+        $this->form_validation->set_rules('state', 'State', 'required');
+        $this->form_validation->set_rules('comp_name', 'company Name', 'required');
+        $this->form_validation->set_rules('comp_email', 'company email', 'required|valid_email');
+       
+                if ($this->form_validation->run() == FALSE) {
+          
+// FETCH COUNTRY DATA    
+        $contition_array = array('status' => 1);
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// FETCH STATE DATA  
+        $contition_array = array('status' => 1, 'country_id' => $this->data['recdata'][0]['re_comp_country']);
+        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_id,state_name,country_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// FETCH CITY DATA
+        $contition_array = array('status' => '1', 'state_id' => $this->data['recdata'][0]['re_comp_state']);
+        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->load->view('recruiter/rec_reg', $this->data);
+        } else {
+//              $contition_array = array('user_id' => $userid, 're_status' => '1');
+//             $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,re_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//             
+                $data = array(
+                    'rec_firstname' => $this->input->post('first_name'),
+                    'rec_lastname' => $this->input->post('last_name'),
+                    'rec_email' => $this->input->post('email'),
+                    'user_id' => $userid,
+                    're_comp_name' => $this->input->post('comp_name'), 
+                    're_comp_email' => $this->input->post('comp_email'),
+                    're_comp_phone' => $this->input->post('comp_num'),
+                    're_comp_profile' => trim($this->input->post('comp_profile')),
+                    're_comp_country' => $this->input->post('country'),
+                    're_comp_state' => $this->input->post('state'),
+                    're_comp_city' => $this->input->post('city'),
+                    'created_date' => date('y-m-d h:i:s'),
+                    're_status' => 1,
+                    'is_delete' => 0,
+                    're_step' => 3
+                );
+               
+                $insert_id = $this->common->insert_data_getid($data, 'recruiter');
+                
+                if ($insert_id) {
+                 
+                    $datavl = "ok";
+                        echo json_encode(
+                            array(
+                                "okmsg" => $datavl,
+                    ));
+                } else {
+                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    redirect('recruiter', refresh);
+                }
+           
+        }
+      
+    }
+     
 }
