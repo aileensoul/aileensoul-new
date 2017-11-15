@@ -71,11 +71,11 @@
                                                                     <div class="designation_rec fl">
                                                                         <ul>
                                                                             <li>        
-                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
+                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'."&post_id=".$postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
                                                                                         <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
                                                                                 </a>
                                                                             </li>
-                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
+                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'."&post_id=".$postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
                                                                                     if ($row['designation']) {
                                                                                         echo $row['designation'];
                                                                                     } else {
@@ -202,7 +202,7 @@
                                                                 <div class="apply-btn fr">
                                                                     <?php
                                                                     $userid = $this->session->userdata('aileenuser');
-                                                                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
+                                                                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '2');
                                                                     $savedata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
 
@@ -221,14 +221,15 @@
                                                                         <?php
                                                                         if ($savedata) {
                                                                             ?> 
-                                                                            <a class="saved" href="javascript:void(0);"><?php echo $this->lang->line("saved"); ?> </a>
+                                                                            <a class="saved" href="javascript:void(0);">Shortlisted</a>
 
                                                                             <?php
                                                                         } else {
                                                                             ?>
                                                                             <input type="hidden" id="<?php echo 'hideenuser' . $row['user_id']; ?>" value= "<?php echo $data[0]['save_id']; ?>">
+                                                                            <input type="hidden" id="<?php echo 'hideenpostid'; ?>" value= "<?php echo $postid; ?>">
 
-                                                                            <a id="<?php echo $row['user_id']; ?>" onClick="savepopup(<?php echo $row['user_id']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['user_id']; ?>"><?php echo $this->lang->line("save"); ?></a>
+                                                                            <a id="<?php echo $row['user_id']; ?>" onClick="shortlistpopup(<?php echo $row['user_id']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['user_id']; ?>">Shortlist</a>
                                                                             <?php
                                                                         }
                                                                     }

@@ -236,25 +236,22 @@
 					</div>
 				</div>
 			   </div>
-				<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-					
-						<div class="fw text-center">
-                         <script type="text/javascript">
-  ( function() {
-    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-    var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-    var placement_id = window.CHITIKA.units.length;
-    window.CHITIKA.units.push(unit);
-    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-}());
-</script>
-<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-						</div>
-						
-						<div class="fw pt10 text-right">
-									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-								</div>
-                </div>
+			   <div class="gov-job-detail-right">
+				<div class="gov-job-right-title">
+					<h3>Government job<a href="<?php echo base_url('goverment/allpost/'); ?>" class="pull-right">All Job</a></h3>
+				</div>
+				<div class="gov-job-list">
+					<ul>
+            <?php 
+            foreach ($govjob_category as $gov_key => $gov_value) { ?>
+              <li>
+                <a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>"><?php echo $gov_value['name']?></a></li>
+           <?php } ?>						
+						</ul>					
+				</div>
+			</div>
+
+			
 				
 
 				<div class="tablate-add">

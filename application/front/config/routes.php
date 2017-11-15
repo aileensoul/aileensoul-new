@@ -71,15 +71,15 @@ $route['privacy-policy'] = "main/privacy_policy";
 $route['business-profile'] = "business_profile/index";
 $route['business-profile/reactivate'] = "business_profile/reactivate";
 
-$route['business-profile/business-information'] = "business_profile/business_information";
-$route['business-profile/business-information-insert'] = "business_profile/business_information_insert";
-$route['business-profile/business-information-update'] = "business_profile/business_information_update";
-$route['business-profile/business-information-edit'] = "business_profile/business_information_update";
-$route['business-profile/contact-information'] = "business_profile/contact_information";
-$route['business-profile/contact-information-insert'] = "business_profile/contact_information_insert";
-$route['business-profile/description'] = "business_profile/description";
-$route['business-profile/description-insert'] = "business_profile/description_insert";
-$route['business-profile/image'] = "business_profile/image";
+//$route['business-profile/business-information'] = "business_profile/business_information";
+//$route['business-profile/business-information-insert'] = "business_profile/business_information_insert";
+//$route['business-profile/business-information-update'] = "business_profile/business_information_update";
+//$route['business-profile/business-information-edit'] = "business_profile/business_information_update";
+//$route['business-profile/contact-information'] = "business_profile/contact_information";
+//$route['business-profile/contact-information-insert'] = "business_profile/contact_information_insert";
+//$route['business-profile/description'] = "business_profile/description";
+//$route['business-profile/description-insert'] = "business_profile/description_insert";
+//$route['business-profile/image'] = "business_profile/image";
 $route['business-profile/image-insert'] = "business_profile/image_insert";
 $route['business-profile/details/(:any)'] = "business_profile/business_resume/$1";
 $route['business-profile/details'] = "business_profile/business_resume";
@@ -118,10 +118,21 @@ $route['notification/business-profile-post/(:any)'] = "notification/business_pos
 $route['notification/business-profile-post-detail/(:any)/(:any)'] = "notification/bus_post_img/$1/$2";
 
 
-$route['business-profile/signup/business-information'] = "business_profile_registration/business_information";
-$route['business-profile/signup/contact-information'] = "business_profile_registration/contact_information";
-$route['business-profile/signup/description'] = "business_profile_registration/description";
-$route['business-profile/signup/image'] = "business_profile_registration/image";
+//$route['business-profile/signup/business-information'] = "business_profile_registration/business_information";
+//$route['business-profile/signup/contact-information'] = "business_profile_registration/contact_information";
+//$route['business-profile/signup/description'] = "business_profile_registration/description";
+//$route['business-profile/signup/image'] = "business_profile_registration/image";
+
+$route['business-profile/business-information'] = "business_profile_registration/business_registration/$1";
+$route['business-profile/contact-information'] = "business_profile_registration/business_registration/$1";
+$route['business-profile/description'] = "business_profile_registration/business_registration/$1";
+$route['business-profile/image'] = "business_profile_registration/business_registration/$1";
+
+$route['business-profile/signup/edit/business-information'] = "business_profile_registration/business_information_edit";
+$route['business-profile/signup/edit/contact-information'] = "business_profile_registration/contact_informatio_edit";
+$route['business-profile/signup/edit/description'] = "business_profile_registration/description_edit";
+$route['business-profile/signup/edit/image'] = "business_profile_registration/image_edit";
+//$route['business-profile/signup/business-registration'] = "business_profile_registration/business_registration";
 
 
 //FREELANCER HIRE ROUTES SETTINGS
@@ -148,6 +159,7 @@ $route['notification/freelancer-hire/(:any)'] = "notification/freelancer_hire_po
 $route['freelancer-hire/project'] = "freelancer/live_post";
 $route['freelancer-hire/project/(:any)'] = "freelancer/live_post/$1";
 $route['freelancer-hire/freelancer-shortlisted/(:any)'] = "freelancer/freelancer_shortlist_list/$1";
+$route['freelancer-hire/registation'] = "freelancer/hire_registation";
 
 
 
@@ -174,7 +186,7 @@ $route['freelancer-work/portfolio/(:any)'] = "freelancer/freelancer_post_portfol
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
 $route['freelancer-work/reactivate'] = "freelancer/reactivate";
-//$route['freelancer-work/search'] = "search/freelancer_post_search";
+$route['freelancer-work/registation'] = "freelancer/registation";
 
 $route['(:any)-project'] = "search/freelancer_post_search";
 $route['project-in-(:any)'] = "search/freelancer_post_search";

@@ -20,67 +20,90 @@
 				<div class="gov-job-title">
 					<table>
 						<tr>
-							<td><img src="<?php echo base_url('assets/img/bank-job.gif'); ?>"></td>
+							<td>
+								<?php if($govjob_post[0]['post_image']){?>
+								<img src="<?php echo GOV_POST_THUMB_IMAGE . $govjob_post[0]['post_image']; ?>">
+								<?php }else{?>
+								<img src="<?php echo GOV_POST_NOIMAGE; ?>">
+								<?php }?>
+							</td>
 							<td class="pl10">
-								<h3>Opening in Sbi life insurance</h3>
-								<p class="job-field"><b>Last Date:</b> 15/5/2018</p>
+								<h3><?php echo ucwords(ucfirst($govjob_post[0]['title'])); ?></h3>
+								<p class="job-field"><b>Last Date:</b> <?php echo date('d-M-Y', strtotime($govjob_post[0]['last_date'])); ?></p>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="gov-job-field">
 					<ul>
-						<li><p class="job-field"><b>Post Name:</b> Manager</p></li>
-						<li class="text-right"><p class="job-field"><b>Job Location:</b> All Over India</p></li>
-						<li><p class="job-field"><b>No. of Vacancies:</b> Not Specified</p></li>
-						<li class="text-right"><p class="job-field"><b>Required Exp :</b> Not Specified</p></li>
-						<li><p class="job-field"><b>Pay Scale :</b> Rs. 35,400-1,12,400</p></li>
+						<li><p class="job-field"><b>Post Name:</b><?php echo ucwords(ucfirst($govjob_post[0]['post_name'])); ?></p></li>
+						<li class="text-right"><p class="job-field"><b>Job Location:</b> <?php echo ucwords(ucfirst($govjob_post[0]['job_location'])); ?></p></li>
+						<li><p class="job-field"><b>No. of Vacancies:</b> 
+
+						<?php 
+						if($govjob_post[0]['no_vacancies']){ 
+						 echo ucwords(ucfirst($govjob_post[0]['no_vacancies'])); 
+						 }else{
+						?>
+						Not Specified
+						<?php }?>
+					  </p></li>
+						<li class="text-right"><p class="job-field"><b>Required Exp :</b> 
+
+						<?php 
+						if($govjob_post[0]['req_exp']){ 
+						 echo ucwords(ucfirst($govjob_post[0]['req_exp'])); 
+						 }else{
+						?>
+						Not Specified
+						<?php }?>
+					 </p></li>
+						<li><p class="job-field"><b>Pay Scale :</b> 
+						<?php if($govjob_post[0]['pay_scale']){ 
+						 echo ucwords(ucfirst($govjob_post[0]['pay_scale'])); 
+						 }else{
+						?>
+						Not Specified
+						<?php }?>
+					</p></li>
 						
 					</ul>
 				</div>
 				<div class="gov-job-detail">
+
+					<?php if($govjob_post[0]['description']){?>
 					<p><b>Job Discription :</b></p>
 					<ul>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
+						<li><?php echo $govjob_post[0]['description']; ?></li>
 					</ul>
+					<?php }?>
+					<?php if($govjob_post[0]['eligibility']){?>
 					<p><b>Eligibility Criteria  :</b></p>
 					<ul>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
-						<li>Achievement of New Business Premium targets </li>
+						<li><?php echo $govjob_post[0]['eligibility']; ?></li>
 					</ul>
-					<p><b>Company Profile:</b></p>
+					<?php }?>
+					<!-- <p><b>Company Profile:</b></p>
 					<p>SBI Life Insurance Co. Ltd
 SBI Life Insurance Company Limited is a joint venture between the State Bank of India and BNP Paribas Assurance. SBI Life Insurance is registered with an authorized capital of Rs 2000 crores and a Paid-up capital of Rs 1000 Crores. SBI owns 74% of the total capital and BNP Paribas Assurance the remaining 26%. </p>
 					<p>State Bank of India enjoys the largest banking franchise in India. Along with its 6 Associate Banks, SBI Group has the unrivalled strength of over 16,000 branches across the country, arguably the largest in the world. </p>
-					<p>State Bank of India enjoys the largest banking franchise in India. Along with its 6 Associate Banks, SBI Group has the unrivalled strength of over 16,000 branches across the country, arguably the largest in the world. </p>
+					<p>State Bank of India enjoys the largest banking franchise in India. Along with its 6 Associate Banks, SBI Group has the unrivalled strength of over 16,000 branches across the country, arguably the largest in the world. </p> -->
+				</div>
+				<div class="gov-job-apply-btn">
+					<a href="<?php echo $govjob_post[0]['apply_link']; ?>" target="blank">Apply</a>
 				</div>
 			</div>
 			<div class="gov-job-detail-right">
 				<div class="gov-job-right-title">
-					<h3>Government job<a href="#" class="pull-right">All Job</a></h3>
+					<h3>Government job<a href="<?php echo base_url('goverment/allpost/'); ?>" class="pull-right">All Job</a></h3>
 				</div>
-				<div class="gov-job-list">
-					
-						<ul>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
-							<li><a href="#">Bank Job</a></li>
-							<li><a href="#">ONGC Job</a></li>
-							<li><a href="#">Railways Job</a></li>
-							
-						</ul>
-					
+				<div class="gov-job-list">					
+				 <ul>
+							 <?php 
+            foreach ($govjob_category as $gov_key => $gov_value) { ?>
+							<li><a href="<?php echo base_url('goverment/allpostdetail/'.$gov_value['id']); ?>"><?php echo $gov_value['name']?></a></li>
+               <?php } ?>		
+					</ul>					
 				</div>
 			</div>
 		</div>

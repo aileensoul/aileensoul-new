@@ -947,7 +947,7 @@ h3.text-effect span {
     padding: 5px;
 }
 .upload-camera label{margin:0 !important;}
-.upload-camera .cameraButton .tooltiptext{margin-top:10px;}
+.upload-camera .cameraButton .tooltiptext{margin-top:7px;}
 .banner{padding-top:14px;}
 .all-profile-custom{padding-top:50px;}
 .all-profile{
@@ -1579,6 +1579,11 @@ body.cover{padding-bottom:60px;}
 /***  end add  ***/
 .header-login .btn-right a:focus{outline:none; background:none !important; color:#fff !important;}
 .no-login .modal .forgot_password .form-control.error{border:none; border-bottom:1px solid #ff000;}
+#onload-Modal .modal-dialog button{top:15px !important;right: -10px !important;}
+
+
+
+
 
 /***  media query  ***/
 @media screen and (min-height: 540px){

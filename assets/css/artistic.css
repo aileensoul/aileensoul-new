@@ -992,6 +992,8 @@ label.cameraButton:active {
 }
 .post-design-product {
     padding-left:10px;
+   /* line-height: 1;
+    float: left;*/
 }
 .post-design-name ul li .post_dot {
     /*max-width: 80%;*/
@@ -1040,10 +1042,10 @@ label.cameraButton:active {
     color: #91949d;
     cursor: default;
 }
-.post-design-name ul li .datespan span:before {
+/*.post-design-name ul li .datespan span:before {
     content: "  ";
     font-size: 17px;
-}
+}*/
 .post-design-name ul li .post-design-product .in_desc_cw {
     padding-left: 10px;
     display: inline-block;
@@ -1772,6 +1774,7 @@ label.cameraButton:active {
     width:150px;
     height:150px;
     top:5px;
+    left: 5px;
     border-radius:4px;
     text-align:center;
 }
@@ -2196,12 +2199,13 @@ label.cameraButton:active {
     padding: 3px 4px;
 }
 .column1 {
-    float: left;
-    float: left;
+    /*float: left;
+    float: left;*/
     margin-bottom: 6px;
     margin-top: 10px;
     width: 227px;
     height: 173px;
+    margin: 0 auto;
 }
 .bui_res_i {
     position: relative;
@@ -2210,7 +2214,7 @@ label.cameraButton:active {
     height: 165px;
     display: inline-block;
     float: left;
-    padding-left: 10px;
+    /*padding-left: 10px;*/
 }
 .bui_res_i img {
     width: auto;
@@ -2480,6 +2484,7 @@ label.cameraButton:active {
     border: 1px solid #d9d9d9;
     height: 60px;
     margin-bottom: 14px;
+    margin-left: 10px;
     width: 60px;
 }
 .user_lst li a {
@@ -2556,7 +2561,7 @@ label.cameraButton:active {
 .folle_text {
     width: 70%;
 }
-.user_lst .folle_text{width:64%;}
+.user_lst .folle_text{width:62%;}
 .padding_low_data {
     background-color: white!important;
 }
@@ -4069,8 +4074,8 @@ div .comment {
 .multi-select-menu {
     position: absolute;
     left: 0;
-    top: 0.8em;
-    z-index: 1;
+    top: 1.1em;
+    z-index: 9;
     float: left;
     min-width: 100%;
     background: #fff;
@@ -4078,7 +4083,7 @@ div .comment {
     border: 1px solid #aaa;
     /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);*/
     display: none;
-	height:300px;
+	height:135px;
 	overflow-y:scroll;
 }
 
@@ -4108,7 +4113,7 @@ div .comment {
 .multi-select-button {
     display: inline-block;
     font-size: 0.875em;
-    padding: 0.2em 0.6em;
+    padding: 0.4em 0.6em;
     max-width: 100%;
 	width:100%;
     white-space: nowrap;
@@ -4116,11 +4121,12 @@ div .comment {
     text-overflow: ellipsis;
     vertical-align: -0.5em;
     background-color: #fff;
-    border: 1px solid #aaa;
+    border: 1px solid #cacaca;
     border-radius: 4px;
     /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);*/
     cursor: default;
 	padding-right:25px;
+	height:35px;
 }
 
 .multi-select-button:after {
@@ -4134,7 +4140,7 @@ div .comment {
     margin-left: 0.4em;
     vertical-align: 0.1em;
 	position:absolute;
-	top:13px;
+	top:15px;
 	right:10px;
 }
 
@@ -4155,6 +4161,13 @@ div .comment {
     white-space: normal;
 }
 .post-design-commnet-box .comment-edit-butn{right: 20px;}
+.art-cat-custom .multi-select-button.error{border:1px solid #ff0000;}
+#artist_regform label.error{right:3px;}
+.art-cat-custom label.error{top:65px;}
+.common-form fieldset .job_reg input:focus{color:#fff !important;}
+.job_reg_page_fprm .job_reg_main h3{background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
 /***  end select dropdown  ***/
 /*** video css  ***/
 .video li .mejs__container.mejs__video{width:100% !important; height:100% !important;}
@@ -4170,7 +4183,7 @@ div .comment {
 .search_button button{margin-left: 0px;}
 .post-design-mid .mejs__audio{width: 300px !important;}     
 .multi-select-container span.custom-mini-select{color:#999;}
-
+.post-design-product .ctre_date::before {content: ".";}
 /***  media query  ***/
 @media screen and (max-width: 1280px) {
     .mian_middle_post_box {
@@ -5072,6 +5085,10 @@ div .comment {
 	.custom-user-list .profile-boxProfileCard_follow ul li.follow_box_ul_li{width:50% !important;}
 	.file-preview{width:520px;}
 	.ctre_date{line-height:1.5;}
+    .profile-job-post-location-name .user_lst ul li .bg_following {margin:0px;margin-right: 9px !important;} 
+.profile-job-post-location-name .user_lst ul li.fr {padding-left: 0px;}
+.profile-job-post-location-name .user_lst ul li #followdiv button{margin: 0px;margin-right: 9px;}
+
 }
 
 @media screen and (max-width: 639px) {
@@ -5686,6 +5703,7 @@ div .comment {
 	.user-list .profile-job-post-location-name .user_lst ul li .user_btn button{margin:0; }
 	.user-list .profile-job-post-location-name ul li.folle_text{padding-top:1px;}
 	.profile-job-post-location-name-rec .fl.search_button button{margin-right:10px; margin-bottom:0;}
+    .business-profile-right .bui-menu-profile{min-height: 106px;}/*d*/
 }
 
 @media screen and (max-width: 430px) {
@@ -5862,5 +5880,6 @@ div .comment {
     #InboxContainer::before {
         right: 150px;
     }
+
 }
 /*media zalak end*/

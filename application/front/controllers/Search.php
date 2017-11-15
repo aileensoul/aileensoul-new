@@ -2301,14 +2301,17 @@ Your browser does not support the audio tag.
                     $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => 1, 'free_hire_step' => 3);
                     $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($free_hire_result) {
-                        $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
-                        $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2);
+                        $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                         if ($userid != $row['user_id']) {
                             $return_html .= '<a href="' . base_url('chat/abc/3/4/' . $row['user_id']) . '">Message</a>';
-                            if (!$data) {
+                            if ($data[0]['status'] == 1 || $data[0]['status'] == '') {
                                 $return_html .= '<input type="hidden" id="hideenuser' . $row['user_id'] . '" value= "' . $data[0]['save_id'] . '">';
                                 $return_html .= '<a id="' . $row['user_id'] . '" onClick="savepopup(' . $row['user_id'] . ')" href="javascript:void(0);" class="saveduser' . $row['user_id'] . '">Save</a>';
-                            } else {
+                            }elseif($data[0]['status'] == 2){
+                                $return_html .= '<a class="saved">Shortlisted</a>';
+                            }
+                            else {
                                 $return_html .= '<a class="saved">Saved </a>';
                             }
                         }
@@ -2546,7 +2549,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<div class="job-post-detail clearfix search">
                                                         <div class="job-contact-frnd ">';
                     $return_html .= '<div class="profile-job-post-detail clearfix" id="removeapply' . $post['post_id'] . '">';
-                    $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                    $return_html .= '<div class="profile-job-post-title clearfix">
                                                                     <div class="profile-job-post-title clearfix  margin_btm" >
                                                                         <div class="profile-job-profile-button clearfix">
                                                                             <div class="profile-job-details col-md-12">

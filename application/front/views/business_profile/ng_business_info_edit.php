@@ -206,9 +206,9 @@
                                             $scope.errorPincode = data.errors.pincode;
                                             $scope.errorPostalAddress = data.errors.business_address;
                                         } else {
-                                            if (data.is_success == '1') {
+                                            if(data.is_success == '1'){
                                                 window.location.href = base_url + 'business-profile/signup/contact-information';
-                                            } else {
+                                            }else{
                                                 return false;
                                             }
                                             //$scope.message = data.message;
@@ -220,8 +220,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                        <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>

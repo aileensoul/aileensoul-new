@@ -10,7 +10,7 @@
     defaults = {
       'containerHTML': '<div class="multi-select-container">',
       'menuHTML': '<div class="multi-select-menu">',
-      'buttonHTML': '<span class="multi-select-button custom-mini-select">',
+      'buttonHTML': '<span class="multi-select-button custom-mini-select" id="multidropdown">',
       'menuItemsHTML': '<div class="multi-select-menuitems">',
       'menuItemHTML': '<label class="multi-select-menuitem">',
       'presetsHTML': '<div class="multi-select-presets">',
@@ -85,7 +85,7 @@
       this.$button.attr({
         'role': 'button',
         'aria-haspopup': 'true',
-        'tabindex': 0,
+        'tabindex': 5,
         'aria-label': this.$labels.eq(0).text()
       })
       .on('keydown.multiselect', function(e) {

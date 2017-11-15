@@ -16,7 +16,7 @@
         <?php } ?>
 		
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push">
+    <body class="page-container-bg-solid page-boxed pushmenu-push freeh3">
         <?php echo $header; ?>
         <?php
         $returnpage = $_GET['page'];
@@ -144,8 +144,27 @@
                                                 <?php } ?>
                                             </div>
                                         </div>
-                                    </div>                             
+                                    </div>  
+
+
                                 </div>
+                                 <div class="custom_footer_left fw">
+                                <div class="fl">
+                                    <ul>
+                                        <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
+                                        <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
+                                        <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
+                                        <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+                                        <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
+
+                                        <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+
+                                </div>
+
+                            </div>
              
 			 <!--left bar box end-->
 			 <div  class="add-post-button mob-block">
@@ -620,7 +639,7 @@
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
         <!-- <footer> -->
-          <?php echo $login_footer ?>
+      
 <?php echo $footer; ?>
         <!-- </footer> -->
         <!-- END FOOTER -->

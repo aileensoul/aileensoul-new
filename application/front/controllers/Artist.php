@@ -63,7 +63,7 @@ class Artist extends MY_Controller {
                     redirect('artist/home', refresh);
                 }
             } else {
-                $this->load->view('artist/art_basic_information', $this->data);
+                redirect('artist/profile', refresh);
             }
         }
     }
@@ -96,6 +96,84 @@ class Artist extends MY_Controller {
     }
 
 // ARTISTICS PROFILE SLUG END
+
+
+    public function profile(){
+
+
+    $contition_array = array('status' => 1);
+    $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+    $contition_array = array('status' => 1, 'type' => 1);
+    $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
+
+    //echo "<pre>"; print_r($this->data['countries']); die();
+
+     $this->load->view('artist/profile', $this->data);
+
+    }
+
+    public function profile_insert(){
+
+     $userid = $this->session->userdata('aileenuser');
+
+
+     $other_category = $this->input->post('othercategory');
+     $contition_array = array('other_category' => $other_category,'type' => 1, 'status' => 1);
+     $exist_other = $this->common->select_data_by_condition('art_other_category',$contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+        if($other_category){
+
+            if($exist_other){
+                $insertid = $exist_other[0]['other_category_id'];
+            }else{
+
+            $data1 = array(
+                'other_category' => $this->input->post('othercategory'),
+                'type' => 1,
+                'status' => 1,
+                'is_delete' => 0,
+                'user_id' => $userid,
+                'created_date' => date('Y-m-d', time()),
+
+            );
+            $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
+           }
+        }
+
+        $checkval = $this->input->post('skills');
+        if(in_array(26, $checkval)){
+            $otherid = $insertid;
+            }else{
+                 $otherid = '';
+            }
+
+             $category = $this->input->post('skills');
+             $category = implode(',' , $category); 
+
+
+     $data = array(
+                'art_name' => $this->input->post('firstname'),
+                'art_lastname' => $this->input->post('lastname'),
+                'art_email' => $this->input->post('email'),
+                'art_phnno' => $this->input->post('phoneno'),
+                'art_country' => $this->input->post('country'),
+                'art_state' => $this->input->post('state'),
+                'art_city' => $this->input->post('city'),
+                'art_skill' =>  $category,
+                'other_skill' => $otherid,
+                'user_id' => $userid,
+                'created_date' => date('Y-m-d H:i:s', time()),
+                'status' => 1,
+                'is_delete' => 0,
+                'art_step' => 4,
+                'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
+            );
+
+            $insert_id = $this->common->insert_data_getid($data, 'art_reg');
+
+            redirect('artist/home', refresh);
+    }
 
     public function art_basic_information_update() {
         $userid = $this->session->userdata('aileenuser');
@@ -2109,7 +2187,7 @@ public function ajax_userlist() {
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
-        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
+        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'user_id,art_email', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
             // insert notification
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
             $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2222,7 +2300,7 @@ public function ajax_userlist() {
                                     </table>';
                     $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
 
-                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $followuserid[0]['art_email']);
 
                 }
 
@@ -2302,7 +2380,7 @@ public function follow_home() {
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $followuserid = $this->common->select_data_by_id('art_reg', 'art_id', $art_id, $data = 'user_id');
+        $followuserid = $this->common->select_data_by_id('art_reg', 'art_id', $art_id, $data = 'user_id,art_email');
             // insert notification
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
             $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2411,7 +2489,7 @@ public function follow_home() {
                                     </table>';
                     $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
 
-                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $followuserid[0]['art_email']);
 
                 }
 
@@ -2868,6 +2946,9 @@ public function follow_home() {
      //if user deactive profile then redirect to artist/index untill active profile End
 
         $art_id = $_POST["follow_to"];
+
+        $followuserid = $this->common->select_data_by_id('art_reg', 'art_id', $art_id, $data = 'user_id,art_email');
+
         $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email,user_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2983,7 +3064,7 @@ public function follow_home() {
                                     </table>';
                     $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
 
-                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $followuserid[0]['art_email']);
 
                 }
             // end notoification
@@ -3012,6 +3093,9 @@ public function followtwo() {
      //if user deactive profile then redirect to artist/index untill active profile End
 
         $art_id = $_POST["follow_to"];
+
+        $followuserid = $this->common->select_data_by_id('art_reg', 'art_id', $art_id, $data = 'user_id,art_email');
+
         $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email,user_id');
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3137,7 +3221,7 @@ public function followtwo() {
                                     </table>';
                     $subject = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname']. ' Started following you in Aileensoul.';
 
-                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artdata[0]['art_email']);
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $followuserid[0]['art_email']);
 
                 }
             // end notoification
@@ -3853,6 +3937,11 @@ public function followtwo() {
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id,user_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $condition_array = array('art_post_id' =>  $artdata[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $profile_data[0]['user_id'], $data = 'art_email');
+
+
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
             $return = 1;
             $condition_array = array('user_id' => $profile_data[0]['user_id']);
@@ -3979,7 +4068,7 @@ public function followtwo() {
                                     </table>';
                     $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname']. ' Like your comment in Aileensoul.';
 
-                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
 
                   }
                 }
@@ -4069,6 +4158,8 @@ public function followtwo() {
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = 'artistic_post_comment_id,user_id,art_post_id,comments,artistic_comment_likes_count,artistic_comment_like_user,created_date', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $condition_array = array('art_post_id' =>  $artdata[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+         $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $profile_data[0]['user_id'], $data = 'art_email');
 
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
             $return = 1;
@@ -4206,7 +4297,7 @@ public function followtwo() {
                                     </table>';
                     $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname']. 'Like your comment in Aileensoul.';
 
-                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                    $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
 
                 }
 
@@ -5038,6 +5129,8 @@ public function delete_commenttwo_postnewpage() {
          $condition_array = array('art_post_id' => $post_id);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+         $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $profile_data[0]['user_id'], $data = 'art_email');
+
         //echo "<pre>"; print_r($profile_data); die();
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
             $return = 1;
@@ -5184,7 +5277,7 @@ public function delete_commenttwo_postnewpage() {
                                     </table>';
                         $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' like your post in Aileensoul.';
 
-                        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
                     }
                 }
             }
@@ -5387,6 +5480,9 @@ public function delete_commenttwo_postnewpage() {
         $condition_array = array('art_post_id' => $post_id);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+
+         $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $profile_data[0]['user_id'], $data = 'art_email');
+
         //echo "<pre>"; print_r($profile_data); die();
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
             $return = 1;
@@ -5500,7 +5596,7 @@ public function delete_commenttwo_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
             }
 
         }
@@ -5666,6 +5762,9 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
         $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'user_id,is_delete,art_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+
+         $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $artdatacomment[0]['user_id'], $data = 'art_email');
+
         $data = array(
             'user_id' => $userid,
             'art_post_id' => $post_id,
@@ -5738,7 +5837,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
             }
 
         }
@@ -5887,6 +5986,9 @@ public function insert_comment_postnewpage() {
     $condition_array = array('art_post_id' => $post_id);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+
+         $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $profile_data[0]['user_id'], $data = 'art_email');
+
         //echo "<pre>"; print_r($profile_data); die();
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
             $return = 1;
@@ -6010,7 +6112,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $to_email_id);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
             }
         }
         // end notoification
@@ -6990,6 +7092,8 @@ public function insert_comment_postnewpage() {
 
         $likepostid = $this->data['likepostid'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $likepostid[0]['user_id'], $data = 'art_email');
+
 
         if (!$likeuser) { //echo 1; die();
             $data = array(
@@ -7069,7 +7173,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
               }
 
             }
@@ -7307,7 +7411,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
               }
 
                     }
@@ -7416,6 +7520,8 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $artimg[0]["post_id"], 'is_delete' => 0);
         $artpostid = $this->data['artpostid'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+
+       $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $artpostid[0]['user_id'], $data = 'art_email');
         //echo "<pre>"; print_r($artpostid); die();
 
         $data = array(
@@ -7493,7 +7599,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post image in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
               }
 
         }
@@ -7693,6 +7799,8 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
         $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $artdatacomment[0]['user_id'], $data = 'art_email');
+
         $data = array(
             'user_id' => $userid,
             'art_post_id' => $post_id,
@@ -7769,7 +7877,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
               }
         }
         // end notoification
@@ -7951,6 +8059,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $artimg[0]["post_id"], 'is_delete' => 0);
         $artpostid = $this->data['artpostid'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $artpostid[0]['user_id'], $data = 'art_email');
 
         $data = array(
             'user_id' => $userid,
@@ -8026,7 +8135,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post image in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
               }
 
         }
@@ -8203,6 +8312,9 @@ public function insert_comment_postnewpage() {
 
         $contition_array = array('art_post_id' => $artlikeimg[0]["post_id"]);
         $artimglikepost = $this->data['artimglikepost'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $artimglikepost[0]['user_id'], $data = 'art_email');
+
         if (!$likecommentuser) {
 
             $data = array(
@@ -8273,7 +8385,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
               }
             }
             // end notoification
@@ -8404,7 +8516,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
                           
                           }
 
@@ -8457,6 +8569,9 @@ public function insert_comment_postnewpage() {
         $artlikeimg = $this->data['artlikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_post_id' => $artlikeimg[0]["post_id"]);
         $artimglikepost = $this->data['artimglikepost'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $artimglikepost[0]['user_id'], $data = 'art_email');
+
         if (!$likecommentuser) {
 
             $data = array(
@@ -8526,7 +8641,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image comment in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
                           
                           }
             }
@@ -8651,7 +8766,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is like on your post image comment in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
                           
                           }
                     }
@@ -9732,6 +9847,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $artimg[0]["post_id"], 'is_delete' => 0);
         $artpostid = $this->data['artpostid'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        $artemail = $this->common->select_data_by_id('art_reg', 'user_id', $artpostid[0]['user_id'], $data = 'art_email');
         //echo "<pre>"; print_r($artpostid); die();
 
         $data = array(
@@ -9810,7 +9926,7 @@ public function insert_comment_postnewpage() {
                                     </table>';
                 $subject = $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . ' is comment on your post image in Aileensoul.';
 
-                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artuserdata[0]['art_email']);
+                $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $artemail[0]['art_email']);
                           
                           }
 

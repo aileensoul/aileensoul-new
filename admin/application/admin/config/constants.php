@@ -145,3 +145,9 @@ define('PROFILENA', '--');
 
 // GOVERMENT THUMB THUMB
     define('GOV_THUMB_UPLOAD_URL', SITEURL . 'uploads/goverment/thumbs/');
+
+// GOVERMENT CATEGORY MAIN
+    define('GOV_CAT_UPLOAD_URL', SITEURL . 'uploads/gov_cate_icon/');
+
+// GOVERMENT CATEGORY  NOMAIN
+    define('GOV_CAT_NOUPLOAD', SITEURL . 'uploads/gov_cate_icon/agj.png');

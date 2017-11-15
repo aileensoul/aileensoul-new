@@ -700,3 +700,10 @@ $config['gov_post_main_max_height'] = '5000';
 $config['gov_post_thumb_upload_path'] = '../uploads/goverment/thumbs/';
 $config['gov_post_thumb_width'] = '60';
 $config['gov_post_thumb_height'] = '60';
+
+// GOVERMENT POST MAIN IMAGE
+$config['gov_cat_main_upload_path'] = '../uploads/gov_cate_icon/';
+$config['gov_cat_main_allowed_types'] = '*';
+$config['gov_cat_main_max_size'] = '100000000'; //in KB
+$config['gov_cat_main_max_width'] = '5000';
+$config['gov_cat_main_max_height'] = '5000';

@@ -51,9 +51,16 @@ $(function(){
     
 // other category input open start
 
+function validate(){
+
+  $("#multidropdown").addClass("error");
+  //alert("falguni123");
+}
+
 $('#skills').change(function other_category(){
         // var e = document.getElementById("skills");
         // var strUser = e.options[e.selectedIndex].value;
+       $("#multidropdown").removeClass("error");
        var strUser1 = $('#skills').val();
        var strUser =  "'" + strUser1 + "'";
        var n = strUser.includes(26);
