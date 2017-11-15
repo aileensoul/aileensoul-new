@@ -22,6 +22,25 @@
       <div class="left_fixed"> 
          <?php ?>
 <?php echo $left_artistic; ?>
+  
+   <!-- <div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" style="display: none">
+      -->
+         <div class="full-box-module_follow" style="margin-top: 0px;">
+            <!-- follower list start  -->  
+            <div class="common-form">
+               <h3 class="user_list_head">User List</h3>
+               <div class="seeall">
+                  <a href="<?php echo base_url('artist/userlist'); ?>">All User</a>
+               </div>
+               <div class="profile-boxProfileCard_follow fw  module">     
+               </div>
+               <!-- follower list end  -->
+            </div>
+         </div>
+     
+ <!--      </div>
+ -->
+
           <div class="full-box-module_follow fixed_right_display_none">
           
             <div class="common-form">
@@ -34,6 +53,24 @@
              
             </div>
          </div>
+
+         <div class="tablate-potrat-add">
+                  <div class="fw text-center pt10">
+                  <script type="text/javascript">
+                    ( function() {
+                    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+                    var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+                    var placement_id = window.CHITIKA.units.length;
+                    window.CHITIKA.units.push(unit);
+                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                  }());
+                  </script>
+                  <script  type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                  </div>
+                </div>
+
+
+
 
          <div class="custom_footer_left fw">
           <div class="fl">
@@ -108,6 +145,24 @@
                                     </div>
                                 </div>
          </div>
+
+         <div class="custom-user-list">
+        <div class="full-box-module_follow">
+        <div class="common-form">
+           <h3 class="user_list_head">User List</h3>
+           <div class="seeall">
+            <a href="<?php echo base_url('artist/userlist'); ?>">All User</a>
+           </div>
+           <div class="profile-boxProfileCard_follow fw  module">
+          <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>     
+           </div>
+         
+        </div>
+       </div>
+       
+    </div>
+
+
                              <div class="art-all-post">
                              <?php
                     if (count($art_data) > 0) {
@@ -1152,24 +1207,30 @@
       
         
 
-    </div> 
-    <div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" style="display: none">
+    </div>
+    <div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" >
      
-         <div class="full-box-module_follow" style="margin-top: 0px;">
-            <!-- follower list start  -->  
-            <div class="common-form">
-               <h3 class="user_list_head">User List</h3>
-               <div class="seeall">
-                  <a href="<?php echo base_url('artist/userlist'); ?>">All User</a>
-               </div>
-               <div class="profile-boxProfileCard_follow  module">     
-               </div>
-               <!-- follower list end  -->
-            </div>
-         </div>
+          <div class="fw text-center">
+                        <script type="text/javascript">
+              ( function() {
+              if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+              var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
+              var placement_id = window.CHITIKA.units.length;
+              window.CHITIKA.units.push(unit);
+              document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+            }());
+            </script>
+<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+          
+            <div class="fw pt10">
+                  <a href="http://www.chitika.com/publishers/apply?refid=aileensoul"><img src="http://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                </div>
+          </div>
+          
+          
      
-      </div>
-  <!-- Bid-modal  -->
+      </div> 
+     <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
                         <div class="modal-dialog modal-lm deactive">
                             <div class="modal-content">

@@ -565,7 +565,7 @@ fieldset.full-width {
 .common-form fieldset input{height:35px; line-height:1;}
 .common-form fieldset.hs-submit input{height:auto; line-height:1;}
 .common-form fieldset.hs-submit input:focus{color: white!important;}
-.common-form fieldset input:focus{   border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
+.common-form fieldset input:focus{   border: 1px solid #1b8ab9 !important; color: #fff!important;}
 .fullwidth_experience select {width: 49%;}
 .margin-month {margin-left: 1%;}
 .common-form input[type=radio],
