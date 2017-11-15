@@ -2327,7 +2327,7 @@ label.cameraButton:active {
     width: 85%;
     padding-left: 0px;
     padding-right: 0px;
-    height: 28px;
+    height: 31px;/*d*/
     font-size: 19px!important;
     line-height: 1;
     resize: none;
