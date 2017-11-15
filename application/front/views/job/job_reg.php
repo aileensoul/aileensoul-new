@@ -61,7 +61,7 @@
                               <label for="test1" class="point_radio" >Yes</label>
                            </div>
                            <div class="main_raio">
-                              <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" checked>
+                              <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher">
                               <label for="test2" class="point_radio">No</label>
                            </div>
                            <?php echo form_error('Fresher');; ?>
