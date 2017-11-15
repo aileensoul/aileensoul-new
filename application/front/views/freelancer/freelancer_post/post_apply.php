@@ -4,7 +4,7 @@
         <title> <?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -135,10 +135,7 @@
                                     <div>
                                        <strong></strong>
  
-
     <a href="<?php echo base_url('job/basic-information')?>" class="edit_profile_job">Edit Profile</a>
-
-
                                       
                                     </div>
                                  </div>
