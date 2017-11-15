@@ -27,7 +27,7 @@ class Job extends MY_Controller {
         // This function is there only one time users slug created after remove it End
 
         include ('include.php');
-         include ('job_include.php');
+        include ('job_include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
 
@@ -1886,8 +1886,8 @@ class Job extends MY_Controller {
 
         $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
         // echo "<pre>";print_r($this->data['job_reg'][0]['progressbar']);die();
-         $contition_array = array('status' => '1', 'is_delete' => '0');
-         $this->data['govjob_category'] = $govjob_category = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+        $this->data['govjob_category'] = $govjob_category = $this->common->select_data_by_condition('gov_category', $contition_array, $data = 'id,name', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($govjob_category); die();
 
@@ -1983,7 +1983,7 @@ class Job extends MY_Controller {
 
 
             if ($insert_id) {
-                 $this->apply_email($notid);
+                $this->apply_email($notid);
                 $applypost = 'Applied';
             }
             echo $applypost;
@@ -2901,11 +2901,11 @@ class Job extends MY_Controller {
 //THIS JOB REGISTRATION IS USED FOR FIRST TIME REGISTARTION VIEW START
 
     public function job_reg($postid = '') {
-        
-       
-       $this->data['livepost'] = $this->uri->segment(3);
-        
-        
+
+
+        $this->data['livepost'] = $this->uri->segment(3);
+
+
         //$postid = $_GET['postid']; 
         // job aply wothout login start
 
@@ -3018,9 +3018,9 @@ class Job extends MY_Controller {
     }
 
     public function job_insert() {
-if($this->input->post('livepost')){
-    $poslivtid = $this->input->post('livepost');
-}
+        if ($this->input->post('livepost')) {
+            $poslivtid = $this->input->post('livepost');
+        }
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         $firstname = $this->input->post('first_name');
@@ -3130,44 +3130,43 @@ if($this->input->post('livepost')){
 
         if ($insert_id) {
             $this->session->set_flashdata('success', 'Basic information updated successfully');
-           if($poslivtid){
-               redirect('job/home/' . $poslivtid, 'refresh');
-           }else{
-            redirect('job/home', 'refresh');
-           }
+            if ($poslivtid) {
+                redirect('job/home/' . $poslivtid, 'refresh');
+            } else {
+                redirect('job/home', 'refresh');
+            }
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-            if($poslivtid){
-             $postdata =   $this->common->select_data_by_id('rec_post', 'post_id',$poslivtid, $data = 'user_id,post_id', $join_str = array());
-           
-                 $cache_time = $this->db->get_where('job_title', array(
-                                    'title_id' => $postdata[0]['post_name']
-                                ))->row()->name;
+            if ($poslivtid) {
+                $postdata = $this->common->select_data_by_id('rec_post', 'post_id', $poslivtid, $data = 'user_id,post_id', $join_str = array());
 
-                        if ($cache_time) {
-                            $cache_time1 = $cache_time;
-                        } else {
-                            $cache_time1 = $postdata[0]['post_name'];
-                        }
+                $cache_time = $this->db->get_where('job_title', array(
+                            'title_id' => $postdata[0]['post_name']
+                        ))->row()->name;
 
-                        if ($cache_time1 != '') {
-                        $text = strtolower($this->common->clean($cache_time1));
-                    } else {
-                        $text = '';
-                    }
-                        $cityname = $this->db->get_where('cities', array('city_id' => $postdata[0]['city']))->row()->city_name;
+                if ($cache_time) {
+                    $cache_time1 = $cache_time;
+                } else {
+                    $cache_time1 = $postdata[0]['post_name'];
+                }
 
-                        if ($cityname != '') {
-                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                    } else {
-                        $cityname = '';
-                    }
-             
-             redirect('recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id']);
-           }else{
-            redirect('job/profile');
-           }
-            
+                if ($cache_time1 != '') {
+                    $text = strtolower($this->common->clean($cache_time1));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->get_where('cities', array('city_id' => $postdata[0]['city']))->row()->city_name;
+
+                if ($cityname != '') {
+                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname = '';
+                }
+
+                redirect('recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id']);
+            } else {
+                redirect('job/profile');
+            }
         }
     }
 
@@ -3210,7 +3209,6 @@ if($this->input->post('livepost')){
                 echo '<option value="">Select stream</option>';
                 foreach ($stream as $st) {
                     echo '<option value="' . $st['stream_id'] . '">' . $st['stream_name'] . '</option>';
-                    
                 }
             } else {
                 echo '<option value="">Stream not available</option>';
@@ -3279,25 +3277,24 @@ if($this->input->post('livepost')){
 //Get All data for search End
 //Search Result Retrieve Start
     public function job_search() {
-        
-    $searchvalue = $this->uri->segment(1); 
-      
-     $skill = explode('jobs', $searchvalue);
-   
-      $location = explode('in-', $searchvalue);
-          
-          $search_job =  trim($skill[0]); 
-           $search_job =  trim($skill[0],'-'); 
-           $search_job = str_replace('-', ' ', $search_job);
-           $search_place =  $location[1];
-     
+
+        $searchvalue = $this->uri->segment(1);
+
+        $skill = explode('jobs', $searchvalue);
+
+        $location = explode('in-', $searchvalue);
+
+        $search_job = trim($skill[0]);
+        $search_job = trim($skill[0], '-');
+      //  $search_job = str_replace('-', ' ', $search_job);
+        $search_place = $location[1];
+
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         // search keyword insert into database start
-
-       // $search_job = trim($this->input->get('skills'));
+        // $search_job = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_job;
-      //  $search_place = trim($this->input->get('searchplace'));
+        //  $search_place = trim($this->input->get('searchplace'));
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
@@ -4385,7 +4382,7 @@ if($this->input->post('livepost')){
 //GET JOB APPLY DATA WITH AJAX END
 //GET SEARCH DATA WITH AJAX START
     public function ajax_job_search($searchkeyword = "", $searchplace = "") {
-
+       
         $perpage = 5;
         $page = 1;
 
@@ -4405,7 +4402,7 @@ if($this->input->post('livepost')){
 
         $search_job = trim($_GET["skill"]);
         $search_place = trim($_GET["place"]);
-        
+
 //        $searchvalue = $this->uri->segment(1); 
 //      
 //        $skill = explode('-jobs', $searchvalue);
@@ -4478,12 +4475,10 @@ if($this->input->post('livepost')){
             $join_str[0]['join_type'] = '';
 
             $contition_array = array('rec_post.user_id !=' => $userid, 'rec_post.is_delete' => 0, 'rec_post.status' => '1');
-
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,rec_post.post_currency';
-
-            $search_condition = "(job_title.name LIKE '%$search_job%')";
+            $search_condition = "(job_title.slug LIKE '%$search_job%')";
             $results_posttitleid = $recpostdata['data'] = $this->common->select_data_by_search('job_title', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
+            
             $unique1 = array_merge($results_skill, $results_all, $results_posttitleid);
 
             $unique = array();
@@ -4527,7 +4522,7 @@ if($this->input->post('livepost')){
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,rec_post.post_currency';
 
-            $search_condition = "(job_title.name LIKE '%$search_job%')";
+            $search_condition = "(job_title.slug LIKE '%$search_job%')";
             $results_posttitleid = $recpostdata['data'] = $this->common->select_data_by_search('job_title', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
             $unique1 = array_merge($results_skill, $results_all, $results_posttitleid);
@@ -4565,37 +4560,37 @@ if($this->input->post('livepost')){
                 $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
 
                 $return_html .= '<li class="text_overflow">';
-$cache_time = $this->db->get_where('job_title', array(
-                                'title_id' => $post['post_name']
-                            ))->row()->name;
+                $cache_time = $this->db->get_where('job_title', array(
+                            'title_id' => $post['post_name']
+                        ))->row()->name;
 
-                    if ($cache_time) {
-                        $cache_time1 = $cache_time;
-                    } else {
-                        $cache_time1 = $post['post_name'];
-                    }
-                    if ($cache_time1 != '') {
-                        $text = strtolower($this->common->clean($cache_time1));
-                    } else {
-                        $text = '';
-                    }
-                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                if ($cache_time) {
+                    $cache_time1 = $cache_time;
+                } else {
+                    $cache_time1 = $post['post_name'];
+                }
+                if ($cache_time1 != '') {
+                    $text = strtolower($this->common->clean($cache_time1));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
-                    if ($cityname != '') {
-                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                    } else {
-                        $cityname = '';
-                    }
+                if ($cityname != '') {
+                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname = '';
+                }
 
-                    $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
-                    $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
+                $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($this->session->userdata('aileenuser')) {
 
                     $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
 //  $return_html .= '<a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" class="post_title" >';
                 } else {
-                     $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
-                  //  $return_html .= '<a  href="javascript:void(0);" onClick="login_profile()" class="post_title" >';
+                    $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post post_title">';
+                    //  $return_html .= '<a  href="javascript:void(0);" onClick="login_profile()" class="post_title" >';
                 }
 
 
@@ -4658,7 +4653,7 @@ $cache_time = $this->db->get_where('job_title', array(
 
                 if (!$post['post_skill']) {
                     $return_html .= $post['other_skill'];
-                 } else if (!$post['other_skill']) {
+                } else if (!$post['other_skill']) {
                     foreach ($aud_res as $skill) {
                         if ($k != 0) {
                             $return_html .= $comma;
@@ -4836,10 +4831,10 @@ $cache_time = $this->db->get_where('job_title', array(
                             $return_html .= 'onClick="login_profile()"';
                         }
 
-if ($this->session->userdata('aileenuser')) {
-                        $return_html .= 'href="javascript:void(0);"  class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
-}
+                        if ($this->session->userdata('aileenuser')) {
+                            $return_html .= 'href="javascript:void(0);"  class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
                         }
+                    }
                     $return_html .= '</li>';
                 }
 
@@ -5912,11 +5907,11 @@ if ($this->session->userdata('aileenuser')) {
 
 
     public function apply_email($notid) {
-        
+
         $jobid = $this->session->userdata('aileenuser');
         $jobdata = $this->common->select_data_by_id('job_reg', 'user_id', $jobid, $data = 'job_user_image,fname,lname,slug', $join_str = array());
         $recemail = $this->common->select_data_by_id('recruiter', 'user_id', $notid, $data = 'rec_comp_email', $join_str = array());
-      
+
         $email_html = '';
         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
 					<tr>
@@ -5948,9 +5943,20 @@ if ($this->session->userdata('aileenuser')) {
                                             </td>
 					</tr>
                                     </table>';
-        
+
         $subject = ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . ' Applied on your jobpost - Aileensoul.';
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail[0]['rec_comp_email']);
+    }
+
+    public function name_slug() {
+        $this->db->select('title_id,name');
+        $res = $this->db->get('job_title')->result();
+        foreach ($res as $k => $v) {
+            $data = array('slug' => $this->common->clean($v->name));
+            $this->db->where('title_id', $v->title_id);
+            $this->db->update('job_title', $data);
+        }
+        echo "yes";
     }
 
 }

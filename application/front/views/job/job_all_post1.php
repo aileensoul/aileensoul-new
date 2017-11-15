@@ -133,13 +133,13 @@
             <div class="job-saved-box">
                <h3>
                   Search result of 
-                  <?php  if($keyword != "" && $keyword1 == ""){echo '"' .  $keyword . '"';}
+                  <?php  if($keyword != "" && $keyword1 == ""){echo '"' .  str_replace('-', ' ', $keyword) . '"';}
                      elseif ($keyword == "" && $keyword1 != "") {
                        echo '"' .  $keyword1 . '"';
                      }
                      else
                      {
-                        echo '"' .  $keyword . '"'; echo  " in "; echo '"' .  $keyword1 . '"';
+                        echo '"' .  str_replace('-', ' ', $keyword) . '"'; echo  " in "; echo '"' .  $keyword1 . '"';
                      }
                      ?>
                </h3>
@@ -227,10 +227,10 @@
 <script>
     var base_url = '<?php echo base_url(); ?>';
    var skill = '<?php echo  $keyword; ?>';
-    var skill = skill.replace('-', ' ');
+    //var skill = skill.replace('-', ' ');
     
     var place = '<?php echo  $keyword1; ?>';
-    var place = place.replace('-', ' ');
+   // var place = place.replace('-', ' ');
     
     var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
     var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';  
