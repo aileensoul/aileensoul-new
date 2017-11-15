@@ -4769,4 +4769,9 @@ class Recruiter extends MY_Controller {
     }
 
 //LIVE LOCATION END
+    
+    public function rec_reg(){
+        
+        $this->load->view('recruiter/rec_reg', $this->data);
+    }
 }
