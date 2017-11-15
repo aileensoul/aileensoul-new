@@ -4447,6 +4447,7 @@ div .comment {
 .profile-job-post-location-name .user_lst ul li .contact_user_list{margin-left: 0px;}
 .art-all-comment .comment-name {padding: 2px 0;}
 
+.post-design-box .post-design-desc a.content_link:hover{color: #1b8ab9;text-decoration:underline; }
 
 /***  media query  ***/
 

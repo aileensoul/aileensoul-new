@@ -1493,6 +1493,17 @@ label.cameraButton input[accept*="camera"] {
 .modal-content .fw a.btn:hover{background-color: #156f95!important;color: #fff!important;}
 .custom-opt .optional{float: none;padding-left: 10px;}
 .portfolio_attachment{border: 1px solid #cacaca !important;}
+
+/*circle in edit profile*/
+.edit_profile_progress {
+    width: 100%;
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    margin: 0px 0 10px;
+    padding: 10px 0px 10px;
+}
+
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {
