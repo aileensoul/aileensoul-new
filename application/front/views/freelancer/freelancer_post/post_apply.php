@@ -135,7 +135,7 @@
                                     <div>
                                        <strong></strong>
  
-    <a href="<?php echo base_url('job/basic-information')?>" class="edit_profile_job">Edit Profile</a>
+    <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile</a>
                                       
                                     </div>
                                  </div>
