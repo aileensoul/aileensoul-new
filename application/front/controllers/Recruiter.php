@@ -673,6 +673,7 @@ class Recruiter extends MY_Controller {
             } else {
                 $data = array(
                     'name' => ucfirst($this->input->post('post_name')),
+                    'slug' => $this->common->clean('post_name'),
                     'status' => 'draft',
                 );
                 $jobtitle = $this->common->insert_data_getid($data, 'job_title');
@@ -987,6 +988,7 @@ class Recruiter extends MY_Controller {
             } else {
                 $data = array(
                     'name' => ucfirst($this->input->post('post_name')),
+                    'slug' => $this->common->clean('post_name'),
                     'status' => 'draft',
                 );
                 $jobtitle = $this->common->insert_data_getid($data, 'job_title');
