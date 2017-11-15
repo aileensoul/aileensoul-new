@@ -79,7 +79,7 @@
                          
                          <fieldset <?php if ($comp_name) { ?> class="error-msg" <?php } ?>>
                                     <label>Company Name :<span class="red">*</span> </label>
-                                    <input name="comp_name" tabindex="1" autofocus type="text" id="comp_name" placeholder="Enter Company Name"  value="<?php
+                                    <input name="comp_name" tabindex="4" autofocus type="text" id="comp_name" placeholder="Enter Company Name"  value="<?php
                                     if ($compname) {
                                         echo $compname;
                                     }
@@ -88,7 +88,7 @@
                                 <?php echo form_error('comp_name'); ?>
                                     <fieldset <?php if ($comp_email) { ?> class="error-msg" <?php } ?>>
                                     <label>Company Email:<span class="red">* </span></label>
-                                    <input name="comp_email" type="text" tabindex="2" id="comp_email" placeholder="Enter Company Email" value="<?php
+                                    <input name="comp_email" type="text" tabindex="5" id="comp_email" placeholder="Enter Company Email" value="<?php
                                     if ($compemail) {
                                         echo $compemail;
                                     }
@@ -98,7 +98,7 @@
                        
                         <fieldset class="full-width <?php if ($comp_num) { ?> error-msg <?php } ?>">
                                     <label>Company Number:<span class="optional">(optional)</span></label>
-                                    <input name="comp_num"  type="text" id="comp_num" tabindex="3" placeholder="Enter Comapny Number" value="<?php
+                                    <input name="comp_num"  type="text" id="comp_num" tabindex="6" placeholder="Enter Comapny Number" value="<?php
                                     if ($compnum) {
                                         echo $compnum;
                                     }
@@ -108,7 +108,7 @@
                         <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                     <label>Country:<span class="red">*</span></label>
 
-                                    <select tabindex="5" autofocus name="country" id="country">
+                                    <select tabindex="7" autofocus name="country" id="country">
                                         <option value="">Select Country</option>
                                         <?php
                                         if (count($countries) > 0) {
@@ -134,7 +134,7 @@
                        
  <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                     <label>State:<span class="red">*</span> </label>
-                                    <select name="state" id="state" tabindex="6">
+                                    <select name="state" id="state" tabindex="8">
                                         <?php
                                         if ($state1) {
                                             foreach ($states as $cnt) {
@@ -156,8 +156,8 @@
                                     <?php echo form_error('state'); ?>
                                 </fieldset>
                                 <fieldset <?php if ($city) { ?> class="error-msg" <?php } ?> class="full-width">
-                                    <label> City:</label>
-                                    <select name="city" id="city" tabindex="7">
+                                    <label> City:<span class="optional">(optional)</span></label>
+                                    <select name="city" id="city" tabindex="9">
                                         <?php
                                         if ($city1) {
                                             foreach ($cities as $cnt) {
@@ -195,7 +195,7 @@
                          <fieldset <?php if ($comp_profile) { ?> class="error-msg" <?php } ?> class="full-width">
                                     <label>Company Profile:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> -->
 
-                                        <textarea tabindex="9" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;"><?php
+                                        <textarea tabindex="10" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;"><?php
                                             if ($comp_profile1) {
                                                 echo $comp_profile1;
                                             }
