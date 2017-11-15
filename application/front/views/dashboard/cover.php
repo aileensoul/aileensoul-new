@@ -236,6 +236,12 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         <div class="sticky-container right-profile">
                             <ul class="sticky-right">
                                 <li>
+                                    <a title="Artistic Profile" href="#art-scroll" class="right-menu-box art-r" onclick="return tabindexart();"> <span>Artistic Profile</span></a>
+                                </li>
+                                <li>
+                                    <a title="Business Profile" href="#bus-scroll" class="right-menu-box bus-r" onclick="return tabindexbus();"> <span>Business Profile</span></a>
+                                </li>
+                                <li>
                                     <a title="Job Profile" href="#job-scroll" class="right-menu-box job-r" onclick="return tabindexjob();"><span>Job Profile</span></a>
                                 </li>
                                 <li>
@@ -244,12 +250,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                 <li>
                                     <a title="freelancer Profile" href="#free-scroll" class="right-menu-box free-r" onclick="return tabindexfree();"> <span>Freelance Profile</span></a>
                                 </li>
-                                <li>
-                                    <a title="Business Profile" href="#bus-scroll" class="right-menu-box bus-r" onclick="return tabindexbus();"> <span>Business Profile</span></a>
-                                </li>
-                                <li>
-                                    <a title="Artistic Profile" href="#art-scroll" class="right-menu-box art-r" onclick="return tabindexart();"> <span>Artistic Profile</span></a>
-                                </li>
+                                
+                               
                             </ul>
                         </div>
                         
@@ -287,6 +289,76 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     </div>
                                 </div>
                             </div>
+
+
+                            <div id="bus-scroll" class="custom-box even">
+                                <div class="custom-width">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 pull-right col-xs-12">
+                                            <div class="left-box">
+                                                <a href="<?php echo base_url('business-profile'); ?>"><img title="Business Profile" src="<?php echo base_url(); ?>assets/img/i4.jpg"></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <div class="right-box">
+                                                <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
+                                                <p>Grow your business network.</p>
+                                                <div class="btns">
+                                                    <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
+                                                    <?php if ($busdata[0]['business_step'] != 4) { ?>
+                                                        <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
+                                                    <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
+                                                        ?>
+
+                                                        <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
+                                                    <?php } else {
+                                                        ?>
+                                                        <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
+
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="job-scroll" class="custom-box odd">
+                                <div class="custom-width">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="left-box">
+                                                <a  href="<?php echo base_url('job'); ?>"><img title="Job Profile" src="<?php echo base_url(); ?>assets/img/i1.png"></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8">
+                                            <div class="right-box">
+                                                <h1><a title="Job Profile" href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
+                                                <p>Find best job options and connect with recruiters.</p>
+                                                <div class="btns">
+
+                                                    <?php if ($job[0]['job_step'] != 10) { ?>
+                                                    <a title="Register" class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
+                                                    <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
+                                                        ?>
+
+                                                        <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
+                                                    <?php } else {
+                                                        ?> 
+
+                                                        <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
+
+                                                    <?php } ?>
+                                                    <a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             
 							<div id="rec-scroll" class="custom-box even">
                                 <div class="custom-width">
@@ -359,72 +431,8 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                     </div>
                                 </div>
                             </div>
-                            <div id="bus-scroll" class="custom-box even">
-                                <div class="custom-width">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4 pull-right col-xs-12">
-                                            <div class="left-box">
-                                                <a href="<?php echo base_url('business-profile'); ?>"><img title="Business Profile" src="<?php echo base_url(); ?>assets/img/i4.jpg"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <div class="right-box">
-                                                <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
-                                                <p>Grow your business network.</p>
-                                                <div class="btns">
-                                                    <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
-                                                    <?php if ($busdata[0]['business_step'] != 4) { ?>
-                                                        <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
-                                                    <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
-                                                        ?>
-
-                                                        <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
-                                                    <?php } else {
-                                                        ?>
-                                                        <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
-
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="job-scroll" class="custom-box odd">
-                                <div class="custom-width">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="left-box">
-                                                <a  href="<?php echo base_url('job'); ?>"><img title="Job Profile" src="<?php echo base_url(); ?>assets/img/i1.png"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-sm-8">
-                                            <div class="right-box">
-                                                <h1><a title="Job Profile" href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
-                                                <p>Find best job options and connect with recruiters.</p>
-                                                <div class="btns">
-
-                                                    <?php if ($job[0]['job_step'] != 10) { ?>
-                                                    <a title="Register" class="btn-1" id="job-register-btn" href="<?php echo base_url('job/'); ?>">Register</a>
-                                                    <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
-                                                        ?>
-
-                                                        <a class="btn-1" id="job-active-btn" href="<?php echo base_url('job/'); ?>">Active</a>
-                                                    <?php } else {
-                                                        ?> 
-
-                                                        <a title="Take me in" class="btn-4" id="job-take-btn" href="<?php echo base_url('job/'); ?>">Take me in</a> 
-
-                                                    <?php } ?>
-                                                    <a title="How it works" data-target="#jop-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							
+                            
+                            
 							
                             <!-- End  bootstrap-touch-slider Slider -->
                             <!-- Modal content-->

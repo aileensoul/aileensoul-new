@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="edi_origde">
                         <?php
-                       
+                       //echo $count_profile;
                         if($count_profile == 100)
                         {
                             if($freepostdata[0]['progressbar']==0)
@@ -135,7 +135,7 @@
                                     <div>
                                        <strong></strong>
  
-    <a href="<?php echo base_url('job/basic-information')?>" class="edit_profile_job">Edit Profile</a>
+    <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile</a>
                                       
                                     </div>
                                  </div>
