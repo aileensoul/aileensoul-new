@@ -176,8 +176,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
+                
         </section>
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
