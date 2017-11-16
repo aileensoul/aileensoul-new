@@ -17,7 +17,7 @@ class Recruiter extends MY_Controller {
     }
 
     public function index() {
-       $userid = $this->session->userdata('aileenuser'); 
+        $userid = $this->session->userdata('aileenuser');
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE START  
         // $this->recruiter_apply_check();
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE END  
@@ -71,10 +71,10 @@ class Recruiter extends MY_Controller {
 //            redirect('recruiter/basic-information');
 //        }
 //    }
-    
-     public function recruiter_apply_check() {
 
-       $userid = $this->session->userdata('aileenuser'); 
+    public function recruiter_apply_check() {
+
+        $userid = $this->session->userdata('aileenuser');
 
 // REDIRECT USER TO REMAIN PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
@@ -83,13 +83,13 @@ class Recruiter extends MY_Controller {
 // REDIRECT USER TO REMAIN PROFILE END
 
         if (count($apply_step) >= 0) {
-            if ($apply_step[0]['re_step'] == 1) { 
+            if ($apply_step[0]['re_step'] == 1) {
                 redirect('recruiter/registration');
             }
-            if ($apply_step[0]['re_step'] == 0) { 
+            if ($apply_step[0]['re_step'] == 0) {
                 redirect('recruiter/registration');
             }
-        } else { 
+        } else {
             redirect('recruiter/registration');
         }
     }
@@ -561,7 +561,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER RECOMMANDED FUNCTION START
     public function recommen_candidate() {
 
-         $userid = $this->session->userdata('aileenuser'); 
+        $userid = $this->session->userdata('aileenuser');
         $this->recruiter_apply_check();
 
 
@@ -1624,23 +1624,22 @@ class Recruiter extends MY_Controller {
                     }
                     $postdata .= '</li>';
                 } else {
-                    
-                    if($row[0]['experience'] == 'Experience'){ 
-                    $postdata .= '<li> <b> Total Experience</b>';
-                                            if($row[0]['exp_y'] != " " && $row[0]['exp_m'] != " "){ 
-                                         if ($row[0]['exp_m'] == '12 month' && $row[0]['exp_y'] == '0 year') {
-                                                       $postdata .= "1 year";
-                                                } else {
-                                                  
-                                                if($row[0]['exp_y'] != '0 year'){
-                                                        $postdata .= $row[0]['exp_y'];
-                                                }
-                                                    if ($row[0]['exp_m'] != '0 month') {
-                                                            $postdata .= ' ' . $row[0]['exp_m'];
-                                                        
-                                                    } 
-                                                }
-                                             } 
+
+                    if ($row[0]['experience'] == 'Experience') {
+                        $postdata .= '<li> <b> Total Experience</b>';
+                        if ($row[0]['exp_y'] != " " && $row[0]['exp_m'] != " ") {
+                            if ($row[0]['exp_m'] == '12 month' && $row[0]['exp_y'] == '0 year') {
+                                $postdata .= "1 year";
+                            } else {
+
+                                if ($row[0]['exp_y'] != '0 year') {
+                                    $postdata .= $row[0]['exp_y'];
+                                }
+                                if ($row[0]['exp_m'] != '0 month') {
+                                    $postdata .= ' ' . $row[0]['exp_m'];
+                                }
+                            }
+                        }
                     }
                     if ($row['experience'] == 'Fresher') {
                         $postdata .= '<li> <b> Total Experience</b>';
@@ -2029,7 +2028,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= 'Created Date : ' . date('d-M-Y', strtotime($post['created_date'])) . '';
                         $rec_post .= '</li>
                              <li class="">';
-                             
+
 
                         $cache_time = $this->db->get_where('job_title', array(
                                     'title_id' => $post['post_name']
@@ -2042,19 +2041,19 @@ class Recruiter extends MY_Controller {
                         }
 
                         if ($cache_time1 != '') {
-                        $text = strtolower($this->common->clean($cache_time1));
-                    } else {
-                        $text = '';
-                    }
+                            $text = strtolower($this->common->clean($cache_time1));
+                        } else {
+                            $text = '';
+                        }
                         $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
                         if ($cityname != '') {
-                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                    } else {
-                        $cityname = '';
-                    }
+                            $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                        } else {
+                            $cityname = '';
+                        }
 
-                        
+
                         $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post Tit44le">';
 
 
@@ -2294,17 +2293,17 @@ class Recruiter extends MY_Controller {
                         }
 
                         if ($cache_time1 != '') {
-                        $text = strtolower($this->common->clean($cache_time1));
-                    } else {
-                        $text = '';
-                    }
+                            $text = strtolower($this->common->clean($cache_time1));
+                        } else {
+                            $text = '';
+                        }
                         $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
                         if ($cityname != '') {
-                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                    } else {
-                        $cityname = '';
-                    }
+                            $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                        } else {
+                            $cityname = '';
+                        }
 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/ri' . $post['user_id'] . '/po' . $post['post_id'] . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . base64_encode($post['user_id']) . '/' . base64_encode($post['post_id']) . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
@@ -2977,22 +2976,21 @@ class Recruiter extends MY_Controller {
 
                     $return_html .= '</span></li>';
                 } else {
-                      if($p[0]['experience'] == 'Experience'){ 
-                    $postdata .= '<li> <b> Total Experience</b>';
-                                            if($p[0]['exp_y'] != " " && $p[0]['exp_m'] != " "){ 
-                                         if ($p[0]['exp_m'] == '12 month' && $p[0]['exp_y'] == '0 year') {
-                                                       $postdata .= "1 year";
-                                                } else {
-                                                  
-                                                if($p[0]['exp_y'] != '0 year'){
-                                                        $postdata .= $p[0]['exp_y'];
-                                                }
-                                                    if ($p[0]['exp_m'] != '0 month') {
-                                                            $postdata .= ' ' . $p[0]['exp_m'];
-                                                        
-                                                    } 
-                                                }
-                                             } 
+                    if ($p[0]['experience'] == 'Experience') {
+                        $postdata .= '<li> <b> Total Experience</b>';
+                        if ($p[0]['exp_y'] != " " && $p[0]['exp_m'] != " ") {
+                            if ($p[0]['exp_m'] == '12 month' && $p[0]['exp_y'] == '0 year') {
+                                $postdata .= "1 year";
+                            } else {
+
+                                if ($p[0]['exp_y'] != '0 year') {
+                                    $postdata .= $p[0]['exp_y'];
+                                }
+                                if ($p[0]['exp_m'] != '0 month') {
+                                    $postdata .= ' ' . $p[0]['exp_m'];
+                                }
+                            }
+                        }
                     }
                     if ($p['experience'] == 'Fresher') {
                         $return_html .= '<li> <b> Total Experience</b><span>' . $p['experience'] . '</span></li>';
@@ -3318,8 +3316,8 @@ class Recruiter extends MY_Controller {
 
         $new = array();
         foreach ($recdata2 as $value) {
-            
-           $new[$value['userid']] = $value;
+
+            $new[$value['userid']] = $value;
         }
 
         $savedata = $new;
@@ -3496,24 +3494,23 @@ class Recruiter extends MY_Controller {
                         $return_html .= '</span>
                                                                     </li>';
                     } else {
-                        
-                        if($rec[0]['experience'] == 'Experience'){ 
-                    $postdata .= '<li> <b> Total Experience</b>';
-                                            if($rec[0]['exp_y'] != " " && $rec[0]['exp_m'] != " "){ 
-                                         if ($rec[0]['exp_m'] == '12 month' && $rec[0]['exp_y'] == '0 year') {
-                                                       $postdata .= "1 year";
-                                                } else {
-                                                  
-                                                if($rec[0]['exp_y'] != '0 year'){
-                                                        $postdata .= $rec[0]['exp_y'];
-                                                }
-                                                    if ($rec[0]['exp_m'] != '0 month') {
-                                                            $postdata .= ' ' . $rec[0]['exp_m'];
-                                                        
-                                                    } 
-                                                }
-                                             } 
-                    }
+
+                        if ($rec[0]['experience'] == 'Experience') {
+                            $postdata .= '<li> <b> Total Experience</b>';
+                            if ($rec[0]['exp_y'] != " " && $rec[0]['exp_m'] != " ") {
+                                if ($rec[0]['exp_m'] == '12 month' && $rec[0]['exp_y'] == '0 year') {
+                                    $postdata .= "1 year";
+                                } else {
+
+                                    if ($rec[0]['exp_y'] != '0 year') {
+                                        $postdata .= $rec[0]['exp_y'];
+                                    }
+                                    if ($rec[0]['exp_m'] != '0 month') {
+                                        $postdata .= ' ' . $rec[0]['exp_m'];
+                                    }
+                                }
+                            }
+                        }
                         if ($rec['experience'] == 'Fresher') {
 
                             $return_html .= '<li> <b> Total Experience</b>
@@ -4388,7 +4385,7 @@ class Recruiter extends MY_Controller {
                                             <td style="padding:5px;"><img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image'] . '" width="60" height="60"></td>
                                             <td style="padding:5px;">
 						<p><b>' . ucwords($recdata[0]['rec_firstname']) . ' ' . ucwords($recdata[0]['rec_lastname']) . '</b> From ' . ucwords($recdata[0]['re_comp_name']) . 'Invited you for an interview.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">'  . date('j F') . ' at ' . date('H:i') .  '</span>
+						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/recruiter_post/' . $postid . '">view</a></p>
@@ -4826,8 +4823,8 @@ class Recruiter extends MY_Controller {
         $segment3 = explode('-', $this->uri->segment(1));
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
-        $city_id = $this->db->select('city_id')->get_where('cities',array('city_name'=>$postid))->row()->city_id;
-        
+        $city_id = $this->db->select('city_id')->get_where('cities', array('city_name' => $postid))->row()->city_id;
+
         $this->data['recliveid'] = $userid = $slugdata[1];
 
         $join_str[0]['table'] = 'recruiter';
@@ -4846,9 +4843,9 @@ class Recruiter extends MY_Controller {
     }
 
 //LIVE LOCATION END
-    
-    public function rec_reg(){
-            $userid = $this->session->userdata('aileenuser');
+
+    public function rec_reg() {
+        $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -4871,10 +4868,10 @@ class Recruiter extends MY_Controller {
 
         $this->load->view('recruiter/rec_reg', $this->data);
     }
-    
-    public function reg_insert(){
-        
-       $userid = $this->session->userdata('aileenuser');
+
+    public function reg_insert() {
+
+        $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
@@ -4883,8 +4880,7 @@ class Recruiter extends MY_Controller {
             redirect('recruiter/');
         }
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
-
-      //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
+        //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
 
         $this->form_validation->set_rules('first_name', 'first Name', 'required');
         $this->form_validation->set_rules('last_name', 'last Name', 'required');
@@ -4893,59 +4889,57 @@ class Recruiter extends MY_Controller {
         $this->form_validation->set_rules('state', 'State', 'required');
         $this->form_validation->set_rules('comp_name', 'company Name', 'required');
         $this->form_validation->set_rules('comp_email', 'company email', 'required|valid_email');
-       
-                if ($this->form_validation->run() == FALSE) {
-          
+
+        if ($this->form_validation->run() == FALSE) {
+
 // FETCH COUNTRY DATA    
-        $contition_array = array('status' => 1);
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => 1);
+            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // FETCH STATE DATA  
-        $contition_array = array('status' => 1, 'country_id' => $this->data['recdata'][0]['re_comp_country']);
-        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_id,state_name,country_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => 1, 'country_id' => $this->data['recdata'][0]['re_comp_country']);
+            $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_id,state_name,country_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // FETCH CITY DATA
-        $contition_array = array('status' => '1', 'state_id' => $this->data['recdata'][0]['re_comp_state']);
-        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => '1', 'state_id' => $this->data['recdata'][0]['re_comp_state']);
+            $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $this->load->view('recruiter/rec_reg', $this->data);
         } else {
 //              $contition_array = array('user_id' => $userid, 're_status' => '1');
 //             $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,re_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //             
-                $data = array(
-                    'rec_firstname' => $this->input->post('first_name'),
-                    'rec_lastname' => $this->input->post('last_name'),
-                    'rec_email' => $this->input->post('email'),
-                    'user_id' => $userid,
-                    're_comp_name' => $this->input->post('comp_name'), 
-                    're_comp_email' => $this->input->post('comp_email'),
-                    're_comp_phone' => $this->input->post('comp_num'),
-                    're_comp_profile' => trim($this->input->post('comp_profile')),
-                    're_comp_country' => $this->input->post('country'),
-                    're_comp_state' => $this->input->post('state'),
-                    're_comp_city' => $this->input->post('city'),
-                    'created_date' => date('y-m-d h:i:s'),
-                    're_status' => 1,
-                    'is_delete' => 0,
-                    're_step' => 3
-                );
-               
-                $insert_id = $this->common->insert_data_getid($data, 'recruiter');
-                
-                if ($insert_id) {
-                 
-                    $datavl = "ok";
-                        echo json_encode(
-                            array(
-                                "okmsg" => $datavl,
-                    ));
-                } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('recruiter', refresh);
-                }
-           
+            $data = array(
+                'rec_firstname' => $this->input->post('first_name'),
+                'rec_lastname' => $this->input->post('last_name'),
+                'rec_email' => $this->input->post('email'),
+                'user_id' => $userid,
+                're_comp_name' => $this->input->post('comp_name'),
+                're_comp_email' => $this->input->post('comp_email'),
+                're_comp_phone' => $this->input->post('comp_num'),
+                're_comp_profile' => trim($this->input->post('comp_profile')),
+                're_comp_country' => $this->input->post('country'),
+                're_comp_state' => $this->input->post('state'),
+                're_comp_city' => $this->input->post('city'),
+                'created_date' => date('y-m-d h:i:s'),
+                're_status' => 1,
+                'is_delete' => 0,
+                're_step' => 3
+            );
+
+            $insert_id = $this->common->insert_data_getid($data, 'recruiter');
+
+            if ($insert_id) {
+
+                $datavl = "ok";
+                echo json_encode(
+                        array(
+                            "okmsg" => $datavl,
+                ));
+            } else {
+                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                redirect('recruiter', refresh);
+            }
         }
-      
     }
-     
+
 }
