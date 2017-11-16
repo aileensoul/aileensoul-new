@@ -2153,7 +2153,7 @@ label.cameraButton input[accept*="camera"] {
 
 .custom-message .message, .custom-message .message2 , .custom-message .message1 {padding:20px 30px;}
 .custom-message .modal-content h2{font-size:20px; line-height:30px;} 
-.custom-message .modal-content input{margin-bottom:15px;} 
+.custom-message .modal-content input{margin-bottom:15px;padding: 9px 15px;} 
 .custom-message .modal-content select{margin-bottom:15px;} 
 .custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;} 
 .custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
@@ -2238,7 +2238,7 @@ label.cameraButton input[accept*="camera"] {
 .gov-job-apply-btn a:hover{background:#1b8ab9; color:#fff;}
 .Add_edu {font-size: 14px;}
 }
-	
+
 	
 	
 /***  media query  ***/

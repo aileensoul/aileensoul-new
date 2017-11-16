@@ -163,7 +163,7 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="col-md-8 col-sm-12 col-xs-12 mob-clear">
+                    <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
                         <div class="common-form">
                             <div class="job-saved-box">
                                 <h3><?php echo $this->lang->line("saved_projects"); ?></h3>
@@ -176,6 +176,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
         </section>
         <?php echo $login_footer ?>

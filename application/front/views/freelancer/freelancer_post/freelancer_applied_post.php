@@ -154,7 +154,7 @@
                     </div>
                 </div>
             </div>
-            <div class="middle-part container">
+            <div class="middle-part container padding_set_res">
                 <div class="job-menu-profile mob-none pt20">
                     <a href="javascript:void(0);">
                         <h3> <?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></h3>
@@ -171,7 +171,7 @@
                         <?php } ?>
                     </div>
                 </div>
-                <div class="col-md-8 col-sm-12 col-xs-12 mob-clear">
+                <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
                     <div class="common-form">
                         <div class="job-saved-box">
                             <h3><?php echo $this->lang->line("applied_projects"); ?></h3>
@@ -185,6 +185,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
