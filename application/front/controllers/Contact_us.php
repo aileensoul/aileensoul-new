@@ -48,7 +48,8 @@ class Contact_us extends CI_Controller {
             'contact_email' => $email,
             'contact_subject' => $subject,
             'contact_message' => $message,
-            'created_date' =>date('Y-m-d', time()),
+            //'created_date' =>date('Y-m-d h:m:s', time()),
+            'created_date' =>date('Y-m-d h:i:s', time()),
             'is_delete' => 0
         );
         $insert_id = $this->common->insert_data_getid($data, 'contact_us');
