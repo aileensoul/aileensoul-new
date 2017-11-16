@@ -1240,10 +1240,23 @@
                                        </div>
                                          <div class="profile-job-profile-menu">                          
                                         <ul class="clearfix">
-                                          
-                                          <li> <b> Industry</b> <span>2 Year 2 Month  </span>
+                                           <?php   if($job[0]['experience'] == 'Experience'){ ?>
+                                          <li> <b> Total Experience</b> <span><?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
+                                         if ($job[0]['exp_m'] == '12 month' && $job[0]['exp_y'] == '0 year') {
+                                                    echo "1 year";
+                                                } else {
+                                                  
+                                                if($job[0]['exp_y'] != '0 year'){
+                                                    echo $job[0]['exp_y'];
+                                                }
+                                                    if ($job[0]['exp_m'] != '0 month') {
+                                                        echo ' ' . $job[0]['exp_m'];
+                                                        
+                                                    } 
+                                                }
+                                             } ?> </span>
                                           </li>
-                                          
+                                         <?php } ?>
                                        </ul>
                                      </div>
 
