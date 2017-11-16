@@ -198,7 +198,7 @@
 <!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option ng-option value="" selected="selected">Select Business type</option>
                                                                 <?php foreach ($business_type as $key => $type) { ?>
-                                                                                                                                                                                                                                                                                                            <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                                                                                                                                                                                                                                                                                    <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="busOption">Other</option>    
                                                                 </select>-->
@@ -214,7 +214,7 @@
 <!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
                                                                 <?php foreach ($category_list as $key => $category) { ?>
-                                                                                                                                                                                                                                                                                                            <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                                                                                                                                                                                                                                                                                    <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="indOption">Other</option>
                                                                 </select>-->
@@ -589,7 +589,12 @@
                                                     $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                                                     $scope.tab_active(2);
                                                     getContactInformation();
-                                                } else {
+//                                                    $("li#left-form-each-li-2 a").attr("href", "#contact_information");
+//                                                    $("li#left-form-each-li-2 a").attr("data-toggle", "tab");
+//                                                    $("li#left-form-each-li-2 a").attr("ng-click", "getContactInformation(); tab_active(2);");
+                                                      $("li#left-form-each-li-2 a").attr("ng-click", "getContactInformation(); tab_active(2);");
+                                                }
+                                                  else {
                                                     return false;
                                                 }
                                             }
@@ -768,8 +773,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                                                                                            <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
