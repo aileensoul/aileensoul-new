@@ -1382,7 +1382,7 @@ class Job extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
 
 
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total,job_step,experience', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total,job_step,experience,exp_m,exp_y', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($userdata[0]['total'] != 0) {
             $step = $userdata[0]['job_step'];
@@ -3018,6 +3018,7 @@ class Job extends MY_Controller {
     }
 
     public function job_insert() {
+       
         if ($this->input->post('livepost')) {
             $poslivtid = $this->input->post('livepost');
         }
@@ -3027,6 +3028,8 @@ class Job extends MY_Controller {
         $lastname = $this->input->post('last_name');
         $email = $this->input->post('email');
         $fresher = $this->input->post('fresher');
+        $expy = $this->input->post('experience_year');
+        $expm = $this->input->post('experience_month');
         $industry = $this->input->post('industry');
 
         $jobtitle = $this->input->post('job_title');
@@ -3108,6 +3111,8 @@ class Job extends MY_Controller {
             'work_job_title' => $jobtitle,
             'work_job_industry' => $this->input->post('industry'),
             'work_job_city' => $city,
+            'exp_y' => $expy,
+            'exp_m' => $expm,
             'experience' => $this->input->post('fresher'),
             'status' => 1,
             'is_delete' => 0,

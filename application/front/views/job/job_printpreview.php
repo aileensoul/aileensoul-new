@@ -1269,6 +1269,8 @@
                                              <b> Total Experience </b>
                                              <span>
                                              <?php
+                                             
+                                             if($job[0]['exp_y'] == " " && $job[0]['exp_m'] == " "){
                                                 $total_work_year = 0;
                                                 $total_work_month = 0;
                                                 foreach ($job_work as $work1) {
@@ -1306,6 +1308,36 @@
                                                     }
                                                 } 
                                                 }
+                                    }else{
+                                        if ($job[0]['exp_m'] == '12 month' && $job[0]['exp_y'] == '0 year') {
+                                                    echo "1 year";
+                                                } else {
+                                                   $month = explode(' ', $job[0]['exp_y']);
+                                                    //print_r($month);
+                                                    $year = $month[0];
+                                                    $y = 0;
+                                                    for ($i = 0; $i <= $y; $i++) {
+                                                        if ($job[0]['exp_m'] >= 12) {
+                                                            $year = $year + 1;
+                                                            $total_work_month = $job[0]['exp_m'] - 12;
+                                                            $y++;
+                                                        } else {
+                                                            $y = 0;
+                                                        }
+                                                    }
+                                                
+                                                
+                                                    echo $year;
+                                                    echo "&nbsp";
+                                                    echo "Year";
+                                                    echo "&nbsp";
+                                                    if ($job[0]['exp_m'] != 0) {
+                                                        echo $total_work_month;
+                                                        echo "&nbsp";
+                                                        echo "Month";
+                                                    } 
+                                                }
+                                    }
                                                 ?> 
                                              </span>
                                           </li>
