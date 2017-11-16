@@ -75,7 +75,7 @@
                                                <?php echo form_error('email'); ?>
                                     </fieldset>
                         
-                         <h3>Company Information</h3>
+                         <h4>Company Information</h4>
                          
                          <fieldset <?php if ($comp_name) { ?> class="error-msg" <?php } ?>>
                                     <label>Company Name :<span class="red">*</span> </label>
