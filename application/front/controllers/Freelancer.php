@@ -2719,6 +2719,7 @@ class Freelancer extends MY_Controller {
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
+        $this->progressbar();
 // job seeker detail
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
