@@ -1238,26 +1238,20 @@
                                              </ul>
                                           </div>
                                        </div>
-                                        <?php   if($job[0]['experience'] == 'Experience'){ ?>
-                                         <div class="panel">
-                                          Total experience :
-                                          <?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
-                                         if ($job[0]['exp_m'] == '12 month' && $job[0]['exp_y'] == '0 year') {
-                                                    echo "1 year";
-                                                } else {
-                                                  
-                                                if($job[0]['exp_y'] != '0 year'){
-                                                    echo $job[0]['exp_y'];
-                                                }
-                                                    if ($job[0]['exp_m'] != '0 month') {
-                                                        echo ' ' . $job[0]['exp_m'];
-                                                        
-                                                    } 
-                                                }
-                                             } ?>
+                                         <div class="profile-job-profile-menu">                          
+                                        <ul class="clearfix">
                                           
-                                       </div>
-                                     <?php } ?>
+                                          <li> <b> Industry</b> <span>2 Year 2 Month  </span>
+                                          </li>
+                                          
+                                       </ul>
+                                     </div>
+
+
+
+
+
+
                                        <div class="profile-job-profile-menu">
                                           <ul class="clearfix">
                                              <div class="text-center">
