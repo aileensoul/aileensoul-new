@@ -6,6 +6,11 @@
    $("#dropdownclass").addClass("no-post-h2");
    
     }
+    $('.progress .progress-bar').css("width",
+           function() {
+               return $(this).attr("aria-valuenow") + "%";
+           }
+       )
    });
    
     $(document).ready(function () {

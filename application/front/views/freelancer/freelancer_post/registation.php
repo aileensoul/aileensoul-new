@@ -27,10 +27,13 @@
                         <div class="col-md-3"></div>
                         <div class="clearfix">
                             <div class="job_reg_page_fprm">
-
+                              <?php   if ($this->uri->segment(3) == 'live-post') {
+                            echo '<div class="alert alert-success">You  will be automatically apply successfully after completing of Freelancer profile ...!</div>';
+                        }
+                        ?>
                                 <div class="common-form job_reg_main">
                                     <h3>Welcome In Freelancer Profile</h3>
-                                    <?php echo form_open(base_url('freelancer/registation_insert'), array('id' => 'freelancer_regform', 'name' => 'freelancer_regform', 'class' => 'clearfix')); ?>
+                                    <?php echo form_open(base_url('freelancer/registation_insert/'.$this->uri->segment(4)), array('id' => 'freelancer_regform', 'name' => 'freelancer_regform', 'class' => 'clearfix')); ?>
                                     <fieldset>
                                         <label >First Name <font  color="red">*</font> :</label>                          
                                         <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo $art[0]['first_name']; ?>" maxlength="35">
@@ -56,8 +59,8 @@
                                         ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label >Phone number:</label>
-                                        <input type="text" name="phoneno" id="phoneno" tabindex="3" placeholder="Enter phone number" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
+                                        <label >Phone number:<span class="optional">(optional)</span></label>
+                                        <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
                                         <?php
                                         echo form_error('email');
                                         ;
@@ -66,7 +69,7 @@
 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                         <label>Country:<span style="color:red">*</span></label>								
-                                        <select name="country" id="country">
+                                        <select name="country" id="country" tabindex="5">
                                             <option value="">Select country</option>
                                             <?php
                                             if (count($countries) > 0) {
@@ -83,7 +86,7 @@
 
                                     <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                         <label>state:<span style="color:red">*</span></label>
-                                        <select name="state" id="state">
+                                        <select name="state" id="state" tabindex="6">
                                             <?php
                                             if ($state1) {
                                                 foreach ($states as $cnt) {
@@ -104,7 +107,7 @@
 
                                     <fieldset class="fw" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                                         <label> City:<span style="color:red">*</span></label>
-                                        <select name="city" id="city" tabindex="3">
+                                        <select name="city" id="city" tabindex="7">
                                             <?php
                                             if ($city1) {
                                                 foreach ($cities as $cnt) {
@@ -134,12 +137,12 @@
 
                                     <fieldset class="full-width" <?php if ($field) { ?> class="error-msg" <?php } ?>>
                                         <?php if ($livepostid) { ?>
-                                            <input type="hidden" name="livepostid" id="livepostid" tabindex="5"  value="<?php echo $livepostid; ?>">
+                                            <input type="hidden" name="livepostid" id="livepostid" tabindex="8"  value="<?php echo $livepostid; ?>">
                                         <?php }
                                         ?>
                                         <label><?php echo $this->lang->line("your_field"); ?>:<span class="red">*</span></label> 
 
-                                        <select tabindex="1" autofocus name="field" id="field" class="field_other">
+                                        <select tabindex="8" name="field" id="field" class="field_other">
                                             <option value=""><?php echo $this->lang->line("select_filed"); ?></option>
                                             <?php
                                             if (count($category_data) > 0) {
@@ -165,7 +168,7 @@
 
                                     <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
-                                        <input id="skills1" name="skills" tabindex="2"   placeholder="Enter skills" value="<?php
+                                        <input id="skills1" name="skills" tabindex="9"   placeholder="Enter skills" value="<?php
                                         if ($skill_2) {
                                             echo $skill_2;
                                         }
@@ -174,7 +177,7 @@
                                     </fieldset>
 
                                     <fieldset  class="" <?php if ($experience_year) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="4" id="experience_year" class="experience_year col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
+                                        <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="10" id="experience_year" class="experience_year col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
 
                                             <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
                                             <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 Year</option>
@@ -202,7 +205,7 @@
                                         </select>
 
 
-                                        <select name="experience_month" tabindex="5" id="experience_month" placeholder="Month" class="experience_month col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
+                                        <select name="experience_month" tabindex="11" id="experience_month" placeholder="Month" class="experience_month col-md-5 day" onchange="return check_yearmonth();" style="margin-right: 5px;">
                                             <option value="" selected option disabled><?php echo $this->lang->line("month"); ?></option>
                                             <option value="0 month"  <?php if ($experience_month1 == "0 month") echo 'selected'; ?>>0 Month</option>
                                             <option value="1 month"  <?php if ($experience_month1 == "1 month") echo 'selected'; ?>>1 Month</option>
@@ -227,7 +230,7 @@
                                     <fieldset class=" full-width">
                                         <div class="job_reg">
                                            <!--<input type="reset">-->
-                                            <input title="Register" type="submit" id="submit" name="" value="Register">
+                                            <input title="Register" tabindex="12" type="submit" id="submit" name="" value="Register">
                                         </div>
                                     </fieldset>
                                     <?php echo form_close(); ?>
@@ -252,6 +255,20 @@
             </div>
         </div>
         <!-- Model Popup Close -->
+ <!-- Bid-modal for other field start  -->
+        <div class="modal fade message-box biderror custom-message" id="bidmodal2" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content message">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>
+                    <!--                    <div class="message" style="width:300px;">-->
+                    <h2>Add Field</h2>         
+                    <input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()">
+                    <div class="fw"><a id="field" class="btn">OK</a></div>
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <!-- Model for other field Popup Close -->
 
 
         <!-- <footer>        -->

@@ -198,7 +198,7 @@
 <!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option ng-option value="" selected="selected">Select Business type</option>
                                                                 <?php foreach ($business_type as $key => $type) { ?>
-                                                                                                                                                                                                                                                <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                                                                                                                                                                                                                                                                                                    <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="busOption">Other</option>    
                                                                 </select>-->
@@ -214,7 +214,7 @@
 <!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
                                                                 <?php foreach ($category_list as $key => $category) { ?>
-                                                                                                                                                                                                                                                <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                                                                                                                                                                                                                                                                                                    <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="indOption">Other</option>
                                                                 </select>-->
@@ -334,7 +334,7 @@
                                 alert("Browser does not support HTML5.");
                             }
                         }
-                        function activeBusinessInformation(){
+                        function activeBusinessInformation() {
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-1').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
@@ -342,21 +342,21 @@
                             getCountry();
                             getBusinessInformation();
                         }
-                        function activeContactInformation(){
+                        function activeContactInformation() {
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-2').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                             getContactInformation();
                         }
-                        function activeDescription(){
+                        function activeDescription() {
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-3').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                             getDescription();
                         }
-                        function activeImage(){
+                        function activeImage() {
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-4').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
@@ -433,7 +433,7 @@
                                     $scope.user.city_id = data[0].city;
                                     $scope.user.pincode = data[0].pincode;
                                     $scope.user.business_address = data[0].address;
-                                    $scope.user.businfo_step = data[0].business_step;
+                                    $scope.user.busreg_step = data[0].business_step;
                                     $scope.busRegStep = data[0].business_step;
                                 }
                             });
@@ -453,7 +453,7 @@
                                     $scope.user.email = data[0].contact_email;
                                     $scope.user.contactwebsite = data[0].contact_website;
                                     $scope.user.busreg_step = data[0].business_step;
-                                }else{
+                                } else {
                                     $scope.tab_active(1);
                                     activeBusinessInformation();
                                 }
@@ -469,16 +469,24 @@
                                 url: base_url + 'business_profile_registration/getDescription',
                                 headers: {'Content-Type': 'application/json'},
                             }).success(function (data) {
-                                if (data) {
-                                    $scope.user.business_type = data['userdata'][0].business_type;
-                                    $scope.user.industriyal = data['userdata'][0].industriyal;
-                                    $scope.user.business_details = data['userdata'][0].details;
-                                    $scope.user.bustype = data['userdata'][0].other_business_type;
-                                    $scope.user.indtype = data['userdata'][0].other_industrial;
-                                    $scope.user.busreg_step = data['userdata'][0].business_step;
-                                    $scope.business_type = data['business_type'];
-                                    $scope.industry_type = data['industriyaldata'];
-                                }else{
+                                if (data['userdata'][0]) {
+                                    if (data['userdata'][0].business_step >= '2') {
+                                        $scope.user.business_type = data['userdata'][0].business_type;
+                                        $scope.user.industriyal = data['userdata'][0].industriyal;
+                                        $scope.user.business_details = data['userdata'][0].details;
+                                        $scope.user.bustype = data['userdata'][0].other_business_type;
+                                        $scope.user.indtype = data['userdata'][0].other_industrial;
+                                        $scope.user.busreg_step = data['userdata'][0].business_step;
+                                        $scope.business_type = data['business_type'];
+                                        $scope.industry_type = data['industriyaldata'];
+                                    } else if (data['userdata'][0].business_step == '1') {
+                                        $scope.tab_active(2);
+                                        activeContactInformation();
+                                    } else {
+                                        $scope.tab_active(1);
+                                        activeBusinessInformation();
+                                    }
+                                } else {
                                     $scope.tab_active(1);
                                     activeBusinessInformation();
                                 }
@@ -493,9 +501,21 @@
                                 method: 'POST',
                                 url: base_url + 'business_profile_registration/getImage',
                             }).success(function (data) {
-                                $('.bus_image_prev').html(data);
+                                if (data.business_step >= '3') {
+                                    $('.bus_image_prev').html(data['busImageDetail']);
+                                } else if (data.business_step == '2') {
+                                    $scope.tab_active(3);
+                                    activeDescription();
+                                } else if (data.business_step == '1') {
+                                    $scope.tab_active(2);
+                                    activeContactInformation();
+                                } else {
+                                    $scope.tab_active(1);
+                                    activeBusinessInformation();
+                                }
                             });
-                        };
+                        }
+                        ;
                         $scope.getImage = function () {
                             getImage();
                         };
@@ -569,6 +589,11 @@
                                                     $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                                                     $scope.tab_active(2);
                                                     getContactInformation();
+                                                    $("li#left-form-each-li-2 a").attr({
+                                                        href: "#contact_information",
+                                                        'data-toggle': "tab",
+                                                        'ng-click': "getContactInformation(); tab_active(2);"
+                                                    });
                                                 } else {
                                                     return false;
                                                 }
@@ -579,8 +604,6 @@
                             }
 
                         };
-
-
                         $scope.conInfoValidate = {
                             rules: {
                                 contactname: {
@@ -637,6 +660,11 @@
                                                     $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                                                     $scope.tab_active(3);
                                                     getDescription();
+                                                    $("li#left-form-each-li-3 a").attr({
+                                                        href: "#description",
+                                                        'data-toggle': "tab",
+                                                        'ng-click': "getDescription(); tab_active(3)"
+                                                    });
                                                 } else {
                                                     return false;
                                                 }
@@ -648,8 +676,6 @@
                             }
 
                         };
-
-
                         $scope.desValidate = {
                             rules: {
                                 business_type: {
@@ -701,6 +727,11 @@
                                                     $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                                                     $scope.tab_active(4);
                                                     getImage();
+                                                    $("li#left-form-each-li-4 a").attr({
+                                                        href: "#business_image",
+                                                        'data-toggle': "tab",
+                                                        'ng-click': "getImage(); tab_active(4)"
+                                                    });
                                                 } else {
                                                     return false;
                                                 }
@@ -715,7 +746,6 @@
                         $scope.submitbusImageForm = function () {
                             var form_data = new FormData();
                             angular.forEach($scope.files, function (file) {
-                                //                                console.log(file);
                                 form_data.append('image1[]', file);
                             });
                             $http.post(base_url + 'business_profile_registration/ng_image_insert', form_data,
@@ -753,8 +783,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                        <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                                                                                                            <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
