@@ -77,19 +77,21 @@ class Feedback extends CI_Controller {
                     $email_html = '';
                     $templ = '';
 
-                    $templ .= '<table width="100%" cellpadding="0" cellspacing="0">
-                    <tr><td>Hi admin!
-                     You have recevied a new feedback  from user  while you were away..</td><td>The user feedback detail follows:</td>';
-                     
-                     $templ .= '<td>';
-                     $templ .= 'Name:'. 'Falguni' .' '. 'Tank';
-                      $templ .= '</td>';
-                       $templ .= '<td>';
-                     $templ .= 'EmailAddress:'. 'falguni.aileensoul@gmail.com';
-                      $templ .= '</td>';
-                       $templ .= '<td>';
-                     $templ .= 'Message:'. 'testing feedback message';
-                      $templ .= '</td>';
+                    $templ .= '<table  width="100%" cellpadding="0" cellspacing="0" style="font-family:arial;font-size:13px;">
+                    <tr><td style="padding-left:20px;">Hi admin!<br><br>
+                         <p style="padding-left:70px;"> You have recevied a new feedback  from user  while you were away..</p><br></td></tr>';
+                      $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $templ .= 'The user feedback detail follows:';
+                      $templ .= '</td></tr>';
+                     $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $templ .= '<b>Name</b> :'. ' Falguni' .' '. ' Tank';
+                      $templ .= '<br></td></tr>';
+                       $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $templ .= '<b>Email-Address</b> : '. 'falguni.aileensoul@gmail.com';
+                      $templ .= '</td></tr>';
+                       $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $templ .= '<b>Message</b> : '. ' testing feedback message';
+                      $templ .= '</td></tr>';
 
                     $templ .= '</tr>
                                     </table>';
