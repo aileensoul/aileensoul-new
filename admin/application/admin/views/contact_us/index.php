@@ -278,6 +278,22 @@ echo $leftmenu;
 <!-- Footer start -->
 <?php echo $footer; ?>
 <!-- Footer End -->
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+
+
+<!-- Bid-modal  -->
+      <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+
 
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
@@ -322,22 +338,22 @@ echo $leftmenu;
   //Delete feedback Start
    function delete_user(contact_id) 
    {
-   
-       $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this contact_us?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
-
-        $('.message #delete').on('click', function () 
-        { 
-            $.ajax({
-                         type: 'POST',
-                          url: '<?php echo base_url() . "contact_us/delete_user" ?>',
-                          data: 'contact_id=' + contact_id,
-                          success: function (response) 
-                          {          
-                                 $('#' + 'contact_usdel' + contact_id).remove();
-                                  $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this contact_us?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
-                          }
-            });   
-        });
+    
+        $('.biderror .mes').html("<div class='pop_content'>Are you Sure you want to Delete this contact_us?<div class='model_ok_cancel'><a class='okbtn' id=" + contact_id + " onClick='user_deleted(" + contact_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('#bidmodal').modal('show');
     }
 //Delete feedback End
+
+function user_deleted(contact_id){
+    $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url() . "contact_us/delete_user" ?>',
+        data: 'contact_id=' + contact_id,
+        success: function (response) 
+        {          
+            $('#' + 'contact_usdel' + contact_id).remove();
+                            
+        }
+  });   
+}
 </script>

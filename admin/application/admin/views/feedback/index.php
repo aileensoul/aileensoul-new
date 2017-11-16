@@ -275,6 +275,21 @@ echo $leftmenu;
 </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
+<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+<!-- Bid-modal  -->
+      <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+
+
 <!-- Footer start -->
 <?php echo $footer; ?>
 <!-- Footer End -->
@@ -323,21 +338,22 @@ echo $leftmenu;
    function delete_user(feedback_id) 
    {
    
-       $.fancybox.open('<div class="message"><h2>Are you Sure you want to Delete this feedback?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
+       $('.biderror .mes').html("<div class='pop_content'>Are you Sure you want to Delete this feedback?<div class='model_ok_cancel'><a class='okbtn' id=" + feedback_id + " onClick='user_deleted(" + feedback_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('#bidmodal').modal('show');
 
-        $('.message #delete').on('click', function () 
-        { 
-            $.ajax({
-                         type: 'POST',
-                          url: '<?php echo base_url() . "feedback/delete_user" ?>',
-                          data: 'feedback_id=' + feedback_id,
-                          success: function (response) 
-                          {          
-                                 $('#' + 'feedbackdel' + feedback_id).remove();
-                                  $.fancybox.close('<div class="message"><h2>Are you Sure you want to Delete this feedback?</h2><button id="delete" class="mesg_link btn btn1">OK</a><button data-fancybox-close="" class="btn btn1">Cancel</button></div>');
-                          }
-            });   
-        });
     }
 //Delete feedback End
+
+function user_deleted(feedback_id){
+    $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() . "feedback/delete_user" ?>',
+            data: 'feedback_id=' + feedback_id,
+            success: function (response) 
+            {          
+                $('#' + 'feedbackdel' + feedback_id).remove();
+            }
+            });   
+
+}
 </script>
