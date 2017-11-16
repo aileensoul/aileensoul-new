@@ -54,7 +54,7 @@
 </script>
 <!-- script for fetch all unread notification end-->
 
-<!--<script>
+<script>
     $(document).ready(function () {
         $("#addcontactBody").click(function (event) {
             $("#addcontactContainer").show();
@@ -65,7 +65,7 @@
             event.stopPropagation();
         });
     });
-</script>-->
+</script>
 <script type="text/javascript" >
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
