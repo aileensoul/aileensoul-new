@@ -2262,7 +2262,7 @@ width: 36%;
 float: left;
 position: relative;
 padding-right: 7px;
-font-size: 20px;
+font-size: 19px;
 font-weight: 600;
 }
 .work_exp .profile-job-profile-menu ul li span{    word-wrap: break-word;
@@ -2363,6 +2363,8 @@ margin-bottom: 15px;}
 	.gov-all-post .fixed_right_display{display:block;}
 	.gov-all-post .right_middle_side_posrt{margin-left:630px;}
 	.all-job-cat li{width:50%;}
+    .work_exp .profile-job-profile-menu ul li b{font-size: 16px;width: 40%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 60%}
 }
 @media screen and (max-width: 1130px) {
     .custom-right {
@@ -3035,6 +3037,8 @@ margin-bottom: 15px;}
     .profile-job-details .job_companyname {
         width: 270px;
     }
+    .work_exp .profile-job-profile-menu ul li b{font-size: 16px;width: 44%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 56%}
 }
 @media screen and (max-width: 479px) {
     #InboxContainer::before {
@@ -3202,6 +3206,9 @@ margin-bottom: 15px;}
 	.all-job-cat li{width:100%;}
 	.gov-job-field ul li{width:100%;}
 	.gov-job-field ul li.text-right{text-align:left;}
+
+    .work_exp .profile-job-profile-menu ul li b{font-size: 13px;width: 48%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 52%;font-size: 12px;}
 }
 @media screen and (max-width: 360px) {
     .art_no_post_text {
@@ -3297,6 +3304,8 @@ margin-bottom: 15px;}
 	.padding-360{padding-left:1px; padding-right:1px;}
 	.contact-frnd-post{padding:10px 8px 0;}
 	/*** end add  ***/
+     .work_exp .profile-job-profile-menu ul li b{font-size: 12px;width: 50%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 50%;font-size: 10px;}
 }
 
 @media screen and (max-width: 319px) {
@@ -3307,4 +3316,6 @@ margin-bottom: 15px;}
     .profile-job-details .post_title {
         font-size: 11px;
     }
+    .work_exp .profile-job-profile-menu ul li b{font-size: 10px;width: 55%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 45%;font-size: 8px;}
 }
