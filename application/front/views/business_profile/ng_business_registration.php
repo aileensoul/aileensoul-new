@@ -49,7 +49,7 @@
     <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="busRegApp" ng-controller="busRegController">
         <?php echo $header; ?>
         <?php if ($business_common_data[0]['business_step'] == 4) { ?>
-            <?php //echo $business_header2_border; ?>
+            <?php echo $business_header2_border; ?>
         <?php } ?>
         <section>
             <?php
@@ -114,7 +114,7 @@
                                                             <fieldset>
                                                                 <label>Country:<span style="color:red">*</span></label>
                                                                 <select name="country" ng-model="user.country_id" ng-change="onCountryChange()" id="country" tabindex="2">
-                                                                    <option value="" selected="selected">Country</option>
+                                                                    <option value="0" selected="selected">Country</option>
                                                                     <option ng-repeat='countryItem in countryList' value='{{countryItem.country_id}}'>{{countryItem.country_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorCountry" class="error">{{errorCountry}}</span>
@@ -122,7 +122,7 @@
                                                             <fieldset>
                                                                 <label>State:<span style="color:red">*</span></label>
                                                                 <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3">
-                                                                    <option value="">Select country first</option>
+                                                                    <option value="0">Select country first</option>
                                                                     <option ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}' ng-selected="user.state_id == stateItem.state_id">{{stateItem.state_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorState" class="error">{{errorState}}</span>
@@ -130,7 +130,7 @@
                                                             <fieldset>
                                                                 <label> City<span class="optional">(optional)</span>:</label>
                                                                 <select name="city" ng-model="user.city_id" id="city" tabindex="4">
-                                                                    <option value="">Select State First</option>
+                                                                    <option value="0">Select State First</option>
                                                                     <option ng-repeat='cityItem in cityList' value='{{cityItem.city_id}}'>{{cityItem.city_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorCity" class="error">{{errorCity}}</span>
@@ -195,13 +195,6 @@
                                                         <form name="businessdis" ng-submit="submitdescriptionForm()" id="businessdis" class="clearfix" ng-validate="desValidate">
                                                             <fieldset>
                                                                 <label>Business type:<span style="color:red">*</span></label>
-<!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
-                                                                    <option ng-option value="" selected="selected">Select Business type</option>
-                                                                <?php foreach ($business_type as $key => $type) { ?>
-                                                                                                                                                                                                                                                                                                                                    <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
-                                                                <?php } ?>
-                                                                    <option ng-option value="0" id="busOption">Other</option>    
-                                                                </select>-->
                                                                 <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option value="" selected="selected">Select Business type</option>
                                                                     <option ng-repeat='businessType in business_type' value='{{businessType.type_id}}'>{{businessType.business_name}}</option>             
@@ -211,13 +204,6 @@
                                                             </fieldset>  
                                                             <fieldset>
                                                                 <label>Category:<span style="color:red">*</span></label>
-<!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
-                                                                    <option ng-option value="" selected="selected">Select Industry type</option>
-                                                                <?php foreach ($category_list as $key => $category) { ?>
-                                                                                                                                                                                                                                                                                                                                    <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
-                                                                <?php } ?>
-                                                                    <option ng-option value="0" id="indOption">Other</option>
-                                                                </select>-->
                                                                 <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
                                                                     <option ng-repeat='caegoryType in industry_type' value='{{caegoryType.industry_id}}'>{{caegoryType.industry_name}}</option>             
@@ -228,14 +214,14 @@
                                                             <div id="busDivCheck" ng-if="user.business_type == '0'">
                                                                 <fieldset class="half-width" id="other-business">
                                                                     <label> Other business type: <span style="color:red;" >*</span></label>
-                                                                    <input type="text" name="bustype" ng-model="user.bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>">
+                                                                    <input type="text" name="bustype" ng-model="user.bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" ng-required="true">
                                                                     <span ng-show="errorOtherBusinessType" class="error">{{errorOtherBusinessType}}</span>
                                                                 </fieldset>
                                                             </div>
                                                             <div id="indDivCheck" ng-if="user.industriyal == '0'">
                                                                 <fieldset class="half-width" id="other-category">
                                                                     <label> Other category:<span style="color:red;" >*</span></label>
-                                                                    <input type="text" name="indtype" ng-model="user.indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>">
+                                                                    <input type="text" name="indtype" ng-model="user.indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>" ng-required="true">
                                                                     <span ng-show="errorOtherCategory" class="error">{{errorOtherCategory}}</span>
                                                                 </fieldset>
                                                             </div>
