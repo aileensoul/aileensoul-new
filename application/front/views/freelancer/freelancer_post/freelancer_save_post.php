@@ -164,6 +164,52 @@
                         </div>
                     </div>
                     <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
+                        <?php if(!($returnpage))
+                {
+                  if($count_profile == 100)
+                  {
+                    if($job_reg[0]['progressbar']==0)
+                    {
+          ?>
+
+          <div class="mob-progressbar" >
+               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               <p class="mob-edit-pro">
+                 
+                  <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
+                  
+                 
+               </p>
+               <div class="progress skill-bar ">
+                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
+                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
+                  </div>
+               </div>
+            </div>
+            <?php
+          }
+        }else{
+
+            ?>
+            <div class="mob-progressbar" >
+               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               <p class="mob-edit-pro">
+                  
+                    
+                  <a href="<?php echo base_url('job/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                  
+                    
+               </p>
+               <div class="progress skill-bar ">
+                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
+                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
+                  </div>
+               </div>
+            </div>
+
+            <?php
+          }}
+          ?>
                         <div class="common-form">
                             <div class="job-saved-box">
                                 <h3><?php echo $this->lang->line("saved_projects"); ?></h3>

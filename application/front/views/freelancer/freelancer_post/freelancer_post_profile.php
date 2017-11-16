@@ -270,7 +270,7 @@
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
-                    <?php if(!($returnpage))
+                   <?php if(!($returnpage))
                 {
                   if($count_profile == 100)
                   {
@@ -316,7 +316,7 @@
             <?php
           }}
           ?>
-                    <div class="common-form">
+                     <div class="common-form">
                         <div class="job-saved-box">
                             <h3><?php echo $this->lang->line("freelancer_details"); ?> </h3>
                             <div class=" fr rec-edit-pro">
