@@ -202,7 +202,7 @@ function submitrecruiterForm()
                 if (response.okmsg == "ok") {
                     window.location = base_url + "recruiter/home";
                 } else {
-                    window.location = base_url + "recruiter/rec_reg";
+                    window.location = base_url + "recruiter/registration";
                 }
             }
         });
