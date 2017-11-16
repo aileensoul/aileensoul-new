@@ -64,19 +64,12 @@
                                          if ($userdata[0]['exp_m'] == '12 month' && $userdata[0]['exp_y'] == '0 year') {
                                                     echo "1 year";
                                                 } else {
-                                                   $month = explode(' ', $userdata[0]['exp_y']);
-                                                    //print_r($month);
-                                                    $year = $month[0];
-                                                   
-                                                
-                                                
-                                                    echo $year;
-                                                    echo "&nbsp";
-                                                    echo "Year";
-                                                    echo "&nbsp";
-                                                     
+                                                  
+                                                if($userdata[0]['exp_y'] != '0 year'){
+                                                    echo $userdata[0]['exp_y'];
+                                                }
                                                     if ($userdata[0]['exp_m'] != '0 month') {
-                                                        echo $userdata[0]['exp_m'];
+                                                        echo ' ' . $userdata[0]['exp_m'];
                                                         
                                                     } 
                                                 }
