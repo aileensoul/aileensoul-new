@@ -1556,7 +1556,71 @@ label.cameraButton input[accept*="camera"] {
     width: 80px;
     margin-left: -37px;
 }
+.page-boxed .edit_profile_progress{width: 23%;}
 /*Complete circle*/
+
+/*** mobile progress bar  ***/
+
+.mob-progressbar {
+    display: none;
+    padding: 15px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background: #fff;
+    text-align: justify;
+}
+.mob-progressbar .progress {
+    height: 30px;
+    margin-top: 5px;
+    background: #e5e5e5;
+    margin-bottom: 6px;
+}
+.mob-progressbar p {
+    font-size: 12px;
+}
+.mob-progressbar .progress .skill {
+    line-height: 28px;
+    padding: 0;
+    margin: 0 0 0 20px;
+    text-transform: uppercase;
+}
+.mob-progressbar .progress .skill .val {
+    font-style: normal;
+    margin: 0 20px 0 0;
+}
+.mob-progressbar .progress-bar {
+    text-align: center;
+    transition-duration: 3s;
+}
+.mob-progressbar .progress-bar-custom {
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    /* ff3.6+ */
+    
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
+    /* safari4+,chrome */
+    
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    /* safari5.1+,chrome10+ */
+    
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    /* opera 11.10+ */
+    
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    /* ie10+ */
+    
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    /* w3c */
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9', GradientType=0);
+}
+.mob-progressbar .mob-edit-pro {
+    text-align: center;
+}
+.mob-progressbar .mob-edit-pro .fa {
+    padding-right: 5px;
+}
+
 
 
 /***  media query  ***/
@@ -1790,6 +1854,7 @@ label.cameraButton input[accept*="camera"] {
 	.tablate-add{display:block; width:160px; position:fixed; margin-left:565px;}
 	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
 	/*** end advertise  ***/
+    .mob-progressbar{display: block;}
 }
 @media screen and (max-width: 840px) {
     
