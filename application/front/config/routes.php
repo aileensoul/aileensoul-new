@@ -289,6 +289,8 @@ $route['job/recruiter-profile/(:any)'] = "job/rec_profile/$1";
 
 //RECRUITER ROUTES SETTINGS
 
+$route['recruiter/registration'] = "recruiter/rec_reg";
+
 $route['recruiter/basic-information'] = "recruiter/rec_basic_information";
 $route['recruiter/company-information'] = "recruiter/company_info_form";
 

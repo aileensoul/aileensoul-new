@@ -42,15 +42,37 @@ class Recruiter extends MY_Controller {
             } else if ($this->data['recdata'][0]['re_step'] == 3) {
                 redirect('recruiter/home', refresh);
             } else if ($this->data['recdata'][0]['re_step'] == 0) {
-                redirect('recruiter/rec_reg', refresh);
+                redirect('recruiter/registration', refresh);
             } else {
-                redirect('recruiter/rec_reg', refresh);
+                redirect('recruiter/registration', refresh);
             }
         }
     }
 
 // recruiter apply check 
-    public function recruiter_apply_check() {
+//    public function recruiter_apply_check() {
+//
+//       $userid = $this->session->userdata('aileenuser'); 
+//
+//// REDIRECT USER TO REMAIN PROFILE START
+//        $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
+//        $apply_step = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//
+//// REDIRECT USER TO REMAIN PROFILE END
+//
+//        if (count($apply_step) >= 0) {
+//            if ($apply_step[0]['re_step'] == 1) { 
+//                redirect('recruiter/registration');
+//            }
+//            if ($apply_step[0]['re_step'] == 0) { 
+//                redirect('recruiter/basic-information');
+//            }
+//        } else { 
+//            redirect('recruiter/basic-information');
+//        }
+//    }
+    
+     public function recruiter_apply_check() {
 
        $userid = $this->session->userdata('aileenuser'); 
 
@@ -62,13 +84,13 @@ class Recruiter extends MY_Controller {
 
         if (count($apply_step) >= 0) {
             if ($apply_step[0]['re_step'] == 1) { 
-                redirect('recruiter/company-information');
+                redirect('recruiter/registration');
             }
             if ($apply_step[0]['re_step'] == 0) { 
-                redirect('recruiter/basic-information');
+                redirect('recruiter/registration');
             }
         } else { 
-            redirect('recruiter/basic-information');
+            redirect('recruiter/registration');
         }
     }
 
