@@ -79,30 +79,22 @@
                                     <div class="col-md-3 col-sm-4">
                                         <ul class="left-form-each">
                                             <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
-                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
+                                            <li id="left-form-each-li-1"><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
+                                                <li id="left-form-each-li-2"><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
                                             <?php } else { ?>
-                                                <li><a href="javascript:void(0);">Contact Information</a></li>
+                                                <li id="left-form-each-li-2"><a href="javascript:void(0);">Contact Information</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
+                                                <li id="left-form-each-li-3"><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
                                             <?php } else { ?>
-                                                <li><a href="javascript:void(0);">Description</a></li>
+                                                <li id="left-form-each-li-3"><a href="javascript:void(0);">Description</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                                <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                                <li id="left-form-each-li-4"><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
                                             <?php } else { ?>
-                                                <li><a href="javascript:void(0);">Business Images</a></li>
+                                                <li id="left-form-each-li-4"><a href="javascript:void(0);">Business Images</a></li>
                                             <?php } ?> 
-                                            <!--                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-if="busRegStep >= '0'">Business Information</a></li>
-                                                                                        <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab" ng-if="busRegStep >= '1'">Contact Information</a></li>
-                                                                                        <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab" ng-if="busRegStep >= '2'">Description</a></li>
-                                                                                        <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab" ng-if="busRegStep >= '3'">Business Images</a></li>-->
-                                            <!--                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-disabled="">Business Information</a></li>
-                                                                                        <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" ng-disabled="" data-toggle="tab">Contact Information</a></li>
-                                                                                        <li><a href="#description" ng-click="getDescription(); tab_active(3)" ng-disabled="" data-toggle="tab">Description</a></li>
-                                                                                        <li><a href="#business_image" ng-click="getImage(); tab_active(4)" ng-disabled="" data-toggle="tab">Business Images</a></li>-->
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-8">
@@ -206,7 +198,7 @@
 <!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option ng-option value="" selected="selected">Select Business type</option>
                                                                 <?php foreach ($business_type as $key => $type) { ?>
-                                                                                                                                                                                                        <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                                                                                                                                                                            <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="busOption">Other</option>    
                                                                 </select>-->
@@ -222,7 +214,7 @@
 <!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
                                                                 <?php foreach ($category_list as $key => $category) { ?>
-                                                                                                                                                                                                        <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                                                                                                                                                                            <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="indOption">Other</option>
                                                                 </select>-->
@@ -345,24 +337,24 @@
                         }
                         if (reg_uri == 'business-information') {
                             $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li:nth-child(1)').addClass('active');
+                            $('ul.left-form-each li#left-form-each-li-1').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(1)').addClass('active');
                         } else if (reg_uri == 'contact-information') {
                             $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li:nth-child(2)').addClass('active');
+                            $('ul.left-form-each li#left-form-each-li-2').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                             getContactInformation();
                         } else if (reg_uri == 'description') {
                             $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li:nth-child(3)').addClass('active');
+                            $('ul.left-form-each li#left-form-each-li-3').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                             getDescription();
                         } else if (reg_uri == 'image') {
                             $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li:nth-child(4)').addClass('active');
+                            $('ul.left-form-each li#left-form-each-li-4').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                             getImage();
@@ -644,9 +636,6 @@
                                 industriyal: {
                                     required: true,
                                 },
-                                subindustriyal: {
-                                    required: true,
-                                },
                                 business_details: {
                                     required: true,
                                     regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
@@ -659,9 +648,6 @@
                                 industriyal: {
                                     required: "Industrial is required.",
                                 },
-                                subindustriyal: {
-                                    required: "Subindustrial is required.",
-                                },
                                 business_details: {
                                     required: "Business details is required.",
                                 },
@@ -669,40 +655,40 @@
                         };
                         $scope.submitdescriptionForm = function () {
                             if ($scope.businessdis.validate()) {
-                                return TRUE;
-                            } else {
-                                return FALSE;
-                            }
-                            // Posting data to php file
-                            $http({
-                                method: 'POST',
-                                url: base_url + 'business_profile_registration/ng_description_insert',
-                                data: $scope.user, //forms user object
-                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                            })
-                                    .success(function (data) {
-                                        if (data.errors) {
-                                            // Showing errors.
-                                            $scope.errorBusinessType = data.errors.business_type;
-                                            $scope.errorCategory = data.errors.industriyal;
-                                            $scope.errorOtherBusinessType = data.errors.bustype;
-                                            $scope.errorOtherCategory = data.errors.indtype;
-                                            $scope.errorBusinessDetails = data.errors.business_details;
-                                        } else {
-                                            if (data.is_success == '1') {
-                                                //window.location.href = base_url + 'business-profile/signup/image';
-                                                $('ul.left-form-each li').removeClass('active');
-                                                $('ul.left-form-each li:nth-child(4)').addClass('active');
-                                                $('.tab-content .tab-pane').removeClass('active');
-                                                $('.tab-content .tab-pane:nth-child(4)').addClass('active');
-                                                $scope.tab_active(4);
-                                                getImage();
+                                // Posting data to php file
+                                $http({
+                                    method: 'POST',
+                                    url: base_url + 'business_profile_registration/ng_description_insert',
+                                    data: $scope.user, //forms user object
+                                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .success(function (data) {
+                                            if (data.errors) {
+                                                // Showing errors.
+                                                $scope.errorBusinessType = data.errors.business_type;
+                                                $scope.errorCategory = data.errors.industriyal;
+                                                $scope.errorOtherBusinessType = data.errors.bustype;
+                                                $scope.errorOtherCategory = data.errors.indtype;
+                                                $scope.errorBusinessDetails = data.errors.business_details;
                                             } else {
-                                                return false;
+                                                if (data.is_success == '1') {
+                                                    //window.location.href = base_url + 'business-profile/signup/image';
+                                                    $('ul.left-form-each li').removeClass('active');
+                                                    $('ul.left-form-each li:nth-child(4)').addClass('active');
+                                                    $('.tab-content .tab-pane').removeClass('active');
+                                                    $('.tab-content .tab-pane:nth-child(4)').addClass('active');
+                                                    $scope.tab_active(4);
+                                                    getImage();
+                                                } else {
+                                                    return false;
+                                                }
+                                                //$scope.message = data.message;
                                             }
-                                            //$scope.message = data.message;
-                                        }
-                                    });
+                                        });
+                            } else {
+                                return false;
+                            }
+
                         };
                         $scope.submitbusImageForm = function () {
                             var form_data = new FormData();
@@ -745,8 +731,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
