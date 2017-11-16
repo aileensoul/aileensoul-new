@@ -81,19 +81,19 @@
                                             <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
                                             <!--<li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                            <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
+                                                                <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
                                             <?php } else { ?>
-                                                            <li><a href="javascript:void(0);">Contact Information</a></li>
+                                                                <li><a href="javascript:void(0);">Contact Information</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                            <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
+                                                                <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
                                             <?php } else { ?>
-                                                            <li><a href="javascript:void(0);">Description</a></li>
+                                                                <li><a href="javascript:void(0);">Description</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                                            <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                                                <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
                                             <?php } else { ?>
-                                                            <li><a href="javascript:void(0);">Business Images</a></li>
+                                                                <li><a href="javascript:void(0);">Business Images</a></li>
                                             <?php } ?> -->
                                             <!--                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-if="busRegStep >= '0'">Business Information</a></li>
                                                                                         <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab" ng-if="busRegStep >= '1'">Contact Information</a></li>
@@ -117,10 +117,10 @@
                                                             <fieldset class="full-width ">
                                                                 <label>Company name:<span style="color:red">*</span></label>
                                                                 <input name="companyname"  ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value="" ng-required="true" validation-max-length="10"
-        validation-min-length="5"
-        validation-no-space="true"
-        validation-field-required="true"
-        validation-no-special-chars="true"/>
+                                                                       validation-min-length="5"
+                                                                       validation-no-space="true"
+                                                                       validation-field-required="true"
+                                                                       validation-no-special-chars="true"/>
                                                                 <span ng-show="errorCompanyName" class="error">{{errorCompanyName}}</span>
                                                             </fieldset>
                                                             <fieldset>
@@ -210,7 +210,7 @@
 <!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option ng-option value="" selected="selected">Select Business type</option>
                                                                 <?php foreach ($business_type as $key => $type) { ?>
-                                                                                                                        <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                                                                                            <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="busOption">Other</option>    
                                                                 </select>-->
@@ -226,7 +226,7 @@
 <!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
                                                                 <?php foreach ($category_list as $key => $category) { ?>
-                                                                                                                        <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                                                                                            <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="indOption">Other</option>
                                                                 </select>-->
@@ -294,13 +294,14 @@
                     </div>
                 </div>
         </section>
-        <?php echo $login_footer   ?>
+        <?php echo $login_footer ?>
         <?php echo $footer; ?>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <script>
-                    var base_url = '<?php echo base_url(); ?>';
-                    var slug = '<?php echo $slugid; ?>';
-                    var reg_uri = '<?php echo $reg_uri ?>';
+                                                                        var base_url = '<?php echo base_url(); ?>';
+                                                                        var slug = '<?php echo $slugid; ?>';
+                                                                        var reg_uri = '<?php echo $reg_uri ?>';
         </script>
         <script>
                     // Defining angularjs application.
@@ -626,8 +627,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
