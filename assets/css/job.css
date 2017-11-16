@@ -2240,6 +2240,7 @@ label.cameraButton input[accept*="camera"] {
 .all-job-box .all-job-right{text-align:center;}
 .all-job-box .all-job-right .job-name{font-size:20px; line-height:1;}
 .job_reg #submit{margin-left:0px;}
+.job_reg #submit:focus{color: #fff !important;}
 .modal.message-box span.mes{padding:0px}
 .gov-read-more{width:100%; float:left; padding:0 15px; text-align:right;}
 .gov-read-more span{border:1px solid #1b8ab9; color:#1b8ab9; padding: 7px 15px; border-radius: 4px;}
