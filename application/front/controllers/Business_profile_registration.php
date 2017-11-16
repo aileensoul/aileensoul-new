@@ -437,6 +437,9 @@ class Business_profile_registration extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
         // GET BUSINESS PROFILE DATA
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
         $busimage = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $return_html = '';
@@ -463,9 +466,8 @@ class Business_profile_registration extends MY_Controller {
                 </div>';
             }
         }
-
-
-        echo $return_html;
+        //echo $return_html;
+        echo json_encode(array('business_step' => $userdata[0]['business_step'], 'busImageDetail' => $return_html));
     }
 
     public function bus_img_delete() {

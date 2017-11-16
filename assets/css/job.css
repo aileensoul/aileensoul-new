@@ -2240,6 +2240,7 @@ label.cameraButton input[accept*="camera"] {
 .all-job-box .all-job-right{text-align:center;}
 .all-job-box .all-job-right .job-name{font-size:20px; line-height:1;}
 .job_reg #submit{margin-left:0px;}
+.job_reg #submit:focus{color: #fff !important;}
 .modal.message-box span.mes{padding:0px}
 .gov-read-more{width:100%; float:left; padding:0 15px; text-align:right;}
 .gov-read-more span{border:1px solid #1b8ab9; color:#1b8ab9; padding: 7px 15px; border-radius: 4px;}
@@ -2248,8 +2249,34 @@ label.cameraButton input[accept*="camera"] {
 .gov-job-apply-btn a:hover{background:#1b8ab9; color:#fff;}
 .Add_edu {font-size: 14px;}
 }
-
-	
+.work_exp .profile-job-profile-menu ul li{list-style-type: none;}
+.work_exp .profile-job-profile-menu ul li b::after {
+    content: " :"!important;
+    float: left;
+    position: absolute;
+    right: 0;
+    top: -1px;
+}
+.work_exp .profile-job-profile-menu ul li b{font-weight: normal;
+width: 36%;
+float: left;
+position: relative;
+padding-right: 7px;
+font-size: 20px;
+font-weight: 600;
+}
+.work_exp .profile-job-profile-menu ul li span{    word-wrap: break-word;
+    word-break: break-word;
+    float: left;
+    font-size: 17px;
+    padding-left: 10px;
+    width: 64%;
+}
+.work_exp .profile-job-profile-button{background: #fff;
+border: 1px solid #d9d9d9;
+padding: 10px 10px;
+margin-bottom: 15px;}
+}
 	
 /***  media query  ***/
 @media screen and (min-width: 768px) {

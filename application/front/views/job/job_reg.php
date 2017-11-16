@@ -66,7 +66,7 @@
                            </div>
                            <?php echo form_error('Fresher');; ?>
                         </fieldset>
-                        <fieldset>
+                        <fieldset class="full-width">
                             <div id="exp_data" style="display:none;">
                                <label>Experience:<span class="red">*</span></label>
                                                       <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change();">

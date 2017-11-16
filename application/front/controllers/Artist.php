@@ -12989,37 +12989,32 @@ public function art_home_post() {
        // $id = $_GET['slug'];
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-            $artisticslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
-            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
             $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $userid, 'status' => 1, 'is_delete' => '0');
-            $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
-        } else {
-            $contition_array = array('slug' => $id, 'status' => '1', 'art_step' => 4);
-            $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo  "<pre>"; print_r($artisticdata[0]['user_id']); die();
+
             $contition_array = array('user_id' => $id, 'status' => 1, 'is_delete' => '0');
-            $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
-        }
 
+            $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str = array(), $groupby = '');
+
+            $artsdata1 = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+
+           // echo "<pre>"; print_r(expression);
+        
         $return_html = '';
-
-        $artsdata1 = array_slice($artsdata, $start, $perpage);
-
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($artsdata);
+            $_GET["total_record"] = count($artsdata1);
         }
 
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
-        if (count($artsdata) > 0) {
+        if (count($artsdata1) > 0) {
 
-            foreach ($artsdata1 as $row) {
+            foreach ($artsdata as $row) {
                 $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
                 $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 

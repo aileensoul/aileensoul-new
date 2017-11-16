@@ -100,7 +100,7 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
          *isProcessing is true.
          *You could even display a message.
          **/
-       // return;
+        return;
     }
     isProcessing = true;
     $.ajax({
