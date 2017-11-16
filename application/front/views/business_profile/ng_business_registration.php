@@ -79,30 +79,30 @@
                                     <div class="col-md-3 col-sm-4">
                                         <ul class="left-form-each">
                                             <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
-                                            <!--<li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
+                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                                <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
+                                                <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
                                             <?php } else { ?>
-                                                                <li><a href="javascript:void(0);">Contact Information</a></li>
+                                                <li><a href="javascript:void(0);">Contact Information</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                                <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
+                                                <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
                                             <?php } else { ?>
-                                                                <li><a href="javascript:void(0);">Description</a></li>
+                                                <li><a href="javascript:void(0);">Description</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                                                <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                                <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
                                             <?php } else { ?>
-                                                                <li><a href="javascript:void(0);">Business Images</a></li>
-                                            <?php } ?> -->
+                                                <li><a href="javascript:void(0);">Business Images</a></li>
+                                            <?php } ?> 
                                             <!--                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-if="busRegStep >= '0'">Business Information</a></li>
                                                                                         <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab" ng-if="busRegStep >= '1'">Contact Information</a></li>
                                                                                         <li><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab" ng-if="busRegStep >= '2'">Description</a></li>
                                                                                         <li><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab" ng-if="busRegStep >= '3'">Business Images</a></li>-->
-                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-disabled="">Business Information</a></li>
-                                            <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" ng-disabled="" data-toggle="tab">Contact Information</a></li>
-                                            <li><a href="#description" ng-click="getDescription(); tab_active(3)" ng-disabled="" data-toggle="tab">Description</a></li>
-                                            <li><a href="#business_image" ng-click="getImage(); tab_active(4)" ng-disabled="" data-toggle="tab">Business Images</a></li>
+                                            <!--                                            <li><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab" ng-disabled="">Business Information</a></li>
+                                                                                        <li><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" ng-disabled="" data-toggle="tab">Contact Information</a></li>
+                                                                                        <li><a href="#description" ng-click="getDescription(); tab_active(3)" ng-disabled="" data-toggle="tab">Description</a></li>
+                                                                                        <li><a href="#business_image" ng-click="getImage(); tab_active(4)" ng-disabled="" data-toggle="tab">Business Images</a></li>-->
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-sm-8">
@@ -113,14 +113,10 @@
                                                         <h3>
                                                             <?php echo $this->lang->line("business_information"); ?>
                                                         </h3>
-                                                        <form name="businessinfo" ng-submit="submitbusinessinfoForm()" id="businessinfo" class="clearfix" novalidate>
+                                                        <form name="businessinfo" id="businessinfo" class="clearfix" ng-submit="submitbusinessinfoForm()" ng-validate="busInfoValidate">
                                                             <fieldset class="full-width ">
                                                                 <label>Company name:<span style="color:red">*</span></label>
-                                                                <input name="companyname"  ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value="" ng-required="true" validation-max-length="10"
-                                                                       validation-min-length="5"
-                                                                       validation-no-space="true"
-                                                                       validation-field-required="true"
-                                                                       validation-no-special-chars="true"/>
+                                                                <input name="companyname"  ng-model="user.companyname" tabindex="1" autofocus type="text" id="companyname" placeholder="Enter company name" value="" />
                                                                 <span ng-show="errorCompanyName" class="error">{{errorCompanyName}}</span>
                                                             </fieldset>
                                                             <fieldset>
@@ -159,7 +155,7 @@
                                                             </fieldset>
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width">
-                                                                <input type="submit"  id="next" name="next" tabindex="7"  value="Next">
+                                                                <input type="submit"  id="next" name="next" tabindex="7" value="Next">
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -169,7 +165,7 @@
                                                         <h3>
                                                             Contact Information
                                                         </h3>
-                                                        <form name="contactinfo" ng-submit="submitcontactinfoForm()" id="contactinfo" class="clearfix">
+                                                        <form name="contactinfo" ng-submit="submitcontactinfoForm()" id="contactinfo" class="clearfix" ng-validate="conInfoValidate">
                                                             <fieldset>
                                                                 <label>Contact person:<span style="color:red">*</span></label>
                                                                 <input name="contactname" ng-model="user.contactname" tabindex="1" autofocus type="text" id="contactname" placeholder="Enter contact name" value=""/>
@@ -204,13 +200,13 @@
                                                         <h3>
                                                             Description
                                                         </h3>
-                                                        <form name="businessdis" ng-submit="submitdescriptionForm()" id="businessdis" class="clearfix">
+                                                        <form name="businessdis" ng-submit="submitdescriptionForm()" id="businessdis" class="clearfix" ng-validate="desValidate">
                                                             <fieldset>
                                                                 <label>Business type:<span style="color:red">*</span></label>
 <!--                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
                                                                     <option ng-option value="" selected="selected">Select Business type</option>
                                                                 <?php foreach ($business_type as $key => $type) { ?>
-                                                                                                                            <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
+                                                                                                                                                                                                        <option ng-option value="<?php echo $type->type_id; ?>"><?php echo $type->business_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="busOption">Other</option>    
                                                                 </select>-->
@@ -226,7 +222,7 @@
 <!--                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
                                                                     <option ng-option value="" selected="selected">Select Industry type</option>
                                                                 <?php foreach ($category_list as $key => $category) { ?>
-                                                                                                                            <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
+                                                                                                                                                                                                        <option ng-option value="<?php echo $category->industry_id; ?>"><?php echo $category->industry_name; ?></option>
                                                                 <?php } ?>
                                                                     <option ng-option value="0" id="indOption">Other</option>
                                                                 </select>-->
@@ -267,7 +263,7 @@
                                                 <div class="tab-pane" id="business_image"> 
                                                     <div class="">
                                                         <h3>Business Images</h3>
-                                                        <form name="businessimage" ng-submit="submitbusImageForm()" id="businessimage" class="clearfix">
+                                                        <form name="businessimage" ng-submit="submitbusImageForm()" id="businessimage" class="clearfix" ng-validate="imageValidate">
                                                             <fieldset class="full-width">
                                                                 <label>Business images<span class="optional">(optional)</span>:</label>
                                                                 <input type="file" file-input="files" ng-file-model="user.image1" tabindex="1" name="image1[]" accept="image/*" id="image1" multiple/> 
@@ -302,10 +298,14 @@
                                                                         var base_url = '<?php echo base_url(); ?>';
                                                                         var slug = '<?php echo $slugid; ?>';
                                                                         var reg_uri = '<?php echo $reg_uri ?>';
+                                                                        var company_name_validation = '<?php echo $this->lang->line('company_name_validation') ?>';
+                                                                        var country_validation = '<?php echo $this->lang->line('country_validation') ?>';
+                                                                        var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
+                                                                        var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
         <script>
                     // Defining angularjs application.
-                    var busRegApp = angular.module('busRegApp', []);
+                    var busRegApp = angular.module('busRegApp', ['ngValidate']);
                     busRegApp.directive("fileInput", function ($parse) {
                         return{
                             link: function ($scope, element, attrs) {
@@ -377,7 +377,6 @@
                         }).success(function (data) {
                             $scope.countryList = data;
                         });
-
                         function onCountryChange(country_id = '') {
                             $http({
                                 method: 'POST',
@@ -396,7 +395,6 @@
                             $("#city").find("option").eq(0).remove();
                             $scope.user.city_id = '0';
                         };
-
                         function onStateChange(state_id = '') {
                             $http({
                                 method: 'POST',
@@ -411,8 +409,6 @@
                             $scope.stateIdVal = $scope.user.state_id;
                             onStateChange($scope.stateIdVal);
                         };
-
-
                         $http({
                             method: 'POST',
                             url: base_url + 'business_profile_registration/getBusinessInformation',
@@ -420,7 +416,6 @@
                         }).success(function (data) {
                             onCountryChange(data[0].country);
                             onStateChange(data[0].state);
-
                             $scope.user.companyname = data[0].company_name;
                             $scope.user.country_id = data[0].country;
                             $scope.user.state_id = data[0].state;
@@ -430,7 +425,6 @@
                             $scope.user.businfo_step = data[0].business_step;
                             $scope.busRegStep = data[0].business_step;
                         });
-
                         function getContactInformation() {
                             $http({
                                 method: 'POST',
@@ -445,11 +439,9 @@
                             });
                         }
                         ;
-
                         $scope.getContactInformation = function () {
                             getContactInformation();
                         };
-
                         function getDescription() {
                             $http({
                                 method: 'POST',
@@ -462,17 +454,14 @@
                                 $scope.user.bustype = data['userdata'][0].other_business_type;
                                 $scope.user.indtype = data['userdata'][0].other_industrial;
                                 $scope.user.busreg_step = data['userdata'][0].business_step;
-
                                 $scope.business_type = data['business_type'];
                                 $scope.industry_type = data['industriyaldata'];
                             });
                         }
                         ;
-
                         $scope.getDescription = function () {
                             getDescription();
                         };
-
                         function getImage() {
                             $http({
                                 method: 'POST',
@@ -482,79 +471,208 @@
                             });
                         }
                         ;
-
                         $scope.getImage = function () {
                             getImage();
                         };
-
-
+                        //validation for edit email formate form
+                        $.validator.addMethod("regx", function (value, element, regexpr) {
+                            if (!value)
+                            {
+                                return true;
+                            } else
+                            {
+                                return regexpr.test(value);
+                            }
+                        }, "Only space, only number and only special characters are not allow");
+                        $scope.busInfoValidate = {
+                            rules: {
+                                companyname: {
+                                    required: true,
+                                    regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                                },
+                                country: {
+                                    required: true,
+                                },
+                                state: {
+                                    required: true,
+                                },
+                                business_address: {
+                                    required: true,
+                                    regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                                }
+                            },
+                            messages: {
+                                companyname: {
+                                    required: company_name_validation,
+                                },
+                                country: {
+                                    required: country_validation,
+                                },
+                                state: {
+                                    required: state_validation,
+                                },
+                                business_address: {
+                                    required: address_validation,
+                                }
+                            }
+                        };
                         // calling our submit function.
                         $scope.submitbusinessinfoForm = function () {
-                            // Posting data to php file
-                            $http({
-                                method: 'POST',
-                                url: base_url + 'business_profile_registration/ng_bus_info_insert',
-                                data: $scope.user, //forms user object
-                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                            })
-                                    .success(function (data) {
-                                        if (data.errors) {
-                                            // Showing errors.
-                                            $scope.errorCompanyName = data.errors.companyname;
-                                            $scope.errorCountry = data.errors.country;
-                                            $scope.errorState = data.errors.state;
-                                            $scope.errorCity = data.errors.city;
-                                            $scope.errorPincode = data.errors.pincode;
-                                            $scope.errorPostalAddress = data.errors.business_address;
-                                        } else {
-                                            if (data.is_success == '1') {
-                                                //window.location.href = base_url + 'business-profile/signup/contact-information';
-                                                $('ul.left-form-each li').removeClass('active');
-                                                $('ul.left-form-each li:nth-child(2)').addClass('active');
-                                                $('.tab-content .tab-pane').removeClass('active');
-                                                $('.tab-content .tab-pane:nth-child(2)').addClass('active');
-                                                $scope.tab_active(2);
-                                                getContactInformation();
+                            if ($scope.businessinfo.validate()) {
+                                // Posting data to php file
+                                $http({
+                                    method: 'POST',
+                                    url: base_url + 'business_profile_registration/ng_bus_info_insert',
+                                    data: $scope.user, //forms user object
+                                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .success(function (data) {
+                                            if (data.errors) {
+                                                // Showing errors.
+                                                $scope.errorCompanyName = data.errors.companyname;
+                                                $scope.errorCountry = data.errors.country;
+                                                $scope.errorState = data.errors.state;
+                                                $scope.errorCity = data.errors.city;
+                                                $scope.errorPincode = data.errors.pincode;
+                                                $scope.errorPostalAddress = data.errors.business_address;
                                             } else {
-                                                return false;
+                                                if (data.is_success == '1') {
+                                                    //window.location.href = base_url + 'business-profile/signup/contact-information';
+                                                    $('ul.left-form-each li').removeClass('active');
+                                                    $('ul.left-form-each li:nth-child(2)').addClass('active');
+                                                    $('.tab-content .tab-pane').removeClass('active');
+                                                    $('.tab-content .tab-pane:nth-child(2)').addClass('active');
+                                                    $scope.tab_active(2);
+                                                    getContactInformation();
+                                                } else {
+                                                    return false;
+                                                }
                                             }
-                                            //$scope.message = data.message;
-                                        }
-                                    });
+                                        });
+                            } else {
+                                return false;
+                            }
+
+                        };
+
+
+                        $scope.conInfoValidate = {
+                            rules: {
+                                contactname: {
+                                    required: true,
+                                    regx: /^[a-zA-Z\s]*[a-zA-Z]/
+                                },
+                                contactmobile: {
+                                    required: true,
+                                    number: true,
+                                    minlength: 8,
+                                    maxlength: 15
+                                },
+                                email: {
+                                    required: true,
+                                    email: true,
+//                                    remote: {
+//                                        url: base_url + "business_profile/check_email",
+//                                        type: "post",
+//                                        data: {
+//                                            email: function () {
+//                                                return $("#email").val();
+//                                            },
+//                                            get_csrf_token_name: get_csrf_hash,
+//                                        },
+//                                    },
+                                },
+                            },
+                            messages: {
+                                contactname: {
+                                    required: "Person name is required.",
+                                },
+                                contactmobile: {
+                                    required: "Mobile number is required.",
+                                },
+                                email: {
+                                    required: "Email id is required.",
+                                    email: "Please enter valid email id.",
+                                    //remote: "Email already exists."
+                                },
+                            }
                         };
                         $scope.submitcontactinfoForm = function () {
-                            // Posting data to php file
-                            $http({
-                                method: 'POST',
-                                url: base_url + 'business_profile_registration/ng_contact_info_insert',
-                                data: $scope.user, //forms user object
-                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                            })
-                                    .success(function (data) {
-                                        if (data.errors) {
-                                            // Showing errors.
-                                            $scope.errorContactName = data.errors.contactname;
-                                            $scope.errorContactMobile = data.errors.contactmobile;
-                                            $scope.errorEmail = data.errors.email;
-                                            $scope.errorCity = data.errors.city;
-                                            $scope.errorContactWebsite = data.errors.contactwebsite;
-                                        } else {
-                                            if (data.is_success == '1') {
-                                                //window.location.href = base_url + 'business-profile/signup/description';
-                                                $('ul.left-form-each li').removeClass('active');
-                                                $('ul.left-form-each li:nth-child(3)').addClass('active');
-                                                $('.tab-content .tab-pane').removeClass('active');
-                                                $('.tab-content .tab-pane:nth-child(3)').addClass('active');
-                                                $scope.tab_active(3);
-                                                getDescription();
+                            if ($scope.contactinfo.validate()) {
+                                // Posting data to php file
+                                $http({
+                                    method: 'POST',
+                                    url: base_url + 'business_profile_registration/ng_contact_info_insert',
+                                    data: $scope.user, //forms user object
+                                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .success(function (data) {
+                                            if (data.errors) {
+                                                // Showing errors.
+                                                $scope.errorContactName = data.errors.contactname;
+                                                $scope.errorContactMobile = data.errors.contactmobile;
+                                                $scope.errorEmail = data.errors.email;
+                                                $scope.errorCity = data.errors.city;
+                                                $scope.errorContactWebsite = data.errors.contactwebsite;
                                             } else {
-                                                return false;
+                                                if (data.is_success == '1') {
+                                                    //window.location.href = base_url + 'business-profile/signup/description';
+                                                    $('ul.left-form-each li').removeClass('active');
+                                                    $('ul.left-form-each li:nth-child(3)').addClass('active');
+                                                    $('.tab-content .tab-pane').removeClass('active');
+                                                    $('.tab-content .tab-pane:nth-child(3)').addClass('active');
+                                                    $scope.tab_active(3);
+                                                    getDescription();
+                                                } else {
+                                                    return false;
+                                                }
+                                                //$scope.message = data.message;
                                             }
-                                            //$scope.message = data.message;
-                                        }
-                                    });
+                                        });
+                            } else {
+                                return false;
+                            }
+
+                        };
+
+
+                        $scope.desValidate = {
+                            rules: {
+                                business_type: {
+                                    required: true,
+                                },
+                                industriyal: {
+                                    required: true,
+                                },
+                                subindustriyal: {
+                                    required: true,
+                                },
+                                business_details: {
+                                    required: true,
+                                    regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                                },
+                            },
+                            messages: {
+                                business_type: {
+                                    required: "Business type is required.",
+                                },
+                                industriyal: {
+                                    required: "Industrial is required.",
+                                },
+                                subindustriyal: {
+                                    required: "Subindustrial is required.",
+                                },
+                                business_details: {
+                                    required: "Business details is required.",
+                                },
+                            }
                         };
                         $scope.submitdescriptionForm = function () {
+                            if ($scope.businessdis.validate()) {
+                                return TRUE;
+                            } else {
+                                return FALSE;
+                            }
                             // Posting data to php file
                             $http({
                                 method: 'POST',
@@ -627,8 +745,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
