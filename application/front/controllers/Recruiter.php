@@ -1624,6 +1624,24 @@ class Recruiter extends MY_Controller {
                     }
                     $postdata .= '</li>';
                 } else {
+                    
+                    if($row[0]['experience'] == 'Experience'){ 
+                    $postdata .= '<li> <b> Total Experience</b>';
+                                            if($row[0]['exp_y'] != " " && $row[0]['exp_m'] != " "){ 
+                                         if ($row[0]['exp_m'] == '12 month' && $row[0]['exp_y'] == '0 year') {
+                                                       $postdata .= "1 year";
+                                                } else {
+                                                  
+                                                if($row[0]['exp_y'] != '0 year'){
+                                                        $postdata .= $row[0]['exp_y'];
+                                                }
+                                                    if ($row[0]['exp_m'] != '0 month') {
+                                                            $postdata .= ' ' . $row[0]['exp_m'];
+                                                        
+                                                    } 
+                                                }
+                                             } 
+                    }
                     if ($row['experience'] == 'Fresher') {
                         $postdata .= '<li> <b> Total Experience</b>';
                         $postdata .= '<span>' . $row['experience'] . '</span>';
@@ -2959,7 +2977,23 @@ class Recruiter extends MY_Controller {
 
                     $return_html .= '</span></li>';
                 } else {
-
+                      if($p[0]['experience'] == 'Experience'){ 
+                    $postdata .= '<li> <b> Total Experience</b>';
+                                            if($p[0]['exp_y'] != " " && $p[0]['exp_m'] != " "){ 
+                                         if ($p[0]['exp_m'] == '12 month' && $p[0]['exp_y'] == '0 year') {
+                                                       $postdata .= "1 year";
+                                                } else {
+                                                  
+                                                if($p[0]['exp_y'] != '0 year'){
+                                                        $postdata .= $p[0]['exp_y'];
+                                                }
+                                                    if ($p[0]['exp_m'] != '0 month') {
+                                                            $postdata .= ' ' . $p[0]['exp_m'];
+                                                        
+                                                    } 
+                                                }
+                                             } 
+                    }
                     if ($p['experience'] == 'Fresher') {
                         $return_html .= '<li> <b> Total Experience</b><span>' . $p['experience'] . '</span></li>';
                     } //if complete
@@ -3462,6 +3496,24 @@ class Recruiter extends MY_Controller {
                         $return_html .= '</span>
                                                                     </li>';
                     } else {
+                        
+                        if($rec[0]['experience'] == 'Experience'){ 
+                    $postdata .= '<li> <b> Total Experience</b>';
+                                            if($rec[0]['exp_y'] != " " && $rec[0]['exp_m'] != " "){ 
+                                         if ($rec[0]['exp_m'] == '12 month' && $rec[0]['exp_y'] == '0 year') {
+                                                       $postdata .= "1 year";
+                                                } else {
+                                                  
+                                                if($rec[0]['exp_y'] != '0 year'){
+                                                        $postdata .= $rec[0]['exp_y'];
+                                                }
+                                                    if ($rec[0]['exp_m'] != '0 month') {
+                                                            $postdata .= ' ' . $rec[0]['exp_m'];
+                                                        
+                                                    } 
+                                                }
+                                             } 
+                    }
                         if ($rec['experience'] == 'Fresher') {
 
                             $return_html .= '<li> <b> Total Experience</b>

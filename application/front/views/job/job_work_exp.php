@@ -59,7 +59,7 @@
                                     <div class="panel-group wrap" id="bs-collapse">
                                      <?php   if($userdata[0]['experience'] == 'Experience'){ ?>
                                          <div class="panel">
-                                          Total experience
+                                          Total experience :
                                           <?php  if($userdata[0]['exp_y'] != " " && $userdata[0]['exp_m'] != " "){ 
                                          if ($userdata[0]['exp_m'] == '12 month' && $userdata[0]['exp_y'] == '0 year') {
                                                     echo "1 year";
