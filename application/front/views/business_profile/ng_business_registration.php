@@ -531,7 +531,7 @@
                                                 if (data.is_success == '1') {
                                                     //window.location.href = base_url + 'business-profile/signup/contact-information';
                                                     $('ul.left-form-each li').removeClass('active');
-                                                    $('ul.left-form-each li:nth-child(2)').addClass('active');
+                                                    $('ul.left-form-each li#left-form-each-li-2').addClass('active');
                                                     $('.tab-content .tab-pane').removeClass('active');
                                                     $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                                                     $scope.tab_active(2);
@@ -610,7 +610,7 @@
                                                 if (data.is_success == '1') {
                                                     //window.location.href = base_url + 'business-profile/signup/description';
                                                     $('ul.left-form-each li').removeClass('active');
-                                                    $('ul.left-form-each li:nth-child(3)').addClass('active');
+                                                    $('ul.left-form-each li#left-form-each-li-3').addClass('active');
                                                     $('.tab-content .tab-pane').removeClass('active');
                                                     $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                                                     $scope.tab_active(3);
@@ -674,7 +674,7 @@
                                                 if (data.is_success == '1') {
                                                     //window.location.href = base_url + 'business-profile/signup/image';
                                                     $('ul.left-form-each li').removeClass('active');
-                                                    $('ul.left-form-each li:nth-child(4)').addClass('active');
+                                                    $('ul.left-form-each li#left-form-each-li-4').addClass('active');
                                                     $('.tab-content .tab-pane').removeClass('active');
                                                     $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                                                     $scope.tab_active(4);
