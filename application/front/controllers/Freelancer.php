@@ -468,6 +468,8 @@ class Freelancer extends MY_Controller {
         $this->freelancer_apply_check();
         // code for display page end
 
+
+
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_field,freelancer_post_area,freelancer_post_otherskill,freelancer_post_skill_description,freelancer_post_exp_year,freelancer_post_exp_month,free_post_step,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //Retrieve skill data Start
@@ -3390,6 +3392,7 @@ class Freelancer extends MY_Controller {
 // code for display page start
         $this->freelancer_apply_check();
 // code for display page end
+        $this->progressbar();
 // job seeker detail
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3937,6 +3940,9 @@ class Freelancer extends MY_Controller {
             // code for display page start
             $this->freelancer_apply_check();
             // code for display page end
+
+            $this->progressbar();
+
             $contition_array = array('user_id' => $userid);
             $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
@@ -5315,7 +5321,7 @@ class Freelancer extends MY_Controller {
 
         $this->data['count_profile'] = $percentage;
         $this->data['count_profile_value'] = ($percentage / 100);
-     
+
 
         if ($this->data['count_profile'] == 100) {
             if ($apply_reg[0]['progressbar'] != 1) {

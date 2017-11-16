@@ -432,14 +432,52 @@ class Business_profile_registration extends MY_Controller {
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/ng_image', $this->data);
     }
-    
+
     public function getImage() {
         $userid = $this->session->userdata('aileenuser');
         $this->business_profile_active_check();
         // GET BUSINESS PROFILE DATA
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-        $userdata = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        echo json_encode($userdata);
+        $busimage = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $return_html = '';
+        if (count($busimage) > 0) {
+            $y = 0;
+            foreach ($busimage as $image) {
+                $y = $y + 1;
+
+                $return_html .= '<div class="job_work_edit_' . $image['bus_image_id'] . '" id="image_main">
+                    <div class="img_bui_data"> 
+                        <div class="edit_bui_img">
+                            <img id="imageold" src="' . BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name'] . '" >
+                        </div>
+                        <div style="float: left;">
+                            <div class="hs-submit full-width fl">
+                                <a href="javascript:void(0);" class="click_close_icon" onclick="delete_bus_image(' . $image['bus_image_id'] . ');">
+                                    <div class="bui_close">
+                                        <label for="bui_img_delete"><i class="fa fa-times" aria-hidden="true"></i></label>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+            }
+        }
+
+
+        echo $return_html;
+    }
+
+    public function bus_img_delete() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $image_id = $_POST['image_id'];
+        $data = array(
+            'is_delete' => 1
+        );
+        $updatdata = $this->common->update_data($data, 'bus_image', 'bus_image_id', $image_id);
+        if ($updatdata) {
+            echo 'ok';
+        }
     }
 
     public function ng_image_insert() {

@@ -206,7 +206,7 @@
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
                                                 <!--<a href="<?php echo base_url('business-profile/business-information-update'); ?>">-->
-                                                <a href="<?php echo base_url('business-profile/signup/edit/business-information'); ?>">
+                                                <a href="<?php echo base_url('business-profile/business-information'); ?>">
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
                                                 <?php

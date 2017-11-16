@@ -135,7 +135,7 @@
                                     <div>
                                        <strong></strong>
  
-    <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile</a>
+                                  <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile</a>
                                       
                                     </div>
                                  </div>
@@ -279,13 +279,14 @@
         </div>
         <!-- Model Popup Close -->
 
-        <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
+        <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
-        </script>
+       
         <script type="text/javascript">
             $(".alert").delay(3200).fadeOut(300);
             var base_url = '<?php echo base_url(); ?>';
-
+            var count_profile_value='<?php echo $count_profile_value;?>';
+            var count_profile='<?php echo $count_profile;?>';
         </script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/post_apply.js?ver=' . time()); ?>"></script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
