@@ -27,7 +27,10 @@
                         <div class="col-md-3"></div>
                         <div class="clearfix">
                             <div class="job_reg_page_fprm">
-
+                              <?php   if ($this->uri->segment(3) == 'live-post') {
+                            echo '<div class="alert alert-success">You  will be automatically apply successfully after completing of Freelancer profile ...!</div>';
+                        }
+                        ?>
                                 <div class="common-form job_reg_main">
                                     <h3>Welcome In Freelancer Profile</h3>
                                     <?php echo form_open(base_url('freelancer/registation_insert'), array('id' => 'freelancer_regform', 'name' => 'freelancer_regform', 'class' => 'clearfix')); ?>
