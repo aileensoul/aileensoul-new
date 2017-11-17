@@ -96,7 +96,8 @@ $(document).ready(function () {
 
             job_title: {
 
-                required: "#test2:checked",
+               /// required: "#test2:checked",
+                required: "true",
                 regx1: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
 
             },
@@ -118,15 +119,15 @@ $(document).ready(function () {
                 regx1: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
 
             },
-            'experience_year': {
-
-                required: true
-            },
-
-            'experience_month': {
-
-                required: true
-            },
+//            'experience_year': {
+//
+//                required: true
+//            },
+//
+//            'experience_month': {
+//
+//                required: true
+//            },
 
         },
 
@@ -180,23 +181,43 @@ $(document).ready(function () {
                 required: "Skill is required.",
 
             },
-            'experience_year': {
-
-                required: "Experience year is required.",
-            },
-            'experience_month': {
-
-                required: "Experience month is required.",
-            },
+//            'experience_year': {
+//
+//                required: "Experience year is required.",
+//            },
+//            'experience_month': {
+//
+//                required: "Experience month is required.",
+//            },
 
         },
 
     });
 });
 
+$("#submit").on('click', function (){ 
+    $('#experience_error').remove();
+    $('.experience_month').removeClass('error');
+    $('.experience_year').removeClass('error');
+
+    var year = $('#experience_year').val();
+    var month = $('#experience_month').val();
+
+    if (year == null && month == null) {
+
+        $('#experience_year').addClass('error');
+        $('#experience_month').addClass('error');
+        $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
+        return false;
+    } else {
+        return true;
+    }
+//    $('.experience_month').append('<label for="year-month" class="year-month" style="display: block;">Experiance is required.</label>');
+
+});
 //BUTTON SUBMIT DISABLE AFTER SOME TIME START
 $("#submit").on('click', function ()
-{
+{ 
     if (!$('#jobseeker_regform').valid())
     {
         return false;

@@ -60,16 +60,17 @@
                               <input type="radio" value="Fresher" tabindex="4" id="test1" name="fresher" class="radio_job" id="fresher">
                               <label for="test1" class="point_radio" >Yes</label>
                            </div>
+
                            <div class="main_raio">
                               <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" onclick="experience()">
                               <label for="test2" class="point_radio">No</label>
                            </div>
-                           <?php echo form_error('Fresher');; ?>
+                           <div class="fresher-error"><?php echo form_error('Fresher'); ?></div>
                         </fieldset>
                         <fieldset class="full-width">
                             <div id="exp_data" style="display:none;">
-                               <label>Experience:<span class="red">*</span></label>
-                                                      <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change();">
+                               <label>Experience<span class="red">*</span>:</label>
+                                                      <select style="width: 45%; margin-right: 4%; float: left;" tabindex="1" autofocus name="experience_year" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change();">
                                                          <option value="" selected option disabled>Year</option>
                                                          <option value="0 year">0 year</option>
                                                          <option value="1 year">1 year</option>
@@ -93,7 +94,7 @@
                                                          <option value="19 year">19 year</option>
                                                          <option value="20 year">20 year</option>
                                                       </select>
-                                                      <?php echo form_error('experience_year'); ?>
+                                                    <!--   <?php// echo form_error('experience_year'); ?> -->
                                                       <select style="width: 45%;" name="experience_month" tabindex="2"   id="experience_month" class="experience_month keyskil" onclick="expmonth_click();">
                                                          <option value="" selected option disabled>Month</option>
                                                          <option value="0 month">0 month</option>
@@ -176,7 +177,6 @@
 
  
    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver='.time()) ?>"></script>
-   <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js?ver='.time()); ?>"></script>
    <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
   
 <!-- This Js is used for call popup -->
