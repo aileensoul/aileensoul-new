@@ -60,11 +60,12 @@
                               <input type="radio" value="Fresher" tabindex="4" id="test1" name="fresher" class="radio_job" id="fresher">
                               <label for="test1" class="point_radio" >Yes</label>
                            </div>
+
                            <div class="main_raio">
                               <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" onclick="experience()">
                               <label for="test2" class="point_radio">No</label>
                            </div>
-                           <?php echo form_error('Fresher');; ?>
+                           <div class="fresher-error"><?php echo form_error('Fresher'); ?></div>
                         </fieldset>
                         <fieldset class="full-width">
                             <div id="exp_data" style="display:none;">
