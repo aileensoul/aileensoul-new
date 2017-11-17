@@ -108,8 +108,9 @@
                            <div class="count_main_progress">
                               <div class="circles">
                                  <div class="second circle-1 ">
+                                     <img src="<?php echo base_url("assets/img/true.png"); ?>">
                                     <div class="true_progtree">
-                                       <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                                       
                                     </div>
                                     <div class="tr_text">
                                        Successfully Completed
