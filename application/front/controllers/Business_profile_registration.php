@@ -47,7 +47,7 @@ class Business_profile_registration extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $this->load->view('business_profile/ng_business_registration', $this->data);
+            $this->load->view('business_profile/ng_business_registration_old', $this->data);
         }
     }
 

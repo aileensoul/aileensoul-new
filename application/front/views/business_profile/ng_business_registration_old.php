@@ -121,12 +121,13 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>State:<span style="color:red">*</span></label>
-                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3" ng-init="user.state_id=stateList[1]">
+                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3" ng-init="user.state_id=stateList[1].state_id">
                                                                     <option value="">Select country first</option>
                                                                     <option data-ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}' ng-selected="user.state_id == stateItem.state_id">{{stateItem.state_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorState" class="error">{{errorState}}</span>
                                                             </fieldset>
+                                                            <p>selected Value : {{user.state_id}}</p>
                                                             <fieldset>
                                                                 <label> City<span class="optional">(optional)</span>:</label>
                                                                 <select name="city" ng-model="user.city_id" id="city" tabindex="4">
