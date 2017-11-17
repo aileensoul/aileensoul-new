@@ -4449,6 +4449,13 @@ div .comment {
 .art-all-comment .comment-name {padding: 2px 0;}
 
 .post-design-box .post-design-desc a.content_link:hover{color: #1b8ab9;text-decoration:underline; }
+/***  all edit profile form  ***/
+.all-edit-profile-box{width:730px; margin:0 auto;}
+
+
+/***  end all edit profile form  ***/
+
+
 
 /***  media query  ***/
 
