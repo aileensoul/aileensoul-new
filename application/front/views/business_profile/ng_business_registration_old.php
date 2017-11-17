@@ -42,8 +42,6 @@
             .tabs-left > .nav-tabs > li {
                 float: none;
             }
-
-
         </style>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push" ng-app="busRegApp" ng-controller="busRegController">
@@ -121,13 +119,12 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>State:<span style="color:red">*</span></label>
-                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3" ng-init="user.state_id=stateList[1].state_id">
+                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3" ng-init="user.state_id = stateList[0].state_id">
                                                                     <option value="">Select country first</option>
                                                                     <option data-ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}' ng-selected="user.state_id == stateItem.state_id">{{stateItem.state_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorState" class="error">{{errorState}}</span>
                                                             </fieldset>
-                                                            <p>selected Value : {{user.state_id}}</p>
                                                             <fieldset>
                                                                 <label> City<span class="optional">(optional)</span>:</label>
                                                                 <select name="city" ng-model="user.city_id" id="city" tabindex="4">
@@ -195,41 +192,41 @@
                                                         </h3>
                                                         <form name="businessdis" ng-submit="submitdescriptionForm()" id="businessdis" class="clearfix" ng-validate="desValidate">
                                                             <div class="fw">
-                                                            <fieldset>
-                                                                <label>Business type:<span style="color:red">*</span></label>
-                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
-                                                                    <option value="" selected="selected">Select Business type</option>
-                                                                    <option ng-repeat='businessType in business_type' value='{{businessType.type_id}}'>{{businessType.business_name}}</option>             
-                                                                    <option ng-option value="0" id="busOption">Other</option>    
-                                                                </select>
-                                                                <span ng-show="errorBusinessType" class="error">{{errorBusinessType}}</span>
-                                                            </fieldset>  
-                                                            <div id="busDivCheck" ng-if="user.business_type == '0'">
-                                                                <fieldset class="half-width" id="other-business">
-                                                                    <label> Other business type: <span style="color:red;" >*</span></label>
-                                                                    <input type="text" name="bustype" ng-model="user.bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" ng-required="true">
-                                                                    <span ng-show="errorOtherBusinessType" class="error">{{errorOtherBusinessType}}</span>
-                                                                </fieldset>
-                                                            </div>
+                                                                <fieldset>
+                                                                    <label>Business type:<span style="color:red">*</span></label>
+                                                                    <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
+                                                                        <option value="" selected="selected">Select Business type</option>
+                                                                        <option ng-repeat='businessType in business_type' value='{{businessType.type_id}}'>{{businessType.business_name}}</option>             
+                                                                        <option ng-option value="0" id="busOption">Other</option>    
+                                                                    </select>
+                                                                    <span ng-show="errorBusinessType" class="error">{{errorBusinessType}}</span>
+                                                                </fieldset>  
+                                                                <div id="busDivCheck" ng-if="user.business_type == '0'">
+                                                                    <fieldset class="half-width" id="other-business">
+                                                                        <label> Other business type: <span style="color:red;" >*</span></label>
+                                                                        <input type="text" name="bustype" ng-model="user.bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" ng-required="true">
+                                                                        <span ng-show="errorOtherBusinessType" class="error">{{errorOtherBusinessType}}</span>
+                                                                    </fieldset>
+                                                                </div>
                                                             </div>
                                                             <div class="fw">
-                                                            <fieldset>
-                                                                <label>Category:<span style="color:red">*</span></label>
-                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
-                                                                    <option ng-option value="" selected="selected">Select Industry type</option>
-                                                                    <option ng-repeat='caegoryType in industry_type' value='{{caegoryType.industry_id}}'>{{caegoryType.industry_name}}</option>             
-                                                                    <option ng-option value="0" id="indOption">Other</option>
-                                                                </select>
-                                                                <span ng-show="errorCategory" class="error">{{errorCategory}}</span>
-                                                            </fieldset>  
-                                                            
-                                                            <div id="indDivCheck" ng-if="user.industriyal == '0'">
-                                                                <fieldset class="half-width" id="other-category">
-                                                                    <label> Other category:<span style="color:red;" >*</span></label>
-                                                                    <input type="text" name="indtype" ng-model="user.indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>" ng-required="true">
-                                                                    <span ng-show="errorOtherCategory" class="error">{{errorOtherCategory}}</span>
-                                                                </fieldset>
-                                                            </div>
+                                                                <fieldset>
+                                                                    <label>Category:<span style="color:red">*</span></label>
+                                                                    <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
+                                                                        <option ng-option value="" selected="selected">Select Industry type</option>
+                                                                        <option ng-repeat='caegoryType in industry_type' value='{{caegoryType.industry_id}}'>{{caegoryType.industry_name}}</option>             
+                                                                        <option ng-option value="0" id="indOption">Other</option>
+                                                                    </select>
+                                                                    <span ng-show="errorCategory" class="error">{{errorCategory}}</span>
+                                                                </fieldset>  
+
+                                                                <div id="indDivCheck" ng-if="user.industriyal == '0'">
+                                                                    <fieldset class="half-width" id="other-category">
+                                                                        <label> Other category:<span style="color:red;" >*</span></label>
+                                                                        <input type="text" name="indtype" ng-model="user.indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>" ng-required="true">
+                                                                        <span ng-show="errorOtherCategory" class="error">{{errorOtherCategory}}</span>
+                                                                    </fieldset>
+                                                                </div>
                                                             </div>
                                                             <fieldset class="full-width">
                                                                 <label>Details of your business:<span style="color:red">*</span></label>
@@ -404,11 +401,26 @@
                             });
                         }
 
+                        function onCountryChange1(country_id = '') {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/getStateByCountryId',
+                                data: {countryId: country_id}
+                            }).success(function (data) {
+                                if (angular.isDefined($scope.user.state_id)) {
+                                    delete $scope.user.state_id;
+                                }
+                                $scope.user.state_id = "";
+                                $scope.stateList = data;
+                                //$("#state").find("option").eq(0).remove();
+                            });
+                        }
+
                         $scope.onCountryChange = function () {
                             $scope.countryIdVal = $scope.user.country_id;
-                            onCountryChange($scope.countryIdVal);
-                            $("#city").find("option").eq(0).remove();
-                            $scope.user.city_id = '0';
+                            onCountryChange1($scope.countryIdVal);
+                            //$("#city").find("option").eq(0).remove();
+                            $scope.user.city_id = "";
                         };
                         function onStateChange(state_id = '') {
                             $http({
@@ -419,10 +431,22 @@
                                 $scope.cityList = data;
                             });
                         }
+                        function onStateChange1(state_id = '') {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/getCityByStateId',
+                                data: {stateId: state_id}
+                            }).success(function (data) {
+                                if (angular.isDefined($scope.user.city_id)) {
+                                    delete $scope.user.city_id;
+                                }
+                                $scope.cityList = data;
+                            });
+                        }
 
                         $scope.onStateChange = function () {
                             $scope.stateIdVal = $scope.user.state_id;
-                            onStateChange($scope.stateIdVal);
+                            onStateChange1($scope.stateIdVal);
                         };
                         function getBusinessInformation() {
                             $http({
@@ -774,8 +798,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                                                                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
