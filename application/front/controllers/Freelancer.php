@@ -468,6 +468,8 @@ class Freelancer extends MY_Controller {
         $this->freelancer_apply_check();
         // code for display page end
 
+
+
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_field,freelancer_post_area,freelancer_post_otherskill,freelancer_post_skill_description,freelancer_post_exp_year,freelancer_post_exp_month,free_post_step,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //Retrieve skill data Start
@@ -2169,7 +2171,7 @@ class Freelancer extends MY_Controller {
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
-
+        $this->progressbar();
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
         $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2717,6 +2719,7 @@ class Freelancer extends MY_Controller {
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
+        $this->progressbar();
 // job seeker detail
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3390,6 +3393,7 @@ class Freelancer extends MY_Controller {
 // code for display page start
         $this->freelancer_apply_check();
 // code for display page end
+        $this->progressbar();
 // job seeker detail
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3937,12 +3941,15 @@ class Freelancer extends MY_Controller {
             // code for display page start
             $this->freelancer_apply_check();
             // code for display page end
+
+            $this->progressbar();
+
             $contition_array = array('user_id' => $userid);
-            $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             // echo "222";die();
             $contition_array = array('user_id' => $id, 'free_post_step' => 7);
-            $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image,  designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         //   echo "<pre>"; print_r($apply_data);die();
         $this->data['title'] = $apply_data[0]['freelancer_post_fullname'] . " " . $apply_data[0]['freelancer_post_username'] . TITLEPOSTFIX;
@@ -4171,7 +4178,7 @@ class Freelancer extends MY_Controller {
 
 
         $contition_array = array('user_id' => $userid);
-        $user_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $user_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $user_reg_prev_image = $user_reg_data[0]['profile_background'];
         $user_reg_prev_main_image = $user_reg_data[0]['profile_background_main'];
@@ -5135,10 +5142,147 @@ class Freelancer extends MY_Controller {
 
     //FREELANCER APPLY NEW REGISTATION PROFILE END
     //FREELANCER APPLY NEW REGISTATION INSERT START
-    public function registation_insert($postid = '') {
+//    public function registation_insert($postid = '') {
+//
+//        if ($this->input->post('livepostid')) {
+//            $postid = trim($this->input->post('livepostid'));
+//        }
+//
+//        $userid = $this->session->userdata('aileenuser');
+//        $skill1 = $this->input->post('skills');
+//        $skills = explode(',', $skill1);
+//
+//        $this->form_validation->set_rules('firstname', 'Full Name', 'required');
+//        $this->form_validation->set_rules('lastname', 'Last Name', 'required');
+//        $this->form_validation->set_rules('email', 'EmailId', 'required|valid_email');
+//        $this->form_validation->set_rules('country', 'country', 'required');
+//        $this->form_validation->set_rules('state', 'state', 'required');
+//        $this->form_validation->set_rules('field', 'field', 'required');
+//        $this->form_validation->set_rules('skills', 'skill', 'required');
+//
+//        if ($this->form_validation->run() == FALSE) {
+//            $this->load->view('freelancer/freelancer_post/registation');
+//        } else {
+//
+//
+//            if (count($skills) > 0) {
+//                foreach ($skills as $ski) {
+//                    if ($ski != " ") {
+//                        $contition_array = array('skill' => trim($ski), 'type' => 1);
+//                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+//                        if (count($skilldata) < 0) {
+//                            $contition_array = array('skill' => trim($ski), 'type' => 5);
+//                            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+//                        }
+//                        if ($skilldata) {
+//                            $skill[] = $skilldata[0]['skill_id'];
+//                        } else {
+//                            $data = array(
+//                                'skill' => trim($ski),
+//                                'status' => '1',
+//                                'type' => 5,
+//                                'user_id' => $userid,
+//                            );
+//                            $skill[] = $this->common->insert_data_getid($data, 'skill');
+//                        }
+//                    }
+//                }
+//                $skill = array_unique($skill, SORT_REGULAR);
+//                $skills = implode(',', $skill);
+//            }
+//
+//
+//
+//            $data = array(
+//                'freelancer_post_fullname' => trim($this->input->post('firstname')),
+//                'freelancer_post_username' => trim($this->input->post('lastname')),
+//                'freelancer_post_email' => trim($this->input->post('email')),
+//                'freelancer_post_country' => trim($this->input->post('country')),
+//                'freelancer_post_state' => trim($this->input->post('state')),
+//                'freelancer_post_city' => trim($this->input->post('city')),
+//                'freelancer_post_field' => trim($this->input->post('field')),
+//                'freelancer_post_area' => $skills,
+//                'freelancer_post_exp_month' => trim($this->input->post('experience_month')),
+//                'freelancer_post_exp_year' => trim($this->input->post('experience_year')),
+//                'freelancer_apply_slug' => $this->setcategory_slug($first_lastname, 'freelancer_apply_slug', 'freelancer_post_reg'),
+//                'user_id' => $userid,
+//                'created_date' => date('Y-m-d', time()),
+//                'status' => 1,
+//                'is_delete' => 0,
+//                'free_post_step' => 7
+//            );
+//            $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
+//
+//            if ($insert_id) {
+//                $this->session->set_flashdata('success', 'Basic information updated successfully');
+//
+//                if ($postid) {
+//                    redirect('freelancer-work/home/' . $postid, refresh);
+//                } else {
+//                    redirect('freelancer-work/home', refresh);
+//                }
+//            } else {
+//
+//                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+//                if ($postid) {
+//                    redirect('freelancer-work/registation' . $postid, refresh);
+//                } else {
+//                    redirect('freelancer-work/registation', refresh);
+//                }
+//            }
+//        }
+//    }
+ public function registation_insert($postliveid = '') {
+      //  echo $postliveid;die();
 
+        if ($postliveid) {
+            $id = trim($postliveid);
+             $userid = $this->session->userdata('aileenuser');
+             $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $id))->row()->user_id;
+             
+             $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
+            $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            
+             if ($userdata) {
+                
+            } else {
+                $data = array(
+                    'post_id' => $id,
+                    'user_id' => $userid,
+                    'status' => 1,
+                    'created_date' => date('Y-m-d h:i:s', time()),
+                    'modify_date' => date('Y-m-d h:i:s', time()),
+                    'is_delete' => 0,
+                    'job_delete' => 0,
+                    'job_save' => 3
+                );
+                $insert_id = $this->common->insert_data_getid($data, 'freelancer_apply');
+                // insert notification
+                $data = array(
+                    'not_type' => 3,
+                    'not_from_id' => $userid,
+                    'not_to_id' => $notid,
+                    'not_read' => 2,
+                    'not_from' => 4,
+                    'not_product_id' => $insert_id,
+                    "not_active" => 1,
+                    'not_created_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_id = $this->common->insert_data_getid($data, 'notification');
+                // end notoification
+                if ($insert_id) {
+
+                    $this->apply_email($notid);
+                    $applypost = 'Applied';
+                }
+               // echo $applypost;
+            }
+        }
+        
         if ($this->input->post('livepostid')) {
-            $postid = trim($this->input->post('livepostid'));
+            
         }
 
         $userid = $this->session->userdata('aileenuser');
@@ -5209,23 +5353,24 @@ class Freelancer extends MY_Controller {
             if ($insert_id) {
                 $this->session->set_flashdata('success', 'Basic information updated successfully');
 
-                if ($postid) {
-                    redirect('freelancer-work/home/' . $postid, refresh);
+                if ($postliveid) {
+                   
+                    redirect('freelancer-work/home/live-post/', refresh);
                 } else {
                     redirect('freelancer-work/home', refresh);
                 }
             } else {
 
                 $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                if ($postid) {
-                    redirect('freelancer-work/registation' . $postid, refresh);
+                if ($postliveid) {
+                    redirect('freelancer-work/registation' . $postliveid, refresh);
                 } else {
                     redirect('freelancer-work/registation', refresh);
                 }
             }
         }
+        
     }
-
     //FREELANCER APPLY NEW REGISTATION INSERT END
     //CHECK FOR MAIL DESIGNING START
     public function email_view() {
@@ -5272,84 +5417,66 @@ class Freelancer extends MY_Controller {
     public function progressbar() {
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-        $this->data['apply_reg'] = $apply_reg = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = array());
-        $count = 0;
-        if ($apply_reg[0]['freelancer_post_fullname'] != '') {
-            $count++;
+        $this->data['apply_reg'] = $apply_reg = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_skypeid,freelancer_post_email,freelancer_post_phoneno,freelancer_post_country,freelancer_post_state,freelancer_post_city,freelancer_post_pincode,freelancer_post_field,freelancer_post_area,freelancer_post_skill_description,freelancer_post_hourly,freelancer_post_ratestate,freelancer_post_fixed_rate,freelancer_post_job_type,freelancer_post_work_hour,freelancer_post_degree,freelancer_post_stream,freelancer_post_univercity,freelancer_post_collage,freelancer_post_percentage,freelancer_post_passingyear,freelancer_post_eduaddress,freelancer_post_portfolio_attachment,freelancer_post_portfolio,freelancer_post_exp_month,freelancer_post_exp_year,progressbar', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = array());
+
+        if ($apply_reg > 0) {
+            $notEmpty = 0;
+            $totalField = 28;
+
+            foreach ($apply_reg as $row) {
+                $notEmpty += ($row['freelancer_post_fullname'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_username'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_skypeid'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_email'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_phoneno'] != 0) ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_country'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_state'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_city'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_pincode'] != 0) ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_field'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_area'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_skill_description'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_hourly'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_ratestate'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_fixed_rate'] != 0) ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_job_type'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_work_hour'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_degree'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_stream'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_univercity'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_collage'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_percentage'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_passingyear'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_eduaddress'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_portfolio_attachment'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_portfolio'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_exp_month'] != '') ? 1 : 0;
+                $notEmpty += ($row['freelancer_post_exp_year'] != '') ? 1 : 0;
+                //do with all field
+            }
+
+            $percentage = $notEmpty / $totalField * 100;
         }
-        if ($apply_reg[0]['freelancer_post_username'] != '') {
-            $count++;
+
+        $this->data['count_profile'] = $percentage;
+        $this->data['count_profile_value'] = ($percentage / 100);
+
+
+        if ($this->data['count_profile'] == 100) {
+            if ($apply_reg[0]['progressbar'] != 1) {
+                $data = array(
+                    'progressbar' => '0',
+                    'modify_date' => date('Y-m-d h:i:s', time())
+                );
+                $updatedata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
+            }
+        } else {
+            $data = array(
+                'progressbar' => '0',
+                'modify_date' => date('Y-m-d h:i:s', time())
+            );
+            $updatedata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
         }
-        if ($apply_reg[0]['freelancer_post_skypeid'] != '') {
-            $count++;
-        }
-        if ($apply_reg[0]['freelancer_post_email'] != '') {
-            $count++;
-        }
-        if ($apply_reg[0]['freelancer_post_phoneno'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_country'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_state'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_city'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_field'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_area'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_skill_description'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_hourly'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_ratestate'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_fixed_rate'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_job_type'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_work_hour'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_degree'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_stream'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_univercity'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_collage'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_percentage'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_passingyear'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_eduaddress'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_portfolio_attachment'] != '') {
-            $count++;
-        }
-         if ($apply_reg[0]['freelancer_post_portfolio'] != '') {
-            $count++;
-        }
-        echo $count;die();
     }
 
     //FOR FREELANCER APPLY PROGRESSBAR END

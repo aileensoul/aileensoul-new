@@ -1,3 +1,6 @@
+//FLASH MESSAGE SCRIPT START
+$(".alert").delay(3200).fadeOut(300);
+//FLASH MESSAGE SCRIPT END
 //CODE FOR COUNTRY,STATE, CITY START
 $(document).ready(function () {
     $('#country').on('change', function () {
@@ -152,7 +155,7 @@ $(document).ready(function () {
             email: {
                 required: "Email id is required.",
                 email: "Please enter valid email id.",
-               // remote: "Email already exists."
+                remote: "Email already exists."
             },
             country: {
                 required: "Country is required.",

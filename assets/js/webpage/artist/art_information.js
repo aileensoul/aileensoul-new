@@ -51,16 +51,12 @@ $(function(){
     
 // other category input open start
 
-function validate(){
-
-  $("#multidropdown").addClass("error");
-  //alert("falguni123");
-}
-
 $('#skills').change(function other_category(){
         // var e = document.getElementById("skills");
         // var strUser = e.options[e.selectedIndex].value;
        $("#multidropdown").removeClass("error");
+       $("#othercategory").removeClass("error");
+
        var strUser1 = $('#skills').val();
        var strUser =  "'" + strUser1 + "'";
        var n = strUser.includes(26);
@@ -87,7 +83,7 @@ function removevalidation(){
    $('#othercategory_error').remove();    
 }
 
-function validation_other(event){ 
+function validation_other(event){  
   
   $('#othercategory_error').remove(); 
        event.preventDefault();
@@ -105,6 +101,7 @@ function validation_other(event){
         if(category_trim == ''){
        $("#othercategory").addClass("othercategory_require");
        $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">Other art category required. </span>').insertAfter('#othercategory');
+         $("#othercategory").addClass("error");
         return false;
         event.preventDefault();
          } 
@@ -118,6 +115,7 @@ function validation_other(event){
                     if(data == 'true'){ 
                     $("#othercategory").addClass("othercategory_require");
                    $('<span class="error" id="othercategory_error" style="float: right;color: red; font-size: 13px;">This category already exists in art category field. </span>').insertAfter('#othercategory');
+                   $("#othercategory").addClass("error");
                    } else{ 
                      $("#artinfo")[0].submit();                  
                    }                 
@@ -137,14 +135,16 @@ function validation_other(event){
  }else{ 
       return false;
         event.preventDefault();
-   }
-
- 
+   } 
 }
 
-// textarea.onkeyup = function(evt) {
-//     this.scrollTop = this.scrollHeight;
-// }
+function validate(){
+
+   var strUser1 = $('#skills').val();
+   if(strUser1 == ''){
+      $("#multidropdown").addClass("error");
+   }
+}
 
 function checkvalue() {
                            
@@ -176,54 +176,50 @@ $(document).ready(function () {
 $(".alert").delay(3200).fadeOut(300);
 
 
-function cursorpointer(){
-
-   elem = document.getElementById('desc_art');
-   elem.focus();
-  setEndOfContenteditable(elem);
-}
-
-function setEndOfContenteditable(contentEditableElement)
-{
-    var range,selection;
-    if(document.createRange)
-    {
-        range = document.createRange();//Create a range (a range is a like the selection but invisible)
-        range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
-        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-        selection = window.getSelection();//get the selection object (allows you to change selection)
-        selection.removeAllRanges();//remove any selections already made
-        selection.addRange(range);//make the range you have just created the visible selection
-    }
-    else if(document.selection)
-    { 
-        range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
-        range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
-        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-        range.select();//Select the range (make it the visible selection
-    }
-}
+// portfolio start all validation
 
 
-var _onPaste_StripFormatting_IEPaste = false;
-            function OnPaste_StripFormatting(elem, e) { 
-                if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
-                    e.preventDefault();
-                    var text = e.originalEvent.clipboardData.getData('text/plain');
-                    window.document.execCommand('insertText', false, text);
-                } else if (e.clipboardData && e.clipboardData.getData) {                   
-                    e.preventDefault();
-                    var text = e.clipboardData.getData('text/plain');
-                    window.document.execCommand('insertText', false, text);
-                } else if (window.clipboardData && window.clipboardData.getData) {
-                    if (!_onPaste_StripFormatting_IEPaste) {
-                        _onPaste_StripFormatting_IEPaste = true;
-                        e.preventDefault();
-                        window.document.execCommand('ms-pasteTextOnly', false);
-                    }
-                    _onPaste_StripFormatting_IEPaste = false;
-                }
-            }
+ $("#bestofmine").change(function(event) {
+    
+     $(".bestofmine_image").html("");
+    var bestofmine = document.getElementById("bestofmine").value;
+    var bestmine = document.getElementById("bestmine").value;
 
+  var lastIndex = bestofmine.lastIndexOf("\\");
+    if (lastIndex >= 0) {
+        bestofmine = bestofmine.substring(lastIndex + 1);
+        
+    }    
+  $("#datav").text(bestofmine); 
+
+
+  if(bestofmine != ''){ 
+      var bestofmine_ext = bestofmine.split('.').pop();      
+      var allowespdf = ['pdf'];
+      var foundPresentpdf = $.inArray(bestofmine_ext, allowespdf) > -1;
+      }
+      var bestmine_ext = bestmine.split('.').pop();    
+       var allowespdf = ['pdf'];
+       var foundPresentportfolio = $.inArray(bestmine_ext, allowespdf) > -1;
+       if(foundPresentpdf == false)
+       {
+            $(".bestofmine_image").html("Please select only pdf file.");
+            return false;
+            event.preventDefault();       
+      }
+});
+
+    function delpdf(){
+     $.ajax({ 
+        type:'POST',
+        url: base_url + "artist/deletepdf",
+        //url:'<?php echo base_url() . "artist/deletepdf" ?>',
+        success:function(data){ 
+        $("#filename").text('');
+        $("#pdffile").hide();
+        document.getElementById('bestmine').value = '';
+          }
+            }); 
+  }
 
 

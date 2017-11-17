@@ -163,7 +163,53 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="col-md-8 col-sm-12 col-xs-12 mob-clear">
+                    <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
+                        <?php if(!($returnpage))
+                {
+                  if($count_profile == 100)
+                  {
+                    if($freepostdata[0]['progressbar']==0)
+                    {
+          ?>
+
+          <div class="mob-progressbar" >
+               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               <p class="mob-edit-pro">
+                 
+                  <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
+                  
+                 
+               </p>
+               <div class="progress skill-bar ">
+                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
+                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
+                  </div>
+               </div>
+            </div>
+            <?php
+          }
+        }else{
+
+            ?>
+            <div class="mob-progressbar" >
+               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               <p class="mob-edit-pro">
+                  
+                    
+                  <a href="<?php echo base_url('freelancer-work/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                  
+                    
+               </p>
+               <div class="progress skill-bar ">
+                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
+                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
+                  </div>
+               </div>
+            </div>
+
+            <?php
+          }}
+          ?>
                         <div class="common-form">
                             <div class="job-saved-box">
                                 <h3><?php echo $this->lang->line("saved_projects"); ?></h3>
@@ -176,7 +222,62 @@
                             </div>
                         </div>
                     </div>
+                    <?php 
+               if(!($returnpage))
+                       {
+                           if($count_profile == 100)
+                           {
+                            if($freepostdata[0]['progressbar']==0)
+                            {
+                             
+               ?>
+            <div class="edit_profile_progress edit_pr_bar complete_profile">
+               <div class="progre_bar_text">
+                  <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               </div>
+               <div class="count_main_progress">
+                  <div class="circles">
+                     <div class="second circle-1 ">
+                        <div class="true_progtree">
+                           <img src="<?php echo base_url("img/true.png"); ?>">
+                        </div>
+                        <div class="tr_text">
+                           Successfully Completed
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <?php
+               }
+                  }
+               else
+               {
+                   ?>
+            <div class="edit_profile_progress edit_pr_bar">
+               <div class="progre_bar_text">
+                  <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               </div>
+               <div class="count_main_progress">
+                  <div class="circles">
+                     <div class="second circle-1">
+                        <div>
+                           <strong></strong>
+                           <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <?php
+               }
+               ?>
+            <?php
+               }
+               ?>
                 </div>
+                <div class="clearfix"></div>
         </section>
         <?php echo $login_footer ?>
         <?php echo $footer; ?>
@@ -227,14 +328,19 @@
         </div>
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>">
+        <script  type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var no_saved = '<?php echo $this->lang->line("no_saved_freelancer"); ?>';
+            var count_profile_value = '<?php echo $count_profile_value; ?>';
+            var count_profile = '<?php echo $count_profile; ?>';
         </script>
+
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_save_post.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
+        <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/progressbar.js?ver=' . time()); ?>"></script>
         <script>
             //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)

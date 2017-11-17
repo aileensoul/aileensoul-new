@@ -98,18 +98,13 @@
                        <input  type="file" name="bestofmine" id="bestofmine" style="display:block;display:none;"/>
 
  <label for="bestofmine" class="optional-custom"  tabindex="1" ><i class="fa fa-plus action-buttons btn-group"  aria-hidden="true" style=" margin: 8px; cursor:pointer ; color: #fff; float: initial;"> </i> Attachment<span class="optional">(optional)</span></label> <span id="datav" class="attach-file-name"></span>   <div class="fw" id="loader" style="text-align:center; display: none;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /> 
-               </div>
- 
-<!--  <span id ="filename" style="color: #8c8c8c; font-size: 17px; padding-left: 10px;visibility:show;"><?php echo $userdata[0]['art_bestofmine']; ?></span><span class="file_name"></span>
-  -->
+  </div> 
  <div class="bestofmine_image" style="color:#f00; display: block;"></div>
            
                         <?php if($userdata[0]['art_bestofmine']){?>
                               <div style="visibility:show;" id ="pdffile">
 
                                  <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $userdata[0]['art_bestofmine']) ?>">
-
-                             <!--  <a href="<?php //echo base_url('artist/creat_pdf1/'.$userdata[0]['art_id']) ?>"> -->
 
                               <i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
 

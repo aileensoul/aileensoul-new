@@ -144,8 +144,6 @@ class Business_profile_registration extends MY_Controller {
         if ($request->countryId != '') {
             $stateList = $this->User_model->getStateByCountryId($request->countryId);
             echo json_encode($stateList);
-        } else {
-            echo json_encode(array('status' => 'failure'));
         }
     }
 
@@ -206,10 +204,10 @@ class Business_profile_registration extends MY_Controller {
         if (empty($_POST['companyname']))
             $errors['companyname'] = 'Companyname is required.';
 
-        if (empty($_POST['country_id']['country_id']))
+        if (empty($_POST['country_id']))
             $errors['country'] = 'Country is required.';
 
-        if (empty($_POST['state_id']['state_id']))
+        if (empty($_POST['state_id']))
             $errors['state'] = 'State is required.';
 
         if (empty($_POST['business_address']))
@@ -218,24 +216,40 @@ class Business_profile_registration extends MY_Controller {
         if (!empty($errors)) {
             $data['errors'] = $errors;
         } else {
-            $data['company_name'] = $_POST['companyname'];
-            $data['country'] = $_POST['country_id']['country_id'];
-            $data['state'] = $_POST['state_id']['state_id'];
-            $data['city'] = $_POST['city_id']['city_id'];
-            $data['pincode'] = $_POST['pincode'];
-            $data['address'] = $_POST['business_address'];
-            $data['user_id'] = $userid;
-            $data['business_slug'] = $this->setcategory_slug($data['company_name'], 'business_slug', 'business_profile');
-            $data['created_date'] = date('Y-m-d H:i:s', time());
-            $data['status'] = 1;
-            $data['is_deleted'] = 0;
-            $data['business_step'] = 1;
+            if ($_POST['busreg_step'] == '0' || $_POST['busreg_step'] == '') {
+                $data['company_name'] = $_POST['companyname'];
+                $data['country'] = $_POST['country_id'];
+                $data['state'] = $_POST['state_id'];
+                $data['city'] = $_POST['city_id'];
+                $data['pincode'] = $_POST['pincode'];
+                $data['address'] = $_POST['business_address'];
+                $data['user_id'] = $userid;
+                $data['business_slug'] = $this->setcategory_slug($data['company_name'], 'business_slug', 'business_profile');
+                $data['created_date'] = date('Y-m-d H:i:s', time());
+                $data['status'] = 1;
+                $data['is_deleted'] = 0;
+                $data['business_step'] = 1;
 
-            $insert_id = $this->common->insert_data_getid($data, 'business_profile');
-            if ($insert_id) {
-                $data['is_success'] = 1;
+                $insert_id = $this->common->insert_data_getid($data, 'business_profile');
+                if ($insert_id) {
+                    $data['is_success'] = 1;
+                } else {
+                    $data['is_success'] = 0;
+                }
             } else {
-                $data['is_success'] = 0;
+                $data['company_name'] = $_POST['companyname'];
+                $data['country'] = $_POST['country_id'];
+                $data['state'] = $_POST['state_id'];
+                $data['city'] = $_POST['city_id'];
+                $data['pincode'] = $_POST['pincode'];
+                $data['address'] = $_POST['business_address'];
+                $data['modified_date'] = date('Y-m-d H:i:s', time());
+                $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+                if ($updatdata) {
+                    $data['is_success'] = 1;
+                } else {
+                    $data['is_success'] = 0;
+                }
             }
         }
 // response back.
@@ -279,7 +293,6 @@ class Business_profile_registration extends MY_Controller {
         $errors = array();
         $data = array();
         $_POST = json_decode(file_get_contents('php://input'), true);
-
         if (empty($_POST['contactname'])) {
             $errors['contactname'] = 'Person name is required.';
         }
@@ -303,14 +316,14 @@ class Business_profile_registration extends MY_Controller {
         if (!empty($errors)) {
             $data['errors'] = $errors;
         } else {
-            $data = array(
-                'contact_person' => $_POST['contactname'],
-                'contact_mobile' => $_POST['contactmobile'],
-                'contact_email' => $_POST['email'],
-                'contact_website' => $_POST['contactwebsite'],
-                'modified_date' => date('Y-m-d H:i:s', time()),
-                'business_step' => 2
-            );
+            $data['contact_person'] = $_POST['contactname'];
+            $data['contact_mobile'] = $_POST['contactmobile'];
+            $data['contact_email'] = $_POST['email'];
+            $data['contact_website'] = $_POST['contactwebsite'];
+            $data['modified_date'] = date('Y-m-d H:i:s', time());
+            if ($_POST['busreg_step'] == '1') {
+                $data['business_step'] = 2;
+            }
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
             if ($updatdata) {
                 $data['is_success'] = 1;
@@ -343,13 +356,12 @@ class Business_profile_registration extends MY_Controller {
 
         // GET INDUSTRIAL TYPE DATA
         $contition_array = array('status' => 1);
-        $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $industriyaldata = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         // GEY BUSINESS TYPE DATA
-        $this->data['businesstypedata'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $businesstypedata = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-        echo json_encode($userdata);
+        echo json_encode(array('userdata' => $userdata, 'business_type' => $businesstypedata, 'industriyaldata' => $industriyaldata));
     }
 
     public function ng_description_insert() {
@@ -398,8 +410,9 @@ class Business_profile_registration extends MY_Controller {
             }
             $data['details'] = $_POST['business_details'];
             $data['modified_date'] = date('Y-m-d H:i:s', time());
-            $data['business_step'] = 3;
-
+            if ($_POST['busreg_step'] == '2') {
+                $data['business_step'] = 3;
+            }
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
             if ($updatdata) {
                 $data['is_success'] = 1;
@@ -418,6 +431,55 @@ class Business_profile_registration extends MY_Controller {
 
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/ng_image', $this->data);
+    }
+
+    public function getImage() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->business_profile_active_check();
+        // GET BUSINESS PROFILE DATA
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0');
+        $busimage = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $return_html = '';
+        if (count($busimage) > 0) {
+            $y = 0;
+            foreach ($busimage as $image) {
+                $y = $y + 1;
+
+                $return_html .= '<div class="job_work_edit_' . $image['bus_image_id'] . '" id="image_main">
+                    <div class="img_bui_data"> 
+                        <div class="edit_bui_img">
+                            <img id="imageold" src="' . BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name'] . '" >
+                        </div>
+                        <div style="float: left;">
+                            <div class="hs-submit full-width fl">
+                                <a href="javascript:void(0);" class="click_close_icon" onclick="delete_bus_image(' . $image['bus_image_id'] . ');">
+                                    <div class="bui_close">
+                                        <label for="bui_img_delete"><i class="fa fa-times" aria-hidden="true"></i></label>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+            }
+        }
+        //echo $return_html;
+        echo json_encode(array('business_step' => $userdata[0]['business_step'], 'busImageDetail' => $return_html));
+    }
+
+    public function bus_img_delete() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $image_id = $_POST['image_id'];
+        $data = array(
+            'is_delete' => 1
+        );
+        $updatdata = $this->common->update_data($data, 'bus_image', 'bus_image_id', $image_id);
+        if ($updatdata) {
+            echo 'ok';
+        }
     }
 
     public function ng_image_insert() {

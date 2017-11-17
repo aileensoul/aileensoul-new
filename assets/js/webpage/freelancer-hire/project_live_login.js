@@ -238,7 +238,7 @@ $(document).ready(function () {
         var selyear = $("#selyear").val();
         var selgen = $("#selgen").val();
         var postid = $(".post_id_login").val();
-//alert(postid);
+
         var post_data = {
             'first_name': first_name,
             'last_name': last_name,
@@ -318,11 +318,12 @@ $(document).ready(function () {
                 var userid = response.userid;
                 if (response.okmsg == "ok") { 
                     if (postid == '') { 
+                       
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                         window.location = base_url + "freelancer-work/profile/live-post";
                         sendmail(userid);
                     } else {
-                      
+                    
                         $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
                     //  alert(base_url + 'job/profile/live-post?postid=' + postid);
                         window.location = base_url + 'freelancer-work/profile/live-post/' + postid;

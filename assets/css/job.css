@@ -1477,6 +1477,16 @@ label.cameraButton input[accept*="camera"] {
     color: #1b8ab9;
     text-align: center;
 }
+.job_reg_main h4 {
+    border-bottom: 1px solid #d9d9d9;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 8px 0px;
+    font-size: 24px;
+    background: #fff;
+    color: #1b8ab9;
+    text-align: center;
+}
 .job_reg {
     margin: 15px 0px;
 }
@@ -2153,7 +2163,7 @@ label.cameraButton input[accept*="camera"] {
 
 .custom-message .message, .custom-message .message2 , .custom-message .message1 {padding:20px 30px;}
 .custom-message .modal-content h2{font-size:20px; line-height:30px;} 
-.custom-message .modal-content input{margin-bottom:15px;} 
+.custom-message .modal-content input{margin-bottom:15px;padding: 9px 15px;} 
 .custom-message .modal-content select{margin-bottom:15px;} 
 .custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;} 
 .custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
@@ -2230,6 +2240,7 @@ label.cameraButton input[accept*="camera"] {
 .all-job-box .all-job-right{text-align:center;}
 .all-job-box .all-job-right .job-name{font-size:20px; line-height:1;}
 .job_reg #submit{margin-left:0px;}
+.job_reg #submit:focus{color: #fff !important;}
 .modal.message-box span.mes{padding:0px}
 .gov-read-more{width:100%; float:left; padding:0 15px; text-align:right;}
 .gov-read-more span{border:1px solid #1b8ab9; color:#1b8ab9; padding: 7px 15px; border-radius: 4px;}
@@ -2238,8 +2249,34 @@ label.cameraButton input[accept*="camera"] {
 .gov-job-apply-btn a:hover{background:#1b8ab9; color:#fff;}
 .Add_edu {font-size: 14px;}
 }
-	
-	
+.work_exp .profile-job-profile-menu ul li{list-style-type: none;}
+.work_exp .profile-job-profile-menu ul li b::after {
+    content: " :"!important;
+    float: left;
+    position: absolute;
+    right: 0;
+    top: -1px;
+}
+.work_exp .profile-job-profile-menu ul li b{font-weight: normal;
+width: 36%;
+float: left;
+position: relative;
+padding-right: 7px;
+font-size: 19px;
+font-weight: 600;
+}
+.work_exp .profile-job-profile-menu ul li span{    word-wrap: break-word;
+    word-break: break-word;
+    float: left;
+    font-size: 17px;
+    padding-left: 10px;
+    width: 64%;
+}
+.work_exp .profile-job-profile-button{background: #fff;
+border: 1px solid #d9d9d9;
+padding: 10px 10px;
+margin-bottom: 15px;}
+}
 	
 /***  media query  ***/
 @media screen and (min-width: 768px) {
@@ -2326,6 +2363,8 @@ label.cameraButton input[accept*="camera"] {
 	.gov-all-post .fixed_right_display{display:block;}
 	.gov-all-post .right_middle_side_posrt{margin-left:630px;}
 	.all-job-cat li{width:50%;}
+    .work_exp .profile-job-profile-menu ul li b{font-size: 16px;width: 40%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 60%}
 }
 @media screen and (max-width: 1130px) {
     .custom-right {
@@ -2998,6 +3037,8 @@ label.cameraButton input[accept*="camera"] {
     .profile-job-details .job_companyname {
         width: 270px;
     }
+    .work_exp .profile-job-profile-menu ul li b{font-size: 16px;width: 44%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 56%}
 }
 @media screen and (max-width: 479px) {
     #InboxContainer::before {
@@ -3165,6 +3206,9 @@ label.cameraButton input[accept*="camera"] {
 	.all-job-cat li{width:100%;}
 	.gov-job-field ul li{width:100%;}
 	.gov-job-field ul li.text-right{text-align:left;}
+
+    .work_exp .profile-job-profile-menu ul li b{font-size: 13px;width: 48%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 52%;font-size: 12px;}
 }
 @media screen and (max-width: 360px) {
     .art_no_post_text {
@@ -3260,6 +3304,8 @@ label.cameraButton input[accept*="camera"] {
 	.padding-360{padding-left:1px; padding-right:1px;}
 	.contact-frnd-post{padding:10px 8px 0;}
 	/*** end add  ***/
+     .work_exp .profile-job-profile-menu ul li b{font-size: 12px;width: 50%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 50%;font-size: 10px;}
 }
 
 @media screen and (max-width: 319px) {
@@ -3270,4 +3316,6 @@ label.cameraButton input[accept*="camera"] {
     .profile-job-details .post_title {
         font-size: 11px;
     }
+    .work_exp .profile-job-profile-menu ul li b{font-size: 10px;width: 55%;}
+    .work_exp .profile-job-profile-menu ul li span{width: 45%;font-size: 8px;}
 }

@@ -67,7 +67,7 @@
                             <div>
                                 <?php
                                 if ($this->session->flashdata('error')) {
-                                    echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+                                    echo '<div class="alert alert-success">' . $this->session->flashdata('error') . '</div>';
                                 }
                                 if ($this->session->flashdata('success')) {
                                     echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';

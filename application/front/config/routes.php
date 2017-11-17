@@ -198,8 +198,8 @@ $route['freelancer-work'] = "freelancer/freelancer_post";
 //$route['freelancer-work/home/live-post/(:any)'] = "freelancer/freelancer_apply_post/$1";
 
 //$route['freelancer-work/profile'] = "freelancer/freelancer_apply_reg";
-$route['freelancer-work/profile/live-post'] = "freelancer/freelancer_post_basic_information";
-$route['freelancer-work/profile/live-post/(:any)'] = "freelancer/freelancer_post_basic_information/$1";
+$route['freelancer-work/profile/live-post'] = "freelancer/registation";
+$route['freelancer-work/profile/live-post/(:any)'] = "freelancer/registation/$1";
 
 
 
@@ -288,6 +288,8 @@ $route['job/recruiter-profile/(:any)'] = "job/rec_profile/$1";
 
 
 //RECRUITER ROUTES SETTINGS
+
+$route['recruiter/registration'] = "recruiter/rec_reg";
 
 $route['recruiter/basic-information'] = "recruiter/rec_basic_information";
 $route['recruiter/company-information'] = "recruiter/company_info_form";
