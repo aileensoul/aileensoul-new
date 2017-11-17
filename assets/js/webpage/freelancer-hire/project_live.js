@@ -18,6 +18,7 @@ function save_post(abc)
 //CODE FOR SAVE POST END
 //CODE FOR APPLY POST START
 function applypopup(postid, userid) {
+   
     $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to apply this project?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
     $('#bidmodal').modal('show');
 }
@@ -29,11 +30,12 @@ function apply_post(abc, xyz) {
         url: base_url + "freelancer/apply_insert",
         data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
         success: function (data) {
+            
             $('.savedpost' + abc).hide();
-            $('.applypost' + abc).html(data);
-            $('.applypost' + abc).attr('disabled', 'disabled');
+            $('.applypost').html(data);
+            $('.applypost').attr('disabled', 'disabled');
             $('.applypost' + abc).attr('onclick', 'myFunction()');
-            $('.applypost' + abc).addClass('applied');
+            $('.applypost').addClass('applied');
         }
     });
 }

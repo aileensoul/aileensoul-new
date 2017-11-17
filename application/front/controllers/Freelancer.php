@@ -19,7 +19,9 @@ class Freelancer extends MY_Controller {
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
 
-    public function index() {  //echo "falguni"; die();
+    public function index() {  
+      //  echo $this->input->ip_address();die();
+    ////echo "falguni"; die();
         //  echo "<pre>"; print_r($this->data);die();
         $userid = $this->session->userdata('aileenuser');
         $this->load->view('freelancer/freelancer_main', $this->data);
@@ -2633,8 +2635,11 @@ class Freelancer extends MY_Controller {
         $id = $_POST['post_id'];
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
-
+     //  echo $notid;
+       
         $userid = $this->session->userdata('aileenuser');
+      //  echo $userid;die();
+        $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
         $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2643,6 +2648,7 @@ class Freelancer extends MY_Controller {
         $app_id = $userdata[0]['app_id'];
 
         if ($userdata) {
+           
             $contition_array = array('job_delete' => 1);
             $jobdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'app_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2675,7 +2681,7 @@ class Freelancer extends MY_Controller {
             }
             echo $applypost;
         } else {
-
+          
             $data = array(
                 'post_id' => $id,
                 'user_id' => $userid,
@@ -4827,12 +4833,13 @@ class Freelancer extends MY_Controller {
         $saveuser_id = $_POST['user_id'];
         $word = 'Shortlisted';
         $userid = $this->session->userdata('aileenuser');
-
+      //  echo $saveuser_id;die();
         //this condition for prevent dublicate entry of save
         $contition_array = array('from_id' => $userid, 'to_id' => $saveuser_id, 'save_type' => 2);
         $usershortlist = $this->common->select_data_by_condition('save', $contition_array, $data = 'save_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
         $save_id = $usershortlist[0]['save_id'];
-
+       // echo $save_id; die();
         if ($usershortlist) {
 
             $data = array(
@@ -4842,6 +4849,17 @@ class Freelancer extends MY_Controller {
             );
 
             $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+             $data = array(
+                'not_type' => 9,
+                'not_from_id' => $userid,
+                'not_to_id' => $saveuser_id,
+                'not_read' => 2,
+                'not_from' => 5,
+                'not_product_id' => $save_id,
+                "not_active" => 1,
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+            $insertnotification = $this->common->insert_data_getid($data, 'notification');
             if ($updatedata) {
                 $this->selectemail_user($saveuser_id, $post_id, $word);
                 $saveuser = 'shortlisted';
@@ -4857,6 +4875,23 @@ class Freelancer extends MY_Controller {
                 'created_date' => date('Y-m-d', time())
             );
             $insert_id = $this->common->insert_data($data, 'save');
+            
+        $contition_array = array('from_id' => $userid, 'to_id' => $saveuser_id, 'save_type' => 2);
+        $usersave = $this->common->select_data_by_condition('save', $contition_array, $data = 'save_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $save_id = $usersave[0]['save_id'];
+            
+             $data = array(
+                'not_type' => 9,
+                'not_from_id' => $userid,
+                'not_to_id' => $saveuser_id,
+                'not_read' => 2,
+                'not_from' => 5,
+                'not_product_id' => $save_id,
+                "not_active" => 1,
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+            $insertnotification = $this->common->insert_data_getid($data, 'notification');
+            
             if ($insert_id) {
                 $this->selectemail_user($saveuser_id, $post_id, $word);
                 $saveuser = 'shortlisted';
