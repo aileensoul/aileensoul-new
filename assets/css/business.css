@@ -1497,7 +1497,8 @@ label.cameraButton:active {
     text-overflow: ellipsis;
     font-size: 13px;
     font-weight: 600;
-    display: inline-block;
+    /*display: inline-block;*/
+    float: left;
     margin-left: 10px;
 }
 .comment-details {
@@ -4441,7 +4442,7 @@ div .comment {
 .onebyone-carosel .prev { left: -33.33%; }
 .post-design-name ul li .other_name{line-height: 1.3;}
 
-.post-design-mid .mejs__audio{width: 300px !important;}
+.post-design-mid .mejs__audio{width: 300px !important; height: 40px!important}
 .profile-job-post-location-name .user_lst ul li .bg_following {margin-left: 0px;}
 .profile-job-post-location-name .user_lst ul li #followdiv button{margin-left: 10px;}
 .profile-job-post-location-name .user_lst ul li .contact_user_list{margin-left: 0px;}
@@ -5196,7 +5197,7 @@ div .comment {
         right: 20px;
     }
     .custom-none {
-        display: none;
+        display: none !important;
     }
 	.custom-none.active{display:block;}
     .left-side-bar {

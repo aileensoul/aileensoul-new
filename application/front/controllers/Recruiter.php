@@ -2053,17 +2053,21 @@ class Recruiter extends MY_Controller {
                             $cityname = '';
                         }
 
-
-                        $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post Tit44le">';
-
+ $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+                       
+if ($cache_time) {
+                            $rec_post_name = $cache_time;
+                        } else {
+                            $rec_post_name = $post['post_name'];
+                        }
+                        $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' .
+                       $rec_post_name . '">';
+                         
+                          $rec_post .= $rec_post_name;
 
 //                             <a class="post_title" href="javascript:void(0)" title="Post Title">';
-                        $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
-                        if ($cache_time) {
-                            $rec_post .= '' . $cache_time . '';
-                        } else {
-                            $rec_post .= '' . $post['post_name'] . '';
-                        }
+                       
+                        
                         $rec_post .= '</a> </li><li>';
                         $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                         $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
@@ -2307,15 +2311,17 @@ class Recruiter extends MY_Controller {
 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/ri' . $post['user_id'] . '/po' . $post['post_id'] . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . base64_encode($post['user_id']) . '/' . base64_encode($post['post_id']) . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
-                        $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="Post Tit44le">';
-
-
-                        $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
-                        if ($cache_time) {
-                            $rec_post .= $cache_time;
+                       $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+                       
+if ($cache_time) {
+                            $rec_post_name = $cache_time;
                         } else {
-                            $rec_post .= $post['post_name'];
+                            $rec_post_name = $post['post_name'];
                         }
+                        $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' .
+                       $rec_post_name . '">';
+                         
+                          $rec_post .= $rec_post_name;
 
                         $rec_post .= '</a> 
                                                                     </li>
