@@ -809,5 +809,9 @@ class Business_profile_registration extends MY_Controller {
         $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
         //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
+    
+     public function reg_country() {
+       $this->load->view('business_profile/khytai_business',$this->data);
+    }
 
 }
