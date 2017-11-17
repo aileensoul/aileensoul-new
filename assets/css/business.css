@@ -5197,7 +5197,7 @@ div .comment {
         right: 20px;
     }
     .custom-none {
-        display: none !important;
+        display: none;
     }
 	.custom-none.active{display:block;}
     .left-side-bar {
