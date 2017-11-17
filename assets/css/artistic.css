@@ -1496,7 +1496,8 @@ label.cameraButton:active {
     word-wrap: break-word;
     color: black;
     font-size: 13px;
-    margin-top: -10px;
+    /*margin-top: -10px;*/
+    margin-top: -5px;
 }
 .inputtype-edit-comment {
     position: relative;
@@ -1698,13 +1699,13 @@ label.cameraButton:active {
     border: 1px solid #d9d9d9;
 }
 .more-image {
-    right: 0px;
-    bottom: 1px;
+    right: 2px;
+    bottom: 2px;
     color: white;
     position: absolute;
     cursor: pointer;
-    width: 100%;
-    height: 100%;
+    width: 262px;
+    height: 198px;
     background: rgba(0, 0, 0, 0.5);
 }
 .more-image span {
