@@ -2413,6 +2413,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-job-post-location-name-rec .designation_rec {
         width: 71% !important;
     }
+    
 }
 @media screen and (max-width: 360px) {
     #paddingtop_fixed {
@@ -2499,7 +2500,7 @@ label.cameraButton input[accept*="camera"] {
 	.mob-add{margin-bottom:0; border:none;}
 	.padding-360{padding-left:1px; padding-right:1px;}
 	.contact-frnd-post{padding:10px 8px 0;}
-	/*** end add  ***/
+   	/*** end add  ***/
 }
 @media screen and (max-width: 319px) {
     .profile-job-details .post_title {

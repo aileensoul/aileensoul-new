@@ -62,7 +62,7 @@
         });
         $("body").click(function (event) {
             $("#addcontactContainer").hide();
-            event.stopPropagation();
+//            event.stopPropagation();
         });
     });
 </script>
@@ -173,9 +173,9 @@
                                             </div>
                                         </div>
                                     </li>  
-                                   <li id="Inbox_link">
+                                    <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
+                                                                        <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -189,7 +189,7 @@
 
                                                     <div>
                                                         <ul class="notification_data_in_h2">
-<div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                                            <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                                         </ul></div>
 
                                                 </div>
@@ -274,7 +274,7 @@
                                     </li>   
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
+                                                                       <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -288,7 +288,7 @@
 
                                                     <div>
                                                         <ul class="notification_data_in_h2">
-<div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                                                            <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                                         </ul></div>
 
                                                 </div>
@@ -304,8 +304,9 @@
                                                 <a href="<?php echo base_url('business-profile/details/' . $businessdata[0]['business_slug']); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
-                                                <!--<a href="<?php //echo base_url('business-profile/business-information-edit'); ?>">-->
-                                                <a href="<?php echo base_url('business-profile/signup/edit/business-information'); ?>">
+                                                <!--<a href="<?php //echo base_url('business-profile/business-information-edit');  ?>">-->
+                                                <!--<a href="<?php echo base_url('business-profile/signup/edit/business-information'); ?>">-->
+                                                <a href="<?php echo base_url('business-profile/business-information'); ?>">
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
                                                 <?php
@@ -453,7 +454,8 @@
             error: function (XMLHttpRequest, textStatus, errorThrown) {
             }
         });
-    };
+    }
+    ;
     $(document).ready(function () {
         waitForMsg1();
     });
@@ -476,7 +478,8 @@
             var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
             if (segment != "chat") {
                 chatmsg();
-            };
+            }
+            ;
         }
         $('#Inbox_link').on('click', function () {
             chatmsg();
@@ -548,22 +551,4 @@
         document.getElementById('searchplace1').value = null;
 
     });
-</script>
-<script type="text/javascript">
-  /*  $(document).ready(function () {
-        var images = new Array()
-        function preload(image) {
-
-            for (i = 0; i < preload.arguments.length; i++) {
-                images[i] = new Image()
-                images[i].src = preload.arguments[i]
-            }
-        }
-        preload(
-                '<?php echo base_url(); ?>img/icon_contact_request.png',
-                '<?php echo base_url(); ?>img/h3.png',
-                '<?php echo base_url(); ?>img/index.png',
-                '<?php echo base_url(); ?>img/edit_profile.png',
-                )
-    }); */
 </script>

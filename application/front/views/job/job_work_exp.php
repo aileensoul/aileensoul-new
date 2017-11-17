@@ -154,7 +154,7 @@
                                                 <div id="input<?php echo $y; ?>" style="margin-bottom:4px;position: relative;" class="clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
                                                    <div class="job_work_experience_main_div">
                                                       <label>Experience:<span class="red">*</span></label>
-                                                      <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change_edittime();">
+                                                      <select style="width: 47%; margin-right: 4%; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change_edittime();">
                                                          <option value="" selected option disabled>Year</option>
                                                          <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 year</option>
                                                          <option value="1 year"  <?php if ($experience_year1 == "1 year") echo 'selected'; ?>>1 year</option>
@@ -299,7 +299,7 @@
                                                 <!--clone div start-->              
                                                 <div id="input1" style="margin-bottom:4px;position: relative;" class="clonedInput">
                                                    <label>Experience:<span class="red">*</span></label>
-                                                   <select style="width:45%; float: left; margin-right: 43px;" name="experience_year[]" id="experience_year" class="experience_year keyskil" onchange="expyear_change();">
+                                                   <select style="width:45%; float: left; margin-right: 4%;" name="experience_year[]" id="experience_year" class="experience_year keyskil" onchange="expyear_change();">
                                                       <option value="" selected option disabled>Year</option>
                                                       <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 year</option>
                                                       <option value="1 year"  <?php if ($experience_year1 == "1 year") echo 'selected'; ?>>1 year</option>

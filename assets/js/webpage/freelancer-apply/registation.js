@@ -155,7 +155,7 @@ $(document).ready(function () {
             email: {
                 required: "Email id is required.",
                 email: "Please enter valid email id.",
-               // remote: "Email already exists."
+                remote: "Email already exists."
             },
             country: {
                 required: "Country is required.",
