@@ -3594,7 +3594,7 @@ public function followtwo() {
 
       foreach ($followingdata as $followkey) {
           $contition_array = array('art_id' => $followkey['follow_to'], 'status' => '1');
-          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
            if ($artaval) {
 
              $userlist1[] = $artaval;
@@ -3621,7 +3621,7 @@ public function followtwo() {
 
       foreach ($followingdata as $followkey) {
           $contition_array = array('art_id' => $followkey['follow_to'], 'status' => '1');
-          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
            if ($artaval) {
 
              $userlist1[] = $artaval;
@@ -3641,8 +3641,9 @@ public function followtwo() {
             $contition_array = array('art_id' => $user['follow_to'], 'status' => '1');
               $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image,art_name,art_lastname,designation,slug,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-              $geturl = $this->get_url($artaval[0]['user_id']);
+              //echo "<pre>"; print_r($artaval[0]['user_id']); die();
 
+              $geturl = $this->get_url($artaval[0]['user_id']);
                 if($artaval){
                 $return_html .= '
     <div class = "profile-job-post-detail clearfix" id = "removefollow' . $user['follow_to'] . '">
@@ -3688,7 +3689,7 @@ public function followtwo() {
                                     <li class="folle_text">
                                         <div class="">
                                             <div class="follow-li-text" style="padding: 0;">
-                                                <a title="' .ucfirst(strtolower($artaval[0]['art_name'])) .'&nbsp;'.ucfirst(strtolower($artaval[0]['art_lastname'])). '" href="' . base_url('artist/dashboard/' . $artaval[0]['slug']) . '">' . ucfirst(strtolower($artaval[0]['art_name'])) .'&nbsp;'. ucfirst(strtolower($artaval[0]['art_lastname'])) . '</a></div>
+                                                <a title="' .ucfirst(strtolower($artaval[0]['art_name'])) .'&nbsp;'.ucfirst(strtolower($artaval[0]['art_lastname'])). '" href="' . base_url('artist/dashboard/' . $geturl) . '">' . ucfirst(strtolower($artaval[0]['art_name'])) .'&nbsp;'. ucfirst(strtolower($artaval[0]['art_lastname'])) . '</a></div>
                                             <div>';
 
                 $return_html .= '<a>';
@@ -16181,10 +16182,11 @@ public function get_artistic_name($id=''){
         echo $return;
     }
 
-public function get_url($userid){
+public function get_url($userid){ 
 
               $contition_array = array('user_id' => $userid, 'status' => 1);
               $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+              
 
                $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
 
@@ -16215,6 +16217,8 @@ public function get_url($userid){
                                   $city_get =  $this->common->clean($city_url); 
 
                  $url = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
+
+                // echo "<pre>"; print_r($url); die();
                  return $url;                           
   }
 
