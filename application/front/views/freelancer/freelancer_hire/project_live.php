@@ -291,10 +291,10 @@
 
 
                                                                     <!--  <?php if ($post['post_other_skill']) { ?>
-                                                                                                                                     <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
-                                                                                                                                     </li>
+                                                                                                                                         <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
+                                                                                                                                         </li>
                                                                     <?php } else { ?>
-                                                                                                                                     <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
+                                                                                                                                         <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
 
                                                                     <li><b>Post Description</b><span><pre>
                                                                                 <?php
@@ -367,9 +367,18 @@
                                                                                 echo PROFILENA;
                                                                             }
                                                                             ?>                                                          </li>-->
-
-                                                                            <a href="javascript:void(0);" onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $this->session->userdata('aileenuser'); ?>)" class= "applypost  button"> Apply</a>
-
+                                                                            <?php
+                                                                            $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
+                                                                            if ($postuser[0]['user_id'] != $this->session->userdata('aileenuser')) {
+                                                                                $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $this->session->userdata('aileenuser'));
+                                                                                $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                                if ($freelancerapply1) {
+                                                                                    ?>
+                                                                                    <a href="javascript:void(0);" class="button applied">Applied</a>
+                                                                                <?php } else { ?>
+                                                                                    <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
+        <?php }
+    } ?>
                                                                             </div>
 
                                                                             </div>
@@ -385,14 +394,14 @@
                                                                         </div>
                                                                         <!-- sortlisted employe -->
                                                                         <div class="sort-emp-mainbox">
-                                                                            <?php if ($shortlist) {
-                                                                                ?>
+<?php if ($shortlist) {
+    ?>
                                                                                 <h3>
                                                                                     Shortlisted Freelancer
                                                                                 </h3>
 
                                                                                 <div class="sort-emp">
-                                                                                    <?php foreach ($shortlist as $user) { ?>
+                                                                                            <?php foreach ($shortlist as $user) { ?>
                                                                                         <div class="sort-emp-box">
                                                                                             <div class="sort-emp-img">
                                                                                                 <?php
@@ -405,7 +414,7 @@
                                                                                                         if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
                                                                                                             ?>
                                                                                                             <div class="post-img-user">
-                                                                                                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                                                             </div>
                                                                                                         <?php } ?>
                                                                                                         <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
@@ -417,9 +426,9 @@
                                                                                                         if ($info) {
                                                                                                             ?>
                                                                                                             <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freelancr_user_data[0]['freelancer_post_user_image']; ?>" alt="" >
-                                                                                                        <?php } else { ?>
+                                                                                                            <?php } else { ?>
                                                                                                             <div class="post-img-user">
-                                                                                                                <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                                                             </div>
                                                                                                             <?php
                                                                                                         }
@@ -427,10 +436,10 @@
                                                                                                 } else {
                                                                                                     ?>
                                                                                                     <div class="post-img-user">
-                                                                                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                                                     </div>
-                                                                                                <?php } ?>
-                                                                                            <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
+        <?php } ?>
+                                                                                        <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                                                             </div>
                                                                                             <div class="sort-emp-detail">
                                                                                                 <h4><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></h4>
@@ -444,14 +453,14 @@
                                                                                             </div>
                                                                                             <div class="sort-emp-msg">
                                                                                                 <a class="btn1" href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">
-                                                                                                     Message
-                                                                                                    </a>
-<!--                                                                                                <a href="#" class="btn1">Message</a>-->
+                                                                                                    Message
+                                                                                                </a>
+                                                                                                <!--                                                                                                <a href="#" class="btn1">Message</a>-->
                                                                                             </div>
                                                                                         </div>
-                                                                                    <?php } ?>
+                                                                                <?php } ?>
                                                                                 </div>
-                                                                            <?php } ?>
+<?php } ?>
                                                                         </div>
                                                                         <!-- end sortlisted employe -->
                                                                         </div>
@@ -547,7 +556,7 @@
                                                                         </div>
                                                                         <!-- Model Popup Close -->
                                                                         <!-- START FOOTER -->
-                                                                        <?php echo $footer; ?>
+<?php echo $footer; ?>
                                                                         </body>
 
                                                                         <!-- END FOOTER -->
@@ -567,7 +576,7 @@
                                                                         } else {
                                                                             ?>
                                                                             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-                                                                        <?php } ?>
+<?php } ?>
 
                                                                         <script>
                                                                                     var base_url = '<?php echo base_url(); ?>';

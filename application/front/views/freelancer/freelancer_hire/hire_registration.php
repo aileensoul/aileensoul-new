@@ -33,7 +33,7 @@
                                     <?php echo form_open(base_url('freelancer/hire_registation_insert'), array('id' => 'freelancerhire_regform', 'name' => 'freelancerhire_regform', 'class' => 'clearfix')); ?>
                                     <fieldset>
                                         <label >First Name <font  color="red">*</font> :</label>                          
-                                        <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo $art[0]['first_name']; ?>" maxlength="35">
+                                        <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" value="<?php echo  $userdata[0]['first_name']; ?>" maxlength="35">
                                         <?php
                                         echo form_error('firstname');
                                         ;
@@ -41,7 +41,7 @@
                                     </fieldset>
                                     <fieldset>
                                         <label >Last Name <font  color="red">*</font>:</label>
-                                        <input type="text" name="lastname" id="lastname" tabindex="2" placeholder="Enter last name" style="text-transform: capitalize;" onfocus="this.value = this.value;" value="" maxlength="35">
+                                        <input type="text" name="lastname" id="lastname" tabindex="2" placeholder="Enter last name" style="text-transform: capitalize;" onfocus="this.value = this.value;" value="<?php echo $userdata[0]['last_name']; ?>" maxlength="35">
                                         <?php
                                         echo form_error('lastname');
                                         ;
@@ -49,7 +49,7 @@
                                     </fieldset>
                                     <fieldset>
                                         <label >Email Address <font  color="red">*</font> :</label>
-                                        <input type="email" name="email" id="email" tabindex="3" placeholder="Enter email address" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
+                                        <input type="email" name="email" id="email" tabindex="3" placeholder="Enter email address" value="<?php  echo $userdata[0]['user_email']; ?>" maxlength="255">
                                         <?php
                                         echo form_error('email');
                                         ;

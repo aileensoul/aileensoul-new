@@ -109,7 +109,7 @@
     jQuery(document).ready(function ($) {
         if (screen.width <= 767) {
             $("ul.left-form-each").on("click", ".init", function () {
-                $(this).closest("ul").children('li:not(.init)').toggle();
+                console.log($(this).closest("ul").children('li:not(.init)').toggle());
             });
             var allOptions = $("ul.left-form-each").children('li:not(.init)');
             $("ul.left-form-each").on("click", "li:not(.init)", function () {
