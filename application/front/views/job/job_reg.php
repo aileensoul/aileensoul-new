@@ -68,8 +68,8 @@
                         </fieldset>
                         <fieldset class="full-width">
                             <div id="exp_data" style="display:none;">
-                               <label>Experience:<span class="red">*</span></label>
-                                                      <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change();">
+                               <label>Experience<span class="red">*</span>:</label>
+                                                      <select style="width: 45%; margin-right: 4%; float: left;" tabindex="1" autofocus name="experience_year" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change();">
                                                          <option value="" selected option disabled>Year</option>
                                                          <option value="0 year">0 year</option>
                                                          <option value="1 year">1 year</option>
@@ -93,7 +93,7 @@
                                                          <option value="19 year">19 year</option>
                                                          <option value="20 year">20 year</option>
                                                       </select>
-                                                      <?php echo form_error('experience_year'); ?>
+                                                    <!--   <?php// echo form_error('experience_year'); ?> -->
                                                       <select style="width: 45%;" name="experience_month" tabindex="2"   id="experience_month" class="experience_month keyskil" onclick="expmonth_click();">
                                                          <option value="" selected option disabled>Month</option>
                                                          <option value="0 month">0 month</option>
