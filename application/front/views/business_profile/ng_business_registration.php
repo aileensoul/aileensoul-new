@@ -79,19 +79,19 @@
                                     <div class="col-md-3 col-sm-4">
                                         <ul class="left-form-each">
                                             <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
-                                            <li id="left-form-each-li-1"><a href="#business_information" ng-click="getCountry(); getBusinessInformation(); tab_active(1)" data-toggle="tab">Business Information</a></li>
+                                            <li id="left-form-each-li-1"><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li id="left-form-each-li-2"><a href="#contact_information" ng-click="getContactInformation(); tab_active(2);" data-toggle="tab">Contact Information</a></li>
+                                                <li id="left-form-each-li-2"><a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab">Contact Information</a></li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-2"><a href="javascript:void(0);">Contact Information</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li id="left-form-each-li-3"><a href="#description" ng-click="getDescription(); tab_active(3)" data-toggle="tab">Description</a></li>
+                                                <li id="left-form-each-li-3"><a href="#description" ng-click="tab_active(3)" data-toggle="tab">Description</a></li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-3"><a href="javascript:void(0);">Description</a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                                <li id="left-form-each-li-4"><a href="#business_image" ng-click="getImage(); tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                                <li id="left-form-each-li-4"><a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">Business Images</a></li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-4"><a href="javascript:void(0);">Business Images</a></li>
                                             <?php } ?> 
@@ -114,15 +114,15 @@
                                                             <fieldset>
                                                                 <label>Country:<span style="color:red">*</span></label>
                                                                 <select name="country" ng-model="user.country_id" ng-change="onCountryChange()" id="country" tabindex="2">
-                                                                    <option value="0" selected="selected">Country</option>
+                                                                    <option value="" selected="selected">Country</option>
                                                                     <option ng-repeat='countryItem in countryList' value='{{countryItem.country_id}}'>{{countryItem.country_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorCountry" class="error">{{errorCountry}}</span>
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>State:<span style="color:red">*</span></label>
-                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3">
-                                                                    <option value="0">Select country first</option>
+                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3" ng-init="user.state_id=stateList[1]">
+                                                                    <option value="">Select country first</option>
                                                                     <option ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}' ng-selected="user.state_id == stateItem.state_id">{{stateItem.state_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorState" class="error">{{errorState}}</span>
@@ -130,7 +130,7 @@
                                                             <fieldset>
                                                                 <label> City<span class="optional">(optional)</span>:</label>
                                                                 <select name="city" ng-model="user.city_id" id="city" tabindex="4">
-                                                                    <option value="0">Select State First</option>
+                                                                    <option value="">Select State First</option>
                                                                     <option ng-repeat='cityItem in cityList' value='{{cityItem.city_id}}'>{{cityItem.city_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorCity" class="error">{{errorCity}}</span>
@@ -305,12 +305,16 @@
                             var url;
                             if (data == 1) {
                                 history.pushState('Business information', 'Business information', 'business-information');
+                                activeBusinessInformation();
                             } else if (data == 2) {
                                 history.pushState('Contact information', 'Contact information', 'contact-information');
+                                activeContactInformation();
                             } else if (data == 3) {
                                 history.pushState('Description', 'Description', 'description');
+                                activeDescription();
                             } else if (data == 4) {
                                 history.pushState('Business image', 'Business image', 'image');
+                                activeImage();
                             }
                             if (typeof (history.pushState) != "undefined") {
                                 var obj = {Title: title, Url: url};
@@ -321,30 +325,38 @@
                             }
                         }
                         function activeBusinessInformation() {
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-1').addClass('active');
+                            $('ul.left-form-each li').removeClass('active init');
+                            $('ul.left-form-each li').addClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-1').removeClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-1').addClass('active init');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(1)').addClass('active');
                             getCountry();
                             getBusinessInformation();
                         }
                         function activeContactInformation() {
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-2').addClass('active');
+                            $('ul.left-form-each li').removeClass('active init');
+                            $('ul.left-form-each li').addClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-2').removeClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-2').addClass('active init');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                             getContactInformation();
                         }
                         function activeDescription() {
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-3').addClass('active');
+                            $('ul.left-form-each li').removeClass('active init');
+                            $('ul.left-form-each li').addClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-3').removeClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-3').addClass('active init');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                             getDescription();
                         }
                         function activeImage() {
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-4').addClass('active');
+                            $('ul.left-form-each li').removeClass('active init');
+                            $('ul.left-form-each li').addClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-4').removeClass('custom-none');
+                            $('ul.left-form-each li#left-form-each-li-4').addClass('active init');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                             getImage();
@@ -373,6 +385,8 @@
                         $scope.getCountry = function () {
                             getCountry();
                         };
+
+
                         function onCountryChange(country_id = '') {
                             $http({
                                 method: 'POST',
@@ -568,13 +582,8 @@
                                                 $scope.errorPostalAddress = data.errors.business_address;
                                             } else {
                                                 if (data.is_success == '1') {
-                                                    //window.location.href = base_url + 'business-profile/signup/contact-information';
-                                                    $('ul.left-form-each li').removeClass('active');
-                                                    $('ul.left-form-each li#left-form-each-li-2').addClass('active');
-                                                    $('.tab-content .tab-pane').removeClass('active');
-                                                    $('.tab-content .tab-pane:nth-child(2)').addClass('active');
+                                                    activeContactInformation();
                                                     $scope.tab_active(2);
-                                                    getContactInformation();
                                                     $("li#left-form-each-li-2 a").attr({
                                                         href: "#contact_information",
                                                         'data-toggle': "tab",
@@ -639,13 +648,8 @@
                                                 $scope.errorContactWebsite = data.errors.contactwebsite;
                                             } else {
                                                 if (data.is_success == '1') {
-                                                    //window.location.href = base_url + 'business-profile/signup/description';
-                                                    $('ul.left-form-each li').removeClass('active');
-                                                    $('ul.left-form-each li#left-form-each-li-3').addClass('active');
-                                                    $('.tab-content .tab-pane').removeClass('active');
-                                                    $('.tab-content .tab-pane:nth-child(3)').addClass('active');
+                                                    activeDescription();
                                                     $scope.tab_active(3);
-                                                    getDescription();
                                                     $("li#left-form-each-li-3 a").attr({
                                                         href: "#description",
                                                         'data-toggle': "tab",
@@ -706,13 +710,8 @@
                                                 $scope.errorBusinessDetails = data.errors.business_details;
                                             } else {
                                                 if (data.is_success == '1') {
-                                                    //window.location.href = base_url + 'business-profile/signup/image';
-                                                    $('ul.left-form-each li').removeClass('active');
-                                                    $('ul.left-form-each li#left-form-each-li-4').addClass('active');
-                                                    $('.tab-content .tab-pane').removeClass('active');
-                                                    $('.tab-content .tab-pane:nth-child(4)').addClass('active');
+                                                    activeImage();
                                                     $scope.tab_active(4);
-                                                    getImage();
                                                     $("li#left-form-each-li-4 a").attr({
                                                         href: "#business_image",
                                                         'data-toggle': "tab",
@@ -769,8 +768,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                                                                                                            <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                                                                                                            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
