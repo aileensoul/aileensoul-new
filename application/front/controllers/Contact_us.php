@@ -33,6 +33,7 @@ class Contact_us extends CI_Controller {
         $message = $_POST['contact_message'];
 
         $toemail = "dshah1341@gmail.com";
+        $touser =  $_POST['contact_email']; 
 
         $this->form_validation->set_rules('contact_name', 'contact name', 'required');
         $this->form_validation->set_rules('contactlast_name', 'contact name', 'required');
@@ -75,6 +76,23 @@ class Contact_us extends CI_Controller {
                      $email_html .= '</tr></table>';
 
                     $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $toemail);
+
+
+                    $email_user = '';
+                     $email_user .= '<table  width="100%" cellpadding="0" cellspacing="0" style="font-family:arial;font-size:13px;">
+                    <tr><td style="padding-left:20px;">Thank you for contact us<br><br></td></tr>';
+                     $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $email_user .= 'we appreciate your assistance in making the aileensoul better..';
+                      $email_user .= '</td></tr>';
+                     $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $email_user .= 'Thanks & regards,';
+                      $email_user .= '<br></td></tr>';
+                       $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $email_user .= 'Aileensoul team.';
+                      $email_user .= '</td></tr>';
+                     $email_user .= '</table>';
+
+                     $send_user = $this->email_model->send_email($subject = $subject, $templ = $email_user, $to_email = $touser);
 
             echo "ok";
         }
