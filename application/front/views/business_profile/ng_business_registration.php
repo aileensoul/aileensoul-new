@@ -63,14 +63,14 @@
                     <?php } ?>
                     <div class="common-form1">
                         <div class="col-md-3 col-sm-4"></div>
-                        <?php
+                        <?php /*
                         if ($busdata[0]['business_step'] == 4) {
                             ?>
                             <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_edit_title"); ?></h3></div>
                         <?php } else {
                             ?>
                             <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("bus_reg_title"); ?></h3></div>
-                        <?php } ?>
+                        <?php } */ ?>
                     </div>
                     <div class="container">
                         <div class="row">
