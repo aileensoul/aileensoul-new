@@ -5074,7 +5074,7 @@ class Freelancer extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . ' Selected you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
+        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " ". $writting_word . 'you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
 
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
         $email_html = '';
@@ -5092,7 +5092,7 @@ class Freelancer extends MY_Controller {
                           ' . ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)) . '</div> </td>';
         }
         $email_html .= '<td style="padding:5px;">
-						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . '</b> Selected you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
+						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " ". $writting_word.'</b>  you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
 						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
@@ -5100,7 +5100,7 @@ class Freelancer extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . ' Selected you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
+        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " ". $writting_word . ' you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
 
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
     }

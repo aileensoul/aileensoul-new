@@ -4465,7 +4465,7 @@ div .comment {
 .business-profile .edit-progress-box .progress-line-filled.step2{width:50%;}
 .business-profile .edit-progress-box .progress-line-filled.step3{width:75%;}
 .business-profile .edit-progress-box .progress-line-filled.step4{width:100%;}
-.filled-box{}
+.filled-box .edit-pro-box{background:#1b8ab9;}
 
 
 /***  end all edit profile form  ***/
@@ -5227,13 +5227,13 @@ div .comment {
         position: relative
     }
     .left-form-each {
-        background: #fff none repeat scroll 0 0;
+        /*background: #fff none repeat scroll 0 0;
         display: block;
         left: 0;
         position: absolute;
         top: -40px;
         width: 100%;
-        z-index: 999;
+        z-index: 999;*/
     }
     .profile-box {
         position: relative;
@@ -5343,6 +5343,10 @@ div .comment {
 	.ctre_date{line-height:1.5;}
     .posterror-modal-close {margin:-33px -33px 0px 0px;}
     .cameraButton .tooltiptext {top:-5px !important;}
+	/*** all edit profile box  ***/
+	.all-edit-profile-box{width:100%;}
+	
+	/*** end all edit profile box  ***/
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5996,6 +6000,10 @@ div .comment {
 	.art-all-comment{padding-left:10px;}
 	.tabs-left > li > a{font-size:12px; padding:5px;}
     .user_btn .contact_user_list{width: 100px;}
+	/*** all edit profile box  ***/
+	.all-edit-tab ul li a .edit-form-name{display:none;}
+	
+	/*** end all edit profile box  ***/
 
 }
 @media screen and (max-width: 430px) {

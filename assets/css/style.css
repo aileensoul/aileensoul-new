@@ -2204,7 +2204,7 @@ li.active2 .notification-data-inside h6 i{font-weight: normal;}
 	
 	/* cover page */
 	.por_content ul li .pro-text{width:85% !important;}
-	.common-form_border h3{display:none;}
+	.common-form_border h3{/*display:none;*/}
 	.modal.in .modal-dialog{width:100%; padding:0 15px;}
 	.padd_set .change-password{padding: 0;}
 	.padd_set{padding:35px 0;}
