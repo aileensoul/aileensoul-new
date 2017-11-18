@@ -4947,5 +4947,8 @@ if ($cache_time) {
             }
         }
     }
-
+  
+    public function abc(){
+        $this->load->view('test/index');
+    }
 }

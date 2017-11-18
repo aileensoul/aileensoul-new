@@ -80,14 +80,11 @@ class Contact_us extends CI_Controller {
 
                     $email_user = '';
                      $email_user .= '<table  width="100%" cellpadding="0" cellspacing="0" style="font-family:arial;font-size:13px;">
-                    <tr><td style="padding-left:20px;">Thank you for contact us<br><br> <p style="padding-left:0px;"> Your Message has been  received and will be reviewed by the aileensoul team.</p></td></tr>';
-                     $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
-                     $email_user .= 'we appreciate your assistance in making the aileensoul better..';
-                      $email_user .= '</td></tr>';
-                     $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                    <tr><td style="padding-left:20px;">Thank you for contacting us.<br><br> <p style="padding-left:0px;"> Your Message has been  received and will be reviewed by the aileensoul team. We appreciate your assistance in making aileensoul better.</p></td></tr>';
+                     $email_user .= '<tr><td style="padding-bottom: 5px;padding-left:20px;">';
                      $email_user .= 'Thanks & regards,';
                       $email_user .= '<br></td></tr>';
-                       $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                       $email_user .= '<tr><td style="padding-bottom: 5px;padding-left:20px;">';
                      $email_user .= 'Aileensoul team.';
                       $email_user .= '</td></tr>';
                      $email_user .= '</table>';

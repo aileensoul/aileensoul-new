@@ -2185,7 +2185,7 @@ label.cameraButton:active {
     height: 95px;
     float: left;
     width: 95px;
-    padding: 10px;
+    padding: 5px;
     margin: 1px;
 }
 .image_profile img {
@@ -4537,6 +4537,7 @@ div .comment {
 	.tablate-potrat-add{display:block;}
 	.tablate-potrat-add .fw.text-center{text-align:center;}
 	.left_side_posrt{position:absolute;}
+    .manage-post-custom  .mian_middle_post_box{margin-left: 10px;}
 	/***  end add  ***/
 	
 }
