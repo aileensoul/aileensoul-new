@@ -20,6 +20,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function index() {  
+      //  echo $date = date('Y-m-d'); die();
       //  echo $this->input->ip_address();die();
     ////echo "falguni"; die();
         //  echo "<pre>"; print_r($this->data);die();
