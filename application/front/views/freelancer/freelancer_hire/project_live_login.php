@@ -1020,7 +1020,7 @@
          <?php } ?>
          <!--recommen candidate end-->
       </div>  
-        </div>
+<!--        </div>-->
        
 					<div class="tablate-add">
 
