@@ -29,7 +29,7 @@ class Feedback extends CI_Controller {
         $subject = $_POST['feedback_subject'];
         $message = $_POST['feedback_message'];
         $toemail = "dshah1341@gmail.com";
-        
+        $touser =  $_POST['feedback_email'];       
 
         $data = array(
             'first_name' => $feedback_firstname,
@@ -43,6 +43,7 @@ class Feedback extends CI_Controller {
         $insert_id = $this->common->insert_data_getid($data, 'feedback');
         if ($insert_id) {
 
+            // email send to admin
                      $email_html = '';
                      $email_html .= '<table  width="100%" cellpadding="0" cellspacing="0" style="font-family:arial;font-size:13px;">
                     <tr><td style="padding-left:20px;">Hi admin!<br><br>
@@ -64,6 +65,26 @@ class Feedback extends CI_Controller {
 
                      $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $toemail);
 
+            // email send to user
+
+
+                     $email_user = '';
+                     $email_user .= '<table  width="100%" cellpadding="0" cellspacing="0" style="font-family:arial;font-size:13px;">
+                    <tr><td style="padding-left:20px;">Thank you.. Your Feedback is important for us..!!<br><br>
+                         <p style="padding-left:0px;"> Your Message has been  received and will be reviewed by the aileensoul team.</p><br></td></tr>';
+                     $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $email_user .= 'we appreciate your assistance in making the aileensoul better..';
+                      $email_user .= '</td></tr>';
+                     $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $email_user .= 'Thanks & regards,';
+                      $email_user .= '<br></td></tr>';
+                       $email_user .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
+                     $email_user .= 'Aileensoul team.';
+                      $email_user .= '</td></tr>';
+                     $email_user .= '</table>';
+
+                     $send_user = $this->email_model->send_email($subject = $subject, $templ = $email_user, $to_email = $touser);
+
             echo "ok";
         }
     }
@@ -76,23 +97,19 @@ class Feedback extends CI_Controller {
                     $templ = '';
 
                     $templ .= '<table  width="100%" cellpadding="0" cellspacing="0" style="font-family:arial;font-size:13px;">
-                    <tr><td style="padding-left:20px;">Hi admin!<br><br>
-                         <p style="padding-left:70px;"> You have recevied a new feedback  from user  while you were away..</p><br></td></tr>';
+                    <tr><td style="padding-left:20px;">Thank you.. Your Feedback is important for us..!!<br><br>
+                         <p style="padding-left:0px;"> Your Message has been  received and will be reviewed by the aileensoul team.</p><br></td></tr>';
                       $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
-                     $templ .= 'The user feedback detail follows:';
+                     $templ .= 'we appreciate your assistance in making the aileensoul better..';
                       $templ .= '</td></tr>';
                      $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
-                     $templ .= '<b>Name</b> :'. ' Falguni' .' '. ' Tank';
+                     $templ .= 'Thanks & regards,';
                       $templ .= '<br></td></tr>';
                        $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
-                     $templ .= '<b>Email-Address</b> : '. 'falguni.aileensoul@gmail.com';
+                     $templ .= 'Aileensoul team.';
                       $templ .= '</td></tr>';
-                       $templ .= '<tr><td style="padding-bottom: 3px;padding-left:20px;">';
-                     $templ .= '<b>Message</b> : '. ' testing feedback message';
-                      $templ .= '</td></tr>';
-
-                    $templ .= '</tr>
-                                    </table>';
+                    
+                    $templ .= '</table>';
 
 
                     $email_html .= '<!DOCTYPE html><html><head><title>Aileensoul Notification Mail</title>
