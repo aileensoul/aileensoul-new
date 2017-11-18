@@ -77,42 +77,36 @@
                             <div class="col-md-12">
                                 <div class="all-edit-profile-box business-profile">
                                     <div class="all-edit-tab">
-										<div class="edit-progress-box">
-											<div class="progress-line"></div>
-											<div class="progress-line-filled"></div>
-										</div>
+                                        <div class="edit-progress-box">
+                                            <div class="progress-line"></div>
+                                            <div class="progress-line-filled"></div>
+                                        </div>
                                         <ul class="left-form-each">
                                             <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
                                             <li id="left-form-each-li-1">
-												
-												<a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">
-													<span class="edit-pro-box"><img src="<?php echo base_url('assets/img/basic-info.png'); ?>"></span><span class="edit-form-name">Business Information</span>
-												</a>
-											</li>
+                                                <a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">
+                                                    <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/basic-info.png'); ?>"></span><span class="edit-form-name">Business Information</span>
+                                                </a>
+                                            </li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
                                                 <li id="left-form-each-li-2">
-												
-												<a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Contact Information</span></a></li>
+                                                    <a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Contact Information</span></a></li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-2"><a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Contact Information</span></a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
                                                 <li id="left-form-each-li-3">
-												
-												<a href="#description" ng-click="tab_active(3)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
+                                                    <a href="#description" ng-click="tab_active(3)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-3">
-												
-												<a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
+                                                    <a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
                                                 <li id="left-form-each-li-4">
-												
-												<a href="#business_image" ng-click="tab_active(4)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
+                                                    <a href="#business_image" ng-click="tab_active(4)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-4">
-												
-												<a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
+                                                    <a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
                                             <?php } ?> 
                                         </ul>
                                     </div>
@@ -140,8 +134,8 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>State:<span style="color:red">*</span></label>
-                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3" ng-init="user.state_id=stateList[1]">
-                                                                    <option value="">Select country first</option>
+                                                                <select name="state" ng-model="user.state_id" ng-change="onStateChange()" id="state" tabindex="3" ng-init="user.state_id = stateList[0].state_id">
+                                                                    <option value="">Select State</option>
                                                                     <option data-ng-repeat='stateItem in stateList' value='{{stateItem.state_id}}' ng-selected="user.state_id == stateItem.state_id">{{stateItem.state_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorState" class="error">{{errorState}}</span>
@@ -149,7 +143,7 @@
                                                             <fieldset>
                                                                 <label> City<span class="optional">(optional)</span>:</label>
                                                                 <select name="city" ng-model="user.city_id" id="city" tabindex="4">
-                                                                    <option value="">Select State First</option>
+                                                                    <option value="">Select City</option>
                                                                     <option data-ng-repeat='cityItem in cityList' value='{{cityItem.city_id}}'>{{cityItem.city_name}}</option>             
                                                                 </select>
                                                                 <span ng-show="errorCity" class="error">{{errorCity}}</span>
@@ -213,41 +207,41 @@
                                                         </h3>
                                                         <form name="businessdis" ng-submit="submitdescriptionForm()" id="businessdis" class="clearfix" ng-validate="desValidate">
                                                             <div class="fw">
-                                                            <fieldset>
-                                                                <label>Business type:<span style="color:red">*</span></label>
-                                                                <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
-                                                                    <option value="" selected="selected">Select Business type</option>
-                                                                    <option ng-repeat='businessType in business_type' value='{{businessType.type_id}}'>{{businessType.business_name}}</option>             
-                                                                    <option ng-option value="0" id="busOption">Other</option>    
-                                                                </select>
-                                                                <span ng-show="errorBusinessType" class="error">{{errorBusinessType}}</span>
-                                                            </fieldset>  
-                                                            <div id="busDivCheck" ng-if="user.business_type == '0'">
-                                                                <fieldset class="half-width" id="other-business">
-                                                                    <label> Other business type: <span style="color:red;" >*</span></label>
-                                                                    <input type="text" name="bustype" ng-model="user.bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" ng-required="true">
-                                                                    <span ng-show="errorOtherBusinessType" class="error">{{errorOtherBusinessType}}</span>
-                                                                </fieldset>
-                                                            </div>
+                                                                <fieldset>
+                                                                    <label>Business type:<span style="color:red">*</span></label>
+                                                                    <select name="business_type" ng-model="user.business_type" ng-change="busSelectCheck(this)" id="business_type" tabindex="1">
+                                                                        <option value="" selected="selected">Select Business type</option>
+                                                                        <option ng-repeat='businessType in business_type' value='{{businessType.type_id}}'>{{businessType.business_name}}</option>             
+                                                                        <option ng-option value="0" id="busOption">Other</option>    
+                                                                    </select>
+                                                                    <span ng-show="errorBusinessType" class="error">{{errorBusinessType}}</span>
+                                                                </fieldset>  
+                                                                <div id="busDivCheck" ng-if="user.business_type == '0'">
+                                                                    <fieldset class="half-width" id="other-business">
+                                                                        <label> Other business type: <span style="color:red;" >*</span></label>
+                                                                        <input type="text" name="bustype" ng-model="user.bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" ng-required="true">
+                                                                        <span ng-show="errorOtherBusinessType" class="error">{{errorOtherBusinessType}}</span>
+                                                                    </fieldset>
+                                                                </div>
                                                             </div>
                                                             <div class="fw">
-                                                            <fieldset>
-                                                                <label>Category:<span style="color:red">*</span></label>
-                                                                <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
-                                                                    <option ng-option value="" selected="selected">Select Industry type</option>
-                                                                    <option ng-repeat='caegoryType in industry_type' value='{{caegoryType.industry_id}}'>{{caegoryType.industry_name}}</option>             
-                                                                    <option ng-option value="0" id="indOption">Other</option>
-                                                                </select>
-                                                                <span ng-show="errorCategory" class="error">{{errorCategory}}</span>
-                                                            </fieldset>  
-                                                            
-                                                            <div id="indDivCheck" ng-if="user.industriyal == '0'">
-                                                                <fieldset class="half-width" id="other-category">
-                                                                    <label> Other category:<span style="color:red;" >*</span></label>
-                                                                    <input type="text" name="indtype" ng-model="user.indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>" ng-required="true">
-                                                                    <span ng-show="errorOtherCategory" class="error">{{errorOtherCategory}}</span>
-                                                                </fieldset>
-                                                            </div>
+                                                                <fieldset>
+                                                                    <label>Category:<span style="color:red">*</span></label>
+                                                                    <select name="industriyal" ng-model="user.industriyal" ng-change="indSelectCheck(this)" id="industriyal" tabindex="2">
+                                                                        <option ng-option value="" selected="selected">Select Industry type</option>
+                                                                        <option ng-repeat='caegoryType in industry_type' value='{{caegoryType.industry_id}}'>{{caegoryType.industry_name}}</option>             
+                                                                        <option ng-option value="0" id="indOption">Other</option>
+                                                                    </select>
+                                                                    <span ng-show="errorCategory" class="error">{{errorCategory}}</span>
+                                                                </fieldset>  
+
+                                                                <div id="indDivCheck" ng-if="user.industriyal == '0'">
+                                                                    <fieldset class="half-width" id="other-category">
+                                                                        <label> Other category:<span style="color:red;" >*</span></label>
+                                                                        <input type="text" name="indtype" ng-model="user.indtype" id="indtype" tabindex="4"  value="<?php echo $other_industry; ?>" ng-required="true">
+                                                                        <span ng-show="errorOtherCategory" class="error">{{errorOtherCategory}}</span>
+                                                                    </fieldset>
+                                                                </div>
                                                             </div>
                                                             <fieldset class="full-width">
                                                                 <label>Details of your business:<span style="color:red">*</span></label>
@@ -421,12 +415,26 @@
                                 $("#state").find("option").eq(0).remove();
                             });
                         }
+                        function onCountryChange1(country_id = '') {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/getStateByCountryId',
+                                data: {countryId: country_id}
+                            }).success(function (data) {
+                                if (angular.isDefined($scope.user.state_id)) {
+                                    delete $scope.user.state_id;
+                                }
+                                $scope.user.state_id = "";
+                                $scope.stateList = data;
+                                //$("#state").find("option").eq(0).remove();
+                            });
+                        }
 
                         $scope.onCountryChange = function () {
                             $scope.countryIdVal = $scope.user.country_id;
-                            onCountryChange($scope.countryIdVal);
-                            $("#city").find("option").eq(0).remove();
-                            $scope.user.city_id = '0';
+                            onCountryChange1($scope.countryIdVal);
+                            //$("#city").find("option").eq(0).remove();
+                            $scope.user.city_id = "";
                         };
                         function onStateChange(state_id = '') {
                             $http({
@@ -437,10 +445,22 @@
                                 $scope.cityList = data;
                             });
                         }
+                        function onStateChange1(state_id = '') {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'business_profile_registration/getCityByStateId',
+                                data: {stateId: state_id}
+                            }).success(function (data) {
+                                if (angular.isDefined($scope.user.city_id)) {
+                                    delete $scope.user.city_id;
+                                }
+                                $scope.cityList = data;
+                            });
+                        }
 
                         $scope.onStateChange = function () {
                             $scope.stateIdVal = $scope.user.state_id;
-                            onStateChange($scope.stateIdVal);
+                            onStateChange1($scope.stateIdVal);
                         };
                         function getBusinessInformation() {
                             $http({
@@ -792,8 +812,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                                                                                                                <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                                                                                                                <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
