@@ -5074,7 +5074,7 @@ class Freelancer extends MY_Controller {
                                             </td>
 					</tr>
                                     </table>';
-        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . ' Selected you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
+        $subject = $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " ". $writting_word . 'you for ' . $projectdata[0]["post_name"] . ' project in Aileensoul.';
 
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $applydata[0]['freelancer_post_email']);
         $email_html = '';
