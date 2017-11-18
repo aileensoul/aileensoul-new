@@ -1020,7 +1020,7 @@ fieldset.fresher_radio label {
 .freeh3 h3{font-size: 23px;font-weight: 500;color: #5c5c5c;}
 .modal-content input{padding: 9px 15px;} 
 
-
+.modal.message-box span.mes{margin:0px;padding: 0px;}
 
 
 /***  media query  ***/
