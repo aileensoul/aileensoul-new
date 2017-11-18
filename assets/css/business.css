@@ -4461,7 +4461,11 @@ div .comment {
 .all-edit-tab ul li a .edit-form-name{padding:0 20px; display:block;}
 
 .business-profile .all-edit-tab ul li{float:left; width:25%; text-align:center; list-style-type:none; position:relative; z-index:9; padding:0; margin-bottom:0;}
-.business-profile .edit-progress-box .progress-line-filled.step{width:15%;}
+.business-profile .edit-progress-box .progress-line-filled.step1{width:25%;}
+.business-profile .edit-progress-box .progress-line-filled.step2{width:50%;}
+.business-profile .edit-progress-box .progress-line-filled.step3{width:75%;}
+.business-profile .edit-progress-box .progress-line-filled.step4{width:100%;}
+.filled-box{}
 
 
 /***  end all edit profile form  ***/
