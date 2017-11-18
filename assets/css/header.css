@@ -1044,6 +1044,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     width: 358px;
     right: 2px;
     border-radius: 5px;
+    line-height: 1.2;
 }
 #addcontactTitle {
     position: relative;
