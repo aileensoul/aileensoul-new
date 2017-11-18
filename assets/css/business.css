@@ -4451,6 +4451,17 @@ div .comment {
 .post-design-box .post-design-desc a.content_link:hover{color: #1b8ab9;text-decoration:underline; }
 /***  all edit profile form  ***/
 .all-edit-profile-box{width:730px; margin:0 auto;}
+.edit-pro-box{width:50px; height:50px; border-radius:100%; margin:0 auto; background:#a4adb8; display:block; padding:10px;}
+.all-edit-tab{position:relative;}
+.edit-progress-box .progress-line{width:100%; float:left; height:5px; background:#a4adb8; position:absolute; top:44px;}
+.edit-progress-box .progress-line-filled{height:5px; background:#1b8ab9; position:absolute; top:44px;}
+.all-edit-tab ul{padding:20px 0 30px; width:100%; float:left;}
+.all-edit-form .common-form h3{background:#fff; color:#606060; text-align:center; font-size:22px; border-bottom:1px solid #d9d9d9; padding:10px 0;}
+.all-edit-tab ul li a{font-size:14px; color:#606060;}
+.all-edit-tab ul li a .edit-form-name{padding:0 20px; display:block;}
+
+.business-profile .all-edit-tab ul li{float:left; width:25%; text-align:center; list-style-type:none; position:relative; z-index:9; padding:0; margin-bottom:0;}
+.business-profile .edit-progress-box .progress-line-filled.step{width:15%;}
 
 
 /***  end all edit profile form  ***/

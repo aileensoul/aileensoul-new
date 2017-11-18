@@ -75,29 +75,48 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="left-side-bar">
-                                    <div class="col-md-3 col-sm-4">
+                                <div class="all-edit-profile-box business-profile">
+                                    <div class="all-edit-tab">
+										<div class="edit-progress-box">
+											<div class="progress-line"></div>
+											<div class="progress-line-filled"></div>
+										</div>
                                         <ul class="left-form-each">
                                             <input ng-model="busRegStep" type="hidden" value="" id="busRegStep">
-                                            <li id="left-form-each-li-1"><a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">Business Information</a></li>
+                                            <li id="left-form-each-li-1">
+												
+												<a href="#business_information" ng-click="tab_active(1)" data-toggle="tab">
+													<span class="edit-pro-box"><img src="<?php echo base_url('assets/img/basic-info.png'); ?>"></span><span class="edit-form-name">Business Information</span>
+												</a>
+											</li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li id="left-form-each-li-2"><a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab">Contact Information</a></li>
+                                                <li id="left-form-each-li-2">
+												
+												<a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Contact Information</span></a></li>
                                             <?php } else { ?>
-                                                <li id="left-form-each-li-2"><a href="javascript:void(0);">Contact Information</a></li>
+                                                <li id="left-form-each-li-2"><a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Contact Information</span></a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
-                                                <li id="left-form-each-li-3"><a href="#description" ng-click="tab_active(3)" data-toggle="tab">Description</a></li>
+                                                <li id="left-form-each-li-3">
+												
+												<a href="#description" ng-click="tab_active(3)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
                                             <?php } else { ?>
-                                                <li id="left-form-each-li-3"><a href="javascript:void(0);">Description</a></li>
+                                                <li id="left-form-each-li-3">
+												
+												<a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
-                                                <li id="left-form-each-li-4"><a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">Business Images</a></li>
+                                                <li id="left-form-each-li-4">
+												
+												<a href="#business_image" ng-click="tab_active(4)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
                                             <?php } else { ?>
-                                                <li id="left-form-each-li-4"><a href="javascript:void(0);">Business Images</a></li>
+                                                <li id="left-form-each-li-4">
+												
+												<a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
                                             <?php } ?> 
                                         </ul>
                                     </div>
-                                    <div class="col-md-6 col-sm-8">
+                                    <div class="all-edit-form">
                                         <div class="common-form common-form_border">
                                             <div class="tab-content">
                                                 <div class="tab-pane" id="business_information">                
