@@ -4164,9 +4164,9 @@ div .comment {
 #artist_regform label.error{right:3px;}
 .art-cat-custom label.error{top:65px;}
 .common-form fieldset .job_reg input:focus{color:#fff !important;}
-.job_reg_page_fprm .job_reg_main h3{background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+/*.job_reg_page_fprm .job_reg_main h3{background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;}
+  -webkit-text-fill-color: transparent;}*/
 /***  end select dropdown  ***/
 .job_reg_page_fprm .job_reg input{margin-left:0px;}
 /*** video css  ***/

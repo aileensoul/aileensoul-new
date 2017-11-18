@@ -1474,7 +1474,11 @@ label.cameraButton input[accept*="camera"] {
     padding: 15px 0px;
     font-size: 24px;
     background: #fff;
-    color: #1b8ab9;
+   color:#1b8ab9;
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
     text-align: center;
 }
 .job_reg_main h4 {
@@ -2277,6 +2281,9 @@ border: 1px solid #d9d9d9;
 padding: 10px 10px;
 margin-bottom: 15px;}
 }
+
+.job_reg_main {background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%)}
+
 	
 /***  media query  ***/
 @media screen and (min-width: 768px) {
