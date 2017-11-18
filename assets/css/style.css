@@ -1986,7 +1986,8 @@ li.active2 .notification-data-inside h6 i{font-weight: normal;}
 .login p button {margin-left: 0px;}
 .title h1{margin-bottom: 10px;margin-top: 6px;}
 
-
+body.reg-form{background:#fff;}
+body.reg-form footer{background:#fff !important;}
 
 
 
