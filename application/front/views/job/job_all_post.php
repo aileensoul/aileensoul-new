@@ -204,7 +204,7 @@
                <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                     <?php
                                 if ($this->uri->segment(3) == 'live-post') {
-                                    echo '<div class="alert alert-danger">Applied successfully...!</div>';
+                                    echo '<div class="alert alert-success">Applied successfully...!</div>';
                                 }
                                 ?>
                   <div class="common-form">

@@ -2283,7 +2283,7 @@ margin-bottom: 15px;}
 }
 
 .job_reg_main {background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%)}
-
+.mes #field_error{width: 100%;text-align: right;}
 	
 /***  media query  ***/
 @media screen and (min-width: 768px) {
