@@ -17,7 +17,7 @@ class Registration extends CI_Controller {
     }
 
     //Show main registratin page insert Start
-    public function index($id = " ") { 
+    public function index($id = " ") {
         if ($this->session->userdata('fbuser')) {
 
             $fbid = $this->session->userdata('fbuser');
@@ -89,13 +89,13 @@ class Registration extends CI_Controller {
 
         $contition_array = array('user_email' => $email_reg, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        if ($userdata) {           
+        if ($userdata) {
         } else {
             if ($this->form_validation->run() == FALSE) {
                 $this->load->view('registration/registration');
             } else {
                 $userdata = $this->db->get_where('user', array('user_email' => $email_reg))->row()->user_id;
-                if ($userdata) {    
+                if ($userdata) {
                 } else {
                     $data = array(
                         'first_name' => $this->input->post('first_name'),
@@ -121,68 +121,65 @@ class Registration extends CI_Controller {
                 if ($insert_id) {
                     $this->session->set_userdata('aileenuser', $insert_id);
                     $datavl = "ok";
-                        echo json_encode(
+                    echo json_encode(
                             array(
                                 "okmsg" => $datavl,
                                 "userid" => $insert_id,
-                               
                     ));
-
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('registration', 'refresh');
                 }
-
             }
         }
     }
 
+    public function sendmail() {
 
-public function sendmail(){
+        $user_id = $_POST['userid'];
+        if ($user_id) {
+            $contition_array = array('user_id' => $user_id);
+            $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_email,first_name,last_name,user_id,user_gender,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-     $user_id = $_POST['userid'];
-                if ($user_id) {
-        $contition_array = array('user_id' => $user_id);
-        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_email,first_name,last_name,user_id,user_gender,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $gender = $userdata[0]['user_gender'];
+            $toemail = $userdata[0]['user_email'];
+            $fname = $userdata[0]['first_name'];
+            $lname = $userdata[0]['last_name'];
 
-                    $gender = $userdata[0]['user_gender'];
-                    $toemail = $userdata[0]['user_email'];
-                    $fname = $userdata[0]['first_name'];
-                    $lname =$userdata[0]['last_name'];
-                   
-                   $msg = '<tr>
+            $msg = '<tr>
                              <td style="text-align:center; padding-top:15px;">';
-                             if ($userdata[0]['user_image']) {
-                             $msg .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']) . '">';
-                     } else {
+            if ($userdata[0]['user_image']) {
+                $msg .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']) . '">';
+            } else {
 
-                           if($gender == 'F'){
-                                 $msg .= '<img src="' . base_url(FNOIMAGE) . '">';
-                            }else{
-                                 $msg .= '<img src="' . base_url(MNOIMAGE) . '">';
-                            }
-                        }
-                     $msg .= '</td>
+                if ($gender == 'F') {
+                    $msg .= '<img src="' . base_url(FNOIMAGE) . '">';
+                } else {
+                    $msg .= '<img src="' . base_url(MNOIMAGE) . '">';
+                }
+            }
+            $msg .= '</td>
                               </tr>
                             <tr>
                                <td style="text-align:center; padding:10px 0 30px; font-size:15px;">';
-                    $msg .= '<p style="margin:0;">Hi,' . ucwords($fname) .' '.ucwords($lname) . '</p>
+            $msg .= '<p style="margin:0;">Hi,' . ucwords($fname) . ' ' . ucwords($lname) . '</p>
                             <p style="padding:25px 0 ; margin:0;">Verify your email address.</p>
                              <p><a class="btn" href="' . base_url() . 'registration/verify/' . $user_id . '">Verify</a></p>
                               </td>
                               </tr>';
-                              echo "<pre>"; print_r($msg); die();
+            echo "<pre>";
+            print_r($msg);
+            die();
 
-                    $subject = "Welcome to aileensoul";
+            $subject = "Welcome to aileensoul";
 
-                    $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail, $subject, $msg);
+            $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail, $subject, $msg);
 
-                    //$mail = $this->email_model->do_email($msg, $subject, $toemail, $from);
-                }
+            //$mail = $this->email_model->do_email($msg, $subject, $toemail, $from);
+        }
+    }
 
-   
-}
- //Show main registratin page insert End
+    //Show main registratin page insert End
 //Registrtaion email already exist checking controller start
 
     public function check_email() { //echo "hello"; die();
@@ -316,7 +313,7 @@ public function sendmail(){
 
     //User Name Checking with ajax End
 //Change Password Controller Start
-    public function changepassword() {   
+    public function changepassword() {
         $this->load->view('registration/changepassword');
     }
 
@@ -385,14 +382,14 @@ public function sendmail(){
         $username = $userdata[0]['user_name'];
         $firstname = $userdata[0]['first_name'];
         $lastname = $userdata[0]['last_name'];
-         $gender = $userdata[0]['user_gender'];
+        $gender = $userdata[0]['user_gender'];
 
-         $data = array(
-                        'user_verify' => '2',
-                        'verify_date' => date('Y-m-d', time())
-                    );
+        $data = array(
+            'user_verify' => '2',
+            'verify_date' => date('Y-m-d', time())
+        );
 
-                    $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
+        $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
 
 
         $to_email = $email;
@@ -405,11 +402,11 @@ public function sendmail(){
             $msg .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']) . '">';
         } else {
 
-            if($gender == 'F'){
-                                 $msg .= '<img src="' . base_url(FNOIMAGE) . '">';
-                            }else{
-                                 $msg .= '<img src="' . base_url(MNOIMAGE) . '">';
-                            }
+            if ($gender == 'F') {
+                $msg .= '<img src="' . base_url(FNOIMAGE) . '">';
+            } else {
+                $msg .= '<img src="' . base_url(MNOIMAGE) . '">';
+            }
         }
         $msg .= '</td>
             </tr>
@@ -551,14 +548,13 @@ public function sendmail(){
         //For live link need this code start
         $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => 0, 'status' => 1);
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $jobuser=$jobdata[0]['total'];
+        $jobuser = $jobdata[0]['total'];
         //For live link need this code End
-        
         //For live link of freelancer aplly user code start
         $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
         $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $freelancer_apply_user=$free_work_result[0]['total'];
-      
+        $freelancer_apply_user = $free_work_result[0]['total'];
+
         //For live link of freelancer aplly user code end
 
         if (count($userinfo) > 0) {
@@ -579,14 +575,12 @@ public function sendmail(){
                 array(
                     "data" => $data,
                     "id" => $id,
-                    "jobuser"=> $jobuser,
-                    "freelancerapply"=>$freelancer_apply_user,
+                    "jobuser" => $jobuser,
+                    "freelancerapply" => $freelancer_apply_user,
         ));
-
     }
 
 //login validation end
-    
     // login check and email validation start for live link
     public function user_check_login() {
         $email_login = $this->input->post('email_login');
@@ -596,7 +590,7 @@ public function sendmail(){
         $result = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $userinfo = $this->common->check_login($email_login, $password_login);
-      
+
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
@@ -610,55 +604,54 @@ public function sendmail(){
         } else {
             $is_data = 'email';
         }
-        
+
         $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_deleted' => '0', 'status' => 1, 'business_step' => 4);
         $business_result = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $business = 0;
-        if($business_result[0]['total'] > 0){
+        if ($business_result[0]['total'] > 0) {
             $business = 1;
         }
-        
+
         $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
         $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $free_work = 0;
-        if($free_work_result[0]['total'] > 0){
+        if ($free_work_result[0]['total'] > 0) {
             $free_work = 1;
         }
-        
+
         $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_hire_step' => 3);
         $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $free_hire = 0;
-        if($free_hire_result[0]['total'] > 0){
+        if ($free_hire_result[0]['total'] > 0) {
             $free_hire = 1;
         }
 
         $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'art_step' => 4);
         $artistic_result = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $artistic = 0;
-        if($artistic_result[0]['total'] > 0){
+        if ($artistic_result[0]['total'] > 0) {
             $artistic = 1;
         }
-        
+
         echo json_encode(
                 array(
                     "data" => $is_data,
                     "id" => $id,
                     "is_bussiness" => $business,
-                    "is_freelancer_work"=>$free_work,
-                    "is_freelancer_hire"=>$free_hire,
-                    "is_artistic"=>$artistic
+                    "is_freelancer_work" => $free_work,
+                    "is_freelancer_hire" => $free_hire,
+                    "is_artistic" => $artistic
         ));
     }
 
 //login validation end
-
     // for old password match start
 
-     public function check_password() { 
+    public function check_password() {
 
         $oldpassword = md5($this->input->post('oldpassword'));
 

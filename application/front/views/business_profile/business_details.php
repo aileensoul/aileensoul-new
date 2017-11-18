@@ -996,7 +996,7 @@
                         },
                         success: function (response)
                         {
-                            if (response == "ok") {
+                            if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
                                 window.location = "<?php echo base_url() ?>business-profile/details/" + slug;
                             } else {
