@@ -1557,6 +1557,18 @@ label.cameraButton input[accept*="camera"] {
     margin-left: -37px;
 }
 .page-boxed .edit_profile_progress{width: 23%;}
+.true_progtree {
+    position: absolute;
+    top: 52px;
+    left: 48px;
+}
+.tr_text {
+    padding: 10px 0px;
+    color: #1b8ab9;
+}
+.tr_text {
+    display: none;
+}
 /*Complete circle*/
 
 /*** mobile progress bar  ***/

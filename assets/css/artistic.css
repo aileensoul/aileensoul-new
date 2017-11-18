@@ -1005,7 +1005,7 @@ label.cameraButton:active {
     font-weight: 600;
     color: #1b8ab9;
     /*text-overflow: ellipsis;*/
-    vertical-align: bottom;
+    /*vertical-align: bottom;*/
     /*overflow: hidden;
    /* white-space: nowrap;*/
     line-height: 21px;
@@ -1023,7 +1023,7 @@ label.cameraButton:active {
     font-weight: 600;
     color: #1b8ab9;
     /*text-overflow: ellipsis;*/
-    vertical-align: bottom;
+    /*vertical-align: bottom;*/
     /*overflow: hidden;
    /* white-space: nowrap;*/
     line-height: 20px;
@@ -1704,7 +1704,7 @@ label.cameraButton:active {
     color: white;
     position: absolute;
     cursor: pointer;
-    width: 262px;
+    width: 273px;
     height: 198px;
     background: rgba(0, 0, 0, 0.5);
 }
@@ -3675,7 +3675,7 @@ label.cameraButton input[accept*="camera"] {
     color: #1b8ab9;
 }
 .posted_with {
-    padding-left: 4px!important;
+    /*padding-left: 4px!important;*/
     padding-right: 4px!important;
     word-spacing: 2px;
     float: left;
