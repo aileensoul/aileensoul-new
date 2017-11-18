@@ -6,7 +6,7 @@
       <!-- END HEAD -->
 
       <title><?php echo $title; ?></title>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php // echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
 
 
@@ -718,6 +718,77 @@
 
             </div>
          </div>
+               <!-- sortlisted employe -->
+                                                                        <div class="sort-emp-mainbox">
+                                                                            <?php if ($shortlist) {
+                                                                                ?>
+                                                                                <h3>
+                                                                                    Shortlisted Freelancer
+                                                                                </h3>
+
+                                                                                <div class="sort-emp">
+    <?php foreach ($shortlist as $user) { ?>
+                                                                                        <div class="sort-emp-box">
+                                                                                            <div class="sort-emp-img">
+                                                                                                <?php
+                                                                                                $fname = $user['freelancer_post_fullname'];
+                                                                                                $lname = $user['freelancer_post_username'];
+                                                                                                $sub_fname = substr($fname, 0, 1);
+                                                                                                $sub_lname = substr($lname, 0, 1);
+                                                                                                if ($user['freelancer_post_user_image']) {
+                                                                                                    if (IMAGEPATHFROM == 'upload') {
+                                                                                                        if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
+                                                                                                            ?>
+                                                                                                            <div class="post-img-user">
+                                                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                            </div>
+                                                                                                        <?php } ?>
+                                                                                                        <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                        <?php
+                                                                                                    } else {
+                                                                                                        $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
+                                                                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                                                        if ($info) {
+                                                                                                            ?>
+                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freelancr_user_data[0]['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                            <?php } else { ?>
+                                                                                                            <div class="post-img-user">
+                                                                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                            </div>
+                                                                                                            <?php
+                                                                                                        }
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    ?>
+                                                                                                    <div class="post-img-user">
+                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                    </div>
+        <?php } ?>
+                                                                                    <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
+                                                                                            </div>
+                                                                                            <div class="sort-emp-detail">
+                                                                                                <h4><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></h4>
+                                                                                                <p><?php
+                                                                                                    if ($user['designation']) {
+                                                                                                        echo $user['designation'];
+                                                                                                    } else {
+                                                                                                        echo "Designation";
+                                                                                                    }
+                                                                                                    ?></p>
+                                                                                            </div>
+                                                                                            <div class="sort-emp-msg">
+<!--                                                                                                <a class="btn1" href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">
+                                                                                                    Message
+                                                                                                </a>-->
+                                                                                                <!--                                                                                                <a href="#" class="btn1">Message</a>-->
+                                                                                            </div>
+                                                                                        </div>
+                                                                                <?php } ?>
+                                                                                </div>
+<?php } ?>
+                                                                        </div>
+                                                                        <!-- end sortlisted employe -->
 		<div class="mob-add">
 								<div class="fw text-center pt10 pb5">
 									<script type="text/javascript">

@@ -1519,7 +1519,7 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
 .sort-emp-box{border:1px solid #d9d9d9; padding:10px; border-radius:4px; width:100%; float:left; margin-bottom:15px;}
 .sort-emp-img{border:1px solid #d9d9d9; width:60px; height:60px; float:left;}
 .sort-emp-detail{width:70%; float:left; padding-left:10px;}
-.sort-emp-detail h4 a{font-size:18px; color:#5c5c5c;}
+.sort-emp-detail h4 a{font-size:18px; color:#5c5c5c;cursor: default;}
 .sort-emp-detail p{font-size:15px; color:#5c5c5c;}
 .sort-emp-msg{float:right; padding-top:8px;}
 .sort-emp-msg a{letter-spacing: 1px;

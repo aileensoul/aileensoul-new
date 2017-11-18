@@ -291,10 +291,10 @@
 
 
                                                                     <!--  <?php if ($post['post_other_skill']) { ?>
-                                                                                                                                         <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
-                                                                                                                                         </li>
+                                                                                                                                             <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
+                                                                                                                                             </li>
                                                                     <?php } else { ?>
-                                                                                                                                         <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
+                                                                                                                                             <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
 
                                                                     <li><b>Post Description</b><span><pre>
                                                                                 <?php
@@ -377,8 +377,9 @@
                                                                                     <a href="javascript:void(0);" class="button applied">Applied</a>
                                                                                 <?php } else { ?>
                                                                                     <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
-        <?php }
-    } ?>
+                                                                                <?php }
+                                                                            }
+                                                                            ?>
                                                                             </div>
 
                                                                             </div>
@@ -394,14 +395,14 @@
                                                                         </div>
                                                                         <!-- sortlisted employe -->
                                                                         <div class="sort-emp-mainbox">
-<?php if ($shortlist) {
-    ?>
+                                                                            <?php if ($shortlist) {
+                                                                                ?>
                                                                                 <h3>
                                                                                     Shortlisted Freelancer
                                                                                 </h3>
 
                                                                                 <div class="sort-emp">
-                                                                                            <?php foreach ($shortlist as $user) { ?>
+    <?php foreach ($shortlist as $user) { ?>
                                                                                         <div class="sort-emp-box">
                                                                                             <div class="sort-emp-img">
                                                                                                 <?php
@@ -439,7 +440,7 @@
                                                                                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                                                                     </div>
         <?php } ?>
-                                                                                        <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
+                                                                                    <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                                                             </div>
                                                                                             <div class="sort-emp-detail">
                                                                                                 <h4><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></h4>
