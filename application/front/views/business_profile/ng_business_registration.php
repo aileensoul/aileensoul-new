@@ -74,7 +74,7 @@
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 fw">
                                 <div class="all-edit-profile-box business-profile">
                                     <div class="all-edit-tab">
                                         <div class="edit-progress-box">
@@ -342,39 +342,70 @@
                                 alert("Browser does not support HTML5.");
                             }
                         }
+//                        function activeBusinessInformation() {
+//                            $('.progress-line-filled').addClass('step1');
+//                            $('ul.left-form-each li').removeClass('active init');
+//                            $('ul.left-form-each li').addClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-1').removeClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-1').addClass('active init');
+//                            $('.tab-content .tab-pane').removeClass('active');
+//                            $('.tab-content .tab-pane:nth-child(1)').addClass('active');
+//                            getCountry();
+//                            getBusinessInformation();
+//                        }
+//                        function activeContactInformation() {
+//                            $('ul.left-form-each li').removeClass('active init');
+//                            $('ul.left-form-each li').addClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-2').removeClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-2').addClass('active init');
+//                            $('.tab-content .tab-pane').removeClass('active');
+//                            $('.tab-content .tab-pane:nth-child(2)').addClass('active');
+//                            getContactInformation();
+//                        }
+//                        function activeDescription() {
+//                            $('ul.left-form-each li').removeClass('active init');
+//                            $('ul.left-form-each li').addClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-3').removeClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-3').addClass('active init');
+//                            $('.tab-content .tab-pane').removeClass('active');
+//                            $('.tab-content .tab-pane:nth-child(3)').addClass('active');
+//                            getDescription();
+//                        }
+//                        function activeImage() {
+//                            $('ul.left-form-each li').removeClass('active init');
+//                            $('ul.left-form-each li').addClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-4').removeClass('custom-none');
+//                            $('ul.left-form-each li#left-form-each-li-4').addClass('active init');
+//                            $('.tab-content .tab-pane').removeClass('active');
+//                            $('.tab-content .tab-pane:nth-child(4)').addClass('active');
+//                            getImage();
+//                        }
                         function activeBusinessInformation() {
-                            $('ul.left-form-each li').removeClass('active init');
-                            $('ul.left-form-each li').addClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-1').removeClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-1').addClass('active init');
+                            $('.progress-line-filled').addClass('step1');
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li#left-form-each-li-1').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(1)').addClass('active');
                             getCountry();
                             getBusinessInformation();
                         }
                         function activeContactInformation() {
-                            $('ul.left-form-each li').removeClass('active init');
-                            $('ul.left-form-each li').addClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-2').removeClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-2').addClass('active init');
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li#left-form-each-li-2').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                             getContactInformation();
                         }
                         function activeDescription() {
-                            $('ul.left-form-each li').removeClass('active init');
-                            $('ul.left-form-each li').addClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-3').removeClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-3').addClass('active init');
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li#left-form-each-li-3').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                             getDescription();
                         }
                         function activeImage() {
-                            $('ul.left-form-each li').removeClass('active init');
-                            $('ul.left-form-each li').addClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-4').removeClass('custom-none');
-                            $('ul.left-form-each li#left-form-each-li-4').addClass('active init');
+                            $('ul.left-form-each li').removeClass('active');
+                            $('ul.left-form-each li#left-form-each-li-4').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                             getImage();
