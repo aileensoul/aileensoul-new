@@ -1971,7 +1971,7 @@ Your browser does not support the audio tag.
                 $notification .= '</span></div></div> </div></a> </li>';
             }
             //18
-            if ($total['not_from'] == 5) {
+            if ($total['not_from'] == 5 && $total['not_type'] == 4) {
 
                 $notification .= '<li class="';
                 if ($total['not_active'] == 1) {
@@ -2001,7 +2001,7 @@ Your browser does not support the audio tag.
             }
 
             // 19 shortlisted
-            if ($total['not_from'] == 5) {
+            if ($total['not_from'] == 5 && $total['not_type'] == 9) {
               //  echo "123";die();
                 $notification .= '<li class="';
                 if ($total['not_active'] == 1) {
@@ -4257,7 +4257,7 @@ Your browser does not support the audio tag.
 
 
                 //   foreach ($work_not as $art) {
-                if ($total['not_from'] == 5) {
+                if ($total['not_from'] == 5 && $total['not_type'] == 4) {
                     //    19
 
                     $return_html .= '<a href="' . base_url() . 'freelancer/freelancer_post_profile/' . $total['user_id'] . '?page=freelancer_post">';
