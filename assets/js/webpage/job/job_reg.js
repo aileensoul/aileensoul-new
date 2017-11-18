@@ -50,7 +50,6 @@ $(document).ready(function () {
 
         ignore: '*:not([name])',
         ignore: ":hidden",
-         
 
         rules: {
 
@@ -96,7 +95,7 @@ $(document).ready(function () {
 
             job_title: {
 
-               /// required: "#test2:checked",
+                /// required: "#test2:checked",
                 required: true,
                 regx1: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
 
@@ -195,36 +194,42 @@ $(document).ready(function () {
     });
 });
 
-$("#submit").on('click', function (){ 
+$("#submit").on('click', function () {
     $('#experience_error').remove();
     $('.experience_month').removeClass('error');
     $('.experience_year').removeClass('error');
 
     var year = $('#experience_year').val();
     var month = $('#experience_month').val();
+    var checked_val = $('input[name=fresher]:checked').val();
+    if (checked_val == 'Experience') {
+        if (year == null && month == null) {
 
-    if (year == null && month == null) {
-
-        $('#experience_year').addClass('error');
-        $('#experience_month').addClass('error');
-        $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
-        return false;
-    } else {
-        return true;
+            $('#experience_year').addClass('error');
+            $('#experience_month').addClass('error');
+            $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
+            //   return false;
+        } else {
+            return true;
+        }
     }
 //    $('.experience_month').append('<label for="year-month" class="year-month" style="display: block;">Experiance is required.</label>');
 
 });
 //BUTTON SUBMIT DISABLE AFTER SOME TIME START
 $("#submit").on('click', function ()
-{ 
+{
+    /*if (!$('#jobseeker_regform').valid())
+     {
+     return false;
+     } else
+     {
+     $("#submit").addClass("register_disable");
+     return true;
+     }*/
     if (!$('#jobseeker_regform').valid())
     {
         return false;
-    } else
-    {
-        $("#submit").addClass("register_disable");
-        return true;
     }
 });
 //BUTTON SUBMIT DISABLE AFTER SOME TIME END
