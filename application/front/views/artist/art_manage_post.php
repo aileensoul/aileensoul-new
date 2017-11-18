@@ -53,9 +53,9 @@
     </div>
 </div>
 <div class="user-midd-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 hidden-sm hidden-xs">
+    <div class="container art_container padding-360 manage-post-custom">
+        
+            <div class="profile-box-custom left_side_posrt">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                        <div class="head_details1">
@@ -193,7 +193,7 @@
                 </a>
             </div>
             <!-- popup start -->
-            <div class="col-md-6 col-sm-12 "  >
+            <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business"  >
 <?php 
 $userid = $this->session->userdata('aileenuser');
 $other_user = $artisticdata[0]['art_id'];
@@ -351,7 +351,7 @@ if ($info) { ?>
              </div>
               <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
             </div>           
-        </div>
+        
     </div>
 </div>   
 </div>

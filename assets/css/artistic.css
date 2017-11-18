@@ -2171,7 +2171,7 @@ label.cameraButton:active {
     height: 110px;
     float: left;
     width: 120px;
-    padding: 20px;
+    padding: 5px;
     margin: 1px;
 }
 .image_profile img {
@@ -4186,6 +4186,12 @@ div .comment {
 .post-design-product .ctre_date::before {content: ".";}
 #paddingtop_fixed label.optional-custom{margin-top: 8px;} 
 .post-design-box .post-design-desc a.content_link:hover{color: #1b8ab9;text-decoration:underline; }
+
+.manage-post-custom .left_side_posrt{position:relative;}
+.manage-post-custom .mian_middle_post_box{left:inherit;}
+.manage-post-custom .right_middle_side_posrt{position:relative; margin-left:6px;}
+.manage-post-custom .tablate-add{position:relative; margin-left:10px; float:left;}
+
 
 
 
