@@ -65,7 +65,7 @@
                               <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" onclick="experience()">
                               <label for="test2" class="point_radio">No</label>
                            </div>
-                           <div class="fresher-error"><?php echo form_error('Fresher'); ?></div>
+                           <div class="fresher-error"><?php echo form_error('fresher'); ?></div>
                         </fieldset>
                         <fieldset class="full-width">
                             <div id="exp_data" style="display:none;">
@@ -117,7 +117,7 @@
                         <fieldset class="full-width">
                            <label >Job Title<font  color="red">*</font> :</label>
                            <input type="search" tabindex="6" id="job_title" name="job_title" value="" placeholder="Ex:- Sr. Engineer, Jr. Engineer, Software Developer, Account Manager" style="text-transform: capitalize;" onfocus="this.value = this.value;" maxlength="255">
-                           <?php echo form_error('job_title');; ?>
+                           <?php echo form_error('job_title'); ?>
                         </fieldset>
                         <fieldset class="full-width fresher_select main_select_data" >
                            <label for="skills"> Skills<font  color="red">*</font> : </label>

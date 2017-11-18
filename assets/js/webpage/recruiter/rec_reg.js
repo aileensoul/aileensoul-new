@@ -198,9 +198,9 @@ function submitrecruiterForm()
             success: function (response)
             {
                
-               
+              
                 if (response.okmsg == "ok") {
-                    window.location = base_url + "recruiter/home";
+                    window.location = base_url + "recruiter/add-post";
                 } else {
                     window.location = base_url + "recruiter/registration";
                 }
