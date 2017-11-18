@@ -90,23 +90,41 @@
                                             </li>
                                             <?php if ($business_common_data[0]['business_step'] >= '1' && $business_common_data[0]['business_step'] != '') { ?>
                                                 <li id="left-form-each-li-2">
-                                                    <a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Contact Information</span></a></li>
+                                                    <a href="#contact_information" ng-click="tab_active(2);" data-toggle="tab">
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/contact-info.png'); ?>"></span><span class="edit-form-name">Contact Information</span>
+                                                    </a>
+                                                </li>
                                             <?php } else { ?>
-                                                <li id="left-form-each-li-2"><a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Contact Information</span></a></li>
+                                                <li id="left-form-each-li-2"><a href="javascript:void(0);">
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/contact-info.png'); ?>"></span><span class="edit-form-name">Contact Information</span>
+                                                    </a>
+                                                </li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '1' && $business_common_data[0]['business_step'] != '') { ?>
                                                 <li id="left-form-each-li-3">
-                                                    <a href="#description" ng-click="tab_active(3)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
+                                                    <a href="#description" ng-click="tab_active(3)" data-toggle="tab">
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/discription.png'); ?>"></span><span class="edit-form-name">Description</span>
+                                                    </a>
+                                                </li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-3">
-                                                    <a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Description</span></a></li>
+                                                    <a href="javascript:void(0);">
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/discription.png'); ?>"></span><span class="edit-form-name">Description</span>
+                                                    </a>
+                                                </li>
                                             <?php } ?>
                                             <?php if ($business_common_data[0]['business_step'] > '2' && $business_common_data[0]['business_step'] != '') { ?>    
                                                 <li id="left-form-each-li-4">
-                                                    <a href="#business_image" ng-click="tab_active(4)" data-toggle="tab"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
+                                                    <a href="#business_image" ng-click="tab_active(4)" data-toggle="tab">
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/upload-img.png'); ?>"></span><span class="edit-form-name">Business Images</span>
+                                                    </a>
+                                                </li>
                                             <?php } else { ?>
                                                 <li id="left-form-each-li-4">
-                                                    <a href="javascript:void(0);"><span class="edit-pro-box"></span><span class="edit-form-name">Business Images</span></a></li>
+                                                    <a href="javascript:void(0);">
+                                                        <span class="edit-pro-box"><img src="<?php echo base_url('assets/img/upload-img.png'); ?>"></span><span class="edit-form-name">Business Images</span>
+                                                    </a>
+                                                </li>
                                             <?php } ?> 
                                         </ul>
                                     </div>
@@ -383,8 +401,9 @@
                         function activeBusinessInformation() {
                             $('.progress-line-filled').removeClass('step1 step2 step3 step4');
                             $('.progress-line-filled').addClass('step1');
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-1').addClass('active');
+                            $('ul.left-form-each li').removeClass('active filled-box');
+                            $('ul.left-form-each li#left-form-each-li-1').addClass('active filled-box');
+                            $('ul.left-form-each li.active').prev().addClass("filled-box");
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(1)').addClass('active');
                             getCountry();
@@ -393,8 +412,9 @@
                         function activeContactInformation() {
                             $('.progress-line-filled').removeClass('step1 step2 step3 step4');
                             $('.progress-line-filled').addClass('step2');
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-2').addClass('active');
+                            $('ul.left-form-each li').removeClass('active filled-box');
+                            $('ul.left-form-each li#left-form-each-li-2').addClass('active filled-box');
+                            $('ul.left-form-each li.active').prev().addClass("filled-box");
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                             getContactInformation();
@@ -402,8 +422,9 @@
                         function activeDescription() {
                             $('.progress-line-filled').removeClass('step1 step2 step3 step4');
                             $('.progress-line-filled').addClass('step3');
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-3').addClass('active');
+                            $('ul.left-form-each li').removeClass('active filled-box');
+                            $('ul.left-form-each li#left-form-each-li-3').addClass('active filled-box');
+                            $('ul.left-form-each li.active').prev().addClass("filled-box");
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                             getDescription();
@@ -411,8 +432,9 @@
                         function activeImage() {
                             $('.progress-line-filled').removeClass('step1 step2 step3 step4');
                             $('.progress-line-filled').addClass('step4');
-                            $('ul.left-form-each li').removeClass('active');
-                            $('ul.left-form-each li#left-form-each-li-4').addClass('active');
+                            $('ul.left-form-each li').removeClass('active filled-box');
+                            $('ul.left-form-each li#left-form-each-li-4').addClass('active filled-box');
+                            $('ul.left-form-each li.active').prev().addClass("filled-box");
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                             getImage();
@@ -850,8 +872,8 @@
         <?php
         if (IS_BUSINESS_JS_MINIFY == '0') {
             ?>
-                                                                                                                                                                                                                                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+                                                                                                                                                                                                                                                                                                                                                                                                        <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
