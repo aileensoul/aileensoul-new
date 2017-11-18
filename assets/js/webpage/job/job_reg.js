@@ -47,7 +47,8 @@ $(document).ready(function () {
 
 
     $("#jobseeker_regform").validate({
-
+        
+       
         ignore: '*:not([name])',
         ignore: ":hidden",
 
@@ -190,6 +191,12 @@ $(document).ready(function () {
 //            },
 
         },
+        
+        errorPlacement: function(error, element) {
+     if (element.attr("name") == "fresher") {
+         $(".fresher-error").html( error );  
+     } 
+   }
 
     });
 });

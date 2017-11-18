@@ -57,7 +57,7 @@
                         <fieldset class="fresher_radio col-xs-12" >
                            <label>Fresher <font  color="red">*</font> : </label>
                            <div class="main_raio">
-                              <input type="radio" value="Fresher" tabindex="4" id="test1" name="fresher" class="radio_job" id="fresher">
+                              <input type="radio" value="Fresher" tabindex="4" id="test1" name="fresher" class="radio_job" id="fresher" onclick="not_experience()">
                               <label for="test1" class="point_radio" >Yes</label>
                            </div>
 
@@ -65,7 +65,7 @@
                               <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" onclick="experience()">
                               <label for="test2" class="point_radio">No</label>
                            </div>
-                           <div class="fresher-error"><?php echo form_error('fresher'); ?></div>
+                           <div class="fresher-error">fdgfgf<?php echo form_error('fresher'); ?></div>
                         </fieldset>
                         <fieldset class="full-width">
                             <div id="exp_data" style="display:none;">
@@ -187,6 +187,15 @@
    <script>
        function experience(){
          document.getElementById('exp_data').style.display = 'block';
+       }
+       
+       function not_experience(){
+           var melement = document.getElementById('exp_data');
+               
+               if(melement.style.display == 'block'){
+                   melement.style.display = 'none';
+               }
+       
        }
        function expyear_change() {
         var experience_year = document.querySelector("#experience_year").value;
