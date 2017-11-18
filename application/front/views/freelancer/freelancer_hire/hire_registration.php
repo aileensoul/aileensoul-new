@@ -57,7 +57,7 @@
                                     </fieldset>
                                     <fieldset>
                                         <label >Phone number:</label>
-                                        <input type="text" name="phoneno" id="phoneno" tabindex="3" placeholder="Enter phone number" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
+                                        <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
                                         <?php
                                         echo form_error('email');
                                         ;
@@ -66,7 +66,7 @@
 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                         <label>Country:<span style="color:red">*</span></label>								
-                                        <select name="country" id="country">
+                                        <select name="country" id="country" tabindex="5">
                                             <option value="">Select country</option>
                                             <?php
                                             if (count($countries) > 0) {
@@ -83,7 +83,7 @@
 
                                     <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                         <label>state:<span style="color:red">*</span></label>
-                                        <select name="state" id="state">
+                                        <select name="state" id="state" tabindex="6">
                                             <?php
                                             if ($state1) {
                                                 foreach ($states as $cnt) {
@@ -104,7 +104,7 @@
 
                                     <fieldset class="fw" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                                         <label> City:<span style="color:red">*</span></label>
-                                        <select name="city" id="city" tabindex="3">
+                                        <select name="city" id="city" tabindex="7">
                                             <?php
                                             if ($city1) {
                                                 foreach ($cities as $cnt) {
@@ -134,14 +134,14 @@
 
                                       <fieldset class="full-width <?php if ($professional_info) { ?> error-msg <?php } ?>">
                                     <label><?php echo $this->lang->line("professional_info"); ?>:<span class="optional">(optional)</span></label>
-                                    <textarea tabindex=""  name ="professional_info" id="professional_info" rows="4" cols="50" placeholder="Enter professional information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"></textarea>
+                                    <textarea tabindex=""  name ="professional_info" tabindex="8" id="professional_info" rows="4" cols="50" placeholder="Enter professional information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"></textarea>
                                     <?php echo form_error('professional_info'); ?> 
                                 </fieldset>
 
                                     <fieldset class=" full-width">
                                         <div class="job_reg">
                                            <!--<input type="reset">-->
-                                            <input title="Register" type="submit" id="submit" name="" value="Register">
+                                            <input title="Register" type="submit" id="submit" tabindex="9" name="" value="Register">
                                         </div>
                                     </fieldset>
                                     <?php echo form_close(); ?>
