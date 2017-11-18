@@ -403,7 +403,6 @@
                             $('.progress-line-filled').addClass('step1');
                             $('ul.left-form-each li').removeClass('active filled-box');
                             $('ul.left-form-each li#left-form-each-li-1').addClass('active filled-box');
-                            $('ul.left-form-each li.active').prev().addClass("filled-box");
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(1)').addClass('active');
                             getCountry();
@@ -413,8 +412,8 @@
                             $('.progress-line-filled').removeClass('step1 step2 step3 step4');
                             $('.progress-line-filled').addClass('step2');
                             $('ul.left-form-each li').removeClass('active filled-box');
+                            $('ul.left-form-each li#left-form-each-li-1').addClass('filled-box');
                             $('ul.left-form-each li#left-form-each-li-2').addClass('active filled-box');
-                            $('ul.left-form-each li.active').prev().addClass("filled-box");
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(2)').addClass('active');
                             getContactInformation();
@@ -424,7 +423,8 @@
                             $('.progress-line-filled').addClass('step3');
                             $('ul.left-form-each li').removeClass('active filled-box');
                             $('ul.left-form-each li#left-form-each-li-3').addClass('active filled-box');
-                            $('ul.left-form-each li.active').prev().addClass("filled-box");
+                            $('ul.left-form-each li#left-form-each-li-1').addClass('filled-box');
+                            $('ul.left-form-each li#left-form-each-li-2').addClass('filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(3)').addClass('active');
                             getDescription();
@@ -434,7 +434,9 @@
                             $('.progress-line-filled').addClass('step4');
                             $('ul.left-form-each li').removeClass('active filled-box');
                             $('ul.left-form-each li#left-form-each-li-4').addClass('active filled-box');
-                            $('ul.left-form-each li.active').prev().addClass("filled-box");
+                            $('ul.left-form-each li#left-form-each-li-1').addClass('filled-box');
+                            $('ul.left-form-each li#left-form-each-li-2').addClass('filled-box');
+                            $('ul.left-form-each li#left-form-each-li-3').addClass('filled-box');
                             $('.tab-content .tab-pane').removeClass('active');
                             $('.tab-content .tab-pane:nth-child(4)').addClass('active');
                             getImage();
