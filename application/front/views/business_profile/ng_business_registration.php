@@ -381,6 +381,7 @@
 //                            getImage();
 //                        }
                         function activeBusinessInformation() {
+                            $('.progress-line-filled').removeClass('step1 step2 step3 step4');
                             $('.progress-line-filled').addClass('step1');
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-1').addClass('active');
@@ -390,6 +391,8 @@
                             getBusinessInformation();
                         }
                         function activeContactInformation() {
+                            $('.progress-line-filled').removeClass('step1 step2 step3 step4');
+                            $('.progress-line-filled').addClass('step2');
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-2').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
@@ -397,6 +400,8 @@
                             getContactInformation();
                         }
                         function activeDescription() {
+                            $('.progress-line-filled').removeClass('step1 step2 step3 step4');
+                            $('.progress-line-filled').addClass('step3');
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-3').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
@@ -404,6 +409,8 @@
                             getDescription();
                         }
                         function activeImage() {
+                            $('.progress-line-filled').removeClass('step1 step2 step3 step4');
+                            $('.progress-line-filled').addClass('step4');
                             $('ul.left-form-each li').removeClass('active');
                             $('ul.left-form-each li#left-form-each-li-4').addClass('active');
                             $('.tab-content .tab-pane').removeClass('active');
