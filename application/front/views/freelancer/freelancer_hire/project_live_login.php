@@ -719,9 +719,10 @@
             </div>
          </div>
                <!-- sortlisted employe -->
-                                                                        <div class="sort-emp-mainbox">
+                                                                       
                                                                             <?php if ($shortlist) {
                                                                                 ?>
+                                                                                 <div class="sort-emp-mainbox">
                                                                                 <h3>
                                                                                     Shortlisted Freelancer
                                                                                 </h3>
@@ -751,7 +752,7 @@
                                                                                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                                                                         if ($info) {
                                                                                                             ?>
-                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freelancr_user_data[0]['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
                                                                                                             <?php } else { ?>
                                                                                                             <div class="post-img-user">
                                                                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
