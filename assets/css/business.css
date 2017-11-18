@@ -4920,6 +4920,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
 	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:580px; }
 	/*** end advertise  ***/
 	.designation_rec{width:60% !important;}
+    .manage-post-custom  .mian_middle_post_box{margin-left: 0px;}
+
 }
 @media screen and (max-width: 800px) {
     .mySlides .post-design-commnet-box .cmy_2 {
@@ -5359,7 +5361,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
     .cameraButton .tooltiptext {top:-5px !important;}
 	/*** all edit profile box  ***/
 	.all-edit-profile-box{width:100%;}
-	
+	.manage-post-custom .mian_middle_post_box{margin-left: auto !important;}
 	/*** end all edit profile box  ***/
 }
 @media screen and (max-width: 639px) {

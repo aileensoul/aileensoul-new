@@ -4281,6 +4281,7 @@ div .comment {
     .tablate-potrat-add{display:block;}
     .tablate-potrat-add .fw.text-center{text-align:center;}
     .left_side_posrt{position:absolute;}
+    .manage-post-custom  .mian_middle_post_box{margin-left: 10px;}
     /***  end add  ***/
 }
 
@@ -5099,7 +5100,7 @@ div .comment {
     .profile-job-post-location-name .user_lst ul li .bg_following {margin:0px;margin-right: 9px !important;} 
 .profile-job-post-location-name .user_lst ul li.fr {padding-left: 0px;}
 .profile-job-post-location-name .user_lst ul li #followdiv button{margin: 0px;margin-right: 9px;}
-
+.manage-post-custom .mian_middle_post_box{margin-left: auto !important;}
 }
 
 @media screen and (max-width: 639px) {
