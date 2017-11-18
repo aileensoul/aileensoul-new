@@ -5363,7 +5363,7 @@ class Freelancer extends MY_Controller {
                 $skills = implode(',', $skill);
             }
 
-
+$first_lastname = trim($this->input->post('firstname')) . " " . trim($this->input->post('lastname'));
 
             $data = array(
                 'freelancer_post_fullname' => trim($this->input->post('firstname')),
