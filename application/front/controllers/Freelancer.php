@@ -76,21 +76,23 @@ class Freelancer extends MY_Controller {
         $this->freelancer_apply_deactivate_check();
         //code for check user deactivate end
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_email,freelancer_post_skypeid,freelancer_post_phoneno', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_email,freelancer_post_skypeid,freelancer_post_phoneno,free_post_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      //  echo "<pre>"; print_r($userdata);die();
         if ($userdata) {
             $step = $userdata[0]['free_post_step'];
 
             if ($step == 1 || $step > 1) {
+                
                 $this->data['firstname1'] = $userdata[0]['freelancer_post_fullname'];
                 $this->data['lastname1'] = $userdata[0]['freelancer_post_username'];
                 $this->data['email1'] = $userdata[0]['freelancer_post_email'];
                 $this->data['skypeid1'] = $userdata[0]['freelancer_post_skypeid'];
                 $this->data['phoneno1'] = $userdata[0]['freelancer_post_phoneno'];
+               
             }
         }
 
-
+          
         $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information', $this->data);
     }
 
