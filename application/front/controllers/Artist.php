@@ -2182,14 +2182,14 @@ public function ajax_userlist() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                         
                                         $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -2370,7 +2370,7 @@ public function follow_home() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
 
@@ -2378,7 +2378,7 @@ public function follow_home() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -2946,14 +2946,14 @@ public function follow_home() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
 
                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -3103,14 +3103,14 @@ public function followtwo() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
 
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'] . '</b> Started following you in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'artist/details/' . $geturl . '">view</a></p>
@@ -3951,14 +3951,14 @@ public function followtwo() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                             // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
@@ -4180,14 +4180,14 @@ public function followtwo() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                             // <img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '" width="60" height="60">
                                            $email_html .=  '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') .  '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') .  '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
@@ -5160,14 +5160,14 @@ public function delete_commenttwo_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                       
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> like your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdata[0]['art_post_id'] . '">view</a></p>
@@ -5479,14 +5479,14 @@ public function delete_commenttwo_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                           
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -5721,13 +5721,13 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -5995,14 +5995,14 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                          
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -7056,14 +7056,14 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                                              
                                            $email_html .= ' </td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $likepostid[0]['art_post_id'] . '">view</a></p>
@@ -7295,13 +7295,13 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $likepostid[0]['art_post_id'] . '">view</a></p>
@@ -7482,14 +7482,14 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                               
                                            $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
@@ -7760,14 +7760,14 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
 
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artdatacomment[0]['art_post_id'] . '">view</a></p>
@@ -8019,13 +8019,13 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }                                          
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
@@ -8269,13 +8269,13 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }                                         
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -8400,13 +8400,13 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -8525,13 +8525,13 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }                                
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -8650,13 +8650,13 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }                                
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is like on your post image comment in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artimglikepost[0]['art_post_id'] . '">view</a></p>
@@ -9808,7 +9808,7 @@ public function insert_comment_postnewpage() {
                                    $email_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artuserdata[0]['art_user_image'] . '"  alt="" width="60" height="60">';
                                     }else{
 
-                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="60" height="60">';
+                                    $email_html .= '<img src = "' . base_url(NOARTIMAGE) . '" alt = "" width="50" height="50">';
                         }
                       }
 
@@ -9816,7 +9816,7 @@ public function insert_comment_postnewpage() {
                                             $email_html .= '</td>
                                             <td style="padding:5px;">
                         <p><b>' . $artuserdata[0]['art_name'].' '.$artuserdata[0]['art_lastname'] . '</b> is comment on your post image in artistic profile.</p>
-                        <span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                        <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/art-post/' . $artpostid[0]['art_post_id'] . '">view</a></p>
