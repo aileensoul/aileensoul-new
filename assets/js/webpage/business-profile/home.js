@@ -871,8 +871,6 @@ function save_post(abc)
 function followuser(clicked_id)
 {
     var follow_index = $('.follow_left_box_main_btn').index();
-    alert(follow_index);
-    return false;
     document.getElementById('followdiv' + clicked_id).removeAttribute("onclick");
     document.getElementById('Follow_close' + clicked_id).removeAttribute("onclick");
     $.ajax({
@@ -1868,7 +1866,7 @@ $('.close1').click(function () {
 function removeimage() {
     var fileInput = document.getElementById("file-1").files;
     var ab = $(this).index();
-    alert(ab);
+    //alert(ab);
     for (var i = 0; i < fileInput.length; i++)
     {
         var vname = fileInput[i].name;
