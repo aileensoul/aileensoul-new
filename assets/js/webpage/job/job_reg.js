@@ -195,9 +195,10 @@ $(document).ready(function () {
         errorPlacement: function(error, element) {
      if (element.attr("name") == "fresher") {
          $(".fresher-error").html( error );  
+     }else{
+          error.insertAfter(element);
      } 
    }
-
     });
 });
 
