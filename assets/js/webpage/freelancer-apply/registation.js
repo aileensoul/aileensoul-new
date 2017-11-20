@@ -281,4 +281,9 @@ $(document).on('change', '.field_other', function (event) {
     }
 
 });
+    $(document).on('keydown', function (e) {
+                if (e.keyCode === 27) {
+                    $('#bidmodal2').modal('hide');
+            }
+            });   
 
