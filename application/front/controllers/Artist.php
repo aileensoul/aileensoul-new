@@ -13197,9 +13197,9 @@ public function art_home_post() {
                 $return_html .= '</div>
 </div>';
        }    
-                if ($row['art_post'] || $row['art_description']) {
+                //if ($row['art_post'] || $row['art_description']) {
                     $return_html .= '<div class = "post-design-desc ">';
-                }
+                //}
                 $return_html .= '<div class = "ft-15 t_artd">
 <div id = "editpostdata' . $row['art_post_id'] . '" style = "display:block;">
 <a id="editpostval' . $row['art_post_id'].'">' . $this->common->make_links($row['art_post']) . '</a>
@@ -13240,9 +13240,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 <div contenteditable = "true" id = "editpostdesc' . $row['art_post_id'] . '" class = "textbuis editable_text" placeholder = "Description" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(' . $row['art_post_id'] . ');">' . $row['art_description'] . '</div>
 </div><button class = "fr" id = "editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin: 5px 0;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save</button>
 </div> ';
-                if ($row['art_post'] || $row['art_description']) {
+                //if ($row['art_post'] || $row['art_description']) {
                     $return_html .= '</div>';
-                }
+                //}
                 $return_html .= '<div class="post-design-mid col-md-12" >  
     <div class="mange_post_image">';
 
