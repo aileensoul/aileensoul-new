@@ -91,9 +91,9 @@ $(document).ready(function () {
 //            currency: {
 //                required: true,
 //            },
-//            rate: {
-//                required: true,
-//            },
+            rate: {
+                number: true,
+            },
             country: {
                 required: true,
             },
@@ -107,16 +107,16 @@ $(document).ready(function () {
         },
         messages: {
             post_name: {
-                required: "Project name is required.",
+                required: "Project name is required."
             },
             skills: {
-                required: "Skill is required"
+                required: "Skill is required."
             },
             fields_req: {
-                required: "Please select field of requirement",
+                required: "Please select field of requirement."
             },
             post_desc: {
-                required: "Project description  is required.",
+                required: "Project description  is required."
             },
 //            last_date: {
 //                //required: "Last Date of apply is required.",
@@ -124,14 +124,12 @@ $(document).ready(function () {
 //            currency: {
 //                required: "Please select currency type",
 //            },
-//            rate: {
-//                required: "Rate is required",
-//            },
+          
             country: {
-                required: "Please select country"
+                required: "Please select country."
             },
             state: {
-                required: "Please select state"
+                required: "Please select state."
             }
 
         },

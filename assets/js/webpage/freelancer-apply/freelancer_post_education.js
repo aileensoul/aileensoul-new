@@ -391,11 +391,32 @@ function remove_validation_stream() {
 //Click on Degree other option process End
 
 //ALL POPUP CLOSE USING ESC START
-$(document).on('keydown', function (e) {
+//$(document).on('keydown', function (e) {
+//                if (e.keyCode === 27) {
+//                    $('#bidmodal2').modal('hide');
+//                    if($('#bidmodal_stream').modal('show')){
+//                         $('#bidmodal_stream').modal('hide');
+//                          $('#bidmodal_degree').modal('show');
+//                     document.getElementById('bidmodal_degree').style.display === "block"     
+//                    }else if(document.getElementById('bidmodal_degree').style.display === "block"){
+//                        $('#bidmodal_degree').modal('hide');
+//                    }else{
+//                        
+//                    }
+//                    
+//                    
+//            }
+//            });
+            
+    $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {
                     $('#bidmodal2').modal('hide');
-                    $('#bidmodal_degree').modal('hide');
-                    $('#bidmodal_stream').modal('hide');
-                }
-            });
+                    if(document.getElementById('bidmodal_stream').style.display === "block"){
+                     document.getElementById('bidmodal_degree').style.display === 'block';
+                      $('#bidmodal_stream').modal('hide');     
+                      $('#bidmodal_degree').modal('show');
+                    }                   
+            }
+            });        
+            
 //ALL POPUP CLOSE USING ESC END

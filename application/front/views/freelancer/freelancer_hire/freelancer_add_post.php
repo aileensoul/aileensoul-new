@@ -170,7 +170,7 @@
                                             <div class="p15 fw">
                                                 <fieldset  class="col-md-6 pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
                                                     <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span class="optional">(optional)</span></label>
-                                                    <input tabindex="11" name="rate" type="number" id="rate" placeholder="Enter your rate" min='1'/>
+                                                    <input tabindex="11" name="rate" type="text" id="rate" placeholder="Enter your rate"/>
                                                     <span id="fullname-error"></span>
                                                     <?php echo form_error('rate'); ?>
                                                 </fieldset>

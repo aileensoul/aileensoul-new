@@ -56,8 +56,8 @@
                                         ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label >Phone number:</label>
-                                        <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php echo $job[0]['user_email']; ?>" maxlength="255">
+                                        <label >Phone number:<span class="optional">(optional)</span></label>
+                                        <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="" maxlength="255">
                                         <?php
                                         echo form_error('email');
                                         ;
@@ -134,7 +134,7 @@
 
                                       <fieldset class="full-width <?php if ($professional_info) { ?> error-msg <?php } ?>">
                                     <label><?php echo $this->lang->line("professional_info"); ?>:<span class="optional">(optional)</span></label>
-                                    <textarea tabindex=""  name ="professional_info" tabindex="8" id="professional_info" rows="4" cols="50" placeholder="Enter professional information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"></textarea>
+                                    <textarea tabindex="8"  name ="professional_info" tabindex="8" id="professional_info" rows="4" cols="50" placeholder="Enter professional information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"></textarea>
                                     <?php echo form_error('professional_info'); ?> 
                                 </fieldset>
 
