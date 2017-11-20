@@ -344,7 +344,7 @@ if ($info) { ?>
                             <div class="art-all-post">
                 <!-- <div class="job-contact-frnd"> -->
                     
-   <!--  <div class="nofoundpost">
+  <!--   <div class="nofoundpost">
     </div> -->
             <!--  </div> -->
 

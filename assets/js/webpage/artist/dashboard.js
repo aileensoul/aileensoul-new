@@ -1477,6 +1477,7 @@ function remove_ownpost(abc)
                 GetArtAudios();
                 GetArtPdf();
                         if(data.notcount == 0){ 
+                             $('#loader').hide();
                             $('.' + 'nofoundpost').html(data.notfound);
                             $('.' + 'not_available').remove();
                             $('.' + 'image_profile').remove();
