@@ -94,7 +94,7 @@
                                  //$desc_art =  form_error('desc_art');
                                   
                                  ?>
-                                    <fieldset class="full-width <?php if($skills) {  ?> error-msg <?php } ?>">
+                                    <fieldset class="full-width art-cat-custom <?php if($skills) {  ?> error-msg <?php } ?>">
                                         <label>Art category:<span style="color:red">*</span></label>
 
                           <select name="skills[]" id="skills" tabindex="1" autofocus multiple>
