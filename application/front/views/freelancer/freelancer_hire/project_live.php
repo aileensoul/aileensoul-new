@@ -454,9 +454,15 @@
                                                                                                     ?></p>
                                                                                             </div>
                                                                                             <div class="sort-emp-msg">
-                                                                                                <a class="btn1" href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">
+                                                                                                <?php $login_id = $this->session->userdata('aileenuser');
+                                                                                              $user_data= $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $login_id, $data = 'user_id', $join_str = array());
+                                                                                                      if($user_data)
+                                                                                                          {
+                                                                                                ?>
+                                                                                                <a class="btn1" href = "<?php echo base_url('chat/abc/3/4/' . $user['user_id']); ?>">
                                                                                                     Message
                                                                                                 </a>
+                                                                                                      <?php } ?>
                                                                                                 <!--                                                                                                <a href="#" class="btn1">Message</a>-->
                                                                                             </div>
                                                                                         </div>

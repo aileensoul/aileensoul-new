@@ -411,11 +411,9 @@ function remove_validation_stream() {
     $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {
                     $('#bidmodal2').modal('hide');
-                    if(document.getElementById('bidmodal_stream').style.display === "block"){
-                     document.getElementById('bidmodal_degree').style.display === 'block';
-                      $('#bidmodal_stream').modal('hide');     
+                     $('#bidmodal_stream').modal('hide');     
                       $('#bidmodal_degree').modal('show');
-                    }                   
+                               
             }
             });        
             
