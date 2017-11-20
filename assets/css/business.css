@@ -5405,11 +5405,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
     .audio_source audio {
         width: 229px;
     }
-    .audio_img {
+     .audio_img {
         height: 230px !important;
         width: 230px !important;
         position: relative !important;
     }
+    .post-design-mid .mejs__audio{width: 230px !important;}
+    .audio_mp3 p{margin-left: 35px !important;}
     .cq_latest_left {
         width: 14%
     }
@@ -5644,11 +5646,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
     .audio_source audio {
         width: 200px;
     }
-    .audio_img {
-        height: 200px !important;
-        width: 200px !important;
+     .audio_img {
+        height: 230px !important;
+        width: 230px !important;
         position: relative !important;
     }
+    .post-design-mid .mejs__audio{width: 230px !important;}
+    .audio_mp3 p{margin-left: 21px !important;}
     .two-images img {
         height: 175px;
     }
@@ -6026,6 +6030,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
     .bui_bcon {
         width: 35%;
     }
+    .audio_main_div{width: 70%;}
 }
 @media screen and (max-width: 360px) {
     #paddingtop_fixed {
@@ -6055,10 +6060,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
         padding-left: 15px;
     }
     .audio_img {
-        height: 150px !important;
-        width: 150px !important;
+        height: 230px !important;
+        width: 230px !important;
         position: relative !important;
     }
+    .post-design-mid .mejs__audio{width: 230px !important;}
     .audio_source audio {
         width: 150px;
     }
@@ -6218,6 +6224,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
     .profile-job-details .post_title {
         font-size: 9px;
     }
+    .audio_main_div{width: 73%}
 }
 
 @keyframes pulse1 {

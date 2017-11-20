@@ -5159,12 +5159,14 @@ div .comment {
     .audio_source audio {
         width: 229px;
     }
+    
     .audio_img {
         height: 230px !important;
         width: 230px !important;
         position: relative !important;
     }
     .post-design-mid .mejs__audio{width: 230px !important;}
+    
     .cq_latest_left {
         width: 14%;
     }
@@ -5367,11 +5369,13 @@ div .comment {
         width: 200px;
     }
     .audio_img {
-        height: 200px !important;
+        height: 230px !important;
         width: 230px !important;
         position: relative !important;
     }
     .post-design-mid .mejs__audio{width: 230px !important;}
+
+    .audio_main_div{width: 55%;}
     .cq_latest_right {
         width: 76%;
     }
@@ -5724,6 +5728,7 @@ div .comment {
     .bui_bcon {
         width: 35%;
     }
+    .audio_main_div{width: 70%;}
 }
 
 @media screen and (max-width: 360px) {
@@ -5744,10 +5749,11 @@ div .comment {
         max-width: 66%;
     }
     .audio_img {
-        height: 150px !important;
-        width: 150px !important;
+        height: 230px !important;
+        width: 230px !important;
         position: relative !important;
     }
+    .post-design-mid .mejs__audio{width: 230px !important;}
     .audio_source audio {
         width: 150px;
     }
@@ -5879,6 +5885,7 @@ div .comment {
     .contact-frnd-post{padding:10px 8px 0;}
     /*** end add  ***/
 	.file-preview{width:194px;}
+
 }
 
 @media screen and (max-width: 319px) {
