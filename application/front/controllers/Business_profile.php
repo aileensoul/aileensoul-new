@@ -4,6 +4,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Business_profile extends MY_Controller {
+
     public $data;
 
     public function __construct() {
@@ -18,7 +19,7 @@ class Business_profile extends MY_Controller {
         //AWS access info end
         $userid = $this->session->userdata('aileenuser');
         include ('business_include.php');
-          
+
         // FIX BUSINESS PROFILE NO POST DATA
 
         $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Business Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/bui-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
@@ -39,13 +40,13 @@ class Business_profile extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // GET COUNTRY DATA
-            $contition_array = array('status' => 1);
+            $contition_array = array('status' => '1');
             $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // GET STATE DATA
-            $contition_array = array('status' => 1);
+            $contition_array = array('status' => '1');
             $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id,state_name,country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // GET CITY DATA
-            $contition_array = array('status' => 1);
+            $contition_array = array('status' => '1');
             $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name,state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if (count($userdata) > 0) {
 
@@ -85,7 +86,7 @@ class Business_profile extends MY_Controller {
 //dependentacy industrial and sub industriyal start
         if (isset($_POST["industry_id"]) && !empty($_POST["industry_id"])) {
 //Get all state data
-            $contition_array = array('industry_id' => $_POST["industry_id"], 'status' => 1);
+            $contition_array = array('industry_id' => $_POST["industry_id"], 'status' => '1');
             $subindustriyaldata = $this->data['subindustriyaldata'] = $this->common->select_data_by_condition('sub_industry_type', $contition_array, $data = '*', $sortby = 'sub_industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -104,7 +105,7 @@ class Business_profile extends MY_Controller {
 // dependentacy industrial and sub industriyal end  
         if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
 //Get all state data
-            $contition_array = array('country_id' => $_POST["country_id"], 'status' => 1);
+            $contition_array = array('country_id' => $_POST["country_id"], 'status' => '1');
             $state = $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //Count total number of rows
@@ -121,7 +122,7 @@ class Business_profile extends MY_Controller {
 
         if (isset($_POST["state_id"]) && !empty($_POST["state_id"])) {
 //Get all city data
-            $contition_array = array('state_id' => $_POST["state_id"], 'status' => 1);
+            $contition_array = array('state_id' => $_POST["state_id"], 'status' => '1');
             $city = $this->data['city'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -147,7 +148,7 @@ class Business_profile extends MY_Controller {
         $this->data['business_data'] = $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         // GET COUNTRY DATA
-        $contition_array = array('status' => 1);
+        $contition_array = array('status' => '1');
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id, country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET STATE DATA
@@ -159,7 +160,7 @@ class Business_profile extends MY_Controller {
         $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id, city_name, state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         // GET INDUSTRIAL TYPE DATA
-        $contition_array = array('status' => 1);
+        $contition_array = array('status' => '1');
         $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GEY BUSINESS TYPE DATA
@@ -183,7 +184,7 @@ class Business_profile extends MY_Controller {
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'country,state,city,company_name,pincode,address,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET COUNTRY DATA
-        $contition_array = array('status' => 1);
+        $contition_array = array('status' => '1');
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id, country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET STATE DATA
@@ -276,7 +277,7 @@ class Business_profile extends MY_Controller {
                 $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'country,state,city,company_name,pincode,address,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET COUNTRY DATA
-                $contition_array = array('status' => 1);
+                $contition_array = array('status' => '1');
                 $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id, country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET STATE DATA
@@ -311,8 +312,8 @@ class Business_profile extends MY_Controller {
                         $data['business_slug'] = $this->setcategory_slug($companyname, 'business_slug', 'business_profile');
                     }
                     $data['modified_date'] = date('Y-m-d H:i:s', time());
-                    $data['status'] = 1;
-                    $data['is_deleted'] = 0;
+                    $data['status'] = '1';
+                    $data['is_deleted'] = '0';
 
                     $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
                     if ($updatdata) {
@@ -335,9 +336,9 @@ class Business_profile extends MY_Controller {
                         'user_id' => $userid,
                         'business_slug' => $this->setcategory_slug($companyname, 'business_slug', 'business_profile'),
                         'created_date' => date('Y-m-d H:i:s', time()),
-                        'status' => 1,
-                        'is_deleted' => 0,
-                        'business_step' => 1
+                        'status' => '1',
+                        'is_deleted' => '0',
+                        'business_step' => '1'
                     );
 
 
@@ -438,7 +439,7 @@ class Business_profile extends MY_Controller {
                     'contact_email' => $this->input->post('email'),
                     'contact_website' => $this->input->post('contactwebsite'),
                     'modified_date' => date('Y-m-d', time()),
-                    'business_step' => 2
+                    'business_step' => '2'
                 );
             }
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
@@ -491,7 +492,7 @@ class Business_profile extends MY_Controller {
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,subindustriyal,details,other_business_type,other_industrial,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET INDUSTRIAL TYPE DATA
-        $contition_array = array('status' => 1);
+        $contition_array = array('status' => '1');
         $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GEY BUSINESS TYPE DATA
@@ -520,7 +521,7 @@ class Business_profile extends MY_Controller {
         $this->business_profile_active_check();
 
         if ($this->input->post('next')) {
-            
+
             $this->form_validation->set_rules('business_type', 'Business type', 'required');
             $this->form_validation->set_rules('industriyal', 'Industriyal', 'required');
             $this->form_validation->set_rules('business_details', 'Details', 'required');
@@ -534,7 +535,7 @@ class Business_profile extends MY_Controller {
                 $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,subindustriyal,details,other_business_type,other_industrial,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET INDUSTRIAL TYPE DATA
-                $contition_array = array('status' => 1);
+                $contition_array = array('status' => '1');
                 $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GEY BUSINESS TYPE DATA
@@ -580,7 +581,7 @@ class Business_profile extends MY_Controller {
                         'other_industrial' => $this->input->post('indtype'),
                         'details' => $this->input->post('business_details'),
                         'modified_date' => date('Y-m-d', time()),
-                        'business_step' => 3
+                        'business_step' => '3'
                     );
                 }
                 $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
@@ -648,14 +649,14 @@ class Business_profile extends MY_Controller {
             if ($_POST['filedata'][$x]) {
                 $data = array(
                     'modified_date' => date('Y-m-d', time()),
-                    'business_step' => 4
+                    'business_step' => '4'
                 );
 
                 $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
             } else {
                 $data = array(
                     'modified_date' => date('Y-m-d', time()),
-                    'business_step' => 4
+                    'business_step' => '4'
                 );
 
                 $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
@@ -822,7 +823,7 @@ class Business_profile extends MY_Controller {
                         'image_name' => $dataimage,
                         'user_id' => $userid,
                         'created_date' => date('Y-m-d H:i:s'),
-                        'is_delete' => 0
+                        'is_delete' => '0'
                     );
 
                     $insert_id = $this->common->insert_data_getid($data, 'bus_image');
@@ -831,13 +832,13 @@ class Business_profile extends MY_Controller {
                 if ($dataimage) {
                     $data = array(
                         'modified_date' => date('Y-m-d', time()),
-                        'business_step' => 4
+                        'business_step' => '4'
                     );
                     $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
                 } else {
                     $data = array(
                         'modified_date' => date('Y-m-d', time()),
-                        'business_step' => 4
+                        'business_step' => '4'
                     );
                     $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
                 }
@@ -891,7 +892,7 @@ class Business_profile extends MY_Controller {
         $data = array(
             'addmore' => $this->input->post('addmore'),
             'modified_date' => date('Y-m-d', time()),
-            'business_step' => 5
+            'business_step' => '5'
         );
 
         $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
@@ -921,19 +922,19 @@ class Business_profile extends MY_Controller {
         $business_type = $this->data['business_common_data'][0]['business_type'];
         // GET USER BUSINESS DATA FROM INCLUDE END
         // GET BUSINESS USER FOLLOWING LIST START
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
         $follow_list = $followdata[0]['follow_list'];
         $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
         // GET BUSINESS USER FOLLOWING LIST END
         // GET BUSINESS USER IGNORE LIST START
-        $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+        $contition_array = array('user_from' => $business_profile_id, 'profile' => '2');
         $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
         $user_list = $followdata[0]['user_list'];
         $user_list = str_replace(",", "','", $userdata[0]['user_list']);
         // GET BUSINESS USER IGNORE LIST END
         //GET BUSINESS USER SUGGESTED USER LIST 
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+        $contition_array = array('is_deleted' => '0', 'status' => '1', 'user_id != ' => $userid, 'business_step' => '4');
         $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
 
@@ -966,8 +967,8 @@ class Business_profile extends MY_Controller {
             $this->is_business_profile_register();
         }
 
-        $business_main_slug = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_slug;
-        $business_main_profile = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        $business_main_slug = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_slug;
+        $business_main_profile = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
 
         if ($id != '') {
             $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => '1', 'business_step' => 4);
@@ -983,14 +984,14 @@ class Business_profile extends MY_Controller {
             $other_user_id = $business_data[0]['user_id'];
 
             $loginuser = $business_main_profile;
-            $contition_array = array('follow_type' => 2, 'follow_status' => 1);
+            $contition_array = array('follow_type' => '2', 'follow_status' => '1');
             $search_condition = "((follow_from  = '$loginuser' AND follow_to  = ' $other_user') OR (follow_from  = '$other_user' AND follow_to  = '$loginuser'))";
             $followperson = $this->common->select_data_by_search('follow', $search_condition, $contition_array, $data = 'count(*) as follow_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-            
-            $contition_array = array('contact_type' => 2, 'status'=> 'confirm');
+
+            $contition_array = array('contact_type' => '2', 'status' => 'confirm');
             $search_condition = "((contact_from_id  = '$userid' AND contact_to_id = ' $other_user_id') OR (contact_from_id  = '$other_user_id' AND contact_to_id = '$userid'))";
             $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as contact_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
-            
+
             if ($followperson[0]['follow_count'] == 2 || $contactperson[0]['contact_count'] == 1) {
                 $this->data['is_eligable_for_post'] = 1;
             }
@@ -1027,7 +1028,7 @@ class Business_profile extends MY_Controller {
         );
         $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('user_id' => $userid, 'status' => 1, 'is_delete' => '0');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
         $otherdata = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $datacount = count($otherdata);
         if ($datacount == 0) {
@@ -1624,7 +1625,7 @@ class Business_profile extends MY_Controller {
         /* FOLLOWER USER LIST END */
 
         /* INDUSTRIAL AND CITY WISE DATA START */
-        $condition_array = array('business_profile.is_deleted' => 0, 'business_profile.status' => 1, 'business_profile.business_step' => 4);
+        $condition_array = array('business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
         $search_condition = "(business_profile.industriyal = '$industriyal' AND business_profile.industriyal != 0) AND (business_profile.other_industrial = '$other_industrial' AND business_profile.other_industrial != '') OR (business_profile.city = '$city')";
         $data = "GROUP_CONCAT(user_id) as industry_city_user_list";
         $industrial_city_data = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data, $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
@@ -1637,13 +1638,13 @@ class Business_profile extends MY_Controller {
         $total_user_list = implode(',', $total_user_list);
         $total_user_list = str_replace(",", "','", $total_user_list);
 
-        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1, 'FIND_IN_SET ("' . $user_id . '", delete_post) !=' => '0');
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1', 'FIND_IN_SET ("' . $user_id . '", delete_post) !=' => '0');
         $delete_postdata = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'GROUP_CONCAT(business_profile_post_id) as delete_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $delete_post_id = $delete_postdata[0]['delete_post_id'];
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
-        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1');
         $search_condition = "(`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list'))) OR (posted_user_id ='$user_id')";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
@@ -1666,13 +1667,13 @@ class Business_profile extends MY_Controller {
         $post_posted_user_id = $row['posted_user_id'];
         $post_business_slug = $row['business_slug'];
         $post_industriyal = $row['industriyal'];
-        $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+        $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => '1'))->row()->industry_name;
         $post_other_industrial = $row['other_industrial'];
         $post_user_id = $row['user_id'];
         if ($post_posted_user_id) {
             $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
-            $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
-            $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+            $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => '1'))->row()->business_slug;
+            $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => '1'))->row()->industry_name;
             $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
         }
 
@@ -2116,7 +2117,7 @@ Your browser does not support the audio tag.
             $countlike = $post_business_likes_count - 1;
             $likelistarray = explode(',', $likeuser);
 
-            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
+            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->company_name;
             $return_html .= '<div class = "like_one_other">';
             $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
             if (in_array($userid, $likelistarray)) {
@@ -2143,7 +2144,7 @@ Your browser does not support the audio tag.
         $countlike = $post_business_likes_count - 1;
         $likelistarray = explode(',', $likeuser);
 //        foreach ($likelistarray as $key => $value) {
-//            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
 //        }
 
         $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
@@ -2153,7 +2154,7 @@ Your browser does not support the audio tag.
         $countlike = $post_business_likes_count - 1;
         $likelistarray = explode(',', $likeuser);
 
-        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
 
         $return_html .= '<div class = "like_one_other">';
         $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
@@ -2183,11 +2184,11 @@ Your browser does not support the audio tag.
             foreach ($businessprofiledata as $rowdata) {
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
 
-                $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
+                $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_slug;
 
                 $return_html .= '<div class = "all-comment-comment-box">
 <div class = "post-design-pro-comment-img">';
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
 
                 if ($business_userimage) {
                     $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
@@ -2282,7 +2283,7 @@ Your browser does not support the audio tag.
 </div>';
                 }
                 $userid = $this->session->userdata('aileenuser');
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => '1'))->row()->user_id;
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
                     $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
@@ -2316,7 +2317,7 @@ Your browser does not support the audio tag.
 <div class = "post-design-proo-img hidden-mob">';
 
         $userid = $this->session->userdata('aileenuser');
-        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
+        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_user_image;
         if ($business_userimage) {
             if (IMAGEPATHFROM == 'upload') {
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
@@ -2431,14 +2432,14 @@ Your browser does not support the audio tag.
 
                 $data = array(
                     'product_name' => $this->input->post('productname'),
-                    'product_image' => $picture,
+                    //'product_image' => $picture,
                     'product_description' => $this->input->post('description'),
                     'modify_date' => date('Y-m-d', time())
                 );
             } else {
                 $data = array(
                     'product_name' => $this->input->post('productname'),
-                    'product_image' => $this->input->post('hiddenimg'),
+                    //'product_image' => $this->input->post('hiddenimg'),
                     'product_description' => $this->input->post('description'),
                     'modify_date' => date('Y-m-d', time())
                 );
@@ -2717,7 +2718,7 @@ Your browser does not support the audio tag.
             include ('business_profile_include.php');
         }
         if ($id != '') {
-            $contition_array = array('business_profile.business_slug' => $id, 'business_profile.is_deleted' => '0', 'business_profile.status' => 1, 'business_profile.business_step' => 4);
+            $contition_array = array('business_profile.business_slug' => $id, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
             $join_str[0]['table'] = 'countries';
             $join_str[0]['join_table_id'] = 'countries.country_id';
             $join_str[0]['from_table_id'] = 'business_profile.country';
@@ -2741,7 +2742,7 @@ Your browser does not support the audio tag.
             $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
             $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => 1, 'business_profile.business_step' => 4);
+            $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
             $join_str[0]['table'] = 'countries';
             $join_str[0]['join_table_id'] = 'countries.country_id';
             $join_str[0]['from_table_id'] = 'business_profile.country';
@@ -2836,17 +2837,17 @@ Your browser does not support the audio tag.
         $id = $_POST['business_profile_post_id'];
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
+        $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
         $userdata = $this->common->select_data_by_condition('business_profile_save', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $save_id = $userdata[0]['save_id'];
         if ($userdata) {
-            $contition_array = array('business_delete' => 1);
+            $contition_array = array('business_delete' => '1');
             $jobdata = $this->common->select_data_by_condition('business_profile_save', $contition_array, $data = 'save_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $data = array(
-                'business_delete' => 0,
-                'business_save' => 1
+                'business_delete' => '0',
+                'business_save' => '1'
             );
             $updatedata = $this->common->update_data($data, 'business_profile_save', 'save_id', $save_id);
             if ($updatedata) {
@@ -2859,9 +2860,9 @@ Your browser does not support the audio tag.
                 'post_id' => $id,
                 'user_id' => $userid,
                 'created_date' => date('Y-m-d H:i:s', time()),
-                'is_delete' => 0,
-                'business_save' => 1,
-                'business_delete' => 0
+                'is_delete' => '0',
+                'business_save' => '1',
+                'business_delete' => '0'
             );
             $insert_id = $this->common->insert_data_getid($data, 'business_profile_save');
             if ($insert_id) {
@@ -2881,8 +2882,8 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 
         $data = array(
-            'business_save' => 0,
-            'business_delete' => 1,
+            'business_save' => '0',
+            'business_delete' => '1',
             'modify_date' => date('Y-m-d h:i:s', time())
         );
         $updatedata = $this->common->update_data($data, 'business_profile_save', 'save_id', $id);
@@ -2940,11 +2941,11 @@ Your browser does not support the audio tag.
         $limit = $perpage;
         $offset = $start;
 
-        $contition_array = array('business_step' => 4, 'is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid);
+        $contition_array = array('business_step' => '4', 'is_deleted' => '0', 'status' => '1', 'user_id !=' => $userid);
         $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit, $offset, $join_str = array(), $groupby = '');
         $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // followers count
         $join_str[0]['table'] = 'follow';
@@ -2952,7 +2953,7 @@ Your browser does not support the audio tag.
         $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
         $join_str[0]['join_type'] = '';
 
-        $contition_array = array('follow_to' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 1);
+        $contition_array = array('follow_to' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '1');
         $followers = count($this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
 
 // follow count end
@@ -2962,7 +2963,7 @@ Your browser does not support the audio tag.
         $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
         $join_str[0]['join_type'] = '';
 
-        $contition_array = array('follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 1, 'business_profile.business_step' => 4);
+        $contition_array = array('follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '1', 'business_profile.business_step' => '4');
         $following = count($this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
 
 //following end
@@ -3015,7 +3016,7 @@ Your browser does not support the audio tag.
                                                                                 <a title="' . $user['company_name'] . '" href="' . base_url('business-profile/dashboard/' . $user['business_slug']) . '">' . $user['company_name'] . '</a>
                                                                             </div>
                                                                             <div>';
-            $category = $this->db->get_where('industry_type', array('industry_id' => $user['industriyal'], 'status' => 1))->row()->industry_name;
+            $category = $this->db->get_where('industry_type', array('industry_id' => $user['industriyal'], 'status' => '1'))->row()->industry_name;
             $return_html .= '<a>';
             if ($category) {
                 $return_html .= $category;
@@ -3069,60 +3070,60 @@ Your browser does not support the audio tag.
 //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
+        $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
         $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+        $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($follow) {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 1,
+                'follow_status' => '1',
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
 // insert notification
 
-            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+            $contition_array = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
                 $datafollow = array(
-                    'not_read' => 2,
+                    'not_read' => '2',
                     'not_created_date' => date('Y-m-d H:i:s')
                 );
 
-                $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+                $where = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
                 $this->db->where($where);
                 $updatdata = $this->db->update('notification', $datafollow);
             } else {
                 $data = array(
-                    'follow_type' => 2,
+                    'follow_type' => '2',
                     'follow_from' => $artdata[0]['business_profile_id'],
                     'follow_to' => $business_id,
-                    'follow_status' => 1,
+                    'follow_status' => '1',
                 );
                 $insertdata = $this->common->insert_data($data, 'follow');
 
-                $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+                $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
                 $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // insert notification
 
                 $data = array(
-                    'not_type' => 8,
+                    'not_type' => '8',
                     'not_from_id' => $userid,
                     'not_to_id' => $busdatatoid[0]['user_id'],
-                    'not_read' => 2,
+                    'not_read' => '2',
                     'not_product_id' => $follow_id[0]['follow_id'],
-                    'not_from' => 6,
+                    'not_from' => '6',
                     'not_created_date' => date('Y-m-d H:i:s'),
-                    'not_active' => 1
+                    'not_active' => '1'
                 );
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
                 if ($insert_id) {
@@ -3147,7 +3148,7 @@ Your browser does not support the audio tag.
 
 // end notification
 
-            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
+            $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1');
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($update) {
@@ -3168,27 +3169,27 @@ Your browser does not support the audio tag.
             }
         } else {   //echo "hii"; die();
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 1,
+                'follow_status' => '1',
             );
             $insertdata = $this->common->insert_data($data, 'follow');
 
 
-            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+            $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
             $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // insert notification
 
             $data = array(
-                'not_type' => 8,
+                'not_type' => '8',
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatatoid[0]['user_id'],
-                'not_read' => 2,
+                'not_read' => '2',
                 'not_product_id' => $follow_id[0]['follow_id'],
-                'not_from' => 6,
+                'not_from' => '6',
                 'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
+                'not_active' => '1'
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
@@ -3210,7 +3211,7 @@ Your browser does not support the audio tag.
 
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
             }
-            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
+            $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // end notification
@@ -3248,26 +3249,26 @@ Your browser does not support the audio tag.
 
         $business_id = $_POST["follow_to"];
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
 
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+        $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
 
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
         if ($follow) {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 0,
+                'follow_status' => '0',
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
 
-            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
+            $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1');
 
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3297,48 +3298,48 @@ Your browser does not support the audio tag.
         $this->business_profile_active_check();
 
         $business_id = $_POST["follow_to"];
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
+        $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
         $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'contact_email,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+        $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $is_follow = 0;
         if ($follow) {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 1,
+                'follow_status' => '1',
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
             // insert notification
 
-            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+            $contition_array = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($busnotification[0]['not_read'] == 2) {
                 
             } elseif ($busnotification[0]['not_read'] == 1) {
                 $datafollow = array(
-                    'not_read' => 2
+                    'not_read' => '2'
                 );
 
-                $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+                $where = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
                 $this->db->where($where);
                 $updatdata = $this->db->update('notification', $datafollow);
             } else {
                 $data = array(
-                    'not_type' => 8,
+                    'not_type' => '8',
                     'not_from_id' => $userid,
                     'not_to_id' => $busdatatoid[0]['user_id'],
-                    'not_read' => 2,
+                    'not_read' => '2',
                     'not_product_id' => $follow[0]['follow_id'],
-                    'not_from' => 6,
+                    'not_from' => '6',
                     'not_created_date' => date('Y-m-d H:i:s'),
-                    'not_active' => 1
+                    'not_active' => '1'
                 );
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
@@ -3375,26 +3376,26 @@ Your browser does not support the audio tag.
             }
         } else {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 1,
+                'follow_status' => '1',
             );
             $insert = $this->common->insert_data($data, 'follow');
 
             // insert notification
-            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+            $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
             $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $datanoti = array(
-                'not_type' => 8,
+                'not_type' => '8',
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatatoid[0]['user_id'],
-                'not_read' => 2,
+                'not_read' => '2',
                 'not_product_id' => $follow_id[0]['follow_id'],
-                'not_from' => 6,
+                'not_from' => '6',
                 'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
+                'not_active' => '1'
             );
 
             $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
@@ -3449,19 +3450,19 @@ Your browser does not support the audio tag.
         $business_type = $businessdata[0]['business_type'];
         // GET USER BUSINESS DATA END
         // GET BUSINESS USER FOLLOWING LIST START
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
         $follow_list = $followdata[0]['follow_list'];
         $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
         // GET BUSINESS USER FOLLOWING LIST END
         // GET BUSINESS USER IGNORE LIST START
-        $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+        $contition_array = array('user_from' => $business_profile_id, 'profile' => '2');
         $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
         $user_list = $followdata[0]['user_list'];
         $user_list = str_replace(",", "','", $userdata[0]['user_list']);
         // GET BUSINESS USER IGNORE LIST END
         //GET BUSINESS USER SUGGESTED USER LIST 
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+        $contition_array = array('is_deleted' => '0', 'status' => '1', 'user_id != ' => $userid, 'business_step' => '4');
         $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '2', $join_str_contact = array(), $groupby = '');
@@ -3471,10 +3472,10 @@ Your browser does not support the audio tag.
         if (count($userlistview) > 0) {
             foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
                 $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
                 $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => '1'))->row()->industry_name;
                 if (!$businessfollow) {
 
                     $third_user_html .= '<li class = "follow_box_ul_li fad' . $userlist['business_profile_id'] . '" id = "fad' . $userlist['business_profile_id'] . '">
@@ -3509,7 +3510,7 @@ Your browser does not support the audio tag.
                     $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
       <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
       </a></div></li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => '1'))->row()->industry_name;
                     $third_user_html .= '<li>
       <div class = "post-design-product_follow_main" style = "display:block;">
       <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
@@ -3551,19 +3552,19 @@ Your browser does not support the audio tag.
         $business_type = $businessdata[0]['business_type'];
         // GET USER BUSINESS DATA END
         // GET BUSINESS USER FOLLOWING LIST START
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
         $follow_list = $followdata[0]['follow_list'];
         $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
         // GET BUSINESS USER FOLLOWING LIST END
         // GET BUSINESS USER IGNORE LIST START
-        $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+        $contition_array = array('user_from' => $business_profile_id, 'profile' => '2');
         $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
         $user_list = $followdata[0]['user_list'];
         $user_list = str_replace(",", "','", $userdata[0]['user_list']);
         // GET BUSINESS USER IGNORE LIST END
         //GET BUSINESS USER SUGGESTED USER LIST 
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+        $contition_array = array('is_deleted' => '0', 'status' => '1', 'user_id != ' => $userid, 'business_step' => '4');
         $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
@@ -3572,10 +3573,10 @@ Your browser does not support the audio tag.
         if (count($userlistview) > 0) {
             foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
                 $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
                 $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => '1'))->row()->industry_name;
                 if (!$businessfollow) {
 
                     $third_user_html .= '<li class = "follow_box_ul_li fad' . $userlist['business_profile_id'] . '" id = "fad' . $userlist['business_profile_id'] . '">
@@ -3610,7 +3611,7 @@ Your browser does not support the audio tag.
                     $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
       <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a></div></li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => '1'))->row()->industry_name;
                     $third_user_html .= '<li>
       <div class = "post-design-product_follow_main" style = "display:block;">
       <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
@@ -3652,54 +3653,50 @@ Your browser does not support the audio tag.
         $business_id = $_POST["follow_to"];
         $is_listing = $_POST["is_listing"];
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
-
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
-
+        $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
         $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+        $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
         if ($follow) {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 1,
+                'follow_status' => '1',
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
             // insert notification
 
 
-            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+            $contition_array = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>"; print_r($busnotification); die();
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
                 $datafollow = array(
-                    'not_read' => 2
+                    'not_read' => '2'
                 );
 
-                $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+                $where = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
                 $this->db->where($where);
                 $updatdata = $this->db->update('notification', $datafollow);
             } else {
-
-
                 $data = array(
-                    'not_type' => 8,
+                    'not_type' => '8',
                     'not_from_id' => $userid,
                     'not_to_id' => $busdatatoid[0]['user_id'],
-                    'not_read' => 2,
+                    'not_read' => '2',
                     'not_product_id' => $follow[0]['follow_id'],
-                    'not_from' => 6,
+                    'not_from' => '6',
                     'not_created_date' => date('Y-m-d H:i:s'),
-                    'not_active' => 1
+                    'not_active' => '1'
                 );
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
@@ -3740,27 +3737,27 @@ Your browser does not support the audio tag.
             }
         } else {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 1,
+                'follow_status' => '1',
             );
             $insert = $this->common->insert_data($data, 'follow');
 
             // insert notification
-            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+            $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
             $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
             $datanoti = array(
-                'not_type' => 8,
+                'not_type' => '8',
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatatoid[0]['user_id'],
-                'not_read' => 2,
+                'not_read' => '2',
                 'not_product_id' => $follow_id[0]['follow_id'],
-                'not_from' => 6,
+                'not_from' => '6',
                 'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
+                'not_active' => '1'
             );
 
             $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
@@ -3823,18 +3820,18 @@ Your browser does not support the audio tag.
         $business_id = $_POST["follow_to"];
         $is_listing = $_POST["is_listing"];
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+        $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($follow) {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 0,
+                'follow_status' => '0',
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
             $unfollow = '';
@@ -3867,18 +3864,18 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 
         $business_id = $_POST["follow_to"];
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+        $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($follow) {
             $data = array(
-                'follow_type' => 2,
+                'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
-                'follow_status' => 0,
+                'follow_status' => '0',
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
             if ($update) {
@@ -3942,12 +3939,12 @@ Your browser does not support the audio tag.
         if ($start < 0)
             $start = 0;
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $artdata = $artisticdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
 
         if ($id == $slug_id || $id == '') {
-            $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -3958,11 +3955,11 @@ Your browser does not support the audio tag.
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4, 'business_profile.status' => 1);
+            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1');
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -4032,9 +4029,9 @@ Your browser does not support the audio tag.
                                                                                 <div class="follow-li-text " style="padding: 0;">
                                                                                     <a href="' . base_url('business-profile/dashboard/' . $followerslug) . '">' . ucfirst(strtolower($followername)) . '</a></div>
                                                                                 <div>';
-                $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from'], 'status' => 1))->row()->industriyal;
-                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
-                $othercategory = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from'], 'status' => 1))->row()->other_industrial;
+                $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from'], 'status' => '1'))->row()->industriyal;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => '1'))->row()->industry_name;
+                $othercategory = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from'], 'status' => '1'))->row()->other_industrial;
 
                 $return_html .= '<a>';
                 if ($category) {
@@ -4051,7 +4048,7 @@ Your browser does not support the audio tag.
                 $busdatauser = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-                $contition_array = array('follow_from' => $busdatauser[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_from']);
+                $contition_array = array('follow_from' => $busdatauser[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'follow_to' => $user['follow_from']);
                 $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
                 if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_from'] != $busdatauser[0]['business_profile_id']) {
@@ -4118,12 +4115,12 @@ Your browser does not support the audio tag.
         if ($start < 0)
             $start = 0;
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
 
-            $contition_array = array('user_id' => $userid, 'status' => 1, 'is_deleted' => 0);
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => 0);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -4134,12 +4131,12 @@ Your browser does not support the audio tag.
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4, 'business_profile.status' => 1, 'business_profile.is_deleted' => 0);
+            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => '0');
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'business_step' => 4, 'status' => 1, 'is_deleted' => 0);
+            $contition_array = array('business_slug' => $id, 'business_step' => '4', 'status' => '1', 'is_deleted' => '0');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -4150,7 +4147,7 @@ Your browser does not support the audio tag.
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4, 'business_profile.status' => 1, 'business_profile.is_deleted' => 0);
+            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => '1', 'follow_type' => '2', 'business_profile.business_step' => '4', 'business_profile.status' => '1', 'business_profile.is_deleted' => 0);
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
@@ -4207,9 +4204,9 @@ Your browser does not support the audio tag.
                                                 <a title="' . $companyname . '" href="' . base_url('business-profile/dashboard/' . $slug) . '">' . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name . '</a></div>
                                             <div>';
 
-                $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => 1))->row()->industriyal;
-                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
-                $othercategory = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => 1))->row()->other_industrial;
+                $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => '1'))->row()->industriyal;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => '1'))->row()->industry_name;
+                $othercategory = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => '1'))->row()->other_industrial;
 
                 $return_html .= '<a>';
                 if ($category) {
@@ -4581,31 +4578,31 @@ Your browser does not support the audio tag.
             if ($businessprofiledata[0]['user_id'] == $userid) {
                 
             } else {
-                $contition_array = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => 6, 'not_img' => 3);
+                $contition_array = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => '6', 'not_img' => '3');
                 $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($busnotification[0]['not_read'] == 2) {
                     
                 } elseif ($busnotification[0]['not_read'] == 1) {
 
                     $datalike = array(
-                        'not_read' => 2
+                        'not_read' => '2'
                     );
 
-                    $where = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => 6, 'not_img' => 3);
+                    $where = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => '6', 'not_img' => '3');
                     $this->db->where($where);
                     $updatdata = $this->db->update('notification', $datalike);
                 } else {
 
                     $datacmlike = array(
-                        'not_type' => 5,
+                        'not_type' => '5',
                         'not_from_id' => $userid,
                         'not_to_id' => $businessprofiledata[0]['user_id'],
-                        'not_read' => 2,
+                        'not_read' => '2',
                         'not_product_id' => $post_id,
-                        'not_from' => 6,
-                        'not_img' => 3,
+                        'not_from' => '6',
+                        'not_img' => '3',
                         'not_created_date' => date('Y-m-d H:i:s'),
-                        'not_active' => 1
+                        'not_active' => '1'
                     );
 
 
@@ -4723,29 +4720,29 @@ Your browser does not support the audio tag.
                 
             } else {
 
-                $contition_array = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => 6, 'not_img' => 3);
+                $contition_array = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => '6', 'not_img' => '3');
                 $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($busnotification[0]['not_read'] == 2) {
                     
                 } elseif ($busnotification[0]['not_read'] == 1) {
                     $datalike = array(
-                        'not_read' => 2
+                        'not_read' => '2'
                     );
 
-                    $where = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => 6, 'not_img' => 3);
+                    $where = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => '6', 'not_img' => '3');
                     $this->db->where($where);
                     $updatdata = $this->db->update('notification', $datalike);
                 } else {
                     $data = array(
-                        'not_type' => 5,
+                        'not_type' => '5',
                         'not_from_id' => $userid,
                         'not_to_id' => $businessprofiledata[0]['user_id'],
-                        'not_read' => 2,
+                        'not_read' => '2',
                         'not_product_id' => $post_id,
-                        'not_from' => 6,
-                        'not_img' => 3,
+                        'not_from' => '6',
+                        'not_img' => '3',
                         'not_created_date' => date('Y-m-d H:i:s'),
-                        'not_active' => 1
+                        'not_active' => '1'
                     );
 
                     $insert_id = $this->common->insert_data_getid($data, 'notification');
@@ -4859,7 +4856,7 @@ Your browser does not support the audio tag.
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
                 $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => '1'))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -4943,7 +4940,7 @@ Your browser does not support the audio tag.
 
                 $userid = $this->session->userdata('aileenuser');
 
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => '1'))->row()->user_id;
 
 
                 if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
@@ -5002,7 +4999,7 @@ Your browser does not support the audio tag.
         $post_delete = $_POST["post_delete"];
 
         $data = array(
-            'status' => 0,
+            'status' => '0',
         );
         $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
 
@@ -5015,7 +5012,7 @@ Your browser does not support the audio tag.
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
                 $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => '1'))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -5104,7 +5101,7 @@ Your browser does not support the audio tag.
                 }
 
                 $userid = $this->session->userdata('aileenuser');
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => '1'))->row()->user_id;
 
                 if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
                     $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
@@ -5192,24 +5189,24 @@ Your browser does not support the audio tag.
                 } elseif ($busnotification[0]['not_read'] == 1) {
 
                     $datalike = array(
-                        'not_read' => 2
+                        'not_read' => '2'
                     );
 
-                    $where = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => 6, 'not_img' => 2);
+                    $where = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $businessprofiledata[0]['user_id'], 'not_product_id' => $post_id, 'not_from' => '6', 'not_img' => '2');
                     $this->db->where($where);
                     $updatdata = $this->db->update('notification', $datalike);
                 } else {
 
                     $datalike = array(
-                        'not_type' => 5,
+                        'not_type' => '5',
                         'not_from_id' => $userid,
                         'not_to_id' => $businessprofiledata[0]['user_id'],
-                        'not_read' => 2,
+                        'not_read' => '2',
                         'not_product_id' => $post_id,
-                        'not_from' => 6,
-                        'not_img' => 2,
+                        'not_from' => '6',
+                        'not_img' => '2',
                         'not_created_date' => date('Y-m-d H:i:s'),
-                        'not_active' => 1
+                        'not_active' => '1'
                     );
                     $insert_id = $this->common->insert_data_getid($datalike, 'notification');
 
@@ -5265,7 +5262,7 @@ Your browser does not support the audio tag.
                 $likelistarray = explode(',', $likeuser);
 
                 foreach ($likelistarray as $key => $value) {
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                 }
 
                 $cmtlikeuser .= '<div class="like_one_other">';
@@ -5282,7 +5279,7 @@ Your browser does not support the audio tag.
                 $likelistarray = explode(',', $likeuser);
                 $likelistarray = array_reverse($likelistarray);
 
-                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
+                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->company_name;
 
                 if ($userid == $likelistarray[0]) {
                     $cmtlikeuser .= 'You ';
@@ -5353,7 +5350,7 @@ Your browser does not support the audio tag.
                 $likelistarray = explode(',', $likeuser);
                 $likelistarray = array_reverse($likelistarray);
                 foreach ($likelistarray as $key => $value) {
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                 }
 
                 $cmtlikeuser .= '<div class="like_one_other">';
@@ -5366,7 +5363,7 @@ Your browser does not support the audio tag.
 
                 $likelistarray = explode(',', $likeuser);
 
-                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
+                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->company_name;
 
                 $cmtlikeuser .= '' . ucfirst($business_fname1) . '&nbsp;';
 
@@ -5417,8 +5414,8 @@ Your browser does not support the audio tag.
             'business_profile_post_id' => $post_id,
             'comments' => $post_comment,
             'created_date' => date('Y-m-d H:i:s', time()),
-            'status' => 1,
-            'is_delete' => 0
+            'status' => '1',
+            'is_delete' => '0'
         );
 
 
@@ -5430,15 +5427,15 @@ Your browser does not support the audio tag.
             
         } else {
             $notificationdata = array(
-                'not_type' => 6,
+                'not_type' => '6',
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatacomment[0]['user_id'],
-                'not_read' => 2,
+                'not_read' => '2',
                 'not_product_id' => $insert_id,
-                'not_from' => 6,
-                'not_img' => 1,
+                'not_from' => '6',
+                'not_img' => '1',
                 'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
+                'not_active' => '1'
             );
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
 
@@ -5474,7 +5471,7 @@ Your browser does not support the audio tag.
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
             $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
-            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
+            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => '1'))->row()->business_user_image;
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
@@ -5551,7 +5548,7 @@ Your browser does not support the audio tag.
             }
 
             $userid = $this->session->userdata('aileenuser');
-            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => 1))->row()->user_id;
+            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => '1'))->row()->user_id;
             if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
@@ -5604,8 +5601,8 @@ Your browser does not support the audio tag.
             'business_profile_post_id' => $post_id,
             'comments' => $post_comment,
             'created_date' => date('Y-m-d H:i:s', time()),
-            'status' => 1,
-            'is_delete' => 0
+            'status' => '1',
+            'is_delete' => '0'
         );
 
         $insert_id = $this->common->insert_data_getid($data, 'business_profile_post_comment');
@@ -5615,15 +5612,15 @@ Your browser does not support the audio tag.
             
         } else {
             $notificationdata = array(
-                'not_type' => 6,
+                'not_type' => '6',
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatacomment[0]['user_id'],
-                'not_read' => 2,
+                'not_read' => '2',
                 'not_product_id' => $insert_id,
-                'not_from' => 6,
-                'not_img' => 1,
+                'not_from' => '6',
+                'not_img' => '1',
                 'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
+                'not_active' => '1'
             );
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
 
@@ -5659,7 +5656,7 @@ Your browser does not support the audio tag.
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
             $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
-            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
+            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => '1'))->row()->business_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -5746,7 +5743,7 @@ Your browser does not support the audio tag.
 
             $userid = $this->session->userdata('aileenuser');
 
-            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => 1))->row()->user_id;
+            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => '1'))->row()->user_id;
 
 
             if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
@@ -5897,7 +5894,7 @@ Your browser does not support the audio tag.
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $data = array(
-            'status' => 1,
+            'status' => '1',
             'modified_date' => date('y-m-d h:i:s')
         );
 
@@ -5948,7 +5945,7 @@ Your browser does not support the audio tag.
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         foreach ($followerdata as $fdata) {
-            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4);
+            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => '4');
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $business_userid = $this->data['business_data'][0]['user_id'];
             $contition_array = array('user_id' => $business_userid, 'status' => '1', 'is_delete' => '0');
@@ -5959,7 +5956,7 @@ Your browser does not support the audio tag.
 //data fatch using industriyal start
 
         $userselectindustriyal = $businessdata[0]['industriyal'];
-        $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => 4);
+        $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => '4');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         foreach ($businessprofiledata as $fdata) {
             $contition_array = array('business_profile_post.user_id' => $fdata['user_id'], 'business_profile_post.status' => '1', 'business_profile_post.user_id !=' => $userid, 'is_delete' => '0');
@@ -6067,7 +6064,7 @@ Your browser does not support the audio tag.
         $slug_id = $slug_data[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
 
-            $contition_array = array('business_slug' => $slug_id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $slug_id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'post_files';
@@ -6075,13 +6072,13 @@ Your browser does not support the audio tag.
             $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'insert_profile' => 2, 'status' => 1, 'is_delete' => '0');
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'insert_profile' => 2, 'status' => '1', 'is_delete' => '0');
             $data = 'business_profile_post_id, post_files_id, file_name';
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'post_files';
@@ -6089,7 +6086,7 @@ Your browser does not support the audio tag.
             $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'insert_profile' => 2, 'status' => 1, 'is_delete' => '0');
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'insert_profile' => '2', 'status' => '1', 'is_delete' => '0');
             $data = 'business_profile_post_id, post_files_id, file_name';
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         }
@@ -6115,19 +6112,17 @@ Your browser does not support the audio tag.
         $slug_id = $slug_data[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
 
-            $contition_array = array('business_slug' => $slug_id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $slug_id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
@@ -6152,19 +6147,17 @@ Your browser does not support the audio tag.
         $slug_id = $slug_data[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
 
-            $contition_array = array('business_slug' => $slug_id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $slug_id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
@@ -6183,7 +6176,7 @@ Your browser does not support the audio tag.
         $this->business_profile_active_check();
         $this->is_business_profile_register();
 
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'business_step' => 4);
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'business_step' => '4');
         $slug_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slug_id = $slug_data[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
@@ -6191,16 +6184,15 @@ Your browser does not support the audio tag.
             $contition_array = array('business_slug' => $slug_id, 'status' => '1');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
@@ -6230,7 +6222,7 @@ Your browser does not support the audio tag.
                 'post_image_id' => $post_image,
                 'user_id' => $userid,
                 'created_date' => date('Y-m-d H:i:s', time()),
-                'is_unlike' => 0
+                'is_unlike' => '0'
             );
             $insertdata = $this->common->insert_data_getid($data, 'bus_post_image_like');
 // insert notification
@@ -6239,15 +6231,15 @@ Your browser does not support the audio tag.
             } else {
 
                 $data = array(
-                    'not_type' => 5,
+                    'not_type' => '5',
                     'not_from_id' => $userid,
                     'not_to_id' => $likepostid[0]['user_id'],
-                    'not_read' => 2,
+                    'not_read' => '2',
                     'not_product_id' => $post_image,
-                    'not_from' => 6,
-                    'not_img' => 5,
+                    'not_from' => '6',
+                    'not_img' => '5',
                     'not_created_date' => date('Y-m-d H:i:s'),
-                    'not_active' => 1
+                    'not_active' => '1'
                 );
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
@@ -6294,7 +6286,7 @@ Your browser does not support the audio tag.
                 $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 $countlike = count($commneteduser) - 1;
                 foreach ($commneteduser as $userdata) {
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => '1'))->row()->company_name;
                 }
                 $imglikeuser .= '<div class="like_one_other_img">';
                 $imglikeuser .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ');">';
@@ -6303,7 +6295,7 @@ Your browser does not support the audio tag.
                 $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $countlike = count($commneteduser) - 1;
-                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
+                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => '1'))->row()->company_name;
 
 
                 if ($userid == $commneteduser[0]['user_id']) {
@@ -6364,7 +6356,7 @@ Your browser does not support the audio tag.
                     $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     $countlike = count($commneteduser) - 1;
                     foreach ($commneteduser as $userdata) {
-                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => 1))->row()->company_name;
+                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => '1'))->row()->company_name;
                     }
 
                     $imglikeuser1 .= '<div class="like_one_other_img">';
@@ -6374,7 +6366,7 @@ Your browser does not support the audio tag.
                     $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     $countlike = count($commneteduser) - 1;
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => '1'))->row()->company_name;
 
 
                     if ($userid == $commneteduser[0]['user_id']) {
@@ -6422,32 +6414,30 @@ Your browser does not support the audio tag.
                 if ($likepostid[0]['user_id'] == $userid) {
                     
                 } else {
-                    $contition_array = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $likepostid[0]['user_id'], 'not_product_id' => $post_image, 'not_from' => 6, 'not_img' => 5);
+                    $contition_array = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $likepostid[0]['user_id'], 'not_product_id' => $post_image, 'not_from' => '6', 'not_img' => '5');
                     $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($busnotification[0]['not_read'] == 2) {
                         
                     } elseif ($busnotification[0]['not_read'] == 1) {
 
                         $datalike = array(
-                            'not_read' => 2
+                            'not_read' => '2'
                         );
 
-                        $where = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $likepostid[0]['user_id'], 'not_product_id' => $post_image, 'not_from' => 6, 'not_img' => 5);
+                        $where = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $likepostid[0]['user_id'], 'not_product_id' => $post_image, 'not_from' => '6', 'not_img' => '5');
                         $this->db->where($where);
                         $updatdata = $this->db->update('notification', $datalike);
                     } else {
-
-
                         $data = array(
-                            'not_type' => 5,
+                            'not_type' => '5',
                             'not_from_id' => $userid,
                             'not_to_id' => $likepostid[0]['user_id'],
-                            'not_read' => 2,
+                            'not_read' => '2',
                             'not_product_id' => $post_image,
-                            'not_from' => 6,
-                            'not_img' => 5,
+                            'not_from' => '6',
+                            'not_img' => '5',
                             'not_created_date' => date('Y-m-d H:i:s'),
-                            'not_active' => 1
+                            'not_active' => '1'
                         );
 
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
@@ -6479,8 +6469,6 @@ Your browser does not support the audio tag.
                 $contition_array = array('post_image_id' => $_POST["post_image_id"], 'is_unlike' => '0');
                 $bdata2 = $this->data['bdata2'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-
                 if ($updatdata) {
 
                     $imglike1 = '<li>';
@@ -6496,7 +6484,7 @@ Your browser does not support the audio tag.
                     $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     $countlike = count($commneteduser) - 1;
                     foreach ($commneteduser as $userdata) {
-                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => 1))->row()->company_name;
+                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => '1'))->row()->company_name;
                     }
                     $imglikeuser1 .= '<div class="like_one_other_img">';
                     $imglikeuser1 .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ');">';
@@ -6505,7 +6493,7 @@ Your browser does not support the audio tag.
                     $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     $countlike = count($commneteduser) - 1;
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => '1'))->row()->company_name;
 
                     if ($userid == $commneteduser[0]['user_id']) {
                         $imglikeuser1 .= 'You ';
@@ -6550,7 +6538,7 @@ Your browser does not support the audio tag.
         $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
+        $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => '0');
         $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $data = array(
@@ -6558,7 +6546,7 @@ Your browser does not support the audio tag.
             'post_image_id' => $post_image_id,
             'comment' => $post_comment,
             'created_date' => date('Y-m-d H:i:s', time()),
-            'is_delete' => 0
+            'is_delete' => '0'
         );
         $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
 
@@ -6568,15 +6556,15 @@ Your browser does not support the audio tag.
             
         } else {
             $datanotification = array(
-                'not_type' => 6,
+                'not_type' => '6',
                 'not_from_id' => $userid,
                 'not_to_id' => $buspostid[0]['user_id'],
-                'not_read' => 2,
+                'not_read' => '2',
                 'not_product_id' => $insert_id,
-                'not_from' => 6,
-                'not_img' => 4,
+                'not_from' => '6',
+                'not_img' => '4',
                 'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
+                'not_active' => '1'
             );
 
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
@@ -6614,7 +6602,7 @@ Your browser does not support the audio tag.
         foreach ($businesscomment as $bus_comment) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
             $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
-            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
+            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => '1'))->row()->business_user_image;
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
@@ -6698,7 +6686,7 @@ Your browser does not support the audio tag.
             }
             $userid = $this->session->userdata('aileenuser');
 
-            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
+            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => '1'))->row()->user_id;
             if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
@@ -6748,7 +6736,7 @@ Your browser does not support the audio tag.
         $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
+        $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => '0');
         $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $data = array(
@@ -6756,7 +6744,7 @@ Your browser does not support the audio tag.
             'post_image_id' => $post_image_id,
             'comment' => $post_comment,
             'created_date' => date('Y-m-d H:i:s', time()),
-            'is_delete' => 0
+            'is_delete' => '0'
         );
         $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
 
@@ -6766,15 +6754,15 @@ Your browser does not support the audio tag.
             
         } else {
             $datanotification = array(
-                'not_type' => 6,
+                'not_type' => '6',
                 'not_from_id' => $userid,
                 'not_to_id' => $buspostid[0]['user_id'],
-                'not_read' => 2,
+                'not_read' => '2',
                 'not_product_id' => $insert_id,
-                'not_from' => 6,
-                'not_img' => 4,
+                'not_from' => '6',
+                'not_img' => '4',
                 'not_created_date' => date('Y-m-d H:i:s'),
-                'not_active' => 1
+                'not_active' => '1'
             );
 //echo "<pre>"; print_r($datanotification); die();
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
@@ -6810,7 +6798,7 @@ Your browser does not support the audio tag.
 
             $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
             $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
-            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
+            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => '1'))->row()->business_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -6852,8 +6840,7 @@ Your browser does not support the audio tag.
             $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
             $cmtinsert .= 'onClick="imgcomment_like(this.id)">';
 
-            $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
-
+            $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => '0');
             $businesscommentlike1 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if (count($businesscommentlike1) == 0) {
@@ -6900,7 +6887,7 @@ Your browser does not support the audio tag.
             }
             $userid = $this->session->userdata('aileenuser');
 
-            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
+            $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => '1'))->row()->user_id;
 
 
             if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
@@ -6967,7 +6954,7 @@ Your browser does not support the audio tag.
                 'post_image_comment_id' => $post_image_comment_id,
                 'user_id' => $userid,
                 'created_date' => date('Y-m-d H:i:s', time()),
-                'is_unlike' => 0
+                'is_unlike' => '0'
             );
 
             $insertdata = $this->common->insert_data_getid($data, 'bus_comment_image_like');
@@ -6978,15 +6965,15 @@ Your browser does not support the audio tag.
                 
             } else {
                 $datanotification = array(
-                    'not_type' => 5,
+                    'not_type' => '5',
                     'not_from_id' => $userid,
                     'not_to_id' => $busimglike[0]['user_id'],
-                    'not_read' => 2,
+                    'not_read' => '2',
                     'not_product_id' => $post_image_comment_id,
-                    'not_from' => 6,
-                    'not_img' => 6,
+                    'not_from' => '6',
+                    'not_img' => '6',
                     'not_created_date' => date('Y-m-d H:i:s'),
-                    'not_active' => 1
+                    'not_active' => '1'
                 );
                 $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
                 if ($insert_id) {
@@ -7034,7 +7021,7 @@ Your browser does not support the audio tag.
 
                 $data = array(
                     'modify_date' => date('Y-m-d', time()),
-                    'is_unlike' => 1
+                    'is_unlike' => '1'
                 );
 
 
@@ -7063,7 +7050,7 @@ Your browser does not support the audio tag.
 
                 $data = array(
                     'modify_date' => date('Y-m-d', time()),
-                    'is_unlike' => 0
+                    'is_unlike' => '0'
                 );
 
                 $where = array('post_image_comment_id' => $post_image_comment_id, 'user_id' => $userid);
@@ -7076,31 +7063,31 @@ Your browser does not support the audio tag.
                     
                 } else {
 
-                    $contition_array = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => 6, 'not_img' => 6);
+                    $contition_array = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => '6', 'not_img' => '6');
                     $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($busnotification[0]['not_read'] == 2) {
                         
                     } elseif ($busnotification[0]['not_read'] == 1) {
 
                         $datalike = array(
-                            'not_read' => 2
+                            'not_read' => '2'
                         );
 
-                        $where = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => 6, 'not_img' => 6);
+                        $where = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => '6', 'not_img' => '6');
                         $this->db->where($where);
                         $updatdata = $this->db->update('notification', $datalike);
                     } else {
 
                         $data = array(
-                            'not_type' => 5,
+                            'not_type' => '5',
                             'not_from_id' => $userid,
                             'not_to_id' => $busimglike[0]['user_id'],
-                            'not_read' => 2,
+                            'not_read' => '2',
                             'not_product_id' => $post_image_comment_id,
-                            'not_from' => 6,
-                            'not_img' => 6,
+                            'not_from' => '6',
+                            'not_img' => '6',
                             'not_created_date' => date('Y-m-d H:i:s'),
-                            'not_active' => 1
+                            'not_active' => '1'
                         );
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
                         if ($insert_id) {
@@ -7175,7 +7162,7 @@ Your browser does not support the audio tag.
                 'post_image_comment_id' => $post_image_comment_id,
                 'user_id' => $userid,
                 'created_date' => date('Y-m-d H:i:s', time()),
-                'is_unlike' => 0
+                'is_unlike' => '0'
             );
 //echo "<pre>"; print_r($data); die();
 
@@ -7188,15 +7175,15 @@ Your browser does not support the audio tag.
                 
             } else {
                 $datanotification = array(
-                    'not_type' => 5,
+                    'not_type' => '5',
                     'not_from_id' => $userid,
                     'not_to_id' => $busimglike[0]['user_id'],
-                    'not_read' => 2,
+                    'not_read' => '2',
                     'not_product_id' => $post_image_comment_id,
-                    'not_from' => 6,
-                    'not_img' => 6,
+                    'not_from' => '6',
+                    'not_img' => '6',
                     'not_created_date' => date('Y-m-d H:i:s'),
-                    'not_active' => 1
+                    'not_active' => '1'
                 );
 //echo "<pre>"; print_r($datanotification); die();
                 $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
@@ -7224,10 +7211,7 @@ Your browser does not support the audio tag.
 
             $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
             $bdatacm = $this->data['bdatacm'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
             if ($insertdata) {
-
-
                 $imglike .= '<a id="' . $post_image_comment_id . '" onClick="imgcomment_liketwo(this.id)">';
                 $imglike .= ' <i class="fa fa-thumbs-up" aria-hidden="true">';
                 $imglike .= '</i>';
@@ -7247,7 +7231,7 @@ Your browser does not support the audio tag.
 
                 $data = array(
                     'modify_date' => date('Y-m-d', time()),
-                    'is_unlike' => 1
+                    'is_unlike' => '1'
                 );
 
 
@@ -7278,7 +7262,7 @@ Your browser does not support the audio tag.
 
                 $data = array(
                     'modify_date' => date('Y-m-d', time()),
-                    'is_unlike' => 0
+                    'is_unlike' => '0'
                 );
 
                 $where = array('post_image_comment_id' => $post_image_comment_id, 'user_id' => $userid);
@@ -7293,30 +7277,30 @@ Your browser does not support the audio tag.
                     
                 } else {
 
-                    $contition_array = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => 6, 'not_img' => 6);
+                    $contition_array = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => '6', 'not_img' => '6');
                     $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($busnotification[0]['not_read'] == 2) {
                         
                     } elseif ($busnotification[0]['not_read'] == 1) {
 
                         $datalike = array(
-                            'not_read' => 2
+                            'not_read' => '2'
                         );
 
-                        $where = array('not_type' => 5, 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => 6, 'not_img' => 6);
+                        $where = array('not_type' => '5', 'not_from_id' => $userid, 'not_to_id' => $busimglike[0]['user_id'], 'not_product_id' => $post_image_comment_id, 'not_from' => '6', 'not_img' => '6');
                         $this->db->where($where);
                         $updatdata = $this->db->update('notification', $datalike);
                     } else {
                         $datanotification = array(
-                            'not_type' => 5,
+                            'not_type' => '5',
                             'not_from_id' => $userid,
                             'not_to_id' => $busimglike[0]['user_id'],
-                            'not_read' => 2,
+                            'not_read' => '2',
                             'not_product_id' => $post_image_comment_id,
-                            'not_from' => 6,
-                            'not_img' => 6,
+                            'not_from' => '6',
+                            'not_img' => '6',
                             'not_created_date' => date('Y-m-d H:i:s'),
-                            'not_active' => 1
+                            'not_active' => '1'
                         );
 
                         $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
@@ -7423,7 +7407,7 @@ Your browser does not support the audio tag.
 
                 $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
                 $company_slug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => '1'))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -7468,7 +7452,7 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
                 $cmtinsert .= 'onClick="imgcomment_like(this.id)">';
 
-                $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => '0');
                 $businesscommentlike1 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 if (count($businesscommentlike1) == 0) {
@@ -7516,7 +7500,7 @@ Your browser does not support the audio tag.
 
                 $userid = $this->session->userdata('aileenuser');
 
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => '1'))->row()->user_id;
 
                 if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
 
@@ -7573,12 +7557,10 @@ Your browser does not support the audio tag.
         $post_delete = $_POST["post_delete"];
 
         $data = array(
-            'is_delete' => 1,
+            'is_delete' => '1',
             'modify_date' => date('y-m-d h:i:s')
         );
-
         $updatdata = $this->common->update_data($data, 'bus_post_image_comment', 'post_image_comment_id', $post_image_comment_id);
-
 
         $contition_array = array('post_image_id' => $post_delete, 'is_delete' => '0');
         $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7588,7 +7570,7 @@ Your browser does not support the audio tag.
             foreach ($businesscomment as $bus_comment) {
                 $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
                 $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => '1'))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -7633,14 +7615,12 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
                 $cmtinsert .= 'onClick="imgcomment_liketwo(this.id)">';
 
-                $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
-
+                $contition_array = array('post_image_comment_id' => $bus_comment['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => '0');
                 $businesscommentlike1 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 if (count($businesscommentlike1) == 0) {
                     $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
                 } else {
-
                     $cmtinsert .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
                 }
 
@@ -7681,7 +7661,7 @@ Your browser does not support the audio tag.
                 }
                 $userid = $this->session->userdata('aileenuser');
 
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => '1'))->row()->user_id;
 
 
                 if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
@@ -7757,7 +7737,7 @@ Your browser does not support the audio tag.
                 $fourdata .= '<div class="all-comment-comment-box">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
 
-                $busienss_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                $busienss_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
 
                 if ($busienss_userimage) {
                     if (IMAGEPATHFROM == 'upload') {
@@ -7849,7 +7829,7 @@ Your browser does not support the audio tag.
                 }
 
                 $userid = $this->session->userdata('aileenuser');
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => '1'))->row()->user_id;
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
                     $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
@@ -7896,7 +7876,7 @@ Your browser does not support the audio tag.
 
                 $fourdata .= '<div class="post-design-pro-comment-img">';
 
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
 
                 if ($business_userimage != '') {
                     if (IMAGEPATHFROM == 'upload') {
@@ -7938,7 +7918,7 @@ Your browser does not support the audio tag.
                 $fourdata .= '<a id="' . $rowdata['post_image_comment_id'] . '"   onClick="imgcomment_liketwo(this.id)">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => '0');
 
                 $businesscommentlike2 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -7975,16 +7955,13 @@ Your browser does not support the audio tag.
 
                 $userid = $this->session->userdata('aileenuser');
 
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['post_image_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['post_image_id'], 'status' => '1'))->row()->user_id;
 
 
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
                     $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
                     $fourdata .= '<div class="comment-details-menu">';
-
-
-
                     $fourdata .= '<input type="hidden" name="post_deletetwo"';
                     $fourdata .= 'id="post_deletetwo' . $rowdata['post_image_comment_id'] . '" value= "' . $rowdata['post_image_id'] . '">';
                     $fourdata .= '<a id="' . $rowdata['post_image_comment_id'] . '"   onClick="comment_deletetwo(this.id)"> Delete<span class="insertcomment1' . $rowdata['post_image_comment_id'] . '">';
@@ -8019,13 +7996,13 @@ Your browser does not support the audio tag.
         if ($busmulimage1) {
             foreach ($busmulimage1 as $rowdata) {
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
-                $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_slug;
 
                 $mulimgfour .= '<div class="all-comment-comment-box">';
 
                 $mulimgfour .= '<div class="post-design-pro-comment-img">';
 
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
                 if ($business_userimage != '') {
                     if (IMAGEPATHFROM == 'upload') {
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
@@ -8073,7 +8050,7 @@ Your browser does not support the audio tag.
                 $mulimgfour .= '<a id="' . $rowdata['post_image_comment_id'] . '"   onClick="imgcomment_liketwo(this.id)">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => '0');
 
                 $businesscommentlike2 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo "<pre>"; print_r($businesscommentlike); 
@@ -8112,7 +8089,7 @@ Your browser does not support the audio tag.
 
                 $userid = $this->session->userdata('aileenuser');
 
-                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['post_image_id'], 'status' => 1))->row()->user_id;
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['post_image_id'], 'status' => '1'))->row()->user_id;
 
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
@@ -8161,15 +8138,15 @@ Your browser does not support the audio tag.
         foreach ($likelistarray as $key => $value) {
 
             $bus_slug = $this->db->get_where('business_profile', array('user_id' => $value))->row()->business_slug;
-            $business_fname = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-            $bus_image = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->business_user_image;
-            $bus_ind = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->industriyal;
+            $business_fname = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
+            $bus_image = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->business_user_image;
+            $bus_ind = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->industriyal;
 
-            $bus_cat = $this->db->get_where('industry_type', array('industry_id' => $bus_ind, 'status' => 1))->row()->industry_name;
+            $bus_cat = $this->db->get_where('industry_type', array('industry_id' => $bus_ind, 'status' => '1'))->row()->industry_name;
             if ($bus_cat) {
                 $category = $bus_cat;
             } else {
-                $category = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->other_industrial;
+                $category = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->other_industrial;
             }
             $modal .= '<li>';
             $modal .= '<div class="like_user_listq">';
@@ -8219,7 +8196,7 @@ Your browser does not support the audio tag.
 //
 //            $bus_slug = $this->db->get_where('business_profile', array('user_id' => $value))->row()->business_slug;
 //
-//            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
 //            echo '<div class="likeuser_list"><a href="' . base_url('business-profile/details/' . $bus_slug) . '">';
 //            echo ucwords($business_fname1);
 //            echo '</a></div>';
@@ -8246,15 +8223,15 @@ Your browser does not support the audio tag.
         foreach ($commneteduser as $userlist) {
 
             $bus_slug = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id']))->row()->business_slug;
-            $business_fname = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => 1))->row()->company_name;
-            $bus_image = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => 1))->row()->business_user_image;
-            $bus_ind = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => 1))->row()->industriyal;
+            $business_fname = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => '1'))->row()->company_name;
+            $bus_image = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => '1'))->row()->business_user_image;
+            $bus_ind = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => '1'))->row()->industriyal;
 
-            $bus_cat = $this->db->get_where('industry_type', array('industry_id' => $bus_ind, 'status' => 1))->row()->industry_name;
+            $bus_cat = $this->db->get_where('industry_type', array('industry_id' => $bus_ind, 'status' => '1'))->row()->industry_name;
             if ($bus_cat) {
                 $category = $bus_cat;
             } else {
-                $category = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => 1))->row()->other_industrial;
+                $category = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => '1'))->row()->other_industrial;
             }
             $modal .= '<li>';
             $modal .= '<div class="like_user_listq">';
@@ -8303,7 +8280,7 @@ Your browser does not support the audio tag.
 //        foreach ($commneteduser as $userlist) {
 //            $bus_slug = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id']))->row()->business_slug;
 //
-//            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => 1))->row()->company_name;
+//            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => '1'))->row()->company_name;
 //            echo '<div class="likeuser_list"><a href="' . base_url('business-profile/details/' . $bus_slug) . '">';
 //            echo ucwords($business_fname1);
 //            echo '</a></div>';
@@ -8328,7 +8305,7 @@ Your browser does not support the audio tag.
         $status = $_POST['status'];
 
 
-        $contition_array = array('contact_type' => 2);
+        $contition_array = array('contact_type' => '2');
         $search_condition = "((contact_to_id = '$to_id' AND contact_from_id = ' $userid') OR (contact_from_id = '$to_id' AND contact_to_id = '$userid'))";
         $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
         if ($contactperson[0]['status'] == $status) {
@@ -8402,10 +8379,10 @@ Your browser does not support the audio tag.
                 $data = array(
                     'contact_from_id' => $userid,
                     'contact_to_id' => $to_id,
-                    'contact_type' => 2,
+                    'contact_type' => '2',
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
-                    'not_read' => 2
+                    'not_read' => '2'
                 );
 
 
@@ -8460,10 +8437,10 @@ Your browser does not support the audio tag.
                 $data = array(
                     'contact_from_id' => $userid,
                     'contact_to_id' => $to_id,
-                    'contact_type' => 2,
+                    'contact_type' => '2',
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
-                    'not_read' => 2
+                    'not_read' => '2'
                 );
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
@@ -8492,10 +8469,10 @@ Your browser does not support the audio tag.
             $data = array(
                 'contact_from_id' => $userid,
                 'contact_to_id' => $to_id,
-                'contact_type' => 2,
+                'contact_type' => '2',
                 'created_date' => date('Y-m-d H:i:s'),
                 'status' => 'pending',
-                'not_read' => 2
+                'not_read' => '2'
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
@@ -8717,7 +8694,7 @@ Your browser does not support the audio tag.
             $data = array(
                 'modify_date' => date('Y-m-d H:i:s', time()),
                 'status' => 'confirm',
-                'not_read' => 2
+                'not_read' => '2'
             );
             $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contactid);
         } else {
@@ -9162,14 +9139,14 @@ Your browser does not support the audio tag.
 
         if ($id != '') {
             $business_user_id = $this->db->select('user_id')->get_where('business_profile', array('business_slug' => $id))->row()->user_id;
-            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
+            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => '2');
             $search_condition = "(contact_to_id = '$business_user_id' OR contact_from_id = '$business_user_id')";
             $data = "contact_id,contact_from_id,contact_to_id,status";
             $contacts_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data, $sortby = 'contact_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str = array(), $groupby = '');
             $contacts_user1 = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data, $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $business_user_id = $userid;
-            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
+            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => '2');
             $search_condition = "(contact_to_id = '$userid' OR contact_from_id = '$userid')";
             $data = "contact_id,contact_from_id,contact_to_id,status";
             $contacts_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data, $sortby = 'contact_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str = arrat(), $groupby = '');
@@ -9304,12 +9281,12 @@ Your browser does not support the audio tag.
 
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('contact_type' => 2);
+        $contition_array = array('contact_type' => '2');
         $search_condition = "((contact_to_id = ' $to_id' AND contact_from_id = ' $userid') OR (contact_from_id = ' $to_id' AND contact_to_id = '$userid'))";
         $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
         $contact_id = $contactperson[0]['contact_id'];
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => '1');
         $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo $businessdata1[0]['business_slug']; die();
@@ -9325,7 +9302,7 @@ Your browser does not support the audio tag.
 //$contactdata =  '<button>';
 // for count list user start
 
-        $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
+        $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => '2');
         $search_condition = "(contact_to_id = '$userid' OR contact_from_id = '$userid')";
         $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
@@ -9352,14 +9329,14 @@ No Contacts Available.
         if ($showdata == $businessdata1[0]['business_slug']) {
             echo json_encode(
                     array("contactdata" => $contactdata,
-                        "notfound" => 1,
+                        "notfound" => '1',
                         "notcount" => $datacount,
                         "nomsg" => $nomsg,
             ));
         } else {
             echo json_encode(
                     array("contactdata" => $contactdata,
-                        "notfound" => 2,
+                        "notfound" => '2',
                         "notcount" => $datacount,
                         "nomsg" => $nomsg,
             ));
@@ -9374,7 +9351,7 @@ No Contacts Available.
         $to_id = $_POST['toid'];
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('contact_type' => 2);
+        $contition_array = array('contact_type' => '2');
         $search_condition = "((contact_to_id = ' $to_id' AND contact_from_id = ' $userid') OR (contact_from_id = ' $to_id' AND contact_to_id = '$userid'))";
         $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'status,contact_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
         if ($contactperson) {
@@ -9399,7 +9376,7 @@ No Contacts Available.
                     'contact_to_id' => $to_id,
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
-                    'not_read' => 2
+                    'not_read' => '2'
                 );
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
@@ -9409,7 +9386,7 @@ No Contacts Available.
                 $data = array(
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
-                    'not_read' => 2
+                    'not_read' => '2'
                 );
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
@@ -9422,10 +9399,10 @@ No Contacts Available.
             $data = array(
                 'contact_from_id' => $userid,
                 'contact_to_id' => $to_id,
-                'contact_type' => 2,
+                'contact_type' => '2',
                 'created_date' => date('Y-m-d H:i:s'),
                 'status' => 'pending',
-                'not_read' => 2
+                'not_read' => '2'
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
@@ -9444,7 +9421,7 @@ No Contacts Available.
     public function contact_count() {
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('not_read' => 2);
+        $contition_array = array('not_read' => '2');
         $search_condition = "((contact_to_id = '$userid' AND status = 'pending') OR (contact_from_id = '$userid' AND status = 'confirm'))";
         $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'contact_id', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
@@ -9456,15 +9433,15 @@ No Contacts Available.
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('not_read' => 2, 'contact_to_id' => $userid, 'status' => 'pending');
+        $contition_array = array('not_read' => '2', 'contact_to_id' => $userid, 'status' => 'pending');
         $result_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('not_read' => 2, 'contact_from_id' => $userid, 'status' => 'confirm');
+        $contition_array = array('not_read' => '2', 'contact_from_id' => $userid, 'status' => 'confirm');
         $result_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $result = array_merge($result_req, $result_con);
         $data = array(
-            'not_read' => 1
+            'not_read' => '1'
         );
 
         foreach ($result as $cnt) {
@@ -9541,7 +9518,7 @@ No Contacts Available.
         /* FOLLOWER USER LIST END */
 
         /* INDUSTRIAL AND CITY WISE DATA START */
-        $condition_array = array('business_profile.is_deleted' => 0, 'business_profile.status' => 1, 'business_profile.business_step' => 4);
+        $condition_array = array('business_profile.is_deleted' => '0', 'business_profile.status' => '1', 'business_profile.business_step' => '4');
         $search_condition = "(business_profile.industriyal = '$industriyal' AND business_profile.industriyal != 0) AND (business_profile.other_industrial = '$other_industrial' AND business_profile.other_industrial != '') OR (business_profile.city = '$city')";
         $data = "GROUP_CONCAT(user_id) as industry_city_user_list";
         $industrial_city_data = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data, $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
@@ -9554,19 +9531,19 @@ No Contacts Available.
         $total_user_list = implode(',', $total_user_list);
         $total_user_list = str_replace(",", "','", $total_user_list);
 
-        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1, 'FIND_IN_SET ("' . $user_id . '", delete_post) !=' => '0');
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1', 'FIND_IN_SET ("' . $user_id . '", delete_post) !=' => '0');
         $delete_postdata = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'GROUP_CONCAT(business_profile_post_id) as delete_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $delete_post_id = $delete_postdata[0]['delete_post_id'];
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
-        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1');
         $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND is_delete=0)";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
-        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
+        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -9587,7 +9564,7 @@ No Contacts Available.
                 $post_company_name = $row['company_name'];
                 $post_business_profile_post_id = $row['business_profile_post_id'];
                 $post_product_name = $row['product_name'];
-                $post_product_image = $row['product_image'];
+                //$post_product_image = $row['product_image'];
                 $post_product_description = $row['product_description'];
                 $post_business_likes_count = $row['business_likes_count'];
                 $post_business_like_user = $row['business_like_user'];
@@ -9596,12 +9573,12 @@ No Contacts Available.
                 $post_business_slug = $row['business_slug'];
                 $post_industriyal = $row['industriyal'];
                 $post_user_id = $row['user_id'];
-                $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+                $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => '1'))->row()->industry_name;
                 $post_other_industrial = $row['other_industrial'];
                 if ($post_posted_user_id) {
                     $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
-                    $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
-                    $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+                    $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => '1'))->row()->business_slug;
+                    $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => '1'))->row()->industry_name;
                     $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
                 }
 
@@ -10022,7 +9999,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<div class = "like_one_other">';
                     $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
 
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->company_name;
 
                     if (in_array($userid, $likelistarray)) {
                         $return_html .= "You";
@@ -10054,7 +10031,7 @@ Your browser does not support the audio tag.
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
 
-                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
 
                 $return_html .= '<div class = "like_one_other">';
                 $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
@@ -10084,11 +10061,11 @@ Your browser does not support the audio tag.
                     foreach ($businessprofiledata as $rowdata) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
 
-                        $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
+                        $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_slug;
 
                         $return_html .= '<div class = "all-comment-comment-box">
 <div class = "post-design-pro-comment-img">';
-                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
 
                         if ($business_userimage) {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
@@ -10183,7 +10160,7 @@ Your browser does not support the audio tag.
 </div>';
                         }
                         $userid = $this->session->userdata('aileenuser');
-                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => '1'))->row()->user_id;
                         if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
                             $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
@@ -10217,7 +10194,7 @@ Your browser does not support the audio tag.
 <div class = "post-design-proo-img hidden-mob">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_user_image;
                 if ($business_userimage) {
                     if (IMAGEPATHFROM == 'upload') {
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
@@ -10283,19 +10260,19 @@ Your browser does not support the audio tag.
         $business_type = $businessdata[0]['business_type'];
         // GET USER BUSINESS DATA END
         // GET BUSINESS USER FOLLOWING LIST START
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
         $follow_list = $followdata[0]['follow_list'];
         $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
         // GET BUSINESS USER FOLLOWING LIST END
         // GET BUSINESS USER IGNORE LIST START
-        $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+        $contition_array = array('user_from' => $business_profile_id, 'profile' => '2');
         $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
         $user_list = $followdata[0]['user_list'];
         $user_list = str_replace(",", "','", $userdata[0]['user_list']);
         // GET BUSINESS USER IGNORE LIST END
         //GET BUSINESS USER SUGGESTED USER LIST 
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+        $contition_array = array('is_deleted' => '0', 'status' => '1', 'user_id != ' => $userid, 'business_step' => '4');
         //$search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
         $search_condition = "(business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list'))";
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '0', $join_str_contact = array(), $groupby = '');
@@ -10305,10 +10282,10 @@ Your browser does not support the audio tag.
         if (count($userlistview) > 0) {
             foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
                 $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
                 $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => '1'))->row()->industry_name;
                 if (!$businessfollow) {
 
                     $return_html .= '<li class = "follow_box_ul_li fad' . $userlist['business_profile_id'] . '" id = "fad' . $userlist['business_profile_id'] . '">
@@ -10343,7 +10320,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
       <h6>' . ucfirst($userlist['company_name']) . '</h6>
       </a></div></li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => '1'))->row()->industry_name;
                     $return_html .= '<li>
       <div class = "post-design-product_follow_main" style = "display:block;">
       <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst($userlist['company_name']) . '">
@@ -10436,7 +10413,7 @@ Your browser does not support the audio tag.
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
@@ -10799,7 +10776,7 @@ Your browser does not support the audio tag.
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
@@ -10808,7 +10785,7 @@ Your browser does not support the audio tag.
         $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
         $join_str[0]['join_type'] = '';
 
-        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'pdf');
+        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'pdf');
         $businesspdf = $this->data['businessaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
         if ($businesspdf) {
@@ -10845,7 +10822,7 @@ Your browser does not support the audio tag.
         if ($start < 0)
             $start = 0;
         if ($id != '') {
-            $bus_userid = $this->db->get_where('business_profile', array('business_slug' => $id, 'status' => 1))->row()->user_id;
+            $bus_userid = $this->db->get_where('business_profile', array('business_slug' => $id, 'status' => '1'))->row()->user_id;
         } else {
             $bus_userid = $this->session->userdata('aileenuser');
         }
@@ -10870,22 +10847,22 @@ Your browser does not support the audio tag.
         $total_user_list = implode(',', $total_user_list);
         $total_user_list = str_replace(",", "','", $total_user_list);
 
-        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1, 'FIND_IN_SET ("' . $userid . '", delete_post) !=' => '0');
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1', 'FIND_IN_SET ("' . $userid . '", delete_post) !=' => '0');
         $delete_postdata = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'GROUP_CONCAT(business_profile_post_id) as delete_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $delete_post_id = $delete_postdata[0]['delete_post_id'];
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
-        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
+        $condition_array = array('business_profile_post.is_delete' => '0', 'business_profile_post.status' => '1');
         $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND is_delete=0)";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
-        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
+        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
-       
+
         $return_html = '';
 
         if (empty($_GET["total_record"])) {
@@ -10903,7 +10880,7 @@ Your browser does not support the audio tag.
                 $post_company_name = $row['company_name'];
                 $post_business_profile_post_id = $row['business_profile_post_id'];
                 $post_product_name = $row['product_name'];
-                $post_product_image = $row['product_image'];
+                //$post_product_image = $row['product_image'];
                 $post_product_description = $row['product_description'];
                 $post_business_likes_count = $row['business_likes_count'];
                 $post_business_like_user = $row['business_like_user'];
@@ -10912,12 +10889,12 @@ Your browser does not support the audio tag.
                 $post_business_slug = $row['business_slug'];
                 $post_industriyal = $row['industriyal'];
                 $post_user_id = $row['user_id'];
-                $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+                $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => '1'))->row()->industry_name;
                 $post_other_industrial = $row['other_industrial'];
                 if ($post_posted_user_id) {
                     $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
-                    $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
-                    $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+                    $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => '1'))->row()->business_slug;
+                    $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => '1'))->row()->industry_name;
                     $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
                 }
 
@@ -11349,7 +11326,7 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class = "like_one_other">';
                     $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->company_name;
 
                     if (in_array($userid, $likelistarray)) {
                         $return_html .= "You";
@@ -11379,7 +11356,7 @@ Your browser does not support the audio tag.
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
 
-                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
 
                 $return_html .= '<div class = "like_one_other">';
                 $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
@@ -11410,11 +11387,11 @@ Your browser does not support the audio tag.
                     foreach ($businessprofiledata as $rowdata) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
 
-                        $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
+                        $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_slug;
 
                         $return_html .= '<div class = "all-comment-comment-box">
 <div class = "post-design-pro-comment-img">';
-                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
 
                         if ($business_userimage) {
                             $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
@@ -11510,7 +11487,7 @@ Your browser does not support the audio tag.
 </div>';
                         }
                         $userid = $this->session->userdata('aileenuser');
-                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => '1'))->row()->user_id;
                         if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
                             $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
@@ -11544,7 +11521,7 @@ Your browser does not support the audio tag.
 <div class = "post-design-proo-img hidden-mob">';
 
                 $userid = $this->session->userdata('aileenuser');
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_user_image;
                 if ($business_userimage) {
                     if (IMAGEPATHFROM == 'upload') {
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
@@ -11668,7 +11645,7 @@ Your browser does not support the audio tag.
 
     public function get_company_name($id = '') {
         $s3 = new S3(awsAccessKey, awsSecretKey);
-        $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => '1');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         return $company_name = $businessdata[0]['company_name'];
@@ -11677,7 +11654,7 @@ Your browser does not support the audio tag.
     public function ajax_business_skill() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $term = $_GET['term'];
-        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
+        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => '4');
         $search_condition = "(company_name LIKE '" . trim($term) . "%' OR other_industrial LIKE '" . trim($term) . "%' OR other_business_type LIKE '" . trim($term) . "%')";
         $businessdata = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // GET BUSINESS TYPE
@@ -11732,7 +11709,7 @@ Your browser does not support the audio tag.
     public function business_home_follow_ignore() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
-        $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         $follow_to = $_POST['follow_to'];
 
         $insert_data['profile'] = '2';
@@ -11791,7 +11768,7 @@ Your browser does not support the audio tag.
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
-            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         }
 
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
@@ -11815,7 +11792,7 @@ Your browser does not support the audio tag.
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
-            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         }
 
         $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
@@ -11838,7 +11815,7 @@ Your browser does not support the audio tag.
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id != '') {
-            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
+            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => '1'))->row()->user_id;
         }
 
         $contition_array = array('contact_type' => 2, 'contact_person.status' => 'confirm', 'business_profile.status' => 1);
@@ -11854,10 +11831,10 @@ Your browser does not support the audio tag.
 
         return $contacts_count;
     }
-    
-    public function mail_test(){
+
+    public function mail_test() {
         $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
-    //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
+        //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
 
 }
