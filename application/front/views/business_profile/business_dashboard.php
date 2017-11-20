@@ -982,6 +982,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         type: 'POST',
                         url: '<?php echo base_url() ?>registration/reg_insert',
                         data: post_data,
+                        dataType: 'json',
                         beforeSend: function ()
                         {
                             $("#register_error").fadeOut();
@@ -989,7 +990,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         },
                         success: function (response)
                         {
-                            if (response == "ok") {
+                            if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
 //                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
                                 window.location = "<?php echo base_url() ?>business-profile/";
