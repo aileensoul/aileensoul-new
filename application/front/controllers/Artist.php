@@ -15862,12 +15862,12 @@ public function get_artistic_name($id=''){
                                                    $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1');
                                                    $artlike = $this->data['artlike'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                     $likeuserarray = explode(',', $artlike[0]['art_like_user']);
-                                                      if (!in_array($userid, $likeuserarray)) { 
+                                                     // if (!in_array($userid, $likeuserarray)) { 
                     $return_html .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true">
                                                 </i>';
-                                                 } else {
-                                               $return_html .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
-                                                } 
+                                               //   } else {
+                                               // $return_html .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
+                                               //  } 
                                               $return_html .= '<span style="display: none;">
                                                 </span>
                                                 </a>
