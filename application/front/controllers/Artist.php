@@ -6349,56 +6349,56 @@ public function insert_comment_postnewpage() {
         echo $coverpic;
     }
 
-    public function image() {
-        $userid = $this->session->userdata('aileenuser');
+    // public function image() {
+    //     $userid = $this->session->userdata('aileenuser');
 
-         //if user deactive profile then redirect to artist/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+    //      //if user deactive profile then redirect to artist/index untill active profile start
+    //      $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
-        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+    //     $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if($artistic_deactive)
-        {
-             redirect('artist/');
-        }
-     //if user deactive profile then redirect to artist/index untill active profile End
+    //     if($artistic_deactive)
+    //     {
+    //          redirect('artist/');
+    //     }
+    //  //if user deactive profile then redirect to artist/index untill active profile End
 
-        $config['upload_path'] = $this->config->item('art_bg_original_upload_path');
-        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+    //     $config['upload_path'] = $this->config->item('art_bg_original_upload_path');
+    //     $config['allowed_types'] = 'jpg|jpeg|png|gif';
 
-        $config['file_name'] = $_FILES['image']['name'];
+    //     $config['file_name'] = $_FILES['image']['name'];
 
-        //Load upload library and initialize configuration
-        $this->load->library('upload', $config);
-        $this->upload->initialize($config);
+    //     //Load upload library and initialize configuration
+    //     $this->load->library('upload', $config);
+    //     $this->upload->initialize($config);
 
-        if ($this->upload->do_upload('image')) {
+    //     if ($this->upload->do_upload('image')) {
 
-            $uploadData = $this->upload->data();
+    //         $uploadData = $this->upload->data();
 
-            $image = $uploadData['file_name'];
-        } else {
+    //         $image = $uploadData['file_name'];
+    //     } else {
 
-            $image = '';
-        }
-
-
-        $data = array(
-            'profile_background_main' => $image,
-            'modified_date' => date('Y-m-d h:i:s', time())
-        );
+    //         $image = '';
+    //     }
 
 
-        $updatedata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
+    //     $data = array(
+    //         'profile_background_main' => $image,
+    //         'modified_date' => date('Y-m-d h:i:s', time())
+    //     );
 
-        if ($updatedata) {
-            echo $userid;
-        } else {
-            echo "welcome";
-        }
-    }
 
-    // cover pic end
+    //     $updatedata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
+
+    //     if ($updatedata) {
+    //         echo $userid;
+    //     } else {
+    //         echo "welcome";
+    //     }
+    // }
+
+    // // cover pic end
 // click on post after post open on new page start
     public function postnewpage($id = '') {
         $userid = $this->session->userdata('aileenuser');
