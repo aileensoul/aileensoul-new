@@ -227,9 +227,9 @@ class Business_profile_registration extends MY_Controller {
                 $data['user_id'] = $userid;
                 $data['business_slug'] = $this->setcategory_slug($data['company_name'], 'business_slug', 'business_profile');
                 $data['created_date'] = date('Y-m-d H:i:s', time());
-                $data['status'] = 1;
-                $data['is_deleted'] = 0;
-                $data['business_step'] = 1;
+                $data['status'] = '1';
+                $data['is_deleted'] = '0';
+                $data['business_step'] = '1';
 
                 $insert_id = $this->common->insert_data_getid($data, 'business_profile');
                 if ($insert_id) {
@@ -323,7 +323,7 @@ class Business_profile_registration extends MY_Controller {
             $data['contact_website'] = $_POST['contactwebsite'];
             $data['modified_date'] = date('Y-m-d H:i:s', time());
             if ($_POST['busreg_step'] == '1') {
-                $data['business_step'] = 2;
+                $data['business_step'] = '2';
             }
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
             if ($updatdata) {
@@ -412,7 +412,7 @@ class Business_profile_registration extends MY_Controller {
             $data['details'] = $_POST['business_details'];
             $data['modified_date'] = date('Y-m-d H:i:s', time());
             if ($_POST['busreg_step'] == '2') {
-                $data['business_step'] = 3;
+                $data['business_step'] = '3';
             }
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
             if ($updatdata) {
@@ -475,7 +475,7 @@ class Business_profile_registration extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $image_id = $_POST['image_id'];
         $data = array(
-            'is_delete' => 1
+            'is_delete' => '1'
         );
         $updatdata = $this->common->update_data($data, 'bus_image', 'bus_image_id', $image_id);
         if ($updatdata) {
@@ -637,7 +637,7 @@ class Business_profile_registration extends MY_Controller {
                         'image_name' => $dataimage,
                         'user_id' => $userid,
                         'created_date' => date('Y-m-d H:i:s'),
-                        'is_delete' => 0
+                        'is_delete' => '0'
                     );
                     $insert_id = $this->common->insert_data_getid($data, 'bus_image');
                 }
@@ -645,13 +645,13 @@ class Business_profile_registration extends MY_Controller {
                 if ($dataimage) {
                     $data = array(
                         'modified_date' => date('Y-m-d H:i:s', time()),
-                        'business_step' => 4
+                        'business_step' => '4'
                     );
                     $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
                 } else {
                     $data = array(
                         'modified_date' => date('Y-m-d H:i:s', time()),
-                        'business_step' => 4
+                        'business_step' => '4'
                     );
                     $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
                 }
@@ -659,7 +659,7 @@ class Business_profile_registration extends MY_Controller {
         } else {
             $data = array(
                 'modified_date' => date('Y-m-d H:i:s', time()),
-                'business_step' => 4
+                'business_step' => '4'
             );
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
         }
@@ -674,7 +674,7 @@ class Business_profile_registration extends MY_Controller {
 
     public function get_company_name($id = '') {
         $s3 = new S3(awsAccessKey, awsSecretKey);
-        $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => 1);
+        $contition_array = array('business_slug' => $id, 'is_deleted' => '0', 'status' => '1');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         return $company_name = $businessdata[0]['company_name'];
