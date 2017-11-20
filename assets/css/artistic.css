@@ -5164,6 +5164,7 @@ div .comment {
         width: 230px !important;
         position: relative !important;
     }
+    .post-design-mid .mejs__audio{width: 230px !important;}
     .cq_latest_left {
         width: 14%;
     }
@@ -5272,7 +5273,7 @@ div .comment {
         float: none;
     }
     .comment-details {
-        font-size: 14px;
+        font-size: 13px;
     }
     .posted_with {
         font-size: 10px;
@@ -5367,9 +5368,10 @@ div .comment {
     }
     .audio_img {
         height: 200px !important;
-        width: 200px !important;
+        width: 230px !important;
         position: relative !important;
     }
+    .post-design-mid .mejs__audio{width: 230px !important;}
     .cq_latest_right {
         width: 76%;
     }
