@@ -1,24 +1,24 @@
 //Disable progress bar when 100% complete Start
-  $(document).ready(function(){ 
-   
-   var nb = $('div.profile-job-post-title').length;
-    if(nb == 0){
-   $("#dropdownclass").addClass("no-post-h2");
-   
-    }
-    $('.progress .progress-bar').css("width",
-           function() {
-               return $(this).attr("aria-valuenow") + "%";
-           }
-       )
-   });
-   
-    $(document).ready(function () {
-   $('.complete_profile').fadeIn('fast').delay(5000).fadeOut('slow');
-   $('.edit_profile_job').fadeIn('slow').delay(5000);
-   $('.tr_text').fadeIn('slow').delay(500);
-   $('.true_progtree img').fadeIn('slow').delay(500);
-     });
+//  $(document).ready(function(){ 
+//   
+//   var nb = $('div.profile-job-post-title').length;
+//    if(nb == 0){
+//   $("#dropdownclass").addClass("no-post-h2");
+//   
+//    }
+//    $('.progress .progress-bar').css("width",
+//           function() {
+//               return $(this).attr("aria-valuenow") + "%";
+//           }
+//       )
+//   });
+//   
+//    $(document).ready(function () {
+//   $('.complete_profile').fadeIn('fast').delay(5000).fadeOut('slow');
+//   $('.edit_profile_job').fadeIn('slow').delay(5000);
+//   $('.tr_text').fadeIn('slow').delay(500);
+//   $('.true_progtree img').fadeIn('slow').delay(500);
+//     });
 //Disable progress bar when 100% complete End
 
 //Progress bar see start

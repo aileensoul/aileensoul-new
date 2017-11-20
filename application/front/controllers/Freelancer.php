@@ -5459,7 +5459,7 @@ $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->inpu
 
         if ($apply_reg > 0) {
             $notEmpty = 0;
-            $totalField = 28;
+            $totalField = 26;
 
             foreach ($apply_reg as $row) {
                 $notEmpty += ($row['freelancer_post_fullname'] != '') ? 1 : 0;
@@ -5476,7 +5476,7 @@ $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->inpu
                 $notEmpty += ($row['freelancer_post_skill_description'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_hourly'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_ratestate'] != '') ? 1 : 0;
-                $notEmpty += ($row['freelancer_post_fixed_rate'] != 0) ? 1 : 0;
+               // $notEmpty += ($row['freelancer_post_fixed_rate'] != 0) ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_job_type'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_work_hour'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_degree'] != '') ? 1 : 0;
@@ -5485,7 +5485,7 @@ $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->inpu
                 $notEmpty += ($row['freelancer_post_collage'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_percentage'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_passingyear'] != '') ? 1 : 0;
-                $notEmpty += ($row['freelancer_post_eduaddress'] != '') ? 1 : 0;
+              //  $notEmpty += ($row['freelancer_post_eduaddress'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_portfolio_attachment'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_portfolio'] != '') ? 1 : 0;
                 $notEmpty += ($row['freelancer_post_exp_month'] != '') ? 1 : 0;

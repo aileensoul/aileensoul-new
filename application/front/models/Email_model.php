@@ -40,11 +40,12 @@ line-height: 1;}
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 ); /* ie6-9 */
 		font-size:16px;
 		color:#fff;
-		padding:10px 25px;
+		padding:8px 20px;
 		text-decoration:none;
-                border-radius:5px;
+                border-radius:3px;
 	}
 	.btn:hover{/*opacity:0.8;*/}
+    .description_table img { width:50px !important; height:50px !important;}
 </style></head>
 <body>
 	<div style="max-width:600px; margin:0 auto; background:#f4f4f4; padding:30px;">
@@ -56,8 +57,8 @@ line-height: 1;}
 						</h2></td></tr></table>
 			</td></tr>
 			<tr><td style="border-bottom:1px solid #ddd;">
-			<table width="100%" cellpadding="0" cellspacing="0">
-                            <tr><td style="padding:10px 0 30px; font-size:15px;">' . $templ . '</td></tr>
+			<table width="100%" cellpadding="0" cellspacing="0" class="description_table">
+                            <tr><td style="padding:5px;padding-left: 10px;padding-top: 21px;} font-size:15px;">' . $templ . '</td></tr>
                         </table>
 			</td></tr>
 			<tr><td style="padding:25px 0px;">

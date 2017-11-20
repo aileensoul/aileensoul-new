@@ -74,6 +74,26 @@ class Main extends CI_Controller {
 
      //        );
      // $insertid = $this->common->insert_data_getid($data, 'user_visit');
+
+    $ipaddress = trim($this->input->ip_address()); 
+    //echo $ipaddress; die();
+
+    $date = date('Y-m-d');
+      
+    $contition_array = array('ip' => $ipaddress, 'insert_date' => $date);
+    $uservisit = $this->common->select_data_by_condition('user_visit', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = ''); 
+//echo  $this->db->last_query(); die();
+    //echo "<pre>"; print_r($uservisit); die();
+   
+       if($uservisit){}else{
+          $data = array(
+                'ip' => $ipaddress,
+                //'mac' => 1,
+                'insert_date' => date('Y-m-d', time()),
+
+            );
+       $insertid = $this->common->insert_data_getid($data, 'user_visit');
+    }
         
         $this->load->view('main', $this->data);
 

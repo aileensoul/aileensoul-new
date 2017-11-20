@@ -474,17 +474,17 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
             document.getElementById('row2').style.display = "block"; 
             return false;
         }
-        $.ajax({
+        // $.ajax({
 
-            url: base_url + "artist/image",
-            //url: "<?php echo base_url(); ?>artist/image",
-            type: "POST",
-            data: fd,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-            }
-        });
+        //     url: base_url + "artist/image",
+        //     //url: "<?php echo base_url(); ?>artist/image",
+        //     type: "POST",
+        //     data: fd,
+        //     processData: false,
+        //     contentType: false,
+        //     success: function (response) {
+        //     }
+        // });
     });
 
 $('#upload').click(function(){
