@@ -69,6 +69,7 @@ $('#skills').change(function other_category(){
             document.getElementById('other_category').style.display = "block";
         }else if(strUser1 == ''){
           $("span").addClass("custom-mini-select");
+          document.getElementById('other_category').style.display = "none"; 
         }
 
         else{ 
