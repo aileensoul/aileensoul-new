@@ -67,6 +67,14 @@ class Dashboard extends MY_Controller {
         $condition_array = array('is_delete' => 0,'art_step' =>'4');
         $data="art_id";
         $this->data['artistic_list'] = $get_users = $this->common->select_data_by_condition('art_reg', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
+
+
+        $date = date('Y-m-d');
+
+        $contition_array = array('insert_date' => $date);
+        $user_visit = $this->common->select_data_by_condition('user_visit', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['count_visit'] = count($user_visit);
+        
         
         $this->load->view('dashboard/index',$this->data);
 
