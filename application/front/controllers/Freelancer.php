@@ -1635,6 +1635,7 @@ class Freelancer extends MY_Controller {
                 $skills = implode(',', $skill);
             }
             //skill code end
+            $post_name = trim($this->input->post('post_name'));
             $data = array(
                 'post_name' => trim($this->input->post('post_name')),
                 'post_description' => trim($this->input->post('post_desc')),
@@ -1648,6 +1649,7 @@ class Freelancer extends MY_Controller {
                 'post_exp_month' => trim($this->input->post('month')),
                 'post_exp_year' => trim($this->input->post('year')),
                 'post_last_date' => $lastdate,
+                'post_slug' => $this->common->clean($post_name),
                 //'post_location' => $this->input->post('location'),
 //                'country' => trim($this->input->post('country')),
 //                'state' => trim($this->input->post('state')),
@@ -2137,7 +2139,7 @@ class Freelancer extends MY_Controller {
                 $skill = array_unique($skill, SORT_REGULAR);
                 $skills = implode(',', $skill);
             }
-
+            $post_name = trim($this->input->post('post_name'));
             $data = array(
                 'post_name' => trim($this->input->post('post_name')),
                 'post_description' => trim($this->input->post('post_desc')),
@@ -2151,6 +2153,7 @@ class Freelancer extends MY_Controller {
                 'post_exp_month' => trim($this->input->post('month')),
                 'post_exp_year' => trim($this->input->post('year')),
                 'post_last_date' => $lastdate,
+                'post_slug' => $this->common->clean($post_name),
 //                'country' => trim($this->input->post('country')),
 //                'city' => trim($this->input->post('city')),
                 'modify_date' => date('Y-m-d', time()),
@@ -5033,7 +5036,7 @@ class Freelancer extends MY_Controller {
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $applydata[0]['freelancer_post_fullname'] . " " . $applydata[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
@@ -5070,7 +5073,7 @@ class Freelancer extends MY_Controller {
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " " . $writting_word . '</b> you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
@@ -5096,7 +5099,7 @@ class Freelancer extends MY_Controller {
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Employer <b>' . $this->data['freehiredata'][0]['fullname'] . " " . $this->data['freehiredata'][0]['username'] . " ". $writting_word.'</b>  you for ' . $projectdata[0]["post_name"] . ' project in freelancer profile.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'notification/freelancer-hire/' . $postid . '">view</a></p>
@@ -5434,7 +5437,7 @@ $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->inpu
         }
         $email_html .= '<td style="padding:5px;">
 						<p>Freelancer <b>' . $postuser[0]['freelancer_post_fullname'] . " " . $postuser[0]['freelancer_post_username'] . '</b> Applied on your Project.</p>
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
@@ -5518,4 +5521,25 @@ $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->inpu
     }
 
     //FOR FREELANCER APPLY PROGRESSBAR END
+        public function post_slug() {
+        $this->db->select('post_id,post_name');
+        $res = $this->db->get('freelancer_post')->result();
+        foreach ($res as $k => $v) {
+            $data = array('post_slug' => $this->common->clean($v->post_name));
+            $this->db->where('post_id', $v->post_id);
+            $this->db->update('freelancer_post', $data);
+        }
+        echo "yes";
+    }
+    
+    public function category_slug() {
+        $this->db->select('category_id,category_name');
+        $res = $this->db->get('category')->result();
+        foreach ($res as $k => $v) {
+            $data = array('category_slug' => $this->common->clean($v->category_name));
+            $this->db->where('category_id', $v->category_id);
+            $this->db->update('category', $data);
+        }
+        echo "yes";
+    }
 }

@@ -2364,7 +2364,7 @@ Your browser does not support the audio tag.
         $search_skill = trim($skill[0]);
         $search_skill = trim($skill[0], '-');
        
-        $search_skill = str_replace('-', ' ', $search_skill);
+      //  $search_skill = str_replace('-', ' ', $search_skill);
        
         $search_place = $location[1];
 
@@ -2469,11 +2469,11 @@ Your browser does not support the audio tag.
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $category_temp = $this->db->select('category_id')->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
+            $category_temp = $this->db->select('category_id')->get_where('category', array('category_slug' => $search_skill, 'status' => '1'))->row()->category_id;
             $contition_array = array('post_field_req' => $category_temp, 'user_id !=' => $userid, 'status' => '1', 'city' => $cache_time);
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 
-            $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
+            $search_condition = "(post_slug LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
             $contion_array = array('freelancer_post.user_id !=' => $userid);
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>";print_r($freeldata);die();
@@ -2502,7 +2502,7 @@ Your browser does not support the audio tag.
             $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
             $join_str[0]['join_type'] = '';
             
-            $category_temp = $this->db->select('category_id')->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
+            $category_temp = $this->db->select('category_id')->get_where('category', array('category_slug' => $search_skill, 'status' => '1'))->row()->category_id;
             $contition_array = array('freelancer_post.post_field_req' => $category_temp, 'freelancer_post.user_id !=' => $userid, 'freelancer_post.status' => '1', 'freelancer_post.is_delete' => 0, 'freelancer_hire_reg.city' => $cache_time);
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 
@@ -2514,7 +2514,7 @@ Your browser does not support the audio tag.
             $join_str[0]['join_type'] = '';
             
             
-            $search_condition = "(freelancer_post.post_name LIKE '%$search_skill%' or freelancer_post.post_other_skill LIKE '%$search_skill%' or freelancer_post.post_est_time LIKE '%$search_skill%' or freelancer_post.post_rate LIKE '%$search_skill%' or  freelancer_post.post_exp_year LIKE '%$search_skill%' or  freelancer_post.post_exp_month LIKE '%$search_skill%')";
+            $search_condition = "(freelancer_post.post_slug LIKE '%$search_skill%' or freelancer_post.post_other_skill LIKE '%$search_skill%' or freelancer_post.post_est_time LIKE '%$search_skill%' or freelancer_post.post_rate LIKE '%$search_skill%' or  freelancer_post.post_exp_year LIKE '%$search_skill%' or  freelancer_post.post_exp_month LIKE '%$search_skill%')";
             $contion_array = array('freelancer_hire_reg.city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
