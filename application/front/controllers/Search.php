@@ -296,7 +296,7 @@ class Search extends MY_Controller {
                     if ($cache_time != '') {
                         $return_html .= $cache_time;
                     } else {
-                        $return_html .= $p['other_industrial'];
+                        $return_html .= ucfirst($p['other_industrial']);
                     }
                     $return_html .= '</a>
                                                                                 </li>
@@ -307,7 +307,7 @@ class Search extends MY_Controller {
                     if ($cache_time != '') {
                         $return_html .= $cache_time;
                     } else {
-                        $return_html .= $p['other_business_type'];
+                        $return_html .= ucfirst($p['other_business_type']);
                     }
                     $return_html .= '</a>
                                                                                 </li>
