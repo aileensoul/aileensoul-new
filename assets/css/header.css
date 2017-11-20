@@ -1379,7 +1379,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 }
 .ui-state-active {
     border: none!important;
-    background: #f3f9fb!important;
+    background: #fff!important; /*d bg*/
 }
 .ui-menu .ui-menu-item .ui-menu-item-wrapper {
     padding: 2px!important;
@@ -1484,7 +1484,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     background-color: #e9f6fc;
 }
 .notification-database .active {
-    background-color: #f3f9fb;
+    background-color: #fff; /*d bg*/
 }
 #notificationTitle .see_link a:hover {
     text-decoration-line: underline;
@@ -1681,7 +1681,7 @@ footer {
     position: absolute;
     width: 100%;
     bottom: 0;
-    background-color:#f3f9fb !important;
+    background-color:#fff !important; /*d bg*/
 }
 
 .footer-bottom {
