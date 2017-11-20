@@ -169,7 +169,7 @@ color: #1b8ab9 !important;}
         </section>
         <!-- Calender JS Start-->
         <!-- <footer> -->
-            <?php echo $login_footer ?>
+            <?php //echo $login_footer ?>
             <?php echo $footer; ?>
         <!-- </footer> -->
         <script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
