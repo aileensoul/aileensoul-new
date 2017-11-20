@@ -2162,7 +2162,7 @@ label.cameraButton:active {
     top: 0;
 }
 .buisness_he_module {
-    padding-left: 5px;
+    /*padding-left: 5px;*/
     display: table;
     width: 100%;
 }
