@@ -1496,6 +1496,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .fresher_radio {
     padding: 6px 8px;
+    position: relative;
 }
 .common-form fieldset.fresher_radio label {
     display: inline-block;
@@ -2284,6 +2285,8 @@ margin-bottom: 15px;}
 
 .job_reg_main {background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%)}
 .mes #field_error{width: 100%;text-align: right;}
+.job_reg_page_fprm .fresher-error .error{position: absolute;left: 125px;
+}
 	
 /***  media query  ***/
 @media screen and (min-width: 768px) {
