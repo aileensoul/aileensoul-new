@@ -380,7 +380,7 @@
                      <!-- space for left bar -->
             </div>
          </div>
-         <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business animated fadeInUp">
+         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
             <div class="common-form">
                <div class="job-saved-box">
                   <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
