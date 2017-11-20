@@ -2287,7 +2287,7 @@ margin-bottom: 15px;}
 .mes #field_error{width: 100%;text-align: right;}
 .job_reg_page_fprm .fresher-error .error{position: absolute;left: 125px;
 }
-	
+
 /***  media query  ***/
 @media screen and (min-width: 768px) {
     .mob-progressbar.temp {

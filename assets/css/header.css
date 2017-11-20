@@ -2656,7 +2656,7 @@ footer ul li a:hover{
         line-height: 2.3;
     }
     .dropdown-content_hover::before{right: 3px !important;}
-    /*.notification-pic {width: 70px;}*/
+    
 }
 @media screen and (max-width: 540px) {
     #InboxContainer {
