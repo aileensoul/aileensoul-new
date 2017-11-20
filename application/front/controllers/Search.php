@@ -2465,7 +2465,7 @@ Your browser does not support the audio tag.
           
         } elseif ($search_place == "") {
 
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '1'))->row()->skill_id;
+            $temp = $this->db->select('skill_id')->get_where('skill', array('skill_slug' => $search_skill, 'status' => 1, 'type' => '1'))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2486,7 +2486,7 @@ Your browser does not support the audio tag.
 
             
             
-            $temp = $this->db->select('skill_id')->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
+            $temp = $this->db->select('skill_id')->get_where('skill', array('skill_slug' => $search_skill, 'status' => 1))->row()->skill_id;
             
             $join_str[0]['table'] = 'freelancer_hire_reg';
             $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
