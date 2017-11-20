@@ -5925,7 +5925,7 @@ class Job extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
         if ($jobdata[0]['job_user_image'] != '' && $info) {
-            $email_html .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image'] . '" width="60" height="60">';
+            $email_html .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image'] . '" width="50" height="50">';
         } else {
             $a = $jobdata[0]['fname'];
             $b = $jobdata[0]['lname'];
@@ -5941,7 +5941,7 @@ class Job extends MY_Controller {
         $email_html .= '</td>
                                             <td style="padding:5px;">
 						<p>Job seeker<b> ' . ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . '</b> Applied on your jobpost.
-						<span style="display:block; font-size:11px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
                                                 <p><a class="btn" href="' . BASEURL . 'job/resume/' . $jobdata[0]['slug'] . '?page=recruiter">view</a></p>
