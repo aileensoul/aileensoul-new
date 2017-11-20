@@ -205,7 +205,7 @@
                                                                     <a  class="other_name name_business post_dot" href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucfirst(strtolower($companyname)); ?></a>
                                                                     <!--<span role="presentation" aria-hidden="true"> · </span>-->
                                                                     <span class="ctre_date">
-                                                                        <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>                     
+                                                                        <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_data[0]['created_date']))); ?>                     
                                                                     </span> 
                                                                 </div>
                                                             </div>
