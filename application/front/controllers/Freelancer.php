@@ -4739,7 +4739,8 @@ class Freelancer extends MY_Controller {
                     'status' => 2,
                     'is_delete' => 0,
                     'is_other' => '1',
-                    'user_id' => $userid
+                    'user_id' => $userid,
+                    'category_slug' =>$this->common->clean($other_field)
                 );
                 $insert_id = $this->common->insert_data_getid($data, 'category');
                 if ($insert_id) {
@@ -4796,7 +4797,8 @@ class Freelancer extends MY_Controller {
                     'status' => 2,
                     'is_delete' => 0,
                     'is_other' => '2',
-                    'user_id' => $userid
+                    'user_id' => $userid,
+                    'category_slug'=>$this->common->clean($other_field)
                 );
                 $insert_id = $this->common->insert_data_getid($data, 'category');
                 if ($insert_id) {
@@ -5542,4 +5544,16 @@ $first_lastname = trim($this->input->post('firstname')) . " " . trim($this->inpu
         }
         echo "yes";
     }
+    
+     public function skill_slug() {
+        $this->db->select('skill_id,skill');
+        $res = $this->db->get('skill')->result();
+        foreach ($res as $k => $v) {
+            $data = array('skill_slug' => $this->common->clean($v->skill));
+            $this->db->where('skill_id', $v->skill_id);
+            $this->db->update('skill', $data);
+        }
+        echo "yes";
+    }
+    
 }
