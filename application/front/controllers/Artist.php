@@ -1012,7 +1012,7 @@ class Artist extends MY_Controller {
 //new code end
 
        $contition_array = array('art_post_id' => $insert_id);
-       $art_insertpost = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post_id,art_post,art_category,art_description,user_id,art_likes_count,art_like_user,created_date,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       $art_insertpost = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post_id,art_post,art_description,user_id,art_likes_count,art_like_user,created_date,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         
         $row = $art_insertpost[0];
        
