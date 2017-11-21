@@ -26,7 +26,7 @@ class General extends MY_Controller {
         $searchTerm = $_GET['term'];
         if (!empty($searchTerm)) {
 
-            $contition_array = array('state_id !=' => 0, 'status' => 1);
+            $contition_array = array('state_id !=' => '0', 'status' => '1');
             $search_condition = "(city_name LIKE '" . trim($searchTerm) . "%')";
             $citylist = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_id as id,city_name as text', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
         }
@@ -44,7 +44,7 @@ class General extends MY_Controller {
         //get search term
         $searchTerm = $_GET['term'];
         if (!empty($searchTerm)) {
-            $contition_array = array('status' => 1, 'type' => 1);
+            $contition_array = array('status' => '1', 'type' => '1');
             $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
             $citylist = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill as text', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
         }
@@ -62,7 +62,7 @@ class General extends MY_Controller {
         //get search term
         $searchTerm = $_GET['term'];
         if (!empty($searchTerm)) {
-            $contition_array = array('status' => 1, 'type' => 2);
+            $contition_array = array('status' => '1', 'type' => '2');
             $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
             $citylist = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill as text', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
         }
@@ -80,7 +80,7 @@ class General extends MY_Controller {
         //get search term
         $searchTerm = $_GET['term'];
         if (!empty($searchTerm)) {
-            $contition_array = array('status' => 1);
+            $contition_array = array('status' => '1');
             $search_condition = "(language_name LIKE '" . trim($searchTerm) . "%')";
             $languagelist = $this->common->select_data_by_search('language', $search_condition, $contition_array, $data = 'language_name as text', $sortby = 'language_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str5 = '', $groupby = 'language_name');
         }

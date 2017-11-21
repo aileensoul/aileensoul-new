@@ -546,12 +546,12 @@ class Registration extends CI_Controller {
         $userinfo = $this->common->check_login($email_login, $password_login);
 
         //For live link need this code start
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1');
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $jobuser = $jobdata[0]['total'];
         //For live link need this code End
         //For live link of freelancer aplly user code start
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
         $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $freelancer_apply_user = $free_work_result[0]['total'];
 
@@ -605,7 +605,7 @@ class Registration extends CI_Controller {
             $is_data = 'email';
         }
 
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_deleted' => '0', 'status' => 1, 'business_step' => 4);
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
         $business_result = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $business = 0;
@@ -613,7 +613,7 @@ class Registration extends CI_Controller {
             $business = 1;
         }
 
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'free_post_step' => '7');
         $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $free_work = 0;
@@ -621,7 +621,7 @@ class Registration extends CI_Controller {
             $free_work = 1;
         }
 
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_hire_step' => 3);
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'free_hire_step' => '3');
         $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $free_hire = 0;
@@ -629,7 +629,7 @@ class Registration extends CI_Controller {
             $free_hire = 1;
         }
 
-        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'art_step' => 4);
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => '1', 'art_step' => '4');
         $artistic_result = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $artistic = 0;

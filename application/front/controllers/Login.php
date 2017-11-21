@@ -165,7 +165,7 @@ class Login extends CI_Controller {
                     'last_name' => $lname,
                     'user_gender' => $gen,
                     'fb_id' => $fbid,
-                    'is_delete' => 0,
+                    'is_delete' => '0',
                     'created_date' => date('y-m-d h:i:s')
                 );
 
