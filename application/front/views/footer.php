@@ -180,8 +180,8 @@
         $.ajax({
             type: "GET",
             url: "<?php echo base_url(); ?>notification/select_notification",
-            async: true,
-            cache: false,
+            //async: true,
+            //cache: false,
             timeout: 50000,
 
             success: function (data) {
