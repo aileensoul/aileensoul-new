@@ -104,7 +104,7 @@ class Business_profile_registration extends MY_Controller {
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'country,state,city,company_name,pincode,address,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET COUNTRY DATA
-        $contition_array = array('status' => 1);
+        $contition_array = array('status' => '1');
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id, country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET STATE DATA
@@ -356,7 +356,7 @@ class Business_profile_registration extends MY_Controller {
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,details,other_business_type,other_industrial,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         // GET INDUSTRIAL TYPE DATA
-        $contition_array = array('status' => 1);
+        $contition_array = array('status' => '1');
         $industriyaldata = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         // GEY BUSINESS TYPE DATA
@@ -769,7 +769,7 @@ class Business_profile_registration extends MY_Controller {
             $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
         }
 
-        $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+        $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => '1');
 
         $join_str_following[0]['table'] = 'follow';
         $join_str_following[0]['join_table_id'] = 'follow.follow_from';
@@ -792,7 +792,7 @@ class Business_profile_registration extends MY_Controller {
             $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
         }
 
-        $contition_array = array('contact_type' => 2, 'contact_person.status' => 'confirm', 'business_profile.status' => 1);
+        $contition_array = array('contact_type' => '2', 'contact_person.status' => 'confirm', 'business_profile.status' => '1');
         $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
 
         $join_str_contact[0]['table'] = 'business_profile';
