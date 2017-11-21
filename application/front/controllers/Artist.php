@@ -1016,6 +1016,30 @@ class Artist extends MY_Controller {
 
                         //echo "<pre>"; print_r($data1);
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
+
+
+                        if ($_SERVER['HTTP_HOST'] != "localhost") {
+                            if (isset($main_image)) {
+                                unlink($main_image);
+                            }
+                            if (isset($thumb_image)) {
+                                unlink($thumb_image);
+                            }
+                            if (isset($resize_image)) {
+                                unlink($resize_image);
+                            }
+                            if (isset($resize_image1)) {
+                                unlink($resize_image1);
+                            }
+                            if (isset($resize_image2)) {
+                                unlink($resize_image2);
+                            }
+                            // if (isset($resize_image4)) {
+                            //     unlink($resize_image4);
+                            // }
+                        }
+
+
                        
                     } else {
                         echo $this->upload->display_errors();
@@ -6357,6 +6381,18 @@ public function insert_comment_postnewpage() {
         );
 
         $update = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
+
+         if ($update) {
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($upload_image)) {
+                    unlink($upload_image);
+                }
+                if (isset($thumb_image)) {
+                    unlink($thumb_image);
+                }
+            }
+        }
+
         $this->data['artdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*', $join_str = array());
         $coverpic =  '<img id="image_src" name="image_src" src = "' . ART_BG_MAIN_UPLOAD_URL . $this->data['artdata'][0]['profile_background'] . '" />';
 
@@ -14046,6 +14082,16 @@ public function artistic_search_city($id = "") {
         //  echo "11111";die();
 
         if ($update) {
+
+
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_image)) {
+                        unlink($main_image);
+                    }
+                    if (isset($thumb_image)) {
+                        unlink($thumb_image);
+                    }
+                }
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $artistic_user = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
