@@ -1633,7 +1633,7 @@ label.cameraButton input[accept*="camera"] {
     padding-right: 5px;
 }
 select{color: #acacac !important;}
-
+.profile-job-details ul li .post_title a{font-weight: bold;display: inline-block;cursor: pointer;}   
 
 
 /***  media query  ***/
