@@ -808,6 +808,9 @@ class Business_profile extends MY_Controller {
                             if (isset($resize_image2)) {
                                 unlink($resize_image2);
                             }
+                            if (isset($resize_image4)) {
+                                unlink($resize_image4);
+                            }
                         }
                         /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
                     } else {
@@ -1804,6 +1807,15 @@ Your browser does not support the audio tag.
             $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
 
             if ($updatdata) {
+
+                if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_image)) {
+                        unlink($main_image);
+                    }
+                    if (isset($thumb_image)) {
+                        unlink($thumb_image);
+                    }
+                }
                 if ($this->input->post('hitext') == 1) {
                     redirect('business-profile/business-profile-save-post', refresh);
                 } elseif ($this->input->post('hitext') == 2) {
@@ -1917,6 +1929,15 @@ Your browser does not support the audio tag.
         $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
 
         if ($update) {
+
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($main_image)) {
+                    unlink($main_image);
+                }
+                if (isset($thumb_image)) {
+                    unlink($thumb_image);
+                }
+            }
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -3728,6 +3749,18 @@ Your browser does not support the audio tag.
         );
 
         $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+
+        if ($update) {
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($main_image)) {
+                    unlink($main_image);
+                }
+                if (isset($thumb_image)) {
+                    unlink($thumb_image);
+                }
+            }
+        }
+
         $this->data['busdata'] = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = 'profile_background', $join_str = array());
 
 //      echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
@@ -3757,7 +3790,7 @@ Your browser does not support the audio tag.
 
         $data = array(
             'profile_background_main' => $image,
-            'modified_date' => date('Y-m-d h:i:s', time())
+            'modified_date' => date('Y-m-d H:i:s', time())
         );
 
 

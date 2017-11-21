@@ -106,18 +106,18 @@
                                     <a href="javascript:void(0)">
                                         <h3  style="color: #1b8ab9;">Blog</h3>
                                     </a>
-    <?php
-}
-?>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                             <div class="main-menu-right">
                                 <ul class="">
                                     <li>
-<?php
-if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
-    ?>
+                                        <?php
+                                        if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
+                                            ?>
                                             <a title="Recent Post" href="<?php echo base_url('blog/'); ?>">Recent Post </a>
                                             <?php
                                         } else {
@@ -161,9 +161,9 @@ if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri-
                     <div class="container">
                         <div class="row">
                             <div class="blog_post_outer col-md-9 col-sm-8 pr0">
-<?php
-if ($this->input->get('q')) {
-    ?>
+                                <?php
+                                if ($this->input->get('q')) {
+                                    ?>
                                     <div class="blog-tag">
                                         <div class="tag-line"><span>Search results for</span> <?php echo $search_keyword; ?></div>
                                     </div>
@@ -195,34 +195,34 @@ if ($this->input->get('q')) {
                                                 </div>
                                             </div>
                                         </div>
-        <?php
-    }
-    if ($this->uri->segment(3) == 'popular') {
-        echo "Not Any Popular Blog";
-    }
-}//if end
-else {
+                                        <?php
+                                    }
+                                    if ($this->uri->segment(3) == 'popular') {
+                                        echo "Not Any Popular Blog";
+                                    }
+                                }//if end
+                                else {
 
-    foreach ($blog_detail as $blog) {
-        ?>
+                                    foreach ($blog_detail as $blog) {
+                                        ?>
                                         <div class="blog_main_o">
                                             <div class="date_blog_left">
                                                 <div class="blog-date-change">
                                                     <div class="blog-month blog-picker">
                                                         <span class="blog_monthd">
-                                        <?php
-                                        $date_time = new DateTime($blog['created_date']);
-                                        $month = $date_time->format('M') . PHP_EOL;
-                                        echo $month;
-                                        ?>
+                                                            <?php
+                                                            $date_time = new DateTime($blog['created_date']);
+                                                            $month = $date_time->format('M') . PHP_EOL;
+                                                            echo $month;
+                                                            ?>
                                                         </span>
                                                     </div class="blog-date blog-picker">
                                                     <div>
                                                         <span class="blog_mdate">
-        <?php
-        $date = new DateTime($blog['created_date']);
-        echo $date->format('d') . PHP_EOL;
-        ?>
+                                                            <?php
+                                                            $date = new DateTime($blog['created_date']);
+                                                            echo $date->format('d') . PHP_EOL;
+                                                            ?>
                                                         </span>
                                                     </div>
                                                     <div class="blog-year blog-picker">
@@ -237,11 +237,11 @@ else {
                                                 <div class="blog-left-comment">
                                                     <div class="blog-comment-count">
                                                         <a>
-        <?php
-        $condition_array = array('status' => 'approve', 'blog_id' => $blog['id']);
-        $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
-        echo count($blog_comment);
-        ?>
+                                                            <?php
+                                                            $condition_array = array('status' => 'approve', 'blog_id' => $blog['id']);
+                                                            $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+                                                            echo count($blog_comment);
+                                                            ?>
                                                         </a>
                                                     </div>
                                                     <div class="blog-comment">
@@ -271,31 +271,31 @@ else {
                                                             </div>
                                                             <div class="blog_class_main_desc ">
                                                                 <span class="dot_span_desc">
-        <?php
-        $num_words = 75;
-        $words = array();
-        $words = explode(" ", $blog['description'], $num_words);
-        $shown_string = "";
+                                                                    <?php
+                                                                    $num_words = 75;
+                                                                    $words = array();
+                                                                    $words = explode(" ", $blog['description'], $num_words);
+                                                                    $shown_string = "";
 
-        if (count($words) == 75) {
-            $words[74] = " ...... ";
-        }
+                                                                    if (count($words) == 75) {
+                                                                        $words[74] = " ...... ";
+                                                                    }
 
-        $shown_string = implode(" ", $words);
-        echo $shown_string;
-        ?>
+                                                                    $shown_string = implode(" ", $words);
+                                                                    echo $shown_string;
+                                                                    ?>
                                                                 </span>
                                                             </div>
                                                             <div class="blog_class_main_social">
                                                                 <div class="left_blog_icon fl">
                                                                     <ul class="social_icon_bloag fl">
                                                                         <li>
-                                                                    <?php
-                                                                    $title = urlencode('"' . $blog['title'] . '"');
-                                                                    $url = urlencode(base_url('blog/' . $blog['blog_slug']));
-                                                                    $summary = urlencode('"' . $blog['description'] . '"');
-                                                                    $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
-                                                                    ?>
+                                                                            <?php
+                                                                            $title = urlencode('"' . $blog['title'] . '"');
+                                                                            $url = urlencode(base_url('blog/' . $blog['blog_slug']));
+                                                                            $summary = urlencode('"' . $blog['description'] . '"');
+                                                                            $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
+                                                                            ?>
 
                                                                             <a class="fbk" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog/' . $blog['blog_slug']); ?>" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
                                                                                 <span  class="social_fb"></span>
@@ -327,10 +327,10 @@ else {
                                                 </div>
                                             </div>
                                         </div>
-        <?php
-    }//for loop end
-}//else end
-?>
+                                        <?php
+                                    }//for loop end
+                                }//else end
+                                ?>
                             </div>
 
                             <div class="col-md-3 col-sm-4 hidden-xs">
@@ -342,72 +342,75 @@ else {
                                             <div class="searc_w"><input type="text" name="q" id="q" placeholder="Search Blog Post"></div>
                                             <button type="submit" class="butn_w" onclick="return checkvalue();"><i class="fa fa-search"></i></button> 
 
-                                <?php echo form_close(); ?>
+                                            <?php echo form_close(); ?>
                                     </div>
                                 </div>
                                 <div class="blog_latest_post">
                                     <h3>Latest Post</h3>
-<?php
-foreach ($blog_last as $blog) {
-    ?>
+                                    <?php
+                                    foreach ($blog_last as $blog) {
+                                        ?>
                                         <div class="latest_post_posts">
                                             <ul>
                                                 <li>
                                                     <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> 
-                                                    <div class="post_inside_data">
-                                                        <div class="post_latest_left">
-                                                            <div class="lateaqt_post_img">
-                                                                <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" alt="">
+                                                        <div class="post_inside_data">
+                                                            <div class="post_latest_left">
+                                                                <div class="lateaqt_post_img">
+                                                                    <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="post_latest_right">
+                                                                <div class="desc_post">
+                                                                    <span class="rifght_fname"> <?php echo $blog['title']; ?> </span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="post_latest_right">
-                                                            <div class="desc_post">
-                                                                <span class="rifght_fname"> <?php echo $blog['title']; ?> </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     </a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <!--latest_post_posts end -->
-    <?php
-}//for loop end
-?>
+                                        <?php
+                                    }//for loop end
+                                    ?>
                                 </div>
-                            
-								<div class="fw text-center pt15">
-                        <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-					
-						<div class="fw pt10">
-									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-								</div>
-					</div>
-							
-							</div>
-							
-							<div class="tablate-add">
 
-                            <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                        </div>
+                                <div class="fw text-center pt15">
+                                    <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                                    </script>
+                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    <div class="fw pt10">
+                                        <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tablate-add">
+
+                                <script type="text/javascript">
+                                (function () {
+                                    if (window.CHITIKA === undefined) {
+                                        window.CHITIKA = {'units': []}; };
+                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                    var placement_id = window.CHITIKA.units.length;
+                                    window.CHITIKA.units.push(unit);
+                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                }());
+                                </script>
+                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -432,8 +435,8 @@ foreach ($blog_last as $blog) {
 </body>
 </html>
 <script>
-                                                var base_url = '<?php echo base_url(); ?>';
+                            var base_url = '<?php echo base_url(); ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
 
