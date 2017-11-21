@@ -200,7 +200,7 @@ $other_user = $artisticdata[0]['art_id'];
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
  $userdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 $loginuser = $userdata[0]['art_id'];
- $contition_array = array('follow_type' => 1, 'follow_status' => 1);
+ $contition_array = array('follow_type' => '1', 'follow_status' => '1');
  $search_condition = "((follow_from  = '$loginuser' AND follow_to  = ' $other_user') OR (follow_from  = '$other_user' AND follow_to  = '$loginuser'))";
  $contactperson = $this->common->select_data_by_search('follow', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
  if((count($contactperson) == 2) || ($artisticdata[0]['user_id'] == $userid)){

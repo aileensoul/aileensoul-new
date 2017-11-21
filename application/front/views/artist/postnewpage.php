@@ -79,7 +79,7 @@
                                             $lastnameposted = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_lastname;
 
 
-                                        $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
+                                        $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => '1'))->row()->art_user_image;
 
                                         $userimageposted = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
 
@@ -91,7 +91,7 @@
               $contition_array = array('user_id' => $art_data[0]['user_id'], 'status' => 1);
               $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => '1'))->row()->city_name;
 
                 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
 
@@ -122,10 +122,10 @@
                  $url_postid = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
 
                                             // url changes start
-              $contition_array = array('user_id' => $art_data[0]['posted_user_id'], 'status' => 1);
+              $contition_array = array('user_id' => $art_data[0]['posted_user_id'], 'status' => '1');
               $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => '1'))->row()->city_name;
 
                 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
 
@@ -560,8 +560,8 @@
                                         $countlike = $commnetcount[0]['art_likes_count'] - 1;
                                         $likelistarray = explode(',', $likeuser);
                                         foreach ($likelistarray as $key => $value) {
-                                            $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                            $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                                            $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_name;
+                                            $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_lastname;
                                             ?>
                                         <?php } ?>
                                         <!-- pop up box end-->
@@ -575,8 +575,8 @@
 
                                             $likelistarray = explode(',', $likeuser);
                                             $likelistarray = array_reverse($likelistarray);
-                                            $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                            $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                            $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_name;
+                                            $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_lastname;
                                             ?>
                                             <div class="like_one_other">
                                             <a href="javascript:void(0);" class="likeuserlist1"  onclick="likeuserlist(<?php echo $art_data[0]['art_post_id']; ?>);">
@@ -613,8 +613,8 @@
                                     $countlike = $commnetcount[0]['art_likes_count'] - 1;
                                     $likelistarray = explode(',', $likeuser);
                                     foreach ($likelistarray as $key => $value) {
-                                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_name;
+                                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_lastname;
                                         ?>
                                     <?php } ?>
                                     <!-- pop up box end-->
@@ -627,8 +627,8 @@
                                         $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
                                         $likelistarray = explode(',', $likeuser);
-                                        $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                                        $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                                        $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_name;
+                                        $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_lastname;
                                         ?>
                                         <div class="like_one_other">
                                          <a href="javascript:void(0);"  class="likeuserlist1" onclick="likeuserlist(<?php echo $art_data[0]['art_post_id']; ?>);">
@@ -671,10 +671,10 @@
                                                     $artlastname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                                                     $artslug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->slug;
 
-             $contition_array = array('user_id' => $rowdata['user_id'], 'status' => 1);
+             $contition_array = array('user_id' => $rowdata['user_id'], 'status' => '1');
               $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => '1'))->row()->city_name;
 
                 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
 
@@ -709,9 +709,9 @@
                                                             <a  class="post_dot" title="<?php echo ucfirst(strtolower($artname)) . ' ' . ucfirst(strtolower($artlastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_art); ?>"> 
 
                                                             <?php
-                                                            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
-                                                            $art_first = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_name;
-                                                            $art_last = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_lastname;
+                                                            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_user_image;
+                                                            $art_first = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_name;
+                                                            $art_last = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_lastname;
                                                             ?>
                                                         
 
@@ -843,7 +843,7 @@
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
 
-                                                            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                                                            $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => '1'))->row()->user_id;
 
 
                                                             if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
@@ -888,16 +888,16 @@
                                 <div class="post-design-commnet-box col-md-12" id="<?php echo "box_hide" . $art_data[0]['art_post_id']; ?>">
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
-                                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
-                                    $art_first = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                                    $art_last = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
-                                    $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+                                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_user_image;
+                                    $art_first = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_name;
+                                    $art_last = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_lastname;
+                                    $art_slug = $this->db->select('slug')->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->slug;
 
 
-                                    $contition_array = array('user_id' => $userid, 'status' => 1);
+                                    $contition_array = array('user_id' => $userid, 'status' => '1');
               $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => '1'))->row()->city_name;
 
                 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
 
@@ -1082,7 +1082,7 @@
 
                                                                             <?php
                                                                             $userid = $this->session->userdata('aileenuser');
-                                                                            $contition_array = array('post_image_id' => $artdata['post_files_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                                                                            $contition_array = array('post_image_id' => $artdata['post_files_id'], 'user_id' => $userid, 'is_unlike' => '0');
 
                                                                             $activedata = $this->data['activedata'] = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1095,7 +1095,7 @@
 
 
                                                                             <span class="<?php echo 'likeimage' . $artdata['post_files_id']; ?>"> <?php
-                                                                                $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => 0);
+                                                                                $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                                                 $likecount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //                                                                                if ($likecount) {
@@ -1173,8 +1173,8 @@
                                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                 // echo '<pre>'; print_r($commnetcount);
                                                                 foreach ($commnetcount as $comment) {
-                                                                    $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
-                                                                    $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                    $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_name;
+                                                                    $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_lastname;
                                                                     ?>
                                                                 <?php } ?>
                                                                 <!-- pop up box end-->
@@ -1184,8 +1184,8 @@
                                                                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-                                                                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
-                                                                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                    $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => '1'))->row()->art_name;
+                                                                    $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => '1'))->row()->art_lastname;
                                                                     ?>
                                                                     <div class="like_one_other" >
                                                                     <a href="javascript:void(0);" class="likeuserlist1"  onclick="likeuserlistimg(<?php echo $artdata['post_files_id']; ?>);">
@@ -1220,8 +1220,8 @@
                                                             $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                             // echo '<pre>'; print_r($commnetcount);
                                                             foreach ($commnetcount as $comment) {
-                                                                $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
-                                                                $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_name;
+                                                                $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => '1'))->row()->art_lastname;
                                                                 ?>
                                                             <?php } ?>
                                                             <!-- pop up box end-->
@@ -1231,8 +1231,8 @@
                                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-                                                                $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_name;
-                                                                $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => 1))->row()->art_lastname;
+                                                                $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => '1'))->row()->art_name;
+                                                                $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $commnetcount[0]['user_id'], 'status' => '1'))->row()->art_lastname;
                                                                 ?>
                                                                 <div class="like_one_other" >
                                                                 <a href="javascript:void(0);" class="likeuserlist1" onclick="likeuserlistimg(<?php echo $artdata['post_files_id']; ?>);">
@@ -1287,7 +1287,7 @@
                                                                                 <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $slugdata); ?>"> 
 
                                                                                     <?php
-                                                                                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                                                                                    $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_user_image;
                                                                                     ?>
 
                                 <?php 
@@ -1352,7 +1352,7 @@
 
                                                                                             <?php
                                                                                             $userid = $this->session->userdata('aileenuser');
-                                                                                            $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                                                                                            $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => '0');
 
                                                                                             $artcommentlike1 = $this->common->select_data_by_condition('art_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                             if (count($artcommentlike1) == 0) {
@@ -1401,7 +1401,7 @@
                                                                                     <?php
                                                                                     $userid = $this->session->userdata('aileenuser');
 
-                                                                                    $business_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['post_image_id'], 'status' => 1))->row()->user_id;
+                                                                                    $business_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['post_image_id'], 'status' => '1'))->row()->user_id;
 
 
                                                                                     if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
@@ -1447,9 +1447,9 @@
                                                         <div class="post-design-commnet-box col-md-12" id="<?php echo "box_comment" . $artdata['post_files_id']; ?>">
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
-                                                            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
-                                                            $art_firstuser = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                                                            $art_lastuser = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+                                                            $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_user_image;
+                                                            $art_firstuser = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_name;
+                                                            $art_lastuser = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_lastname;
 
                                                             ?>
                                                             <div class="post-design-proo-img hidden-mob">
