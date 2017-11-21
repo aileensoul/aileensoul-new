@@ -4945,7 +4945,7 @@ class Job extends MY_Controller {
 
             foreach ($job_skill as $skill) {
                 if ($skill != '') {
-                    $contition_array = array('is_delete' => 0, 'status' => 1, 'FIND_IN_SET("' . $skill . '", post_skill) != ' => '0', 'post_id' => $postdata['post_id']);
+                    $contition_array = array('is_delete' => '0', 'status' => '1', 'FIND_IN_SET("' . $skill . '", post_skill) != ' => '0', 'post_id' => $postdata['post_id']);
                     $skillpost[] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 }
             }
@@ -4955,13 +4955,13 @@ class Job extends MY_Controller {
             // FETCH SKILL WISE JOB END
             // FETCH TITLE WISE JOB END
             $titlepost = array();
-            $contition_array = array('is_delete' => 0, 'status' => 1, 'FIND_IN_SET("' . $job_title . '", post_name) != ' => '0', 'post_id' => $postdata['post_id']);
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'FIND_IN_SET("' . $job_title . '", post_name) != ' => '0', 'post_id' => $postdata['post_id']);
             $titlepost[] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $titlearray = array_reduce($titlepost, 'array_merge', array());
             // FETCH TITLE WISE JOB END
             // FETCH INDUSTERY WISE JOB END
             $indpost = array();
-            $contition_array = array('is_delete' => 0, 'status' => 1, 'FIND_IN_SET("' . $job_industry . '", industry_type) != ' => '0', 'post_id' => $postdata['post_id']);
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'FIND_IN_SET("' . $job_industry . '", industry_type) != ' => '0', 'post_id' => $postdata['post_id']);
             $indpost[] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $indarray = array_reduce($indpost, 'array_merge', array());
             // FETCH INDUSTERY WISE JOB END
@@ -5288,8 +5288,8 @@ class Job extends MY_Controller {
 
         $contition_array = array(
             'user_id' => $userid,
-            'is_delete' => 0,
-            'status' => 1
+            'is_delete' => '0',
+            'status' => '1'
         );
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'keyskill,work_job_title,work_job_industry,work_job_city', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -5305,7 +5305,7 @@ class Job extends MY_Controller {
 
 
         foreach ($jobcity as $city) {
-            $contition_array = array('is_delete' => 0, 'status' => 1, 'FIND_IN_SET("' . $city . '", city) != ' => '0');
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'FIND_IN_SET("' . $city . '", city) != ' => '0');
             $postdata = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($postdata) {
                 $postlist[] = $postdata;
@@ -5322,7 +5322,7 @@ class Job extends MY_Controller {
 
             foreach ($job_skill as $skill) {
                 if ($skill != '') {
-                    $contition_array = array('is_delete' => 0, 'status' => 1, 'FIND_IN_SET("' . $skill . '", post_skill) != ' => '0', 'post_id' => $postdata['post_id']);
+                    $contition_array = array('is_delete' => '0', 'status' => '1', 'FIND_IN_SET("' . $skill . '", post_skill) != ' => '0', 'post_id' => $postdata['post_id']);
                     $skillpost[] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 }
             }
@@ -5332,13 +5332,13 @@ class Job extends MY_Controller {
             // FETCH SKILL WISE JOB END
             // FETCH TITLE WISE JOB END
             $titlepost = array();
-            $contition_array = array('is_delete' => 0, 'status' => 1, 'FIND_IN_SET("' . $job_title . '", post_name) != ' => '0', 'post_id' => $postdata['post_id']);
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'FIND_IN_SET("' . $job_title . '", post_name) != ' => '0', 'post_id' => $postdata['post_id']);
             $titlepost[] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $titlearray = array_reduce($titlepost, 'array_merge', array());
             // FETCH TITLE WISE JOB END
             // FETCH INDUSTERY WISE JOB END
             $indpost = array();
-            $contition_array = array('is_delete' => 0, 'status' => 1, 'FIND_IN_SET("' . $job_industry . '", industry_type) != ' => '0', 'post_id' => $postdata['post_id']);
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'FIND_IN_SET("' . $job_industry . '", industry_type) != ' => '0', 'post_id' => $postdata['post_id']);
             $indpost[] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $indarray = array_reduce($indpost, 'array_merge', array());
             // FETCH INDUSTERY WISE JOB END
@@ -5473,7 +5473,7 @@ class Job extends MY_Controller {
     }
 
 //FOR PROGRESSBAR COUNT COMMON FUNCTION END
-//FOR RECRUITER POST START
+//FOR RECRUITER POST STA RT
     public function post($id = "") {
         //echo $id;
         $user_id = $this->db->get_where('rec_post', array('post_id' => $id))->row()->user_id;
@@ -5544,7 +5544,7 @@ class Job extends MY_Controller {
         //if ($id == $userid || $id == '') {
         // $this->recruiter_apply_check();
 
-        $contition_array = array('user_id' => $id, 'is_delete' => 0, 're_status' => '0');
+        $contition_array = array('user_id' => $id, 'is_delete' => '0', 're_status' => '0');
         $postdataone = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $limit = $perpage;
@@ -5557,7 +5557,7 @@ class Job extends MY_Controller {
 
         $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_month,max_year,,min_month,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country';
 
-        $contition_array = array('rec_post.user_id' => $id, 'rec_post.is_delete' => 0, 'rec_post.post_id' => $postid);
+        $contition_array = array('rec_post.user_id' => $id, 'rec_post.is_delete' => '0', 'rec_post.post_id' => $postid);
         $rec_postdata = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
         //  echo "<pre>";print_r( $rec_postdata);die();
         $rec_postdata1 = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -5752,7 +5752,7 @@ class Job extends MY_Controller {
 
             $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
-            $contition_array = array('post_id' => $rec_postdata[0]['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+            $contition_array = array('post_id' => $rec_postdata[0]['post_id'], 'job_delete' => '0', 'user_id' => $userid);
             $jobapply = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($jobapply) {
@@ -5865,8 +5865,8 @@ class Job extends MY_Controller {
                 $data = array(
                     'industry_name' => $other_industry,
                     'created_date' => date('Y-m-d h:i:s', time()),
-                    'status' => 1,
-                    'is_delete' => 0,
+                    'status' => '1',
+                    'is_delete' => '0',
                     'is_other' => '1',
                     'user_id' => $userid
                 );
@@ -5891,7 +5891,7 @@ class Job extends MY_Controller {
                         }
                     }
 //For Getting Other at end
-                    $contition_array = array('is_delete' => '0', 'status' => 1, 'industry_name' => "Others");
+                    $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
                     $industry_otherdata = $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
