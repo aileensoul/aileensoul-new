@@ -349,6 +349,9 @@ class Job extends MY_Controller {
                 $main_image = $job['new_image'];
                 $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
                 //S3 BUCKET STORE MAIN IMAGE END
+
+
+                $main_file = $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
             }
             //Configuring Main Image End
             //Configuring Thumbnail Start
@@ -380,7 +383,20 @@ class Job extends MY_Controller {
             $thumb_image = $job_thumb['new_image'];
             $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
             //S3 BUCKET STORE THUMB IMAGE END
+
+                $thumb_file = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
+
         }
+
+
+        if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_file)) {
+                        unlink($main_file);
+                    }
+                    if (isset($thumb_file)) {
+                        unlink($thumb_file);
+                    }
+                }
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $job_reg_data = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'edu_certificate_primary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -562,7 +578,20 @@ class Job extends MY_Controller {
             $thumb_image = $job_thumb['new_image'];
             $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
             //S3 BUCKET STORE THUMB IMAGE END
+            $thumb_file =  $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
+            $main_file =  $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
+
         }
+
+
+         if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_file)) {
+                        unlink($main_file);
+                    }
+                    if (isset($thumb_file)) {
+                        unlink($thumb_file);
+                    }
+                }
 
 
         $contition_array = array('user_id' => $userid);
@@ -746,7 +775,21 @@ class Job extends MY_Controller {
             $thumb_image = $job_thumb['new_image'];
             $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
             //S3 BUCKET STORE THUMB IMAGE END
+
+            $main_file = $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
+            $thumb_file = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
+
         }
+
+
+         if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_file)) {
+                        unlink($main_file);
+                    }
+                    if (isset($thumb_file)) {
+                        unlink($thumb_file);
+                    }
+                }
 
         $contition_array = array('user_id' => $userid);
         $job_reg_data = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'edu_certificate_higher_secondary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -976,6 +1019,19 @@ class Job extends MY_Controller {
                 $thumb_image = $job_profile_post_thumb[$i]['new_image'];
                 $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
                 //S3 BUCKET STORE THUMB IMAGE END
+
+                $main_file = $this->config->item('job_edu_main_upload_path') . $response['result'][$i]['file_name'];
+                $thumb_file = $this->config->item('job_edu_thumb_upload_path') . $response['result'][$i]['file_name'];
+
+
+                if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_file)) {
+                        unlink($main_file);
+                    }
+                    if (isset($thumb_file)) {
+                        unlink($thumb_file);
+                    }
+                }
 
                 $contition_array = array('user_id' => $userid);
                 $job_reg_data = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = 'count(*) as total,edu_certificate,job_graduation_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1597,6 +1653,18 @@ class Job extends MY_Controller {
                         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
                         //S3 BUCKET STORE THUMB IMAGE END
 
+                        $main_file = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
+
+                        $thumb_file = $this->config->item('job_work_thumb_upload_path') . $response['result'][$i]['file_name'];
+
+                        if ($_SERVER['HTTP_HOST'] != "localhost") {
+                              if (isset($main_file)) {
+                              unlink($main_file);
+                             }
+                            if (isset($thumb_file)) {
+                             unlink($thumb_file);
+                            }
+                      } 
 
                         $contition_array = array('user_id' => $userid);
                         $job_reg_data = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'work_certificate', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2360,6 +2428,13 @@ class Job extends MY_Controller {
 
 
         $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+        $main_file = $this->config->item('job_bg_original_upload_path'). $uploadData['file_name'];
+
+        if ($_SERVER['HTTP_HOST'] != "localhost") {
+                              if (isset($main_file)) {
+                              unlink($main_file);
+                             }
+                      } 
 
         if ($updatedata) {
             echo $userid;

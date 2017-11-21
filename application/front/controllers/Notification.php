@@ -1703,13 +1703,12 @@ Your browser does not support the audio tag.
                 if ($total['user_image'] && (file_exists($filepath)) == 1) {
                     $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
-
-
-                    $notification .= '<div class="post-img-div">';
-                    $notification .= '' . ucwords($acr) . '';
-                    $notification .= '</div>';
+//                    $a = $companyname;
+//                    $acr = substr($a, 0, 1);
+//                    $notification .= '<div class="post-img-div">';
+//                    $notification .= '' . ucwords($acr) . '';
+//                    $notification .= '</div>';
+                    $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                 }
                 $notification .= '</div><div class="notification-data-inside">';
                 $notification .= '<h6><b>' . '  ' . ucwords($companyname) . '</b><span class="noti-msg-y"> Commented on your post in business profile. </span></h6>';
@@ -1733,13 +1732,13 @@ Your browser does not support the audio tag.
                 if ($total['user_image'] && (file_exists($filepath)) == 1) {
                     $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
-
-
-                    $notification .= '<div class="post-img-div">';
-                    $notification .= '' . ucwords($acr) . '';
-                    $notification .= '</div>';
+//                    $a = $companyname;
+//                    $acr = substr($a, 0, 1);
+//                    $notification .= '<div class="post-img-div">';
+//                    $notification .= '' . ucwords($acr) . '';
+//                    $notification .= '</div>';
+                    
+                    $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                 }
                 $notification .= '</div><div class="notification-data-inside">';
                 $notification .= '<h6><b>' . '  ' . ucwords($companyname) . '</b> <span class="noti-msg-y">Started following you in business profile.</span></h6>';
@@ -1763,13 +1762,13 @@ Your browser does not support the audio tag.
                 if ($total['user_image'] && (file_exists($filepath)) == 1) {
                     $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
-
-
-                    $notification .= '<div class="post-img-div">';
-                    $notification .= '' . ucwords($acr) . '';
-                    $notification .= '</div>';
+//                    $a = $companyname;
+//                    $acr = substr($a, 0, 1);
+//                    $notification .= '<div class="post-img-div">';
+//                    $notification .= '' . ucwords($acr) . '';
+//                    $notification .= '</div>';
+                    
+                    $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                 }
                 $notification .= '</div><div class="notification-data-inside">';
                 $notification .= '<h6><b>' . '  ' . ucwords($companyname) . '</b> <span class="noti-msg-y"> Likes your post in business profile. </span> </h6>';
@@ -1793,13 +1792,12 @@ Your browser does not support the audio tag.
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
                     } else {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . '';
-                        $notification .= '</div>';
+//                        $a = $companyname;
+//                        $acr = substr($a, 0, 1);
+//                        $notification .= '<div class="post-img-div">';
+//                        $notification .= '' . ucwords($acr) . '';
+//                        $notification .= '</div>';
+                        $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -1825,13 +1823,12 @@ Your browser does not support the audio tag.
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
                     } else {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . '';
-                        $notification .= '</div>';
+//                        $a = $companyname;
+//                        $acr = substr($a, 0, 1);
+//                        $notification .= '<div class="post-img-div">';
+//                        $notification .= '' . ucwords($acr) . '';
+//                        $notification .= '</div>';
+                        $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -1858,13 +1855,12 @@ Your browser does not support the audio tag.
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
                     } else {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . '';
-                        $notification .= '</div>';
+//                        $a = $companyname;
+//                        $acr = substr($a, 0, 1);
+//                        $notification .= '<div class="post-img-div">';
+//                        $notification .= '' . ucwords($acr) . '';
+//                        $notification .= '</div>';
+                        $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -1891,13 +1887,12 @@ Your browser does not support the audio tag.
                     if ($total['user_image'] && (file_exists($filepath)) == 1) {
                         $notification .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $total['user_image']) . '" >';
                     } else {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-
-
-                        $notification .= '<div class="post-img-div">';
-                        $notification .= '' . ucwords($acr) . '';
-                        $notification .= '</div>';
+//                        $a = $companyname;
+//                        $acr = substr($a, 0, 1);
+//                        $notification .= '<div class="post-img-div">';
+//                        $notification .= '' . ucwords($acr) . '';
+//                        $notification .= '</div>';
+                        $notification .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                     }
                     $notification .= '</div>';
                     $notification .= '<div class="notification-data-inside">';
@@ -4068,13 +4063,13 @@ Your browser does not support the audio tag.
                         if ($total['user_image'] && (file_exists($filepath)) == 1) {
                             $return_html .= '<img src="' . base_url() . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'] . '" >';
                         } else {
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
-
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) .
-                                    '</div>';
+//                            $a = $companyname;
+//                            $acr = substr($a, 0, 1);
+//                            $return_html .= '<div class="post-img-div">' .
+//                                    ucwords($acr) .
+//                                    '</div>';
+                            
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
 
                         $return_html .= '</div>
@@ -4108,13 +4103,13 @@ Your browser does not support the audio tag.
                         if ($total['user_image'] && (file_exists($filepath)) == 1) {
                             $return_html .= '<img src="' . base_url() . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'] . '" >';
                         } else {
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
-
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) .
-                                    '</div>';
+//                            $a = $companyname;
+//                            $acr = substr($a, 0, 1);
+//                            $return_html .= '<div class="post-img-div">' .
+//                                    ucwords($acr) .
+//                                    '</div>';
+                            
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
 
 
@@ -4148,13 +4143,13 @@ Your browser does not support the audio tag.
                         if ($total['user_image'] && (file_exists($filepath)) == 1) {
                             $return_html .= '<img src="' . base_url() . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'] . '">';
                         } else {
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
-
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) .
-                                    '</div>';
+//                            $a = $companyname;
+//                            $acr = substr($a, 0, 1);
+//                            $return_html .= '<div class="post-img-div">' .
+//                                    ucwords($acr) .
+//                                    '</div>';
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
+                            
                         }
                         $return_html .= '</div>
                                                 
@@ -4190,13 +4185,13 @@ Your browser does not support the audio tag.
                         if ($total['user_image'] && (file_exists($filepath)) == 1) {
                             $return_html .= '<img src="' . base_url() . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'] . '" >';
                         } else {
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
-
-
-                            $return_html .= '<div class="post-img-div">' .
-                                    ucwords($acr) .
-                                    '</div>';
+//                            $a = $companyname;
+//                            $acr = substr($a, 0, 1);
+//                            $return_html .= '<div class="post-img-div">' .
+//                                    ucwords($acr) .
+//                                    '</div>';
+                            
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
                         }
 
                         $return_html .= '</div>

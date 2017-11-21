@@ -139,12 +139,12 @@ class Recruiter extends MY_Controller {
         $this->form_validation->set_rules('last_name', 'last Name', 'required');
         $this->form_validation->set_rules('email', ' EmailId', 'required|valid_email');
 
-        if ($_FILES['file1']['name']) {
-            $image = base_url(RECIMAGE . $_FILES["file1"]['name']);
-            if (move_uploaded_file($_FILES['file1']['tmp_name'], $image)) {
-                $usre1 = $_FILES["file1"]['name'];
-            }
-        }
+//        if ($_FILES['file1']['name']) {
+//            $image = base_url(RECIMAGE . $_FILES["file1"]['name']);
+//            if (move_uploaded_file($_FILES['file1']['tmp_name'], $image)) {
+//                $usre1 = $_FILES["file1"]['name'];
+//            }
+//        }
 
         if ($this->form_validation->run() == FALSE) {
             //   $contition_array = array('user_id' => $userid, 're_status' => '1');
@@ -392,6 +392,19 @@ class Recruiter extends MY_Controller {
                     $this->load->library('image_lib', $job_thumb);
                     $dataimage = $imgdata['file_name'];
 //Creating Thumbnail
+                    // changes 21-11 unlink image 
+                    $main_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+                    $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                            if (isset($main_image)) {
+                                unlink($main_image);
+                            }
+                            if (isset($thumb_image)) {
+                                unlink($thumb_image);
+                            }
+                            
+                    }
+                    // changes 21-11 unlink image 
                     $this->image_lib->resize();
                     $thumberror = $this->image_lib->display_errors();
                 } else {
@@ -3925,7 +3938,16 @@ if ($cache_time) {
         );
 
         $update = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
-
+   if ($update) {
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($main_image)) {
+                    unlink($main_image);
+                }
+                if (isset($thumb_image)) {
+                    unlink($thumb_image);
+                }
+            }
+        }
         $this->data['reccdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
 
         $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['reccdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
@@ -3959,7 +3981,14 @@ if ($cache_time) {
         $this->upload->initialize($config);
         //echo $this->upload->do_upload('photo'); die();
         if ($this->upload->do_upload('image')) {
-
+// changes 21-11 unlink image 
+                    $main_image = $this->config->item('rec_bg_original_upload_path') . $_FILES['image']['name'];
+                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                            if (isset($main_image)) {
+                                unlink($main_image);
+                            }
+                    }
+                    // changes 21-11 unlink image 
             $uploadData = $this->upload->data();
             //$picture = $uploadData['file_name']."-".date("Y_m_d H:i:s");
             $image = $uploadData['file_name'];
@@ -4149,6 +4178,20 @@ if ($cache_time) {
                 //Creating Thumbnail
                 $this->image_lib->resize();
                 $thumberror = $this->image_lib->display_errors();
+                
+                // changes 21-11 unlink image 
+                    $main_image = $this->config->item('rec_profile_main_upload_path') . $imgdata['file_name'];
+                    $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                            if (isset($main_image)) {
+                                unlink($main_image);
+                            }
+                            
+                            if (isset($thumb_image)) {
+                                unlink($thumb_image);
+                            }
+                    }
+                    // changes 21-11 unlink image 
             } else {
 
                 $thumberror = '';

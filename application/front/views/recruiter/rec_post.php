@@ -74,12 +74,14 @@ if ($this->uri->segment(3) == $userid) {
 $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');
 $image = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-$image_ori = $this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background'];
-if (file_exists($image_ori) && $image[0]['profile_background'] != '') {
-    ?>
-
-                            <img src="<?php echo base_url($this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" / >
-    <?php
+   $image_ori = $image[0]['profile_background'];
+                         $filename = $this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if ($info && $image[0]['profile_background'] != '') {
+                            ?>
+                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                     <?php
 } else {
     ?>
 
