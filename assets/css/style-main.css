@@ -446,6 +446,20 @@ a:hover{
    background-position:right !important;   
   
 }
+/*Dhaval date of birth*/
+/*
+#register_form .dob span{position: relative;}
+
+#register_form .dob span:after {
+    content:"\f078";   
+    font-family: "FontAwesome";
+    font-size: 11px;
+    color:#aaa;
+    right:8px; top:4px;
+    padding:0 0 2px;
+    position:absolute;
+    pointer-events:none;}
+    */
 .login .form-group select:focus{
 	width:65px;
 	margin-right:15px;

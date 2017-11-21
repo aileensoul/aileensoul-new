@@ -459,7 +459,7 @@ class Artist extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,art_skill,art_yourart,art_desc_art,art_inspire,other_skill,art_bestofmine', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
          $work_skill = explode(',', $userdata[0]['art_skill']); 
-         $contition_array = array('status' => '1', 'type' => '1');
+         $contition_array = array('status' => '1');
          $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
           $contition_array = array('other_category_id' => $userdata[0]['other_skill']);
          $other_category = $this->common->select_data_by_condition('art_other_category', $contition_array, $data = 'other_category_id, other_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -524,10 +524,13 @@ class Artist extends MY_Controller {
         $images[] = $fileName;
         $config['file_name'] = $fileName;
          $this->upload->initialize($config);
-         $this->upload->do_upload('bestofmine');    
+         $this->upload->do_upload('bestofmine');   
+
+
+        $main_file = $this->config->item('art_portfolio_main_upload_path') . $config['file_name']; 
 
      $other_category = $category_trim;
-     $contition_array = array('other_category' => $other_category,'type' => '1', 'status' => '1');
+     $contition_array = array('other_category' => $other_category, 'status' => '1');
      $exist_other = $this->common->select_data_by_condition('art_other_category',$contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
         if($other_category){ 
@@ -574,7 +577,14 @@ class Artist extends MY_Controller {
          $this->data['get_url'] = $get_url = $this->get_url($userid);
 
          if ($updatdata) {
-                        redirect('artist/details/'.$get_url, refresh);                    
+
+
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_file)) {
+                        unlink($main_file);
+                    }
+                }
+                 redirect('artist/details/'.$get_url, refresh);                    
                 } 
     }
 
@@ -1937,7 +1947,7 @@ $datacount = count($otherdata);
         $regid = $slugdata[0];      
         
         $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => '4');
-        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
     if($userid){

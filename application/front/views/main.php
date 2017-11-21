@@ -181,6 +181,7 @@
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
+                                        <span>
                                         <select tabindex="9" class="day" name="selday" id="selday">
                                             <option value="" disabled selected value>Day</option>
                                             <?php
@@ -191,6 +192,8 @@
                                             }
                                             ?>
                                         </select>
+                                        </span>
+                                        <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
                                             <option value="1">Jan</option>
@@ -206,6 +209,8 @@
                                             <option value="11">Nov</option>
                                             <option value="12">Dec</option>
                                         </select>
+                                        </span>
+                                        <span>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
                                             <?php
@@ -215,15 +220,17 @@
                                                 <?php
                                             }
                                             ?>
-                                        </select>
+                                        </select></span>
                                     </div>
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
                                     <div class="form-group gender-custom">
+                                       <span>
                                         <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                             <option value="" disabled selected value>Gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                         </select>
+                                        </span>
                                     </div>
                                     <p class="form-text">
                                         By Clicking on create an account button you agree our<br class="mob-none">
