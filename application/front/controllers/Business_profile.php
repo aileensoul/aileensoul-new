@@ -80,6 +80,7 @@ class Business_profile extends MY_Controller {
         $this->load->helper('url');
         $this->load->view('business_profile/minify_js');
     }
+
 // BUSINESS PROFILE SLUG START
 
     public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
@@ -106,6 +107,7 @@ class Business_profile extends MY_Controller {
         $slug = trim($slug, '-');
         return $slug;
     }
+
     public function check_email() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $email = $this->input->post('email');
@@ -458,7 +460,7 @@ class Business_profile extends MY_Controller {
         } else {
             $insert_id = $this->common->insert_data_getid($data, 'business_profile_post');
         }
-        
+
         $this->config->item('bus_post_main_upload_path');
         $config = array(
             'image_library' => 'gd',
@@ -748,7 +750,6 @@ class Business_profile extends MY_Controller {
                             $resized_image_height = $thumb_image_height;
                         }
 
-
                         $conf_new2[$i] = array(
                             'image_library' => 'gd2',
                             'source_image' => $business_profile_post_thumb[$i]['new_image'],
@@ -772,18 +773,14 @@ class Business_profile extends MY_Controller {
                         $dataimage = $response['result'][$i]['file_name'];
                         //Creating Thumbnail
                         $this->$instanse3->crop();
-
                         $resize_image2 = $this->config->item('bus_post_resize3_upload_path') . $response['result'][$i]['file_name'];
                         $abc = $s3->putObjectFile($resize_image2, bucket, $resize_image2, S3::ACL_PUBLIC_READ);
 
                         /* CROP 210 X 210 */
-
                         $response['error'][] = $thumberror = $this->$instanse->display_errors();
-
                         $return['data'][] = $imgdata;
                         $return['status'] = "success";
                         $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
-
                         $data1 = array(
                             'file_name' => $fileName,
                             'insert_profile' => '2',
@@ -791,29 +788,29 @@ class Business_profile extends MY_Controller {
                             'is_deleted' => '1',
                             'post_format' => $file_type
                         );
-
                         //echo "<pre>"; print_r($data1);
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
                         /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
 
-//                        if (isset($main_image)) {
-//                            unlink($main_image);
-//                        }
-//                        if (isset($thumb_image)) {
-//                            unlink($thumb_image);
-//                        }
-//                        if (isset($resize_image)) {
-//                            unlink($resize_image);
-//                        }
-//                        if (isset($resize_image1)) {
-//                            unlink($resize_image1);
-//                        }
-//                        if (isset($resize_image2)) {
-//                            unlink($resize_image2);
-//                        }
+                        if ($_SERVER['HTTP_HOST'] != "localhost") {
+                            if (isset($main_image)) {
+                                unlink($main_image);
+                            }
+                            if (isset($thumb_image)) {
+                                unlink($thumb_image);
+                            }
+                            if (isset($resize_image)) {
+                                unlink($resize_image);
+                            }
+                            if (isset($resize_image1)) {
+                                unlink($resize_image1);
+                            }
+                            if (isset($resize_image2)) {
+                                unlink($resize_image2);
+                            }
+                        }
                         /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
                     } else {
-                        
                         echo $this->upload->display_errors();
                         exit;
                     }
