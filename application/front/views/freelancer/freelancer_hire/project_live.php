@@ -379,7 +379,7 @@
                                                                                 <?php } else if($applyuser) { ?>
                                                                                     <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
                                                                                 <?php } else{ ?> 
-                                                                                    <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
+                                                                                    <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['user_id']); ?>"  class= "applypost  button"> Apply</a>
                                                                                <?php  }
                                                                             }
                                                                             ?>
@@ -397,7 +397,7 @@
                                                                         </div>
                                                                         </div>
                                                                         <!-- sortlisted employe -->
-                                                                       
+                                                                       <?php if($postuser[0]['user_id'] == $this->session->userdata('aileenuser') || $applyuser){ ?>
                                                                             <?php if ($shortlist) {
                                                                                 ?>
                                                                          <div class="sort-emp-mainbox">
@@ -419,10 +419,13 @@
                                                                                                         if (!file_exists($this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'])) {
                                                                                                             ?>
                                                                                                             <div class="post-img-user">
+                                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
                                                                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                                </a>
                                                                                                             </div>
                                                                                                         <?php } ?>
-                                                                                                        <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                        <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
+                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
                                                                                                         <?php
                                                                                                     } else {
                                                                                                         $filename = $this->config->item('free_post_profile_main_upload_path') . $user['freelancer_post_user_image'];
@@ -430,10 +433,13 @@
                                                                                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                                                                         if ($info) {
                                                                                                             ?>
-                                                                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" >
+                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
+                                                                                                    <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
                                                                                                             <?php } else { ?>
                                                                                                             <div class="post-img-user">
+                                                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>" >
                                                                                                             <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                                </a>
                                                                                                             </div>
                                                                                                             <?php
                                                                                                         }
@@ -441,13 +447,15 @@
                                                                                                 } else {
                                                                                                     ?>
                                                                                                     <div class="post-img-user">
-                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
+                                                                                                        <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>">
+                                                                                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?> 
+                                                                                                            </a>
                                                                                                     </div>
         <?php } ?>
                                                                                     <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                                                             </div>
                                                                                             <div class="sort-emp-detail">
-                                                                                                <h4><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></h4>
+                                                                                                <h4><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></h4>
                                                                                                 <p><?php
                                                                                                     if ($user['designation']) {
                                                                                                         echo $user['designation'];
@@ -473,6 +481,7 @@
                                                                                 </div>
 <?php } ?>
                                                                         </div>
+                                                                       <?php }?> 
                                                                         <!-- end sortlisted employe -->
                                                                         </div>
                                                                         </div>
