@@ -189,7 +189,7 @@
                                         if (is_numeric($this->uri->segment(3))) {
                                             $id = $this->uri->segment(3);
                                         } else {
-                                            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
                                         }
                                         ?>
                                         <div class="flw_msg_btn fr">

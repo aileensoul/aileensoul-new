@@ -181,10 +181,10 @@
                                 if (is_numeric($this->uri->segment(3))) {
                                     $id = $this->uri->segment(3);
                                 } else {
-                                    $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                    $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
                                 }
                                 $userid = $this->session->userdata('aileenuser');
-                                $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => 2);
+                                $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => '2');
                                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 if ($userid != $this->uri->segment(3)) {
                                     if ($this->uri->segment(3) != "") {

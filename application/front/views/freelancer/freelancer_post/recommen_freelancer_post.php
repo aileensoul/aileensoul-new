@@ -89,7 +89,7 @@
                                                 <span class="profile-company-name ">
                                                     <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></a>
                                                 </span>
-                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
+                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' =>'1'))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a  href="<?php echo base_url('freelancer-work/freelancer-details'); ?>">
                                                         <?php

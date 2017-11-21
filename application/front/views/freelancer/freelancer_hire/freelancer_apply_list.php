@@ -202,7 +202,7 @@
                                                                 <div class="apply-btn fr">
                                                                     <?php
                                                                     $userid = $this->session->userdata('aileenuser');
-                                                                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '2');
+                                                                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' =>'2', 'status' => '2');
                                                                     $savedata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
 
