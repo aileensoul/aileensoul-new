@@ -2214,13 +2214,13 @@ label.cameraButton:active {
     padding: 3px 4px;
 }
 .column1 {
-    /*float: left;
-    float: left;*/
+    /*float: left;*/
+    float: left;
     margin-bottom: 6px;
     margin-top: 10px;
     width: 227px;
     height: 173px;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 .bui_res_i {
     position: relative;
@@ -5362,6 +5362,11 @@ body.reg-form{background: #fff}
 	/*** all edit profile box  ***/
 	.all-edit-profile-box{width:100%;}
 	.manage-post-custom .mian_middle_post_box{margin-left: auto !important;}
+    .profile-job-profile-menu .buisness-profile-pic .column1{width: 32%;margin:0.5%;}
+    .profile-job-profile-menu .buisness-profile-pic .column1 .bui_res_i{width: 100%;}
+    .profile-job-profile-menu .buisness-profile-pic .column1 .bui_res_i2{width: 100%;}
+    .profile-job-profile-menu .buisness-profile-pic .column1 .bui_res_i2 .view_bui{width: 100%;}
+
 	/*** end all edit profile box  ***/
 }
 @media screen and (max-width: 639px) {
@@ -5602,6 +5607,7 @@ body.reg-form{background: #fff}
 	.popup-text textarea::-moz-placeholder{font-size:19px !important;}
 	.popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 	.file-preview{width:380px;}
+    .profile-job-profile-menu .buisness-profile-pic .column1{width: 49%;}
 }
 @media screen and (max-width: 479px) {
     .slider_img{
@@ -6212,6 +6218,7 @@ body.reg-form{background: #fff}
 	.business-profile-right .bui-menu-profile{min-height:106px ;}/*d*/
 	.buisness-menu.other-profile-menu::before{bottom:89px;}
 	.file-preview{width:194px;}
+    .profile-job-profile-menu .buisness-profile-pic .column1{width: 100%;}
 }
 @media screen and (max-width: 319px) {
     .editor-content {
