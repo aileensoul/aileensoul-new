@@ -369,15 +369,18 @@
                                                                             ?>                                                          </li>-->
                                                                             <?php
                                                                             $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
+                                                                            $applyuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
                                                                             if ($postuser[0]['user_id'] != $this->session->userdata('aileenuser')) {
                                                                                 $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $this->session->userdata('aileenuser'));
                                                                                 $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                 if ($freelancerapply1) {
                                                                                     ?>
                                                                                     <a href="javascript:void(0);" class="button applied">Applied</a>
-                                                                                <?php } else { ?>
+                                                                                <?php } else if($applyuser) { ?>
                                                                                     <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
-                                                                                <?php }
+                                                                                <?php } else{ ?> 
+                                                                                    <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
+                                                                               <?php  }
                                                                             }
                                                                             ?>
                                                                             </div>
