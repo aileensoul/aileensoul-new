@@ -41,13 +41,13 @@ class Artist_userprofile extends CI_Controller {
             $this->data['art'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id,first_name,last_name,user_email', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if (count($artdata) > 0) {
-                if ($artdata[0]['art_step'] == 1) {
+                if ($artdata[0]['art_step'] == '1') {
                     redirect('artist/artistic-address', refresh);
-                } else if ($artdata[0]['art_step'] == 2) {
+                } else if ($artdata[0]['art_step'] == '2') {
                     redirect('artist/artistic-information', refresh);
-                } else if ($artdata[0]['art_step'] == 3) { //echo "123"; die();
+                } else if ($artdata[0]['art_step'] == '3') { //echo "123"; die();
                     redirect('artist/artistic-portfolio', refresh);
-                } else if ($artdata[0]['art_step'] == 4) {
+                } else if ($artdata[0]['art_step'] == '4') {
                     redirect('artist/home', refresh);
                 }
             } else {
@@ -64,7 +64,7 @@ class Artist_userprofile extends CI_Controller {
         $user_name = $this->session->userdata('user_name');
 
 
-        $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+        $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => '4');
         $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
       
         $contition_array = array('user_id' => $artisticdata[0]['user_id']);
@@ -118,7 +118,7 @@ class Artist_userprofile extends CI_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['art_id'];
         // manage post start       
-        $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+        $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => '4');
         $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
        $contition_array = array('user_id' => $artisticdata[0]['user_id']);
@@ -413,7 +413,7 @@ class Artist_userprofile extends CI_Controller {
         $id = $_POST['art_id'];
         // manage post start
         
-            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => '4');
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
     
          $contition_array = array('user_id' => $artisticdata[0]['user_id']);
@@ -515,7 +515,7 @@ class Artist_userprofile extends CI_Controller {
     public function artistic_user_pdf() {
        $id = $_POST['art_id'];
         
-            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => '4');
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $artisticdata[0]['user_id']);
@@ -575,10 +575,10 @@ class Artist_userprofile extends CI_Controller {
         if ($start < 0)
             $start = 0;
 
-            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => '4');
             $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $contition_array = array('user_id' => $id, 'status' => 1, 'is_delete' => '0');
+            $contition_array = array('user_id' => $id, 'status' => '1', 'is_delete' => '0');
             $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
 
         $return_html = '';
@@ -1061,8 +1061,8 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $countlike = $commnetcount[0]['art_likes_count'] - 1;
                     $likelistarray = explode(',', $likeuser);
                     foreach ($likelistarray as $key => $value) {
-                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                        $art_fname1 = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_name;
+                        $art_lname1 = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $value, 'status' => '1'))->row()->art_lastname;
                     }
                    
                     $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
@@ -1072,8 +1072,8 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $countlike = $commnetcount[0]['art_likes_count'] - 1;
                     $likelistarray = explode(',', $likeuser);
 
-                  $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                 $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+                  $art_fname = $this->db->select('art_name')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_name;
+                 $art_lname = $this->db->select('art_lastname')->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => '1'))->row()->art_lastname;
 
                     $return_html .= '<div class="like_one_other">';
 
@@ -1114,7 +1114,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 <div class="post-design-pro-comment-img">';
                  $return_html .= '<a href = "javascript:void(0)" target="_blank" onclick="login_profile();">';
 
-                        $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
+                        $art_userimage = $this->db->select('art_user_image')->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_user_image; 
 
                         if (IMAGEPATHFROM == 'upload') {
                             if($art_userimage){
@@ -1215,7 +1215,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                     </div>';
                         }
                         $userid = $this->session->userdata('aileenuser');
-                        $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                        $art_userid = $this->db->select('user_id')->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => '1'))->row()->user_id;
                         if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
                             $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                     <div class="comment-details-menu">
