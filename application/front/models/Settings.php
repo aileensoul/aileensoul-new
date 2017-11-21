@@ -5,7 +5,7 @@ class Settings extends CI_Model {
     //get all settings details
     function getSettingDetails() {
         $this->db->select('setting_id,setting_name,setting_value');
-        $this->db->where('setting_id !=', 8);
+        $this->db->where('setting_id !=', '8');
         return $this->db->get('settings')->result_array();
     }
 

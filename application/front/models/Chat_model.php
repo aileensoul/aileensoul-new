@@ -41,11 +41,11 @@ class Chat_model extends CI_Model {
      $not_active = 1;
  } //echo "hiii"; die();
         $data2 = array(
-            'not_type' => 2,
+            'not_type' => '2',
             'not_from_id' => $userid,
             'not_to_id' => $id,
-            'not_read' => 2,
-            'not_img' => 0,
+            'not_read' => '2',
+            'not_img' => '0',
             'not_active' => $not_active,
             'not_from' => $not_from,
             'not_product_id' => $msg_insert_id,

@@ -24,7 +24,7 @@ class Blog_Model extends CI_Model {
     public function Blogcount($is_not = null) {
         if (isset($is_not) && $is_not != "" && $is_not != null) {
             $this->db->where('blog_id', $is_not);
-            $this->db->where('approve_status', 1);
+            $this->db->where('approve_status', '1');
         }
         $get = $this->db->get('blog_review');
         return $get->result();
