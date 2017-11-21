@@ -118,14 +118,14 @@
                                         <div class="post-design-top col-md-12" >
                                             <div class="post-design-pro-img " style="padding-left: 17px;"> 
                                                 <?php
-                                                $companyname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->company_name;
+                                                $companyname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->company_name;
                                                 $companynameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id']))->row()->company_name;
-                                                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_user_image;
-                                                $business_slug = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_slug;
+                                                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->business_user_image;
+                                                $business_slug = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->business_slug;
 
                                                 $userimageposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id']))->row()->business_user_image;
-                                                $slugname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_slug;
-                                                $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => 1))->row()->business_slug;
+                                                $slugname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->business_slug;
+                                                $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => '1'))->row()->business_slug;
                                                 ?>
                                                 <?php if ($busienss_data[0]['posted_user_id']) {
                                                     ?>
@@ -155,10 +155,10 @@
                                             <div class="post-design-name fl col-xs-8 col-md-10">
                                                 <ul>
                                                     <?php
-                                                    $slugname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_slug;
-                                                    $categoryid = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->industriyal;
-                                                    $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
-                                                    $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => 1))->row()->business_slug;
+                                                    $slugname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->business_slug;
+                                                    $categoryid = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => '1'))->row()->industriyal;
+                                                    $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => '1'))->row()->industry_name;
+                                                    $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => '1'))->row()->business_slug;
                                                     ?>
                                                     <?php if ($busienss_data[0]['posted_user_id']) { ?>
                                                         <li>
@@ -445,7 +445,7 @@
                                                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
                                                 $likelistarray = explode(',', $likeuser);
                                                 foreach ($likelistarray as $key => $value) {
-                                                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                                                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                                                 }
                                                 ?>
                                                 <!-- pop up box end-->
@@ -458,7 +458,7 @@
                                                     $countlike = $commnetcount[0]['business_likes_count'] - 1;
                                                     $likelistarray = explode(',', $likeuser);
 
-                                                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                                                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                                                     ?>
                                                     <div class="like_one_other">
                                                         <?php
@@ -494,7 +494,7 @@
                                             $countlike = $commnetcount[0]['business_likes_count'] - 1;
                                             $likelistarray = explode(',', $likeuser);
                                             foreach ($likelistarray as $key => $value) {
-                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                                             }
                                             ?>
                                             <!-- pop up box end-->
@@ -507,7 +507,7 @@
                                                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
                                                 $likelistarray = explode(',', $likeuser);
 
-                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                                                 ?>
                                                 <div class="like_one_other">
                                                     <?php
@@ -546,7 +546,7 @@
                                                             <div class="all-comment-comment-box">
                                                                 <div class="post-design-pro-comment-img"> 
                                                                     <?php
-                                                                    $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                                                                    $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
                                                                     if ($business_userimage != '') {
                                                                         ?>
                                                                         <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
@@ -634,7 +634,7 @@
                                                                     <?php } ?>
                                                                     <?php
                                                                     $userid = $this->session->userdata('aileenuser');
-                                                                    $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                                                                    $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => '1'))->row()->user_id;
                                                                     if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
                                                                         ?>      
                                                                         <span role="presentation" aria-hidden="true"> · </span>
@@ -666,8 +666,8 @@
                                             <div class="post-design-proo-img hidden-mob"> 
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
-                                                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
-                                                $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->company_name;
+                                                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_user_image;
+                                                $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->company_name;
                                                 if ($business_userimage) {
                                                     ?>
                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
@@ -748,7 +748,7 @@
                                                     <a id="<?php echo $busdata['post_files_id']; ?>" onClick="mulimg_like(this.id)">
                                                         <?php
                                                         $userid = $this->session->userdata('aileenuser');
-                                                        $contition_array = array('post_image_id' => $busdata['post_files_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                                                        $contition_array = array('post_image_id' => $busdata['post_files_id'], 'user_id' => $userid, 'is_unlike' => '0');
 
                                                         $activedata = $this->data['activedata'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -759,7 +759,7 @@
                                                             <i class="fa fa-thumbs-up fa-1x " aria-hidden="true"></i>
                                                         <?php } ?>
                                                         <span class="<?php echo 'likeimage' . $busdata['post_files_id']; ?>"> <?php
-                                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => 0);
+                                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                             $likecount = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                             if ($likecount) {
                                                                 
@@ -819,7 +819,7 @@
                                             $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                             $countlike = count($commneteduser) - 1;
                                             foreach ($commneteduser as $userdata) {
-                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => 1))->row()->company_name;
+                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => '1'))->row()->company_name;
                                             }
                                             ?>
                                             <!-- pop up box end-->
@@ -828,7 +828,7 @@
                                                 $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                 $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 $countlike = count($commneteduser) - 1;
-                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
+                                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => '1'))->row()->company_name;
                                                 ?>
                                                 <div class="like_one_other_img">
                                                     <?php
@@ -862,7 +862,7 @@
                                         $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                         $countlike = count($commneteduser) - 1;
                                         foreach ($commneteduser as $userdata) {
-                                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => 1))->row()->company_name;
+                                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userdata['user_id'], 'status' => '1'))->row()->company_name;
                                         }
                                         ?>
                                         <!-- pop up box end-->
@@ -871,7 +871,7 @@
                                             $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                             $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                             $countlike = count($commneteduser) - 1;
-                                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
+                                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => '1'))->row()->company_name;
                                             ?>
                                             <div class="like_one_other_img" style="">
                                                 <?php
@@ -905,7 +905,7 @@
                                                         <div class="all-comment-comment-box">
                                                             <div class="post-design-pro-comment-img"> 
                                                                 <?php
-                                                                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                                                                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
                                                                 if ($business_userimage != '') {
                                                                     ?>
                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
@@ -947,7 +947,7 @@
                                                                     <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="imgcomment_like(this.id)">
                                                                         <?php
                                                                         $userid = $this->session->userdata('aileenuser');
-                                                                        $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                                                                        $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => '0');
                                                                         $businesscommentlike1 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         if (count($businesscommentlike1) == 0) {
                                                                             ?>
@@ -987,7 +987,7 @@
                                                                 <!-- comment delete start -->
                                                                 <?php
                                                                 $userid = $this->session->userdata('aileenuser');
-                                                                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['post_image_id'], 'status' => 1))->row()->user_id;
+                                                                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['post_image_id'], 'status' => '1'))->row()->user_id;
                                                                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
                                                                     ?>
                                                                     <span role="presentation" aria-hidden="true"> · </span>
@@ -1024,8 +1024,8 @@
                                         <div class="post-design-proo-img hidden-mob"> 
                                             <?php
                                             $userid = $this->session->userdata('aileenuser');
-                                            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
-                                            $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->company_name;
+                                            $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_user_image;
+                                            $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->company_name;
                                             if ($business_userimage != '') {
                                                 ?>
                                                 <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>" alt="">

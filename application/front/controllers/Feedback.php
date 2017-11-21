@@ -38,7 +38,7 @@ class Feedback extends CI_Controller {
             'subject' => $subject,
             'description' => $message,
             'created_date' => date('Y-m-d H:i:s', time()),
-            'is_delete' => 0
+            'is_delete' => '0'
         );
         $insert_id = $this->common->insert_data_getid($data, 'feedback');
         if ($insert_id) {

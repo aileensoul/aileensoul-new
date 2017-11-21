@@ -209,7 +209,7 @@
                                                                             <!--                                                                            <li class=fr>
                                                                             <?php
                                                                             $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-                                                                            $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                                                                            $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
                                                                             $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                             if ($freelancerapply1) {
                                                                                 ?>

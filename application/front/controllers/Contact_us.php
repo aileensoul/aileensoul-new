@@ -16,7 +16,7 @@ class Contact_us extends CI_Controller {
     }
 
     public function index() {
-        $contition_array = array('site_id' => 1);
+        $contition_array = array('site_id' => '1');
         $this->data['cnt'] = $this->common->select_data_by_condition('site_settings', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
@@ -51,7 +51,7 @@ class Contact_us extends CI_Controller {
             'contact_message' => $message,
             //'created_date' =>date('Y-m-d h:m:s', time()),
             'created_date' =>date('Y-m-d h:i:s', time()),
-            'is_delete' => 0
+            'is_delete' => '0'
         );
         $insert_id = $this->common->insert_data_getid($data, 'contact_us');
         if ($insert_id) {

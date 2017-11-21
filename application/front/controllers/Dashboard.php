@@ -25,7 +25,7 @@ class Dashboard extends MY_Controller {
         $userdata = $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
         if ($userdata[0]['user_slider'] == 1) {
             $data = array(
-                'user_slider' => 0,
+                'user_slider' => '0',
                 'modified_date' => date('Y-m-d', time())
             );
 
@@ -561,7 +561,7 @@ $path = $CI->config->item('cache_path');
         }
 
 
-        $contition_array = array('user_id' => $userid, 'experience !=' => 'Fresher', 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'experience !=' => 'Fresher', 'status' => '1');
         $workdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
