@@ -71,10 +71,10 @@
 
               $userid = $this->session->userdata('aileenuser');
 
-              $contition_array = array('user_id' => $userid, 'status' => 1);
+              $contition_array = array('user_id' => $userid, 'status' => '1');
               $arturl = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_city,art_skill,other_skill,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => 1))->row()->city_name;
+               $city_url = $this->db->select('city_name')->get_where('cities', array('city_id' => $arturl[0]['art_city'], 'status' => '1'))->row()->city_name;
 
                 $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
 

@@ -3275,7 +3275,7 @@ if ($cache_time) {
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
-
+       // echo $page;
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
@@ -3332,10 +3332,10 @@ if ($cache_time) {
         $return_html = " ";
         $savedata1 = array_slice($savedata, $start, $perpage);
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($savedata1);
+            $_GET["total_record"] = count($savedata);
         }
 
-
+        $return_html = '';
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
