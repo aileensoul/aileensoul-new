@@ -104,7 +104,7 @@ class Artist extends MY_Controller {
     $contition_array = array('status' => '1');
     $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-    $contition_array = array('status' => '1', 'type' => '1');
+    $contition_array = array('status' => '1');
     $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
 
     //echo "<pre>"; print_r($this->data['countries']); die();
@@ -119,58 +119,72 @@ class Artist extends MY_Controller {
 
 
      $other_category = $this->input->post('othercategory');
-     $contition_array = array('other_category' => $other_category,'type' => '1', 'status' => '1');
+     $contition_array = array('other_category' => $other_category, 'status' => '1');
      $exist_other = $this->common->select_data_by_condition('art_other_category',$contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
-        if($other_category){
 
-            if($exist_other){
-                $insertid = $exist_other[0]['other_category_id'];
-            }else{
+        // $this->form_validation->set_rules('firstname', 'First name', 'required');
+        // $this->form_validation->set_rules('lastname', 'Last name', 'required');
+        // $this->form_validation->set_rules('email', 'Email id', 'required|valid_email');
+        // $this->form_validation->set_rules('country', 'Country', 'required');
+        // $this->form_validation->set_rules('state', 'State', 'required');
+        // $this->form_validation->set_rules('city', 'City', 'required');
+        // $this->form_validation->set_rules('skills', 'Skill', 'required');
 
-            $data1 = array(
-                'other_category' => $this->input->post('othercategory'),
-                'type' => '1',
-                'status' => '1',
-                'is_delete' => '0',
-                'user_id' => $userid,
-                'created_date' => date('Y-m-d', time()),
+        // if ($this->form_validation->run() == FALSE) { 
+        //     $this->load->view('artist/profile');
+        // }else{
+        
 
-            );
-            $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
-           }
-        }
+            if($other_category){
 
-        $checkval = $this->input->post('skills');
-        if(in_array(26, $checkval)){
-            $otherid = $insertid;
-            }else{
-                 $otherid = '';
+                if($exist_other){
+                    $insertid = $exist_other[0]['other_category_id'];
+                }else{
+
+                $data1 = array(
+                    'other_category' => $this->input->post('othercategory'),
+                    'status' => '1',
+                    'is_delete' => '0',
+                    'user_id' => $userid,
+                    'created_date' => date('Y-m-d', time()),
+
+                );
+                $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
+               }
             }
 
-             $category = $this->input->post('skills');
-             $category = implode(',' , $category); 
+            $checkval = $this->input->post('skills');
+            if(in_array(26, $checkval)){
+                $otherid = $insertid;
+                }else{
+                     $otherid = '';
+                }
+
+                 $category = $this->input->post('skills');
+                 $category = implode(',' , $category); 
 
 
-     $data = array(
-                'art_name' => $this->input->post('firstname'),
-                'art_lastname' => $this->input->post('lastname'),
-                'art_email' => $this->input->post('email'),
-                'art_phnno' => $this->input->post('phoneno'),
-                'art_country' => $this->input->post('country'),
-                'art_state' => $this->input->post('state'),
-                'art_city' => $this->input->post('city'),
-                'art_skill' =>  $category,
-                'other_skill' => $otherid,
-                'user_id' => $userid,
-                'created_date' => date('Y-m-d H:i:s', time()),
-                'status' => '1',
-                'is_delete' => '0',
-                'art_step' => '4',
-                'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
-            );
+         $data = array(
+                    'art_name' => $this->input->post('firstname'),
+                    'art_lastname' => $this->input->post('lastname'),
+                    'art_email' => $this->input->post('email'),
+                    'art_phnno' => $this->input->post('phoneno'),
+                    'art_country' => $this->input->post('country'),
+                    'art_state' => $this->input->post('state'),
+                    'art_city' => $this->input->post('city'),
+                    'art_skill' =>  $category,
+                    'other_skill' => $otherid,
+                    'user_id' => $userid,
+                    'created_date' => date('Y-m-d H:i:s', time()),
+                    'status' => '1',
+                    'is_delete' => '0',
+                    'art_step' => '4',
+                    'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
+                );
 
-            $insert_id = $this->common->insert_data_getid($data, 'art_reg');
+                $insert_id = $this->common->insert_data_getid($data, 'art_reg');
+         //}    
 
             redirect('artist/home', refresh);
     }
