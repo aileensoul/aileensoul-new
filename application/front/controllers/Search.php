@@ -2676,9 +2676,9 @@ Your browser does not support the audio tag.
                         $return_html .= $this->db->select('currency_name')->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                         $return_html .= "&nbsp";
                         if ($post['post_rating_type'] == 1) {
-                            $return_html .= "Hourly";
+                            $return_html .= "Fixed ";
                         } else {
-                            $return_html .= "Fixed";
+                            $return_html .= "Hourly";
                         }
                     } else {
                         $return_html .= PROFILENA;
