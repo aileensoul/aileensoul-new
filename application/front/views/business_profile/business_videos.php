@@ -41,7 +41,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
                                                     $join_str[0]['join_type'] = '';
 
-                                                    $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'video');
+                                                    $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'video');
                                                     $busvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
 //                                                    $contition_array = array('user_id' => $businessdata1[0]['user_id']);

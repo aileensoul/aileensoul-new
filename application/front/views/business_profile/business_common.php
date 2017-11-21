@@ -150,7 +150,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $busineslug = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 $busuid = $busineslug[0]['user_id'];
 
-                                $contition_array = array('contact_type' => 2);
+                                $contition_array = array('contact_type' => '2');
                                 $search_condition = "((contact_to_id = '$busuid' AND contact_from_id = ' $userid') OR (contact_from_id = '$busuid' AND contact_to_id = '$userid'))";
                                 $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
                                 ?>
@@ -291,7 +291,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                     $userid = $this->session->userdata('aileenuser');
                                                     $contition_array = array('user_id' => $userid, 'status' => '1');
                                                     $bup_id = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                    $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $bup_id[0]['business_profile_id'], 'follow_to' => $business_common_data[0]['business_profile_id']))->row()->follow_status;
+                                                    $status = $this->db->get_where('follow', array('follow_type' => '2', 'follow_from' => $bup_id[0]['business_profile_id'], 'follow_to' => $business_common_data[0]['business_profile_id']))->row()->follow_status;
                                                     $logslug = $this->db->get_where('business_profile', array('user_id' => $userid))->row()->business_slug;
                                                     if ($logslug != $this->uri->segment(3)) {
                                                         if ($status == 0 || $status == " ") {

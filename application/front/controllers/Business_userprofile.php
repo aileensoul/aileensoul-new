@@ -42,15 +42,15 @@ class Business_userprofile extends CI_Controller {
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET COUNTRY DATA
-            $contition_array = array('status' => 1);
+            $contition_array = array('status' => '1');
             $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET STATE DATA
-            $contition_array = array('status' => 1);
+            $contition_array = array('status' => '1');
             $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id,state_name,country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET CITY DATA
-            $contition_array = array('status' => 1);
+            $contition_array = array('status' => '1');
             $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name,state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if (count($userdata) > 0) {
@@ -77,7 +77,7 @@ class Business_userprofile extends CI_Controller {
 
         $id = $_POST['bus_slug'];
 
-        $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+        $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
         $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $join_str[0]['table'] = 'post_files';
@@ -128,7 +128,7 @@ class Business_userprofile extends CI_Controller {
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
@@ -137,7 +137,7 @@ class Business_userprofile extends CI_Controller {
         $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
         $join_str[0]['join_type'] = '';
 
-        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'video');
+        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'video');
         $businessvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
         if ($businessvideo) {
@@ -388,7 +388,7 @@ class Business_userprofile extends CI_Controller {
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
@@ -502,7 +502,7 @@ class Business_userprofile extends CI_Controller {
             $contition_array = array('business_slug' => $slug_id, 'status' => '1');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $join_str[0]['table'] = 'post_files';
@@ -510,7 +510,7 @@ class Business_userprofile extends CI_Controller {
         $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
         $join_str[0]['join_type'] = '';
 
-        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => 0, 'post_files.insert_profile' => '2', 'post_format' => 'pdf');
+        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'pdf');
         $businesspdf = $this->data['businessaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
         if ($businesspdf) {
@@ -549,28 +549,28 @@ class Business_userprofile extends CI_Controller {
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => '1');
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $slug_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $slug_id = $slug_data[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
-            $contition_array = array('business_slug' => $slug_id, 'is_deleted' => 0, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $slug_id, 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
             $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
             $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
-            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
             $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => '1', 'is_delete' => '0');
             $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
             $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
@@ -637,11 +637,11 @@ class Business_userprofile extends CI_Controller {
 <div class = "post-design-name fl col-xs-8 col-md-10">
 <ul>';
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $row['user_id']))->row()->company_name;
-                $slugname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->business_slug;
-                $categoryid = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->industriyal;
-                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
+                $slugname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => '1'))->row()->business_slug;
+                $categoryid = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => '1'))->row()->industriyal;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => '1'))->row()->industry_name;
                 $companynameposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->company_name;
-                $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->business_slug;
+                $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id'], 'status' => '1'))->row()->business_slug;
                 if ($row['posted_user_id']) {
                     $return_html .= '<li>
 <div class = "else_post_d">
@@ -661,7 +661,7 @@ class Business_userprofile extends CI_Controller {
 </div>
 </li>';
                 }
-                $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name;
                 $return_html .= '<li><div class = "post-design-product"> <a class = "buuis_desc_a" title = "Category">';
 
                 if ($category) {
@@ -921,7 +921,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $countlike = $commnetcount[0]['business_likes_count'] - 1;
                     $likelistarray = explode(',', $likeuser);
                     foreach ($likelistarray as $key => $value) {
-                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                     }
                     $return_html .= '<a href="javascript:void(0);"  onclick="open_profile();">';
                     $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
@@ -931,7 +931,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $countlike = $commnetcount[0]['business_likes_count'] - 1;
                     $likelistarray = explode(',', $likeuser);
 
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                     $return_html .= '<div class="like_one_other">';
                     if ($userid == $value) {
                         $return_html .= "You";
@@ -958,7 +958,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
                 $likelistarray = explode(',', $likeuser);
                 foreach ($likelistarray as $key => $value) {
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                 }
                 $return_html .= '<a href="javascript:void(0);"  onclick="open_profile();">';
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
@@ -968,7 +968,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
                 $likelistarray = explode(',', $likeuser);
 
-                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => '1'))->row()->company_name;
                 $return_html .= '<div class="like_one_other">';
                 $return_html .= ucfirst(strtolower($business_fname1));
                 $return_html .= "&nbsp;";
@@ -996,7 +996,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->business_slug;
                         $return_html .= '<div class="all-comment-comment-box">
                 <div class="post-design-pro-comment-img">';
-                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
                         if ($business_userimage) {
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
@@ -1076,7 +1076,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     </div>';
                         }
                         $userid = $this->session->userdata('aileenuser');
-                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => '1'))->row()->user_id;
                         if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
                             $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                     <div class="comment-details-menu">
@@ -1170,10 +1170,10 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
-            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         }
 
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => '1');
 
         $join_str_following[0]['table'] = 'follow';
         $join_str_following[0]['join_table_id'] = 'follow.follow_to';
@@ -1194,10 +1194,10 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
-            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         }
 
-        $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+        $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => '1');
 
         $join_str_following[0]['table'] = 'follow';
         $join_str_following[0]['join_table_id'] = 'follow.follow_from';
@@ -1217,10 +1217,10 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id != '') {
-            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
+            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => '1'))->row()->user_id;
         }
 
-        $contition_array = array('contact_type' => 2, 'contact_person.status' => 'confirm', 'business_profile.status' => 1);
+        $contition_array = array('contact_type' => '2', 'contact_person.status' => 'confirm', 'business_profile.status' => '1');
         $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
 
         $join_str_contact[0]['table'] = 'business_profile';

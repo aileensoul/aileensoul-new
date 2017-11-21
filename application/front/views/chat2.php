@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 }
                                 if ($message_from_profile == 2) {
                                     $last_user_image = $last_user_data['user_image'];
-                                    $slug= $this->db->get_where('job_reg', array('user_id' =>$id,'is_delete'=>0,'status'=>1))->row()->slug;
+                                    $slug= $this->db->get_where('job_reg', array('user_id' =>$id,'is_delete'=>'0','status'=>'1'))->row()->slug;
                                     $profile_url = base_url() . 'job/job_printpreview/' . $slug . '?page=recruiter';
                                 }
                                 if ($message_from_profile == 3) {

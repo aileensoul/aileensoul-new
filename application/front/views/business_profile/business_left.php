@@ -64,7 +64,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     </a> 
                 </span>
 
-                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
+                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                 <div class="profile-boxProfile-name">
                     <a  href="<?php echo base_url('business-profile/dashboard/' . $business_common_data[0]['business_slug']); ?> " title="<?php echo ucwords($business_common_data[0]['company_name']); ?>" >
                         <?php
