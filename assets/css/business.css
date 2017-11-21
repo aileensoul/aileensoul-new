@@ -4482,6 +4482,8 @@ background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );}
 body.reg-form{background: #fff}
 .reg-form footer{background: #fff !important;}
+.profile-boxProfileCard .mejs__inner .mejs__overlay{height: 110px !important;}
+.profile-boxProfileCard .mejs__inner .mejs__poster{height: 110px !important;}
 /***  end all edit profile form  ***/
 
 
