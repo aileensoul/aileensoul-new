@@ -1216,8 +1216,8 @@ class Freelancer extends MY_Controller {
                 $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                 $return_html .= '</li>';
                 $return_html .= '<li>';
-                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . '-vacancy-in-' . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title ">
-                                                    ' . ucwords($this->text2link($post['post_name'])) . '</a> </li>';
+                $return_html .= '<div class="post_title "><a href="' . base_url('freelancer-hire/project/' . $text . '-vacancy-in-' . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" >
+                                                    ' . ucwords($this->text2link($post['post_name'])) . '</a></div> </li>';
 
 
 
