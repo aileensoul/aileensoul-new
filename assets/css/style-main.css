@@ -1266,7 +1266,7 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 .custom-box .custom-width .right-box a{font-size:18px; color:#000; transition:none;}
 .custom-box.tabindex{padding-top:60px;}
 
-.how-it-popup .modal-header h1{text-align:center; font-size:40px; font-weight:bold; font-family: 'times_new_romanbold';}
+.how-it-popup .modal-header h1{text-align:center; font-size:40px; font-weight:bold; font-family: 'arial';}
 .how-it-popup .modal-header a{color:#bababa; font-size:18px; margin-top:-10px;}
 .how-it-popup .modal-header a:hover{color:#777;}
 .how-it-popup .modal-body{padding-top:0; padding-bottom:0; width:100%; float:left;}
