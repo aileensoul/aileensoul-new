@@ -33,15 +33,15 @@
                                               <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                  aria-hidden="true" rel="noopener">
              <div class="bg-images no-cover-upload">  
-               <?php
-
-                $imageee= $this->config->item('rec_bg_thumb_upload_path').$recdata[0]['profile_background'];
-           if(file_exists($imageee) && $recdata[0]['profile_background'] != '')
-                 {
-                   ?>
-               <img src="<?php echo base_url($this->config->item('rec_bg_thumb_upload_path') . $recdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>">
-                    <!-- box image end -->
-                         <?php
+            <?php
+                                                 $image_ori = $recdata[0]['profile_background'];
+                         $filename = $this->config->item('rec_bg_main_upload_path') . $recdata[0]['profile_background'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if ($info && $recdata[0]['profile_background'] != '') {
+                            ?>
+                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                     <?php
                    } else {
                              ?>
                   <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
@@ -55,12 +55,13 @@
                                     <div class="left_side_box_img buisness-profile-txext">
                                         
                                               <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                                                <?php
- $imageee= $this->config->item('rec_profile_thumb_upload_path').$recdata[0]['recruiter_user_image'];
-                                              if(file_exists($imageee) && $recdata[0]['recruiter_user_image'] != '') { 
-                                            ?>
-                       <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image']); ?>" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
-                                   <?php
+                                                
+  <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
+                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                <?php
                               } else {
 
 

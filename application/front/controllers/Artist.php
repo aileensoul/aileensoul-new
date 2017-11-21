@@ -104,7 +104,7 @@ class Artist extends MY_Controller {
     $contition_array = array('status' => '1');
     $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-    $contition_array = array('status' => '1', 'type' => '1');
+    $contition_array = array('status' => '1');
     $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
 
     //echo "<pre>"; print_r($this->data['countries']); die();
@@ -119,58 +119,72 @@ class Artist extends MY_Controller {
 
 
      $other_category = $this->input->post('othercategory');
-     $contition_array = array('other_category' => $other_category,'type' => '1', 'status' => '1');
+     $contition_array = array('other_category' => $other_category, 'status' => '1');
      $exist_other = $this->common->select_data_by_condition('art_other_category',$contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
-        if($other_category){
 
-            if($exist_other){
-                $insertid = $exist_other[0]['other_category_id'];
-            }else{
+        // $this->form_validation->set_rules('firstname', 'First name', 'required');
+        // $this->form_validation->set_rules('lastname', 'Last name', 'required');
+        // $this->form_validation->set_rules('email', 'Email id', 'required|valid_email');
+        // $this->form_validation->set_rules('country', 'Country', 'required');
+        // $this->form_validation->set_rules('state', 'State', 'required');
+        // $this->form_validation->set_rules('city', 'City', 'required');
+        // $this->form_validation->set_rules('skills', 'Skill', 'required');
 
-            $data1 = array(
-                'other_category' => $this->input->post('othercategory'),
-                'type' => '1',
-                'status' => '1',
-                'is_delete' => '0',
-                'user_id' => $userid,
-                'created_date' => date('Y-m-d', time()),
+        // if ($this->form_validation->run() == FALSE) { 
+        //     $this->load->view('artist/profile');
+        // }else{
+        
 
-            );
-            $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
-           }
-        }
+            if($other_category){
 
-        $checkval = $this->input->post('skills');
-        if(in_array(26, $checkval)){
-            $otherid = $insertid;
-            }else{
-                 $otherid = '';
+                if($exist_other){
+                    $insertid = $exist_other[0]['other_category_id'];
+                }else{
+
+                $data1 = array(
+                    'other_category' => $this->input->post('othercategory'),
+                    'status' => '1',
+                    'is_delete' => '0',
+                    'user_id' => $userid,
+                    'created_date' => date('Y-m-d', time()),
+
+                );
+                $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
+               }
             }
 
-             $category = $this->input->post('skills');
-             $category = implode(',' , $category); 
+            $checkval = $this->input->post('skills');
+            if(in_array(26, $checkval)){
+                $otherid = $insertid;
+                }else{
+                     $otherid = '';
+                }
+
+                 $category = $this->input->post('skills');
+                 $category = implode(',' , $category); 
 
 
-     $data = array(
-                'art_name' => $this->input->post('firstname'),
-                'art_lastname' => $this->input->post('lastname'),
-                'art_email' => $this->input->post('email'),
-                'art_phnno' => $this->input->post('phoneno'),
-                'art_country' => $this->input->post('country'),
-                'art_state' => $this->input->post('state'),
-                'art_city' => $this->input->post('city'),
-                'art_skill' =>  $category,
-                'other_skill' => $otherid,
-                'user_id' => $userid,
-                'created_date' => date('Y-m-d H:i:s', time()),
-                'status' => '1',
-                'is_delete' => '0',
-                'art_step' => '4',
-                'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
-            );
+         $data = array(
+                    'art_name' => $this->input->post('firstname'),
+                    'art_lastname' => $this->input->post('lastname'),
+                    'art_email' => $this->input->post('email'),
+                    'art_phnno' => $this->input->post('phoneno'),
+                    'art_country' => $this->input->post('country'),
+                    'art_state' => $this->input->post('state'),
+                    'art_city' => $this->input->post('city'),
+                    'art_skill' =>  $category,
+                    'other_skill' => $otherid,
+                    'user_id' => $userid,
+                    'created_date' => date('Y-m-d H:i:s', time()),
+                    'status' => '1',
+                    'is_delete' => '0',
+                    'art_step' => '4',
+                    'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
+                );
 
-            $insert_id = $this->common->insert_data_getid($data, 'art_reg');
+                $insert_id = $this->common->insert_data_getid($data, 'art_reg');
+         //}    
 
             redirect('artist/home', refresh);
     }
@@ -445,7 +459,7 @@ class Artist extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_step,art_skill,art_yourart,art_desc_art,art_inspire,other_skill,art_bestofmine', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
          $work_skill = explode(',', $userdata[0]['art_skill']); 
-         $contition_array = array('status' => '1', 'type' => '1');
+         $contition_array = array('status' => '1');
          $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');        
           $contition_array = array('other_category_id' => $userdata[0]['other_skill']);
          $other_category = $this->common->select_data_by_condition('art_other_category', $contition_array, $data = 'other_category_id, other_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -510,10 +524,13 @@ class Artist extends MY_Controller {
         $images[] = $fileName;
         $config['file_name'] = $fileName;
          $this->upload->initialize($config);
-         $this->upload->do_upload('bestofmine');    
+         $this->upload->do_upload('bestofmine');   
+
+
+        $main_file = $this->config->item('art_portfolio_main_upload_path') . $config['file_name']; 
 
      $other_category = $category_trim;
-     $contition_array = array('other_category' => $other_category,'type' => '1', 'status' => '1');
+     $contition_array = array('other_category' => $other_category, 'status' => '1');
      $exist_other = $this->common->select_data_by_condition('art_other_category',$contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
         if($other_category){ 
@@ -560,7 +577,14 @@ class Artist extends MY_Controller {
          $this->data['get_url'] = $get_url = $this->get_url($userid);
 
          if ($updatdata) {
-                        redirect('artist/details/'.$get_url, refresh);                    
+
+
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_file)) {
+                        unlink($main_file);
+                    }
+                }
+                 redirect('artist/details/'.$get_url, refresh);                    
                 } 
     }
 
@@ -1002,6 +1026,30 @@ class Artist extends MY_Controller {
 
                         //echo "<pre>"; print_r($data1);
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
+
+
+                        if ($_SERVER['HTTP_HOST'] != "localhost") {
+                            if (isset($main_image)) {
+                                unlink($main_image);
+                            }
+                            if (isset($thumb_image)) {
+                                unlink($thumb_image);
+                            }
+                            if (isset($resize_image)) {
+                                unlink($resize_image);
+                            }
+                            if (isset($resize_image1)) {
+                                unlink($resize_image1);
+                            }
+                            if (isset($resize_image2)) {
+                                unlink($resize_image2);
+                            }
+                            // if (isset($resize_image4)) {
+                            //     unlink($resize_image4);
+                            // }
+                        }
+
+
                        
                     } else {
                         echo $this->upload->display_errors();
@@ -1899,7 +1947,7 @@ $datacount = count($otherdata);
         $regid = $slugdata[0];      
         
         $contition_array = array('art_id' => $regid, 'status' => '1' , 'art_step' => '4');
-        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_achievement,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_email,art_phnno,art_country,art_state,art_city,art_pincode,art_address,art_yourart,art_skill,art_desc_art,art_inspire,art_bestofmine,art_portfolio,user_id,art_step,art_user_image,profile_background,designation,slug,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['get_url'] =  $this->get_url($this->data['artisticdata'][0]['user_id']);
     if($userid){
@@ -6343,6 +6391,18 @@ public function insert_comment_postnewpage() {
         );
 
         $update = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
+
+         if ($update) {
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($upload_image)) {
+                    unlink($upload_image);
+                }
+                if (isset($thumb_image)) {
+                    unlink($thumb_image);
+                }
+            }
+        }
+
         $this->data['artdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*', $join_str = array());
         $coverpic =  '<img id="image_src" name="image_src" src = "' . ART_BG_MAIN_UPLOAD_URL . $this->data['artdata'][0]['profile_background'] . '" />';
 
@@ -14032,6 +14092,16 @@ public function artistic_search_city($id = "") {
         //  echo "11111";die();
 
         if ($update) {
+
+
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_image)) {
+                        unlink($main_image);
+                    }
+                    if (isset($thumb_image)) {
+                        unlink($thumb_image);
+                    }
+                }
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $artistic_user = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);

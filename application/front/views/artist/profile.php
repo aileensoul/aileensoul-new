@@ -34,6 +34,18 @@
 
                         <?php echo form_open(base_url('artist/profile_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "return validation_other(event)")); ?>
 
+                        <?php
+                                 $firstname =  form_error('firstname');
+                                 $lastname = form_error('lastname');
+                                 $email =  form_error('email');
+                                 $phoneno =  form_error('phoneno');
+                                 $skills =  form_error('skills');
+                                 $country = form_error('country');
+                                 $state = form_error('state');
+                                 $city = form_error('city');
+                                 
+                            ?>
+
                         <fieldset>
                            <label >First Name <font  color="red">*</font> :</label>                          
                            <input type="text" name="firstname" id="firstname" tabindex="1" placeholder="Enter first name" style="text-transform: capitalize;" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" value="<?php echo $userdata[0]['first_name']; ?>" maxlength="35">
@@ -52,7 +64,7 @@
                         <fieldset>
                            <label >Phone number:</label>
                            <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="<?php echo $job[0]['user_email'];?>" maxlength="255">
-                           <?php echo form_error('email');; ?>
+                           <?php echo form_error('phoneno');; ?>
                         </fieldset>
 
 
