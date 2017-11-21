@@ -2287,9 +2287,9 @@ class Freelancer extends MY_Controller {
                 $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                 $return_html .= '</li>
                                                                                     <li>';
-                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" class="post_title">';
+                $return_html .= '<div class="post_title "><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '">';
                 $return_html .= ucwords($post['post_name']);
-                $return_html .= '</a> </li>';
+                $return_html .= '</a></div> </li>';
 
                 $country = $this->db->select('country')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->country;
                 // $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $city))->row()->city_name;
@@ -2820,10 +2820,9 @@ class Freelancer extends MY_Controller {
                     $cityname1 = '';
                 }
 
-                $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="' . ucwords($this->common->make_links($post['post_name'])) . '" class="post_title">';
+                $return_html .= '<div class="post_title "><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="' . ucwords($this->common->make_links($post['post_name'])) . '" >';
                 $return_html .= ucwords($this->common->make_links($post['post_name']));
-                $return_html .= '</a>   
-                                                                        </li>';
+                $return_html .= '</a> </div></li>';
 
                 $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                 $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
@@ -3489,9 +3488,9 @@ class Freelancer extends MY_Controller {
                     } else {
                         $cityname1 = '';
                     }
-                    $return_html .= '<a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title">';
+                    $return_html .= '<div class="post_title "><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' " title="' . ucwords($post['post_name']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" >';
                     $return_html .= ucwords($this->text2link($post['post_name']));
-                    $return_html .= '</a> </li>';
+                    $return_html .= '</a></div></li>';
                     $firstname = $this->db->select('fullname')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                     $lastname = $this->db->select('username')->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
 
