@@ -379,7 +379,7 @@
                                                                                 <?php } else if($applyuser) { ?>
                                                                                     <a href="javascript:void(0);"  class= "applypost  button"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
                                                                                 <?php } else{ ?> 
-                                                                                    <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['user_id']); ?>"  class= "applypost  button"> Apply</a>
+                                                                                    <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['post_id']); ?>"  class= "applypost  button"> Apply</a>
                                                                                <?php  }
                                                                             }
                                                                             ?>

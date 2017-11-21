@@ -95,7 +95,7 @@ else{
                            <!-- <div id="hi" class="notifications"> -->
                            <?php if ($userdata[0]['user_image'] != '') { ?>
                            <div id="profile-photohead" class="profile-head">
-                           <img alt="" class="img-circle" src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" height="50" width="50" alt="Smiley face" />
+                           <img alt="" class="img-circle" src="<?php echo USER_THUMB_UPLOAD_URL . $userdata[0]['user_image']; ?>" height="50" width="50" alt="Smiley face" />
                          </div>
 
                            <?php
