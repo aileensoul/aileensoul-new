@@ -555,7 +555,7 @@
                                                                     $userid = $this->session->userdata('aileenuser');
                                                                     if ($userid != $row['userid']) {
 
-                                                                        $contition_array = array('from_id' => $userid, 'to_id' => $row['userid'], 'save_type' => 1, 'status' => '0');
+                                                                        $contition_array = array('from_id' => $userid, 'to_id' => $row['userid'], 'save_type' => '1', 'status' => '0');
                                                                         $savedata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         ?>
 

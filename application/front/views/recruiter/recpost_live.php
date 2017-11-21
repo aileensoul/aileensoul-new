@@ -486,7 +486,7 @@
                         $join_str[0]['from_table_id'] = 'job_apply.user_id';
                         $join_str[0]['join_type'] = '';
 
-                        $condition_array = array('post_id' => $post['post_id'], 'job_apply.job_delete' => '0', 'job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.job_step' => 10);
+                        $condition_array = array('post_id' => $post['post_id'], 'job_apply.job_delete' => '0', 'job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.job_step' => '10');
                         $data = "job_apply.*,job_reg.job_id";
                         $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
                         $countt = count($apply_candida); ?>
@@ -498,7 +498,7 @@
               <?php           $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                     $contition_array = array(
                         'post_id' => $post['post_id'],
-                        'job_delete' => 0,
+                        'job_delete' => '0',
                         'user_id' => $userid
                     );
                     $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
