@@ -85,7 +85,7 @@
                                  <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                  </span>
                                  </span>
-                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
+                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                                  <div class="profile-boxProfile-name">
                                     <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>"><?php
                                        if (ucwords($jobdata[0]['designation'])) {
