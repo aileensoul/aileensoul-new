@@ -1231,6 +1231,8 @@ class Business_profile extends MY_Controller {
         } else {
             $insert_id = $this->common->insert_data_getid($data, 'business_profile_post');
         }
+        
+        $this->config->item('bus_post_main_upload_path');
         $config = array(
             'image_library' => 'gd',
             'upload_path' => $this->config->item('bus_post_main_upload_path'),
@@ -1584,6 +1586,7 @@ class Business_profile extends MY_Controller {
 //                        }
                         /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
                     } else {
+                        
                         echo $this->upload->display_errors();
                         exit;
                     }
