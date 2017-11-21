@@ -206,7 +206,7 @@
                                                             </fieldset>
                                                             <fieldset>
                                                                 <label>Contact website<span class="optional">(optional)</span>:</label>
-                                                                <input name="contactwebsite" ng-model="user.contactwebsite" tabindex="4" autofocus type="text" id="contactwebsite" placeholder="Enter contact email" value=""/>
+                                                                <input name="contactwebsite" ng-model="user.contactwebsite" tabindex="4" autofocus type="url" id="contactwebsite" placeholder="Enter contact email" value=""/>
                                                                 <span class="website_hint" style="font-size: 13px; color: #1b8ab9;">Note : <i>Enter website url with http or https</i></span>                                 
                                                                 <span ng-show="errorContactWebsite" class="error">{{errorContactWebsite}}</span>                      
                                                             </fieldset>
