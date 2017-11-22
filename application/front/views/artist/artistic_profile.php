@@ -170,19 +170,14 @@ if ($artisticdata[0]['art_bestofmine']) {
     $allowespdf = array('pdf'); 
     $filename = $artisticdata[0]['art_bestofmine'];
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
-   if (in_array($ext, $allowespdf)) { ?>
-<?php if (!file_exists($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine'])) {
-   echo "Pdf not available."
     ?>
-<?php }else{  ?>
-        <a href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine']) ?>"><i style="color: red; font-size:22px;" class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-<?php }?>
-         <?php
-         } ?>  
-         </div>
-<?php } else {
+         <a title = "click to open" href = "<?php echo ART_PORTFOLIO_MAIN_UPLOAD_URL . $artisticdata[0]['art_bestofmine']; ?>" target="_blank"><i style="color: red; font-size:22px;" class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+
+        </div>
+<?php } else {  
     echo PROFILENA;
     } ?>
+     
     </span>
     </li>
                                                                      
