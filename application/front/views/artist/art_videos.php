@@ -37,7 +37,7 @@
                                              
                                                  <?php
 
-          $contition_array = array('user_id' => $artisticdata[0]['user_id']);
+          $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'is_delete' => '0');
          $artvideo = $this->data['artvideo'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
           //echo "<pre>"; print_r($artvideo); die();

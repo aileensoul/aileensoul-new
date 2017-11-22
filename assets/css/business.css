@@ -2182,11 +2182,11 @@ label.cameraButton:active {
     position: relative;
     margin-bottom: 10px;
     overflow: hidden;
-    height: 95px;
+    height: 90px;
     float: left;
-    width: 95px;
+    width: 90px;
     padding: 0px;
-    margin: 5px;
+    margin: 4px;
 }
 .image_profile img {
     height: 100%;

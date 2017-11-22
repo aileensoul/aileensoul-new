@@ -442,24 +442,34 @@ a:hover{
    -moz-appearance:    none;
    appearance:         none;
    position:relative;
-   background:url('../img/down-arrow.png') no-repeat !important;
+/*   background:url('../img/down-arrow.png') no-repeat !important;*/
    background-position:right !important;   
   
 }
 /*Dhaval date of birth*/
-/*
-#register_form .dob span{position: relative;}
 
-#register_form .dob span:after {
-    content:"\f078";   
+.login #register_form  span{position: relative;}
+
+.login #register_form  span:after {
+    content:"\f0d7";   
     font-family: "FontAwesome";
-    font-size: 11px;
+    font-size: 14px;
     color:#aaa;
-    right:8px; top:4px;
+    right:28px; top:0px;
     padding:0 0 2px;
+    position:relative;
+    pointer-events:none;
+}
+
+/*#register_form .dob span:before {
+    content:'';
+    right:4px; top:0px;
+    width:23px; height:18px;
+    background:#fff;
     position:absolute;
-    pointer-events:none;}
-    */
+    pointer-events:none;
+    display:block;
+}*/
 .login .form-group select:focus{
 	width:65px;
 	margin-right:15px;
@@ -467,7 +477,7 @@ a:hover{
     -moz-appearance:    none;
     appearance:         none;
     position:relative;
-    background:url('../img/down-arrow-hover.png') no-repeat;
+    /*background:url('../img/down-arrow-hover.png') no-repeat;*/
     background-position:right;  
 }
 .login .form-group select.year{
