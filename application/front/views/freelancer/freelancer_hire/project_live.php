@@ -223,6 +223,7 @@
 
                                                                             <li>
                                                                                 <?php
+                                                                                $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
                                                                                 $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
                                                                                 if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) {
                                                                                     ?>
@@ -382,7 +383,7 @@
                                                                     </ul>
                                                                 </div>
                                                                 <?php
-                                                                $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
+                                                               // $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
                                                                 if ($postuser[0]['user_id'] != $this->session->userdata('aileenuser')) {
                                                                     ?>
                                                                     <div class="profile-job-profile-button clearfix">

@@ -3773,11 +3773,11 @@ class Freelancer extends MY_Controller {
         //  echo "11111";die();
         
         if($_SERVER['HTTP_HOST'] == 'localhost'){
-            if (isset($user_bg_full_image)) {
-                unlink($user_bg_full_image);
+            if (isset($upload_image)) {
+                unlink($upload_image);
             }
-             if (isset($user_bg_thumb_image)) {
-                unlink($user_bg_thumb_image);
+             if (isset($thumb_image)) {
+                unlink($thumb_image);
             }
         }
 
@@ -3880,11 +3880,11 @@ class Freelancer extends MY_Controller {
         $update = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
         //  echo "11111";die();
         if($_server['HTTP_HOST'] != 'localhost'){
-            if (isset($user_bg_full_image)) {
-                unlink($user_bg_full_image);
+            if (isset($main_image)) {
+                unlink($main_image);
             }
-            if (isset($user_bg_thumb_image)) {
-                unlink($user_bg_thumb_image);
+            if (isset($thumb_image)) {
+                unlink($thumb_image);
             }
         }
         if ($update) {
@@ -4152,11 +4152,11 @@ class Freelancer extends MY_Controller {
         $update = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
         
          if($_server['HTTP_HOST'] != 'localhost'){
-           if (isset($user_bg_full_image)) {
-                unlink($user_bg_full_image);
+           if (isset($main_image)) {
+                unlink($main_image);
             }
-            if (isset($user_bg_thumb_image)) {
-                unlink($user_bg_thumb_image);
+            if (isset($thumb_image)) {
+                unlink($thumb_image);
             }
             if (isset($user_bg_origin_image)) {
                 unlink($user_bg_origin_image);
@@ -4306,14 +4306,14 @@ class Freelancer extends MY_Controller {
         $update = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
         
         if($_SERVER['HTTP_HOST'] != 'localhost'){
-            if (isset($user_bg_full_image)) {
-                unlink($user_bg_full_image);
+            if (isset($main_image)) {
+                unlink($main_image);
             }
-             if (isset($user_bg_thumb_image)) {
-                unlink($user_bg_thumb_image);
+             if (isset($thumb_image)) {
+                unlink($thumb_image);
             }
-             if (isset($user_bg_origin_image)) {
-                unlink($user_bg_origin_image);
+             if (isset($upload_image)) {
+                unlink($upload_image);
             }
         }
         
@@ -4988,7 +4988,9 @@ class Freelancer extends MY_Controller {
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
         $this->data['recliveid'] = $userid = $slugdata[1];
-
+//echo "<pre>";print_r($segment3);
+//echo "<pre>"; print_r($slugdata);
+//echo $postid;die();
 
         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
         $data = 'username,fullname,designation,freelancer_hire_user_image,user_id,profile_background';
