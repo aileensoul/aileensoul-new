@@ -29,7 +29,7 @@
                             <div class="job_reg_page_fprm">
 
                                 <div class="common-form job_reg_main">
-                                    <h3>Welcome In Freelancer Profile</h3>
+                                    <h3>Welcome In Employer Profile</h3>
                                     <?php echo form_open(base_url('freelancer/hire_registation_insert'), array('id' => 'freelancerhire_regform', 'name' => 'freelancerhire_regform', 'class' => 'clearfix')); ?>
                                     <fieldset>
                                         <label >First Name <font  color="red">*</font> :</label>                          

@@ -438,7 +438,7 @@
                         <div class="contact-frnd-post">
                           <div class="art-img-nn">
                          <div class="art_no_post_img">
-                                  <img src="/aileensoul-new/assets/img/free-no.png">
+                                  <img src="/assets/img/free-no.png">
                         </div>
                   <div class="art_no_post_text">   You must have a freelancer  profile for applying to this post </div>
                                             </div>
