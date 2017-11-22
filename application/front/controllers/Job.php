@@ -2392,7 +2392,16 @@ class Job extends MY_Controller {
 
 
         $update = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-
+ if ($update) {
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($main_image)) {
+                    unlink($main_image);
+                }
+                if (isset($thumb_image)) {
+                    unlink($thumb_image);
+                }
+            }
+        }
         $this->data['jobdata'] = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
 
         $coverpic = '<img src = "' . JOB_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
