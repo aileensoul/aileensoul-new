@@ -1682,6 +1682,7 @@ footer {
     width: 100%;
     bottom: 0;
     background-color:#fff !important; /*d bg*/
+	font-size:14px;
 }
 
 .footer-bottom {

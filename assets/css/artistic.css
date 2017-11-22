@@ -4194,6 +4194,7 @@ div .comment {
 .profile-boxProfileCard .mejs__inner .mejs__overlay{height: 110px !important;}
 .profile-boxProfileCard .mejs__inner .mejs__poster{height: 110px !important;}
 
+.post-design-name ul li:nth-child(4) a{font-weight:600 !important;}
 
 
 /***  media query  ***/
