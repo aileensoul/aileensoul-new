@@ -159,7 +159,7 @@
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
-                                    <div class="contact-frnd-post">
+                                    <div class="contact-frnd-post no-post-custom">
                                         <div class="mob-add">
                                             <div class="fw text-center pt10 pb5">
                                                 <script type="text/javascript">
