@@ -24,9 +24,9 @@ $(function () {
         //startDate: today,
 
     });
- $(".day").attr('tabindex', 11);
-    $(".month").attr('tabindex', 12);
-    $(".year").attr('tabindex', 13);
+ $(".day").attr('tabindex', 13);
+    $(".month").attr('tabindex', 14);
+    $(".year").attr('tabindex', 15);
 });
 
 
