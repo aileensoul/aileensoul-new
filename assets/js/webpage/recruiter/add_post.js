@@ -24,9 +24,9 @@ $(function () {
         //startDate: today,
 
     });
- $(".day").attr('tabindex', 11);
-    $(".month").attr('tabindex', 12);
-    $(".year").attr('tabindex', 13);
+ $(".day").attr('tabindex', 13);
+    $(".month").attr('tabindex', 14);
+    $(".year").attr('tabindex', 15);
 });
 
 
@@ -911,7 +911,7 @@ $(document).on('change', '#industry', function (event) {
        
             item.val('');
 
-             $('.biderror .mes').html('<h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a>');
+             $('.biderror .mes').html('<h2>Add Industry</h2><input tabindex="1" type="text" name="other_indu" id="other_indu"><a id="indus" tabindex="2" class="btn">OK</a>');
             $('#bidmodal').modal('show');
            // $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
    

@@ -2091,6 +2091,7 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
 	.tablate-add{display:none;}
 	.mian_middle_post_box{float:none;}
 	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
+	.no-post-custom .mob-add{display:none;}
 	/*** end add  ***/
 	.sort-emp-detail{width:60%;}
 	

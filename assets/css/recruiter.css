@@ -1023,6 +1023,8 @@ fieldset.fresher_radio label {
 .modal.message-box span.mes{margin:0px!important;padding: 0px !important;}
 .modal .modal-dialog .message {padding:20px 30px;}
 .mes #field_error{width: 100%;text-align: right;}
+.mes input:focus{border:1px solid #1b8ab9;}
+.mes .btn:focus{opacity:0.8;}
 
 /***  media query  ***/
 

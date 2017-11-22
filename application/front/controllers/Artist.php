@@ -524,7 +524,14 @@ class Artist extends MY_Controller {
         $images[] = $fileName;
         $config['file_name'] = $fileName;
          $this->upload->initialize($config);
-         $this->upload->do_upload('bestofmine');   
+         $this->upload->do_upload('bestofmine');  
+
+         $main_image = $this->config->item('art_portfolio_main_upload_path') . $fileName;
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ); 
 
 
         $main_file = $this->config->item('art_portfolio_main_upload_path') . $config['file_name']; 
