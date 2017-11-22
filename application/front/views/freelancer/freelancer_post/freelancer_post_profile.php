@@ -196,7 +196,7 @@
                                             <ul>
                                                 <?php 
                                                 if ($data[0]['status'] == '1' || $data[0]['status'] == '') {
-                                                    echo "123";
+                                                    
                                                     if ($_GET['post_id']) {
                                                         ?> 
                                                         <li>
@@ -211,14 +211,14 @@
 
                                                         </li> <?php }
                                         } elseif ($data[0]['status'] == '0') {
-                                            echo "222";
+                                           
                                                             ?>
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
-                                                    </li> <?php } else { echo "3333";
+                                                    </li> <?php } else { 
                                         ?>
                                                     <li> 
-                                                        <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> ">shortlisted</a>
+                                                        <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> ">Shortlisted</a>
                                                     </li> 
                                                 <?php }
                                                 ?>
