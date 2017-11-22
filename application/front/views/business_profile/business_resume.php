@@ -96,7 +96,7 @@
                                                                 <li><b>Category</b><span><?php echo $business_data['industry_name']; ?></span></li>
                                                                 <li><b>Details Of Your Business </b> 
                                                                     <span>
-                                                                        <p> <?php echo nl2br($this->common->make_links($business_data['details'])); ?></p>
+                                                                         <?php echo nl2br($this->common->make_links($business_data['details'])); ?>
                                                                     </span>
                                                                 </li>
                                                             </ul>

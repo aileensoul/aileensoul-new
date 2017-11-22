@@ -50,7 +50,7 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
         
 </head>
-<body>
+<body class="custom-landscape">
 <!--    <script type="application/ld+json">
         {
         "@context": "http://schema.org",
@@ -156,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-5 col-sm-6">
+                        <div class="col-md-5 col-sm-6 custom-padd">
                             <div class="login">
                                 <h4>Join Aileensoul - It's Free</h4>
                                 <form role="form" name="register_form" id="register_form" method="post">

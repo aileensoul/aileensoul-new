@@ -61,7 +61,7 @@
                                                                                 $sub_post_lname = substr($post_lname, 0, 1);
                                                                                 ?>
                                                                                 <div class="post-img-div">
-                                                                                    <?php echo ucfirst(strtolower($sub_post_fname)) .  ucfirst(strtolower($sub_post_lname)); ?>
+                                                                                    <?php echo ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname)); ?>
                                                                                 </div>
                                                                                 <?php
                                                                             }
@@ -71,11 +71,11 @@
                                                                     <div class="designation_rec fl">
                                                                         <ul>
                                                                             <li>        
-                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'."&post_id=".$postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
+                                                                                <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire' . "&post_id=" . $postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
                                                                                         <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
                                                                                 </a>
                                                                             </li>
-                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'."&post_id=".$postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
+                                                                            <li style="display: block;" ><a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire' . "&post_id=" . $postid); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>" > <?php
                                                                                     if ($row['designation']) {
                                                                                         echo $row['designation'];
                                                                                     } else {
@@ -125,12 +125,18 @@
                                                                         </span>    
                                                                     </li>
 
-                                                                    <?php $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name; ?>
+                                                                    <?php
+                                                                    $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name;
+                                                                    $countryname = $this->db->select('country_name')->get_where('countries', array('country_id' => $row['freelancer_post_country']))->row()->country_name;
+                                                                    ?>
                                                                     <li><b><?php echo $this->lang->line("location"); ?></b><span> <?php
-                                                                            if ($cityname) {
-                                                                                echo $cityname;
-                                                                            } else {
-                                                                                echo PROFILENA;
+                                                                            if ($cityname || $countryname) {
+                                                                                if ($cityname) {
+                                                                                    echo  $cityname . ",";
+                                                                                }
+                                                                                if ($countryname) {
+                                                                                    echo  $countryname;
+                                                                                }
                                                                             }
                                                                             ?></span></li>
                                                                     <li><b><?php echo $this->lang->line("skill_description"); ?></b> <span> <p>
@@ -202,7 +208,7 @@
                                                                 <div class="apply-btn fr">
                                                                     <?php
                                                                     $userid = $this->session->userdata('aileenuser');
-                                                                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' =>'2', 'status' => '2');
+                                                                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => '2', 'status' => '2');
                                                                     $savedata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
 
@@ -242,15 +248,15 @@
                                                 }
                                             } else {
                                                 ?>
-                                           <div class="art-img-nn">
-                                                <div class="art_no_post_img">
-                                                    <img src="<?php echo base_url('assets/img/free-no1.png')?>">
+                                                <div class="art-img-nn">
+                                                    <div class="art_no_post_img">
+                                                        <img src="<?php echo base_url('assets/img/free-no1.png') ?>">
+                                                    </div>
+                                                    <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
                                                 </div>
-                                                <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
-                                           </div>
-<!--                                                <div class="text-center rio">
-                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer"); ?></h4>
-                                                </div>-->
+                                                <!--                                                <div class="text-center rio">
+                                                                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer");  ?></h4>
+                                                                                                </div>-->
                                                 <?php
                                             }
                                             ?>
@@ -266,7 +272,7 @@
                 </div>
             </div>
         </section>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         <!-- Model Popup Open -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -279,13 +285,13 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>">
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver='.time()); ?>"></script>
-        <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+        <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <script>
             function inviteuserpopup(abc) {
                 $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");

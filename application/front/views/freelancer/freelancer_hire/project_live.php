@@ -222,9 +222,11 @@
                                                                             <?php $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name; ?>
 
                                                                             <li>
-                                                                                <?php $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
-                                                                                if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
-                                                                                 <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
+                                                                                <?php
+                                                                                $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
+                                                                                if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) {
+                                                                                    ?>
+                                                                                    <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
                                                                                     </a>
 
                                                                                     <?php if ($cityname || $countryname) { ?>
@@ -237,8 +239,8 @@
                                                                                                 <?php echo $countryname; ?></p>
                                                                                         </div>
                                                                                     <?php } ?>
-                                                                                <?php } 
-                                                                                else if ($hireuser) { ?>
+                                                                                <?php } else if ($hireuser) {
+                                                                                    ?>
                                                                                     <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="javascript:void(0);"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
                                                                                     </a>
 
@@ -253,7 +255,7 @@
                                                                                         </div>
                                                                                     <?php } ?>
                                                                                 <?php } else { ?>
-                                                                                    <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id']. '?page=freelancer_post'); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
+                                                                                    <a class="display_inline" title="<?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>" href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucwords($firstname); ?>&nbsp;<?php echo ucwords($lastname); ?>
                                                                                     </a> 
                                                                                     <?php if ($cityname || $countryname) { ?>
                                                                                         <div class="fr lction display_inline">
@@ -313,10 +315,10 @@
 
 
                                                                         <!--  <?php if ($post['post_other_skill']) { ?>
-                                                                                                                                                                                                     <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
-                                                                                                                                                                                                     </li>
+                                                                                                                                                                                                                 <li><b>Other Skill</b><span><?php echo $post['post_other_skill']; ?></span>
+                                                                                                                                                                                                                 </li>
                                                                         <?php } else { ?>
-                                                                                                                                                                                                     <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
+                                                                                                                                                                                                                 <li><b>Other Skill</b><span><?php echo "-"; ?></span></li><?php } ?> -->
 
                                                                         <li><b>Post Description</b><span><pre>
                                                                                     <?php
@@ -379,20 +381,15 @@
 
                                                                     </ul>
                                                                 </div>
-                                                                <div class="profile-job-profile-button clearfix">
-                                                                    <div class="profile-job-details col-md-12">
-                                                                        <ul><li class="fr">
-                                                                                <!--                                                                            Last Date : <?php
-                                                                                if ($post['post_last_date']) {
-                                                                                    echo date('d-M-Y', strtotime($post['post_last_date']));
-                                                                                } else {
-                                                                                    echo PROFILENA;
-                                                                                }
-                                                                                ?>                                                          </li>-->
-                                                                                <?php
-                                                                                $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
+                                                                <?php
+                                                                $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
+                                                                if ($postuser[0]['user_id'] != $this->session->userdata('aileenuser')) {
+                                                                    ?>
+                                                                    <div class="profile-job-profile-button clearfix">
 
-                                                                                if ($postuser[0]['user_id'] != $this->session->userdata('aileenuser')) {
+                                                                        <div class="profile-job-details col-md-12">
+                                                                            <ul><li class="fr">
+                                                                                    <?php
                                                                                     $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $this->session->userdata('aileenuser'));
                                                                                     $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                     if ($freelancerapply1) {
@@ -404,11 +401,10 @@
                                                                                         <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['post_id']); ?>"  class= "applypost  button"> Apply</a>
                                                                                         <?php
                                                                                     }
-                                                                                }
-                                                                                ?>
-                                                                                </div>
-
-                                                                                </div>
+                                                                                    ?>
+                                                                                    </div>
+                                                                                    </div>
+                                                                                <?php } ?>
                                                                                 </div>
                                                                                 </div>
                                                                                 </div>
@@ -510,7 +506,7 @@
                                                                                                             </div>
                                                                                                         <?php } ?>
                                                                                                     <?php } ?>
-                        <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
+            <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                                                                 </div>
                                                                                                 <div class="sort-emp-detail">
                                                                                                     <h4>
