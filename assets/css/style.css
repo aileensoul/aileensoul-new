@@ -1990,6 +1990,10 @@ body.reg-form{background:#fff;}
 body.reg-form footer{background:#fff !important;}
 #fre-popup .por_content ul li{padding: 11px 10px;}
 
+select{
+  color: #acacac;
+}
+select option { color: black; }
 
 
 /***  media query  ***/
@@ -2214,7 +2218,7 @@ body.reg-form footer{background:#fff !important;}
 	.change-password-box #basicinfo{padding:10px;}
 	.no-login .login h4{padding:0; font-size:26px;}
 	.no-login .dob .d_o_b{width:100%; margin-bottom:0; margin-top:10px;}
-	.no-login .login .form-group select{margin-right:5px !important; /*width:50px;*/}
+	.no-login .login .form-group select{margin-right:7px !important; /*width:50px;*/}
 	.no-login .btn-right{padding-top:0; text-align:right;}
 	.no-login .right-header{padding-top:0;}
 	.no-login .login p.pt15{padding-top:0;}
@@ -2396,6 +2400,7 @@ body.reg-form footer{background:#fff !important;}
 	.how-it-popup{width: 97%;}
 	/****/
 	.created_date {font-size: 8px; letter-spacing: 0.5px;}
+    .no-login .login .form-group select{margin-right:5px !important;}/*d*/
 }
 
 
