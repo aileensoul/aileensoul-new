@@ -9685,7 +9685,7 @@ Your browser does not support the audio tag.
         $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'video');
         $businessvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
-        if ($businessvideo) {
+      if ($businessvideo) {
             $fetch_video .= '<tr>';
 
             if ($businessvideo[0]['file_name']) {
@@ -9694,6 +9694,7 @@ Your browser does not support the audio tag.
                 $post_poster1 = explode('.', $post_poster);
                 $post_poster2 = end($post_poster1);
                 $post_poster = str_replace($post_poster2, 'png', $post_poster);
+                //echo "<pre>"; print_r($post_poster); die();
 
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
@@ -9713,7 +9714,14 @@ Your browser does not support the audio tag.
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+                        $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                        //echo "<pre>"; print_r($post_poster); die();
+                        if($postposter){
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        }else{
+                        $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9749,7 +9757,14 @@ Your browser does not support the audio tag.
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+
+                        $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                          if($postposter){
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        }else{
+                            $fetch_video .= '<video controls>';
+                        }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9785,7 +9800,14 @@ Your browser does not support the audio tag.
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+
+                        $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                          if($postposter){
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                         $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9824,7 +9846,15 @@ Your browser does not support the audio tag.
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+
+                        $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                          if($postposter){
+
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                            $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9860,7 +9890,15 @@ Your browser does not support the audio tag.
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+
+                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                          if($postposter){
+
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                       }else{
+                         $fetch_video .= '<video controls>';
+                       }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9896,7 +9934,15 @@ Your browser does not support the audio tag.
                     $filename = $this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image;
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
+
+                        $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                          if($postposter){
+
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        }else{
+                            $fetch_video .= '<video controls>';
+                        }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
