@@ -2893,16 +2893,16 @@ if ($cache_time) {
                                     <ul>
                                         <li>';
                 if ($this->session->userdata('aileenuser')) {
-                    $return_html .= '<a style=" font-size: 19px;font-weight: 600;" href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '">';
+                    $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '">';
                 } else {
-                    $return_html .= '<a style=" font-size: 19px;font-weight: 600;" href="javascript:void(0)" onClick="login_profile()">';
+                    $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="javascript:void(0)" onClick="login_profile()">';
                 }
 
 
                 $return_html .= ucfirst(strtolower($p['fname'])) . ' ' . ucfirst(strtolower($p['lname'])) .
                         '</a></li>';
 
-                $return_html .= ' <li style="display: block;"><a href="javascript:void(0)">';
+                $return_html .= ' <li style="display: block;"><a href="javascript:void(0)" class="post_designation">';
 
                 if ($p['designation']) {
                     $return_html .= $p['designation'];
