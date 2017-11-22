@@ -150,7 +150,9 @@
                                <?php if($userdata[0]['art_bestofmine']){?>
                                 <div style="visibility:show;" id ="pdffile">
 
-                                 <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $userdata[0]['art_bestofmine']) ?>">
+                                 <!-- <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $userdata[0]['art_bestofmine']) ?>"> -->
+
+                                  <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo ART_PORTFOLIO_MAIN_UPLOAD_URL . $userdata[0]['art_bestofmine']; ?>">
 
                               <i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
 
