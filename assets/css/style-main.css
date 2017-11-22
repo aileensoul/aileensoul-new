@@ -1705,6 +1705,8 @@ body.cover{padding-bottom:60px;}
 	.tablate-add{display:block; width:160px; position:fixed; margin-left:590px;}
 	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:580px; }
 	/*** end advertise  ***/
+	.login form{
+	padding:16px 19px 15px;
 	
 }
 
@@ -1787,7 +1789,7 @@ body.cover{padding-bottom:60px;}
 	.banner-box .upload-camera{height:34px; width:38px;}
 	.cameraButton .tooltiptext{padding:3px 0 !important; top:-9px !important;}
 	body{/*padding-bottom:90px;*/}
-	.login form{padding:16px 15px 15px;}
+	.login form{padding:16px 12px 15px;}/*d*/
 	footer .col-md-6{width:100%; float:left; font-size: 12px;}
 	.mid-trns{display:inherit; height:auto;}
 	.titlea h1{margin-bottom:0;}
@@ -1878,6 +1880,7 @@ body.cover{padding-bottom:60px;}
 	.contact-frnd-post{padding:10px 8px 0;}
 	.mid-trns .custom-padd{padding-right: 0px;padding-left: 0px;}
 	.login #register_form span::after{right: 16px;}
+	.login form{padding: 16px 8px 15px;}
 	/*** end add  ***/
 }
 
