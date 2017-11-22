@@ -4988,6 +4988,7 @@ class Freelancer extends MY_Controller {
         $slugdata = array_reverse($segment3);
         $postid = $slugdata[0];
         $this->data['recliveid'] = $userid = $slugdata[1];
+        $this->data['postid'] = $postid;
 //echo "<pre>";print_r($segment3);
 //echo "<pre>"; print_r($slugdata);
 //echo $postid;die();
