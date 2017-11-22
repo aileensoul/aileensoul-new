@@ -637,7 +637,7 @@
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
-                                            <select tabindex="9" class="day" name="selday" id="selday">
+                                            <span><select tabindex="9" class="day" name="selday" id="selday">
                                                 <option value="" disabled selected value>Day</option>
                                                 <?php
                                                 for ($i = 1; $i <= 31; $i++) {
@@ -646,7 +646,8 @@
                                                     <?php
                                                 }
                                                 ?>
-                                            </select>
+                                            </select></span>
+                                            <span>
                                             <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                                 <option value="" disabled selected value>Month</option>
                                                 //<?php
@@ -669,7 +670,8 @@
 //                  }
 //                  
                                                 ?>
-                                            </select>
+                                            </select></span>
+                                            <span>
                                             <select tabindex="11" class="year" name="selyear" id="selyear">
                                                 <option value="" disabled selected value>Year</option>
                                                 <?php
@@ -681,16 +683,17 @@
                                                 ?>
 
                                             </select>
-
+                                        </span>
                                         </div>
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
-                                            <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                            <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                 <option value="" disabled selected value>Gender</option>
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                             </select>
+                                        </span>
                                         </div>
 
                                         <p class="form-text">

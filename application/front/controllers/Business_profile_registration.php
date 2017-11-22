@@ -440,7 +440,7 @@ class Business_profile_registration extends MY_Controller {
         // GET BUSINESS PROFILE DATA
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
         $busimage = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $return_html = '';
@@ -626,6 +626,15 @@ class Business_profile_registration extends MY_Controller {
                     $return['data'][] = $imgdata;
                     $return['status'] = "success";
                     $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+
+                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                        if (isset($main_image)) {
+                            unlink($main_image);
+                        }
+                        if (isset($resize_image)) {
+                            unlink($resize_image);
+                        }
+                    }
                 } else {
                     $dataimage = '';
                 }
@@ -683,7 +692,7 @@ class Business_profile_registration extends MY_Controller {
     public function business_home_follow_ignore() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
-        $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         $follow_to = $_POST['follow_to'];
 
         $insert_data['profile'] = '2';
@@ -742,10 +751,10 @@ class Business_profile_registration extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
-            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         }
 
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => '1');
 
         $join_str_following[0]['table'] = 'follow';
         $join_str_following[0]['join_table_id'] = 'follow.follow_to';
@@ -766,7 +775,7 @@ class Business_profile_registration extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id == '') {
-            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
         }
 
         $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => '1');
@@ -789,7 +798,7 @@ class Business_profile_registration extends MY_Controller {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         if ($business_profile_id != '') {
-            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
+            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => '1'))->row()->user_id;
         }
 
         $contition_array = array('contact_type' => '2', 'contact_person.status' => 'confirm', 'business_profile.status' => '1');
@@ -810,9 +819,9 @@ class Business_profile_registration extends MY_Controller {
         $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
         //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
-    
-     public function reg_country() {
-       $this->load->view('business_profile/khytai_business',$this->data);
+
+    public function reg_country() {
+        $this->load->view('business_profile/khytai_business', $this->data);
     }
 
 }

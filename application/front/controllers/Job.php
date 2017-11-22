@@ -2392,7 +2392,16 @@ class Job extends MY_Controller {
 
 
         $update = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-
+ if ($update) {
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($main_image)) {
+                    unlink($main_image);
+                }
+                if (isset($thumb_image)) {
+                    unlink($thumb_image);
+                }
+            }
+        }
         $this->data['jobdata'] = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
 
         $coverpic = '<img src = "' . JOB_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
@@ -5990,7 +5999,7 @@ class Job extends MY_Controller {
 
         $jobid = $this->session->userdata('aileenuser');
         $jobdata = $this->common->select_data_by_id('job_reg', 'user_id', $jobid, $data = 'job_user_image,fname,lname,slug', $join_str = array());
-        $recemail = $this->common->select_data_by_id('recruiter', 'user_id', $notid, $data = 'rec_comp_email', $join_str = array());
+        $recemail = $this->common->select_data_by_id('recruiter', 'user_id', $notid, $data = 're_comp_email', $join_str = array());
 
         $email_html = '';
         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
@@ -6025,7 +6034,7 @@ class Job extends MY_Controller {
                                     </table>';
 
         $subject = ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . ' Applied on your jobpost - Aileensoul.';
-        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail[0]['rec_comp_email']);
+        $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail[0]['re_comp_email']);
     }
 
     public function name_slug() {

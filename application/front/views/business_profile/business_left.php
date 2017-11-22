@@ -8,9 +8,15 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                href="<?php echo base_url('business-profile/dashboard/' . $business_common_data[0]['business_slug']); ?>"
                tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $business_common_data[0]['company_name']; ?>">
                 <!-- BOX IMAGE START -->
-                <?php if ($business_common_data[0]['profile_background'] != '') { ?>
-                    <div><img src="<?php echo base_url($this->config->item('bus_bg_thumb_upload_path') . $business_common_data[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $business_common_data[0]['company_name']; ?>" ></div> 
-                    <?php
+                <?php
+                         $filename = $this->config->item('bus_bg_thumb_upload_path') . $business_common_data[0]['profile_background'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if ($info && $business_common_data[0]['profile_background'] != '') {
+                            ?>
+                           <img src = "<?php echo BUS_BG_MAIN_UPLOAD_URL . $business_common_data[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                     <?php
+                     
                 } else {
                     ?>
                     <div class="bg-images no-cover-upload"> 
@@ -44,8 +50,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
                                 <?php } else {
                                     ?>
-                                    <img  src="<?php echo base_url($this->config->item('bus_profile_main_upload_path') . $business_common_data[0]['business_user_image']); ?>"  alt="<?php echo $business_common_data[0]['company_name']; ?>" >
-                                    <?php
+                                   
+                                     <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
+                                        <?php
                                 }
                             }
                             ?>
