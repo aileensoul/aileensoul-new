@@ -2961,7 +2961,7 @@ label.cameraButton:active {
     padding: 0px 1px;
 }
 .custom_footer_dot {
-    padding-top: 2px;
+    /*padding-top: 2px;*/
 }
 .bui_art_left_box .custom_footer_left ul li {
     padding-top: 2px;
