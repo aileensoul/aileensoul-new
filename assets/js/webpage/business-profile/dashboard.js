@@ -177,6 +177,7 @@ function GetBusVideos() {
         },
         success: function (data) {
             $('.loader').remove();
+            $('video, audio').mediaelementplayer();
             $('.bus_videos').html(data);
         }
     });
@@ -192,6 +193,7 @@ function GetBusAudios() {
         },
         success: function (data) {
             $('.loader').remove();
+            $('video, audio').mediaelementplayer();
             $('.bus_audios').html(data);
         }
     });
