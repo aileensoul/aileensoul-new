@@ -1554,7 +1554,7 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 #forgot_password .modal-body label.error{color: #ff0000 !important;}
 .login .form-group select{top: 0;}
 .dob{position: relative;}
-.form-control.error{ border-bottom: 1px solid red !important;}
+.no-login .form-control.error{ border-bottom: 1px solid red !important;}
 .dob .error{
 	position: absolute;
 	left: 0;
@@ -1787,7 +1787,7 @@ body.cover{padding-bottom:60px;}
 	.banner{padding-top:12px;}
 	.cameraButton .fa.fa-camera{height:20px; width:24px; background-size:100%;}
 	.banner-box .upload-camera{height:34px; width:38px;}
-	.cameraButton .tooltiptext{padding:3px 0 !important; top:-9px !important;}
+	.cameraButton .tooltiptext{padding:3px 0 !important; top:-4px !important;}
 	body{/*padding-bottom:90px;*/}
 	.login form{padding:16px 12px 15px;}/*d*/
 	footer .col-md-6{width:100%; float:left; font-size: 12px;}

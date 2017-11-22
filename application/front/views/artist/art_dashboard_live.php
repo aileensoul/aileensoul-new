@@ -593,6 +593,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
+                                        <span>
                                         <select tabindex="9" class="day" name="selday" id="selday">
                                             <option value="" disabled selected value>Day</option>
                                             <?php
@@ -602,7 +603,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
     <?php
 }
 ?>
-                                        </select>
+                                        </select></span>
+                                        <span>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
                                             //<?php
@@ -625,7 +627,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 //                  }
 //                  
 ?>
-                                        </select>
+                                        </select></span>
+                                        <span>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
                                             <?php
@@ -637,16 +640,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 ?>
 
                                         </select>
-
+                                        <span>
                                     </div>
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                     <div class="form-group gender-custom">
-                                        <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                        <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                             <option value="" disabled selected value>Gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                         </select>
+                                        <span>
                                     </div>
 
                                     <p class="form-text">

@@ -56,18 +56,18 @@
 
                 if ($image_ori) {
                     ?>
-                    <?php 
+                  <!--   <?php 
 
 if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['profile_background'])) {
   ?>
         <div class="bg-images no-cover-upload">
        <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="WHITE IMAGE" />  </div>            
 <?php }else{?>
-
+ -->
                    <!--  <img src="<?php echo base_url($this->config->item('art_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" / > -->
 
                     <img src="<?php echo ART_BG_MAIN_UPLOAD_URL.$image[0]['profile_background']; ?>" name="image_src" id="image_src" / >
-                    <?php }?>
+                   <!--  <?php }?> -->
                     
                     <?php
                 } else {

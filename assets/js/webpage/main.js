@@ -337,7 +337,7 @@ $(document).ready(function () {
         },
         messages: {
             forgot_email: {
-                required: "Email Address Is Required.",
+                required: "Email address is required.",
             }
         },
     });
