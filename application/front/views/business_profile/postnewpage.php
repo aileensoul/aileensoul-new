@@ -1,3 +1,6 @@
+<?php
+$s3 = new S3(awsAccessKey, awsSecretKey);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -166,7 +169,28 @@
                                                     ?>
                                                     <?php if ($userimageposted) { ?>
                                                         <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
-                                                            <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" alt="12" />
+                                                            <?php
+                                                            if (IMAGEPATHFROM == 'upload') {
+                                                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
+                                                                    ?>
+                                                                    <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  name="image_src" id="image_src" alt="12">
+                                                                <?php } else { ?>
+                                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted ?>" name="image_src" id="image_src" alt="12" >
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $userimageposted;
+                                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                if (!$info) {
+                                                                    ?>
+                                                                    <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  name="image_src" id="image_src" alt="12">
+                                                                <?php } else { ?>
+                                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted ?>" name="image_src" id="image_src" alt="12" >
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+
                                                         </a>
                                                     <?php } else { ?>
                                                         <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
@@ -176,7 +200,28 @@
                                                 <?php } else { ?>
                                                     <?php if ($business_userimage) { ?>
                                                         <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
-                                                            <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="10">
+                                                            <?php
+                                                            if (IMAGEPATHFROM == 'upload') {
+                                                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                                                    ?>
+                                                                    <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="10">
+                                                                <?php } else { ?>
+                                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage ?>" alt="10" >
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                if (!$info) {
+                                                                    ?>
+                                                                    <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="10">
+                                                                <?php } else { ?>
+                                                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage ?>" alt="10" >
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+            <!--<img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="10">-->
                                                         </a>
                                                     <?php } else { ?>
                                                         <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
@@ -590,7 +635,27 @@
                                                                     $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
                                                                     if ($business_userimage != '') {
                                                                         ?>
-                                                                        <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
+                                                                        <?php
+                                                                        if (IMAGEPATHFROM == 'upload') {
+                                                                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                                                                ?>
+                                                                                <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="No Image">
+                                                                            <?php } else { ?>
+                                                                                <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage; ?>"  alt="" >
+                                                                                <?php
+                                                                            }
+                                                                        } else {
+                                                                            $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                                                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                            if (!$info) {
+                                                                                ?>
+                                                                                <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="12">
+                                                                            <?php } else { ?>
+                                                                                <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage; ?>" alt="12" >
+                                                                                <?php
+                                                                            }
+                                                                        }
+                                                                        ?>
                                                                         <?php
                                                                     } else {
                                                                         ?>
@@ -711,7 +776,27 @@
                                                 $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->company_name;
                                                 if ($business_userimage) {
                                                     ?>
-                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
+                                                    <?php
+                                                    if (IMAGEPATHFROM == 'upload') {
+                                                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                                            ?>
+                                                            <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="No Image">
+                                                        <?php } else { ?>
+                                                            <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage; ?>"  alt="" >
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                        if (!$info) {
+                                                            ?>
+                                                            <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="12">
+                                                        <?php } else { ?>
+                                                            <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage; ?>" alt="12" >
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
                                                     <?php
                                                 } else {
                                                     ?>
@@ -810,7 +895,21 @@
                         <div class="mySlides">
                             <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                             <div class="slider_img">
-                                <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['file_name']) ?>" >
+                                <?php
+                                if (IMAGEPATHFROM == 'upload') {
+                                    if (!file_exists($this->config->item('bus_post_main_upload_path') . $busdata['file_name'])) {
+                                        ?>
+                                    <?php } else { ?>
+                                        <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name']; ?>"  alt="" >
+                                        <?php
+                                    }
+                                } else {
+                                    $filename = $this->config->item('bus_post_main_upload_path') . $busdata['file_name'];
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename); ?>
+                                        <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name']; ?>" alt="12">
+                                   <?php 
+                                }
+                                ?>
                                 <a class="prev" style="left: 0px" onclick="plusSlides( - 1)">&#10094;</a>
                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             </div>
@@ -990,6 +1089,27 @@
                                                                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->business_user_image;
                                                                 if ($business_userimage != '') {
                                                                     ?>
+                                                                    <?php
+                                                                    if (IMAGEPATHFROM == 'upload') {
+                                                                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                                                            ?>
+                                                                            <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="No Image">
+                                                                        <?php } else { ?>
+                                                                            <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name']; ?>"  alt="" >
+                                                                            <?php
+                                                                        }
+                                                                    } else {
+                                                                        $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                                        if (!$info) {
+                                                                            ?>
+                                                                            <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="12">
+                                                                        <?php } else { ?>
+                                                                            <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name']; ?>" alt="12" >
+                                                                            <?php
+                                                                        }
+                                                                    }
+                                                                    ?>
                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
                                                                     <?php
                                                                 } else {
@@ -1110,7 +1230,27 @@
                                             $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->company_name;
                                             if ($business_userimage != '') {
                                                 ?>
-                                                <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>" alt="">
+                                                <?php
+                                                if (IMAGEPATHFROM == 'upload') {
+                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                                                        ?>
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="No Image">
+                                                    <?php } else { ?>
+                                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage; ?>"  alt="" >
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $business_userimage;
+                                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                    if (!$info) {
+                                                        ?>
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE) ?>"  alt="12">
+                                                    <?php } else { ?>
+                                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage; ?>" alt="12" >
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
                                                 <?php
                                             } else {
                                                 ?>
@@ -1184,10 +1324,10 @@
             </div>
         </div>
         <?php echo $footer; ?>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());       ?>"></script>--> 
+        <!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());            ?>"></script>--> 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());       ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/jquery.jMosaic.js?ver=' . time());            ?>"></script>-->
         <!-- script for business autofill -->
         <script>
                                                 var base_url = '<?php echo base_url(); ?>';

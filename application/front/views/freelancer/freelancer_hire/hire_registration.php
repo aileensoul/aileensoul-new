@@ -179,5 +179,20 @@
                                             var base_url = '<?php echo base_url(); ?>';
                                             var site = '<?php echo base_url(); ?>';
         </script>
+
+
+
+<script type="text/javascript">
+
+$('select').on('change', function() {
+  if ($(this).val()){ 
+    $(this).css('color', 'black');
+  } 
+  else{ 
+     $(this).css('color', '#acacac');
+  }
+})
+
+</script>
     </body>
 </html>

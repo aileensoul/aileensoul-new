@@ -448,7 +448,7 @@ a:hover{
 }
 /*Dhaval date of birth*/
 
-.login #register_form  span{position: relative;}
+/*.login #register_form  span{position: relative;}*/
 
 .login #register_form  span:after {
     content:"\f0d7";   
@@ -1804,6 +1804,7 @@ body.cover{padding-bottom:60px;}
 	footer ul li:last-child a{padding-right:15px;}
 	.form-pd{padding:40px 0 33px;}
 	.custom-landscape header{position: relative;}
+	.login #register_form span::after{right: 15px;}
 }
 
 @media screen and (max-width: 640px) {
@@ -1880,7 +1881,7 @@ body.cover{padding-bottom:60px;}
 	.contact-frnd-post{padding:10px 8px 0;}
 	.mid-trns .custom-padd{padding-right: 0px;padding-left: 0px;}
 	.login #register_form span::after{right: 16px;}
-	.login form{padding: 16px 8px 15px;}
+	.login form{padding: 16px 8px 15px !important;}
 	/*** end add  ***/
 }
 
@@ -1890,6 +1891,7 @@ body.cover{padding-bottom:60px;}
 	.por_content ul li .pro-text{font-size: 12px;}
 	.por_content ul li img{margin-right: 3px; float: left; width: 40px; height: 40px;}
 	.por_content ul li .pro-text .count{width: 14px;}
+	.login form{padding: 16px 8px 15px !important;}
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 

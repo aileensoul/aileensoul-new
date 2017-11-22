@@ -9694,8 +9694,7 @@ Your browser does not support the audio tag.
                 $post_poster1 = explode('.', $post_poster);
                 $post_poster2 = end($post_poster1);
                 $post_poster = str_replace($post_poster2, 'png', $post_poster);
-                //echo "<pre>"; print_r($post_poster); die();
-
+                
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
                     if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
@@ -9704,7 +9703,6 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -9716,7 +9714,6 @@ Your browser does not support the audio tag.
                     if ($info) {
                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
                         $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
-                        //echo "<pre>"; print_r($post_poster); die();
                         if($postposter){
                         $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                         }else{
@@ -9726,7 +9723,6 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -9747,7 +9743,6 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
@@ -9769,7 +9764,6 @@ Your browser does not support the audio tag.
                         $fetch_video .= '<video controls>';
                     }
                     $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
-                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                     $fetch_video .= 'Your browser does not support the video tag.';
                     $fetch_video .= '</video>';
                     $fetch_video .= '</td>';
