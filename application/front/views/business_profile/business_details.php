@@ -1069,6 +1069,13 @@
                     $('#register').modal('show');
                 }, 2000);
             });
+            $('select').on('change', function () {
+                if ($(this).val()) {
+                    $(this).css('color', 'black');
+                } else {
+                    $(this).css('color', '#acacac');
+                }
+            })
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>                        

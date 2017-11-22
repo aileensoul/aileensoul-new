@@ -46,6 +46,13 @@
                     return false;
                 });
             });
+            $('select').on('change', function () {
+                if ($(this).val()) {
+                    $(this).css('color', 'black');
+                } else {
+                    $(this).css('color', '#acacac');
+                }
+            })
         </script>   
 
     </head>
