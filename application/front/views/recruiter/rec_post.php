@@ -107,11 +107,11 @@ $image = $this->common->select_data_by_condition('recruiter', $contition_array, 
 
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-<?php
-$imageee = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
-if (file_exists($imageee) && $recdata[0]['recruiter_user_image'] != '') {
-    ?>
-                                <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image']); ?>" alt="" >
+        <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
+                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
                                 <?php
                             } else {
                                 $a = $recdata[0]['rec_firstname'];
