@@ -440,7 +440,7 @@ class Business_profile_registration extends MY_Controller {
         // GET BUSINESS PROFILE DATA
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
         $busimage = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $return_html = '';
@@ -626,6 +626,15 @@ class Business_profile_registration extends MY_Controller {
                     $return['data'][] = $imgdata;
                     $return['status'] = "success";
                     $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+
+                    if ($_SERVER['HTTP_HOST'] != "localhost") {
+                        if (isset($main_image)) {
+                            unlink($main_image);
+                        }
+                        if (isset($resize_image)) {
+                            unlink($resize_image);
+                        }
+                    }
                 } else {
                     $dataimage = '';
                 }
@@ -810,9 +819,9 @@ class Business_profile_registration extends MY_Controller {
         $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
         //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
-    
-     public function reg_country() {
-       $this->load->view('business_profile/khytai_business',$this->data);
+
+    public function reg_country() {
+        $this->load->view('business_profile/khytai_business', $this->data);
     }
 
 }
