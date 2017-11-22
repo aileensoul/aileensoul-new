@@ -416,9 +416,25 @@
                                                                             </div>
                                                                             </div>
                                                                         <?php } else { ?>
+            <div class="col-md- col-sm-12 mob-clear">
+                <div class="common-form">
+                    <div class="job-saved-box">
+                        <h3><?php echo $this->lang->line("saved_freelancer"); ?></h3>
+                        <div class="contact-frnd-post">
+                          <div class="art-img-nn">
+                         <div class="art_no_post_img">
+                                  <img src="../assets/img/free-no.png">
+                        </div>
+                  <div class="art_no_post_text">   You must have a freelancer  profile for applying to this post </div>
+                                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div><!-- 
                                                                             <div class="text-center rio">
                                                                                 You must have a freelancer  profile for applying to this post
-                                                                            </div>
+                                                                            </div> -->
                                                                         <?php } ?>
                                                                         <!-- sortlisted employe -->
                                                                         <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser') || $applyuser) { ?>
