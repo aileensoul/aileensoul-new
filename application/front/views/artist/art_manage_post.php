@@ -191,7 +191,7 @@
                     </div>
                 </div>
                 </a>
-				<div class="custom_footer_left fw">
+				<div class="custom_footer_left f-width">
           <div class="fl">
              <ul>
              <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
