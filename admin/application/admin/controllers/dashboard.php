@@ -29,12 +29,12 @@ class Dashboard extends MY_Controller {
         $adminid =  $this->session->userdata('aileen_admin');
      
         //For Count Job Register User Data
-        $condition_array = array('is_delete' => 0,'job_step'=>'10');
+        $condition_array = array('is_delete' => '0','job_step'=>'10');
         $data="job_id";
         $this->data['job_list'] = $get_users = $this->common->select_data_by_condition('job_reg', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
 
         //For Count Recruiter Register User Data
-        $condition_array = array('is_delete' => 0,'re_step' =>'3');
+        $condition_array = array('is_delete' => '0','re_step' =>'3');
         $data="rec_id";
         $this->data['recruiter_list'] = $get_users = $this->common->select_data_by_condition('recruiter', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
         
@@ -44,7 +44,7 @@ class Dashboard extends MY_Controller {
         $this->data['user_list'] = $get_users = $this->common->select_data_by_condition('user', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
         
         //For Count Freelancer hire Register User Data
-        $condition_array = array('is_delete' => 0,'free_hire_step' =>'3');
+        $condition_array = array('is_delete' => '0','free_hire_step' =>'3');
         $data="reg_id";
         $this->data['freelancer_hire_list'] = $get_users = $this->common->select_data_by_condition('freelancer_hire_reg', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
 
@@ -54,17 +54,17 @@ class Dashboard extends MY_Controller {
         $this->data['pages_list'] = $get_users = $this->common->select_data_by_condition('ailee_pages', $condition_array=array(), $data, $short_by, $order_by, $limit, $offset, $join_str = array());
        
         //For Count Freelancer apply Register User Data
-        $condition_array = array('is_delete' => 0,'free_post_step'=>'7');
+        $condition_array = array('is_delete' => '0','free_post_step'=>'7');
         $data="freelancer_post_reg_id";
         $this->data['freelancer_apply_list'] = $get_users = $this->common->select_data_by_condition('freelancer_post_reg', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
 
         //For Count Business Register User Data
-        $condition_array = array('is_deleted' => 0,'business_step' => '4');
+        $condition_array = array('is_deleted' => '0','business_step' => '4');
         $data="business_profile_id";
         $this->data['business_list'] = $get_users = $this->common->select_data_by_condition('business_profile', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
         
         //For Count Artistic Register User Data
-        $condition_array = array('is_delete' => 0,'art_step' =>'4');
+        $condition_array = array('is_delete' => '0','art_step' =>'4');
         $data="art_id";
         $this->data['artistic_list'] = $get_users = $this->common->select_data_by_condition('art_reg', $condition_array, $data, $short_by, $order_by, $limit, $offset, $join_str = array());
 

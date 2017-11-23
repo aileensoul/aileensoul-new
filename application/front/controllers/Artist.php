@@ -2102,12 +2102,12 @@ public function ajax_userlist() {
                                                                     <li class="fruser' . $user['art_id'] . ' fr">';
 
             $status = $this->db->select('follow_status')->get_where('follow', array('follow_type' => '1', 'follow_from' => $artisticdata[0]['art_id'], 'follow_to' => $user['art_id']))->row()->follow_status;
-            if ($status == '0' || $status == " ") {
+            if ($status == 0 || $status == " ") {
                 $return_html .= '<div id= "followdiv " class="user_btn">
                                                                                 <button id="follow' . $user['art_id'] . '" onClick="followuser(' . $user['art_id'] . ')">
                                                                                   <span> Follow </span>
                                                                                 </button></div>';
-            } elseif ($status == '1') {
+            } elseif ($status == 1) {
                 $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
                                                                                 <button class="bg_following" id="unfollow' . $user['art_id'] . '" onClick="unfollowuser(' . $user['art_id'] . ')">
                                                                                  <span>   Following </span>
