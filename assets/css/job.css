@@ -238,6 +238,18 @@ li.fr a {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.profile-job-details .post_title {
+    font-size: 17px;
+    font-weight: 600;
+    width: 60%;
+    word-break: break-word;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .profile-job-post-detail .profile-job-post-title .button {
     font-size: 15px;
     padding: 3px 13px !important;

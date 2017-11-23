@@ -77,6 +77,18 @@ li.fr a {text-decoration: none !important;}
 .profile-job-details .post_title { font-size: 17px; font-weight: 600; width: 60%; word-break: break-word;
     word-wrap: break-word !important; word-break: break-word !important; /*cursor: default;*/ overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
 }
+.profile-job-details .post_title {
+    font-size: 17px;
+    font-weight: 600;
+    width: 60%;
+    word-break: break-word;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .profile-job-post-detail .profile-job-post-title .button {font-size: 15px; padding: 3px 13px !important; margin-right: 4px;
     margin-left: 4px; background-color: #ffffff; text-transform: capitalize; color: #1b8ab9; border: 1px solid #1b8ab9;
     float: left; font-weight:normal;
