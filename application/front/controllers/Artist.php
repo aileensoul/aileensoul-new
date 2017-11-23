@@ -483,7 +483,7 @@ class Artist extends MY_Controller {
 
     public function check_category(){
         $category = $_GET['category'];
-        $contition_array = array('status' => '1', 'type' => '1', 'art_category' => $category);
+        $contition_array = array('status' => '1', 'art_category' => $category);
          $checkvalue = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
          if($checkvalue){
             echo 'true';
@@ -13976,7 +13976,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
         $artistic_postdata = $this->common->select_data_by_search('art_reg', $search_condition,$contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = 'art_name,art_lastname,designation,other_skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_name,art_lastname,designation,other_skill');
 
 
-        $contition_array = array('status' => '1', 'type' => '1');
+        $contition_array = array('status' => '1',);
         $search_condition = "(art_category LIKE '" . trim($searchTerm) . "%')";
         $skill = $this->common->select_data_by_search('art_category', $search_condition, $contition_array, $data = 'art_category', $sortby = 'art_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_category');
 
@@ -14360,7 +14360,7 @@ public function get_artistic_name($id=''){
             $new = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
 
-            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->category_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1'))->row()->category_id;
             //echo "<pre>"; print_r($temp); die();
 
             $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->other_category_id;
@@ -14410,7 +14410,7 @@ public function get_artistic_name($id=''){
                 $artpost = array_unique($uniquedata, SORT_REGULAR);                
 
         } else {
-            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->category_id;
+            $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1'))->row()->category_id;
 
              $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->other_category_id;
 
