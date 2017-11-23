@@ -547,7 +547,6 @@ class Artist extends MY_Controller {
 
             $data1 = array(
                 'other_category' => $other_category,
-                'type' => '1',
                 'status' => '1',
                 'is_delete' => '0',
                 'user_id' => $userid,
@@ -13982,7 +13981,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
         }
 
-        $contition_array = array('status' => '1', 'type' => '1');
+        $contition_array = array('status' => '1');
         $search_condition = "(other_category LIKE '" . trim($searchTerm) . "%')";
         $other_category = $this->common->select_data_by_search('art_other_category', $search_condition, $contition_array, $data = 'other_category', $sortby = 'other_category', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'other_category');
        
@@ -14363,7 +14362,7 @@ public function get_artistic_name($id=''){
             $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1'))->row()->category_id;
             //echo "<pre>"; print_r($temp); die();
 
-            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->other_category_id;
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1'))->row()->other_category_id;
         
            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => '4',  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -14412,7 +14411,7 @@ public function get_artistic_name($id=''){
         } else {
             $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1'))->row()->category_id;
 
-             $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->other_category_id;
+             $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1'))->row()->other_category_id;
 
 
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => '4',  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
@@ -15363,7 +15362,7 @@ public function get_artistic_name($id=''){
 
             $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->category_id;
 
-            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->other_category_id;
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1'))->row()->other_category_id;
 
            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => '4',  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -15428,7 +15427,7 @@ public function get_artistic_name($id=''){
             $temp = $this->db->select('category_id')->get_where('art_category', array('art_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->category_id;
 
 
-            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1', 'type' => '1'))->row()->other_category_id;
+            $other_temp = $this->db->select('other_category_id')->get_where('art_other_category', array('other_category' => $searchskill, 'status' => '1'))->row()->other_category_id;
 
 
             $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => '4',  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
