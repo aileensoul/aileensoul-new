@@ -368,7 +368,7 @@ public function post()
         $join_str[0]['from_table_id'] = 'rec_post.user_id';
         $join_str[0]['join_type'] = '';
 
-        $data='recruiter.rec_firstname,recruiter.rec_lastname,rec_post.post_id,rec_post.post_name,rec_post.min_month,rec_post.min_year,rec_post.max_month,rec_post.max_year,rec_post.fresher,rec_post.country,rec_post.state,rec_post.city,rec_post.status,rec_post.created_date,rec_post.modify_date';
+        $data='recruiter.rec_firstname,recruiter.rec_lastname,rec_post.post_id,rec_post.post_name,rec_post.min_year,rec_post.max_year,rec_post.fresher,rec_post.country,rec_post.state,rec_post.city,rec_post.status,rec_post.created_date,rec_post.modify_date';
        
        $contition_array = array('rec_post.is_delete' => '0');
 
