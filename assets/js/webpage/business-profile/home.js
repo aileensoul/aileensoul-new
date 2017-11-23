@@ -911,7 +911,7 @@ function followclose(clicked_id)
                     dataType: 'html',
                     success: function (data) {
                         $('ul.home_three_follow_ul').append(data);
-                        $.when($('.fad' + clicked_id).fadeOut(1750))
+                        $.when($('.fad' + clicked_id).fadeOut(1500))
                                 .done(function () {
                                     $('.fad' + clicked_id).remove();
                                     var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
