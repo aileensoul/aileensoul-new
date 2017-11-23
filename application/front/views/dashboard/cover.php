@@ -897,7 +897,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         <span class="mes">
                             <div id="popup-form">
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                               <div class="col-md-5">
+                               <div class="fw">
 
                                 <div class="user_profile"></div>
 
