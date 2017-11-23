@@ -1122,12 +1122,14 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
 transition: background-color 60000000000000s ease-in-out 0s;
 }
-.header-login input:-webkit-autofill,
-.header-login input:-webkit-autofill:hover,
-.header-login input:-webkit-autofill:focus,
-.header-login input:-webkit-autofill:active {
-transition: background-color 60000000000000s ease-in-out 0s;
--webkit-text-fill-color:#fff !important;
+#register_form input:-webkit-autofill,
+#register_form input:-webkit-autofill:hover,
+#register_form input:-webkit-autofill:focus,
+#register_form input:-webkit-autofill:active {
+background-color: #FFFFFF !important;
+    /*color: #555 !important;*/
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #555555 !important;
 }
 .carousel.carousel-fade .item {
  -webkit-transition: opacity 3s ease-in-out;
