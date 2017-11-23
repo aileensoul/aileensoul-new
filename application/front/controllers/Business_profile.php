@@ -9655,7 +9655,7 @@ Your browser does not support the audio tag.
         echo $fetch_result;
     }
 
-    public function bus_videos() {
+    public function bus_videos_old() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $id = $_POST['bus_slug'];
 // manage post start
@@ -9685,7 +9685,7 @@ Your browser does not support the audio tag.
         $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'video');
         $businessvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
 
-      if ($businessvideo) {
+        if ($businessvideo) {
             $fetch_video .= '<tr>';
 
             if ($businessvideo[0]['file_name']) {
@@ -9694,7 +9694,7 @@ Your browser does not support the audio tag.
                 $post_poster1 = explode('.', $post_poster);
                 $post_poster2 = end($post_poster1);
                 $post_poster = str_replace($post_poster2, 'png', $post_poster);
-                
+
                 if (IMAGEPATHFROM == 'upload') {
                     $fetch_video .= '<td class = "image_profile">';
                     if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
@@ -9714,11 +9714,11 @@ Your browser does not support the audio tag.
                     if ($info) {
                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
                         $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
-                        if($postposter){
-                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
-                        }else{
-                        $fetch_video .= '<video controls>';
-                       }
+                        if ($postposter) {
+                            $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        } else {
+                            $fetch_video .= '<video controls>';
+                        }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9755,9 +9755,9 @@ Your browser does not support the audio tag.
 
                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
                         $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
-                          if($postposter){
-                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
-                        }else{
+                        if ($postposter) {
+                            $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        } else {
                             $fetch_video .= '<video controls>';
                         }
                     } else {
@@ -9797,11 +9797,11 @@ Your browser does not support the audio tag.
 
                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
                         $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
-                          if($postposter){
-                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
-                       }else{
-                         $fetch_video .= '<video controls>';
-                       }
+                        if ($postposter) {
+                            $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        } else {
+                            $fetch_video .= '<video controls>';
+                        }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9843,12 +9843,12 @@ Your browser does not support the audio tag.
 
                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
                         $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
-                          if($postposter){
+                        if ($postposter) {
 
-                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
-                       }else{
+                            $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        } else {
                             $fetch_video .= '<video controls>';
-                       }
+                        }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9885,14 +9885,14 @@ Your browser does not support the audio tag.
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     if ($info) {
 
-                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                        $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
                         $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
-                          if($postposter){
+                        if ($postposter) {
 
-                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
-                       }else{
-                         $fetch_video .= '<video controls>';
-                       }
+                            $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        } else {
+                            $fetch_video .= '<video controls>';
+                        }
                     } else {
                         $fetch_video .= '<video controls>';
                     }
@@ -9931,12 +9931,278 @@ Your browser does not support the audio tag.
 
                         $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
                         $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
-                          if($postposter){
+                        if ($postposter) {
 
-                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
-                        }else{
+                            $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        } else {
                             $fetch_video .= '<video controls>';
                         }
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
+            }
+            $fetch_video .= '</tr>';
+        } else {
+            //$fetch_video .= '<div class = "not_available"> <p> Video Not Available </p></div>';
+        }
+
+        $fetch_video .= '<div class = "dataconvideo"></div>';
+
+
+        echo $fetch_video;
+    }
+
+    public function bus_videos() {
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $id = $_POST['bus_slug'];
+// manage post start
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
+
+        $contition_array = array('user_id' => $userid, 'status' => '1');
+        $slug_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $slug_id = $slug_data[0]['business_slug'];
+
+        if ($id == $slug_id || $id == '') {
+
+            $contition_array = array('business_slug' => $slug_id, 'status' => '1');
+            $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => '4');
+            $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+
+        $join_str[0]['table'] = 'post_files';
+        $join_str[0]['join_table_id'] = 'post_files.post_id';
+        $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
+        $join_str[0]['join_type'] = '';
+
+        $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'business_profile_post.is_delete' => '0', 'post_files.insert_profile' => '2', 'post_format' => 'video');
+        $businessvideo = $this->data['businessvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'file_name', $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '6', $offset = '', $join_str, $groupby = '');
+
+        if ($businessvideo) {
+            $fetch_video .= '<tr>';
+
+            if ($businessvideo[0]['file_name']) {
+
+                $post_poster = $businessvideo[0]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                    $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                    if ($postposter) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[0]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
+            }
+
+            if ($businessvideo[1]['file_name']) {
+                $post_poster = $businessvideo[1]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                    $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                    if ($postposter) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[1]['file_name'] . '" type = "video/mp4">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
+            }
+            if ($businessvideo[2]['file_name']) {
+
+                $post_poster = $businessvideo[2]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                    $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                    if ($postposter) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[2]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
+            }
+            $fetch_video .= '</tr>';
+            $fetch_video .= '<tr>';
+
+            if ($businessvideo[3]['file_name']) {
+
+                $post_poster = $businessvideo[3]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                    $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                    if ($postposter) {
+
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[3]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
+            }
+            if ($businessvideo[4]['file_name']) {
+
+                $post_poster = $businessvideo[4]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                    $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                    if ($postposter) {
+
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[4]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                }
+            }
+            if ($businessvideo[5]['file_name']) {
+
+                $post_poster = $businessvideo[5]['file_name'];
+                $post_poster1 = explode('.', $post_poster);
+                $post_poster2 = end($post_poster1);
+                $post_poster = str_replace($post_poster2, 'png', $post_poster);
+
+                if (IMAGEPATHFROM == 'upload') {
+                    $fetch_video .= '<td class = "image_profile">';
+                    if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                    } else {
+                        $fetch_video .= '<video controls>';
+                    }
+                    $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessvideo[5]['file_name'] . '" type = "video/mp4">';
+                    //$fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
+                    $fetch_video .= 'Your browser does not support the video tag.';
+                    $fetch_video .= '</video>';
+                    $fetch_video .= '</td>';
+                } else {
+                    $fetch_video .= '<td class = "image_profile">';
+
+                    $postposter = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                    $this->data['postposter'] = $postposter = $s3->getObjectInfo(bucket, $postposter);
+                    if ($postposter) {
+
+                        $fetch_video .= '<video controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
                         $fetch_video .= '<video controls>';
                     }
