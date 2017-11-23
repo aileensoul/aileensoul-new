@@ -52,9 +52,11 @@ document.getElementById('myModal1').style.display = "block";
    
                         function openModal() {
                             document.getElementById('myModal1').style.display = "block";
+                            $('body').addClass('modal-open');
                         }
                         function closeModal() {
                             document.getElementById('myModal1').style.display = "none";
+                            $('body').removeClass('modal-open');
                         }
                         var slideIndex = 1;
                         showSlides(slideIndex);
