@@ -20,7 +20,9 @@ $(document).ready(function () {
        // if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
         if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
             var page = $(".page_number:last").val();
+         
             var total_record = $(".total_record").val();
+            
             var perpage_record = $(".perpage_record").val();
             if (parseInt(perpage_record) <= parseInt(total_record)) {
                 var available_page = total_record / perpage_record;
