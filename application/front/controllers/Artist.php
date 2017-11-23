@@ -14856,15 +14856,24 @@ public function get_artistic_name($id=''){
                                 $return_html .= '</div>';
                             }
                              
-                 } elseif (in_array($ext, $allowesaudio)) {                                          
-                        $return_html .= '<div>
-                        <audio width="120" height="100" controls>
-                   <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
+                 } elseif (in_array($ext, $allowesaudio)) {
 
-                    <source src="movie.ogg" type="audio/ogg">
-                        Your browser does not support the audio tag.
-                      </audio>
-                    </div>';
+
+
+                         $return_html .= '<div class="audio_main_div">
+                                                <div class="audio_img">
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
+                                                </div>
+                                                <div class="audio_source">
+                                                    <audio controls>
+                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
+
+                                                        <source src="movie.ogg" type="audio/ogg">
+                                                        Your browser does not support the audio tag.
+                                                    </audio>
+                                                </div></div>';
+
+
                  } 
                    } elseif (count($artmultiimage) == 2) {  
                                                
@@ -15849,13 +15858,18 @@ public function get_artistic_name($id=''){
                          </video>
                     </div>';                                    
                  } elseif (in_array($ext, $allowesaudio)) {                                          
-                        $return_html .= '<div>
-                        <audio width="120" height="100" controls>
-                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
-                    <source src="movie.ogg" type="audio/ogg">
-                        Your browser does not support the audio tag.
-                      </audio>
-                    </div>';
+                        $return_html .= '<div class="audio_main_div">
+                                                <div class="audio_img">
+                                                    <img src="' . base_url('assets/images/music-icon.png') . '">  
+                                                </div>
+                                                <div class="audio_source">
+                                                    <audio controls>
+                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
+
+                                                        <source src="movie.ogg" type="audio/ogg">
+                                                        Your browser does not support the audio tag.
+                                                    </audio>
+                                                </div></div>';
                  } 
                    } elseif (count($artmultiimage) == 2) { 
                                                
