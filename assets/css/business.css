@@ -1502,7 +1502,7 @@ label.cameraButton:active {
     margin-left: 10px;
 }
 .comment-details {
-    padding-left: 48px;
+    padding-left: 10px;
     padding-right: 10px;
     font-weight: 400;
     word-break: break-word !important;
@@ -1510,6 +1510,8 @@ label.cameraButton:active {
     color: black;
     font-size: 13px;
     margin-top: 0px;
+    float: left;
+    width: 93%
 }
 .inputtype-edit-comment {
     position: relative;
