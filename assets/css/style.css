@@ -1996,7 +1996,6 @@ body.reg-form footer{background:#fff !important;}
 select option { color: black; }
 */
 
-
 /***  media query  ***/
 @media screen and (max-height: 540px){
     .no-login .modal-dialog{margin-bottom:20px !important; height:auto !important;}
