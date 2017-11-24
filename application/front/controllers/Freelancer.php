@@ -165,14 +165,14 @@ class Freelancer extends MY_Controller {
 
                 $updatedata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
                 if ($updatedata) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
+                  //  $this->session->set_flashdata('success', 'Basic information updated successfully');
                     if ($postid) {
                         redirect('freelancer-work/address-information/' . $postid, refresh);
                     } else {
                         redirect('freelancer-work/address-information', refresh);
                     }
                 } else {
-                    $this->session->flashdata('error', 'Your data not inserted');
+                   // $this->session->flashdata('error', 'Your data not inserted');
                     if ($postid) {
                         redirect('freelancer-work/basic-information/' . $postid, refresh);
                     } else {
@@ -197,7 +197,7 @@ class Freelancer extends MY_Controller {
 
                 $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
                 if ($insert_id) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
+                   // $this->session->set_flashdata('success', 'Basic information updated successfully');
 
                     if ($postid) {
                         redirect('freelancer-work/address-information/' . $postid, refresh);
@@ -206,7 +206,7 @@ class Freelancer extends MY_Controller {
                     }
                 } else {
 
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                  //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     if ($postid) {
                         redirect('freelancer-work/basic-information/' . $postid, refresh);
                     } else {
@@ -437,14 +437,14 @@ class Freelancer extends MY_Controller {
                 );
                 $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
                 if ($updatdata) {
-                    $this->session->set_flashdata('success', 'Address information updated successfully');
+                  //  $this->session->set_flashdata('success', 'Address information updated successfully');
                     if ($postid) {
                         redirect('freelancer-work/professional-information/' . $postid, refresh);
                     } else {
                         redirect('freelancer-work/professional-information', refresh);
                     }
                 } else {
-                    $this->session->flashdata('error', 'Your data not inserted');
+                  //  $this->session->flashdata('error', 'Your data not inserted');
                     if ($postid) {
                         redirect('freelancer-work/address-information/' . $postid, refresh);
                     } else {
@@ -591,14 +591,14 @@ class Freelancer extends MY_Controller {
                 );
                 $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
                 if ($updatdata) {
-                    $this->session->set_flashdata('success', 'professional information updated successfully');
+                   // $this->session->set_flashdata('success', 'professional information updated successfully');
                     if ($postid) {
                         redirect('freelancer-work/rate/' . $postid, refresh);
                     } else {
                         redirect('freelancer-work/rate', refresh);
                     }
                 } else {
-                    $this->session->flashdata('error', 'Your data not inserted');
+                   // $this->session->flashdata('error', 'Your data not inserted');
                     if ($postid) {
                         redirect('freelancer-work/rate/' . $postid, refresh);
                     } else {
@@ -686,14 +686,14 @@ class Freelancer extends MY_Controller {
             );
             $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
             if ($updatdata) {
-                $this->session->set_flashdata('success', 'Rate information updated successfully');
+               // $this->session->set_flashdata('success', 'Rate information updated successfully');
                 if ($postid) {
                     redirect('freelancer-work/avability/' . $postid, refresh);
                 } else {
                     redirect('freelancer-work/avability', refresh);
                 }
             } else {
-                $this->session->flashdata('error', 'Your data not inserted');
+              //  $this->session->flashdata('error', 'Your data not inserted');
                 if ($postid) {
                     redirect('freelancer-work/rate/' . $postid, refresh);
                 } else {
@@ -770,14 +770,14 @@ class Freelancer extends MY_Controller {
 
             $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
             if ($updatdata) {
-                $this->session->set_flashdata('success', 'Avability information updated successfully');
+               // $this->session->set_flashdata('success', 'Avability information updated successfully');
                 if ($postid) {
                     redirect('freelancer-work/education/' . $postid, refresh);
                 } else {
                     redirect('freelancer-work/education', refresh);
                 }
             } else {
-                $this->session->flashdata('error', 'Your data not inserted');
+              //  $this->session->flashdata('error', 'Your data not inserted');
                 if ($postid) {
                     redirect('freelancer-work/avability/' . $postid, refresh);
                 } else {
@@ -937,14 +937,14 @@ class Freelancer extends MY_Controller {
         );
         $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
         if ($updatdata) {
-            $this->session->set_flashdata('success', 'Education information updated successfully');
+           // $this->session->set_flashdata('success', 'Education information updated successfully');
             if ($postid) {
                 redirect('freelancer-work/portfolio/' . $postid, refresh);
             } else {
                 redirect('freelancer-work/portfolio', refresh);
             }
         } else {
-            $this->session->flashdata('error', 'Your data not inserted');
+           // $this->session->flashdata('error', 'Your data not inserted');
             if ($postid) {
                 redirect('freelancer-work/education/' . $postid, refresh);
             } else {
@@ -5213,10 +5213,10 @@ class Freelancer extends MY_Controller {
             );
             $insert_id = $this->common->insert_data($data, 'freelancer_hire_reg');
             if ($insert_id) {
-                $this->session->set_flashdata('success', 'Basic information updated successfully');
+              //  $this->session->set_flashdata('success', 'Basic information updated successfully');
                 redirect('freelancer-hire/home', refresh);
             } else {
-                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+             //   $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                 redirect('freelancer/hire_registation', refresh);
             }
         }
@@ -5455,7 +5455,7 @@ class Freelancer extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
 
             if ($insert_id) {
-                $this->session->set_flashdata('success', 'Basic information updated successfully');
+              //  $this->session->set_flashdata('success', 'Basic information updated successfully');
 
                 if ($postliveid) {
 
@@ -5465,7 +5465,7 @@ class Freelancer extends MY_Controller {
                 }
             } else {
 
-                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+             //   $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                 if ($postliveid) {
                     redirect('freelancer-work/registation' . $postliveid, refresh);
                 } else {

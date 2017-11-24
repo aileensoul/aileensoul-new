@@ -143,7 +143,7 @@ function removepopup(id) {
                var numItems = $('.contact-frnd-post .job-contact-frnd .profile-job-post-detail').length;
                if (numItems == '0') {
           
-                   var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "img/job-no.png'/></div><div class='art_no_post_text'>No Applied Job Available</div></div>";
+                   var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "assets/img/job-no.png'/></div><div class='art_no_post_text'>No Applied Job Available</div></div>";
                    $('.contact-frnd-post').html(nodataHtml);
                }
            }

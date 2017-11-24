@@ -101,10 +101,10 @@ class Freelancer_hire extends MY_Controller {
                 );
                 $updatedata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
                 if ($updatedata) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
+                   // $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelancer-hire/address-information', refresh);
                 } else {
-                    $this->session->flashdata('error', 'Your data not inserted');
+                  //  $this->session->flashdata('error', 'Your data not inserted');
                     redirect('freelancer-hire/basic-information', refresh);
                 }
             } else {
@@ -123,10 +123,10 @@ class Freelancer_hire extends MY_Controller {
                 );
                 $insert_id = $this->common->insert_data($data, 'freelancer_hire_reg');
                 if ($insert_id) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
+                 //   $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelancer-hire/address-information', refresh);
                 } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                 //   $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('freelancer-hire/basic-information', refresh);
                 }
             }
@@ -370,11 +370,11 @@ class Freelancer_hire extends MY_Controller {
                     $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
                     if ($updatdata) {
 
-                        $this->session->set_flashdata('success', 'Address information updated successfully');
+                      //  $this->session->set_flashdata('success', 'Address information updated successfully');
                         redirect('freelancer-hire/professional-information', refresh);
                     } else {
 
-                        $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                       // $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                         redirect('freelancer-hire/address-information', refresh);
                     }
                 } else {
@@ -400,11 +400,11 @@ class Freelancer_hire extends MY_Controller {
 
                 if ($updatdata) {
 
-                    $this->session->set_flashdata('success', 'Address information updated successfully');
+                 //   $this->session->set_flashdata('success', 'Address information updated successfully');
                     redirect('freelancer-hire/professional-information', refresh);
                 } else {
 
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                  //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('freelancer-hire/address-information', refresh);
                 }
             }

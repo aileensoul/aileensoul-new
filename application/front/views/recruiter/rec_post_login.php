@@ -542,19 +542,21 @@
                   Created Date : <?php echo date('d-M-Y',strtotime($post['created_date'])); ?>
                </li>
      
-              <li class="">
-              <a class="post_title" href="javascript:void(0)" title="Post Title">
-               <?php 
+                <?php 
                                               $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
                                               if($cache_time)
                                               {
-                                                  echo  $cache_time;
+                                                    $cache_time;
                                               }
                                               else
                                               {
-                                                echo $post['post_name'];
+                                                $cache_time = $post['post_name'];
                                               }
-                                           ?>  </a>     
+                                           ?>
+               
+              <li class="">
+              <a class="post_title" href="javascript:void(0)" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
+                </a>     
               </li>
      
              <li>  
