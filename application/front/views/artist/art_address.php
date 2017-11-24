@@ -54,13 +54,13 @@
                     <!-- middle section start -->
                     <div class="col-md-6 col-sm-8">
                     <div>
-                        <?php
+                        <!-- <?php
                                         if ($this->session->flashdata('error')) {
                                             echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
                                         }
                                         if ($this->session->flashdata('success')) {
                                             echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-                                        }?>
+                                        }?> -->
                     </div>
                         <div class="common-form common-form_border">
                          <h3>
