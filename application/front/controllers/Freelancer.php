@@ -293,7 +293,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($freelancerpost_deactive) {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
+            redirect('freelancer-work');
         }
         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO freelancer/freelancer_post/freelancer_post_basic_information END  
     }
@@ -1101,7 +1101,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($freelancerhire_deactive) {
-            redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
+            redirect('freelancer-hire');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
     }
@@ -2591,7 +2591,7 @@ class Freelancer extends MY_Controller {
                 
             }
         } else {
-            redirect('freelancer/freelancer_post/freelancer_post_basic_information');
+            redirect('freelancer-work');
         }
     }
 
