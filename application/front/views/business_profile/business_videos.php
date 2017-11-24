@@ -86,20 +86,24 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                                                 <?php
                                                                             }
                                                                         } else {
-                                                                            $filename = $this->config->item('bus_post_main_upload_path') . $post_poster;
+                                                                            $filename = $this->config->item('bus_post_main_upload_path') . $videov['file_name'];
                                                                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                                                            if ($info) {
+                                                                           // echo "<pre>"; print_r($info); die();
+                                                                            if ($info) { 
                                                                                 ?>
-                                                                                <video preload="none" poster="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $post_poster); ?>" controls playsinline webkit-playsinline>
+                                                                                <video preload="none" poster="<?php echo BUS_POST_MAIN_UPLOAD_URL . $post_poster; ?>" controls playsinline webkit-playsinline>
                                                                                     <?php
-                                                                                } else {
+                                                                                } else { 
                                                                                     ?>
                                                                                     <video preload="none" controls playsinline webkit-playsinline>
                                                                                         <?php
                                                                                     }
                                                                                 }
                                                                                 ?>
-                                                                                <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4">
+                                                                                <!-- <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4"> -->
+
+                                                                                <source src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $videov['file_name']; ?>" type="video/mp4">
+
                                                                                 <source src="movie.ogg" type="video/ogg">
                                                                                 Your browser does not support the video tag.
                                                                             </video>
