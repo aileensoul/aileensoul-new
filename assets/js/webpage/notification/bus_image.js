@@ -19,20 +19,21 @@ function check() {
 $(document).ready(function () {
     $('.blocks').jMosaic({items_type: "li", margin: 0});
     $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
+    $('body').addClass('modal-open');
 });
 
 document.getElementById('myModal1').style.display = "block";
 showSlides(slideIndex = count);
-
+$("body").addClass('modal-open');
 
 function openModal() {
     document.getElementById('myModal1').style.display = "block";
-    $('body').addClass('modal-open');
+    $("body").addClass('modal-open');
 }
 
 function closeModal() {
     document.getElementById('myModal1').style.display = "none";
-    $('body').removeClass('modal-open');
+    $("body").removeClass('modal-open');
 }
 
 var slideIndex = 1;
@@ -47,9 +48,11 @@ function currentSlide(n) {
 
     $('.post-design-commnet-box').show();
     showSlides(slideIndex = n);
+     $("body").addClass('modal-open');
 }
 
 function showSlides(n) {
+    $("body").addClass('modal-open');
     var i;
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("demo");
