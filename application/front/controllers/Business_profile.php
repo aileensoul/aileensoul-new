@@ -2351,13 +2351,13 @@ Your browser does not support the audio tag.
                 $this->db->where($where);
                 $updatdata = $this->db->update('notification', $datafollow);
             } else {
-                $data = array(
-                    'follow_type' => '2',
-                    'follow_from' => $artdata[0]['business_profile_id'],
-                    'follow_to' => $business_id,
-                    'follow_status' => '1',
-                );
-                $insertdata = $this->common->insert_data($data, 'follow');
+                // $data = array(
+                //     'follow_type' => '2',
+                //     'follow_from' => $artdata[0]['business_profile_id'],
+                //     'follow_to' => $business_id,
+                //     'follow_status' => '1',
+                // );
+                // $insertdata = $this->common->insert_data($data, 'follow');
 
                 $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
                 $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
