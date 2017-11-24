@@ -732,7 +732,8 @@
                         <div class="mySlides">
                             <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                             <div class="slider_img">
-                                <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['file_name']) ?>" >
+                               <!--  <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['file_name']) ?>" > -->
+                                 <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name'] ?>" >
                                 <a class="prev" style="left: 0px" onclick="plusSlides( - 1)">&#10094;</a>
                                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
                             </div>
