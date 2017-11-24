@@ -8237,7 +8237,7 @@ Your browser does not support the audio tag.
         $join_str[0]['join_type'] = '';
 
         $contition_array = array('contact_from_id' => $userid, 'contact_person.status' => 'confirm');
-        $friendlist_con = $this->data['friendlist_con'] = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+        $friendlist_con = $this->data['friendlist_con'] = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = strtotime('created_date'), $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
         $this->data['friendlist'] = array_merge($friendlist_con, $friendlist_req);
