@@ -4658,6 +4658,7 @@ div .comment {
     .tablate-add{display:block; width:160px; position:fixed; margin-left:590px;}
     .mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
     /*** end advertise  ***/
+    .more-image{width: 263px;height:198px;}
 }
 
 @media screen and (max-width: 800px) {
@@ -5103,6 +5104,7 @@ div .comment {
 .profile-job-post-location-name .user_lst ul li.fr {padding-left: 0px;}
 .profile-job-post-location-name .user_lst ul li #followdiv button{margin: 0px;margin-right: 9px;}
 .manage-post-custom .mian_middle_post_box{margin-left: auto !important;}
+.more-image{width: 264px;height: 188px;}
 }
 
 @media screen and (max-width: 639px) {
@@ -5235,6 +5237,7 @@ div .comment {
     .post-edit-popup .popup-text textarea{width:79%; padding-right:0;}
     .mian_middle_post_box{width:100%;}
 	.file-preview{width:435px;}
+    .more-image{width: calc(100% - 2px);}
 }
 
 @media screen and (max-width: 540px) {
@@ -5335,6 +5338,7 @@ div .comment {
     .popup-text textarea::-moz-placeholder{font-size:19px !important;}
     .popup-text textarea::-webkit-input-placeholder{font-size:19px !important;}
 	.file-preview{width:380px;}
+
 }
 
 @media screen and (max-width: 479px) {
@@ -5724,6 +5728,7 @@ div .comment {
 	.user-list .profile-job-post-location-name ul li.folle_text{padding-top:1px;}
 	.profile-job-post-location-name-rec .fl.search_button button{margin-right:10px; margin-bottom:0;}
     .business-profile-right .bui-menu-profile{min-height: 106px;}/*d*/
+    .more-image{height: 148px;}
 }
 
 @media screen and (max-width: 430px) {
