@@ -318,11 +318,15 @@ ol.upper_alpha{list-style-type: upper-alpha; padding: 5px 25px;}
 .date_blog_right .blog_main_post_second_part h1{display: inline-block;}
 /*.blog h3{display: inline-block;}*/
 .blog_post_outer .comment_foem button{margin-left: 0px !important;}
+.main-none{display:none;}
 
+/***  media query  ***/
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1279px) {
 	.term_desc{width: 100% !important;}
 	.all-comments ul li .c-user-comments{width:89%;}
+	.block-1279{display:block;}
+	.none-1279{display:none;}
 }
 @media screen and (max-width: 1200px) {
 	.blog_latest_post h3{font-size: 20px;}

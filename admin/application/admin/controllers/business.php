@@ -55,13 +55,13 @@ public function user()
 
             $sortby = 'business_profile_id';
 
-            $orderby = 'asc';
+            $orderby = 'desc';
 
         }
   
         $this->data['offset'] = $offset;
 
-       $data='business_profile_id,contact_person,company_name,contact_email,country ,state,city,business_profile_image,created_date,modified_date ,status,is_deleted';
+       $data='business_profile_id,contact_person,company_name,contact_email,country ,state,city,created_date,modified_date ,status,is_deleted';
        $contition_array = array('is_deleted' => '0');
         $this->data['users'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 // This is userd for pagination offset and limoi End

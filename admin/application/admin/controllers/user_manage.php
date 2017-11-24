@@ -50,7 +50,7 @@ class User_manage extends CI_Controller {
   
         $this->data['offset'] = $offset;
 
-       $data='user_id, user_name ,first_name ,last_name ,user_email ,user_dob ,user_gender,user_image,status ,created_date,modified_date';
+       $data='user_id,first_name ,last_name ,user_email ,user_dob ,user_gender,user_image,status ,created_date,modified_date';
        $contition_array = array('is_delete' => '0');
         $this->data['users'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str = array(), $groupby = '');
 // This is userd for pagination offset and limoi End
@@ -212,7 +212,7 @@ public function search(){
   
         $this->data['offset'] = $offset;
         
-          $data='user_id, user_name ,first_name ,last_name ,user_email ,user_dob ,user_gender,user_image,status ,created_date,modified_date';
+          $data='user_id,first_name ,last_name ,user_email ,user_dob ,user_gender,user_image,status ,created_date,modified_date';
            $search_condition = "(first_name LIKE '%$search_keyword%' OR user_email LIKE '%$search_keyword%')";
             $contition_array = array('is_delete' => '0');
             $this->data['users'] = $this->common->select_data_by_search('user', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);
@@ -281,7 +281,7 @@ public function search(){
   
         $this->data['offset'] = $offset;
         
-          $data='user_id, user_name ,first_name ,last_name ,user_email ,user_dob ,user_gender,user_image,status ,created_date,modified_date';
+          $data='user_id,first_name ,last_name ,user_email ,user_dob ,user_gender,user_image,status ,created_date,modified_date';
            $search_condition = "(first_name LIKE '%$search_keyword%' OR user_email LIKE '%$search_keyword%')";
             $contition_array = array('is_delete' => '0');
             $this->data['users'] = $this->common->select_data_by_search('user', $search_condition, $contition_array,$data, $sortby, $orderby, $limit, $offset);

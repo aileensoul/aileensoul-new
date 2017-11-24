@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))
 
 
 
-class Artistic extends CI_Controller {
+class Artist extends CI_Controller {
 
     public $data;
 
@@ -55,7 +55,7 @@ public function user()
 
             $sortby = 'art_id';
 
-            $orderby = 'asc';
+            $orderby = 'desc';
 
         }
   

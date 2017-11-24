@@ -412,7 +412,7 @@ function remove_validation_stream() {
                 if (e.keyCode === 27) {
                     $('#bidmodal2').modal('hide');
                      $('#bidmodal_stream').modal('hide');     
-                      $('#bidmodal_degree').modal('show');
+                      $('#bidmodal_degree').modal('hide');
                                
             }
             });        

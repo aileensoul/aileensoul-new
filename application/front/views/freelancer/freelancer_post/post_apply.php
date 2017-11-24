@@ -28,13 +28,13 @@
                                                    if ($freelancerdata[0]['profile_background'] != '') {
                                                        ?>
                                                     <div class="data_img">
-                                                        <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freelancerdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>" >
+                                                        <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freelancerdata[0]['profile_background']); ?>" class="bgImage" alt="" >
                                                     </div>
                                                     <?php
                                                 } else {
                                                     ?>
                                                     <div class="data_img bg-images no-cover-upload">
-                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>"  >
+                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt=""  >
                                                     </div>
                                                     <?php
                                                 }

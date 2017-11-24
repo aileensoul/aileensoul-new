@@ -904,13 +904,7 @@ function followclose(clicked_id)
         url: base_url + "business_profile/business_home_follow_ignore",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-            if (data) {
-                $.ajax({
-                    type: 'POST',
-                    url: base_url + "business_profile/third_follow_ignore_user_data",
-                    dataType: 'html',
-                    success: function (data) {
-                        $('ul.home_three_follow_ul').append(data);
+            $('ul.home_three_follow_ul').append(data);
                         $.when($('.fad' + clicked_id).fadeOut(1500))
                                 .done(function () {
                                     $('.fad' + clicked_id).remove();
@@ -919,12 +913,43 @@ function followclose(clicked_id)
                                         $('.full-box-module_follow').hide();
                                     }
                                 });
-                    }
-                });
-            }
         }
     });
 }
+
+
+
+
+// function followclose(clicked_id)
+// {
+//     document.getElementById('followdiv' + clicked_id).removeAttribute("onclick");
+//     document.getElementById('Follow_close' + clicked_id).removeAttribute("onclick");
+//     $.ajax({
+//         type: 'POST',
+//         url: base_url + "business_profile/business_home_follow_ignore",
+//         data: 'follow_to=' + clicked_id,
+//         success: function (data) {
+//             if (data) {
+//                 $.ajax({
+//                     type: 'POST',
+//                     url: base_url + "business_profile/third_follow_ignore_user_data",
+//                     dataType: 'html',
+//                     success: function (data) {
+//                         $('ul.home_three_follow_ul').append(data);
+//                         $.when($('.fad' + clicked_id).fadeOut(1500))
+//                                 .done(function () {
+//                                     $('.fad' + clicked_id).remove();
+//                                     var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+//                                     if (liCount == 0) {
+//                                         $('.full-box-module_follow').hide();
+//                                     }
+//                                 });
+//                     }
+//                 });
+//             }
+//         }
+//     });
+// }
 //function followclose(clicked_id)
 //{
 //    $.when($('.fad' + clicked_id).fadeOut(3000))

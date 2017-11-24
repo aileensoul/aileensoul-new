@@ -160,6 +160,7 @@ $route['freelancer-hire/project'] = "freelancer/live_post";
 $route['freelancer-hire/project/(:any)'] = "freelancer/live_post/$1";
 $route['freelancer-hire/freelancer-shortlisted/(:any)'] = "freelancer/freelancer_shortlist_list/$1";
 $route['freelancer-hire/registation'] = "freelancer/hire_registation";
+$route['freelancer-hire'] = "freelancer_hire/freelancer_hire/freelancer_hire_basic_info";
 
 
 
@@ -187,6 +188,7 @@ $route['freelancer-work/search'] = "search/freelancer_post_search";
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
 $route['freelancer-work/reactivate'] = "freelancer/reactivate";
 $route['freelancer-work/registation'] = "freelancer/registation";
+$route['freelancer-work'] = "freelancer/freelancer_post/freelancer_post_basic_information";
 
 $route['(:any)-project'] = "search/freelancer_post_search";
 $route['project-in-(:any)'] = "search/freelancer_post_search";

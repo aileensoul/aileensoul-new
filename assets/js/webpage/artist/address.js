@@ -93,7 +93,7 @@ $(document).ready(function () {
                    });
 
 
- $(".alert").delay(3200).fadeOut(300);
+ // $(".alert").delay(3200).fadeOut(300);
 
 
  jQuery(document).ready(function($) {  

@@ -90,7 +90,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('freelancer_apply/user'); ?>"><i class="fa fa-users"></i>List Freelancer Hire User</a></li>
+                    <li><a href="<?php echo base_url('freelancer_apply/user'); ?>"><i class="fa fa-users"></i>List Freelancer Apply User</a></li>
 <!--                    <li><a href="<?php //echo base_url('freelancer_hire/project'); ?>"><i class="fa fa-users"></i>List Projects</a></li>-->
                 </ul>
             </li>

@@ -258,10 +258,10 @@ class Artist extends MY_Controller {
             $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
 
             if ($updatdata) {
-                $this->session->set_flashdata('success', 'Basic Information updated successfully');
+                //$this->session->set_flashdata('success', 'Basic Information updated successfully');
                 redirect('artist/artistic-address', refresh);
             } else {
-                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                //$this->session->flashdata('error', 'Sorry!! Your data not inserted');
                 redirect('artist/artistic-basic-information-insert', refresh);
             }
         } else {
@@ -435,10 +435,10 @@ class Artist extends MY_Controller {
                 }
                 $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
                 if ($updatdata) {
-                    $this->session->set_flashdata('success', 'Address updated successfully');
+                    //$this->session->set_flashdata('success', 'Address updated successfully');
                     redirect('artist/artistic-information', refresh);
                 } else {
-                    $this->session->flashdata('error', 'Your data not inserted');
+                    //$this->session->flashdata('error', 'Your data not inserted');
                     redirect('artist/artistic-address', refresh);
                 }
             }
@@ -2211,7 +2211,7 @@ public function ajax_userlist() {
                     $email_html = '';
                     $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                                            <td sstyle="padding-left: 15px;padding-top: 12px;padding-bottom: 8px;">';
+                                            <td style="padding-left: 15px;padding-top: 12px;padding-bottom: 8px;">';
 
                                             if (IMAGEPATHFROM == 'upload') {
 
@@ -14594,14 +14594,14 @@ public function get_artistic_name($id=''){
                                        <div class="fruser' . $key['art_id'].'">';
 
                                          $status  =  $this->db->select('follow_status')->get_where('follow',array('follow_type' => '1', 'follow_from' => $artdata[0]['art_id'], 'follow_to'=>$key['art_id'] ))->row()->follow_status; 
-                                            if($status == '0' || $status == " "){
+                                            if($status == 0 || $status == " "){
 
                                  $return_html .= '<div id="followdiv " class="user_btn">
                                             <button id="follow' . $key['art_id'].'" onClick="followuser('.$key['art_id'].')">
                                             <span>Follow</span> 
                                              </button>
                                           </div>';
-                                           } elseif($status == '1'){ 
+                                           } elseif($status == 1){ 
 
                                           $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
                                          <button class="bg_following" id="unfollow' . $key['art_id'].'" onClick="unfollowuser('.$key['art_id'].') ">

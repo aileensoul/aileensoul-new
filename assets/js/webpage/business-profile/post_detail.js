@@ -1488,12 +1488,17 @@ function seemorediv(abc) { //alert("hii");
 }
 
 $('#postedit').on('click', function () {
-// $('.my_text').attr('readonly', false);
+      $(".my_text").prop("readonly", false);
+     $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
 });
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
 //$( "#bidmodal" ).hide();
-        $('#postedit').modal('hide');
+       $('#postedit').modal('hide');
+         $('.my_text').attr('readonly', false);
+         $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
         // $('.my_text').attr('readonly', false);
 
         //$('.modal-post').show();
@@ -1510,6 +1515,10 @@ function check_lengthedit(abc)
     if (product_name.length > maxLen) {
         text_num = maxLen - product_name.length;
         var msg = "You have reached your maximum limit of characters allowed";
+         $("#editpostname" + abc).prop("readonly", true);
+         document.getElementById("editpostdesc" + abc).contentEditable = false;
+         document.getElementById("editpostsubmit"+abc).setAttribute("disabled","disabled");
+
         $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
         $('#postedit').modal('show');
         var substrval = product_name.substring(0, maxLen);

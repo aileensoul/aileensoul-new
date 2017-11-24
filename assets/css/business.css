@@ -2777,7 +2777,7 @@ label.cameraButton:active {
     margin: auto;
     padding: 0;
     width: 90%;
-    height: 100%;
+    /*height: 100%;*/
     max-width: 1200px;
 }
 .close2 {
@@ -4925,6 +4925,7 @@ body.reg-form{background: #fff}
 	/*** end advertise  ***/
 	.designation_rec{width:60% !important;}
     .manage-post-custom  .mian_middle_post_box{margin-left: 0px;}
+    .more-image{width: 264px;}
 
 }
 @media screen and (max-width: 800px) {
@@ -5370,7 +5371,8 @@ body.reg-form{background: #fff}
     .profile-job-profile-menu .buisness-profile-pic .column1 .bui_res_i{width: 100%;}
     .profile-job-profile-menu .buisness-profile-pic .column1 .bui_res_i2{width: 100%;}
     .profile-job-profile-menu .buisness-profile-pic .column1 .bui_res_i2 .view_bui{width: 100%;}
-
+    .comment-details{width: 90%}
+    .more-image{width: 266px;height: 189px;}
 	/*** end all edit profile box  ***/
 }
 @media screen and (max-width: 639px) {
@@ -5509,6 +5511,7 @@ body.reg-form{background: #fff}
 	.post-edit-popup .popup-text textarea{width:79%;}
 	.mian_middle_post_box{width:100%;}
 	.file-preview{width:435px;}
+    .more-image{width: calc(100% - 2px);}
 }
 @media screen and (max-width: 540px) {
     .reactivate_btn_n,
@@ -6032,7 +6035,8 @@ body.reg-form{background: #fff}
     .user_btn .contact_user_list{width: 100px;}
 	/*** all edit profile box  ***/
 	.all-edit-tab ul li a .edit-form-name{display:none;}
-	
+    .comment-details{width: 89%;}
+    .more-image{height: 149px;}	
 	/*** end all edit profile box  ***/
 
 }
@@ -6041,6 +6045,7 @@ body.reg-form{background: #fff}
         width: 35%;
     }
     .audio_main_div{width: 70%;}
+    .comment-details{width: 87% ;}
 }
 @media screen and (max-width: 360px) {
     #paddingtop_fixed {
@@ -6223,6 +6228,9 @@ body.reg-form{background: #fff}
 	.buisness-menu.other-profile-menu::before{bottom:89px;}
 	.file-preview{width:194px;}
     .profile-job-profile-menu .buisness-profile-pic .column1{width: 100%;}
+    .comment-details{width: 86% ;}
+    .more-image{height: 119px;} 
+
 }
 @media screen and (max-width: 319px) {
     .editor-content {
