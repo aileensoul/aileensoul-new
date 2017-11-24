@@ -257,6 +257,39 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                         
 						<section class="all-profile-custom">
+						
+							<div id="bus-scroll" class="custom-box odd">
+                                <div class="custom-width">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="left-box">
+                                                <a href="<?php echo base_url('business-profile'); ?>"><img title="Business Profile" src="<?php echo base_url(); ?>assets/img/i4.jpg"></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <div class="right-box">
+                                                <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
+                                                <p>Grow your business network.</p>
+                                                <div class="btns">
+                                                    <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
+                                                    <?php if ($busdata[0]['business_step'] != 4) { ?>
+                                                        <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
+                                                    <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
+                                                        ?>
+
+                                                        <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
+                                                    <?php } else {
+                                                        ?>
+                                                        <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
+
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 							
 							<div id="job-scroll" class="custom-box odd">
                                 <div class="custom-width">
@@ -366,38 +399,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                             </div>
 
 
-                            <div id="bus-scroll" class="custom-box odd">
-                                <div class="custom-width">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <div class="left-box">
-                                                <a href="<?php echo base_url('business-profile'); ?>"><img title="Business Profile" src="<?php echo base_url(); ?>assets/img/i4.jpg"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-12">
-                                            <div class="right-box">
-                                                <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
-                                                <p>Grow your business network.</p>
-                                                <div class="btns">
-                                                    <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
-                                                    <?php if ($busdata[0]['business_step'] != 4) { ?>
-                                                        <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
-                                                    <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
-                                                        ?>
-
-                                                        <a class="btn-1" id="business-active-btn" href="<?php echo base_url('business-profile'); ?>">Active</a>
-                                                    <?php } else {
-                                                        ?>
-                                                        <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
-
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                            
 
 
                             
