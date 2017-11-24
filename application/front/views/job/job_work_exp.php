@@ -59,12 +59,12 @@
                                     <div class="panel-group wrap" id="bs-collapse">
                                       
                                       
+                                           <?php  if($userdata[0]['experience'] == 'Experience' && ($userdata[0]['exp_y'] != "")){ ?>
                                    <div class="profile-job-post-title clearfix">
                                     <div class="profile-job-profile-button clearfix">
                                        <div class="profile-job-details">
                                         <div class="profile-job-profile-menu">                          
                                         <ul class="clearfix">
-                                           <?php   if($userdata[0]['experience'] == 'Experience'){ ?>
                                           <li> <b> Total Experience</b> <span><?php  if($userdata[0]['exp_y'] != " " && $userdata[0]['exp_m'] != " "){ 
                                          if ($userdata[0]['exp_m'] == '12 month' && $userdata[0]['exp_y'] == '0 year') {
                                                     echo "1 year";
@@ -78,12 +78,12 @@
                                                 }
                                              } ?> </span>
                                           </li>
-                                         <?php } ?>
                                        </ul>
                                      </div>
                                    </div>
                                  </div>
                                </div>
+                                         <?php } ?>
                                        <div class="panel">
                                           <div  id="panel-heading" <?php if($userdata[0]['experience'] == 'Fresher'){ ?> class="panel-heading active" <?php } else if($userdata[0]['experience'] == ''){?> class="panel-heading" <?php }else{?> class="panel-heading" <?php } ?>>
                                              <h4 class="panel-title">
