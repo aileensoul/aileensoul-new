@@ -130,8 +130,8 @@
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i2">  
                                                                                         <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
-                                                                                        <div class="view_bui"> 
-                                                                                            <a   id="myBtn">view all</a>
+                                                                                        <div class="view_bui" id="myBtn"> 
+                                                                                            <a id="myBtn">view all</a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

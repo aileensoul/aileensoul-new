@@ -123,20 +123,38 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <div class="bui-menu-profile">
                         <div class="profile-left">
                             <h4 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> <?php echo ucfirst($business_common_data[0]['company_name']); ?></a></h4>
-                            <h4 class="profile-head-text_dg"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+                            
                                     <?php
-                                    if ($business_common_data[0]['industriyal']) {
-                                        echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name;
-                                    }
-                                    if ($business_common_data[0]['other_industrial']) {
-                                        if ($industry_type == '') {
-                                            echo ucfirst(strtolower($business_common_data[0]['other_industrial']));
+                                    if ($business_common_data[0]['industriyal']) { ?>
+
+                                    <h4 class="profile-head-text_dg" title=" <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+
+                                       <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>
+
+                                        </a></h4>
+                                  <?php  }
+                                    if ($business_common_data[0]['other_industrial']) { ?>
+
+                                     <h4 class="profile-head-text_dg" title="<?php  echo ucfirst(strtolower($business_common_data[0]['other_industrial'])); ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+
+                                       <?php if ($industry_type == '') {
+
+                                       $num_words = 9;
+                                       $words = array();
+                                       $words = explode(" ",  $business_common_data[0]['other_industrial'], $num_words);
+                                       $shown_string = "";
+                                        if(count($words) == 9){
+                                          $words[8] ='....';
                                         }
-                                    }
+                                         $shown_string = implode(" ", $words); 
+                                         echo ucfirst(strtolower($shown_string));
+                                        } ?>
+                                        </a></h4>
+                                   <?php }
                                     ?>
 
 
-                                </a></h4>
+                               
                         </div>
                         <?php
                         $userid = $this->session->userdata('aileenuser');
