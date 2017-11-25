@@ -84,7 +84,7 @@
                                                     }
                                                     ?>
                                                     <div>
-                                                <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                                                        <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                                                     </div>
                                                 </div>
                                                 <?php
@@ -97,7 +97,7 @@
                                             <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                         </span>
 
-                                                <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;     ?>
+                                        <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;     ?>
                                         <div class="profile-boxProfile-name">
                                             <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>"><?php
                                                 if (ucwords($jobdata[0]['designation'])) {
@@ -112,12 +112,12 @@
                                             <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
                                                 <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>"> Details</a>
                                             </li>
-<?php // if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'search' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {     ?>
+                                            <?php // if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'search' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {     ?>
                                             <li <?php if ($this->uri->segment(1) == 'search' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>">Saved </a>
                                             </li>
                                             <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'applied-job') { ?> class="active" <?php } ?>><a class="padding_less_right" title="Applied Job" href="<?php echo base_url('job/applied-job'); ?>">Applied </a>
                                             </li>
-<?php // }     ?>
+                                            <?php // }     ?>
                                         </ul>
 
                                     </div>
@@ -148,13 +148,13 @@
                         <div  class="add-post-button mob-block">
                             <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                 <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
-<?php } ?>
+                            <?php } ?>
                         </div>
                         <div class="mob-none">
                             <div  class="add-post-button">
                                 <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                     <a class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
-<?php } ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>
-                                       All Jobs
+                                        All Jobs
                                     </h3>
                                     <div class="contact-frnd-post">
                                         <!--                                <div class = "job-contact-frnd">
@@ -216,7 +216,7 @@
                                                                                             echo $cityname . ', ';
                                                                                         }
                                                                                         ?>
-            <?php echo $countryname; ?> 
+                                                                                        <?php echo $countryname; ?> 
                                                                                     </p>
 
                                                                                 </div>
@@ -289,9 +289,9 @@
                                                                     <li><b>Interview Process</b><span>
 
 
-                                                                                <?php if ($post['interview_process'] != '') { ?>
+                                                                            <?php if ($post['interview_process'] != '') { ?>
                                                                                 <pre>
-                                                                                <?php echo $this->common->make_links($post['interview_process']); ?></pre>
+                                                                                    <?php echo $this->common->make_links($post['interview_process']); ?></pre>
                                                                                 <?php
                                                                             } else {
                                                                                 echo PROFILENA;
@@ -350,7 +350,7 @@
 
 
 
-        <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
+                                                                    <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
 
                                                                         <li> <b>Education Required</b> <span> 
 
@@ -400,16 +400,16 @@
                                                                         ?>
 
                                                                         <li><b>Education Required</b><span>
-                                                                        <?php echo PROFILENA; ?>
+                                                                                <?php echo PROFILENA; ?>
                                                                             </span>
                                                                         </li>
-        <?php }
-        ?>                   <li><b>Employment Type</b><span>
+                                                                    <?php }
+                                                                    ?>                   <li><b>Employment Type</b><span>
 
 
-                                                                                <?php if ($post['emp_type'] != '') { ?>
+                                                                            <?php if ($post['emp_type'] != '') { ?>
                                                                                 <pre>
-                                                                                <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?></pre>
+                                                                                    <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?></pre>
                                                                                 <?php
                                                                             } else {
                                                                                 echo PROFILENA;
@@ -422,9 +422,9 @@
                                                                     <li><b>Company Profile</b><span>
 
 
-                                                                                <?php if ($post['re_comp_profile'] != '') { ?>
+                                                                            <?php if ($post['re_comp_profile'] != '') { ?>
                                                                                 <pre>
-                                                                                <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
+                                                                                    <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
                                                                                 <?php
                                                                             } else {
                                                                                 echo PROFILENA;
@@ -451,7 +451,7 @@
                                                                             }
                                                                             ?>
                                                                         </li>                                                   </li>
-        <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
+                                                                        <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                                             <li class="fr">';
                                                                                 <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
                                                                                 <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="button">Edit</a>
@@ -469,7 +469,7 @@
 
                                                                                 <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="button">Applied  Candidate : <?php echo $countt ?></a>
                                                                             </li>
-                                                                            <?php } else { ?>
+                                                                        <?php } else { ?>
                                                                             <li class="fr">
                                                                                 <?php
                                                                                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -500,12 +500,12 @@
                                                                                     <?php } else { ?>
 
                                                                                         <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> button save_saved_btn">Save</a>
-                                                                                <?php } ?>
+                                                                                    <?php } ?>
 
                                                                                 </li>
                                                                             <?php } ?>
                                                                             </li>
-        <?php } ?>
+                                                                        <?php } ?>
                                                                     </ul>
                                                                 </div>
 
@@ -528,9 +528,9 @@
                                                     No  Post Available.
                                                 </div>
                                             </div>
-<?php }
-?>
-        <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
+                                        <?php }
+                                        ?>
+<!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
                                     </div>
                                 </div>
                             </div>
@@ -627,29 +627,13 @@
         <!-- START FOOTER -->
         <!-- <footer> -->
 
-<?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- </footer> -->
         <!-- END FOOTER -->
 
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
 
-        <!-- FIELD VALIDATION JS START -->
-        <?php
-        if (IS_REC_JS_MINIFY == '0') {
-            ?>
-            <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
-            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-            <?php
-        } else {
-            ?>
-            <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
-
-        <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-        <?php } else { ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
-<?php } ?>
         <script>
                                 var base_url = '<?php echo base_url(); ?>';
                                 var data1 = <?php echo json_encode($de); ?>;
