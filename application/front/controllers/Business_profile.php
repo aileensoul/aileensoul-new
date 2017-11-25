@@ -10415,7 +10415,8 @@ $return_html .= '<li>
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[0]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile">';
+                 $fetchaudio .= '<td class = "image_profile">';
+                //$fetchaudio .= '<td><img src = "' . base_url('assets/images/music-icon.png') . '">';
                 $fetchaudio .= '<audio controls>';
 
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[0]['file_name'] . '" type = "audio/mp3">';
