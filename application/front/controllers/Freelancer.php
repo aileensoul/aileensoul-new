@@ -2653,11 +2653,15 @@ class Freelancer extends MY_Controller {
         $id = $_POST['post_id'];
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
-        //  echo $notid;
+       //   echo $notid; die();
 
+        
         $userid = $this->session->userdata('aileenuser');
         //  echo $userid;die();
-        $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
+        $this->data['jobdata']= $postdtaa = $this->common->select_data_by_id('freelancer_post', 'post_id', $id, $data = 'user_id', $join_str = array());
+        if($postdtaa[0]['user_id'] == $userid){
+            
+        }else{
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
         $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2730,6 +2734,7 @@ class Freelancer extends MY_Controller {
                 $applypost = 'Applied';
             }
             echo $applypost;
+        }
         }
     }
 

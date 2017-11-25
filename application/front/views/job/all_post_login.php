@@ -387,110 +387,102 @@
 
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
 
-                                <!--                                <div class="full-box-module">   
-                                                                    <div class="profile-boxProfileCard  module">
-                                                                        <div class="profile-boxProfileCard-cover"> 
-                                                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" onclick="register_profile();" tabindex="-1" 
-                                                                               aria-hidden="true" rel="noopener">
-                                                                                <div class="bg-images no-cover-upload"> 
-                                <?php
-                                $image_ori = $recdata[0]['profile_background'];
-                                $filename = $this->config->item('rec_bg_main_upload_path') . $recdata[0]['profile_background'];
-                                $s3 = new S3(awsAccessKey, awsSecretKey);
-                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                if ($info && $recdata[0]['profile_background'] != '') {
-                                    ?>
-                                                                                                <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
-                                    <?php
-                                } else {
-                                    ?>
-                                                                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
-                                    <?php
-                                }
-                                ?>
-                                                                                </div>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="profile-boxProfileCard-content clearfix">
-                                                                            <div class="left_side_box_img buisness-profile-txext">
-                                
-                                                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="javascript:void(0);" onclick="register_profile();" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                                <?php
-                                $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
-                                $s3 = new S3(awsAccessKey, awsSecretKey);
-                                $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                                if ($recdata[0]['recruiter_user_image'] != '' && $info) {
-                                    ?>
-                                                                                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
-                                    <?php
-                                } else {
-
-
-                                    $a = $recdata[0]['rec_firstname'];
-                                    $acr = substr($a, 0, 1);
-
-                                    $b = $recdata[0]['rec_lastname'];
-                                    $acr1 = substr($b, 0, 1);
-                                    ?>
-                                                                                                <div class="post-img-profile">
-                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
-                                        
-                                                                                                </div>
-                                        
-                                    <?php
-                                }
-                                ?>
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="right_left_box_design ">
-                                                                                <span class="profile-company-name ">
-                                                                                    <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
-                                                                                </span>
-                                
-                                <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;   ?>
-                                                                                <div class="profile-boxProfile-name">
-                                                                                    <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
-                                <?php
-                                if (ucfirst(strtolower($recdata[0]['designation']))) {
-                                    echo ucfirst(strtolower($recdata[0]['designation']));
-                                } else {
-                                    echo "Designation";
-                                }
-                                ?></a>
-                                                                                </div>
-                                                                                <ul class=" left_box_menubar">
-                                                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="javascript:void(0);" onclick="register_profile();"> Details</a>
-                                                                                    </li>                                
-                                                                                    <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="javascript:void(0);" onclick="register_profile();">Post</a>
-                                                                                    </li>
-                                                                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" class="padding_less_right" href="javascript:void(0);" onclick="register_profile();">Saved </a>
-                                                                                    </li>
-                                
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>                             
-                                                                </div>-->
+                                <div class="full-box-module">   
+                                    <div class="profile-boxProfileCard  module">
+                                        <div class="profile-boxProfileCard-cover"> 
+                                            <input type="checkbox" name="Ahmedabad" value="ON" /> Ahmedabad
+                                            <input type="checkbox" name="Banglore" value="ON" /> Banglore
+                                            <input type="checkbox" name="Chennai" value="ON" /> Chennai
+                                            <input type="checkbox" name="Dehli" value="ON" /> Dehli
+                                            <input type="checkbox" name="Hydrabad" value="ON" /> Hydrabad
+                                            <input type="checkbox" name="Mumbai" value="ON" /> Mumbai
+                                            <input type="checkbox" name="pune" value="ON" /> Pune
 
 
 
-                                <div class="tablate-potrat-add">
-                                    <div class="fw text-center pt10">
-                                        <script type="text/javascript">
-                                            (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []};
-                                                }
-                                                ;
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                            }());
-                                        </script>
-                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                    </div>
+                                            <!--                                                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" onclick="register_profile();" tabindex="-1" 
+                                                                                                                           aria-hidden="true" rel="noopener">
+                                                                                                                            <div class="bg-images no-cover-upload"> 
+                                            <?php
+                                            $image_ori = $recdata[0]['profile_background'];
+                                            $filename = $this->config->item('rec_bg_main_upload_path') . $recdata[0]['profile_background'];
+                                            $s3 = new S3(awsAccessKey, awsSecretKey);
+                                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                            if ($info && $recdata[0]['profile_background'] != '') {
+                                                ?>
+                                                                                                                                                <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                                                <?php
+                                            } else {
+                                                ?>
+                                                                                                                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
+                                                <?php
+                                            }
+                                            ?>
+                                                                                                                            </div>
+                                                                                                                        </a>-->
+                                        </div>
+                                        <!--                                                                        <div class="profile-boxProfileCard-content clearfix">
+                                                                                                                    <div class="left_side_box_img buisness-profile-txext">
+                                                                        
+                                                                                                                        <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="javascript:void(0);" onclick="register_profile();" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                        <?php
+                                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                        if ($recdata[0]['recruiter_user_image'] != '' && $info) {
+                                            ?>
+                                                                                                                                            <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                            <?php
+                                        } else {
+
+
+                                            $a = $recdata[0]['rec_firstname'];
+                                            $acr = substr($a, 0, 1);
+
+                                            $b = $recdata[0]['rec_lastname'];
+                                            $acr1 = substr($b, 0, 1);
+                                            ?>
+                                                                                                                                            <div class="post-img-profile">
+                                            <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
+                                                                                    
+                                                                                                                                            </div>
+                                                                                    
+                                            <?php
+                                        }
+                                        ?>
+                                                                                                                        </a>
+                                                                                                                    </div>
+                                                                                                                    <div class="right_left_box_design ">
+                                                                                                                        <span class="profile-company-name ">
+                                                                                                                            <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
+                                                                                                                        </span>
+                                                                        
+                                        <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;   ?>
+                                                                                                                        <div class="profile-boxProfile-name">
+                                                                                                                            <a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
+                                        <?php
+                                        if (ucfirst(strtolower($recdata[0]['designation']))) {
+                                            echo ucfirst(strtolower($recdata[0]['designation']));
+                                        } else {
+                                            echo "Designation";
+                                        }
+                                        ?></a>
+                                                                                                                        </div>
+                                                                                                                        <ul class=" left_box_menubar">
+                                                                                                                            <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Details" href="javascript:void(0);" onclick="register_profile();"> Details</a>
+                                                                                                                            </li>                                
+                                                                                                                            <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="javascript:void(0);" onclick="register_profile();">Post</a>
+                                                                                                                            </li>
+                                                                                                                            <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" class="padding_less_right" href="javascript:void(0);" onclick="register_profile();">Saved </a>
+                                                                                                                            </li>
+                                                                        
+                                                                                                                        </ul>
+                                                                                                                    </div>
+                                                                                                                </div>-->
+                                    </div>                             
                                 </div>
+
+
 
                                 <div class="custom_footer_left fw">
                                     <div class="fl">
@@ -509,6 +501,25 @@
                                     </div>
 
                                 </div>
+                                <div class="tablate-potrat-add">
+                                    <div class="fw text-center pt10">
+                                        <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                        </script>
+                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    </div>
+                                </div>
+
+
 
 
                             </div>
@@ -1656,7 +1667,7 @@
         </script>
 
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/all_post_login.js?ver=' . time()); ?>"></script>
-     
+
         <script>
 
         </script>
