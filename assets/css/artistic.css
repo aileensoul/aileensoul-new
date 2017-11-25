@@ -3916,11 +3916,11 @@ div .comment {
 .slider_img .next {
     top: 50%;
 }
-.art_pdf .image_profile {
+/*.art_pdf .image_profile {
     width: 80px;
     height: 80px;
     margin: 22px;
-}
+}*/
 .file-preview-thumbnails #outerContainer #mainContainer {
     min-width: 100% !important;
     width: 100% !important;

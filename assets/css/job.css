@@ -2300,6 +2300,7 @@ margin-bottom: 15px;}
 .job_reg_page_fprm .fresher-error .error{position: absolute;left: 125px;
 }
 
+#jobseeker_regform1 .experience_year + .error{top:60px;}
 /***  media query  ***/
 @media screen and (min-width: 768px) {
     .mob-progressbar.temp {

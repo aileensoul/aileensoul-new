@@ -59,17 +59,23 @@
                     </div>
                 </div>
             </header>
+            <div class="container">
+                <div  style="text-align: center;padding: 175px;">
             <section class="">
                 <div class="main-comtai">
                     <!-- <h1>Terms and Conditions</h1> -->
+                    <h2 style="font-size: 50px;color: #ffffff;padding-bottom: 40px;">About Us</h2>
+                    <p class="" style="font-size: 30px;color: #ffffff;">We provide platform & opportunities to every person in the world to make their career.</p>
                 </div>
             </section>
+            </div>
+            </div>
         </div>
             <section class="middle-main">
                 <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">what Is Aileensoul</h1>
+                            <h1 class="pb20">What is Aileensoul</h1>
                         </div>
                         <div class="about-content">
                             Aileensoul is dedicated purely towards providing relentless and free platform to everyone. We provide a diversified platform for every kind of person. You can hire, recruit, and find a job of your preference in your required field. You can also find freelancing work from our site. Aileensoul targets every kind of population be it a person from artistic field or a person working in a contemporary setup. Beginning from hiring a housemaid to hiring an employ for your business, Aileensoul has it all. Any person looking for any kind of job or wants to showcase his/her artistic talent are free to create their profile. We want the gap that exists between the employer and employee to be fulfilled and hence creating a vast platform for employment as well as different services. 
@@ -88,7 +94,7 @@
                     <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">Mission</h1>
+                            <h1 class="pb20">Our Mission</h1>
                         </div>
                         <div class="about-content">
                             Career is the most important aspect in every person's life and we want to add value to the society by providing a platform to each and every person in the world & help them grow their career.
@@ -113,13 +119,13 @@
                         </div>
                        <div class="about-content">
                            Coming together is a beginning, staying together is progress, and working together is success.<br>
-                            <h6 class="fr" style="margin-right: 150px;">-Henry Ford </h6>
+                    -Henry Ford 
                         </div>
                         <div class="all-tem">
                            <ul class="">
                             <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/PrashantDadhania.jpg">
+                                    <img src="assets/img/NishaRaj.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Nisha Raj</h4>
@@ -129,7 +135,7 @@
 
                              <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/yatinbelani.jpg">
+                                    <img src="assets/img/YatinBelani.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Yatin Belani</h4>
@@ -149,7 +155,7 @@
 
                              <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/himanshuSadadiya.jpg">
+                                    <img src="assets/img/himanshuSadadiya.jpeg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Himanshu Sadadiya</h4>
@@ -209,7 +215,7 @@
 
                                 <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/jay.jpg">
+                                    <img src="assets/img/JayPatel.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Jay Patel</h4>
@@ -219,7 +225,7 @@
 
                                 <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/Prashant Dadhania.jpg">
+                                    <img src="assets/img/PallaviPanalia.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Pallavi Panaliya</h4>
@@ -235,7 +241,7 @@
                               <ul class="">
                             <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/dhaval.jpg">
+                                    <img src="assets/img/Dhavalshah.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Dhaval Shah</h4>
@@ -259,7 +265,7 @@
                           <ul class="Main-im">
                             <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/DhavalShah.jpg">
+                                    <img src="assets/img/ShahDhaval.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Dhaval Shah</h4>

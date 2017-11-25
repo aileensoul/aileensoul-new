@@ -1605,6 +1605,7 @@ body.cover{padding-bottom:60px;}
 .no-login .modal .forgot_password .form-control.error{border:none; border-bottom:1px solid #ff000;}
 #onload-Modal .modal-dialog button{top: 30px !important;right: 0px !important;background: none !important;border: none !important;}
 
+
 /*about us page design*/
 .all-tem{width: 100%;float: left;text-align: center;}
 .img-custom{width:24%;margin-bottom: 20px;list-style-type: none; display: inline-block;}
@@ -1612,13 +1613,18 @@ body.cover{padding-bottom:60px;}
 .team-1 img{width: 100%}
 .text-custom{text-align: center;}
 .Main-im .team-1{height: 250px;width: 250px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;}
-.about-us .terms-con-cus{background-image: url("../../assets/img/1img.jpg");background-repeat: no-repeat;background-position: center;width: 100%;}
-.about-us .main-comtai{height: 400px;}
+.about-us .terms-con-cus{background-image: url("../../assets/img/about10.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: 100%}
+/*.about-us .main-comtai{height: 600px;}*/
 .about-us .bg-none{background: none !important;}
 .about-us .overlaay{background: rgba(0,0,0,0.7);padding: 15px 0px;}
 .about-us header{padding: 0px;}
 .about-us .text-custom h4{margin-bottom: 0px;}
+.about-us .titlea h1{text-transform: none;color: #5c5c5c!important;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color:#5c5c5c;}
 /*complete about us*/
+
+
 
 /***  media query  ***/
 @media screen and (min-height: 540px){
