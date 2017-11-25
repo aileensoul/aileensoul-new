@@ -1120,7 +1120,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div>';
 
         $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
-        $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name,post_files_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if (count($businessmultiimage) == 1) {
 
@@ -1162,9 +1162,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                 if (IMAGEPATHFROM == 'upload') {
                     $return_html .= '<div>';
                     if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
-                        $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
-                        $return_html .= '<video width = "100%" height = "350" controls>';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
                     }
                     $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
                     //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -1176,9 +1176,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     $return_html .= '<div>';
                     if ($info) {
-                        $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
-                        $return_html .= '<video width = "100%" height = "350" controls>';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
                     }
                     $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
                     //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -1306,8 +1306,31 @@ Your browser does not support the audio tag.
 </a>
 </li>
 </ul>
-<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">
-<li>
+<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">';
+
+$contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
+   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    //echo "<pre>"; print_r($postformat); die();
+                    if($postformat[0]['post_format'] == 'video'){
+                    $return_html .= '<li id="viewvideouser'.$row['business_profile_post_id'].'">';
+
+                    $contition_array = array('post_id' => $row['business_profile_post_id']);
+   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata); 
+
+                    if($user_data > 0){
+
+                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+
+                    $return_html .= $user_data . ' '. 'Views'; 
+
+                    $return_html .= '</span></div></li>';
+
+                      }
+
+                   }
+
+$return_html .= '<li>
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
@@ -9162,7 +9185,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div>';
 
                 $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
-                $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name,post_files_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 if (count($businessmultiimage) == 1) {
 
@@ -9203,7 +9226,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
 
                         $return_html .= '<div>
-<video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" controls playsinline webkit-playsinline>
+<video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls playsinline webkit-playsinline>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
 Your browser does not support the video tag.
 </video>
@@ -9331,8 +9354,31 @@ Your browser does not support the audio tag.
 </a>
 </li>
 </ul>
-<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">
-<li>
+<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">';
+
+$contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
+   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    //echo "<pre>"; print_r($postformat); die();
+                    if($postformat[0]['post_format'] == 'video'){
+                    $return_html .= '<li id="viewvideouser'.$row['business_profile_post_id'].'">';
+
+                    $contition_array = array('post_id' => $row['business_profile_post_id']);
+   $userdata = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata); 
+
+                    if($user_data > 0){
+
+                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+
+                    $return_html .= $user_data . ' '. 'Views'; 
+
+                    $return_html .= '</span></div></li>';
+
+                      }
+
+                   }
+
+$return_html .= '<li>
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
@@ -10470,7 +10516,7 @@ Your browser does not support the audio tag.
             foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
                 $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" target="_blank"><div class = "pdf_img">';
-                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '" style = "height: 50%; width: 50%;">';
+                $fetch_pdf .= '<img src = "' . base_url('assets/images/PDF.jpg') . '">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -10776,7 +10822,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div class = "post-design-mid col-md-12 padding_adust" >
 <div>';
                 $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
-                $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name,post_files_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 if (count($businessmultiimage) == 1) {
 
@@ -10818,9 +10864,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         if (IMAGEPATHFROM == 'upload') {
                             $return_html .= '<div>';
                             if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
-                                $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                             } else {
-                                $return_html .= '<video width = "100%" height = "350" controls>';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
                             }
 
                             $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
@@ -10833,9 +10879,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                             $filename = $this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name'];
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) {
-                                $return_html .= '<video width = "100%" height = "350" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                             } else {
-                                $return_html .= '<video width = "100%" height = "350" controls>';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
                             }
                             $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
                             $return_html .= 'Your browser does not support the video tag.';
@@ -10965,8 +11011,30 @@ Your browser does not support the audio tag.
 </a>
 </li>
 </ul>
-<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">
-<li>
+<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">';
+$contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
+   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    //echo "<pre>"; print_r($postformat); die();
+                    if($postformat[0]['post_format'] == 'video'){
+                    $return_html .= '<li id="viewvideouser'.$row['business_profile_post_id'].'">';
+
+                    $contition_array = array('post_id' => $row['business_profile_post_id']);
+   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata); 
+
+                    if($user_data > 0){
+
+                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+
+                    $return_html .= $user_data . ' '. 'Views'; 
+
+                    $return_html .= '</span></div></li>';
+
+                      }
+
+                   }
+
+$return_html .= '<li>
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
@@ -11420,7 +11488,9 @@ Your browser does not support the audio tag.
                 redirect('business-profile/image', refresh);
             }
         } else {
-            redirect('business-profile/business-information-update', refresh);
+            //redirect('business-profile/business-information-update', refresh);
+             redirect('business-profile/business-information', refresh);
+
         }
 
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
@@ -11501,5 +11571,48 @@ Your browser does not support the audio tag.
         $send_email = $this->email_model->test_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
         //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
+
+
+
+//video show user count start
+
+public function showuser(){
+
+    $userid = $this->session->userdata('aileenuser');
+    $file_id = $_POST['file_id'];
+    $post_id = $_POST['post_id']; 
+
+   $contition_array = array('business_profile_post_id' => $post_id);
+   $postuploaduid = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'user_id,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+   //echo "<pre>"; print_r($postuploaduid); die();
+   $contition_array = array('post_files_id' => $file_id, 'user_id' => $userid, 'post_id' => $post_id);
+   $existvideouser = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+         if($userid ==  $postuploaduid[0]['user_id'] || $userid ==  $postuploaduid[0]['posted_user_id']){  }else{  
+            if(!$existvideouser){
+
+                $data = array(
+                            'post_files_id' => $file_id,
+                            'user_id' => $userid,
+                            'created_date' => date('Y-m-d H:i:s', time()),
+                            'post_id' => $post_id,
+                        );                         
+    $insert_id = $this->common->insert_data_getid($data, 'bus_showvideo');
+   }
+}
+
+   $contition_array = array('post_files_id' => $file_id);
+   $userdata = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata);
+
+    $return_html = '';
+
+    $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+    $return_html .= $user_data . ' ' .'Views';
+    $return_html .= '</sapn></div>';
+
+    echo $return_html;
+ }
 
 }

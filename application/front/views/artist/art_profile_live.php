@@ -239,7 +239,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <div class="col-md-8 col-sm-9 col-xs-8 fw-479">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_data();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
                         </div>
                     </div>
                 </div>

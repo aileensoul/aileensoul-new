@@ -498,7 +498,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div>';
 
         $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
-        $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name,post_files_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if (count($businessmultiimage) == 1) {
 
@@ -528,7 +528,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
             } elseif (in_array($ext, $allowesvideo)) {
 
                 $return_html .= '<div>
-<video width = "100%" height = "350" controls>
+<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
 Your browser does not support the video tag.
@@ -658,8 +658,31 @@ Your browser does not support the audio tag.
 </a>
 </li>
 </ul>
-<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">
-<li>
+<ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">';
+
+$contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
+   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    //echo "<pre>"; print_r($postformat); die();
+                    if($postformat[0]['post_format'] == 'video'){
+                    $return_html .= '<li id="viewvideouser'.$row['business_profile_post_id'].'">';
+
+                    $contition_array = array('post_id' => $row['business_profile_post_id']);
+   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $user_data = count($userdata); 
+
+                    if($user_data > 0){
+
+                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+
+                    $return_html .= $user_data . ' '. 'Views'; 
+
+                    $return_html .= '</span></div></li>';
+
+                      }
+
+                   }
+                   
+$return_html .= '<li>
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
