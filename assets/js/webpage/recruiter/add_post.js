@@ -198,7 +198,7 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
 }, "Last date of apply is required.");
 //   validation border is not show in last date end  
 //pattern validation at salary start//
-$.validator.addMethod("pattern", function (value, element, param) {
+$.validator.addMethod("patternn", function (value, element, param) {
     if (this.optional(element)) {
         return true;
     }
@@ -300,19 +300,19 @@ $(document).ready(function () {
 
             },
             minsal: {
-                // required: true,
-                //number:true,
-                maxlength: 11,
-                pattern: /^([0-9]\d*)(\\d+)?$/
-
+//                // required: true,
+//                //number:true,
+               maxlength: 11,
+                patternn: /^([0-9]\d*)(\\d+)?$/
+//
             },
             maxsal: {
                 // required: true,
-                number: true,
+             //   number: true,
+                patternn: /^([0-9]\d*)(\\d+)?$/,
                 min: 0,
                 greaterThan: "#minsal",
-                maxlength: 11,
-                pattern: /^([0-9]\d*)(\\d+)?$/
+                maxlength: 11
             },
 
         },
