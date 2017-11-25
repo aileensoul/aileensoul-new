@@ -27,9 +27,11 @@ $(document).ready(function () {
     //PHONE NUMBER VALIDATION FUNCTION END
 
 
+
     $("#jobseeker_regform1").validate({
 
-        ignore: ":hidden",
+      //  ignore: ":hidden",
+      ignore: [],
 
         rules: {
 
