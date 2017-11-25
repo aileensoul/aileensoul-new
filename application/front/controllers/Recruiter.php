@@ -184,10 +184,10 @@ class Recruiter extends MY_Controller {
                 $insert_id = $this->common->update_data($data, 'recruiter', 'rec_id', $this->data['recdata'][0]['rec_id']);
 
                 if ($insert_id) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
+                 //   $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('recruiter/company-information', refresh);
                 } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                  //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
                 }
             } else {
@@ -207,10 +207,10 @@ class Recruiter extends MY_Controller {
                 $insert_id = $this->common->insert_data_getid($data, 'recruiter');
                 if ($insert_id) {
 
-                    $this->session->set_flashdata('success', 'Basic information inserted successfully');
+                   // $this->session->set_flashdata('success', 'Basic information inserted successfully');
                     redirect('recruiter/company-information', refresh);
                 } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                  //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
                 }
             }
@@ -490,10 +490,10 @@ class Recruiter extends MY_Controller {
                 $insert_id = $this->common->update_data($data, 'recruiter', 'rec_id', $this->data['recdata'][0]['rec_id']);
 
                 if ($insert_id) {
-                    $this->session->set_flashdata('success', 'company information updated successfully');
+                   // $this->session->set_flashdata('success', 'company information updated successfully');
                     redirect('recruiter/home', refresh);
                 } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                   // $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
                 }
             } else {
@@ -515,7 +515,7 @@ class Recruiter extends MY_Controller {
                 );
                 $insert_id = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
                 if ($insert_id) {
-                    $this->session->set_flashdata('success', 'company information inserted successfully');
+                    //$this->session->set_flashdata('success', 'company information inserted successfully');
                     if ($this->data['recdata'][0]['re_step'] == 3) {
                         redirect('recruiter/home', refresh);
                     } else {
