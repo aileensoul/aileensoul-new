@@ -176,9 +176,9 @@ function GetBusVideos() {
             $(".bus_videos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
-            $('.loader').remove();
-            $('video, audio').mediaelementplayer();
+            $('.loader').remove();   
             $('.bus_videos').html(data);
+            $('video, audio').mediaelementplayer();
         }
     });
 }
@@ -193,8 +193,8 @@ function GetBusAudios() {
         },
         success: function (data) {
             $('.loader').remove();
-            $('video, audio').mediaelementplayer();
             $('.bus_audios').html(data);
+            $('video, audio').mediaelementplayer();
         }
     });
 }
