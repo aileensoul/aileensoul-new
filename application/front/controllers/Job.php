@@ -131,11 +131,8 @@ class Job extends MY_Controller {
         $this->form_validation->set_rules('gender', 'Gender', 'required');
         $this->form_validation->set_rules('city', 'City', 'required');
       //  $this->form_validation->set_rules('pincode', 'Pincode', 'required');
-<<<<<<< HEAD
-        $this->form_validation->set_rules('address', 'Address', 'required');
-=======
        // $this->form_validation->set_rules('address', 'Address', 'required');
->>>>>>> 79432f971ab408fa5f842ae06e67a9d81788780f
+
 
         // Language  start   
         $language = $this->input->post('language');
@@ -3377,16 +3374,20 @@ class Job extends MY_Controller {
     public function job_search() {
 
         $searchvalue = $this->uri->segment(1);
-
+       // echo $searchvalue;die();
+        
+        if($searchvalue == 'jobs-jobs'){
+             $this->all_post();
+             return false;
+        }else{
         $skill = explode('jobs', $searchvalue);
-
         $location = explode('in-', $searchvalue);
 
         $search_job = trim($skill[0]);
         $search_job = trim($skill[0], '-');
       //  $search_job = str_replace('-', ' ', $search_job);
         $search_place = $location[1];
-
+        }
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         // search keyword insert into database start
@@ -3416,7 +3417,6 @@ class Job extends MY_Controller {
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('job/job_all_post1', $this->data);
         } else {
-
             $this->load->view('job/job_search_login', $this->data);
         }
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
@@ -6067,6 +6067,29 @@ class Job extends MY_Controller {
             $this->db->update('job_title', $data);
         }
         echo "yes";
+    }
+    
+    
+    public function all_post(){
+        
+        $join_str[0]['table'] = 'recruiter';
+        $join_str[0]['join_table_id'] = 'recruiter.user_id';
+        $join_str[0]['from_table_id'] = 'rec_post.user_id';
+        $join_str[0]['join_type'] = '';
+
+        $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
+        $contition_array = array('status' => '1', 'rec_post.is_delete' => '0');
+        $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+      
+        if ($this->session->userdata('aileenuser')) {
+            //echo "3333";die();
+            $this->load->view('job/all_post', $this->data);
+        } else {
+           // echo "4444";die();
+            $this->load->view('job/all_post_login', $this->data);
+        }
+        
+        
     }
 
 }
