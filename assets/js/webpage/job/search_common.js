@@ -91,17 +91,15 @@ function checkvalue() {
     var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
 
     if (searchkeyword == "" && searchplace == "") {
-        alert(1111);
         return false;
     } else {
-        alert(123);
         if (searchkeyword == "") {
             window.location = base_url + 'jobs-in-' + searchplace;
             return false;
         } else if (searchplace == "") {
-            alert(searchkeyword);
             if(searchkeyword == 'jobs'){
-                window.location = base_url + searchkeyword;
+             
+                window.location = base_url + 'jobs';
             }else{
             window.location = base_url + searchkeyword + '-jobs';
         }
