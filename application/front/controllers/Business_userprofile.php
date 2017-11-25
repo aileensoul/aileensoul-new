@@ -1157,7 +1157,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 redirect('business-profile/image', refresh);
             }
         } else {
-            redirect('business-profile/business-information-update', refresh);
+            redirect('business-profile/business-information', refresh);
         }
 
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END

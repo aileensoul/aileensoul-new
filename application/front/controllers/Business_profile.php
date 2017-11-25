@@ -11488,7 +11488,9 @@ $return_html .= '<li>
                 redirect('business-profile/image', refresh);
             }
         } else {
-            redirect('business-profile/business-information-update', refresh);
+            //redirect('business-profile/business-information-update', refresh);
+             redirect('business-profile/business-information', refresh);
+
         }
 
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
@@ -11587,7 +11589,7 @@ public function showuser(){
    $contition_array = array('post_files_id' => $file_id, 'user_id' => $userid, 'post_id' => $post_id);
    $existvideouser = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // if($userid ==  $postuploaduid[0]['user_id'] || $userid ==  $postuploaduid[0]['posted_user_id']){  }else{  
+         if($userid ==  $postuploaduid[0]['user_id'] || $userid ==  $postuploaduid[0]['posted_user_id']){  }else{  
             if(!$existvideouser){
 
                 $data = array(
@@ -11598,7 +11600,7 @@ public function showuser(){
                         );                         
     $insert_id = $this->common->insert_data_getid($data, 'bus_showvideo');
    }
-//}
+}
 
    $contition_array = array('post_files_id' => $file_id);
    $userdata = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
