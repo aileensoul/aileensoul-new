@@ -771,7 +771,7 @@ textarea:focus::-webkit-input-placeholder
 	left:0;
 	right:0;
 }
-.about-content:after{
+/*.about-content:after{
 	position:absolute;
 	height:1px;
 	width:140px;
@@ -781,7 +781,7 @@ textarea:focus::-webkit-input-placeholder
 	margin:0 auto;
 	left:0;
 	right:0;
-}
+}*/
 .mail-sent{
 	padding-left:0;
 	display:inline-block;
@@ -1605,9 +1605,20 @@ body.cover{padding-bottom:60px;}
 .no-login .modal .forgot_password .form-control.error{border:none; border-bottom:1px solid #ff000;}
 #onload-Modal .modal-dialog button{top: 30px !important;right: 0px !important;background: none !important;border: none !important;}
 
-
-
-
+/*about us page design*/
+.all-tem{width: 100%;float: left;text-align: center;}
+.img-custom{width:24%;margin-bottom: 20px;list-style-type: none; display: inline-block;}
+.team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;}
+.team-1 img{width: 100%}
+.text-custom{text-align: center;}
+.Main-im .team-1{height: 250px;width: 250px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;}
+.about-us .terms-con-cus{background-image: url("../../assets/img/1img.jpg");background-repeat: no-repeat;background-position: center;width: 100%;}
+.about-us .main-comtai{height: 400px;}
+.about-us .bg-none{background: none !important;}
+.about-us .overlaay{background: rgba(0,0,0,0.7);padding: 15px 0px;}
+.about-us header{padding: 0px;}
+.about-us .text-custom h4{margin-bottom: 0px;}
+/*complete about us*/
 
 /***  media query  ***/
 @media screen and (min-height: 540px){
