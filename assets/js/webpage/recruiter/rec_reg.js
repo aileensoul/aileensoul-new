@@ -72,9 +72,9 @@ $(document).ready(function () {
 
             comp_num: {
 
+                number: true,
                 minlength: 8,
-                maxlength: 15,
-                number: true
+                maxlength: 15
             },
             
              comp_profile: {
