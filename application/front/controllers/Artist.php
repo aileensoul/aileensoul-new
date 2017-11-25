@@ -258,10 +258,10 @@ class Artist extends MY_Controller {
             $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
 
             if ($updatdata) {
-                $this->session->set_flashdata('success', 'Basic Information updated successfully');
+                //$this->session->set_flashdata('success', 'Basic Information updated successfully');
                 redirect('artist/artistic-address', refresh);
             } else {
-                $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                //$this->session->flashdata('error', 'Sorry!! Your data not inserted');
                 redirect('artist/artistic-basic-information-insert', refresh);
             }
         } else {
@@ -435,10 +435,10 @@ class Artist extends MY_Controller {
                 }
                 $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
                 if ($updatdata) {
-                    $this->session->set_flashdata('success', 'Address updated successfully');
+                    //$this->session->set_flashdata('success', 'Address updated successfully');
                     redirect('artist/artistic-information', refresh);
                 } else {
-                    $this->session->flashdata('error', 'Your data not inserted');
+                    //$this->session->flashdata('error', 'Your data not inserted');
                     redirect('artist/artistic-address', refresh);
                 }
             }
