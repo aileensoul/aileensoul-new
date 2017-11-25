@@ -197,8 +197,8 @@ class Notification extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
-        $this->data['busienss_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('business_profile_post_id' => $id, 'status' => '1', 'is_delete' => '0');
+        $this->data['busienss_data'] = $busienss_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
 
         $this->load->view('notification/business_post', $this->data);
@@ -255,13 +255,14 @@ class Notification extends MY_Controller {
         $this->load->view('notification/bus_image', $this->data);
     }
 
-    public function ajax_business_home_post() {
+    public function ajax_business_home_post($post_id) {
 // return html
         $userid = $this->session->userdata('aileenuser');
         include ('business_include.php');
         $business_login_slug = $this->data['business_login_slug'];
-        $post_id = $_GET['post_id'];
 
+
+       // $post_id = $this->uri->segment(3);
         $user_name = $this->session->userdata('user_name');
 
         $business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
@@ -280,7 +281,7 @@ class Notification extends MY_Controller {
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
-        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
+        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $return_html = '';
@@ -308,7 +309,10 @@ class Notification extends MY_Controller {
             $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
         }
 
-        $return_html .= '<div id = "removepost' . $post_business_profile_post_id . '">
+    if($row){
+
+
+         $return_html .= '<div id = "removepost' . $post_business_profile_post_id . '">
                         <div class = "col-md-12 col-sm-12 post-design-box">
                             <div class = "post_radius_box">
                                 <div class = "post-design-top col-md-12" >
@@ -954,6 +958,12 @@ $return_html .= '<li>
 </div>
 </div></div>';
 
+}else{
+
+    $return_html = '<div class="art_no_post_avl"><h3>Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('assets/img/bui-no.png') . '></div><div class="art_no_post_text">Sorry,this content is not available at the moment.</div></div></div>';
+        $this->data['no_business_contact_html'] = '<div class="art-img-nn"><div class="art_no_post_img"><img src="' . base_url('assets/img/No_Contact_Request.png') . '"></div><div class="art_no_post_text">No Contacts Available.</div></div>';
+
+}
 
         echo $return_html;
 // return html        

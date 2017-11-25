@@ -33,17 +33,15 @@ function ajax_business_home_post(post_id) {
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "notification/ajax_business_home_post?post_id=" + post_id,
+        //url: base_url + "notification/ajax_business_home_post?post_id=" + post_id,
+        url: base_url + "notification/ajax_business_home_post/" + post_id,
         data: {total_record: $("#total_record").val()},
         dataType: "html",
-        beforeSend: function () {
-            
+        beforeSend: function () {  
         },
         complete: function () {
-//            $('#loader').hide();
         },
-        success: function (data) {
-//            $('.loader').remove();
+        success: function (data) { 
             $('.business-all-post').append(data);
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -52,7 +50,7 @@ function ajax_business_home_post(post_id) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
-            check_no_post_data();
+           // check_no_post_data();
             $('video, audio').mediaelementplayer();
         }
     });
