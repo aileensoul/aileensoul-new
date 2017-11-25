@@ -1977,7 +1977,8 @@ class Job extends MY_Controller {
         $id = $_POST['post_id'];
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
-
+           
+        
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
@@ -2059,7 +2060,7 @@ class Job extends MY_Controller {
                 $applypost = 'Applied';
             }
             echo $applypost;
-            die();
+         
         }
     }
 
@@ -3376,7 +3377,7 @@ class Job extends MY_Controller {
         $searchvalue = $this->uri->segment(1);
        // echo $searchvalue;die();
         
-        if($searchvalue == 'jobs-jobs'){
+        if($searchvalue == 'jobs'){
              $this->all_post();
              return false;
         }else{

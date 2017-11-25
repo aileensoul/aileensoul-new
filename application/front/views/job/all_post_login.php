@@ -374,7 +374,7 @@
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -1506,7 +1506,7 @@
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a tabindex="12" id ="postid" onClick="login_profile_apply()" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
