@@ -1977,17 +1977,16 @@ class Job extends MY_Controller {
         $id = $_POST['post_id'];
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
-           
         
         $userid = $this->session->userdata('aileenuser');
-
-        $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
-        $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id,count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+        $contition_array = array('post_id' => $id, 'user_id' => $userid, 'job_delete' => '0');
+        $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $app_id = $userdata[0]['app_id'];
 
-        if ($userdata[0]['total'] != 0) {
-
+        if ($userdata) {
+            
             $contition_array = array('job_delete' => '1');
             $jobdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2023,7 +2022,8 @@ class Job extends MY_Controller {
             }
             echo $applypost;
         } else {
-
+            
+           
             $data = array(
                 'post_id' => $id,
                 'user_id' => $userid,
@@ -6080,13 +6080,13 @@ class Job extends MY_Controller {
 
         $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
         $contition_array = array('status' => '1', 'rec_post.is_delete' => '0');
-        $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
       
+       
+        
         if ($this->session->userdata('aileenuser')) {
-            //echo "3333";die();
             $this->load->view('job/all_post', $this->data);
         } else {
-           // echo "4444";die();
             $this->load->view('job/all_post_login', $this->data);
         }
         
