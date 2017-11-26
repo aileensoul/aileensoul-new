@@ -271,7 +271,6 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <h1><a title="Business Profile" href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
                                                 <p>Grow your business network.</p>
                                                 <div class="btns">
-                                                    <a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
                                                     <?php if ($busdata[0]['business_step'] != 4) { ?>
                                                         <a title="Register" class="btn-1" id="business-register-btn" href="<?php echo base_url('business-profile'); ?>">Register</a> 
                                                     <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
@@ -283,6 +282,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <a title="Take me in" class="btn-4" id="business-take-btn" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
 
                                                     <?php } ?>
+													<a title="How it works" data-target="#bus-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -339,7 +339,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <h1><a title="Recruiter Profile" href="<?php echo base_url('recruiter'); ?>">Recruiter Profile</a></h1>
                                                 <p>Hire quality employees here.</p>
                                                 <div class="btns">
-                                                    <a title="How it works" data-target="#rec-popup" data-toggle="modal" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
+                                                    
                                                     
 
                                                     <?php if ($recrdata[0]['re_step'] != 3) { ?>
@@ -355,6 +355,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                         <a title="Take me in" class="btn-4" id="rec-take-btn" href="<?php echo base_url('recruiter'); ?>">Take me in</a>
 
                                                     <?php } ?>
+													<a title="How it works" data-target="#rec-popup" data-toggle="modal" href="javascript:;" class="pl20 ml20 hew">How it works?</a>
 
                                                 </div>
                                             </div>

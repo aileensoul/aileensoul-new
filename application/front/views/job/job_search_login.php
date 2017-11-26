@@ -418,7 +418,7 @@
       </div>
       <!-- Model Popup Close -->
       
-<?php echo $login_footer ?>        
+<?php //echo  $login_footer ?>        
 <?php echo $footer;  ?>
 
 <!--footer>        
