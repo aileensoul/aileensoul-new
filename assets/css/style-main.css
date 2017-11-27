@@ -1609,7 +1609,7 @@ body.cover{padding-bottom:60px;}
 /*about us page design*/
 .all-tem{width: 100%;float: left;text-align: center;}
 .img-custom{width:24%;margin-bottom: 20px;list-style-type: none; display: inline-block;}
-.team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;}
+.team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;box-shadow: 0px 0px 10px -1px rgba(92,92,92,1)}
 .team-1 img{width: 100%}
 .text-custom{text-align: center;}
 .Main-im .team-1{height: 250px;width: 250px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;}
