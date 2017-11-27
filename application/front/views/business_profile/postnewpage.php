@@ -621,7 +621,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             </div>
                                             <!-- all fourcomment comment end-->
                                             <div  id="<?php echo "threecomment" . $busienss_data[0]['business_profile_post_id']; ?>" style="display:block">
-                                                <div class="<?php echo 'insertcomment' . $busienss_data[0]['business_profile_post_id']; ?>">
+                                                <div class="hidebottomborder <?php echo 'insertcomment' . $busienss_data[0]['business_profile_post_id']; ?>">
                                                     <?php
                                                     $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'status' => '1');
                                                     $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
