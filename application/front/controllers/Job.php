@@ -3642,9 +3642,9 @@ class Job extends MY_Controller {
 
 //                    $return_html .= '<a href="' . base_url('job/post-' . $post['post_id'].'/'. $text.'-vacancy-in-'.$cityname) . '" title="' . $cache_time . '" class=" post_title">';
                  if ($cache_time) {
-                    $post_name .= $cache_time;
+                    $post_name = $cache_time;
                 } else {
-                    $post_name .= $post['post_name'];
+                    $post_name = $post['post_name'];
                 }
                 $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="'. $post_name .'">';
                
@@ -3972,9 +3972,9 @@ class Job extends MY_Controller {
                 }
 
                 if ($cache_time) {
-                    $post_name .= $cache_time;
+                    $post_name = $cache_time;
                 } else {
-                    $post_name .= $post['post_name'];
+                    $post_name = $post['post_name'];
                 }
                 $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
                 $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4280,9 +4280,9 @@ class Job extends MY_Controller {
                 }
 
                 if ($cache_time) {
-                    $post_name .= $cache_time;
+                    $post_name = $cache_time;
                 } else {
-                    $post_name .= $post['post_name'];
+                    $post_name = $post['post_name'];
                 }
                 
                 $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
@@ -4694,9 +4694,9 @@ class Job extends MY_Controller {
                 }
 
                  if ($cache_time) {
-                    $post_name .= $cache_time;
+                    $post_name = $cache_time;
                 } else {
-                    $post_name .= $post['post_name'];
+                    $post_name = $post['post_name'];
                 }
                 
                 $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
