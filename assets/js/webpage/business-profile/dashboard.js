@@ -176,7 +176,7 @@ function GetBusVideos() {
             $(".bus_videos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
-            $('.loader').remove();   
+            $('.loader').remove();
             $('.bus_videos').html(data);
             $('video, audio').mediaelementplayer();
         }
@@ -1375,7 +1375,11 @@ function followuser_two(clicked_id)
             $('.' + 'fr' + clicked_id).html(data.follow_html);
             $('#' + 'countfollow').html('(' + data.following_count + ')');
             $('#' + 'countfollower').html('(' + data.follower_count + ')');
-            //$('.' + 'fr' + clicked_id).html(data);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -2073,37 +2077,36 @@ function check_no_post_data() {
 
 
 
- // video user show list
+// video user show list
 
- function count_videouser(file_id, post_id){ 
+function count_videouser(file_id, post_id) {
 
-  var vid = document.getElementById("show_video" + file_id);
+    var vid = document.getElementById("show_video" + file_id);
 
-      if (vid.paused) {
-         vid.play(); 
-          $.ajax({
+    if (vid.paused) {
+        vid.play();
+        $.ajax({
             type: 'POST',
             url: base_url + "business_profile/showuser",
             data: 'post_id=' + post_id + '&file_id=' + file_id,
             dataType: "html",
-            success: function (data) { 
-              $('#' + 'viewvideouser' + post_id).html(data);       
+            success: function (data) {
+                $('#' + 'viewvideouser' + post_id).html(data);
             }
         });
-       }
-    else {
-      vid.pause(); 
+    } else {
+        vid.pause();
     }
- }
+}
 
-function playtime(file_id, post_id){
-               $.ajax({
-                        type: 'POST',
-                        url: base_url + "business_profile/showuser",
-                        data: 'post_id=' + post_id + '&file_id=' + file_id,
-                        dataType: "html",
-                        success: function (data) { 
-                          $('#' + 'viewvideouser' + post_id).html(data);       
-                        }
-                    });
+function playtime(file_id, post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/showuser",
+        data: 'post_id=' + post_id + '&file_id=' + file_id,
+        dataType: "html",
+        success: function (data) {
+            $('#' + 'viewvideouser' + post_id).html(data);
+        }
+    });
 }

@@ -155,15 +155,17 @@ echo form_open('profile/forgot_password', $form_attribute);
                 <div class="container pt-20">
                     <div class="row">
 
-                        <div class="col-md-6 col-sm-8 pull-right col-xs-12">
+                        <div class="col-md-8 col-sm-8 pull-right col-xs-12">
                             <ul>
                                 <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
+                                 <li><a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a>|</li>
+                        <li><a tabindex="15" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>|</li>
                                 <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a>|</li>
                                 <li><a href="<?php echo base_url('blog'); ?>">Blog</a>|</li>
                                 <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
                             </ul>
                         </div>
-                        <div class="col-md-6 col-sm-4">
+                        <div class="col-md-4 col-sm-4">
                             © 2017 | by Aileensoul
                         </div>
                     </div>

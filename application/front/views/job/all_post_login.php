@@ -362,10 +362,12 @@
         }
         /*second*/
         .no-login .left_side_posrt label{margin-bottom: 6px;}
-        .no-login .left_side_posrt  a{color: #5c5c5c !important;}
+        .no-login .left_side_posrt  a {color: #5c5c5c;}
         .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
+        .job_active{color: #1b8ab9 !important;}
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 180px;border: none;}
+
     </style>
     <body class="page-container-bg-solid page-boxed no-login freeh3">
 
@@ -396,23 +398,23 @@
                                         <div class="profile-boxProfileCard-cover"> 
                                             <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" >Ahmedabad Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" <?php if ($_GET['city'] == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" >Bengaluru Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" <?php if ($_GET['city'] == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw"> 
-                                                <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" >Chennai Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" <?php if ($_GET['city'] == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" >Delhi Jobs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" <?php if ($_GET['city'] == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
                                             </label>
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" >Hyderabad JObs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" <?php if ($_GET['city'] == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
                                             </label>
 
                                             <label for="City" class="lbpos fw">
-                                                <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" >Mumbai JObs</a>
+                                                <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" <?php if ($_GET['city'] == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
                                             </label>
 
 
@@ -426,11 +428,11 @@
                                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                             if ($info && $recdata[0]['profile_background'] != '') {
                                                 ?>
-                                                                                                                                                                <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                                                                                                                                                                        <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
                                                 <?php
                                             } else {
                                                 ?>
-                                                                                                                                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
+                                                                                                                                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
                                                 <?php
                                             }
                                             ?>
@@ -447,7 +449,7 @@
                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                         if ($recdata[0]['recruiter_user_image'] != '' && $info) {
                                             ?>
-                                                                                                                                                            <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                                                                                                                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
                                             <?php
                                         } else {
 
@@ -458,11 +460,11 @@
                                             $b = $recdata[0]['rec_lastname'];
                                             $acr1 = substr($b, 0, 1);
                                             ?>
-                                                                                                                                                            <div class="post-img-profile">
+                                                                                                                                                                    <div class="post-img-profile">
                                             <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
-                                                                                                    
-                                                                                                                                                            </div>
-                                                                                                    
+                                                                                                            
+                                                                                                                                                                    </div>
+                                                                                                            
                                             <?php
                                         }
                                         ?>
@@ -546,11 +548,17 @@
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>
-                                        All Jobs
+                                        <?php if ($_GET['city']) { ?> All Jobs of
+                                            <?php echo $_GET['city'];
+                                        } else {
+                                            ?>
+                                            All Jobs
+<?php } ?>
                                     </h3>
 
                                     <div class="contact-frnd-post">
                                         <?php
+                                        if($postdata){
                                         foreach ($postdata as $post) {
                                             ?>
                                             <div class="job-contact-frnd ">
@@ -572,10 +580,25 @@
                                                                         $cache_time = $post['post_name'];
                                                                     }
                                                                     ?>
+                                                                    <?php
+                                                                    if ($cache_time != '') {
+                                                                        $text = strtolower($this->common->clean($cache_time1));
+                                                                    } else {
+                                                                        $text = '';
+                                                                    }
+                                                                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                                                                    if ($cityname != '') {
+                                                                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                                                                    } else {
+                                                                        $cityname = '';
+                                                                    }
+                                                                    ?>
 
                                                                     <li class="">
-                                                                        <a class="post_title" href="javascript:void(0)" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
-                                                                        </a>     
+                                                                        <div class="post_title">
+                                                                        <a class="" href="<?php echo base_url('recruiter/jobpost/' . $text .$cityname. '-' . $post['user_id'] . '-' . $post['post_id']); ?>" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
+                                                                        </a>  
+                                                                        </div>
                                                                     </li>
 
                                                                     <li>  
@@ -596,7 +619,7 @@
                                                                                         echo $cityname . ', ';
                                                                                     }
                                                                                     ?>
-                                                                                    <?php echo $countryname; ?> 
+        <?php echo $countryname; ?> 
                                                                                 </p>
 
                                                                             </div>
@@ -669,9 +692,9 @@
                                                                 <li><b>Interview Process</b><span>
 
 
-                                                                        <?php if ($post['interview_process'] != '') { ?>
+                                                                            <?php if ($post['interview_process'] != '') { ?>
                                                                             <pre>
-                                                                                <?php echo $this->common->make_links($post['interview_process']); ?></pre>
+                                                                            <?php echo $this->common->make_links($post['interview_process']); ?></pre>
                                                                             <?php
                                                                         } else {
                                                                             echo PROFILENA;
@@ -730,7 +753,7 @@
 
 
 
-                                                                <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
+    <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
 
                                                                     <li> <b>Education Required</b> <span> 
 
@@ -780,16 +803,16 @@
                                                                     ?>
 
                                                                     <li><b>Education Required</b><span>
-                                                                            <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                         </span>
                                                                     </li>
                                                                 <?php }
                                                                 ?>                   <li><b>Employment Type</b><span>
 
 
-                                                                        <?php if ($post['emp_type'] != '') { ?>
+                                                                            <?php if ($post['emp_type'] != '') { ?>
                                                                             <pre>
-                                                                                <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?></pre>
+                                                                            <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?></pre>
                                                                             <?php
                                                                         } else {
                                                                             echo PROFILENA;
@@ -802,9 +825,9 @@
                                                                 <li><b>Company Profile</b><span>
 
 
-                                                                        <?php if ($post['re_comp_profile'] != '') { ?>
+                                                                            <?php if ($post['re_comp_profile'] != '') { ?>
                                                                             <pre>
-                                                                                <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
+                                                                            <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
                                                                             <?php
                                                                         } else {
                                                                             echo PROFILENA;
@@ -850,6 +873,17 @@
                                             </div>
                                             <?php
                                         }
+                                        } else { ?>
+                                            
+                                        <div class="text-center rio">
+                     <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
+                     <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn't find what you were looking for.</p>
+                     <ul>
+                        <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.</li>
+                     </ul>
+                  </div>
+                                            
+                                     <?php   }
                                         ?>
                                         <!--.........AJAX DATA END......-->           
                                    <!--<div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>-->
@@ -875,7 +909,7 @@
                                 </div>
                             </div>
                             <!--recommen candidate start-->
-                            <?php if (count($recommandedpost) > 0) { ?>
+<?php if (count($recommandedpost) > 0) { ?>
                                 <div class="common-form">
                                     <div class="job-saved-box">
                                         <h3>
@@ -900,6 +934,7 @@
                                                                                 </li>
 
                                                                                 <li class="">
+                                                                                    
                                                                                     <a class="post_title" href="javascript:void(0)" title="Post Title">
                                                                                         <?php
                                                                                         $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
@@ -929,7 +964,7 @@
                                                                                                     echo $cityname . ', ';
                                                                                                 }
                                                                                                 ?>
-                                                                                                <?php echo $countryname; ?> 
+            <?php echo $countryname; ?> 
                                                                                             </p>
 
                                                                                         </div>
@@ -1002,9 +1037,9 @@
                                                                             <li><b>Interview Process</b><span>
 
 
-                                                                                    <?php if ($post['interview_process'] != '') { ?>
+                                                                                        <?php if ($post['interview_process'] != '') { ?>
                                                                                         <pre>
-                                                                                            <?php echo $this->common->make_links($post['interview_process']); ?></pre>
+                                                                                        <?php echo $this->common->make_links($post['interview_process']); ?></pre>
                                                                                         <?php
                                                                                     } else {
                                                                                         echo PROFILENA;
@@ -1063,7 +1098,7 @@
 
 
 
-                                                                            <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
+        <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
 
                                                                                 <li> <b>Education Required</b> <span> 
 
@@ -1113,16 +1148,16 @@
                                                                                 ?>
 
                                                                                 <li><b>Education Required</b><span>
-                                                                                        <?php echo PROFILENA; ?>
+            <?php echo PROFILENA; ?>
                                                                                     </span>
                                                                                 </li>
                                                                             <?php }
                                                                             ?>                   <li><b>Employment Type</b><span>
 
 
-                                                                                    <?php if ($post['emp_type'] != '') { ?>
+                                                                                        <?php if ($post['emp_type'] != '') { ?>
                                                                                         <pre>
-                                                                                            <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?></pre>
+                                                                                        <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?></pre>
                                                                                         <?php
                                                                                     } else {
                                                                                         echo PROFILENA;
@@ -1135,9 +1170,9 @@
                                                                             <li><b>Company Profile</b><span>
 
 
-                                                                                    <?php if ($post['re_comp_profile'] != '') { ?>
+                                                                                        <?php if ($post['re_comp_profile'] != '') { ?>
                                                                                         <pre>
-                                                                                            <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
+                                                                                        <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
                                                                                         <?php
                                                                                     } else {
                                                                                         echo PROFILENA;
@@ -1192,7 +1227,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } ?>
+<?php } ?>
                             <!--recommen candidate end-->
                         </div>  
 
@@ -1254,7 +1289,7 @@
         <!-- Model Popup Close -->
 
         <!--footer>        
-        <?php //echo $footer;   ?>
+<?php //echo $footer;     ?>
         </footer-->
 
         <!-- Login  -->
@@ -1666,7 +1701,7 @@
         } else {
             ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
+<?php } ?>
 
 
 

@@ -1609,12 +1609,12 @@ body.cover{padding-bottom:60px;}
 
 /*about us page design*/
 .all-tem{width: 100%;float: left;text-align: center;}
-.img-custom{width:24%;margin-bottom: 20px;list-style-type: none; display: inline-block;}
+.img-custom{width:24%;margin-bottom: 60px;list-style-type: none; display: inline-block;}
 .team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;box-shadow: 0px 0px 10px -1px rgba(92,92,92,1)}
 .team-1 img{width: 100%}
 .text-custom{text-align: center;}
 .Main-im .team-1{height: 250px;width: 250px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;}
-.about-us .terms-con-cus{background-image: url("../../assets/img/about10.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: 100%}
+.about-us .terms-con-cus{background-image: url("../../assets/img/AboutHeader.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: 100%}
 /*.about-us .main-comtai{height: 600px;}*/
 .about-us .bg-none{background: none !important;}
 .about-us .overlaay{background: rgba(0,0,0,0.7);padding: 15px 0px;}
@@ -1627,7 +1627,7 @@ body.cover{padding-bottom:60px;}
 .about-us .btn-right .btn2:hover{color: #fff;}
 .about-us .btn-right .btn3:hover{color: #000;}
 /*complete about us*/
-
+.custom-tp{line-height: 3;}
 
 
 /***  media query  ***/

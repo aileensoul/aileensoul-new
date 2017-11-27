@@ -555,7 +555,7 @@
                                            ?>
                
               <li class="">
-              <a class="post_title" href="javascript:void(0)" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
+              <a class="post_title" href="javascript:void(0)" onclick="register_profile();" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
                 </a>     
               </li>
      
