@@ -116,6 +116,7 @@ function freelancerwork_home(pagenum)
                     type: 'POST',
                     url:  base_url + "freelancer/apply_insert",
                     data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
+                      dataType: 'json',
                     success: function (data) {
                         $('.savedpost' + abc).hide();
                         $('.applypost' + abc).html(data.status);
