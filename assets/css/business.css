@@ -4491,7 +4491,7 @@ body.reg-form{background: #fff}
 .profile-boxProfileCard .mejs__inner .mejs__poster{height: 110px !important;}
 /***  end all edit profile form  ***/
 .business_data .bus_pdf .image_profile .pdf_img image{height: 100%!important;width: 100%!important;}
-
+.business_data .art_audios .image_profile .mejs__audio{margin-top: 60px;}
 
 /***  media query  ***/
 
