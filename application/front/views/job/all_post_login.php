@@ -362,7 +362,7 @@
         }
         /*second*/
         .no-login .left_side_posrt  label {color: #5c5c5c !important;}
-        .no-login .left_side_posrt .lbpos input{width: 0% !important; }
+        /*.no-login .left_side_posrt .lbpos input{width: 0% !important; }*/
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 180px;border: none;}
     </style>
     <body class="page-container-bg-solid page-boxed no-login freeh3">
@@ -400,28 +400,28 @@
                                             <input type="checkbox" name="Mumbai" value="ON" /> Mumbai
                                             <input type="checkbox" name="pune" value="ON" /> Pune
  -->                                            <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" name="radio" value="Ahmedabad" checked="" type="checkbox">
+                                                <input id="fresher"  tabindex="1" name="radio" value="Ahmedabad" checked="" type="checkbox">
                                                 Ahmedabad Jobs&nbsp;&nbsp;
                                                 </label>
                                                 <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" name="radio" value="Bengaluru"  type="checkbox">
+                                                <input id="fresher" class="cus-input-city" tabindex="2" name="radio" value="Bengaluru"  type="checkbox">
                                                 Bengaluru Jobs&nbsp;&nbsp;
                                                 </label>
                                                 <label for="Fresher" class="lbpos fw"> 
-                                                <input id="fresher" tabindex="1" name="radio" value="Chennai" type="checkbox" >
+                                                <input id="fresher" class="cus-input-city" tabindex="1" name="radio" value="Chennai" type="checkbox" >
                                                 Chennai Jobs&nbsp;&nbsp;
                                                 </label>
                                                 <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" name="radio" value="Delhi" type="checkbox">
+                                                <input id="fresher" tabindex="1" class="cus-input-city" name="radio" value="Delhi" type="checkbox">
                                                 Delhi Jobs&nbsp;&nbsp;
                                                 </label>
                                                 <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" name="radio" value="Hydrabad" type="checkbox" >
+                                                <input id="fresher" tabindex="1" class="cus-input-city" name="radio" value="Hydrabad" type="checkbox" >
                                                 Hydrabad JObs&nbsp;&nbsp;
                                                 </label>
                                                 </label>
                                                 <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" name="radio" value="Mumbai" type="checkbox" >
+                                                <input id="fresher" tabindex="1" name="radio" class="cus-input-city" value="Mumbai" type="checkbox" >
                                                 Mumbai JObs&nbsp;&nbsp;
                                                 </label>
 
