@@ -684,9 +684,6 @@
     {  
 
       var post_id = "<?php echo $postid; ?>";
-       // alert(post_id);
-
-     //alert(clicked_id);
       var post_id = "<?php echo $postid; ?>";
         //alert(post_id);
 
@@ -694,11 +691,16 @@
             type: 'POST',
             url: '<?php echo base_url() . "recruiter/invite_user" ?>',
             data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
+            dataType: 'json',
             success: function (data) { //alert(data);
                 $('#' + 'invited' + clicked_id).html(data).addClass('invited').removeClass('invite_border').removeAttr("onclick");
-
                $('#' + 'invited' + clicked_id).css('cursor', 'default');
-
+                     if (data.notification.notification_count != 0) {
+                         alert(123456);
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count,to_id);
+            }
 
               //    $('.biderror .mes').html("<div class='pop_content'>Candidate invite successfully.");
               // $('#bidmodal').modal('show');
