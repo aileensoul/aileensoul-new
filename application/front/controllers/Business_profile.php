@@ -2494,6 +2494,7 @@ $return_html .= '<li>
                         array(
                             "follow" => $follow,
                             "count" => $datacount,
+                            "status" => 'success',
                 ));
             }
         }

@@ -135,7 +135,7 @@
 
     $(document).ready(function () {
         // MAIN NOTIFICATION
-        waitForMsg();
+        //waitForMsg();
         $menuLeft = $('.pushmenu-left');
         $nav_list = $('#nav_list');
         $nav_list.click(function () {
@@ -155,44 +155,41 @@
 
     });
 
-    function addmsg(type, msg) {
-        if (msg == 0) {
-            $("#notification_count").html('');
-            $('#notification_count').css({
-                "background-color": "",
-                "padding": "0px"
-            });
-            $('#notificationLink').removeClass('notification_available');
-            document.getElementById('notification_count').style.display = 'none';
-        } else {
-            $('#notification_count').html(msg);
-            $('#notification_count').css({
-                "background-color": "#FF4500",
-                "padding": "5px 6px"
-            });
-            $('#notificationLink').addClass('notification_available');
-            //   document.getElementById('message_count').style.display = "none";
-            document.getElementById('notification_count').style.display = 'block';
-        }
-    }
+//    function addmsg(type, msg) {
+//        if (msg == 0) {
+//            $("#notification_count").html('');
+//            $('#notification_count').css({
+//                "background-color": "",
+//                "padding": "0px"
+//            });
+//            $('#notificationLink').removeClass('notification_available');
+//            document.getElementById('notification_count').style.display = 'none';
+//        } else {
+//            $('#notification_count').html(msg);
+//            $('#notification_count').css({
+//                "background-color": "#FF4500",
+//                "padding": "5px 6px"
+//            });
+//            $('#notificationLink').addClass('notification_available');
+//            document.getElementById('notification_count').style.display = 'block';
+//        }
+//    }
 
-    function waitForMsg() {
-        $.ajax({
-            type: "GET",
-            url: "<?php echo base_url(); ?>notification/select_notification",
-            //async: true,
-            //cache: false,
-            timeout: 50000,
-
-            success: function (data) {
-                addmsg("new", data);
-                setTimeout(
-                        waitForMsg,
-                        10000
-                        );
-            },
-        });
-    }
+//    function waitForMsg() {
+//        $.ajax({
+//            type: "GET",
+//            url: "<?php echo base_url(); ?>notification/select_notification",
+//            timeout: 50000,
+//
+//            success: function (data) {
+//                addmsg("new", data);
+//                setTimeout(
+//                        waitForMsg,
+//                        10000
+//                        );
+//            },
+//        });
+//    }
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
 </script>
 <script type="text/javascript">

@@ -15,7 +15,7 @@ function check() {
 $(document).ready(function () {
     business_userlist();
     $(window).scroll(function () {
-        if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -81,7 +81,25 @@ function followuser(clicked_id)
             $('.' + 'fruser' + clicked_id).html(data.follow);
             //$('#countfollow').html(data.count);
             $('.left_box_following_count').html(data.count);
+            notification_count(clicked_id);
         }
+    });
+}
+function notification_count(clicked_id) {
+    $.ajax({
+        type: "GET",
+        url: base_url + "notification/select_notification/" + clicked_id,
+        dataType: 'json',
+        success: function (data) {
+            if (data.count != 0) {
+                //        $("#notif").html(data.notif);
+                var socket = io.connect('http://' + window.location.hostname + ':3000');
+                socket.emit('notification_count', {
+                    notification_count: data.count,
+                    to_id: data.to_id,
+                });
+            }
+        },
     });
 }
 function unfollowuser(clicked_id)

@@ -72,7 +72,7 @@ else{
                      <!-- general notification start -->
                      <li id="notification_li">
                         <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
-                        <span id="notification_count"></span>
+                        <span id="notification_count<?php echo $userid; ?>"></span>
                         </a>
                         <div id="notificationContainer"  class="dropdown2_content">
                            <div id="InboxBody" class="Inbox">

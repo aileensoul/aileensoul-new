@@ -118,7 +118,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         $bus_detail = nl2br($this->common->make_links($business_data[0]['details']));
                                         $bus_detail = preg_replace('[^(<br( \/)?>)*|(<br( \/)?>)*$]', '', $bus_detail);
                                         ?>
-                                        <td class="business_data_td2"><span><?php echo $bus_detail ; ?></span></td>
+                                        <td class="business_data_td2"><span><?php echo $bus_detail; ?></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -153,17 +153,17 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         <!-- user video emd-->
                         <!-- user audio start-->
                         <!-- <a href="<?php echo base_url('business-profile/audios/' . $business_common_data[0]['business_slug']) ?>"> -->
-                            <div class="full-box-module business_data">
-                                <div class="profile-boxProfileCard  module">
-                                    <div class="head_details1">
-                                        <h5><i class="fa fa-music" aria-hidden="true"></i>Audio</h5>
-                                    </div>
-                                    <table class="business_data_table">
-                                        <div class="bus_audios"> 
-                                        </div>
-                                    </table>
+                        <div class="full-box-module business_data">
+                            <div class="profile-boxProfileCard  module">
+                                <div class="head_details1">
+                                    <h5><i class="fa fa-music" aria-hidden="true"></i>Audio</h5>
                                 </div>
+                                <table class="business_data_table">
+                                    <div class="bus_audios"> 
+                                    </div>
+                                </table>
                             </div>
+                        </div>
                         <!-- </a> -->
                         <!-- user audio end-->
                         <!-- user pdf  start-->
@@ -178,27 +178,27 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
                         </a>
                         <!-- user pdf  end-->
-						<div class="custom_footer_left fw">
-          <div class="fl">
-             <ul>
-             <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
-              
-              <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
-              
-              <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-              
-			  <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-			  
-              <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-        
-              <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
-            </ul>
-          </div>
-        <div>
-          
-        </div>
+                        <div class="custom_footer_left fw">
+                            <div class="fl">
+                                <ul>
+                                    <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
 
-        </div>
+                                    <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
+
+                                    <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
+
+                                    <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+
+                                    <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
+
+                                    <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+                                </ul>
+                            </div>
+                            <div>
+
+                            </div>
+
+                        </div>
                     </div>
                     <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business">
                         <?php
@@ -484,14 +484,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <!-- <footer> -->
-            <?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- </footer> -->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());        ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());         ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -501,6 +501,19 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
+                                        var socket = io.connect('http://' + window.location.hostname + ':3000');
+                                        socket.on('notification_count', function (data) {
+                                            $("#notification_count" + data.to_id).html(data.notification_count);
+                                            // $('#notification_count').html(msg);
+                                            $('#notification_count' + data.to_id).css({
+                                                "background-color": "#FF4500",
+                                                "padding": "5px 6px"
+                                            });
+                                            $('#notificationLink').addClass('notification_available');
+                                            //   document.getElementById('message_count').style.display = "none";
+                                            document.getElementById('notification_count' + data.to_id).style.display = 'block';
+                                            //   $('#notif_audio')[0].play();
+                                        });
                                         var base_url = '<?php echo base_url(); ?>';
                                         var slug = '<?php echo $slugid; ?>';
                                         var no_business_post_html = '<?php echo $no_business_post_html ?>';
