@@ -29,13 +29,20 @@ function apply_post(abc, xyz) {
         type: 'POST',
         url: base_url + "freelancer/apply_insert",
         data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
+        datatype:json,
         success: function (data) {
             
             $('.savedpost' + abc).hide();
-            $('.applypost').html(data);
+            $('.applypost').html(data.status);
             $('.applypost').attr('disabled', 'disabled');
             $('.applypost' + abc).attr('onclick', 'myFunction()');
             $('.applypost').addClass('applied');
+            
+            if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
         }
     });
 }

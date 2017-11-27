@@ -1151,7 +1151,11 @@ function followuser_two(clicked_id)
             $('.' + 'fruser' + clicked_id).html(data.follow_html);
             $('.' + 'left_box_following_count').html('(' + data.following_count + ')');
             $('.' + 'left_box_follower_count').html('(' + data.follower_count + ')');
-            //$('.' + 'fruser' + clicked_id).html(data);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }

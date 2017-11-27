@@ -353,12 +353,18 @@
                     url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
                     data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user.value,
                     success: function (data) {
-                        $('#' + 'postdata' + appid).html(data);
+                        $('#' + 'postdata' + appid).html(data.status);
                         $('#' + 'postdata' + appid).parent().removeClass();
                         var numItems = $('.contact-frnd-post .job-contact-frnd').length;
                         if (numItems == '0') {
                             var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Job Found.</h4></div>";
                             $('.contact-frnd-post').html(nodataHtml);
+                        }
+                        
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
                         }
 
                     }

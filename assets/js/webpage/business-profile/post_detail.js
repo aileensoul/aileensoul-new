@@ -406,6 +406,8 @@ function comment_editbox(clicked_id) {
                 document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
             } else {
                 $('.mes').html('Sorry this content is now not available');
                 $('#bidmodal').modal('show');
@@ -422,6 +424,8 @@ function comment_editcancle(clicked_id) {
     document.getElementById('editcomment' + clicked_id).style.display = 'none';
     document.getElementById('showcomment' + clicked_id).style.display = 'block';
     document.getElementById('editsubmit' + clicked_id).style.display = 'none';
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
     $('.post-design-commnet-box').show();
 }
 
@@ -443,6 +447,8 @@ function comment_editboxtwo(clicked_id) {
                 document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                 document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
             } else {
                 $('.mes').html('Sorry this content is now not available');
                 $('#bidmodal').modal('show');
@@ -459,6 +465,8 @@ function comment_editcancletwo(clicked_id) {
     document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
     document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
     $('.post-design-commnet-box').show();
+    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
 }
 
 function comment_editbox3(clicked_id) {

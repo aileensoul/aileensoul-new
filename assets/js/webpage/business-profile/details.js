@@ -29,6 +29,11 @@ function followuser_two(clicked_id)
             $('#' + 'countfollow').html('(' + data.following_count + ')');
             $('#' + 'countfollower').html('(' + data.follower_count + ')');
             //$('.' + 'fr' + clicked_id).html(data);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }

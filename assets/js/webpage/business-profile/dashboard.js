@@ -176,7 +176,7 @@ function GetBusVideos() {
             $(".bus_videos").html('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
         },
         success: function (data) {
-            $('.loader').remove();   
+            $('.loader').remove();
             $('.bus_videos').html(data);
             $('video, audio').mediaelementplayer();
         }
@@ -673,6 +673,7 @@ function comment_editbox(clicked_id) {
                 document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
             } else {
                 $('.mes').html('Sorry this content is now not available');
                 $('#bidmodal').modal('show');
@@ -687,6 +688,7 @@ function comment_editcancle(clicked_id) {
     document.getElementById('editcomment' + clicked_id).style.display = 'none';
     document.getElementById('showcomment' + clicked_id).style.display = 'block';
     document.getElementById('editsubmit' + clicked_id).style.display = 'none';
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
     $('.post-design-commnet-box').show();
 }
 
@@ -708,6 +710,8 @@ function comment_editboxtwo(clicked_id) {
                 document.getElementById('editsubmittwo' + clicked_id).style.display = 'inline-block';
                 document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                 document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
                 $('.post-design-commnet-box').hide();
             } else {
                 $('.mes').html('Sorry this content is now not available');
@@ -723,6 +727,10 @@ function comment_editcancletwo(clicked_id) {
     document.getElementById('editcommenttwo' + clicked_id).style.display = 'none';
     document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
     document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
+
+     $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
     $('.post-design-commnet-box').show();
 }
 
@@ -1375,7 +1383,11 @@ function followuser_two(clicked_id)
             $('.' + 'fr' + clicked_id).html(data.follow_html);
             $('#' + 'countfollow').html('(' + data.following_count + ')');
             $('#' + 'countfollower').html('(' + data.follower_count + ')');
-            //$('.' + 'fr' + clicked_id).html(data);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -2073,37 +2085,36 @@ function check_no_post_data() {
 
 
 
- // video user show list
+// video user show list
 
- function count_videouser(file_id, post_id){ 
+function count_videouser(file_id, post_id) {
 
-  var vid = document.getElementById("show_video" + file_id);
+    var vid = document.getElementById("show_video" + file_id);
 
-      if (vid.paused) {
-         vid.play(); 
-          $.ajax({
+    if (vid.paused) {
+        vid.play();
+        $.ajax({
             type: 'POST',
             url: base_url + "business_profile/showuser",
             data: 'post_id=' + post_id + '&file_id=' + file_id,
             dataType: "html",
-            success: function (data) { 
-              $('#' + 'viewvideouser' + post_id).html(data);       
+            success: function (data) {
+                $('#' + 'viewvideouser' + post_id).html(data);
             }
         });
-       }
-    else {
-      vid.pause(); 
+    } else {
+        vid.pause();
     }
- }
+}
 
-function playtime(file_id, post_id){
-               $.ajax({
-                        type: 'POST',
-                        url: base_url + "business_profile/showuser",
-                        data: 'post_id=' + post_id + '&file_id=' + file_id,
-                        dataType: "html",
-                        success: function (data) { 
-                          $('#' + 'viewvideouser' + post_id).html(data);       
-                        }
-                    });
+function playtime(file_id, post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/showuser",
+        data: 'post_id=' + post_id + '&file_id=' + file_id,
+        dataType: "html",
+        success: function (data) {
+            $('#' + 'viewvideouser' + post_id).html(data);
+        }
+    });
 }

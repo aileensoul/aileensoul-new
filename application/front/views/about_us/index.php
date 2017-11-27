@@ -135,7 +135,7 @@
 
                              <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/YatinBelani.jpg">
+                                    <img src="assets/img/yatinbelani.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Yatin Belani</h4>
@@ -241,7 +241,7 @@
                               <ul class="">
                             <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/Dhavalshah.jpg">
+                                    <img src="assets/img/Dhaval.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Dhaval Shah</h4>

@@ -338,7 +338,7 @@
                                                         </div>
 
  <div id="<?php echo 'editpostbox' . $art_data[0]['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
-        <input type="text" class="my_text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Title" value="<?php echo $art_data[0]['art_post']; ?>" onKeyDown=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onKeyup=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onblur=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>);>
+        <input type="text" class="my_text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Product Name" value="<?php echo $art_data[0]['art_post']; ?>" onKeyDown=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onKeyup=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onblur=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>);>
 
 
          <?php 

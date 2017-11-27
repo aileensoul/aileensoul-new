@@ -129,6 +129,12 @@ function post_like(clicked_id)
                             document.getElementById('likeusername' + clicked_id).style.display = "block";
                         }
                         $('#likeusername' + clicked_id).addClass('likeduserlist1');
+
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                     }
                 });
             } else {
@@ -462,6 +468,8 @@ function comment_editbox(clicked_id) {
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
 
                 $('.post-design-commnet-box').hide();
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
             } else {
                 $('.mes').html('Sorry this content is now not available');
                 $('#bidmodal').modal('show');
@@ -475,6 +483,8 @@ function comment_editcancle(clicked_id) {
     document.getElementById('editcomment' + clicked_id).style.display = 'none';
     document.getElementById('showcomment' + clicked_id).style.display = 'block';
     document.getElementById('editsubmit' + clicked_id).style.display = 'none';
+
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
 
     $('.post-design-commnet-box').show();
 }
@@ -499,6 +509,9 @@ function comment_editboxtwo(clicked_id) {
                 document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
 
                 $('.post-design-commnet-box').hide();
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
             } else {
                 $('.mes').html('Sorry this content is now not available');
                 $('#bidmodal').modal('show');
@@ -512,6 +525,10 @@ function comment_editcancletwo(clicked_id) {
     document.getElementById('editcommenttwo' + clicked_id).style.display = 'none';
     document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
     document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
+
+
+    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
 
     $('.post-design-commnet-box').show();
 }
@@ -891,6 +908,11 @@ function followuser(clicked_id)
                             $('.full-box-module_follow').hide();
                         }
                     });
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -905,14 +927,14 @@ function followclose(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('ul.home_three_follow_ul').append(data);
-                        $.when($('.fad' + clicked_id).fadeOut(1500))
-                                .done(function () {
-                                    $('.fad' + clicked_id).remove();
-                                    var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
-                                    if (liCount == 0) {
-                                        $('.full-box-module_follow').hide();
-                                    }
-                                });
+            $.when($('.fad' + clicked_id).fadeOut(1500))
+                    .done(function () {
+                        $('.fad' + clicked_id).remove();
+                        var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+                        if (liCount == 0) {
+                            $('.full-box-module_follow').hide();
+                        }
+                    });
         }
     });
 }
@@ -1904,37 +1926,36 @@ function removeimage() {
 // video view user start
 
 
- // video user show list
+// video user show list
 
- function count_videouser(file_id, post_id){ 
+function count_videouser(file_id, post_id) {
 
-  var vid = document.getElementById("show_video" + file_id);
+    var vid = document.getElementById("show_video" + file_id);
 
-      if (vid.paused) {
-         vid.play(); 
-          $.ajax({
+    if (vid.paused) {
+        vid.play();
+        $.ajax({
             type: 'POST',
             url: base_url + "business_profile/showuser",
             data: 'post_id=' + post_id + '&file_id=' + file_id,
             dataType: "html",
-            success: function (data) { 
-              $('#' + 'viewvideouser' + post_id).html(data);       
+            success: function (data) {
+                $('#' + 'viewvideouser' + post_id).html(data);
             }
         });
-       }
-    else {
-      vid.pause(); 
+    } else {
+        vid.pause();
     }
- }
+}
 
-function playtime(file_id, post_id){
-               $.ajax({
-                        type: 'POST',
-                        url: base_url + "business_profile/showuser",
-                        data: 'post_id=' + post_id + '&file_id=' + file_id,
-                        dataType: "html",
-                        success: function (data) { 
-                          $('#' + 'viewvideouser' + post_id).html(data);       
-                        }
-                    });
+function playtime(file_id, post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/showuser",
+        data: 'post_id=' + post_id + '&file_id=' + file_id,
+        dataType: "html",
+        success: function (data) {
+            $('#' + 'viewvideouser' + post_id).html(data);
+        }
+    });
 }

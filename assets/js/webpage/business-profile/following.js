@@ -125,6 +125,11 @@ function followuser_two(clicked_id)
             $('#' + 'countfollow').html('(' + data.following_count + ')');
             $('#' + 'countfollower').html('(' + data.follower_count + ')');
             // $('#' + 'frfollow' + clicked_id).html(data);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -163,6 +168,11 @@ function followuser_list_two(clicked_id)
             $('.' + 'follow_btn_' + clicked_id).addClass('user_btn_h');
             $('#' + 'unfollow' + clicked_id).html('');
             $('.' + 'fruser' + clicked_id).html(data.follow_html);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }

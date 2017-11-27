@@ -34,7 +34,7 @@ $('#postedit').on('click', function () {
            $('#editpostname' + abc).val(substrval);
        } else { 
            text_num = maxLen - product_name.length;
-           document.getElementById("text_num_" + abc).value = text_num;
+           document.getElementById("text_num").value = text_num;
        }
    }
 $( document ).on( 'keydown', function ( e ) { 
