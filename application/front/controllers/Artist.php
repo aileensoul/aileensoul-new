@@ -12886,6 +12886,7 @@ public function art_home_post() {
          $contition_array = array('user_id' => $artisticdata[0]['user_id']);
          $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+         $this->data['get_url'] = $get_url = $this->get_url($this->data['artisticdata'][0]['user_id']);
 
         foreach ($artimage as $val) {
             $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
@@ -12910,7 +12911,8 @@ public function art_home_post() {
             $fetchaudio .= '<tr>';
 
             if ($singlearray2[0]['file_name']) {
-                $fetchaudio .= '<td class="image_profile">';
+                //$fetchaudio .= '<td class="image_profile">';
+                $fetchaudio .= '<td><a href="'.base_url('artist/audios/' . $get_url).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio  controls>';
 
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[0]['file_name'] . '" type="audio/mp3">';
@@ -12921,7 +12923,8 @@ public function art_home_post() {
             }
 
             if ($singlearray2[1]['file_name']) {
-                $fetchaudio .= '<td class="image_profile">';
+                //$fetchaudio .= '<td class="image_profile">';
+                 $fetchaudio .= '<td><a href="'.base_url('artist/audios/' . $get_url).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[1]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12930,7 +12933,8 @@ public function art_home_post() {
                 $fetchaudio .= '</td>';
             }
             if ($singlearray2[2]['file_name']) {
-                $fetchaudio .= '<td class="image_profile">';
+               // $fetchaudio .= '<td class="image_profile">';
+                 $fetchaudio .= '<td><a href="'.base_url('artist/audios/' . $get_url).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[2]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12942,7 +12946,8 @@ public function art_home_post() {
             $fetchaudio .= '<tr>';
 
             if ($singlearray2[3]['file_name']) {
-                $fetchaudio .= '<td class="image_profile">';
+                //$fetchaudio .= '<td class="image_profile">';
+                 $fetchaudio .= '<td><a href="'.base_url('artist/audios/' . $get_url).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[3]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12951,7 +12956,8 @@ public function art_home_post() {
                 $fetchaudio .= '</td>';
             }
             if ($singlearray2[4]['file_name']) {
-                $fetchaudio .= '<td class="image_profile">';
+                //$fetchaudio .= '<td class="image_profile">';
+                 $fetchaudio .= '<td><a href="'.base_url('artist/audios/' . $get_url).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[4]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
@@ -12960,7 +12966,8 @@ public function art_home_post() {
                 $fetchaudio .= '</td>';
             }
             if ($singlearray2[5]['file_name']) {
-                $fetchaudio .= '<td class="image_profile">';
+                //$fetchaudio .= '<td class="image_profile">';
+                 $fetchaudio .= '<td><a href="'.base_url('artist/audios/' . $get_url).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio  controls>';
                 $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[5]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';

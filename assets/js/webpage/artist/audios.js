@@ -23,6 +23,7 @@ function check() {
 $(document).ready(function() {
       $('.blocks').jMosaic({items_type: "li", margin: 0});
       $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
+      $('video, audio').mediaelementplayer();
     });
 
 

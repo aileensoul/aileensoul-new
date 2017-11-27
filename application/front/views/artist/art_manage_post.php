@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artist/audios/' . $get_url) ?>">
+                <!-- <a href="<?php echo base_url('artist/audios/' . $get_url) ?>"> -->
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -176,7 +176,7 @@
                         </table>
                     </div>
                 </div>
-                </a>
+               <!--  </a> -->
                 <a href="<?php echo base_url('artist/pdf/' . $get_url) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module pdf_box">
