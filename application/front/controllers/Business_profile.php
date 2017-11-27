@@ -3028,7 +3028,7 @@ Your browser does not support the audio tag.
         //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $not_bus_profile_id = $business_id = $_POST["follow_to"];
-        
+
         $is_listing = $_POST["is_listing"];
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
@@ -3179,7 +3179,7 @@ Your browser does not support the audio tag.
         $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $not_bus_profile_id))->row()->user_id;
         $not_count = $this->business_notification_count($to_id);
 
-       
+
         echo json_encode(
                 array("follow_html" => $follow_html,
                     "following_count" => $this->business_user_following_count($business_id),
@@ -4571,7 +4571,7 @@ Your browser does not support the audio tag.
             $data = array(
                 'business_likes_count' => $business_likes_count + 1,
                 'business_like_user' => $useridin,
-                'modify_date' => date('y-m-d h:i:s')
+                'modify_date' => date('Y-m-d H:i:s')
             );
             $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $post_id);
 // insert notification
@@ -4697,11 +4697,19 @@ Your browser does not support the audio tag.
                     $like_user_count .= '' . $commnetcount[0]['business_likes_count'] . '';
                     $like_user_count .= '<span> Like</span>';
                 }
+
+                // GET NOTIFICATION COUNT
+                $to_id = $businessprofiledata[0]['user_id'];
+                $not_count = $this->business_notification_count($to_id);
+
                 echo json_encode(
                         array("like" => $cmtlike,
                             "likeuser" => $cmtlikeuser,
                             "like_user_count" => $like_user_count,
-                            "like_user_total_count" => $commnetcount[0]['business_likes_count']));
+                            "like_user_total_count" => $commnetcount[0]['business_likes_count'],
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                ));
             } else {
                 
             }
@@ -4778,11 +4786,18 @@ Your browser does not support the audio tag.
                     $like_user_count .= '' . $commnetcount[0]['business_likes_count'] . '';
                     $like_user_count .= '<span> Like</span>';
                 }
+
+                // GET NOTIFICATION COUNT
+                $to_id = $businessprofiledata[0]['user_id'];
+                $not_count = $this->business_notification_count($to_id);
+
                 echo json_encode(
                         array("like" => $cmtlike,
                             "likeuser" => $cmtlikeuser,
                             "like_user_count" => $like_user_count,
-                            "like_user_total_count" => $commnetcount[0]['business_likes_count']
+                            "like_user_total_count" => $commnetcount[0]['business_likes_count'],
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             } else {
                 
@@ -4978,6 +4993,20 @@ Your browser does not support the audio tag.
 
 // comment count variable end 
         }
+
+        // GET NOTIFICATION COUNT
+        $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $business_id))->row()->user_id;
+        $not_count = $this->business_notification_count($to_id);
+
+        echo json_encode(
+                array(
+                    "follow" => $follow_html,
+                    "count" => $datacount,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+        ));
+
+
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
