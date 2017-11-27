@@ -33,7 +33,7 @@ function short_user(abc) {
         data: 'user_id=' + abc  + '&post_id=' + postid.value,
         dataType: 'json',
         success: function (data) {
-            $('.' + 'saveduser' + abc).html(data).addClass('saved');
+            $('.' + 'saveduser' + abc).html(data.status).addClass('saved');
             if (data.notification.notification_count != 0) {
                             var notification_count = data.notification.notification_count;
                             var to_id = data.notification.to_id;

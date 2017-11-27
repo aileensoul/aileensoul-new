@@ -471,6 +471,11 @@ $(document).ready(function () {
                             success: function (data)
                             {
                               //  alert("sucess");
+                              if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                                 window.location = base_url + "freelancer-work/home/live-post";
                             }
                         });
