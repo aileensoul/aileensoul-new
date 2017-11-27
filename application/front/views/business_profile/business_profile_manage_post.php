@@ -152,7 +152,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         </a>
                         <!-- user video emd-->
                         <!-- user audio start-->
-                        <a href="<?php echo base_url('business-profile/audios/' . $business_common_data[0]['business_slug']) ?>">
+                        <!-- <a href="<?php echo base_url('business-profile/audios/' . $business_common_data[0]['business_slug']) ?>"> -->
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
@@ -164,7 +164,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     </table>
                                 </div>
                             </div>
-                        </a>
+                        <!-- </a> -->
                         <!-- user audio end-->
                         <!-- user pdf  start-->
                         <a href="<?php echo base_url('business-profile/pdf/' . $business_common_data[0]['business_slug']) ?>">

@@ -10415,8 +10415,8 @@ $return_html .= '<li>
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[0]['file_name']) {
-                 $fetchaudio .= '<td class = "image_profile">';
-                //$fetchaudio .= '<td><img src = "' . base_url('assets/images/music-icon.png') . '">';
+                 //$fetchaudio .= '<td class = "image_profile">';
+                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio controls>';
 
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[0]['file_name'] . '" type = "audio/mp3">';
@@ -10427,7 +10427,8 @@ $return_html .= '<li>
             }
 
             if ($businessaudio[1]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile">';
+                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                // $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[1]['file_name'] . '" type = "audio/mp3">';
                 //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
@@ -10436,7 +10437,8 @@ $return_html .= '<li>
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[2]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile">';
+                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[2]['file_name'] . '" type = "audio/mp3">';
                 //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
@@ -10448,7 +10450,8 @@ $return_html .= '<li>
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[3]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile">';
+                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[3]['file_name'] . '" type = "audio/mp3">';
                 //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
@@ -10457,7 +10460,8 @@ $return_html .= '<li>
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[4]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile">';
+                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[4]['file_name'] . '" type = "audio/mp3">';
                 //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
@@ -10466,7 +10470,8 @@ $return_html .= '<li>
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[5]['file_name']) {
-                $fetchaudio .= '<td class = "image_profile">';
+                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[5]['file_name'] . '" type = "audio/mp3">';
                 //$fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
