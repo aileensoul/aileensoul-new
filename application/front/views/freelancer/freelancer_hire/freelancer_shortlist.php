@@ -61,7 +61,7 @@
                                                                                 $sub_post_lname = substr($post_lname, 0, 1);
                                                                                 ?>
                                                                                 <div class="post-img-div">
-                                                                                    <?php echo ucfirst(strtolower($sub_post_fname)) .  ucfirst(strtolower($sub_post_lname)); ?>
+                                                                                    <?php echo ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname)); ?>
                                                                                 </div>
                                                                                 <?php
                                                                             }
@@ -221,14 +221,14 @@
                                                                         <?php
                                                                         if ($savedata) {
                                                                             ?> 
-                                                                            <!--<a class="saved" href="javascript:void(0);"><?php echo $this->lang->line("saved"); ?> </a>-->
+                                                                                            <!--<a class="saved" href="javascript:void(0);"><?php echo $this->lang->line("saved"); ?> </a>-->
 
                                                                             <?php
                                                                         } else {
                                                                             ?>
-                                                                            <!--<input type="hidden" id="<?php echo 'hideenuser' . $row['user_id']; ?>" value= "<?php echo $data[0]['save_id']; ?>">-->
+                                                                                            <!--<input type="hidden" id="<?php echo 'hideenuser' . $row['user_id']; ?>" value= "<?php echo $data[0]['save_id']; ?>">-->
 
-                                                                            <!--<a id="<?php echo $row['user_id']; ?>" onClick="savepopup(<?php echo $row['user_id']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['user_id']; ?>"><?php echo $this->lang->line("save"); ?></a>-->
+                                                                                            <!--<a id="<?php echo $row['user_id']; ?>" onClick="savepopup(<?php echo $row['user_id']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['user_id']; ?>"><?php echo $this->lang->line("save"); ?></a>-->
                                                                             <?php
                                                                         }
                                                                     }
@@ -241,15 +241,15 @@
                                                 }
                                             } else {
                                                 ?>
-                                           <div class="art-img-nn">
-                                                <div class="art_no_post_img">
-                                                    <img src="<?php echo base_url('assets/img/free-no1.png')?>">
+                                                <div class="art-img-nn">
+                                                    <div class="art_no_post_img">
+                                                        <img src="<?php echo base_url('assets/img/free-no1.png') ?>">
+                                                    </div>
+                                                    <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
                                                 </div>
-                                                <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
-                                           </div>
-<!--                                                <div class="text-center rio">
-                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer"); ?></h4>
-                                                </div>-->
+                                                <!--                                                <div class="text-center rio">
+                                                                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer");  ?></h4>
+                                                                                                </div>-->
                                                 <?php
                                             }
                                             ?>
@@ -265,7 +265,7 @@
                 </div>
             </div>
         </section>
-            <?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- Model Popup Open -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -278,31 +278,36 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>">
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver='.time()); ?>"></script>
-        <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_apply_list.js?ver=' . time()); ?>"></script>
+        <script   type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
         <script>
             function inviteuserpopup(abc) {
-               
+
                 $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                 $('#bidmodal').modal('show');
             }
             function inviteuser(clicked_id)
             {
                 var post_id = "<?php echo $postid; ?>";
-                alert(post_id);
+
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "freelancer/free_invite_user" ?>',
                     data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
+                    dataType: 'json',
                     success: function (data) { //alert(data);
                         $('#' + 'invited' + clicked_id).html(data).addClass('button invited').removeClass('invite_border').removeAttr("onclick");
                         $('#' + 'invited' + clicked_id).css('cursor', 'default');
-
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                     }
                 });
             }

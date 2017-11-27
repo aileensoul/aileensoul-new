@@ -983,52 +983,52 @@ class Freelancer extends MY_Controller {
 //FREELANCER_APPLY PORTFOLIO PAGE END
 //FREELANCER_APPLY PORTFOLIO PAGE DATA INSERT START
     public function freelancer_post_portfolio_insert($postliveid = '') {
-        // echo 123; die();
-        if ($postliveid) {
-
-            $id = trim($postliveid);
-            $userid = $this->session->userdata('aileenuser');
-            $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $id))->row()->user_id;
-
-            $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
-            $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            if ($userdata) {
-                
-            } else {
-                $data = array(
-                    'post_id' => $id,
-                    'user_id' => $userid,
-                    'status' => '1',
-                    'created_date' => date('Y-m-d h:i:s', time()),
-                    'modify_date' => date('Y-m-d h:i:s', time()),
-                    'is_delete' => '0',
-                    'job_delete' => '0',
-                    'job_save' => '3'
-                );
-                $insert_id = $this->common->insert_data_getid($data, 'freelancer_apply');
-                // insert notification
-                $data = array(
-                    'not_type' => '3',
-                    'not_from_id' => $userid,
-                    'not_to_id' => $notid,
-                    'not_read' => '2',
-                    'not_from' => '4',
-                    'not_product_id' => $insert_id,
-                    "not_active" => '1',
-                    'not_created_date' => date('Y-m-d H:i:s')
-                );
-
-                $insert_id = $this->common->insert_data_getid($data, 'notification');
-                // end notoification
-                if ($insert_id) {
-
-                    $this->apply_email($notid);
-                    $applypost = 'Applied';
-                }
-                echo $applypost;
-            }
-        }
+//        // echo 123; die();
+//        if ($postliveid) {
+//
+//            $id = trim($postliveid);
+//            $userid = $this->session->userdata('aileenuser');
+//            $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $id))->row()->user_id;
+//
+//            $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
+//            $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//
+//            if ($userdata) {
+//                
+//            } else {
+//                $data = array(
+//                    'post_id' => $id,
+//                    'user_id' => $userid,
+//                    'status' => '1',
+//                    'created_date' => date('Y-m-d h:i:s', time()),
+//                    'modify_date' => date('Y-m-d h:i:s', time()),
+//                    'is_delete' => '0',
+//                    'job_delete' => '0',
+//                    'job_save' => '3'
+//                );
+//                $insert_id = $this->common->insert_data_getid($data, 'freelancer_apply');
+//                // insert notification
+//                $data = array(
+//                    'not_type' => '3',
+//                    'not_from_id' => $userid,
+//                    'not_to_id' => $notid,
+//                    'not_read' => '2',
+//                    'not_from' => '4',
+//                    'not_product_id' => $insert_id,
+//                    "not_active" => '1',
+//                    'not_created_date' => date('Y-m-d H:i:s')
+//                );
+//
+//                $insert_id = $this->common->insert_data_getid($data, 'notification');
+//                // end notoification
+//                if ($insert_id) {
+//
+//                    $this->apply_email($notid);
+//                    $applypost = 'Applied';
+//                }
+//                echo $applypost;
+//            }
+//        }
 
         $portfolio = $_POST['portfolio'];
         $userid = $this->session->userdata('aileenuser');
@@ -2698,10 +2698,19 @@ class Freelancer extends MY_Controller {
                 if ($para == 'all') {
                     // apply mail start
                     $this->apply_email($notid);
+                    
                     $applypost = 'Applied';
                 }
             }
-            echo $applypost;
+           // GET NOTIFICATION COUNT
+                $not_count = $this->freelancer_notification_count($notid);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'Applied',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$notid),
+                ));
+                
         } else {
 
             $data = array(
@@ -2733,7 +2742,14 @@ class Freelancer extends MY_Controller {
                 $this->apply_email($notid);
                 $applypost = 'Applied';
             }
-            echo $applypost;
+            // GET NOTIFICATION COUNT
+                $not_count = $this->freelancer_notification_count($notid);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'Applied',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$notid),
+                ));
         }
         }
     }
@@ -4018,35 +4034,35 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_HIRE REMOVE POST(PROJECT) END
 //FREELANCER_HIRE INVITE APPLIED START
-    public function invite_user($appid, $status, $postid, $personid) {
-        $userid = $this->session->userdata('aileenuser');
-
-        $data = array(
-            'status' => $status,
-            'modify_date' => date('y-m-d h:i:s')
-        );
-
-
-        $updatedata = $this->common->update_data($data, 'freelancer_apply', 'app_id', $appid);
-
-        // insert notification
-
-        $data = array(
-            'not_type' => '4',
-            'not_from_id' => $userid,
-            'not_to_id' => $personid,
-            'not_read' => '2',
-            'not_from' => '5',
-            'not_product_id' => $appid,
-            "not_active" => '1',
-            'not_created_date' => date('Y-m-d H:i:s')
-        );
-
-        $insert_id = $this->common->insert_data_getid($data, 'notification');
-        // end notoification
-
-        redirect('freelancer/freelancer_apply_list/' . $postid, 'refresh');
-    }
+//    public function invite_user($appid, $status, $postid, $personid) {
+//        $userid = $this->session->userdata('aileenuser');
+//
+//        $data = array(
+//            'status' => $status,
+//            'modify_date' => date('y-m-d h:i:s')
+//        );
+//
+//
+//        $updatedata = $this->common->update_data($data, 'freelancer_apply', 'app_id', $appid);
+//
+//        // insert notification
+//
+//        $data = array(
+//            'not_type' => '4',
+//            'not_from_id' => $userid,
+//            'not_to_id' => $personid,
+//            'not_read' => '2',
+//            'not_from' => '5',
+//            'not_product_id' => $appid,
+//            "not_active" => '1',
+//            'not_created_date' => date('Y-m-d H:i:s')
+//        );
+//
+//        $insert_id = $this->common->insert_data_getid($data, 'notification');
+//        // end notoification
+//
+//        redirect('freelancer/freelancer_apply_list/' . $postid, 'refresh');
+//    }
 
 //FREELANCER_HIRE INVITE APPLIED END
 //FREELANCER_APPLY DEACTIVATE START
@@ -4460,10 +4476,19 @@ class Freelancer extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s')
             );
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-            echo 'Selected';
+            // GET NOTIFICATION COUNT
+                $not_count = $this->freelancer_notification_count($invite_user);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'Selected',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$invite_user),
+                ));
+                
             if ($insert_id) {
                 $word = 'Selected';
                 $this->selectemail_user($invite_user, $postid, $word);
+                
             }
         } else {
             echo 'error';
@@ -4931,10 +4956,20 @@ class Freelancer extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s')
             );
             $insertnotification = $this->common->insert_data_getid($data, 'notification');
+            
+            
+                
             if ($updatedata) {
                 $this->selectemail_user($saveuser_id, $post_id, $word);
                 $saveuser = 'shortlisted';
-                echo $saveuser;
+                 // GET NOTIFICATION COUNT
+                $not_count = $this->freelancer_notification_count($saveuser_id);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'shortlisted',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$saveuser_id),
+                ));
             }
         } else {
             $data = array(
@@ -4962,11 +4997,18 @@ class Freelancer extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s')
             );
             $insertnotification = $this->common->insert_data_getid($data, 'notification');
-
+           
             if ($insert_id) {
                 $this->selectemail_user($saveuser_id, $post_id, $word);
                 $saveuser = 'shortlisted';
-                echo $saveuser;
+                 // GET NOTIFICATION COUNT
+                $not_count = $this->freelancer_notification_count($saveuser_id);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'shortlisted',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$saveuser_id),
+                ));
             }
         }
     }
@@ -5620,6 +5662,14 @@ class Freelancer extends MY_Controller {
             $this->db->update('skill', $data);
         }
         echo "yes";
+    }
+    
+     public function freelancer_notification_count($to_id = '') {
+        $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
+        $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $count = $result[0]['total'];
+        return  $count;
     }
 
 }

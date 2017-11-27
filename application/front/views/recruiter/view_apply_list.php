@@ -696,7 +696,6 @@
                 $('#' + 'invited' + clicked_id).html(data).addClass('invited').removeClass('invite_border').removeAttr("onclick");
                $('#' + 'invited' + clicked_id).css('cursor', 'default');
                      if (data.notification.notification_count != 0) {
-                         alert(123456);
                 var notification_count = data.notification.notification_count;
                 var to_id = data.notification.to_id;
                 show_header_notification(notification_count,to_id);

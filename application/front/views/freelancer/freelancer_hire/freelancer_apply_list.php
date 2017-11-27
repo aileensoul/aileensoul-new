@@ -132,10 +132,10 @@
                                                                     <li><b><?php echo $this->lang->line("location"); ?></b><span> <?php
                                                                             if ($cityname || $countryname) {
                                                                                 if ($cityname) {
-                                                                                    echo  $cityname . ",";
+                                                                                    echo $cityname . ",";
                                                                                 }
                                                                                 if ($countryname) {
-                                                                                    echo  $countryname;
+                                                                                    echo $countryname;
                                                                                 }
                                                                             }
                                                                             ?></span></li>
@@ -255,7 +255,7 @@
                                                     <div class="art_no_post_text"><?php echo $this->lang->line("no_applied_freelancer"); ?></div> 
                                                 </div>
                                                 <!--                                                <div class="text-center rio">
-                                                                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer");  ?></h4>
+                                                                                                    <h4 class="page-heading  product-listing" ><?php //echo $this->lang->line("no_applied_freelancer");   ?></h4>
                                                                                                 </div>-->
                                                 <?php
                                             }
@@ -272,7 +272,7 @@
                 </div>
             </div>
         </section>
-<?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- Model Popup Open -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -304,10 +304,15 @@
                     type: 'POST',
                     url: '<?php echo base_url() . "freelancer/free_invite_user" ?>',
                     data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
+                    dataType: 'json',
                     success: function (data) { //alert(data);
                         $('#' + 'invited' + clicked_id).html(data).addClass('button invited').removeClass('invite_border').removeAttr("onclick");
                         $('#' + 'invited' + clicked_id).css('cursor', 'default');
-
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                     }
                 });
             }
