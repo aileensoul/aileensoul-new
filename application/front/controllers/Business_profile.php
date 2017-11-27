@@ -1427,7 +1427,7 @@ Your browser does not support the audio tag.
 <div id = "fourcomment' . $post_business_profile_post_id . '" style = "display:none;">
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
-<div class = "insertcomment' . $post_business_profile_post_id . '">';
+<div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
 
         $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -5078,7 +5078,7 @@ Your browser does not support the audio tag.
         $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // khyati changes start
-        $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
+        $cmtinsert = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
             $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
@@ -7150,7 +7150,7 @@ Your browser does not support the audio tag.
 
 // html start
 
-        $fourdata = '<div class="insertcommenttwo' . $post_id . '">';
+        $fourdata = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
 
         $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1');
         $busienssdata = $this->data['busienssdata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9500,7 +9500,7 @@ Your browser does not support the audio tag.
 <div id = "fourcomment' . $post_business_profile_post_id . '" style = "display:none;">
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
-<div class = "insertcomment' . $post_business_profile_post_id . '">';
+<div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
 
                 $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
                 $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -11158,7 +11158,7 @@ Your browser does not support the audio tag.
 <div id = "fourcomment' . $post_business_profile_post_id . '" style = "display:none;">
 </div>
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
-<div class = "insertcomment' . $post_business_profile_post_id . '">';
+<div class = "hidebottomborder insertcomment' . $post_business_profile_post_id . '">';
 
                 $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
                 $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
