@@ -81,11 +81,9 @@ function followuser(clicked_id)
             $('.' + 'fruser' + clicked_id).html(data.follow);
             $('.left_box_following_count').html(data.count);
             if (data.notification.notification_count != 0) {
-                var socket = io.connect('http://' + window.location.hostname + ':3000');
-                socket.emit('notification_count', {
-                    notification_count: data.notification.notification_count,
-                    to_id: data.notification.to_id,
-                });
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count,to_id);
             }
 
         }

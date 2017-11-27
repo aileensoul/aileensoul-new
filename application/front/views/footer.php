@@ -99,7 +99,12 @@
             success: function (data) {
                 $('.' + 'notification_data_in').html(data.notification);
                 $('#seenot').html(data.seeall);
-
+                $('span[id^=notification_count]').html('');
+                $('span[id^=notification_count]').css({
+                    "background-color": "",
+                    "padding": "0px"
+                });
+                $('#notificationLink').removeClass('notification_available');
             }
 
         });
@@ -135,6 +140,22 @@
 
     $(document).ready(function () {
         // MAIN NOTIFICATION
+
+        var socket = io.connect('http://' + window.location.hostname + ':3000');
+        socket.on('notification_count', function (data) {
+            $("#notification_count" + data.to_id).html(data.notification_count);
+            $('#notification_count' + data.to_id).css({
+                "background-color": "#FF4500",
+                "padding": "5px 6px",
+                "border-radius": "50px",
+            });
+            $('#notificationLink').addClass('notification_available');
+            document.getElementById('notification_count' + data.to_id).style.display = 'block';
+            $('#notif_audio')[0].play();
+        });
+
+
+
         //waitForMsg();
         $menuLeft = $('.pushmenu-left');
         $nav_list = $('#nav_list');
@@ -191,7 +212,14 @@
 //        });
 //    }
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
-   
+
+    function show_header_notification(notification_count, to_id) {
+        var socket = io.connect('http://' + window.location.hostname + ':3000');
+        socket.emit('notification_count', {
+            notification_count: notification_count,
+            to_id: to_id,
+        });
+    }
 </script>
 <script type="text/javascript">
     $('#InboxLink').on('click', function () {

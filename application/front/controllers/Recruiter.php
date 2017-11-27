@@ -4447,7 +4447,16 @@ if ($cache_time) {
                 //$jobemail = 'khyati.aileensoul@gmail.com';
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
             }
-            echo'invited';
+          //  echo'invited';
+            
+            // GET NOTIFICATION COUNT
+                $not_count = $this->recruiter_notification_count($invite_user);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'invited',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$invite_user),
+                ));
         } else {
             echo 'error';
         }
@@ -4993,5 +5002,13 @@ if ($cache_time) {
   
     public function abc(){
         $this->load->view('test/index');
+    }
+    
+     public function recruiter_notification_count($to_id = '') {
+        $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
+        $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $count = $result[0]['total'];
+        return  $count;
     }
 }

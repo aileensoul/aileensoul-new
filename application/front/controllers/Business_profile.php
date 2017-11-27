@@ -2372,14 +2372,7 @@ Your browser does not support the audio tag.
                 $this->db->where($where);
                 $updatdata = $this->db->update('notification', $datafollow);
             } else {
-                // $data = array(
-                //     'follow_type' => '2',
-                //     'follow_from' => $artdata[0]['business_profile_id'],
-                //     'follow_to' => $business_id,
-                //     'follow_status' => '1',
-                // );
-                // $insertdata = $this->common->insert_data($data, 'follow');
-
+                
                 $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
                 $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // insert notification
@@ -2439,7 +2432,7 @@ Your browser does not support the audio tag.
                             "notification" => array('notification_count'=>$not_count, 'to_id' =>$to_id),
                 ));
             }
-        } else {   //echo "hii"; die();
+        } else {   
             $data = array(
                 'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
@@ -2479,7 +2472,6 @@ Your browser does not support the audio tag.
 					</tr>
                                     </table>';
                 $subject = $this->data['business_login_company_name'] . ' Started following you in Aileensoul.';
-
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
             }
             $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
@@ -2516,25 +2508,17 @@ Your browser does not support the audio tag.
 
 //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($business_deactive) {
             redirect('business_profile/');
         }
 //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
-
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-
-        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
-
-        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
+        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($follow) {
             $data = array(
                 'follow_type' => '2',
@@ -2543,22 +2527,15 @@ Your browser does not support the audio tag.
                 'follow_status' => '0',
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
-
-
             $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1');
-
-            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($update) {
-
                 $unfollow = '<div id="followdiv " class="user_btn">';
                 $unfollow .= '<button id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
                                Follow 
                       </button>';
                 $unfollow .= '</div>';
-
                 $datacount = '(' . count($followcount) . ')';
-
                 echo json_encode(
                         array(
                             "follow" => $unfollow,
@@ -8769,7 +8746,7 @@ No Contacts Available.
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
-                $contactdata = '<button onClick = "contact_person_menu(' . $to_id . ')">';
+                $contactdata = '<button class="contact_user_list" onClick = "contact_person_menu(' . $to_id . ')">';
                 $contactdata .= ' Add to contact';
                 $contactdata .= '</button>';
             } elseif ($status == 'cancel') {
@@ -10422,7 +10399,7 @@ Your browser does not support the audio tag.
 
             if ($businessaudio[0]['file_name']) {
                 //$fetchaudio .= '<td class = "image_profile">';
-                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio controls>';
 
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[0]['file_name'] . '" type = "audio/mp3">';
@@ -10433,7 +10410,7 @@ Your browser does not support the audio tag.
             }
 
             if ($businessaudio[1]['file_name']) {
-                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 // $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[1]['file_name'] . '" type = "audio/mp3">';
@@ -10443,7 +10420,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[2]['file_name']) {
-                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[2]['file_name'] . '" type = "audio/mp3">';
@@ -10456,7 +10433,7 @@ Your browser does not support the audio tag.
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[3]['file_name']) {
-                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[3]['file_name'] . '" type = "audio/mp3">';
@@ -10466,7 +10443,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[4]['file_name']) {
-                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[4]['file_name'] . '" type = "audio/mp3">';
@@ -10476,7 +10453,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[5]['file_name']) {
-                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td class = "image_profile"><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[5]['file_name'] . '" type = "audio/mp3">';

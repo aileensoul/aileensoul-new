@@ -596,7 +596,8 @@
 
                                                                     <li class="">
                                                                         <div class="post_title">
-                                                                        <a class="" href="<?php echo base_url('recruiter/jobpost/' . $text .$cityname. '-' . $post['user_id'] . '-' . $post['post_id']); ?>" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?></a>  
+                                                                        <a class="" href="<?php echo base_url('recruiter/jobpost/' . $text .$cityname. '-' . $post['user_id'] . '-' . $post['post_id']); ?>" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
+                                                                        </a>  
                                                                         </div>
                                                                     </li>
 
