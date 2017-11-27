@@ -191,7 +191,14 @@
 //        });
 //    }
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
-   
+
+    function show_header_notification(notification_count,to_id) {
+        var socket = io.connect('http://' + window.location.hostname + ':3000');
+        socket.emit('notification_count', {
+            notification_count: notification_count,
+            to_id: to_id,
+        });
+    }
 </script>
 <script type="text/javascript">
     $('#InboxLink').on('click', function () {
