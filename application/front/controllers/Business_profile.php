@@ -1162,9 +1162,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                 if (IMAGEPATHFROM == 'upload') {
                     $return_html .= '<div>';
                     if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
-                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
-                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls>';
                     }
                     $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
                     //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -1176,9 +1176,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                     $return_html .= '<div>';
                     if ($info) {
-                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                     } else {
-                        $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
+                        $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls>';
                     }
                     $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
                     //$return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">';
@@ -1308,29 +1308,27 @@ Your browser does not support the audio tag.
 </ul>
 <ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">';
 
-$contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
-   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    //echo "<pre>"; print_r($postformat); die();
-                    if($postformat[0]['post_format'] == 'video'){
-                    $return_html .= '<li id="viewvideouser'.$row['business_profile_post_id'].'">';
+        $contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
+        $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r($postformat); die();
+        if ($postformat[0]['post_format'] == 'video') {
+            $return_html .= '<li id="viewvideouser' . $row['business_profile_post_id'] . '">';
 
-                    $contition_array = array('post_id' => $row['business_profile_post_id']);
-   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    $user_data = count($userdata); 
+            $contition_array = array('post_id' => $row['business_profile_post_id']);
+            $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $user_data = count($userdata);
 
-                    if($user_data > 0){
+            if ($user_data > 0) {
 
-                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+                $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
 
-                    $return_html .= $user_data . ' '. 'Views'; 
+                $return_html .= $user_data . ' ' . 'Views';
 
-                    $return_html .= '</span></div></li>';
+                $return_html .= '</span></div></li>';
+            }
+        }
 
-                      }
-
-                   }
-
-$return_html .= '<li>
+        $return_html .= '<li>
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
@@ -2333,7 +2331,7 @@ $return_html .= '<li>
 //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $business_deactive = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($business_deactive) {
             redirect('business_profile/');
@@ -2428,10 +2426,17 @@ $return_html .= '<li>
                       </button>';
                 $follow .= '</div>';
                 $datacount = '(' . count($followcount) . ')';
+                
+                // GET NOTIFICATION COUNT
+                $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $business_id))->row()->user_id;
+                $not_count = $this->business_notification_count($to_id);
+                
                 echo json_encode(
                         array(
                             "follow" => $follow,
                             "count" => $datacount,
+                            "status" => 'success',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$to_id),
                 ));
             }
         } else {   //echo "hii"; die();
@@ -2489,12 +2494,17 @@ $return_html .= '<li>
                 $follow .= '</div>';
 
                 $datacount = '(' . count($followcount) . ')';
-
+                
+                // GET NOTIFICATION COUNT
+                $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $business_id))->row()->user_id;
+                $not_count = $this->business_notification_count($to_id);
+                
                 echo json_encode(
                         array(
                             "follow" => $follow,
                             "count" => $datacount,
                             "status" => 'success',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$to_id),
                 ));
             }
         }
@@ -2558,8 +2568,7 @@ $return_html .= '<li>
         }
     }
 
-
- public function business_home_follow_ignore() {
+    public function business_home_follow_ignore() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
         $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
@@ -2569,44 +2578,44 @@ $return_html .= '<li>
         $insert_data['user_from'] = $business_profile_id;
         $insert_data['user_to'] = $follow_to;
 
-       $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
+        $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
 
-       if($insert_id){
+        if ($insert_id) {
 
-                // GET USER BUSINESS DATA START
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // GET USER BUSINESS DATA START
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $business_profile_id = $businessdata[0]['business_profile_id'];
-        $industriyal = $businessdata[0]['industriyal'];
-        $city = $businessdata[0]['city'];
-        $state = $businessdata[0]['state'];
-        $other_industrial = $businessdata[0]['other_industrial'];
-        $business_type = $businessdata[0]['business_type'];
-        // GET USER BUSINESS DATA END
-        // GET BUSINESS USER FOLLOWING LIST START
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
-        $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
-        $follow_list = $followdata[0]['follow_list'];
-        $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
-        // GET BUSINESS USER FOLLOWING LIST END
-        // GET BUSINESS USER IGNORE LIST START
-        $contition_array = array('user_from' => $business_profile_id, 'profile' => '2');
-        $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
-        $user_list = $followdata[0]['user_list'];
-        $user_list = str_replace(",", "','", $userdata[0]['user_list']);
-        // GET BUSINESS USER IGNORE LIST END
-        //GET BUSINESS USER SUGGESTED USER LIST 
-        $contition_array = array('is_deleted' => '0', 'status' => '1', 'user_id != ' => $userid, 'business_step' => '4');
-        $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
+            $business_profile_id = $businessdata[0]['business_profile_id'];
+            $industriyal = $businessdata[0]['industriyal'];
+            $city = $businessdata[0]['city'];
+            $state = $businessdata[0]['state'];
+            $other_industrial = $businessdata[0]['other_industrial'];
+            $business_type = $businessdata[0]['business_type'];
+            // GET USER BUSINESS DATA END
+            // GET BUSINESS USER FOLLOWING LIST START
+            $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
+            $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
+            $follow_list = $followdata[0]['follow_list'];
+            $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
+            // GET BUSINESS USER FOLLOWING LIST END
+            // GET BUSINESS USER IGNORE LIST START
+            $contition_array = array('user_from' => $business_profile_id, 'profile' => '2');
+            $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
+            $user_list = $followdata[0]['user_list'];
+            $user_list = str_replace(",", "','", $userdata[0]['user_list']);
+            // GET BUSINESS USER IGNORE LIST END
+            //GET BUSINESS USER SUGGESTED USER LIST 
+            $contition_array = array('is_deleted' => '0', 'status' => '1', 'user_id != ' => $userid, 'business_step' => '4');
+            $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
+            $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
 
-        $userlist = $userlistview[2];
+            $userlist = $userlistview[2];
 
-        $third_user_html = '';
-        if (count($userlistview) > 0) {
-            //foreach ($userlistview as $userlist) {
+            $third_user_html = '';
+            if (count($userlistview) > 0) {
+                //foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
                 $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => '1'))->row()->business_profile_id;
                 $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
@@ -2666,13 +2675,11 @@ $return_html .= '<li>
       </div></div></li>';
                 }
             }
-       // }
+            // }
 
-        echo $third_user_html;
-
-       }
+            echo $third_user_html;
+        }
     }
-
 
     public function home_three_follow() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -9227,7 +9234,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
 
                         $return_html .= '<div>
-<video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls playsinline webkit-playsinline>
+<video width = "100%" height = "350" poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls playsinline webkit-playsinline>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
 Your browser does not support the video tag.
 </video>
@@ -9357,29 +9364,27 @@ Your browser does not support the audio tag.
 </ul>
 <ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">';
 
-$contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
-   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    //echo "<pre>"; print_r($postformat); die();
-                    if($postformat[0]['post_format'] == 'video'){
-                    $return_html .= '<li id="viewvideouser'.$row['business_profile_post_id'].'">';
+                $contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
+                $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                //echo "<pre>"; print_r($postformat); die();
+                if ($postformat[0]['post_format'] == 'video') {
+                    $return_html .= '<li id="viewvideouser' . $row['business_profile_post_id'] . '">';
 
                     $contition_array = array('post_id' => $row['business_profile_post_id']);
-   $userdata = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    $user_data = count($userdata); 
+                    $userdata = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $user_data = count($userdata);
 
-                    if($user_data > 0){
+                    if ($user_data > 0) {
 
-                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+                        $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
 
-                    $return_html .= $user_data . ' '. 'Views'; 
+                        $return_html .= $user_data . ' ' . 'Views';
 
-                    $return_html .= '</span></div></li>';
+                        $return_html .= '</span></div></li>';
+                    }
+                }
 
-                      }
-
-                   }
-
-$return_html .= '<li>
+                $return_html .= '<li>
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
@@ -10416,8 +10421,8 @@ $return_html .= '<li>
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[0]['file_name']) {
-                 //$fetchaudio .= '<td class = "image_profile">';
-                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                //$fetchaudio .= '<td class = "image_profile">';
+                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 $fetchaudio .= '<audio controls>';
 
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[0]['file_name'] . '" type = "audio/mp3">';
@@ -10428,7 +10433,7 @@ $return_html .= '<li>
             }
 
             if ($businessaudio[1]['file_name']) {
-                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 // $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[1]['file_name'] . '" type = "audio/mp3">';
@@ -10438,7 +10443,7 @@ $return_html .= '<li>
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[2]['file_name']) {
-                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[2]['file_name'] . '" type = "audio/mp3">';
@@ -10451,7 +10456,7 @@ $return_html .= '<li>
             $fetchaudio .= '<tr>';
 
             if ($businessaudio[3]['file_name']) {
-                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[3]['file_name'] . '" type = "audio/mp3">';
@@ -10461,7 +10466,7 @@ $return_html .= '<li>
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[4]['file_name']) {
-                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[4]['file_name'] . '" type = "audio/mp3">';
@@ -10471,7 +10476,7 @@ $return_html .= '<li>
                 $fetchaudio .= '</td>';
             }
             if ($businessaudio[5]['file_name']) {
-                $fetchaudio .= '<td><a href="'.base_url('business-profile/audios/' . $businessdata1[0]['business_slug']).'"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
+                $fetchaudio .= '<td><a href="' . base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) . '"><img src = "' . base_url('assets/images/music-icon.png') . '"></a>';
                 //$fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
                 $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessaudio[5]['file_name'] . '" type = "audio/mp3">';
@@ -10871,9 +10876,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                         if (IMAGEPATHFROM == 'upload') {
                             $return_html .= '<div>';
                             if (file_exists($this->config->item('bus_post_main_upload_path') . $post_poster)) {
-                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                             } else {
-                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls>';
                             }
 
                             $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
@@ -10886,9 +10891,9 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
                             $filename = $this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name'];
                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                             if ($info) {
-                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls poster="' . BUS_POST_MAIN_UPLOAD_URL . $post_poster . '">';
                             } else {
-                                $return_html .= '<video width = "100%" height = "350" id="show_video'.$businessmultiimage[0]['post_files_id'].'" onplay="playtime('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.')" onClick="count_videouser('.$businessmultiimage[0]['post_files_id'].','.$post_business_profile_post_id.');" controls>';
+                                $return_html .= '<video width = "100%" height = "350" id="show_video' . $businessmultiimage[0]['post_files_id'] . '" onplay="playtime(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ')" onClick="count_videouser(' . $businessmultiimage[0]['post_files_id'] . ',' . $post_business_profile_post_id . ');" controls>';
                             }
                             $return_html .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">';
                             $return_html .= 'Your browser does not support the video tag.';
@@ -11019,29 +11024,27 @@ Your browser does not support the audio tag.
 </li>
 </ul>
 <ul class = "col-md-6 col-sm-6 col-xs-6 like_cmnt_count">';
-$contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
-   $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    //echo "<pre>"; print_r($postformat); die();
-                    if($postformat[0]['post_format'] == 'video'){
-                    $return_html .= '<li id="viewvideouser'.$row['business_profile_post_id'].'">';
+                $contition_array = array('post_id' => $row['business_profile_post_id'], 'insert_profile' => '2');
+                $postformat = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'post_format', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                //echo "<pre>"; print_r($postformat); die();
+                if ($postformat[0]['post_format'] == 'video') {
+                    $return_html .= '<li id="viewvideouser' . $row['business_profile_post_id'] . '">';
 
                     $contition_array = array('post_id' => $row['business_profile_post_id']);
-   $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    $user_data = count($userdata); 
+                    $userdata = $this->common->select_data_by_condition('showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $user_data = count($userdata);
 
-                    if($user_data > 0){
+                    if ($user_data > 0) {
 
-                     $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+                        $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
 
-                    $return_html .= $user_data . ' '. 'Views'; 
+                        $return_html .= $user_data . ' ' . 'Views';
 
-                    $return_html .= '</span></div></li>';
+                        $return_html .= '</span></div></li>';
+                    }
+                }
 
-                      }
-
-                   }
-
-$return_html .= '<li>
+                $return_html .= '<li>
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
@@ -11458,7 +11461,6 @@ $return_html .= '<li>
         }
     }
 
-
     public function business_profile_active_check() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -11496,8 +11498,7 @@ $return_html .= '<li>
             }
         } else {
             //redirect('business-profile/business-information-update', refresh);
-             redirect('business-profile/business-information', refresh);
-
+            redirect('business-profile/business-information', refresh);
         }
 
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
@@ -11579,47 +11580,55 @@ $return_html .= '<li>
         //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
 
-
-
 //video show user count start
 
-public function showuser(){
+    public function showuser() {
 
-    $userid = $this->session->userdata('aileenuser');
-    $file_id = $_POST['file_id'];
-    $post_id = $_POST['post_id']; 
+        $userid = $this->session->userdata('aileenuser');
+        $file_id = $_POST['file_id'];
+        $post_id = $_POST['post_id'];
 
-   $contition_array = array('business_profile_post_id' => $post_id);
-   $postuploaduid = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'user_id,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('business_profile_post_id' => $post_id);
+        $postuploaduid = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'user_id,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-   //echo "<pre>"; print_r($postuploaduid); die();
-   $contition_array = array('post_files_id' => $file_id, 'user_id' => $userid, 'post_id' => $post_id);
-   $existvideouser = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r($postuploaduid); die();
+        $contition_array = array('post_files_id' => $file_id, 'user_id' => $userid, 'post_id' => $post_id);
+        $existvideouser = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-         if($userid ==  $postuploaduid[0]['user_id'] || $userid ==  $postuploaduid[0]['posted_user_id']){  }else{  
-            if(!$existvideouser){
+        if ($userid == $postuploaduid[0]['user_id'] || $userid == $postuploaduid[0]['posted_user_id']) {
+            
+        } else {
+            if (!$existvideouser) {
 
                 $data = array(
-                            'post_files_id' => $file_id,
-                            'user_id' => $userid,
-                            'created_date' => date('Y-m-d H:i:s', time()),
-                            'post_id' => $post_id,
-                        );                         
-    $insert_id = $this->common->insert_data_getid($data, 'bus_showvideo');
-   }
-}
+                    'post_files_id' => $file_id,
+                    'user_id' => $userid,
+                    'created_date' => date('Y-m-d H:i:s', time()),
+                    'post_id' => $post_id,
+                );
+                $insert_id = $this->common->insert_data_getid($data, 'bus_showvideo');
+            }
+        }
 
-   $contition_array = array('post_files_id' => $file_id);
-   $userdata = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    $user_data = count($userdata);
+        $contition_array = array('post_files_id' => $file_id);
+        $userdata = $this->common->select_data_by_condition('bus_showvideo', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $user_data = count($userdata);
 
-    $return_html = '';
+        $return_html = '';
 
-    $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
-    $return_html .= $user_data . ' ' .'Views';
-    $return_html .= '</sapn></div>';
+        $return_html .= '<div class="comnt_count_ext_a  comnt_count_ext2"><span>';
+        $return_html .= $user_data . ' ' . 'Views';
+        $return_html .= '</sapn></div>';
 
-    echo $return_html;
- }
+        echo $return_html;
+    }
+    
+    public function business_notification_count($to_id = '') {
+        $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
+        $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $count = $result[0]['total'];
+        return  $count;
+    }
 
 }

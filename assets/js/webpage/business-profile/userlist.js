@@ -79,29 +79,19 @@ function followuser(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fruser' + clicked_id).html(data.follow);
-            //$('#countfollow').html(data.count);
             $('.left_box_following_count').html(data.count);
-            notification_count(clicked_id);
+            if (data.notification.notification_count != 0) {
+                var socket = io.connect('http://' + window.location.hostname + ':3000');
+                socket.emit('notification_count', {
+                    notification_count: data.notification.notification_count,
+                    to_id: data.notification.to_id,
+                });
+            }
+
         }
     });
 }
-function notification_count(clicked_id) {
-    $.ajax({
-        type: "GET",
-        url: base_url + "notification/select_notification/" + clicked_id,
-        dataType: 'json',
-        success: function (data) {
-            if (data.count != 0) {
-                //        $("#notif").html(data.notif);
-                var socket = io.connect('http://' + window.location.hostname + ':3000');
-                socket.emit('notification_count', {
-                    notification_count: data.count,
-                    to_id: data.to_id,
-                });
-            }
-        },
-    });
-}
+
 function unfollowuser(clicked_id)
 {
     $.ajax({

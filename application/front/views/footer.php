@@ -90,7 +90,7 @@
             data: '',
             beforeSend: function () {
                 $('#gen_not_loader').show();
-                $('ul.notification_data_in').html('<div class="fw" id="gen_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>');
+                $('ul.notification_data_in').html('<div class="fw" id="gen_not_loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>');
             },
 
             complete: function () {
@@ -191,6 +191,7 @@
 //        });
 //    }
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
+   
 </script>
 <script type="text/javascript">
     $('#InboxLink').on('click', function () {
@@ -235,28 +236,28 @@
 
 // });
 // better image preloading @ https://perishablepress.com/press/2009/12/28/3-ways-preload-images-css-javascript-ajax/
-   
-    
-    /*$(document).ready(function () {
-        var images = new Array()
-        function preload(image) {
 
-            for (i = 0; i < preload.arguments.length; i++) {
-                images[i] = new Image()
-                images[i].src = preload.arguments[i]
-            }
-        }
-        preload(
-                '<?php echo base_url(); ?>img/fi1_hover.png',
-                '<?php echo base_url(); ?>img/fi2_hover.png',
-                '<?php echo base_url(); ?>img/fi3_hover.png',
-                '<?php echo base_url(); ?>img/fi4_hover.png',
-                '<?php echo base_url(); ?>img/fi5_hover.png',
-                '<?php echo base_url(); ?>img/icon_contact_request.png',
-                '<?php echo base_url(); ?>img/h3.png',
-                '<?php echo base_url(); ?>img/index.png',
-                '<?php echo base_url(); ?>img/edit_profile.png',
-                )
-    }); */
+
+    /*$(document).ready(function () {
+     var images = new Array()
+     function preload(image) {
+     
+     for (i = 0; i < preload.arguments.length; i++) {
+     images[i] = new Image()
+     images[i].src = preload.arguments[i]
+     }
+     }
+     preload(
+     '<?php echo base_url(); ?>img/fi1_hover.png',
+     '<?php echo base_url(); ?>img/fi2_hover.png',
+     '<?php echo base_url(); ?>img/fi3_hover.png',
+     '<?php echo base_url(); ?>img/fi4_hover.png',
+     '<?php echo base_url(); ?>img/fi5_hover.png',
+     '<?php echo base_url(); ?>img/icon_contact_request.png',
+     '<?php echo base_url(); ?>img/h3.png',
+     '<?php echo base_url(); ?>img/index.png',
+     '<?php echo base_url(); ?>img/edit_profile.png',
+     )
+     }); */
 </script>
 <!--<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>-->
