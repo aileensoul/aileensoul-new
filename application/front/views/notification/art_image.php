@@ -137,17 +137,70 @@
 
                  $url_id = $arturl[0]['slug'] .'-' . $category_url . '-'. $city_get.'-'.$arturl[0]['art_id'];
 
-
-
-
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
                                             <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artist/dashboard/' . $url_post_id); ?>">
-                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" /> </a>
+
+                                                <?php 
+
+                                                 if (IMAGEPATHFROM == 'upload') {
+                                                  if($userimageposted){
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
+                                   <?php } }else{?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $userimageposted;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
+
+                                              
+                                <?php }else{?>
+
+                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                                                <?php } }?>
+
+                                            </a>
 
                                         <?php } else { ?>
                                             <a class="post_dot"  href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
-                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" /> </a>
+
+                                                <?php 
+                                                 if (IMAGEPATHFROM == 'upload') {
+                                                  if($userimageposted){
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>"  alt="">
+                                   <?php } }else{?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                              
+                                <?php }else{?>
+                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                                <?php } }?>
+
+                                               </a>
 
                                         <?php } ?>
                                     </div>
@@ -267,14 +320,30 @@
                                                         </div>
 
                                                         <div id="<?php echo 'editpostbox' . $art_data[0]['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
-                                                            <input type="text" class="my_text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Art name" value="<?php echo $art_data[0]['art_post']; ?>">
+                                                            <input type="text" class="my_text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Product name" value="<?php echo $art_data[0]['art_post']; ?>" onKeyDown=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onKeyup=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onblur=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>);>
+
+
+                            <?php 
+                              if($art_data[0]['art_post']){ 
+                                $counter = $art_data[0]['art_post'];
+                                $a = strlen($counter);
+
+                                ?>
+
+                            <input size=1 id="text_num" tabindex="-500" class="text_num" value="<?php echo (50 - $a);?>" name=text_num readonly>
+
+                           <?php }else{?>
+                           <input size=1 id="text_num" class="text_num" tabindex="-500" value=50 name=text_num readonly> 
+
+                            <?php }?>
+
                                                         </div>
                                             
                                             <div class="margin_btm" id="<?php echo 'editpostdetails' . $art_data[0]['art_post_id']; ?>" style="display:block;"><span class="show">
                                                     <?php print $this->common->make_links($art_data[0]['art_description']); ?></span>
                                             </div>
                                             <div id="<?php echo 'editpostdetailbox' . $art_data[0]['art_post_id']; ?>" style="display:none;">
-                                                <div contenteditable="true" id="<?php echo 'editpostdesc' . $art_data[0]['art_post_id']; ?>" name="editpostdesc" class="editable_text" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $art_data[0]['art_description']; ?>
+                                                <div palceholder ="Description" contenteditable="true" id="<?php echo 'editpostdesc' . $art_data[0]['art_post_id']; ?>" name="editpostdesc" class="editable_text" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $art_data[0]['art_description']; ?>
                                                 </div> 
                                             </div>
                                             <button class="fr" id="<?php echo "editpostsubmit" . $art_data[0]['art_post_id']; ?>" style="display:none; " onClick="edit_postinsert(<?php echo $art_data[0]['art_post_id']; ?>)">Save</button>
@@ -618,8 +687,8 @@
 
                           <?php 
 
-                          if (IMAGEPATHFROM == 'upload') {
-                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                          if (IMAGEPATHFROM == 'upload') { 
+                                          if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {  ?>
                                        
                                         <a class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artist/dashboard/' . $url_id); ?>">
                                         <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
@@ -630,8 +699,7 @@
                                         <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
                                       </a>
                                    <?php }
-                                } else{
-
+                                } else{ 
 
                             $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
                             $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -783,15 +851,33 @@
                                                             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_user_image;
                                                             ?>
                                                             <div class="post-design-proo-img">
-                                                                <?php if ($art_userimage) { ?>
-                                                                    <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
-                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="No Image">
-                                                                    <?php
-                                                                }
-                                                                ?>
+
+                                                                 <?php 
+
+                                if (IMAGEPATHFROM == 'upload') {
+                                                  if($art_userimage){
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php } }else{?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                              
+                                <?php }else{?>
+                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                                                <?php } }?>  
                                                             </div>
                                                             <div class="">
                                                                 <div id="content" class="col-md-12 inputtype-comment cmy_2" >
@@ -1026,15 +1112,33 @@
                                                             <?php
                                                             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => '1'))->row()->art_user_image;
                                                             ?>
-                                                            <?php if ($art_userimage) { ?>
-                                                                <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
-                                                                <?php
-                                                            } else {
-                                                                ?>
-                                                                <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
-                                                                <?php
-                                                            }
-                                                            ?>
+
+                                            <?php 
+
+                                if (IMAGEPATHFROM == 'upload') {
+                                                  if($art_userimage){
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php } }else{?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                              
+                                <?php }else{?>
+                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                                                <?php } }?>                                                          
                                                         </div>
                                                         <div class="comment-name">
                                                             <b title=" <?php
@@ -1161,15 +1265,34 @@
                                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => '1'))->row()->art_user_image;
                                     ?>
                                     <div class="post-design-proo-img">
-                                        <?php if ($art_userimage) { ?>
-                                            <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <img src="<?php echo base_url(NOIMAGE); ?>" alt="No Image">
-                                            <?php
-                                        }
-                                        ?>
+
+                                         <?php 
+
+                                if (IMAGEPATHFROM == 'upload') {
+                                                  if($art_userimage){
+                                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) { ?>
+                                       
+                                        <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                                        
+                                    <?php } else { ?>
+                                        <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
+                                   <?php } }else{?>
+                                   <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+                               <?php } }else{
+
+                      $filename = $this->config->item('art_profile_thumb_upload_path') . $art_userimage;
+                      $s3 = new S3(awsAccessKey, awsSecretKey);
+                     $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+
+                                                if ($info) { ?>
+
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
+                                              
+                                <?php }else{?>
+                                                  <img  src="<?php echo base_url(NOARTIMAGE); ?>"  alt="">
+
+                                                <?php } }?>
+                                       
                                     </div>
                                     <div class="">
                                         <div id="content" class="col-md-12 inputtype-comment cmy_2" >
