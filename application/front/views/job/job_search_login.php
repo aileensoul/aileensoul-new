@@ -377,7 +377,7 @@
       <div class="container">
       <div class="row row4">
      
-      <div class="col-md-7 col-sm-7 col-sm-push-4 col-md-push-4">
+      <div class="col-md-8 col-sm-8 col-sm-push-2 col-md-push-2">
          <div class="common-form">
             <div class="job-saved-box">
                <h3>
