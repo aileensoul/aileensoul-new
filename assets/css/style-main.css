@@ -159,6 +159,7 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
 	color:#fff;
 	text-decoration:none;
 }
+
 .btn3{
 	font-size:16px;
 	color:#fff;
@@ -1622,6 +1623,9 @@ body.cover{padding-bottom:60px;}
 .about-us .titlea h1{text-transform: none;color: #5c5c5c!important;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color:#5c5c5c;}
+.about-us .btn-right .btn2{color: #000;}
+.about-us .btn-right .btn2:hover{color: #fff;}
+.about-us .btn-right .btn3:hover{color: #000;}
 /*complete about us*/
 
 
