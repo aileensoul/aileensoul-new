@@ -362,7 +362,7 @@
         }
         /*second*/
         .no-login .left_side_posrt  label {color: #5c5c5c !important;}
-        /*.no-login .left_side_posrt .lbpos input{width: 0% !important; }*/
+        .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 180px;border: none;}
     </style>
     <body class="page-container-bg-solid page-boxed no-login freeh3">
