@@ -4995,22 +4995,16 @@ Your browser does not support the audio tag.
         }
 
         // GET NOTIFICATION COUNT
-        $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $business_id))->row()->user_id;
+        $to_id = $busdatacomment[0]['user_id'];
         $not_count = $this->business_notification_count($to_id);
-
-        echo json_encode(
-                array(
-                    "follow" => $follow_html,
-                    "count" => $datacount,
-                    "status" => 'success',
-                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
-        ));
-
 
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
-                    "comment_count" => $cntinsert));
+                    "comment_count" => $cntinsert,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+        ));
     }
 
     public function insert_comment() {
@@ -5208,11 +5202,20 @@ Your browser does not support the audio tag.
             $cntinsert .= '<span> Comment</span>';
         }
 
+        // GET NOTIFICATION COUNT
+        $to_id = $busdatacomment[0]['user_id'];
+        // $not_count = $this->business_notification_count($to_id);
+        $not_count = $this->business_notification_count($to_id);
+
+
 //        echo $cmtinsert;
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
-                    "comment_count" => $cntinsert));
+                    "comment_count" => $cntinsert,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+        ));
 
 // khyati chande 
     }
