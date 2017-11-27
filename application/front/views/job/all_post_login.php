@@ -400,7 +400,7 @@
                                             <input type="checkbox" name="Mumbai" value="ON" /> Mumbai
                                             <input type="checkbox" name="pune" value="ON" /> Pune
  -->                                            <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher"  tabindex="1" name="radio" value="Ahmedabad" checked="" type="checkbox">
+                                                <input id="fresher"  tabindex="1" name="radio" class="cus-input-city" value="Ahmedabad" checked="" type="checkbox">
                                                 Ahmedabad Jobs&nbsp;&nbsp;
                                                 </label>
                                                 <label for="Fresher" class="lbpos fw">
