@@ -390,10 +390,10 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <input type="checkbox" name="Ahmedabad" value="ON" /> Ahmedabad
-                                            <input type="checkbox" name="Banglore" value="ON" /> Banglore
+                                            <P> <input type="checkbox" name="Ahmedabad" value="ON" /> Ahmedabad </P>
+                                            <input type="checkbox" name="Bengaluru" value="ON" /> Bengaluru
                                             <input type="checkbox" name="Chennai" value="ON" /> Chennai
-                                            <input type="checkbox" name="Dehli" value="ON" /> Dehli
+                                            <input type="checkbox" name="Delhi" value="ON" /> Delhi
                                             <input type="checkbox" name="Hydrabad" value="ON" /> Hydrabad
                                             <input type="checkbox" name="Mumbai" value="ON" /> Mumbai
                                             <input type="checkbox" name="pune" value="ON" /> Pune
