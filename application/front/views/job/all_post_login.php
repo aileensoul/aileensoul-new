@@ -362,7 +362,7 @@
         }
         /*second*/
         .no-login .left_side_posrt label{margin-bottom: 6px;}
-        .no-login .left_side_posrt  a {color: #5c5c5c !important;}
+        .no-login .left_side_posrt  a{color: #5c5c5c !important;}
         .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 180px;border: none;}

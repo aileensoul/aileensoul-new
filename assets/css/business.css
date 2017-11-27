@@ -1468,6 +1468,11 @@ label.cameraButton:active {
     padding-bottom: 5px;
     border-bottom: 1px solid #d9d9d9;
 }
+.all-comment-comment-box-custom{
+    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 .all-comment-comment-box span {
     color: #999999;
     vertical-align: middle;
@@ -4492,7 +4497,7 @@ body.reg-form{background: #fff}
 .profile-boxProfileCard .mejs__inner .mejs__poster{height: 110px !important;}
 /***  end all edit profile form  ***/
 .business_data .bus_pdf .image_profile .pdf_img image{height: 100%!important;width: 100%!important;}
-.business_data .art_audios .image_profile .mejs__audio{margin-top: 60px;}
+.business_data .bus_audios .image_profile .mejs__audio{margin-top: 60px;}
 .has-error input, input.error, select.error, .has-error textarea, textarea.error{border: 1px solid #ff0000 !important;}
 /***  media query  ***/
 
