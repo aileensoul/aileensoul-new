@@ -396,6 +396,9 @@ label.cameraButton:active {
 }
 .common-form_border {
     border: 1px solid #d9d9d9;
+	-webkit-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
+	-moz-box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
+	box-shadow: 0px 0px 10px -1px rgba(217,217,217,1);
 }
 .red {
     color: red;
@@ -4455,8 +4458,8 @@ div .comment {
 .all-edit-profile-box{width:730px; margin:0 auto;}
 .edit-pro-box{width:50px; height:50px; border-radius:100%; margin:0 auto; background:#a4adb8; display:block; padding:10px;}
 .all-edit-tab{position:relative;}
-.edit-progress-box .progress-line{width:100%; float:left; height:5px; background:#a4adb8; position:absolute; top:44px;}
-.edit-progress-box .progress-line-filled{height:5px; position:absolute; top:44px;
+.edit-progress-box .progress-line{width:100%; float:left; height:3px; background:#a4adb8; position:absolute; top:44px;}
+.edit-progress-box .progress-line-filled{height:3px; position:absolute; top:44px;
 background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
 background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
