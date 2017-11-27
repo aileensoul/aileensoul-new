@@ -130,32 +130,3 @@ var len = input.val().length;
 input[0].focus();
 input[0].setSelectionRange(len, len);
  });
-
-
-// dropdwon color change script start
-
-$('select').on('change', function () {
-
-    var country = $('#country').val();
-    var state = $('#state').val();
-    var city = $('#city').val();
-
-    alert(country); alert(state); alert(city);
-
-        if (!country) { alert(1);
-           
-           $(this).css('color', '#acacac');
-
-        }else if(!state){ alert(2);
-
-              $(this).css('color', '#acacac');
-
-        } else if(!city){ alert(3);
-
-              $(this).css('color', '#acacac');
-
-        }else { alert(4);
-          
-           $(this).css('color', 'black');
-        }
-});
