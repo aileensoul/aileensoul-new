@@ -2340,13 +2340,13 @@ Your browser does not support the audio tag.
 
         $business_id = $_POST["follow_to"];
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
-        $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'user_id,contact_email', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
-        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($follow) {
             $data = array(
@@ -2360,7 +2360,7 @@ Your browser does not support the audio tag.
 // insert notification
 
             $contition_array = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
-            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
                 $datafollow = array(
@@ -2381,7 +2381,7 @@ Your browser does not support the audio tag.
                 // $insertdata = $this->common->insert_data($data, 'follow');
 
                 $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
-                $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // insert notification
 
                 $data = array(
@@ -2418,13 +2418,13 @@ Your browser does not support the audio tag.
 // end notification
 
             $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1');
-            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($update) {
-                $follow = '<div id="unfollowdiv" class="user_btn">';
-                $follow .= '<button class= "bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
+                $follow_html = '<div id="unfollowdiv" class="user_btn">';
+                $follow_html .= '<button class= "bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
                               <span>Following</span>
                       </button>';
-                $follow .= '</div>';
+                $follow_html .= '</div>';
                 $datacount = '(' . count($followcount) . ')';
                 
                 // GET NOTIFICATION COUNT
@@ -2433,7 +2433,7 @@ Your browser does not support the audio tag.
                 
                 echo json_encode(
                         array(
-                            "follow" => $follow,
+                            "follow" => $follow_html,
                             "count" => $datacount,
                             "status" => 'success',
                             "notification" => array('notification_count'=>$not_count, 'to_id' =>$to_id),
@@ -2449,7 +2449,7 @@ Your browser does not support the audio tag.
             $insertdata = $this->common->insert_data($data, 'follow');
 
             $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
-            $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // insert notification
 
             $data = array(
@@ -2483,15 +2483,15 @@ Your browser does not support the audio tag.
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
             }
             $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
-            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // end notification
             if ($insertdata) {
-                $follow = '<div id="unfollowdiv" class="user_btn">';
-                $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
+                $follow_html = '<div id="unfollowdiv" class="user_btn">';
+                $follow_html .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
                                <span>Following</span>
                       </button>';
-                $follow .= '</div>';
+                $follow_html .= '</div>';
 
                 $datacount = '(' . count($followcount) . ')';
                 
@@ -2501,7 +2501,7 @@ Your browser does not support the audio tag.
                 
                 echo json_encode(
                         array(
-                            "follow" => $follow,
+                            "follow" => $follow_html,
                             "count" => $datacount,
                             "status" => 'success',
                             "notification" => array('notification_count'=>$not_count, 'to_id' =>$to_id),
