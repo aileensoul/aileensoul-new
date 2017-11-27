@@ -99,7 +99,12 @@
             success: function (data) {
                 $('.' + 'notification_data_in').html(data.notification);
                 $('#seenot').html(data.seeall);
-
+                $('span[id^=notification_count]').html('');
+                $('span[id^=notification_count]').css({
+                    "background-color": "",
+                    "padding": "0px"
+                });
+                $('#notificationLink').removeClass('notification_available');
             }
 
         });
@@ -141,7 +146,8 @@
             $("#notification_count" + data.to_id).html(data.notification_count);
             $('#notification_count' + data.to_id).css({
                 "background-color": "#FF4500",
-                "padding": "5px 6px"
+                "padding": "5px 6px",
+                "border-radius": "50px",
             });
             $('#notificationLink').addClass('notification_available');
             document.getElementById('notification_count' + data.to_id).style.display = 'block';

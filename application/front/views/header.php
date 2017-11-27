@@ -71,12 +71,12 @@
                                     <!-- general notification start -->
                                     <li id="notification_li">
                                         <a class="action-button shadow animate dropbtn_common <?php
-                                        if ($user_notification_count != '0' || $user_notification_count != '') {
+                                        if ($user_notification_count != '0' && $user_notification_count != '') {
                                             echo 'notification_available';
                                         }
                                         ?>" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
-                                           <?php if ($user_notification_count != '0' || $user_notification_count != '') { ?>
-                                            <span id="notification_count<?php echo $userid; ?>" style=""><?php echo $user_notification_count; ?></span>
+                                           <?php if ($user_notification_count != '0' && $user_notification_count != '') { ?>
+                                            <span id="notification_count<?php echo $userid; ?>" style="background-color:#FF4500; padding:5px 6px; border-radius:50%;"><?php echo $user_notification_count; ?></span>
                                             <?php } else { ?>
                                                 <span id="notification_count<?php echo $userid; ?>"></span>
                                             <?php } ?>
