@@ -281,6 +281,7 @@ $route['job/profile/live-post'] = "job/job_reg";
 $route['job/profile/live-post/(:any)'] = "job/job_reg/$1";
 //$route['job/search'] = "job/job_search";
  $route['jobs'] = "job/job_search";
+ $route['jobs/(:any)'] = "job/job_search/$1";
 //$route['(:any)'] = "job/job_search";
 $route['(:any)-jobs'] = "job/job_search";
 $route['jobs-in-(:any)'] = "job/job_search";

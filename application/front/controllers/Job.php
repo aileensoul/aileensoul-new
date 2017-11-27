@@ -10,7 +10,6 @@ class Job extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->load->library('S3');
@@ -25,7 +24,6 @@ class Job extends MY_Controller {
 //             $this->db->update('job_reg', $data);
 //         }
         // This function is there only one time users slug created after remove it End
-
         include ('include.php');
         include ('job_include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
@@ -130,10 +128,8 @@ class Job extends MY_Controller {
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
         $this->form_validation->set_rules('gender', 'Gender', 'required');
         $this->form_validation->set_rules('city', 'City', 'required');
-      //  $this->form_validation->set_rules('pincode', 'Pincode', 'required');
-       // $this->form_validation->set_rules('address', 'Address', 'required');
-
-
+        //  $this->form_validation->set_rules('pincode', 'Pincode', 'required');
+        // $this->form_validation->set_rules('address', 'Address', 'required');
         // Language  start   
         $language = $this->input->post('language');
         $language = explode(',', $language);
@@ -187,10 +183,10 @@ class Job extends MY_Controller {
 
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
             if ($updatedata) {
-               // $this->session->set_flashdata('success', 'Basic information updated successfully');
+                // $this->session->set_flashdata('success', 'Basic information updated successfully');
                 redirect('job/qualification', refresh);
             } else {
-               // $this->session->flashdata('error', 'Your data not inserted');
+                // $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/basic-information', refresh);
             }
         }
@@ -385,19 +381,18 @@ class Job extends MY_Controller {
             $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
             //S3 BUCKET STORE THUMB IMAGE END
 
-                $thumb_file = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
-
+            $thumb_file = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
         }
 
 
         if ($_SERVER['HTTP_HOST'] != "localhost") {
-                    if (isset($main_file)) {
-                        unlink($main_file);
-                    }
-                    if (isset($thumb_file)) {
-                        unlink($thumb_file);
-                    }
-                }
+            if (isset($main_file)) {
+                unlink($main_file);
+            }
+            if (isset($thumb_file)) {
+                unlink($thumb_file);
+            }
+        }
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $job_reg_data = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'edu_certificate_primary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -467,10 +462,10 @@ class Job extends MY_Controller {
             //Update only one field into database End 
 
             if ($updatedata) {
-               // $this->session->set_flashdata('success', 'Primary Education updated successfully');
+                // $this->session->set_flashdata('success', 'Primary Education updated successfully');
                 redirect('job/qualification/secondary');
             } else {
-               // $this->session->flashdata('error', 'Your data not inserted');
+                // $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -486,10 +481,10 @@ class Job extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
 
             if ($insert_id) {
-               // $this->session->set_flashdata('success', 'Primary Education updated successfully');
+                // $this->session->set_flashdata('success', 'Primary Education updated successfully');
                 redirect('job/qualification/secondary');
             } else {
-               // $this->session->flashdata('error', 'Your data not inserted');
+                // $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         }
@@ -579,20 +574,19 @@ class Job extends MY_Controller {
             $thumb_image = $job_thumb['new_image'];
             $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
             //S3 BUCKET STORE THUMB IMAGE END
-            $thumb_file =  $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
-            $main_file =  $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
-
+            $thumb_file = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
+            $main_file = $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
         }
 
 
-         if ($_SERVER['HTTP_HOST'] != "localhost") {
-                    if (isset($main_file)) {
-                        unlink($main_file);
-                    }
-                    if (isset($thumb_file)) {
-                        unlink($thumb_file);
-                    }
-                }
+        if ($_SERVER['HTTP_HOST'] != "localhost") {
+            if (isset($main_file)) {
+                unlink($main_file);
+            }
+            if (isset($thumb_file)) {
+                unlink($thumb_file);
+            }
+        }
 
 
         $contition_array = array('user_id' => $userid);
@@ -662,10 +656,10 @@ class Job extends MY_Controller {
             //Update only one field into database End 
 
             if ($updatedata) {
-               // $this->session->set_flashdata('success', 'Secondary Education updated successfully');
+                // $this->session->set_flashdata('success', 'Secondary Education updated successfully');
                 redirect('job/qualification/higher-secondary');
             } else {
-               // $this->session->flashdata('error', 'Your data not inserted');
+                // $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -681,10 +675,10 @@ class Job extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
 
             if ($insert_id) {
-             //   $this->session->set_flashdata('success', 'Secondary Education updated successfully');
+                //   $this->session->set_flashdata('success', 'Secondary Education updated successfully');
                 redirect('job/qualification/higher-secondary');
             } else {
-              //  $this->session->flashdata('error', 'Your data not inserted');
+                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         }
@@ -779,18 +773,17 @@ class Job extends MY_Controller {
 
             $main_file = $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
             $thumb_file = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
-
         }
 
 
-         if ($_SERVER['HTTP_HOST'] != "localhost") {
-                    if (isset($main_file)) {
-                        unlink($main_file);
-                    }
-                    if (isset($thumb_file)) {
-                        unlink($thumb_file);
-                    }
-                }
+        if ($_SERVER['HTTP_HOST'] != "localhost") {
+            if (isset($main_file)) {
+                unlink($main_file);
+            }
+            if (isset($thumb_file)) {
+                unlink($thumb_file);
+            }
+        }
 
         $contition_array = array('user_id' => $userid);
         $job_reg_data = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'edu_certificate_higher_secondary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -859,10 +852,10 @@ class Job extends MY_Controller {
 
 
             if ($updatedata) {
-               // $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
+                // $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
                 redirect('job/qualification/graduation');
             } else {
-              //  $this->session->flashdata('error', 'Your data not inserted');
+                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         } else {
@@ -880,10 +873,10 @@ class Job extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'job_add_edu');
 
             if ($insert_id) {
-               // $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
+                // $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
                 redirect('job/qualification/graduation');
             } else {
-              //  $this->session->flashdata('error', 'Your data not inserted');
+                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/qualification', refresh);
             }
         }
@@ -1159,11 +1152,11 @@ class Job extends MY_Controller {
 
         if ($insert_id || $updatedata1) {
 
-           // $this->session->set_flashdata('success', 'Education updated successfully');
+            // $this->session->set_flashdata('success', 'Education updated successfully');
             redirect('job/project');
         } else {
             //echo "welome";die();
-           // $this->session->flashdata('error', 'Your data not inserted');
+            // $this->session->flashdata('error', 'Your data not inserted');
             redirect('job/qualification', 'refresh');
         }
     }
@@ -1229,10 +1222,10 @@ class Job extends MY_Controller {
 
             if ($updatedata) {
 
-              //  $this->session->set_flashdata('success', 'Project And Training / Internship updated successfully');
+                //  $this->session->set_flashdata('success', 'Project And Training / Internship updated successfully');
                 redirect('job/work-area');
             } else {
-              //  $this->session->flashdata('error', 'Your data not inserted');
+                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/project', 'refresh');
             }
         }
@@ -1420,10 +1413,10 @@ class Job extends MY_Controller {
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
 
             if ($updatedata) {
-              //  $this->session->set_flashdata('success', 'Skill updated successfully');
+                //  $this->session->set_flashdata('success', 'Skill updated successfully');
                 redirect('job/work-experience');
             } else {
-              //  $this->session->flashdata('error', 'Your data not inserted');
+                //  $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/work-area', 'refresh');
             }
         }
@@ -1547,10 +1540,10 @@ class Job extends MY_Controller {
 
 
                 if ($updatedata && $updatedata1 || $updatedata && $insertid) {
-                  //  $this->session->set_flashdata('success', 'Work Experience updated successfully');
+                    //  $this->session->set_flashdata('success', 'Work Experience updated successfully');
                     redirect('job/home');
                 } else {
-                  //  $this->session->flashdata('error', 'Your data not inserted');
+                    //  $this->session->flashdata('error', 'Your data not inserted');
                     redirect('job/work-experience', 'refresh');
                 }
             } else {
@@ -1661,13 +1654,13 @@ class Job extends MY_Controller {
                         $thumb_file = $this->config->item('job_work_thumb_upload_path') . $response['result'][$i]['file_name'];
 
                         if ($_SERVER['HTTP_HOST'] != "localhost") {
-                              if (isset($main_file)) {
-                              unlink($main_file);
-                             }
-                            if (isset($thumb_file)) {
-                             unlink($thumb_file);
+                            if (isset($main_file)) {
+                                unlink($main_file);
                             }
-                      } 
+                            if (isset($thumb_file)) {
+                                unlink($thumb_file);
+                            }
+                        }
 
                         $contition_array = array('user_id' => $userid);
                         $job_reg_data = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'work_certificate', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1844,10 +1837,10 @@ class Job extends MY_Controller {
 
 
                 if ($insert_id && $updatedata || $updatedata1 && $updatedata) {
-                  //  $this->session->set_flashdata('success', 'Work Experience updated successfully');
+                    //  $this->session->set_flashdata('success', 'Work Experience updated successfully');
                     redirect('job/home');
                 } else {
-                //    $this->session->flashdata('error', 'Your data not inserted');
+                    //    $this->session->flashdata('error', 'Your data not inserted');
                     redirect('job/work-experience', 'refresh');
                 }
             }
@@ -1977,16 +1970,16 @@ class Job extends MY_Controller {
         $id = $_POST['post_id'];
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
-        
+
         $userid = $this->session->userdata('aileenuser');
-       
+
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'job_delete' => '0');
         $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $app_id = $userdata[0]['app_id'];
 
         if ($userdata) {
-            
+
             $contition_array = array('job_delete' => '1');
             $jobdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2022,8 +2015,8 @@ class Job extends MY_Controller {
             }
             echo $applypost;
         } else {
-            
-           
+
+
             $data = array(
                 'post_id' => $id,
                 'user_id' => $userid,
@@ -2060,7 +2053,6 @@ class Job extends MY_Controller {
                 $applypost = 'Applied';
             }
             echo $applypost;
-         
         }
     }
 
@@ -2397,7 +2389,7 @@ class Job extends MY_Controller {
 
 
         $update = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
- if ($update) {
+        if ($update) {
             if ($_SERVER['HTTP_HOST'] != "localhost") {
                 if (isset($main_image)) {
                     unlink($main_image);
@@ -2442,13 +2434,13 @@ class Job extends MY_Controller {
 
 
         $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-        $main_file = $this->config->item('job_bg_original_upload_path'). $uploadData['file_name'];
+        $main_file = $this->config->item('job_bg_original_upload_path') . $uploadData['file_name'];
 
         if ($_SERVER['HTTP_HOST'] != "localhost") {
-                              if (isset($main_file)) {
-                              unlink($main_file);
-                             }
-                      } 
+            if (isset($main_file)) {
+                unlink($main_file);
+            }
+        }
 
         if ($updatedata) {
             echo $userid;
@@ -3107,7 +3099,7 @@ class Job extends MY_Controller {
     }
 
     public function job_insert() {
-       
+
         if ($this->input->post('livepost')) {
             $poslivtid = $this->input->post('livepost');
         }
@@ -3225,14 +3217,14 @@ class Job extends MY_Controller {
         }
 
         if ($insert_id) {
-           // $this->session->set_flashdata('success', 'Basic information updated successfully');
+            // $this->session->set_flashdata('success', 'Basic information updated successfully');
             if ($poslivtid) {
                 redirect('job/home/' . $poslivtid, 'refresh');
             } else {
                 redirect('job/home', 'refresh');
             }
         } else {
-          //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+            //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             if ($poslivtid) {
                 $postdata = $this->common->select_data_by_id('rec_post', 'post_id', $poslivtid, $data = 'user_id,post_id', $join_str = array());
 
@@ -3374,20 +3366,21 @@ class Job extends MY_Controller {
 //Search Result Retrieve Start
     public function job_search() {
 
-        $searchvalue = $this->uri->segment(1);
-       // echo $searchvalue;die();
         
-        if($searchvalue == 'jobs'){
-             $this->all_post();
-             return false;
-        }else{
-        $skill = explode('jobs', $searchvalue);
-        $location = explode('in-', $searchvalue);
+        $searchvalue = $this->uri->segment(1);
+        // echo $searchvalue;die();
 
-        $search_job = trim($skill[0]);
-        $search_job = trim($skill[0], '-');
-      //  $search_job = str_replace('-', ' ', $search_job);
-        $search_place = $location[1];
+        if ($searchvalue == 'jobs') {
+            $this->all_post();
+            return false;
+        } else {
+            $skill = explode('jobs', $searchvalue);
+            $location = explode('in-', $searchvalue);
+
+            $search_job = trim($skill[0]);
+            $search_job = trim($skill[0], '-');
+            //  $search_job = str_replace('-', ' ', $search_job);
+            $search_place = $location[1];
         }
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -3641,15 +3634,15 @@ class Job extends MY_Controller {
                 $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //                    $return_html .= '<a href="' . base_url('job/post-' . $post['post_id'].'/'. $text.'-vacancy-in-'.$cityname) . '" title="' . $cache_time . '" class=" post_title">';
-                 if ($cache_time) {
+                if ($cache_time) {
                     $post_name = $cache_time;
                 } else {
                     $post_name = $post['post_name'];
                 }
-                $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="'. $post_name .'">';
-               
-                    $return_html .= $post_name;
-               
+                $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' . $post_name . '">';
+
+                $return_html .= $post_name;
+
                 //FOR POSTTITLE CLICK URL THAT SEO WANT END
 
                 $return_html .= '</a></li><li>';
@@ -3978,14 +3971,14 @@ class Job extends MY_Controller {
                 }
                 $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
                 $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $return_html .= '<li><a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="'. $post_name .'">';
+                $return_html .= '<li><a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' . $post_name . '">';
 
                 $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
-               
-                    $return_html .= $post_name;
-            
-                   
-              
+
+                $return_html .= $post_name;
+
+
+
                 $return_html .= '</a></li>';
 
                 $return_html .= '<li>';
@@ -4284,14 +4277,14 @@ class Job extends MY_Controller {
                 } else {
                     $post_name = $post['post_name'];
                 }
-                
+
                 $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
                 $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $return_html .= '<li><a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="'.$post_name.'">';
+                $return_html .= '<li><a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' . $post_name . '">';
                 $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
-                
-                    $return_html .= $post_name;
-               
+
+                $return_html .= $post_name;
+
                 $return_html .= '</a></li>';
 
                 $return_html .= '<li>';
@@ -4493,7 +4486,7 @@ class Job extends MY_Controller {
 //GET JOB APPLY DATA WITH AJAX END
 //GET SEARCH DATA WITH AJAX START
     public function ajax_job_search($searchkeyword = "", $searchplace = "") {
-       
+
         $perpage = 5;
         $page = 1;
 
@@ -4589,7 +4582,7 @@ class Job extends MY_Controller {
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,rec_post.post_currency';
             $search_condition = "(job_title.slug LIKE '%$search_job%')";
             $results_posttitleid = $recpostdata['data'] = $this->common->select_data_by_search('job_title', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            
+
             $unique1 = array_merge($results_skill, $results_all, $results_posttitleid);
 
             $unique = array();
@@ -4693,24 +4686,24 @@ class Job extends MY_Controller {
                     $cityname = '';
                 }
 
-                 if ($cache_time) {
+                if ($cache_time) {
                     $post_name = $cache_time;
                 } else {
                     $post_name = $post['post_name'];
                 }
-                
+
                 $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
                 $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($this->session->userdata('aileenuser')) {
 
-                    $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="'.$post_name.'">';
+                    $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' . $post_name . '">';
 //  $return_html .= '<a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" class="post_title" >';
                 } else {
-                    $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="'.$post_name.'">';
+                    $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' . $post_name . '">';
                     //  $return_html .= '<a  href="javascript:void(0);" onClick="login_profile()" class="post_title" >';
                 }
 
-                    $return_html .= $post_name;
+                $return_html .= $post_name;
                 $return_html .= '</a></li>';
 
                 $return_html .= '<li>';
@@ -6069,10 +6062,27 @@ class Job extends MY_Controller {
         }
         echo "yes";
     }
-    
-    
-    public function all_post(){
+
+    public function all_post($city= '') {
+       
+        $city = $_GET['city'];
+        //echo $city[0]['city'] ; die();
         
+        if($city[0]['city']){
+          
+            $cache_time = $this->db->get_where('cities', array('city_name' => $city))->row()->city_id;
+            
+            $join_str[0]['table'] = 'recruiter';
+            $join_str[0]['join_table_id'] = 'recruiter.user_id';
+            $join_str[0]['from_table_id'] = 'rec_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $contition_array = array('city' => $cache_time, 're_status' => '1', 'rec_post.is_delete' => '0');
+            $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
+            
+            
+        }else{
+          //  echo "123";die();
         $join_str[0]['table'] = 'recruiter';
         $join_str[0]['join_table_id'] = 'recruiter.user_id';
         $join_str[0]['from_table_id'] = 'rec_post.user_id';
@@ -6081,16 +6091,29 @@ class Job extends MY_Controller {
         $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
         $contition_array = array('status' => '1', 'rec_post.is_delete' => '0');
         $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-      
-       
-        
+        }
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('job/all_post', $this->data);
         } else {
             $this->load->view('job/all_post_login', $this->data);
         }
+    }
+
+    public function job_city_search() {
+        echo 132;
+        exit;
+        $search_place = $_GET['city'];
+        echo $search_place;die();
+        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
+
+        $join_str[0]['table'] = 'recruiter';
+        $join_str[0]['join_table_id'] = 'recruiter.user_id';
+        $join_str[0]['from_table_id'] = 'rec_post.user_id';
+        $join_str[0]['join_type'] = '';
+        $contition_array = array('city' => $cache_time, 're_status' => '1', 'rec_post.is_delete' => '0');
+        $unique = $this->data['results'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
         
-        
+        echo "<pre>"; print_r($unique);die();
     }
 
 }

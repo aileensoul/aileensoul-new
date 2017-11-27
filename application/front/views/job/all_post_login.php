@@ -392,38 +392,26 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <!-- <P> <input type="checkbox" name="Ahmedabad" value="ON" /> Ahmedabad </P>
-                                            <input type="checkbox" name="Bengaluru" value="ON" /> Bengaluru
-                                            <input type="checkbox" name="Chennai" value="ON" /> Chennai
-                                            <input type="checkbox" name="Delhi" value="ON" /> Delhi
-                                            <input type="checkbox" name="Hydrabad" value="ON" /> Hydrabad
-                                            <input type="checkbox" name="Mumbai" value="ON" /> Mumbai
-                                            <input type="checkbox" name="pune" value="ON" /> Pune
- -->                                            <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher"  tabindex="1" name="radio" class="cus-input-city" value="Ahmedabad" checked="" type="checkbox">
-                                                Ahmedabad Jobs&nbsp;&nbsp;
-                                                </label>
-                                                <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" class="cus-input-city" tabindex="2" name="radio" value="Bengaluru"  type="checkbox">
-                                                Bengaluru Jobs&nbsp;&nbsp;
-                                                </label>
-                                                <label for="Fresher" class="lbpos fw"> 
-                                                <input id="fresher" class="cus-input-city" tabindex="1" name="radio" value="Chennai" type="checkbox" >
-                                                Chennai Jobs&nbsp;&nbsp;
-                                                </label>
-                                                <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" class="cus-input-city" name="radio" value="Delhi" type="checkbox">
-                                                Delhi Jobs&nbsp;&nbsp;
-                                                </label>
-                                                <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" class="cus-input-city" name="radio" value="Hydrabad" type="checkbox" >
-                                                Hydrabad JObs&nbsp;&nbsp;
-                                                </label>
-                                                </label>
-                                                <label for="Fresher" class="lbpos fw">
-                                                <input id="fresher" tabindex="1" name="radio" class="cus-input-city" value="Mumbai" type="checkbox" >
-                                                Mumbai JObs&nbsp;&nbsp;
-                                                </label>
+                                            <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
+                                            <label for="Fresher" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" >Ahmedabad Jobs</a>
+                                            </label>
+                                            <label for="Fresher" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" >Bengaluru Jobs</a>
+                                            </label>
+                                            <label for="Fresher" class="lbpos fw"> 
+                                                <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" >Chennai Jobs</a>
+                                            </label>
+                                            <label for="Fresher" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" >Delhi Jobs</a>
+                                            </label>
+                                            <label for="Fresher" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" >Hyderabad JObs</a>
+                                            </label>
+
+                                            <label for="Fresher" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" >Mumbai JObs</a>
+                                            </label>
 
 
                                             <!--                                                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="javascript:void(0);" onclick="register_profile();" tabindex="-1" 
@@ -436,11 +424,11 @@
                                             $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                             if ($info && $recdata[0]['profile_background'] != '') {
                                                 ?>
-                                                                                                                                                <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                                                                                                                                                                <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
                                                 <?php
                                             } else {
                                                 ?>
-                                                                                                                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
+                                                                                                                                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
                                                 <?php
                                             }
                                             ?>
@@ -457,7 +445,7 @@
                                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                         if ($recdata[0]['recruiter_user_image'] != '' && $info) {
                                             ?>
-                                                                                                                                            <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                                                                                                                                            <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
                                             <?php
                                         } else {
 
@@ -468,11 +456,11 @@
                                             $b = $recdata[0]['rec_lastname'];
                                             $acr1 = substr($b, 0, 1);
                                             ?>
-                                                                                                                                            <div class="post-img-profile">
+                                                                                                                                                            <div class="post-img-profile">
                                             <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
-                                                                                    
-                                                                                                                                            </div>
-                                                                                    
+                                                                                                    
+                                                                                                                                                            </div>
+                                                                                                    
                                             <?php
                                         }
                                         ?>
