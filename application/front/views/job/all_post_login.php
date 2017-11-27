@@ -366,7 +366,7 @@
         .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
         .job_active{color: #1b8ab9 !important;}
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
-        .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 180px;border: none;}
+        .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 210px;border: none;}
 
     </style>
     <body class="page-container-bg-solid page-boxed no-login freeh3">
@@ -415,6 +415,10 @@
 
                                             <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" <?php if ($_GET['city'] == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
+                                            </label>
+                                            
+                                            <label for="City" class="lbpos fw">
+                                                <a href="<?php echo base_url("jobs/?city=pune"); ?>" <?php if ($_GET['city'] == 'pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
                                             </label>
 
 
@@ -596,7 +600,7 @@
 
                                                                     <li class="">
                                                                         <div class="post_title">
-                                                                        <a class="" href="<?php echo base_url('recruiter/jobpost/' . $text .$cityname. '-' . $post['user_id'] . '-' . $post['post_id']); ?>" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
+                                                                        <a class="" href="<?php echo base_url('recruiter/jobpost/' . $text .$cityname. '-' . $post['user_id'] . '-' . $post['post_id']. '?page=all_jobs'); ?>" title="<?php echo $cache_time; ?>"> <?php echo $cache_time; ?>
                                                                         </a>  
                                                                         </div>
                                                                     </li>
