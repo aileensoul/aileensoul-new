@@ -1722,8 +1722,8 @@ label.cameraButton:active {
     color: white;
     position: absolute;
     cursor: pointer;
-    width: 273px;
-    height: 198px;
+    width: 276px;
+    height: 199px;
     background: rgba(0, 0, 0, 0.5);
 }
 .more-image span {
@@ -2564,7 +2564,8 @@ label.cameraButton:active {
 .user_btn button {
     letter-spacing: 1px;
     width: 100px;
-    padding: 8px 7px;
+    /*padding: 8px 7px;*/
+    padding: 8px 4px;
     margin-bottom: 7px;
     background: rgb(44, 83, 158);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
@@ -4492,7 +4493,7 @@ body.reg-form{background: #fff}
 /***  end all edit profile form  ***/
 .business_data .bus_pdf .image_profile .pdf_img image{height: 100%!important;width: 100%!important;}
 .business_data .art_audios .image_profile .mejs__audio{margin-top: 60px;}
-
+.has-error input, input.error, select.error, .has-error textarea, textarea.error{border: 1px solid #ff0000 !important;}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {

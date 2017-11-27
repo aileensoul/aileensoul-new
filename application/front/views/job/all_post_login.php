@@ -361,7 +361,9 @@
             color: #1b8ab9;
         }
         /*second*/
-        .no-login .left_side_posrt  label {color: #5c5c5c !important;}
+        .no-login .left_side_posrt label{margin-bottom: 6px;}
+        .no-login .left_side_posrt  a {color: #5c5c5c !important;}
+        .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 180px;border: none;}
     </style>
@@ -393,23 +395,23 @@
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
                                             <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
-                                            <label for="Fresher" class="lbpos fw">
+                                            <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs/?city=Ahmedabad"); ?>" >Ahmedabad Jobs</a>
                                             </label>
-                                            <label for="Fresher" class="lbpos fw">
+                                            <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs/?city=Bengaluru"); ?>" >Bengaluru Jobs</a>
                                             </label>
-                                            <label for="Fresher" class="lbpos fw"> 
+                                            <label for="City" class="lbpos fw"> 
                                                 <a href="<?php echo base_url("jobs/?city=Chennai"); ?>" >Chennai Jobs</a>
                                             </label>
-                                            <label for="Fresher" class="lbpos fw">
+                                            <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs/?city=Delhi"); ?>" >Delhi Jobs</a>
                                             </label>
-                                            <label for="Fresher" class="lbpos fw">
+                                            <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs/?city=Hyderabad"); ?>" >Hyderabad JObs</a>
                                             </label>
 
-                                            <label for="Fresher" class="lbpos fw">
+                                            <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs/?city=Mumbai"); ?>" >Mumbai JObs</a>
                                             </label>
 

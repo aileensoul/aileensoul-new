@@ -872,9 +872,9 @@ label.cameraButton input[accept*="camera"] {
 
 
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a{height: auto;}
-.date-dropdowns .day.error{ border: 1px solid red !important;}
-.date-dropdowns .month.error{ border: 1px solid red !important;}
-.date-dropdowns .year.error{ border: 1px solid red !important;}
+.date-dropdowns .day.error{ border: 1px solid red /*!important*/;}
+.date-dropdowns .month.error{ border: 1px solid red /*!important*/;}
+.date-dropdowns .year.error{ border: 1px solid red /*!important*/;}
 .h3_edit {
     background: #ffffff!important;
     margin: 0;
