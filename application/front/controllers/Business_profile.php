@@ -2372,7 +2372,7 @@ Your browser does not support the audio tag.
                 $this->db->where($where);
                 $updatdata = $this->db->update('notification', $datafollow);
             } else {
-                
+
                 $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => '1', 'follow_to' => $business_id);
                 $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // insert notification
@@ -2419,20 +2419,20 @@ Your browser does not support the audio tag.
                       </button>';
                 $follow_html .= '</div>';
                 $datacount = '(' . count($followcount) . ')';
-                
+
                 // GET NOTIFICATION COUNT
                 $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $business_id))->row()->user_id;
                 $not_count = $this->business_notification_count($to_id);
-                
+
                 echo json_encode(
                         array(
                             "follow" => $follow_html,
                             "count" => $datacount,
                             "status" => 'success',
-                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$to_id),
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             }
-        } else {   
+        } else {
             $data = array(
                 'follow_type' => '2',
                 'follow_from' => $artdata[0]['business_profile_id'],
@@ -2486,17 +2486,17 @@ Your browser does not support the audio tag.
                 $follow_html .= '</div>';
 
                 $datacount = '(' . count($followcount) . ')';
-                
+
                 // GET NOTIFICATION COUNT
                 $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $business_id))->row()->user_id;
                 $not_count = $this->business_notification_count($to_id);
-                
+
                 echo json_encode(
                         array(
                             "follow" => $follow_html,
                             "count" => $datacount,
                             "status" => 'success',
-                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$to_id),
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             }
         }
@@ -2796,7 +2796,19 @@ Your browser does not support the audio tag.
         if ($is_follow == 1) {
             $third_user_html = $this->third_follow_user_data();
             $following_count = $this->business_user_following_count();
-            echo json_encode(array('follow' => $follow, 'third_user' => $third_user_html, 'following_count' => $following_count));
+
+            // GET NOTIFICATION COUNT
+            $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $business_id))->row()->user_id;
+            $not_count = $this->business_notification_count($to_id);
+
+            echo json_encode(
+                    array(
+                        'follow' => $follow,
+                        'third_user' => $third_user_html,
+                        'following_count' => $following_count,
+                        'status' => 'success',
+                        'notification' => array('notification_count' => $not_count, 'to_id' => $to_id),
+            ));
         }
     }
 
@@ -3009,25 +3021,24 @@ Your browser does not support the audio tag.
 
         //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($business_deactive) {
             redirect('business_profile/');
         }
         //if user deactive profile then redirect to business_profile/index untill active profile End
 
-        $business_id = $_POST["follow_to"];
+        $not_bus_profile_id = $business_id = $_POST["follow_to"];
+        
         $is_listing = $_POST["is_listing"];
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => '0', 'status' => '1', 'business_step' => '4');
-        $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
-        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
         if ($follow) {
@@ -3043,7 +3054,7 @@ Your browser does not support the audio tag.
 
 
             $contition_array = array('not_type' => '8', 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => '6');
-            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = 'not_read', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>"; print_r($busnotification); die();
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
@@ -3087,19 +3098,19 @@ Your browser does not support the audio tag.
                 }
             }
             // end notification
-            $follow = '';
+            $follow_html = '';
             if ($update) {
-                $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
+                $follow_html .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
                 if ($is_listing == 1) {
-                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_list_two(' . $business_id . ')">
+                    $follow_html .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_list_two(' . $business_id . ')">
                               <span>Following</span>
                       </button>';
                 } else {
-                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')">
+                    $follow_html .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')">
                               <span>Following</span>
                       </button>';
                 }
-                $follow .= '</div>';
+                $follow_html .= '</div>';
                 //echo $follow;
             }
         } else {
@@ -3113,8 +3124,7 @@ Your browser does not support the audio tag.
 
             // insert notification
             $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
-            $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+            $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $datanoti = array(
                 'not_type' => '8',
@@ -3147,13 +3157,13 @@ Your browser does not support the audio tag.
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $busdatatoid[0]['contact_email']);
             }
             // end notification
-            $follow = '';
+            $follow_html = '';
             if ($insert) {
-                $follow .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
+                $follow_html .= '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
                 if ($is_listing == '1') {
-                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_list_two(' . $business_id . ')"><span>Following</span></button>';
+                    $follow_html .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_list_two(' . $business_id . ')"><span>Following</span></button>';
                 } else {
-                    $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
+                    $follow_html .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
                 }
 
                 $follow .= '</div>';
@@ -3164,11 +3174,19 @@ Your browser does not support the audio tag.
         if ($profile_slug) {
             $business_id = $this->db->select('business_profile_id')->get_where('business_profile', array('business_slug' => $profile_slug))->row()->business_profile_id;
         }
+
+        // GET NOTIFICATION COUNT
+        $to_id = $this->db->select('user_id')->get_where('business_profile', array('business_profile_id' => $not_bus_profile_id))->row()->user_id;
+        $not_count = $this->business_notification_count($to_id);
+
+       
         echo json_encode(
-                array("follow_html" => $follow,
+                array("follow_html" => $follow_html,
                     "following_count" => $this->business_user_following_count($business_id),
                     "follower_count" => $this->business_user_follower_count($business_id),
                     "contacts_count" => $this->business_user_contacts_count(),
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
         ));
     }
 
@@ -3177,7 +3195,7 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($business_deactive) {
             redirect('business_profile/');
@@ -3188,10 +3206,10 @@ Your browser does not support the audio tag.
         $is_listing = $_POST["is_listing"];
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('follow_type' => '2', 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
-        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($follow) {
             $data = array(
@@ -11599,13 +11617,13 @@ Your browser does not support the audio tag.
 
         echo $return_html;
     }
-    
+
     public function business_notification_count($to_id = '') {
         $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
         $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $count = $result[0]['total'];
-        return  $count;
+        return $count;
     }
 
 }

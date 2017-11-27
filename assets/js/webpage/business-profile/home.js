@@ -891,6 +891,11 @@ function followuser(clicked_id)
                             $('.full-box-module_follow').hide();
                         }
                     });
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -905,14 +910,14 @@ function followclose(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('ul.home_three_follow_ul').append(data);
-                        $.when($('.fad' + clicked_id).fadeOut(1500))
-                                .done(function () {
-                                    $('.fad' + clicked_id).remove();
-                                    var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
-                                    if (liCount == 0) {
-                                        $('.full-box-module_follow').hide();
-                                    }
-                                });
+            $.when($('.fad' + clicked_id).fadeOut(1500))
+                    .done(function () {
+                        $('.fad' + clicked_id).remove();
+                        var liCount = $("ul.home_three_follow_ul li.follow_box_ul_li").length;
+                        if (liCount == 0) {
+                            $('.full-box-module_follow').hide();
+                        }
+                    });
         }
     });
 }
@@ -1904,37 +1909,36 @@ function removeimage() {
 // video view user start
 
 
- // video user show list
+// video user show list
 
- function count_videouser(file_id, post_id){ 
+function count_videouser(file_id, post_id) {
 
-  var vid = document.getElementById("show_video" + file_id);
+    var vid = document.getElementById("show_video" + file_id);
 
-      if (vid.paused) {
-         vid.play(); 
-          $.ajax({
+    if (vid.paused) {
+        vid.play();
+        $.ajax({
             type: 'POST',
             url: base_url + "business_profile/showuser",
             data: 'post_id=' + post_id + '&file_id=' + file_id,
             dataType: "html",
-            success: function (data) { 
-              $('#' + 'viewvideouser' + post_id).html(data);       
+            success: function (data) {
+                $('#' + 'viewvideouser' + post_id).html(data);
             }
         });
-       }
-    else {
-      vid.pause(); 
+    } else {
+        vid.pause();
     }
- }
+}
 
-function playtime(file_id, post_id){
-               $.ajax({
-                        type: 'POST',
-                        url: base_url + "business_profile/showuser",
-                        data: 'post_id=' + post_id + '&file_id=' + file_id,
-                        dataType: "html",
-                        success: function (data) { 
-                          $('#' + 'viewvideouser' + post_id).html(data);       
-                        }
-                    });
+function playtime(file_id, post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/showuser",
+        data: 'post_id=' + post_id + '&file_id=' + file_id,
+        dataType: "html",
+        success: function (data) {
+            $('#' + 'viewvideouser' + post_id).html(data);
+        }
+    });
 }
