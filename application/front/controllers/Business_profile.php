@@ -4108,7 +4108,7 @@ Your browser does not support the audio tag.
             $data = array(
                 'business_comment_likes_count' => $business_comment_likes_count + 1,
                 'business_comment_like_user' => $userid,
-                'modify_date' => date('y-m-d h:i:s')
+                'modify_date' => date('Y-m-d H:i:s')
             );
 
             $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
@@ -4179,7 +4179,17 @@ Your browser does not support the audio tag.
                 }
                 $cmtlike1 .= '</span>';
                 $cmtlike1 .= '</a>';
-                echo $cmtlike1;
+//                echo $cmtlike1;
+                // GET NOTIFICATION COUNT
+                $to_id = $businessprofiledata[0]['user_id'];
+                $not_count = $this->business_notification_count($to_id);
+
+                echo json_encode(
+                        array(
+                            'comment_html' => $cmtlike1,
+                            'status' => 'success',
+                            'notification' => array('notification_count' => $not_count, 'to_id' => $to_id),
+                ));
             } else {
                 
             }
@@ -4194,7 +4204,7 @@ Your browser does not support the audio tag.
             $data = array(
                 'business_comment_likes_count' => $business_comment_likes_count - 1,
                 'business_comment_like_user' => implode(', ', $likeuserarray),
-                'modify_date' => date('y-m-d h:i:s')
+                'modify_date' => date('Y-m-d H:i:s')
             );
 
 
@@ -4216,7 +4226,17 @@ Your browser does not support the audio tag.
                 }
                 $cmtlike1 .= '</span>';
                 $cmtlike1 .= '</a>';
-                echo $cmtlike1;
+                //                echo $cmtlike1;
+                // GET NOTIFICATION COUNT
+                $to_id = $businessprofiledata[0]['user_id'];
+                $not_count = $this->business_notification_count($to_id);
+
+                echo json_encode(
+                        array(
+                            'comment_html' => $cmtlike1,
+                            'status' => 'success',
+                            'notification' => array('notification_count' => $not_count, 'to_id' => $to_id),
+                ));
             } else {
                 
             }

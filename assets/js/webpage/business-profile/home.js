@@ -388,8 +388,14 @@ function comment_like1(clicked_id)
                     type: 'POST',
                     url: base_url + "business_profile/like_comment1",
                     data: 'post_id=' + clicked_id,
+                    dataType: 'json',
                     success: function (data) {
-                        $('#' + 'likecomment1' + clicked_id).html(data);
+                        $('#' + 'likecomment1' + clicked_id).html(data.comment_html);
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                     }
                 });
             } else {
