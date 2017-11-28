@@ -1613,7 +1613,7 @@ body.cover{padding-bottom:60px;}
 .about-para{font-size: 30px;color: #ffffff;}
 .cus-about{text-align: center;padding: 175px;}
 .all-tem{width: 100%;float: left;text-align: center;}
-.img-custom{width:24%;margin-bottom: 60px;list-style-type: none; display: inline-block;}
+.img-custom{width:24%;margin-bottom: 35px;list-style-type: none; display: inline-block;}
 .team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;box-shadow: 0px 0px 10px -1px rgba(92,92,92,1)}
 .team-1 img{width: 100%}
 .text-custom{text-align: center;}
@@ -1630,6 +1630,7 @@ body.cover{padding-bottom:60px;}
 .about-us .btn-right .btn2{color: #000;}
 .about-us .btn-right .btn2:hover{color: #fff;}
 .about-us .btn-right .btn3:hover{color: #000;}
+
 /*complete about us*/
 .custom-tp{line-height: 3;}
 .modal-body .form-group input{ left: 0;}
@@ -1640,6 +1641,15 @@ input:-webkit-autofill:active {
 transition: background-color 60000000000000s ease-in-out 0s;
  -webkit-text-fill-color: #555555 !important;
 }
+.header-login input:-webkit-autofill,
+.header-login input:-webkit-autofill:hover,
+.header-login input:-webkit-autofill:focus,
+.header-login input:-webkit-autofill:active {
+transition: background-color 60000000000000s ease-in-out 0s;
+ -webkit-text-fill-color: #fff !important;
+}
+
+
 .modal-body .form-group input:-webkit-autofill,
 .modal-body .form-group input:-webkit-autofill:hover,
 .modal-body .form-group input:-webkit-autofill:focus,
@@ -1764,7 +1774,7 @@ background-color: #FFFFFF !important;
 	.about-us .middle-main .all-tem .text-custom h4{font-size: 18px;}
 	.about-us .middle-main .all-tem .text-custom p{font-size: 12px;}
 	.Main-im .team-1{height: 200px;width: 200px;}
-	.about-para{font-size: 20px;}
+	.about-para{font-size: 18px;}
 
 }
 
@@ -1811,7 +1821,7 @@ background-color: #FFFFFF !important;
 	.mail-sent li{width:100%; padding:5px 15px; border-right:0;}
 	.title h1{font-size:35px;}
 	.about-content{font-size:14px;}
-	.about-us .main-inner .middle-main{padding:95px 0 20px;}
+	.about-us .main-inner .middle-main{padding:40px 0 20px;}
 	.main-inner .middle-main{padding:100px 0 0;}
     .main-inner .pd-low{ padding:146px 0 40px; }
 	.banner{/*margin-left: -15px;
@@ -1864,13 +1874,15 @@ background-color: #FFFFFF !important;
 	.form-pd{padding:40px 0 33px;}
 	.custom-landscape header{position: relative;}
 	.login #register_form span::after{right: 15px;}
-	.img-custom{width: 32% ;}
-	.team-1{height: 130px;width:130px;}
+	.img-custom{width: 40% ;}
+	.team-1{height: 150px;width:150px;}
 	.cus-about{padding: 80px;}
-	.about-us .middle-main .all-tem .text-custom h4{font-size: 15px;}
-	.about-us .middle-main .all-tem .text-custom p{font-size: 10px;}
-
-	
+	.about-us .middle-main .all-tem .text-custom h4{font-size: 19px;}
+	.about-us .middle-main .all-tem .text-custom p{font-size: 13px;}
+	.about-content{width: 100% !important;}
+	.about-h2{padding-top: 60px;padding-bottom: 25px;}
+	.about-content{margin-bottom: 25px;}
+	.about-us header{position: relative;}
 }
 
 @media screen and (max-width: 640px) {
@@ -1907,6 +1919,7 @@ background-color: #FFFFFF !important;
 }
 @media screen and (max-width: 540px) {
 	.cus-about{padding: 50px;}
+	.about-h2{padding-top:60px;padding-bottom: 0px;font-size: 40px;}
 }
 
 @media screen and (max-width: 479px) {
@@ -1942,6 +1955,9 @@ background-color: #FFFFFF !important;
 	.about-h2{font-size: 30px;padding-top: 10px;}
 	.about-para{font-size: 15px;}	
 	.about-us .terms-con-cus{background-size: cover;}
+	.about-h2{padding-top: 50px;}
+	.about-us .middle-main .all-tem .text-custom h4{font-size: 20px;}
+	.about-us .middle-main .all-tem .text-custom p{font-size: 15px;}
 }
 
 @media screen and (max-width: 360px) {
