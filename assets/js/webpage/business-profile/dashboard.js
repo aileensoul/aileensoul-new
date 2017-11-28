@@ -1903,6 +1903,7 @@ function contact_person_query(clicked_id, status) {
         success: function (data) { //alert(data);
             // return data;
             contact_person_model(clicked_id, status, data);
+            
         }
     });
 }
@@ -1929,8 +1930,14 @@ function contact_person(clicked_id) {
         type: 'POST',
         url: base_url + "business_profile/contact_person",
         data: 'toid=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
-            $('#contact_per').html(data);
+            $('#contact_per').html(data.return_html);
+            if (data.co_notification.co_notification_count != 0) {
+                var co_notification_count = data.co_notification.co_notification_count;
+                var co_to_id = data.co_notification.co_to_id;
+                show_contact_notification(co_notification_count, co_to_id);
+            }
         }
     });
 }

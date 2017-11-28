@@ -1,46 +1,68 @@
 <script type="text/javascript">
-
-    function addmsg_contact(type, msg)
-    {
-        if (msg == '0')
-        {
-            $("#addcontact_count").html('');
-            $('#addcontact_count').css({"background-color": "", "padding": "0px"});
-            $('#addcontactLink').removeClass('contact_notification_available');
-        } else
-        {
-            $('#addcontact_count').html(msg);
-            $('#addcontact_count').css({"background-color": "#FF4500", "padding": "3.5px 5px"});
-            $('#addcontactLink').addClass('contact_notification_available');
-        }
-    }
-    function waitForMsg_contact()
-    {
-        $.ajax({
-            type: "GET",
-            url: "<?php echo base_url(); ?>business_profile/contact_count",
-            async: true,
-            cache: false,
-            timeout: 50000,
-            success: function (data) {
-                addmsg_contact("new", data);
-                setTimeout(
-                        waitForMsg_contact,
-                        10000
-                        );
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            }
+    function show_contact_notification(contact_notification_count, contact_to_id) {
+        var socket = io.connect('http://' + window.location.hostname + ':3000');
+        socket.emit('contact_notification_count', {
+            contact_notification_count: contact_notification_count,
+            contact_to_id: contact_to_id,
         });
     }
-
-
+//    function addmsg_contact(type, msg)
+//    {
+//        if (msg == '0')
+//        {
+//            $("#addcontact_count").html('');
+//            $('#addcontact_count').css({"background-color": "", "padding": "0px"});
+//            $('#addcontactLink').removeClass('contact_notification_available');
+//        } else
+//        {
+//            $('#addcontact_count').html(msg);
+//            $('#addcontact_count').css({"background-color": "#FF4500", "padding": "3.5px 5px"});
+//            $('#addcontactLink').addClass('contact_notification_available');
+//        }
+//    }
+//    function waitForMsg_contact()
+//    {
+//        $.ajax({
+//            type: "GET",
+//            url: "<?php echo base_url(); ?>business_profile/contact_count",
+//            async: true,
+//            cache: false,
+//            timeout: 50000,
+//            success: function (data) {
+//                addmsg_contact("new", data);
+//                setTimeout(
+//                        waitForMsg_contact,
+//                        10000
+//                        );
+//            },
+//            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//            }
+//        });
+//    }
+//
+//
+//    $(document).ready(function () {
+//
+//        waitForMsg_contact();
+//
+//    });
     $(document).ready(function () {
-
-        waitForMsg_contact();
-
-    });
-    $(document).ready(function () {
+        
+        var socket = io.connect('http://' + window.location.hostname + ':3000');
+        socket.on('contact_notification_count', function (data) {
+            $("#notification_count" + data.to_id).html(data.notification_count);
+            $('#notification_count' + data.to_id).css({
+                "background-color": "#FF4500",
+                "padding": "5px 6px",
+                "border-radius": "50px",
+            });
+            $('#notificationLink').addClass('notification_available');
+            document.getElementById('notification_count' + data.to_id).style.display = 'block';
+            $('#notif_audio')[0].play();
+        });
+        
+        
+        
         $menuLeft = $('.pushmenu-left');
         $nav_list = $('#nav_list');
 

@@ -6193,7 +6193,7 @@ Your browser does not support the audio tag.
         // GET NOTIFICATION COUNT
         $to_id = $buspostid[0]['user_id'];
         $not_count = $this->business_notification_count($to_id);
-        
+
         header('Content-type: application/json');
         echo json_encode(
                 array("comment" => $cmtinsert,
@@ -7842,22 +7842,9 @@ Your browser does not support the audio tag.
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'cancel' . "'" . ');" style="cursor: pointer;">';
-                $contactdata .= '<div>   
-                                                            <div class="add-contact">
-                                                             <div></div>
-                                                            <div></div>
-                                                            <div></div>
-                                                            <div><span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
-
-                                                            </div>
-                                                            
-
-                                                            <div class="addtocont">
-                                                    <span class="ft-13"><i class="icon-user"></i>
-                                                       Add to contact </span>
-                                                    </div> 
-
-                                                </div>';
+                $contactdata .= '<div><div class="add-contact"><div></div><div></div><div></div>
+                                    <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
+                                    </div><div class="addtocont"><span class="ft-13"><i class="icon-user"></i>Add to contact </span></div></div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'cancel') {
 
@@ -7870,27 +7857,11 @@ Your browser does not support the audio tag.
                     'not_read' => '2'
                 );
 
-
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
-                $contactdata .= '<div class="cance_req_main_box">   
-                                                            <div class="add-contact">
-                                                             <div></div>
-                                                            <div></div>
-                                                            <div></div>
-                                                            <div>
-                                                         <span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
-                                                            </div>
-
-                                                            </div>
-                                                            
-
-                                                            <div class="addtocont">
-                                                    <span class="ft-13 cl_haed_s">
-                                                      Cancel request </span>
-                                                    </div> 
-
-                                                </div>';
+                $contactdata .= '<div class="cance_req_main_box"><div class="add-contact"><div></div><div></div><div></div>
+                    <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span></div>
+                    </div><div class="addtocont"><span class="ft-13 cl_haed_s">Cancel request </span></div></div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'confirm') {
                 $data = array(
@@ -7901,22 +7872,9 @@ Your browser does not support the audio tag.
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'cancel' . "'" . ');" style="cursor: pointer;">';
-                $contactdata .= '<div>   
-                                                            <div class="add-contact">
-                                                             <div></div>
-                                                            <div></div>
-                                                            <div></div>
-                                                            <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
-
-                                                            </div>
-                                                            
-
-                                                            <div class="addtocont">
-                                                    <span class="ft-13"><i class="icon-user"></i>
-                                                       Add to contact </span>
-                                                    </div> 
-
-                                                </div>';
+                $contactdata .= '<div><div class="add-contact"><div></div><div></div><div></div>
+                                <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_add.png') . '"></span></div>
+                                </div><div class="addtocont"><span class="ft-13"><i class="icon-user"></i>Add to contact </span></div></div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'reject') {
                 $data = array(
@@ -7930,24 +7888,9 @@ Your browser does not support the audio tag.
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
-                $contactdata .= '<div class="cance_req_main_box">   
-                                                            <div class="add-contact">
-                                                             <div></div>
-                                                            <div></div>
-                                                            <div></div>
-                                                            <div>
-                                                         <span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
-                                                            </div>
-
-                                                            </div>
-                                                            
-
-                                                            <div class="addtocont">
-                                                    <span class="ft-13 cl_haed_s">
-                                                      Cancel request </span>
-                                                    </div> 
-
-                                                </div>';
+                $contactdata .= '<div class="cance_req_main_box"><div class="add-contact"><div></div><div></div><div></div>
+                    <div><span class="cancel_req_busi">   <img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span></div>
+                    </div><div class="addtocont"><span class="ft-13 cl_haed_s">Cancel request </span></div></div>';
                 $contactdata .= '</a>';
             }
         } else {
@@ -7983,28 +7926,23 @@ Your browser does not support the audio tag.
             }
 
             $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
-            $contactdata .= '<div class="cance_req_main_box">   
-                                                            <div class="add-contact">
-                                                             <div></div>
-                                                            <div></div>
-                                                            <div></div>
-                                                            <div>
-                                                         <span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span>
-                                                            </div>
-
-                                                            </div>
-                                                            
-
-                                                            <div class="addtocont">
-                                                    <span class="ft-13 cl_haed_s">
-                                                      Cancel request </span>
-                                                    </div> 
-
-                                                </div>';
+            $contactdata .= '<div class="cance_req_main_box"><div class="add-contact"><div></div><div></div><div></div>
+                <div><span class="cancel_req_busi"><img src="' . base_url('assets/img/icon_contact_cancel.png') . '"></span></div>
+                </div><div class="addtocont"><span class="ft-13 cl_haed_s">Cancel request </span></div></div>';
             $contactdata .= '</a>';
         }
 
-        echo $contactdata;
+        //echo $contactdata;
+
+        // GET NOTIFICATION COUNT
+        $not_count = $this->business_contact_notification_count($to_id);
+
+        echo json_encode(
+                array(
+                    "return_html" => $contactdata,
+                    "status" => 'success',
+                    "co_notification" => array('co_notification_count' => $not_count, 'co_to_id' => $to_id),
+        ));
     }
 
     public function contact_notification() {
@@ -11712,6 +11650,15 @@ Your browser does not support the audio tag.
 
         $count = $result[0]['total'];
         return $count;
+    }
+
+    public function business_contact_notification_count($to_id = '') {
+        $contition_array = array('not_read' => '2');
+        $search_condition = "((contact_to_id = '$to_id' AND status = 'pending') OR (contact_from_id = '$to_id' AND status = 'confirm'))";
+        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'contact_id', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+
+        $contactcount = $contactperson[0]['total'];
+        return $contactcount;
     }
 
 }
