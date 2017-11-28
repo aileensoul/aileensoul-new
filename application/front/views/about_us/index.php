@@ -60,12 +60,12 @@
                 </div>
             </header>
             <div class="container">
-                <div  style="text-align: center;padding: 175px;">
+                <div class="cus-about" >
             <section class="">
                 <div class="main-comtai">
                     <!-- <h1>Terms and Conditions</h1> -->
-                    <h2 style="font-size: 50px;color: #ffffff;padding-bottom: 40px;">About Us</h2>
-                    <p class="" style="font-size: 30px;color: #ffffff;">We provide platform & opportunities to every person in the world to make their career.</p>
+                    <h2 class="about-h2">About Us</h2>
+                    <p class="about-para" >We provide platform & opportunities to every person in the world to make their career.</p>
                 </div>
             </section>
             </div>
@@ -278,12 +278,6 @@
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
             <?php
             echo $login_footer
             ?>
