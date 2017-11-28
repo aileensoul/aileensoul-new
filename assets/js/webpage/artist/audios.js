@@ -39,7 +39,6 @@ function followuser(clicked_id)
     $.ajax({
         type: 'POST',
         url: base_url + "artist/follow_two",
-        //url: '<?php echo base_url() . "artist/follow_two" ?>',
         data: 'follow_to=' + clicked_id,
         dataType: 'json',
         success: function (data) {
