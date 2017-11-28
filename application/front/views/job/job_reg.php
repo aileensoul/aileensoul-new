@@ -70,7 +70,7 @@
                         <fieldset class="full-width">
                             <div id="exp_data" style="display:none;">
                                <label>Total Experience<span class="red">*</span>:</label>
-                                                      <select style="width: 45%; margin-right: 4%; float: left;" tabindex="1" autofocus name="experience_year" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change();">
+                                                      <select style="width: 45%; margin-right: 4%; float: left;" tabindex="6" autofocus name="experience_year" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change();">
                                                          <option value="" selected option disabled>Year</option>
                                                          <option value="0 year">0 year</option>
                                                          <option value="1 year">1 year</option>
@@ -95,7 +95,7 @@
                                                          <option value="20 year">20 year</option>
                                                       </select>
                                                     <!--   <?php// echo form_error('experience_year'); ?> -->
-                                                      <select style="width: 45%;" name="experience_month" tabindex="2"   id="experience_month" class="experience_month keyskil" onclick="expmonth_click();">
+                                                      <select style="width: 45%;" name="experience_month" tabindex="7"   id="experience_month" class="experience_month keyskil" onclick="expmonth_click();">
                                                          <option value="" selected option disabled>Month</option>
                                                          <option value="0 month">0 month</option>
                                                          <option value="1 month">1 month</option>
@@ -116,17 +116,17 @@
                         </fieldset>
                         <fieldset class="full-width">
                            <label >Job Title<font  color="red">*</font> :</label>
-                           <input type="search" tabindex="6" id="job_title" name="job_title" value="" placeholder="Ex:- Sr. Engineer, Jr. Engineer, Software Developer, Account Manager" style="text-transform: capitalize;" onfocus="this.value = this.value;" maxlength="255">
+                           <input type="search" tabindex="8" id="job_title" name="job_title" value="" placeholder="Ex:- Sr. Engineer, Jr. Engineer, Software Developer, Account Manager" style="text-transform: capitalize;" onfocus="this.value = this.value;" maxlength="255">
                            <?php echo form_error('job_title'); ?>
                         </fieldset>
                         <fieldset class="full-width fresher_select main_select_data" >
                            <label for="skills"> Skills<font  color="red">*</font> : </label>
-                           <input id="skills2" style="text-transform: capitalize;" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
+                           <input id="skills2" style="text-transform: capitalize;" name="skills" tabindex="9"  size="90" placeholder="Enter SKills">
                            <?php echo form_error('skills'); ?>
                         </fieldset>
                         <fieldset class="full-width main_select_data">
                            <label>Industry <font  color="red">*</font> :</label>
-                           <select name="industry" id="industry" tabindex="8">
+                           <select name="industry" id="industry" tabindex="10">
                               <option value="" selected="selected">Select industry</option>
                               <?php foreach ($industry as $indu) { ?>
                               <option value="<?php echo $indu['industry_id']; ?>"><?php echo $indu['industry_name']; ?></option>
@@ -137,7 +137,7 @@
                         </fieldset>
                         <fieldset class="full-width fresher_select main_select_data" >
                            <label for="cities">Preffered location for job<font  color="red">*</font> : </label>
-                           <input id="cities2" name="cities"  style="text-transform: capitalize;" size="90" tabindex="9" placeholder="Enter Preferred Cites">
+                           <input id="cities2" name="cities"  style="text-transform: capitalize;" size="90" tabindex="11" placeholder="Enter Preferred Cites">
                            <?php echo form_error('cities');; ?>
                         </fieldset>
                         <fieldset class=" full-width">

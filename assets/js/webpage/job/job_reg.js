@@ -47,8 +47,7 @@ $(document).ready(function () {
 
 
     $("#jobseeker_regform").validate({
-        
-       
+
         ignore: '*:not([name])',
         ignore: ":hidden",
 
@@ -191,14 +190,14 @@ $(document).ready(function () {
 //            },
 
         },
-        
-        errorPlacement: function(error, element) {
-     if (element.attr("name") == "fresher") {
-         $(".fresher-error").html( error );  
-     }else{
-          error.insertAfter(element);
-     } 
-   }
+
+        errorPlacement: function (error, element) {
+            if (element.attr("name") == "fresher") {
+                $(".fresher-error").html(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
     });
 });
 
@@ -253,7 +252,7 @@ $(document).on('change', '#industry', function (event) {
 
         item.val('');
 
-        $('.biderror .mes').html('<h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a>');
+        $('.biderror .mes').html('<h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu" onkeypress="return remove_validation_stream()"><a id="indus" class="btn">OK</a>');
         $('#bidmodal').modal('show');
 
         //$.fancybox.open('<div class="message" style="width:300px;"><h2>Add Industry</h2><input type="text" name="other_indu" id="other_indu"><a id="indus" class="btn">OK</a></div>');
@@ -303,4 +302,9 @@ $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $("#bidmodal").hide();
     }
-});  
+});
+function remove_validation_stream() {
+    $("#other_indu").removeClass("keyskill_border_active");
+    $('#field_error').remove();
+
+}

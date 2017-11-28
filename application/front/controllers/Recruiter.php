@@ -1557,10 +1557,12 @@ class Recruiter extends MY_Controller {
                 if ($row['work_job_title']) {
                     $contition_array = array('title_id' => $row['work_job_title']);
                     $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if($jobtitle != ""){
                     $postdata .= '<li> <b> Job Title</b> <span>';
                     $postdata .= '' . $jobtitle[0]['name'] . '';
                     $postdata .= '</span>';
                     $postdata .= '</li>';
+                    }
                 }
                 if ($row['keyskill']) {
                     $detailes = array();
