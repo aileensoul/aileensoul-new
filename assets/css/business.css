@@ -4499,6 +4499,10 @@ body.reg-form{background: #fff}
 .business_data .bus_pdf .image_profile .pdf_img image{height: 100%!important;width: 100%!important;}
 .business_data .bus_audios .image_profile .mejs__audio{margin-top: 60px;}
 .has-error input, input.error, select.error, .has-error textarea, textarea.error{border: 1px solid #ff0000 !important;}
+#mySlides .art-all-comment .comment-name{width: 95% !important;}
+#mySlides .art-all-comment .comment-details{width: 95% !important;}
+
+
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {
