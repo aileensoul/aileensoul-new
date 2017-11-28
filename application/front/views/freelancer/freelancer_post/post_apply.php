@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -186,9 +187,25 @@
                         <!-- cover pic end -->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <?php
-                            if ($this->uri->segment(3) == 'live-post') {
-                                echo '<div class="alert alert-success">Applied successfully...!</div>';
-                            }
+                            if ($this->uri->segment(3) == 'live-post') { ?>
+                                
+                                 <div>
+                                    <?php
+                                    if ($this->session->flashdata('error')) {
+                                       
+                                        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+                                    }
+                                    if ($this->session->flashdata('success')) {
+                                      
+                                        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+                                    }
+                                    ?>
+                                </div>
+                                
+                                 <?php
+                                  
+                                
+                           }
                             ?>
                             <div class="common-form">
                                 <div class="job-saved-box">

@@ -2660,6 +2660,8 @@ class Freelancer extends MY_Controller {
         //  echo $userid;die();
         $this->data['jobdata']= $postdtaa = $this->common->select_data_by_id('freelancer_post', 'post_id', $id, $data = 'user_id', $join_str = array());
         if($postdtaa[0]['user_id'] == $userid){
+       
+            $this->session->set_flashdata('error', 'You can not apply on your own post');
             
         }else{
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
@@ -2751,6 +2753,7 @@ class Freelancer extends MY_Controller {
                             "notification" => array('notification_count'=>$not_count, 'to_id' =>$notid),
                 ));
         }
+        $this->session->set_flashdata('success', 'Applied Sucessfully ......');
         }
     }
 
@@ -5388,13 +5391,18 @@ class Freelancer extends MY_Controller {
 
         if ($postliveid) {
             $id = trim($postliveid);
+            
             $userid = $this->session->userdata('aileenuser');
             $notid = $this->db->select('user_id')->get_where('freelancer_post', array('post_id' => $id))->row()->user_id;
 
             $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => '0');
             $userdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
+            if($userid == $notid){
+                
+                $this->session->flashdata('error', 'you can not apply on your own post');
+                
+            }else{
             if ($userdata) {
                 
             } else {
@@ -5431,7 +5439,7 @@ class Freelancer extends MY_Controller {
                 // echo $applypost;
             }
         }
-
+        }
         if ($this->input->post('livepostid')) {
             
         }
