@@ -474,6 +474,7 @@ $(document).ready(function () {
                             type: 'POST',
                             url: base_url + 'job/job_apply_post',
                             data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
+                            datatype: 'json',
                             success: function (data)
                             {
                              //   alert("KHYTAI");

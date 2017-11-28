@@ -3,11 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
-       <?php
+        <?php
         if (IS_REC_CSS_MINIFY == '0') {
             ?>
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
             <?php
         } else {
             ?>
@@ -15,7 +15,7 @@
         <?php } ?>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
-        <?php echo $header;?>
+        <?php echo $header; ?>
         <?php if ($recdata[0]['re_step'] == 3) { ?>
             <?php echo $recruiter_header2_border; ?>
         <?php } ?>
@@ -641,107 +641,107 @@
         <?php echo $footer; ?>
         <!-- END FOOTER -->
         <!-- FIELD VALIDATION JS START -->
-        
+
         <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
-        <!--SCRIPT FOR DATE START-->
-        <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script> 
+            <!--SCRIPT FOR DATE START-->
+            <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js'); ?>"></script>
 
             <?php
         } else {
             ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/val_boot_drop.min.js?ver=' . time()); ?>"></script>
         <?php } ?>
-        
-        
-       
+
+
+
         <script>
-                                                                                var base_url = '<?php echo base_url(); ?>';
-                                                                                var data1 = <?php echo json_encode($de); ?>;
-                                                                                var data = <?php echo json_encode($demo); ?>;
-                                                                                var jobdata = <?php echo json_encode($jobtitle); ?>;
-                                                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                                var base_url = '<?php echo base_url(); ?>';
+                                                                var data1 = <?php echo json_encode($de); ?>;
+                                                                var data = <?php echo json_encode($demo); ?>;
+                                                                var jobdata = <?php echo json_encode($jobtitle); ?>;
+                                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <!-- FIELD VALIDATION JS END -->
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-          <script type="text/javascript">
-   
-
-   function inviteusermodel(abc){
-    //alert(abc);
+        <script type="text/javascript">
 
 
-    $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-    $('#bidmodal').modal('show');
+                                                                function inviteusermodel(abc) {
+                                                                    //alert(abc);
 
-   } 
 
-   function inviteuser(clicked_id)
-    {  
+                                                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                                    $('#bidmodal').modal('show');
 
-      var post_id = "<?php echo $postid; ?>";
-      var post_id = "<?php echo $postid; ?>";
-        //alert(post_id);
+                                                                }
 
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url() . "recruiter/invite_user" ?>',
-            data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
-            dataType: 'json',
-            success: function (data) { //alert(data);
-                $('#' + 'invited' + clicked_id).html(data).addClass('invited').removeClass('invite_border').removeAttr("onclick");
-               $('#' + 'invited' + clicked_id).css('cursor', 'default');
-                     if (data.notification.notification_count != 0) {
-                var notification_count = data.notification.notification_count;
-                var to_id = data.notification.to_id;
-                show_header_notification(notification_count,to_id);
+                                                                function inviteuser(clicked_id)
+                                                                {
+
+                                                                    var post_id = "<?php echo $postid; ?>";
+                                                                    var post_id = "<?php echo $postid; ?>";
+                                                                    //alert(post_id);
+
+                                                                    $.ajax({
+                                                                        type: 'POST',
+                                                                        url: '<?php echo base_url() . "recruiter/invite_user" ?>',
+                                                                        data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
+                                                                        dataType: 'json',
+                                                                        success: function (data) { //alert(data);
+                                                                            $('#' + 'invited' + clicked_id).html(data.status).addClass('invited').removeClass('invite_border').removeAttr("onclick");
+                                                                            $('#' + 'invited' + clicked_id).css('cursor', 'default');
+                                                                            if (data.notification.notification_count != 0) {
+                                                                                var notification_count = data.notification.notification_count;
+                                                                                var to_id = data.notification.to_id;
+                                                                                show_header_notification(notification_count, to_id);
+                                                                            }
+
+                                                                            //    $('.biderror .mes').html("<div class='pop_content'>Candidate invite successfully.");
+                                                                            // $('#bidmodal').modal('show');
+                                                                        }
+
+                                                                    });
+                                                                }
+
+
+        </script>
+        <script>
+            function savepopup(id) {
+                //alert(id);
+
+                save_user(id);
+                //                       
+                $('.biderror .mes').html("<div class='pop_content'>Candidate successfully saved.");
+                $('#bidmodal').modal('show');
             }
-
-              //    $('.biderror .mes').html("<div class='pop_content'>Candidate invite successfully.");
-              // $('#bidmodal').modal('show');
-          }
-           
-        });
-    }
-
-   
-</script>
- <script>
-    function savepopup(id) { 
-      //alert(id);
-                        
-      save_user(id);
-//                       
-    $('.biderror .mes').html("<div class='pop_content'>Candidate successfully saved.");
-        $('#bidmodal').modal('show');
-          }
         </script>
         <script type="text/javascript">
-   function save_user(abc)
-   {  
-      
- var saveid = document.getElementById("hideenuser" + abc);
+            function save_user(abc)
+            {
 
-      $.ajax({ 
-                type:'POST',
-                url:'<?php echo base_url() . "recruiter/save_search_user" ?>',
-                data:'user_id='+abc + '&save_id='+saveid.value,
-                success:function(data){ 
-                
-                 $('#' + abc).html(data).addClass('saved');
-                 
+                var saveid = document.getElementById("hideenuser" + abc);
 
-                }
-            }); 
-        
-}
-</script>
-                    
-        <!--<script type="text/javascript" src="<?php //echo base_url('assets/js/webpage/recruiter/saved_candidate.js'); ?>"></script>-->
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url() . "recruiter/save_search_user" ?>',
+                    data: 'user_id=' + abc + '&save_id=' + saveid.value,
+                    success: function (data) {
+
+                        $('#' + abc).html(data).addClass('saved');
+
+
+                    }
+                });
+
+            }
+        </script>
+
+<!--<script type="text/javascript" src="<?php //echo base_url('assets/js/webpage/recruiter/saved_candidate.js');  ?>"></script>-->
 
 
         <style type="text/css">

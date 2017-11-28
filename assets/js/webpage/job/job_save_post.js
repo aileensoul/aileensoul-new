@@ -168,11 +168,16 @@ function job_save(pagenum)
            type: 'POST',
            url: base_url +'job/job_apply_post',
            data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user.value,
-           success: function (data) {
+        datatype: 'json',
+            success: function (data) {
                $('#' + 'postdata' + appid).html(data);
                $('#' + 'postdata' + appid).removeClass();
                var numItems = $('.contact-frnd-post .job-contact-frnd .profile-job-post-detail').length;
-              
+              if (data.notification.notification_count != 0) {
+                                                var notification_count = data.notification.notification_count;
+                                                var to_id = data.notification.to_id;
+                                                show_header_notification(notification_count, to_id);
+                                            }
                if (numItems == '0') {
 
                    var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "assets/img/job-no.png'/></div><div class='art_no_post_text'>No  Saved Post Available.</div></div>";

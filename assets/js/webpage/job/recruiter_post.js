@@ -86,12 +86,19 @@ function apply_post(abc, xyz)
                             type: 'POST',
                             url: base_url +'job/job_apply_post',
                             data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-                            success: function (data) {
+                            datatype: 'json',                    
+        success: function (data) {
                                 $('.savedpost' + abc).hide();
-                                $('.applypost' + abc).html(data);
+                                $('.applypost' + abc).html(data.status);
                                 $('.applypost' + abc).attr('disabled', 'disabled');
                                 $('.applypost' + abc).attr('onclick', 'myFunction()');
                                 $('.applypost' + abc).addClass('applied');
+                                
+                                if (data.notification.notification_count != 0) {
+                                                var notification_count = data.notification.notification_count;
+                                                var to_id = data.notification.to_id;
+                                                show_header_notification(notification_count, to_id);
+                                            }
                             }
                         });
 }

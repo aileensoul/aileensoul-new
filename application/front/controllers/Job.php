@@ -2013,7 +2013,14 @@ class Job extends MY_Controller {
                     $applypost = 'Applied';
                 }
             }
-            echo $applypost;
+            // GET NOTIFICATION COUNT
+                $not_count = $this->job_notification_count($notid);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'Applied',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$notid),
+                ));
         } else {
 
 
@@ -2052,7 +2059,16 @@ class Job extends MY_Controller {
                 $this->apply_email($notid);
                 $applypost = 'Applied';
             }
-            echo $applypost;
+//            echo $applypost;
+           
+            // GET NOTIFICATION COUNT
+                $not_count = $this->job_notification_count($notid);
+                
+                echo json_encode(
+                        array(
+                            "status" => 'Applied',
+                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$notid),
+                ));
         }
     }
 
@@ -6117,4 +6133,11 @@ class Job extends MY_Controller {
 //        echo "<pre>"; print_r($unique);die();
 //    }
 
+     public function job_notification_count($to_id = '') {
+        $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
+        $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $count = $result[0]['total'];
+        return  $count;
+    }
 }

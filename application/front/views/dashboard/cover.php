@@ -194,7 +194,7 @@ if (!file_exists($this->config->item('user_bg_main_upload_path') . $userdata[0][
                                         ?>
                                         <div class="profile-photo">
                                            <?php 
-if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
+if ($userdata[0]['user_image'] == '') {
                                                                 $a = $first_name;
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $last_name;
