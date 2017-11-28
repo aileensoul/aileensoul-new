@@ -152,7 +152,7 @@
                                                 
                                                 <input type="hidden" name="exp_data[]" value="old" class="exp_data" id="exp_data<?php echo $y; ?>">
                                                 <div id="input<?php echo $y; ?>" style="margin-bottom:4px;position: relative;" class="clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
-                                                   <div class="job_work_experience_main_div">
+                                                   <!--<div class="job_work_experience_main_div">-->
                                                       <label>Experience:<span class="red">*</span></label>
                                                       <select style="width: 47%; margin-right: 4%; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change_edittime();">
                                                          <option value="" selected option disabled>Year</option>
@@ -277,7 +277,7 @@
                                                          <input class="delete_btn" style="min-width: 70px;" type="button" value="Delete" onclick="delete_job_work('<?php echo $workdata[$x]['work_id']; ?>','<?php echo $work_certificate1; ?>')">
                                                       </div>
                                                       <?php } ?>
-                                                   </div>
+                                                   <!--</div>-->
                                                 </div>
                                                 <?php
                                                    }
