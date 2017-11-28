@@ -202,7 +202,8 @@
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>">
+                                                <!--<a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>">-->
+                                                <a href="<?php echo base_url('business-profile/details/' . $business_login_slug); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
                                                 <!--<a href="<?php echo base_url('business-profile/business-information-update'); ?>">-->

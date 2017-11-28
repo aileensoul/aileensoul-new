@@ -4,7 +4,7 @@ $(document).ready(function () {
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 //        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-            if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
 
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
@@ -129,6 +129,11 @@ function post_like(clicked_id)
                 document.getElementById('likeusername' + clicked_id).style.display = "block";
             }
             $('#likeusername' + clicked_id).addClass('likeduserlist1');
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -160,6 +165,11 @@ function insert_comment(clicked_id)
                 });
                 $('#' + 'insertcount' + clicked_id).html(data.count);
                 $('.insertcomment' + clicked_id).html(data.comment);
+                if (data.notification.notification_count != 0) {
+                    var notification_count = data.notification.notification_count;
+                    var to_id = data.notification.to_id;
+                    show_header_notification(notification_count, to_id);
+                }
             }
         });
     } else {
@@ -175,6 +185,11 @@ function insert_comment(clicked_id)
                 });
                 $('#' + 'insertcount' + clicked_id).html(data.count);
                 $('#' + 'fourcomment' + clicked_id).html(data.comment);
+                if (data.notification.notification_count != 0) {
+                    var notification_count = data.notification.notification_count;
+                    var to_id = data.notification.to_id;
+                    show_header_notification(notification_count, to_id);
+                }
             }
         });
     }
@@ -216,6 +231,11 @@ function entercomment(clicked_id)
                         });
                         $('.insertcomment' + clicked_id).html(data.comment);
                         $('.comment_count' + clicked_id).html(data.comment_count);
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                     }
                 });
             } else {
@@ -231,6 +251,11 @@ function entercomment(clicked_id)
                         $('#' + 'insertcount' + clicked_id).html(data.count);
                         $('#' + 'fourcomment' + clicked_id).html(data.comment);
                         $('.' + 'comment_count' + clicked_id).html(data.comment_count);
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                     }
                 });
             }
@@ -278,6 +303,11 @@ function comment_like(clicked_id)
         success: function (data) {
             //alert('.' + 'likepost' + clicked_id);
             $('#' + 'likecomment' + clicked_id).html(data);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -289,6 +319,11 @@ function comment_like1(clicked_id)
         data: 'post_id=' + clicked_id,
         success: function (data) {
             $('#' + 'likecomment1' + clicked_id).html(data);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }
@@ -1505,7 +1540,7 @@ $('body').on("click", "*", function (e) {
     }
 
 });
-$('body').on('touchstart', function(e) {
+$('body').on('touchstart', function (e) {
     var classNames = $(e.target).attr("class").toString().split(' ').pop();
     if (classNames != 'fa-ellipsis-v') {
         $('div[id^=myDropdown]').hide().removeClass('show');

@@ -4091,7 +4091,7 @@ Your browser does not support the audio tag.
 
         $post_id = $_POST['post_id'];
         $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $bus_not_to_id = $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $business_comment_likes_count = $businessprofiledata[0]['business_comment_likes_count'];
         $likeuserarray = explode(',', $businessprofiledata[0]['business_comment_like_user']);
@@ -4181,7 +4181,7 @@ Your browser does not support the audio tag.
                 $cmtlike1 .= '</a>';
 //                echo $cmtlike1;
                 // GET NOTIFICATION COUNT
-                $to_id = $businessprofiledata[0]['user_id'];
+                $to_id = $bus_not_to_id[0]['user_id'];
                 $not_count = $this->business_notification_count($to_id);
 
                 echo json_encode(
@@ -4228,7 +4228,7 @@ Your browser does not support the audio tag.
                 $cmtlike1 .= '</a>';
                 //                echo $cmtlike1;
                 // GET NOTIFICATION COUNT
-                $to_id = $businessprofiledata[0]['user_id'];
+                $to_id = $bus_not_to_id[0]['user_id'];
                 $not_count = $this->business_notification_count($to_id);
 
                 echo json_encode(
@@ -5768,11 +5768,18 @@ Your browser does not support the audio tag.
                     $like_user_count .= '</span>';
                     $like_user_count .= '<span> Like</span>';
                 }
+
+                // GET NOTIFICATION COUNT
+                $to_id = $likepostid[0]['user_id'];
+                $not_count = $this->business_notification_count($to_id);
+
                 echo json_encode(
                         array("like" => $imglike,
                             "likeuser" => $imglikeuser,
                             "like_user_count" => $like_user_count,
                             "like_user_total_count" => count($commneteduser),
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             }
         } else {
@@ -5843,11 +5850,17 @@ Your browser does not support the audio tag.
                         $like_user_count1 .= '<span> Like</span>';
                     }
 
+                    $to_id = $likepostid[0]['user_id'];
+                    $not_count = $this->business_notification_count($to_id);
+
+
                     echo json_encode(
                             array("like" => $imglike1,
                                 "likeuser" => $imglikeuser1,
                                 "like_user_count" => $like_user_count1,
                                 "like_user_total_count" => count($commneteduser),
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                     ));
                 }
             } else {
@@ -5965,10 +5978,17 @@ Your browser does not support the audio tag.
                         $like_user_count1 .= '<span> Like</span>';
                     }
 
+                    $to_id = $likepostid[0]['user_id'];
+                    $not_count = $this->business_notification_count($to_id);
+
+
                     echo json_encode(
                             array("like" => $imglike1,
                                 "likeuser" => $imglikeuser1,
-                                "like_user_count" => $like_user_count1));
+                                "like_user_count" => $like_user_count1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 }
             }
         }
@@ -6168,11 +6188,19 @@ Your browser does not support the audio tag.
         }
 
         $cmtinsert .= '</div>';
+
+
+        // GET NOTIFICATION COUNT
+        $to_id = $buspostid[0]['user_id'];
+        $not_count = $this->business_notification_count($to_id);
+        
         header('Content-type: application/json');
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
-                    "comment_count" => count($buscmtcnt)
+                    "comment_count" => count($buscmtcnt),
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
         ));
     }
 
@@ -6371,10 +6399,18 @@ Your browser does not support the audio tag.
                 $cntinsert .= '<span> Comment</span>';
             }
         }
+
+// GET NOTIFICATION COUNT
+        $to_id = $buspostid[0]['user_id'];
+        $not_count = $this->business_notification_count($to_id);
+
+
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
-                    "comment_count" => $cntinsert
+                    "comment_count" => $cntinsert,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
         ));
     }
 
