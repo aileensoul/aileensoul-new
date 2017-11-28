@@ -192,6 +192,11 @@ function insert_comment(clicked_id)
                             });
                             $('.insertcomment' + clicked_id).html(data.comment);
                             $('.comment_count' + clicked_id).html(data.comment_count);
+                            if (data.notification.notification_count != 0) {
+                                var notification_count = data.notification.notification_count;
+                                var to_id = data.notification.to_id;
+                                show_header_notification(notification_count, to_id);
+                            }
                         }
                     });
                 } else {
@@ -206,6 +211,11 @@ function insert_comment(clicked_id)
                             });
                             $('#' + 'fourcomment' + clicked_id).html(data.comment);
                             $('.comment_count' + clicked_id).html(data.comment_count);
+                            if (data.notification.notification_count != 0) {
+                                var notification_count = data.notification.notification_count;
+                                var to_id = data.notification.to_id;
+                                show_header_notification(notification_count, to_id);
+                            }
                         }
                     });
                 }
@@ -274,6 +284,11 @@ function entercomment(clicked_id)
                                     });
                                     $('.insertcomment' + clicked_id).html(data.comment);
                                     $('.comment_count' + clicked_id).html(data.comment_count);
+                                    if (data.notification.notification_count != 0) {
+                                        var notification_count = data.notification.notification_count;
+                                        var to_id = data.notification.to_id;
+                                        show_header_notification(notification_count, to_id);
+                                    }
                                 }
                             });
                         } else {
@@ -288,6 +303,11 @@ function entercomment(clicked_id)
                                     });
                                     $('#' + 'fourcomment' + clicked_id).html(data.comment);
                                     $('.comment_count' + clicked_id).html(data.comment_count);
+                                    if (data.notification.notification_count != 0) {
+                                        var notification_count = data.notification.notification_count;
+                                        var to_id = data.notification.to_id;
+                                        show_header_notification(notification_count, to_id);
+                                    }
                                 }
                             });
                         }
@@ -368,8 +388,14 @@ function comment_like1(clicked_id)
                     type: 'POST',
                     url: base_url + "business_profile/like_comment1",
                     data: 'post_id=' + clicked_id,
+                    dataType: 'json',
                     success: function (data) {
-                        $('#' + 'likecomment1' + clicked_id).html(data);
+                        $('#' + 'likecomment1' + clicked_id).html(data.comment_html);
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
                     }
                 });
             } else {
@@ -468,7 +494,7 @@ function comment_editbox(clicked_id) {
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
 
                 $('.post-design-commnet-box').hide();
-                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom', '0px');
 
             } else {
                 $('.mes').html('Sorry this content is now not available');
@@ -484,7 +510,7 @@ function comment_editcancle(clicked_id) {
     document.getElementById('showcomment' + clicked_id).style.display = 'block';
     document.getElementById('editsubmit' + clicked_id).style.display = 'none';
 
-    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom', '1px solid #d9d9d9');
 
     $('.post-design-commnet-box').show();
 }
@@ -509,8 +535,8 @@ function comment_editboxtwo(clicked_id) {
                 document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
 
                 $('.post-design-commnet-box').hide();
-                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
-                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom', '0px');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom', '0px');
 
             } else {
                 $('.mes').html('Sorry this content is now not available');
@@ -527,8 +553,8 @@ function comment_editcancletwo(clicked_id) {
     document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
 
 
-    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
-    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom', '1px solid #d9d9d9');
+    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom', '1px solid #d9d9d9');
 
     $('.post-design-commnet-box').show();
 }

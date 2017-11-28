@@ -368,6 +368,12 @@
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 210px;border: none;}
 
+        
+
+
+
+
+
     </style>
     <body class="page-container-bg-solid page-boxed no-login freeh3">
 
