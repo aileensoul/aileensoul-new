@@ -64,11 +64,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 </div>
                                 <table class="business_data_table">
                                     <tr>
-                                        <td class="business_data_td1"><i class="fa fa-user"></i></td>
+                                        <td class="business_data_td1 detaile_map"><i class="fa fa-user"></i></td>
                                         <td class="business_data_td2"><?php echo ucfirst(strtolower($business_data[0]['contact_person'])); ?></td>
                                     </tr>
                                     <tr>
-                                        <td class="business_data_td1"><i class="fa fa-mobile"></i></td>
+                                        <td class="business_data_td1 detaile_map"><i class="fa fa-mobile"></i></td>
                                         <td class="business_data_td2"><span><?php
                                                 if ($business_data[0]['contact_mobile'] != '0') {
                                                     echo $business_data[0]['contact_mobile'];
@@ -79,7 +79,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="business_data_td1"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
+                                        <td class="business_data_td1 detaile_map"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
                                         <td class="business_data_td2"><span><?php echo $business_data[0]['contact_email']; ?></span></td>
                                     </tr>
                                     <tr>
@@ -108,7 +108,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     if ($business_data[0]['contact_website']) {
                                         ?>
                                         <tr>
-                                            <td class="business_data_td1"><i class="fa fa-globe"></i></td>
+                                            <td class="business_data_td1 detaile_map"><i class="fa fa-globe"></i></td>
                                             <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $business_data[0]['contact_website']; ?>"> <?php echo $business_data[0]['contact_website']; ?></a></span></td>
                                         </tr>
                                     <?php } ?>

@@ -2083,7 +2083,7 @@ label.cameraButton input[accept*="camera"] {
     background: white;
 }
 #radio-error.error {
-    left: 45px;
+    left: -5px;
 }
 .mesg_link {
     background: #1b8ab9;
@@ -2301,6 +2301,9 @@ margin-bottom: 15px;}
 }
 
 #jobseeker_regform1 .experience_year + .error{top:60px;}
+
+
+
 /***  media query  ***/
 @media screen and (min-width: 768px) {
     .mob-progressbar.temp {
