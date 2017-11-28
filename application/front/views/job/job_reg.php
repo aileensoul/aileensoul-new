@@ -62,7 +62,7 @@
                            </div>
 
                            <div class="main_raio">
-                              <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" onclick="experience()">
+                              <input type="radio"  value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" onclick="experience()">
                               <label for="test2" class="point_radio">No</label>
                            </div>
                            <div class="fresher-error"><?php echo form_error('fresher'); ?></div>
