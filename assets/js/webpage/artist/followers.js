@@ -172,12 +172,16 @@ function followuser_two(clicked_id)
     $.ajax({
         type: 'POST',
         url: base_url + "artist/followtwo",
-        //url:'<?php echo base_url() . "artist/followtwo" ?>',
         dataType: 'json',
         data: 'follow_to=' + clicked_id,
-        success: function (data) {   //alert(data.count);                 
+        success: function (data) {   
             $('#' + 'frfollow' + clicked_id).html(data.follow);
             $('#' + 'countfollow').html(data.count);
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
 
         }
     });

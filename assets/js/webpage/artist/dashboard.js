@@ -631,6 +631,11 @@ function post_like(clicked_id)
                     document.getElementById('likeusername' + clicked_id).style.display = "block";
                 }
                 $('#likeusername' + clicked_id).addClass('likeduserlist1');
+                if (data.notification.notification_count != 0) {
+                    var notification_count = data.notification.notification_count;
+                    var to_id = data.notification.to_id;
+                    show_header_notification(notification_count, to_id);
+                }
             }
         }
     });
@@ -646,13 +651,19 @@ function comment_like(clicked_id)
         url: base_url + "artist/like_comment",
         //url: '<?php echo base_url() . "artist/like_comment" ?>',
         data: 'post_id=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
 
             if (data == 'notavl') {
                 $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
                 $('#bidmodal').modal('show');
             } else {
-                $('#' + 'likecomment' + clicked_id).html(data);
+                $('#' + 'likecomment' + clicked_id).html(data.return_html);
+                if (data.notification.notification_count != 0) {
+                    var notification_count = data.notification.notification_count;
+                    var to_id = data.notification.to_id;
+                    show_header_notification(notification_count, to_id);
+                }
             }
         }
     });
