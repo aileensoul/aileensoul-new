@@ -553,7 +553,7 @@
 
                                                             <!-- one image start -->
                                                             <div class="one-image">
-                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img  src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img  src="<?php echo ART_POST_MAIN_UPLOAD_URL .  $artmultiimage[0]['file_name'];?>" > </a>
                                                             </div>
                                                             <!-- one image end -->
 
@@ -613,7 +613,7 @@
 
                                             <!-- two image start -->
                                               <div class="two-images" >
-                                            <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="two-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
+                                            <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="two-columns" src="<?php echo ART_POST_MAIN_UPLOAD_URL  . $multiimage['file_name']; ?>" > </a>
                                             </div>
 
                                             <!-- two image end -->
@@ -625,13 +625,13 @@
 
                                                             <!-- three image start -->
                                                             <div class="three-image-top" >
-                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>"> </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo ART_POST_MAIN_UPLOAD_URL  . $artmultiimage[0]['file_name']; ?>"> </a>
                                                             </div>
                                                               <div class="three-image" >
-                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['file_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo ART_POST_MAIN_UPLOAD_URL . $artmultiimage[1]['file_name']; ?>" > </a>
                                                             </div>
                                                             <div class="three-image" >
-                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['file_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo ART_POST_MAIN_UPLOAD_URL  . $artmultiimage[2]['file_name']; ?>" > </a>
                                                             </div>
 
                                                             <!-- three image end -->
@@ -644,7 +644,7 @@
 
                                                                 <!-- four image start -->
                                                               <div class="four-image" >
-                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="breakpoint" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
+                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="breakpoint" src="<?php echo ART_POST_MAIN_UPLOAD_URL . $multiimage['file_name']; ?>" > </a>
 
                                                                 </div>
 
@@ -664,7 +664,7 @@
                             <!-- five image start -->
                             <div>
                              <div class="four-image" >
-                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
+                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo ART_POST_MAIN_UPLOAD_URL . $multiimage['file_name']; ?>" > </a>
                                 </div>
                                  </div>
 
@@ -680,7 +680,7 @@
 
                                                                                         <div>
                                                                  <div class="four-image" >
-                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['file_name']) ?>"> </a></div>
+                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo ART_POST_MAIN_UPLOAD_URL . $artmultiimage[3]['file_name']; ?>"> </a></div>
 
                                                                     <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>" >
 
