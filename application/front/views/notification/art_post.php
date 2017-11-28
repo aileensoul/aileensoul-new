@@ -662,11 +662,11 @@
                                                                 ?>
 
                             <!-- five image start -->
-                            <div>
+                         
                              <div class="four-image" >
                                     <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo ART_POST_MAIN_UPLOAD_URL . $multiimage['file_name']; ?>" > </a>
                                 </div>
-                                 </div>
+                                 
 
                                 <!-- five image end -->
 
