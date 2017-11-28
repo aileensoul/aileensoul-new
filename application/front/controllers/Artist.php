@@ -2128,10 +2128,17 @@ class Artist extends MY_Controller {
                 $follow .= '</div>';
 
                 $datacount = '(' . count($followcount) . ')';
+
+                // GET NOTIFICATION COUNT
+                $to_id = $followuserid[0]['user_id'];
+                $not_count = $this->artistic_notification_count($to_id);
+
                 echo json_encode(
                         array(
                             "follow" => $follow,
                             "count" => $datacount,
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             }
         } else {
@@ -2889,14 +2896,13 @@ class Artist extends MY_Controller {
                 $follow_html .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
                 $follow_html .= '</div>';
                 //echo $follow;
-                
                 // GET NOTIFICATION COUNT
-                $to_id = $art_id;
+                $to_id = $this->db->select('user_id')->get_where('art_reg', array('art_id' => $art_id))->row()->user_id;
                 $not_count = $this->artistic_notification_count($to_id);
 
                 echo json_encode(
                         array(
-                            "follow" => $follow_html,
+                            "follow_html" => $follow_html,
                             "status" => 'success',
                             "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
@@ -2985,9 +2991,7 @@ class Artist extends MY_Controller {
                 $follow_html .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
                 $follow_html .= '</div>';
                 //echo $follow;
-
-                // GET NOTIFICATION COUNT
-                $to_id = $art_id;
+                $to_id = $this->db->select('user_id')->get_where('art_reg', array('art_id' => $art_id))->row()->user_id;
                 $not_count = $this->artistic_notification_count($to_id);
 
                 echo json_encode(
@@ -3060,10 +3064,17 @@ class Artist extends MY_Controller {
                 $follow .= '</div>';
                 $datacount = '(' . count($followcount) . ')';
 
+                // GET NOTIFICATION COUNT
+                $to_id = $this->db->select('user_id')->get_where('art_reg', array('art_id' => $art_id))->row()->user_id;
+                $not_count = $this->artistic_notification_count($to_id);
+
+
                 echo json_encode(
                         array(
                             "follow" => $follow,
                             "count" => $datacount,
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             }
         } else {
@@ -3152,10 +3163,18 @@ class Artist extends MY_Controller {
                 $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser_two(' . $art_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
                 $datacount = '(' . count($followcount) . ')';
+
+                // GET NOTIFICATION COUNT
+                $to_id = $this->db->select('user_id')->get_where('art_reg', array('art_id' => $art_id))->row()->user_id;
+                $not_count = $this->artistic_notification_count($to_id);
+
+
                 echo json_encode(
                         array(
                             "follow" => $follow,
                             "count" => $datacount,
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             }
         }
@@ -3880,7 +3899,7 @@ class Artist extends MY_Controller {
                 $data = array(
                     'artistic_comment_likes_count' => $artistic_comment_likes_count + 1,
                     'artistic_comment_like_user' => $userid,
-                    'modify_date' => date('y-m-d h:i:s')
+                    'modify_date' => date('Y-m-d H:i:s')
                 );
                 $updatdata = $this->common->update_data($data, 'artistic_post_comment', 'artistic_post_comment_id', $post_id);
                 // insert notification
@@ -3986,7 +4005,17 @@ class Artist extends MY_Controller {
                     $cmtlike1 .= '</span>';
                     $cmtlike1 .= '</a>';
                     //$cmtlike1 .= '</div>';
-                    echo $cmtlike1;
+                    //    echo $cmtlike1;
+                    // GET NOTIFICATION COUNT
+                    $to_id = $artdata[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
+                    echo json_encode(
+                            array(
+                                "return_html" => $cmtlike1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 } else {
                     
                 }
@@ -4021,7 +4050,17 @@ class Artist extends MY_Controller {
                     $cmtlike1 .= '</span>';
                     $cmtlike1 .= '</a>';
                     //$cmtlike1 .= '</div>';
-                    echo $cmtlike1;
+                    //echo $cmtlike1;
+                    // GET NOTIFICATION COUNT
+                    $to_id = $artdata[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
+                    echo json_encode(
+                            array(
+                                "return_html" => $cmtlike1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 } else {
                     
                 }
@@ -4213,7 +4252,17 @@ class Artist extends MY_Controller {
                     $cmtlike1 .= '</span>';
                     $cmtlike1 .= '</a>';
                     //$cmtlike1 .= '</div>';
-                    echo $cmtlike1;
+                    //echo $cmtlike1;
+                    // GET NOTIFICATION COUNT
+                    $to_id = $artdata[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
+                    echo json_encode(
+                            array(
+                                "return_html" => $cmtlike1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 } else {
                     
                 }
@@ -4248,7 +4297,17 @@ class Artist extends MY_Controller {
                     $cmtlike1 .= '</span>';
                     $cmtlike1 .= '</a>';
                     //$cmtlike1 .= '</div>';
-                    echo $cmtlike1;
+                    //echo $cmtlike1;
+                    // GET NOTIFICATION COUNT
+                    $to_id = $artdata[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
+                    echo json_encode(
+                            array(
+                                "return_html" => $cmtlike1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 } else {
                     
                 }
@@ -5819,10 +5878,18 @@ class Artist extends MY_Controller {
                 $cntinsert .= '<span> Comment</span>';
             }
         }
+        // GET NOTIFICATION COUNT
+        $to_id = $artdatacomment[0]['user_id'];
+        $not_count = $this->artistic_notification_count($to_id);
+
+
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "comment" => $cmtinsert,
-                    "commentcount" => $cntinsert));
+                    "commentcount" => $cntinsert,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+        ));
     }
 
     public function insert_commentthree() {
@@ -7072,10 +7139,17 @@ class Artist extends MY_Controller {
 
 
                 //    $like_user_count = count($commnetcount);
+                // GET NOTIFICATION COUNT
+                $to_id = $likepostid[0]['user_id'];
+                $not_count = $this->artistic_notification_count($to_id);
+
                 echo json_encode(
                         array("like" => $imglike,
                             "likeuser" => $cmtlikeuser,
-                            "like_user_count" => $like_user_count));
+                            "like_user_count" => $like_user_count,
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                ));
                 //10-5 user list end               
             }
         } else {
@@ -7147,11 +7221,17 @@ class Artist extends MY_Controller {
                         $like_user_count .= '</span>';
                         $like_user_count .= '<span> Like</span>';
                     }
+                    // GET NOTIFICATION COUNT
+                    $to_id = $likepostid[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
 
                     echo json_encode(
                             array("like" => $imglike1,
                                 "likeuser" => $cmtlikeuser,
-                                "like_user_count" => $like_user_count));
+                                "like_user_count" => $like_user_count,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 }
             } else {
 
@@ -7307,10 +7387,17 @@ class Artist extends MY_Controller {
                         $like_user_count .= '<span> Like</span>';
                     }
 
+                    // GET NOTIFICATION COUNT
+                    $to_id = $likepostid[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
                     echo json_encode(
                             array("like" => $imglike1,
                                 "likeuser" => $cmtlikeuser,
-                                "like_user_count" => $like_user_count));
+                                "like_user_count" => $like_user_count,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 }
             }
         }
@@ -7588,11 +7675,20 @@ class Artist extends MY_Controller {
                 $cntinsert .= '<span> Comment</span>';
             }
         }
+
+
+        // GET NOTIFICATION COUNT
+        $to_id = $artpostid[0]['user_id'];
+        $not_count = $this->artistic_notification_count($to_id);
+
         //   echo $cmtinsert;
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
-                    "commentcount" => $cntinsert));
+                    "commentcount" => $cntinsert,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+        ));
     }
 
     public function insert_commentthree_postnewpage() {
@@ -7833,10 +7929,18 @@ class Artist extends MY_Controller {
                 $cntinsert .= '<span> Comment</span>';
             }
         }
+
+        // GET NOTIFICATION COUNT
+        $to_id = $artdatacomment[0]['user_id'];
+        $not_count = $this->artistic_notification_count($to_id);
+
         echo json_encode(
                 array("count" => $cntinsert,
                     "comment" => $cmtinsert,
-                    "commentcount" => $cntinsert));
+                    "commentcount" => $cntinsert,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+        ));
 
         // khyati chande 
     }
@@ -8207,7 +8311,17 @@ class Artist extends MY_Controller {
                 }
                 $imglike .= '</span>';
                 $imglike .= '</a>';
-                echo $imglike;
+                //echo $imglike;
+                // GET NOTIFICATION COUNT
+                    $to_id = $artimglike[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
+                    echo json_encode(
+                            array(
+                                "return_html" => $imglike1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
             }
         } else {
             if ($likecommentuser[0]['is_unlike'] == '0') {
@@ -8230,7 +8344,17 @@ class Artist extends MY_Controller {
                     }
                     $imglike1 .= '</span>';
                     $imglike1 .= '</a>';
-                    echo $imglike1;
+                    //echo $imglike1;
+                    // GET NOTIFICATION COUNT
+                    $to_id = $artimglike[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
+                    echo json_encode(
+                            array(
+                                "return_html" => $imglike1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 }
             } else {
                 $data = array(
@@ -8336,7 +8460,17 @@ class Artist extends MY_Controller {
                     }
                     $imglike1 .= '</span>';
                     $imglike1 .= '</a>';
-                    echo $imglike1;
+                    //echo $imglike1;
+                    // GET NOTIFICATION COUNT
+                    $to_id = $artimglike[0]['user_id'];
+                    $not_count = $this->artistic_notification_count($to_id);
+
+                    echo json_encode(
+                            array(
+                                "return_html" => $imglike1,
+                                "status" => 'success',
+                                "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                    ));
                 }
             }
         }
@@ -9864,10 +9998,16 @@ class Artist extends MY_Controller {
         }
         $cmtinsert .= '</div>';
         //   echo $cmtinsert;
+        // GET NOTIFICATION COUNT
+        $to_id = $artpostid[0]['user_id'];
+        $not_count = $this->artistic_notification_count($to_id);
+
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
-                    "commentcount" => $cntinsert
+                    "commentcount" => $cntinsert,
+                    "status" => 'success',
+                    "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
         ));
     }
 
