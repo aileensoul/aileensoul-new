@@ -19,6 +19,14 @@ io.on('connection', function (socket) {
             to_id: data.to_id,
         });
     });
+    
+    socket.on('contact_request_count', function (data) {
+        console.log(data);
+        io.sockets.emit('contact_request_count', {
+            contact_request_count: data.contact_request_count,
+            contact_to_id: data.contact_to_id,
+        });
+    });
 
 
     socket.on('new_count_message', function (data) {
