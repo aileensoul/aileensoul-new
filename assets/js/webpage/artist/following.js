@@ -130,8 +130,9 @@ function followuser(clicked_id)
         type: 'POST',
         url: base_url + "artist/follow_two",
         data: 'follow_to=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
-            $('.' + 'fruser' + clicked_id).html(data);
+            $('.' + 'fruser' + clicked_id).html(data.follow_html);
             if (data.notification.notification_count != 0) {
                 var notification_count = data.notification.notification_count;
                 var to_id = data.notification.to_id;
