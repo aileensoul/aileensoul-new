@@ -2220,10 +2220,17 @@ class Artist extends MY_Controller {
                 $follow .= '</div>';
 
                 $datacount = '(' . count($followcount) . ')';
+
+                // GET NOTIFICATION COUNT
+                $to_id = $followuserid[0]['user_id'];
+                $not_count = $this->artistic_notification_count($to_id);
+
                 echo json_encode(
                         array(
                             "follow" => $follow,
                             "count" => $datacount,
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
                 ));
             }
         }
@@ -2409,11 +2416,18 @@ class Artist extends MY_Controller {
 
         if ($is_follow == 1) {
             $third_user_html = $this->third_follow_user_data();
+
+            // GET NOTIFICATION COUNT
+            $to_id = $followuserid[0]['user_id'];
+            $not_count = $this->artistic_notification_count($to_id);
+
             echo json_encode(
                     array(
                         "follow" => $follow,
                         "count" => $datacount,
                         "third_user" => $third_user_html,
+                        "status" => 'success',
+                        "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
             ));
         }
     }
@@ -2871,10 +2885,21 @@ class Artist extends MY_Controller {
             // end notoification
 
             if ($update) {
-                $follow = '<div id="unfollowdiv">';
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
-                $follow .= '</div>';
-                echo $follow;
+                $follow_html = '<div id="unfollowdiv">';
+                $follow_html .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
+                $follow_html .= '</div>';
+                //echo $follow;
+                
+                // GET NOTIFICATION COUNT
+                $to_id = $art_id;
+                $not_count = $this->artistic_notification_count($to_id);
+
+                echo json_encode(
+                        array(
+                            "follow" => $follow_html,
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                ));
             }
         } else {
             $data = array(
@@ -2956,10 +2981,21 @@ class Artist extends MY_Controller {
 
             if ($insert) {
 
-                $follow = '<div id="unfollowdiv">';
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
-                $follow .= '</div>';
-                echo $follow;
+                $follow_html = '<div id="unfollowdiv">';
+                $follow_html .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
+                $follow_html .= '</div>';
+                //echo $follow;
+
+                // GET NOTIFICATION COUNT
+                $to_id = $art_id;
+                $not_count = $this->artistic_notification_count($to_id);
+
+                echo json_encode(
+                        array(
+                            "follow_html" => $follow_html,
+                            "status" => 'success',
+                            "notification" => array('notification_count' => $not_count, 'to_id' => $to_id),
+                ));
             }
         }
     }

@@ -236,7 +236,11 @@ function followuser(clicked_id)
                             $('.full-box-module_follow').hide();
                         }
                     });
-
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
 
         }
 
@@ -273,21 +277,20 @@ function followclose(clicked_id)
 
 function followusercell(clicked_id)
 {
-
     $("#fadcell" + clicked_id).fadeOut(6000);
-
-
     $.ajax({
         type: 'POST',
         url: base_url + "artist/follow_home",
-        //url: '<?php echo base_url() . "artist/follow_two" ?>',
         dataType: 'json',
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-
             $('.' + 'fr' + clicked_id).html(data.follow);
             $('#countfollow').html(data.count);
-
+            if (data.notification.notification_count != 0) {
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
 
 
