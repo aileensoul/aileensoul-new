@@ -692,7 +692,7 @@
                                                                         url: '<?php echo base_url() . "recruiter/invite_user" ?>',
                                                                         data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
                                                                         dataType: 'json',
-                                                                        success: function (data) { //alert(data);
+                                                                        success: function (data) {
                                                                             $('#' + 'invited' + clicked_id).html(data.status).addClass('invited').removeClass('invite_border').removeAttr("onclick");
                                                                             $('#' + 'invited' + clicked_id).css('cursor', 'default');
                                                                             if (data.notification.notification_count != 0) {
