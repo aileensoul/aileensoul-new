@@ -1006,7 +1006,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 }
 
 /*** business profile  ***/
-#addcontact_count {
+#addcontact_count, .addcontact_count {
     font-weight: 600;
     height: 16px;
     position: absolute;
