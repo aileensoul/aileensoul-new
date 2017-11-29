@@ -1660,6 +1660,21 @@ background-color: #FFFFFF !important;
  	-webkit-text-fill-color: #848484 !important;  
 }
 
+.contact header .logo a{text-shadow: 2px 2px #cbcbcb;}
+.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) !important;}
+.contact .inner-form{float:left; margin:0 40px;}
+.contact-add{border:1px solid #c7c7c7; width:560px; float:right; margin:0 40px; border-radius:4px;}
+.con-address td{padding:15px; vertical-align:middle; color:#848484;}
+.con-address td a{color:#848484;}
+.con-address td:first-child{width:130px;}
+.con-address td address{margin:0;}
+.con-address td p{line-height:1.5;}
+.con-address:first-child{border-bottom:1px solid #c7c7c7;}
+.con-address h4{color:#5c5c5c; font-size:18px;}
+.contact .login .btn1{background:#8ab1c5; border:none !important;}
+.contact .title h1{color:#838383 !important; background:none;
+        -webkit-background-clip: inherit;
+        -webkit-text-fill-color: inherit;}
 
 
 /***  media query  ***/
@@ -1683,7 +1698,8 @@ background-color: #FFFFFF !important;
 	.bottom-middle{padding-left:0;}
 	.header-login .input{width:26%;}
 	.tablate-add{display:block; width:160px; position:fixed; margin-left:960px;}
-
+	.contact .inner-form{margin:0 10px;}
+	.contact-add{margin:0 10px;}
 }
 
 @media screen and (max-width: 1199px) {
@@ -1701,6 +1717,8 @@ background-color: #FFFFFF !important;
 	.tablate-potrat-add .fw.text-center{text-align:center;}
 	.left_side_posrt{position:absolute;}
 	/***  end add  ***/
+	.contact .inner-form{margin:1% auto; width:50%;}
+	.contact-add{margin:1% auto; width:46%;}
 
 }
 
@@ -1775,12 +1793,14 @@ background-color: #FFFFFF !important;
 	.about-us .middle-main .all-tem .text-custom p{font-size: 12px;}
 	.Main-im .team-1{height: 200px;width: 200px;}
 	.about-para{font-size: 18px;}
-
+	.contact .inner-form{margin:0 auto; width:100%;}
+	.contact-add{margin:35px auto 0; width:100%;}
 }
 
 @media screen and (max-width: 767px) {
 	
 	header{}
+	.mob-p15{padding:15px;}
 	body.cover{padding-bottom:90px;}
 	footer{padding:0; height:65px; text-align:center;}
 	footer .pt20{padding:10px 15px !important;}
@@ -1950,14 +1970,17 @@ background-color: #FFFFFF !important;
 	.profile-detail h2{line-height:1.5; margin-top:10px;}
 	.btn-4{font-size: 12px;}
 	.btn-4{padding: 5px 20px;}
-	.img-custom{width: 100% ;}
-	.team-1{height: 200px;width:200px;}
+	.img-custom{width: 100%;}
+	.team-1{height: 200px; width:200px;}
 	.about-h2{font-size: 30px;padding-top: 10px;}
 	.about-para{font-size: 15px;}	
 	.about-us .terms-con-cus{background-size: cover;}
 	.about-h2{padding-top: 50px;}
 	.about-us .middle-main .all-tem .text-custom h4{font-size: 20px;}
 	.about-us .middle-main .all-tem .text-custom p{font-size: 15px;}
+	.con-address td{width:100%; float:left;}
+	.con-address td:first-child{padding-bottom:0;}
+	.con-address td:last-child{padding-top:0;}
 }
 
 @media screen and (max-width: 360px) {

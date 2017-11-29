@@ -39,6 +39,9 @@
     <body class="contact">
         <div class="main-inner">
             <?php echo $login_header; ?>
+			<div class="contact-banner">
+				<img src="<?php echo base_url('assets/img/contactus.jpg'); ?>">
+			</div>
             <section class="middle-main">
                 <div class="container">
                     <div id="contactsucc"></div>
@@ -77,12 +80,49 @@
                                     <p>
                                         <button title="Submit" class="btn1">Submit</button>
                                     </p>
+								</form>
                             </div>
-                        </div>
-                    </div>
+                        
+							
+						</div>
+						<div class="mob-p15">
+						<div class="contact-add">
+							<div class="title">
+								<h1>Reach Us</h1>
+							</div>
+							<div class="fw p20">
+								<table width="100%" class="con-address">
+									<tr>
+										<td><h4>Address:</h4></td>
+										<td valign="middle">
+											<address>Satellite,
+											Near 100 ft road,<br> Shyamal crossroad,
+											Anandnagar,<br>
+											Ahmedabad, Gujarat<br> India (380015)</address>
+										</td>
+									</tr>
+									<tr><td colspan="2" style="padding:10px;"></td></tr>
+								</table>
+								
+								<table width="100%" class="con-address">
+									<tr><td colspan="2" style="padding:10px;"></td></tr>
+									<tr>
+										<td><h4>Mail Us:</h4></td>
+										<td><p><a href="mailto:info@aileensoul.com">info@aileensoul.com</a></p>
+											<p><a href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></p>
+											<p><a href="mailto:hr@aileensoul.com">hr@aileensoul.com</a></p>
+										</td>
+									</tr>
+								</table>
+							</div>
+								
+							</div>
+						</div>
+					</div>
                 </div>
-        </div>
-    </section>
+        
+			</section>
+		
     <?php echo $login_footer; ?>
 </div>
 

@@ -1992,6 +1992,9 @@ body.reg-form footer{background:#fff !important;}
 .blog_header .logo h3{display: inline-block;}
 
 
+
+
+
 /***  media query  ***/
 @media screen and (max-height: 540px){
     .no-login .modal-dialog{margin-bottom:20px !important; height:auto !important;}
@@ -2042,6 +2045,7 @@ body.reg-form footer{background:#fff !important;}
 	.fixed_right_side{right: 0;}
   .fixed_right_display_none{display:block;}
   .fixed_right_display{display: none;}
+  
 }
 
 @media screen and (max-width: 1199px) {
