@@ -172,7 +172,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
      function remove_user(abc)
                 {
-alert(123);
+
                     $.ajax({
                         type: 'POST',
                         url: base_url + "recruiter/remove_candidate",

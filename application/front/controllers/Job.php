@@ -265,7 +265,7 @@ class Job extends MY_Controller {
         $contition_array = array('is_delete' => '0', 'stream_name !=' => "Other");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1') AND (stream_name != 'Others'))";
         $stream_alldata1 = $this->data['stream_alldata1'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = 'stream_id,stream_name', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
-        
+
         $contition_array = array('status' => '1', 'is_delete' => '0', 'stream_name' => "Other");
         $stream_otherdata = $this->data['stream_otherdata'] = $this->common->select_data_by_condition('stream', $contition_array, $data = 'stream_id,stream_name', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
         //For getting all Stream End
@@ -2018,13 +2018,13 @@ class Job extends MY_Controller {
                 }
             }
             // GET NOTIFICATION COUNT
-                $not_count = $this->job_notification_count($notid);
-                
-                echo json_encode(
-                        array(
-                            "status" => 'Applied',
-                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$notid),
-                ));
+            $not_count = $this->job_notification_count($notid);
+
+            echo json_encode(
+                    array(
+                        "status" => 'Applied',
+                        "notification" => array('notification_count' => $not_count, 'to_id' => $notid),
+            ));
         } else {
 
 
@@ -2064,15 +2064,14 @@ class Job extends MY_Controller {
                 $applypost = 'Applied';
             }
 //            echo $applypost;
-           
             // GET NOTIFICATION COUNT
-                $not_count = $this->job_notification_count($notid);
-                
-                echo json_encode(
-                        array(
-                            "status" => 'Applied',
-                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$notid),
-                ));
+            $not_count = $this->job_notification_count($notid);
+
+            echo json_encode(
+                    array(
+                        "status" => 'Applied',
+                        "notification" => array('notification_count' => $not_count, 'to_id' => $notid),
+            ));
         }
     }
 
@@ -3106,7 +3105,7 @@ class Job extends MY_Controller {
         }
         $this->data['jobtitle'] = array_values($result1);
 
-        $contition_array = array('is_delete' => '0', 'status' => '1','industry_name !=' => "Others");
+        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name !=' => "Others");
         $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3386,7 +3385,7 @@ class Job extends MY_Controller {
 //Search Result Retrieve Start
     public function job_search() {
 
-        
+
         $searchvalue = $this->uri->segment(1);
         // echo $searchvalue;die();
 
@@ -3849,12 +3848,12 @@ class Job extends MY_Controller {
                 $return_html .= '<div class="profile-job-profile-button clearfix">
                                        <div class="profile-job-details col-md-12 col-xs-12">
                                           <ul>';
-                $return_html .= '<li class="job_all_post last_date">Last Date :';
-                if ($post['post_last_date'] != "0000-00-00") {
-                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                } else {
-                    $return_html .= PROFILENA;
-                }
+//                $return_html .= '<li class="job_all_post last_date">Last Date :';
+//                if ($post['post_last_date'] != "0000-00-00") {
+//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                } else {
+//                    $return_html .= PROFILENA;
+//                }
 
                 $return_html .= '</li>';
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -4182,13 +4181,13 @@ class Job extends MY_Controller {
                 $return_html .= '<div class="profile-job-profile-button clearfix">
                                        <div class="profile-job-details col-md-12 col-xs-12">
                                           <ul>';
-                $return_html .= '<li class="job_all_post last_date">Last Date :';
-                if ($post['post_last_date'] != "0000-00-00") {
-                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                } else {
-                    $return_html .= PROFILENA;
-                }
-                $return_html .= '</li>';
+//                $return_html .= '<li class="job_all_post last_date">Last Date :';
+//                if ($post['post_last_date'] != "0000-00-00") {
+//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                } else {
+//                    $return_html .= PROFILENA;
+//                }
+//                $return_html .= '</li>';
 
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -4470,14 +4469,14 @@ class Job extends MY_Controller {
                                     <div class="profile-job-details col-md-12 col-xs-12">
                                        <ul>';
 
-                $return_html .= '<li class="job_all_post last_date">Last Date :';
-
-                if ($post['post_last_date'] != "0000-00-00") {
-                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                } else {
-                    $return_html .= PROFILENA;
-                }
-                $return_html .= '</li>';
+//                $return_html .= '<li class="job_all_post last_date">Last Date :';
+//
+//                if ($post['post_last_date'] != "0000-00-00") {
+//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                } else {
+//                    $return_html .= PROFILENA;
+//                }
+//                $return_html .= '</li>';
 
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
@@ -4779,13 +4778,16 @@ class Job extends MY_Controller {
                     $return_html .= $post['other_skill'];
                 } else if (!$post['other_skill']) {
                     foreach ($aud_res as $skill) {
-                        if ($k != 0) {
-                            $return_html .= $comma;
-                        }
+
                         $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
 
-                        $return_html .= $cache_time;
-                        $k++;
+                        if ($cache_time != " ") {
+                            if ($k != 0) {
+                                $return_html .= $comma;
+                            }
+                            $return_html .= $cache_time;
+                            $k++;
+                        }
                     }
                 } else if ($post['post_skill'] && $post['other_skill']) {
                     foreach ($aud_res as $skill) {
@@ -4912,13 +4914,13 @@ class Job extends MY_Controller {
                               <div class="profile-job-details col-md-12">
                                  <ul>';
 
-                $return_html .= '<li class="job_all_post last_date">Last Date : ';
-                if ($post['post_last_date'] != "0000-00-00") {
-                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-                } else {
-                    $return_html .= PROFILENA;
-                }
-                $return_html .= '</li>';
+//                $return_html .= '<li class="job_all_post last_date">Last Date : ';
+//                if ($post['post_last_date'] != "0000-00-00") {
+//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+//                } else {
+//                    $return_html .= PROFILENA;
+//                }
+//                $return_html .= '</li>';
 
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
@@ -6083,35 +6085,33 @@ class Job extends MY_Controller {
         echo "yes";
     }
 
-    public function all_post($city= '') {
-       
+    public function all_post($city = '') {
+
         $city = $_GET['city'];
         //echo $city[0]['city'] ; die();
         $this->data['title'] = 'Find Latest Job Vacancies at Your Location' . TITLEPOSTFIX;
-        if($city[0]['city']){
-          
+        if ($city[0]['city']) {
+
             $cache_time = $this->db->get_where('cities', array('city_name' => $city))->row()->city_id;
-            
+
             $join_str[0]['table'] = 'recruiter';
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
             $join_str[0]['join_type'] = '';
-            
+
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $contition_array = array('city' => $cache_time, 'status' => '1', 'rec_post.is_delete' => '0');
-            $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data , $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-            
-            
-        }else{
-          //  echo "123";die();
-        $join_str[0]['table'] = 'recruiter';
-        $join_str[0]['join_table_id'] = 'recruiter.user_id';
-        $join_str[0]['from_table_id'] = 'rec_post.user_id';
-        $join_str[0]['join_type'] = '';
+            $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
+        } else {
+            //  echo "123";die();
+            $join_str[0]['table'] = 'recruiter';
+            $join_str[0]['join_table_id'] = 'recruiter.user_id';
+            $join_str[0]['from_table_id'] = 'rec_post.user_id';
+            $join_str[0]['join_type'] = '';
 
-        $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
-        $contition_array = array('status' => '1', 'rec_post.is_delete' => '0');
-        $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+            $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
+            $contition_array = array('status' => '1', 'rec_post.is_delete' => '0');
+            $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('job/all_post', $this->data);
@@ -6137,11 +6137,12 @@ class Job extends MY_Controller {
 //        echo "<pre>"; print_r($unique);die();
 //    }
 
-     public function job_notification_count($to_id = '') {
+    public function job_notification_count($to_id = '') {
         $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
         $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $count = $result[0]['total'];
-        return  $count;
+        return $count;
     }
+
 }
