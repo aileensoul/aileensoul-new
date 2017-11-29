@@ -36,7 +36,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
        
     </head>
-    <body class="contact">
+    <body class="contact outer-page">
         <div class="main-inner">
             <?php echo $login_header; ?>
 			<div class="contact-banner">

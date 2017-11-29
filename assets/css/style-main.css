@@ -1579,7 +1579,7 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 #selmonth.error{ border-bottom: 1px solid red !important;}
 #selyear.error{ border-bottom: 1px solid red !important;}
 #selgen.error{ border-bottom: 1px solid red !important;}
-.about-content{width: 80% !important;line-height: 35px !important;text-align: justify;}
+.about-content{width: 80% !important;line-height: 35px !important;}
 select:focus{ outline: none; }
 .gender.valid{color:#848484 !important;}
 
@@ -1662,7 +1662,7 @@ background-color: #FFFFFF !important;
 }
 
 .contact header .logo a{text-shadow: 2px 2px #cbcbcb;}
-.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) !important;}
+.contact header{border-bottom:1px solid #d9d9d9; background-color:rgba(255,255,255,0.4) !important;}
 .contact .inner-form{float:left; margin:0 40px;}
 .contact-add{border:1px solid #c7c7c7; width:560px; float:right; margin:0 40px; border-radius:4px;}
 .con-address td{padding:15px; vertical-align:middle; color:#848484;}
