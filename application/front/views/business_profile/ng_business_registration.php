@@ -42,7 +42,10 @@
             .tabs-left > .nav-tabs > li {
                 float: none;
             }
-
+            .form_submit{
+                opacity: 0.5 !important;
+                pointer-events: none !important;
+            }
 
         </style>
     </head>
@@ -178,8 +181,7 @@
                                                             </fieldset>
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width">
-                                                                <input type="submit"  id="next" name="next" tabindex="7" value="Next" ng-disabled="enable=='false'">
-                                                                <span ng-show="searchButtonText == 'Searching'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                                                                <input type="submit"  id="next" name="next" tabindex="7" value="Next" >
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -361,44 +363,7 @@
                                 alert("Browser does not support HTML5.");
                             }
                         }
-//                        function activeBusinessInformation() {
-//                            $('.progress-line-filled').addClass('step1');
-//                            $('ul.left-form-each-ul li').removeClass('active init');
-//                            $('ul.left-form-each-ul li').addClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-1').removeClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-1').addClass('active init');
-//                            $('.tab-content .tab-pane').removeClass('active');
-//                            $('.tab-content .tab-pane:nth-child(1)').addClass('active');
-//                            getCountry();
-//                            getBusinessInformation();
-//                        }
-//                        function activeContactInformation() {
-//                            $('ul.left-form-each-ul li').removeClass('active init');
-//                            $('ul.left-form-each-ul li').addClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-2').removeClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-2').addClass('active init');
-//                            $('.tab-content .tab-pane').removeClass('active');
-//                            $('.tab-content .tab-pane:nth-child(2)').addClass('active');
-//                            getContactInformation();
-//                        }
-//                        function activeDescription() {
-//                            $('ul.left-form-each-ul li').removeClass('active init');
-//                            $('ul.left-form-each-ul li').addClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-3').removeClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-3').addClass('active init');
-//                            $('.tab-content .tab-pane').removeClass('active');
-//                            $('.tab-content .tab-pane:nth-child(3)').addClass('active');
-//                            getDescription();
-//                        }
-//                        function activeImage() {
-//                            $('ul.left-form-each-ul li').removeClass('active init');
-//                            $('ul.left-form-each-ul li').addClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-4').removeClass('custom-none');
-//                            $('ul.left-form-each-ul li#left-form-each-li-4').addClass('active init');
-//                            $('.tab-content .tab-pane').removeClass('active');
-//                            $('.tab-content .tab-pane:nth-child(4)').addClass('active');
-//                            getImage();
-//                        }
+
                         function activeBusinessInformation() {
                             $('.progress-line-filled').removeClass('step1 step2 step3 step4');
                             $('.progress-line-filled').addClass('step1');
@@ -682,6 +647,7 @@
                         $scope.submitbusinessinfoForm = function () {
                             if ($scope.businessinfo.validate()) {
                                 // Posting data to php file
+                                angular.element('#businessinfo #next').addClass("form_submit");
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile_registration/ng_bus_info_insert',
@@ -699,6 +665,7 @@
                                                 $scope.errorPostalAddress = data.errors.business_address;
                                             } else {
                                                 if (data.is_success == '1') {
+                                                    angular.element('#businessinfo #next').removeClass("form_submit");
                                                     activeContactInformation();
                                                     $scope.tab_active(2);
                                                     $("li#left-form-each-li-2 a").attr({
@@ -749,6 +716,7 @@
                         $scope.submitcontactinfoForm = function () {
                             if ($scope.contactinfo.validate()) {
                                 // Posting data to php file
+                                angular.element('#contactinfo #next').addClass("form_submit");
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile_registration/ng_contact_info_insert',
@@ -765,6 +733,7 @@
                                                 $scope.errorContactWebsite = data.errors.contactwebsite;
                                             } else {
                                                 if (data.is_success == '1') {
+                                                    angular.element('#contactinfo #next').removeClass("form_submit");
                                                     activeDescription();
                                                     $scope.tab_active(3);
                                                     $("li#left-form-each-li-3 a").attr({
@@ -811,6 +780,7 @@
                         $scope.submitdescriptionForm = function () {
                             if ($scope.businessdis.validate()) {
                                 // Posting data to php file
+                                angular.element('#businessdis #next').addClass("form_submit");
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile_registration/ng_description_insert',
@@ -827,6 +797,7 @@
                                                 $scope.errorBusinessDetails = data.errors.business_details;
                                             } else {
                                                 if (data.is_success == '1') {
+                                                    angular.element('#businessdis #next').removeClass("form_submit");
                                                     activeImage();
                                                     $scope.tab_active(4);
                                                     $("li#left-form-each-li-4 a").attr({
@@ -847,6 +818,7 @@
                         };
                         $scope.submitbusImageForm = function () {
                             var form_data = new FormData();
+                            angular.element('#businessimage #next').addClass("form_submit");
                             angular.forEach($scope.files, function (file) {
                                 form_data.append('image1[]', file);
                             });
@@ -860,6 +832,7 @@
                                     $scope.errorImage = data.errors.image1;
                                 } else {
                                     if (data.is_success == '1') {
+                                        angular.element('#businessimage #next').removeClass("form_submit");
                                         window.location.href = base_url + 'business-profile/home';
                                     } else {
                                         return false;
