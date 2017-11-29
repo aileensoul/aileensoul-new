@@ -178,7 +178,8 @@
                                                             </fieldset>
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width">
-                                                                <input type="submit"  id="next" name="next" tabindex="7" value="Next">
+                                                                <input type="submit"  id="next" name="next" tabindex="7" value="Next" ng-disabled="enable=='false'">
+                                                                <span ng-show="searchButtonText == 'Searching'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
                                                             </fieldset>
                                                         </form>
                                                     </div>
