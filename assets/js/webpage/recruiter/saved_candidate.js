@@ -2,6 +2,7 @@
         
 
     function removepopup(id) {
+     
         $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this candidate?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_user(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
         $('#bidmodal').modal('show');
     }
@@ -171,8 +172,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
      function remove_user(abc)
                 {
-
-
+alert(123);
                     $.ajax({
                         type: 'POST',
                         url: base_url + "recruiter/remove_candidate",
@@ -185,7 +185,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
                             if (numItems == '0') {
                               
-                                var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "img/job-no1.png'/></div><div class='art_no_post_text'>No Saved Candidate  Available.</div></div>";
+                                var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "assets/img/job-no1.png'/></div><div class='art_no_post_text'>No Saved Candidate  Available.</div></div>";
                                 $('.contact-frnd-post').html(nodataHtml);
                             }
 

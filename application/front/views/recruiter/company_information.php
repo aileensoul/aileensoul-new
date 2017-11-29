@@ -218,7 +218,7 @@
                                     <label for="country-suggestions">Sector/Skill You hire for:<span class="optional">(optional)</span></span></label>
 
 
-                                    <textarea name ="comp_sector" id="comp_sector" rows="4" cols="50" tabindex="8" placeholder=" Ex.php, java, information technology ,automobile ,construction" style="resize: none;"><?php
+                                    <textarea name ="comp_sector" id="comp_sector" rows="4" cols="50" tabindex="8" placeholder=" Ex.php, java, information technology ,automobile ,construction" style="resize: none;" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"><?php
                                         if ($compsector) {
                                             echo $compsector;
                                         }
@@ -229,7 +229,7 @@
                                 <fieldset <?php if ($comp_profile) { ?> class="error-msg" <?php } ?> class="full-width">
                                     <label>Company Profile:<span class="optional">(optional)</span><!-- <span style="color:red">*</span> -->
 
-                                        <textarea tabindex="9" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;"><?php
+                                        <textarea tabindex="9" name ="comp_profile" id="comp_profile" rows="4" cols="50" placeholder="Enter Company Profile" style="resize: none;" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"><?php
                                             if ($comp_profile1) {
                                                 echo $comp_profile1;
                                             }
