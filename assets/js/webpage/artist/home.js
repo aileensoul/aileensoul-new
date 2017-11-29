@@ -586,13 +586,19 @@ function comment_like1(clicked_id)
         type: 'POST',
         url: base_url + "artist/like_comment1",
         data: 'post_id=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
 
-            if (data == 'notavl') {
+            if (data.return_html == 'notavl') {
                 $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
                 $('#bidmodal').modal('show');
             } else {
-                $('#' + 'likecomment1' + clicked_id).html(data);
+                $('#' + 'likecomment1' + clicked_id).html(data.return_html);
+                if (data.notification.notification_count != 0) {
+                    var notification_count = data.notification.notification_count;
+                    var to_id = data.notification.to_id;
+                    show_header_notification(notification_count, to_id);
+                }
             }
         }
     });

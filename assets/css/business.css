@@ -4499,7 +4499,7 @@ body.reg-form{background: #fff}
 /***  end all edit profile form  ***/
 .business_data .bus_pdf .image_profile .pdf_img image{height: 100%!important;width: 100%!important;}
 .business_data .bus_audios .image_profile .mejs__audio{margin-top: 60px;}
-.has-error input, input.error, select.error, .has-error textarea, textarea.error{border: 1px solid #ff0000 !important;}
+/*.has-error input, input.error, select.error, .has-error textarea, textarea.error{border: 1px solid #ff0000 !important;}*/
 .modal-content2 .art-all-comment .comment-name{width: 95% !important;}
 .modal-content2 .art-all-comment .comment-details{width: 95% !important;}
 #myModal .popup-img-popup{overflow-y: auto;}

@@ -1991,7 +1991,8 @@ body.reg-form footer{background:#fff !important;}
 #fre-popup .por_content ul li{padding: 11px 10px;}
 .blog_header .logo h3{display: inline-block;}
 
-
+.contact header .btn2{border:1px solid #8ab1c5; color:#8ab1c5;}
+.contact header .btn3{border:1px solid #8ab1c5; color:#8ab1c5;}
 
 
 
@@ -2226,6 +2227,7 @@ body.reg-form footer{background:#fff !important;}
 	.no-login .form-group{margin-bottom:10px;}
 	.no-login .sign_in.pt10{padding-top:0;}
 	.alert.alert-success{margin-top:20px; width:100%;}
+	.outer-page header{position:relative; background:url('../img/mob-about-bg.jpg');}
 }
 
 @media screen and (max-width: 640px) {
