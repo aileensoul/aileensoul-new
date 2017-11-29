@@ -761,6 +761,7 @@ textarea:focus::-webkit-input-placeholder
 	position:relative;
 	padding-top:30px;
 }
+
 .about-content:before{
 	position:absolute;
 	height:1px;
@@ -1578,7 +1579,7 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 #selmonth.error{ border-bottom: 1px solid red !important;}
 #selyear.error{ border-bottom: 1px solid red !important;}
 #selgen.error{ border-bottom: 1px solid red !important;}
-.about-content{width: 80% !important;line-height: 28px !important;}
+.about-content{width: 80% !important;line-height: 35px !important;text-align: justify;}
 select:focus{ outline: none; }
 .gender.valid{color:#848484 !important;}
 
@@ -1896,7 +1897,7 @@ background-color: #FFFFFF !important;
 	.login #register_form span::after{right: 15px;}
 	.img-custom{width: 40% ;}
 	.team-1{height: 150px;width:150px;}
-	.cus-about{padding: 80px;}
+	.cus-about{padding: 80px;padding-top: 0px;}
 	.about-us .middle-main .all-tem .text-custom h4{font-size: 19px;}
 	.about-us .middle-main .all-tem .text-custom p{font-size: 13px;}
 	.about-content{width: 100% !important;}
@@ -1934,11 +1935,11 @@ background-color: #FFFFFF !important;
 	.upload-profile{width: 87px; height: 87px; padding:15px 4px; font-size:9px; line-height:1.5;}
 	.upload-profile img{width:25px !important; height:25px !important;}
 	.banner-box #row2 img{height:200px;}
-	.cus-about{padding: 60px;}
+	.cus-about{padding: 36px;padding-top: 0px;}
 	
 }
 @media screen and (max-width: 540px) {
-	.cus-about{padding: 50px;}
+	.cus-about{padding: 25px;padding-top: 0px}
 	.about-h2{padding-top:60px;padding-bottom: 0px;font-size: 40px;}
 }
 

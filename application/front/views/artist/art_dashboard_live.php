@@ -640,7 +640,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 ?>
 
                                         </select>
-                                        <span>
+                                        </span>
                                     </div>
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
 
@@ -650,7 +650,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                         </select>
-                                        <span>
+                                        </span>
                                     </div>
 
                                     <p class="form-text">

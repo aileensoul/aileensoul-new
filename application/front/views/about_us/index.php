@@ -78,7 +78,13 @@
                             <h1 class="pb20">What is Aileensoul</h1>
                         </div>
                         <div class="about-content">
-                            Aileensoul is dedicated purely towards providing relentless and free platform to everyone. We provide a diversified platform for every kind of person. You can hire, recruit, and find a job of your preference in your required field. You can also find freelancing work from our site. Aileensoul targets every kind of population be it a person from artistic field or a person working in a contemporary setup. Beginning from hiring a housemaid to hiring an employ for your business, Aileensoul has it all. Any person looking for any kind of job or wants to showcase his/her artistic talent are free to create their profile. We want the gap that exists between the employer and employee to be fulfilled and hence creating a vast platform for employment as well as different services. 
+                            Founded in 2017, Aileensoul is a new age portal that amalgamates a variety of career-oriented services into a single unified platform with an aim to address the needs of  jobseekers, recruiters, business professionals, freelancers and artists - all under one roof! Introduced to fulfil one of the most fundamental and important aspects of an individual’s life - one’s desire to land a rewarding and successful career for himself or herself - Aileensoul’s futuristic platform serves to launch and advance the careers of first-time jobseekers, experienced business professionals/consultants and upcoming/veteran artists. 
+                        <br>
+                        <br>
+                            Whether you are looking to grow your business network or searching for a reliable job portal to explore vacancies in leading companies and reputed firms, Aileensoul caters to all your needs. We celebrate talent in every form and continue to innovate features and offerings that help individuals like you showcase their unique capabilities, talent and art to the global community that exists on our platform.  
+                        <br>
+                        <br>
+                            All our niche profiles have been thoughtfully designed to touch upon every possible aspect that can influence your career progression - be it full-time/freelance job search, networking, real-time collaboration with recruiters or a platform to showcase your skills and arouse the interest of potential clients or companies.
                         </div>
                        <!--  <p class="text-center"><img src="<?php //echo base_url('assets/img/message.png'); ?>"></p> -->
                         <!-- <div class="text-center">
@@ -97,18 +103,28 @@
                             <h1 class="pb20">Our Mission</h1>
                         </div>
                         <div class="about-content">
-                            Career is the most important aspect in every person's life and we want to add value to the society by providing a platform to each and every person in the world & help them grow their career.
+                            Social and economic upliftment of people is a key contributor to the all-round progress of a nation. Aileensoul endeavours to impact this very aspect of socio-economic development through creation of employment opportunities for the country’s youth and helping eradicate unemployment and poverty, not just from India but also from the world. 
 
                       <br>
-                       
-                            AileenSoul works with a mission to free this world from unemployment and poverty, hereby touching everyone's lives.
-
+                        <br>
+                         We believe that every individual has the right to a better tomorrow and a prospering career is one its founding stones. At Aileensoul, we strive to remove the man-made barriers of bureaucracy by enabling individuals and professionals to connect and collaborate in a transparent and independent manner.
                         </div>
                        
                     </div>
                 </div>
 
+                 <div class="container">
+                    <div class="pt10">
+                        <div class="titlea">
+                            <h1 class="pb20">Our Vision</h1>
+                        </div>
+                        <div class="about-content">
+                                We aspire to become a one-stop destination for career enthusiasts from various walks of life and with diverse experience and educational backgrounds.                              
 
+                        </div>
+                       
+                    </div>
+                </div>
 
 
 
