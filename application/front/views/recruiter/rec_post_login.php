@@ -473,7 +473,7 @@
                                     </div>                             
                                 </div>
 <?php if ($_GET['page'] == all_jobs) { ?>
-                                    <div class="full-box-module">   
+<!--                                    <div class="full-box-module">   
                                         <div class="profile-boxProfileCard  module">
                                             <div class="profile-boxProfileCard-cover"> 
                                                 <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
@@ -502,7 +502,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 <?php } ?>
 
                                 <div class="custom_footer_left fw">
