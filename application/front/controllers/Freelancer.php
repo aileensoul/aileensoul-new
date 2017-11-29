@@ -1205,22 +1205,28 @@ class Freelancer extends MY_Controller {
                                         <ul>
                                             <li class="fr">';
                 $cache_time1 = $post['post_name'];
-                $text = str_replace(" ", "-", $cache_time1);
-                $text = preg_replace("/[!$#%()]+/i", "", $text);
-                $text = strtolower($text);
-
+                
+                if ($cache_time1 != '') {
+                    $text = strtolower($this->common->clean($cache_time1));
+                } else {
+                    $text = '';
+                }
+                
+             
                 $cityname = $this->db->select('city_name')->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
-                $cityname1 = str_replace(" ", "-", $cityname);
-                $cityname1 = preg_replace("/[!$#%()]+/i", "", $cityname1);
-                $cityname1 = strtolower($cityname1);
+                if ($cityname != '') {
+                    $cityname1 = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname1 = '';
+                }
 
                 $return_html .= $this->lang->line("created_date");
                 $return_html .= ':';
                 $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
                 $return_html .= '</li>';
                 $return_html .= '<li>';
-                $return_html .= '<div class="post_title "><a href="' . base_url('freelancer-hire/project/' . $text . '-vacancy-in-' . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" >
+                $return_html .= '<div class="post_title "><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . '" title="' . ucwords($this->text2link($post['post_name'])) . '" >
                                                     ' . ucwords($this->text2link($post['post_name'])) . '</a></div> </li>';
 
 
