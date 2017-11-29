@@ -680,7 +680,7 @@
 
                                                                                         <div>
                                                                  <div class="four-image" >
-                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo ART_POST_MAIN_UPLOAD_URL . $artmultiimage[3]['file_name']; ?>"> </a></div>
+                                                                    <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo ART_POST_MAIN_UPLOAD_URL . $artmultiimage[3]['file_name']; ?>"> </a>
 
                                                                     <a href="<?php echo base_url('artist/postnewpage/' . $art_data[0]['art_post_id']) ?>" >
 
@@ -691,7 +691,7 @@
                                                                 </div>
 
                                                                 </a>
-
+                                                                </div>
                                                             </div>
                                                             <!-- this div view all image end -->
 

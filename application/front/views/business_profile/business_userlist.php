@@ -61,7 +61,7 @@
                             </ul>
                           </div>
                 
-                    </div>
+                    </div>  
                         </div>
 
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
