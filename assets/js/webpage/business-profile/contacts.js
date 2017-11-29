@@ -19,7 +19,7 @@ $(document).ready(function () {
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 //        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
 
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
@@ -182,8 +182,14 @@ function contact_person_menu(clicked_id) {
         type: 'POST',
         url: base_url + "business_profile/contact_person_menu",
         data: 'toid=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
-            $('#' + 'statuschange' + clicked_id).html(data);
+            $('#' + 'statuschange' + clicked_id).html(data.return_html);
+            if (data.co_notification.co_notification_count != 0) {
+                var co_notification_count = data.co_notification.co_notification_count;
+                var co_to_id = data.co_notification.co_to_id;
+                show_contact_notification(co_notification_count, co_to_id);
+            }
         }
     });
 }
@@ -197,11 +203,11 @@ function removecontactuser(clicked_id) {
         dataType: 'json',
         data: 'contact_id=' + clicked_id + '&showdata=' + showdata,
         success: function (data) {
-            
-          $('#' + 'statuschange' + clicked_id).html(data.contactdata);
+
+            $('#' + 'statuschange' + clicked_id).html(data.contactdata);
             //$('#' + 'removecontact' + clicked_id).fadeOut(2000);
             if (data.notfound == 1) {
-                if (data.notcount == 0) { 
+                if (data.notcount == 0) {
                     $('.contact-frnd-post').html(data.nomsg);
                 } else {
                     $('#' + 'removecontact' + clicked_id).fadeOut(2000);
@@ -277,9 +283,15 @@ function contact_person(clicked_id) {
         url: base_url + "business_profile/contact_person",
 
         data: 'toid=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
             //   alert(data);
             $('#contact_per').html(data);
+            if (data.co_notification.co_notification_count != 0) {
+                var co_notification_count = data.co_notification.co_notification_count;
+                var co_to_id = data.co_notification.co_to_id;
+                show_contact_notification(co_notification_count, co_to_id);
+            }
 
         }
     });

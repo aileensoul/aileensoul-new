@@ -7933,7 +7933,6 @@ Your browser does not support the audio tag.
         }
 
         //echo $contactdata;
-
         // GET NOTIFICATION COUNT
         $not_count = $this->business_contact_notification_count($to_id);
 
@@ -8104,7 +8103,7 @@ Your browser does not support the audio tag.
         $userid = $this->session->userdata('aileenuser');
         //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($business_deactive) {
             redirect('business-profile/');
         }
@@ -8260,10 +8259,15 @@ Your browser does not support the audio tag.
         $countdata = count($contactpersonc);
         $contactpersonc = $countdata;
 
+        // GET NOTIFICATION COUNT
+        $not_count = $this->business_contact_notification_count($toid);
+
         echo json_encode(
                 array(
                     "contactdata" => $contactdata,
                     "contactcount" => $contactpersonc,
+                    "status" => 'success',
+                    "co_notification" => array('co_notification_count' => $not_count, 'co_to_id' => $toid),
         ));
     }
 
@@ -8835,7 +8839,16 @@ No Contacts Available.
             $contactdata .= '</button>';
         }
 
-        echo $contactdata;
+        //echo $contactdata;
+        // GET NOTIFICATION COUNT
+        $not_count = $this->business_contact_notification_count($to_id);
+
+        echo json_encode(
+                array(
+                    "return_html" => $contactdata,
+                    "status" => 'success',
+                    "co_notification" => array('co_notification_count' => $not_count, 'co_to_id' => $to_id),
+        ));
     }
 
 //contact list end

@@ -1,8 +1,12 @@
+<?php
+$userid = $this->session->userdata('aileenuser');
+?>
+
 <script type="text/javascript">
     function show_contact_notification(contact_notification_count, contact_to_id) {
         var socket = io.connect('http://' + window.location.hostname + ':3000');
-        socket.emit('contact_notification_count', {
-            contact_notification_count: contact_notification_count,
+        socket.emit('contact_request_count', {
+            contact_request_count: contact_notification_count,
             contact_to_id: contact_to_id,
         });
     }
@@ -47,22 +51,22 @@
 //
 //    });
     $(document).ready(function () {
-        
+
         var socket = io.connect('http://' + window.location.hostname + ':3000');
-        socket.on('contact_notification_count', function (data) {
-            $("#notification_count" + data.to_id).html(data.notification_count);
-            $('#notification_count' + data.to_id).css({
+        socket.on('contact_request_count', function (data) {
+            $("#addcontact_count" + data.contact_to_id).html(data.contact_request_count);
+            $('#addcontact_count' + data.contact_to_id).css({
                 "background-color": "#FF4500",
-                "padding": "5px 6px",
+                "padding": "3.5px 5px",
                 "border-radius": "50px",
             });
-            $('#notificationLink').addClass('notification_available');
-            document.getElementById('notification_count' + data.to_id).style.display = 'block';
-            $('#notif_audio')[0].play();
+            $('#addcontactLink').addClass('contact_notification_available');
+            //document.getElementById('addcontact_count' + data.contact_to_id).style.display = 'block';
+            //$('#notif_audio')[0].play();
         });
-        
-        
-        
+
+
+
         $menuLeft = $('.pushmenu-left');
         $nav_list = $('#nav_list');
 
@@ -157,9 +161,23 @@
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
                                     <li id="add_contact">
-                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
+                                        <a class="action-button shadow animate dropbtn_common <?php
+                                        if ($contact_request_count != '0') {
+                                            echo 'contact_notification_available';
+                                        }
+                                        ?>" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
                                             <span class="bu_req"></span>
-                                            <span id="addcontact_count"></span>
+                                            <?php
+                                            if ($contact_request_count != '0') {
+                                                ?>
+                                                <span class="addcontact_count" id="addcontact_count<?php echo $userid; ?>" style="background-color:#FF4500; padding:3.5px 5px;"><?php echo $contact_request_count; ?></span>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <span class="addcontact_count" id="addcontact_count<?php echo $userid; ?>"></span>
+                                                <?php
+                                            }
+                                            ?>
                                         </a>
                                         <div id="addcontactContainer" class="dropdown2_content">
                                             <div id="addcontactBody" class="notifications">
@@ -197,7 +215,7 @@
                                     </li>  
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                        <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
+                                                                                            <!--  <span class="badge bg-theme"><?php //echo $message_count;         ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -280,9 +298,23 @@
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
                                     <li id="add_contact">
-                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
+                                        <a class="action-button shadow animate dropbtn_common <?php
+                                        if ($contact_request_count != '0') {
+                                            echo 'contact_notification_available';
+                                        }
+                                        ?>" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
                                             <span class="bu_req"></span>
-                                            <span id="addcontact_count"></span>
+                                            <?php
+                                            if ($contact_request_count != '0') {
+                                                ?>
+                                                <span class="addcontact_count" id="addcontact_count<?php echo $userid; ?>" style="background-color:#FF4500; padding:3.5px 5px;"><?php echo $contact_request_count; ?></span>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <span class="addcontact_count" id="addcontact_count<?php echo $userid; ?>"></span>
+                                                <?php
+                                            }
+                                            ?>
                                         </a>
                                         <div id="addcontactContainer" class="dropdown2_content">
                                             <div id="addcontactBody" class="notifications">
@@ -297,7 +329,7 @@
                                     </li>   
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                       <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
+                                                                                           <!--  <span class="badge bg-theme"><?php //echo $message_count;         ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -327,7 +359,7 @@
                                                 <a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
-                                                <!--<a href="<?php //echo base_url('business-profile/business-information-edit');  ?>">-->
+                                                <!--<a href="<?php //echo base_url('business-profile/business-information-edit');       ?>">-->
                                                 <!--<a href="<?php echo base_url('business-profile/signup/edit/business-information'); ?>">-->
                                                 <a href="<?php echo base_url('business-profile/business-information'); ?>">
                                                     <span class="icon-edit-profile edit_data"></span>  
@@ -400,6 +432,12 @@
             url: "<?php echo base_url(); ?>business_profile/update_contact_count",
             type: "POST",
             success: function (data) {
+                $('span[id^=addcontact_count]').html('');
+                $('span[id^=addcontact_count]').css({
+                    "background-color": "",
+                    "padding": "0px"
+                });
+                $('#addcontactLink').removeClass('contact_notification_available');
             }
         });
     }
@@ -424,6 +462,11 @@
                     var data_html = "<li><div class='art-img-nn' id='art-blank'><div class='art_no_post_img'><img src='<?php echo base_url(); ?>img/No_Contact_Request.png'></div><div class='art_no_post_text'>No Contact Request Available.</div></div></li>";
                     $('#notification_main_in').html(data_html);
                     $('#seecontact').hide();
+                }
+                if (data.co_notification.co_notification_count != 0) {
+                    var co_notification_count = data.co_notification.co_notification_count;
+                    var co_to_id = data.co_notification.co_to_id;
+                    show_contact_notification(co_notification_count, co_to_id);
                 }
             }
         });

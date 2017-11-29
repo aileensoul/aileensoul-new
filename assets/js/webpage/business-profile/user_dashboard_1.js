@@ -1771,8 +1771,14 @@ function contact_person(clicked_id) {
         type: 'POST',
         url: base_url + "business_profile/contact_person",
         data: 'toid=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
             $('#contact_per').html(data);
+            if (data.co_notification.co_notification_count != 0) {
+                var co_notification_count = data.co_notification.co_notification_count;
+                var co_to_id = data.co_notification.co_to_id;
+                show_contact_notification(co_notification_count, co_to_id);
+            }
         }
     });
 }
