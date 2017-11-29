@@ -1981,7 +1981,7 @@ body.no-login{padding-bottom:0;}
 .no-login .inner-form1{width:560px;}
 .no-login.modal-open{overflow-y:auto;}
 
-li.active2 .notification-data-inside h6 i{font-weight: normal;}
+li.active2 .notification-data-inside h6 i{font-weight: normal;font-style: normal; }
 #notification_main_in .notification_data_in_h2 li.active{background-color: #e9f6fc;}
 .login p button {margin-left: 0px;}
 .title h1{margin-bottom: 10px;margin-top: 6px;}

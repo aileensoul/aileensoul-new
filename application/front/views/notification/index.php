@@ -48,8 +48,8 @@
     background: -ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
     background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9',GradientType=0);
-    background-color: #f9f9f9;font-weight: 600;
-    color: #000033;">View Notification</h3>
+    background-color: #f9f9f9;font-weight: normal;
+    color: #5c5c5c;">View Notification</h3>
 
                         <!-- BEGIN CONTAINER -->
                         <!--  <div class="page-container">
