@@ -13,12 +13,21 @@ class Message extends MY_Controller {
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
-
+        $this->load->model('message_model');
         include('business_include.php');
     }
 
     public function index($message_from_profile = '', $message_to_profile = '') {
         $this->load->view('message/index');
+    }
+    
+    public function business_profile() {
+        $this->load->view('message/business_profile');
+    }
+    
+    public function getBusinessUserChatList(){
+        $user_data = $this->message_model->get_business_user_list();
+        echo json_encode($user_data);
     }
     
     public function business_profile_active_check() {

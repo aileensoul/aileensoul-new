@@ -164,7 +164,7 @@
             messageApp.controller('messageController', function ($scope, $http) {
                 load_message_user();
                 function load_message_user() {
-                    $http.get(base_url + "message/get_user_list").success(function (data) {
+                    $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
                         $scope.loaded_user_data = data;
                     })
                 }
