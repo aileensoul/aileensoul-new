@@ -2302,7 +2302,7 @@ Your browser does not support the audio tag.
             if ($status == 0 || $status == " ") {
                 $return_html .= '<div id= "followdiv " class="user_btn">
                                                                                 <button id="follow' . $user['business_profile_id'] . '" onClick="followuser(' . $user['business_profile_id'] . ')">
-                                                                                    Follow 
+                                                                                   <span> Follow </span>
                                                                                 </button></div>';
             } elseif ($status == 1) {
                 $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
@@ -2532,7 +2532,7 @@ Your browser does not support the audio tag.
             if ($update) {
                 $unfollow = '<div id="followdiv " class="user_btn">';
                 $unfollow .= '<button id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
-                               Follow 
+                               <span>Follow </span>
                       </button>';
                 $unfollow .= '</div>';
                 $datacount = '(' . count($followcount) . ')';

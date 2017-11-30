@@ -23,7 +23,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 ftr-copuright">
-                    <span>    &#9400; 2017 | by Aileensoul Technologies Private Limited </span>
+                    <span>    &#9400; 2017 | by Aileensoul </span>
                 </div>
             </div>
         </div>

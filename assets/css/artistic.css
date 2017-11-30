@@ -130,7 +130,7 @@ label.cameraButton:active {
     padding: 10px 0px;
     position: absolute;
     z-index: 1;
-    font-weight: 800;
+    font-weight: 500;
     margin-top: 25px;
     top: -8px;
     right: 110%;
@@ -4976,7 +4976,7 @@ div .comment {
     .cameraButton .tooltiptext {
         font-size: 12px;
         width: 121px;
-        font-weight: 600;
+        font-weight: 500;
         margin-top: 21px;
     }
     #paddingtop_fixed {

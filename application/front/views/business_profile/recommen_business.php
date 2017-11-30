@@ -141,26 +141,29 @@
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <?php echo $business_left; ?>
-								<div class="tablate-potrat-add">
-								<div class="fw text-center pt10">
-									<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-								</div>
-							</div>
+                                <div class="tablate-potrat-add">
+                                    <div class="fw text-center pt10">
+                                        <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                        </script>
+                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
-                                    <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
+                                    <h3 style="background-color: #fff; text-align: center; color: #003; ">
                                         Search result of 
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {
@@ -174,61 +177,70 @@
                                         }
                                         ?>
                                     </h3>
-										<div class="mob-add">
-								<div class="fw text-center pt10 pb5">
-									<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-								</div>
-							</div>
-                                    <div class="job-contact-frnd">
-                                        <!-- AJAX DATA... -->
+                                    <div class="mob-add">
+                                        <div class="fw text-center pt10 pb5">
+                                            <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                            </script>
+                                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                        </div>
+                                    </div>
+                                    <div class="contact-frnd-post">
+                                        <div class="job-contact-frnd">
+                                            <!-- AJAX DATA... -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-						
-						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-					
-							<div class="fw text-center">
-								<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-								<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-								<div class="fw pt10">
-									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
-								</div>
-							</div>
-						
-						</div>
-						<div class="tablate-add">
+
+                        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                            <div class="fw text-center">
+                                <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                </script>
+                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                <div class="fw pt10">
+                                    <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_tired_of_adsense.png" /></a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tablate-add">
 
                             <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []}; };
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                            </script>
+                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                         </div>
-					
-					</div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -261,9 +273,9 @@
 </div>
 <!-- Model Popup Close -->
 <!-- <footer> -->
-    <?php echo $footer ?>
+<?php echo $footer ?>
 <!-- </footer> -->
-<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());   ?>"></script>-->
+<!--<script src="<?php //echo base_url('assets/js/jquery.wallform.js?ver=' . time());    ?>"></script>-->
 <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.highlite.js?ver=' . time()); ?>">
 </script>

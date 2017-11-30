@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Grow Business Network|Hiring|Search Jobs|Freelance Work|It's Free|Aileensoul</title>
+        <title>Terms and Conditions - Aileensoul.com</title>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <meta charset="utf-8">
         <?php
-        if($_SERVER['HTTP_HOST'] != "localhost"){
-        ?>
-        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
-        <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        if ($_SERVER['HTTP_HOST'] != "localhost") {
+            ?>
+            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+            <script>
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-91486853-1', 'auto');
-            ga('send', 'pageview');
+                ga('create', 'UA-91486853-1', 'auto');
+                ga('send', 'pageview');
 
-        </script>
-        <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-        <?php
+            </script>
+            <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
+            <?php
         }
         ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -46,10 +46,10 @@
                             </div>
                             <div class="col-md-8 col-sm-9">
                                 <div class="btn-right pull-right">
-                                <?php if(!$this->session->userdata('aileenuser')) {?>
-                                    <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-                                    <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
-                                    <?php }?>
+                                    <?php if (!$this->session->userdata('aileenuser')) { ?>
+                                        <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
+                                        <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -197,8 +197,8 @@
                         <div class="col-md-8 col-sm-8 pull-right col-xs-12">
                             <ul>
                                 <li><a href="<?php echo base_url('about-us'); ?>">About Us</a>|</li>
-                                 <li><a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a>|</li>
-                        <li><a tabindex="15" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>|</li>
+                                <li><a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a>|</li>
+                                <li><a tabindex="15" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>|</li>
                                 <li><a href="<?php echo base_url('contact-us'); ?>">Contact Us</a>|</li>
                                 <li><a title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a>|</li>
                                 <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
