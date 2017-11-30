@@ -159,6 +159,7 @@ submitHandler: submitrecruiterForm
 
 function submitrecruiterForm()
     {
+    
       var first_name = $("#first_name").val();
       var last_name = $("#last_name").val();
       var email = $("#email").val();
@@ -169,8 +170,8 @@ function submitrecruiterForm()
       var state = $("#state").val();
       var city = $("#city").val();
       var comp_profile = $("#comp_profile").val();
-      
-      
+      var segment =$('#segment').val();
+     
       var post_data = {
             'first_name': first_name,
             'last_name': last_name,
@@ -182,6 +183,7 @@ function submitrecruiterForm()
             'state': state,
             'city': city,
             'comp_profile': comp_profile,
+            'segment': segment
           //  'aileensoulnewfrontcsrf': get_csrf_hash,
         }
         
@@ -200,8 +202,10 @@ function submitrecruiterForm()
                
               
                 if (response.okmsg == "ok") {
+                    return false;
                     window.location = base_url + "recruiter/add-post";
                 } else {
+                    return false;
                     window.location = base_url + "recruiter/registration";
                 }
             }
