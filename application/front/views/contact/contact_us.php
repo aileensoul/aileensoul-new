@@ -95,7 +95,9 @@
 									<tr>
 										<td><h4>Address:</h4></td>
 										<td valign="middle">
-											<address>Satellite,
+											<address>
+											Aileensoul Technologies Private Limited<br>
+											Satellite,
 											Near 100 ft road,<br> Shyamal crossroad,
 											Anandnagar,<br>
 											Ahmedabad, Gujarat<br> India (380015)</address>
