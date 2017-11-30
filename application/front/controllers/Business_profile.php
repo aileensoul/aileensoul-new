@@ -2532,7 +2532,7 @@ Your browser does not support the audio tag.
             if ($update) {
                 $unfollow = '<div id="followdiv " class="user_btn">';
                 $unfollow .= '<button id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
-                               Follow 
+                               <span>Follow </span>
                       </button>';
                 $unfollow .= '</div>';
                 $datacount = '(' . count($followcount) . ')';
