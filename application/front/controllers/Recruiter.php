@@ -5013,4 +5013,7 @@ if ($cache_time) {
         $count = $result[0]['total'];
         return  $count;
     }
+    public function add_post_login(){
+        $this->load->view('recruiter/add_post_login');
+    }
 }

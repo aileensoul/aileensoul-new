@@ -241,8 +241,6 @@
         <script>
                         // var complex = <?php echo json_encode($selectdata); ?>;
                         var base_url = '<?php echo base_url(); ?>';
-
-
         </script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_post_professional_information.js?ver=' . time()); ?>"></script>
         <script  type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>

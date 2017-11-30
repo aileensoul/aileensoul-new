@@ -115,7 +115,7 @@
 	overflow: auto;
 }
 .ui-autocomplete {
-	position: absolute;
+	position: absolute !important;
 	top: 0;
 	left: 0;
 	cursor: default;
