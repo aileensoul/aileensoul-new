@@ -30,6 +30,11 @@ class Message extends MY_Controller {
         echo json_encode($user_data);
     }
     
+    
+    public function recruiter_profile() {
+        $this->load->view('message/recruiter_profile');
+    }
+    
     public function business_profile_active_check() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
