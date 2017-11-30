@@ -1366,6 +1366,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 .popup-textarea textarea {
     padding-right: 10px;
 }
+
 .ui-widget {
     max-height: 210px!important;
     margin-top: 4px!important;
