@@ -181,7 +181,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" tabindex="7" value="Next" >
-                                                                <div class="loader"> </div>
+                                                                <div class="loader" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -216,7 +216,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" tabindex="5"  value="Next">
-                                                                 <div class="loader"> </div>
+                                                                 <div class="loader" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -273,7 +273,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" value="Next" tabindex="6" >
-                                                                 <div class="loader"> </div>
+                                                                 <div class="loader" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -295,6 +295,7 @@
                                                             </fieldset>
                                                             <fieldset class = "hs-submit full-width">
                                                                 <input type = "submit" id = "submit" name = "submit" tabindex = "2" value = "Submit">
+                                                                <div class="loader" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -341,6 +342,7 @@
                         $scope.countryList = undefined;
                         $scope.stateList = undefined;
                         $scope.cityList = undefined;
+                        $scope.loader_show = false;
                         $scope.tab_active = function (data) {
                             var title;
                             var url;
@@ -613,6 +615,15 @@
                                 return regexpr.test(value);
                             }
                         }, "Only space, only number and only special characters are not allow");
+                        $.validator.addMethod("regx1", function (value, element, regexpr) {
+                            if (!value)
+                            {
+                                return true;
+                            } else
+                            {
+                                return regexpr.test(value);
+                            }
+                        }, "You can use letters(a-z), numbers, and periods.");
                         $scope.busInfoValidate = {
                             rules: {
                                 companyname: {
@@ -650,6 +661,7 @@
                             if ($scope.businessinfo.validate()) {
                                 // Posting data to php file
                                 angular.element('#businessinfo #next').addClass("form_submit");
+                                $scope.loader_show = true;
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile_registration/ng_bus_info_insert',
@@ -668,6 +680,7 @@
                                             } else {
                                                 if (data.is_success == '1') {
                                                     angular.element('#businessinfo #next').removeClass("form_submit");
+                                                    $scope.loader_show = false;
                                                     activeContactInformation();
                                                     $scope.tab_active(2);
                                                     $("li#left-form-each-li-2 a").attr({
@@ -700,6 +713,7 @@
                                 email: {
                                     required: true,
                                     email: true,
+                                    regx1: /^[a-zA-Z0-9.@]+$/
                                 }
                             },
                             messages: {
@@ -719,6 +733,7 @@
                             if ($scope.contactinfo.validate()) {
                                 // Posting data to php file
                                 angular.element('#contactinfo #next').addClass("form_submit");
+                                $scope.loader_show = true;
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile_registration/ng_contact_info_insert',
@@ -736,6 +751,7 @@
                                             } else {
                                                 if (data.is_success == '1') {
                                                     angular.element('#contactinfo #next').removeClass("form_submit");
+                                                    $scope.loader_show = false;
                                                     activeDescription();
                                                     $scope.tab_active(3);
                                                     $("li#left-form-each-li-3 a").attr({
@@ -783,6 +799,7 @@
                             if ($scope.businessdis.validate()) {
                                 // Posting data to php file
                                 angular.element('#businessdis #next').addClass("form_submit");
+                                $scope.loader_show = true;
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'business_profile_registration/ng_description_insert',
@@ -800,6 +817,7 @@
                                             } else {
                                                 if (data.is_success == '1') {
                                                     angular.element('#businessdis #next').removeClass("form_submit");
+                                                    $scope.loader_show = false;
                                                     activeImage();
                                                     $scope.tab_active(4);
                                                     $("li#left-form-each-li-4 a").attr({
@@ -821,6 +839,7 @@
                         $scope.submitbusImageForm = function () {
                             var form_data = new FormData();
                             angular.element('#businessimage #next').addClass("form_submit");
+                            $scope.loader_show = true;
                             angular.forEach($scope.files, function (file) {
                                 form_data.append('image1[]', file);
                             });
@@ -835,6 +854,7 @@
                                 } else {
                                     if (data.is_success == '1') {
                                         angular.element('#businessimage #next').removeClass("form_submit");
+                                        $scope.loader_show = false;
                                         window.location.href = base_url + 'business-profile/home';
                                     } else {
                                         return false;
