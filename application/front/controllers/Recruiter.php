@@ -184,10 +184,10 @@ class Recruiter extends MY_Controller {
                 $insert_id = $this->common->update_data($data, 'recruiter', 'rec_id', $this->data['recdata'][0]['rec_id']);
 
                 if ($insert_id) {
-                 //   $this->session->set_flashdata('success', 'Basic information updated successfully');
+                    //   $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('recruiter/company-information', refresh);
                 } else {
-                  //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
                 }
             } else {
@@ -207,10 +207,10 @@ class Recruiter extends MY_Controller {
                 $insert_id = $this->common->insert_data_getid($data, 'recruiter');
                 if ($insert_id) {
 
-                   // $this->session->set_flashdata('success', 'Basic information inserted successfully');
+                    // $this->session->set_flashdata('success', 'Basic information inserted successfully');
                     redirect('recruiter/company-information', refresh);
                 } else {
-                  //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    //  $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
                 }
             }
@@ -396,13 +396,12 @@ class Recruiter extends MY_Controller {
                     $main_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
                     $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
                     if ($_SERVER['HTTP_HOST'] != "localhost") {
-                            if (isset($main_image)) {
-                                unlink($main_image);
-                            }
-                            if (isset($thumb_image)) {
-                                unlink($thumb_image);
-                            }
-                            
+                        if (isset($main_image)) {
+                            unlink($main_image);
+                        }
+                        if (isset($thumb_image)) {
+                            unlink($thumb_image);
+                        }
                     }
                     // changes 21-11 unlink image 
                     $this->image_lib->resize();
@@ -490,10 +489,10 @@ class Recruiter extends MY_Controller {
                 $insert_id = $this->common->update_data($data, 'recruiter', 'rec_id', $this->data['recdata'][0]['rec_id']);
 
                 if ($insert_id) {
-                   // $this->session->set_flashdata('success', 'company information updated successfully');
+                    // $this->session->set_flashdata('success', 'company information updated successfully');
                     redirect('recruiter/home', refresh);
                 } else {
-                   // $this->session->flashdata('error', 'Sorry!! Your data not inserted');
+                    // $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
                 }
             } else {
@@ -1557,11 +1556,11 @@ class Recruiter extends MY_Controller {
                 if ($row['work_job_title']) {
                     $contition_array = array('title_id' => $row['work_job_title']);
                     $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if($jobtitle != ""){
-                    $postdata .= '<li> <b> Job Title</b> <span>';
-                    $postdata .= '' . $jobtitle[0]['name'] . '';
-                    $postdata .= '</span>';
-                    $postdata .= '</li>';
+                    if ($jobtitle != "") {
+                        $postdata .= '<li> <b> Job Title</b> <span>';
+                        $postdata .= '' . $jobtitle[0]['name'] . '';
+                        $postdata .= '</span>';
+                        $postdata .= '</li>';
                     }
                 }
                 if ($row['keyskill']) {
@@ -2068,21 +2067,21 @@ class Recruiter extends MY_Controller {
                             $cityname = '';
                         }
 
- $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
-                       
-if ($cache_time) {
+                        $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+
+                        if ($cache_time) {
                             $rec_post_name = $cache_time;
                         } else {
                             $rec_post_name = $post['post_name'];
                         }
                         $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' .
-                       $rec_post_name . '">';
-                         
-                          $rec_post .= $rec_post_name;
+                                $rec_post_name . '">';
+
+                        $rec_post .= $rec_post_name;
 
 //                             <a class="post_title" href="javascript:void(0)" title="Post Title">';
-                       
-                        
+
+
                         $rec_post .= '</a> </li><li>';
                         $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                         $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
@@ -2326,17 +2325,17 @@ if ($cache_time) {
 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/ri' . $post['user_id'] . '/po' . $post['post_id'] . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
                         // $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/live_post/' . base64_encode($post['user_id']) . '/' . base64_encode($post['post_id']) . '/' . $text . '-vacancy-in-'.$cityname . '" title="Post Tit44le">'; 
-                       $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
-                       
-if ($cache_time) {
+                        $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+
+                        if ($cache_time) {
                             $rec_post_name = $cache_time;
                         } else {
                             $rec_post_name = $post['post_name'];
                         }
                         $rec_post .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' .
-                       $rec_post_name . '">';
-                         
-                          $rec_post .= $rec_post_name;
+                                $rec_post_name . '">';
+
+                        $rec_post .= $rec_post_name;
 
                         $rec_post .= '</a> 
                                                                     </li>
@@ -3290,7 +3289,7 @@ if ($cache_time) {
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
-       // echo $page;
+        // echo $page;
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
@@ -3940,7 +3939,7 @@ if ($cache_time) {
         );
 
         $update = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
-   if ($update) {
+        if ($update) {
             if ($_SERVER['HTTP_HOST'] != "localhost") {
                 if (isset($main_image)) {
                     unlink($main_image);
@@ -3984,13 +3983,13 @@ if ($cache_time) {
         //echo $this->upload->do_upload('photo'); die();
         if ($this->upload->do_upload('image')) {
 // changes 21-11 unlink image 
-                    $main_image = $this->config->item('rec_bg_original_upload_path') . $_FILES['image']['name'];
-                    if ($_SERVER['HTTP_HOST'] != "localhost") {
-                            if (isset($main_image)) {
-                                unlink($main_image);
-                            }
-                    }
-                    // changes 21-11 unlink image 
+            $main_image = $this->config->item('rec_bg_original_upload_path') . $_FILES['image']['name'];
+            if ($_SERVER['HTTP_HOST'] != "localhost") {
+                if (isset($main_image)) {
+                    unlink($main_image);
+                }
+            }
+            // changes 21-11 unlink image 
             $uploadData = $this->upload->data();
             //$picture = $uploadData['file_name']."-".date("Y_m_d H:i:s");
             $image = $uploadData['file_name'];
@@ -4180,20 +4179,20 @@ if ($cache_time) {
                 //Creating Thumbnail
                 $this->image_lib->resize();
                 $thumberror = $this->image_lib->display_errors();
-                
+
                 // changes 21-11 unlink image 
-                    $main_image = $this->config->item('rec_profile_main_upload_path') . $imgdata['file_name'];
-                    $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
-                    if ($_SERVER['HTTP_HOST'] != "localhost") {
-                            if (isset($main_image)) {
-                                unlink($main_image);
-                            }
-                            
-                            if (isset($thumb_image)) {
-                                unlink($thumb_image);
-                            }
+                $main_image = $this->config->item('rec_profile_main_upload_path') . $imgdata['file_name'];
+                $thumb_image = $this->config->item('rec_profile_thumb_upload_path') . $imgdata['file_name'];
+                if ($_SERVER['HTTP_HOST'] != "localhost") {
+                    if (isset($main_image)) {
+                        unlink($main_image);
                     }
-                    // changes 21-11 unlink image 
+
+                    if (isset($thumb_image)) {
+                        unlink($thumb_image);
+                    }
+                }
+                // changes 21-11 unlink image 
             } else {
 
                 $thumberror = '';
@@ -4449,16 +4448,15 @@ if ($cache_time) {
                 //$jobemail = 'khyati.aileensoul@gmail.com';
                 $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $jobemail);
             }
-          //  echo'invited';
-            
+            //  echo'invited';
             // GET NOTIFICATION COUNT
-                $not_count = $this->recruiter_notification_count($invite_user);
-                
-                echo json_encode(
-                        array(
-                            "status" => 'invited',
-                            "notification" => array('notification_count'=>$not_count, 'to_id' =>$invite_user),
-                ));
+            $not_count = $this->recruiter_notification_count($invite_user);
+
+            echo json_encode(
+                    array(
+                        "status" => 'invited',
+                        "notification" => array('notification_count' => $not_count, 'to_id' => $invite_user),
+            ));
         } else {
             echo 'error';
         }
@@ -5001,19 +4999,134 @@ if ($cache_time) {
             }
         }
     }
-  
-    public function abc(){
+
+    public function abc() {
         $this->load->view('test/index');
     }
-    
-     public function recruiter_notification_count($to_id = '') {
+
+    public function recruiter_notification_count($to_id = '') {
         $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
         $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $count = $result[0]['total'];
-        return  $count;
+        return $count;
     }
-    public function add_post_login(){
-        $this->load->view('recruiter/add_post_login');
+
+    public function add_post_login() {
+
+        $userid = $this->session->userdata('aileenuser');
+        
+        $contition_array = array('status' => '1');
+        $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('is_delete' => '0', 'is_other' => '0', 'industry_name !=' => "Others");
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+        $industry = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
+        $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('status' => '1');
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('status' => '1', 'type' => '1');
+        $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $contition_array = array('status' => 'publish');
+        $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        foreach ($jobtitle as $key1 => $value1) {
+            foreach ($value1 as $ke1 => $val1) {
+                $title[] = $val1;
+            }
+        }
+        foreach ($title as $key => $value) {
+            $result1[$key]['label'] = $value;
+            $result1[$key]['value'] = $value;
+        }
+        $this->data['jobtitle'] = array_values($result1);
+
+
+        $this->load->view('recruiter/add_post_login', $this->data);
     }
+
+    public function add_post_insert() {
+        
+        $userid = $this->session->userdata('aileenuser');
+        echo $userid;die();
+        
+        $post_name = $this->input->post('post_name');
+        $skills = $this->input->post('skills');
+        $position = $this->input->post('position');
+        $minyear = $this->input->post('minyear');
+        $maxyear = $this->input->post('maxyear');
+        $fresher = $this->input->post('fresher');
+        $industry = $this->input->post('industry');
+        $emp_type = $this->input->post('emp_type');
+        $education = $this->input->post('education');
+        $post_desc = $this->input->post('post_desc');
+        $interview = $this->input->post('interview');
+        $country = $this->input->post('country');
+        $state = $this->input->post('state');
+        $city = $this->input->post('city');
+        $salary_type = $this->input->post('salary_type');
+        $datepicker = $this->input->post('datepicker');
+        $minsal = $this->input->post('minsal');
+        $maxsal = $this->input->post('maxsal');
+        $currency = $this->input->post('currency');
+
+ if ($jobtitle != " ") {
+            $contition_array = array('name' => trim($jobtitle));
+            $jobdata = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'title_id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            if ($jobdata) {
+                $jobtitle = $jobdata[0]['title_id'];
+            } else {
+                $data = array(
+                    'name' => ucfirst($this->input->post('post_name')),
+                    'slug' => $this->common->clean('post_name'),
+                    'status' => 'draft',
+                );
+                $jobtitle = $this->common->insert_data_getid($data, 'job_title');
+            }
+        }
+        
+$skills = explode(',', $skills);
+        if (count($skills) > 0) {
+
+            foreach ($skills as $ski) {
+                if ($ski != " ") {
+                    $contition_array = array('skill' => trim($ski), 'type' => '1');
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                    if (count($skilldata) == 0) {
+                        $contition_array = array('skill' => trim($ski), 'type' => '4');
+
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    }
+                    if ($skilldata) {
+                        $skill1[] = $skilldata[0]['skill_id'];
+                    } else {
+                        $data = array(
+                            'skill' => trim($ski),
+                            'status' => '1',
+                            'type' => '4',
+                            'user_id' => $userid,
+                        );
+                        $skill1[] = $this->common->insert_data_getid($data, 'skill');
+                    }
+                }
+            }
+        }
+        $skills = implode(',', $skill1);        
+
+
+
+
+
+
+       
+        die();
+    }
+
 }

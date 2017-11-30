@@ -3,6 +3,7 @@
     <head>
         <?php echo $head; ?>
         <title><?php echo $title; ?></title>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
     </head>
@@ -535,7 +536,7 @@
                                             <fieldset id="erroe_nn" class="full-width" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
                                                 <label>Required Education:<span class="optional">(optional)</span></label> 
 
-                                                <input type="search" tabindex="9" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                                <input type="search" tabindex="9" id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                                 <span id="fullname-error"></span>
                                                 <?php echo form_error('education'); ?>
                                             </fieldset>
@@ -710,8 +711,8 @@
 
                                             <fieldset  class="hs-submit full-width">
 
-
-                                                <input type="submit" title="Post" id="submit" onclick="register_profile();" class="add_post_btns" tabindex="24" name="submit" value="Post">
+                                                <a href="javascript:void(0);" onClick="register_profile();" class= "applypost  button"> Apply</a>
+                                                <!--<input type="submit" title="Post" id="submit" onclick="register_profile();" class="add_post_btns" tabindex="24" name="submit" value="Post">-->
 
                                             </fieldset>
                                         </div>
@@ -894,7 +895,7 @@
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a tabindex="12" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
@@ -948,6 +949,7 @@
                 </div>
             </div>
         </div>
+        
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
@@ -957,6 +959,7 @@
                                                 var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                                 var base_url = '<?php echo base_url(); ?>';
                                                 var postslug = '<?php echo $this->uri->segment(3); ?>';
+                                                 var jobdata = <?php echo json_encode($jobtitle); ?>;
 
 
         </script>
