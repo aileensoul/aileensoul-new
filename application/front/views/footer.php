@@ -17,28 +17,23 @@
         });
     }
 </script>
-
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('.dropbtn_common').on('click', function () {
             $('.dropbtn_common').not(this).next().removeClass('show');
             $(this).next().toggleClass('show');
         });
-
         $('body').on('click', function (e) {
             if (!$(e.target).closest('.dropbtn_common').length)
             {
                 $('.dropbtn_common').next().removeClass('show');
             }
-
         });
         $(window).on('click', function (e) {
             if (!$(e.target).closest('.dropbtn_common').length)
             {
                 $('.dropbtn_common').next().removeClass('show');
             }
-
         });
         $(document).on('keydown', function (e) {
             if (e.keyCode === 27) {
