@@ -57,7 +57,11 @@ $(document).ready(function () {
                   //  alert("login");
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                  // 8-11   window.location = base_url + "job/home";
-                    window.location = base_url + "recruiter/jobpost/";
+                  var email_login = $("#post_name").val();
+                  alert(email_login);
+                  return false;
+                 
+                    window.location = base_url + "recruiter/";
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
