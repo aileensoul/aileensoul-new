@@ -3179,7 +3179,7 @@ label.cameraButton:active {
 }
 .designation_rec {
     float: left;
-    width: 64%!important;
+    width: 63%!important;
 
 }
 .profile-job-post-title-inside .profile_search {
@@ -5314,7 +5314,7 @@ body.reg-form{background: #fff}
     .cameraButton .tooltiptext {
         font-size: 12px;
         width: 121px;
-        font-weight: 600;
+        font-weight: 500;
         margin-top: 21px;
     }
     #paddingtop_fixed {
@@ -5589,10 +5589,11 @@ body.reg-form{background: #fff}
 	
 	/*** follow , unfollow div  ***/
 	.folle_text{width:72%;}
-	.user_lst #unfollowdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
-	.user_lst #unfollowdiv button span{background:url('../img/icon_following.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
-	.user_lst #followdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
-	.user_lst #followdiv button span{background:url('../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
+    .user_lst .user_btn button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
+    .user_lst .user_btn button span{background:url('../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
+	.user_lst #unfollowdiv.user_btn button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
+	.user_lst #unfollowdiv.user_btn button span{background:url('../img/icon_following.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
+	
 	.user-list .user_lst .folle_text{width:52%;}
 	.post-edit-popup .popup-text textarea{width:79%;}
 	.mian_middle_post_box{width:100%;}
@@ -6302,9 +6303,9 @@ body.reg-form{background: #fff}
 	.buisness-menu::before {
         bottom: 41px;
     }
-	.user-list .user_lst ul li:last-child{width:100%;}
+	/*.user-list .user_lst ul li:last-child{width:100%;}*/
 	.user-list .user_lst ul li .follow-img{margin-bottom:0;}
-	.user-list .user_lst .folle_text{width:75%;}
+	.user-list .user_lst .folle_text{width:64%;}
 	.popup-text textarea::-moz-placeholder{font-size:17px !important;}
 	.popup-text textarea::-webkit-input-placeholder{font-size:17px !important;}
 	/***  add  ***/

@@ -174,10 +174,10 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 ?>
 
                                     <?php if ($contactperson[0]['status'] == 'cancel' || $contactperson[0]['status'] == '' || $contactperson[0]['status'] == 'reject') { ?>
-                                    <a href="javascript:void(0);" onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>);" style="cursor: pointer;">
+                                    <a href="javascript:void(0);" onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>);" >
 
                                         <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
-                                        <a onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>)" style="cursor: pointer;">
+                                        <a onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>)" >
                                         <?php } ?>
 
     <?php if ($contactperson[0]['status'] == 'cancel') { ?> 
@@ -222,7 +222,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                             <div class="fw in_mian_chng">   
                                                 <div class="in_your_contact">
 
-                                                    <div class="in_your_contact_change">
+                                                    <div class="in_your_contact_change" style="cursor: pointer;">
                                                         <span class="in_your_contct_img">
                                                             <img src="<?php echo base_url('assets/img/icon_contact_accept.png'); ?>">
                                                         </span>

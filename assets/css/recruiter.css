@@ -363,7 +363,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 }
 label.cameraButton:active {border-color: #CCC #EEE #EEE #CCC;}
 .cameraButton .tooltiptext {visibility: hidden; width: 180px; background-color: black; color: #fff; opacity: 1.0;
-    text-align: center; padding: 10px 0px; position: absolute; z-index: 1; font-weight: 800; margin-top: 25px; top: -8px;
+    text-align: center; padding: 10px 0px; position: absolute; z-index: 1; font-weight: 500; margin-top: 25px; top: -8px;
     right: 110%;
 }
 .cameraButton .tooltiptext::after {content: ""; position: absolute; top: 50%; left: 100%; margin-top: -5px; border-width: 5px;

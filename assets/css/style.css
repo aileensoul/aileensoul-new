@@ -891,7 +891,7 @@ label.error {
     padding: 10px 0px;
     position: absolute;
     z-index: 1;
-    font-weight: 800;
+    font-weight: 500;
     margin-top: 25px;
     top: -8px;
     right: 110%;
