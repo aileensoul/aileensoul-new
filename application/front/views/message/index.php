@@ -1,42 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <?php echo $head; ?>
         <meta charset="utf-8">
         <title>Chat | Aileensoul</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <link href="assets/css/common-style.css" rel="stylesheet">
-        <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/style-main.css" rel="stylesheet">
-        <link href="assets/css/header.css" rel="stylesheet">
-        <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>assets/css/style-main.css" rel="stylesheet">
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <script src="assets/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/header.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/header.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-
+        <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
             .msg_left_data:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_left_data .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
         </style>
-
     <body>
         <div class="container">
             <div class="" id="paddingtop_fixed">
                 <div class="chat_nobcx">
-                    <div class="people-list" id="people-list">
+                    <div class="people-list" id="people-list" ng-app="messageApp" ng-controller="messageController">
                         <div class="search border_btm">
-                            <input name="" id="user_search" placeholder="search" value="" type="text">
+                            <input name="search_key" ng-model="search_key" id="search_key" placeholder="search" type="search">
                             <i class="fa fa-search" id="add_search"></i>
                         </div>
                         <ul class="list">
-
                             <div id="userlist">
                                 <a href="#">
                                     <li class="clearfix active">
@@ -74,7 +63,6 @@
                                     </a>
                                 </div>
                             </div>
-
                         </div>
                         <div class="chat-history" id="chat-history">
                             <ul id="received" class="padding_less_right">
@@ -142,14 +130,13 @@
                                             <div class="comment" name="comments" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>
                                             <div for="smily" class="smily_b">
                                                 <div>
-                                                    <a class="smil" href="#" id="notificationLink1" "="">
+                                                    <a class="smil" href="#" id="notificationLink1">
                                                         <i class="em em-blush"></i>
                                                     </a>
 
                                                 </div>
                                             </div>
                                         </form>
-
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning btn-sm main_send" id="submit">Send</button>
                                         </span>
@@ -157,12 +144,29 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+                    // Defining angularjs application.
+                    var messageApp = angular.module('messageApp', ['ngValidate']);
+                    messageApp.directive("fileInput", function ($parse) {
+                        return{
+                            link: function ($scope, element, attrs) {
+                                element.on("change", function (event) {
+                                    var files = event.target.files;
+                                    $parse(attrs.fileInput).assign($scope, element[0].files);
+                                    $scope.$apply();
+                                });
+                            }
+                        }
+                    });
+                    messageApp.controller('messageController', function ($scope, $http) {
+                        
+                        
+                    });
+        </script>
     </body>
 </html>
 

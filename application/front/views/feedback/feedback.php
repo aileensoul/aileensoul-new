@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Feedback - Share valuable thoughts with Aileensoul.com</title>
+        <title>Feedback to Aileensoul.com</title>
         <meta name="description" content="Feel free to share your views and thoughts about Aileensoul.com services." />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver='.time()); ?>">
         <meta charset="utf-8">
