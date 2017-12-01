@@ -1613,7 +1613,7 @@ body.cover{padding-bottom:60px;}
 /*about us page design*/
 .about-h2{font-size: 50px;color: #ffffff;padding-bottom: 40px;}
 .about-para{font-size: 30px;color: #ffffff;}
-.cus-about{text-align: center;padding: 175px;}
+.cus-about{text-align: center;padding: 225px;}
 .all-tem{width: 100%;float: left;text-align: center;}
 .img-custom{width:24%;margin-bottom: 35px;list-style-type: none; display: inline-block;}
 .team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;box-shadow: 0px 0px 10px -1px rgba(92,92,92,1)}
@@ -1634,6 +1634,20 @@ body.cover{padding-bottom:60px;}
 .about-us .btn-right .btn3:hover{color: #000;}
 
 /*complete about us*/
+
+/*Disclaimer page Design*/
+.cust-disclaimer .terms-con-cus{background-image: url("../../assets/img/disclaimer2.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size:cover;}
+.cust-disclaimer .logo a{color: #5c5c5c;}
+.cust-disclaimer .overlaay{background:transparent;}
+.cust-disclaimer .about-h2{color: #5c5c5c;}
+.cust-disclaimer .btn-right .btn2{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+.cust-disclaimer .btn-right .btn2:hover{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.cust-disclaimer .btn-right .btn3{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.cust-disclaimer .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+.cust-disclaimer header{position: relative;}
+.cust-disclaimer .term_desc{padding:40px 0px 0px;}
+/*Disclaimer complete*/
+
 .custom-tp{line-height: 3;}
 .modal-body .form-group input{ left: 0;}
 input:-webkit-autofill,
@@ -1797,7 +1811,7 @@ footer ul li a:hover{color:#1b8ab9;}
 	padding:16px 19px 15px;}
 	/*.about-us .middle-main .all-tem .team-1 {margin-left: 10px;}*/
 	.team-1{height: 150px;width: 150px;}
-	.cus-about{padding: 140px;}
+	.cus-about{padding: 129	px;}
 	.about-us .middle-main .all-tem .text-custom h4{font-size: 18px;}
 	.about-us .middle-main .all-tem .text-custom p{font-size: 12px;}
 	.Main-im .team-1{height: 200px;width: 200px;}
@@ -1807,6 +1821,8 @@ footer ul li a:hover{color:#1b8ab9;}
 	.contact .main-inner .middle-main{padding-top:0;}
 	.footer-ul{width:100%;}
 	.ftr-copuright{text-align:center; padding-bottom:15px;}
+	.cust-disclaimer .main-comtai{padding: 35px;}
+	.cust-disclaimer .term_desc{padding:40px 0px 80px;}
 }
 
 @media screen and (max-width: 767px) {
@@ -1916,8 +1932,10 @@ footer ul li a:hover{color:#1b8ab9;}
 	.about-h2{padding-top: 60px;padding-bottom: 25px;}
 	.about-content{margin-bottom: 25px;}
 	.about-us header{position: relative;}
+	/*.cust-disclaimer .cust-header{background-image: url("../../assets/img/disclaimer12.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: cover;}*/
 	.about-us .logo{padding-bottom: 10px;}
 	.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) url('../img/mob-about-bg.jpg') !important; background-size:100% !important;}
+	.cust-disclaimer .about-h2{padding-top: 26px;padding-bottom: 25px;}
 }
 
 @media screen and (max-width: 640px) {

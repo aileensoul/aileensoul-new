@@ -358,6 +358,7 @@ ol.upper_alpha{list-style-type: upper-alpha; padding: 5px 25px;}
 	.all-comments ul li .c-user-img{width:60px; height:60px;}
 	.all-comments ul li .c-user-img img{width:60px; height:60px;}
 	.all-comments ul li .c-user-comments{width:82%;}
+	
 }
 @media screen and (max-width: 639px) {
 

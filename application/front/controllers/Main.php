@@ -152,5 +152,8 @@ class Main extends CI_Controller {
     public function privacy_policy() {
         $this->load->view('privacypolicy');
     }
+    public function website_disclaimer() {
+        $this->load->view('websitedisclaimer');
+    }
 
 }

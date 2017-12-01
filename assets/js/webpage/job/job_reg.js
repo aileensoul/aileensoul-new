@@ -226,18 +226,15 @@ $("#submit").on('click', function () {
 //BUTTON SUBMIT DISABLE AFTER SOME TIME START
 $("#submit").on('click', function ()
 {
-    /*if (!$('#jobseeker_regform').valid())
+if ($('#jobseeker_regform').valid())
      {
-     return false;
-     } else
-     {
-     $("#submit").addClass("register_disable");
-     return true;
-     }*/
-    if (!$('#jobseeker_regform').valid())
-    {
-        return false;
-    }
+         $("#submit").addClass("register_disable");
+     //return false;
+     } 
+//    if (!$('#jobseeker_regform').valid())
+//    {
+//        return false;
+//    }
 });
 //BUTTON SUBMIT DISABLE AFTER SOME TIME END
 

@@ -17,7 +17,7 @@ class Message extends MY_Controller {
         include('business_include.php');
     }
 
-    public function index($message_from_profile = '', $message_to_profile = '') {
+    public function index() {
         $this->load->view('message/index');
     }
     
@@ -26,10 +26,29 @@ class Message extends MY_Controller {
     }
     
     public function getBusinessUserChatList(){
-        $user_data = $this->message_model->get_business_user_list();
+        $business_profile_id = $this->data['business_login_profile_id'];
+        $user_data = $this->message_model->getBusinessUserChatList($business_profile_id);
         echo json_encode($user_data);
     }
     
+    public function businessSingleMessageInsert(){
+        $userid = $this->session->userdata('aileenuser');
+        
+        $message = $_POST['message'];
+        $message_from = $userid;
+        $message_to = $_POST['user_id'];
+        $message_from_profile = '5';
+        $message_from_profile_id = $this->data['business_login_profile_id'];
+        $message_to_profile = '5';
+        $message_to_profile_id = $_POST['business_profile_id'];
+        
+        $insert_message = $this->message_model->add_message($message, $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
+        if($insert_message){
+            echo json_encode(array('result' => 'success'));
+        }else{
+            echo json_encode(array('result' => 'fail'));
+        }
+    }
     
     public function recruiter_profile() {
         $this->load->view('message/recruiter_profile');

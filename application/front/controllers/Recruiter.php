@@ -6,7 +6,8 @@ if (!defined('BASEPATH'))
 class Recruiter extends MY_Controller {
 
     public $data;
- public $my_variable;
+    public $my_variable;
+
     public function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
@@ -4904,7 +4905,7 @@ class Recruiter extends MY_Controller {
 //LIVE LOCATION END
 
     public function rec_reg() {
-      
+
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -4930,7 +4931,7 @@ class Recruiter extends MY_Controller {
     }
 
     public function reg_insert() {
- 
+
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -4985,27 +4986,58 @@ class Recruiter extends MY_Controller {
                 'is_delete' => '0',
                 're_step' => '3'
             );
-          
+
 
             $insert_id = $this->common->insert_data_getid($data, 'recruiter');
-            if($this->input->post('segment') == 'live-post'){
+           if($this->input->post('segment') == 'live-post'){
+               $segment = $this->input->post('segment');
                
-                $this->post_data(); 
-               echo $this->my_variable;
-                echo $jobtitle;
-                echo 123;exit;
-                
-                
-            }
-            
-            
-            
+            $contition_array = array('status' => '1','is_delete' =>'0', 'user_id' => $userid);
+            $temp = $this->common->select_data_by_condition('rec_post_login', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+            $data = array(
+            'post_name' => $temp[0]['post_name'],
+            'post_description' => $temp[0]['post_description'],
+            'post_skill' => $temp[0]['post_skill'],
+            'post_position' => $temp[0]['post_position'],
+            'post_last_date' => $temp[0]['post_last_date'],
+            'country' => $temp[0]['country'],
+            'state' => $temp[0]['state'],
+            'city' => $temp[0]['city'],
+            'min_year' => $temp[0]['min_year'],
+            'max_year' => $temp[0]['max_year'],
+            'interview_process' => $temp[0]['interview_process'],
+            'industry_type' => $temp[0]['industry_type'],
+            'degree_name' => $temp[0]['degree_name'],
+            'emp_type' => $temp[0]['emp_type'],
+            'fresher' => $temp[0]['fresher'],
+            'min_sal' => $temp[0]['min_sal'],
+            'max_sal' => $temp[0]['max_sal'],
+            'post_currency' => $temp[0]['post_currency'],
+            'salary_type' =>$temp[0]['salary_type'],
+            'is_delete' => '0',
+            'created_date' => date('y-m-d h:i:s'),
+            'user_id' => $userid,
+            'status' => '1',
+        );
+        $insert_id = $this->common->insert_data_getid($data, 'rec_post');
+        
+        $data=array(
+            'is_delete' => '1',
+            'status' => '0',
+            'modify_date'=>date('y-m-d h:i:s')
+        );
+               
+         $updatdata = $this->common->update_data($data, 'rec_post_login', 'post_id', $temp[0][post_id]);      
+               
+           }
             if ($insert_id) {
 
                 $datavl = "ok";
                 echo json_encode(
                         array(
                             "okmsg" => $datavl,
+                            "segment" => $segment,
                 ));
             } else {
                 $this->session->flashdata('error', 'Sorry!! Your data not inserted');
@@ -5047,7 +5079,7 @@ class Recruiter extends MY_Controller {
 
         $contition_array = array('is_delete' => '0', 'status' => '1', 'degree_name' => "Other");
         $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $contition_array = array('status' => '1');
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -5075,7 +5107,7 @@ class Recruiter extends MY_Controller {
     public function add_post_insert() {
 
         $userid = $this->session->userdata('aileenuser');
-     
+
         $jobtitle = $this->input->post('post_name');
         $skills = $this->input->post('skills');
         $position = $this->input->post('position');
@@ -5196,31 +5228,30 @@ class Recruiter extends MY_Controller {
         );
 
         $insert_id = $this->common->insert_data_getid($data, 'rec_post');
-        
-        if($insert_id){
+
+        if ($insert_id) {
             $data = "ok";
-        echo json_encode(
-                array(
-                    "data" => $data,
-                    "id" => $userid,
-        ));
-            
-        }else{
+            echo json_encode(
+                    array(
+                        "data" => $data,
+                        "id" => $userid,
+            ));
+        } else {
             $data = "notok";
-            
-              echo json_encode(
-                array(
-                    "data" => $data,
-                    "id" => $userid,
-        ));
-           
+
+            echo json_encode(
+                    array(
+                        "data" => $data,
+                        "id" => $userid,
+            ));
         }
-      
     }
-    
-    public function post_data(){
-        
-     $this->my_variable = $jobtitle = $this->input->post('post_name');
+
+    public function add_post_added() {
+
+        $userid = $this->session->userdata('aileenuser');
+
+        $jobtitle = $this->input->post('post_name');
         $skills = $this->input->post('skills');
         $position = $this->input->post('position');
         $minyear = $this->input->post('minyear');
@@ -5239,14 +5270,140 @@ class Recruiter extends MY_Controller {
         $minsal = $this->input->post('minsal');
         $maxsal = $this->input->post('maxsal');
         $currency = $this->input->post('currency');
-        
-        $data= "ok";
-        echo json_encode(
-                array(
-                    "data" => $data,
-                    'jobtitle' => $jobtitle,
-        ));
-        
+
+       
+
+   
+
+            if ($jobtitle != " ") {
+                $contition_array = array('name' => trim($jobtitle));
+                $jobdata = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'title_id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                if ($jobdata) {
+                    $jobtitle = $jobdata[0]['title_id'];
+                } else {
+                    $data = array(
+                        'name' => ucfirst($this->input->post('post_name')),
+                        'slug' => $this->common->clean('post_name'),
+                        'status' => 'draft',
+                    );
+                    $jobtitle = $this->common->insert_data_getid($data, 'job_title');
+                }
+            }
+
+            $skills = explode(',', $skills);
+            if (count($skills) > 0) {
+
+                foreach ($skills as $ski) {
+                    if ($ski != " ") {
+                        $contition_array = array('skill' => trim($ski), 'type' => '1');
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                        if (count($skilldata) == 0) {
+                            $contition_array = array('skill' => trim($ski), 'type' => '4');
+
+                            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        }
+                        if ($skilldata) {
+                            $skill1[] = $skilldata[0]['skill_id'];
+                        } else {
+                            $data = array(
+                                'skill' => trim($ski),
+                                'status' => '1',
+                                'type' => '4',
+                                'user_id' => $userid,
+                            );
+                            $skill1[] = $this->common->insert_data_getid($data, 'skill');
+                        }
+                    }
+                }
+            }
+            $skills = implode(',', $skill1);
+
+            $education = explode(',', $education);
+            if (count($education) > 0) {
+
+                foreach ($education as $educat) {
+                    if ($educat != " ") {
+                        $contition_array = array('degree_name' => trim($educat), 'status' => '1', 'is_other' => '0');
+                        $edudata = $this->common->select_data_by_condition('degree', $contition_array, $data = 'degree_id,degree_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                        if (count($edudata) == 0) {
+                            $contition_array = array('degree_name' => trim($educat), 'status' => '2', 'is_other' => '1', 'user_id' => $userid);
+                            $edudata = $this->common->select_data_by_condition('degree', $contition_array, $data = 'degree_id,degree_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        }
+                        if ($edudata) {
+                            $edudata1[] = $edudata[0]['degree_id'];
+                        } else {
+                            $data = array(
+                                'degree_name' => trim($educat),
+                                'status' => '2',
+                                'is_other' => '1',
+                                'user_id' => $userid,
+                                'created_date' => date('y-m-d h:i:s'),
+                            );
+                            $edudata1[] = $this->common->insert_data_getid($data, 'degree');
+                        }
+                    }
+                }
+            }
+            $edudata = implode(',', $edudata1);
+
+            $data = array(
+                'post_name' => $jobtitle,
+                'post_description' => trim($post_desc),
+                'post_skill' => $skills,
+                'post_position' => $position,
+                'post_last_date' => date('Y-m-d', strtotime($lastdate)),
+                'country' => $country,
+                'state' => $state,
+                'city' => $city,
+                'min_year' => $minyear,
+                'max_year' => $maxyear,
+                'interview_process' => trim($interview),
+                'industry_type' => $industry,
+                'degree_name' => $edudata,
+                'emp_type' => $emp_type,
+                'fresher' => $fresher,
+                'min_sal' => $minsal,
+                'max_sal' => $maxsal,
+                'post_currency' => $currency,
+                'salary_type' => $salary_type,
+                'is_delete' => '0',
+                'created_date' => date('y-m-d h:i:s'),
+                'user_id' => $userid,
+                'status' => '1',
+            );
+
+            $insert_id = $this->common->insert_data_getid($data, 'rec_post_login');
+
+            $data = "ok";
+            echo json_encode(
+                    array(
+                        "data" => $data,
+                       
+            ));
+
+     
+    }
+
+    public function get_degree($id = "") {
+
+
+        //get search term
+        $searchTerm = $_GET['term'];
+        if (!empty($searchTerm)) {
+
+            $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
+            $search_condition = "((status = '1')) AND (degree_name LIKE '" . trim($searchTerm) . "%')";
+            $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = 'degree_name as text', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+        foreach ($degree as $key => $value) {
+            //   $citydata[$key]['id'] = $value['id'];
+            $degreedata[$key]['value'] = $value['text'];
+        }
+
+        $cdata = array_values($degreedata);
+        echo json_encode($cdata);
     }
 
 }

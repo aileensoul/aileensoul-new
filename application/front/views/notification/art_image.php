@@ -1309,7 +1309,7 @@
 
                     </div>
                     </section>
-                    <footer>
+         
                         <!-- Bid-modal  -->
                         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
                             <div class="modal-dialog modal-lm">
@@ -1325,7 +1325,7 @@
                             </div>
                         </div>
                         <!-- Model Popup Close -->
-                    </footer>
+         
                     </body>
                     <!-- Model Popup Close -->
                     <!-- Bid-modal-2  -->

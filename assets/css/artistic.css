@@ -3743,7 +3743,7 @@ label.cameraButton input[accept*="camera"] {
     margin-bottom: 5px;
     padding: 7px;
 }
-.likeduserlist,
+.likeduserlist,.likeduserlistimg1,
 .likeduserlist1 {
     padding-right: 24px;
     padding-left: 24px;

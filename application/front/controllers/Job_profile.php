@@ -29,7 +29,7 @@ class Job_profile extends MY_Controller {
     
        if(isset($_POST["country_id"]) && !empty($_POST["country_id"])){ 
     //Get all state data
-       	 $contition_array = array('country_id' => $_POST["country_id"] , 'status' => 1);
+       	 $contition_array = array('country_id' => $_POST["country_id"] , 'status' => '1');
      $state =  $this->data['states'] =  $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
    
     //Count total number of rows

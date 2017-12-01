@@ -17,6 +17,7 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                         <li><a title="About Us" href="<?php echo base_url('about-us'); ?>"  target="_blank">About Us</a><span class="mob-none">|</span></li>
                         <li><a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a><span class="mob-none">|</span></li>
                         <li><a tabindex="15" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a><span class="mob-none">|</span></li>
+                        <li><a title="Disclaimer" href="<?php echo base_url('Disclaimer'); ?>"  target="_blank">Disclaimer policy</a><span class="mob-none">|</span></li>
                         <li><a title="Contact Us" href="<?php echo base_url('contact-us'); ?>"  target="_blank">Contact Us</a><span class="mob-none">|</span></li>
                         <li><a title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a><span class="mob-none">|</span></li>
                         <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a></li>

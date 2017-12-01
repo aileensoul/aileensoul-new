@@ -51,7 +51,12 @@
                         } elseif ($this->uri->segment(3) == "") {
                             $user_id = $userid;
                         } else {
-                            $user_id = $this->uri->segment(3);
+                            if (is_numeric($this->uri->segment(3))) {
+                                    $user_id = $this->uri->segment(3);
+                                } else {
+                                    $user_id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
+                                }
+                           // $user_id = $this->uri->segment(3);
                         }
                         $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 'status' => '1');
                         $image = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
