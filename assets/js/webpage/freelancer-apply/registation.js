@@ -281,9 +281,20 @@ $(document).on('change', '.field_other', function (event) {
     }
 
 });
+//CLOSE MODEL ON ESC KEY START
     $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {
                     $('#bidmodal2').modal('hide');
             }
-            });   
+            }); 
+//CLOSE MODEL ON ESC KEY END
+//DISABLE BUTTON ON ONE TIME CLICK START
+$("#submit").on('click', function ()
+{
+    if ($('#freelancer_regform').valid())
+     {
+         $("#submit").addClass("register_disable");
+     } 
 
+});
+//DISABLE CUTTON ON ONE TIME CLICK END

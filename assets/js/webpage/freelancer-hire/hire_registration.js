@@ -149,3 +149,11 @@ function OnPaste_StripFormatting(elem, e) {
 }
 //CODE FOR COPY-PASTE END
 
+$("#submit").on('click', function ()
+{
+    if ($('#freelancerhire_regform').valid())
+     {
+         $("#submit").addClass("register_disable");
+     } 
+
+});
