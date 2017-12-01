@@ -174,6 +174,7 @@ $(document).ready(function () {
             }
         },
     });
+
 });
 //FORM FILL UP VALIDATION END
 
@@ -184,6 +185,8 @@ function remove_validation() {
 
 }
 $("#freelancer_regform").submit(function () {
+
+  
     $('#experience_error').remove();
     $('.experience_month').removeClass('error');
     $('.experience_year').removeClass('error');
@@ -198,6 +201,8 @@ $("#freelancer_regform").submit(function () {
         $('<span class="error" id="experience_error" style="float: right;color: red; font-size: 11px;">Experiance is required</span>').insertAfter('#experience_month');
         return false;
     } else {
+
+        consol.log();
         return true;
     }
 //    $('.experience_month').append('<label for="year-month" class="year-month" style="display: block;">Experiance is required.</label>');
@@ -291,9 +296,10 @@ $(document).on('change', '.field_other', function (event) {
 //DISABLE BUTTON ON ONE TIME CLICK START
 $("#submit").on('click', function ()
 {
-    if ($('#freelancer_regform').valid())
+    if ($('#artpost').valid())
      {
          $("#submit").addClass("register_disable");
+         return true;
      } 
 
 });

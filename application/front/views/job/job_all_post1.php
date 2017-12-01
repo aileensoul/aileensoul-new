@@ -133,8 +133,17 @@
             <div class="job-saved-box">
                <h3>
                   Search result of 
-                  <?php  if($keyword != "" && $keyword1 == ""){echo '"' .  str_replace('-', ' ', $keyword) . '"';}
+                  <?php  
+                  if($keyword == "" && $keyword1 == ""){
+                      echo "All Jobs";
+                  }
+                  elseif($keyword != "" && $keyword1 == ""){
+                      
+                      echo '"' .  str_replace('-', ' ', $keyword) . '"';
+                      
+                  }
                      elseif ($keyword == "" && $keyword1 != "") {
+                         
                        echo '"' .  $keyword1 . '"';
                      }
                      else

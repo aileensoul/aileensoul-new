@@ -711,8 +711,8 @@
 
                                             <fieldset  class="hs-submit full-width">
 
-                                                <a href="javascript:void(0);" onClick="register_profile();" class= "applypost  button"> Apply</a>
-                                                <!--<input type="submit" title="Post" id="submit" onclick="register_profile();" class="add_post_btns" tabindex="24" name="submit" value="Post">-->
+                                                <!--<a href="javascript:void(0);" onClick="register_profile();" class= "applypost  button"> Apply</a>-->
+                                                <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="24" name="submit" value="Post">
 
                                             </fieldset>
                                         </div>

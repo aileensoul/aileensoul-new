@@ -177,7 +177,124 @@ $(function () {
             });
 });
 
+//pattern validation at salary start//
+$.validator.addMethod("patternn", function (value, element, param) {
+    if (this.optional(element)) {
+        return true;
+    }
+    if (typeof param === "string") {
+        param = new RegExp("^(?:" + param + ")$");
+    }
+    return param.test(value);
+}, "Salary is not in correct format.");
 
+//pattern validation at salary end//
+$.validator.addMethod("required1", function (value, element, regexpr) {
+    //return value == '' || value.trim().length != 0; 
+
+    if (!value)
+    {
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+        return false;
+    } else
+    {
+        return true;
+    }
+
+    // return regexpr.test(value);
+}, "Last date of apply is required.");
+
+jQuery.validator.addMethod("isValid", function (value, element) {
+
+
+    var todaydate = new Date();
+    var dd = todaydate.getDate();
+    var mm = todaydate.getMonth() + 1; //January is 0!
+    var yyyy = todaydate.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    var todaydate = dd + '/' + mm + '/' + yyyy;
+
+    var lastDate = $("input[name=last_date]").val();
+    //alert(lastDate); alert(todaydate);
+
+    lastDate = lastDate.split("/");
+    var lastdata_new = lastDate[1] + "/" + lastDate[0] + "/" + lastDate[2];
+    var lastdata_new_one = new Date(lastdata_new).getTime();
+
+    todaydate = todaydate.split("/");
+    var todaydate_new = todaydate[1] + "/" + todaydate[0] + "/" + todaydate[2];
+    var todaydate_new_one = new Date(todaydate_new).getTime();
+
+    if (lastdata_new_one >= todaydate_new_one) {
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+        return true;
+    } else {
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+        return false;
+    }
+
+    //return lastdata_new_one >= todaydate_new_one;
+}, "Last date should be grater than or equal to today date.");
+
+$.validator.addMethod("greaterThan1",
+        function (value, element, param) {
+            var $min = $(param);
+            if (this.settings.onfocusout) {
+                $min.off(".validate-greaterThan").on("blur.validate-greaterThan", function () {
+                    $(element).valid();
+                });
+            }
+            if (!value)
+            {
+                return true;
+            } else
+            {
+                //return parseInt(value) > parseInt($min.val());
+                return (value) > ($min.val());
+            }
+        }, "Maximum experience must be greater than minimum experience.");
+
+$.validator.addMethod("greaterThan",
+        function (value, element, param) {
+            var $otherElement = $(param);
+            if (!value)
+            {
+                return true;
+            } else
+            {
+                return parseInt(value, 10) > parseInt($otherElement.val(), 10);
+            }
+        });
+        
+$.validator.addMethod("reg_candidate", function (value, element, regexpr) {
+    return regexpr.test(value);
+}, "Float Number Is Not Allowed");
+
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    //return value == '' || value.trim().length != 0; 
+    if (!value)
+    {
+        return true;
+    } else
+    {
+        return regexpr.test(value);
+    }
+    // return regexpr.test(value);
+}, "Only space, only number and only special characters are not allow.");
 $(document).ready(function () {
 
     $('#country').on('change', function () {
@@ -189,7 +306,7 @@ $(document).ready(function () {
                 url: base_url + "job_profile/ajax_data",
                 data: 'country_id=' + countryID,
                 success: function (html) {
-                 
+
                     $('#state').html(html);
                     $('#city').html('<option value="">Select state first</option>');
                 }
@@ -216,6 +333,182 @@ $(document).ready(function () {
             $('#city').html('<option value="">Select state first</option>');
         }
     });
+
+    $("#artpost").validate({
+        
+        ignore: '*:not([name])',
+        rules: {
+
+            post_name: {
+
+                required: true,
+                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
+                minlength: 10,
+                maxlength: 100
+
+            },
+            skills: {
+
+                required: true,
+                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+            },
+
+            position_no: {
+                required: true,
+                number: true,
+                min: 1,
+                reg_candidate: /^-?(([0-9]{0,1000}))$/,
+                maxlength: 4,
+                range: [1, 1000]
+            },
+
+            minyear: {
+
+                required: true
+            },
+
+            post_desc: {
+
+                required: true,
+                maxlength: 2500
+
+            },
+
+            interview: {
+
+                maxlength: 2500
+
+            },
+
+            country: {
+
+                required: true
+
+            },
+            state: {
+
+                required: true
+
+            },
+            maxyear: {
+
+                required: true,
+                greaterThan1: "#minyear"
+                        //required:true 
+            },
+
+            emp_type: {
+
+                required: true
+
+
+            },
+            industry: {
+
+                required: true
+
+
+            },
+
+            last_date: {
+
+                required1: "Last date of apply is required.",
+                isValid: 'Last date should be grater than and equal to today date.'
+
+            },
+            minsal: {
+//                // required: true,
+//                //number:true,
+                maxlength: 11,
+                patternn: /^([0-9]\d*)(\\d+)?$/
+//
+            },
+            maxsal: {
+                // required: true,
+                //   number: true,
+                patternn: /^([0-9]\d*)(\\d+)?$/,
+                min: 0,
+                greaterThan: "#minsal",
+                maxlength: 11
+            },
+
+        },
+
+        messages: {
+
+            post_name: {
+
+                required: "Job title  is required."
+            },
+            skills: {
+
+                required: "Skill  is required."
+            },
+
+            position_no: {
+                required: "You have to select minimum 1 position."
+            },
+            minyear: {
+
+                required: "Minimum experience is required."
+            },
+
+            post_desc: {
+
+                required: "Post description is required."
+
+            },
+            country: {
+
+                required: "Country is required."
+
+            },
+            state: {
+
+                required: "State is required."
+
+            },
+            maxyear: {
+
+                required: "Maximum experience is required."
+                        // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
+
+            },
+
+            industry: {
+
+                required: "Industry is required."
+                        // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
+
+            },
+
+            emp_type: {
+
+                required: "Employment type is required."
+                        // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
+
+            },
+
+            last_date: {
+
+                required: "Last date for apply required."
+            },
+
+            maxsal: {
+                required: "Maximum salary is required.",
+                greaterThan: "Maximum salary should be grater than minimum salary."
+            },
+
+            minsal: {
+                required: "Minimum salary is required."
+            },
+
+        }
+
+    });
+
+
+
 
 });
 $(document).ready(function () {
@@ -313,8 +606,8 @@ $(document).ready(function () {
                         url: base_url + 'recruiter/add_post_insert',
                         data: post_data1,
                         dataType: "json",
-                        success: function (response){
-                            if(response.data == "ok") {
+                        success: function (response) {
+                            if (response.data == "ok") {
                                 window.location = base_url + "recruiter/home";
                             }
                         }
@@ -335,13 +628,13 @@ $(document).ready(function () {
         });
         return false;
     }
-    
-    
+
+
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
         return regexpr.test(value);
     }, "Email should be in small character");
-    
-      $("#register_form").validate({
+
+    $("#register_form").validate({
         rules: {
             first_name: {
                 required: true,
@@ -417,8 +710,8 @@ $(document).ready(function () {
                 },
         submitHandler: submitRegisterForm
     });
-    
-     function submitRegisterForm()
+
+    function submitRegisterForm()
     {
         var postid = '';
         var first_name = $("#first_name").val();
@@ -505,11 +798,11 @@ $(document).ready(function () {
                 $("#btn1").html('Create an account ...');
             },
             success: function (response)
-            { 
-             
+            {
+
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
-                 var post_name = $("#post_name").val();
+                    var post_name = $("#post_name").val();
                     var skills = $("#skills2").val();
                     var position = $("#position").val();
                     var minyear = $("#minyear").val();
@@ -553,21 +846,18 @@ $(document).ready(function () {
                     }
                     $.ajax({
                         type: 'POST',
-                        url: base_url + 'recruiter/add_post_insert',
+                        url: base_url + 'recruiter/add_post_added',
                         data: post_data1,
                         dataType: "json",
-                        success: function (response){
-                            if(response.data == "ok") {
+                        success: function (response) {
+                            if (response.data == "ok") {
                                 window.location = base_url + "recruiter/registration/live-post";
                             }
                         }
                     });
-                 
-                 
-                 
-                    
+
                     return false;
-                   
+
                 } else {
                     $("#register_error").fadeIn(1000, function () {
                         $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
@@ -580,4 +870,14 @@ $(document).ready(function () {
         return false;
     }
 
+});
+$('#submit').on('click',function () {
+    
+     if ($('#freelancer_regform').valid())
+     {
+         register_profile();
+        
+     } 
+    
+    
 });

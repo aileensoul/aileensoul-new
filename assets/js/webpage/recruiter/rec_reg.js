@@ -10,7 +10,7 @@ jQuery.validator.addMethod("noSpace", function (value, element) {
 
 // compnay info end
 $(document).ready(function () {
-
+alert(123);
     $("#basicinfo").validate({
 
         rules: {
@@ -201,7 +201,11 @@ function submitrecruiterForm()
             {
               
                 if (response.okmsg == "ok") {
+                    if(response.segment == 'live-post') {
+                        window.location = base_url + "recruiter/post";
+                    }else{
                     window.location = base_url + "recruiter/add-post";
+                }
                 } else {
                     window.location = base_url + "recruiter/registration";
                 }
