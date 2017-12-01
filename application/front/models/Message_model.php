@@ -56,23 +56,37 @@ class Message_model extends CI_Model {
     }
 
     function getBusinessUserChatList($business_profile_id = '') {
-        $this->db->select('b.business_profile_id,b.company_name,b.business_user_image,b.user_id,m.message')->from('business_profile b');
+        
+//        $result_array1 = array();
+//        $result_array2 = array();
+        
+        $this->db->select('b.business_profile_id,b.company_name,b.business_user_image,b.user_id,m.message,m.id')->from('business_profile b');
+        $this->db->select_max('id');
         $this->db->join('messages m', 'm.message_to_profile_id = b.business_profile_id');
         $this->db->where(array('b.status' => '1', 'b.business_step' => '4', 'm.is_deleted' => '0', 'm.message_from_profile' => '5', 'm.message_to_profile' => '5', 'm.message_from_profile_id' => $business_profile_id));
+        $this->db->order_by('m.id', 'DESC');
         $this->db->group_by('m.message_to_profile_id');
-        $this->db->order_by('m.id', 'desc');
         $query1 = $this->db->get();
-        $query1 = $query1->result_array();
-
-        $this->db->select('bs.business_profile_id,bs.company_name,bs.business_user_image,bs.user_id,ms.message')->from('business_profile bs');
+        $result_array1 = $query1->result_array();
+        
+        echo '<pre>';
+        print_r($result_array1);
+        exit;
+        
+        $this->db->select('bs.business_profile_id,bs.company_name,bs.business_user_image,bs.user_id,ms.message,ms.id')->from('business_profile bs');
+        $this->db->select_max('id');
         $this->db->join('messages ms', 'ms.message_from_profile_id = bs.business_profile_id');
         $this->db->where(array('bs.status' => '1', 'bs.business_step' => '4', 'ms.is_deleted' => '0', 'ms.message_from_profile' => '5', 'ms.message_to_profile' => '5', 'ms.message_to_profile_id' => $business_profile_id));
+        $this->db->order_by('ms.id', 'DESC');
         $this->db->group_by('ms.message_from_profile_id');
-        $this->db->order_by('ms.id', 'desc');
         $query2 = $this->db->get();
-        $query2 = $query2->result_array();
+        $result_array2 = $query2->result_array();
+        
+        echo '<pre>';
+        print_r($result_array2);
+        exit;
 
-        $query = array_merge($query1, $query2);
+        $query = array_merge($result_array1, $result_array2);
         return $query;
     }
 
