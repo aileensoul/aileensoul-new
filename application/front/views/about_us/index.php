@@ -118,7 +118,7 @@
                         <div class="titlea">
                             <h1 class="pb20">Our Vision</h1>
                         </div>
-                        <div class="about-content">
+                        <div class="about-content text-center">
                                 We aspire to become a one-stop destination for career enthusiasts from various walks of life and with diverse experience and educational backgrounds.                              
 
                         </div>
@@ -133,7 +133,7 @@
                         <div class="titlea">
                             <h1 class="pb20">Our Team</h1>
                         </div>
-                       <div class="about-content">
+                       <div class="about-content text-center">
                            Coming together is a beginning, staying together is progress, and working together is success.<br>
                     -Henry Ford 
                         </div>
