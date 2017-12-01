@@ -145,7 +145,7 @@ $(function () {
                 minLength: 0,
                 source: function (request, response) {
                     // delegate back to autocomplete, but extract the last term
-                    $.getJSON(base_url + "general/get_degree", {term: extractLast(request.term)}, response);
+                    $.getJSON(base_url + "recruiter/get_degree", {term: extractLast(request.term)}, response);
                 },
                 focus: function () {
                     // prevent value inserted on focus
@@ -182,7 +182,7 @@ $(document).ready(function () {
 
     $('#country').on('change', function () {
         var countryID = $(this).val();
-alert(countryID);
+
         if (countryID) {
             $.ajax({
                 type: 'POST',
@@ -553,7 +553,7 @@ $(document).ready(function () {
                     }
                     $.ajax({
                         type: 'POST',
-                        url: base_url + 'recruiter/post_data',
+                        url: base_url + 'recruiter/add_post_insert',
                         data: post_data1,
                         dataType: "json",
                         success: function (response){

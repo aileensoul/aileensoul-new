@@ -41,11 +41,11 @@ class MY_Controller extends CI_Controller {
             $segfreelancerloc = $this->uri->segment(1);
         }
 //freelancer search live link end  
-        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc,'add_post_login','ajax_data');
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc,'add_post_login','ajax_data','get_skill','get_degree');
 
         $segment1 = $this->uri->segment(1);
 
-        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artist', 'search', 'freelancer-work', 'recruiter', 'business_userprofile', $segjobloc, $segfreelancerloc,'job_profile');
+        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artist', 'search', 'freelancer-work', 'recruiter', 'business_userprofile', $segjobloc, $segfreelancerloc,'job_profile','general');
 
         $actual_link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
         $actual_link = base64_encode(str_replace('index.php/', '', $actual_link));

@@ -253,7 +253,6 @@ class Freelancer_hire extends MY_Controller {
 
     public function ajax_data() {
 //ajax data for category and subcategory start
-echo "123"; die();
         
         if (isset($_POST["category_id"]) && !empty($_POST["category_id"])) {
             //Get all state data
@@ -281,7 +280,7 @@ echo "123"; die();
             echo $_POST["country_id"];die();
             $contition_array = array('country_id' => $_POST["country_id"], 'status' => '1');
             $state = $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-echo "<pre>"; print_r($state);die();
+
             //Count total number of rows
             //Display states list
             if (count($state) > 0) {

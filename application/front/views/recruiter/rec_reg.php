@@ -203,6 +203,9 @@
                                         <?php ?> 
                                 </fieldset>
                          <input type="hidden" id="segment" value="<?php echo  $this->uri->segment(3); ?>">
+                         
+                         
+                         
                         <fieldset class=" full-width">
                            <div class="job_reg">
                               <!--<input type="reset">-->

@@ -199,13 +199,10 @@ function submitrecruiterForm()
             },
             success: function (response)
             {
-               
               
                 if (response.okmsg == "ok") {
-                    return false;
                     window.location = base_url + "recruiter/add-post";
                 } else {
-                    return false;
                     window.location = base_url + "recruiter/registration";
                 }
             }
