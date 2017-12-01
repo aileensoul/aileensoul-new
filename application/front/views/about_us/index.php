@@ -257,7 +257,7 @@
                               <ul class="">
                             <li class="img-custom">
                                 <div class="team-1">
-                                    <img src="assets/img/Dhaval.jpg">
+                                    <img src="assets/img/Dhaval12.jpg">
                                 </div>
                                  <div class="text-custom">
                                     <h4>Dhaval Shah</h4>

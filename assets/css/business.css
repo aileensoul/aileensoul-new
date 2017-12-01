@@ -4505,7 +4505,7 @@ body.reg-form{background: #fff}
 .modal-content2 .art-all-comment .comment-name{width: 95% !important;}
 .modal-content2 .art-all-comment .comment-details{width: 95% !important;}
 #myModal .popup-img-popup{overflow-y: auto;}
-
+.user-list .mian_middle_post_box h3{color: #5c5c5c;}
 
 /*Loader in rdit profile*/
 .loader,
