@@ -75,7 +75,7 @@
                 <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">What is Aileensoul</h1>
+                            <h1 class="pb20">About Aileensoul</h1>
                         </div>
                         <div class="about-content">
                             Founded in 2017, Aileensoul is a new age portal that amalgamates a variety of career-oriented services into a single unified platform with an aim to address the needs of  jobseekers, recruiters, business professionals, freelancers and artists - all under one roof! Introduced to fulfil one of the most fundamental and important aspects of an individual’s life - one’s desire to land a rewarding and successful career for himself or herself - Aileensoul’s futuristic platform serves to launch and advance the careers of first-time jobseekers, experienced business professionals/consultants and upcoming/veteran artists. 
@@ -118,7 +118,7 @@
                         <div class="titlea">
                             <h1 class="pb20">Our Vision</h1>
                         </div>
-                        <div class="about-content">
+                        <div class="about-content text-center">
                                 We aspire to become a one-stop destination for career enthusiasts from various walks of life and with diverse experience and educational backgrounds.                              
 
                         </div>
@@ -133,7 +133,7 @@
                         <div class="titlea">
                             <h1 class="pb20">Our Team</h1>
                         </div>
-                       <div class="about-content">
+                       <div class="about-content text-center">
                            Coming together is a beginning, staying together is progress, and working together is success.<br>
                     -Henry Ford 
                         </div>
