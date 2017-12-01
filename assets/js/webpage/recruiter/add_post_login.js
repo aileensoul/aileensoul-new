@@ -186,7 +186,7 @@ alert(countryID);
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url: base_url + "freelancer_hire/ajax_data",
+                url: base_url + "job_profile/ajax_data",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                  
