@@ -154,6 +154,7 @@
                 </div>
             </div>
         </div>
+        <?php echo $footer; ?>
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug = '<?php echo $slugid; ?>';

@@ -44,7 +44,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             $image_ori = $image[0]['profile_background'];
             if ($image_ori) {
                 ?>
-                                                    <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
+                                                                                                <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
                 <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
                 <?php
             } else {
@@ -104,7 +104,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 <?php } else {
                                     ?>
                                     <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
-                                <?php }
+                                    <?php
+                                }
                             }
                         } else {
                             ?>
@@ -115,7 +116,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                         if ($business_common_data[0]['user_id'] == $userid) {
                             ?>                                                                                                                        <!-- <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a> -->
                             <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
-<?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
                 <!--PROFILE PIC START-->
@@ -123,38 +124,41 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                     <div class="bui-menu-profile">
                         <div class="profile-left">
                             <h4 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> <?php echo ucfirst($business_common_data[0]['company_name']); ?></a></h4>
-                            
-                                    <?php
-                                    if ($business_common_data[0]['industriyal']) { ?>
 
-                                    <h4 class="profile-head-text_dg" title=" <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+                            <?php if ($business_common_data[0]['industriyal']) { ?>
 
-                                       <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>
+                                <h4 class="profile-head-text_dg" title=" <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
 
-                                        </a></h4>
-                                  <?php  }
-                                    if ($business_common_data[0]['other_industrial']) { ?>
+                                        <?php echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $business_common_data[0]['industriyal']))->row()->industry_name; ?>
 
-                                     <h4 class="profile-head-text_dg" title="<?php  echo ucfirst(strtolower($business_common_data[0]['other_industrial'])); ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
+                                    </a></h4>
+                                <?php
+                            }
+                            if ($business_common_data[0]['other_industrial']) {
+                                ?>
 
-                                       <?php if ($industry_type == '') {
+                                <h4 class="profile-head-text_dg" title="<?php echo ucfirst(strtolower($business_common_data[0]['other_industrial'])); ?>"><a href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug'] . ''); ?>"> 
 
-                                       $num_words = 9;
-                                       $words = array();
-                                       $words = explode(" ",  $business_common_data[0]['other_industrial'], $num_words);
-                                       $shown_string = "";
-                                        if(count($words) == 9){
-                                          $words[8] ='....';
+                                        <?php
+                                        if ($industry_type == '') {
+
+                                            $num_words = 9;
+                                            $words = array();
+                                            $words = explode(" ", $business_common_data[0]['other_industrial'], $num_words);
+                                            $shown_string = "";
+                                            if (count($words) == 9) {
+                                                $words[8] = '....';
+                                            }
+                                            $shown_string = implode(" ", $words);
+                                            echo ucfirst(strtolower($shown_string));
                                         }
-                                         $shown_string = implode(" ", $words); 
-                                         echo ucfirst(strtolower($shown_string));
-                                        } ?>
-                                        </a></h4>
-                                   <?php }
-                                    ?>
+                                        ?>
+                                    </a></h4>
+                            <?php }
+                            ?>
 
 
-                               
+
                         </div>
                         <?php
                         $userid = $this->session->userdata('aileenuser');
@@ -173,14 +177,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                 $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
                                 ?>
 
-                                    <?php if ($contactperson[0]['status'] == 'cancel' || $contactperson[0]['status'] == '' || $contactperson[0]['status'] == 'reject') { ?>
+                                <?php if ($contactperson[0]['status'] == 'cancel' || $contactperson[0]['status'] == '' || $contactperson[0]['status'] == 'reject') { ?>
                                     <a href="javascript:void(0);" onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>);" >
 
-                                        <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
+                                    <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
                                         <a onclick="return contact_person_query(<?php echo $business_common_data[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>)" >
                                         <?php } ?>
 
-    <?php if ($contactperson[0]['status'] == 'cancel') { ?> 
+                                        <?php if ($contactperson[0]['status'] == 'cancel') { ?> 
                                             <div>   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -197,8 +201,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } elseif ($contactperson[0]['status'] == 'pending') {
-        ?>
+                                        <?php } elseif ($contactperson[0]['status'] == 'pending') {
+                                            ?>
                                             <div class="cance_req_main_box">   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -217,8 +221,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } elseif ($contactperson[0]['status'] == 'confirm') {
-        ?> 
+                                        <?php } elseif ($contactperson[0]['status'] == 'confirm') {
+                                            ?> 
                                             <div class="fw in_mian_chng">   
                                                 <div class="in_your_contact">
 
@@ -237,8 +241,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } elseif ($contactperson[0]['status'] == 'reject') {
-        ?>
+                                        <?php } elseif ($contactperson[0]['status'] == 'reject') {
+                                            ?>
                                             <div>   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -255,8 +259,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } else {
-        ?> 
+                                        <?php } else {
+                                            ?> 
                                             <div>   
                                                 <div class="add-contact">
                                                     <div></div>
@@ -273,11 +277,11 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                 </div> 
 
                                             </div>
-    <?php } ?>                            
+                                        <?php } ?>                            
 
                                     </a>
                             </div>
-<?php } ?>
+                        <?php } ?>
                     </div>
                     <!-- PICKUP -->
                     <!-- menubar -->
@@ -288,9 +292,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             if ($business_common_data[0]['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user bpro-fw6">
-                                    <?php } else { ?>
+                                <?php } else { ?>
                                     <ul class="bpro-fw">
-<?php } ?>  
+                                    <?php } ?>  
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('business-profile/dashboard/' . $business_common_data[0]['business_slug']); ?>">Dashboard</a></li>
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business-profile/details/' . $business_common_data[0]['business_slug']); ?>"> Details</a></li>
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'contacts') { ?> class="active" <?php } ?>><a title="Contacts" href="<?php echo base_url('business-profile/contacts/' . $business_common_data[0]['business_slug']); ?>"> Contacts <br>  (<span class="contactcount"><?php echo $business_user_contacts_count; ?></span>)</a></li>
@@ -317,19 +321,20 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                                             <div class="msg_flw_btn_1" id= "followdiv">
                                                                 <button id="<?php echo "follow" . $business_common_data[0]['business_profile_id']; ?>" onClick="followuser_two(<?php echo $business_common_data[0]['business_profile_id']; ?>)">Follow</button>
                                                             </div>
-        <?php } elseif ($status == 1) { ?>
+                                                        <?php } elseif ($status == 1) { ?>
                                                             <div class="msg_flw_btn_1" id= "unfollowdiv">
                                                                 <button class="bg_following"  id="<?php echo "unfollow" . $business_common_data[0]['business_profile_id']; ?>" onClick="unfollowuser_two(<?php echo $business_common_data[0]['business_profile_id']; ?>)">Following </button>
                                                             </div>
-        <?php } ?>
+                                                        <?php } ?>
                                                     </div>         
                                                 </li>
                                                 <li>
-                                                    <a  href="<?php echo base_url('chat/abc/5/5/' . $business_common_data[0]['user_id']); ?>">Message</a></li>
-                                    <?php } ?>
+                                                    <!--<a  href="<?php echo base_url('chat/abc/5/5/' . $business_common_data[0]['user_id']); ?>">Message</a></li>-->
+                                                    <a href="javascript:void(0);" onclick="send_message(<?php echo $business_common_data[0]['user_id'] ?>,<?php echo $business_common_data[0]['business_profile_id'] ?>);">Message</a></li>
+                                            <?php } ?>
                                         </ul>   
                                     </div>
-<?php } ?>
+                                <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -345,21 +350,84 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 <div class="modal-body">
                     <span class="mes">
                         <div id="popup-form">
-                        <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                        <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                            <div class="fw">
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
-                            </div>
+                            <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                            <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                                <div class="fw">
+                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
+                                </div>
 
-                            <div class="col-md-7 text-center">
-                                <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
-                            </div>
-                            <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                        </form>
-                    </div>
+                                <div class="col-md-7 text-center">
+                                    <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
+                                </div>
+                                <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                            </form>
+                        </div>
                     </span>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade message-box biderror" id="messageModel" role="dialog">
+        <div class="modal-dialog modal-lm deactive">
+            <div class="modal-content">
+                <button type="button" class="modal-close1" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <span class="mes">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function send_message(user_id, business_profile_id) {
+//            $('#messageModel .mes').html("<h5 class='modal-title'>Send Message</h5><hr><div class='form-group'><div class='col-md-12'><div class='post-design-proo-img hidden-mob'>".
+//                    ."<img src='<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>' alt='<?php echo $business_login_company_name; ?>'>".
+//                    ."</div><div id='content' class='col-md-12  inputtype-comment cmy_2'>".
+//                    ."<div contenteditable='true' class='edt_2 editable_text' name='message' id='message' placeholder='Enter Message ...' onclick='enterMessage();' onpaste='OnPaste_StripFormatting(this, event);' style='text-align: left;'></div>".
+//                    ."</div><div class='comment-edit-butn hidden-mob'><button onclick='enter_message();' style='padding:10px 20px; margin: -10px;'>Send</button>".
+//                    ."</div></div></div>");
+
+            $('#messageModel .mes').html("<h5 class='modal-title'>Send Message</h5><hr><div class='form-group'><div class='col-md-12'><div class='post-design-proo-img hidden-mob'><img src='<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>' alt='<?php echo $business_login_company_name; ?>'></div><div id='content' class='col-md-12  inputtype-comment cmy_2'><div contenteditable='true' class='edt_2 editable_text' name='message' id='message' placeholder='Enter Message ...' onclick='enterMessage(" + user_id + "," + business_profile_id + ");' onpaste='OnPaste_StripFormatting(this, event);' style='text-align: left;'></div></div><div class='comment-edit-butn hidden-mob'><button id='enterMessage' onclick='enterMessage(" + user_id + "," + business_profile_id + ");' style='padding:10px 20px; margin: -10px;'>Send</button></div></div></div>");
+            $('#messageModel').modal('show');
+        }
+
+        function enterMessage(user_id, business_profile_id) {
+
+            $("#message").click(function () {
+                $(this).prop("contentEditable", true);
+                $(this).html("");
+            });
+
+            var sel = $("#message");
+            var txt = sel.html();
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            txt = txt.replace(/&gt;/gi, ">");
+            txt = txt.replace(/div/gi, "p");
+            if (txt == '' || txt == '<br>') {
+                return false;
+            }
+            if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            }
+            txt = txt.replace(/&/g, "%26");
+            $('#message').html("");
+
+            $.ajax({
+                type: 'POST',
+                url: base_url + "message/businessSingleMessageInsert",
+                data: 'user_id=' + user_id + '&business_profile_id=' + business_profile_id + '&message=' + encodeURIComponent(txt),
+                dataType: "json",
+                success: function (data) {
+                    if (data.result == 'success') {
+                        window.location = "<?php echo base_url() ?>message/business_profile";
+                    }else{
+                        $('#messageModel').modal('hide');
+                    }
+                }
+            });
+        }
+    </script>
     <!--PROFILE PIC MODEL END-->
