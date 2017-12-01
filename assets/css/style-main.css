@@ -1672,6 +1672,7 @@ background-color: #FFFFFF !important;
 .con-address td p{line-height:1.5;}
 .con-address:first-child{border-bottom:1px solid #c7c7c7;}
 .con-address h4{color:#5c5c5c; font-size:18px;}
+.contact header{position:absolute;}
 .contact .login .btn1{background:#8ab1c5; border:none !important;}
 .contact .title h1{color:#838383 !important; background:none;
         -webkit-background-clip: inherit;

@@ -75,7 +75,7 @@
                 <div class="container">
                     <div class="pt10">
                         <div class="titlea">
-                            <h1 class="pb20">What is Aileensoul</h1>
+                            <h1 class="pb20">About Aileensoul</h1>
                         </div>
                         <div class="about-content">
                             Founded in 2017, Aileensoul is a new age portal that amalgamates a variety of career-oriented services into a single unified platform with an aim to address the needs of  jobseekers, recruiters, business professionals, freelancers and artists - all under one roof! Introduced to fulfil one of the most fundamental and important aspects of an individual’s life - one’s desire to land a rewarding and successful career for himself or herself - Aileensoul’s futuristic platform serves to launch and advance the careers of first-time jobseekers, experienced business professionals/consultants and upcoming/veteran artists. 
