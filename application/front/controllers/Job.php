@@ -4574,7 +4574,11 @@ class Job extends MY_Controller {
            $unique = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = ''); 
         }
         elseif ($search_job == "") {
-         
+          
+            if($search_place == 'bangalore'){
+                $search_place = 'Bengaluru';
+            }
+            $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
             $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3, 'rec_post.is_delete' => '0');
 
             $join_str[0]['table'] = 'recruiter';
