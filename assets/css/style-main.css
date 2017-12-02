@@ -512,6 +512,7 @@ footer{
 	height:60px;
 	width:100%;
         background-color: #fff; /*d bg*/
+        line-height: 22px;
 	
 }
 footer > .container {
@@ -1613,7 +1614,7 @@ body.cover{padding-bottom:60px;}
 /*about us page design*/
 .about-h2{font-size: 50px;color: #ffffff;padding-bottom: 40px;}
 .about-para{font-size: 30px;color: #ffffff;}
-.cus-about{text-align: center;padding: 225px;}
+.cus-about{text-align: center;padding: 175px;}
 .all-tem{width: 100%;float: left;text-align: center;}
 .img-custom{width:24%;margin-bottom: 35px;list-style-type: none; display: inline-block;}
 .team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;box-shadow: 0px 0px 10px -1px rgba(92,92,92,1)}
@@ -1646,7 +1647,24 @@ body.cover{padding-bottom:60px;}
 .cust-disclaimer .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
 .cust-disclaimer header{position: relative;}
 .cust-disclaimer .term_desc{padding:40px 0px 0px;}
+
 /*Disclaimer complete*/
+
+/*Feedback page design*/
+.feedback-cus .terms-con-cus{background-image: url("../../assets/img/feedback.jpeg");background-repeat: no-repeat;background-position: center;width: 100%;background-size:cover;}
+
+.feedback-cus .logo a{color: #5c5c5c;}
+.feedback-cus header{background:transparent;}
+.feedback-cus .about-h2{color: #5c5c5c;}
+.feedback-cus .btn-right .btn2{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+.feedback-cus .btn-right .btn2:hover{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.feedback-cus .btn-right .btn3{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.feedback-cus .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+.feedback-cus header{position: relative;}
+.feedback-cus .about-h2 {padding-bottom: 145px;}
+.feedback-cus .cus-about{padding: 140px;letter-spacing: 5px;}
+
+/*feedback Complete*/
 
 .custom-tp{line-height: 3;}
 .modal-body .form-group input{ left: 0;}
@@ -1694,6 +1712,7 @@ background-color: #FFFFFF !important;
         -webkit-text-fill-color: inherit;}
 .ftr-copuright{font-size:13px;}
 footer ul li a:hover{color:#1b8ab9;}
+footer div.pt20{padding-top: 18px;}
 
 /***  media query  ***/
 @media screen and (min-height: 540px){
@@ -1702,7 +1721,9 @@ footer ul li a:hover{color:#1b8ab9;}
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
 	footer > .container {padding-left:15px; padding-right:15px; width:1250px;}
 }
-
+@media (min-width: 1400px) {
+	.cus-about{text-align: center;padding: 225px;}
+ }
 @media (min-width: 1280px) { 
    .main-inner .pd-low{/*padding-top: 100px;*/}
 	.container {width: 1280px;}  
@@ -1936,6 +1957,7 @@ footer ul li a:hover{color:#1b8ab9;}
 	.about-us .logo{padding-bottom: 10px;}
 	.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) url('../img/mob-about-bg.jpg') !important; background-size:100% !important;}
 	.cust-disclaimer .about-h2{padding-top: 26px;padding-bottom: 25px;}
+
 }
 
 @media screen and (max-width: 640px) {
@@ -1944,6 +1966,7 @@ footer ul li a:hover{color:#1b8ab9;}
 	.custom-box .custom-width .right-box a{font-size:16px;}
 	.left-profile .profile-photo{top: -48px;}
     .main-inner .middle-main{padding-bottom: 0px !important; padding: 125px 0;}
+    .feedback-cus .middle-main{padding-bottom: 0px !important; padding: 0px 0;}
 	.registeration .main-inner .middle-main{padding-top:70px;}
     .main-inner .pd-low{padding: 120px 0;}
 	/*.banner-box .left-profile{left: 0px!important;}*/

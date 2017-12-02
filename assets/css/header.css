@@ -600,7 +600,8 @@
     line-height: 16px;
 }
 .dropdown-menu {
-    right: -11px;
+    /*right: -11px;*/
+    right: 0px;
     left: inherit !important;
     position: absolute;
     border: none;
@@ -2216,6 +2217,7 @@ footer ul li a:hover{
     color:#353535;
     text-decoration:underline;
 }
+.cover button.modal-close:hover{color: #1b8ab9 !important;}
     
 
 /***  media query  ***/

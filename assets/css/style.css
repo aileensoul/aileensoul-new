@@ -1994,8 +1994,10 @@ footer .p20{padding-top: 17px;}
 
 .contact header .btn2{border:1px solid #8ab1c5; color:#8ab1c5;}
 .contact header .btn3{border:1px solid #8ab1c5; color:#8ab1c5;}
-
-
+footer ul.footer-ul li{padding: 0px !important;}
+footer div.pt20{padding-top: 18px;}
+.feedback-cus .title h1{color: #5c5c5c;background: transparent;-webkit-text-fill-color:#5c5c5c;}
+.feedback-cus .btn1 {background: #5c5c5c;color: #fff;border: none!important}
 
 /***  media query  ***/
 @media screen and (max-height: 540px){

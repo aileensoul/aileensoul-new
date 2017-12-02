@@ -31,16 +31,52 @@
         <?php
         }
         ?>
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver='.time()); ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver='.time()); ?>">
        
     </head>
-    <body>
+    <body class="feedback-cus">
         <div class="main-inner" class="feedback">
-            <?php
-            echo $login_header
-            ?>
+           <!--  <?php
+            //echo $login_header
+            ?> -->
+
+            <div class="terms-con-cus">
+            <header class="terms-con bg-none cust-header">
+                <div class="overlaay">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-3">
+                                <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                            </div>
+                            <div class="col-md-8 col-sm-9">
+                                <div class="btn-right pull-right">
+                                <?php if(!$this->session->userdata('aileenuser')) {?>
+                                    <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
+                                    <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
+                                    <?php }?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="container">
+                <div class="cus-about" >
+            <section class="">
+                <div class="main-comtai">
+                    <!-- <h1>Terms and Conditions</h1> -->
+                    <h2 class="about-h2">YOUR &nbsp;FEEDBACK &nbsp;MATTERS</h2>
+<!--                     <p class="about-para" >We provide platform & opportunities to every person in the world to make their career.</p> -->
+                </div>
+            </section>
+            </div>
+            </div>
+        </div>
+
             <section class="middle-main">
                 <div class="container">
                     <div class="form-pd row">
