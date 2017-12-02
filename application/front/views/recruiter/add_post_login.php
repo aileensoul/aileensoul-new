@@ -396,8 +396,8 @@
                                 <div class="job-saved-box">
 
 
-                                    <?php echo form_open(base_url('recruiter/add_post_login_insert'), array('id' => 'artpost', 'name' => 'artpost', 'class' => 'clearfix form_addedit', 'onsubmit' => "return imgval()")); ?>
-
+                                    <?php //echo form_open(base_url('recruiter/add_post_login_insert'), array('id' => 'artpost', 'name' => 'artpost', 'class' => 'clearfix form_addedit', 'onsubmit' => "return imgval()")); ?>
+                                    <form id="artpost" name="artpost" class="clearfix">
                                     <?php
                                     $postname = form_error('postname');
                                     $skills1 = form_error('skills1');
@@ -827,7 +827,7 @@
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
-                                            <span> <select tabindex="9" class="day" name="selday" id="selday">
+                                            <span> <select tabindex="9" class="day1" name="selday" id="selday">
                                                     <option value="" disabled selected value>Day</option>
                                                     <?php
                                                     for ($i = 1; $i <= 31; $i++) {
@@ -838,7 +838,7 @@
                                                     ?>
                                                 </select></span>
                                             <span>
-                                                <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                                <select tabindex="10" class="month1" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected value>Month</option>
                                                     //<?php
 //                  for($i = 1; $i <= 12; $i++){
@@ -862,7 +862,7 @@
                                                     ?>
                                                 </select></span>
                                             <span>
-                                                <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <select tabindex="11" class="year1" name="selyear" id="selyear">
                                                     <option value="" disabled selected value>Year</option>
                                                     <?php
                                                     for ($i = date('Y'); $i >= 1900; $i--) {

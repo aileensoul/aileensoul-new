@@ -556,6 +556,11 @@ class Registration extends CI_Controller {
         $freelancer_apply_user = $free_work_result[0]['total'];
 
         //For live link of freelancer aplly user code end
+        //CHECK USER HAVE RECRUITER PROFILE
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 're_status' => '1');
+        $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $recdata = $recdata[0]['total'];
+        //CHECK USER HAVE RECRUITER PROFILE END
 
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
@@ -577,6 +582,7 @@ class Registration extends CI_Controller {
                     "id" => $id,
                     "jobuser" => $jobuser,
                     "freelancerapply" => $freelancer_apply_user,
+                    "recuser"=>$recdata,
         ));
     }
 
