@@ -857,46 +857,7 @@ $(document).ready(function () {
 
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
-                    postdata();
-                    $.ajax({
-                        type: 'POST',
-                        url: base_url + 'recruiter/add_post_added',
-                        data: post_data1,
-                        dataType: "json",
-                        success: function (response) {
-                            if (response.data == "ok") {
-                                window.location = base_url + "recruiter/registration/live-post";
-                            }
-                        }
-                    });
-
-                    return false;
-
-                } else {
-                    $("#register_error").fadeIn(1000, function () {
-                        $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
-                        $("#btn1").html('Create an account');
-                    });
-                }
-
-            }
-        });
-        return false;
-    }
-
-});
-$('#submit').on('click', function () {
-
-    if ($('#freelancer_regform').valid())
-    {
-        register_profile();
-
-    }
-
-
-});
-function postdata(){
-    var post_name = $("#post_name").val();
+                    var post_name = $("#post_name").val();
                     var skills = $("#skills2").val();
                     var position = $("#position").val();
                     var minyear = $("#minyear").val();
@@ -938,4 +899,40 @@ function postdata(){
                         'currency': currency,
                         csrf_token_name: csrf_hash
                     }
-}
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + 'recruiter/add_post_added',
+                        data: post_data1,
+                        dataType: "json",
+                        success: function (response) {
+                            if (response.data == "ok") {
+                                window.location = base_url + "recruiter/registration/live-post";
+                            }
+                        }
+                    });
+
+                    return false;
+
+                } else {
+                    $("#register_error").fadeIn(1000, function () {
+                        $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
+                        $("#btn1").html('Create an account');
+                    });
+                }
+
+            }
+        });
+        return false;
+    }
+
+});
+$('#submit').on('click', function () {
+
+    if ($('#freelancer_regform').valid())
+    {
+        register_profile();
+
+    }
+
+
+});
