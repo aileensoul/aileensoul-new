@@ -565,7 +565,8 @@ $(document).ready(function () {
                     var position = $("#position").val();
                     var minyear = $("#minyear").val();
                     var maxyear = $("#maxyear").val();
-                    var fresher = $("#fresher_nme").val();
+               var fresher =  $("#fresher_nme").is(':checked') ? 1 : 0;
+                  //  var fresher = $("#fresher_nme").val();
                     var industry = $("#industry").val();
                     var emp_type = $("#emp_type").val();
                     var education = $("#education").val();
@@ -619,7 +620,8 @@ $(document).ready(function () {
                     var position = $("#position").val();
                     var minyear = $("#minyear").val();
                     var maxyear = $("#maxyear").val();
-                    var fresher = $("#fresher_nme").val();
+                    var fresher =  $("#fresher_nme").is(':checked') ? 1 : 0;
+                  //  var fresher = $("#fresher_nme").val();
                     var industry = $("#industry").val();
                     var emp_type = $("#emp_type").val();
                     var education = $("#education").val();
@@ -862,7 +864,8 @@ $(document).ready(function () {
                     var position = $("#position").val();
                     var minyear = $("#minyear").val();
                     var maxyear = $("#maxyear").val();
-                    var fresher = $("#fresher_nme").val();
+                    var fresher =  $("#fresher_nme").is(':checked') ? 1 : 0;
+                  //  var fresher = $("#fresher_nme").val();
                     var industry = $("#industry").val();
                     var emp_type = $("#emp_type").val();
                     var education = $("#education").val();
