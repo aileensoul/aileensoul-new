@@ -20,20 +20,31 @@ class Message extends MY_Controller {
     public function index() {
         $this->load->view('message/index');
     }
-    
+
     public function business_profile() {
         $this->load->view('message/business_profile');
     }
-    
-    public function getBusinessUserChatList(){
+
+    public function getBusinessUserChatList() {
         $business_profile_id = $this->data['business_login_profile_id'];
         $user_data = $this->message_model->getBusinessUserChatList($business_profile_id);
         echo json_encode($user_data);
     }
-    
-    public function businessSingleMessageInsert(){
+
+    public function getBusinessUserChatSearchList() {
+        $search_key = $_POST['search_key'];
+        $business_profile_id = $this->data['business_login_profile_id'];
+        if ($search_key) {
+            $user_data = $this->message_model->getBusinessUserChatSearchList($business_profile_id, $search_key);
+        }else{
+            $user_data = $this->message_model->getBusinessUserChatList($business_profile_id);
+        }
+        echo json_encode($user_data);
+    }
+
+    public function businessSingleMessageInsert() {
         $userid = $this->session->userdata('aileenuser');
-        
+
         $message = $_POST['message'];
         $message_from = $userid;
         $message_to = $_POST['user_id'];
@@ -41,19 +52,19 @@ class Message extends MY_Controller {
         $message_from_profile_id = $this->data['business_login_profile_id'];
         $message_to_profile = '5';
         $message_to_profile_id = $_POST['business_profile_id'];
-        
+
         $insert_message = $this->message_model->add_message($message, $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
-        if($insert_message){
+        if ($insert_message) {
             echo json_encode(array('result' => 'success'));
-        }else{
+        } else {
             echo json_encode(array('result' => 'fail'));
         }
     }
-    
+
     public function recruiter_profile() {
         $this->load->view('message/recruiter_profile');
     }
-    
+
     public function business_profile_active_check() {
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $userid = $this->session->userdata('aileenuser');
@@ -173,7 +184,6 @@ class Message extends MY_Controller {
         //    $send_email = $this->email_model->send_email($subject = 'This is a testing mail', $templ = '', $to_email = 'ankit.aileensoul@gmail.com');
     }
 
-
     public function business_notification_count($to_id = '') {
         $contition_array = array('not_read' => '2', 'not_to_id' => $to_id, 'not_type !=' => '1', 'not_type !=' => '2');
         $result = $this->common->select_data_by_condition('notification', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -190,5 +200,5 @@ class Message extends MY_Controller {
         $contactcount = $contactperson[0]['total'];
         return $contactcount;
     }
-    
+
 }

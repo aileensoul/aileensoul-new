@@ -56,17 +56,40 @@ class Message_model extends CI_Model {
     }
 
     function getBusinessUserChatList($business_profile_id = '') {
+        
+        $this->db->select("max(m.id) as max_id")->from("messages m");
+        $this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        $this->db->group_by("(CASE WHEN m.message_from_profile_id='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
+        $query1 = $this->db->get();
+        $result_array1 = $query1->result_array();
+        
         $this->db->select("b.business_profile_id,b.company_name,b.business_user_image,b.user_id,m.message,m.id")->from("business_profile  b");
-        $this->db->join('messages m', 'b.business_profile_id = (CASE WHEN m.message_from_profile_id='.$business_profile_id.' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)');
-        $this->db->where("m.message_from_profile_id='".$business_profile_id."' OR m.message_to_profile_id='".$business_profile_id."' AND b.status = '1' AND b.business_step = '4' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        $this->db->join('messages m', 'b.business_profile_id = (CASE WHEN m.message_from_profile_id=' . $business_profile_id . ' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)');
+        $this->db->where("m.id IN (".implode(',',array_column($result_array1, 'max_id')).")");
         $this->db->order_by("m.id", "DESC");
-        $this->db->group_by("(CASE WHEN m.message_from_profile_id='".$business_profile_id."' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
         $query = $this->db->get();
         $result_array = $query->result_array();
-//        echo '<pre>';
-//        print_r($result_array);
-//        exit;
         return $result_array;
+        
+    }
+
+    function getBusinessUserChatSearchList($business_profile_id = '',$search_key = '') {
+        
+        $this->db->select("max(m.id) as max_id")->from("messages m");
+        $this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        $this->db->group_by("(CASE WHEN m.message_from_profile_id='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
+        $query1 = $this->db->get();
+        $result_array1 = $query1->result_array();
+        
+        $this->db->select("b.business_profile_id,b.company_name,b.business_user_image,b.user_id,m.message,m.id")->from("business_profile  b");
+        $this->db->join('messages m', 'b.business_profile_id = (CASE WHEN m.message_from_profile_id=' . $business_profile_id . ' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)');
+        $this->db->where("m.id IN (".implode(',',array_column($result_array1, 'max_id')).") AND b.company_name LIKE '%".$search_key."%' ");
+        $this->db->order_by("m.id", "DESC");
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+        
+        
     }
 
 }

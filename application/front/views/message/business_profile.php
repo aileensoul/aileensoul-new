@@ -23,23 +23,23 @@
                 <div class="chat_nobcx">
                     <div class="people-list" id="people-list" ng-app="messageApp" ng-controller="messageController">
                         <div class="search border_btm">
-                            <input name="search_key" ng-model="search_key" id="search_key" placeholder="search" type="search">
+                            <input name="search_key" ng-model="search_key" ng-keyup="getSearchdata()" id="search_key" placeholder="search" type="search">
                             <i class="fa fa-search" id="add_search"></i>
                         </div>
                         <ul class="list">
                             <div id="userlist">
-                                <div class="userlist_repeat" ng-repeat="data in loaded_user_data| filter:search">
+                                <div class="userlist_repeat" ng-repeat="data in loaded_user_data | filter:search">
                                     <a href="<?php echo base_url() ?>chat/abc/5/5/{{data.user_id}}">
                                         <li class="clearfix active">
                                             <div class="chat_heae_img" ng-if="data.business_user_image">
                                                 <img src="<?php echo base_url() ?>uploads/business_profile/thumbs/{{data.business_user_image}}" alt="{{data.company_name}}"/>
                                             </div>
                                             <div class="chat_heae_img" ng-if="!data.business_user_image">
-                                                <img src="https://www.aileensoul.com/uploads/nobusimage.jpg" alt="Ankit"/>
+                                                <img src="<?php echo base_url() ?>uploads/nobusimage.jpg" alt="No Bus Image"/>
                                             </div>
                                             <div class="about">
                                                 <div class="name">{{data.company_name}}<br></div>
-                                                <div>{{data.message}}</div>
+                                                <div>{{data.message| htmlToPlaintext}}</div>
                                             </div>
                                         </li>
                                     </a>
@@ -162,12 +162,30 @@
         <script>
             // Defining angularjs application.
             var messageApp = angular.module('messageApp', []);
+            messageApp.filter('htmlToPlaintext', function () {
+                return function (text) {
+                    return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+                };
+            });
             messageApp.controller('messageController', function ($scope, $http) {
                 load_message_user();
                 function load_message_user() {
                     $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
                         $scope.loaded_user_data = data;
                     })
+                }
+
+                $scope.getSearchdata = function () {
+
+                    $http({
+                        method: 'POST',
+                        url: base_url + 'message/getBusinessUserChatSearchList',
+                        data: 'search_key=' + $scope.search_key,
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    })
+                            .success(function (data) {
+                                $scope.loaded_user_data = data;
+                            });
                 }
             });
         </script>
