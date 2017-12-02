@@ -839,7 +839,7 @@
                                     </p>
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                            Already have an account ? <a tabindex="12" id ="postid" onClick="login_profile_apply()" href="javascript:void(0);"> Log In </a>
                                         </p>
                                     </div>
                                 </form>

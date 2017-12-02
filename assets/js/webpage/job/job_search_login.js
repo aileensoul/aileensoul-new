@@ -467,10 +467,12 @@ function create_profile_apply(postid) {
 //            $(".regpostval").val(postid);
     $('.pt15').html(" Don't have an account? <a class='db-479' href='javascript:void(0);' data-toggle='modal' onclick='register_profile(" + postid + ");'>Create an account</a>");
     $('#register').modal('show');
+    $("#postid").attr("class", postid);
 
 }
 //For Apply Button Click Process Start
 function login_profile_apply(postid) {
+    var postid = document.getElementById("postid").getAttribute("class");
      $('#register').modal('hide');
     $(".password_login").val('');
     $(".email_login").val('');

@@ -3390,10 +3390,9 @@ class Job extends MY_Controller {
         // echo $searchvalue;die();
 
         if ($searchvalue == 'jobs') {
-           // $this->all_post();
+            // $this->all_post();
             $search_job = '';
             $search_place = '';
-           
         } else {
             $skill = explode('jobs', $searchvalue);
             $location = explode('in-', $searchvalue);
@@ -3423,7 +3422,7 @@ class Job extends MY_Controller {
         if ($search_place) {
             $title .= $search_place;
         }
-        if(empty($search_job) && empty($search_place)){
+        if (empty($search_job) && empty($search_place)) {
             $title .= 'Find Latest Job Vacancies at Your Location';
         }
         $this->data['title'] = "$title | Aileensoul";
@@ -4563,7 +4562,7 @@ class Job extends MY_Controller {
 
 //Total Search All Start
         // search keyword insert into database end
-        if($search_job == "" && $search_place == ""){
+        if ($search_job == "" && $search_place == "") {
             $join_str[0]['table'] = 'recruiter';
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
@@ -4571,12 +4570,14 @@ class Job extends MY_Controller {
 
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $contition_array = array('status' => '1', 'rec_post.is_delete' => '0');
-           $unique = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = ''); 
-        }
-        elseif ($search_job == "") {
-          
-            if($search_place == 'bangalore'){
+            $unique = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+        } elseif ($search_job == "") {
+
+            if ($search_place == 'bangalore' || $search_place == 'Bangalore') {
                 $search_place = 'Bengaluru';
+            }
+            if ($search_place == 'bombay' || $search_place == 'Bombay') {
+                $search_place = 'Mumbai';
             }
             $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
             $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3, 'rec_post.is_delete' => '0');
@@ -4588,7 +4589,7 @@ class Job extends MY_Controller {
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $unique = $this->data['results'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
         } elseif ($search_place == "") {
-       
+
             //Search FOr Skill Start
             $temp = $this->db->get_where('skill', array('skill' => $search_job, 'status' => 1))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
