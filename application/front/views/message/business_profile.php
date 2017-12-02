@@ -30,7 +30,7 @@
                             <div id="userlist">
                                 <div class="userlist_repeat" ng-repeat="data in loaded_user_data| filter:search">
                                     <a href="<?php echo base_url() ?>message/b/{{data.business_slug}}">
-                                        <li class="clearfix" id="{{data.business_slug}}">
+                                        <li class="clearfix" id="{{data.business_slug}}" ng-class="{'active': data.business_slug == current}">
                                             <div class="chat_heae_img" ng-if="data.business_user_image">
                                                 <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{data.business_user_image}}" alt="{{data.company_name}}"/>
                                             </div>
@@ -167,22 +167,40 @@
         </script>
         <script>
             // Defining angularjs application.
-            var messageApp = angular.module('messageApp', []);
+//            var messageApp = angular.module('messageApp', []);
+            var messageApp = angular.module('messageApp', ['ngRoute']);
             messageApp.filter('htmlToPlaintext', function () {
                 return function (text) {
                     return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
                 };
             });
+            messageApp.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
+                    var original = $location.path;
+                    alert(original);
+                    $location.path = function (path, reload) {
+                        if (reload === false) {
+                            var lastRoute = $route.current;
+                            var un = $rootScope.$on('$locationChangeSuccess', function () {
+                                $route.current = lastRoute;
+                                un();
+                            });
+                        }
+                        return original.apply($location, [path]);
+                    };
+                }]);
+            //$location.path('/user/' + $scope.userId, false);
             messageApp.controller('messageController', function ($scope, $http) {
+                $scope.current = '<?php echo $this->uri->segment(3); ?>';
                 load_message_user();
                 function load_message_user() {
                     $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
                         $scope.loaded_user_data = data;
+                        var select_segment = window.location.pathname.split("/").pop();
+                        $('li#' + select_segment).addClass('active');
                     })
                 }
 
                 $scope.getSearchdata = function () {
-
                     $http({
                         method: 'POST',
                         url: base_url + 'message/getBusinessUserChatSearchList',
@@ -194,9 +212,7 @@
                             });
                 }
             });
-            $(document).ready(function () {
-                alert(this.href.substr(this.href.lastIndexOf('/') + 1));
-            });
+  
         </script>
     </body>
 </html>
