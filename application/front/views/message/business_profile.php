@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <link href="<?php echo base_url() ?>assets/css/style-main.css" rel="stylesheet">
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
         <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
         <style type="text/css">
@@ -18,6 +17,7 @@
         </style>
     <body>
         <?php echo $header; ?>
+        <?php echo $business_header2_border; ?>
         <div class="container">
             <div class="" id="paddingtop_fixed">
                 <div class="chat_nobcx">
@@ -194,8 +194,6 @@
                             });
                 }
             });
-        </script>
-        <script type="text/javascript">
             $(document).ready(function () {
                 alert(this.href.substr(this.href.lastIndexOf('/') + 1));
             });
