@@ -444,7 +444,9 @@
                             </div>
                         </div>
                     </div>
-                    </section>
+                </div>
+			</div>
+		</div>
                     <!-- Model Popup Open -->
                     <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
