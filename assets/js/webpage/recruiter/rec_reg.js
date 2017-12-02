@@ -10,7 +10,7 @@ jQuery.validator.addMethod("noSpace", function (value, element) {
 
 // compnay info end
 $(document).ready(function () {
-alert(123);
+
     $("#basicinfo").validate({
 
         rules: {

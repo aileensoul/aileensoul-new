@@ -279,7 +279,7 @@ $.validator.addMethod("greaterThan",
                 return parseInt(value, 10) > parseInt($otherElement.val(), 10);
             }
         });
-        
+
 $.validator.addMethod("reg_candidate", function (value, element, regexpr) {
     return regexpr.test(value);
 }, "Float Number Is Not Allowed");
@@ -335,7 +335,7 @@ $(document).ready(function () {
     });
 
     $("#artpost").validate({
-        
+
         ignore: '*:not([name])',
         rules: {
 
@@ -503,14 +503,14 @@ $(document).ready(function () {
                 required: "Minimum salary is required."
             },
 
-        }
-
+        },
+        submitHandler: submitaddpostForm
     });
 
-
-
-
 });
+function submitaddpostForm() {
+    register_profile();
+}
 $(document).ready(function () {
     $("#login_form").validate({
 
@@ -557,6 +557,7 @@ $(document).ready(function () {
             {
                 if (response.data == "ok") {
                     //  alert("login");
+                    if(response.recuser == 1){
                     $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                     // 8-11   window.location = base_url + "job/home";
                     var post_name = $("#post_name").val();
@@ -612,7 +613,61 @@ $(document).ready(function () {
                             }
                         }
                     });
+                }else{
+                      var post_name = $("#post_name").val();
+                    var skills = $("#skills2").val();
+                    var position = $("#position").val();
+                    var minyear = $("#minyear").val();
+                    var maxyear = $("#maxyear").val();
+                    var fresher = $("#fresher_nme").val();
+                    var industry = $("#industry").val();
+                    var emp_type = $("#emp_type").val();
+                    var education = $("#education").val();
+                    var post_desc = $("#post_desc").val();
+                    var interview = $("#post_desc").val();
+                    var country = $("#country").val();
+                    var state = $("#state").val();
+                    var city = $("#city").val();
+                    var salary_type = $("#salary_type").val();
+                    var datepicker = $("#example2").val();
+                    var minsal = $("#minsal").val();
+                    var maxsal = $("#maxsal").val();
+                    var currency = $("#currency").val();
 
+                    var post_data1 = {
+                        'post_name': post_name,
+                        'skills': skills,
+                        'position': position,
+                        'minyear': minyear,
+                        'maxyear': maxyear,
+                        'fresher': fresher,
+                        'industry': industry,
+                        'emp_type': emp_type,
+                        'education': education,
+                        'post_desc': post_desc,
+                        'interview': interview,
+                        'country': country,
+                        'state': state,
+                        'city': city,
+                        'salary_type': salary_type,
+                        'datepicker': datepicker,
+                        'minsal': minsal,
+                        'maxsal': maxsal,
+                        'currency': currency,
+                        csrf_token_name: csrf_hash
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + 'recruiter/add_post_added',
+                        data: post_data1,
+                        dataType: "json",
+                        success: function (response) {
+                            if (response.data == "ok") {
+                                window.location = base_url + "recruiter/registration/live-post";
+                            }
+                        }
+                    });
+                }
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                     document.getElementById("password_login").classList.add('error');
@@ -871,13 +926,13 @@ $(document).ready(function () {
     }
 
 });
-$('#submit').on('click',function () {
-    
-     if ($('#freelancer_regform').valid())
-     {
-         register_profile();
-        
-     } 
-    
-    
+$('#submit').on('click', function () {
+
+    if ($('#freelancer_regform').valid())
+    {
+        register_profile();
+
+    }
+
+
 });
