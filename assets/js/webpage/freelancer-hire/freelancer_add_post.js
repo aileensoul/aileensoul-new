@@ -268,6 +268,7 @@ $(function () {
     }
 
     $("#skills2").bind("keydown", function (event) {
+       
         if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).autocomplete("instance").menu.active) {
             event.preventDefault();
@@ -278,6 +279,7 @@ $(function () {
                 source: function (request, response) {
                     // delegate back to autocomplete, but extract the last term
                     $.getJSON(base_url + "general/get_skill", {term: extractLast(request.term)}, response);
+                    $("#ui-id-1").addClass("autoposition");
                 },
                 focus: function () {
                     // prevent value inserted on focus

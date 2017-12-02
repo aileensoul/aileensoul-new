@@ -21,6 +21,10 @@
                 padding-right: 0px!important;
                 font-size: 11px!important;
             }
+            .autoposition{
+                position: absolute!important;
+                
+            }
         </style>
     </head>
     <body class="pushmenu-push">
