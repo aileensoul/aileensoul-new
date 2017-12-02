@@ -379,7 +379,9 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </div>
     </div>
     <script type="text/javascript">
-
+        
+        var business_slug = '<?php echo $business_common_data[0]['business_slug'] ?>';
+        
         function send_message(user_id, business_profile_id) {
 //            $('#messageModel .mes').html("<h5 class='modal-title'>Send Message</h5><hr><div class='form-group'><div class='col-md-12'><div class='post-design-proo-img hidden-mob'>".
 //                    ."<img src='<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>' alt='<?php echo $business_login_company_name; ?>'>".
@@ -422,7 +424,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                 dataType: "json",
                 success: function (data) {
                     if (data.result == 'success') {
-                        window.location = "<?php echo base_url() ?>message/business_profile";
+                        window.location = "<?php echo base_url() ?>message/b/" + business_slug;
                     }else{
                         $('#messageModel').modal('hide');
                     }

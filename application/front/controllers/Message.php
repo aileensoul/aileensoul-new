@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Message extends MY_Controller {
-
+    public $data;
     public function __construct() {
         parent::__construct();
 
@@ -13,6 +13,7 @@ class Message extends MY_Controller {
         //AWS access info start
         $this->load->library('S3');
         //AWS access info end
+        $this->load->model('business_model');
         $this->load->model('message_model');
         include('business_include.php');
     }
@@ -21,8 +22,16 @@ class Message extends MY_Controller {
         $this->load->view('message/index');
     }
 
-    public function business_profile() {
-        $this->load->view('message/business_profile');
+    public function business_profile($business_slug='') {
+        $user_data = $this->business_model->getBusinessDataBySlug($business_slug,$select_data="business_profile_id,company_name,business_user_image,other_business_type,other_industrial,business_type,industriyal,business_slug");
+        $this->data['user_data'] = $user_data;
+        if($user_data['business_type'] != '' || $user_data['business_type'] != 'null'){
+            $this->data['user_data']['business_type'] = $business_type = $this->business_model->getBusinessTypeName($user_data['business_type']);
+        }
+        if($user_data['industriyal'] != '' || $user_data['industriyal'] != 'null'){
+            $this->data['user_data']['industriyal'] = $industriyal = $this->business_model->getIndustriyalName($user_data['industriyal']);
+        }
+        $this->load->view('message/business_profile',$this->data);
     }
 
     public function getBusinessUserChatList() {

@@ -713,7 +713,7 @@
                                 email: {
                                     required: true,
                                     email: true,
-                                    regx1: /^[a-zA-Z0-9.@]+$/
+                                //    regx1: /^[a-zA-Z0-9.@]+$/
                                 }
                             },
                             messages: {

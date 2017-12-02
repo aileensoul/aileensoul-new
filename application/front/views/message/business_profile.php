@@ -28,14 +28,14 @@
                         </div>
                         <ul class="list">
                             <div id="userlist">
-                                <div class="userlist_repeat" ng-repeat="data in loaded_user_data | filter:search">
-                                    <a href="<?php echo base_url() ?>chat/abc/5/5/{{data.user_id}}">
-                                        <li class="clearfix active">
+                                <div class="userlist_repeat" ng-repeat="data in loaded_user_data| filter:search">
+                                    <a href="<?php echo base_url() ?>message/b/{{data.business_slug}}">
+                                        <li class="clearfix" id="{{data.business_slug}}">
                                             <div class="chat_heae_img" ng-if="data.business_user_image">
-                                                <img src="<?php echo base_url() ?>uploads/business_profile/thumbs/{{data.business_user_image}}" alt="{{data.company_name}}"/>
+                                                <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{data.business_user_image}}" alt="{{data.company_name}}"/>
                                             </div>
                                             <div class="chat_heae_img" ng-if="!data.business_user_image">
-                                                <img src="<?php echo base_url() ?>uploads/nobusimage.jpg" alt="No Bus Image"/>
+                                                <img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Bus Image"/>
                                             </div>
                                             <div class="about">
                                                 <div class="name">{{data.company_name}}<br></div>
@@ -51,12 +51,18 @@
                     <div class="chat" id="chat" style="display:block;">
                         <div class="chat-header clearfix border_btm">
                             <a href="#">
-                                <div class="post-img-div">PV</div>
+                                <div class="chat_heae_img">
+                                    <?php if ($user_data['business_user_image'] != '') { ?>
+                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $user_data['business_user_image'] ?>" alt="<?php echo $user_data['company_name'] ?>"/>
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url() . NOBUSIMAGE2; ?>" alt="No Business Image"/>
+                                    <?php } ?>
+                                </div>
                                 <div class="chat-about">
                                     <div class="chat-with">
-                                        <span>parimal vasava</span>  
+                                        <span><?php echo $user_data['company_name'] ?></span>  
                                     </div>
-                                    <div class="chat-num-messages"> Current Work</div>
+                                    <div class="chat-num-messages"><?php echo $user_data['industriyal'] ?></div>
                                 </div>
                             </a>
                             <div class="chat_drop">
@@ -187,6 +193,11 @@
                                 $scope.loaded_user_data = data;
                             });
                 }
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                alert(this.href.substr(this.href.lastIndexOf('/') + 1));
             });
         </script>
     </body>

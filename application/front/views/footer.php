@@ -136,8 +136,8 @@
     $(document).ready(function () {
         // MAIN NOTIFICATION
 
-        //var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
-        var socket = io.connect('https://www.aileensoul.com:3000',{secure: true});
+        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
+        //var socket = io.connect('https://www.aileensoul.com:3000',{secure: true});
         socket.on('notification_count', function (data) {
             $("#notification_count" + data.to_id).html(data.notification_count);
             $('#notification_count' + data.to_id).css({
@@ -210,8 +210,8 @@
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
 
     function show_header_notification(notification_count, to_id) {
-        //var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
-        var socket = io.connect('https://www.aileensoul.com:3000',{secure: true});
+        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
+        //var socket = io.connect('https://www.aileensoul.com:3000',{secure: true});
         socket.emit('notification_count', {
             notification_count: notification_count,
             to_id: to_id,

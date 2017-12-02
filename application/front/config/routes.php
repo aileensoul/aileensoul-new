@@ -135,6 +135,8 @@ $route['business-profile/signup/edit/description'] = "business_profile_registrat
 $route['business-profile/signup/edit/image'] = "business_profile_registration/image_edit";
 //$route['business-profile/signup/business-registration'] = "business_profile_registration/business_registration";
 
+$route['message/b/(:any)'] = "message/business_profile/$1";
+
 
 //FREELANCER HIRE ROUTES SETTINGS
 $route['freelancer-hire/home'] = "freelancer/recommen_candidate";
