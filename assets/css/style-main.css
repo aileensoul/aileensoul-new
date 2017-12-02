@@ -1662,7 +1662,7 @@ body.cover{padding-bottom:60px;}
 .feedback-cus .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
 .feedback-cus header{position: relative;}
 .feedback-cus .about-h2 {padding-bottom: 145px;}
-.feedback-cus .cus-about{padding: 140px;letter-spacing: 5px;}
+.feedback-cus .cus-about{padding: 140px 0;letter-spacing: 5px;}
 
 /*feedback Complete*/
 
@@ -1844,6 +1844,7 @@ footer div.pt20{padding-top: 18px;}
 	.ftr-copuright{text-align:center; padding-bottom:15px;}
 	.cust-disclaimer .main-comtai{padding: 35px;}
 	.cust-disclaimer .term_desc{padding:40px 0px 80px;}
+	.feedback-cus .about-h2{font-size:36px;}
 }
 
 @media screen and (max-width: 767px) {
@@ -1957,7 +1958,8 @@ footer div.pt20{padding-top: 18px;}
 	.about-us .logo{padding-bottom: 10px;}
 	.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) url('../img/mob-about-bg.jpg') !important; background-size:100% !important;}
 	.cust-disclaimer .about-h2{padding-top: 26px;padding-bottom: 25px;}
-
+	.feedback-cus .cus-about{padding:0;}
+	.feedback-cus .about-h2{font-size:22px; padding-bottom:190px; padding-top:0;}
 }
 
 @media screen and (max-width: 640px) {
