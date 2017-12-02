@@ -360,8 +360,8 @@
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
-                            <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            <a href="javascript:void(0);" onclick="login_profile1();" class="btn2">Login</a>
+                            <a href="javascript:void(0);" onclick="register_profile1();" class="btn3">Creat an account</a>
                         </div>
                     </div>
                 </div>
@@ -730,8 +730,69 @@
                 <!-- MIDDLE SECTION END-->
         </section>
         
-        
-           <!-- Login  -->
+       <!-- Login  -->
+        <div class="modal fade login" id="login1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content login-frm">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <div class="right-main">
+                            <div class="right-main-inner">
+                                <div class="">
+                                        <div class="title">
+                                            <h1 class="ttc">Welcome To Aileensoul</h1>
+                                        </div>
+
+                                        <form role="form" name="login_form_not" id="login_form_not" method="post">
+
+                                            <div class="form-group">
+                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                <div id="error2" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('erroremail')) {
+                                                        echo $this->session->flashdata('erroremail');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorlogin"></div> 
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                                <div id="error1" style="display:block;">
+                                                    <?php
+                                                    if ($this->session->flashdata('errorpass')) {
+                                                        echo $this->session->flashdata('errorpass');
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div id="errorpass"></div> 
+                                            </div>
+
+                                            <p class="pt-20 ">
+                                                <button class="btn1" onclick="login()">Login</button>
+                                            </p>
+
+                                            <p class=" text-center">
+                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            </p>
+
+                                            <p class="pt15 text-center">
+                                                Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            </p>
+                                        </form>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login -->
+         
+           <!-- Login for submit post data -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
@@ -792,7 +853,111 @@
             </div>
         </div>
         <!-- Login -->
-        
+                <div class="modal fade register-model login" id="register_apply" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <div class="clearfix">
+                            <div class="col-md-12 col-sm-12">
+                                    <h4>Join Aileensoul - It's Free</h4>
+									<div class="main-form">
+                                    <form role="form" name="register" id="register" method="post">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                        </div>
+                                        <div class="form-group">
+                                            <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                      <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                        </div>
+                                        <div class="form-group dob">
+                                            <label class="d_o_b"> Date Of Birth :</label>
+                                            <select tabindex="9" class="day" name="selday" id="selday">
+                                                <option value="" disabled selected value>Day</option>
+                                                <?php
+                                                for ($i = 1; $i <= 31; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                            <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                                <option value="" disabled selected value>Month</option>
+                                                //<?php
+//                  for($i = 1; $i <= 12; $i++){
+//                  
+                                                ?>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">Mar</option>
+                                                <option value="4">Apr</option>
+                                                <option value="5">May</option>
+                                                <option value="6">Jun</option>
+                                                <option value="7">Jul</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                                //<?php
+//                  }
+//                  
+                                                ?>
+                                            </select>
+                                            <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <option value="" disabled selected value>Year</option>
+                                                <?php
+                                                for ($i = date('Y'); $i >= 1900; $i--) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </select>
+
+                                        </div>
+                                        <div class="dateerror" style="color:#f00; display: block;"></div>
+
+                                        <div class="form-group gender-custom">
+                                            <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                                <option value="" disabled selected value>Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select>
+                                        </div>
+
+                                        <p class="form-text">
+                                            By Clicking on create an account button you agree our<br class="mob-none">
+                                            <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                        </p>
+                                        <p>
+                                            <button tabindex="13" class="btn1">Create an account</button>
+											<!--<p class="next">Next</p>-->
+                                        </p>
+                                    </form>
+									</div>
+							
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
                 <!-- register -->
 
         <div class="modal fade register-model login" id="register" role="dialog">

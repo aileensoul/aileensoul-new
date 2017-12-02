@@ -417,129 +417,297 @@
 
                                         </div>
                                     </div>
-                             
-                            </div>                             
-                        </div>
 
-
-
-                        <div class="custom_footer_left fw">
-                            <div class="fl">
-                                <ul>
-                                    <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
-                                    <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
-                                    <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-                                    <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-                                    <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-
-                                    <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
-                                </ul>
-                            </div>
-                            <div>
-
+                                </div>                             
                             </div>
 
-                        </div>
-                        <div class="tablate-potrat-add">
-                            <div class="fw text-center pt10">
-                                <script type="text/javascript">
-                                    (function () {
-                                        if (window.CHITIKA === undefined) {
-                                            window.CHITIKA = {'units': []};
-                                        }
-                                        ;
-                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                        var placement_id = window.CHITIKA.units.length;
-                                        window.CHITIKA.units.push(unit);
-                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                    }());
-                                </script>
-                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                            </div>
-                        </div>
 
 
+                            <div class="custom_footer_left fw">
+                                <div class="fl">
+                                    <ul>
+                                        <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
+                                        <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
+                                        <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
+                                        <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+                                        <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
 
-
-                    </div>
-
-                </div>
-
-
-
-
-                <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-                    <div class="common-form">
-                        <div class="job-saved-box">
-                            <h3>
-                                Search result of 
-                                <?php if($keyword == "" && $keyword1 == ""){
-                                  echo   'All Jobs';
-                                }
-                                elseif ($keyword != "" && $keyword1 == "") {
-                                    echo '"' . $keyword . '"';
-                                } elseif ($keyword == "" && $keyword1 != "") {
-                                    echo '"' . $keyword1 . '"';
-                                } else {
-                                    echo '"' . $keyword . '"';
-                                    echo " in ";
-                                    echo '"' . $keyword1 . '"';
-                                }
-                                ?>
-                            </h3>
-
-                            <div class="contact-frnd-post">
-                                <div class="job-contact-frnd ">
-                                    <!--.........AJAX DATA......-->           
+                                        <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+                                    </ul>
                                 </div>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div>
+
+                                </div>
+
+                            </div>
+                            <div class="tablate-potrat-add">
+                                <div class="fw text-center pt10">
+                                    <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                                    </script>
+                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                </div>
                             </div>
 
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                        <div class="common-form">
+                            <div class="mob-add">
+                                <div class="fw text-center pt10 pb5">
+                                    <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                                    </script>
+                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                </div>
+                            </div>
+                            <div class="job-saved-box">
+                                <h3>
+                                    Search result of 
+                                    <?php
+                                    if ($keyword == "" && $keyword1 == "") {
+                                        echo 'All Jobs';
+                                    } elseif ($keyword != "" && $keyword1 == "") {
+                                        echo '"' . $keyword . '"';
+                                    } elseif ($keyword == "" && $keyword1 != "") {
+                                        echo '"' . $keyword1 . '"';
+                                    } else {
+                                        echo '"' . $keyword . '"';
+                                        echo " in ";
+                                        echo '"' . $keyword1 . '"';
+                                    }
+                                    ?>
+                                </h3>
+
+                                <div class="contact-frnd-post">
+                                    <div class="job-contact-frnd ">
+                                        <!--.........AJAX DATA......-->           
+                                    </div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
+                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                        <div class="fw text-center">
+                            <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                            </script>
+                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                            <div class="fw pt10 text-right">
+                                <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Model Popup Open -->
+    <!-- Bid-modal  -->
+    <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+        <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
+                <div class="modal-body">
+                    <span class="mes"></span>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- Model Popup Open -->
-<!-- Bid-modal  -->
-<div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-    <div class="modal-dialog modal-lm">
-        <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
-            <div class="modal-body">
-                <span class="mes"></span>
+    <!-- Model Popup Close -->
+
+    <?php //echo  $login_footer  ?>        
+    <?php echo $footer; ?>
+
+    <!--footer>        
+    <?php //echo $footer;   ?>
+    </footer-->
+
+    <!-- Login  -->
+    <div class="modal fade login" id="login" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content login-frm">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <div class="right-main">
+                        <div class="right-main-inner">
+                            <div class="">
+                                <div class="title">
+                                    <h1 class="ttc">Welcome To Aileensoul</h1>
+                                </div>
+
+                                <form role="form" name="login_form" id="login_form" method="post">
+
+                                    <div class="form-group">
+                                        <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorlogin"></div> 
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                        <div id="error1" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('errorpass')) {
+                                                echo $this->session->flashdata('errorpass');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorpass"></div> 
+                                    </div>
+
+                                    <p class="pt-20 ">
+                                        <button class="btn1" onclick="login()">Login</button>
+                                    </p>
+
+                                    <p class=" text-center">
+                                        <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                    </p>
+
+                                    <p class="pt15 text-center">
+                                        Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                    </p>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Model Popup Close -->
+    <!-- Login -->
 
-<?php //echo  $login_footer  ?>        
-<?php echo $footer; ?>
+    <!-- Login  For Apply Post-->
+    <div class="modal fade login" id="login_apply" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content login-frm">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <div class="right-main">
+                        <div class="right-main-inner">
+                            <div class="">
+                                <div class="title">
+                                    <h1 class="ttc">Welcome To Aileensoul</h1>
+                                </div>
 
-<!--footer>        
-<?php //echo $footer;   ?>
-</footer-->
+                                <form role="form" name="login_form_apply" id="login_form_apply" method="post">
 
-<!-- Login  -->
-<div class="modal fade login" id="login" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content login-frm">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-            <div class="modal-body">
-                <div class="right-main">
-                    <div class="right-main-inner">
-                        <div class="">
-                            <div class="title">
-                                <h1 class="ttc">Welcome To Aileensoul</h1>
+                                    <div class="form-group">
+                                        <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" class="form-control input-sm email_login" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorlogin_apply"></div> 
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password_login_apply" id="password_login_apply" class="form-control input-sm password_login" placeholder="Password*">
+                                        <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+
+                                        <div id="error1" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('errorpass')) {
+                                                echo $this->session->flashdata('errorpass');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorpass_apply"></div> 
+                                    </div>
+
+                                    <p class="pt-20 ">
+                                        <button class="btn1" onclick="login()">Login</button>
+                                    </p>
+
+                                    <p class=" text-center">
+                                        <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                    </p>
+
+                                    <p class="pt15 text-center">
+                                        Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                    </p>
+                                </form>
+
+
                             </div>
+                        </div>
+                    </div>
 
-                            <form role="form" name="login_form" id="login_form" method="post">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login -->
 
+    <!-- model for forgot password start -->
+    <div class="modal fade login" id="forgotPassword" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content login-frm">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <div class="right-main">
+                        <div class="right-main-inner">
+                            <div class="">
+                                <div id="forgotbuton"></div> 
+                                <div class="title">
+                                    <h1 class="ttc">Forgot Password</h1>
+                                </div>
+                                <?php
+                                $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                echo form_open('profile/forgot_password', $form_attribute);
+                                ?>
                                 <div class="form-group">
-                                    <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                    <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
                                     <div id="error2" style="display:block;">
                                         <?php
                                         if ($this->session->flashdata('erroremail')) {
@@ -549,189 +717,177 @@
                                     </div>
                                     <div id="errorlogin"></div> 
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
-                                    <div id="error1" style="display:block;">
-                                        <?php
-                                        if ($this->session->flashdata('errorpass')) {
-                                            echo $this->session->flashdata('errorpass');
-                                        }
-                                        ?>
-                                    </div>
-                                    <div id="errorpass"></div> 
-                                </div>
 
-                                <p class="pt-20 ">
-                                    <button class="btn1" onclick="login()">Login</button>
+                                <p class="pt-20 text-center">
+                                    <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
                                 </p>
 
-                                <p class=" text-center">
-                                    <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
-                                </p>
+                                </form>
 
-                                <p class="pt15 text-center">
-                                    Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
-                                </p>
-                            </form>
-
-
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-</div>
-<!-- Login -->
 
-<!-- Login  For Apply Post-->
-<div class="modal fade login" id="login_apply" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content login-frm">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-            <div class="modal-body">
-                <div class="right-main">
-                    <div class="right-main-inner">
+
+
+
+    <!-- model for forgot password end -->
+
+    <!-- register -->
+
+    <div class="modal fade register-model login" id="register" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content inner-form1">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <div class="clearfix">
                         <div class="">
-                            <div class="title">
-                                <h1 class="ttc">Welcome To Aileensoul</h1>
-                            </div>
-
-                            <form role="form" name="login_form_apply" id="login_form_apply" method="post">
-
-                                <div class="form-group">
-                                    <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" class="form-control input-sm email_login" placeholder="Email Address*">
-                                    <div id="error2" style="display:block;">
-                                        <?php
-                                        if ($this->session->flashdata('erroremail')) {
-                                            echo $this->session->flashdata('erroremail');
-                                        }
-                                        ?>
-                                    </div>
-                                    <div id="errorlogin_apply"></div> 
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" name="password_login_apply" id="password_login_apply" class="form-control input-sm password_login" placeholder="Password*">
-                                    <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
-
-                                    <div id="error1" style="display:block;">
-                                        <?php
-                                        if ($this->session->flashdata('errorpass')) {
-                                            echo $this->session->flashdata('errorpass');
-                                        }
-                                        ?>
-                                    </div>
-                                    <div id="errorpass_apply"></div> 
-                                </div>
-
-                                <p class="pt-20 ">
-                                    <button class="btn1" onclick="login()">Login</button>
-                                </p>
-
-                                <p class=" text-center">
-                                    <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
-                                </p>
-
-                                <p class="pt15 text-center">
-                                    Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
-                                </p>
-                            </form>
-
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Login -->
-
-<!-- model for forgot password start -->
-<div class="modal fade login" id="forgotPassword" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content login-frm">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-            <div class="modal-body">
-                <div class="right-main">
-                    <div class="right-main-inner">
-                        <div class="">
-                            <div id="forgotbuton"></div> 
-                            <div class="title">
-                                <h1 class="ttc">Forgot Password</h1>
-                            </div>
-                            <?php
-                            $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                            echo form_open('profile/forgot_password', $form_attribute);
-                            ?>
-                            <div class="form-group">
-                                <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
-                                <div id="error2" style="display:block;">
-                                    <?php
-                                    if ($this->session->flashdata('erroremail')) {
-                                        echo $this->session->flashdata('erroremail');
-                                    }
-                                    ?>
-                                </div>
-                                <div id="errorlogin"></div> 
-                            </div>
-
-                            <p class="pt-20 text-center">
-                                <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
-                            </p>
-
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<!-- model for forgot password end -->
-
-<!-- register -->
-
-<div class="modal fade register-model login" id="register" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content inner-form1">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-            <div class="modal-body">
-                <div class="clearfix">
-                    <div class="">
-                        <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
-                        <div class="main-form">
-                            <form role="form" name="register_form" id="register_form" method="post">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                            <div class="title"><h1>Join Aileensoul - It's Free</h1></div>
+                            <div class="main-form">
+                                <form role="form" name="register_form" id="register_form" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+
+                                    <div class="form-group">
+                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                        <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                    </div>
+                                    <div class="form-group dob">
+                                        <label class="d_o_b"> Date Of Birth :</label>
+                                        <span> <select tabindex="9" class="day" name="selday" id="selday">
+                                                <option value="" disabled selected value>Day</option>
+                                                <?php
+                                                for ($i = 1; $i <= 31; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select></span>
+                                        <span>
+                                            <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                                <option value="" disabled selected value>Month</option>
+                                                //<?php
+//                  for($i = 1; $i <= 12; $i++){
+//                  
+                                                ?>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">Mar</option>
+                                                <option value="4">Apr</option>
+                                                <option value="5">May</option>
+                                                <option value="6">Jun</option>
+                                                <option value="7">Jul</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                                //<?php
+//                  }
+//                  
+                                                ?>
+                                            </select></span>
+                                        <span>
+                                            <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <option value="" disabled selected value>Year</option>
+                                                <?php
+                                                for ($i = date('Y'); $i >= 1900; $i--) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            </select></span>
+
+                                    </div>
+                                    <div class="dateerror" style="color:#f00; display: block;"></div>
+
+                                    <div class="form-group gender-custom">
+                                        <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                                <option value="" disabled selected value>Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select></span>
+                                    </div>
+
+                                    <p class="form-text">
+                                        By Clicking on create an account button you agree our
+                                        <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                    </p>
+                                    <p>
+                                        <button tabindex="13" class="btn1">Create an account</button>
+                                                                                    <!--<p class="next">Next</p>-->
+                                    </p>
+                                    <div class="sign_in pt10">
+                                        <p>
+                                            Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- register -->
+
+    <!-- register for apply start-->
+
+    <div class="modal fade register-model login" id="register_apply" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <div class="clearfix">
+                        <div class="col-md-12 col-sm-12">
+                            <h4>Join Aileensoul - It's Free</h4>
+                            <div class="main-form">
+                                <form role="form" name="register_form" id="register_form" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
-                                </div>
-                                <div class="form-group">
-                                    <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                    <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
-                                </div>
-                                <div class="form-group dob">
-                                    <label class="d_o_b"> Date Of Birth :</label>
-                                    <span> <select tabindex="9" class="day" name="selday" id="selday">
+                                    <div class="form-group">
+                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                        <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                    </div>
+                                    <div class="form-group dob">
+                                        <label class="d_o_b"> Date Of Birth :</label>
+                                        <select tabindex="9" class="day" name="selday" id="selday">
                                             <option value="" disabled selected value>Day</option>
                                             <?php
                                             for ($i = 1; $i <= 31; $i++) {
@@ -740,8 +896,7 @@
                                                 <?php
                                             }
                                             ?>
-                                        </select></span>
-                                    <span>
+                                        </select>
                                         <select tabindex="10" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
                                             //<?php
@@ -764,8 +919,7 @@
 //                  }
 //                  
                                             ?>
-                                        </select></span>
-                                    <span>
+                                        </select>
                                         <select tabindex="11" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
                                             <?php
@@ -776,170 +930,56 @@
                                             }
                                             ?>
 
-                                        </select></span>
+                                        </select>
 
-                                </div>
-                                <div class="dateerror" style="color:#f00; display: block;"></div>
+                                    </div>
+                                    <div class="dateerror" style="color:#f00; display: block;"></div>
 
-                                <div class="form-group gender-custom">
-                                    <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                    <div class="form-group gender-custom">
+                                        <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                             <option value="" disabled selected value>Gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
-                                        </select></span>
-                                </div>
+                                        </select>
+                                    </div>
 
-                                <p class="form-text">
-                                    By Clicking on create an account button you agree our
-                                    <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
-                                </p>
-                                <p>
-                                    <button tabindex="13" class="btn1">Create an account</button>
-                                                                                <!--<p class="next">Next</p>-->
-                                </p>
-                                <div class="sign_in pt10">
-                                    <p>
-                                        Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                    <p class="form-text">
+                                        By Clicking on create an account button you agree our<br class="mob-none">
+                                        <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
                                     </p>
-                                </div>
-                            </form>
-                        </div>
+                                    <p>
+                                        <button tabindex="13" class="btn1">Create an account</button>
+                                                                                    <!--<p class="next">Next</p>-->
+                                    </p>
+                                </form>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- register -->
+    <!-- register for apply end -->
 
-<!-- register for apply start-->
+    <!-- script for skill textbox automatic start-->
+    <!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());    ?>"></script>-->
+    <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
 
-<div class="modal fade register-model login" id="register_apply" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-            <div class="modal-body">
-                <div class="clearfix">
-                    <div class="col-md-12 col-sm-12">
-                        <h4>Join Aileensoul - It's Free</h4>
-                        <div class="main-form">
-                            <form role="form" name="register_form" id="register_form" method="post">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
-                                        </div>
-                                    </div>
-                                </div>
+    <script>
+                                            var base_url = '<?php echo base_url(); ?>';
 
-                                <div class="form-group">
-                                    <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
-                                </div>
-                                <div class="form-group">
-                                    <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                    <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
-                                </div>
-                                <div class="form-group dob">
-                                    <label class="d_o_b"> Date Of Birth :</label>
-                                    <select tabindex="9" class="day" name="selday" id="selday">
-                                        <option value="" disabled selected value>Day</option>
-                                        <?php
-                                        for ($i = 1; $i <= 31; $i++) {
-                                            ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
-                                    <select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                        <option value="" disabled selected value>Month</option>
-                                        //<?php
-//                  for($i = 1; $i <= 12; $i++){
-//                  
-                                        ?>
-                                        <option value="1">Jan</option>
-                                        <option value="2">Feb</option>
-                                        <option value="3">Mar</option>
-                                        <option value="4">Apr</option>
-                                        <option value="5">May</option>
-                                        <option value="6">Jun</option>
-                                        <option value="7">Jul</option>
-                                        <option value="8">Aug</option>
-                                        <option value="9">Sep</option>
-                                        <option value="10">Oct</option>
-                                        <option value="11">Nov</option>
-                                        <option value="12">Dec</option>
-                                        //<?php
-//                  }
-//                  
-                                        ?>
-                                    </select>
-                                    <select tabindex="11" class="year" name="selyear" id="selyear">
-                                        <option value="" disabled selected value>Year</option>
-                                        <?php
-                                        for ($i = date('Y'); $i >= 1900; $i--) {
-                                            ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                            <?php
-                                        }
-                                        ?>
+                                            var skill = '<?php echo $keyword; ?>';
+                                            var skill = skill.replace('-', ' ');
 
-                                    </select>
+                                            var place = '<?php echo $keyword1; ?>';
+                                            var place = place.replace('-', ' ');
 
-                                </div>
-                                <div class="dateerror" style="color:#f00; display: block;"></div>
+                                            var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                            var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+    </script>
 
-                                <div class="form-group gender-custom">
-                                    <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                        <option value="" disabled selected value>Gender</option>
-                                        <option value="M">Male</option>
-                                        <option value="F">Female</option>
-                                    </select>
-                                </div>
-
-                                <p class="form-text">
-                                    By Clicking on create an account button you agree our<br class="mob-none">
-                                    <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
-                                </p>
-                                <p>
-                                    <button tabindex="13" class="btn1">Create an account</button>
-                                                                                <!--<p class="next">Next</p>-->
-                                </p>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- register for apply end -->
-
-<!-- script for skill textbox automatic start-->
-<!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
-<script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-
-<script>
-                                        var base_url = '<?php echo base_url(); ?>';
-
-                                        var skill = '<?php echo $keyword; ?>';
-                                        var skill = skill.replace('-', ' ');
-
-                                        var place = '<?php echo $keyword1; ?>';
-                                        var place = place.replace('-', ' ');
-
-                                        var csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                        var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-</script>
-
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search_login.js?ver=' . time()); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_search_login.js?ver=' . time()); ?>"></script>
 </body>
 </html>

@@ -11,18 +11,19 @@ class MY_Controller extends CI_Controller {
 
         //    $this->output->cache(1);
         //$this->output->enable_profiler(TRUE);
-
-        $segment_check = $this->uri->segment(2);
-
-        $segment_dynamicpost = substr($segment_check, 0, strrpos($segment_check, "-"));
-
-        if ($segment_dynamicpost) {
-
-            $segment2 = $segment_dynamicpost;
-        } else {
-            $segment2 = $this->uri->segment(2);
-        }
-
+//COMMENT BY KHYATI 02/12/2017 START
+//        $segment_check = $this->uri->segment(2);
+//
+//        $segment_dynamicpost = substr($segment_check, 0, strrpos($segment_check, "-"));
+//
+//        if ($segment_dynamicpost) {
+//
+//            $segment2 = $segment_dynamicpost;
+//        } else {
+//            $segment2 = $this->uri->segment(2);
+//        }
+//COMMENT BY KHYATI 02/12/2017 START
+        $segment2 = $this->uri->segment(2);
 //        jobs live link start
         $jobs = array('0' => 'jobs');
         $jobin = explode('-', $this->uri->segment(1));
@@ -40,12 +41,13 @@ class MY_Controller extends CI_Controller {
             $segment2 = $this->uri->segment(1);
             $segfreelancerloc = $this->uri->segment(1);
         }
+
 //freelancer search live link end  
-        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc,'add_post_login','ajax_data','get_skill','get_degree');
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc, 'add-post-live', 'ajax_data', 'get_skill', 'get_degree');
 
         $segment1 = $this->uri->segment(1);
 
-        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artist', 'search', 'freelancer-work', 'recruiter', 'business_userprofile', $segjobloc, $segfreelancerloc,'job_profile','general');
+        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artist', 'search', 'freelancer-work', 'recruiter', 'business_userprofile', $segjobloc, $segfreelancerloc, 'job_profile', 'general');
 
         $actual_link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
         $actual_link = base64_encode(str_replace('index.php/', '', $actual_link));
