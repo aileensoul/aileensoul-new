@@ -88,47 +88,10 @@
                         </div>
                         <div class="chat-history" id="chat-history">
                             <ul id="received" class="padding_less_right">
-                                <?php /*
-                                  foreach ($user_data['chat'] as $chat) {
-                                  if ($chat['message_from_profile_id'] == $business_login_profile_id) {
-                                  ?>
-                                  <li class="clearfix">
-                                  <div class="message-data align-right">
-                                  <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span>
-                                  </div>
-                                  <div class="msg_right">
-                                  <div class="messagedelete fl">
-                                  <a href="javascript:void(0);">
-                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                  </a>
-                                  </div>
-                                  <div class="message other-message float-right"><?php echo $chat['message']; ?> <span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
-                                  <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div>
-                                  </div>
-                                  </li>
-                                  <?php
-                                  } else {
-                                  ?>
-                                  <li class="recive-data">
-                                  <div class="message-data">
-                                  <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span></span>
-                                  </div>
-                                  <div class="msg_left_data">
-                                  <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message"><?php echo $chat['message']; ?><span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
-                                  <div class="messagedelete">
-                                  <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                  </a>
-                                  </div>
-                                  </div>
-                                  </li>
-                                  <?php
-                                  }
-                                  } */
-                                ?>
                                 <div class="userchat_repeat" ng-repeat="chat in user_chat">
-                                    <li class="clearfix" ng-if="chat.message_from_profile_id == ">   
+                                    <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
                                         <div class="message-data align-right">    
-                                            <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span>
+                                            <span class="message-data-time">{{chat.timestamp | date : "dd-MM-yyyy"}}</span>
                                         </div>   
                                         <div class="msg_right"> 
                                             <div class="messagedelete fl">
@@ -136,13 +99,13 @@
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
                                             </div>
-                                            <div class="message other-message float-right">{{chat.message}}<span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
+                                            <div class="message other-message float-right">{{chat.message| htmlToPlaintext}}<span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
                                             <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div>
                                         </div>
                                     </li> 
-                                    <li class="recive-data" ng-if=""> 
+                                    <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $business_login_profile_id ?>'"> 
                                         <div class="message-data">
-                                            <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span></span> 
+                                            <span class="message-data-time">{{chat.timestamp | date : "dd-MM-yyyy"}}</span></span> 
                                         </div>    
                                         <div class="msg_left_data"> 
                                             <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message">{{chat.message}}<span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
@@ -199,6 +162,12 @@
 
             messageApp.controller('messageController', function ($scope, $http) {
                 $scope.current = '<?php echo $this->uri->segment(3); ?>';
+                $scope.formatDate = function (date) {
+                    var dateOut = new Date(date);
+                    return dateOut;
+                };
+
+
                 load_message_user();
                 function load_message_user() {
                     $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
