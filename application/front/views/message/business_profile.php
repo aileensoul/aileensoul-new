@@ -20,6 +20,8 @@
 			.msg_right .msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:right; margin-left:10px;}
 			.chat .chat-history .my-message{max-width:93%;}
 			.chat .chat-history .other-message{float:left; max-width:93%;}
+			.msg-time{float: right; padding-left: 10px; font-size: 11px; vertical-align: bottom; line-height: 1;
+			padding-top: 10px;}
         </style>
     <body>
         <?php echo $header; ?>
@@ -98,7 +100,7 @@
                                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
-                                                <div class="message other-message float-right"><?php echo $chat['message']; ?> </div>
+                                                <div class="message other-message float-right"><?php echo $chat['message']; ?> <span class="msg-time">30:25</span></div>
 												<div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div>
                                             </div>
                                         </li> 
@@ -110,7 +112,7 @@
                                                 <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span></span> 
                                             </div>    
                                             <div class="msg_left_data"> 
-                                                <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message"><?php echo $chat['message']; ?></div>
+                                                <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message"><?php echo $chat['message']; ?><span class="msg-time">30:25</span></div>
                                                 <div class="messagedelete"> 
                                                     <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
