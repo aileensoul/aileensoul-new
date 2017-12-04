@@ -1971,7 +1971,7 @@ body.no-login{padding-bottom:0;}
 .no-login .form-group label.error {
     padding-left: 0 !important;
 }
-.no-login .form-group{margin-bottom:15px;}
+/*.no-login .form-group{margin-bottom:15px;}*/
 .no-login .dob .error{bottom:-25px;}
 .no-login .gender-custom .error{bottom:-25px;}
 .no-login .job-saved-box{margin-bottom:15px;}
@@ -1998,7 +1998,7 @@ footer ul.footer-ul li{padding: 0px !important;}
 footer div.pt20{padding-top: 18px;}
 .feedback-cus .title h1{color: #5c5c5c;background: transparent;-webkit-text-fill-color:#5c5c5c;}
 .feedback-cus .btn1 {background: #5c5c5c;color: #fff;border: none!important}
-
+.contact .con-address td a:hover{color: #1b8ab9;}
 /***  media query  ***/
 
 @media screen and (max-height: 540px){
