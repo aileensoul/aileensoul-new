@@ -115,7 +115,7 @@
 
                                     <p class="clr-c fs12">
                                         By Clicking on create an account button you agree our 
-                                        <a tabindex="10" href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a tabindex="11" href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                        <a tabindex="10" href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a tabindex="11" href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
                                         <button class="btn1" tabindex="9">Create an account</button>

@@ -2,6 +2,13 @@
 <meta http-equiv="Cache-control" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6060111582812113",
+    enable_page_level_ads: true
+  });
+</script>
 <!-- SEO CHANGES START -->
 <?php
 if ($_SERVER['HTTP_HOST'] != "localhost") {
