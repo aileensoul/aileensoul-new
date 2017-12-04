@@ -16,8 +16,10 @@
             .msg_left_data .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
 			.chat .chat-history .msg_left_data::after{display:none;}
 			.chat .chat-history .msg_right::after{display:none;}
-			.msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:left; margin-right:10px;}
+			.msg_left_data .msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:left; margin-right:10px;}
+			.msg_right .msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:right; margin-left:10px;}
 			.chat .chat-history .my-message{max-width:93%;}
+			.chat .chat-history .other-message{float:left; max-width:93%;}
         </style>
     <body>
         <?php echo $header; ?>
@@ -97,6 +99,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="message other-message float-right"><?php echo $chat['message']; ?> </div>
+												<div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div>
                                             </div>
                                         </li> 
                                         <?php
