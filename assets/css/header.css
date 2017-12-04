@@ -2217,7 +2217,7 @@ footer ul li a:hover{
     color:#353535;
     text-decoration:underline;
 }
-.cover button.modal-close:hover{color: #1b8ab9 !important;}
+.cover button.modal-close:hover{background: #156f95 !important;}
     
 
 /***  media query  ***/

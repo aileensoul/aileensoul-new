@@ -29,15 +29,22 @@
             <?php
         }
         ?>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-6060111582812113",
+                enable_page_level_ads: true
+            });
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
     </head>
-    <body class="custom-tp">
+    <body class="custom-tp turmcon-cust ">
         <div class="main-inner">
-            <header class="terms-con">
+            <header class="terms-con bg-none">
                 <div class="overlaay">
                     <div class="container">
                         <div class="row">
@@ -46,21 +53,29 @@
                             </div>
                             <div class="col-md-8 col-sm-9">
                                 <div class="btn-right pull-right">
-                                    <?php if (!$this->session->userdata('aileenuser')) { ?>
-                                        <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-                                        <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
-                                    <?php } ?>
+                                <?php if(!$this->session->userdata('aileenuser')) {?>
+                                    <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
+                                    <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
-            <section class="grad_terms">
+            <div class="terms-con-cus">
+            <div class="container">
+                <div class="cus-about" >
+            <section class="">
                 <div class="main-comtai">
-                    <h1>Terms and Conditions</h1>
+                    <!-- <h1>Terms and Conditions</h1> -->
+                    <h2 class="about-h2">Terms and Conditions</h2>
+                  
                 </div>
             </section>
+            </div>
+            </div>
+        </div>
             <section class="middle-main bg_white">
 
 
