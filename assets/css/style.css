@@ -2000,6 +2000,7 @@ footer div.pt20{padding-top: 18px;}
 .feedback-cus .btn1 {background: #5c5c5c;color: #fff;border: none!important}
 
 /***  media query  ***/
+
 @media screen and (max-height: 540px){
     .no-login .modal-dialog{margin-bottom:20px !important; height:auto !important;}
 	
@@ -2016,12 +2017,18 @@ footer div.pt20{padding-top: 18px;}
     
   }
 }
-
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1296px) {
     .container {
         width: 1280px;
     }
 }
+@media (min-width: 1280px) { 
+   .main-inner .pd-low{/*padding-top: 100px;*/} 
+    .cover .middle-section .container{width:1265px}
+
+  
+}
+
 
 @media screen and (min-width: 800px) {
     #floatBarsG {

@@ -1756,13 +1756,26 @@ footer div.pt20{padding-top: 18px;}
 @media (min-width: 1400px) {
 	.cus-about{text-align: center;padding: 225px 0;}
  }
+ @media screen and (min-width: 1296px) {
+    .container {
+        width: 1280px;
+    }
+    }
+    @media screen and (min-width: 1296px) {
+    .container {
+        width: 1280px;
+    }
+}
 @media (min-width: 1280px) { 
-   .main-inner .pd-low{/*padding-top: 100px;*/}
-	.container {width: 1280px;}  
-	.cover .middle-section .container{width:1270px}
+   .main-inner .pd-low{/*padding-top: 100px;*/} 
+	.cover .middle-section .container{width:1265px}
 
   
 }
+
+
+
+
 
 @media (max-width: 1279px) {
 	.top-middle{padding-left:0;}
@@ -1770,7 +1783,7 @@ footer div.pt20{padding-top: 18px;}
 	.header-login .input{width:26%;}
 	.tablate-add{display:block; width:160px; position:fixed; margin-left:960px;}
 	.contact .inner-form{margin:0 10px;}
-	.contact-add{margin:0 10px;}
+
 }
 
 @media screen and (max-width: 1199px) {
@@ -1876,7 +1889,7 @@ footer div.pt20{padding-top: 18px;}
 	.footer-ul{width:100%;}
 	.ftr-copuright{text-align:center; padding-bottom:15px;}
 	.cust-disclaimer .main-comtai{padding: 0px;}
-	.cust-disclaimer .term_desc{padding:40px 0px 80px;}
+	.cust-disclaimer .term_desc{padding:0px 0px 30px;}
 	.feedback-cus .about-h2{font-size:36px;}
 	
 	
@@ -1927,7 +1940,7 @@ footer div.pt20{padding-top: 18px;}
 	.mail-sent li{width:100%; padding:5px 15px; border-right:0;}
 	.title h1{font-size:35px;}
 	.about-content{font-size:14px;}
-	.about-us .main-inner .middle-main{padding:40px 0 20px;}
+	.about-us .main-inner .middle-main{padding:10px 0 20px;}
 	.main-inner .middle-main{padding:100px 0 0;}
     .main-inner .pd-low{ padding:146px 0 40px; }
 	.banner{/*margin-left: -15px;
@@ -2111,7 +2124,11 @@ footer div.pt20{padding-top: 18px;}
 	.por_content ul li .pro-text .count{width: 14px;}
 	.login form{padding: 16px 8px 15px !important;}
 	.about-us .main-inner .btn-right.pull-right a.btn2{margin-bottom: 10px;}
+	.about-us .titlea h1{font-size: 32px;}
 }
+@media screen and (max-width: 319px) {
+	footer ul li{width: 100%;}
+	}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   select,
