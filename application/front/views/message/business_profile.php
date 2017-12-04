@@ -78,62 +78,44 @@
                         </div>
                         <div class="chat-history" id="chat-history">
                             <ul id="received" class="padding_less_right">
-                                <li class="clearfix">   
-                                    <div class="message-data align-right">    
-                                        <span class="message-data-time">31 Oct 2017 10:07</span>&nbsp; &nbsp;    <span class="message-data-name fr">harshad patel <i class="fa fa-circle me"></i></span> 
-                                    </div>   
-                                    <div class="msg_right"> 
-                                        <div class="messagedelete fl">
-                                            <a href="javascript:void(0);">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
-                                        </div> 
-                                        <div class="message other-message float-right">hello</div>
-                                    </div>
-                                </li> 
-                                <li class="recive-data"> 
-                                    <div class="message-data">
-                                        <span class="message-data-time">24 Jul 2017 07:02 </span>
-                                        <span class="message-data-name fl"><i class="fa fa-circle online"></i>hexel web technology  </span> 
-                                    </div>    
-                                    <div class="msg_left_data">  
-                                        <div class="message my-message">sdf</div>
-                                        <div class="messagedelete"> 
-                                            <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix">   
-                                    <div class="message-data align-right">    
-                                        <span class="message-data-time">31 Oct 2017 10:07</span>&nbsp; &nbsp;    <span class="message-data-name fr">harshad patel <i class="fa fa-circle me"></i></span> 
-                                    </div>   
-                                    <div class="msg_right"> 
-                                        <div class="messagedelete fl">
-                                            <a href="javascript:void(0);">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
-                                        </div> 
-                                        <div class="message other-message float-right">how are you</div>
-                                    </div>
-                                </li>
-                                <li class="recive-data"> 
-                                    <div class="message-data">
-                                        <span class="message-data-time">24 Jul 2017 07:02 </span>
-                                        <span class="message-data-name fl"><i class="fa fa-circle online"></i>hexel web technology  </span> 
-                                    </div>    
-                                    <div class="msg_left_data">  
-                                        <div class="message my-message">hello</div>
-                                        <div class="messagedelete"> 
-                                            <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
+                                <?php
+                                foreach ($user_data['chat'] as $chat) {
+                                    if ($chat['message_from_profile_id'] == $business_login_profile_id) {
+                                        ?>
+                                        <li class="clearfix">   
+                                            <div class="message-data align-right">    
+                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span>&nbsp; &nbsp;    <span class="message-data-name fr"><?php echo $chat['company_name']; ?> <i class="fa fa-circle me"></i></span> 
+                                            </div>   
+                                            <div class="msg_right"> 
+                                                <div class="messagedelete fl">
+                                                    <a href="javascript:void(0);">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="message other-message float-right"><?php echo $chat['message']; ?> </div>
+                                            </div>
+                                        </li> 
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <li class="recive-data"> 
+                                            <div class="message-data">
+                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span>&nbsp; &nbsp;    <span class="message-data-name fl"><i class="fa fa-circle online"></i><?php echo $chat['company_name']; ?> </span> 
+                                            </div>    
+                                            <div class="msg_left_data"> 
+                                                <div class="message my-message"><?php echo $chat['message']; ?></div>
+                                                <div class="messagedelete"> 
+                                                    <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </ul>
-
                         </div>
-
                         <div class="panel-footer">
                             <div class="">
                                 <div class="" id="msg_block">
@@ -168,27 +150,13 @@
         <script>
             // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-            var messageApp = angular.module('messageApp', ['ngRoute']);
+            var messageApp = angular.module('messageApp', []);
             messageApp.filter('htmlToPlaintext', function () {
                 return function (text) {
                     return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
                 };
             });
-            messageApp.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
-                    var original = $location.path;
-                    alert(original);
-                    $location.path = function (path, reload) {
-                        if (reload === false) {
-                            var lastRoute = $route.current;
-                            var un = $rootScope.$on('$locationChangeSuccess', function () {
-                                $route.current = lastRoute;
-                                un();
-                            });
-                        }
-                        return original.apply($location, [path]);
-                    };
-                }]);
-            //$location.path('/user/' + $scope.userId, false);
+
             messageApp.controller('messageController', function ($scope, $http) {
                 $scope.current = '<?php echo $this->uri->segment(3); ?>';
                 load_message_user();
@@ -212,7 +180,7 @@
                             });
                 }
             });
-  
+
         </script>
     </body>
 </html>

@@ -89,13 +89,12 @@ class Message_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
-    
-    function getBusinessDataBySlug($business_slug='',$select_data='*'){
-        $this->db->select($select_data)->from('business_profile');
-        $this->db->where("business_slug='$business_slug'");
+    function getBusinessChat($business_profile_id='',$business_to_profile_id=''){
+        $this->db->select("m.message,m.timestamp,m.message_from_profile_id,b.company_name,b.business_user_image")->from("messages m");
+        $this->db->join('business_profile b', 'b.business_profile_id = m.message_from_profile_id');
+        $this->db->where("(m.message_from_profile_id='" . $business_profile_id . "' AND m.message_to_profile_id='".$business_to_profile_id."' ) OR (m.message_to_profile_id='" . $business_profile_id . "' AND m.message_from_profile_id='" . $business_to_profile_id . "')AND m.is_deleted = '0' AND m.is_message_from_delete = '0' AND m.message_from_profile = '5' AND m.message_to_profile = '5'");
         $query = $this->db->get();
-        $result_array = $query->row_array();
+        $result_array = $query->result_array();
         return $result_array;
     }
-
 }
