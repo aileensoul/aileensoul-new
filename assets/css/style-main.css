@@ -1613,19 +1613,21 @@ body.cover{padding-bottom:60px;}
 
 /*about us page design*/
 .about-h2{font-size: 50px;color: #ffffff;padding-bottom: 40px;}
+.about-us .about-h2{font-size: 50px;color: #ffffff;padding-bottom: 90px;}
 .about-para{font-size: 30px;color: #ffffff;}
-.cus-about{text-align: center;padding: 175px;}
+.cus-about{text-align: center;padding: 175px 0;}
 .all-tem{width: 100%;float: left;text-align: center;}
 .img-custom{width:24%;margin-bottom: 35px;list-style-type: none; display: inline-block;}
 .team-1{height: 200px;width: 200px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;box-shadow: 0px 0px 10px -1px rgba(92,92,92,1)}
 .team-1 img{width: 100%}
 .text-custom{text-align: center;}
 .Main-im .team-1{height: 250px;width: 250px;border-radius: 100%;overflow: hidden;margin: 0 auto;border: 1px solid #5c5c5c;}
-.about-us .terms-con-cus{background-image: url("../../assets/img/AboutHeader.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: 100%}
+.about-us .terms-con-cus{background-image: url("../../assets/img/AboutHeader.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: cover;}
 /*.about-us .main-comtai{height: 600px;}*/
 .about-us .bg-none{background: none !important;}
 .about-us .overlaay{background: rgba(0,0,0,0.7);padding: 15px 0px;}
 .about-us header{padding: 0px;}
+.about-us header{position: relative;}
 .about-us .text-custom h4{margin-bottom: 0px;}
 .about-us .titlea h1{text-transform: none;color: #5c5c5c!important;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
         -webkit-background-clip: text;
@@ -1640,13 +1642,14 @@ body.cover{padding-bottom:60px;}
 .cust-disclaimer .terms-con-cus{background-image: url("../../assets/img/disclaimer2.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size:cover;}
 .cust-disclaimer .logo a{color: #5c5c5c;}
 .cust-disclaimer .overlaay{background:transparent;}
-.cust-disclaimer .about-h2{color: #5c5c5c;}
+.cust-disclaimer .about-h2{color: #5c5c5c;padding-bottom: 40px;}
 .cust-disclaimer .btn-right .btn2{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
 .cust-disclaimer .btn-right .btn2:hover{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
 .cust-disclaimer .btn-right .btn3{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
 .cust-disclaimer .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
 .cust-disclaimer header{position: relative;}
 .cust-disclaimer .term_desc{padding:40px 0px 0px;}
+
 
 /*Disclaimer complete*/
 
@@ -1661,10 +1664,36 @@ body.cover{padding-bottom:60px;}
 .feedback-cus .btn-right .btn3{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
 .feedback-cus .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
 .feedback-cus header{position: relative;}
-.feedback-cus .about-h2 {padding-bottom: 145px;}
-.feedback-cus .cus-about{padding: 140px 0;letter-spacing: 5px;}
-
+.feedback-cus .about-h2 {padding-bottom: 175px;}
+.feedback-cus .cus-about{padding: 175px 0;letter-spacing: 5px;}
 /*feedback Complete*/
+
+/*Term and condition start design*/
+.turmcon-cust .terms-con-cus{background-image: url("../../assets/img/disclaimer1.jpeg");background-repeat: no-repeat;background-position: center;width: 100%;background-size:cover;}
+.turmcon-cust .overlaay{background:#fff;}
+.turmcon-cust header .logo a{color: #5c5c5c;}
+.turmcon-cust header{position: relative;}
+.turmcon-cust .btn-right .btn2{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+.turmcon-cust .btn-right .btn2:hover{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.turmcon-cust .btn-right .btn3{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.turmcon-cust .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+
+/*Term and condition End design*/
+
+/*Privacy Policy design*/
+.privacy-cust .terms-con-cus{background-image: url("../../assets/img/disclaimer3.jpeg");background-repeat: no-repeat;background-position: center;width: 100%;background-size:cover;}
+.privacy-cust .overlaay{background:transparent;}
+.privacy-cust .about-h2{color: #5c5c5c;}
+.privacy-cust header{position: relative;}
+.privacy-cust header{background: transparent;}
+.privacy-cust header .logo a{color: #5c5c5c;}
+.privacy-cust .btn-right .btn2{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+.privacy-cust .btn-right .btn2:hover{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.privacy-cust .btn-right .btn3{color: #5c5c5c;background:#fff;border: 1px solid #5c5c5c;}
+.privacy-cust .btn-right .btn3:hover{color: #fff;background:#5c5c5c;border: 1px solid #5c5c5c;}
+/*Privacy Policy End design*/
+
+
 
 .custom-tp{line-height: 3;}
 .modal-body .form-group input{ left: 0;}
@@ -1720,9 +1749,10 @@ footer div.pt20{padding-top: 18px;}
 }
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
 	footer > .container {padding-left:15px; padding-right:15px; width:1250px;}
+
 }
 @media (min-width: 1400px) {
-	.cus-about{text-align: center;padding: 225px;}
+	.cus-about{text-align: center;padding: 225px 0;}
  }
 @media (min-width: 1280px) { 
    .main-inner .pd-low{/*padding-top: 100px;*/}
@@ -1832,7 +1862,8 @@ footer div.pt20{padding-top: 18px;}
 	padding:16px 19px 15px;}
 	/*.about-us .middle-main .all-tem .team-1 {margin-left: 10px;}*/
 	.team-1{height: 150px;width: 150px;}
-	.cus-about{padding: 129	px;}
+	.cus-about{padding: 175px 0;}
+	.turmcon-cust .main-comtai {padding: 0px;}
 	.about-us .middle-main .all-tem .text-custom h4{font-size: 18px;}
 	.about-us .middle-main .all-tem .text-custom p{font-size: 12px;}
 	.Main-im .team-1{height: 200px;width: 200px;}
@@ -1842,11 +1873,13 @@ footer div.pt20{padding-top: 18px;}
 	.contact .main-inner .middle-main{padding-top:0;}
 	.footer-ul{width:100%;}
 	.ftr-copuright{text-align:center; padding-bottom:15px;}
-	.cust-disclaimer .main-comtai{padding: 35px;}
+	.cust-disclaimer .main-comtai{padding: 0px;}
 	.cust-disclaimer .term_desc{padding:40px 0px 80px;}
 	.feedback-cus .about-h2{font-size:36px;}
-}
+	
+	
 
+}
 @media screen and (max-width: 767px) {
 	.footer-ul .mob-none{display:none;}
 	header{}
@@ -1947,19 +1980,25 @@ footer div.pt20{padding-top: 18px;}
 	.login #register_form span::after{right: 15px;}
 	.img-custom{width: 40% ;}
 	.team-1{height: 150px;width:150px;}
-	.cus-about{padding: 80px;padding-top: 0px;}
+	.cus-about{padding: 80px 0;padding-top: 0px;}
 	.about-us .middle-main .all-tem .text-custom h4{font-size: 19px;}
 	.about-us .middle-main .all-tem .text-custom p{font-size: 13px;}
 	.about-content{width: 100% !important;}
 	.about-h2{padding-top: 60px;padding-bottom: 25px;}
+	.privacy-cust .about-h2{padding-top: 0px;padding-bottom: 190px;}
 	.about-content{margin-bottom: 25px;}
 	.about-us header{position: relative;}
 	/*.cust-disclaimer .cust-header{background-image: url("../../assets/img/disclaimer12.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: cover;}*/
 	.about-us .logo{padding-bottom: 10px;}
 	.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) url('../img/mob-about-bg.jpg') !important; background-size:100% !important;}
-	.cust-disclaimer .about-h2{padding-top: 26px;padding-bottom: 25px;}
+	.cust-disclaimer .about-h2{padding-top: 0px;padding-bottom: 190px;}
 	.feedback-cus .cus-about{padding:0;}
 	.feedback-cus .about-h2{font-size:22px; padding-bottom:190px; padding-top:0;}
+	/*.turmcon-cust .main-comtai{padding:47px 0;}*/
+	.cust-disclaimer .about-h2{font-size: 40px;margin: 0px;}
+	.turmcon-cust .about-h2{padding-bottom: 190px;padding-top: 0px;margin: 0px;}
+	.turmcon-cust .main-comtai{padding: 0px}
+	.privacy-cust .main-comtai {padding: 0px !important;}
 }
 
 @media screen and (max-width: 640px) {
@@ -1992,12 +2031,15 @@ footer div.pt20{padding-top: 18px;}
 	.upload-profile{width: 87px; height: 87px; padding:15px 4px; font-size:9px; line-height:1.5;}
 	.upload-profile img{width:25px !important; height:25px !important;}
 	.banner-box #row2 img{height:200px;}
-	.cus-about{padding: 36px;padding-top: 0px;}
+	.cus-about{padding: 36px 0;padding-top: 0px;}
+	/*.about-us .about-h2{padding-bottom: 50px;}*/
+	.about-us .cus-about{padding: 32px 0;padding-top: 0px;}
 	
 }
 @media screen and (max-width: 540px) {
-	.cus-about{padding: 25px;padding-top: 0px}
+	.cus-about{padding: 25px 0px;padding-top: 0px}
 	.about-h2{padding-top:60px;padding-bottom: 0px;font-size: 40px;}
+	/*.privacy-cust .about-h2{padding-top:0px;padding-bottom: 60px;font-size: 39px;}*/
 }
 
 @media screen and (max-width: 479px) {
@@ -2031,6 +2073,7 @@ footer div.pt20{padding-top: 18px;}
 	.img-custom{width: 100%;}
 	.team-1{height: 200px; width:200px;}
 	.about-h2{font-size: 30px;padding-top: 10px;}
+	/*.turmcon-cust .about-h2{font-size: 25px;padding-top: 50px;padding-bottom: 60px;}*/
 	.about-para{font-size: 15px;}	
 	.about-us .terms-con-cus{background-size: cover;}
 	.about-h2{padding-top: 50px;}
@@ -2039,6 +2082,8 @@ footer div.pt20{padding-top: 18px;}
 	.con-address td{width:100%; float:left;}
 	.con-address td:first-child{padding-bottom:0;}
 	.con-address td:last-child{padding-top:0;}
+	/*.privacy-cust .about-h2{padding-top: 50px;padding-bottom: 50px;}*/
+	/*.privacy-cust .main-comtai{padding: 47px 0;}*/
 }
 
 @media screen and (max-width: 360px) {
@@ -2063,6 +2108,7 @@ footer div.pt20{padding-top: 18px;}
 	.por_content ul li img{margin-right: 3px; float: left; width: 40px; height: 40px;}
 	.por_content ul li .pro-text .count{width: 14px;}
 	.login form{padding: 16px 8px 15px !important;}
+	.about-us .main-inner .btn-right.pull-right a.btn2{margin-bottom: 10px;}
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
