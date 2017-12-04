@@ -32,6 +32,13 @@
             <?php
         }
         ?>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-6060111582812113",
+                enable_page_level_ads: true
+            });
+        </script>
         <style type="text/css">
             footer > .container{border:1px solid transparent!important;}
             .footer{border:1px solid #d9d9d9;}
