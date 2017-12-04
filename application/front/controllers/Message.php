@@ -52,6 +52,20 @@ class Message extends MY_Controller {
         }
         echo json_encode($user_data);
     }
+    public function getBusinessUserChat() {
+        $business_profile_id = $this->data['business_login_profile_id'];
+        
+        $business_slug = $_POST['business_slug'];
+        $user_data = $this->business_model->getBusinessDataBySlug($business_slug,$select_data="business_profile_id,company_name,business_user_image,other_business_type,other_industrial,business_type,industriyal,business_slug");
+        if($user_data['business_type'] != '' || $user_data['business_type'] != 'null'){
+            $user_data['business_type'] = $this->business_model->getBusinessTypeName($user_data['business_type']);
+        }
+        if($user_data['industriyal'] != '' || $user_data['industriyal'] != 'null'){
+            $user_data['industriyal'] = $this->business_model->getIndustriyalName($user_data['industriyal']);
+        }
+        $user_data['chat'] = $this->message_model->getBusinessChat($business_profile_id,$user_data['business_profile_id']);
+        echo json_encode($user_data);
+    }
 
     public function businessSingleMessageInsert() {
         $userid = $this->session->userdata('aileenuser');

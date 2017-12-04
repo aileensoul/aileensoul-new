@@ -56,10 +56,9 @@ class Message_model extends CI_Model {
     }
 
     function getBusinessUserChatList($business_profile_id = '') {
-        
         $this->db->select("max(m.id) as max_id")->from("messages m");
         $this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
-        $this->db->group_by("(CASE WHEN m.message_from_profile_id='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
+        $this->db->group_by("(CASE WHEN m.message_from_profile_id ='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
         $query1 = $this->db->get();
         $result_array1 = $query1->result_array();
         
@@ -77,7 +76,7 @@ class Message_model extends CI_Model {
         
         $this->db->select("max(m.id) as max_id")->from("messages m");
         $this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
-        $this->db->group_by("(CASE WHEN m.message_from_profile_id='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
+        $this->db->group_by("(CASE WHEN m.message_from_profile_id ='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
         $query1 = $this->db->get();
         $result_array1 = $query1->result_array();
         

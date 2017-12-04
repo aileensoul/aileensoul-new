@@ -14,22 +14,23 @@
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
             .msg_left_data:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_left_data .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
-			.chat .chat-history .msg_left_data::after{display:none;}
-			.chat .chat-history .msg_right::after{display:none;}
-			.msg_left_data .msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:left; margin-right:10px;}
-			.msg_right .msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:right; margin-left:10px;}
-			.chat .chat-history .my-message{max-width:93%;}
-			.chat .chat-history .other-message{float:left; max-width:93%;}
-			.msg-time{float: right; padding-left: 10px; font-size: 11px; vertical-align: bottom; line-height: 1;
-			padding-top: 10px;}
-        </style>
-    <body>
-        <?php echo $header; ?>
-        <?php echo $business_header2_border; ?>
-        <div class="container">
+            .chat .chat-history .msg_left_data::after{display:none;}
+            .chat .chat-history .msg_right::after{display:none;}
+            .msg_left_data .msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:left; margin-right:10px;}
+            .msg_right .msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:right; margin-left:10px;}
+            .chat .chat-history .my-message{max-width:93%;}
+            .chat .chat-history .other-message{float:left; max-width:93%;}
+            .msg-time{float: right; padding-left: 10px; font-size: 11px; vertical-align: bottom; line-height: 1;
+                      padding-top: 10px; opacity: 0.5;}
+            </style>
+        <body ng-app="messageApp" ng-controller="messageController">
+            <?php echo $header; ?>
+            <?php echo $business_header2_border; ?>
+            <div class="container">
             <div class="" id="paddingtop_fixed">
                 <div class="chat_nobcx">
-                    <div class="people-list" id="people-list" ng-app="messageApp" ng-controller="messageController">
+                    <!--<div class="people-list" id="people-list" ng-app="messageApp" ng-controller="messageController">-->
+                    <div class="people-list" id="people-list">
                         <div class="search border_btm">
                             <input name="search_key" ng-model="search_key" ng-keyup="getSearchdata()" id="search_key" placeholder="search" type="search">
                             <i class="fa fa-search" id="add_search"></i>
@@ -37,20 +38,20 @@
                         <ul class="list">
                             <div id="userlist">
                                 <div class="userlist_repeat" ng-repeat="data in loaded_user_data| filter:search">
-                                    <a href="<?php echo base_url() ?>message/b/{{data.business_slug}}">
-                                        <li class="clearfix" id="{{data.business_slug}}" ng-class="{'active': data.business_slug == current}">
-                                            <div class="chat_heae_img" ng-if="data.business_user_image">
-                                                <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{data.business_user_image}}" alt="{{data.company_name}}"/>
-                                            </div>
-                                            <div class="chat_heae_img" ng-if="!data.business_user_image">
-                                                <img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Bus Image"/>
-                                            </div>
-                                            <div class="about">
-                                                <div class="name">{{data.company_name}}<br></div>
-                                                <div>{{data.message| htmlToPlaintext}}</div>
-                                            </div>
-                                        </li>
-                                    </a>
+                                    <!--<a href="<?php echo base_url() ?>message/b/{{data.business_slug}}">-->
+                                    <li class="clearfix" id="{{data.business_slug}}" ng-class="{'active': data.business_slug == current}" ng-click="getuserMessage()">
+                                        <div class="chat_heae_img" ng-if="data.business_user_image">
+                                            <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{data.business_user_image}}" alt="{{data.company_name}}"/>
+                                        </div>
+                                        <div class="chat_heae_img" ng-if="!data.business_user_image">
+                                            <img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Bus Image"/>
+                                        </div>
+                                        <div class="about">
+                                            <div class="name">{{data.company_name}}<br></div>
+                                            <div>{{data.message| htmlToPlaintext}}</div>
+                                        </div>
+                                    </li>
+                                    <!--</a>-->
                                 </div>
                             </div>
                         </ul>
@@ -59,23 +60,24 @@
                     <div class="chat" id="chat" style="display:block;">
                         <div class="chat-header clearfix border_btm">
                             <a href="#">
-                                <div class="chat_heae_img">
-                                    <?php if ($user_data['business_user_image'] != '') { ?>
-                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $user_data['business_user_image'] ?>" alt="<?php echo $user_data['company_name'] ?>"/>
-                                    <?php } else { ?>
-                                        <img src="<?php echo base_url() . NOBUSIMAGE2; ?>" alt="No Business Image"/>
-                                    <?php } ?>
+                                <div class="chat_heae_img" ng-if="business_user_image">
+                                    <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{company_name}}"/>
                                 </div>
+                                <div class="chat_heae_img" ng-if="!business_user_image">
+                                    <img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Bus Image"/>
+                                </div>
+
                                 <div class="chat-about">
                                     <div class="chat-with">
-                                        <span><?php echo $user_data['company_name'] ?></span>  
+                                        <span>{{company_name}}</span>  
                                     </div>
-                                    <div class="chat-num-messages"><?php echo $user_data['industriyal'] ?></div>
+                                    <div class="chat-num-messages" ng-if="industriyal">{{industriyal}}</div>
+                                    <div class="chat-num-messages" ng-if="!industriyal">{{other_industrial}}</div>
                                 </div>
                             </a>
                             <div class="chat_drop">
                                 <a onclick="myFunction()" class="chatdropbtn fr"> 
-                                    <img src="https://www.aileensoul.com/assets/img/t_dot.png" onclick="myFunction()">
+                                    <img src="<?php base_url() ?>assets/img/t_dot.png" onclick="myFunction()">
                                 </a>
                                 <div id="mychat_dropdown" class="chatdropdown-content">
                                     <a href="javascript:void(0);" onclick="delete_history()">
@@ -86,43 +88,72 @@
                         </div>
                         <div class="chat-history" id="chat-history">
                             <ul id="received" class="padding_less_right">
-                                <?php
-                                foreach ($user_data['chat'] as $chat) {
-                                    if ($chat['message_from_profile_id'] == $business_login_profile_id) {
-                                        ?>
-                                        <li class="clearfix">   
-                                            <div class="message-data align-right">    
-                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span>
-                                            </div>   
-                                            <div class="msg_right"> 
-                                                <div class="messagedelete fl">
-                                                    <a href="javascript:void(0);">
-                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="message other-message float-right"><?php echo $chat['message']; ?> <span class="msg-time">30:25</span></div>
-												<div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div>
-                                            </div>
-                                        </li> 
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <li class="recive-data"> 
-                                            <div class="message-data">
-                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span></span> 
-                                            </div>    
-                                            <div class="msg_left_data"> 
-                                                <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message"><?php echo $chat['message']; ?><span class="msg-time">30:25</span></div>
-                                                <div class="messagedelete"> 
-                                                    <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <?php
-                                    }
-                                }
+                                <?php /*
+                                  foreach ($user_data['chat'] as $chat) {
+                                  if ($chat['message_from_profile_id'] == $business_login_profile_id) {
+                                  ?>
+                                  <li class="clearfix">
+                                  <div class="message-data align-right">
+                                  <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span>
+                                  </div>
+                                  <div class="msg_right">
+                                  <div class="messagedelete fl">
+                                  <a href="javascript:void(0);">
+                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                  </a>
+                                  </div>
+                                  <div class="message other-message float-right"><?php echo $chat['message']; ?> <span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
+                                  <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div>
+                                  </div>
+                                  </li>
+                                  <?php
+                                  } else {
+                                  ?>
+                                  <li class="recive-data">
+                                  <div class="message-data">
+                                  <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span></span>
+                                  </div>
+                                  <div class="msg_left_data">
+                                  <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message"><?php echo $chat['message']; ?><span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
+                                  <div class="messagedelete">
+                                  <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                  </a>
+                                  </div>
+                                  </div>
+                                  </li>
+                                  <?php
+                                  }
+                                  } */
                                 ?>
+                                <div class="userchat_repeat" ng-repeat="chat in user_chat">
+                                    <li class="clearfix" ng-if="chat.message_from_profile_id == ">   
+                                        <div class="message-data align-right">    
+                                            <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span>
+                                        </div>   
+                                        <div class="msg_right"> 
+                                            <div class="messagedelete fl">
+                                                <a href="javascript:void(0);">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                            <div class="message other-message float-right">{{chat.message}}<span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
+                                            <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div>
+                                        </div>
+                                    </li> 
+                                    <li class="recive-data" ng-if=""> 
+                                        <div class="message-data">
+                                            <span class="message-data-time"><?php echo date('l, d M Y', $chat['timestamp']); ?></span></span> 
+                                        </div>    
+                                        <div class="msg_left_data"> 
+                                            <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message">{{chat.message}}<span class="msg-time"><?php echo date('h:i A', $chat['timestamp']); ?></span></div>
+                                            <div class="messagedelete"> 
+                                                <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+
                             </ul>
                         </div>
                         <div class="panel-footer">
@@ -188,6 +219,28 @@
                                 $scope.loaded_user_data = data;
                             });
                 }
+                $scope.getuserMessage = function () {
+                    var business_slug = this.data.business_slug;
+                    getUserMessage(business_slug);
+
+                }
+                getUserMessage($scope.current);
+                function getUserMessage(business_slug) {
+                    $http({
+                        method: 'POST',
+                        url: base_url + 'message/getBusinessUserChat',
+                        data: 'business_slug=' + business_slug,
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    })
+                            .success(function (data) {
+                                $scope.business_user_image = data.business_user_image;
+                                $scope.company_name = data.company_name;
+                                $scope.industriyal = data.industriyal;
+                                $scope.other_industrial = data.other_industrial;
+                                $scope.user_chat = data.chat;
+                            });
+                }
+
             });
 
         </script>
