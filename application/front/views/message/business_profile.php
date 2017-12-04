@@ -14,6 +14,10 @@
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
             .msg_left_data:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_left_data .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
+			.chat .chat-history .msg_left_data::after{display:none;}
+			.chat .chat-history .msg_right::after{display:none;}
+			.msg-user-img{width:35px; height:35px; border-radius:100%; overflow:hidden; float:left; margin-right:10px;}
+			.chat .chat-history .my-message{max-width:93%;}
         </style>
     <body>
         <?php echo $header; ?>
@@ -84,7 +88,7 @@
                                         ?>
                                         <li class="clearfix">   
                                             <div class="message-data align-right">    
-                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span>&nbsp; &nbsp;    <span class="message-data-name fr"><?php echo $chat['company_name']; ?> <i class="fa fa-circle me"></i></span> 
+                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span>
                                             </div>   
                                             <div class="msg_right"> 
                                                 <div class="messagedelete fl">
@@ -100,10 +104,10 @@
                                         ?>
                                         <li class="recive-data"> 
                                             <div class="message-data">
-                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span>&nbsp; &nbsp;    <span class="message-data-name fl"><i class="fa fa-circle online"></i><?php echo $chat['company_name']; ?> </span> 
+                                                <span class="message-data-time"><?php echo date('l, d M Y i:s',$chat['timestamp']); ?></span></span> 
                                             </div>    
                                             <div class="msg_left_data"> 
-                                                <div class="message my-message"><?php echo $chat['message']; ?></div>
+                                                <div class="msg-user-img"><img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1507704688.png"></div><div class="message my-message"><?php echo $chat['message']; ?></div>
                                                 <div class="messagedelete"> 
                                                     <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
