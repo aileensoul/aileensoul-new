@@ -2110,6 +2110,12 @@ label.cameraButton input[accept*="camera"] {
     pointer-events: none;
     cursor: default;
 }
+
+.register_enable-cust {
+    pointer-events: inherit;
+    cursor: pointer;
+}
+
 .message a.mesg_link:hover {
     color: #fff;
     background: #156f95;

@@ -15,6 +15,7 @@ class Message_model extends CI_Model {
             'message_from_profile_id' => (int) $message_from_profile_id,
             'message_to_profile' => (int) $message_to_profile,
             'message_to_profile_id' => (int) $message_to_profile_id,
+            'timestamp' => NOW(),
             //'timestamp' => time() + 92,
         );
 

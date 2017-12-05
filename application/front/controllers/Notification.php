@@ -4333,7 +4333,7 @@ Your browser does not support the audio tag.
                 }
                 //20
                 if ($total['not_from'] == 4) {
-                    $return_html .= '<a href="' . base_url() . 'freelancer-work/freelancer-details/' . $total['not_from_id'] . '">';
+                    $return_html .= '<a href="' . base_url() . 'freelancer-work/freelancer-details/' . $total['not_from_id'] . '?page=freelancer_hire">';
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';

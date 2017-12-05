@@ -391,23 +391,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             </div>
                         </a>
                         <!-- user pdf  end-->
-						<div class="custom_footer_left fw">
-                                <div class="fl">
-                                    <ul>
-                                        <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
-                                        <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
-                                        <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-                                        <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-                                        <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-
-                                        <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
-                                    </ul>
-                                </div>
-                                <div>
-
-                                </div>
-
-                            </div>
+                        <?php echo $left_footer; ?>
                     </div>
                     <div class=" custom-right-art mian_middle_post_box animated fadeInUp custom-right-business">
                         <?php
@@ -647,61 +631,61 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
                                         <span><select tabindex="9" class="day" name="selday" id="selday">
-                                            <option value="" disabled selected value>Day</option>
-                                            <?php
-                                            for ($i = 1; $i <= 31; $i++) {
+                                                <option value="" disabled selected value>Day</option>
+                                                <?php
+                                                for ($i = 1; $i <= 31; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
                                                 ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
-                                        </select></span>
+                                            </select></span>
                                         <span>
-                                        <select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                            <option value="" disabled selected value>Month</option>
-                                            //<?php
+                                            <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                                <option value="" disabled selected value>Month</option>
+                                                //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-?>
-                                            <option value="1">Jan</option>
-                                            <option value="2">Feb</option>
-                                            <option value="3">Mar</option>
-                                            <option value="4">Apr</option>
-                                            <option value="5">May</option>
-                                            <option value="6">Jun</option>
-                                            <option value="7">Jul</option>
-                                            <option value="8">Aug</option>
-                                            <option value="9">Sep</option>
-                                            <option value="10">Oct</option>
-                                            <option value="11">Nov</option>
-                                            <option value="12">Dec</option>
-                                            //<?php
+                                                ?>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">Mar</option>
+                                                <option value="4">Apr</option>
+                                                <option value="5">May</option>
+                                                <option value="6">Jun</option>
+                                                <option value="7">Jul</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                                //<?php
 //                  }
 //                  
-?>
-                                        </select></span>
-                                        <span>
-                                        <select tabindex="11" class="year" name="selyear" id="selyear">
-                                            <option value="" disabled selected value>Year</option>
-                                            <?php
-                                            for ($i = date('Y'); $i >= 1900; $i--) {
                                                 ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-    <?php
-}
-?>
+                                            </select></span>
+                                        <span>
+                                            <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <option value="" disabled selected value>Year</option>
+                                                <?php
+                                                for ($i = date('Y'); $i >= 1900; $i--) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
 
-                                        </select>
-                                    </span>
+                                            </select>
+                                        </span>
                                     </div>
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                     <div class="form-group gender-custom">
                                         <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                            <option value="" disabled selected value>Gender</option>
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                        </select></span>
+                                                <option value="" disabled selected value>Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select></span>
                                     </div>
 
                                     <p class="form-text">
@@ -721,13 +705,13 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <!-- <footer> -->
-<?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- </footer> -->
         <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script type = "text/javascript" src="<?php echo base_url('assets/js/jquery.form.3.51.js') ?>"></script> 
-        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());          ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/mediaelement-and-player.min.js?ver=' . time());           ?>"></script>-->
         <script src="<?php echo base_url('assets/dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
@@ -743,7 +727,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         </script>
         <!-- script for login  user valoidtaion start -->
         <script>
-            function open_profile(){
+            function open_profile() {
                 register_profile();
             }
             function login_profile() {
@@ -1054,7 +1038,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
         <?php } else { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/user_dashboard.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
-<?php } ?>
+        <?php } ?>
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {

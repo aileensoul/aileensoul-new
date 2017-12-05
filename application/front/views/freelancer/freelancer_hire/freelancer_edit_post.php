@@ -5,8 +5,16 @@
         <?php echo $head; ?>
 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-hire.css?ver=' . time()); ?>">
+        <style type="text/css">
+             .autoposition{
+                position: absolute!important;
+                z-index: 999 !important;
+                
+            }
+        </style>
 
     </head>
+    
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
         <?php echo $freelancer_hire_header2_border; ?>

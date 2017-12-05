@@ -107,9 +107,7 @@
                                         </div>
                                     </div>                             
                                 </div>
-                                <div  class="add-post-button">
-                                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Add Project</a>
-                                </div>
+                                
                                 <div class="tablate-potrat-add">
                                     <div class="fw text-center pt10">
                                         <script type="text/javascript">
@@ -126,6 +124,10 @@
                                         </script>
                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
+                                </div>
+                                <?php echo $left_footer; ?>
+                                <div  class="add-post-button">
+                                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Add Project</a>
                                 </div>
 
                             </div>
