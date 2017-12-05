@@ -90,11 +90,23 @@ class Message_model extends CI_Model {
         return $result_array;
     }
     function getBusinessChat($business_profile_id='',$business_to_profile_id=''){
-        $this->db->select("m.message,m.timestamp,m.message_from_profile_id,b.company_name,b.business_user_image")->from("messages m");
+        $this->db->select("m.message,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,b.company_name,b.business_user_image")->from("messages m");
         $this->db->join('business_profile b', 'b.business_profile_id = m.message_from_profile_id');
         $this->db->where("(m.message_from_profile_id='" . $business_profile_id . "' AND m.message_to_profile_id='".$business_to_profile_id."' ) OR (m.message_to_profile_id='" . $business_profile_id . "' AND m.message_from_profile_id='" . $business_to_profile_id . "')AND m.is_deleted = '0' AND m.is_message_from_delete = '0' AND m.message_from_profile = '5' AND m.message_to_profile = '5'");
         $query = $this->db->get();
         $result_array = $query->result_array();
+        return $result_array;
+    }
+    
+    function getBusinessLastMessage($business_profile_id='',$business_to_profile_id=''){
+        //$this->db->select("m.message,m.timestamp,m.message_from_profile_id,b.company_name,b.business_user_image")->from("messages m");
+        $this->db->select("m.message,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,b.company_name,b.business_user_image")->from("messages m");
+        $this->db->join('business_profile b', 'b.business_profile_id = m.message_from_profile_id');
+        $this->db->where("(m.message_from_profile_id='" . $business_profile_id . "' AND m.message_to_profile_id='".$business_to_profile_id."' ) OR (m.message_to_profile_id='" . $business_profile_id . "' AND m.message_from_profile_id='" . $business_to_profile_id . "')AND m.is_deleted = '0' AND m.is_message_from_delete = '0' AND m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        $this->db->order_by('m.id','desc');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        $result_array = $query->row();
         return $result_array;
     }
 }

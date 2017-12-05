@@ -104,8 +104,11 @@ class Message extends MY_Controller {
         $message_to_profile_id = $user_data['business_profile_id'];
         
         $insert_message = $this->message_model->add_message($message, $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
+        
+        $last_chat = $this->message_model->getBusinessLastMessage($message_from_profile_id, $user_data['business_profile_id']);
+        
         if ($insert_message) {
-            echo json_encode(array('result' => 'success'));
+            echo json_encode($last_chat);
         } else {
             echo json_encode(array('result' => 'fail'));
         }

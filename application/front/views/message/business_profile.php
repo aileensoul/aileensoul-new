@@ -87,31 +87,61 @@
                             </div>
                         </div>
                         <div class="chat-history" id="chat-history" scroll="user_chat">
-                            <ul id="received" class="padding_less_right">
-                                <div class="userchat_repeat" ng-repeat="chat in user_chat">
+                            <!-- <ul id="received" class="padding_less_right">
+                                                                <div class="userchat_repeat" ng-repeat="chat in user_chat">
+                                                                    <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
+                                                                        <div class="message-data align-right">    
+                                                                            <span class="message-data-time">{{chat.timestamp * 1000| date : "EEEE, dd MMMM yyyy"}}</span>
+                                                                        </div>   
+                                                                        <div class="msg_right"> 
+                                                                            <div class="messagedelete fl">
+                                                                                <a href="javascript:void(0);">
+                                                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="message other-message float-right">{{chat.message| htmlToPlaintext}}<span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                                                            <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>"></div>
+                                                                            <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
+                                                                        </div>
+                                                                    </li> 
+                                                                    <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $business_login_profile_id ?>'"> 
+                                                                        <div class="message-data">
+                                                                            <span class="message-data-time">{{chat.timestamp * 1000| date : "EEEE, dd MMMM yyyy"}}</span></span> 
+                                                                        </div>    
+                                                                        <div class="msg_left_data"> 
+                                                                            <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{chat.company_name}}"></div>
+                                                                            <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
+                                                                            <div class="message my-message">{{chat.message}}<span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                                                            <div class="messagedelete"> 
+                                                                                <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </div>
+                            </ul>-->
+                            <ul id="received" class="padding_less_right" ng-repeat="(key, value) in user_chat | groupBy: 'date'">
+                                <div class="message-data align-right">    
+                                    <span class="message-data-time">{{key}}</span>
+                                </div>
+                                <div ng-repeat="chat in value"> 
                                     <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
-                                        <div class="message-data align-right">    
-                                            <span class="message-data-time">{{chat.timestamp * 1000| date : "EEEE, dd MMMM yyyy"}}</span>
-                                        </div>   
                                         <div class="msg_right"> 
                                             <div class="messagedelete fl">
                                                 <a href="javascript:void(0);">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
                                             </div>
-                                            <div class="message other-message float-right">{{chat.message| htmlToPlaintext}}<span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                            <div class="message other-message float-right" ng-bind-html="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
                                             <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>"></div>
                                             <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
                                         </div>
                                     </li> 
                                     <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $business_login_profile_id ?>'"> 
-                                        <div class="message-data">
-                                            <span class="message-data-time">{{chat.timestamp * 1000| date : "EEEE, dd MMMM yyyy"}}</span></span> 
-                                        </div>    
                                         <div class="msg_left_data"> 
                                             <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{chat.company_name}}"></div>
                                             <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
-                                            <div class="message my-message">{{chat.message}}<span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                            <div class="message my-message" ng-bind-html="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
                                             <div class="messagedelete"> 
                                                 <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
@@ -121,6 +151,7 @@
                                 </div>
 
                             </ul>
+
                         </div>
                         <div class="panel-footer">
                             <div class="">
@@ -151,172 +182,159 @@
         </div>
         <?php echo $footer; ?>
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var slug = '<?php echo $slugid; ?>';
+                    var base_url = '<?php echo base_url(); ?>';
+                    var slug = '<?php echo $slugid; ?>';
         </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.9/angular-filter.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
         <script>
-            // Defining angularjs application.
+                    // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-            var messageApp = angular.module('messageApp', []);
-            messageApp.filter('htmlToPlaintext', function () {
-                return function (text) {
-                    return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
-                };
-            });
-            messageApp.directive('schrollBottom', function () {		// custom directive for scrolling bottom on new message load
-                return {
-                    scope: {
-                        schrollBottom: "="
-                    },
-                    link: function (scope, element) {
-                        scope.$watchCollection('schrollBottom', function (newValue) {
-                            if (newValue)
-                            {
-                                $(element).scrollTop($(element)[0].scrollHeight);
-                            }
-                        });
-                    }
-                }
-            });
-            // AUTO SCROLL MESSAGE DIV FIRST TIME START
-            messageApp.directive('scroll', function ($timeout) {
-                return {
-                    restrict: 'A',
-                    link: function (scope, element, attr) {
-                        scope.$watchCollection(attr.scroll, function (newVal) {
-                            $timeout(function () {
-                                element[0].scrollTop = element[0].scrollHeight;
-                            });
-                        });
-                    }
-                }
-            });
-            // AUTO SCROLL MESSAGE DIV FIRST TIME END
-            messageApp.directive('ngEnter', function () {			// custom directive for sending message on enter click
-                return function (scope, element, attrs) {
-                    element.bind("keydown keypress", function (event) {
-                        if (event.which === 13) {
-                            scope.$apply(function () {
-                                scope.$eval(attrs.ngEnter);
-                            });
-                            event.preventDefault();
-                        }
+                    var messageApp = angular.module('messageApp', ['angular.filter','ngSanitize']);
+                    messageApp.filter('htmlToPlaintext', function () {
+                        return function (text) {
+                            return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+                        };
                     });
-                };
-            });
-            messageApp.directive('focusMe', function ($timeout) {		// custom directive for focusing on message sending input box
-                return {
-                    link: function (scope, element, attrs) {
-                        scope.$watch(attrs.focusMe, function (value) {
-                            if (value === true) {
-                                $timeout(function () {
-                                    element[0].focus();
-                                    scope[attrs.focusMe] = false;
-                                });
-                            }
-                        });
-                    }
-                };
-            });
-            messageApp.controller('messageController', function ($scope, $http) {
-                // Varialbles Initialization.
-                $scope.isMsgBoxEmpty = false;
-                $scope.isFileSelected = false;
-                $scope.isMsg = false;
-                $scope.setFocus = true;
-                $scope.chatMsg = "";
-                $scope.users = [];
-                $scope.messeges = [];
-                $scope.current = '<?php echo $this->uri->segment(3); ?>';
-                load_message_user();
-                function load_message_user() {
-                    $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
-                        $scope.loaded_user_data = data;
-                        var select_segment = window.location.pathname.split("/").pop();
-                        $('li#' + select_segment).addClass('active');
-                    })
-                }
-
-                $scope.getSearchdata = function () {
-                    $http({
-                        method: 'POST',
-                        url: base_url + 'message/getBusinessUserChatSearchList',
-                        data: 'search_key=' + $scope.search_key,
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    })
-                            .success(function (data) {
-                                $scope.loaded_user_data = data;
-                            });
-                }
-                $scope.getuserMessage = function () {
-                    var business_slug = this.data.business_slug;
-                    getUserMessage(business_slug);
-                    //window.location.hash = business_slug;
-                    history.pushState('Business Profile Message', 'Business Profile Message', business_slug);
-                    var select_segment = window.location.pathname.split("/").pop();
-                    $('li#' + select_segment).addClass('active');
-                }
-
-
-                getUserMessage($scope.current);
-                function getUserMessage(business_slug) {
-                    $http({
-                        method: 'POST',
-                        url: base_url + 'message/getBusinessUserChat',
-                        data: 'business_slug=' + business_slug,
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                    })
-                            .success(function (data) {
-                                $scope.business_user_image = data.business_user_image;
-                                $scope.company_name = data.company_name;
-                                $scope.industriyal = data.industriyal;
-                                $scope.other_industrial = data.other_industrial;
-                                $scope.user_chat = data.chat;
-                            });
-                }
-
-                // sending text message function
-                $scope.sendMsg = function () {
-                    var message = $('#message').html();
-                    if (message) {
-                        $scope.isFileSelected = false;
-                        $scope.isMsg = true;
-                        //var dateString = formatAMPM(new Date());
-//                        $socket.emit("send-message", {username: $rootScope.username, userAvatar: $rootScope.userAvatar, msg: $scope.chatMsg, hasMsg: $scope.isMsg, hasFile: $scope.isFileSelected, msgTime: dateString}, function (data) {
-//                            //delivery report code goes here
-//                            if (data.success == true) {
-//                                $scope.chatMsg = "";
-//                                $scope.setFocus = true;
-//                            }
-//                        });
-                        $http({
-                            method: 'POST',
-                            url: base_url + 'message/businessMessageInsert',
-                            data: 'message=' + message + '&business_slug=' + $scope.current,
-                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                        })
-                                .success(function (data) {
-                                    if (data.result == 'success') {
-                                        $scope.chatMsg = "";
-                                        $scope.setFocus = true;
+                    //messageApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
+                    messageApp.directive('schrollBottom', function () {		// custom directive for scrolling bottom on new message load
+                        return {
+                            scope: {
+                                schrollBottom: "="
+                            },
+                            link: function (scope, element) {
+                                scope.$watchCollection('schrollBottom', function (newValue) {
+                                    if (newValue)
+                                    {
+                                        $(element).scrollTop($(element)[0].scrollHeight);
                                     }
                                 });
-                    } else {
-                        $scope.isMsgBoxEmpty = true;
-                    }
-                }
+                            }
+                        }
+                    });
+                    // AUTO SCROLL MESSAGE DIV FIRST TIME START
+                    messageApp.directive('scroll', function ($timeout) {
+                        return {
+                            restrict: 'A',
+                            link: function (scope, element, attr) {
+                                scope.$watchCollection(attr.scroll, function (newVal) {
+                                    $timeout(function () {
+                                        element[0].scrollTop = element[0].scrollHeight;
+                                    });
+                                });
+                            }
+                        }
+                    });
+                    // AUTO SCROLL MESSAGE DIV FIRST TIME END
+                    messageApp.directive('ngEnter', function () {			// custom directive for sending message on enter click
+                        return function (scope, element, attrs) {
+                            element.bind("keydown keypress", function (event) {
+                                if (event.which === 13 && !event.shiftKey) {
+                                    scope.$apply(function () {
+                                        scope.$eval(attrs.ngEnter);
+                                    });
+                                    event.preventDefault();
+                                }
+                            });
+                        };
+                    });
+                    messageApp.directive('focusMe', function ($timeout) {		// custom directive for focusing on message sending input box
+                        return {
+                            link: function (scope, element, attrs) {
+                                scope.$watch(attrs.focusMe, function (value) {
+                                    if (value === true) {
+                                        $timeout(function () {
+                                            element[0].focus();
+                                            scope[attrs.focusMe] = false;
+                                        });
+                                    }
+                                });
+                            }
+                        };
+                    });
+                    messageApp.controller('messageController', function ($scope, $http) {
+                        // Varialbles Initialization.
+                        $scope.isMsgBoxEmpty = false;
+                        $scope.isFileSelected = false;
+                        $scope.isMsg = false;
+                        $scope.setFocus = true;
+                        $scope.chatMsg = "";
+                        $scope.users = [];
+                        $scope.messeges = [];
+                        $scope.current = '<?php echo $this->uri->segment(3); ?>';
+                        load_message_user();
+                        function load_message_user() {
+                            $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
+                                $scope.loaded_user_data = data;
+                                var select_segment = window.location.pathname.split("/").pop();
+                                $('li#' + select_segment).addClass('active');
+                            })
+                        }
 
-                // recieving new text message
-//                $socket.on("new message", function (data) {
-//                    if (data.username == $rootScope.username) {
-//                        data.ownMsg = true;
-//                    } else {
-//                        data.ownMsg = false;
-//                    }
-//                    $scope.messeges.push(data);
-//                });
-            });
+                        $scope.getSearchdata = function () {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'message/getBusinessUserChatSearchList',
+                                data: 'search_key=' + $scope.search_key,
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .success(function (data) {
+                                        $scope.loaded_user_data = data;
+                                    });
+                        }
+                        $scope.getuserMessage = function () {
+                            var business_slug = this.data.business_slug;
+                            getUserMessage(business_slug);
+                            history.pushState('Business Profile Message', 'Business Profile Message', business_slug);
+                            var select_segment = window.location.pathname.split("/").pop();
+                            $('li').removeClass('active');
+                            $('li#' + select_segment).addClass('active');
+                        }
 
+                        getUserMessage($scope.current);
+                        function getUserMessage(business_slug) {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'message/getBusinessUserChat',
+                                data: 'business_slug=' + business_slug,
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .success(function (data) {
+                                        $scope.business_user_image = data.business_user_image;
+                                        $scope.company_name = data.company_name;
+                                        $scope.industriyal = data.industriyal;
+                                        $scope.other_industrial = data.other_industrial;
+                                        $scope.user_chat = data.chat;
+                                    });
+                        }
+
+                        // sending text message function
+                        $scope.sendMsg = function () {
+                            var message = $('#message').html();
+                            message = message.replace(/^(<br\s*\/?>)+/,'');
+                            if (message) {
+                                $scope.isFileSelected = false;
+                                $scope.isMsg = true;
+
+                                $http({
+                                    method: 'POST',
+                                    url: base_url + 'message/businessMessageInsert',
+                                    data: 'message=' + message + '&business_slug=' + $scope.current,
+                                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                                })
+                                        .success(function (data) {
+                                            if (data.result != 'fail') {
+                                                $scope.user_chat.push({message: data.message, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date});
+                                                //$scope.user_chat = data.chat;
+                                                $('#message').html('');
+                                                $scope.setFocus = true;
+                                            }
+                                        });
+                            } else {
+                                $scope.isMsgBoxEmpty = true;
+                            }
+                        }
+                    });
         </script>
     </body>
 </html>
