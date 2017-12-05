@@ -2014,6 +2014,9 @@ footer div.pt20{padding-top: 18px;}
 	.turmcon-cust .about-h2{padding-bottom: 190px;padding-top: 0px;margin: 0px;}
 	.turmcon-cust .main-comtai{padding: 0px}
 	.privacy-cust .main-comtai {padding: 0px !important;}
+	 .turmcon-cust .about-h2{font-size: 29px;}
+    .cust-disclaimer .about-h2{font-size: 32px;}
+
 }
 
 @media screen and (max-width: 640px) {
@@ -2128,6 +2131,7 @@ footer div.pt20{padding-top: 18px;}
 }
 @media screen and (max-width: 319px) {
 	footer ul li{width: 100%;}
+	.turmcon-cust .about-h2{font-size: 25px;}
 	}
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
