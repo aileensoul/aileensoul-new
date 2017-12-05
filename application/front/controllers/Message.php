@@ -4,7 +4,9 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Message extends MY_Controller {
+
     public $data;
+
     public function __construct() {
         parent::__construct();
 
@@ -22,18 +24,18 @@ class Message extends MY_Controller {
         $this->load->view('message/index');
     }
 
-    public function business_profile($business_slug='') {
+    public function business_profile($business_slug = '') {
         $business_profile_id = $this->data['business_login_profile_id'];
-        $user_data = $this->business_model->getBusinessDataBySlug($business_slug,$select_data="business_profile_id,company_name,business_user_image,other_business_type,other_industrial,business_type,industriyal,business_slug");
+        $user_data = $this->business_model->getBusinessDataBySlug($business_slug, $select_data = "business_profile_id,company_name,business_user_image,other_business_type,other_industrial,business_type,industriyal,business_slug");
         $this->data['user_data'] = $user_data;
-        if($user_data['business_type'] != '' || $user_data['business_type'] != 'null'){
+        if ($user_data['business_type'] != '' || $user_data['business_type'] != 'null') {
             $this->data['user_data']['business_type'] = $this->business_model->getBusinessTypeName($user_data['business_type']);
         }
-        if($user_data['industriyal'] != '' || $user_data['industriyal'] != 'null'){
+        if ($user_data['industriyal'] != '' || $user_data['industriyal'] != 'null') {
             $this->data['user_data']['industriyal'] = $this->business_model->getIndustriyalName($user_data['industriyal']);
         }
-        $this->data['user_data']['chat'] = $this->message_model->getBusinessChat($business_profile_id,$user_data['business_profile_id']);
-        $this->load->view('message/business_profile',$this->data);
+        $this->data['user_data']['chat'] = $this->message_model->getBusinessChat($business_profile_id, $user_data['business_profile_id']);
+        $this->load->view('message/business_profile', $this->data);
     }
 
     public function getBusinessUserChatList() {
@@ -47,23 +49,24 @@ class Message extends MY_Controller {
         $business_profile_id = $this->data['business_login_profile_id'];
         if ($search_key) {
             $user_data = $this->message_model->getBusinessUserChatSearchList($business_profile_id, $search_key);
-        }else{
+        } else {
             $user_data = $this->message_model->getBusinessUserChatList($business_profile_id);
         }
         echo json_encode($user_data);
     }
+
     public function getBusinessUserChat() {
         $business_profile_id = $this->data['business_login_profile_id'];
-        
+
         $business_slug = $_POST['business_slug'];
-        $user_data = $this->business_model->getBusinessDataBySlug($business_slug,$select_data="business_profile_id,company_name,business_user_image,other_business_type,other_industrial,business_type,industriyal,business_slug");
-        if($user_data['business_type'] != '' || $user_data['business_type'] != 'null'){
+        $user_data = $this->business_model->getBusinessDataBySlug($business_slug, $select_data = "business_profile_id,company_name,business_user_image,other_business_type,other_industrial,business_type,industriyal,business_slug");
+        if ($user_data['business_type'] != '' || $user_data['business_type'] != 'null') {
             $user_data['business_type'] = $this->business_model->getBusinessTypeName($user_data['business_type']);
         }
-        if($user_data['industriyal'] != '' || $user_data['industriyal'] != 'null'){
+        if ($user_data['industriyal'] != '' || $user_data['industriyal'] != 'null') {
             $user_data['industriyal'] = $this->business_model->getIndustriyalName($user_data['industriyal']);
         }
-        $user_data['chat'] = $this->message_model->getBusinessChat($business_profile_id,$user_data['business_profile_id']);
+        $user_data['chat'] = $this->message_model->getBusinessChat($business_profile_id, $user_data['business_profile_id']);
         echo json_encode($user_data);
     }
 
@@ -78,6 +81,28 @@ class Message extends MY_Controller {
         $message_to_profile = '5';
         $message_to_profile_id = $_POST['business_profile_id'];
 
+        $insert_message = $this->message_model->add_message($message, $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
+        if ($insert_message) {
+            echo json_encode(array('result' => 'success'));
+        } else {
+            echo json_encode(array('result' => 'fail'));
+        }
+    }
+
+    public function businessMessageInsert() {
+        $userid = $this->session->userdata('aileenuser');
+        
+        $business_slug = $_POST['business_slug'];
+        $user_data = $this->business_model->getBusinessDataBySlug($business_slug, $select_data = "business_profile_id,user_id");
+        
+        $message = $_POST['message'];
+        $message_from = $userid;
+        $message_to = $user_data['user_id'];
+        $message_from_profile = '5';
+        $message_from_profile_id = $this->data['business_login_profile_id'];
+        $message_to_profile = '5';
+        $message_to_profile_id = $user_data['business_profile_id'];
+        
         $insert_message = $this->message_model->add_message($message, $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
         if ($insert_message) {
             echo json_encode(array('result' => 'success'));
