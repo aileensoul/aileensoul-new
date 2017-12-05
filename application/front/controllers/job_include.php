@@ -17,6 +17,7 @@ $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $con
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
+$this->data['left_footer'] = $this->load->view('leftfooter', $this->data,TRUE);
 
 // Start Job
 $this->data['job_left'] = $this->load->view('job/job_left', $this->data, true);

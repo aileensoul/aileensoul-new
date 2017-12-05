@@ -14,6 +14,7 @@ $this->data['user_notification_count'] = $count = $result[0]['total'];
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
+$this->data['left_footer'] = $this->load->view('leftfooter', $this->data,TRUE);
 $this->data['artistic_search'] = $this->load->view('artist/artistic_search', $this->data, true);
 $artregid = $this->data['artdata'][0]['art_id'];
 $contition_array = array('follow_to' => $artregid, 'follow_status' => '1', 'follow_type' => '1');

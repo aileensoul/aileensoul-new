@@ -15,6 +15,7 @@ $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
 $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
 $this->data['rec_search'] = $this->load->view('recruiter/rec_search', $this->data, true);
+$this->data['left_footer'] = $this->load->view('leftfooter', $this->data,TRUE);
 $this->data['recruiter_header2_border'] = $this->load->view('recruiter/recruiter_header2_border', $this->data, true);
 // recruiter detail
 
