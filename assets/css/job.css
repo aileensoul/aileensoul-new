@@ -2185,6 +2185,8 @@ label.cameraButton input[accept*="camera"] {
 .custom-message .modal-content h2{font-size:20px; line-height:30px;} 
 .custom-message .modal-content input{padding: 9px 15px;} /*margin-bottom:15px;*/
 .custom-message .modal-content select{margin-bottom:15px;} 
+.cust-err .modal-content select{margin-bottom:0px;} 
+.cust-err .error{width: 100%;text-align: right;}
 .custom-message .modal-content .btn{background:#1b8ab9; color:#fff; border:1px solid #1b8ab9; padding:10px 20px;} 
 .custom-message .modal-content .btn:hover{background:#fff !important; color:#1b8ab9 !important;}
 .custom-message .modal-content .mes{padding:0 !important; margin:0!important;}
