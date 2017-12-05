@@ -345,16 +345,19 @@
             //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)
             {
+              //  alert(123);
                 var alldata = 'all';
                 var user = <?php echo $aileenuser_id; ?>;
                 var appid = xyz;
+             //   alert(appid);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
-                    data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user.value,
+                    data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user,
                     success: function (data) {
+                      //  alert(data.status);
                         $('#' + 'postdata' + appid).html(data.status);
-                        $('#' + 'postdata' + appid).parent().removeClass();
+                        $('#' + 'postdata' + appid).remove();
                         var numItems = $('.contact-frnd-post .job-contact-frnd').length;
                         if (numItems == '0') {
                             var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Job Found.</h4></div>";

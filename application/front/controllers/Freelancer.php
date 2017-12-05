@@ -2660,7 +2660,9 @@ class Freelancer extends MY_Controller {
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
        //   echo $notid; die();
-
+//echo $id;
+//echo $para;
+//echo $notid;die();
         
         $userid = $this->session->userdata('aileenuser');
         //  echo $userid;die();
