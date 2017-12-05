@@ -130,6 +130,7 @@
                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
                                 </div>
+                                  <?php echo $left_footer; ?>
                             </div>
                         </div>
                         <!--COVER PIC END-->

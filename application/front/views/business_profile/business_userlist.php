@@ -46,22 +46,7 @@
 
                                 </div>
                             </div>
-                              <div class="custom_footer_left fw">
-                          <div class="fl">
-                             <ul>
-                             <li><a title="About Us" href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
-                              
-                              <li><a title="Contact Us" href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
-                              
-                              <li><a title="Blogs" href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
-                              <li><a title="Privacy Policy" href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
-                              <li><a title="Terms &nbsp; Condition" href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
-                              
-                              <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
-                            </ul>
-                          </div>
-                
-                    </div>  
+                            <?php echo $left_footer; ?>
                         </div>
 
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
@@ -74,16 +59,16 @@
                                                 <div class="mob-add">
                                                     <div class="fw text-center pt10 pb10">
                                                         <script type="text/javascript">
-                                                            (function () {
-                                                                if (window.CHITIKA === undefined) {
-                                                                    window.CHITIKA = {'units': []};
-                                                                }
-                                                                ;
-                                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                                var placement_id = window.CHITIKA.units.length;
-                                                                window.CHITIKA.units.push(unit);
-                                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                                            }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                                                         </script>
                                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                                     </div>
@@ -102,16 +87,16 @@
 
                             <div class="fw text-center">
                                 <script type="text/javascript">
-                                                                            (function () {
-                                                                                if (window.CHITIKA === undefined) {
-                                                                                    window.CHITIKA = {'units': []};
-                                                                                }
-                                                                                ;
-                                                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                                                var placement_id = window.CHITIKA.units.length;
-                                                                                window.CHITIKA.units.push(unit);
-                                                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                                                            }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                                 </script>
                                 <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                 <div class="fw pt10">
@@ -122,16 +107,16 @@
                         <div class="tablate-add">
 
                             <script type="text/javascript">
-                                                                            (function () {
-                                                                                if (window.CHITIKA === undefined) {
-                                                                                    window.CHITIKA = {'units': []};
-                                                                                }
-                                                                                ;
-                                                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                                                                var placement_id = window.CHITIKA.units.length;
-                                                                                window.CHITIKA.units.push(unit);
-                                                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                                                            }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                             </script>
                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                         </div>
@@ -140,7 +125,7 @@
             </div>
         </section>
         <!-- <footer> -->
-            <?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- </footer> -->
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -182,7 +167,7 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <!-- script for business autofill -->
         <script>
-                                                                            var base_url = '<?php echo base_url(); ?>';
+                                        var base_url = '<?php echo base_url(); ?>';
         </script>
         <?php if (IS_BUSINESS_JS_MINIFY == '0') { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/userlist.js?ver=' . time()); ?>"></script>

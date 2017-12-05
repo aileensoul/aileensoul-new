@@ -105,7 +105,7 @@
                   </div>
                </div>
                <div class="job-menu-profile mob-block">
-                  <a  href="<?php echo site_url('job/resume/' . $jobdata[0]['user_id']); ?>">
+                  <a  href="javascript:void(0);">
                      <h5 class="profile-head-text"> <?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?></h5>
                   </a>
                   <!-- text head start -->
@@ -125,7 +125,7 @@
          </div>
          <div class="middle-part container padding_set_res">
             <div class="job-menu-profile job_edit_menu mob-none">
-               <a  href="<?php echo site_url('job/resume/' . $jobdata[0]['user_id']); ?>">
+               <a  href="javascript:void(0);">
                   <h3 class="profile-head-text"> <?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?></h3>
                </a>
                <!-- text head start -->

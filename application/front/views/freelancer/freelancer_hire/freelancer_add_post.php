@@ -23,6 +23,7 @@
             }
             .autoposition{
                 position: absolute!important;
+                z-index: 999 !important;
                 
             }
         </style>
