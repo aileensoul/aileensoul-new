@@ -1290,7 +1290,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 .custom_footer_left {
     background: white;
     border: 1px solid #d9d9d9;
-    padding: 8px;
+    padding: 1px;
     border-radius: 2px;
     margin-bottom: 10px;
 }
@@ -1314,7 +1314,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 }
 .bui_art_left_box .custom_footer_left ul li {
     display: inline-block;
-    padding: 5px 2px 0px;
+    padding: 0px 2px 0px;
     margin: 0;
     float: left;
 }

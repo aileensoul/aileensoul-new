@@ -54,19 +54,19 @@
     border: none;
 }*/
 select.day:focus {
-    border: 1px solid #1b8ab9 !important;
+    border-bottom: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
 }
 select.month:focus {
-    border: 1px solid #1b8ab9 !important;
+    border-bottom: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
 }
 select.year:focus {
-    border: 1px solid #1b8ab9 !important;
+    border-bottom: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
 }
 .common-form select:focus {
-    border: 1px solid #1b8ab9 !important;
+    border-bottom: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
 }
 .common-form textarea:focus {

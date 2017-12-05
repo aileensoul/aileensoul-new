@@ -198,7 +198,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             }
             /* label underline focus color */
             .form-group input[type=text]:focus {
-                border-bottom: 1px solid #1b8ab9;
+                border-bottom: 1px solid #1b8ab9 !important;
                 color: #1b8ab9!important;
 
             }
