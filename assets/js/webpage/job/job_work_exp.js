@@ -66,9 +66,9 @@ $(document).ready(function () {
             },
 
         },
-        groups: {
-            expyear: "experience_year[] experience_month[]"
-        },
+//        groups: {
+//            expyear: "experience_year[] experience_month[]"
+//        },
         messages: {
 
             'jobtitle[]': {
