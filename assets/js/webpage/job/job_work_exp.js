@@ -66,6 +66,9 @@ $(document).ready(function () {
             },
 
         },
+        groups: {
+            expyear: " 'experience_year[]' 'experience_month[]'"
+        },
         messages: {
 
             'jobtitle[]': {
@@ -78,11 +81,11 @@ $(document).ready(function () {
             },
             'experience_year[]': {
 
-                required: "Experience year is required.",
+                required: "Experience is required.",
             },
             'experience_month[]': {
 
-                required: "Experience month is required.",
+                required: "Experience is required.",
             },
             'companyemail[]': {
 
