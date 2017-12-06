@@ -174,6 +174,7 @@
                                             <div for="smily" class="smily_b">
                                                 <div><a class="smil" href="#" id="notificationLink1"><i class="em em-blush"></i></a></div>
                                             </div>
+                                            <button class="btn btn-warning btn-flat ng-pristine ng-valid ng-touched" data-widget="" ngf-select="" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
                                         </form>
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning btn-sm main_send" ng-click="sendMsg()" id="submit">Send</button>
@@ -329,6 +330,157 @@
                                 $scope.isMsgBoxEmpty = true;
                             }
                         }
+
+                        // ====================================== Image Sending Code ==============================
+                        $scope.$watch('imageFiles', function () {
+                            $scope.sendImage($scope.imageFiles);
+                        });
+
+                        //  opens the sent image on gallery_icon click
+                        /*$scope.openClickImage = function (msg) {
+                            if (!msg.ownMsg) {
+                                $http.post($rootScope.baseUrl + "/v1/getfile", msg).success(function (response) {
+                                    if (!response.isExpired) {
+                                        msg.showme = false;
+                                        msg.serverfilename = msg.serverfilename;
+                                    } else {
+                                        var html = '<p id="alert">' + response.expmsg + '</p>';
+                                        if ($(".chat-box").has("p").length < 1) {
+                                            $(html).hide().prependTo(".chat-box").fadeIn(1500);
+                                            $('#alert').delay(1000).fadeOut('slow', function () {
+                                                $('#alert').remove();
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        }; */
+
+                        // recieving new image message
+                        /*$socket.on("new message image", function (data) {
+                            $scope.showme = true;
+                            if (data.username == $rootScope.username) {
+                                data.ownMsg = true;
+                                data.dwimgsrc = "app/images/spin.gif";
+                            } else {
+                                data.ownMsg = false;
+                            }
+                            if ((data.username == $rootScope.username) && data.repeatMsg) {
+                                checkMessegesImage(data);
+                            } else {
+                                $scope.messeges.push(data);
+                            }
+                        });
+                        */
+                        // replacing spinning wheel in sender message after image message delivered to everyone.
+                        function checkMessegesImage(msg) {
+                            for (var i = ($scope.messeges.length - 1); i >= 0; i--) {
+                                if ($scope.messeges[i].hasFile) {
+                                    if ($scope.messeges[i].istype === "image") {
+                                        if ($scope.messeges[i].dwid === msg.dwid) {
+                                            $scope.messeges[i].showme = false;
+                                            $scope.messeges[i].filename = msg.filename;
+                                            $scope.messeges[i].size = msg.size;
+                                            $scope.messeges[i].imgsrc = msg.serverfilename;
+                                            $scope.messeges[i].serverfilename = msg.serverfilename;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            ;
+                        }
+
+                        // validate file type to image function
+                       /* $scope.validateImage = function (file) {
+                            var filetype = file.type.substring(0, file.type.indexOf('/'));
+                            if (filetype == "image") {
+                                return true;
+                            } else {
+                                var html = '<p id="alert">Select Images.</p>';
+                                if ($(".chat-box").has("p").length < 1) {
+                                    $(html).hide().prependTo(".chat-box").fadeIn(1500);
+                                    $('#alert').delay(1000).fadeOut('slow', function () {
+                                        $('#alert').remove();
+                                    });
+                                }
+                                return false;
+                            }
+                        } */
+
+                        // download image if it exists on server else return error message
+                        /*$scope.downloadImage = function (ev, elem) {
+                            var search_id = elem.id;
+                            for (var i = ($scope.messeges.length - 1); i >= 0; i--) {
+                                if ($scope.messeges[i].hasFile) {
+                                    if ($scope.messeges[i].istype === "image") {
+                                        if ($scope.messeges[i].dwid === search_id) {
+                                            $http.post($rootScope.baseUrl + "/v1/getfile", $scope.messeges[i]).success(function (response) {
+                                                if (!response.isExpired) {
+                                                    var linkID = "#" + search_id + "A";
+                                                    $(linkID).find('i').click();
+                                                    return true;
+                                                } else {
+                                                    var html = '<p id="alert">' + response.expmsg + '</p>';
+                                                    if ($(".chat-box").has("p").length < 1) {
+                                                        $(html).hide().prependTo(".chat-box").fadeIn(1500);
+                                                        $('#alert').delay(1000).fadeOut('slow', function () {
+                                                            $('#alert').remove();
+                                                        });
+                                                    }
+                                                    return false;
+                                                }
+                                            });
+                                            break;
+                                        }
+                                    }
+                                }
+                            };
+                        }
+                        */
+                        // sending new images function
+                        /*$scope.sendImage = function (files) {
+                            if (files && files.length) {
+                                $scope.isFileSelected = true;
+                                for (var i = 0; i < files.length; i++) {
+                                    var file = files[i];
+                                    var dateString = formatAMPM(new Date());
+                                    var DWid = $rootScope.username + "dwid" + Date.now();
+                                    var image = {
+                                        username: $rootScope.username,
+                                        userAvatar: $rootScope.userAvatar,
+                                        hasFile: $scope.isFileSelected,
+                                        isImageFile: true,
+                                        istype: "image",
+                                        showme: true,
+                                        dwimgsrc: "app/images/gallery_icon5.png",
+                                        dwid: DWid,
+                                        msgTime: dateString
+                                    };
+                                    $socket.emit('send-message', image, function (data) {       // sending new image message via socket    
+                                    });
+                                    var fd = new FormData();
+                                    fd.append('file', file);
+                                    fd.append('username', $rootScope.username);
+                                    fd.append('userAvatar', $rootScope.userAvatar);
+                                    fd.append('hasFile', $scope.isFileSelected);
+                                    fd.append('isImageFile', true);
+                                    fd.append('istype', "image");
+                                    fd.append('showme', true);
+                                    fd.append('dwimgsrc', "app/images/gallery_icon5.png");
+                                    fd.append('dwid', DWid);
+                                    fd.append('msgTime', dateString);
+                                    fd.append('filename', file.name);
+                                    $http.post($rootScope.baseUrl + "/v1/uploadImage", fd, {
+                                        transformRequest: angular.identity,
+                                        headers: {'Content-Type': undefined}
+                                    }).then(function (response) {
+                                    });
+
+                                }
+                            }
+                        };
+                        */
 
                         // SOCKET ON
 
