@@ -713,6 +713,21 @@ label.error {
 	padding: 4px 7px;
 	border-radius: 100%;
 }
+.cust-modal-close{    height: 26px !important;
+    width: 26px !important;
+    background: #1b8ab9 !important;
+    color: #fff !important;
+    font-size: 19px !important;
+    border: 1px solid #1b8ab9 !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: -12px !important;
+    right: -12px !important;
+    line-height: 22px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    z-index: 7 !important;
+    padding: 2px 3px;}
 .modal.message-box .modal-body {
     text-align: center;
 }

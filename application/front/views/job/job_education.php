@@ -666,7 +666,7 @@
                                               <?php
                                                 if ($edu_certificate1) {
                                                    ?>
-                                          <div class="img_work_exp" style=" margin-top: 14px;" >
+                                          <div class="img_work_exp fl"  >
                                                    <?php
                                                    $ext = explode('.',$edu_certificate1);
                                                    if($ext[1] == 'pdf')
@@ -681,7 +681,7 @@
                                                     ?>
 
                                                     
-                                               <img class="fl" src="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $edu_certificate1 ?>" style="width:100px;height:100px;" class="job_education_certificate_img">
+                                               <img class="" src="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $edu_certificate1 ?>" style="width:100px;height:100px;" class="job_education_certificate_img">
                                              <?php
                                                 }//else end
                                                 ?>
@@ -697,7 +697,10 @@
                                            <div style="float: left;" id="graduation_certi">
                                                 <div class="hs-submit full-width fl">
                                               
-                                                   <input  type="button" class="datad_delete"   value="" onClick="delete_graduation('<?php echo $jobgrad[$x]['job_graduation_id']; ?>','<?php echo $edu_certificate1; ?>')">
+                                               
+
+                                                   <button type="button" class="cust-modal-close datad_delete" onClick="delete_graduation('<?php echo $jobgrad[$x]['job_graduation_id']; ?>','<?php echo $edu_certificate1; ?>')" data-dismiss="modal">×</button>
+
                                                 </div>
                                              </div>
 
