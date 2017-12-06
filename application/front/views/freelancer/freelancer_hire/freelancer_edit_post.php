@@ -35,7 +35,7 @@
                                 ?>
                             </div>
                             <div class="common-form custom-form">
-                                <h3 class=""><?php echo $this->lang->line("edit_project"); ?></h3>
+                                <h3 class="col-chang"><?php echo $this->lang->line("edit_project"); ?></h3>
                                 <?php echo form_open(base_url('freelancer/freelancer_edit_post_insert/' . $freelancerpostdata[0]['post_id']), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit')); ?>
 
                                 <div class="custom-add-box">

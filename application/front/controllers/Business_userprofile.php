@@ -982,7 +982,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     </a>
 </div>
 
-<div class="art-all-comment col-md-12">
+<div class="art-all-comment col-md-12" style="display:none">
     <div id="fourcomment' . $row['business_profile_post_id'] . '" style="display:none;">
     </div>
     <div  id="threecomment' . $row['business_profile_post_id'] . '" style="display:block">

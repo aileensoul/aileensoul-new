@@ -6,9 +6,10 @@
         <title>Chat | Aileensoul</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
-        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+        <!--        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+                <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">-->
         <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
@@ -23,6 +24,48 @@
             .msg-time{float: right; padding-left: 10px; font-size: 11px; vertical-align: bottom; line-height: 1;
                       padding-top: 10px; opacity: 0.5;}
             </style>
+<!--            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.css">
+            <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojipicker.js"></script>
+
+             Emoji Data 
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.tw.css">
+            <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojis.js"></script>-->
+
+<!--            <script type="text/javascript">
+                $(document).ready(function (e) {
+
+                    $('#input-default').emojiPicker();
+                    $('#input-custom-size').emojiPicker({
+                        width: '300px',
+                        height: '200px'
+                    });
+                    $('#input-left-position').emojiPicker({
+                        position: 'left'
+                    });
+                    $('#create').click(function (e) {
+                        e.preventDefault();
+                        $('#text-custom-trigger').emojiPicker({
+                            width: '300px',
+                            height: '200px',
+                            button: false
+                        });
+                    });
+                    $('#toggle').click(function (e) {
+                        e.preventDefault();
+                        $('#text-custom-trigger').emojiPicker('toggle');
+                    });
+                    $('#destroy').click(function (e) {
+                        e.preventDefault();
+                        $('#text-custom-trigger').emojiPicker('destroy');
+                    })
+
+                    // keyup event is fired
+                    $(".emojiable-question, .emojiable-option").on("keyup", function () {
+                        //console.log("emoji added, input val() is: " + $(this).val());
+                    });
+                });
+            </script>-->
+
         <body ng-app="messageApp" ng-controller="messageController">
             <?php echo $header; ?>
             <?php echo $business_header2_border; ?>
@@ -77,7 +120,7 @@
                             </a>
                             <div class="chat_drop">
                                 <a onclick="myFunction()" class="chatdropbtn fr"> 
-                                    <img src="<?php base_url() ?>assets/img/t_dot.png" onclick="myFunction()">
+                                    <img src="<?php base_url('assets/img/t_dot.png') ?>" onclick="myFunction()">
                                 </a>
                                 <div id="mychat_dropdown" class="chatdropdown-content">
                                     <a href="javascript:void(0);" onclick="delete_history()">
@@ -87,71 +130,39 @@
                             </div>
                         </div>
                         <div class="chat-history" id="chat-history" scroll="user_chat">
-                            <!-- <ul id="received" class="padding_less_right">
-                                                                <div class="userchat_repeat" ng-repeat="chat in user_chat">
-                                                                    <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
-                                                                        <div class="message-data align-right">    
-                                                                            <span class="message-data-time">{{chat.timestamp * 1000| date : "EEEE, dd MMMM yyyy"}}</span>
-                                                                        </div>   
-                                                                        <div class="msg_right"> 
-                                                                            <div class="messagedelete fl">
-                                                                                <a href="javascript:void(0);">
-                                                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="message other-message float-right">{{chat.message| htmlToPlaintext}}<span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
-                                                                            <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>"></div>
-                                                                            <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
-                                                                        </div>
-                                                                    </li> 
-                                                                    <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $business_login_profile_id ?>'"> 
-                                                                        <div class="message-data">
-                                                                            <span class="message-data-time">{{chat.timestamp * 1000| date : "EEEE, dd MMMM yyyy"}}</span></span> 
-                                                                        </div>    
-                                                                        <div class="msg_left_data"> 
-                                                                            <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{chat.company_name}}"></div>
-                                                                            <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
-                                                                            <div class="message my-message">{{chat.message}}<span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
-                                                                            <div class="messagedelete"> 
-                                                                                <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </div>
-                            </ul>-->
-                            <ul id="received" class="padding_less_right" ng-repeat="(key, value) in user_chat | groupBy: 'date'">
-                                <div class="message-data align-right">    
-                                    <span class="message-data-time">{{key}}</span>
-                                </div>
-                                <div ng-repeat="chat in value"> 
-                                    <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
-                                        <div class="msg_right"> 
-                                            <div class="messagedelete fl">
-                                                <a href="javascript:void(0);">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </a>
+                            <div id="<?php echo $business_login_slug ?>-{{business_slug}}" class="user_message_div">
+                                <ul id="received" class="padding_less_right received" ng-repeat="(key, value) in user_chat | groupBy: 'date'">
+                                    <div class="message-data align-right">    
+                                        <span class="message-data-time">{{key}}</span>
+                                    </div>
+                                    <div ng-repeat="chat in value"> 
+                                        <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
+                                            <div class="msg_right"> 
+                                                <div class="messagedelete fl">
+                                                    <a href="javascript:void(0);">
+                                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="message other-message float-right" ng-bind-html="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                                <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>"></div>
+                                                <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
                                             </div>
-                                            <div class="message other-message float-right" ng-bind-html="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
-                                            <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>"></div>
-                                            <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
-                                        </div>
-                                    </li> 
-                                    <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $business_login_profile_id ?>'"> 
-                                        <div class="msg_left_data"> 
-                                            <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{chat.company_name}}"></div>
-                                            <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
-                                            <div class="message my-message" ng-bind-html="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
-                                            <div class="messagedelete"> 
-                                                <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </a>
+                                        </li> 
+                                        <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $business_login_profile_id ?>'"> 
+                                            <div class="msg_left_data"> 
+                                                <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{chat.company_name}}"></div>
+                                                <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
+                                                <div class="message my-message" ng-bind-html="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                                <div class="messagedelete"> 
+                                                    <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                </div>
+                                        </li>
+                                    </div>
 
-                            </ul>
-
+                                </ul>
+                            </div>
                         </div>
                         <div class="panel-footer">
                             <div class="">
@@ -161,13 +172,9 @@
                                             <div class="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>
                                             <!--<div class="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>-->
                                             <div for="smily" class="smily_b">
-                                                <div>
-                                                    <a class="smil" href="#" id="notificationLink1">
-                                                        <i class="em em-blush"></i>
-                                                    </a>
-
-                                                </div>
+                                                <div><a class="smil" href="#" id="notificationLink1"><i class="em em-blush"></i></a></div>
                                             </div>
+                                            <button class="btn btn-warning btn-flat ng-pristine ng-valid ng-touched" data-widget="" ngf-select="" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
                                         </form>
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning btn-sm main_send" ng-click="sendMsg()" id="submit">Send</button>
@@ -190,28 +197,13 @@
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-                    var messageApp = angular.module('messageApp', ['angular.filter','ngSanitize']);
+                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize']);
                     messageApp.filter('htmlToPlaintext', function () {
                         return function (text) {
                             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
                         };
                     });
                     //messageApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
-                    messageApp.directive('schrollBottom', function () {		// custom directive for scrolling bottom on new message load
-                        return {
-                            scope: {
-                                schrollBottom: "="
-                            },
-                            link: function (scope, element) {
-                                scope.$watchCollection('schrollBottom', function (newValue) {
-                                    if (newValue)
-                                    {
-                                        $(element).scrollTop($(element)[0].scrollHeight);
-                                    }
-                                });
-                            }
-                        }
-                    });
                     // AUTO SCROLL MESSAGE DIV FIRST TIME START
                     messageApp.directive('scroll', function ($timeout) {
                         return {
@@ -254,6 +246,8 @@
                     });
                     messageApp.controller('messageController', function ($scope, $http) {
                         // Varialbles Initialization.
+                        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
+
                         $scope.isMsgBoxEmpty = false;
                         $scope.isFileSelected = false;
                         $scope.isMsg = false;
@@ -304,18 +298,19 @@
                                         $scope.company_name = data.company_name;
                                         $scope.industriyal = data.industriyal;
                                         $scope.other_industrial = data.other_industrial;
+                                        $scope.business_slug = data.business_slug;
                                         $scope.user_chat = data.chat;
                                     });
                         }
 
                         // sending text message function
                         $scope.sendMsg = function () {
+                            $scope.current = window.location.pathname.split("/").pop();
                             var message = $('#message').html();
-                            message = message.replace(/^(<br\s*\/?>)+/,'');
+                            message = message.replace(/^(<br\s*\/?>)+/, '');
                             if (message) {
                                 $scope.isFileSelected = false;
                                 $scope.isMsg = true;
-
                                 $http({
                                     method: 'POST',
                                     url: base_url + 'message/businessMessageInsert',
@@ -324,16 +319,182 @@
                                 })
                                         .success(function (data) {
                                             if (data.result != 'fail') {
-                                                $scope.user_chat.push({message: data.message, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date});
-                                                //$scope.user_chat = data.chat;
-                                                $('#message').html('');
-                                                $scope.setFocus = true;
+                                                // GET SOCKET USER LIST START
+                                                socket.emit('getBusinessChatUserList', {
+                                                    message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
+                                                });
+                                                // GET SOCKET USER LIST END    
                                             }
                                         });
                             } else {
                                 $scope.isMsgBoxEmpty = true;
                             }
                         }
+
+                        // ====================================== Image Sending Code ==============================
+                        $scope.$watch('imageFiles', function () {
+                            $scope.sendImage($scope.imageFiles);
+                        });
+
+                        //  opens the sent image on gallery_icon click
+                        /*$scope.openClickImage = function (msg) {
+                            if (!msg.ownMsg) {
+                                $http.post($rootScope.baseUrl + "/v1/getfile", msg).success(function (response) {
+                                    if (!response.isExpired) {
+                                        msg.showme = false;
+                                        msg.serverfilename = msg.serverfilename;
+                                    } else {
+                                        var html = '<p id="alert">' + response.expmsg + '</p>';
+                                        if ($(".chat-box").has("p").length < 1) {
+                                            $(html).hide().prependTo(".chat-box").fadeIn(1500);
+                                            $('#alert').delay(1000).fadeOut('slow', function () {
+                                                $('#alert').remove();
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        }; */
+
+                        // recieving new image message
+                        /*$socket.on("new message image", function (data) {
+                            $scope.showme = true;
+                            if (data.username == $rootScope.username) {
+                                data.ownMsg = true;
+                                data.dwimgsrc = "app/images/spin.gif";
+                            } else {
+                                data.ownMsg = false;
+                            }
+                            if ((data.username == $rootScope.username) && data.repeatMsg) {
+                                checkMessegesImage(data);
+                            } else {
+                                $scope.messeges.push(data);
+                            }
+                        });
+                        */
+                        // replacing spinning wheel in sender message after image message delivered to everyone.
+                        function checkMessegesImage(msg) {
+                            for (var i = ($scope.messeges.length - 1); i >= 0; i--) {
+                                if ($scope.messeges[i].hasFile) {
+                                    if ($scope.messeges[i].istype === "image") {
+                                        if ($scope.messeges[i].dwid === msg.dwid) {
+                                            $scope.messeges[i].showme = false;
+                                            $scope.messeges[i].filename = msg.filename;
+                                            $scope.messeges[i].size = msg.size;
+                                            $scope.messeges[i].imgsrc = msg.serverfilename;
+                                            $scope.messeges[i].serverfilename = msg.serverfilename;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            ;
+                        }
+
+                        // validate file type to image function
+                       /* $scope.validateImage = function (file) {
+                            var filetype = file.type.substring(0, file.type.indexOf('/'));
+                            if (filetype == "image") {
+                                return true;
+                            } else {
+                                var html = '<p id="alert">Select Images.</p>';
+                                if ($(".chat-box").has("p").length < 1) {
+                                    $(html).hide().prependTo(".chat-box").fadeIn(1500);
+                                    $('#alert').delay(1000).fadeOut('slow', function () {
+                                        $('#alert').remove();
+                                    });
+                                }
+                                return false;
+                            }
+                        } */
+
+                        // download image if it exists on server else return error message
+                        /*$scope.downloadImage = function (ev, elem) {
+                            var search_id = elem.id;
+                            for (var i = ($scope.messeges.length - 1); i >= 0; i--) {
+                                if ($scope.messeges[i].hasFile) {
+                                    if ($scope.messeges[i].istype === "image") {
+                                        if ($scope.messeges[i].dwid === search_id) {
+                                            $http.post($rootScope.baseUrl + "/v1/getfile", $scope.messeges[i]).success(function (response) {
+                                                if (!response.isExpired) {
+                                                    var linkID = "#" + search_id + "A";
+                                                    $(linkID).find('i').click();
+                                                    return true;
+                                                } else {
+                                                    var html = '<p id="alert">' + response.expmsg + '</p>';
+                                                    if ($(".chat-box").has("p").length < 1) {
+                                                        $(html).hide().prependTo(".chat-box").fadeIn(1500);
+                                                        $('#alert').delay(1000).fadeOut('slow', function () {
+                                                            $('#alert').remove();
+                                                        });
+                                                    }
+                                                    return false;
+                                                }
+                                            });
+                                            break;
+                                        }
+                                    }
+                                }
+                            };
+                        }
+                        */
+                        // sending new images function
+                        /*$scope.sendImage = function (files) {
+                            if (files && files.length) {
+                                $scope.isFileSelected = true;
+                                for (var i = 0; i < files.length; i++) {
+                                    var file = files[i];
+                                    var dateString = formatAMPM(new Date());
+                                    var DWid = $rootScope.username + "dwid" + Date.now();
+                                    var image = {
+                                        username: $rootScope.username,
+                                        userAvatar: $rootScope.userAvatar,
+                                        hasFile: $scope.isFileSelected,
+                                        isImageFile: true,
+                                        istype: "image",
+                                        showme: true,
+                                        dwimgsrc: "app/images/gallery_icon5.png",
+                                        dwid: DWid,
+                                        msgTime: dateString
+                                    };
+                                    $socket.emit('send-message', image, function (data) {       // sending new image message via socket    
+                                    });
+                                    var fd = new FormData();
+                                    fd.append('file', file);
+                                    fd.append('username', $rootScope.username);
+                                    fd.append('userAvatar', $rootScope.userAvatar);
+                                    fd.append('hasFile', $scope.isFileSelected);
+                                    fd.append('isImageFile', true);
+                                    fd.append('istype', "image");
+                                    fd.append('showme', true);
+                                    fd.append('dwimgsrc', "app/images/gallery_icon5.png");
+                                    fd.append('dwid', DWid);
+                                    fd.append('msgTime', dateString);
+                                    fd.append('filename', file.name);
+                                    $http.post($rootScope.baseUrl + "/v1/uploadImage", fd, {
+                                        transformRequest: angular.identity,
+                                        headers: {'Content-Type': undefined}
+                                    }).then(function (response) {
+                                    });
+
+                                }
+                            }
+                        };
+                        */
+
+                        // SOCKET ON
+
+                        socket.on('getBusinessChatUserList', function (data) {
+                            var chat_length = $scope.user_chat.length;
+                            if (chat_length == 0) {
+                                $scope.user_chat = [];
+                            }
+                            load_message_user();
+                            getUserMessage($scope.current);
+                            $('#message').html('');
+                            $scope.setFocus = true;
+                        });
+
                     });
         </script>
     </body>

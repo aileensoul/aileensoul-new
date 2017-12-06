@@ -2967,10 +2967,10 @@ label.cameraButton:active {
     padding-top: 2px;
 }
 .custom_footer_left {
-    padding: 5px;
+    /*padding: 5px;*/
     background: white;
     border: 1px solid #d9d9d9;
-    padding: 8px;
+    /*padding: 8px;*/
     border-radius: 2px;
 }
 
@@ -4187,6 +4187,7 @@ div .comment {
 .multi-select-container span.custom-mini-select{color:#999;}
 .post-design-product .ctre_date::before {content: ".";}
 #paddingtop_fixed label.optional-custom{margin-top: 8px;} 
+.post-design-box .post-design-desc a.content_link{color: #1b8ab9;}
 .post-design-box .post-design-desc a.content_link:hover{color: #1b8ab9;text-decoration:underline; }
 
 .manage-post-custom .left_side_posrt{position:relative;}
