@@ -49,7 +49,7 @@
                                     ?>
                                 </div>
                                 <div class="common-form custom-form">
-                                    <h3><?php echo $this->lang->line("project_post"); ?></h3>
+                                    <h3 class="col-chang"><?php echo $this->lang->line("project_post"); ?></h3>
 
                                     <div class="job-saved-box">
 

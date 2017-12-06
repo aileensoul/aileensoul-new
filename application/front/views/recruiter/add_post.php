@@ -46,7 +46,7 @@
                             </div> 
 
                             <div class="common-form custom-form">
-                                <h3>Add New Job Post</h3>
+                                <h3 class="col-chang">Add New Job Post</h3>
 
                                 <div class="job-saved-box">
 

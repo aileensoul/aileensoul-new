@@ -157,8 +157,8 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/yatinbelani.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/yatinbelani.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Yatin Belani</h4>
@@ -167,8 +167,8 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/Shashvat.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/Shashvat.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Shashwat Barbhaya</h4>
@@ -177,8 +177,8 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/himanshuSadadiya.jpeg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/himanshuSadadiya.jpeg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Himanshu Sadadiya</h4>
@@ -187,8 +187,8 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/AnkitMakadiya.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/AnkitMakadiya.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Ankit Makadiya</h4>
@@ -197,8 +197,8 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/KhyatiRaval.jpeg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/KhyatiRaval.jpeg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Khyati Raval </h4>
@@ -207,8 +207,8 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/nikunj.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/nikunj.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Nikunj Bhalodiya </h4>
@@ -217,8 +217,8 @@
                              </li>
 
                                 <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/Harshad.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/Harshad.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Harshad Patoliya</h4>
@@ -227,8 +227,8 @@
                              </li>
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/PRASHANT.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/PRASHANT.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Prashant Dadhaniya</h4>
@@ -237,8 +237,8 @@
                              </li>
 
                                 <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/JayPatel.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/JayPatel.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Jay Patel</h4>
@@ -247,8 +247,8 @@
                              </li>
 
                                 <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/PallaviPanalia.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/PallaviPanalia.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Pallavi Panaliya</h4>
@@ -263,8 +263,8 @@
 
                               <ul class="">
                             <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/Dhaval12.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/Dhaval12.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Dhaval Shah</h4>
@@ -274,8 +274,8 @@
 
 
                              <li class="img-custom">
-                                <div class="team-1">
-                                    <img src="assets/img/FalguniTank.jpg" oncontextmenu="return false;">
+                                <div class="team-1" oncontextmenu="return false;">
+                                    <img src="assets/img/FalguniTank.jpg" >
                                 </div>
                                  <div class="text-custom">
                                     <h4>Falguni Tank</h4>

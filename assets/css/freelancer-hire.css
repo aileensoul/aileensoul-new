@@ -1468,7 +1468,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .add-post-textarea{height:188px; resize: none; overflow: auto;}
 /*** new add form design  ***/
-.custom-form h3{background:none; color:#1b8ab9; font-size:25px; font-weight:bold; text-align:center;}
+.custom-form h3{background:none; color:#1b8ab9; font-size:25px; font-weight:normal; text-align:center;}
 .custom-form .form_addedit{border:none !important; background:none;}
 .custom-add-box{width:100%; float:left; border:1px solid #d9d9d9; border-radius:4px; background:#fff; margin-bottom:20px;}
 .custom-add-box h3{border:0px solid #000; border-bottom:1px solid #d9d9d9; font-size:20px;}
@@ -1579,7 +1579,7 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
 
  .profile-job-details ul li .post_title a{font-weight: bold;display: inline-block;cursor: pointer;}   
 .register_disable{pointer-events: none;}
-
+.col-chang{color: #5c5c5c !important;}
 
 /***  media query  ***/
 @media screen and (max-width: 1279px) {

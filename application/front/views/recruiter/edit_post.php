@@ -32,7 +32,7 @@
                         <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
 
                             <div class="common-form custom-form">
-								<h3 class="">Edit Job Post</h3>
+								<h3 class="col-chang">Edit Job Post</h3>
 								
 								<div class="job-saved-box">
                                 
