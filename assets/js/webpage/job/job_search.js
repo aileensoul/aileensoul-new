@@ -120,10 +120,10 @@ function applypopup(postid, userid) {
            type: 'POST',
            url: base_url +'job/job_apply_post',         
            data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-           datatype: 'json',
+           dataType: 'json',
            success: function (data) {
                $('.savedpost' + abc).hide();
-               $('.applypost' + abc).html(data);
+               $('.applypost' + abc).html(data.status);
                $('.applypost' + abc).attr('disabled', 'disabled');
                $('.applypost' + abc).attr('onclick', 'myFunction()');
                $('.applypost' + abc).addClass('applied');
