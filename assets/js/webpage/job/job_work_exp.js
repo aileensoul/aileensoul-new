@@ -662,7 +662,7 @@ $('#btnAdd').click(function () {
     $('#btnRemove').removeAttr('disabled', 'disabled');
     $('#input' + newNum + ' .experience_year').val('');
     $('#input' + newNum + ' .experience_month').val('');
-    $('#input' + newNum + ' .experience_month').attr("disabled", "disabled");
+   // $('#input' + newNum + ' .experience_month').attr("disabled", "disabled");
     $('#input' + newNum + ' .certificate').val('');
 
     $('#input' + newNum + ' .hs-submit').remove();
