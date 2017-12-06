@@ -2313,6 +2313,7 @@ margin-bottom: 15px;}
 
 #jobseeker_regform1 .experience_year + .error{top:60px;}
 .img_work_exp{padding-bottom: 10px;}
+#work_certi .hs-submit{position: relative;}
 #graduation_certi{position: relative;}
 #graduation_certi .modal-close{top:-20px;right: -11px;}
 #experience_month2-error{display: none !important;}
