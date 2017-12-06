@@ -4461,7 +4461,7 @@ div .comment {
 .profile-job-post-location-name .user_lst ul li #followdiv button{margin-left: 10px;}
 .profile-job-post-location-name .user_lst ul li .contact_user_list{margin-left: 0px;}
 .art-all-comment .comment-name {padding: 2px 0;}
-
+.post-design-box .post-design-desc a.content_link{color: #1b8ab9;}
 .post-design-box .post-design-desc a.content_link:hover{color: #1b8ab9;text-decoration:underline; }
 /***  all edit profile form  ***/
 .all-edit-profile-box{width:730px; margin:0 auto;}
@@ -4508,16 +4508,16 @@ body.reg-form{background: #fff}
 .user-list .mian_middle_post_box h3{color: #5c5c5c;}
 
 /*Loader in rdit profile*/
-.loader,
-.loader:before,
-.loader:after {
+.loader-cust,
+.loader-cust:before,
+.loader-cust:after {
   background: #ffffff;
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 1em;
 }
-.loader {
+.loader-cust {
   color: #ffffff;
   text-indent: -9999em;
   margin: 0 auto;
@@ -4531,18 +4531,18 @@ body.reg-form{background: #fff}
   right: 30px;
   top:44px;
 }
-.loader:before,
-.loader:after {
+.loader-cust:before,
+.loader-cust:after {
   position: absolute;
   top: 0;
   content: '';
 }
-.loader:before {
+.loader-cust:before {
   left: -1.5em;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
-.loader:after {
+.loader-cust:after {
   left: 1.5em;
 }
 @-webkit-keyframes load1 {
