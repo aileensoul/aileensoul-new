@@ -1981,7 +1981,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .ui-autocomplete {
     outline: none;
-    max-width: 600px!important;
+    max-width: 300px!important;
     z-index: 9999 !important;
     width: 100%
 }
@@ -2312,8 +2312,13 @@ margin-bottom: 15px;}
 }
 
 #jobseeker_regform1 .experience_year + .error{top:60px;}
-
-
+.img_work_exp{padding-bottom: 10px;}
+#graduation_certi{position: relative;}
+#graduation_certi .modal-close{top:-20px;right: -11px;}
+#experience_month2-error{display: none !important;}
+#experience_month3-error{display: none !important;}
+#experience_month4-error{display: none !important;}
+#experience_month5-error{display: none !important;}
 
 /***  media query  ***/
 @media screen and (min-width: 768px) {
