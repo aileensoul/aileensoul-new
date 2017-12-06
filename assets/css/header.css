@@ -2218,8 +2218,9 @@ footer ul li a:hover{
     text-decoration:underline;
 }
 .cover button.modal-close:hover{background: #156f95 !important;}
-    
-
+.cus-full1{padding: 0 18px !important;}
+.cus-full2{padding: 0 42px !important;}
+.cus-full3{padding: 0 96px !important;}
 /***  media query  ***/
 
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
