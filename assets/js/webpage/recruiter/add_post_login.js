@@ -349,7 +349,7 @@ $(document).ready(function () {
 
                 required: true,
                 regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                minlength: 10,
+//                minlength: 10,
                 maxlength: 100
 
             },

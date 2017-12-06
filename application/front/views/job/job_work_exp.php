@@ -226,7 +226,7 @@
                                                          ?>"  maxlength="15" />&nbsp;&nbsp;&nbsp; <span id="companyphn-error"> </span>
                                                       <?php echo form_error('companyphn[]'); ?>
                                                       <label style="  display: block;">Experience Certificate:</label>
-                                                      <input style="width:100%;  margin-bottom: 50px; display: inline-block;" type="file" name="certificate[]" id="certificate" tabindex="6" class="certificate fl" placeholder="CERTIFICATE"  tabindex="7" />
+                                                      <input style="width:100%;  margin-bottom: 30px; display: inline-block;" type="file" name="certificate[]" id="certificate" tabindex="6" class="certificate fl" placeholder="CERTIFICATE"  tabindex="7" />
                                                       <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
                                                       &nbsp;&nbsp;&nbsp; 
                                                       <?php
