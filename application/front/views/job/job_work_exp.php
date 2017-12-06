@@ -259,7 +259,7 @@
                                                       <div style="float: left;" id="work_certi">
                                                          <div class="hs-submit full-width fl">
                                                            
-                                                            <button type="button" class="modal-close delete_graduation"  onClick="delete_workexp('<?php echo $workdata[$x]['work_id']; ?>','<?php echo $work_certificate1; ?>')" data-dismiss="modal">×</button>
+                                                            <button type="button" class="cust-modal-close delete_graduation"  onClick="delete_workexp('<?php echo $workdata[$x]['work_id']; ?>','<?php echo $work_certificate1; ?>')" data-dismiss="modal">×</button>
                                                          </div>
                                                       </div>
                                                       <?php

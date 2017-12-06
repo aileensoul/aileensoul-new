@@ -411,7 +411,7 @@ function expyear_change_edittime() {
     {
 
         var experience_year = document.querySelector("#input1 #experience_year").value;
-        var experience_year2 = document.querySelector("#input2 #experience_year").value;
+        var experience_year2 = document.querySelector("#input2 #experience_year2").value;
 
         if (experience_year)
         {
@@ -429,73 +429,81 @@ function expyear_change_edittime() {
 
         if (experience_year2)
         {
-            $('#input2 #experience_month').attr('disabled', false);
+            $('#input2 #experience_month2').attr('disabled', false);
             if (experience_year2 === '0 year') {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input2 #experience_month').attr('disabled', 'disabled');
+            $('#input2 #experience_month2').attr('disabled', 'disabled');
         }
     }
 
     if (num == 3)
     {
         var experience_year = document.querySelector("#input1 #experience_year").value;
-        var experience_year2 = document.querySelector("#input2 #experience_year").value;
-        var experience_year3 = document.querySelector("#input3 #experience_year").value;
+        var experience_year2 = document.querySelector("#input2 #experience_year2").value;
+        var experience_year3 = document.querySelector("#input3 #experience_year3").value;
 
         if (experience_year)
         {
+            
             $('#input1 #experience_month').attr('disabled', false);
 
             if (experience_year === '0 year') {
+               
                 $("#input1 #experience_month option[value='0 month']").attr('disabled', true);
             } else {
+               
                 $("#input1 #experience_month option[value='0 month']").attr('disabled', false);
             }
         } else
         {
+            
             $('#input1 #experience_month').attr('disabled', 'disabled');
         }
 
         if (experience_year2)
         {
-            $('#input2 #experience_month').attr('disabled', false);
+           
+            $('#input2 #experience_month2').attr('disabled', false);
 
             if (experience_year2 === '0 year') {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', true);
+                
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', false);
+                 
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input2 #experience_month').attr('disabled', 'disabled');
+           
+            $('#input2 #experience_month2').attr('disabled', 'disabled');
         }
 
         if (experience_year3)
         {
-            $('#input3 #experience_month').attr('disabled', false);
+            $('#input3 #experience_month3').attr('disabled', false);
 
             if (experience_year3 === '0 year') {
-                $("#input3 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input3 #experience_month3 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input3 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input3 #experience_month3 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input3 #experience_month').attr('disabled', 'disabled');
+            $('#input3 #experience_month3').attr('disabled', 'disabled');
         }
     }
 
     if (num == 4)
     {
         var experience_year = document.querySelector("#input1 #experience_year").value;
-        var experience_year2 = document.querySelector("#input2 #experience_year").value;
-        var experience_year3 = document.querySelector("#input3 #experience_year").value;
-        var experience_year4 = document.querySelector("#input4 #experience_year").value;
+        var experience_year2 = document.querySelector("#input2 #experience_year2").value;
+        var experience_year3 = document.querySelector("#input3 #experience_year3").value;
+        var experience_year4 = document.querySelector("#input4 #experience_year4").value;
 
         if (experience_year)
         {
@@ -513,52 +521,52 @@ function expyear_change_edittime() {
 
         if (experience_year2)
         {
-            $('#input2 #experience_month').attr('disabled', false);
+            $('#input2 #experience_month2').attr('disabled', false);
             if (experience_year2 === '0 year') {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input2 #experience_month').attr('disabled', 'disabled');
+            $('#input2 #experience_month2').attr('disabled', 'disabled');
         }
 
         if (experience_year3)
         {
-            $('#input3 #experience_month').attr('disabled', false);
+            $('#input3 #experience_month3').attr('disabled', false);
             if (experience_year3 === '0 year') {
-                $("#input3 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input3 #experience_month3 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input3 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input3 #experience_month3 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input3 #experience_month').attr('disabled', 'disabled');
+            $('#input3 #experience_month3').attr('disabled', 'disabled');
         }
 
         if (experience_year4)
         {
-            $('#input4 #experience_month').attr('disabled', false);
+            $('#input4 #experience_month4').attr('disabled', false);
 
             if (experience_year4 === '0 year') {
-                $("#input4 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input4 #experience_month4 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input4 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input4 #experience_month4 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input4 #experience_month').attr('disabled', 'disabled');
+            $('#input4 #experience_month4').attr('disabled', 'disabled');
         }
     }
 
     if (num == 5)
     {
         var experience_year = document.querySelector("#input1 #experience_year").value;
-        var experience_year2 = document.querySelector("#input2 #experience_year").value;
-        var experience_year3 = document.querySelector("#input3 #experience_year").value;
-        var experience_year4 = document.querySelector("#input4 #experience_year").value;
-        var experience_year5 = document.querySelector("#input5 #experience_year").value;
+        var experience_year2 = document.querySelector("#input2 #experience_year2").value;
+        var experience_year3 = document.querySelector("#input3 #experience_year3").value;
+        var experience_year4 = document.querySelector("#input4 #experience_year4").value;
+        var experience_year5 = document.querySelector("#input5 #experience_year5").value;
 
         if (experience_year)
         {
@@ -576,57 +584,57 @@ function expyear_change_edittime() {
 
         if (experience_year2)
         {
-            $('#input2 #experience_month').attr('disabled', false);
+            $('#input2 #experience_month2').attr('disabled', false);
 
             if (experience_year2 === '0 year') {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input2 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input2 #experience_month2 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input2 #experience_month').attr('disabled', 'disabled');
+            $('#input2 #experience_month2').attr('disabled', 'disabled');
         }
 
         if (experience_year3)
         {
-            $('#input3 #experience_month').attr('disabled', false);
+            $('#input3 #experience_month3').attr('disabled', false);
 
             if (experience_year3 === '0 year') {
-                $("#input3 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input3 #experience_month3 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input3 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input3 #experience_month3 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input3 #experience_month').attr('disabled', 'disabled');
+            $('#input3 #experience_month3').attr('disabled', 'disabled');
         }
 
         if (experience_year4)
         {
-            $('#input4 #experience_month').attr('disabled', false);
+            $('#input4 #experience_month4').attr('disabled', false);
 
             if (experience_year4 === '0 year') {
-                $("#input4 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input4 #experience_month4 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input4 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input4 #experience_month4 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input4 #experience_month').attr('disabled', 'disabled');
+            $('#input4 #experience_month4').attr('disabled', 'disabled');
         }
 
         if (experience_year5)
         {
-            $('#input5 #experience_month').attr('disabled', false);
+            $('#input5 #experience_month5').attr('disabled', false);
             if (experience_year5 === '0 year') {
-                $("#input5 #experience_month option[value='0 month']").attr('disabled', true);
+                $("#input5 #experience_month5 option[value='0 month']").attr('disabled', true);
             } else {
-                $("#input5 #experience_month option[value='0 month']").attr('disabled', false);
+                $("#input5 #experience_month5 option[value='0 month']").attr('disabled', false);
             }
         } else
         {
-            $('#input5 #experience_month').attr('disabled', 'disabled');
+            $('#input5 #experience_month5').attr('disabled', 'disabled');
         }
     }
 }
@@ -662,7 +670,7 @@ $('#btnAdd').click(function () {
     $('#btnRemove').removeAttr('disabled', 'disabled');
     $('#input' + newNum + ' .experience_year').val('');
     $('#input' + newNum + ' .experience_month').val('');
-   // $('#input' + newNum + ' .experience_month').attr("disabled", "disabled");
+    $('#input' + newNum + ' .experience_month').attr("disabled", "disabled");
     $('#input' + newNum + ' .certificate').val('');
 
     $('#input' + newNum + ' .hs-submit').remove();
