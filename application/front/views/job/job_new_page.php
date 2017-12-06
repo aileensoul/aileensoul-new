@@ -76,7 +76,7 @@
                                                         }
                                                         ?>
                                                         <div class="post-img-profile">
-                                                    <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                                                            <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                                                         </div>
                                                     </div>
                                                     <?php
@@ -90,7 +90,7 @@
                                                     <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                                 </span>
                                             </span>
-                                                    <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
+                                            <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
                                             <div class="profile-boxProfile-name">
                                                 <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>"><?php
                                                     if (ucwords($jobdata[0]['designation'])) {
@@ -104,12 +104,12 @@
                                                 <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
                                                     <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>"> Details</a>
                                                 </li>
-<?php if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'job_resume' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '' || $this->uri->segment(3) == 'live-post')) { ?>
+                                                <?php if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'job_resume' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '' || $this->uri->segment(3) == 'live-post')) { ?>
                                                     <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>">Saved </a>
                                                     </li>
                                                     <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'applied-job') { ?> class="active" <?php } ?>><a class="padding_less_right" title="Applied Job" href="<?php echo base_url('job/applied-job'); ?>">Applied </a>
                                                     </li>
-<?php } ?>
+                                                <?php } ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                                     <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                 </div>
                             </div>
-<?php echo $left_footer; ?>
+                            <?php echo $left_footer; ?>
                         </div>
                     </div>
                     <div>
@@ -198,10 +198,123 @@
                         <div class="page-title">
                             <h3>Recommended Job</h3>
                         </div>
-                        <div class="job-contact-frnd1">
+                        <?php
+                        if ($postdetail) {
+                            foreach ($postdetail as $post) {
+                                ?>
+                                <div class="all-job-box" id="applypost' . $post['app_id'] . '">
+                                    <div class="all-job-top">
+                                        <?php
+                                        $cache_time = $this->db->get_where('recruiter', array(
+                                                    'user_id' => $post['user_id']
+                                                ))->row()->comp_logo;
+                                        ?>
+                                        <div class="post-img">
+                                            <a href="#">
+                                                <?php if ($cache_time) { ?>
+                                                    <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) ?>">
+                                                <?php } else { ?> 
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
+                                                <?php } ?>
+                                            </a>
+                                        </div>
+                                        <?php
+                                        $cache_time = $this->db->get_where('job_title', array(
+                                                    'title_id' => $post['post_name']
+                                                ))->row()->name;
+                                        if ($cache_time) {
+                                            $post_name = $cache_time;
+                                        } else {
+                                            $post_name = $post['post_name'];
+                                        }
+                                        $cache_time1 = $this->db->get_where('recruiter', array(
+                                                    'user_id' => $post['user_id']
+                                                ))->row()->re_comp_name;
 
-                                
-                        </div>
+                                        $cache_time2 = $this->db->get_where('recruiter', array(
+                                                    'user_id' => $post['user_id']
+                                                ))->row()->rec_firstname;
+                                        $cache_time3 = $this->db->get_where('recruiter', array(
+                                                    'user_id' => $post['user_id']
+                                                ))->row()->rec_lastname;
+                                        ?>
+                                        <div class="job-top-detail">
+                                            <h5><a href="#"><?php echo $post_name; ?></a></h5>
+                                            <p><a href="#"><?php echo $cache_time1; ?></a></p>
+                                            <p><a href="#"><?php echo ucwords($cache_time2) . " " . ucfirst($cache_time3); ?></a></p>
+                                        </div>
+                                    </div>
+                                    <div class="all-job-middle">
+                                        <p class="pb5">
+                                            <span class="location">
+                                                <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">Ahmedabad,(India)</span>
+                                            </span>
+                                            <span class="exp">
+                                                <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+                                                    <?php
+                                                    if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
+                                                        echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " " . "(Fresher can also apply)";
+                                                        ?>
+
+                                                        <?php
+                                                    } else {
+                                                        if (($post['min_year'] != '0' || $post['max_year'] != '0')) {
+                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year';
+                                                        } else {
+                                                            echo "Fresher";
+                                                        }
+                                                    }
+                                                    ?>
+                                                    <!--3 year - 7 year (freshers can also apply)-->
+                                                </span>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <?php echo $post['post_description']; ?>
+                                        </p>
+
+                                    </div>
+                                    <div class="all-job-bottom">
+                                        <span class="job-post-date"><b>Posted on:</b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
+                                        <p class="pull-right">
+                                            <?php
+                                            $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                                            $contition_array = array(
+                                                'post_id' => $post['post_id'],
+                                                'job_delete' => '0',
+                                                'user_id' => $userid
+                                            );
+                                            $jobapply = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                                            $contition_array = array(
+                                                'user_id' => $userid,
+                                                'job_save' => '2',
+                                                'post_id ' => $post['post_id'],
+                                                'job_delete' => '1'
+                                            );
+                                            $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                            ?>
+                                            <?php if($jobsave){ ?>
+                                            <a href="javascript:void(0);" class="btn4 saved save_saved_btn">Saved</a>
+                                            <?php }else{ ?>
+                                            <a href="javascript:void(0);" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id'];?>">Save</a>
+                                            <?php } ?>
+                                            <?php if ($jobapply) { ?>
+                                                <a href="javascript:void(0);" class="btn4 button applied">Applied</a>
+                                            <?php } else { ?>
+                                                <a href="javascript:void(0);"  class= "btn4 applypost<?php echo $post['post_id']; ?>" onclick="applypopup(<?php echo $post['post_id'] . ',' . $post['user_id'] ?>)">Apply</a>
+                                            <?php } ?>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            
+                        }
+                        ?>
+
                     </div>
 
 
@@ -209,16 +322,16 @@
 
                         <div class="fw text-center">
                             <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
+                                (function () {
+                                    if (window.CHITIKA === undefined) {
+                                        window.CHITIKA = {'units': []};
+                                    }
+                                    ;
+                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                    var placement_id = window.CHITIKA.units.length;
+                                    window.CHITIKA.units.push(unit);
+                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                }());
                             </script>
                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                         </div>
@@ -235,10 +348,10 @@
                          </div>
                          <div class="gov-job-list">
                                  <ul>
-<?php foreach ($govjob_category as $gov_key => $gov_value) { ?>
-               <li>
-                 <a href="<?php echo base_url('goverment/allpostdetail/' . $gov_value['id']); ?>"><?php echo $gov_value['name'] ?></a></li>
-<?php } ?>						
+                    <?php foreach ($govjob_category as $gov_key => $gov_value) { ?>
+                                                                       <li>
+                                                                         <a href="<?php echo base_url('goverment/allpostdetail/' . $gov_value['id']); ?>"><?php echo $gov_value['name'] ?></a></li>
+                    <?php } ?>						
                                          </ul>					
                          </div>
                  </div> -->
@@ -249,16 +362,16 @@
                     <div class="tablate-add">
 
                         <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
+                                (function () {
+                                    if (window.CHITIKA === undefined) {
+                                        window.CHITIKA = {'units': []};
+                                    }
+                                    ;
+                                    var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                    var placement_id = window.CHITIKA.units.length;
+                                    window.CHITIKA.units.push(unit);
+                                    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                }());
                         </script>
                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                     </div>
@@ -277,29 +390,29 @@
                     </div>
                     <!-- Model Popup Close -->
 
-<?php echo $footer; ?>
+                    <?php echo $footer; ?>
 
 
                     <!-- script for skill textbox automatic start-->
 
-<!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());   ?>"></script>-->
+<!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());                ?>"></script>-->
 
                     <!-- script for skill textbox automatic end -->
 
                     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
                     <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
                     <!--<script type="text/javascript" src="<?php
-// echo base_url('assets/js/raphael-min.js
+                    // echo base_url('assets/js/raphael-min.js
 //?ver='.time()); 
-?>"></script>-->
+                    ?>"></script>-->
                     <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
 
                     <script>
-                                        $(".alert").delay(3200).fadeOut(300);
+                                $(".alert").delay(3200).fadeOut(300);
 
-                                        var base_url = '<?php echo base_url(); ?>';
-                                        var count_profile_value = '<?php echo $count_profile_value; ?>';
-                                        var count_profile = '<?php echo $count_profile; ?>';
+                                var base_url = '<?php echo base_url(); ?>';
+                                var count_profile_value = '<?php echo $count_profile_value; ?>';
+                                var count_profile = '<?php echo $count_profile; ?>';
                     </script>
 
                     <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/job_all_post.js?ver=' . time()); ?>"></script>

@@ -3608,271 +3608,95 @@ class Job extends MY_Controller {
 
         if (count($postdetail) > 0) {
             foreach ($postdetail1 as $post) {
-                //  foreach ($postdetaildata as $post) {
-                $return_html .= '
-                <div class="profile-job-post-detail clearfix" id="applypost' . $post['app_id'] . '">
-                <div class = "profile-job-post-title clearfix">
-                <div class = "profile-job-profile-button clearfix">
-                <div class = "profile-job-details col-md-12 col-xs-12  padding_job_rs">
-                <ul>
-                        <li class="fr date_re">
-                              Created Date :' . date('d-M-Y', strtotime($post['created_date'])) . '
-                        </li>
+                $return_html .= '<div class="all-job-box" id="applypost' . $post['app_id'] . '">
+                                    <div class="all-job-top">';
 
-                        <li>';
+                $cache_time = $this->db->get_where('recruiter', array(
+                            'user_id' => $post['user_id']
+                        ))->row()->comp_logo;
 
-                //FOR POSTTITLE CLICK URL THAT SEO WANT START
+                $return_html .= '<div class="post-img">
+                                            <a href="#">';
+                if ($cache_time) {
+                    $return_html .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '">';
+                } else {
+                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                }
+                $return_html .= '</a>
+                                        </div>';
+
                 $cache_time = $this->db->get_where('job_title', array(
                             'title_id' => $post['post_name']
                         ))->row()->name;
-
-                if ($cache_time) {
-                    $cache_time1 = $cache_time;
-                } else {
-                    $cache_time1 = $post['post_name'];
-                }
-
-                //    $text = str_replace("-", "", $cache_time1);
-                //    $text = str_replace(" ", "-", $text);
-                //    $text = $str = preg_replace('/-+/', '-', $text);
-                // echo  $text = preg_replace("/[.!$#%()]+/i", "", $text);
-                // echo  $text=strtolower($text); 
-                if ($cache_time1 != '') {
-                    $text = strtolower($this->common->clean($cache_time1));
-                } else {
-                    $text = '';
-                }
-                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-
-                //  $cityname = str_replace(" ", "-", $cache_time1);
-                // $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
-                // $cityname=strtolower($cityname);
-                if ($cityname != '') {
-                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                } else {
-                    $cityname = '';
-                }
-
-                $contition_array = array('user_id' => $post['user_id'], 're_status' => '1', 'is_delete' => '0');
-                $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-//                    $return_html .= '<a href="' . base_url('job/post-' . $post['post_id'].'/'. $text.'-vacancy-in-'.$cityname) . '" title="' . $cache_time . '" class=" post_title">';
                 if ($cache_time) {
                     $post_name = $cache_time;
                 } else {
                     $post_name = $post['post_name'];
                 }
-                $return_html .= '<a class="post_title" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '" title="' . $post_name . '">';
-
-                $return_html .= $post_name;
-
-                //FOR POSTTITLE CLICK URL THAT SEO WANT END
-
-                $return_html .= '</a></li><li>';
-                $cityname = $this->db->get_where('cities', array(
-                            'city_id' => $post['city']
-                        ))->row()->city_name;
-                $countryname = $this->db->get_where('countries', array(
-                            'country_id' => $post['country']
-                        ))->row()->country_name;
-                if ($countryname || $cityname) {
-                    $return_html .= '<div class="fr lction">
-                                 <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"></i>';
-                    if ($cityname) {
-                        $return_html .= $cityname . ', ';
-                    }
-
-                    $return_html .= $countryname . '</p></div>';
-                }
-
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
-                $return_html .= '<a class="job_companyname "  href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" title="' . $cache_time1 . '">';
-                $out = strlen($cache_time1) > 40 ? substr($cache_time1, 0, 40) . "..." : $cache_time1;
-                $return_html .= $out . '</a></li>';
-                $return_html .= '<li><a class="display_inline" title="Recruiter Name" href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
-                $cache_time = $this->db->get_where('recruiter', array(
+
+                $cache_time2 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_firstname;
-                $cache_time1 = $this->db->get_where('recruiter', array(
+                $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-                $return_html .= ucwords($cache_time) . "  " . ucwords($cache_time1) . '</a></li>';
-                $return_html .= '</ul></div></div>';
-                $return_html .= '<div class="profile-job-profile-menu">
-                                       <ul class="clearfix">
-                                          <li> <b> Skills</b> <span>';
-                $comma = ",";
-                $k = 0;
-                $aud = $post['post_skill'];
-                $aud_res = explode(',', $aud);
-                if (!$post['post_skill']) {
-                    $return_html .= $post['other_skill'];
-                } else
-                if (!$post['other_skill']) {
-                    foreach ($aud_res as $skill) {
-                        if ($k != 0) {
-                            $return_html .= $comma;
-                        }
 
-                        $cache_time = $this->db->get_where('skill', array(
-                                    'skill_id' => $skill
-                                ))->row()->skill;
-                        $return_html .= $cache_time;
-                        $k++;
-                    }
-                } else
-                if ($post['post_skill'] && $post['other_skill']) {
-                    foreach ($aud_res as $skill) {
-                        if ($k != 0) {
-                            $return_html .= $comma;
-                        }
+                $return_html .= '<div class="job-top-detail">';
+                $return_html .= '<h5><a href="#">';
+                $return_html .= $post_name;
+                $return_html .= '</a></h5>';
+                $return_html .= '<p><a href = "#">';
+                $return_html .= $cache_time1;
+                $return_html .= '</a></p>';
+                $return_html .= '<p><a href="#">';
+                $return_html .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
+                $return_html .= '</a></p>
+            </div>
+            </div>
+            <div class="all-job-middle">
+                <p class="pb5">
+                    <span class="location">';
+                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">Ahmedabad,(India)</span>
+                    </span>';
+                $return_html .= '<span class="exp">
+                        <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
 
-                        $cache_time = $this->db->get_where('skill', array(
-                                    'skill_id' => $skill
-                                ))->row()->skill;
-                        $return_html .= $cache_time;
-                        $k++;
-                    }
-
-                    $return_html .= ',' . $post['other_skill'];
-                }
-
-                $return_html .= '</span></li><li>
-                                  <b>Job Description</b>
-                              <span><p>';
-                if ($post['post_description']) {
-                    $return_html .= '<pre>' . $this->common->make_links($post['post_description']) . '</pre>';
-                } else {
-                    $return_html .= PROFILENA;
-                }
-
-                $return_html .= '</p></span></li>';
-                $return_html .= '<li><b>Interview Process</b>
-                                  <span><pre>';
-                if ($post['interview_process']) {
-                    $return_html .= $this->common->make_links($post['interview_process']);
-                } else {
-                    $return_html .= PROFILENA;
-                }
-
-                $return_html .= '</pre></span></li>';
-                $return_html .= '<li><b>Required Experience</b><span><p title="Min - Max">';
                 if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
-                    $return_html .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " , " . "Fresher can also apply.";
-                } else
-                if (($post['min_year'] != '0' || $post['max_year'] != '0')) {
-                    $return_html .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year';
+                    $return_html .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " " . "(Fresher can also apply)";
                 } else {
-                    $return_html .= "Fresher";
-                }
-
-                $return_html .= '</p></span></li>';
-                $return_html .= '<li><b>Salary</b><span title="Min - Max">';
-                $currency = $this->db->get_where('currency', array(
-                            'currency_id' => $post['post_currency']
-                        ))->row()->currency_name;
-                if ($post['min_sal'] || $post['max_sal']) {
-                    $return_html .= $post['min_sal'] . " - " . $post['max_sal'] . ' ' . $currency . ' ' . $post['salary_type'];
-                } else {
-                    $return_html .= PROFILENA;
-                }
-
-                $return_html .= '</span></li>';
-                $return_html .= '<li><b>No of Position</b><span>' . $post['post_position'] . ' ' . 'Position</span></li>';
-                $return_html .= '<li><b>Industry Type</b> <span>';
-                $cache_time = $this->db->get_where('job_industry', array(
-                            'industry_id' => $post['industry_type']
-                        ))->row()->industry_name;
-                $return_html .= $cache_time . '</span></li>';
-                if ($post['degree_name'] != '' || $post['other_education'] != '') {
-                    $return_html .= '<li> <b>Education Required</b> <span> ';
-                    $comma = ", ";
-                    $k = 0;
-                    $edu = $post['degree_name'];
-                    $edu_nm = explode(',', $edu);
-                    if (!$post['degree_name']) {
-                        $return_html .= $post['other_education'];
-                    } else
-                    if (!$post['other_education']) {
-                        foreach ($edu_nm as $edun) {
-                            if ($k != 0) {
-                                $return_html .= $comma;
-                            }
-
-                            $cache_time = $this->db->get_where('degree', array(
-                                        'degree_id' => $edun
-                                    ))->row()->degree_name;
-                            $return_html .= $cache_time;
-                            $k++;
-                        }
-                    } else
-                    if ($post['degree_name'] && $post['other_education']) {
-                        foreach ($edu_nm as $edun) {
-                            if ($k != 0) {
-                                $return_html .= $comma;
-                            }
-
-                            $cache_time = $this->db->get_where('degree', array(
-                                        'degree_id' => $edun
-                                    ))->row()->degree_name;
-                            $return_html .= $cache_time;
-                            $k++;
-                        }
-
-                        $return_html .= "," . $post['other_education'];
+                    if (($post['min_year'] != '0' || $post['max_year'] != '0')) {
+                        $return_html .= $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year';
+                    } else {
+                        $return_html .= "Fresher";
                     }
-
-                    $return_html .= '</span> </li>';
-                } else {
-                    $return_html .= '<li><b>Education Required</b><span>' . PROFILENA . '</span></li>';
                 }
 
-                $return_html .= '<li><b>Employment Type</b><span>';
-                if ($post['emp_type'] != '') {
-                    $return_html .= '<pre>' . $this->common->make_links($post['emp_type']) . '  Job</pre>';
-                } else {
-                    $return_html .= PROFILENA;
-                }
 
-                $return_html .= '</span></li>';
-                $return_html .= '<li><b>Company Profile</b><span>';
-                $currency = $this->db->get_where('recruiter', array(
-                            'user_id' => $post['user_id']
-                        ))->row()->re_comp_profile;
-                if ($currency != '') {
-                    $return_html .= '<pre>' . $this->common->make_links($currency) . '</pre>';
-                } else {
-                    $return_html .= PROFILENA;
-                }
+                $return_html .= '</span>
+                    </span>
+                </p>
+                <p>';
+                $return_html .= $post['post_description'];
+                $return_html .= '</p>
 
-                $return_html .= '</span></li>';
-                $return_html .= '</ul></div>';
-                $return_html .= '<div class="profile-job-profile-button clearfix">
-                                       <div class="profile-job-details col-md-12 col-xs-12">
-                                          <ul>';
-//                $return_html .= '<li class="job_all_post last_date">Last Date :';
-//                if ($post['post_last_date'] != "0000-00-00") {
-//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-//                } else {
-//                    $return_html .= PROFILENA;
-//                }
+            </div>
+            <div class="all-job-bottom">
+                <span class="job-post-date"><b>Posted on:</b>';
+                $return_html .= date('d-M-Y', strtotime($post['created_date']));
+                $return_html .= '</span>
+                <p class="pull-right">';
 
-                $return_html .= '</li>';
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-                $contition_array = array(
-                    'post_id' => $post['post_id'],
-                    'job_delete' => '0',
-                    'user_id' => $userid
-                );
-                $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if ($jobsave) {
-                    $return_html .= '<a href="javascript:void(0);" class="button applied">Applied</a>';
+                $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
+                $jobapply = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+                if ($jobapply) {
+                    $return_html .= '<a href="javascript:void(0);" class="btn4 button applied">Applied</a>';
                 } else {
-                    $return_html .= '<li class="fr"><a title="Apply" href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a></li>';
-                    $return_html .= '<li class="fr">';
-                    $userid = $this->session->userdata('aileenuser');
                     $contition_array = array(
                         'user_id' => $userid,
                         'job_save' => '2',
@@ -3881,28 +3705,30 @@ class Job extends MY_Controller {
                     );
                     $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if ($jobsave) {
-                        $return_html .= '<a class="button saved save_saved_btn">Saved</a>';
+                        $return_html .= '<a href="javascript:void(0);" class="btn4 saved savedpost' . $post['post_id'] . '">Saved</a>';
                     } else {
-                        $return_html .= '<a title="Save" id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button save_saved_btn">Save</a>';
+                        $return_html .= '<a href="javascript:void(0);" id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" class="btn4 savedpost' . $post['post_id'] . '">Save</a>';
                     }
-
-                    $return_html .= '</li>';
+                    $return_html .= '<a href="javascript:void(0);"  class= "btn4 applypost' . $post['post_id'] . '" onclick="applypopup(' . $post['post_id'] . ', ' . $post['user_id'] . ')">Apply</a>';
                 }
-                $return_html .= '</ul></div></div>';
-                $return_html .= '</div></div>';
+
+                $return_html .= ' </p>
+
+</div>
+</div>';
             }//foreach ($postdetail1 as $post) end
-            // }//foreach ($postdetail as $post_key => $postdetail1) end
+// }//foreach ($postdetail as $post_key => $postdetail1) end
         }//if (count($postdetail) > 0) end
         else {
 
             $return_html .= '<div class="art-img-nn">
-                                <div class="art_no_post_img">
-                                 <img src="' . base_url('assets/img/job-no.png') . '">
-                              </div>
-                              <div class="art_no_post_text">
-                                 No  Recommended Post Available.
-                              </div>
-                           </div>';
+    <div class="art_no_post_img">
+        <img src="' . base_url('assets/img/job-no.png') . '">
+    </div>
+    <div class="art_no_post_text">
+        No  Recommended Post Available.
+    </div>
+</div>';
         }//else end
 
         echo $return_html;
@@ -3955,13 +3781,13 @@ class Job extends MY_Controller {
             foreach ($postdetail1 as $post) {
 
                 $return_html .= ' <div class="profile-job-post-detail clearfix" id="postdata' . $post['app_id'] . '">
-                                 <div class="profile-job-post-title clearfix">
-                                    <div class="profile-job-profile-button clearfix">
-                                       <div class="profile-job-details col-md-12 col-xs-12">
-                                          <ul>';
+    <div class="profile-job-post-title clearfix">
+        <div class="profile-job-profile-button clearfix">
+            <div class="profile-job-details col-md-12 col-xs-12">
+                <ul>';
                 $return_html .= '<li class="fr date_re">
-                                Created Date : ' . date('d-M-Y', strtotime($post['created_date'])) . '
-                            </li>';
+                        Created Date : ' . date('d-M-Y', strtotime($post['created_date'])) . '
+                    </li>';
                 $cache_time = $this->db->get_where('job_title', array(
                             'title_id' => $post['post_name']
                         ))->row()->name;
@@ -4011,7 +3837,7 @@ class Job extends MY_Controller {
 
                 if ($cityname || $countryname) {
                     $return_html .= '<div class="fr lction">
-                                    <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"> </i>';
+                            <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"> </i>';
                     if ($cityname) {
                         $return_html .= $cityname . ",";
                     }
@@ -4039,7 +3865,7 @@ class Job extends MY_Controller {
                 $return_html .= '</ul></div></div>';
 
                 $return_html .= '<div class="profile-job-profile-menu">
-                                       <ul class="clearfix">';
+            <ul class="clearfix">';
 
                 $return_html .= '<li> <b> Skills</b> <span> ';
 
@@ -4183,15 +4009,15 @@ class Job extends MY_Controller {
                 $return_html .= '</ul></div>';
 
                 $return_html .= '<div class="profile-job-profile-button clearfix">
-                                       <div class="profile-job-details col-md-12 col-xs-12">
-                                          <ul>';
-//                $return_html .= '<li class="job_all_post last_date">Last Date :';
-//                if ($post['post_last_date'] != "0000-00-00") {
-//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-//                } else {
-//                    $return_html .= PROFILENA;
-//                }
-//                $return_html .= '</li>';
+            <div class="profile-job-details col-md-12 col-xs-12">
+                <ul>';
+                //                $return_html .= '<li class="job_all_post last_date">Last Date :';
+                //                if ($post['post_last_date'] != "0000-00-00") {
+                //                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+                //                } else {
+                //                    $return_html .= PROFILENA;
+                //                }
+                //                $return_html .= '</li>';
 
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -4201,7 +4027,7 @@ class Job extends MY_Controller {
                 if ($jobsave[0]['job_save'] == 1) {
                     $return_html .= '<button  class="button" disabled>Applied</button>';
                 } else {
-                    $return_html .= '<li class="fr"> <a title="Apply" href="javascript:void(0);" class="button" onclick="applypopup(' . $post['post_id'] . ',' . $post['app_id'] . ')">Apply</a> </li>';
+                    $return_html .= '<li class="fr"> <a title="Apply" href="javascript:void(0);" class="button" onclick="applypopup(' . $post['post_id'] . ', ' . $post['app_id'] . ')">Apply</a> </li>';
                     $return_html .= '<li class="fr"><a  title="Remove" href="javascript:void(0);" class="button" onclick="removepopup(' . $post['app_id'] . ')">Remove</a></li>';
                 }
 
@@ -4211,13 +4037,13 @@ class Job extends MY_Controller {
         }//if ($postdetail) end
         else {
             $return_html .= '<div class="art-img-nn">
-                                <div class="art_no_post_img">
-                                     <img src="' . base_url('assets/img/job-no.png') . '">
-                                </div>
-                                <div class="art_no_post_text">
-                                    No  Saved Post Available.
-                                </div>
-                              </div>';
+    <div class="art_no_post_img">
+        <img src="' . base_url('assets/img/job-no.png') . '">
+    </div>
+    <div class="art_no_post_text">
+        No  Saved Post Available.
+    </div>
+</div>';
         }//else end
 
         echo $return_html;
@@ -4264,10 +4090,10 @@ class Job extends MY_Controller {
         if (count($postdetail) != '0') {
             foreach ($postdetail1 as $post) {
                 $return_html .= '<div class="profile-job-post-detail clearfix" id="removeapply' . $post['app_id'] . '">
-                              <div class="profile-job-post-title clearfix">
-                                 <div class="profile-job-profile-button clearfix">
-                                    <div class="profile-job-details col-md-12 col-xs-12">
-                                       <ul>';
+    <div class="profile-job-post-title clearfix">
+        <div class="profile-job-profile-button clearfix">
+            <div class="profile-job-details col-md-12 col-xs-12">
+                <ul>';
 
                 $return_html .= '<li class="fr date_re"> Created Date :' . date('d-M-Y', strtotime($post['created_date'])) . '</li>';
                 $cache_time = $this->db->get_where('job_title', array(
@@ -4339,7 +4165,7 @@ class Job extends MY_Controller {
                 $return_html .= '</ul></div></div>';
 
                 $return_html .= '<div class="profile-job-profile-menu">
-                        <ul class="clearfix">';
+            <ul class="clearfix">';
 
                 $return_html .= '<li> <b> Skills</b> <span> ';
 
@@ -4470,17 +4296,17 @@ class Job extends MY_Controller {
                 $return_html .= '</ul></div>';
 
                 $return_html .= '<div class="profile-job-profile-button clearfix">
-                                    <div class="profile-job-details col-md-12 col-xs-12">
-                                       <ul>';
+            <div class="profile-job-details col-md-12 col-xs-12">
+                <ul>';
 
-//                $return_html .= '<li class="job_all_post last_date">Last Date :';
-//
-//                if ($post['post_last_date'] != "0000-00-00") {
-//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-//                } else {
-//                    $return_html .= PROFILENA;
-//                }
-//                $return_html .= '</li>';
+                //                $return_html .= '<li class="job_all_post last_date">Last Date :';
+                //
+                        //                if ($post['post_last_date'] != "0000-00-00") {
+                //                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+                //                } else {
+                //                    $return_html .= PROFILENA;
+                //                }
+                //                $return_html .= '</li>';
 
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
@@ -4495,13 +4321,13 @@ class Job extends MY_Controller {
             }
         } else {
             $return_html .= '<div class="art-img-nn">
-                           <div class="art_no_post_img">
-                              <img src="' . base_url('assets/img/job-no.png') . '">
-                           </div>
-                           <div class="art_no_post_text">
-                              No  Applied Post Available.
-                           </div>
-                        </div>';
+    <div class="art_no_post_img">
+        <img src="' . base_url('assets/img/job-no.png') . '">
+    </div>
+    <div class="art_no_post_text">
+        No  Applied Post Available.
+    </div>
+</div>';
         }
         echo $return_html;
     }
@@ -4525,7 +4351,7 @@ class Job extends MY_Controller {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
-        // search keyword insert into database start
+// search keyword insert into database start
 
         $search_job = trim($_GET["skill"]);
         $search_place = trim($_GET["place"]);
@@ -4546,7 +4372,7 @@ class Job extends MY_Controller {
 
         if ($this->session->userdata('aileenuser')) {
 
-            //Insert Search Data into database start
+//Insert Search Data into database start
             $data = array(
                 'search_keyword' => $search_job,
                 'search_location' => $search_place,
@@ -4561,7 +4387,7 @@ class Job extends MY_Controller {
         }
 
 //Total Search All Start
-        // search keyword insert into database end
+// search keyword insert into database end
         if ($search_job == "" && $search_place == "") {
             $join_str[0]['table'] = 'recruiter';
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
@@ -4582,14 +4408,14 @@ class Job extends MY_Controller {
 //          echo $search_place;die();
             $contition_array = array('slug' => $search_place, 'state_id !=' => '0');
             $groupid = $this->common->select_data_by_condition('cities', $contition_array, $data = 'group_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         
-          
+
+
             $contition_array = array('group_id' => $groupid[0]['group_id'], 'status' => '1');
             $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $city_names = array_column($citydata, 'city_id');
-         
+
             $city_names = implode(',', $city_names);
-       
+
             $contition_array = array('re_status' => '1', 'recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3, 'rec_post.is_delete' => '0');
 
             $join_str[0]['table'] = 'recruiter';
@@ -4598,15 +4424,15 @@ class Job extends MY_Controller {
             $join_str[0]['join_type'] = '';
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $search_condition = "city IN ('$city_names')";
-           $unique= $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data , $sortby = '', $orderby = 'ASC', $limit = '', $offset = '', $join_str, $groupby = '');
-           // $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-            //echo "<pre>"; print_r($unique);die();
+            $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = '', $orderby = 'ASC', $limit = '', $offset = '', $join_str, $groupby = '');
+// $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
+//echo "<pre>"; print_r($unique);die();
         } elseif ($search_place == "") {
 
             //Search FOr Skill Start
             $temp = $this->db->get_where('skill', array('skill' => $search_job, 'status' => 1))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
-            $results_skill = $this->common->select_data_by_condition('rec_post',$search_condition, $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $results_skill = $this->common->select_data_by_condition('rec_post', $search_condition, $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             //Search FOr Skill End
             //Search FOr firstname,lastname,companyname,other_skill and concat(firstname,lastname) Start
@@ -4945,16 +4771,16 @@ class Job extends MY_Controller {
                 $return_html .= '</ul></div>';
 
                 $return_html .= '<div class="profile-job-profile-button clearfix">
-                              <div class="profile-job-details col-md-12">
-                                 <ul>';
+                                                <div class="profile-job-details col-md-12">
+                                                    <ul>';
 
-//                $return_html .= '<li class="job_all_post last_date">Last Date : ';
-//                if ($post['post_last_date'] != "0000-00-00") {
-//                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
-//                } else {
-//                    $return_html .= PROFILENA;
-//                }
-//                $return_html .= '</li>';
+                //                $return_html .= '<li class="job_all_post last_date">Last Date : ';
+                //                if ($post['post_last_date'] != "0000-00-00") {
+                //                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+                //                } else {
+                //                    $return_html .= PROFILENA;
+                //                }
+                //                $return_html .= '</li>';
 
                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
@@ -4964,7 +4790,7 @@ class Job extends MY_Controller {
                     $return_html .= ' <a href="javascript:void(0);" class="button applied">Applied</a>';
                 } else {
                     $return_html .= '<li class="fr"> 
-                                <a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button"';
+                                                            <a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button"';
 
                     if ($this->session->userdata('aileenuser')) {
                         $return_html .= 'onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')"';
@@ -4972,8 +4798,8 @@ class Job extends MY_Controller {
                         $return_html .= 'onClick="create_profile_apply(' . $post['post_id'] . ')"';
                     }
                     $return_html .= '>Apply</a>
-                              </li>
-                              <li class="fr">';
+                                                        </li>
+                                                        <li class="fr">';
 
                     $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
@@ -5004,19 +4830,19 @@ class Job extends MY_Controller {
         }//if end
         else {
             $return_html .= '<div class="text-center rio">
-                     <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
-                     <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn' . "'" . 't find what you were looking for.</p>
-                     <ul>
-                        <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.</li>
-                     </ul>
-                  </div>';
+                                                <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
+                                                <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn' . "'" . 't find what you were looking for.</p>
+                                                <ul>
+                                                    <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.</li>
+                                                </ul>
+                                            </div>';
         }
 
         echo $return_html;
     }
 
-//GET SEARCH DATA WITH AJAX END
-// CREATE SLUG START
+    //GET SEARCH DATA WITH AJAX END
+    // CREATE SLUG START
     public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
         $slugname = $oldslugname = $this->create_slug($slugname);
         $i = 1;
@@ -5061,8 +4887,8 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
 
-//JOB CHANGES START
-// job seeker detail
+        //JOB CHANGES START
+        // job seeker detail
 
         $contition_array = array(
             'user_id' => $userid,
@@ -5076,7 +4902,7 @@ class Job extends MY_Controller {
         $job_industry = $jobdata[0]['work_job_industry'];
         $job_skill = $jobdata[0]['keyskill'];
 
-// post detail
+        // post detail
         // FETCH SKILL WISE JOB START
         $jobcity = explode(',', $jobdata[0]['work_job_city']);
         $jobcity = array_filter(array_map('trim', $jobcity));
@@ -5273,7 +5099,7 @@ class Job extends MY_Controller {
 
                     $return_html .= '</p></span></li>';
                     $return_html .= '<li><b>Interview Process</b>
-                                  <span><pre>';
+                                                                    <span><pre>';
                     if ($post['interview_process']) {
                         $return_html .= $this->common->make_links($post['interview_process']);
                     } else {
@@ -5373,8 +5199,8 @@ class Job extends MY_Controller {
                     $return_html .= '</span></li>';
                     $return_html .= '</ul></div>';
                     $return_html .= '<div class="profile-job-profile-button clearfix">
-                                       <div class="profile-job-details col-md-12 col-xs-12">
-                                          <ul>';
+                                                            <div class="profile-job-details col-md-12 col-xs-12">
+                                                                <ul>';
                     $return_html .= '<li class="job_all_post last_date">Last Date :';
                     if ($post['post_last_date'] != "0000-00-00") {
                         $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
@@ -5393,7 +5219,7 @@ class Job extends MY_Controller {
                     if ($jobsave) {
                         $return_html .= '<a href="javascript:void(0);" class="button applied">Applied</a>';
                     } else {
-                        $return_html .= '<li class="fr"><a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a></li>';
+                        $return_html .= '<li class="fr"><a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ', ' . $post['user_id'] . ')">Apply</a></li>';
                         $return_html .= '<li class="fr">';
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array(
@@ -5419,27 +5245,27 @@ class Job extends MY_Controller {
         else {
 
             $return_html .= '<div class="art-img-nn">
-                                <div class="art_no_post_img">
-                                 <img src="' . base_url('assets/img/job-no.png') . '">
-                              </div>
-                              <div class="art_no_post_text">
-                                 No  Recommended Post Available.
-                              </div>
-                           </div>';
+                                                    <div class="art_no_post_img">
+                                                        <img src="' . base_url('assets/img/job-no.png') . '">
+                                                    </div>
+                                                    <div class="art_no_post_text">
+                                                        No  Recommended Post Available.
+                                                    </div>
+                                                </div>';
         }//else end
 
         echo $return_html;
     }
 
-//GET JOB ALL POST DATA WITH AJAX END
-// JOB POST FETCH DATA START
+    //GET JOB ALL POST DATA WITH AJAX END
+    // JOB POST FETCH DATA START
     public function job_rec_data($string = "") {
 
         $userid = $this->session->userdata('aileenuser');
 
 
-//JOB CHANGES START
-// job seeker detail
+        //JOB CHANGES START
+        // job seeker detail
 
         $contition_array = array(
             'user_id' => $userid,
@@ -5453,7 +5279,7 @@ class Job extends MY_Controller {
         $job_industry = $jobdata[0]['work_job_industry'];
         $job_skill = $jobdata[0]['keyskill'];
 
-// post detail
+        // post detail
         // FETCH SKILL WISE JOB START
         $jobcity = explode(',', $jobdata[0]['work_job_city']);
         $jobcity = array_filter(array_map('trim', $jobcity));
@@ -5810,7 +5636,7 @@ class Job extends MY_Controller {
                                                                 <li><b>Job Description</b><span><pre>';
             $rec_post .= '' . $this->common->make_links($rec_postdata[0]['post_description']) . '</pre></span>';
             $rec_post .= '</li>
-                                                                <li><b>Interview Process</b><span>';
+                                                                            <li><b>Interview Process</b><span>';
             if ($post['interview_process'] != '') {
 
                 $rec_post .= '' . $this->common->make_links($rec_postdata[0]['interview_process']) . '';
@@ -5822,7 +5648,7 @@ class Job extends MY_Controller {
 
 
             $rec_post .= '<li>   <b>Required experience</b></li>
-               <li><b>Salary</b><span title="Min - Max" >';
+                                                                            <li><b>Salary</b><span title="Min - Max" >';
             $currency = $this->db->get_where('currency', array('currency_id' => $rec_postdata[0]['post_currency']))->row()->currency_name;
             if ($rec_postdata[0]['min_sal'] || $rec_postdata[0]['max_sal']) {
                 $rec_post .= '' . $rec_postdata[0]['min_sal'] . " - " . $rec_postdata[0]['max_sal'] . ' ' . $currency . ' ' . $rec_postdata[0]['salary_type'] . '';
@@ -5831,7 +5657,7 @@ class Job extends MY_Controller {
             }
 
             $rec_post .= '</span></li><li><b>No of Position</b><span>' . $rec_postdata[0]['post_position'] . ' ' . 'Position</span> </li>
-                                                                <li><b>Industry Type</b> <span>';
+                                                                            <li><b>Industry Type</b> <span>';
 
             $cache_time = $this->db->get_where('job_industry', array('industry_id' => $rec_postdata[0]['industry_type']))->row()->industry_name;
             $rec_post .= '' . $cache_time . '';
@@ -5877,13 +5703,13 @@ class Job extends MY_Controller {
 
 
                 $rec_post .= '</span>
-                                                                 </li>';
+                                                                            </li>';
             } else {
 
                 $rec_post .= '<li><b>Required education</b><span>';
                 $rec_post .= PROFILENA;
                 $rec_post .= '</span>
-                                                                    </li>';
+                                                                            </li>';
             }
             $rec_post .= '<li><b>Employment Type</b><span>';
             if ($rec_postdata[0]['emp_type'] != '') {
@@ -5902,8 +5728,8 @@ class Job extends MY_Controller {
 
 
             $rec_post .= '</span></li></ul></div>
-                             <div class="profile-job-profile-button clearfix">
-                    <div class="apply-btn fr">';
+                                                                    <div class="profile-job-profile-button clearfix">
+                                                                        <div class="apply-btn fr">';
 
             $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -5947,29 +5773,29 @@ class Job extends MY_Controller {
                 //$rec_post .= '</li>';
             }
             $rec_post .= '</div>
-                                                        </div>
-                                                    </div>
-                                                </div>';
+                                                                    </div>
+                                                                </div>
+                                                            </div>';
         } else {
 
             $rec_post .= '<div class="art-img-nn">
-                                            <div class="art_no_post_img">
+                                                                <div class="art_no_post_img">
 
-                                                <img src="' . base_url('assets/img/job-no.png') . '">
+                                                                    <img src="' . base_url('assets/img/job-no.png') . '">
 
-                                            </div>
-                                            <div class="art_no_post_text">
-                                                No  Post Available.
-                                            </div>
-                                        </div>';
+                                                                </div>
+                                                                <div class="art_no_post_text">
+                                                                    No  Post Available.
+                                                                </div>
+                                                            </div>';
         }
 
         echo $rec_post;
         // code end
     }
 
-// RECRUITER POST AJAX LAZZY LOADER DATA END
-//FOR RECRUITER POST START
+    // RECRUITER POST AJAX LAZZY LOADER DATA END
+    //FOR RECRUITER POST START
     public function rec_profile($id = "") {
         // echo $user_id;die();
         $user_id = $this->db->get_where('rec_post', array('post_id' => $id))->row()->user_id;
@@ -6002,8 +5828,8 @@ class Job extends MY_Controller {
         $this->load->view('job/recruiter_profile', $this->data);
     }
 
-//FOR RECRUITER POST END
-//add other_industry into database start 
+    //FOR RECRUITER POST END
+    //add other_industry into database start 
     public function job_other_industry() {
 
         $other_industry = $_POST['other_industry'];
@@ -6045,7 +5871,7 @@ class Job extends MY_Controller {
                             $select .= '>' . $st['industry_name'] . '</option>';
                         }
                     }
-//For Getting Other at end
+                    //For Getting Other at end
                     $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name' => "Others");
                     $industry_otherdata = $this->data['industry_otherdata'] = $this->common->select_data_by_condition('job_industry', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -6063,7 +5889,7 @@ class Job extends MY_Controller {
         die();
     }
 
-//add other_industry into database End 
+    //add other_industry into database End 
 
 
     public function apply_email($notid) {
@@ -6074,8 +5900,8 @@ class Job extends MY_Controller {
 
         $email_html = '';
         $email_html .= '<table width="100%" cellpadding="0" cellspacing="0">
-					<tr>
-                                            <td style="padding:5px;">';
+                                                                <tr>
+                                                                    <td style="padding:5px;">';
         $filename = $this->config->item('job_profile_thumb_upload_path') . $jobdata[0]['job_user_image'];
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
@@ -6094,15 +5920,15 @@ class Job extends MY_Controller {
 
 
         $email_html .= '</td>
-                                            <td style="padding:5px;">
-						<p>Job seeker<b> ' . ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . '</b> Applied on your jobpost.
-						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
-                                            </td>
-                                            <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'job/resume/' . $jobdata[0]['slug'] . '?page=recruiter">view</a></p>
-                                            </td>
-					</tr>
-                                    </table>';
+                                                                    <td style="padding:5px;">
+                                                                        <p>Job seeker<b> ' . ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . '</b> Applied on your jobpost.
+                                                                            <span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
+                                                                    </td>
+                                                                    <td style="padding:5px;">
+                                                                        <p><a class="btn" href="' . BASEURL . 'job/resume/' . $jobdata[0]['slug'] . '?page=recruiter">view</a></p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>';
 
         $subject = ucwords($jobdata[0]['fname']) . ' ' . ucwords($jobdata[0]['lname']) . ' Applied on your jobpost - Aileensoul.';
         $send_email = $this->email_model->send_email($subject = $subject, $templ = $email_html, $to_email = $recemail[0]['re_comp_email']);
@@ -6154,21 +5980,21 @@ class Job extends MY_Controller {
         }
     }
 
-//    public function job_city_search() {
-//        echo 132;
-//        exit;
-//        $search_place = $_GET['city'];
-//        echo $search_place;die();
-//        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
-//
-//        $join_str[0]['table'] = 'recruiter';
-//        $join_str[0]['join_table_id'] = 'recruiter.user_id';
-//        $join_str[0]['from_table_id'] = 'rec_post.user_id';
-//        $join_str[0]['join_type'] = '';
-//        $contition_array = array('city' => $cache_time, 're_status' => '1', 'rec_post.is_delete' => '0');
-//        $unique = $this->data['results'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-//        
-//        echo "<pre>"; print_r($unique);die();
+    //    public function job_city_search() {
+    //        echo 132;
+    //        exit;
+    //        $search_place = $_GET['city'];
+    //        echo $search_place;die();
+    //        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
+    //
+                                                            //        $join_str[0]['table'] = 'recruiter';
+    //        $join_str[0]['join_table_id'] = 'recruiter.user_id';
+    //        $join_str[0]['from_table_id'] = 'rec_post.user_id';
+    //        $join_str[0]['join_type'] = '';
+    //        $contition_array = array('city' => $cache_time, 're_status' => '1', 'rec_post.is_delete' => '0');
+    //        $unique = $this->data['results'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
+    //        
+    //        echo "<pre>"; print_r($unique);die();
 //    }
 
     public function job_notification_count($to_id = '') {
@@ -6177,6 +6003,143 @@ class Job extends MY_Controller {
 
         $count = $result[0]['total'];
         return $count;
+    }
+
+    public function new_page() {
+
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+
+// job seeker detail
+
+        $contition_array = array(
+            'user_id' => $userid,
+            'is_delete' => '0',
+            'status' => '1'
+        );
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// post detail
+
+        $contition_array = array(
+            'is_delete' => '0',
+            'status' => '1'
+        );
+        $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// for getting data from rec_post table for keyskill
+
+        $work_job_skill = $jobdata[0]['keyskill'];
+        $work_skill = explode(',', $work_job_skill);
+        foreach ($work_skill as $skill) {
+            $contition_array = array(
+                'FIND_IN_SET("' . $skill . '",post_skill)!=' => '0',
+                'is_delete' => '0',
+                'status' => '1'
+            );
+            $data = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $recommendata[] = $data;
+        }
+
+
+// Retrieve data according to city match start
+
+        $work_job_city = $jobdata[0]['work_job_city'];
+        $work_city = explode(',', $work_job_city);
+
+        foreach ($work_city as $city) {
+            $data = '*';
+            $contition_array = array(
+                'FIND_IN_SET("' . $city . '",city)!=' => '0',
+                'is_delete' => '0',
+                'status' => '1'
+            );
+            $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $recommendata_city[] = $data1;
+        }
+
+// Retrieve data according to city match End
+// Retrieve data according to industry match start
+
+        $work_job_industry = $jobdata[0]['work_job_industry'];
+//        foreach ($postdata as $post) {
+        $data = '*';
+        $contition_array = array(
+            'industry_type' => $work_job_industry,
+            'is_delete' => '0',
+            'status' => '1'
+        );
+        $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $recommendata_industry[] = $data1;
+//        }
+// Retrieve data according to industry match End
+// Retrieve data according to Job Title match start
+
+        $work_job_title = $jobdata[0]['work_job_title'];
+
+        foreach ($postdata as $post) {
+            $data = '*';
+            $contition_array = array(
+                'post_name' => $work_job_title,
+                'is_delete' => '0',
+                'status' => '1'
+            );
+            $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $recommendata_title[] = $data1;
+        }
+
+        $recskill = count(array_filter($recommendata));
+        $reccity = count(array_filter($recommendata_city));
+        $recindustry = count(array_filter($recommendata_industry));
+        $rectitle = count(array_filter($recommendata_title));
+
+// Retrieve data according to  Job Title match End
+//echo "<pre>";print_r($recommendata);die();
+
+        if ($recskill != 0 && $reccity == 0 && $recindustry == 0 && $rectitle == 0) {
+
+            $unique = $recommendata;
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
+            $qbc = array_filter($qbc);
+        } elseif ($recskill == 0 && $reccity != 0 && $recindustry == 0 && $rectitle == 0) {
+
+            $unique = $recommendata_city;
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
+            $qbc = array_filter($qbc);
+        } elseif ($recskill == 0 && $reccity == 0 && $recindustry != 0 && $rectitle == 0) {
+            $unique = $recommendata_industry;
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
+            $qbc = array_filter($qbc);
+        } elseif ($recskill == 0 && $reccity == 0 && $recindustry == 0 && $rectitle != 0) {
+
+            $unique = $recommendata_title;
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
+            $qbc = array_filter($qbc);
+        } else {
+
+            $unique = array_merge((array) $recommendata, (array) $recommendata_city, (array) $recommendata_industry, (array) $recommendata_title);
+//            $newArray = array();
+//            foreach ($unique as $key => $innerArr1) {
+//                foreach ($innerArr1 as $key1 => $innerArr) {
+//                    $newArray[][] = $innerArr;
+//                }
+//            }
+            $newArray = array_reduce($unique, 'array_merge', array());
+            $qbc = array_unique($newArray, SORT_REGULAR);
+            $qbc = array_filter($qbc);
+        }
+
+        $postdetail = $this->data['postdetail'] = $qbc;
+
+        // echo "<pre>"; print_r($postdetail);die();
+
+
+
+
+        $this->load->view('job/job_new_page', $this->data);
     }
 
 }

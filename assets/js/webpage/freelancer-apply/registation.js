@@ -130,13 +130,13 @@ $(document).ready(function () {
             state: {
                 required: true,
             },
-             city:{
+            city: {
                 required: true,
             },
             field: {
                 required: true
             },
-            
+
             skills: {
                 required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
@@ -146,10 +146,10 @@ $(document).ready(function () {
         },
 
         messages: {
-             firstname: {
+            firstname: {
                 required: "First name is required."
             },
-             lastname: {
+            lastname: {
                 required: "Last name is required."
             },
             email: {
@@ -163,13 +163,13 @@ $(document).ready(function () {
             state: {
                 required: "State is required.",
             },
-            city:{
-                required:"City is required.",
+            city: {
+                required: "City is required.",
             },
-             field: {
+            field: {
                 required: "Field is required",
             },
-             skills: {
+            skills: {
                 required: "Skill is required"
             }
         },
@@ -186,7 +186,7 @@ function remove_validation() {
 }
 $("#freelancer_regform").submit(function () {
 
-  
+
     $('#experience_error').remove();
     $('.experience_month').removeClass('error');
     $('.experience_year').removeClass('error');
@@ -247,7 +247,8 @@ $(document).on('change', '.field_other', function (event) {
                     dataType: 'json',
                     data: 'other_field=' + textVal,
                     success: function (response) {
-
+                        $("#other_field").removeClass("keyskill_border_active");
+                        $('#field_error').remove();
                         if (response.select == 0)
                         {
 //                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
@@ -287,20 +288,20 @@ $(document).on('change', '.field_other', function (event) {
 
 });
 //CLOSE MODEL ON ESC KEY START
-    $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                    $('#bidmodal2').modal('hide');
-            }
-            }); 
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal2').modal('hide');
+    }
+});
 //CLOSE MODEL ON ESC KEY END
 //DISABLE BUTTON ON ONE TIME CLICK START
 $("#submit").on('click', function ()
 {
     if ($('#artpost').valid())
-     {
-         $("#submit").addClass("register_disable");
-         return true;
-     } 
+    {
+        $("#submit").addClass("register_disable");
+        return true;
+    }
 
 });
 //DISABLE CUTTON ON ONE TIME CLICK END
