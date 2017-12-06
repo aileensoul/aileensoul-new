@@ -4579,8 +4579,8 @@ class Job extends MY_Controller {
 //            if ($search_place == 'bombay' || $search_place == 'Bombay') {
 //                $search_place = 'Mumbai';
 //            }
-          
-            $contition_array = array('city_name' => $search_place, 'state_id !=' => '0');
+//          echo $search_place;die();
+            $contition_array = array('slug' => $search_place, 'state_id !=' => '0');
             $groupid = $this->common->select_data_by_condition('cities', $contition_array, $data = 'group_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
          
           

@@ -5416,5 +5416,17 @@ class Recruiter extends MY_Controller {
         }
         echo "yes";
     }
+    
+     public function city_slug() {
+
+        $contition_array = array('state_id !=' => '0', 'status' => '1');
+        $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '50', $offset = '0', $join_str5 = '', $groupby = '');
+        
+        foreach ($citydata as $k => $v){
+            $data = array('slug' => $this->common->clean($v['city_name']));
+            $insert_id = $this->common->update_data($data, 'cities', 'city_id',$v['city_id']);
+        }
+        echo "yes";
+    }
 
 }
