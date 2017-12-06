@@ -181,7 +181,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" tabindex="7" value="Next" >
-                                                                <div class="loader" ng-show="loader_show"> </div>
+                                                                <div class="loader-cust" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -216,7 +216,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" tabindex="5"  value="Next">
-                                                                 <div class="loader" ng-show="loader_show"> </div>
+                                                                 <div class="loader-cust" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -273,7 +273,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" value="Next" tabindex="6" >
-                                                                 <div class="loader" ng-show="loader_show"> </div>
+                                                                 <div class="loader-cust" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -295,7 +295,7 @@
                                                             </fieldset>
                                                             <fieldset class = "hs-submit full-width">
                                                                 <input type = "submit" id = "submit" name = "submit" tabindex = "2" value = "Submit">
-                                                                <div class="loader" ng-show="loader_show"> </div>
+                                                                <div class="loader-cust" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
