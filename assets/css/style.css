@@ -1639,7 +1639,7 @@ div .comment {
 .chat_nobcx{margin-top:10px; margin-bottom:5px;}
 .recive-data .my-message{float:left;}
 .recive-data .message-data{width:100%; float:left;}
-.received li{width:100%; float:left;}
+#received li{width:100%; float:left;}
 .recive-data .messagedelete{padding-left:10px; position:absolute; right:-25px; bottom:0;}
 .recive-data .messagedelete a{font-size:18px;}
 .msg_right .messagedelete{position:absolute; left:-25px; bottom:0;}
