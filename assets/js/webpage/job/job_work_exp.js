@@ -67,7 +67,7 @@ $(document).ready(function () {
 
         },
         groups: {
-            expyear: " 'experience_year[]' 'experience_month[]'"
+            expyear: "experience_year[] experience_month[]"
         },
         messages: {
 
