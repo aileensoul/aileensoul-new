@@ -27,6 +27,13 @@ io.on('connection', function (socket) {
             contact_to_id: data.contact_to_id,
         });
     });
+    
+    socket.on('getBusinessChatUserList', function (data) {
+        console.log(data);
+        io.sockets.emit('getBusinessChatUserList', {
+            message_slug:data.message_slug, message_to_slug:data.message_to_slug, message: data.message, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
+        });
+    });
 
 
     socket.on('new_count_message', function (data) {
