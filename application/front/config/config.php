@@ -807,7 +807,17 @@ $config['bus_post_resize4_width'] = '550';
 $config['bus_post_resize4_height'] = '315';
 //$config['bus_post_resize4_height'] = '220';
 
+// BUSINESS MESSAGE IMAGE
+$config['bus_message_main_upload_path'] = 'uploads/business_message/main/';
+$config['bus_message_main_allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+$config['bus_message_main_max_size'] = '100000000'; //in KB
+$config['bus_message_main_max_width'] = '4500';
+$config['bus_message_main_max_height'] = '3000';
 
+// BUSINESS PROFILE IMAGE THUMBS
+$config['bus_message_thumb_upload_path'] = 'uploads/business_message/thumbs/';
+$config['bus_message_thumb_width'] = '160';
+$config['bus_message_thumb_height'] = '160';
 
 // ARTISTIC PROFILE IMAGE
 $config['art_profile_main_upload_path'] = 'uploads/artistic_profile/main/';

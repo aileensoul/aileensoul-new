@@ -143,7 +143,7 @@
                                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
-                                                <div class="message other-message float-right" ng-bind-html="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                                <div class="message other-message float-right" ng-bind-html="chat.message" ng-hide="hasFile"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
                                                 <div class="msg-user-img" ng-if="chat.business_user_image"><img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>"></div>
                                                 <div class="msg-user-img" ng-if="!chat.business_user_image"><img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
                                             </div>
@@ -167,19 +167,37 @@
                         <div class="panel-footer">
                             <div class="">
                                 <div class="" id="msg_block">
-                                    <div class="input-group" id="set_input">
+                                    <div class="input-group " id="set_input">
                                         <form name="blog">
-                                            <div class="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>
+                                            <div class="comment " ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>
                                             <!--<div class="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>-->
                                             <div for="smily" class="smily_b">
                                                 <div><a class="smil" href="#" id="notificationLink1"><i class="em em-blush"></i></a></div>
                                             </div>
-                                            <button class="btn btn-warning btn-flat ng-pristine ng-valid ng-touched" data-widget="" ngf-select="" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
                                         </form>
+                                        <div for="smily" class="link_b input-group-btn box-tools pull-right desktop">
+                                            <!--<button class="btn btn-warning btn-flat ng-pristine ng-valid ng-touched fr" data-widget="" ngf-select="" ngf-multiple="false" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>-->
+                                            <button class="btn btn-warning btn-flat fr" data-widget="" ngf-select="upload($files)" ngf-multiple="true" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+                                        </div>
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning btn-sm main_send" ng-click="sendMsg()" id="submit">Send</button>
                                         </span>
                                     </div>
+                                    <!--                                     <div class="box-footer">
+                                                    <div class="box-tools pull-right desktop">
+                                                       Any File Select Button 
+                                                      <button class="btn btn-warning btn-flat" data-widget="" ngf-select ng-model="Files"><i class="glyphicon glyphicon-paperclip"></i></button>
+                                                    </div>
+                                                     Text message  
+                                                    <form action="" method="post">
+                                                      <div class="input-group">
+                                                        <input type="text" name="message" placeholder="Type Message ..." ng-class="{'form-control': true, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty=false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus"/>
+                                                        <span class="input-group-btn">
+                                                          <button type="button" class="btn btn-warning btn-flat" ng-click="sendMsg()">Send</button>
+                                                        </span>
+                                                      </div>
+                                                    </form>
+                                                  </div>-->
                                 </div>
                             </div>
                         </div>
@@ -194,10 +212,13 @@
         </script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.4.9/angular-filter.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
+        <script src="<?php echo base_url() ?>assets/services/sendImageService.js"></script>
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize']);
+                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload', 'Services']);
                     messageApp.filter('htmlToPlaintext', function () {
                         return function (text) {
                             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
@@ -244,17 +265,8 @@
                             }
                         };
                     });
-                    messageApp.controller('messageController', function ($scope, $http) {
-                        // Varialbles Initialization.
+                    messageApp.controller('messageController', function ($scope, Upload, $timeout, $http) {
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
-
-                        $scope.isMsgBoxEmpty = false;
-                        $scope.isFileSelected = false;
-                        $scope.isMsg = false;
-                        $scope.setFocus = true;
-                        $scope.chatMsg = "";
-                        $scope.users = [];
-                        $scope.messeges = [];
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
                         load_message_user();
                         function load_message_user() {
@@ -331,157 +343,85 @@
                             }
                         }
 
-                        // ====================================== Image Sending Code ==============================
-                        $scope.$watch('imageFiles', function () {
-                            $scope.sendImage($scope.imageFiles);
+                        $scope.$watch('files', function () {
+                            $scope.upload($scope.files);
                         });
-
-                        //  opens the sent image on gallery_icon click
-                        /*$scope.openClickImage = function (msg) {
-                            if (!msg.ownMsg) {
-                                $http.post($rootScope.baseUrl + "/v1/getfile", msg).success(function (response) {
-                                    if (!response.isExpired) {
-                                        msg.showme = false;
-                                        msg.serverfilename = msg.serverfilename;
-                                    } else {
-                                        var html = '<p id="alert">' + response.expmsg + '</p>';
-                                        if ($(".chat-box").has("p").length < 1) {
-                                            $(html).hide().prependTo(".chat-box").fadeIn(1500);
-                                            $('#alert').delay(1000).fadeOut('slow', function () {
-                                                $('#alert').remove();
-                                            });
-                                        }
-                                    }
-                                });
-                            }
-                        }; */
-
-                        // recieving new image message
-                        /*$socket.on("new message image", function (data) {
-                            $scope.showme = true;
-                            if (data.username == $rootScope.username) {
-                                data.ownMsg = true;
-                                data.dwimgsrc = "app/images/spin.gif";
-                            } else {
-                                data.ownMsg = false;
-                            }
-                            if ((data.username == $rootScope.username) && data.repeatMsg) {
-                                checkMessegesImage(data);
-                            } else {
-                                $scope.messeges.push(data);
-                            }
-                        });
-                        */
-                        // replacing spinning wheel in sender message after image message delivered to everyone.
-                        function checkMessegesImage(msg) {
-                            for (var i = ($scope.messeges.length - 1); i >= 0; i--) {
-                                if ($scope.messeges[i].hasFile) {
-                                    if ($scope.messeges[i].istype === "image") {
-                                        if ($scope.messeges[i].dwid === msg.dwid) {
-                                            $scope.messeges[i].showme = false;
-                                            $scope.messeges[i].filename = msg.filename;
-                                            $scope.messeges[i].size = msg.size;
-                                            $scope.messeges[i].imgsrc = msg.serverfilename;
-                                            $scope.messeges[i].serverfilename = msg.serverfilename;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            ;
-                        }
-
-                        // validate file type to image function
-                       /* $scope.validateImage = function (file) {
-                            var filetype = file.type.substring(0, file.type.indexOf('/'));
-                            if (filetype == "image") {
-                                return true;
-                            } else {
-                                var html = '<p id="alert">Select Images.</p>';
+                        $scope.$watch('Files', function () {
+                            var filetype = $scope.catchFile($scope.Files);
+                            if (filetype == "document") {
+                                $scope.sendPDF($scope.Files);
+                            } else if (filetype == "music") {
+                                $scope.sendAudio($scope.Files);
+                            } else if (filetype == "image") {
+                                $scope.sendImage($scope.Files);
+                            } else if (filetype == "invalid format") {
+                                var html = '<p id="alert">Invalid file format.</p>';
                                 if ($(".chat-box").has("p").length < 1) {
                                     $(html).hide().prependTo(".chat-box").fadeIn(1500);
                                     $('#alert').delay(1000).fadeOut('slow', function () {
                                         $('#alert').remove();
                                     });
                                 }
-                                return false;
                             }
-                        } */
+                            if ($scope.Files != null) {
+                                $scope.files = [$scope.Files];
+                            }
+                        });
 
-                        // download image if it exists on server else return error message
-                        /*$scope.downloadImage = function (ev, elem) {
-                            var search_id = elem.id;
-                            for (var i = ($scope.messeges.length - 1); i >= 0; i--) {
-                                if ($scope.messeges[i].hasFile) {
-                                    if ($scope.messeges[i].istype === "image") {
-                                        if ($scope.messeges[i].dwid === search_id) {
-                                            $http.post($rootScope.baseUrl + "/v1/getfile", $scope.messeges[i]).success(function (response) {
-                                                if (!response.isExpired) {
-                                                    var linkID = "#" + search_id + "A";
-                                                    $(linkID).find('i').click();
-                                                    return true;
-                                                } else {
-                                                    var html = '<p id="alert">' + response.expmsg + '</p>';
-                                                    if ($(".chat-box").has("p").length < 1) {
-                                                        $(html).hide().prependTo(".chat-box").fadeIn(1500);
-                                                        $('#alert').delay(1000).fadeOut('slow', function () {
-                                                            $('#alert').remove();
-                                                        });
-                                                    }
-                                                    return false;
-                                                }
-                                            });
-                                            break;
-                                        }
-                                    }
-                                }
-                            };
-                        }
-                        */
-                        // sending new images function
-                        /*$scope.sendImage = function (files) {
+                        // function for checking file type
+                        $scope.catchFile = function (files) {
                             if (files && files.length) {
                                 $scope.isFileSelected = true;
                                 for (var i = 0; i < files.length; i++) {
                                     var file = files[i];
-                                    var dateString = formatAMPM(new Date());
-                                    var DWid = $rootScope.username + "dwid" + Date.now();
-                                    var image = {
-                                        username: $rootScope.username,
-                                        userAvatar: $rootScope.userAvatar,
-                                        hasFile: $scope.isFileSelected,
-                                        isImageFile: true,
-                                        istype: "image",
-                                        showme: true,
-                                        dwimgsrc: "app/images/gallery_icon5.png",
-                                        dwid: DWid,
-                                        msgTime: dateString
-                                    };
-                                    $socket.emit('send-message', image, function (data) {       // sending new image message via socket    
-                                    });
-                                    var fd = new FormData();
-                                    fd.append('file', file);
-                                    fd.append('username', $rootScope.username);
-                                    fd.append('userAvatar', $rootScope.userAvatar);
-                                    fd.append('hasFile', $scope.isFileSelected);
-                                    fd.append('isImageFile', true);
-                                    fd.append('istype', "image");
-                                    fd.append('showme', true);
-                                    fd.append('dwimgsrc', "app/images/gallery_icon5.png");
-                                    fd.append('dwid', DWid);
-                                    fd.append('msgTime', dateString);
-                                    fd.append('filename', file.name);
-                                    $http.post($rootScope.baseUrl + "/v1/uploadImage", fd, {
-                                        transformRequest: angular.identity,
-                                        headers: {'Content-Type': undefined}
-                                    }).then(function (response) {
-                                    });
+                                    if (file.type == "application/pdf" || file.type == "application/msword" || file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || file.type == "text/plain" || file.type == "application/vnd.ms-excel") {
+                                        return "document";
+                                    } else if (file.type == "audio/mp3" || file.type == "audio/mpeg") {
+                                        return "music";
+                                    } else {
+                                        var filetype = file.type.substring(0, file.type.indexOf('/'));
+                                        if (filetype == "image") {
+                                            return "image";
+                                        } else {
+                                            return "invalid format";
+                                        }
+                                    }
 
                                 }
                             }
-                        };
-                        */
+                        }
 
+
+                        $scope.log = '';
+                        $scope.upload = function (files) {
+                            if (files && files.length) {
+
+                                for (var i = 0; i < files.length; i++) {
+                                    var file = files[i];
+                                    if (!file.$error) {
+                                        Upload.upload({
+                                            url: base_url + 'message/business_file_upload',
+                                            data: {
+                                                file: file
+                                            }
+                                        }).then(function (resp) {
+                                            $timeout(function () {
+                                                $scope.log = 'file: ' +
+                                                        resp.config.data.file.name +
+                                                        ', Response: ' + JSON.stringify(resp.data) +
+                                                        '\n' + $scope.log;
+                                            });
+                                        }, null, function (evt) {
+                                            var progressPercentage = parseInt(100.0 *
+                                                    evt.loaded / evt.total);
+                                            $scope.log = 'progress: ' + progressPercentage +
+                                                    '% ' + evt.config.data.file.name + '\n' +
+                                                    $scope.log;
+                                        });
+                                    }
+                                }
+                            }
+                        };
                         // SOCKET ON
 
                         socket.on('getBusinessChatUserList', function (data) {
@@ -494,8 +434,8 @@
                             $('#message').html('');
                             $scope.setFocus = true;
                         });
-
                     });
+
         </script>
     </body>
 </html>
