@@ -129,9 +129,8 @@
 		 </div>
       </div>
       <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-         <div class="common-form">
-            <div class="job-saved-box">
-               <h3>
+        <div class="page-title">
+                       <h3>
                   Search result of 
                   <?php  
                   if($keyword == "" && $keyword1 == ""){
@@ -152,30 +151,11 @@
                      }
                      ?>
                </h3>
+                    </div>
+                    <div class="job-contact-frnd1">
 
-				<div class="contact-frnd-post">
-				<div class="mob-add">
-								<div class="fw text-center pt10 pb5">
-									<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-								</div>
-							</div>
-                            <div class="job-contact-frnd ">
-                              <!--.........AJAX DATA......-->           
-                            </div>
-                         <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
-				</div>
 
-            </div>
-         </div>
+                    </div>
       </div>
 	  <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 					

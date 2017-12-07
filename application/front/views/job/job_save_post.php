@@ -100,9 +100,9 @@
                                 }
                                 ?>
                                 <div class="post-img-user">
-                                <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                                    <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                                 </div>
-<?php } ?>
+                            <?php } ?>
                             <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>assets/img/cam.png">Update Profile Picture</a>
                         </div>
                     </div>
@@ -119,10 +119,10 @@
                             <?php } else {
                                 ?> 
                                 <a id="designation" class="designation" title="<?php echo ucwords($jobdata[0]['designation']); ?>"><?php echo ucwords($jobdata[0]['designation']); ?></a>
-                    <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
-<?php echo $job_menubar; ?>       
+                    <?php echo $job_menubar; ?>       
                 </div>
             </div>
             <div class="middle-part container padding_set_res">
@@ -139,7 +139,7 @@
                         <?php } else {
                             ?> 
                             <a id="designation" class="designation" title="<?php echo ucwords($jobdata[0]['designation']); ?>"><?php echo ucwords($jobdata[0]['designation']); ?></a>
-<?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- text head end -->
@@ -215,10 +215,10 @@
                                 </div>
                             </div>
                         </div>
-        <?php
-    }
-} else {
-    ?>
+                        <?php
+                    }
+                } else {
+                    ?>
                     <div class="edit_profile_progress edit_pr_bar">
                         <div class="progre_bar_text">
                             <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
@@ -235,9 +235,9 @@
                             </div>
                         </div>
                     </div>
-    <?php
-}
-?>
+                    <?php
+                }
+                ?>
             </div>
             <div class="user-midd-section">
                 <div class="container">
@@ -296,20 +296,21 @@
         <!-- Model Popup Close -->
 
         <<!-- footer> -->
-<?php echo $login_footer ?>         
-<?php echo $footer; ?>
+        <?php echo $login_footer ?>         
+        <?php echo $footer; ?>
         <!-- </footer>    -->
 
         <!-- script for skill textbox automatic start-->
-        <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time());   ?>"></script>-->
 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
 
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php // echo base_url('assets/js/raphael-min.js
+        <!--<script type="text/javascript" src="<?php
+        // echo base_url('assets/js/raphael-min.js
 //?ver='.time()); 
-?>"></script>-->
+        ?>"></script>-->
         <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
 
         <script>
