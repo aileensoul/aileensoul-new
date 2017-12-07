@@ -2708,6 +2708,7 @@ footer ul li a:hover{
         font-size: 16px;
         padding: 7px 29px;
     }
+    .notification-data-inside h6{padding: 0px;}
 }
 @media screen and (max-width: 479px) {
     #InboxContainer {

@@ -1981,9 +1981,10 @@ img{
 	footer .container{padding:10px 15px !important;}
 	footer ul{padding-top:0;}
 	.banner{padding-top:12px;}
-	.cameraButton .fa.fa-camera{height:20px; width:24px; background-size:100%;}
+	label.cameraButton{padding:7px 10px 2px !important;}
+	.cameraButton .fa.fa-camera{height:26px; width:30px; background-size:100%;}
 	.banner-box .upload-camera{height:34px; width:38px;}
-	.cameraButton .tooltiptext{padding:3px 0 !important; top:-4px !important;}
+	.cameraButton .tooltiptext{    font-size: 12px;width: 121px;font-weight: 600;margin-top: 25px;padding: 14px 0;}
 	body{/*padding-bottom:90px;*/}
 	.login form{padding:16px 12px 15px;}/*d*/
 	footer .col-md-6{width:100%; float:left; font-size: 12px;}
@@ -2024,6 +2025,7 @@ img{
 	.privacy-cust .main-comtai {padding: 0px !important;}
 	 .turmcon-cust .about-h2{font-size: 29px;}
     .cust-disclaimer .about-h2{font-size: 32px;}
+    .upload-img{margin-top: -72px;right: 20px;}
 
 }
 

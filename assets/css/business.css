@@ -5410,6 +5410,8 @@ body.reg-form{background: #fff}
     }
     .addcontact-right {
         width: 14%;
+        padding-top: 3px;
+
     }
     .upload-img {
         margin-top: -72px !important;
@@ -5566,6 +5568,7 @@ body.reg-form{background: #fff}
     }
     .addcontact-right {
         width: 20%;
+
     }
     .cover-pic {
         bottom: 62%;
