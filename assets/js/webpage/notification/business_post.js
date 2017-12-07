@@ -251,10 +251,22 @@ function comment_like(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/like_comment",
+        url: base_url + "business_profile/check_post_comment_available",
         data: 'post_id=' + clicked_id,
         success: function (data) {
-            $('#' + 'likecomment' + clicked_id).html(data);
+            if (data == 1) {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/like_comment",
+                    data: 'post_id=' + clicked_id,
+                    success: function (data) {
+                        $('#' + 'likecomment' + clicked_id).html(data);
+                    }
+                });
+            } else {
+                $('.mes').html('Sorry this content is now not available');
+                $('#bidmodal').modal('show');
+            }
         }
     });
 }
@@ -263,10 +275,28 @@ function comment_like1(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/like_comment1",
+        url: base_url + "business_profile/check_post_comment_available",
         data: 'post_id=' + clicked_id,
-        success: function (data) {
-            $('#' + 'likecomment1' + clicked_id).html(data);
+        success: function (data1) {
+            if (data1 == 1) {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/like_comment1",
+                    data: 'post_id=' + clicked_id,
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#' + 'likecomment1' + clicked_id).html(data.comment_html);
+                        if (data.notification.notification_count != 0) {
+                            var notification_count = data.notification.notification_count;
+                            var to_id = data.notification.to_id;
+                            show_header_notification(notification_count, to_id);
+                        }
+                    }
+                });
+            } else {
+                $('.mes').html('Sorry this content is now not available');
+                $('#bidmodal').modal('show');
+            }
         }
     });
 }
