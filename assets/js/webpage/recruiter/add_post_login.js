@@ -1,23 +1,23 @@
 function login_profile() {
 
-    $('#register').modal('hide');
+    $('#register_profile').modal('hide');
     $('#login').modal('show');
 }
 function register_profile() {
     $('#login').modal('hide');
-    $('#register').modal('show');
+    $('#register_profile').modal('show');
 }
 function forgot_profile() {
     $('#forgotPassword').modal('show');
 }
-function login_profile1(){
-    $('#register_apply').modal('hide');
-    $('#login1').modal('show');
-}
-function register_profile1() {
-    $('#login1').modal('hide');
-    $('#register_apply').modal('show');
-}
+//function login_profile1(){
+//    $('#register_apply').modal('hide');
+//    $('#login1').modal('show');
+//}
+//function register_profile1() {
+//    $('#login1').modal('hide');
+//    $('#register_apply').modal('show');
+//}
 $(function () {
 
 
@@ -242,9 +242,9 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     var todaydate_new_one = new Date(todaydate_new).getTime();
 
     if (lastdata_new_one >= todaydate_new_one) {
-        $('.day').addClass('error');
-        $('.month').addClass('error');
-        $('.year').addClass('error');
+//        $('.day').addClass('error');
+//        $('.month').addClass('error');
+//        $('.year').addClass('error');
         return true;
     } else {
         $('.day').addClass('error');
@@ -664,7 +664,8 @@ $(document).ready(function () {
                         'currency': currency,
                         csrf_token_name: csrf_hash
                     }
-                    $.ajax({
+                    if(post_name != ''){
+                               $.ajax({
                         type: 'POST',
                         url: base_url + 'recruiter/add_post_added',
                         data: post_data1,
@@ -675,6 +676,10 @@ $(document).ready(function () {
                             }
                         }
                     });
+                    }else{
+                        window.location = base_url + "dashboard";
+                    }
+             
                 }
                 } else if (response.data == "password") {
                     $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
@@ -692,73 +697,73 @@ $(document).ready(function () {
         return false;
     }
     
-//ONLY FOR LOGIN FROM HEADER START
-$("#login_form_not").validate({
-
-        rules: {
-            email_login: {
-                required: true,
-            },
-            password_login: {
-                required: true,
-            }
-        },
-        messages:
-                {
-                    email_login: {
-                        required: "Please enter email address",
-                    },
-                    password_login: {
-                        required: "Please enter password",
-                    }
-                },
-        submitHandler: submitForm1
-    });
-    /* validation */
-    /* login submit */
-    function submitForm1()
-    {
-
-        var email_login = $("#email_login").val();
-        var password_login = $("#password_login").val();
-        var post_data = {
-            'email_login': email_login,
-            'password_login': password_login,
-            csrf_token_name: csrf_hash
-        }
-        $.ajax({
-            type: 'POST',
-            url: base_url + 'registration/check_login',
-            data: post_data,
-            dataType: "json",
-            beforeSend: function ()
-            {
-                $("#error").fadeOut();
-                $("#btn1").html('Login ...');
-            },
-            success: function (response)
-            {
-                if (response.data == "ok") {
-                  //  alert("login");
-                    $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                 // 8-11   window.location = base_url + "job/home";
-                    window.location = base_url + "dashboard";
-                } else if (response.data == "password") {
-                    $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                    document.getElementById("password_login").classList.add('error');
-                    document.getElementById("password_login").classList.add('error');
-                    $("#btn1").html('Login');
-                } else {
-                    $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                    document.getElementById("email_login").classList.add('error');
-                    document.getElementById("email_login").classList.add('error');
-                    $("#btn1").html('Login');
-                }
-            }
-        });
-        return false;
-    }
-    //ONLY FOR LOGIN FROM HEADER END
+////ONLY FOR LOGIN FROM HEADER START
+//$("#login_form_not").validate({
+//
+//        rules: {
+//            email_login: {
+//                required: true,
+//            },
+//            password_login: {
+//                required: true,
+//            }
+//        },
+//        messages:
+//                {
+//                    email_login: {
+//                        required: "Please enter email address",
+//                    },
+//                    password_login: {
+//                        required: "Please enter password",
+//                    }
+//                },
+//        submitHandler: submitForm1
+//    });
+//    /* validation */
+//    /* login submit */
+//    function submitForm1()
+//    {
+//
+//        var email_login = $("#email_login").val();
+//        var password_login = $("#password_login").val();
+//        var post_data = {
+//            'email_login': email_login,
+//            'password_login': password_login,
+//            csrf_token_name: csrf_hash
+//        }
+//        $.ajax({
+//            type: 'POST',
+//            url: base_url + 'registration/check_login',
+//            data: post_data,
+//            dataType: "json",
+//            beforeSend: function ()
+//            {
+//                $("#error").fadeOut();
+//                $("#btn1").html('Login ...');
+//            },
+//            success: function (response)
+//            {
+//                if (response.data == "ok") {
+//                  //  alert("login");
+//                    $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+//                 // 8-11   window.location = base_url + "job/home";
+//                    window.location = base_url + "dashboard";
+//                } else if (response.data == "password") {
+//                    $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+//                    document.getElementById("password_login").classList.add('error');
+//                    document.getElementById("password_login").classList.add('error');
+//                    $("#btn1").html('Login');
+//                } else {
+//                    $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+//                    document.getElementById("email_login").classList.add('error');
+//                    document.getElementById("email_login").classList.add('error');
+//                    $("#btn1").html('Login');
+//                }
+//            }
+//        });
+//        return false;
+//    }
+//    //ONLY FOR LOGIN FROM HEADER END
 
 
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
@@ -773,22 +778,22 @@ $("#login_form_not").validate({
             last_name: {
                 required: true,
             },
-            email_reg: {
-                required: true,
-                email: true,
-                lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
-                remote: {
-                    url: base_url + "registration/check_email",
-                    type: "post",
-                    data: {
-                        email_reg: function () {
-                            // alert("hi");
-                            return $("#email_reg").val();
-                        },
-                        csrf_token_name: csrf_hash,
-                    },
-                },
-            },
+//            email_reg: {
+//                required: true,
+//                email: true,
+//              //  lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+//                remote: {
+//                    url: base_url + "registration/check_email",
+//                    type: "post",
+//                    data: {
+//                        email_reg: function () {
+//                            // alert("hi");
+//                            return $("#email_reg").val();
+//                        },
+//                        csrf_token_name: csrf_hash,
+//                    },
+//                },
+//            },
             password_reg: {
                 required: true,
             },
@@ -817,10 +822,10 @@ $("#login_form_not").validate({
                     last_name: {
                         required: "Please enter last name",
                     },
-                    email_reg: {
-                        required: "Please enter email address",
-                        remote: "Email address already exists",
-                    },
+//                    email_reg: {
+//                        required: "Please enter email address",
+//                        remote: "Email address already exists",
+//                    },
                     password_reg: {
                         required: "Please enter password",
                     },
@@ -844,6 +849,7 @@ $("#login_form_not").validate({
 
     function submitRegisterForm()
     {
+      
         var postid = '';
         var first_name = $("#first_name").val();
         var last_name = $("#last_name").val();
@@ -934,6 +940,7 @@ $("#login_form_not").validate({
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
                     var post_name = $("#post_name").val();
+                  //  alert(post_name);
                     var skills = $("#skills2").val();
                     var position = $("#position").val();
                     var minyear = $("#minyear").val();
@@ -976,7 +983,8 @@ $("#login_form_not").validate({
                         'currency': currency,
                         csrf_token_name: csrf_hash
                     }
-                    $.ajax({
+                    if(post_name != ''){
+                          $.ajax({
                         type: 'POST',
                         url: base_url + 'recruiter/add_post_added',
                         data: post_data1,
@@ -987,6 +995,10 @@ $("#login_form_not").validate({
                             }
                         }
                     });
+                    }else{
+                        window.location = base_url + "dashboard";
+                    }
+                  
 
                     return false;
 
@@ -1002,192 +1014,192 @@ $("#login_form_not").validate({
         return false;
     }
     //ONLY FOR REGISTER FROM HEADER START
-    $.validator.addMethod("lowercase", function (value, element, regexpr) {
-        return regexpr.test(value);
-    }, "Email should be in small character");
+//    $.validator.addMethod("lowercase", function (value, element, regexpr) {
+//        return regexpr.test(value);
+//    }, "Email should be in small character");
 
-    $("#register").validate({
-        rules: {
-            first_name: {
-                required: true,
-            },
-            last_name: {
-                required: true,
-            },
-            email_reg: {
-                required: true,
-                email: true,
-                lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
-                remote: {
-                    url: base_url + "registration/check_email",
-                    type: "post",
-                    data: {
-                        email_reg: function () {
-                            // alert("hi");
-                            return $("#email_reg").val();
-                        },
-                        csrf_token_name: csrf_hash,
-                    },
-                },
-            },
-            password_reg: {
-                required: true,
-            },
-            selday: {
-                required: true,
-            },
-            selmonth: {
-                required: true,
-            },
-            selyear: {
-                required: true,
-            },
-            selgen: {
-                required: true,
-            }
-        },
-
-        groups: {
-            selyear: "selyear selmonth selday"
-        },
-        messages:
-                {
-                    first_name: {
-                        required: "Please enter first name",
-                    },
-                    last_name: {
-                        required: "Please enter last name",
-                    },
-                    email_reg: {
-                        required: "Please enter email address",
-                        remote: "Email address already exists",
-                    },
-                    password_reg: {
-                        required: "Please enter password",
-                    },
-
-                    selday: {
-                        required: "Please enter your birthdate",
-                    },
-                    selmonth: {
-                        required: "Please enter your birthdate",
-                    },
-                    selyear: {
-                        required: "Please enter your birthdate",
-                    },
-                    selgen: {
-                        required: "Please enter your gender",
-                    }
-
-                },
-        submitHandler: submitRegisterForm1
-    });
+//    $("#register").validate({
+//        rules: {
+//            first_name: {
+//                required: true,
+//            },
+//            last_name: {
+//                required: true,
+//            },
+//            email_reg: {
+//                required: true,
+//                email: true,
+//                lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+//                remote: {
+//                    url: base_url + "registration/check_email",
+//                    type: "post",
+//                    data: {
+//                        email_reg: function () {
+//                            // alert("hi");
+//                            return $("#email_reg").val();
+//                        },
+//                        csrf_token_name: csrf_hash,
+//                    },
+//                },
+//            },
+//            password_reg: {
+//                required: true,
+//            },
+//            selday: {
+//                required: true,
+//            },
+//            selmonth: {
+//                required: true,
+//            },
+//            selyear: {
+//                required: true,
+//            },
+//            selgen: {
+//                required: true,
+//            }
+//        },
+//
+//        groups: {
+//            selyear: "selyear selmonth selday"
+//        },
+//        messages:
+//                {
+//                    first_name: {
+//                        required: "Please enter first name",
+//                    },
+//                    last_name: {
+//                        required: "Please enter last name",
+//                    },
+//                    email_reg: {
+//                        required: "Please enter email address",
+//                        remote: "Email address already exists",
+//                    },
+//                    password_reg: {
+//                        required: "Please enter password",
+//                    },
+//
+//                    selday: {
+//                        required: "Please enter your birthdate",
+//                    },
+//                    selmonth: {
+//                        required: "Please enter your birthdate",
+//                    },
+//                    selyear: {
+//                        required: "Please enter your birthdate",
+//                    },
+//                    selgen: {
+//                        required: "Please enter your gender",
+//                    }
+//
+//                },
+//        submitHandler: submitRegisterForm1
+//    });
     /* register submit */
-    function submitRegisterForm1()
-    {
-        var postid = '';
-        var first_name = $("#first_name").val();
-        var last_name = $("#last_name").val();
-        var email_reg = $("#email_reg").val();
-        var password_reg = $("#password_reg").val();
-        var selday = $("#selday").val();
-        var selmonth = $("#selmonth").val();
-        var selyear = $("#selyear").val();
-        var selgen = $("#selgen").val();
-      
-//alert(postid);
-        var post_data = {
-            'first_name': first_name,
-            'last_name': last_name,
-            'email_reg': email_reg,
-            'password_reg': password_reg,
-            'selday': selday,
-            'selmonth': selmonth,
-            'selyear': selyear,
-            'selgen': selgen,
-            csrf_token_name: csrf_hash
-        }
-
-
-        var todaydate = new Date();
-        var dd = todaydate.getDate();
-        var mm = todaydate.getMonth() + 1; //January is 0!
-        var yyyy = todaydate.getFullYear();
-
-        if (dd < 10) {
-            dd = '0' + dd
-        }
-
-        if (mm < 10) {
-            mm = '0' + mm
-        }
-
-        var todaydate = yyyy + '/' + mm + '/' + dd;
-        var value = selyear + '/' + selmonth + '/' + selday;
-
-
-        var d1 = Date.parse(todaydate);
-        var d2 = Date.parse(value);
-        if (d1 < d2) {
-            $(".dateerror").html("Date of birth always less than to today's date.");
-            return false;
-        } else {
-            if ((0 == selyear % 4) && (0 != selyear % 100) || (0 == selyear % 400))
-            {
-                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
-                    if (selday == 31) {
-                        $(".dateerror").html("This month has only 30 days.");
-                        return false;
-                    }
-                } else if (selmonth == 2) { //alert("hii");
-                    if (selday == 31 || selday == 30) {
-                        $(".dateerror").html("This month has only 29 days.");
-                        return false;
-                    }
-                }
-            } else {
-                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
-                    if (selday == 31) {
-                        $(".dateerror").html("This month has only 30 days.");
-                        return false;
-                    }
-                } else if (selmonth == 2) {
-                    if (selday == 31 || selday == 30 || selday == 29) {
-                        $(".dateerror").html("This month has only 28 days.");
-                        return false;
-                    }
-                }
-            }
-        }
-        $.ajax({
-            type: 'POST',
-            url: base_url + 'registration/reg_insert',
-            dataType: 'json',
-            data: post_data,
-            beforeSend: function ()
-            {
-                $("#register_error").fadeOut();
-                $("#btn1").html('Create an account ...');
-            },
-            success: function (response)
-            {
-                
-                if (response.okmsg == "ok") {
-                    
-                        $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                        window.location = base_url + "dashboard";
-                 
-                } else {
-                    $("#register_error").fadeIn(1000, function () {
-                        $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
-                        $("#btn1").html('Create an account');
-                    });
-                }
-
-            }
-        });
-        return false;
-    }
+//    function submitRegisterForm1()
+//    {
+//        var postid = '';
+//        var first_name = $("#first_name").val();
+//        var last_name = $("#last_name").val();
+//        var email_reg = $("#email_reg").val();
+//        var password_reg = $("#password_reg").val();
+//        var selday = $("#selday").val();
+//        var selmonth = $("#selmonth").val();
+//        var selyear = $("#selyear").val();
+//        var selgen = $("#selgen").val();
+//      
+////alert(postid);
+//        var post_data = {
+//            'first_name': first_name,
+//            'last_name': last_name,
+//            'email_reg': email_reg,
+//            'password_reg': password_reg,
+//            'selday': selday,
+//            'selmonth': selmonth,
+//            'selyear': selyear,
+//            'selgen': selgen,
+//            csrf_token_name: csrf_hash
+//        }
+//
+//
+//        var todaydate = new Date();
+//        var dd = todaydate.getDate();
+//        var mm = todaydate.getMonth() + 1; //January is 0!
+//        var yyyy = todaydate.getFullYear();
+//
+//        if (dd < 10) {
+//            dd = '0' + dd
+//        }
+//
+//        if (mm < 10) {
+//            mm = '0' + mm
+//        }
+//
+//        var todaydate = yyyy + '/' + mm + '/' + dd;
+//        var value = selyear + '/' + selmonth + '/' + selday;
+//
+//
+//        var d1 = Date.parse(todaydate);
+//        var d2 = Date.parse(value);
+//        if (d1 < d2) {
+//            $(".dateerror").html("Date of birth always less than to today's date.");
+//            return false;
+//        } else {
+//            if ((0 == selyear % 4) && (0 != selyear % 100) || (0 == selyear % 400))
+//            {
+//                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
+//                    if (selday == 31) {
+//                        $(".dateerror").html("This month has only 30 days.");
+//                        return false;
+//                    }
+//                } else if (selmonth == 2) { //alert("hii");
+//                    if (selday == 31 || selday == 30) {
+//                        $(".dateerror").html("This month has only 29 days.");
+//                        return false;
+//                    }
+//                }
+//            } else {
+//                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
+//                    if (selday == 31) {
+//                        $(".dateerror").html("This month has only 30 days.");
+//                        return false;
+//                    }
+//                } else if (selmonth == 2) {
+//                    if (selday == 31 || selday == 30 || selday == 29) {
+//                        $(".dateerror").html("This month has only 28 days.");
+//                        return false;
+//                    }
+//                }
+//            }
+//        }
+//        $.ajax({
+//            type: 'POST',
+//            url: base_url + 'registration/reg_insert',
+//            dataType: 'json',
+//            data: post_data,
+//            beforeSend: function ()
+//            {
+//                $("#register_error").fadeOut();
+//                $("#btn1").html('Create an account ...');
+//            },
+//            success: function (response)
+//            {
+//                
+//                if (response.okmsg == "ok") {
+//                    
+//                        $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
+//                        window.location = base_url + "dashboard";
+//                 
+//                } else {
+//                    $("#register_error").fadeIn(1000, function () {
+//                        $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
+//                        $("#btn1").html('Create an account');
+//                    });
+//                }
+//
+//            }
+//        });
+//        return false;
+//    }
      //ONLY FOR REGISTER FROM HEADER END
 });
 $('#submit').on('click', function () {

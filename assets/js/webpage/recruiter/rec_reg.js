@@ -7,7 +7,7 @@ jQuery.validator.addMethod("noSpace", function (value, element) {
     return value == '' || value.trim().length != 0;
 }, "No space please and don't leave it empty");
 
-
+$(".alert").delay(3200).fadeOut(300);
 // compnay info end
 $(document).ready(function () {
 
