@@ -243,7 +243,7 @@
                 </div>
                 <div class="col-md-7 col-sm-12 mob-clear ">
                     <div class="page-title">
-                        <h3>Recommended Job</h3>
+                        <h3>Post</h3>
                     </div>
                     <div class="job-contact-frnd1">
 

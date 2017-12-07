@@ -2037,7 +2037,7 @@ class Recruiter extends MY_Controller {
                      $rec_post .= '<div class="all-job-box" id="removepost"' . $post['post_id'] . '">
                                     <div class="all-job-top">';
 
-                    $rec_post = $this->db->get_where('recruiter', array(
+                    $cache_time = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->comp_logo;
 
@@ -2196,7 +2196,7 @@ class Recruiter extends MY_Controller {
                     $rec_post .= '<div class="all-job-box" id="removepost"' . $post['post_id'] . '">
                                     <div class="all-job-top">';
 
-                    $rec_post = $this->db->get_where('recruiter', array(
+                    $cache_time = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->comp_logo;
 
@@ -2346,7 +2346,7 @@ class Recruiter extends MY_Controller {
         }
 
 
-        echo $rec_post;
+        echo $rec_post; 
         // code end
     }
 
