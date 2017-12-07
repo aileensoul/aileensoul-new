@@ -256,7 +256,7 @@
                                                 <p class="pull-right job-top-btn">
 
                                                     <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                                        <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
+<!--                                                        <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
                                                         <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="btn4">Edit</a>
                                                         <?php
                                                         $join_str[0]['table'] = 'job_reg';
@@ -269,7 +269,7 @@
                                                         $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
                                                         $countt = count($apply_candida);
                                                         ?>
-                                                        <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>
+                                                        <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>-->
                                                         <?php
                                                     } else {
                                                         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
