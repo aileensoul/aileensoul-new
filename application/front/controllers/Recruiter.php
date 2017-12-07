@@ -4848,7 +4848,7 @@ class Recruiter extends MY_Controller {
         $this->data['recommandedpost'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         if ($this->session->userdata('aileenuser')) {
-            $this->load->view('recruiter/recpost_live', $this->data);
+            $this->load->view('job/rec_post', $this->data);
         } else {
             $this->load->view('recruiter/rec_post_login', $this->data);
         }

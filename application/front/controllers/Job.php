@@ -1975,8 +1975,8 @@ class Job extends MY_Controller {
         $para = $_POST['allpost'];
         $notid = $_POST['userid'];
 
-      
-        
+
+
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'job_delete' => '0');
@@ -2028,7 +2028,7 @@ class Job extends MY_Controller {
                         "notification" => array('notification_count' => $not_count, 'to_id' => $notid),
             ));
         } else {
-           
+
 
             $data = array(
                 'post_id' => $id,
@@ -3635,6 +3635,18 @@ class Job extends MY_Controller {
                 } else {
                     $post_name = $post['post_name'];
                 }
+
+                if ($post_name != '') {
+                    $text = strtolower($this->common->clean($post_name));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                if ($cityname != '') {
+                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname = '';
+                }
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
@@ -3645,9 +3657,10 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<div class="job-top-detail">';
-                $return_html .= '<h5><a href="#">';
+                $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
                 $return_html .= '</a></h5>';
                 $return_html .= '<p><a href = "#">';
@@ -3661,7 +3674,14 @@ class Job extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">Ahmedabad,(India)</span>
+                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                if ($cityname || $countryname) {
+                    if ($cityname) {
+                        $return_html .= $cityname . ', ';
+                    }
+                    $return_html .= $countryname;
+                }
+                $return_html .= '      </span>
                     </span>';
                 $return_html .= '<span class="exp">
                         <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
