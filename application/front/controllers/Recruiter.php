@@ -4850,7 +4850,7 @@ class Recruiter extends MY_Controller {
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('job/rec_post', $this->data);
         } else {
-            $this->load->view('recruiter/rec_post_login', $this->data);
+            $this->load->view('job/rec_post_login', $this->data);
         }
     }
 

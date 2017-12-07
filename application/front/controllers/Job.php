@@ -3842,7 +3842,8 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<div class="job-top-detail">';
                 $return_html .= '<h5><a href="#">';
                 $return_html .= $post_name;
@@ -3858,7 +3859,14 @@ class Job extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">Ahmedabad,(India)</span>
+                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                if ($cityname || $countryname) {
+                    if ($cityname) {
+                        $return_html .= $cityname . ', ';
+                    }
+                    $return_html .= $countryname;
+                }
+                $return_html .= '</span>
                     </span>';
                 $return_html .= '<span class="exp">
                         <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
@@ -4002,7 +4010,8 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<div class="job-top-detail">';
                 $return_html .= '<h5><a href="#">';
                 $return_html .= $post_name;
@@ -4018,7 +4027,14 @@ class Job extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">Ahmedabad,(India)</span>
+                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                if ($cityname || $countryname) {
+                    if ($cityname) {
+                        $return_html .= $cityname . ', ';
+                    }
+                    $return_html .= $countryname;
+                }
+                $return_html .= '</span>
                     </span>';
                 $return_html .= '<span class="exp">
                         <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';
@@ -4304,7 +4320,8 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<div class="job-top-detail">';
                 $return_html .= '<h5><a href="#">';
                 $return_html .= $post_name;
@@ -4320,7 +4337,14 @@ class Job extends MY_Controller {
             <div class="all-job-middle">
                 <p class="pb5">
                     <span class="location">';
-                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">Ahmedabad,(India)</span>
+                $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                if ($cityname || $countryname) {
+                    if ($cityname) {
+                        $return_html .= $cityname . ', ';
+                    }
+                    $return_html .= $countryname;
+                }
+                $return_html .= '</span>
                     </span>';
                 $return_html .= '<span class="exp">
                         <span><img class="pr5" src="' . base_url('assets/images/exp.png') . '">';

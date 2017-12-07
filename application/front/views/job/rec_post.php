@@ -253,8 +253,58 @@
                                                     </span>
                                                 </p>
                                                 <p class="pull-right job-top-btn">
-                                                    <a href="#" class="btn4">Save</a>
-                                                    <a href="#" class="btn4">Apply</a>
+
+                                                    <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
+                                                        <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
+                                                        <a href="<?php echo base_url() . 'recruiter/edit-post/' . $post['post_id'] ?>" class="btn4">Edit</a>
+                                                        <?php
+                                                        $join_str[0]['table'] = 'job_reg';
+                                                        $join_str[0]['join_table_id'] = 'job_reg.user_id';
+                                                        $join_str[0]['from_table_id'] = 'job_apply.user_id';
+                                                        $join_str[0]['join_type'] = '';
+
+                                                        $condition_array = array('post_id' => $post['post_id'], 'job_apply.job_delete' => '0', 'job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.job_step' => '10');
+                                                        $data = "job_apply.*,job_reg.job_id";
+                                                        $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
+                                                        $countt = count($apply_candida);
+                                                        ?>
+                                                        <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>
+                                                        <?php
+                                                    } else {
+                                                        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                                                        $contition_array = array(
+                                                            'post_id' => $post['post_id'],
+                                                            'job_delete' => '0',
+                                                            'user_id' => $userid
+                                                        );
+                                                        $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                        if ($jobsave) {
+                                                            ?>
+                                                            <a href="javascript:void(0);" class="btn4 applied">Applied</a>
+                                                        <?php } else { ?>
+                                                            <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
+                                                            <?php
+                                                            $userid = $this->session->userdata('aileenuser');
+                                                            $contition_array = array(
+                                                                'user_id' => $userid,
+                                                                'job_save' => '2',
+                                                                'post_id ' => $post['post_id'],
+                                                                'job_delete' => '1'
+                                                            );
+                                                            $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                            if ($jobsave) {
+                                                                ?>
+                                                                <a class="btn4 saved save_saved_btn">Saved</a>
+                                                            <?php } else { ?>
+                                                                <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> button save_saved_btn">Save</a>
+                                                            <?php } ?>
+                                                        <?php
+                                                        }
+                                                    }
+                                                    ?>
+
+                                                    <!--                                                    <a href="#" class="btn4">Save</a>
+                                                                                                                                <a href="#" class="btn4">Apply</a>-->
                                                 </p>
                                             </div>
                                         </div>
@@ -320,7 +370,7 @@
                                                         </span>
                                                     </li>
                                                     <li><b>Required education</b>
-                                                        <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
+                                                            <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
                                                             <span>
                                                                 <?php
                                                                 $comma = ", ";
@@ -359,11 +409,11 @@
                                                                 ?>     
 
                                                             </span>
-                                                        <?php } else { ?>
+                                                            <?php } else { ?>
                                                             <span>
-                                                                <?php echo PROFILENA; ?>
+                                                            <?php echo PROFILENA; ?>
                                                             </span>
-                                                        <?php } ?>
+        <?php } ?>
                                                     </li>
                                                     <li><b>Sallary</b>
                                                         <span>
@@ -392,9 +442,9 @@
                                                     </li>
                                                     <li><b>Interview Process</b>
                                                         <span>
-                                                            <?php if ($post['interview_process'] != '') { ?>
+                                                                <?php if ($post['interview_process'] != '') { ?>
                                                                 <pre>
-                                                                    <?php echo $this->common->make_links($post['interview_process']); ?></pre>
+                                                                <?php echo $this->common->make_links($post['interview_process']); ?></pre>
                                                                 <?php
                                                             } else {
                                                                 echo PROFILENA;
@@ -404,9 +454,9 @@
                                                     </li>
                                                     <li><b>Company profile</b>
                                                         <span>
-                                                            <?php if ($post['re_comp_profile'] != '') { ?>
+                                                                <?php if ($post['re_comp_profile'] != '') { ?>
                                                                 <pre>
-                                                                    <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
+                                                                <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
                                                                 <?php
                                                             } else {
                                                                 echo PROFILENA;
@@ -434,7 +484,7 @@
                                                         $countt = count($apply_candida);
                                                         ?>
                                                         <a href="<?php echo base_url() . 'recruiter/apply-list/' . $post['post_id'] ?>" class="btn4">Applied  Candidate : <?php echo $countt ?></a>
-                                                    <?php
+                                                        <?php
                                                     } else {
                                                         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                                                         $contition_array = array(
@@ -443,39 +493,41 @@
                                                             'user_id' => $userid
                                                         );
                                                         $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                         if ($jobsave) {?>
-                                                        <a href="javascript:void(0);" class="btn4 applied">Applied</a>
-                                                         <?php } else { ?>
-                                                             <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
-                                                             <?php
-                                                                                    $userid = $this->session->userdata('aileenuser');
-                                                                                    $contition_array = array(
-                                                                                        'user_id' => $userid,
-                                                                                        'job_save' => '2',
-                                                                                        'post_id ' => $post['post_id'],
-                                                                                        'job_delete' => '1'
-                                                                                    );
-                                                                                    $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                                    if ($jobsave) {
-                                                                                        ?>
-                                                                                        <a class="btn4 saved save_saved_btn">Saved</a>
-                                                                                         <?php } else { ?>
-                                                                                        <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> button save_saved_btn">Save</a>
-                                                                                         <?php } ?>
-                                                    <?php      } 
-                                                    }
-                                                    ?>
-<!--                                                    <a href="#" class="btn4">Save</a>
-                                                    <a href="#" class="btn4">Apply</a>-->
+                                                        if ($jobsave) {
+                                                            ?>
+                                                            <a href="javascript:void(0);" class="btn4 applied">Applied</a>
+                                                        <?php } else { ?>
+                                                            <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
+                                                            <?php
+                                                            $userid = $this->session->userdata('aileenuser');
+                                                            $contition_array = array(
+                                                                'user_id' => $userid,
+                                                                'job_save' => '2',
+                                                                'post_id ' => $post['post_id'],
+                                                                'job_delete' => '1'
+                                                            );
+                                                            $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                            if ($jobsave) {
+                                                                ?>
+                                                                <a class="btn4 saved save_saved_btn">Saved</a>
+                                                            <?php } else { ?>
+                                                                <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> button save_saved_btn">Save</a>
+                                                            <?php } ?>
+            <?php
+            }
+        }
+        ?>
+                                                    <!--                                                    <a href="#" class="btn4">Save</a>
+                                                                                                        <a href="#" class="btn4">Apply</a>-->
                                                 </p>
 
                                             </div>
                                         </div>
                                     </div>
-                                    <?php
-                                }
-                            } else {
-                                ?>
+        <?php
+    }
+} else {
+    ?>
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
                                         <img src="' . base_url() . 'img/job-no.png">
@@ -547,9 +599,9 @@
 
 
         <!-- FIELD VALIDATION JS START -->
-        <?php
-        if (IS_REC_JS_MINIFY == '0') {
-            ?>
+<?php
+if (IS_REC_JS_MINIFY == '0') {
+    ?>
             <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
             <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
@@ -561,7 +613,7 @@
 
         <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-        <?php } else { ?>
+<?php } else { ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>
 <?php } ?>
         <script>
