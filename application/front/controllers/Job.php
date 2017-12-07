@@ -3832,6 +3832,17 @@ class Job extends MY_Controller {
                 } else {
                     $post_name = $post['post_name'];
                 }
+                 if ($post_name != '') {
+                    $text = strtolower($this->common->clean($post_name));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                if ($cityname != '') {
+                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname = '';
+                }
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
@@ -3845,7 +3856,7 @@ class Job extends MY_Controller {
                 $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                 $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<div class="job-top-detail">';
-                $return_html .= '<h5><a href="#">';
+                $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
                 $return_html .= '</a></h5>';
                 $return_html .= '<p><a href = "#">';
@@ -4000,6 +4011,17 @@ class Job extends MY_Controller {
                 } else {
                     $post_name = $post['post_name'];
                 }
+                if ($post_name != '') {
+                    $text = strtolower($this->common->clean($post_name));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                if ($cityname != '') {
+                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname = '';
+                }
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
@@ -4013,7 +4035,7 @@ class Job extends MY_Controller {
                 $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                 $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<div class="job-top-detail">';
-                $return_html .= '<h5><a href="#">';
+                $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
                 $return_html .= '</a></h5>';
                 $return_html .= '<p><a href = "#">';
@@ -4310,6 +4332,17 @@ class Job extends MY_Controller {
                 } else {
                     $post_name = $post['post_name'];
                 }
+                if ($post_name != '') {
+                    $text = strtolower($this->common->clean($post_name));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                if ($cityname != '') {
+                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname = '';
+                }
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
@@ -4323,7 +4356,7 @@ class Job extends MY_Controller {
                 $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                 $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<div class="job-top-detail">';
-                $return_html .= '<h5><a href="#">';
+                $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
                 $return_html .= '</a></h5>';
                 $return_html .= '<p><a href = "#">';
