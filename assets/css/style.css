@@ -2103,12 +2103,24 @@ footer div.pt20{padding-top: 18px;}
   .fixed_right_display_none{display:block;}
   .fixed_right_display{display: none;}
   
+  /*** new flow  ***/
+  .inner-right-part{width:805px;}
+	.job-detail .job-top-detail{width:85%;}
+	.detail-discription .all-job-middle ul li span{width:80%;}
+  /*** end new flow  ***/
+  
 }
 
 @media screen and (max-width: 1199px) {
 	.header2 {width: 940px;}
 	#people-list{width:30%;}
     #chat{width:70%;}
+	/***  new flow  ***/
+	.middle-part{left:358px;}
+	.inner-right-part{width:605px;}
+	.job-detail .job-top-detail{width:80%;}
+	.detail-discription .all-job-middle ul li span{width:75%;}
+	/***  end new flow  ***/
 }
 
 @media screen and (max-width:1200px){ 
@@ -2185,6 +2197,19 @@ footer div.pt20{padding-top: 18px;}
 	/** freelance add project  **/
 	.work_type_custom label{display:inline-block !important; }
 	.common-form .work_type_custom input[type="radio"], .common-form .work_type_custom input[type="checkbox"] {height:15px !important; margin:0;}
+	
+	/***  new flow  ***/
+	.custom-box .custom-width{max-width:735px;}
+	.custom-box .left-box img{width:100%;}
+	.custom-box .custom-width{height:222px;}
+	.custom-box .custom-width .right-box h1 a{font-size:45px;}
+	.banner-box .banner-img{max-height:260px;}
+	.custom-box .custom-width .right-box .btns{padding-top:60px;}
+	.left-part{display:none;}
+	.middle-part{left:0; right:0; margin:0 auto; float:none;}
+	.inner-right-part{width: 605px; left: 0; right: 0; float: none; margin: 0 auto;}
+	/***  end new flow  ***/
+	
 }
 
 @media screen and (max-width: 900px){
@@ -2302,6 +2327,17 @@ footer div.pt20{padding-top: 18px;}
 	.modal.user-img span.mes{padding:0;}
 	.modal.user-img .modal-content {margin: 0 auto; width:100%;}
 	#upload-demo-one{width:343px;}
+	
+	/***  new flow  ***/
+	btns .btn-4{font-size:14px !important; padding:5px 20px;}
+	.inner-right-part{width:100%;}
+	.middle-part{width:100%;}
+	.job-detail .job-top-detail{width:73%;}
+	.detail-discription .all-job-middle ul li span{width:68%;}
+	
+	.comment-dis{width:100%;}
+	.post-images .two-img{width:calc(50% - 4px);}
+	/***  end new flow  ***/
 }
 
 @media screen and (max-width: 540px) {
@@ -2428,6 +2464,25 @@ footer div.pt20{padding-top: 18px;}
 	.no-login .btn-right{padding-top:3px; text-align:center;}
 	.no-login .modal.in .modal-dialog{margin:auto;}
 	.no-login .login form#login_form{padding:16px 20px 15px;}
+	
+	/***  new flow  ***/
+	.page-title h3{font-size:18px;}
+	.job-detail .post-img{width:65px; height:65px;}
+	.job-top-detail{width:100%; padding-left:0; padding-top:10px;}
+	.loca-exp{padding-right:0;}
+	.job-top-detail .job-top-btn{width:100%; padding-top:10px; margin-top:0;}
+	.detail-discription .all-job-middle ul li{border-bottom:1px solid #d2d2d2}
+	.detail-discription .all-job-middle ul li:last-child{border-bottom:none;}
+	.detail-discription .all-job-middle ul li:first-child b{width:100%;}
+	.detail-discription .all-job-middle ul li:first-child span{width:100%; padding-left:0;}
+	.detail-discription .all-job-middle ul li:nth-child(2) span{width:100%; padding-left:0;}
+	.detail-discription .all-job-middle ul li span{width:49%; padding-left:5px;}
+	.detail-discription .all-job-middle ul li:first-child b::after{display:none;}
+	.detail-discription .all-job-middle ul li:nth-child(2) b::after{display:none;}
+	.detail-discription .all-job-middle ul li b::after {right:0;}
+	.all-job-middle .location{width:100%; float:left; padding-bottom:5px;}
+	.all-job-middle .exp{width:100%; float:left; padding-bottom:5px;}
+	/***  end new flow  ***/
 }
 
 @media screen and (max-width: 360px) {
@@ -2449,6 +2504,11 @@ footer div.pt20{padding-top: 18px;}
 	#upload-demo-one .cr-boundary{width:239px !important; height:239px !important;}
 	#upload-demo-one .cr-boundary .cr-viewport{margin:20px auto;}
 	.no-login .job_all_post{margin-bottom:0 !important;}
+	/***  new flow  ***/
+	.all-job-bottom{text-align:center;}
+	.all-job-bottom p.pull-right{float:none !important; padding-top:5px;}
+	/***  end new flow  ***/
+
 	
 }
 
