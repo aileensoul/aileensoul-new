@@ -531,22 +531,298 @@
 
                         </div>
 
-                        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                        <!--<div class="custom-right-art mian_middle_post_box animated fadeInUp">-->
+                        <div class="inner-right-part">
+                            <div class="page-title">
+                                <h3>
+                                    <?php
+                                    $cache_time = $this->db->get_where('job_title', array('title_id' => $postdata[0]['post_name']))->row()->name;
+                                    if ($cache_time) {
+                                        echo $cache_time;
+                                    } else {
+                                        echo $postdata[0]['post_name'];
+                                    }
+                                    ?>
+                                </h3>
+                            </div>
+                            <?php
+                            foreach ($postdata as $post) {
+                                ?>
+                                <div class="all-job-box job-detail">
+                                    <div class="all-job-top">
+                                        <div class="post-img">
+                                            <a href="#">
+                                                <?php
+                                                $cache_time = $this->db->get_where('recruiter', array(
+                                                            'user_id' => $post['user_id']
+                                                        ))->row()->comp_logo;
+                                                if ($cache_time) {
+                                                    ?>
+                                                    <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time); ?>">
+                                                <?php } else { ?>
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
+                                                <?php } ?>
+                                            </a>
+                                        </div>
+                                        <div class="job-top-detail">
+                                            <?php
+                                            $cache_time1 = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+                                            if ($cache_time1) {
+                                                $cache_time1;
+                                            } else {
+                                                $cache_time1 = $post['post_name'];
+                                            }
+                                            ?>
+                                            <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
+                                            <p><a href="javascript:void(0);">
+                                                    <?php
+                                                    $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
+                                                    echo $out;
+                                                    ?>
+                                                </a>
+                                            </p>
+                                            <p><a href="javascript:void(0);"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
+                                            <p class="loca-exp">
+                                                <span class="location">
+                                                    <?php
+                                                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                                                    $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                                                    ?>
+                                                    <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">
+                                                        <?php
+                                                        if ($cityname || $countryname) {
+                                                            if ($cityname) {
+                                                                echo $cityname . ', ';
+                                                            }
+                                                            echo $countryname;
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                            <p class="loca-exp">
+                                                <span class="exp">
+                                                    <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+
+                                                        <?php
+                                                        if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
+
+
+                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " , " . "(Fresher can also apply).";
+                                                        } else if (($post['min_year'] != '0' || $post['max_year'] != '0')) {
+                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year';
+                                                        } else {
+                                                            echo "Fresher";
+                                                        }
+                                                        ?>
+                                                    </span>
+                                                </span>
+                                            </p>
+                                            <p class="pull-right job-top-btn">
+                                                <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="detail-discription">
+                                        <div class="all-job-middle">
+                                            <ul>
+                                                <li>
+                                                    <b>Job discription</b>
+                                                    <span>
+                                                        <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <b>Key skill</b>
+                                                    <span>  <?php
+                                                        $comma = ", ";
+                                                        $k = 0;
+                                                        $aud = $post['post_skill'];
+                                                        $aud_res = explode(',', $aud);
+
+                                                        if (!$post['post_skill']) {
+
+                                                            echo $post['other_skill'];
+                                                        } else if (!$post['other_skill']) {
+
+
+                                                            foreach ($aud_res as $skill) {
+
+                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+
+                                                                if ($cache_time != " ") {
+                                                                    if ($k != 0) {
+                                                                        echo $comma;
+                                                                    }echo $cache_time;
+                                                                    $k++;
+                                                                }
+                                                            }
+                                                        } else if ($post['post_skill'] && $post['other_skill']) {
+                                                            foreach ($aud_res as $skill) {
+                                                                if ($k != 0) {
+                                                                    echo $comma;
+                                                                }
+                                                                $cache_time3 = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+
+
+                                                                echo $cache_time3;
+                                                                $k++;
+                                                            } echo "," . $post['other_skill'];
+                                                        }
+                                                        ?>  
+                                                    </span>
+                                                </li>
+                                                <li><b>No of openings</b>
+                                                    <span><?php echo $post['post_position']; ?>
+                                                    </span>
+                                                </li>
+                                                <li><b>Indostry</b>
+                                                    <span> 
+                                                        <?php
+                                                        $cache_time4 = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;
+                                                        echo $cache_time4;
+                                                        ?>
+                                                    </span>
+                                                </li>
+                                                <li><b>Required education</b>
+                                                    <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
+                                                        <span>
+                                                            <?php
+                                                            $comma = ", ";
+                                                            $k = 0;
+                                                            $edu = $post['degree_name'];
+                                                            $edu_nm = explode(',', $edu);
+
+                                                            if (!$post['degree_name']) {
+
+                                                                echo $post['other_education'];
+                                                            } else if (!$post['other_education']) {
+
+
+                                                                foreach ($edu_nm as $edun) {
+                                                                    if ($k != 0) {
+                                                                        echo $comma;
+                                                                    }
+                                                                    $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
+
+
+                                                                    echo $cache_time;
+                                                                    $k++;
+                                                                }
+                                                            } else if ($post['degree_name'] && $post['other_education']) {
+                                                                foreach ($edu_nm as $edun) {
+                                                                    if ($k != 0) {
+                                                                        echo $comma;
+                                                                    }
+                                                                    $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
+
+
+                                                                    echo $cache_time;
+                                                                    $k++;
+                                                                } echo "," . $post['other_education'];
+                                                            }
+                                                            ?>     
+
+                                                        </span>
+                                                    <?php } else { ?>
+                                                        <span>
+                                                            <?php echo PROFILENA; ?>
+                                                        </span>
+                                                    <?php } ?>
+                                                </li>
+                                                <li><b>Sallary</b>
+                                                    <span>
+                                                        <?php
+                                                        $currency = $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+
+                                                        if ($post['min_sal'] || $post['max_sal']) {
+                                                            echo $post['min_sal'] . " - " . $post['max_sal'] . ' ' . $currency . ' ' . $post['salary_type'];
+                                                        } else {
+                                                            echo PROFILENA;
+                                                        }
+                                                        ?></span>
+                                                </li>
+                                                <li><b>Employment Type</b>
+                                                    <span>
+                                                        <?php if ($post['emp_type'] != '') { ?>
+
+                                                            <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?>
+
+                                                            <?php
+                                                        } else {
+                                                            echo PROFILENA;
+                                                        }
+                                                        ?> 
+                                                    </span>
+                                                </li>
+                                                <li><b>Interview Process</b>
+                                                    <span>
+                                                        <?php if ($post['interview_process'] != '') { ?>
+                                                            <pre>
+                                                                <?php echo $this->common->make_links($post['interview_process']); ?></pre>
+                                                            <?php
+                                                        } else {
+                                                            echo PROFILENA;
+                                                        }
+                                                        ?> 
+                                                    </span>
+                                                </li>
+                                                <li><b>Company profile</b>
+                                                    <span>
+                                                        <?php if ($post['re_comp_profile'] != '') { ?>
+                                                            <pre>
+                                                                <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
+                                                            <?php
+                                                        } else {
+                                                            echo PROFILENA;
+                                                        }
+                                                        ?> 
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="all-job-bottom">
+                                            <span class="job-post-date"><b>Posted on:</b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
+                                            <p class="pull-right">
+                                                <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+
+
+                        </div>
+                        <div class="mob-add">
+                            <div class="fw text-center pt10 pb5">
+                                <script type="text/javascript">
+                                    (function () {
+                                        if (window.CHITIKA === undefined) {
+                                            window.CHITIKA = {'units': []};
+                                        }
+                                        ;
+                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                        var placement_id = window.CHITIKA.units.length;
+                                        window.CHITIKA.units.push(unit);
+                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                    }());
+                                </script>
+                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                            </div>
+                        </div>
+                        <!--recommen candidate start-->
+                        <?php if (count($recommandedpost) > 0) { ?>
                             <div class="inner-right-part">
                                 <div class="page-title">
                                     <h3>
-                                        <?php
-                                        $cache_time = $this->db->get_where('job_title', array('title_id' => $postdata[0]['post_name']))->row()->name;
-                                        if ($cache_time) {
-                                            echo $cache_time;
-                                        } else {
-                                            echo $postdata[0]['post_name'];
-                                        }
-                                        ?>
+                                        Recommended job
                                     </h3>
                                 </div>
                                 <?php
-                                foreach ($postdata as $post) {
+                                foreach ($recommandedpost as $post) {
                                     ?>
                                     <div class="all-job-box job-detail">
                                         <div class="all-job-top">
@@ -559,8 +835,9 @@
                                                     if ($cache_time) {
                                                         ?>
                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time); ?>">
-                                                    <?php } ?>
+                                                    <?php }else { ?>
                                                     <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
+                                                    <?php } ?>
                                                 </a>
                                             </div>
                                             <div class="job-top-detail">
@@ -618,6 +895,7 @@
                                                     </span>
                                                 </p>
                                                 <p class="pull-right job-top-btn">
+                                                    <!--<a href="#" class="btn4">Save</a>-->
                                                     <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                                 </p>
                                             </div>
@@ -795,285 +1073,9 @@
 
 
                             </div>
-                            <div class="mob-add">
-                                <div class="fw text-center pt10 pb5">
-                                    <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                </div>
-                            </div>
-                            <!--recommen candidate start-->
-<?php if (count($recommandedpost) > 0) { ?>
-                                <div class="inner-right-part">
-                                    <div class="page-title">
-                                        <h3>
-                                            Recommended job
-                                        </h3>
-                                    </div>
-                                    <?php
-                                    foreach ($recommandedpost as $post) {
-                                        ?>
-                                        <div class="all-job-box job-detail">
-                                            <div class="all-job-top">
-                                                <div class="post-img">
-                                                    <a href="#">
-                                                        <?php
-                                                        $cache_time = $this->db->get_where('recruiter', array(
-                                                                    'user_id' => $post['user_id']
-                                                                ))->row()->comp_logo;
-                                                        if ($cache_time) {
-                                                            ?>
-                                                            <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time); ?>">
-        <?php } ?>
-                                                        <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
-                                                    </a>
-                                                </div>
-                                                <div class="job-top-detail">
-                                                    <?php
-                                                    $cache_time1 = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
-                                                    if ($cache_time1) {
-                                                        $cache_time1;
-                                                    } else {
-                                                        $cache_time1 = $post['post_name'];
-                                                    }
-                                                    ?>
-                                                    <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
-                                                    <p><a href="javascript:void(0);">
-                                                            <?php
-                                                            $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
-                                                            echo $out;
-                                                            ?>
-                                                        </a>
-                                                    </p>
-                                                    <p><a href="javascript:void(0);"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
-                                                    <p class="loca-exp">
-                                                        <span class="location">
-                                                            <?php
-                                                            $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                                                            $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
-                                                            ?>
-                                                            <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">
-                                                                <?php
-                                                                if ($cityname || $countryname) {
-                                                                    if ($cityname) {
-                                                                        echo $cityname . ', ';
-                                                                    }
-                                                                    echo $countryname;
-                                                                }
-                                                                ?>
-                                                            </span>
-                                                        </span>
-                                                    </p>
-                                                    <p class="loca-exp">
-                                                        <span class="exp">
-                                                            <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+                        <?php } ?>
+                        <!--recommen candidate end-->
 
-                                                                <?php
-                                                                if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
-
-
-                                                                    echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " , " . "(Fresher can also apply).";
-                                                                } else if (($post['min_year'] != '0' || $post['max_year'] != '0')) {
-                                                                    echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year';
-                                                                } else {
-                                                                    echo "Fresher";
-                                                                }
-                                                                ?>
-                                                            </span>
-                                                        </span>
-                                                    </p>
-                                                    <p class="pull-right job-top-btn">
-                                                        <!--<a href="#" class="btn4">Save</a>-->
-                                                        <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="detail-discription">
-                                                <div class="all-job-middle">
-                                                    <ul>
-                                                        <li>
-                                                            <b>Job discription</b>
-                                                            <span>
-                                                                <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
-                                                            </span>
-                                                        </li>
-                                                        <li>
-                                                            <b>Key skill</b>
-                                                            <span>  <?php
-                                                                $comma = ", ";
-                                                                $k = 0;
-                                                                $aud = $post['post_skill'];
-                                                                $aud_res = explode(',', $aud);
-
-                                                                if (!$post['post_skill']) {
-
-                                                                    echo $post['other_skill'];
-                                                                } else if (!$post['other_skill']) {
-
-
-                                                                    foreach ($aud_res as $skill) {
-
-                                                                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-
-                                                                        if ($cache_time != " ") {
-                                                                            if ($k != 0) {
-                                                                                echo $comma;
-                                                                            }echo $cache_time;
-                                                                            $k++;
-                                                                        }
-                                                                    }
-                                                                } else if ($post['post_skill'] && $post['other_skill']) {
-                                                                    foreach ($aud_res as $skill) {
-                                                                        if ($k != 0) {
-                                                                            echo $comma;
-                                                                        }
-                                                                        $cache_time3 = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
-
-
-                                                                        echo $cache_time3;
-                                                                        $k++;
-                                                                    } echo "," . $post['other_skill'];
-                                                                }
-                                                                ?>  
-                                                            </span>
-                                                        </li>
-                                                        <li><b>No of openings</b>
-                                                            <span><?php echo $post['post_position']; ?>
-                                                            </span>
-                                                        </li>
-                                                        <li><b>Indostry</b>
-                                                            <span> 
-                                                                <?php
-                                                                $cache_time4 = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;
-                                                                echo $cache_time4;
-                                                                ?>
-                                                            </span>
-                                                        </li>
-                                                        <li><b>Required education</b>
-                                                                <?php if ($post['degree_name'] != '' || $post['other_education'] != '') { ?>
-                                                                <span>
-                                                                    <?php
-                                                                    $comma = ", ";
-                                                                    $k = 0;
-                                                                    $edu = $post['degree_name'];
-                                                                    $edu_nm = explode(',', $edu);
-
-                                                                    if (!$post['degree_name']) {
-
-                                                                        echo $post['other_education'];
-                                                                    } else if (!$post['other_education']) {
-
-
-                                                                        foreach ($edu_nm as $edun) {
-                                                                            if ($k != 0) {
-                                                                                echo $comma;
-                                                                            }
-                                                                            $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
-
-
-                                                                            echo $cache_time;
-                                                                            $k++;
-                                                                        }
-                                                                    } else if ($post['degree_name'] && $post['other_education']) {
-                                                                        foreach ($edu_nm as $edun) {
-                                                                            if ($k != 0) {
-                                                                                echo $comma;
-                                                                            }
-                                                                            $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
-
-
-                                                                            echo $cache_time;
-                                                                            $k++;
-                                                                        } echo "," . $post['other_education'];
-                                                                    }
-                                                                    ?>     
-
-                                                                </span>
-                                                                <?php } else { ?>
-                                                                <span>
-                                                                <?php echo PROFILENA; ?>
-                                                                </span>
-        <?php } ?>
-                                                        </li>
-                                                        <li><b>Sallary</b>
-                                                            <span>
-                                                                <?php
-                                                                $currency = $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
-
-                                                                if ($post['min_sal'] || $post['max_sal']) {
-                                                                    echo $post['min_sal'] . " - " . $post['max_sal'] . ' ' . $currency . ' ' . $post['salary_type'];
-                                                                } else {
-                                                                    echo PROFILENA;
-                                                                }
-                                                                ?></span>
-                                                        </li>
-                                                        <li><b>Employment Type</b>
-                                                            <span>
-                                                                <?php if ($post['emp_type'] != '') { ?>
-
-                                                                    <?php echo $this->common->make_links($post['emp_type']) . '  Job'; ?>
-
-                                                                    <?php
-                                                                } else {
-                                                                    echo PROFILENA;
-                                                                }
-                                                                ?> 
-                                                            </span>
-                                                        </li>
-                                                        <li><b>Interview Process</b>
-                                                            <span>
-                                                                    <?php if ($post['interview_process'] != '') { ?>
-                                                                    <pre>
-                                                                    <?php echo $this->common->make_links($post['interview_process']); ?></pre>
-                                                                    <?php
-                                                                } else {
-                                                                    echo PROFILENA;
-                                                                }
-                                                                ?> 
-                                                            </span>
-                                                        </li>
-                                                        <li><b>Company profile</b>
-                                                            <span>
-                                                                    <?php if ($post['re_comp_profile'] != '') { ?>
-                                                                    <pre>
-                                                                    <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
-                                                                    <?php
-                                                                } else {
-                                                                    echo PROFILENA;
-                                                                }
-                                                                ?> 
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="all-job-bottom">
-                                                    <span class="job-post-date"><b>Posted on:</b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
-                                                    <p class="pull-right">
-                                                    <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
-                                                    </p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }
-                                    ?>
-
-
-                                </div>
-<?php } ?>
-                            <!--recommen candidate end-->
-                        </div>  
 
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
@@ -1133,7 +1135,7 @@
         <!-- Model Popup Close -->
 
         <!--footer>        
-<?php //echo $footer;    ?>
+        <?php //echo $footer;    ?>
         </footer-->
 
         <!-- Login  -->
@@ -1545,7 +1547,7 @@
         } else {
             ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-<?php } ?>
+        <?php } ?>
 
 
 
@@ -1569,8 +1571,8 @@
         } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post_login.js?ver=' . time()); ?>"></script>
-                        <!--<script type="text/javascript" defer="defer" src="<?php // echo base_url('assets/js_min/webpage/recruiter/rec_post_login.min.js?ver=' . time());     ?>"></script>-->
-<?php } ?>
+                        <!--<script type="text/javascript" defer="defer" src="<?php // echo base_url('assets/js_min/webpage/recruiter/rec_post_login.min.js?ver=' . time());      ?>"></script>-->
+        <?php } ?>
 
         <script>
 

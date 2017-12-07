@@ -164,7 +164,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                   
 
                         <div class="inner-right-part">
                             <div class="page-title">
@@ -540,7 +540,7 @@
                                 </div>
 <?php } ?>
                         </div>
-                    </div>
+                 
 
                 </div>
             </div>
