@@ -194,8 +194,9 @@
                                                     if ($cache_time) {
                                                         ?>
                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time); ?>">
-                                                    <?php } ?>
+                                                    <?php }else{ ?>
                                                     <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
+                                                    <?php }?>
                                                 </a>
                                             </div>
                                             <div class="job-top-detail">
