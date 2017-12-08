@@ -3730,7 +3730,7 @@ class Job extends MY_Controller {
 
             </div>
             <div class="all-job-bottom">
-                <span class="job-post-date"><b>Posted on:</b>';
+                <span class="job-post-date"><b>Posted on: </b>';
                 $return_html .= date('d-M-Y', strtotime($post['created_date']));
                 $return_html .= '</span>
                 <p class="pull-right">';
@@ -3942,7 +3942,7 @@ class Job extends MY_Controller {
 
             </div>
             <div class="all-job-bottom">
-                <span class="job-post-date"><b>Posted on:</b>';
+                <span class="job-post-date"><b>Posted on: </b>';
                 $return_html .= date('d-M-Y', strtotime($post['created_date']));
                 $return_html .= '</span>
                 <p class="pull-right">';
@@ -4135,7 +4135,7 @@ class Job extends MY_Controller {
 
             </div>
             <div class="all-job-bottom">
-                <span class="job-post-date"><b>Posted on:</b>';
+                <span class="job-post-date"><b>Posted on: </b>';
                 $return_html .= date('d-M-Y', strtotime($post['created_date']));
                 $return_html .= '</span>
                 <p class="pull-right">';
@@ -4474,7 +4474,7 @@ class Job extends MY_Controller {
 
             </div>
             <div class="all-job-bottom">
-                <span class="job-post-date"><b>Posted on:</b>';
+                <span class="job-post-date"><b>Posted on: </b>';
                 $return_html .= date('d-M-Y', strtotime($post['created_date']));
                 $return_html .= '</span>
                 <p class="pull-right">';

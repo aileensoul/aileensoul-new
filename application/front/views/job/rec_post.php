@@ -245,8 +245,8 @@
                                                             if ($cityname) {
                                                                 echo $cityname . ', ';
                                                             }
-                                                            echo $countryname;
-                                                        }(Location)
+                                                            echo $countryname. " (Location)";
+                                                        }
                                                         ?>
                                                     </span>
                                                 </span>
@@ -254,15 +254,15 @@
                                             <p class="loca-exp">
                                                 <span class="exp">
                                                     <span>
-                                                        <img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+                                                        <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
 
                                                         <?php
                                                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
 
 
-                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " , " . "(Fresher can also apply).";
+                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " (Required Experience) " . "(Fresher can also apply).";
                                                         } else if (($post['min_year'] != '0' || $post['max_year'] != '0')) {
-                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year';
+                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year'. " (Required Experience) ";
                                                         } else {
                                                             echo "Fresher";
                                                         }
@@ -485,7 +485,7 @@
                                             </ul>
                                         </div>
                                         <div class="all-job-bottom">
-                                            <span class="job-post-date"><b>Posted on:</b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
+                                            <span class="job-post-date"><b>Posted on:  </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
                                             <p class="pull-right">
                                                 <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
                                                     <a href="javascript:void(0);" class="btn4" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
