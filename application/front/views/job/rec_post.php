@@ -238,21 +238,23 @@
                                                     $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                                                     $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                                                     ?>
-                                                    <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">
+                                                    <span>
+                                                        
                                                         <?php
                                                         if ($cityname || $countryname) {
                                                             if ($cityname) {
                                                                 echo $cityname . ', ';
                                                             }
                                                             echo $countryname;
-                                                        }
+                                                        }(Location)
                                                         ?>
                                                     </span>
                                                 </span>
                                             </p>
                                             <p class="loca-exp">
                                                 <span class="exp">
-                                                    <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+                                                    <span>
+                                                        <img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
 
                                                         <?php
                                                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
@@ -527,7 +529,7 @@
                                                             ?>
                                                             <a class="btn4 saved save_saved_btn">Saved</a>
                                                         <?php } else { ?>
-                                                            <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> button save_saved_btn">Save</a>
+                                                            <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> btn4 save_saved_btn">Save</a>
                                                         <?php } ?>
                                                         <?php
                                                     }
