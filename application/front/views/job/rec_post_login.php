@@ -556,11 +556,27 @@
                                                 $cache_time = $this->db->get_where('recruiter', array(
                                                             'user_id' => $post['user_id']
                                                         ))->row()->comp_logo;
-                                                if ($cache_time) {
-                                                    ?>
-                                                    <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time); ?>">
-                                                <?php } else { ?>
-                                                    <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
+                                                
+                                               if ($cache_time) {
+                                                    if (IMAGEPATHFROM == 'upload') {
+                                                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) { 
+                                                            ?>
+                                                           <img src="<?php echo  base_url('assets/images/commen-img.png') ?>">
+                                                   <?php     } else { ?>
+                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                       <?php  }
+                                                    } else {
+                                                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
+                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                        if ($info) { ?>
+                                                           <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                         <?php } else { ?>
+                                                          <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                       <?php  }
+                                                    }
+                                                } else { ?>
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
                                                 <?php } ?>
                                             </a>
                                         </div>
@@ -588,13 +604,14 @@
                                                     $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                                                     $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                                                     ?>
-                                                    <span><img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">
+                                                    <span>
+                                                        <!--<img class="pr5" src="<?php echo base_url('assets/images/location.png'); ?>">-->
                                                         <?php
                                                         if ($cityname || $countryname) {
                                                             if ($cityname) {
                                                                 echo $cityname . ', ';
                                                             }
-                                                            echo $countryname;
+                                                            echo $countryname . " (Location)";
                                                         }
                                                         ?>
                                                     </span>
@@ -608,9 +625,9 @@
                                                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
 
 
-                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " , " . "(Fresher can also apply).";
+                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " (Required Experience) " . "(Fresher can also apply).";
                                                         } else if (($post['min_year'] != '0' || $post['max_year'] != '0')) {
-                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year';
+                                                            echo $post['min_year'] . ' Year - ' . $post['max_year'] . ' Year' . " (Required Experience) ";
                                                         } else {
                                                             echo "Fresher";
                                                         }
@@ -782,7 +799,7 @@
                                             </ul>
                                         </div>
                                         <div class="all-job-bottom">
-                                            <span class="job-post-date"><b>Posted on:</b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
+                                            <span class="job-post-date"><b>Posted on: </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
                                             <p class="pull-right">
                                                 <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                             </p>

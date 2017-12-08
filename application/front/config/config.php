@@ -809,7 +809,7 @@ $config['bus_post_resize4_height'] = '315';
 
 // BUSINESS MESSAGE IMAGE
 $config['bus_message_main_upload_path'] = 'uploads/business_message/main/';
-$config['bus_message_main_allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+$config['bus_message_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
 $config['bus_message_main_max_size'] = '100000000'; //in KB
 $config['bus_message_main_max_width'] = '4500';
 $config['bus_message_main_max_height'] = '3000';

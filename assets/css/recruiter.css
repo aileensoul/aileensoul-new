@@ -1042,6 +1042,11 @@ fieldset.fresher_radio label {
 .mes input:focus{border:1px solid #1b8ab9;}
 .mes .btn:focus{opacity:0.8;}
 .but1{cursor: pointer;}
+.cust-add-live select{color: #000;}
+.form-group label.error{float: right;right: 0px;left: inherit;}
+.two-select-box1 label{cursor: default !important;}
+.register-model .form-group label.error{float: left;right: inherit;left: 0px;}
+.register-model .form-group{margin-bottom: 10px;}
 
 /***  media query  ***/
 

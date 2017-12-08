@@ -1513,17 +1513,17 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .smily_b {
     position: absolute;
     top: 7px;
-    right: 70px;
+    right: 30px;
     bottom: 3px;
     z-index: 2;
 }
-.link_b {
+/*.link_b {
     position: absolute;
     top: 16px;
     right: 85px;
     bottom: 3px;
     z-index: 2;
-}
+}*/
 #set_input {
     width: 100%;
     background-color: rgba(244, 244, 244, 0.59);
@@ -1835,7 +1835,7 @@ input:-moz-placeholder {
 .cameraButton .fa.fa-camera{width:30px; height:26px; background:url('../img/cam.png') no-repeat; 
 	border:none; padding:5px; opacity: 0.6; background-size:100%;
 }
-label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px!important; 
+label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 10px 2px!important; 
 	border: 1px solid #666; border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
 }
 .border_btm .fsearch{color: #1b8ab9;}
@@ -2033,23 +2033,35 @@ footer div.pt20{padding-top: 18px;}
 	color: #1b8ab9;
 	border: 1px solid #1b8ab9;
 	font-weight: normal; border-radius:4px; display:inline-block;}
-.btn4:hover{background:#1b8ab9; color:#fff;}
-.page-title h3{padding:10px; margin:0 0 10px; text-align:center; border:1px solid #d2d2d2; border-radius:4px;}
+.btn4:hover{background:#1b8ab9; color:#fff !important;}
+.page-title h3{padding:5px; margin:0 0 10px; text-align:center; border:1px solid #d2d2d2; border-radius:4px;color: #5c5c5c;font-size: 25px;}
 .all-job-box{margin:0 0 10px; border:1px solid #d2d2d2; border-radius:4px; width:100%; float:left;}
 .all-job-top{padding:10px 15px; border-bottom:1px solid #d2d2d2; width:100%; float:left;}
-.all-job-top .post-img{width:60px; height:60px; float:left; border:none;}
+.all-job-top .post-img{width:60px; height:60px; float:left; border:none;padding-top: 8px;}
 .all-job-top .post-img img{width:100%;}
-.job-top-detail {width:80%; float:left; padding-left:10px;}
-.job-top-detail h5{ margin:0; line-height:1; font-size:15px;}
-.job-top-detail h5 a{color:#5c5c5c; font-size:15px; font-weight:bold; }
+.job-top-detail {width:87%; float:left; padding-left:10px;white-space: nowrap;}
+.job-top-detail h5{ margin:0; height: 25px; font-size:15px;text-overflow: ellipsis;max-width: 87%;overflow: hidden;}
+.job-top-detail h5 a{color:#5c5c5c; font-size:15px; font-weight:bold;text-overflow: ellipsis;max-width: 100%;overflow: hidden; }
 .job-top-detail h5 a:hover{border-bottom:1px solid #5c5c5c;}
-.job-top-detail p{font-size:13px; margin:0; line-height:1.5;}
+.job-top-detail p{font-size:13px; margin:0;}
 .job-top-detail p a{color:#5c5c5c;}
 .all-job-middle{font-size:13px; padding:10px 15px; width:100%; float:left;}
 .all-job-middle .location{padding-right:20px;}
 .all-job-middle span span img{margin-top:-3px;}
 .all-job-bottom{font-size:13px; padding:10px 15px; width:100%; float:left; border-top:1px solid #d2d2d2;}
 .all-job-bottom .job-post-date{padding-top:4px; display:inline-block;}
+.all-job-box span b{font-weight: normal;}
+.all-job-box .all-job-middle p a{color: #5c5c5c;}
+.all-job-box .all-job-middle p a:hover{color: #1b8ab9;text-decoration: underline;}
+.custom-right-art .all-job-box:hover{box-shadow: -webkit-box-shadow: 0px 6px 5px 0px rgba(217,217,217,1);
+                                                 -moz-box-shadow: 0px 6px 5px 0px rgba(217,217,217,1);
+                                                box-shadow: 0px 6px 5px 0px rgba(217,217,217,1);
+                                            }
+.loca-exp span{color: #5c5c5c;}                                            
+.job-top-btn a{color: #1b8ab9 !important;}
+.job-top-btn a:hover{color: #fff !important;}
+.job-top-btn .saved {color: #fff !important}
+.job-top-btn .applied{color: #fff !important}
 /***  end all job page  ***/
 /***  all job page detail  ***/
 .inner-right-part{width:915px; left:335px; position:relative; float:left;}
@@ -2241,6 +2253,7 @@ word-break: break-word;}
 	.left-part{display:none;}
 	.middle-part{left:0; right:0; margin:0 auto; float:none;}
 	.inner-right-part{width: 605px; left: 0; right: 0; float: none; margin: 0 auto;}
+    .job-top-detail{width: 88%}
 	/***  end new flow  ***/
 	
 }
@@ -2370,6 +2383,7 @@ word-break: break-word;}
 	
 	.comment-dis{width:100%;}
 	.post-images .two-img{width:calc(50% - 4px);}
+    .job-top-detail{width: 86%}
 	/***  end new flow  ***/
 }
 
@@ -2415,6 +2429,7 @@ word-break: break-word;}
     }
 	.people-list .search input{width:95%;}
     img{max-width: inherit;}
+    .job-top-detail{width: 84%;}
 }
 
 @media screen and (max-width: 479px) {
