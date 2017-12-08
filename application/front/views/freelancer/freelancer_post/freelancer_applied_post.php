@@ -219,17 +219,13 @@
             <?php
           }}
           ?>
-                    <div class="common-form">
-                        <div class="job-saved-box">
-                            <h3><?php echo $this->lang->line("applied_projects"); ?></h3>
-                            <div class="contact-frnd-post">
-                                <!--...............AJAX DATA..................-->
-                                <div>
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                                </div>
-                            </div>
+                   <div class="page-title">
+                            <h3>Applied Projects</h3>
                         </div>
-                    </div>
+                        <div class="job-contact-frnd1">
+                            <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo  base_url('assets/images/loading.gif');?>"/></p></div>
+                                
+                        </div>
                 </div>
                 <?php 
                if(!($returnpage))

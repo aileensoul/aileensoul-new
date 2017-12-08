@@ -96,7 +96,7 @@ function freelancerwork_applied(pagenum)
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
+                $(".job-contact-frnd1").prepend('');
             } else {
                 $('#loader').show();
             }
@@ -106,7 +106,7 @@ function freelancerwork_applied(pagenum)
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').append(data);
+            $('.job-contact-frnd1').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -208,14 +208,14 @@ function remove_post(abc)
         url: base_url + "freelancer/freelancer_delete_apply",
         data: 'app_id=' + abc,
         success: function (data) {
-            $('#' + 'removeapply' + abc).html(data).removeClass();
-            $('#' + 'removeapply' + abc).parent();
-            var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+            $('#' + 'removeapply' + abc).html(data);
+            $('#' + 'removeapply' + abc).remove();
+            var numItems = $('.job-contact-frnd1 .all-job-box').length;
             if (numItems == '0') {
                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="/assets/img/free-no1.png"></div><div class="art_no_post_text">No Applied projects Found.</div></div>';
 
               //  var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Freelancer Found.</h4></div>";
-                $('.contact-frnd-post').html(nodataHtml);
+                $('.job-contact-frnd1').html(nodataHtml);
             }
         }
     });

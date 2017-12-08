@@ -5,7 +5,7 @@
         <title> <?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver='.time()); ?>">-->
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/job.css?ver=' . time()); ?>">-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -95,58 +95,53 @@
                                     </div>                             
                                 </div>
                                 <div class="edi_origde">
-                        <?php
-                       //echo $count_profile;
-                        if($count_profile == 100)
-                        {
-                            if($freepostdata[0]['progressbar']==0)
-                            {
-                           ?>
-                        <div class="edit_profile_progress complete_profile">
-                           <div class="progre_bar_text">
-                              <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-                           </div>
-                           <div class="count_main_progress">
-                              <div class="circles">
-                                 <div class="second circle-1 ">
-                                    <div class="true_progtree">
-                                       <img src="<?php echo base_url("assets/img/true.png"); ?>">
-                                    </div>
-                                    <div class="tr_text">
-                                       Successfully Completed
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <?php
-                           }
-                         }
-                              
-                           else
-                           {
-                               ?>
-                        <div class="edit_profile_progress">
-                           <div class="progre_bar_text">
-                              <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-                           </div>
-                           <div class="count_main_progress">
-                              <div class="circles">
-                                 <div class="second circle-1">
-                                    <div>
-                                       <strong></strong>
- 
-                                  <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile</a>
-                                      
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <?php
-                           }
-                           ?>
-                     </div>
+                                    <?php
+                                    //echo $count_profile;
+                                    if ($count_profile == 100) {
+                                        if ($freepostdata[0]['progressbar'] == 0) {
+                                            ?>
+                                            <div class="edit_profile_progress complete_profile">
+                                                <div class="progre_bar_text">
+                                                    <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                                </div>
+                                                <div class="count_main_progress">
+                                                    <div class="circles">
+                                                        <div class="second circle-1 ">
+                                                            <div class="true_progtree">
+                                                                <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                                                            </div>
+                                                            <div class="tr_text">
+                                                                Successfully Completed
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+        <?php
+    }
+} else {
+    ?>
+                                        <div class="edit_profile_progress">
+                                            <div class="progre_bar_text">
+                                                <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                            </div>
+                                            <div class="count_main_progress">
+                                                <div class="circles">
+                                                    <div class="second circle-1">
+                                                        <div>
+                                                            <strong></strong>
+
+                                                            <a href="<?php echo base_url('freelancer-work/basic-information') ?>" class="edit_profile_job">Edit Profile</a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    <?php
+}
+?>
+                                </div>
                                 <div class="tablate-potrat-add">
                                     <div class="fw text-center pt10">
                                         <script type="text/javascript">
@@ -164,59 +159,35 @@
                                         <script async type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
                                 </div>
-                               <?php echo $left_footer; ?>
+<?php echo $left_footer; ?>
                             </div>
                         </div>
                         <!-- cover pic end -->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
-                            <?php
-                            if ($this->uri->segment(3) == 'live-post') { ?>
-                                
-                                 <div>
+                                <?php if ($this->uri->segment(3) == 'live-post') { ?>
+
+                                <div>
+    <?php
+    if ($this->session->flashdata('error')) {
+
+        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+    }
+    if ($this->session->flashdata('success')) {
+
+        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+    }
+    ?>
+                                </div>
+
                                     <?php
-                                    if ($this->session->flashdata('error')) {
-                                       
-                                        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-                                    }
-                                    if ($this->session->flashdata('success')) {
-                                      
-                                        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-                                    }
-                                    ?>
-                                </div>
-                                
-                                 <?php
-                                  
-                                
-                           }
-                            ?>
-                            <div class="common-form">
-                                <div class="job-saved-box">
-                                    <h3><?php echo $this->lang->line("recommended_project"); ?></h3>
-                                    <div class="contact-frnd-post">
-                                        <div class="mob-add">
-                                            <div class="fw text-center pt10 pb5">
-                                                <script type="text/javascript">
-                                            (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []};
-                                                }
-                                                ;
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                            }());
-                                                </script>
-                                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                            </div>
-                                        </div>
-                                        <!--.............AJAX DATA............-->
-                                        <div class="fw" id="loader" style="text-align:center;">
-                                            <img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" />
-                                        </div>
-                                    </div>
-                                </div>
+                                }
+                                ?>
+                            <div class="page-title">
+                                <h3>Recommended Projects</h3>
+                            </div>
+                            <div class="job-contact-frnd1">
+                                <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
+
                             </div>
                         </div>
 
@@ -280,13 +251,13 @@
         <!-- Model Popup Close -->
 
         <script async src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver='.time()); ?>"></script>
-       
+        <script type="text/javascript" src="<?php echo base_url('assets/js/progressloader.js?ver=' . time()); ?>"></script>
+
         <script type="text/javascript">
-            $(".alert").delay(3200).fadeOut(300);
-            var base_url = '<?php echo base_url(); ?>';
-            var count_profile_value='<?php echo $count_profile_value;?>';
-            var count_profile='<?php echo $count_profile;?>';
+                                            $(".alert").delay(3200).fadeOut(300);
+                                            var base_url = '<?php echo base_url(); ?>';
+                                            var count_profile_value = '<?php echo $count_profile_value; ?>';
+                                            var count_profile = '<?php echo $count_profile; ?>';
         </script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/post_apply.js?ver=' . time()); ?>"></script>
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>

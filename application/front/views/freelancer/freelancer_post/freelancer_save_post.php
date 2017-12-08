@@ -210,16 +210,12 @@
             <?php
           }}
           ?>
-                        <div class="common-form">
-                            <div class="job-saved-box">
-                                <h3><?php echo $this->lang->line("saved_projects"); ?></h3>
-                                <div class="contact-frnd-post">
-                                    <!--...................AJAX DATA....................-->
-                                    <div>
-                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                                    </div>
-                                </div>
-                            </div>
+                       <div class="page-title">
+                            <h3>Saved Projects</h3>
+                        </div>
+                        <div class="job-contact-frnd1">
+                            <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo  base_url('assets/images/loading.gif');?>"/></p></div>
+                                
                         </div>
                     </div>
                     <?php 
@@ -358,10 +354,10 @@
                       //  alert(data.status);
                         $('#' + 'postdata' + appid).html(data.status);
                         $('#' + 'postdata' + appid).remove();
-                        var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+                        var numItems = $('.job-contact-frnd1 .all-job-box').length;
                         if (numItems == '0') {
                             var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Job Found.</h4></div>";
-                            $('.contact-frnd-post').html(nodataHtml);
+                            $('.job-contact-frnd1').html(nodataHtml);
                         }
                         
                         if (data.notification.notification_count != 0) {
