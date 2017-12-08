@@ -1513,17 +1513,17 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .smily_b {
     position: absolute;
     top: 7px;
-    right: 70px;
+    right: 30px;
     bottom: 3px;
     z-index: 2;
 }
-.link_b {
+/*.link_b {
     position: absolute;
     top: 16px;
     right: 85px;
     bottom: 3px;
     z-index: 2;
-}
+}*/
 #set_input {
     width: 100%;
     background-color: rgba(244, 244, 244, 0.59);
