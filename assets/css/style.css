@@ -1835,7 +1835,7 @@ input:-moz-placeholder {
 .cameraButton .fa.fa-camera{width:30px; height:26px; background:url('../img/cam.png') no-repeat; 
 	border:none; padding:5px; opacity: 0.6; background-size:100%;
 }
-label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px!important; 
+label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 10px 2px!important; 
 	border: 1px solid #666; border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
 }
 .border_btm .fsearch{color: #1b8ab9;}
