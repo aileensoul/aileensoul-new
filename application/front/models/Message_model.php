@@ -10,8 +10,8 @@ class Message_model extends CI_Model {
         $data1 = array(
             'message' => (string) $message,
             'message_file' => $message_file,
-            'message_file_size' => $message_file_type,
-            'message_file_type' => $message_file_size,
+            'message_file_size' => $message_file_size,
+            'message_file_type' => $message_file_type,
             'message_from' => (string) $userid,
             'message_to' => (string) $id,
             'message_from_profile' => (int) $message_from_profile,
