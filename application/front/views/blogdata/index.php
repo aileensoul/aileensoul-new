@@ -1,454 +1,81 @@
-<!-- <!DOCTYPE html>
--->
-<html class="blog_cl">
+<!doctype html>
+<html>
     <head>
-        <title>Official Blog for Regular Updates , News and sharing knowledge - Ailensoul.com</title>
-        <meta name="description" content="Our Aileensoul official blog will describe our free service and related news, tips and tricks - stay tuned." />
-        <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <?php
-        if ($_SERVER['HTTP_HOST'] != "localhost") {
-            ?>
-            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
-            <script>
-                (function (i, s, o, g, r, a, m) {
-                    i['GoogleAnalyticsObject'] = r;
-                    i[r] = i[r] || function () {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date();
-                    a = s.createElement(o),
-                            m = s.getElementsByTagName(o)[0];
-                    a.async = 1;
-                    a.src = g;
-                    m.parentNode.insertBefore(a, m)
-                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 
-                ga('create', 'UA-91486853-1', 'auto');
-                ga('send', 'pageview');
-
-            </script>
-            <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-            <?php
-        }
-        ?>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-                (adsbygoogle = window.adsbygoogle || []).push({
-                    google_ad_client: "ca-pub-6060111582812113",
-                    enable_page_level_ads: true
-                });
-        </script>
-        <style type="text/css">
-            footer > .container{border:1px solid transparent!important;}
-            .footer{border:1px solid #d9d9d9;}
-        </style>
-        <?php
-        foreach ($blog_detail as $blog) {
-            ?>
-            <!-- Open Graph data -->
-            <meta property="og:title" content="<?php echo $blog['title']; ?>" />
-            <meta  property="og:type" content="Blog" />
-            <meta  property="og:image" content="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" />
-            <meta  property="og:description" content="<?php echo $blog['meta_description']; ?>" />
-            <meta  property="og:url" content="<?php echo base_url('blog/' . $blog['blog_slug']) ?>" />
-            <meta property="og:image:width" content="620" />
-            <meta property="og:image:height" content="541" />
-            <meta property="fb:app_id" content="825714887566997" />
-
-            <!-- for twitter -->
-            <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:site" content="<?php base_url('blog/' . $blog['blog_slug']) ?>">
-            <meta name="twitter:title" content="<?php $blog['title']; ?>">
-            <meta name="twitter:description" content="<?php $blog['meta_description']; ?>">
-            <meta name="twitter:creator" content="By Aileensoul">
-            <meta name="twitter:image" content="http://placekitten.com/250/250">
-            <meta name="twitter:domain" content="<?php base_url('blog/' . $blog['blog_slug']) ?>">
-            <?php
-        }
-        ?>
-
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
-
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css?ver=' . time()); ?>">
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+        <title>Load more pagination with AngularJS and PHP</title>
+        <link href="style.css" type="text/css" rel="stylesheet">
+      
     </head>
-    <body class="blog">
-        <div class="main-inner">
-            <header>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-3">
-                            <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
-                        </div>
-                        <div class="col-md-8 col-sm-9 pt10">
-                            <div class="btn-right pull-right">
-                                <?php if (!$this->session->userdata('aileenuser')) { ?>
-                                    <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-                                    <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div class="blog_header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-5 col-xs-3 mob-zindex">
+    <body ng-app='myapp'>
+        <div class="container" ng-controller='fetchCtrl'>
 
-                            <div class="logo pl20">
-                                <?php
-                                if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
-                                    ?>
-                                    <a href="<?php echo base_url('blog/'); ?>">
-                                        <h3  style="color: #1b8ab9;">Blog</h3>
-                                    </a>
-                                    <?php
-                                } else {
-                                    ?>
-                                    <a href="javascript:void(0)">
-                                        <h3  style="color: #1b8ab9;">Blog</h3>
-                                    </a>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
-                            <div class="main-menu-right">
-                                <ul class="">
-                                    <li>
-                                        <?php
-                                        if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
-                                            ?>
-                                            <a title="Recent Post" href="<?php echo base_url('blog/'); ?>">Recent Post </a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <a title="Recent Post" href="javascript:void(0)">Recent Post </a>
-                                            <?php
-                                        }
-                                        ?>
-                                    </li>
-                                    <li>
-                                        <?php
-                                        if ($this->uri->segment(3) == 'popular') {
-                                            ?>
-                                            <a title="Most Popular" href="javascript:void(0)">Most Popular</a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <a title="Most Popular" href="<?php echo base_url('blog/popular'); ?>">Most Popular</a>
-                                            <?php
-                                        }
-                                        ?>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Post -->
+            <div class="post" ng-repeat='post in posts'>
+                <h1>{{ post.title }}</h1>
+                <h1>{{ post.id }}</h1>
+                <p>
+                    {{ post.shortcontent }}
+                </p>
+                <a href="{{ post.link }}" class="more" target="_blank">More</a>
             </div>
-            <section>
-                <div class="col-md-12 hidden-md hidden-lg pt20">
-                    <div class="blog_search">
-                        <div>
-                            <div class="searc_w"><input type="" name="" placeholder="Search Blog Post"></div>
-                            <div class="butn_w"><a href=""><i class="fa fa-search" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-mid-section user-midd-section">
-                    <div class="container">
-                        <div class="row">
-                            <div class="blog_post_outer col-md-9 col-sm-8 pr0">
-                                <?php
-                                if ($this->input->get('q')) {
-                                    ?>
-                                    <div class="blog-tag">
-                                        <div class="tag-line"><span>Search results for</span> <?php echo $search_keyword; ?></div>
-                                    </div>
-                                    <?php
-                                }//if end  
-                                if ($this->uri->segment(2) == 'tag') {
-                                    ?>
-                                    <div class="blog-tag">
-                                        <div class="tag-line"><span>Tag:</span> <?php echo $search_keyword; ?></div>
-                                    </div>
-                                    <?php
-                                }//if end  
+          
+            <h1 class="load-more" ng-show="showLoadmore" ng-click='getPosts()'>{{ buttonText }}</h1>
+            <input type="hidden" id="row" ng-model='row'>
 
-                                if (count($blog_detail) == 0) {
-
-                                    if ($this->input->get('q') || $this->uri->segment(2) == 'tag') {
-                                        ?>
-                                        <div class="job-saved-box">
-                                            <div class="blog-tag" style="margin-bottom: 0px;">
-
-                                            </div>
-                                            <div class="contact-frnd-post">
-                                                <div class="text-center rio">
-                                                    <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
-                                                    <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn't find what you were looking for.</p>
-                                                    <ul>
-                                                        <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }
-                                    if ($this->uri->segment(3) == 'popular') {
-                                        echo "Not Any Popular Blog";
-                                    }
-                                }//if end
-                                else {
-
-                                    foreach ($blog_detail as $blog) {
-                                        ?>
-                               <div class="blog_main_o">
-    <div class="date_blog_left">
-        <div class="blog-date-change">
-            <div class="blog-month blog-picker">
-                <span class="blog_monthd">
-                  oct
-                </span>
-            </div>
-            <div>
-                <span class="blog_mdate">
-                   16
-                </span>
-            </div>
-            <div class="blog-year blog-picker">
-                <span class="blog_moyear" >
-                  2017
-                </span>
-            </div>
         </div>
-        <div class="blog-left-comment">
-            <div class="blog-comment-count">
-                <a>
-                  0
-                </a>
-            </div>
-            <div class="blog-comment">
-                <a>Comments</a>
-            </div>
-        </div>
-    </div>
-    <div class="date_blog_right">
-        <div class="blog_post_main">
-            <div class="blog_inside_post_main">
-                <div class="blog_main_post_first_part">
-                    <div class="blog_main_post_img">
-                        <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" ></a>
-                    </div>
-                </div>
-                <div class="blog_main_post_second_part">
-                    <div class="blog_class_main_name">
-                        <span>
-                            <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>">
-                                <h1> blog title </h1>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="blog_class_main_by">
-                        <span>
-                        </span>
-                    </div>
-                    <div class="blog_class_main_desc ">
-                        <span class="dot_span_desc">
-                           description
-                        </span>
-                    </div>
-                    <div class="blog_class_main_social">
-                        <div class="left_blog_icon fl">
-                            <ul class="social_icon_bloag fl">
-                                <li>
-                                    <?php
-                                    $title = urlencode('"' . $blog['title'] . '"');
-                                    $url = urlencode(base_url('blog/' . $blog['blog_slug']));
-                                    $summary = urlencode('"' . $blog['description'] . '"');
-                                    $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
-                                    ?>
+        <!-- Script -->
+        <script src="angular.min.js"></script>
+        <script>
+        var fetch = angular.module('myapp', []);
+        var base_url = '<?php echo base_url(); ?>';
+        fetch.controller('fetchCtrl', ['$scope', '$http', function ($scope, $http) {
 
-                                    <a class="fbk" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog/' . $blog['blog_slug']); ?>" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
-                                        <span  class="social_fb"></span>
-                                    </a>
-                                </li>
-                                <li>
+            // Variables
+            $scope.showLoadmore = true;
+            $scope.row = 0;
+            $scope.rowperpage = 3;
+            $scope.buttonText = "Load More";
+           
+            // Fetch data
+             $scope.getPosts = function(){
+                
+                $http({
+                method: 'post',
+                url: base_url + 'blogdata/bloglist',
+                data: {row:$scope.row,rowperpage:$scope.rowperpage}
+                }).then(function successCallback(response) {
+               
+                    if(response.data !='' ){
+                      
+                        $scope.row+=$scope.rowperpage;
+                        if($scope.posts != undefined){
+                            $scope.buttonText = "Loading ...";
+                            setTimeout(function() {
+                                $scope.$apply(function(){
+                                angular.forEach(response.data,function(item) {
+                                    $scope.posts.push(item);
+                                });
+                                $scope.buttonText = "Load More";
+                                });
+                            },500);
+                            // $scope.posts.push(response.data);
+                             
+                        }else{
+                            $scope.posts = response.data;
+                        }
+                    }else{
+                        $scope.showLoadmore = false;
+                    }
 
-                                    <a href="https://plus.google.com/share?url=<?php echo $url; ?>" title="Google +" onclick="javascript:window.open('https://plus.google.com/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-                                        <span  class="social_gp"></span>
-                                    </a>
-                                </li>
-                                <li>
+                });
+             }
 
-                                    <a href="https://www.linkedin.com/cws/share?url=<?php echo $url; ?>" title="linkedin"  onclick="javascript:window.open('https://www.linkedin.com/cws/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_lk"></span></a>
-                                </li>
-                                <li>
+             // Call function
+             $scope.getPosts();
+      
+        }]);
 
-                                    <a href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>"  title="twitter" onclick="javascript:window.open('https://twitter.com/intent/tweet?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_tw"></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="fr blog_view_link">
-                            <a title="Read more" onclick="read_more('<?php echo $blog['id']; ?>', '<?php echo $blog['blog_slug']; ?>')"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                                        <?php
-                                    }//for loop end
-                                }//else end
-                                ?>
-                                <div class="dta_left col-md-6" id="pagination">
-
-                                    <?php
-                                    if ($total_rows > 0) {
-                                        if ($this->pagination->create_links()) {
-                                            $rec1 = $offset + 1;
-                                            $rec2 = $offset + $limit;
-                                            if ($rec2 > $total_rows) {
-                                                $rec2 = $total_rows;
-                                            }
-                                            ?>
-                                            <div style="margin-left: 20px;">
-                                                <?php echo "Records $rec1 - $rec2 of $total_rows"; ?>
-                                            </div><?php
-                                        } else {
-                                            ?>
-                                            <div style="margin-left: 20px;">
-                                                <?php echo "Records 1 - $total_rows of $total_rows"; ?>
-                                            </div>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-
-                                    <?php
-                                    if ($this->pagination->create_links()) {
-
-                                        $tot_client = ceil($total_rows / $limit);
-                                        $cur_client = ceil($offset / $limit) + 1;
-                                        ?>
-
-                                        <div class="text-right data_right col-md-6">
-                                            <div id="example2_paginate" class="dataTables_paginate paging_simple_numbers">
-                                                <?php echo $this->pagination->create_links(); ?> 
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                </div><!-- dta_left col-md-6--> 
-                            </div>
-
-                            <div class="col-md-3 col-sm-4 hidden-xs">
-                                <div class="blog_search">
-                                    <h6> Blog Search </h6>
-                                    <div>
-
-                                        <form action=<?php echo base_url('blog/') ?> method="get" autocomplete="off">
-                                            <div class="searc_w"><input type="text" name="q" id="q" placeholder="Search Blog Post"></div>
-                                            <button type="submit" class="butn_w" onclick="return checkvalue();"><i class="fa fa-search"></i></button> 
-
-                                            <?php echo form_close(); ?>
-                                    </div>
-                                </div>
-                                <div class="blog_latest_post">
-                                    <h3>Latest Post</h3>
-                                    <?php
-                                    foreach ($blog_last as $blog) {
-                                        ?>
-                                        <div class="latest_post_posts">
-                                            <ul>
-                                                <li>
-                                                    <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> 
-                                                        <div class="post_inside_data">
-                                                            <div class="post_latest_left">
-                                                                <div class="lateaqt_post_img">
-                                                                    <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="post_latest_right">
-                                                                <div class="desc_post">
-                                                                    <span class="rifght_fname"> <?php echo $blog['title']; ?> </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!--latest_post_posts end -->
-                                        <?php
-                                    }//for loop end
-                                    ?>
-                                </div>
-
-                                <div class="fw text-center pt15 none-1279">
-                                    <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                    <div class="fw pt10">
-                                        <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-                                    </div>
-                                </div>
-                                <div class="fw text-center pt15 block-1279 main-none">
-                                    <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </section>
-    <?php
-    echo $login_footer
-    ?>
-</div>
-</body>
+        </script>
+    </body>
 </html>
-<script>
-                                        var base_url = '<?php echo base_url(); ?>';
-</script>
-
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
-
-
-
