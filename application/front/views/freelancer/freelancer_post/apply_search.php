@@ -344,6 +344,12 @@
             .form-group input:focus:-ms-textarea-placeholder {
                 color: #1b8ab9;
             }
+            .no-login .left_side_posrt label{margin-bottom: 6px;}
+            .no-login .left_side_posrt  a {color: #5c5c5c;}
+            .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
+            .job_active{color: #1b8ab9 !important;}
+            .no-login .left_side_posrt .lbpos input{width: 10% !important; }
+            .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 210px;border: none;}
             /*second*/
 
         </style>
@@ -380,81 +386,55 @@
                 <div class="container">
                     <div class="">
                         <!--COVER PIC START-->
-                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
-                                <!--                                <div class="full-box-module">   
-                                                                    <div class="profile-boxProfileCard  module">
-                                                                        <div class="profile-boxProfileCard-cover"> 
-                                                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                                <?php
-                                if ($freepostdata[0]['profile_background'] != '') {
-                                    ?>
-                                                                                                                    <div class="data_img">
-                                                                                                                        <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freepostdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
-                                                                                                                    </div>
-                                    <?php
-                                } else {
-                                    ?>
-                                                                                                                    <div class="data_img">
-                                                                                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>"  >
-                                                                                                                    </div>
-                                    <?php
-                                }
-                                ?>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="profile-boxProfileCard-content clearfix">
-                                                                            <div class="left_side_box_img buisness-profile-txext">
-                                                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" 
-                                                                                   href="<?php echo base_url('freelancer-work/freelancer-details/' . $freepostdata[0]['user_id']); ?>" title="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                                <?php
-                                if ($freelancerdata[0]['freelancer_post_user_image']) {
-                                    ?>
-                                                                                                                        <div class="data_img_2">
-                                                                                                                            <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freepostdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
-                                                                                                                        </div>
-                                    <?php
-                                } else {
-                                    $fname = $freepostdata[0]['freelancer_post_fullname'];
-                                    $lname = $freepostdata[0]['freelancer_post_username'];
-                                    $sub_fname = substr($fname, 0, 1);
-                                    $sub_lname = substr($lname, 0, 1);
-                                    ?>
-                                                                                                                        <div class="post-img-profile">
-                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                                                                                        </div> 
-                                    <?php
-                                }
-                                ?>
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="right_left_box_design ">
-                                                                                <span class="profile-company-name ">
-                                                                                    <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></a>
-                                                                                </span>
-                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => '1'))->row()->industry_name; ?>
-                                                                                <div class="profile-boxProfile-name">
-                                                                                    <a  href="<?php echo base_url('freelancer-work/freelancer-details'); ?>">
-                                <?php
-                                if ($freepostdata[0]['designation']) {
-                                    echo ucwords($freepostdata[0]['designation']);
-                                } else {
-                                    echo $this->lang->line("designation");
-                                }
-                                ?></a>
-                                                                                </div>
-                                                                                <ul class=" left_box_menubar">
-                                                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details')) { ?> class="active" <?php } ?>><a  class="padding_less_left"  title="freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php echo $this->lang->line("details"); ?></a>
-                                                                                    </li>
-                                                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer-work/saved-projects'); ?>"><?php echo $this->lang->line("saved"); ?></a>
-                                                                                    </li>
-                                                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied Post"  class="padding_less_right"  href="<?php echo base_url('freelancer-work/applied-projects'); ?>"><?php echo $this->lang->line("applied"); ?></a>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>                             
-                                                                </div>-->
-                            </div>
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
+                            <div class="full-box-module">   
+                                <div class="profile-boxProfileCard  module">
+                                    <div class="profile-boxProfileCard-cover"> 
+                                        <a href="<?php echo base_url("jobs"); ?>" >All Projects</a>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword1 == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
+                                        </label>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Bengaluru') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
+                                        </label>
+                                        <label for="City" class="lbpos fw"> 
+                                            <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword1 == 'Chennai') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
+                                        </label>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword1 == 'Delhi') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
+                                        </label>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword1 == 'Hyderabad') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
+                                        </label>
+
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword1 == 'Mumbai') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                        </label>
+
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Legal Projects</a>
+                                        </label>
+                                        
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
+                                        </label>
+                                        
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
+                                        </label>
+                                        
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                        </label>
+                                        
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("jobs-in-Pune"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
+                                        </label>
+
+                                    </div>
+                                </div>
+
+                            </div> 
                         </div>
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
@@ -637,61 +617,61 @@
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth :</label>
                                         <span><select tabindex="9" class="day" name="selday" id="selday">
-                                            <option value="" disabled selected value>Day</option>
-                                            <?php
-                                            for ($i = 1; $i <= 31; $i++) {
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <option value="" disabled selected value>Day</option>
                                                 <?php
-                                            }
-                                            ?>
-                                        </select></span>
+                                                for ($i = 1; $i <= 31; $i++) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select></span>
                                         <span><select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                            <option value="" disabled selected value>Month</option>
-                                            //<?php
+                                                <option value="" disabled selected value>Month</option>
+                                                //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-                                            ?>
-                                            <option value="1">Jan</option>
-                                            <option value="2">Feb</option>
-                                            <option value="3">Mar</option>
-                                            <option value="4">Apr</option>
-                                            <option value="5">May</option>
-                                            <option value="6">Jun</option>
-                                            <option value="7">Jul</option>
-                                            <option value="8">Aug</option>
-                                            <option value="9">Sep</option>
-                                            <option value="10">Oct</option>
-                                            <option value="11">Nov</option>
-                                            <option value="12">Dec</option>
-                                            //<?php
+                                                ?>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">Mar</option>
+                                                <option value="4">Apr</option>
+                                                <option value="5">May</option>
+                                                <option value="6">Jun</option>
+                                                <option value="7">Jul</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                                //<?php
 //                  }
 //                  
-                                            ?>
-                                        </select></span>
-                                        <span>
-                                        <select tabindex="11" class="year" name="selyear" id="selyear">
-                                            <option value="" disabled selected value>Year</option>
-                                            <?php
-                                            for ($i = date('Y'); $i >= 1900; $i--) {
                                                 ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            </select></span>
+                                        <span>
+                                            <select tabindex="11" class="year" name="selyear" id="selyear">
+                                                <option value="" disabled selected value>Year</option>
                                                 <?php
-                                            }
-                                            ?>
+                                                for ($i = date('Y'); $i >= 1900; $i--) {
+                                                    ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
 
-                                        </select>
-                                    </span>
+                                            </select>
+                                        </span>
                                     </div>
                                     <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                     <div class="form-group gender-custom">
                                         <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                            <option value="" disabled selected value>Gender</option>
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                        </select>
-                                    </span>
+                                                <option value="" disabled selected value>Gender</option>
+                                                <option value="M">Male</option>
+                                                <option value="F">Female</option>
+                                            </select>
+                                        </span>
                                     </div>
 
                                     <p class="form-text">
