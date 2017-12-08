@@ -295,7 +295,11 @@ class Message extends MY_Controller {
             //} //die();
         }
     }
-
+    public function businessmessageDelete(){
+        $message_id = $_POST['message_id'];
+        $delete_data = $this->business_model->businessMessageData($message_id);
+        
+    }
     public function recruiter_profile() {
         $this->load->view('message/recruiter_profile');
     }

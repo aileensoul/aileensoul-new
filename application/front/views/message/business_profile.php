@@ -9,7 +9,7 @@
         <!--        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
                 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">-->
         <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
@@ -23,13 +23,91 @@
             .chat .chat-history .other-message{float:left; max-width:93%;}
             .msg-time{float: right; padding-left: 10px; font-size: 11px; vertical-align: bottom; line-height: 1;
                       padding-top: 10px; opacity: 0.5;}
-            </style>
-<!--            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.css">
-            <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojipicker.js"></script>
+            .link_b { position: absolute;top: 16px;right: 85px;bottom: 3px;z-index: 2;}
+            .smily_b{ position: absolute; top: 7px; right: 70px; bottom: 3px; z-index: 2;}
 
-             Emoji Data 
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.tw.css">
-            <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojis.js"></script>-->
+
+
+
+            .loader,
+            .loader:before,
+            .loader:after {
+                border-radius: 50%;
+                width: 2.5em;
+                height: 2.5em;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                -webkit-animation: load7 1.8s infinite ease-in-out;
+                animation: load7 1.8s infinite ease-in-out;
+            }
+            .loader {
+                color: #0080c0;
+                font-size: 10px;
+                margin: 80px auto;
+                position: relative;
+                text-indent: -9999em;
+                -webkit-transform: translateZ(0);
+                -ms-transform: translateZ(0);
+                transform: translateZ(0);
+                -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s;
+            }
+            .loader:before,
+            .loader:after {
+                content: '';
+                position: absolute;
+                top: 0;
+            }
+            .loader:before {
+                left: -3.5em;
+                -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s;
+            }
+            .loader:after {
+                left: 3.5em;
+            }
+            @-webkit-keyframes load7 {
+                0%,
+                80%,
+                100% {
+                    box-shadow: 0 2.5em 0 -1.3em;
+                }
+                40% {
+                    box-shadow: 0 2.5em 0 0;
+                }
+            }
+            @keyframes load7 {
+                0%,
+                80%,
+                100% {
+                    box-shadow: 0 2.5em 0 -1.3em;
+                }
+                40% {
+                    box-shadow: 0 2.5em 0 0;
+                }
+            }
+
+
+
+
+        </style>
+        <style type="text/css">
+            .mejs__overlay-button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__overlay-loading-bg-img {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+            .mejs__button > button {
+                background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
+            }
+        </style>
+<!--            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.css">
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojipicker.js"></script>
+
+         Emoji Data 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.tw.css">
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojis.js"></script>-->
 
 <!--            <script type="text/javascript">
                 $(document).ready(function (e) {
@@ -66,10 +144,10 @@
                 });
             </script>-->
 
-        <body ng-app="messageApp" ng-controller="messageController">
-            <?php echo $header; ?>
-            <?php echo $business_header2_border; ?>
-            <div class="container">
+    <body ng-app="messageApp" ng-controller="messageController">
+        <?php echo $header; ?>
+        <?php echo $business_header2_border; ?>
+        <div class="container">
             <div class="" id="paddingtop_fixed">
                 <div class="chat_nobcx">
                     <!--<div class="people-list" id="people-list" ng-app="messageApp" ng-controller="messageController">-->
@@ -139,7 +217,7 @@
                                         <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
                                             <div class="msg_right"> 
                                                 <div class="messagedelete fl">
-                                                    <a href="javascript:void(0);">
+                                                    <a href="javascript:void(0);" ng-click="delete_chat(chat.id)">
                                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -148,26 +226,24 @@
                                                     <div class="file_image"><img ng-src="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}" alt="{{chat.message_file}}" style="width:100px; height: auto;"></div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="message other-message float-right" ng-if="chat.message_file_type == 'video'">
                                                     <div class="file_image">
-                                                        <video width = "250" height = "200" ng-attr-poster="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file| chnageExt}}" controls playsinline webkit-playsinline>
+                                                        <video ng-init="loadMediaElement()" width = "250" height = "200" ng-attr-poster="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file| chnageExt}}" controls playsinline webkit-playsinline>
                                                             <source ng-src = "<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}" type = "video/mp4">
                                                             Your browser does not support the video tag.
                                                         </video>
                                                     </div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="message other-message float-right" ng-if="chat.message_file_type == 'audio'">
                                                     <div class="file_image">
-                                                        <audio id = "audio_player" width = "200" height = "200" controls>
+                                                        <audio ng-init="loadMediaElement()" id = "audio_player" width = "200" height = "200" controls>
                                                             <source ng-src = "<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}" type = "audio/mp3">
                                                             Your browser does not support the audio tag.
                                                         </audio>
@@ -175,16 +251,14 @@
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="message other-message float-right" ng-if="chat.message_file_type == 'pdf'">
-                                                    {{chat.message_file}}
+                                                    <img ng-src="<?php echo base_url('assets/images/PDF.jpg') ?>" alt="{{chat.message_file}}" width="100" height="100">
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
@@ -201,7 +275,6 @@
                                                     <div class="file_image"><img ng-src="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}" alt="{{chat.message_file}}" style="width:100px; height: auto;"></div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
@@ -214,7 +287,6 @@
                                                     </div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
@@ -229,27 +301,25 @@
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="message my-message" ng-if="chat.message_file_type == 'pdf'">
+                                                    <img ng-src="<?php echo base_url('assets/images/PDF.jpg') ?>" alt="{{chat.message_file}}"  width="100" height="100">
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <!--<p><b>Filename:</b>{{chat.message_file}}</p>-->
                                                         <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="messagedelete"> 
-                                                    <a href="javascript:void(0);" onclick="delete_chat(2, 365)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                    </a>
+                                                    <a href="javascript:void(0);" ng-click="delete_chat(chat.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
                                         </li>
                                     </div>
-
                                 </ul>
+                                <div class="loader">Loading...</div>
                             </div>
                         </div>
                         <div class="panel-footer">
@@ -303,6 +373,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
         <script src="<?php echo base_url() ?>assets/services/sendImageService.js"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
@@ -333,7 +406,7 @@
                     });
                     messageApp.filter("chnageExt", function () {
                         return function (fileName) {
-                            return fileName = fileName.replace('.MP4','.png');
+                            return fileName = fileName.replace('.MP4', '.png');
                         };
                     });
                     //messageApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
@@ -380,6 +453,23 @@
                     messageApp.controller('messageController', function ($scope, Upload, $timeout, $http) {
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
+                        $scope.delete_chat = function (message_id) {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'message/businessmessageDelete',
+                                data: 'message_id=' + message_id,
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .then(function (success) {
+                            //            $scope.loaded_user_data = success.data;
+                                    
+                                    }); 
+                        }
+                        /*$scope.loadMediaElement = function ()
+                         {
+                         $('video, audio').mediaelementplayer();
+                         console.log('called');
+                         };*/
                         load_message_user();
                         function load_message_user() {
 //                            $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
@@ -465,7 +555,7 @@
                                 $scope.isMsgBoxEmpty = true;
                             }
                         }
-
+                        var isProcessing = false;
                         $scope.$watch('files', function () {
                             $scope.upload($scope.files);
                         });
@@ -477,6 +567,10 @@
 
                         $scope.log = '';
                         $scope.upload = function (files) {
+                            if (isProcessing) {
+                                return;
+                            }
+                            isProcessing = true;
                             $scope.current = window.location.pathname.split("/").pop();
                             if (files && files.length) {
 
@@ -500,6 +594,7 @@
                                                         // GET SOCKET USER LIST END    
                                                         $('#message').html('');
                                                         $scope.setFocus = true;
+                                                        isProcessing = false;
                                                     }
                                                 });
 //            .then(function (resp) {
