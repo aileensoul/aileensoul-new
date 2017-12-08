@@ -2043,11 +2043,27 @@ class Recruiter extends MY_Controller {
 
                     $rec_post .= '<div class="post-img">
                                             <a href="#">';
-                    if ($cache_time) {
-                        $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '">';
+                      if ($cache_time) {
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        } else {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                        }
                     } else {
-                        $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if ($info) {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                        } else {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        }
                     }
+                  
+                } else {
+                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                }
                     $rec_post .= '</a>
                                         </div>';
 
@@ -2087,10 +2103,10 @@ class Recruiter extends MY_Controller {
                     $rec_post .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                     $rec_post .= $post_name;
                     $rec_post .= '</a></h5>';
-                    $rec_post .= '<p><a href = "#">';
+                    $rec_post .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                     $rec_post .= $cache_time1;
                     $rec_post .= '</a></p>';
-                    $rec_post .= '<p><a href="#">';
+                    $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
                     $rec_post .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                     $rec_post .= '</a></p>
             </div>
@@ -2130,7 +2146,7 @@ class Recruiter extends MY_Controller {
                     $rec_post .= $rest;
 
                     if (strlen($post['post_description']) > 150) {
-                        $rec_post .= '.....<a href="">Read more</a>';
+                        $rec_post .= '.....<a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">Read more</a>';
                     }
                     $rec_post .= '</p>
 

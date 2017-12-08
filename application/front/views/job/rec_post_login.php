@@ -556,11 +556,27 @@
                                                 $cache_time = $this->db->get_where('recruiter', array(
                                                             'user_id' => $post['user_id']
                                                         ))->row()->comp_logo;
-                                                if ($cache_time) {
-                                                    ?>
-                                                    <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time); ?>">
-                                                <?php } else { ?>
-                                                    <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
+                                                
+                                               if ($cache_time) {
+                                                    if (IMAGEPATHFROM == 'upload') {
+                                                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) { 
+                                                            ?>
+                                                           <img src="<?php echo  base_url('assets/images/commen-img.png') ?>">
+                                                   <?php     } else { ?>
+                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                       <?php  }
+                                                    } else {
+                                                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
+                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                        if ($info) { ?>
+                                                           <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                         <?php } else { ?>
+                                                          <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                       <?php  }
+                                                    }
+                                                } else { ?>
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
                                                 <?php } ?>
                                             </a>
                                         </div>
