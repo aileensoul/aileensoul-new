@@ -3,10 +3,10 @@
 	
 //The number of "digit" links you would like before and after the selected page number.
 //For example, the number 2 will place two digits on either side,
-	$config['num_links'] = 3;
+	$config['num_links'] = 2;
 
 	//Number of Result per Page
-	$config['per_page'] = 15;
+	$config['per_page'] = 4;
 	
 	//By default, the URI segment will use the starting index for the items you are paginating. If you prefer to show the the actual page number, set this to TRUE.
 	$config['use_page_numbers'] = false;

@@ -212,128 +212,103 @@
 
                                     foreach ($blog_detail as $blog) {
                                         ?>
-                                        <div class="blog_main_o">
-                                            <div class="date_blog_left">
-                                                <div class="blog-date-change">
-                                                    <div class="blog-month blog-picker">
-                                                        <span class="blog_monthd">
-                                                            <?php
-                                                            $date_time = new DateTime($blog['created_date']);
-                                                            $month = $date_time->format('M') . PHP_EOL;
-                                                            echo $month;
-                                                            ?>
-                                                        </span>
-                                                    </div class="blog-date blog-picker">
-                                                    <div>
-                                                        <span class="blog_mdate">
-                                                            <?php
-                                                            $date = new DateTime($blog['created_date']);
-                                                            echo $date->format('d') . PHP_EOL;
-                                                            ?>
-                                                        </span>
-                                                    </div>
-                                                    <div class="blog-year blog-picker">
-                                                        <span class="blog_moyear" >
-                                                            <?php
-                                                            $year = new DateTime($blog['created_date']);
-                                                            echo $year->format('Y') . PHP_EOL;
-                                                            ?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="blog-left-comment">
-                                                    <div class="blog-comment-count">
-                                                        <a>
-                                                            <?php
-                                                            $condition_array1 = array('status' => 'approve', 'blog_id' => $blog['id']);
-                                                            $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array1, $data1 = '*', $short_by1 = 'id', $order_by1 = 'desc', $limit1 = 5, $offset1, $join_str1 = array());
-                                                            echo count($blog_comment);
-                                                            ?>
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-comment">
-                                                        <a>Comments</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="date_blog_right">
-                                                <div class="blog_post_main">
-                                                    <div class="blog_inside_post_main">
-                                                        <div class="blog_main_post_first_part">
-                                                            <div class="blog_main_post_img">
-                                                                <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" ></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="blog_main_post_second_part">
-                                                            <div class="blog_class_main_name">
-                                                                <span>
-                                                                    <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>">
-                                                                        <h1> <?php echo $blog['title']; ?> </h1>
-                                                                    </a>
-                                                                </span>
-                                                            </div>
-                                                            <div class="blog_class_main_by">
-                                                                <span>
-                                                                </span>
-                                                            </div>
-                                                            <div class="blog_class_main_desc ">
-                                                                <span class="dot_span_desc">
-                                                                    <?php
-                                                                    $num_words = 75;
-                                                                    $words = array();
-                                                                    $words = explode(" ", $blog['description'], $num_words);
-                                                                    $shown_string = "";
+                               <div class="blog_main_o">
+    <div class="date_blog_left">
+        <div class="blog-date-change">
+            <div class="blog-month blog-picker">
+                <span class="blog_monthd">
+                  oct
+                </span>
+            </div>
+            <div>
+                <span class="blog_mdate">
+                   16
+                </span>
+            </div>
+            <div class="blog-year blog-picker">
+                <span class="blog_moyear" >
+                  2017
+                </span>
+            </div>
+        </div>
+        <div class="blog-left-comment">
+            <div class="blog-comment-count">
+                <a>
+                  0
+                </a>
+            </div>
+            <div class="blog-comment">
+                <a>Comments</a>
+            </div>
+        </div>
+    </div>
+    <div class="date_blog_right">
+        <div class="blog_post_main">
+            <div class="blog_inside_post_main">
+                <div class="blog_main_post_first_part">
+                    <div class="blog_main_post_img">
+                        <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" ></a>
+                    </div>
+                </div>
+                <div class="blog_main_post_second_part">
+                    <div class="blog_class_main_name">
+                        <span>
+                            <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>">
+                                <h1> blog title </h1>
+                            </a>
+                        </span>
+                    </div>
+                    <div class="blog_class_main_by">
+                        <span>
+                        </span>
+                    </div>
+                    <div class="blog_class_main_desc ">
+                        <span class="dot_span_desc">
+                           description
+                        </span>
+                    </div>
+                    <div class="blog_class_main_social">
+                        <div class="left_blog_icon fl">
+                            <ul class="social_icon_bloag fl">
+                                <li>
+                                    <?php
+                                    $title = urlencode('"' . $blog['title'] . '"');
+                                    $url = urlencode(base_url('blog/' . $blog['blog_slug']));
+                                    $summary = urlencode('"' . $blog['description'] . '"');
+                                    $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
+                                    ?>
 
-                                                                    if (count($words) == 75) {
-                                                                        $words[74] = " ...... ";
-                                                                    }
+                                    <a class="fbk" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog/' . $blog['blog_slug']); ?>" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
+                                        <span  class="social_fb"></span>
+                                    </a>
+                                </li>
+                                <li>
 
-                                                                    $shown_string = implode(" ", $words);
-                                                                    echo $shown_string;
-                                                                    ?>
-                                                                </span>
-                                                            </div>
-                                                            <div class="blog_class_main_social">
-                                                                <div class="left_blog_icon fl">
-                                                                    <ul class="social_icon_bloag fl">
-                                                                        <li>
-                                                                            <?php
-                                                                            $title = urlencode('"' . $blog['title'] . '"');
-                                                                            $url = urlencode(base_url('blog/' . $blog['blog_slug']));
-                                                                            $summary = urlencode('"' . $blog['description'] . '"');
-                                                                            $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
-                                                                            ?>
+                                    <a href="https://plus.google.com/share?url=<?php echo $url; ?>" title="Google +" onclick="javascript:window.open('https://plus.google.com/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                                        <span  class="social_gp"></span>
+                                    </a>
+                                </li>
+                                <li>
 
-                                                                            <a class="fbk" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog/' . $blog['blog_slug']); ?>" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
-                                                                                <span  class="social_fb"></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
+                                    <a href="https://www.linkedin.com/cws/share?url=<?php echo $url; ?>" title="linkedin"  onclick="javascript:window.open('https://www.linkedin.com/cws/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_lk"></span></a>
+                                </li>
+                                <li>
 
-                                                                            <a href="https://plus.google.com/share?url=<?php echo $url; ?>" title="Google +" onclick="javascript:window.open('https://plus.google.com/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-                                                                                <span  class="social_gp"></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
+                                    <a href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>"  title="twitter" onclick="javascript:window.open('https://twitter.com/intent/tweet?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_tw"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="fr blog_view_link">
+                            <a title="Read more" onclick="read_more('<?php echo $blog['id']; ?>', '<?php echo $blog['blog_slug']; ?>')"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                                                                            <a href="https://www.linkedin.com/cws/share?url=<?php echo $url; ?>" title="linkedin"  onclick="javascript:window.open('https://www.linkedin.com/cws/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_lk"></span></a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <a href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>"  title="twitter" onclick="javascript:window.open('https://twitter.com/intent/tweet?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_tw"></span></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="fr blog_view_link">
-                                                                    <a title="Read more" onclick="read_more('<?php echo $blog['id']; ?>', '<?php echo $blog['blog_slug']; ?>')"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <?php
                                     }//for loop end
                                 }//else end
@@ -474,4 +449,6 @@
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
+
+
 
