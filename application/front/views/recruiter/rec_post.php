@@ -3,18 +3,18 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
-         <?php
+        <?php
         if (IS_REC_CSS_MINIFY == '0') {
             ?>
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
-        
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
             <?php
         } else {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
         <?php } ?>
-		
+
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -61,57 +61,59 @@
                 </div>
                 <div class="">
                     <div class="" id="row2">
-<?php
-$userid = $this->session->userdata('aileenuser');
-if ($this->uri->segment(3) == $userid) {
-    $user_id = $userid;
-} elseif ($this->uri->segment(3) == "") {
-    $user_id = $userid;
-} else {
-    $user_id = $this->uri->segment(3);
-}
+                        <?php
+                        $userid = $this->session->userdata('aileenuser');
+                        if ($this->uri->segment(3) == $userid) {
+                            $user_id = $userid;
+                        } elseif ($this->uri->segment(3) == "") {
+                            $user_id = $userid;
+                        } else {
+                            $user_id = $this->uri->segment(3);
+                        }
 
-$contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');
-$image = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');
+                        $image = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-   $image_ori = $image[0]['profile_background'];
-                         $filename = $this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background'];
-                         $s3 = new S3(awsAccessKey, awsSecretKey);
-                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        $image_ori = $image[0]['profile_background'];
+                        $filename = $this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background'];
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info && $image[0]['profile_background'] != '') {
                             ?>
-                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
-                     <?php
-} else {
-    ?>
+                            <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                            <?php
+                        } else {
+                            ?>
 
-                                 <div class="bg-images no-cover-upload">
+                            <div class="bg-images no-cover-upload">
                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
                             </div>
-<?php }
-?>
+                        <?php }
+                        ?>
 
                     </div>
                 </div>
             </div>
             <div class="container tablate-container art-profile">    
-<?php if ($returnpage == '') { ?>
+                <?php if ($returnpage == '') { ?>
                     <div class="upload-img">
                         <label  class="cameraButton"><span class="tooltiptext_rec">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                         </label>
                     </div>
-<?php } ?>
+                <?php } ?>
                 <div class="profile-photo">
                     <!--PROFILE PIC CODE START-->
 
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-        <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
-                         $s3 = new S3(awsAccessKey, awsSecretKey);
-                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                      if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                            <?php
+                            $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                            $s3 = new S3(awsAccessKey, awsSecretKey);
+                            $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                            if ($recdata[0]['recruiter_user_image'] != '' && $info) {
+                                ?>
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
                                 <?php
                             } else {
                                 $a = $recdata[0]['rec_firstname'];
@@ -124,10 +126,10 @@ $image = $this->common->select_data_by_condition('recruiter', $contition_array, 
                                 <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
 
                                 </div>
-<?php } ?>
+                            <?php } ?>
                             <?php if ($returnpage == '') { ?>
                                 <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
-                            <?php } ?>
+<?php } ?>
                         </div>
                     </div>
 
@@ -135,10 +137,10 @@ $image = $this->common->select_data_by_condition('recruiter', $contition_array, 
                     <div class="job-menu-profile mob-block">
                         <a href="javascript:void(0);" title="<?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?>"><h3><?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?></h3></a>
                         <div class="profile-text" >
-<?php
-if ($returnpage == '') {
-    if ($recdata[0]['designation'] == '') {
-        ?>
+                            <?php
+                            if ($returnpage == '') {
+                                if ($recdata[0]['designation'] == '') {
+                                    ?>
                                     <a id="designation" class="designation" title="Designation">Designation</a>
                                 <?php } else {
                                     ?> 
@@ -159,45 +161,45 @@ if ($returnpage == '') {
                     <!-- menubar -->
                     <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
                         <div class=" right-side-menu art-side-menu padding_less_right right-menu-jr">  
-<?php
-$userid = $this->session->userdata('aileenuser');
-if ($recdata[0]['user_id'] == $userid) {
-    ?>     
+                            <?php
+                            $userid = $this->session->userdata('aileenuser');
+                            if ($recdata[0]['user_id'] == $userid) {
+                                ?>     
                                 <ul class="current-user pro-fw4">
-                            <?php } else { ?>
+                                    <?php } else { ?>
                                     <ul class="pro-fw">
-                                <?php } ?>  
+                                        <?php } ?>  
                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>>
-                                    <?php if ($returnpage == 'job') { ?>
+                                        <?php if ($returnpage == 'job') { ?>
                                             <a title="Details" href="<?php echo base_url('recruiter/profile/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Details</a>
                                         <?php } else { ?>
                                             <a title="Details" href="<?php echo base_url('recruiter/profile'); ?>">Details</a>
                                         <?php } ?>
                                     </li>
                                     <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>>
-<?php if ($returnpage == 'job') { ?>
+                                        <?php if ($returnpage == 'job') { ?>
                                             <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
                                         <?php } else { ?>
                                             <a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
-                                        <?php } ?>
+                                    <?php } ?>
                                     </li>
-                                        <?php if (($this->uri->segment(1) == 'recruiter') && ($this->uri->segment(2) == 'post' || $this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'add-post' || $this->uri->segment(2) == 'save-candidate') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
+                                    <?php if (($this->uri->segment(1) == 'recruiter') && ($this->uri->segment(2) == 'post' || $this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'add-post' || $this->uri->segment(2) == 'save-candidate') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
                                         <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" href="<?php echo base_url('recruiter/save-candidate'); ?>">Saved </a>
                                         </li> 
 <?php } ?>   
                                 </ul>
                                 <div class="flw_msg_btn fr">
                                     <ul>
-<?php if ($this->uri->segment(3) != "" && $this->uri->segment(3) != $userid) { ?>
+                                            <?php if ($this->uri->segment(3) != "" && $this->uri->segment(3) != $userid) { ?>
                                             <li>
-                                            <?php
-                                            $returnpage = $_GET['page'];
-                                            if ($returnpage == "job") {
-                                                ?>
+                                                <?php
+                                                $returnpage = $_GET['page'];
+                                                if ($returnpage == "job") {
+                                                    ?>
                                                     <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('chat/abc/2/1/' . $this->uri->segment(3)); ?>">Message</a>
-                                                <?php } ?>
+    <?php } ?>
                                             </li>  <?php } ?>
                                     </ul>
                                 </div>
@@ -206,20 +208,20 @@ if ($recdata[0]['user_id'] == $userid) {
                     <!-- menubar -->    
                 </div>                       
             </div> <div  class="add-post-button mob-block">
-<?php if ($returnpage == '') { ?>
+                <?php if ($returnpage == '') { ?>
                     <a class="btn btn-3 btn-3b" id="rec_post_job2" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
-                <?php } ?>
+<?php } ?>
             </div>
             <div class="middle-part container rec_res">
                 <div class="job-menu-profile mob-none  ">
                     <a href="javascript:void(0);" title="<?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?>"><h3><?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
-<?php
-if ($returnpage == '') {
-    //echo "hii";
-    if ($recdata[0]['designation'] == "") {
-        ?>
+                        <?php
+                        if ($returnpage == '') {
+                            //echo "hii";
+                            if ($recdata[0]['designation'] == "") {
+                                ?>
                                 <a id="designation" class="designation" title="Designation">Designation</a>
                                 <?php
                             } else {
@@ -233,23 +235,19 @@ if ($returnpage == '') {
                         ?>
                     </div>
                     <div  class="add-post-button">
-<?php if ($returnpage == '') { ?>
+                        <?php if ($returnpage == '') { ?>
                             <a title="Post  a Job" class="btn btn-3 btn-3b" id="rec_post_job1" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
-                        <?php } ?>
+<?php } ?>
                     </div>
-					
+
                 </div>
                 <div class="col-md-7 col-sm-12 mob-clear ">
-                    <div class="common-form">
-                        <div class="job-saved-box">
-                            <h3>Post</h3>
-                            <div class="contact-frnd-post">
-                                <div class = "job-contact-frnd">
-                                    <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
-                                </div>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                            </div>
-                        </div>
+                    <div class="page-title">
+                        <h3>Post</h3>
+                    </div>
+                    <div class="job-contact-frnd1">
+
+
                     </div>
                 </div>
             </div>
@@ -289,34 +287,34 @@ if ($returnpage == '') {
         <!--PROFILE PIC MODEL END-->
         <!-- START FOOTER -->
         <!-- <footer> -->
-            <?php echo $login_footer ?>
-            <?php echo $footer; ?>
+<?php echo $login_footer ?>
+<?php echo $footer; ?>
         <!-- </footer> -->
         <!-- END FOOTER -->
 
 
         <!-- FIELD VALIDATION JS START -->
-          <?php
+        <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
-         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
-        
-        <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+            <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>  
+
+            <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()); ?>"></script>
             <?php
         } else {
             ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/croppie_bootstrap_validate.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
-        
+<?php } ?>
+
         <script>
-                                    var base_url = '<?php echo base_url(); ?>';
-                                    var data1 = <?php echo json_encode($de); ?>;
-                                    var data = <?php echo json_encode($demo); ?>;
-                                    var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-                                    var id = '<?php echo $this->uri->segment(3); ?>';
-                                    var return_page = '<?php echo $_GET['page']; ?>';
+                                var base_url = '<?php echo base_url(); ?>';
+                                var data1 = <?php echo json_encode($de); ?>;
+                                var data = <?php echo json_encode($demo); ?>;
+                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                var id = '<?php echo $this->uri->segment(3); ?>';
+                                var return_page = '<?php echo $_GET['page']; ?>';
         </script>
 
 
@@ -324,13 +322,13 @@ if ($returnpage == '') {
         <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
-     <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
             <?php
         } else {
             ?>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/recruiter/rec_post.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
-       
+<?php } ?>
+
     </body>
 </html>

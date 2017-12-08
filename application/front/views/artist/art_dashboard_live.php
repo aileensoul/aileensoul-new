@@ -30,6 +30,8 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
             .two-images, .three-image, .four-image{
                 height: auto !important;
             }
+
+            .art-all-comment{display: none;}
         </style>
         <style>
             /***  commen css  ***/

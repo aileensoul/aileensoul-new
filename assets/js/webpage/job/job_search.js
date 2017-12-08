@@ -45,7 +45,7 @@ function job_search(pagenum)
         dataType: "html",
         beforeSend: function () { 
             if (pagenum == 'undefined') {
-                $(".job-contact-frnd ").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".job-contact-frnd1").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else { 
                 $('#loader').show();
             }
@@ -56,7 +56,7 @@ function job_search(pagenum)
         success: function (data) { 
 
             $('.loader').remove();
-            $('.job-contact-frnd ').append(data);
+            $('.job-contact-frnd1').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -122,6 +122,7 @@ function applypopup(postid, userid) {
            data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
            dataType: 'json',
            success: function (data) {
+             
                $('.savedpost' + abc).hide();
                $('.applypost' + abc).html(data.status);
                $('.applypost' + abc).attr('disabled', 'disabled');

@@ -100,7 +100,7 @@ function job_save(pagenum)
         beforeSend: function () {
             if (pagenum == 'undefined') {
 
-                $(".job-contact-frnd").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".job-contact-frnd1").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }
@@ -110,7 +110,7 @@ function job_save(pagenum)
         },
         success: function (data) {
             $('.loader').remove();
-            $('.job-contact-frnd').append(data);
+            $('.job-contact-frnd1').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -168,11 +168,18 @@ function job_save(pagenum)
            type: 'POST',
            url: base_url +'job/job_apply_post',
            data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user.value,
-        datatype: 'json',
+        dataType: 'json',
             success: function (data) {
-               $('#' + 'postdata' + appid).html(data);
-               $('#' + 'postdata' + appid).removeClass();
-               var numItems = $('.contact-frnd-post .job-contact-frnd .profile-job-post-detail').length;
+//               $('#' + 'postdata' + appid).html(data.status);
+//               $('#' + 'postdata' + appid).removeClass();
+               
+               $('.savedpost' + abc).hide();
+               $('.applypost' + abc).html(data.status);
+               $('.applypost' + abc).attr('disabled', 'disabled');
+               $('.applypost' + abc).attr('onclick', 'myFunction()');
+               $('.applypost' + abc).addClass('applied');
+               
+               var numItems = $('.job-contact-frnd1 .job-contact-frnd .profile-job-post-detail').length;
               if (data.notification.notification_count != 0) {
                                                 var notification_count = data.notification.notification_count;
                                                 var to_id = data.notification.to_id;

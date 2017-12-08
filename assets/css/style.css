@@ -1513,7 +1513,14 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .smily_b {
     position: absolute;
     top: 7px;
-    right: 35px;
+    right: 70px;
+    bottom: 3px;
+    z-index: 2;
+}
+.link_b {
+    position: absolute;
+    top: 16px;
+    right: 85px;
     bottom: 3px;
     z-index: 2;
 }
@@ -2033,8 +2040,8 @@ footer div.pt20{padding-top: 18px;}
 .all-job-top .post-img{width:60px; height:60px; float:left; border:none;}
 .all-job-top .post-img img{width:100%;}
 .job-top-detail {width:80%; float:left; padding-left:10px;}
-.job-top-detail h5{font-size:15px; margin:0; font-weight:bold; padding-bottom:3px;}
-.job-top-detail h5 a{color:#5c5c5c;}
+.job-top-detail h5{ margin:0; line-height:1; font-size:15px;}
+.job-top-detail h5 a{color:#5c5c5c; font-size:15px; font-weight:bold; }
 .job-top-detail h5 a:hover{border-bottom:1px solid #5c5c5c;}
 .job-top-detail p{font-size:13px; margin:0; line-height:1.5;}
 .job-top-detail p a{color:#5c5c5c;}
@@ -2043,6 +2050,32 @@ footer div.pt20{padding-top: 18px;}
 .all-job-middle span span img{margin-top:-3px;}
 .all-job-bottom{font-size:13px; padding:10px 15px; width:100%; float:left; border-top:1px solid #d2d2d2;}
 .all-job-bottom .job-post-date{padding-top:4px; display:inline-block;}
+/***  end all job page  ***/
+/***  all job page detail  ***/
+.inner-right-part{width:915px; left:335px; position:relative; float:left;}
+.all-job-box.job-detail{border:none;}
+.job-detail .post-img{width:110px; height:110px;}
+.job-detail .job-top-detail p span img{margin-top:-3px;}
+.job-detail .job-top-detail p{line-height:1.8;}
+.job-detail .all-job-top{border:1px solid #d2d2d2; margin-bottom:10px; border-radius:4px;}
+.job-detail .detail-discription{border:1px solid #d2d2d2; margin-bottom:10px; border-radius:4px; width:100%; float:left;}
+.job-detail .job-top-detail{width:87%;}
+.detail-discription .all-job-middle ul{padding:0;} 
+.detail-discription .all-job-middle ul li{padding:3px 0; list-style-type:none; width:100%; float:left;} 
+.detail-discription .all-job-middle ul li b{width:130px; float:left; position:relative;}
+.detail-discription .all-job-middle ul li b:after{content: " :"; float: left; position: absolute; right: -5px;
+top: -1px;}
+.detail-discription .all-job-middle ul li span{float:left; padding-left:15px; width:85%;}
+.loca-exp{padding-right:150px;}
+.job-top-detail .job-top-btn{margin-top:-40px;}
+.all-job-middle pre{border: none;
+white-space: pre-line;
+background: transparent;
+padding-top: 2px;
+padding: 0px;
+font-family: arial;
+display: contents;
+word-break: break-word;}
 /***  end all job page  ***/
 
 /***  media query  ***/
@@ -2345,7 +2378,7 @@ footer div.pt20{padding-top: 18px;}
 		top: 10px;
 		right: 3px;
 	}
-	label.cameraButton{opacity: 0.8;}
+	label.cameraButton{opacity: 0.6;}
 	.cover-pic .btn{padding: 3px 8px;}
 	.cls-ve{top: 23px;}
 	.alert.alert-danger {
@@ -2381,6 +2414,7 @@ footer div.pt20{padding-top: 18px;}
         margin-top: -41px !important;
     }
 	.people-list .search input{width:95%;}
+    img{max-width: inherit;}
 }
 
 @media screen and (max-width: 479px) {

@@ -34,7 +34,9 @@
                <div class="col-md-3"></div>
                <div class="clearfix">
                   <div class="job_reg_page_fprm">
-                     
+                     <?php if($this->uri->segment(3) == 'live-post'){
+                         echo '<div class="alert alert-success">Your Post is automatically Post after completing recruiter registation...!</div>';
+                     } ?>
                                  
                      <div class="common-form job_reg_main">
                         <h3>Welcome In Recruiter Profile</h3>

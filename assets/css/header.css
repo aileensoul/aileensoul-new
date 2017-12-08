@@ -2447,7 +2447,7 @@ footer ul li a:hover{
         top: 10px !important;
     }
     #add_contact #addcontactContainer::before {
-        right: 219px;
+        right: 215px;
         margin-top: -16px;
     }
     .action-button #message_count {
@@ -2708,6 +2708,7 @@ footer ul li a:hover{
         font-size: 16px;
         padding: 7px 29px;
     }
+    .notification-data-inside h6{padding: 0px;}
 }
 @media screen and (max-width: 479px) {
     #InboxContainer {
@@ -2801,7 +2802,7 @@ footer ul li a:hover{
         margin-top: -3%;
     }
     #add_contact #addcontactContainer::before {
-        right: 207px;
+        right: 198px;
     }
     #acon::before {
         right: 127px !important;

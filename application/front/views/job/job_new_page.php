@@ -279,29 +279,14 @@
                                         <p class="pull-right">
                                             <?php
                                             $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-                                            $contition_array = array(
-                                                'post_id' => $post['post_id'],
-                                                'job_delete' => '0',
-                                                'user_id' => $userid
-                                            );
-                                            $jobapply = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                                            $contition_array = array(
-                                                'user_id' => $userid,
-                                                'job_save' => '2',
-                                                'post_id ' => $post['post_id'],
-                                                'job_delete' => '1'
-                                            );
-                                            $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                            $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
+                                            $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                             ?>
-                                            <?php if($jobsave){ ?>
-                                            <a href="javascript:void(0);" class="btn4 saved save_saved_btn">Saved</a>
-                                            <?php }else{ ?>
-                                            <a href="javascript:void(0);" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id'];?>">Save</a>
-                                            <?php } ?>
-                                            <?php if ($jobapply) { ?>
-                                                <a href="javascript:void(0);" class="btn4 button applied">Applied</a>
+                                            <?php if ($jobsave[0]['job_save'] == 1) { ?>
+                                                <a href="javascript:void(0);" class="btn4 disabled">Applied</a>
                                             <?php } else { ?>
+                                                <a href="javascript:void(0);" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id']; ?>">Save</a>
                                                 <a href="javascript:void(0);"  class= "btn4 applypost<?php echo $post['post_id']; ?>" onclick="applypopup(<?php echo $post['post_id'] . ',' . $post['user_id'] ?>)">Apply</a>
                                             <?php } ?>
                                         </p>
@@ -349,8 +334,8 @@
                          <div class="gov-job-list">
                                  <ul>
                     <?php foreach ($govjob_category as $gov_key => $gov_value) { ?>
-                                                                       <li>
-                                                                         <a href="<?php echo base_url('goverment/allpostdetail/' . $gov_value['id']); ?>"><?php echo $gov_value['name'] ?></a></li>
+                                                                           <li>
+                                                                             <a href="<?php echo base_url('goverment/allpostdetail/' . $gov_value['id']); ?>"><?php echo $gov_value['name'] ?></a></li>
                     <?php } ?>						
                                          </ul>					
                          </div>
@@ -395,7 +380,7 @@
 
                     <!-- script for skill textbox automatic start-->
 
-<!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());                ?>"></script>-->
+<!--<script src="<?php // echo base_url('assets/js/jquery-ui.min.js?ver='.time());                 ?>"></script>-->
 
                     <!-- script for skill textbox automatic end -->
 
