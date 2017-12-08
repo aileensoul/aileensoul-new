@@ -2033,23 +2033,34 @@ footer div.pt20{padding-top: 18px;}
 	color: #1b8ab9;
 	border: 1px solid #1b8ab9;
 	font-weight: normal; border-radius:4px; display:inline-block;}
-.btn4:hover{background:#1b8ab9; color:#fff;}
-.page-title h3{padding:10px; margin:0 0 10px; text-align:center; border:1px solid #d2d2d2; border-radius:4px;}
+.btn4:hover{background:#1b8ab9; color:#fff !important;}
+.page-title h3{padding:10px; margin:0 0 10px; text-align:center; border:1px solid #d2d2d2; border-radius:4px;color: #5c5c5c;}
 .all-job-box{margin:0 0 10px; border:1px solid #d2d2d2; border-radius:4px; width:100%; float:left;}
 .all-job-top{padding:10px 15px; border-bottom:1px solid #d2d2d2; width:100%; float:left;}
-.all-job-top .post-img{width:60px; height:60px; float:left; border:none;}
+.all-job-top .post-img{width:60px; height:60px; float:left; border:none;padding-top: 8px;}
 .all-job-top .post-img img{width:100%;}
-.job-top-detail {width:80%; float:left; padding-left:10px;}
-.job-top-detail h5{ margin:0; line-height:1; font-size:15px;}
-.job-top-detail h5 a{color:#5c5c5c; font-size:15px; font-weight:bold; }
+.job-top-detail {width:89%; float:left; padding-left:10px;white-space: nowrap;}
+.job-top-detail h5{ margin:0; height: 25px; font-size:15px;text-overflow: ellipsis;max-width: 87%;overflow: hidden;}
+.job-top-detail h5 a{color:#5c5c5c; font-size:15px; font-weight:bold;text-overflow: ellipsis;max-width: 100%;overflow: hidden; }
 .job-top-detail h5 a:hover{border-bottom:1px solid #5c5c5c;}
-.job-top-detail p{font-size:13px; margin:0; line-height:1.5;}
+.job-top-detail p{font-size:13px; margin:0;}
 .job-top-detail p a{color:#5c5c5c;}
 .all-job-middle{font-size:13px; padding:10px 15px; width:100%; float:left;}
 .all-job-middle .location{padding-right:20px;}
 .all-job-middle span span img{margin-top:-3px;}
 .all-job-bottom{font-size:13px; padding:10px 15px; width:100%; float:left; border-top:1px solid #d2d2d2;}
 .all-job-bottom .job-post-date{padding-top:4px; display:inline-block;}
+.all-job-box span b{font-weight: normal;}
+.all-job-box .all-job-middle p a{color: #5c5c5c;}
+.all-job-box .all-job-middle p a:hover{color: #1b8ab9;text-decoration: underline;}
+.custom-right-art .all-job-box:hover{box-shadow: -webkit-box-shadow: 0px 6px 5px 0px rgba(217,217,217,1);
+                                                 -moz-box-shadow: 0px 6px 5px 0px rgba(217,217,217,1);
+                                                box-shadow: 0px 6px 5px 0px rgba(217,217,217,1);
+                                            }
+.loca-exp span{color: #5c5c5c;}                                            
+.job-top-btn a{color: #1b8ab9 !important;}
+.job-top-btn a:hover{color: #fff !important;}
+.job-top-btn .saved, .applied{color: #fff !important}
 /***  end all job page  ***/
 /***  all job page detail  ***/
 .inner-right-part{width:915px; left:335px; position:relative; float:left;}
