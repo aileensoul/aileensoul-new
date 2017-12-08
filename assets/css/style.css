@@ -2068,7 +2068,14 @@ top: -1px;}
 .detail-discription .all-job-middle ul li span{float:left; padding-left:15px; width:85%;}
 .loca-exp{padding-right:150px;}
 .job-top-detail .job-top-btn{margin-top:-40px;}
-.all-job-middle pre{padding:0; margin:0; border:none;}
+.all-job-middle pre{border: none;
+white-space: pre-line;
+background: transparent;
+padding-top: 2px;
+padding: 0px;
+font-family: arial;
+display: contents;
+word-break: break-word;}
 /***  end all job page  ***/
 
 /***  media query  ***/
