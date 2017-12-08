@@ -333,9 +333,11 @@
                                             if (data.result != 'fail') {
                                                 // GET SOCKET USER LIST START
                                                 socket.emit('getBusinessChatUserList', {
-                                                    message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
+                                                    message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
                                                 });
                                                 // GET SOCKET USER LIST END    
+                                                $('#message').html('');
+                                                $scope.setFocus = true;
                                             }
                                         });
                             } else {
@@ -367,7 +369,6 @@
                                 $scope.files = [$scope.Files];
                             }
                         });
-
                         // function for checking file type
                         $scope.catchFile = function (files) {
                             if (files && files.length) {
@@ -391,9 +392,9 @@
                             }
                         }
 
-
                         $scope.log = '';
                         $scope.upload = function (files) {
+                            $scope.current = window.location.pathname.split("/").pop();
                             if (files && files.length) {
 
                                 for (var i = 0; i < files.length; i++) {
@@ -402,22 +403,35 @@
                                         Upload.upload({
                                             url: base_url + 'message/business_file_upload',
                                             data: {
-                                                file: file
+                                                file: file,
+                                                business_slug: $scope.current,
                                             }
-                                        }).then(function (resp) {
-                                            $timeout(function () {
-                                                $scope.log = 'file: ' +
-                                                        resp.config.data.file.name +
-                                                        ', Response: ' + JSON.stringify(resp.data) +
-                                                        '\n' + $scope.log;
-                                            });
-                                        }, null, function (evt) {
-                                            var progressPercentage = parseInt(100.0 *
-                                                    evt.loaded / evt.total);
-                                            $scope.log = 'progress: ' + progressPercentage +
-                                                    '% ' + evt.config.data.file.name + '\n' +
-                                                    $scope.log;
-                                        });
+                                        })
+                                                .success(function (data) {
+                                                    if (data.result != 'fail') {
+                                                        // GET SOCKET USER LIST START
+                                                        socket.emit('getBusinessChatUserList', {
+                                                            message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
+                                                        });
+                                                        // GET SOCKET USER LIST END    
+                                                        $('#message').html('');
+                                                        $scope.setFocus = true;
+                                                    }
+                                                });
+//            .then(function (resp) {
+//            $timeout(function () {
+//            $scope.log = 'file: ' +
+//                    resp.config.data.file.name +
+//                    ', Response: ' + JSON.stringify(resp.data) +
+//                    '\n' + $scope.log;
+//            });
+//            }, null, function (evt) {
+//            var progressPercentage = parseInt(100.0 *
+//                    evt.loaded / evt.total);
+//            $scope.log = 'progress: ' + progressPercentage +
+//                    '% ' + evt.config.data.file.name + '\n' +
+//                    $scope.log;
+//            });
                                     }
                                 }
                             }
@@ -431,11 +445,8 @@
                             }
                             load_message_user();
                             getUserMessage($scope.current);
-                            $('#message').html('');
-                            $scope.setFocus = true;
                         });
                     });
-
         </script>
     </body>
 </html>

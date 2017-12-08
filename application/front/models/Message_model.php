@@ -5,10 +5,13 @@ if (!defined('BASEPATH'))
 
 class Message_model extends CI_Model {
 
-    function add_message($message, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id) {
+    function add_message($message, $message_file, $message_file_type, $message_file_size, $userid, $id, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id) {
         date_default_timezone_set('Asia/Kolkata');
         $data1 = array(
             'message' => (string) $message,
+            'message_file' => $message_file,
+            'message_file_size' => $message_file_type,
+            'message_file_type' => $message_file_size,
             'message_from' => (string) $userid,
             'message_to' => (string) $id,
             'message_from_profile' => (int) $message_from_profile,
@@ -90,7 +93,7 @@ class Message_model extends CI_Model {
     }
 
     function getBusinessChat($business_profile_id = '', $business_to_profile_id = '') {
-        $this->db->select("m.message,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,b.company_name,b.business_user_image,b.business_slug")->from("messages m");
+        $this->db->select("m.message,m.message_file,m.message_file_type,m.message_file_size,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,b.company_name,b.business_user_image,b.business_slug")->from("messages m");
         $this->db->join('business_profile b', 'b.business_profile_id = m.message_from_profile_id');
         $this->db->where("(m.message_from_profile_id='" . $business_profile_id . "' AND m.message_to_profile_id='" . $business_to_profile_id . "' ) OR (m.message_to_profile_id='" . $business_profile_id . "' AND m.message_from_profile_id='" . $business_to_profile_id . "')AND m.is_deleted = '0' AND m.is_message_from_delete = '0' AND m.message_from_profile = '5' AND m.message_to_profile = '5'");
         $query = $this->db->get();
@@ -100,7 +103,7 @@ class Message_model extends CI_Model {
 
     function getBusinessLastMessage($business_profile_id = '', $business_to_profile_id = '') {
         //$this->db->select("m.message,m.timestamp,m.message_from_profile_id,b.company_name,b.business_user_image")->from("messages m");
-        $this->db->select("m.message,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,b.company_name,b.business_user_image,b.business_slug")->from("messages m");
+        $this->db->select("m.message,m.message_file,m.message_file_type,m.message_file_size,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,b.company_name,b.business_user_image,b.business_slug")->from("messages m");
         $this->db->join('business_profile b', 'b.business_profile_id = m.message_from_profile_id');
         $this->db->where("(m.message_from_profile_id='" . $business_profile_id . "' AND m.message_to_profile_id='" . $business_to_profile_id . "' ) OR (m.message_to_profile_id='" . $business_profile_id . "' AND m.message_from_profile_id='" . $business_to_profile_id . "')AND m.is_deleted = '0' AND m.is_message_from_delete = '0' AND m.message_from_profile = '5' AND m.message_to_profile = '5'");
         $this->db->order_by('m.id', 'desc');
