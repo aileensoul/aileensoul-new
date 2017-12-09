@@ -44,7 +44,7 @@
 
 
     </head>
-    <body class="about-us" >
+    <body class="site-map" >
         <div class="main-inner">
             <div class="terms-con-cus">
                 <header class="terms-con bg-none">
@@ -68,7 +68,60 @@
                 </header>
             </div>
             <section class="middle-main">
+			<div class="site-map-img">
+				<img src="assets/img/sitemap.jpg">
+			</div>
                 <div class="container">
+					<div class="site-map-all-profile">
+						<div class="sm-profile-box">
+							<a href="#"><img src="assets/img/job-s.png"></a>
+						</div>
+						<div class="sm-profile-box">
+							<a href="#"><img src="assets/img/rec-s.png"></a>
+						</div>
+						<div class="sm-profile-box">
+							<a href="#"><img src="assets/img/free-s.png"></a>
+						</div>
+						<div class="sm-profile-box">
+							<a href="#"><img src="assets/img/bus-s.png"></a>
+						</div>
+						<div class="sm-profile-box">
+							<a href="#"><img src="assets/img/art-s.png"></a>
+						</div>
+					</div>
+					<!-- html code for inner page  --->
+					<div class="all-site-link">
+						<h3>Business Profile</h3>
+						<div class="linkbox">
+							<h4>Category</h4>
+							<ul>
+								<li><h5>IT</h5></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+							</ul>
+							<ul>
+								<li><h5>Beauty</h5></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+							</ul>
+							<ul>
+								<li><h5>Beauty</h5></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+								<li><a href="#">url-link.html</a></li>
+							</ul>
+							
+						</div>
+					</div>
+					<!-- end html code for inner page  --->
                     <div class="pt10">
                         <div class="titlea">
                             <h1 class="pb20">Sitemap</h1>

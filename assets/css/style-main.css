@@ -1751,6 +1751,24 @@ img{
 	-ms-user-select: none;
 	user-select: none;
 }
+/***  site map  ***/
+.site-map-img img{width:100%;}
+.site-map-all-profile .sm-profile-box{width:20%; float:left; text-align:center; padding:15px;}
+.site-map-all-profile .sm-profile-box img{width:100%;}
+.site-map-all-profile .sm-profile-box a{display:inline-block;}
+.all-site-link h3{color:#5c5c5c; font-weight:bold;}
+.linkbox ul{margin-bottom:20px;}
+/*.linkbox ul{width:50%; float:left;} for two collom*/
+.linkbox ul li h5{font-size:16px; margin-bottom:5px; margin-top:0;}
+.linkbox ul li{padding:3px 20px; list-style-type:none; font-size:16px; position:relative;}
+.linkbox ul li a{color:#91949d;}
+.linkbox ul li:first-child{padding-left:0; color:#5c5c5c;}
+.linkbox ul li:first-child:before{width:10px; height:10px; background:#5c5c5c; content:""; display:inline-block; position:absolute; left:-20px;  top:6px;}
+.linkbox ul li:before{}
+.linkbox ul li a:before{width:8px; height:8px; background:#91949d; content:""; display:inline-block; position:absolute; left:1px;  top:11px; border-radius:100%;}
+.linkbox ul li a:hover{color:#1b8ab9;}
+.linkbox ul li a:hover:before{background:#1b8ab9;}
+/***  end site map  ***/
 
 
 /***  media query  ***/
@@ -1901,7 +1919,7 @@ img{
 	.feedback-cus .about-h2{font-size:36px;}
 	.about-content{width: 100%!important;}
 	
-
+	/*.linkbox ul{width:100%; float:left;} for two collom*/
 }
 @media screen and (max-width: 767px) {
 	.footer-ul .mob-none{display:none;}
