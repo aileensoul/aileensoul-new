@@ -1477,14 +1477,15 @@ Your browser does not support the audio tag.
             $search_place = '';
         }else{
         $skill = explode('project', $searchvalue);
-        $location = explode('in-', $searchvalue);
+        $location = explode('-in-', $searchvalue);
 
         $search_skill = trim($skill[0]);
         $search_skill = trim($skill[0], '-');
         //  $search_skill = str_replace('-', ' ', $search_skill);
-
+       // echo $search_skill;die();
         $search_place = $location[1];
         }
+       
         $userid = $this->session->userdata('aileenuser');
         $this->data['keyword'] = $search_skill;
 //        $search_skill = trim($this->input->get('skills'));
