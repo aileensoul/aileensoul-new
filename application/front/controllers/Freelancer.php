@@ -4897,7 +4897,7 @@ class Freelancer extends MY_Controller {
 //$shortlist = array_reduce($shortlist, 'array_merge', array());
 
         if ($this->session->userdata('aileenuser')) {
-            $this->load->view('freelancer/freelancer_hire/project_live', $this->data);
+            $this->load->view('freelancer/freelancer_post/hire_project', $this->data);
         } else {
             $this->load->view('freelancer/freelancer_hire/project_live_login', $this->data);
         }

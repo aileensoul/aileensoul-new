@@ -18,5 +18,16 @@ class Sitemap_model extends CI_Model {
         }
         return $newArray;
     }
+    
+    function getArtistDataByCategory() {
+        $this->db->select('a.art_name,a.art_lastname')->from('art_reg a');
+        //$this->db->join('art_reg a', 'a.art_id = ac.category_id');
+        //$this->db->where(array('ac.status' => '1','a.status' => '1', 'a.is_delete' => '0', 'a.art_step' => '4'));
+        $this->db->where(array('a.status' => '1', 'a.is_delete' => '0', 'a.art_step' => '4'));
+        $query = $this->db->get();
+        $result = $query->result_array();
+
+        return $result;
+    }
 
 }

@@ -340,6 +340,11 @@ max-width: inherit;}
 .main-menu-right ul li a:hover{color:#1b8ab9; border-bottom:1px solid #1b8ab9;}
 .main-menu-right ul li a.active{color:#1b8ab9; border-bottom:1px solid #1b8ab9;}
 
+.load-more-blog{width:100%; float:left; text-align:center;}
+.load-more-blog li{list-style-type:none;}
+.load-more-blog li button{margin-left:0; color:#1b8ab9; background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); font-size:45px; font-weight:bold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
 
 /***  media query  ***/
 

@@ -65,11 +65,7 @@ class Sitemap extends CI_Controller {
     public function artistic_profile() {
         $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
-        
-        $contition_array = array('');
-        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        
+        $this->data['getArtistDataByCategory'] = $this->sitemap_model->getArtistDataByCategory();
         $this->load->view('sitemap/artistic', $this->data);
     }
 }
