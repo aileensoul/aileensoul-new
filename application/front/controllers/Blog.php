@@ -33,12 +33,19 @@ class Blog extends CI_Controller {
         //FOR GETTING BLOG
         $condition_array = array('status' => 'publish','blog_slug' => $slug);
         $this->data['blog_detail']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
-      
+        $blogid = $this->data['blog_detail'][0]['id'];
          //FOR GETTING 5 LAST DATA
         $condition_array = array('status' => 'publish');
         $this->data['blog_last']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit=5, $offset, $join_str = array());
+   //random blog
+    $this->db->order_by('id', 'RANDOM');
+    $this->db->limit(3);
+    $this->db->where('blog_slug !=',$slug);
+   $this->db->where("FIND_IN_SET('$blogid',blog_category_id) !=", 0);
+    $query = $this->db->get('blog');
+ $this->data['rand_blog'] =  $query->result_array();
 
-        
+   // random blog end 
          $this->load->view('blog/blogdetail',$this->data);
          
         }
@@ -125,7 +132,7 @@ class Blog extends CI_Controller {
 
     //BLOGDETAIL FOR PERICULAR ONE POST START
     public function blogdetail($slug='')
-    { 
+    {
          //FOR GETTING ALL DATA
         $condition_array = array('status' => 'publish');
         $this->data['blog_all']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
