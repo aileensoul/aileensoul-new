@@ -1787,6 +1787,7 @@ img{
 .catbox-left{width:200px; float:left;}
 .catbox-right{width:82%; float:left; border-left:1px solid #d9d9d9;}
 .smap-catbox{width:100%; float:left; padding-bottom:15px;}
+.artist-sitemap{border-right:none;}
 /***  end site map  ***/
 
 
