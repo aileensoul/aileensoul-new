@@ -115,12 +115,11 @@ class Message_model extends CI_Model {
 
     function businessMessageData($message_for='',$message_id = '') {
         if($message_for == 1){
-            $data = array('is_deleted' => '1','is_message_to_delete'=>'1');
-        }
-        else{
             $data = array('is_deleted' => '1','is_message_from_delete'=>'1');
         }
-        $data = array('is_deleted' => '1');
+        else{
+            $data = array('is_deleted' => '1','is_message_to_delete'=>'1');
+        }
         $this->db->where('id', $message_id);
         $update_data = $this->db->update('messages', $data);
         return $update_data;
