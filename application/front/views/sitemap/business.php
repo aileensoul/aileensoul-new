@@ -62,7 +62,7 @@
                                     </div>
                                     <ul class="catbox-right">
                                         <?php foreach ($value as $business) { ?>
-                                            <li><a href="<?php echo base_url('business-profile/dashboard/' . $business['business_slug']) ?>"><?php echo $business['company_name']; ?></a></li>    
+                                        <li><a href="<?php echo base_url('business-profile/dashboard/' . $business['business_slug']) ?>" target="_blank"><?php echo $business['company_name']; ?></a></li>    
                                         <?php } ?>
                                     </ul>
                                 </div>
