@@ -59,13 +59,13 @@
                                         <li><a href = "<?php echo base_url('business-profile/dashboard/' . $artistic['business_slug']) ?>" target = "_blank"><?php
                                                 echo $artistic['art_name'] . ' ' . $artistic['art_lastname'];
                                                 if ($artistic['art_skill'] != '' && $artistic['other_skill'] != '') {
-                                                    echo '<span class="art_category">(' . $artistic['art_skill'] .', '.$artistic['other_skill']. ')</span>';
+                                                    echo ' <span class="art_category">(' . $artistic['art_skill'] .', '.$artistic['other_skill']. ')</span>';
                                                 } else {
                                                     if ($artistic['art_skill'] != '') {
-                                                        echo '<span class="art_category">(' . $artistic['art_skill'] . ')</span>';
+                                                        echo ' <span class="art_category">(' . $artistic['art_skill'] . ')</span>';
                                                     }
                                                     if ($artistic['other_skill'] != '') {
-                                                        echo '<span class="art_category">(' . $artistic['other_skill'] . ')</span>';
+                                                        echo ' <span class="art_category">(' . $artistic['other_skill'] . ')</span>';
                                                     }
                                                 }
                                                 ?></a></li>    

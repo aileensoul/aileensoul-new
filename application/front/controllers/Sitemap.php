@@ -29,11 +29,7 @@ class Sitemap extends CI_Controller {
     public function job_profile() {
         $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
-        
-        $contition_array = array('');
-        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        
+        $this->data['getJobDataByLocation'] = $this->sitemap_model->getJobDataByLocation();
         $this->load->view('sitemap/job', $this->data);
     }
     
