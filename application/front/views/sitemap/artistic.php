@@ -51,13 +51,24 @@
                 <div class="container">
                     <!-- html code for inner page  --->
                     <div class="all-site-link">
-                        <h3>Artistic Profile <span>Categories</span></h3>
+                        <h3>Artistic Profile</h3>
                         <div class="linkbox">
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">
                                     <?php foreach ($getArtistDataByCategory as $artistic) { ?>
-                                    <li><a href = "<?php echo base_url('business-profile/dashboard/' . $artistic['business_slug']) ?>" target = "_blank"><?php echo $artistic['art_name'] . ' ' . $artistic['art_lastname'];
-                                    ?></a></li>    
+                                        <li><a href = "<?php echo base_url('business-profile/dashboard/' . $artistic['business_slug']) ?>" target = "_blank"><?php
+                                                echo $artistic['art_name'] . ' ' . $artistic['art_lastname'];
+                                                if ($artistic['art_skill'] != '' && $artistic['other_skill'] != '') {
+                                                    echo '<span class="art_category">(' . $artistic['art_skill'] .', '.$artistic['other_skill']. ')</span>';
+                                                } else {
+                                                    if ($artistic['art_skill'] != '') {
+                                                        echo '<span class="art_category">(' . $artistic['art_skill'] . ')</span>';
+                                                    }
+                                                    if ($artistic['other_skill'] != '') {
+                                                        echo '<span class="art_category">(' . $artistic['other_skill'] . ')</span>';
+                                                    }
+                                                }
+                                                ?></a></li>    
 <?php } ?>
                                 </ul>
                             </div>
@@ -66,9 +77,9 @@
                     </div>
                 </div>
             </section>
-            <?php
-            echo $login_footer
-            ?>
+<?php
+echo $login_footer
+?>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
     </body>
