@@ -117,8 +117,9 @@ function apply_post(abc, xyz) {
         type: 'POST',
         url:  base_url + "freelancer/apply_insert",
         data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-        datatype:'json',
+        dataType:'json',
         success: function (data) {
+          
             $('.savedpost' + abc).hide();
             $('.applypost' + abc).html(data.status);
             $('.applypost' + abc).attr('disabled', 'disabled');
