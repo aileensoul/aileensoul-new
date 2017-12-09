@@ -69,6 +69,14 @@ $route['terms-and-condition'] = "main/terms_condition";
 $route['privacy-policy'] = "main/privacy_policy";
 
 
+$route['sitemap/job-profile'] = "sitemap/job_profile";
+$route['sitemap/recruiter-profile'] = "sitemap/recruiter_profile";
+$route['sitemap/freelance-profile'] = "sitemap/freelance_profile";
+$route['sitemap/business-profile'] = "sitemap/business_profile";
+$route['sitemap/artistic-profile'] = "sitemap/artistic_profile";
+
+
+
 $route['business-profile'] = "business_profile/index";
 $route['business-profile/reactivate'] = "business_profile/reactivate";
 

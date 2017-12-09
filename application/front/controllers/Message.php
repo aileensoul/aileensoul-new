@@ -298,7 +298,8 @@ class Message extends MY_Controller {
     public function businessmessageDelete(){
         $message_id = $_POST['message_id'];
         $message_for = $_POST['message_for'];
-        $delete_data = $this->message_model->businessMessageData($message_for,$message_id);
+        $business_profile_id = $this->data['business_login_profile_id'];
+        $delete_data = $this->message_model->businessMessageData($message_for,$business_profile_id,$message_id);
         if ($delete_data) {
             echo json_encode(array('result' => 'success'));
         } else {
