@@ -1774,19 +1774,19 @@ img{
 .site-map-all-profile ul li a{color:#fff; font-size:18px;}
 
 .all-site-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:30px;}
-.linkbox ul{margin-bottom:20px;}
+.linkbox ul{margin-bottom:20px; padding-left:15px;}
 /*.linkbox ul{width:50%; float:left;} for two collom*/
 .linkbox h5{font-size:16px; margin-bottom:5px; margin-top:0;}
-.linkbox ul li{padding:3px 20px; list-style-type:none; font-size:16px; position:relative;}
+.linkbox ul li{padding:3px 20px; list-style-type:none; font-size:16px; position:relative; width:50%; float:left;}
 .linkbox ul li a{color:#91949d;}
-/*.linkbox ul li:first-child{padding-left:0; color:#5c5c5c;}
-.linkbox ul li:first-child:before{width:10px; height:10px; background:#5c5c5c; content:""; display:inline-block; position:absolute; left:-20px;  top:6px;}*/
+
 .linkbox ul li:before{}
 .linkbox ul li a:before{width:8px; height:8px; background:#91949d; content:""; display:inline-block; position:absolute; left:1px;  top:11px; border-radius:100%;}
 .linkbox ul li a:hover{color:#1b8ab9;}
 .linkbox ul li a:hover:before{background:#1b8ab9;}
 .catbox-left{width:200px; float:left;}
 .catbox-right{width:82%; float:left; border-left:1px solid #d9d9d9;}
+.smap-catbox{width:100%; float:left; padding-bottom:15px;}
 /***  end site map  ***/
 
 
@@ -1853,7 +1853,8 @@ img{
 	footer ul{display:inline-block; float:none;}
 	footer ul li{padding:0; margin:0;}
 	.ftr-copuright{padding-bottom:15px;}
-
+	.catbox-right{width:78%;}
+	
 }
 
 @media screen and (max-width: 1024px) {
@@ -1939,6 +1940,8 @@ img{
 	.about-content{width: 100%!important;}
 	
 	/*.linkbox ul{width:100%; float:left;} for two collom*/
+	.catbox-left{width:100%; padding-bottom:10px;}
+	.catbox-right{width:100%;}
 }
 @media screen and (max-width: 767px) {
 	.footer-ul .mob-none{display:none;}
@@ -1948,7 +1951,7 @@ img{
 	body.cover{padding-bottom:90px;}
 	footer{padding:0; height:65px; text-align:center;}
 	footer .pt20{padding:10px 15px !important;}
-	footer ul{padding-bottom:5px; float:none; display:inline-block; padding-top:15px;}
+	footer ul{padding-bottom:5px; float:none; display:inline-block; padding-top:15px; }
 	footer ul li{padding-left:0; width:50%; margin-bottom:0;}
 	footer ul li:last-child a{padding-right:15px;}
 	.banner-box .upload-camera {
@@ -2099,7 +2102,7 @@ img{
 	.cus-about{padding: 36px 0;padding-top: 0px;}
 	/*.about-us .about-h2{padding-bottom: 50px;}*/
 	.about-us .cus-about{padding: 32px 0;padding-top: 0px;}
-	
+	.linkbox ul li{width:100%;}
 }
 @media screen and (max-width: 540px) {
 	.cus-about{padding: 25px 0px;padding-top: 0px}
