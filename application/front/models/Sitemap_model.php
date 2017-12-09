@@ -18,15 +18,33 @@ class Sitemap_model extends CI_Model {
         }
         return $newArray;
     }
-    
+
     function getArtistDataByCategory() {
-        $this->db->select('a.art_name,a.art_lastname')->from('art_reg a');
-        //$this->db->join('art_reg a', 'a.art_id = ac.category_id');
-        //$this->db->where(array('ac.status' => '1','a.status' => '1', 'a.is_delete' => '0', 'a.art_step' => '4'));
+        $this->db->select('a.art_name,a.art_lastname,a.art_skill,a.other_skill')->from('art_reg a');
         $this->db->where(array('a.status' => '1', 'a.is_delete' => '0', 'a.art_step' => '4'));
         $query = $this->db->get();
         $result = $query->result_array();
 
+        foreach ($result as $key => $value) {
+            $art_skill = $value['art_skill'];
+            $other_skill = $value['other_skill'];
+            if ($art_skill) {
+                $art_skill = explode(',', $art_skill);
+                $category_name = '';
+                foreach ($art_skill as $key1 => $skill) {
+                    $category_name .= $this->db->select('art_category')->get_where('art_category', array('category_id' => $skill))->row('art_category');
+                    $category_name .= ',';
+                }
+                $category_name = trim($category_name, ',');
+                $result[$key]['art_skill'] = $category_name;
+            }
+            if ($other_skill) {
+                $other_name .= $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $other_skill))->row('other_category');
+                $other_name = trim($other_name, ',');
+                $result[$key]['other_skill'] = $other_name;
+            }
+        }
+        
         return $result;
     }
 
