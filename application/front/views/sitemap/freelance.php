@@ -52,7 +52,7 @@
                 <div class="container">
                     <!-- html code for inner page  --->
                     <div class="all-site-link">
-                        <h3>Business Profile <span>Categories</span></h3>
+                        <h3>Freelancer Profile</h3>
                         <div class="linkbox">
 
                             <div class="smap-catbox">

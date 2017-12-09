@@ -16140,7 +16140,6 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 
         $url = $arturl[0]['slug'] . '-' . $category_url . '-' . $city_get . '-' . $arturl[0]['art_id'];
 
-        // echo "<pre>"; print_r($url); die();
         return $url;
     }
 

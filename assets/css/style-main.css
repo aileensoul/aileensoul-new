@@ -1769,16 +1769,15 @@ img{
 .site-map-all-profile .sm-profile-box img{width:100%;}
 .site-map-all-profile .sm-profile-box a{display:inline-block;}
 .site-map-all-profile h1{margin:0 0 25px; color:#fff;}
-.site-map-all-profile ul{display:inline-block;}
-.site-map-all-profile ul li{color:#fff; float:left; padding:5px 20px; list-style-type:none;}
+.site-map-all-profile ul{display:inline-block; padding:0;}
+.site-map-all-profile ul li{color:#fff; display:inline-block; padding:5px 20px; list-style-type:none;}
 .site-map-all-profile ul li a{color:#fff; font-size:18px;}
 
 .all-site-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:30px;}
 .linkbox ul{margin-bottom:20px; padding-left:15px;}
-/*.linkbox ul{width:50%; float:left;} for two collom*/
 .linkbox h5{font-size:16px; margin-bottom:5px; margin-top:0;}
 .linkbox ul li{padding:3px 20px; list-style-type:none; font-size:16px; position:relative; width:50%; float:left;}
-.linkbox ul li a{color:#91949d;}
+.linkbox ul li a{color:#91949d; text-transform: capitalize;}
 
 .linkbox ul li:before{}
 .linkbox ul li a:before{width:8px; height:8px; background:#91949d; content:""; display:inline-block; position:absolute; left:1px;  top:11px; border-radius:100%;}
@@ -1787,7 +1786,8 @@ img{
 .catbox-left{width:200px; float:left;}
 .catbox-right{width:82%; float:left; border-left:1px solid #d9d9d9;}
 .smap-catbox{width:100%; float:left; padding-bottom:15px;}
-.artist-sitemap{border-left:none;}
+.artist-sitemap{border-left:none; width:100%;}
+.art_category{font-size:15px; padding-left:5px; text-transform: capitalize;}
 /***  end site map  ***/
 
 
@@ -1939,10 +1939,9 @@ img{
 	.cust-disclaimer .term_desc{padding:0px 0px 30px;}
 	.feedback-cus .about-h2{font-size:36px;}
 	.about-content{width: 100%!important;}
-	
-	/*.linkbox ul{width:100%; float:left;} for two collom*/
 	.catbox-left{width:100%; padding-bottom:10px;}
 	.catbox-right{width:100%;}
+	.site-map-all-profile ul li{padding:5px 12px;}
 }
 @media screen and (max-width: 767px) {
 	.footer-ul .mob-none{display:none;}
@@ -2067,7 +2066,8 @@ img{
 	 .turmcon-cust .about-h2{font-size: 29px;}
     .cust-disclaimer .about-h2{font-size: 32px;}
     .upload-img{margin-top: -72px;right: 20px;}
-
+	.site-map .sm-header .site-map-all-profile{padding:35px 0;}
+	.site-map .main-inner .middle-main{padding-top:20px;}
 }
 
 @media screen and (max-width: 640px) {
@@ -2153,6 +2153,7 @@ img{
 	.con-address td:last-child{padding-top:0;}
 	/*.privacy-cust .about-h2{padding-top: 50px;padding-bottom: 50px;}*/
 	/*.privacy-cust .main-comtai{padding: 47px 0;}*/
+	.site-map-all-profile ul li{width:100%;}
 }
 
 @media screen and (max-width: 360px) {

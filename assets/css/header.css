@@ -127,6 +127,7 @@
 .header ul li:last-child {
     border-right: none;
     padding-right: 0px;
+	padding-left:7px;
 }
 .header ul li.dropdown-user a {
     color: #d7ecf5;

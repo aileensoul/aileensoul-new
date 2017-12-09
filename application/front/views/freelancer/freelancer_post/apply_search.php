@@ -390,7 +390,7 @@
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
-                                        <a href="<?php echo base_url("jobs"); ?>" >All Projects</a>
+                                        <a href="<?php echo base_url("projects-project"); ?>" >All Projects</a>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword1 == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
                                         </label>
@@ -442,7 +442,10 @@
                                 <h3>
                                     Search result of 
                                         <?php
-                                        if ($keyword != "" && $keyword1 == "") {
+                                        if($keyword == "" && $keyword1 == ""){
+                                            echo "All Projects";
+                                        }
+                                        elseif ($keyword != "" && $keyword1 == "") {
                                             echo '"' . $keyword . '"';
                                         } elseif ($keyword == "" && $keyword1 != "") {
                                             echo '"' . $keyword1 . '"';
