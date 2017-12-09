@@ -212,7 +212,7 @@ function remove_post(abc)
             $('#' + 'removeapply' + abc).remove();
             var numItems = $('.job-contact-frnd1 .all-job-box').length;
             if (numItems == '0') {
-               var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="/assets/img/free-no1.png"></div><div class="art_no_post_text">No Applied projects Found.</div></div>';
+               var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../assets/img/free-no1.png"></div><div class="art_no_post_text">No Applied projects Found.</div></div>';
 
               //  var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Freelancer Found.</h4></div>";
                 $('.job-contact-frnd1').html(nodataHtml);

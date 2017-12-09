@@ -395,40 +395,40 @@
                                             <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword1 == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Bengaluru') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
+                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw"> 
-                                            <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword1 == 'Chennai') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
+                                            <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword1 == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword1 == 'Delhi') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
+                                            <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword1 == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword1 == 'Hyderabad') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
-                                        </label>
-
-                                        <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword1 == 'Mumbai') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                            <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword1 == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
                                         </label>
 
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Legal Projects</a>
+                                            <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword1 == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                        </label>
+
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword1 == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
                                         </label>
                                         
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
+                                            <a href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword1 == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
                                         </label>
                                         
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
+                                            <a href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
                                         </label>
                                         
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                            <a href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
                                         </label>
                                         
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("jobs-in-Pune"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
+                                            <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
                                         </label>
 
                                     </div>
@@ -537,6 +537,69 @@
             </div>
         </div>
         <!-- Login -->
+            <!-- Login  For Apply Post-->
+    <div class="modal fade login" id="login_apply" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content login-frm">
+                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                <div class="modal-body">
+                    <div class="right-main">
+                        <div class="right-main-inner">
+                            <div class="">
+                                <div class="title">
+                                    <h1 class="ttc">Welcome To Aileensoul</h1>
+                                </div>
+
+                                <form role="form" name="login_form_apply" id="login_form_apply" method="post">
+
+                                    <div class="form-group">
+                                        <input type="email" value="<?php echo $email; ?>" name="email_login_apply" id="email_login_apply" class="form-control input-sm email_login" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorlogin_apply"></div> 
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password_login_apply" id="password_login_apply" class="form-control input-sm password_login" placeholder="Password*">
+                                        <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+
+                                        <div id="error1" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('errorpass')) {
+                                                echo $this->session->flashdata('errorpass');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorpass_apply"></div> 
+                                    </div>
+
+                                    <p class="pt-20 ">
+                                        <button class="btn1" >Login</button>
+                                    </p>
+
+                                    <p class=" text-center">
+                                        <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                    </p>
+
+                                    <p class="pt15 text-center">
+                                        Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                    </p>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login -->
         <!-- model for forgot password start -->
         <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
@@ -586,7 +649,7 @@
         <!-- model for forgot password end -->
         <!-- register -->
 
-        <div class="modal fade register-model login" id="register" role="dialog">
+<!--        <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
@@ -688,7 +751,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- register -->
         <?php echo $footer; ?>
         <!-- script for skill textbox automatic start (option 2)-->
@@ -834,11 +897,11 @@
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
-                                                                                        <!--<p class="next">Next</p>-->
+                                                                                    
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a tabindex="12" id ="postid" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>

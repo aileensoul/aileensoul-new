@@ -123,7 +123,7 @@ function remove_post(abc)
             $('#' + 'postdata' + abc).remove();
             var numItems = $('.job-contact-frnd1 .all-job-box').length;
             if (numItems == '0') {
-                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="/assets/img/free-no1.png"></div><div class="art_no_post_text"> No Saved Projects Found.</div></div>';
+                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../assets/img/free-no1.png"></div><div class="art_no_post_text"> No Saved Projects Found.</div></div>';
                 $('.job-contact-frnd1').html(nodataHtml);
             }
         }
