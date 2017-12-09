@@ -54,7 +54,7 @@
                         <h3>Artistic Profile <span>Categories</span></h3>
                         <div class="linkbox">
                             <div class="smap-catbox">
-                                <ul class="catbox-right">
+                                <ul class="catbox-right artist-sitemap">
                                     <?php foreach ($getArtistDataByCategory as $artistic) { ?>
                                     <li><a href = "<?php echo base_url('business-profile/dashboard/' . $artistic['business_slug']) ?>" target = "_blank"><?php echo $artistic['art_name'] . ' ' . $artistic['art_lastname'];
                                     ?></a></li>    
