@@ -54,47 +54,33 @@
                     <div class="all-site-link">
                         <h3>Business Profile <span>Categories</span></h3>
                         <div class="linkbox">
-
-                            <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>IT</h5>
+<?php
+                            foreach ($getJobDataByLocation as $key => $value) {
+                                ?>
+                                <div class="smap-catbox">
+                                    <div class="catbox-left">
+                                        <h5><?php echo $key ?></h5>
+                                    </div>
+                                    <ul class="catbox-right">
+                                        <?php foreach ($value as $business) {
+                                            
+                                            if ($business['post_name'] != '') {
+                        $text = strtolower($this->common->clean($business['post_name']));
+                    } else {
+                        $text = '';
+                    } 
+                     if ($business['city_name'] != '') {
+                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($business['city_name']));
+                    } else {
+                        $cityname = '';
+                    }?>
+                                        <li><a href="<?php echo base_url('recruiter/jobpost/' . $text . $cityname . '-' . $business['user_id'] . '-' . $business['post_id']) ?>" target="_blank"><?php echo $business['post_name'] . '(' . $business['re_comp_name'] . ")"; ?></a></li>    
+                                        <?php } ?>
+                                    </ul>
                                 </div>
-                                <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                </ul>
-                            </div>
-                            <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>Bueaty</h5>
-                                </div>
-                                <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                </ul>
-                            </div>
-                            <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>Business</h5>
-                                </div>
-                                <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                </ul>
-                            </div>
-
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     
