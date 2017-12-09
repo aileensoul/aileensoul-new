@@ -89,16 +89,14 @@
                  
                   <div class="logo pl20">
                      <a href="<?php echo base_url('blog/'); ?>">
-                        <h3  style="color: #5c5c5c;">Blog</h3>
+                        <h3  style="color: #1b8ab9;">Blog</h3>
                      </a>
                   </div>
                </div>
                <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                   <div class="main-menu-right">
                      <ul class="">
-                        <li><a class="active" href="<?php echo base_url('blog/');?>">Recent Post </a></li>
-                        <li> <a href="<?php echo base_url('blog/popular');?>">Most Popular</a></li>
-						<li><a href="<?php echo base_url('blog/');?>">Recent Post </a></li>
+                        <li><a href="<?php echo base_url('blog/');?>">Recent Post </a></li>
                         <li> <a href="<?php echo base_url('blog/popular');?>">Most Popular</a></li>
                      </ul>
                   </div>
@@ -292,35 +290,6 @@
                               </fieldset>
                            </form>
                         </div>
-						<div class="related-blog">
-							<h3>Related Blogs</h3>
-							<div class="row">
-								<div class="col-md-4 col-sm-12">
-									<div class="rel-blog-box">
-										<a href="#"><div class="rel-blog-img">
-											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
-										</div></a>
-										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-12">
-									<div class="rel-blog-box">
-										<a href="#"><div class="rel-blog-img">
-											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
-										</div></a>
-										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-12">
-									<div class="rel-blog-box">
-										<a href="#"><div class="rel-blog-img">
-											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
-										</div></a>
-										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
-									</div>
-								</div>
-							</div>
-						</div>
                      </div>
                       <?php
                       }else{ ?>

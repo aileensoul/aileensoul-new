@@ -257,6 +257,8 @@ $route['artist/creat-pdf'] = "artist/creat_pdf";
 //BLOG ROUTES SETTINGS
 $route['blog/popular'] = "blog/popular";
 $route['blog/read_more'] = "blog/read_more";
+$route['blog/blog_ajax'] = "blog/blog_ajax";
+$route['blog/cat_ajax'] = "blog/cat_ajax";
 $route['blog/comment_insert'] = "blog/comment_insert";
 $route['blog/tag/(:any)'] = "blog/tagsearch/$1";
 $route['blog/page/(:any)'] = "blog/index/$1";

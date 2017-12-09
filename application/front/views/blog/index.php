@@ -34,10 +34,10 @@
         ?>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
-                (adsbygoogle = window.adsbygoogle || []).push({
-                    google_ad_client: "ca-pub-6060111582812113",
-                    enable_page_level_ads: true
-                });
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-6060111582812113",
+                enable_page_level_ads: true
+            });
         </script>
         <style type="text/css">
             footer > .container{border:1px solid transparent!important;}
@@ -121,32 +121,13 @@
                         <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                             <div class="main-menu-right">
                                 <ul class="">
-                                    <li>
-                                        <?php
-                                        if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
-                                            ?>
-                                            <a title="Recent Post" href="<?php echo base_url('blog/'); ?>">Recent Post </a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <a title="Recent Post" href="javascript:void(0)">Recent Post </a>
-                                            <?php
-                                        }
-                                        ?>
+                                    <?php foreach($blog_category as $category){ ?>
+                                    <li class="category">
+                                            <div id="category_<?php echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
+                                               <?php echo $category['name']; ?>
+                                            </div>
                                     </li>
-                                    <li>
-                                        <?php
-                                        if ($this->uri->segment(3) == 'popular') {
-                                            ?>
-                                            <a title="Most Popular" href="javascript:void(0)">Most Popular</a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <a title="Most Popular" href="<?php echo base_url('blog/popular'); ?>">Most Popular</a>
-                                            <?php
-                                        }
-                                        ?>
-                                    </li>
+                                   <?php  } ?>
                                 </ul>
                             </div>
                         </div>
@@ -210,172 +191,15 @@
                                 }//if end
                                 else {
 
-                                    foreach ($blog_detail as $blog) {
-                                        ?>
-                                        <div class="blog_main_o">
-                                            <div class="date_blog_left">
-                                                <div class="blog-date-change">
-                                                    <div class="blog-month blog-picker">
-                                                        <span class="blog_monthd">
-                                                            <?php
-                                                            $date_time = new DateTime($blog['created_date']);
-                                                            $month = $date_time->format('M') . PHP_EOL;
-                                                            echo $month;
-                                                            ?>
-                                                        </span>
-                                                    </div class="blog-date blog-picker">
-                                                    <div>
-                                                        <span class="blog_mdate">
-                                                            <?php
-                                                            $date = new DateTime($blog['created_date']);
-                                                            echo $date->format('d') . PHP_EOL;
-                                                            ?>
-                                                        </span>
-                                                    </div>
-                                                    <div class="blog-year blog-picker">
-                                                        <span class="blog_moyear" >
-                                                            <?php
-                                                            $year = new DateTime($blog['created_date']);
-                                                            echo $year->format('Y') . PHP_EOL;
-                                                            ?>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="blog-left-comment">
-                                                    <div class="blog-comment-count">
-                                                        <a>
-                                                            <?php
-                                                            $condition_array1 = array('status' => 'approve', 'blog_id' => $blog['id']);
-                                                            $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array1, $data1 = '*', $short_by1 = 'id', $order_by1 = 'desc', $limit1 = 5, $offset1, $join_str1 = array());
-                                                            echo count($blog_comment);
-                                                            ?>
-                                                        </a>
-                                                    </div>
-                                                    <div class="blog-comment">
-                                                        <a>Comments</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="date_blog_right">
-                                                <div class="blog_post_main">
-                                                    <div class="blog_inside_post_main">
-                                                        <div class="blog_main_post_first_part">
-                                                            <div class="blog_main_post_img">
-                                                                <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" ></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="blog_main_post_second_part">
-                                                            <div class="blog_class_main_name">
-                                                                <span>
-                                                                    <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>">
-                                                                        <h1> <?php echo $blog['title']; ?> </h1>
-                                                                    </a>
-                                                                </span>
-                                                            </div>
-                                                            <div class="blog_class_main_by">
-                                                                <span>
-                                                                </span>
-                                                            </div>
-                                                            <div class="blog_class_main_desc ">
-                                                                <span class="dot_span_desc">
-                                                                    <?php
-                                                                    $num_words = 75;
-                                                                    $words = array();
-                                                                    $words = explode(" ", $blog['description'], $num_words);
-                                                                    $shown_string = "";
-
-                                                                    if (count($words) == 75) {
-                                                                        $words[74] = " ...... ";
-                                                                    }
-
-                                                                    $shown_string = implode(" ", $words);
-                                                                    echo $shown_string;
-                                                                    ?>
-                                                                </span>
-                                                            </div>
-                                                            <div class="blog_class_main_social">
-                                                                <div class="left_blog_icon fl">
-                                                                    <ul class="social_icon_bloag fl">
-                                                                        <li>
-                                                                            <?php
-                                                                            $title = urlencode('"' . $blog['title'] . '"');
-                                                                            $url = urlencode(base_url('blog/' . $blog['blog_slug']));
-                                                                            $summary = urlencode('"' . $blog['description'] . '"');
-                                                                            $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
-                                                                            ?>
-
-                                                                            <a class="fbk" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog/' . $blog['blog_slug']); ?>" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
-                                                                                <span  class="social_fb"></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <a href="https://plus.google.com/share?url=<?php echo $url; ?>" title="Google +" onclick="javascript:window.open('https://plus.google.com/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
-                                                                                <span  class="social_gp"></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <a href="https://www.linkedin.com/cws/share?url=<?php echo $url; ?>" title="linkedin"  onclick="javascript:window.open('https://www.linkedin.com/cws/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_lk"></span></a>
-                                                                        </li>
-                                                                        <li>
-
-                                                                            <a href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>"  title="twitter" onclick="javascript:window.open('https://twitter.com/intent/tweet?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_tw"></span></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="fr blog_view_link">
-                                                                    <a title="Read more" onclick="read_more('<?php echo $blog['id']; ?>', '<?php echo $blog['blog_slug']; ?>')"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }//for loop end
-                                }//else end
-                                ?>
-                                <div class="dta_left col-md-6" id="pagination">
-
-                                    <?php
-                                    if ($total_rows > 0) {
-                                        if ($this->pagination->create_links()) {
-                                            $rec1 = $offset + 1;
-                                            $rec2 = $offset + $limit;
-                                            if ($rec2 > $total_rows) {
-                                                $rec2 = $total_rows;
-                                            }
-                                            ?>
-                                            <div style="margin-left: 20px;">
-                                                <?php echo "Records $rec1 - $rec2 of $total_rows"; ?>
-                                            </div><?php
-                                        } else {
-                                            ?>
-                                            <div style="margin-left: 20px;">
-                                                <?php echo "Records 1 - $total_rows of $total_rows"; ?>
-                                            </div>
-                                            <?php
-                                        }
-                                    }
+                                    //    foreach ($blog_detail as $blog) {
                                     ?>
+                                    <div class="job-contact-frnd">
 
-                                    <?php
-                                    if ($this->pagination->create_links()) {
+                                    </div>
 
-                                        $tot_client = ceil($total_rows / $limit);
-                                        $cur_client = ceil($offset / $limit) + 1;
-                                        ?>
-
-                                        <div class="text-right data_right col-md-6">
-                                            <div id="example2_paginate" class="dataTables_paginate paging_simple_numbers">
-                                                <?php echo $this->pagination->create_links(); ?> 
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                </div><!-- dta_left col-md-6--> 
+                                    <li class="loadbutton"></li>
+                                    <?php }
+                                ?>
                             </div>
 
                             <div class="col-md-3 col-sm-4 hidden-xs">
@@ -472,6 +296,127 @@
 <script>
                                         var base_url = '<?php echo base_url(); ?>';
 </script>
+<script>
+//AJAX DATA LOAD BY LAZZY LOADER START
+    $(document).ready(function () {
+        blog_post();
 
+//    $(window).scroll(function () {
+//        
+//      if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+//            var page = $(".page_number:last").val();
+//            var total_record = $(".total_record").val();
+//            var perpage_record = $(".perpage_record").val();
+//            if (parseInt(perpage_record) <= parseInt(total_record)) {
+//                var available_page = total_record / perpage_record;
+//                available_page = parseInt(available_page, 10);
+//                var mod_page = total_record % perpage_record;
+//                if (mod_page > 0) {
+//                    available_page = available_page + 1;
+//                }
+//                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+////                if (parseInt(page) <= parseInt(available_page)) {alert(11);
+////                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+////                    blog_post(pagenum);
+////                }
+//            }
+//        }
+//    });
+    });
+    
+     function category_data(catid,pagenum) {
+          $('.job-contact-frnd').html("")
+         cat_post(catid,pagenum);
+     }
+     
+     $('.loadcatbutton').click(function () {
+        var pagenum = parseInt($(".page_number:last").val()) + 1;
+        var catid = (".catid").val();
+        cat_post(pagenum);
+    });
+     
+     var isProcessing = false;
+    function cat_post(catid,pagenum) { 
+       
+        if (isProcessing) {
+            /*
+             *This won't go past this condition while
+             *isProcessing is true.
+             *You could even display a message.
+             **/
+            return;
+        }
+        isProcessing = true;
+        $.ajax({ 
+            type: 'POST',
+            url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
+            data: {total_record: $("#total_record").val()},
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $('#loader').hide();
+            },
+            success: function (data) {
+                $('.loader').remove();
+                $('.job-contact-frnd').append(data.blog_data);
+                $('.loadbutton').html(data.load_msg)
+                // second header class add for scroll
+                var nb = $('.post-design-box').length;
+                if (nb == 0) {
+                    $("#dropdownclass").addClass("no-post-h2");
+                } else {
+                    $("#dropdownclass").removeClass("no-post-h2");
+                }
+                isProcessing = false;
+            }
+        });
+    }
+    
+
+    $('.loadbutton').click(function () {
+        var pagenum = parseInt($(".page_number:last").val()) + 1;
+        blog_post(pagenum);
+    });
+    var isProcessing = false;
+    function blog_post(pagenum) {
+        if (isProcessing) {
+            /*
+             *This won't go past this condition while
+             *isProcessing is true.
+             *You could even display a message.
+             **/
+            return;
+        }
+        isProcessing = true;
+        $.ajax({
+            type: 'POST',
+            url: base_url + "blog/blog_ajax?page=" + pagenum,
+            data: {total_record: $("#total_record").val()},
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $('#loader').hide();
+            },
+            success: function (data) {
+                $('.loader').remove();
+                $('.job-contact-frnd').append(data.blog_data);
+                $('.loadbutton').html(data.load_msg)
+                // second header class add for scroll
+                var nb = $('.post-design-box').length;
+                if (nb == 0) {
+                    $("#dropdownclass").addClass("no-post-h2");
+                } else {
+                    $("#dropdownclass").removeClass("no-post-h2");
+                }
+                isProcessing = false;
+            }
+        });
+    }
+//AJAX DATA LOAD BY LAZZY LOADER END
+</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
 
