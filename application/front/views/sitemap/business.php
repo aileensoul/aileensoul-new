@@ -33,10 +33,10 @@
         ?>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-6060111582812113",
-                enable_page_level_ads: true
-            });
+                (adsbygoogle = window.adsbygoogle || []).push({
+                    google_ad_client: "ca-pub-6060111582812113",
+                    enable_page_level_ads: true
+                });
         </script>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
@@ -46,113 +46,29 @@
     </head>
     <body class="site-map" >
         <div class="main-inner">
-            <div class="sm-header">
-                <header class="terms-con bg-none">
-                    <div class="overlaay">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-3">
-                                    <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
-                                </div>
-                                <div class="col-md-8 col-sm-9">
-                                    <div class="btn-right pull-right">
-                                        <?php if (!$this->session->userdata('aileenuser')) { ?>
-                                            <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-                                            <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-				<div class="site-map-all-profile">
-					<div class="container">
-						<h1 class="text-center">Sitemap</h1>
-						<div class="fw text-center">
-							<ul>
-								<li><a href="#">Job Profile</a></li>
-								<li><a href="#">Recruiter Profile</a></li>
-								<li><a href="#">Freelance Profile</a></li>
-								<li><a href="#">Business Profile</a></li>
-								<li><a href="#">Artistic Profile</a></li>
-							</ul>
-						</div>
-
-					</div>
-				</div>
-            </div>
-			
+            <?php echo $sitemap_header ?>
             <section class="middle-main">
-				
-					
-			<div class="site-map-img">
-				<img src="assets/img/sitemap.jpg">
-			</div>
                 <div class="container">
-					
-					<!-- html code for inner page  --->
-					<div class="all-site-link">
-						<h3>Business Profile <span>Categories</span></h3>
-						<div class="linkbox">
-							
-							<div class="smap-catbox">
-								<div class="catbox-left">
-									<h5>IT</h5>
-								</div>
-								<ul class="catbox-right">
-									
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-								</ul>
-							</div>
-							<div class="smap-catbox">
-								<div class="catbox-left">
-									<h5>Bueaty</h5>
-								</div>
-								<ul class="catbox-right">
-									
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-								</ul>
-							</div>
-							<div class="smap-catbox">
-								<div class="catbox-left">
-									<h5>Business</h5>
-								</div>
-								<ul class="catbox-right">
-									
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-									<li><a href="#">url-link.html</a></li>
-								</ul>
-							</div>
-							
-						</div>
-					</div>
-					<!-- end html code for inner page  --->
-                    <div class="pt10">
-                        <div class="titlea">
-                            <h1 class="pb20">Sitemap</h1>
-                        </div>
-                        <div class="about-content">
-                            <ul>
-                                <?php
-                                foreach($business_profile as $profile){
+                    <!-- html code for inner page  --->
+                    <div class="all-site-link">
+                        <h3>Business Profile <span>Categories</span></h3>
+                        <div class="linkbox">
+                            <?php
+                            foreach ($getBusinessDataByCategory as $key => $value) {
                                 ?>
-                                <li><a href="<?php echo base_url('business-profile/dashboard/'.$profile['business_slug']) ?>"><?php echo $profile['company_name']; ?></a></li>
+                                <div class="smap-catbox">
+                                    <div class="catbox-left">
+                                        <h5><?php echo $key ?></h5>
+                                    </div>
+                                    <ul class="catbox-right">
+                                        <?php foreach ($value as $business) { ?>
+                                            <li><a href="<?php echo base_url('business-profile/dashboard/' . $business['business_slug']) ?>"><?php echo $business['company_name']; ?></a></li>    
+                                        <?php } ?>
+                                    </ul>
+                                </div>
                                 <?php
-                                }
-                                ?>
-                            </ul>
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
