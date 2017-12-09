@@ -522,9 +522,9 @@ $blog_data .= '<div class="blog_main_o">';  $blog_data .= $blog['id'];
  $record =  $_GET["total_record"] / $perpage;
 
    if($page > $record){
-       $lod_message = '<button class="loadmore">No more blog available</button>';  
+       $lod_message = '<button class="loadcatbutton">No more blog available</button>';  
    }else{
-    $lod_message = '<button class="loadmore">Load More</button>'; 
+    $lod_message = '<button class="catbutton">Load More</button>'; 
    } 
        
  echo json_encode(array(
