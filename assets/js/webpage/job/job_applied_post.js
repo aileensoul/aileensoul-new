@@ -101,7 +101,7 @@ function job_apply(pagenum)
         beforeSend: function () {
             if (pagenum == 'undefined') {
 
-                $(".job-contact-frnd1").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".job-contact-frnd1").prepend('');
             } else {
                 $('#loader').show();
             }

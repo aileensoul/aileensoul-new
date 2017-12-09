@@ -44,9 +44,9 @@
 
 
     </head>
-    <body class="about-us" >
+    <body class="site-map" >
         <div class="main-inner">
-            <div class="terms-con-cus">
+            <div class="sm-header">
                 <header class="terms-con bg-none">
                     <div class="overlaay">
                         <div class="container">
@@ -66,9 +66,79 @@
                         </div>
                     </div>
                 </header>
+				<div class="site-map-all-profile">
+					<div class="container">
+						<h1 class="text-center">Sitemap</h1>
+						<div class="fw text-center">
+							<ul>
+								<li><a href="#">Job Profile</a></li>
+								<li><a href="#">Recruiter Profile</a></li>
+								<li><a href="#">Freelance Profile</a></li>
+								<li><a href="#">Business Profile</a></li>
+								<li><a href="#">Artistic Profile</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
             </div>
+			
             <section class="middle-main">
+				
+					
+			<div class="site-map-img">
+				<img src="assets/img/sitemap.jpg">
+			</div>
                 <div class="container">
+					
+					<!-- html code for inner page  --->
+					<div class="all-site-link">
+						<h3>Business Profile <span>Categories</span></h3>
+						<div class="linkbox">
+							
+							<div class="smap-catbox">
+								<div class="catbox-left">
+									<h5>IT</h5>
+								</div>
+								<ul class="catbox-right">
+									
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+								</ul>
+							</div>
+							<div class="smap-catbox">
+								<div class="catbox-left">
+									<h5>Bueaty</h5>
+								</div>
+								<ul class="catbox-right">
+									
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+								</ul>
+							</div>
+							<div class="smap-catbox">
+								<div class="catbox-left">
+									<h5>Business</h5>
+								</div>
+								<ul class="catbox-right">
+									
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+									<li><a href="#">url-link.html</a></li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+					<!-- end html code for inner page  --->
                     <div class="pt10">
                         <div class="titlea">
                             <h1 class="pb20">Sitemap</h1>

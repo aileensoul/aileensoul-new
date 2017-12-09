@@ -48,7 +48,7 @@ function freelancerwork_home(pagenum)
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                $(".job-contact-frnd1").prepend('');
             } else {
                 $('#loader').show();
             }
@@ -58,7 +58,7 @@ function freelancerwork_home(pagenum)
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').append(data);
+            $('.job-contact-frnd1').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -118,6 +118,7 @@ function freelancerwork_home(pagenum)
                     data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
                       dataType: 'json',
                     success: function (data) {
+                       
                         $('.savedpost' + abc).hide();
                         $('.applypost' + abc).html(data.status);
                         $('.applypost' + abc).attr('disabled', 'disabled');

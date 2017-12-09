@@ -190,7 +190,7 @@
                         <h3>Saved Job</h3>
                     </div>
                     <div class="job-contact-frnd1">
-
+                        <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
 
                     </div>
                 </div>
@@ -301,7 +301,7 @@
         <!-- </footer>    -->
 
         <!-- script for skill textbox automatic start-->
-        <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time());   ?>"></script>-->
+        <!--<script src="<?php //echo base_url('assets/js/jquery-ui.min.js?ver='.time());    ?>"></script>-->
 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
 
