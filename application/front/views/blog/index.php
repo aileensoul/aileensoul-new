@@ -195,8 +195,10 @@
 
                                     </div>
 
-                                    <li class="loadbutton"></li>
-                                    <li class="loadcatbutton"></li>
+                                    <ul class="load-more-blog">
+										<li class="loadbutton"></li>
+										<li class="loadcatbutton"></li>
+									</ul>
                                     <?php }
                                 ?>
                             </div>

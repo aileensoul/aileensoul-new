@@ -342,9 +342,10 @@ max-width: inherit;}
 
 .load-more-blog{width:100%; float:left; text-align:center;}
 .load-more-blog li{list-style-type:none;}
-.load-more-blog li button{margin-left:0; color:#1b8ab9; background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); font-size:45px; font-weight:bold;
+.load-more-blog li button{margin-left:0; color:#1b8ab9; background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); font-size:45px; font-weight:bold; line-height:1;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;}
+  .load-more-blog li button:focus{outline:none;}
 
 /***  media query  ***/
 
