@@ -290,6 +290,35 @@
                               </fieldset>
                            </form>
                         </div>
+						<div class="related-blog">
+							<h3>Related Blogs</h3>
+							<div class="row">
+								<div class="col-md-4 col-sm-12">
+									<div class="rel-blog-box">
+										<a href="#"><div class="rel-blog-img">
+											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
+										</div></a>
+										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-12">
+									<div class="rel-blog-box">
+										<a href="#"><div class="rel-blog-img">
+											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
+										</div></a>
+										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-12">
+									<div class="rel-blog-box">
+										<a href="#"><div class="rel-blog-img">
+											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
+										</div></a>
+										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
+									</div>
+								</div>
+							</div>
+						</div>
                      </div>
                       <?php
                       }else{ ?>
