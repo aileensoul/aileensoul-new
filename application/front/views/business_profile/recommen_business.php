@@ -163,7 +163,7 @@
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
-                                    <h3 style="background-color: #fff; text-align: center; color: #003; ">
+                                    <h3 style="background-color: #fff; text-align: center; color: #5c5c5c; ">
                                         Search result of 
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {
