@@ -261,10 +261,7 @@
                         </div> 
                     </div>
                     <div class="col-md-7 col-sm-12 mob-clear">
-                        <div class="common-form">
-                            <div class="job-saved-box">
-                                <h3><?php echo $this->lang->line("Projects"); ?></h3>
-                                <?php
+                         <?php
 
                                 function text2link($text) {
                                     $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
@@ -273,14 +270,13 @@
                                     return $text;
                                 }
                                 ?>
-                                <div class="contact-frnd-post">
-                                    <!--AJAX DATA..........-->
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
-                                    <div class="col-md-1">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                         <div class="page-title">
+                        <h3>Post</h3>
+                    </div>
+                    <div class="job-contact-frnd1">
+                        <p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>
+
+                    </div>
                     </div>
                 </div>
         </section>

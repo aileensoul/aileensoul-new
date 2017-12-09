@@ -58,7 +58,7 @@ function freelancerhire_project(user_id, returnpage, pagenum)
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>');
+                $(".job-contact-frnd1").prepend('');
             } else {
                 $('#loader').show();
             }
@@ -68,7 +68,7 @@ function freelancerhire_project(user_id, returnpage, pagenum)
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').append(data);
+            $('.job-contact-frnd1').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {

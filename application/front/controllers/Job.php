@@ -3675,8 +3675,7 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                
                 $return_html .= '<div class="job-top-detail">';
                 $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
@@ -3693,6 +3692,8 @@ class Job extends MY_Controller {
                 <p class="pb5">
                     <span class="location">';
                 $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 if ($cityname || $countryname) {
                     if ($cityname) {
                         $return_html .= $cityname . ', ';
@@ -3887,8 +3888,7 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                
                 $return_html .= '<div class="job-top-detail">';
                 $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
@@ -3905,6 +3905,8 @@ class Job extends MY_Controller {
                 <p class="pb5">
                     <span class="location">';
                 $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 if ($cityname || $countryname) {
                     if ($cityname) {
                         $return_html .= $cityname . ', ';
@@ -4082,8 +4084,7 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                
                 $return_html .= '<div class="job-top-detail">';
                 $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
@@ -4100,6 +4101,8 @@ class Job extends MY_Controller {
                 <p class="pb5">
                     <span class="location">';
                 $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 if ($cityname || $countryname) {
                     if ($cityname) {
                         $return_html .= $cityname . ', ';
@@ -4419,8 +4422,7 @@ class Job extends MY_Controller {
                 $cache_time3 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->rec_lastname;
-                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                
                 $return_html .= '<div class="job-top-detail">';
                 $return_html .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $post_name;
@@ -4437,6 +4439,8 @@ class Job extends MY_Controller {
                 <p class="pb5">
                     <span class="location">';
                 $return_html .= '<span><img class="pr5" src="' . base_url('assets/images/location.png') . '">';
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 if ($cityname || $countryname) {
                     if ($cityname) {
                         $return_html .= $cityname . ', ';

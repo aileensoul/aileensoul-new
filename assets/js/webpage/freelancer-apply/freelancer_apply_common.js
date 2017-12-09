@@ -111,8 +111,7 @@ function checkvalue() {
     var searchplace = $.trim(document.getElementById('searchplace').value);
     var searchplace = searchplace.replace(' ', '-');
     var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
-    alert(searchkeyword);
-    alert(searchplace);
+  
 
 
     if (searchkeyword == "" && searchplace == "") {
