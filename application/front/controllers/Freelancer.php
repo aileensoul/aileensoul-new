@@ -4899,7 +4899,7 @@ class Freelancer extends MY_Controller {
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('freelancer/freelancer_post/hire_project', $this->data);
         } else {
-            $this->load->view('freelancer/freelancer_hire/project_live_login', $this->data);
+            $this->load->view('freelancer/freelancer_post/hire_project_live', $this->data);
         }
     }
 
