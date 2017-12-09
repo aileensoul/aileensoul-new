@@ -3615,13 +3615,34 @@ class Job extends MY_Controller {
                 $return_html .= '<div class="all-job-box" id="applypost' . $post['app_id'] . '">
                                     <div class="all-job-top">';
 
-                $cache_time = $this->db->get_where('recruiter', array(
+                $cache_time_1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->comp_logo;
 
-                $return_html .= '<div class="post-img">
-                                            <a href="javascript:void(0);">';
+                $cache_time = $this->db->get_where('job_title', array(
+                            'title_id' => $post['post_name']
+                        ))->row()->name;
                 if ($cache_time) {
+                    $post_name = $cache_time;
+                } else {
+                    $post_name = $post['post_name'];
+                }
+
+                if ($post_name != '') {
+                    $text = strtolower($this->common->clean($post_name));
+                } else {
+                    $text = '';
+                }
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                if ($cityname != '') {
+                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                } else {
+                    $cityname = '';
+                }
+                $return_html .= '<div class="post-img">
+                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                
+                if ($cache_time_1) {
                     if (IMAGEPATHFROM == 'upload') {
                         if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
                             $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
@@ -3645,26 +3666,7 @@ class Job extends MY_Controller {
                 $return_html .= '</a>
                                         </div>';
 
-                $cache_time = $this->db->get_where('job_title', array(
-                            'title_id' => $post['post_name']
-                        ))->row()->name;
-                if ($cache_time) {
-                    $post_name = $cache_time;
-                } else {
-                    $post_name = $post['post_name'];
-                }
-
-                if ($post_name != '') {
-                    $text = strtolower($this->common->clean($post_name));
-                } else {
-                    $text = '';
-                }
-                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                if ($cityname != '') {
-                    $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                } else {
-                    $cityname = '';
-                }
+                
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
