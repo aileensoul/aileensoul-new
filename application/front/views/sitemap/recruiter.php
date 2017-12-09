@@ -41,7 +41,11 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+        <style type="text/css">
+            .linkbox ul li{
+                width: 100% !important;
+            }
+        </style>
 
     </head>
     <body class="site-map" >
@@ -54,49 +58,15 @@
                 <div class="container">
                     <!-- html code for inner page  --->
                     <div class="all-site-link">
-                        <h3>Business Profile <span>Categories</span></h3>
+                        <h3>Recruiter Profile</h3>
                         <div class="linkbox">
-
                             <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>IT</h5>
-                                </div>
-                                <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
+                                <ul class="catbox-right artist-sitemap">
+                                    <li>Login/Register</li>
+                                    <li>Register/Takeme in</li>
+                                    <li><a href="<?php echo base_url() ?>recruiter/add-post-live" target="_blank">Post a Job</a></li>
                                 </ul>
                             </div>
-                            <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>Bueaty</h5>
-                                </div>
-                                <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                </ul>
-                            </div>
-                            <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>Business</h5>
-                                </div>
-                                <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                </ul>
-                            </div>
-
                         </div>
                     </div>
                 </div>

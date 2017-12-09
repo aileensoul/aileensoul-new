@@ -56,16 +56,16 @@
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">
                                     <?php foreach ($getArtistDataByCategory as $artistic) { ?>
-                                        <li><a href = "<?php echo base_url('business-profile/dashboard/' . $artistic['business_slug']) ?>" target = "_blank"><?php
+                                        <li><a href = "<?php echo base_url('artist/dashboard/' . $artistic['get_url']) ?>" target = "_blank"><?php
                                                 echo $artistic['art_name'] . ' ' . $artistic['art_lastname'];
                                                 if ($artistic['art_skill'] != '' && $artistic['other_skill'] != '') {
-                                                    echo ' <span class="art_category">(' . $artistic['art_skill'] .', '.$artistic['other_skill']. ')</span>';
+                                                    echo ' <span class="art_category">(' . trim($artistic['art_skill']) .', '. trim($artistic['other_skill']) . ')</span>';
                                                 } else {
                                                     if ($artistic['art_skill'] != '') {
-                                                        echo ' <span class="art_category">(' . $artistic['art_skill'] . ')</span>';
+                                                        echo ' <span class="art_category">(' . trim($artistic['art_skill']) . ')</span>';
                                                     }
                                                     if ($artistic['other_skill'] != '') {
-                                                        echo ' <span class="art_category">(' . $artistic['other_skill'] . ')</span>';
+                                                        echo ' <span class="art_category">(' . trim($artistic['other_skill']) . ')</span>';
                                                     }
                                                 }
                                                 ?></a></li>    
