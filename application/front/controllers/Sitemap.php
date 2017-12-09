@@ -23,5 +23,56 @@ class Sitemap extends CI_Controller {
         
         $this->load->view('sitemap/index', $this->data);
     }
+    
+    public function job_profile() {
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        
+        $contition_array = array('');
+        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        
+        $this->load->view('sitemap/job', $this->data);
+    }
+    
+    public function recruiter_profile() {
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        
+        $contition_array = array('');
+        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        
+        $this->load->view('sitemap/recruiter', $this->data);
+    }
+    public function freelance_profile() {
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        
+        $contition_array = array('');
+        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        
+        $this->load->view('sitemap/freelancer', $this->data);
+    }
+    public function business_profile() {
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        
+        $contition_array = array('');
+        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        
+        $this->load->view('sitemap/business', $this->data);
+    }
+    public function artistic_profile() {
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        
+        $contition_array = array('');
+        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        
+        $this->load->view('sitemap/artistic', $this->data);
+    }
 }

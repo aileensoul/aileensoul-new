@@ -71,11 +71,11 @@
 						<h1 class="text-center">Sitemap</h1>
 						<div class="fw text-center">
 							<ul>
-								<li><a href="<?php echo base_url('sitemap/job-profile') ?>">Job Profile</a></li>
-								<li><a href="<?php echo base_url('sitemap/recruiter-profile') ?>">Recruiter Profile</a></li>
-								<li><a href="<?php echo base_url('sitemap/freelancer-profile') ?>">Freelance Profile</a></li>
-								<li><a href="<?php echo base_url('sitemap/business-profile') ?>">Business Profile</a></li>
-								<li><a href="<?php echo base_url('sitemap/artistic-profile') ?>">Artistic Profile</a></li>
+								<li><a href="#">Job Profile</a></li>
+								<li><a href="#">Recruiter Profile</a></li>
+								<li><a href="#">Freelance Profile</a></li>
+								<li><a href="#">Business Profile</a></li>
+								<li><a href="#">Artistic Profile</a></li>
 							</ul>
 						</div>
 
