@@ -33,8 +33,8 @@
             .loader:before,
             .loader:after {
                 border-radius: 50%;
-                width: 2.5em;
-                height: 2.5em;
+                width: 1.2em;
+                height: 1.2em;
                 -webkit-animation-fill-mode: both;
                 animation-fill-mode: both;
                 -webkit-animation: load7 1.8s infinite ease-in-out;
@@ -43,7 +43,7 @@
             .loader {
                 color: #0080c0;
                 font-size: 10px;
-                margin: 80px auto;
+                margin: 20px auto;
                 position: relative;
                 text-indent: -9999em;
                 -webkit-transform: translateZ(0);
@@ -217,7 +217,7 @@
                                         <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
                                             <div class="msg_right"> 
                                                 <div class="messagedelete fl">
-                                                    <a href="javascript:void(0);" ng-click="delete_chat(chat.id)">
+                                                    <a href="javascript:void(0);" ng-click="delete_chat('1',chat.id)">
                                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -226,7 +226,7 @@
                                                     <div class="file_image"><img ng-src="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}" alt="{{chat.message_file}}" style="width:100px; height: auto;"></div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
+                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="message other-message float-right" ng-if="chat.message_file_type == 'video'">
@@ -238,7 +238,7 @@
                                                     </div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
+                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="message other-message float-right" ng-if="chat.message_file_type == 'audio'">
@@ -251,7 +251,7 @@
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
+                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="message other-message float-right" ng-if="chat.message_file_type == 'pdf'">
@@ -259,7 +259,7 @@
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
+                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="msg-user-img" ng-if="chat.business_user_image"><img ng-src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $business_login_user_image ?>"></div>
@@ -309,11 +309,11 @@
                                                     <span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
                                                         <p><b>Size:</b>{{chat.message_file_size| Filesize}}</p>
-                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
+                                                        <p><b><a download="{{chat.message_file}}" target="_blank" href="<?php echo BUS_MESSAGE_MAIN_UPLOAD_URL ?>{{chat.message_file}}">Click here for Download</a></b></p>
                                                     </div>
                                                 </div>
                                                 <div class="messagedelete"> 
-                                                    <a href="javascript:void(0);" ng-click="delete_chat(chat.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                    <a href="javascript:void(0);" ng-click="delete_chat('2',chat.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -453,17 +453,18 @@
                     messageApp.controller('messageController', function ($scope, Upload, $timeout, $http) {
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
-                        $scope.delete_chat = function (message_id) {
+                        $scope.delete_chat = function (message_for,message_id) {
                             $http({
                                 method: 'POST',
                                 url: base_url + 'message/businessmessageDelete',
-                                data: 'message_id=' + message_id,
+                                data: 'message_id=' + message_id + '&message_for=' + message_for,
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
                                     .then(function (success) {
-                            //            $scope.loaded_user_data = success.data;
-                                    
-                                    }); 
+                                        //            $scope.loaded_user_data = success.data;
+//                                    alert($(this).parent().find('li').attr('id'));
+                                        $(this).parents('ng-scope').remove();
+                                    });
                         }
                         /*$scope.loadMediaElement = function ()
                          {

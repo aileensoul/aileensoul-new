@@ -297,8 +297,13 @@ class Message extends MY_Controller {
     }
     public function businessmessageDelete(){
         $message_id = $_POST['message_id'];
-        $delete_data = $this->business_model->businessMessageData($message_id);
-        
+        $message_for = $_POST['message_for'];
+        $delete_data = $this->message_model->businessMessageData($message_for,$message_id);
+        if ($delete_data) {
+            echo json_encode(array('result' => 'success'));
+        } else {
+            echo json_encode(array('result' => 'fail'));
+        }
     }
     public function recruiter_profile() {
         $this->load->view('message/recruiter_profile');
