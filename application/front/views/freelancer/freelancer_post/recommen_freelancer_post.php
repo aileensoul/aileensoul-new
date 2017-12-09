@@ -139,7 +139,10 @@
                             <h3>
                                 Search result of 
                                         <?php
-                                        if ($keyword != "" && $keyword1 == "") {
+                                        if($keyword == '' && $keyword1 == ''){
+                                            echo "All Projects";
+                                        }
+                                        elseif ($keyword != "" && $keyword1 == "") {
                                             echo '"' . $keyword . '"';
                                         } elseif ($keyword == "" && $keyword1 != "") {
                                             echo '"' . $keyword1 . '"';

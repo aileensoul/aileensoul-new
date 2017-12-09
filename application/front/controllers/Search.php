@@ -1470,16 +1470,21 @@ Your browser does not support the audio tag.
         // echo "hi";die();
 
         $searchvalue = $this->uri->segment(1);
+        
+        if ($searchvalue == 'projects') {
+            // $this->all_post();
+            $search_skill = '';
+            $search_place = '';
+        }else{
         $skill = explode('project', $searchvalue);
         $location = explode('in-', $searchvalue);
 
         $search_skill = trim($skill[0]);
         $search_skill = trim($skill[0], '-');
-
         //  $search_skill = str_replace('-', ' ', $search_skill);
 
         $search_place = $location[1];
-
+        }
         $userid = $this->session->userdata('aileenuser');
         $this->data['keyword'] = $search_skill;
 //        $search_skill = trim($this->input->get('skills'));
@@ -1509,6 +1514,9 @@ Your browser does not support the audio tag.
 // code for insert search keyword into database end
         }
         $title = '';
+         if (empty($search_skill) && empty($search_place)) {
+            $title .= 'Find Latest Projects at Your Location';
+        }
         if ($search_skill) {
             $title .= $search_skill;
         }
@@ -1563,7 +1571,19 @@ Your browser does not support the audio tag.
         //$date = date('Y-m-d', time());
         //'freelancer_post.post_last_date >=' => $date,
 // code for insert search keyword into database end
-        if ($search_skill == "") {
+        if($search_skill == "" && $search_place == ""){
+            
+            $join_str[0]['table'] = 'freelancer_post';
+            $join_str[0]['join_table_id'] = 'freelancer_post.user_id';
+            $join_str[0]['from_table_id'] = 'freelancer_hire_reg.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $contition_array = array('freelancer_hire_reg.status' => '1','freelancer_hire_reg.is_delete' => '0', 'freelancer_hire_reg.user_id !=' => $userid, 'freelancer_hire_reg.free_hire_step' => '3');
+            $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+            
+            
+        }
+     elseif ($search_skill == "") {
 
 //$contition_array = array('freelancer_post.city' => $search_place[0], 'freelancer_hire_reg.status' => '1');
             $join_str[0]['table'] = 'freelancer_post';

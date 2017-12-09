@@ -111,7 +111,8 @@ function checkvalue() {
     var searchplace = $.trim(document.getElementById('searchplace').value);
     var searchplace = searchplace.replace(' ', '-');
     var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
-
+    alert(searchkeyword);
+    alert(searchplace);
 
 
     if (searchkeyword == "" && searchplace == "") {
@@ -121,8 +122,12 @@ function checkvalue() {
             window.location = base_url + 'project-in-' + searchplace;
             return false;
         } else if (searchplace == "") {
+            if(searchkeyword == 'projects'){
+                window.location = base_url + 'projects';
+            }else{
             window.location = base_url + searchkeyword + '-project';
-            return false;
+        }
+        return false;
         } else {
             window.location = base_url + searchkeyword + '-project-in-' + searchplace;
             return false;
