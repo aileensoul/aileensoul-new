@@ -29,7 +29,7 @@ function checkvalue()
 
 // THIS SCRIPT IS USED FOR SCRAP IMAGE FOR FACEBOOK POST TO GET REAL IMAGE START
 $(document).ready(function() {
-   $(".fbk").on('click', function() {
+   $(".fbk").on('click', function() { alert("facebook");
    
          var url= $(this).attr('url');
          var url_encode= $(this).attr('url_encode');

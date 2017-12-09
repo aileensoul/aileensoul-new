@@ -367,9 +367,9 @@ $blog_data .= '<div class="blog_main_o">';  $blog_data .= $blog['id'];
  $record =  $_GET["total_record"] / $perpage;
 
    if($page > $record){
-       $lod_message = '<button class="loadmore">No more blog available</button>';  
+      // $lod_message = '<button class="loadmore">No more blog available</button>';  
    }else{
-    $lod_message = '<button class="loadmore">Load More</button>'; 
+    $lod_message = '<button class="loadmore">Load More ...</button>'; 
    } 
        
  echo json_encode(array(
@@ -390,8 +390,8 @@ public function cat_ajax()
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
         }
-//        $cateid = $_GET["cateid"];
-        $cateid = 1;
+        $cateid = $_GET["cateid"];
+      
         // echo $page;
         $start = ($page - 1) * $perpage;
         if ($start < 0)
@@ -529,9 +529,9 @@ $blog_data .= '<div class="blog_main_o">';  $blog_data .= $blog['id'];
  $record =  $_GET["total_record"] / $perpage;
 
    if($page > $record){
-       $lod_message = '<button class="loadcatbutton">No more blog available</button>';  
+    //   $lod_message = '<button class="loadcatbutton">No more blog available</button>';  
    }else{
-    $lod_message = '<button class="catbutton">Load More</button>'; 
+    $lod_message = '<button class="catbutton">Load More ... </button>'; 
    } 
        
  echo json_encode(array(
