@@ -194,10 +194,9 @@
                                     <div class="job-contact-frnd">
 
                                     </div>
-									<ul class="load-more-blog">
-										<li class="loadbutton"></li>
-										<li class="loadcatbutton"></li>
-									</ul>
+
+                                    <li class="loadbutton"></li>
+                                    <li class="loadcatbutton"></li>
                                     <?php }
                                 ?>
                             </div>
@@ -293,6 +292,113 @@
 </div>
 </body>
 </html>
+<script>
+                                        var base_url = '<?php echo base_url(); ?>';
+</script>
+<script>
+//AJAX DATA LOAD BY LAZZY LOADER START
+    $(document).ready(function () {
+        blog_post();
 
+    });
+    
+     function category_data(catid,pagenum) {
+          $('.job-contact-frnd').html("");
+          $('.loadbutton').html("");
+         cat_post(catid,pagenum);
+     }
+     
+     $('.loadcatbutton').click(function () { alert(134343);
+        var pagenum = parseInt($(".page_number:last").val()) + 1;
+        var catid = $(".catid").val();
+        alert(catid);
+        cat_post(catid,pagenum);
+    });
+     
+     var isProcessing = false;
+    function cat_post(catid,pagenum) {
+        alert(catid);
+        alert(pagenum);
+       alert(121212);
+        if (isProcessing) {
+            /*
+             *This won't go past this condition while
+             *isProcessing is true.
+             *You could even display a message.
+             **/
+            return;
+        }
+        isProcessing = true;
+        $.ajax({ 
+            type: 'POST',
+            url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
+            data: {total_record: $("#total_record").val()},
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $('#loader').hide();
+            },
+            success: function (data) {
+                $('.loader').remove();
+                $('.job-contact-frnd').append(data.blog_data);
+                $('.loadcatbutton').html(data.load_msg)
+                // second header class add for scroll
+                var nb = $('.post-design-box').length;
+                if (nb == 0) {
+                    $("#dropdownclass").addClass("no-post-h2");
+                } else {
+                    $("#dropdownclass").removeClass("no-post-h2");
+                }
+                isProcessing = false;
+            }
+        });
+    }
+    
+
+    $('.loadbutton').click(function () {
+        var pagenum = parseInt($(".page_number:last").val()) + 1;
+        blog_post(pagenum);
+    });
+    var isProcessing = false;
+    function blog_post(pagenum) {
+        if (isProcessing) {
+            /*
+             *This won't go past this condition while
+             *isProcessing is true.
+             *You could even display a message.
+             **/
+            return;
+        }
+        isProcessing = true;
+        $.ajax({
+            type: 'POST',
+            url: base_url + "blog/blog_ajax?page=" + pagenum,
+            data: {total_record: $("#total_record").val()},
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $('#loader').hide();
+            },
+            success: function (data) {
+                $('.loader').remove();
+                $('.job-contact-frnd').append(data.blog_data);
+                $('.loadbutton').html(data.load_msg)
+                // second header class add for scroll
+                var nb = $('.post-design-box').length;
+                if (nb == 0) {
+                    $("#dropdownclass").addClass("no-post-h2");
+                } else {
+                    $("#dropdownclass").removeClass("no-post-h2");
+                }
+                isProcessing = false;
+            }
+        });
+    }
+//AJAX DATA LOAD BY LAZZY LOADER END
+</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
 
