@@ -290,35 +290,25 @@
                               </fieldset>
                            </form>
                         </div>
+                      <?php if(count($rand_blog) > 0) { ?>
 						<div class="related-blog">
 							<h3>Related Blogs</h3>
 							<div class="row">
+                                                            <?php foreach($rand_blog as $random) { ?>
 								<div class="col-md-4 col-sm-12">
 									<div class="rel-blog-box">
-										<a href="#"><div class="rel-blog-img">
-											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
-										</div></a>
-										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
+										<a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
+											<img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>">
+										</div>
+										<h5> <?php echo $random['title']; ?> </a> </h5>
 									</div>
 								</div>
-								<div class="col-md-4 col-sm-12">
-									<div class="rel-blog-box">
-										<a href="#"><div class="rel-blog-img">
-											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
-										</div></a>
-										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-12">
-									<div class="rel-blog-box">
-										<a href="#"><div class="rel-blog-img">
-											<img src="https://www.aileensoul.com/uploads/blog/main/blog-31-1.jpg">
-										</div></a>
-										<h5><a href="#"> Find Quick Freelance Work & Hire Quality Freelancers For FREE </a> </h5>
-									</div>
-								</div>
+                                                                                    
+                                                            <?php } ?>
+								
 							</div>
 						</div>
+                      <?php } ?>
                      </div>
                       <?php
                       }else{ ?>

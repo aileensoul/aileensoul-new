@@ -198,6 +198,7 @@
                                     </div>
 
                                     <li class="loadbutton"></li>
+                                    <li class="loadcatbutton"></li>
                                     <?php }
                                 ?>
                             </div>
@@ -325,19 +326,23 @@
     });
     
      function category_data(catid,pagenum) {
-          $('.job-contact-frnd').html("")
+          $('.job-contact-frnd').html("");
+          $('.loadbutton').html("");
          cat_post(catid,pagenum);
      }
      
-     $('.loadcatbutton').click(function () {
+     $('.loadcatbutton').click(function () { alert(134343);
         var pagenum = parseInt($(".page_number:last").val()) + 1;
-        var catid = (".catid").val();
-        cat_post(pagenum);
+        var catid = $(".catid").val();
+        alert(catid);
+        cat_post(catid,pagenum);
     });
      
      var isProcessing = false;
-    function cat_post(catid,pagenum) { 
-       
+    function cat_post(catid,pagenum) {
+        alert(catid);
+        alert(pagenum);
+       alert(121212);
         if (isProcessing) {
             /*
              *This won't go past this condition while
@@ -361,7 +366,7 @@
             success: function (data) {
                 $('.loader').remove();
                 $('.job-contact-frnd').append(data.blog_data);
-                $('.loadbutton').html(data.load_msg)
+                $('.loadcatbutton').html(data.load_msg)
                 // second header class add for scroll
                 var nb = $('.post-design-box').length;
                 if (nb == 0) {
