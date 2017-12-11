@@ -161,7 +161,7 @@
                                                                                             <li><a title="Projects" href="<?php echo base_url('freelancer-hire/projects/' . $recliveid . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                                                         <?php } ?>
                                                                                         <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                                                                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved"); ?></a></li>
+                                                                                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>">Saved</a></li>
                                                                                         <?php } ?>
 
                                                                                     </ul>
