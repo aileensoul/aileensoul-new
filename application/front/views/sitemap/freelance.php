@@ -57,7 +57,7 @@
                 <div class="container">
                     <!-- html code for inner page  --->
                     <div class="all-site-link">
-                        <h3>Freelancer Hire Profile</h3>
+                        <h3>Freelance Hire</h3>
                         <div class="linkbox full_page">
                             <div class="smap-catbox">
                                <ul class="catbox-right artist-sitemap">
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="all-site-link">
-                        <h3>Freelancer Apply Profile</h3>
+                        <h3>Freelance Apply</h3>
                         <div class="linkbox">
                            <?php foreach($getFreepostDataByCategory as $key => $value){  ?>
                             <div class="smap-catbox">
