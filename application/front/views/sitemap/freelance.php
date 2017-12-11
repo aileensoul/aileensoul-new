@@ -60,7 +60,8 @@
                                <ul class="catbox-right artist-sitemap">
                                     <li>Login/Register</li>
                                     <li>Register/Takeme in</li>
-                                    <li><a href="<?php echo base_url() ?>freelancer-hire/add-projects" target="_blank">Post a Project</a></li>
+                                    <!--<li><a href="<?php echo base_url() ?>freelancer-hire/add-projects" target="_blank">Post a Project</a></li>-->
+                                    <li>Post a Project</li>
                                 </ul>
                             </div>
                         </div>
