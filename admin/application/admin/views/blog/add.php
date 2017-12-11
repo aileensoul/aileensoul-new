@@ -56,6 +56,19 @@ echo $leftmenu;
                             <input type="text" class="form-control" name="blog_title" id="blog_title" value="">
                         </div>
                         <!-- BLOG TITLE END -->
+                        
+                         <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="govcat" name="govcat" id="govcat">Category*</label>
+                             <select name="category[]" id="category" tabindex="1" class="form-control" multiple>
+                               <!--<option value="">Select blog Category</option>--> 
+                            <?php                             
+                                      foreach($blog_category as $blog){ 
+                                              ?>
+                                    <option value="<?php echo $blog['id']; ?>"><?php echo $blog['name'];?></option>    <?php  } ?>
+                      </select>
+                    </div>
+                    </div>
 
                         <!--  TAG SELECTION START -->
 <!--                        <div class="form-group col-sm-10">

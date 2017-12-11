@@ -344,7 +344,7 @@ class Blog extends CI_Controller {
             $blog_data .= '</ul>
                                                                 </div>';
             $blog_data .= '<div class="fr blog_view_link">';
-            $blog_data .= "<a title='Read more' onclick='read_more()'> Read more <i class='fa fa-long-arrow-right' aria-hidden='true'></i>
+            $blog_data .= "<a title='Read more' onclick='read_more('" . $blog['id'] . "', '" . $blog['blog_slug'] . "')'> Read more <i class='fa fa-long-arrow-right' aria-hidden='true'></i>
                                                                     </a>
                                                                 </div>
                                                             </div>

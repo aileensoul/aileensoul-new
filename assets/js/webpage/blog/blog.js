@@ -1,7 +1,6 @@
 //Click on Read more Process Start
-function read_more(blog_id, slug) { 
-alert(blog_id);
-alert(slug);
+function read_more(blog_id, slug) {
+
     $.ajax({
         type: 'POST',
         url: base_url + 'blog/read_more',
@@ -69,13 +68,15 @@ function facebookcheck()
     window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + summary + '&p[url]=' + url_encode + '&p[images][0]=' + image + '', 'sharer', 'toolbar=0,status=0,width=620,height=280');
 }
 
-function googlecheck()
-{ 
-   var url = $(this).attr('url');
+function googlecheck(url='')
+{
+    //var url = $(this).attr('url');
+    console.log(url);
+    return false;
+    alert(url);
     var url_encode = $(this).attr('url_encode');
-    var title = $(this).attr('title');
     
-    window.open('https://plus.google.com/share?url=' + url_encode + '", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+    window.open('https://plus.google.com/share?url=' + url + ',' + '' + ',' + 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
 }
 
 // THIS SCRIPT IS USED FOR SCRAP IMAGE FOR FACEBOOK POST TO GET REAL IMAGE END

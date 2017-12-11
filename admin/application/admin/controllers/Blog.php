@@ -43,7 +43,6 @@ class Blog extends MY_Controller {
             $condition_array = array('status !=' => 'delete');
             $this->data['blog_detail']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
         //FOR GETTING ALL DATA END 
-
         $this->load->view('blog/list', $this->data);
 }
 //LIST OF BLOG ADD BY ADMIN END
@@ -51,15 +50,18 @@ class Blog extends MY_Controller {
 //BLOG ADD BY ADMIN START
  public function add()
      {
-        
-        $this->load->view('blog/add');
+          //FOR GETTING ALL DATA STARt
+            $condition_array = array('status' => 'publish');
+            $this->data['blog_category']  = $this->common->select_data_by_condition('blog_category', $condition_array, $data='*', $short_by='', $order_by='', $limit='', $offset='', $join_str = array());
+        //FOR GETTING ALL DATA END 
+        $this->load->view('blog/add',$this->data);
         
     }
  //BLOG ADD BY ADMIN END
 
 //BLOG ADD INSERT START
  public function blog_insert()
-     {
+     { 
         //IMAGE UPLOAD IN FOLDER START
         if($_FILES['image']['name'] != '' )
         {
@@ -110,6 +112,7 @@ class Blog extends MY_Controller {
         //FOR INSERT BLOG DATA START
         $data = array(
                     'title' => $this->input->post('blog_title'),
+                    'blog_category_id' => implode(',',$this->input->post('category')),
                     'tag' => $this->input->post('tag'),
                     'meta_description' => $this->input->post('meta_description'),
                     'description' => $this->input->post('description'),
@@ -296,6 +299,11 @@ public function reject_comment()
     $condition_array = array('status !=' => 'delete','id'=> $id);
     $this->data['blog_detail']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
     //FOR GETTING ALL DATA END 
+    
+          //FOR GETTING ALL DATA STARt
+            $condition_array = array('status' => 'publish');
+            $this->data['blog_category']  = $this->common->select_data_by_condition('blog_category', $condition_array, $data='*', $short_by='', $order_by='', $limit='', $offset='', $join_str = array());
+        //FOR GETTING ALL DATA END 
 
 
         $this->load->view('blog/edit',$this->data);

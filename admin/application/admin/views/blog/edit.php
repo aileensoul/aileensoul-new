@@ -56,6 +56,19 @@ echo $leftmenu;
                             <input type="text" class="form-control" name="blog_title" id="blog_title" value="<?php echo $blog_detail[0]['title'];?>">
                         </div>
                         <!-- BLOG TITLE END -->
+                        
+                        <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="govcat" name="govcat" id="govcat">Category*</label>
+                             <select name="category[]" id="category" tabindex="1" class="form-control" multiple>
+                               <!--<option value="">Select blog Category</option>--> 
+                            <?php  $blog_category = explode(',',$blog_detail[0]['blog_category_id']);                       
+                                      foreach($blog_category as $blog){ 
+                                              ?>
+                                    <option value="<?php echo $blog['id']; ?>" <?php echo (isset($blog_category) && in_array($blog['id'], $blog_category) ) ? "selected" : "" ?>><?php echo $blog['name'];?></option>    <?php  } ?>
+                      </select>
+                    </div>
+                    </div>
 
                          <!-- BLOG SLUG START -->
                         <div class="form-group col-sm-10">

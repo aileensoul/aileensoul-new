@@ -110,6 +110,9 @@ echo $leftmenu;
                      <?php echo ( $this->uri->segment(3) == 'fname' && $this->uri->segment(4) == 'ASC' ) ? '<i class="glyphicon glyphicon-arrow-up">' : (( $this->uri->segment(3) == 'fname' && $this->uri->segment(4) == 'DESC' ) ? '<i class="glyphicon glyphicon-arrow-down">' : '' ); ?>
 
                     </th>
+                    
+                    <th><i class="fa fa-bullhorn"></i> 
+                    <a href="javascript:void(0);">Category</a></th>
 
 <!--                    <th><i class="fa fa-envelope"></i> 
                      <a href="javascript:void(0);">Tag Name</a>
@@ -148,6 +151,12 @@ echo $leftmenu;
                     <td><?php echo $i++; ?></td> 
 
                     <td><?php echo $blog['title']; ?></td>
+                    <td><?php 
+       $category =  explode(',', $blog['blog_category_id']);
+      foreach($category as $catid){ 
+  echo  '*' . $this->db->get_where('blog_category', array('id' => $catid))->row()->name . "<br>";
+      }?></td>
+      
 
 <!--                     <td>
                        <?php echo $blog['tag']; ?>
