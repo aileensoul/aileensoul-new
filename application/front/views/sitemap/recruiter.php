@@ -52,18 +52,17 @@
         <div class="main-inner">
             <?php echo $sitemap_header ?>
             <section class="middle-main">
-                <div class="site-map-img">
-                    <img src="assets/img/sitemap.jpg">
-                </div>
                 <div class="container">
-                    <!-- html code for inner page  --->
+                    <!-- html code for inner page  -->
                     <div class="all-site-link">
                         <h3>Recruiter Profile</h3>
                         <div class="linkbox">
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">
                                     <li>Login/Register</li>
+                                    <ul>
                                     <li>Register/Takeme in</li>
+                                    </ul>
                                     <li><a href="<?php echo base_url() ?>recruiter/add-post-live" target="_blank">Post a Job</a></li>
                                 </ul>
                             </div>

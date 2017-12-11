@@ -48,32 +48,37 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body class="site-map" >
-        <div class="main-inner">
+        <div class="main-inner ">
             <?php echo $sitemap_header ?>
             <section class="middle-main">
-                <div class="site-map-img">
-                    <img src="assets/img/sitemap.jpg">
-                </div>
                 <div class="container">
-                    <!-- html code for inner page  --->
+                    <!-- html code for inner page  -->
                     <div class="all-site-link">
-                        <h3>Freelancer Hire Profile</h3>
+                        <h3>Freelance Hire</h3>
                         <div class="linkbox full_page">
                             <div class="smap-catbox">
                                <ul class="catbox-right artist-sitemap">
                                     <li>Login/Register</li>
                                     <li>Register/Takeme in</li>
-                                    <li><a href="<?php echo base_url() ?>freelancer-hire/add-projects" target="_blank">Post a Project</a></li>
+                                    <!--<li><a href="<?php echo base_url() ?>freelancer-hire/add-projects" target="_blank">Post a Project</a></li>-->
+                                    <li>Post a Project</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="all-site-link">
-                        <h3>Freelancer Apply Profile</h3>
+                    <div class="all-site-link cust-link">
+                        <h3>Freelance Apply</h3>
+
+                        <ul>
+                            <li><a href="">All Projects</a></li>
+                            <li style="list-style-type: none;"><h4>Projects by Field</h4></li>
+                        
+                        </ul>
                         <div class="linkbox">
                            <?php foreach($getFreepostDataByCategory as $key => $value){  ?>
                             <div class="smap-catbox">
+
                                 <div class="catbox-left">
                                     <h5><?php echo $key; ?></h5>
                                 </div>
