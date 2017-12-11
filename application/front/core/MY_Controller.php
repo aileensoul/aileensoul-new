@@ -43,7 +43,7 @@ class MY_Controller extends CI_Controller {
         }
 
 //freelancer search live link end  
-        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc, 'add-post-live', 'ajax_data', 'get_skill', 'get_degree');
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc, 'add-post-live', 'ajax_data', 'get_skill', 'get_degree','add-projects');
 
         $segment1 = $this->uri->segment(1);
 
@@ -52,6 +52,7 @@ class MY_Controller extends CI_Controller {
         $actual_link = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
         $actual_link = base64_encode(str_replace('index.php/', '', $actual_link));
 
+        
         if ((!in_array($segment2, $segment2_names)) || (!in_array($segment1, $segment1_names))) {
             if (!$this->session->userdata('aileenuser')) {
                 redirect('login?redirect_url=' . $actual_link, 'refresh');
