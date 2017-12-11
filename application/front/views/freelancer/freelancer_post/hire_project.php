@@ -267,9 +267,23 @@
                                                                                                                             <a href="javascript:void(0);" class="btn4 applied">Applied</a>
                                                                                                                         <?php } else if ($applyuser) { ?>
                                                                                                                             <a href="javascript:void(0);"  class= "applypost btn4"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
+                                                                                                                            <?php
+                                                                                                                            $userid = $this->session->userdata('aileenuser');
+                                                                                                                            $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+                                                                                                                            $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                                                                                                                            if ($data) { ?>
+                                                                                                                                <a href="javascript:void(0);" class="btn4 saved savedpost<?php echo $post['post_id']; ?>">Saved</a>
+                                                                                                                           <?php  } else { ?>
+                                                                                                                                <a href="javascript:void(0);" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id'];?>">Save</a>
+                                                                                                                                
+                                                                                                                           <?php  }
+                                                                                                                            ?>
+
 
                                                                                                                         <?php } else { ?> 
                                                                                                                             <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['post_id']); ?>"  class= "applypost btn4"> Apply</a>
+                                                                                                                            <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['post_id']); ?>"  class="btn4">Save</a>
                                                                                                                         <?php } ?>
 
                                                                                                                         <?php
@@ -375,9 +389,21 @@
                                                                                                                             <a href="javascript:void(0);" class="btn4 applied">Applied</a>
                                                                                                                         <?php } else if ($applyuser) { ?>
                                                                                                                             <a href="javascript:void(0);"  class= "applypost btn4"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
+                                                                                                                            <?php
+                                                                                                                            $userid = $this->session->userdata('aileenuser');
+                                                                                                                            $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+                                                                                                                            $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                                                                                                                            if ($data) { ?>
+                                                                                                                                <a href="javascript:void(0);" class="btn4 saved savedpost<?php echo $post['post_id']; ?>">Saved</a>
+                                                                                                                           <?php  } else { ?>
+                                                                                                                                <a href="javascript:void(0);" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id'];?>">Save</a>
+                                                                                                                           <?php  }
+                                                                                                                            ?>
 
                                                                                                                         <?php } else { ?> 
                                                                                                                             <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['post_id']); ?>"  class= "applypost btn4"> Apply</a>
+                                                                                                                            <a href="<?php echo base_url('freelancer-work/profile/live-post/' . $post['post_id']); ?>"  class="btn4">Save</a>
                                                                                                                         <?php } ?>
 
                                                                                                                         <?php
