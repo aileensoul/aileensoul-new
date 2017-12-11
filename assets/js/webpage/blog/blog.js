@@ -3,10 +3,6 @@ $('document').ready(function(){
 });
 
 //Click on Read more Process Start
-<<<<<<< HEAD
-function read_more(blog_id, slug) {
-
-=======
 
 $(document).on("click", '#read_more', function() { 
     var  blog_id = $(this).attr('blog_id');
@@ -28,7 +24,6 @@ $(document).on("click", '#read_more', function() {
 
 function read_more(blog_id, slug) {
     
->>>>>>> 38fb1fde3c7da01091009e0ab037fb598345de06
     $.ajax({
         type: 'POST',
         url: base_url + 'blog/read_more',
@@ -96,23 +91,15 @@ function facebookcheck()
     window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + summary + '&p[url]=' + url_encode + '&p[images][0]=' + image + '', 'sharer', 'toolbar=0,status=0,width=620,height=280');
 }
 
-<<<<<<< HEAD
-function googlecheck(url='')
-{
-    //var url = $(this).attr('url');
-    console.log(url);
-    return false;
-    alert(url);
-=======
 function googlecheck()
 { 
     alert($(this).attr('id'));
     return false;
    var url = $(this).attr('url');
->>>>>>> 38fb1fde3c7da01091009e0ab037fb598345de06
     var url_encode = $(this).attr('url_encode');
+    var title = $(this).attr('title');
     
-    window.open('https://plus.google.com/share?url=' + url + ',' + '' + ',' + 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+    window.open('https://plus.google.com/share?url=' + url_encode + '", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
 }
 
 $(document).on("click", '#google_link', function(event) { 
