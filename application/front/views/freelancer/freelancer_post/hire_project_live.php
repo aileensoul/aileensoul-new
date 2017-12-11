@@ -479,9 +479,8 @@
                                             </div>
                                         </div>
                                     </div>      
-
-
                                 </div>
+                    <?php echo $left_footer; ?>
                                  <div id="hideuserlist" class=" fixed_right_display animated fadeInRightBig"> 
 
                                                                                         <div class="fw text-center" style="text-align: center;">

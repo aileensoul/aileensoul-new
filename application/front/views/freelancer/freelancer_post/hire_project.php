@@ -170,7 +170,9 @@
 
                                                                                     </div>
                                                                                     </div>  
+
                                                                                     </div>                           
+                                                                                    <?php echo $left_footer; ?>
                                                                                     <div id="hideuserlist" class=" fixed_right_display animated fadeInRightBig"> 
 
                                                                                         <div class="fw text-center" style="text-align: center;">
@@ -199,7 +201,9 @@
                                                                                     $applyuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
                                                                                     if ($applyuser) {
                                                                                         ?>
-                                                                                        <div class="inner-right-part">
+
+
+                                                                                        <div class="inner-right-part cust-inner-part">
                                                                                             <div class="page-title">
                                                                                                 <h3>
                                                                                                     <?php
