@@ -51,7 +51,8 @@
                 <div class="container">
                     <!-- html code for inner page  -->
                     <div class="all-site-link">
-                        <h3>Artistic Profiles</h3>
+                        <h2>Artistic Profile</h2>
+                        <h3>Profiles</h3>
                         <div class="linkbox">
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">

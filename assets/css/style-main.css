@@ -1769,17 +1769,22 @@ img{
 .site-map-all-profile .sm-profile-box img{width:100%;}
 .site-map-all-profile .sm-profile-box a{display:inline-block;}
 .site-map-all-profile h1{margin:0 0 25px; color:#fff;}
+.cust-site h1 a{color: #fff !important;}
+.cust-site h1 a:hover{opacity: 0.85 !important;text-decoration: none;}
 .site-map-all-profile ul{display:inline-block; padding:0;}
 .site-map-all-profile ul li{color:#fff; display:inline-block; padding:5px 20px; list-style-type:none;}
 .site-map-all-profile ul li a{color:#fff; font-size:18px;}
-
-.all-site-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:30px;}
+.site-map-all-profile ul li a:hover{opacity: .85;text-decoration: none;}
+.sitemap_active{opacity: 0.85;}
+.all-site-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:30px;margin-left: -2px;}
 .cust-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:10px;}
 .cust-link ul{padding-left: 13px;}
 .cust-link ul li a{color:#5c5c5c;font-size: 18px;}
+.cust-link h4{font-size: 20px;}
+.cust-link ul li a:hover{color: #1b8ab9;}
 .cust-link h4{color:#5c5c5c;}
 .linkbox ul{margin-bottom:20px; padding-left:15px;}
-.linkbox h5{font-size:16px; margin-bottom:5px; margin-top:0;}
+.linkbox h5{font-size:16px; margin-bottom:5px; margin-top:0;color: #5c5c5c;}
 .linkbox ul li{padding:3px 20px; list-style-type:none; font-size:16px; position:relative; width:50%; float:left;}
 .linkbox ul li a{color:#91949d; text-transform: capitalize;}
 

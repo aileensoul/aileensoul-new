@@ -48,9 +48,20 @@
             <section class="middle-main">
                 <div class="container">
                     <!-- html code for inner page  -->
-                    <div class="all-site-link">
+                    <div class="all-site-link cust-link">
                         <!-- <h3>Job Profile <span>Categories</span></h3> -->
-                        <h3>Job Posts by Location</h3>
+                        <h2>Job Profile</h2>
+                       <ul>
+                            <li style="margin-bottom: 35px;list-style-type: none;margin-left: -14px;"><a href="https://www.aileensoul.com/jobs">All Jobs</a></li>
+                        </ul>
+                        <div class="all-site-link ">
+                     
+                        
+                     <h3 style="padding-bottom: 15px;">Job Posts by Location</h3>
+                        <div class="linkbox">
+                        </div>
+                           
+                        </div>
                         <div class="linkbox">
 <?php
                             foreach ($getJobDataByLocation as $key => $value) {
@@ -80,8 +91,11 @@
                             }
                             ?>
                         </div>
+
                     </div>
-                    
+                      
+                    </div>
+
                 </div>
 
             </section>
