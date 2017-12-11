@@ -46,9 +46,6 @@
         <div class="main-inner">
             <?php echo $sitemap_header ?>
             <section class="middle-main">
-                <div class="site-map-img">
-                    <img src="assets/img/sitemap.jpg">
-                </div>
                 <div class="container">
                     <!-- html code for inner page  --->
                     <div class="all-site-link">
