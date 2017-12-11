@@ -1773,7 +1773,7 @@ img{
 .cust-site h1 a:hover{opacity: 0.85 !important;text-decoration: none;}
 .site-map-all-profile ul{display:inline-block; padding:0;}
 .site-map-all-profile ul li{color:#fff; display:inline-block; padding:5px 20px; list-style-type:none;}
-.site-map-all-profile ul li a{color:#fff; font-size:18px;}
+.site-map-all-profile ul li a{color:#fff; font-size:18px;letter-spacing: 1px;}
 .site-map-all-profile ul li a:hover{opacity: .85;text-decoration: none;}
 .sitemap_active{opacity: 0.85;}
 .all-site-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:30px;margin-left: -2px;}
@@ -1796,7 +1796,8 @@ img{
 .catbox-right{width:82%; float:left; border-left:1px solid #d9d9d9;}
 .smap-catbox{width:100%; float:left; padding-bottom:15px;}
 .artist-sitemap{border-left:none; width:100%;}
-.art_category{font-size:15px; padding-left:5px; text-transform: capitalize;}
+.art_category, .business_category{font-size:15px; padding-left:5px; text-transform: capitalize;}
+
 .site-map .main-inner .middle-main{padding: 20px 0 0 !important;}
 /***  end site map  ***/
 

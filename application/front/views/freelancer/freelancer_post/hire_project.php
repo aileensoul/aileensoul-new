@@ -565,13 +565,13 @@
             <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                                                                             </div>
                                                                                                             <div class="sort-emp-detail">
-                                                                                                                <h4>
+                                                                                                                <div>
                                                                                                                     <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
                                                                                                                         <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                                     <?php } else { ?>
                                                                                                                         <a href="javascript:void(0);"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                                     <?php } ?>
-                                                                                                                </h4>
+                                                                                                                </div>
                                                                                                                 <p><?php
                                                                                                                     if ($user['designation']) {
                                                                                                                         echo $user['designation'];
