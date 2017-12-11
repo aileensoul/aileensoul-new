@@ -20,7 +20,8 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                         <li><a title="Disclaimer" href="<?php echo base_url('Disclaimer'); ?>"  target="_blank">Disclaimer policy</a><span class="mob-none">|</span></li>
                         <li><a title="Contact Us" href="<?php echo base_url('contact-us'); ?>"  target="_blank">Contact Us</a><span class="mob-none">|</span></li>
                         <li><a title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a><span class="mob-none">|</span></li>
-                        <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a></li>
+                        <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a><span class="mob-none">|</span></li>
+                        <li><a title="Sitemap" href="<?php echo base_url('sitemap'); ?>" target="_blank">Sitemap</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ftr-copuright">
