@@ -349,7 +349,9 @@
             .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
             .job_active{color: #1b8ab9 !important;}
             .no-login .left_side_posrt .lbpos input{width: 10% !important; }
-            .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 210px;border: none;}
+             .profile-boxProfileCard-cover{height: 400px;border:1px solid #d9d9d9;padding-left: 10px;}
+             .profile-boxProfileCard-cover a{color: black;}
+             .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
             /*second*/
 
         </style>
