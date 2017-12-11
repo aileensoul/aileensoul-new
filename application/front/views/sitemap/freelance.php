@@ -54,14 +54,15 @@
                 <div class="container">
                     <!-- html code for inner page  -->
                     <div class="all-site-link">
+                        <h2>Freelancer Profile</h2>
                         <h3>Freelance Hire</h3>
                         <div class="linkbox full_page">
                             <div class="smap-catbox">
                                <ul class="catbox-right artist-sitemap">
-                                    <li>Login/Register</li>
-                                    <li>Register/Takeme in</li>
+                                    <li style="list-style-type: circle;font-size: 20px;">Login/Register</li>
+                                    <li style="padding-bottom: 30px;">Register/Takeme in</li>
                                     <!--<li><a href="<?php echo base_url() ?>freelancer-hire/add-projects" target="_blank">Post a Project</a></li>-->
-                                    <li>Post a Project</li>
+                                    <li style="margin-left: -20px;padding-left: 38px;font-size: 20px;cursor: text;"><a style="text-transform: none;color: #333;pointer-events: none;" href=""> Post a Project </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -71,8 +72,8 @@
                         <h3>Freelance Apply</h3>
 
                         <ul>
-                            <li><a href="">All Projects</a></li>
-                            <li style="list-style-type: none;"><h4>Projects by Field</h4></li>
+                            <li style="margin-bottom: 35px;list-style-type: none;margin-left: -15px;"><a href="https://www.aileensoul.com/projects">All Freelance Projects</a></li>
+                            <li style="list-style-type: none;margin-left: -13px;margin-bottom: 30px;"><h4>Projects by Field</h4></li>
                         
                         </ul>
                         <div class="linkbox">

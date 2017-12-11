@@ -55,15 +55,13 @@
                 <div class="container">
                     <!-- html code for inner page  -->
                     <div class="all-site-link">
-                        <h3>Recruiter Profile</h3>
+                        <h2>Recruiter Profile</h2>
                         <div class="linkbox">
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">
-                                    <li>Login/Register</li>
-                                    <ul>
-                                    <li>Register/Takeme in</li>
-                                    </ul>
-                                    <li><a href="<?php echo base_url() ?>recruiter/add-post-live" target="_blank">Post a Job</a></li>
+                                    <li style="list-style-type: circle;font-size: 20px;">Login/Register</li>
+                                    <li style="padding-bottom: 30px;">Register/Takeme in</li>
+                                    <li style="margin-left: -20px;padding-left: 38px;font-size: 20px;"><a style="text-transform: none;color: #333;" href="<?php echo base_url() ?>recruiter/add-post-live" target="_blank">Post a Job</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -52,6 +52,7 @@
                     <!-- html code for inner page  -->
                     <div class="all-site-link">
                         <!-- <h3>Business Profile <span>Categories</span></h3> -->
+                        <h2>Business Profile</h2>
                         <h3>Business Profiles by Categories</h3>
                         <div class="linkbox">
                             <?php
