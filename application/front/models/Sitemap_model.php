@@ -39,16 +39,23 @@ class Sitemap_model extends CI_Model {
     }
 
     function getBusinessDataByCategory() {
-        $this->db->select('bc.industry_name,b.company_name,b.business_slug')->from('industry_type bc');
+        $this->db->select('bc.industry_name,b.company_name,b.business_slug,b.other_industrial')->from('industry_type bc');
         $this->db->join('business_profile b', 'b.industriyal = bc.industry_id');
         $this->db->where(array('bc.status' => '1', 'bc.is_delete' => '0', 'b.status' => '1', 'b.is_deleted' => '0', 'b.business_step' => '4'));
         $query = $this->db->get();
         $result = $query->result_array();
 
+        $this->db->select('b.company_name,b.business_slug,b.other_industrial')->from('business_profile b');
+        $this->db->where(array('b.status' => '1', 'b.is_deleted' => '0', 'b.business_step' => '4', 'b.industriyal' => '0'));
+        $query1 = $this->db->get();
+        $result1 = $query1->result_array();
+        
         $newArray = array();
         foreach ($result as $key => $value) {
             $newArray[$value['industry_name']][] = $value; // sort as per category name
         }
+        $newArray['Other'] = $result1;
+        
         return $newArray;
     }
 
@@ -72,6 +79,7 @@ class Sitemap_model extends CI_Model {
                 $result[$key]['art_skill'] = $category_name;
             }
             if ($other_skill) {
+                $other_name ='';
                 $other_name .= $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $other_skill))->row('other_category');
                 $other_name = trim($other_name, ',');
                 $result[$key]['other_skill'] = $other_name;
