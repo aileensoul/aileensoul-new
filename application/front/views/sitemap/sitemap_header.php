@@ -20,7 +20,7 @@
     </header>
     <div class="site-map-all-profile cust-site">
         <div class="container">
-            <h1 class="text-center"><a href=""> Sitemap </a></h1>
+            <h1 class="text-center"><a href="<?php echo base_url('sitemap') ?>"> Sitemap </a></h1>
             <div class="fw text-center">
                 <ul>
                     <li><a href="<?php echo base_url('sitemap/job-profile') ?>">Job Profile</a></li>

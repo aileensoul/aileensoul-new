@@ -1339,7 +1339,7 @@ class Freelancer extends MY_Controller {
                     $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
                     $return_html .= '<a href="' . base_url('freelancer-hire/freelancer-shortlisted/' . $post['post_id']) . '" class="btn4">Shortlisted Persons:';
                     $return_html .= count($shortlist);
-                    $return_html .='</a>';
+                    $return_html .= '</a>';
                 } else {
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('post_id' => $post['post_id'], 'job_delete' => '0', 'user_id' => $userid);
@@ -1401,34 +1401,55 @@ class Freelancer extends MY_Controller {
 
 //FREELANCER_HIRE ADD POST(PROJECT) START
     public function freelancer_add_post() {
-        $userid = $this->session->userdata('aileenuser');
-        //check user deactivate start
-        $this->freelancer_hire_deactivate_check();
-        //check user deactivate end
+        if ($this->session->userdata('aileenuser')) {
+            $userid = $this->session->userdata('aileenuser');
+            //check user deactivate start
+            $this->freelancer_hire_deactivate_check();
+            //check user deactivate end
 // code for display page start
-        $this->freelancer_hire_check();
+            $this->freelancer_hire_check();
 // code for display page end
-        $contition_array = array('status' => '1');
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('status' => '1');
+            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //for getting univesity data Start
-        $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
-        $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
-        $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //for getting univesity data Start
+            $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+            $search_condition = "((is_other = '2' AND user_id = $userid) OR (status = '1'))";
+            $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
-        $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+            $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //for getting univesity data End
-        $contition_array = array('status' => '1');
-        $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //for getting univesity data End
+            $contition_array = array('status' => '1');
+            $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
-        $data = 'username,fullname';
-        $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => '3');
+            $data = 'username,fullname';
+            $hire_data = $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-        $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
-        $this->load->view('freelancer/freelancer_hire/freelancer_add_post', $this->data);
+            $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
+            $this->load->view('freelancer/freelancer_hire/freelancer_add_post', $this->data);
+        } else {
+
+            $contition_array = array('status' => '1');
+            $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+            //for getting univesity data Start
+            $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
+            $search_condition = "(status = '1')";
+            $this->data['category_data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'category_name' => "Other");
+            $this->data['category_otherdata'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            //for getting univesity data End
+            $contition_array = array('status' => '1');
+            $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+            $this->load->view('freelancer/freelancer_hire/freelancer_add_post_live', $this->data);
+        }
     }
 
 //FREELANCER_HIRE ADD POST(PROJECT) END
@@ -5305,4 +5326,7 @@ class Freelancer extends MY_Controller {
         return $count;
     }
 
+//    public function add_project_login(){
+//        
+//    }
 }

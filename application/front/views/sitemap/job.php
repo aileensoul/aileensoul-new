@@ -50,7 +50,7 @@
                     <!-- html code for inner page  -->
                     <div class="all-site-link cust-link">
                         <!-- <h3>Job Profile <span>Categories</span></h3> -->
-                        <h2>Job Profile</h2>
+                        <h2 style="margin-left: -2px;">Job Profile</h2>
                        <ul>
                             <li style="margin-bottom: 35px;list-style-type: none;margin-left: -14px;"><a href="https://www.aileensoul.com/jobs">All Jobs</a></li>
                         </ul>

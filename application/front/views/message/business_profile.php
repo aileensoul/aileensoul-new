@@ -376,6 +376,7 @@
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/config.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.emojiarea.js?ver=' . time()); ?>"></script>
         <!--<script type="text/javascript" src="<?php echo base_url('assets/js/emojiDirectives.js?ver=' . time()); ?>"></script>-->
@@ -383,7 +384,8 @@
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload', 'Services', 'emojiApp']);
+                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload', 'Services', 'emojiApp', 'ngRoute']);
+                    'use strict';
                     messageApp.filter('htmlToPlaintext', function () {
                         return function (text) {
                             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
@@ -743,18 +745,14 @@
                                 }
                             };
                         }]);
-
-
                     messageApp.filter('colonToCode', function () {
 
                         return function (input) {
 
                             if (!input)
                                 return "";
-
                             if (!Config.rx_colons)
                                 Config.init_unified();
-
                             return input.replace(Config.rx_colons, function (m)
                             {
                                 var val = Config.mapcolon[m];
@@ -764,46 +762,36 @@
                                 } else
                                     return "";
                             });
-
                         };
                     });
-
                     messageApp.filter('codeToSmiley', function () {
 
                         return function (input) {
 
                             if (!input)
                                 return "";
-
                             if (!Config.rx_codes)
                                 Config.init_unified();
-
                             return input.replace(Config.rx_codes, function (m)
                             {
                                 var val = Config.reversemap[m];
                                 if (val) {
                                     val = ":" + val + ":";
-
                                     var $img = $.emojiarea.createIcon($.emojiarea.icons[val]);
                                     return $img;
                                 } else
                                     return "";
                             });
-
                         };
                     });
-
-
                     messageApp.filter('colonToSmiley', function () {
 
                         return function (input) {
 
                             if (!input)
                                 return "";
-
                             if (!Config.rx_colons)
                                 Config.init_unified();
-
                             return input.replace(Config.rx_colons, function (m)
                             {
                                 if (m)
@@ -813,10 +801,8 @@
                                 } else
                                     return "";
                             });
-
                         };
                     });
-
                     // EMOJI CODE START
 
                     // AUTO SCROLL MESSAGE DIV FIRST TIME START
@@ -1024,6 +1010,17 @@
                                 }
                             }
                         };
+                        // EMOJI START
+
+                        $scope.emojiMessage = {};
+                        $scope.decodeType = 'colon';
+                        $scope.emojiMessage.replyToUser = function ()
+                        {
+                            alert('You typed ' + $scope.emojiMessage.messagetext);
+                        }
+
+                        // EMOJI END
+
                         // SOCKET ON
 
                         socket.on('getBusinessChatUserList', function (data) {
