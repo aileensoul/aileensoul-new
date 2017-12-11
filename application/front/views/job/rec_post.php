@@ -203,7 +203,7 @@
                         </div>
                         <?php
                         if (count($postdata) > 0) {
-                            foreach ($postdata as $post) {
+                            foreach ($postdata as $post) {  
                                 ?>
                                 <div class="all-job-box job-detail">
                                     <div class="all-job-top">
@@ -452,7 +452,7 @@
                                                         </span>
                                                     <?php } else { ?>
                                                         <span>
-                                                            <?php echo PROFILENA; ?>
+                                                            <?php echo JOBDATANA; ?>
                                                         </span>
                                                     <?php } ?>
                                                 </li>
@@ -464,7 +464,7 @@
                                                         if ($post['min_sal'] || $post['max_sal']) {
                                                             echo $post['min_sal'] . " - " . $post['max_sal'] . ' ' . $currency . ' ' . $post['salary_type'];
                                                         } else {
-                                                            echo PROFILENA;
+                                                            echo JOBDATANA;
                                                         }
                                                         ?></span>
                                                 </li>
@@ -476,7 +476,7 @@
 
                                                             <?php
                                                         } else {
-                                                            echo PROFILENA;
+                                                            echo JOBDATANA;
                                                         }
                                                         ?> 
                                                     </span>
@@ -488,7 +488,7 @@
                                                                 <?php echo $this->common->make_links($post['interview_process']); ?></pre>
                                                                 <?php
                                                         } else {
-                                                            echo PROFILENA;
+                                                            echo JOBDATANA;
                                                         }
                                                         ?> 
                                                     </span>
@@ -500,7 +500,7 @@
                                                                 <?php echo $this->common->make_links($post['re_comp_profile']); ?></pre>
                                                                 <?php
                                                         } else {
-                                                            echo PROFILENA;
+                                                            echo JOBDATANA;
                                                         }
                                                         ?> 
                                                     </span>
