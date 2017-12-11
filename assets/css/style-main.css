@@ -1774,6 +1774,10 @@ img{
 .site-map-all-profile ul li a{color:#fff; font-size:18px;}
 
 .all-site-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:30px;}
+.cust-link h3{color:#5c5c5c; font-weight:bold; margin-bottom:10px;}
+.cust-link ul{padding-left: 13px;}
+.cust-link ul li a{color:#5c5c5c;font-size: 18px;}
+.cust-link h4{color:#5c5c5c;}
 .linkbox ul{margin-bottom:20px; padding-left:15px;}
 .linkbox h5{font-size:16px; margin-bottom:5px; margin-top:0;}
 .linkbox ul li{padding:3px 20px; list-style-type:none; font-size:16px; position:relative; width:50%; float:left;}

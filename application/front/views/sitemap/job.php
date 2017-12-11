@@ -47,9 +47,10 @@
             <?php echo $sitemap_header ?>
             <section class="middle-main">
                 <div class="container">
-                    <!-- html code for inner page  --->
+                    <!-- html code for inner page  -->
                     <div class="all-site-link">
-                        <h3>Job Profile <span>Categories</span></h3>
+                        <!-- <h3>Job Profile <span>Categories</span></h3> -->
+                        <h3>Job Posts by Location</h3>
                         <div class="linkbox">
 <?php
                             foreach ($getJobDataByLocation as $key => $value) {
