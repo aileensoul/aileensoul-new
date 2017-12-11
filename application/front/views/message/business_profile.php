@@ -217,7 +217,7 @@
                                         <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
                                             <div class="msg_right"> 
                                                 <div class="messagedelete fl">
-                                                    <a href="javascript:void(0);" ng-click="delete_chat('1',chat.id)">
+                                                    <a href="javascript:void(0);" ng-click="delete_chat('1', chat.id)">
                                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -313,7 +313,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="messagedelete"> 
-                                                    <a href="javascript:void(0);" ng-click="delete_chat('2',chat.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                    <a href="javascript:void(0);" ng-click="delete_chat('2', chat.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -376,10 +376,14 @@
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
 
+        <script type="text/javascript" src="<?php echo base_url('assets/js/config.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.emojiarea.js?ver=' . time()); ?>"></script>
+        <!--<script type="text/javascript" src="<?php echo base_url('assets/js/emojiDirectives.js?ver=' . time()); ?>"></script>-->
+        <!--<script type="text/javascript" src="<?php echo base_url('assets/js/emojiFilters.js?ver=' . time()); ?>"></script>-->
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload', 'Services']);
+                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload', 'Services', 'emojiApp']);
                     messageApp.filter('htmlToPlaintext', function () {
                         return function (text) {
                             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
@@ -410,6 +414,411 @@
                         };
                     });
                     //messageApp.filter('unsafe', function($sce) { return $sce.trustAsHtml; });
+
+                    // EMOJI CODE START
+                    messageApp.config(['$sceProvider', function ($sceProvider)
+                        {
+
+                            $sceProvider.enabled(false);
+                            var icons = {},
+                                    reverseIcons = {},
+                                    i, j, hex, name, dataItem, row, column, totalColumns;
+                            for (j = 0; j < Config.EmojiCategories.length; j++)
+                            {
+                                totalColumns = Config.EmojiCategorySpritesheetDimens[j][1];
+                                for (i = 0; i < Config.EmojiCategories[j].length; i++)
+                                {
+                                    dataItem = Config.Emoji[Config.EmojiCategories[j][i]];
+                                    name = dataItem[1][0];
+                                    row = Math.floor(i / totalColumns);
+                                    column = (i % totalColumns);
+                                    icons[':' + name + ':'] = [j, row, column,
+                                        ':' + name + ':'
+                                    ];
+                                    reverseIcons[name] = dataItem[0];
+                                }
+                            }
+
+                            $.emojiarea.spritesheetPath = 'img/emojisprite_!.png';
+                            $.emojiarea.spritesheetDimens = Config.EmojiCategorySpritesheetDimens;
+                            $.emojiarea.iconSize = 20;
+                            $.emojiarea.icons = icons;
+                            $.emojiarea.reverseIcons = reverseIcons;
+                        }]);
+                    messageApp.directive('contenteditable', ['$sce', function ($sce) {
+                            return {
+                                restrict: 'A', // only activate on element attribute
+                                require: '?ngModel', // get a hold of NgModelController
+                                link: function (scope, element, attrs, ngModel) {
+                                    if (!ngModel)
+                                        return; // do nothing if no ng-model
+
+                                    // Specify how UI should be updated
+                                    ngModel.$render = function () {
+                                        element.html(ngModel.$viewValue || '');
+                                    };
+                                    // Listen for change events to enable binding
+                                    element.on('blur keyup change', function () {
+                                        scope.$evalAsync(read);
+                                    });
+                                    read(); // initialize
+
+                                    // Write data to the model
+                                    function read() {
+                                        var html = element.html();
+                                        // When we clear the content editable the browser leaves a <br>
+                                        // behind
+                                        // If strip-br attribute is provided then we strip this out
+                                        if (attrs.stripBr && html == '<br>') {
+                                            html = '';
+                                        }
+                                        ngModel.$setViewValue(html);
+                                    }
+                                }
+                            };
+                        }]);
+                    messageApp.directive('emojiForm', ['$timeout', '$http', '$interpolate', '$compile', function ($timeout, $http, $interpolate, $compile)
+                        {
+                            return {
+                                scope:
+                                        {
+                                            emojiMessage: '='
+                                        },
+                                link: link
+                            };
+                            function link($scope, element, attrs)
+                            {
+                                var messageField = $('textarea', element)[0],
+                                        fileSelects = $('input', element),
+                                        emojiButton = $('#emojibtn', element)[0],
+                                        editorElement = messageField,
+                                        emojiArea = $(messageField).emojiarea(
+                                        {
+                                            button: emojiButton,
+                                            norealTime: true
+                                        }),
+                                        emojiMenu = $('.emoji-menu', element)[0],
+                                        richTextarea = $(
+                                                '.emoji-wysiwyg-editor', element)[0];
+                                var s = $compile($("#messageDiv"));
+                                $("#messageDiv").replaceWith(s($scope));
+                                if (richTextarea)
+                                {
+                                    editorElement = richTextarea;
+                                    $(richTextarea).addClass('form-control');
+                                    if ($(messageField).attr('placeholder'))
+                                        $(richTextarea).attr('placeholder', $interpolate($(messageField).attr('placeholder'))($scope));
+                                    var updatePromise;
+                                    $(richTextarea)
+                                            .on('DOMNodeInserted', onPastedImageEvent)
+                                            .on(
+                                                    'keyup',
+                                                    function (e)
+                                                    {
+                                                        updateHeight();
+                                                        if (!sendAwaiting)
+                                                        {
+                                                            $scope
+                                                                    .$apply(function ()
+                                                                    {
+                                                                        $scope.emojiMessage.messagetext = richTextarea.textContent;
+                                                                    });
+                                                        }
+
+                                                        $timeout.cancel(updatePromise);
+                                                        updatePromise = $timeout(
+                                                                updateValue, 1000);
+                                                    });
+                                }
+
+                                var sendOnEnter = true;
+                                $(editorElement).on(
+                                        'keydown',
+                                        function (e)
+                                        {
+                                            if (richTextarea)
+                                            {
+                                                updateHeight();
+                                            }
+
+                                            if (e.keyCode == 13)
+                                            {
+                                                var submit = false;
+                                                if (sendOnEnter && !e.shiftKey)
+                                                {
+                                                    submit = true;
+                                                } else if (!sendOnEnter && (e.ctrlKey || e.metaKey))
+                                                {
+                                                    submit = true;
+                                                }
+
+                                                if (submit)
+                                                {
+                                                    $timeout.cancel(updatePromise);
+                                                    updateValue();
+                                                    $scope.emojiMessage.replyToUser();
+                                                    // $(element).trigger('message_send');
+                                                    resetTyping();
+                                                    return cancelEvent(e);
+                                                }
+                                            }
+
+                                        });
+                                // $(submitBtn).on('mousedown touchstart', function(e)
+                                // {
+                                //     $timeout.cancel(updatePromise);
+                                //     updateValue();
+                                //     $scope.draftMessage.replyToUser();
+                                //     resetTyping();
+                                //     return cancelEvent(e);
+                                // });
+
+                                function resetTyping()
+                                {
+                                    // lastTyping = 0;
+                                    // lastLength = 0;
+                                }
+                                ;
+                                function updateRichTextarea()
+                                {
+                                    console.log("updateRichTextarea");
+                                    if (richTextarea)
+                                    {
+                                        $timeout.cancel(updatePromise);
+                                        var html = $('<div>').text(
+                                                $scope.draftMessage.text || '').html();
+                                        html = html.replace(/\n/g, '<br/>');
+                                        $(richTextarea).html(html);
+                                        lastLength = html.length;
+                                        updateHeight();
+                                    }
+                                }
+
+                                function updateValue()
+                                {
+                                    if (richTextarea)
+                                    {
+                                        $(richTextarea).trigger('change');
+                                        updateHeight();
+                                    }
+                                }
+
+                                var height = richTextarea.offsetHeight;
+                                function updateHeight()
+                                {
+                                    var newHeight = richTextarea.offsetHeight;
+                                    if (height != newHeight)
+                                    {
+                                        height = newHeight;
+                                        $scope.$emit('ui_editor_resize');
+                                    }
+                                }
+                                ;
+                                function onPastedImageEvent(e)
+                                {
+                                    var element = (e.originalEvent || e).target,
+                                            src = (element ||
+                                                    {}).src || '',
+                                            remove = false;
+                                    if (src.substr(0, 5) == 'data:')
+                                    {
+                                        remove = true;
+                                        var blob = dataUrlToBlob(src);
+                                        ErrorService.confirm(
+                                                {
+                                                    type: 'FILE_CLIPBOARD_PASTE'
+                                                }).then(function ()
+                                        {
+                                            $scope.draftMessage.files = [blob];
+                                            $scope.draftMessage.isMedia = true;
+                                        });
+                                        setZeroTimeout(function ()
+                                        {
+                                            element.parentNode.removeChild(element);
+                                        })
+                                    } else if (src && !src.match(/img\/blank\.gif/))
+                                    {
+                                        var replacementNode = document.createTextNode(' ' + src + ' ');
+                                        setTimeout(function ()
+                                        {
+                                            element.parentNode.replaceChild(replacementNode, element);
+                                        }, 100);
+                                    }
+                                }
+                                ;
+                                function onPasteEvent(e)
+                                {
+                                    console.log("onPasteEvent");
+                                    var cData = (e.originalEvent || e).clipboardData,
+                                            items = cData && cData.items || [],
+                                            files = [],
+                                            file, i;
+                                    for (i = 0; i < items.length; i++)
+                                    {
+                                        if (items[i].kind == 'file')
+                                        {
+                                            file = items[i].getAsFile();
+                                            files.push(file);
+                                        }
+                                    }
+
+                                    if (files.length > 0)
+                                    {
+                                        ErrorService.confirm(
+                                                {
+                                                    type: 'FILES_CLIPBOARD_PASTE',
+                                                    files: files
+                                                }).then(function ()
+                                        {
+                                            $scope.draftMessage.files = files;
+                                            $scope.draftMessage.isMedia = true;
+                                        });
+                                    }
+                                }
+
+                                function onKeyDown(e)
+                                {
+                                    if (e.keyCode == 9 && !e.shiftKey && !e.ctrlKey && !e.metaKey && !$modalStack.getTop())
+                                    { // TAB
+                                        editorElement.focus();
+                                        return cancelEvent(e);
+                                    }
+                                }
+                                $(document).on('keydown', onKeyDown);
+                                $(document).on('paste', onPasteEvent);
+                                var sendAwaiting = false;
+                                function focusField()
+                                {
+                                    onContentLoaded(function ()
+                                    {
+                                        editorElement.focus();
+                                    });
+                                }
+
+                                $scope.$on('$destroy', function cleanup()
+                                {
+
+                                    $(document).off('paste', onPasteEvent);
+                                    $(document).off('keydown', onKeyDown);
+                                    $(submitBtn).off('mousedown')
+                                    fileSelects.off('change');
+                                    if (richTextarea)
+                                    {
+                                        $(richTextarea).off('DOMNodeInserted keyup',
+                                                onPastedImageEvent);
+                                    }
+                                    $(editorElement).off('keydown');
+                                });
+                            }
+                        }]);
+                    messageApp.directive('contenteditable', ['$sce', function ($sce) {
+                            return {
+                                restrict: 'A', // only activate on element attribute
+                                require: '?ngModel', // get a hold of NgModelController
+                                link: function (scope, element, attrs, ngModel) {
+                                    if (!ngModel)
+                                        return; // do nothing if no ng-model
+
+                                    // Specify how UI should be updated
+                                    ngModel.$render = function () {
+                                        element.html(ngModel.$viewValue || '');
+                                    };
+                                    // Listen for change events to enable binding
+                                    element.on('blur keyup change', function () {
+                                        scope.$evalAsync(read);
+                                    });
+                                    read(); // initialize
+
+                                    // Write data to the model
+                                    function read() {
+                                        var html = element.html();
+                                        // When we clear the content editable the browser leaves a <br>
+                                        // behind
+                                        // If strip-br attribute is provided then we strip this out
+                                        if (attrs.stripBr && html == '<br>') {
+                                            html = '';
+                                        }
+                                        ngModel.$setViewValue(html);
+                                    }
+                                }
+                            };
+                        }]);
+
+
+                    messageApp.filter('colonToCode', function () {
+
+                        return function (input) {
+
+                            if (!input)
+                                return "";
+
+                            if (!Config.rx_colons)
+                                Config.init_unified();
+
+                            return input.replace(Config.rx_colons, function (m)
+                            {
+                                var val = Config.mapcolon[m];
+                                if (val)
+                                {
+                                    return val;
+                                } else
+                                    return "";
+                            });
+
+                        };
+                    });
+
+                    messageApp.filter('codeToSmiley', function () {
+
+                        return function (input) {
+
+                            if (!input)
+                                return "";
+
+                            if (!Config.rx_codes)
+                                Config.init_unified();
+
+                            return input.replace(Config.rx_codes, function (m)
+                            {
+                                var val = Config.reversemap[m];
+                                if (val) {
+                                    val = ":" + val + ":";
+
+                                    var $img = $.emojiarea.createIcon($.emojiarea.icons[val]);
+                                    return $img;
+                                } else
+                                    return "";
+                            });
+
+                        };
+                    });
+
+
+                    messageApp.filter('colonToSmiley', function () {
+
+                        return function (input) {
+
+                            if (!input)
+                                return "";
+
+                            if (!Config.rx_colons)
+                                Config.init_unified();
+
+                            return input.replace(Config.rx_colons, function (m)
+                            {
+                                if (m)
+                                {
+                                    var $img = $.emojiarea.createIcon($.emojiarea.icons[m]);
+                                    return $img;
+                                } else
+                                    return "";
+                            });
+
+                        };
+                    });
+
+                    // EMOJI CODE START
+
                     // AUTO SCROLL MESSAGE DIV FIRST TIME START
                     messageApp.directive('scroll', function ($timeout) {
                         return {
@@ -453,7 +862,7 @@
                     messageApp.controller('messageController', function ($scope, Upload, $timeout, $http) {
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
-                        $scope.delete_chat = function (message_for,message_id) {
+                        $scope.delete_chat = function (message_for, message_id) {
                             $http({
                                 method: 'POST',
                                 url: base_url + 'message/businessmessageDelete',
@@ -565,7 +974,6 @@
                                 $scope.files = [$scope.Files];
                             }
                         });
-
                         $scope.log = '';
                         $scope.upload = function (files) {
                             if (isProcessing) {

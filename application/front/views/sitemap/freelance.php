@@ -48,11 +48,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body class="site-map" >
-        <div class="main-inner">
+        <div class="main-inner ">
             <?php echo $sitemap_header ?>
             <section class="middle-main">
                 <div class="container">
-                    <!-- html code for inner page  --->
+                    <!-- html code for inner page  -->
                     <div class="all-site-link">
                         <h3>Freelance Hire</h3>
                         <div class="linkbox full_page">
@@ -67,11 +67,18 @@
                         </div>
                     </div>
 
-                    <div class="all-site-link">
+                    <div class="all-site-link cust-link">
                         <h3>Freelance Apply</h3>
+
+                        <ul>
+                            <li><a href="">All Projects</a></li>
+                            <li style="list-style-type: none;"><h4>Projects by Field</h4></li>
+                        
+                        </ul>
                         <div class="linkbox">
                            <?php foreach($getFreepostDataByCategory as $key => $value){  ?>
                             <div class="smap-catbox">
+
                                 <div class="catbox-left">
                                     <h5><?php echo $key; ?></h5>
                                 </div>

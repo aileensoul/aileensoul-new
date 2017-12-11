@@ -49,9 +49,9 @@
             <?php echo $sitemap_header ?>
             <section class="middle-main">
                 <div class="container">
-                    <!-- html code for inner page  --->
+                    <!-- html code for inner page  -->
                     <div class="all-site-link">
-                        <h3>Artistic Profile</h3>
+                        <h3>Artistic Profiles</h3>
                         <div class="linkbox">
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">
