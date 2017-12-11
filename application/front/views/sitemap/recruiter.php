@@ -55,7 +55,7 @@
                 <div class="container">
                     <!-- html code for inner page  -->
                     <div class="all-site-link">
-                        <h2>Recruiter Profile</h2>
+                        <h2 style="margin-left: -2px;">Recruiter Profile</h2>
                         <div class="linkbox">
                             <div class="smap-catbox">
                                 <ul class="catbox-right artist-sitemap">

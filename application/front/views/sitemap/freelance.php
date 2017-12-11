@@ -54,7 +54,7 @@
                 <div class="container">
                     <!-- html code for inner page  -->
                     <div class="all-site-link">
-                        <h2>Freelancer Profile</h2>
+                        <h2 style="margin-left: -2px;">Freelancer Profile</h2>
                         <h3>Freelance Hire</h3>
                         <div class="linkbox full_page">
                             <div class="smap-catbox">

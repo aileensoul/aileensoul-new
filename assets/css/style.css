@@ -2076,6 +2076,7 @@ footer div.pt20{padding-top: 18px;}
 .detail-discription .all-job-middle ul{padding:0;} 
 .detail-discription .all-job-middle ul li{padding:3px 0; list-style-type:none; width:100%; float:left;} 
 .detail-discription .all-job-middle ul li b{width:130px; float:left; position:relative;}
+
 .detail-discription .all-job-middle ul li b:after{content: " :"; float: left; position: absolute; right: -5px;
 top: -1px;}
 .detail-discription .all-job-middle ul li span{float:left; padding-left:15px; width:85%;}
