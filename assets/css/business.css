@@ -2221,15 +2221,17 @@ label.cameraButton:active {
     background-size: 100%;
 }
 .profile-job-post-detail .buisness-profile-pic {
-    padding: 3px 4px;
+    padding: 3px 3px;
+    padding-right: 0px; 
 }
 .column1 {
     /*float: left;*/
     float: left;
     margin-bottom: 6px;
     margin-top: 10px;
-    width: 227px;
+    width: 226px;
     height: 173px;
+    margin-left: 2px;
     /*margin: 0 auto;*/
 }
 .bui_res_i {
@@ -3950,8 +3952,8 @@ div .comment {
     position: absolute;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    height: 166px;
-    width: 221px;
+    height: 165px;
+    width: 225px;
     left: 0px;
 }
 .view_bui #myBtn {
@@ -3980,8 +3982,8 @@ div .comment {
     height: 100%;
 }
 .bui_res_i2 {
-    height: 166px;
-    width: 223px;
+    height: 165px;
+    width: 225px;
     position: relative;
     cursor: pointer;
 }
