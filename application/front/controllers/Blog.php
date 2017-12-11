@@ -401,7 +401,6 @@ class Blog extends CI_Controller {
         foreach ($blog_detail as $blog) {
 
             $blog_data .= '<div class="blog_main_o">';
-            $blog_data .= $blog['id'];
             $blog_data .= '<div class="date_blog_left">
                                             <div class="blog-date-change">
                                                     <div class="blog-month blog-picker">
