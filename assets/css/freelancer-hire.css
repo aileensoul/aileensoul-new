@@ -1612,6 +1612,7 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
 	.tablate-potrat-add{display:block;}
 	.tablate-potrat-add .fw.text-center{text-align:center;}
 	.left_side_posrt{position:absolute;}
+    .btn4 {padding: 3px 12px !important}
 	/***  end add  ***/
 }
 @media screen and (max-width: 1130px) {
@@ -2153,6 +2154,8 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
     .profile-job-post-location-name-rec .post_designation {
         font-size: 12px;
     }
+    .btn4{padding: 3px 3px !important;}
+
 }
 @media screen and (max-width: 540px) {
     .file_name_pdf {
@@ -2372,6 +2375,7 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
         width: 71% !important;
     }
 	.sort-emp-msg{width:100%; float:left;}
+    .btn4{font-size: 12px;margin-left: 1px;margin-right: 2px;margin-bottom: 5px; }
 }
 @media screen and (max-width: 360px) {
     #paddingtop_fixed {
@@ -2459,6 +2463,8 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
 	.mob-add{margin-bottom:0; border:none;}
 	.padding-360{padding-left:1px; padding-right:1px;}
 	.contact-frnd-post{padding:10px 8px 0;}
+    .btn4{    font-size: 12px;margin-left: 3px;margin-right: 3px;margin-bottom: 5px;}
+}
 	/*** end add  ***/
 }
 @media screen and (max-width: 319px) {
