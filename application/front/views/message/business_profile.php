@@ -143,7 +143,15 @@
                     });
                 });
             </script>-->
-
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/emojionearea.css" media="screen">
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/emojionearea.js"></script>
+        <style>
+            .clearfix:after {
+                content: " ";
+                display: table;
+                clear: both;
+            }
+        </style>
     <body ng-app="messageApp" ng-controller="messageController">
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
@@ -327,35 +335,20 @@
                                 <div class="" id="msg_block">
                                     <div class="input-group " id="set_input">
                                         <form name="blog">
-                                            <div class="comment " ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>
-                                            <!--<div class="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>-->
-                                            <div for="smily" class="smily_b">
-                                                <div><a class="smil" href="#" id="notificationLink1"><i class="em em-blush"></i></a></div>
-                                            </div>
+                                            <!--<div class="comment " ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>-->
+                                            <textarea id="demo1"></textarea>
+                                            <div id="message"></div>
+                                            <!--                                            <div for="smily" class="smily_b">
+                                                                                            <div><a class="smil" href="#" id="notificationLink1"><i class="em em-blush"></i></a></div>
+                                                                                        </div>-->
                                         </form>
                                         <div for="smily" class="link_b input-group-btn box-tools pull-right desktop">
-                                            <!--<button class="btn btn-warning btn-flat ng-pristine ng-valid ng-touched fr" data-widget="" ngf-select="" ngf-multiple="false" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>-->
                                             <button class="btn btn-warning btn-flat fr" data-widget="" ngf-select="upload($files)" ngf-multiple="true" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
                                         </div>
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning btn-sm main_send" ng-click="sendMsg()" id="submit">Send</button>
                                         </span>
                                     </div>
-                                    <!--                                     <div class="box-footer">
-                                                    <div class="box-tools pull-right desktop">
-                                                       Any File Select Button 
-                                                      <button class="btn btn-warning btn-flat" data-widget="" ngf-select ng-model="Files"><i class="glyphicon glyphicon-paperclip"></i></button>
-                                                    </div>
-                                                     Text message  
-                                                    <form action="" method="post">
-                                                      <div class="input-group">
-                                                        <input type="text" name="message" placeholder="Type Message ..." ng-class="{'form-control': true, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty=false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus"/>
-                                                        <span class="input-group-btn">
-                                                          <button type="button" class="btn btn-warning btn-flat" ng-click="sendMsg()">Send</button>
-                                                        </span>
-                                                      </div>
-                                                    </form>
-                                                  </div>-->
                                 </div>
                             </div>
                         </div>
@@ -624,6 +617,15 @@
                             }
                             load_message_user();
                             getUserMessage($scope.current);
+                        });
+                    });
+        </script>
+        <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#demo1").emojioneArea({
+                            container: "#message",
+                            hideSource: true,
+                            useSprite: false
                         });
                     });
         </script>
