@@ -29,9 +29,29 @@ function checkvalue()
 
 // THIS SCRIPT IS USED FOR SCRAP IMAGE FOR FACEBOOK POST TO GET REAL IMAGE START
 $(document).ready(function() {
-   $(".fbk").on('click', function() { alert("facebook");
-   
-         var url= $(this).attr('url');
+//   $(".fbk").on('click', function() { alert("facebook");
+//   
+//         var url= $(this).attr('url');
+//         var url_encode= $(this).attr('url_encode');
+//         var title=$(this).attr('title');
+//         var summary= $(this).attr('summary');
+//         var image=$(this).attr('image');
+//   
+//          $.ajax({
+//          type: 'POST',
+//          url: 'https://graph.facebook.com?id='+url+'&scrape=true',
+//              success: function(data){
+//                 console.log(data);
+//             }
+//   
+//      });
+//           window.open('http://www.facebook.com/sharer.php?s=100&p[title]='+title+'&p[summary]='+summary+'&p[url]='+ url_encode+'&p[images][0]='+image+'', 'sharer', 'toolbar=0,status=0,width=620,height=280');
+//   });
+
+});
+  function facebookcheck() 
+   {
+               var url= $(this).attr('url');
          var url_encode= $(this).attr('url_encode');
          var title=$(this).attr('title');
          var summary= $(this).attr('summary');
@@ -46,6 +66,6 @@ $(document).ready(function() {
    
       });
            window.open('http://www.facebook.com/sharer.php?s=100&p[title]='+title+'&p[summary]='+summary+'&p[url]='+ url_encode+'&p[images][0]='+image+'', 'sharer', 'toolbar=0,status=0,width=620,height=280');
-   });
-   });
+   }
+
 // THIS SCRIPT IS USED FOR SCRAP IMAGE FOR FACEBOOK POST TO GET REAL IMAGE END

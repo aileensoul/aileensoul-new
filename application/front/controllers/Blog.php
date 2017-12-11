@@ -345,7 +345,7 @@ $blog_data .= '<div class="blog_main_o">';  $blog_data .= $blog['id'];
                                                                             $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
                                                                          
 
-                                                                        $blog_data .=  '<a class="fbk" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '" title="Facebook" summary="' . $summary . '" image="' . $image . '"> 
+                                                                        $blog_data .=  '<a class="fbk" onclick="facebookcheck()" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '" title="Facebook" summary="' . $summary . '" image="' . $image . '"> 
                                                                                 <span  class="social_fb"></span>
                                                                             </a>
                                                                         </li>
