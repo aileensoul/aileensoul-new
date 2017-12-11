@@ -13991,7 +13991,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $artistic_user = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artistic_user[0]['art_user_image'] . '" alt="" >';
-            $userimage .= ' <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url() . 'img/cam.png"> Update Profile Picture</a>';
+            $userimage .= ' <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="' . base_url() . 'assets/img/cam.png"> Update Profile Picture</a>';
 
             echo $userimage;
         }
