@@ -271,10 +271,10 @@
                                 }
                                 ?>
                          <div class="page-title">
-                        <h3>Post</h3>
+                        <h3>Projects</h3>
                     </div>
                     <div class="job-contact-frnd1">
-                        <p style="text-align:center;"><img class="loader" src="' + base_url + 'assets/images/loading.gif"/></p>
+                        <p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif');?>"/></p>
 
                     </div>
                     </div>
