@@ -47,10 +47,8 @@ class Sitemap extends CI_Controller {
     public function freelance_profile() {
         $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
-
-        $contition_array = array('');
-        $this->data['business_profile'] = $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $this->data['getFreepostDataByCategory'] = $this->sitemap_model->getFreepostDataByCategory();
+//echo '<pre>'; print_r($this->data['getFreepostDataByCategory']); die();
         $this->load->view('sitemap/freelance', $this->data);
     }
 

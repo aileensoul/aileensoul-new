@@ -22,6 +22,21 @@ class Sitemap_model extends CI_Model {
         }
         return $newArray;
     }
+    
+    function getFreepostDataByCategory(){
+        $this->db->select('fp.post_id,fp.post_name,fp.user_id,fh.username,fh.fullname,ci.city_name,c.category_name')->from('freelancer_post fp');
+        $this->db->join('category c', 'fp.post_field_req = c.category_id');
+        $this->db->join('freelancer_hire_reg fh', 'fp.user_id = fh.user_id');
+        $this->db->join('cities ci', 'fp.city = ci.city_id');
+        $this->db->where(array('fp.status' => '1', 'fp.is_delete' => '0'));
+        $query = $this->db->get();
+        $result = $query->result_array();
+        $newArray = array();
+        foreach ($result as $key => $value) { 
+            $newArray[$value['category_name']][] = $value; // sort as per category name
+        }
+        return $newArray;
+    }
 
     function getBusinessDataByCategory() {
         $this->db->select('bc.industry_name,b.company_name,b.business_slug')->from('industry_type bc');

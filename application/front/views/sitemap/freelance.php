@@ -60,10 +60,10 @@
                         <h3>Freelancer Hire Profile</h3>
                         <div class="linkbox full_page">
                             <div class="smap-catbox">
-                                <ul class="catbox-right artist-sitemap">
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
+                               <ul class="catbox-right artist-sitemap">
+                                    <li>Login/Register</li>
+                                    <li>Register/Takeme in</li>
+                                    <li><a href="<?php echo base_url() ?>freelancer-hire/add-projects" target="_blank">Post a Project</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -72,39 +72,29 @@
                     <div class="all-site-link">
                         <h3>Freelancer Apply Profile</h3>
                         <div class="linkbox">
-                            <div class="smap-catbox">
-                                <ul class="catbox-right">
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                </ul>
-                            </div>
+                           <?php foreach($getFreepostDataByCategory as $key => $value){  ?>
                             <div class="smap-catbox">
                                 <div class="catbox-left">
-                                    <h5>Bueaty</h5>
+                                    <h5><?php echo $key; ?></h5>
                                 </div>
                                 <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
+                                   <?php foreach($value as $projects){ 
+                                       
+                                        if ($projects['post_name'] != '') {
+                        $text = strtolower($this->common->clean($projects['post_name']));
+                    } else {
+                        $text = '';
+                    } 
+                     if ($projects['city_name'] != '') {
+                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($projects['city_name']));
+                    } else {
+                        $cityname = '';
+                    }?>
+                                    <li><a href="<?php echo base_url('recruiter/jobpost/' . $text . $cityname . '-' . $projects['user_id'] . '-' . $projects['post_id']) ?>"><?php echo $projects['post_name'] . '(' . $projects['fullname'] . ' ' . $projects['username'] . ')'; ?></a></li>
+                           <?php } ?>
                                 </ul>
                             </div>
-                            <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>Business</h5>
-                                </div>
-                                <ul class="catbox-right">
-
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
-                                </ul>
-                            </div>
+                           <?php } ?>
 
                         </div>
                     </div>
