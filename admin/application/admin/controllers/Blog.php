@@ -50,6 +50,10 @@ class Blog extends MY_Controller {
         $condition_array = array('status' => 'publish');
         $this->data['blog_category'] = $this->common->select_data_by_condition('blog_category', $condition_array, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array());
         //FOR GETTING ALL DATA END 
+        //FOR GETTING ALL DATA STARt
+        $condition_array = array('status' => 'publish');
+        $this->data['blog_title'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array());
+        //FOR GETTING ALL DATA END 
         $this->load->view('blog/add', $this->data);
     }
 
@@ -102,6 +106,7 @@ class Blog extends MY_Controller {
         $data = array(
             'title' => $this->input->post('blog_title'),
             'blog_category_id' => implode(',', $this->input->post('category')),
+            'blog_related_id' => implode(',', $this->input->post('related')),
             'tag' => $this->input->post('tag'),
             'meta_description' => $this->input->post('meta_description'),
             'description' => $this->input->post('description'),
@@ -272,7 +277,10 @@ class Blog extends MY_Controller {
         $condition_array = array('status' => 'publish');
         $this->data['blog_category'] = $this->common->select_data_by_condition('blog_category', $condition_array, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array());
         //FOR GETTING ALL DATA END 
-
+        //FOR GETTING ALL DATA STARt
+        $condition_array = array('status' => 'publish', 'id !=' => $id);
+        $this->data['blog_title'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array());
+        //FOR GETTING ALL DATA END 
 
         $this->load->view('blog/edit', $this->data);
     }
@@ -368,6 +376,7 @@ class Blog extends MY_Controller {
         $data = array(
             'title' => $this->input->post('blog_title'),
             'blog_category_id' => implode(',', $this->input->post('category')),
+            'blog_related_id' => implode(',', $this->input->post('related')),
             'tag' => $this->input->post('tag'),
             'meta_description' => $this->input->post('meta_description'),
             'description' => $this->input->post('description'),

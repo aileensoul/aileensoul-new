@@ -100,6 +100,21 @@ echo $leftmenu;
                             <input type="file" class="form-control" name="image" id="image" value="" style="border: none;">
                         </div>
                         <!-- BLOG IMAGE END -->
+                       
+                        <!-- RELATED BLOG START -->
+                        <div class="box-body">                   
+                    <div class="form-group col-sm-10">
+                            <label for="govcat" name="govcat" id="govcat">Related Blog*</label>
+                             <select name="related[]" id="related" tabindex="1" class="form-control" multiple>
+                               <!--<option value="">Select blog Category</option>--> 
+                            <?php                             
+                                      foreach($blog_title as $blog){ 
+                                              ?>
+                                    <option value="<?php echo $blog['id']; ?>"><?php echo $blog['title'];?></option>    <?php  } ?>
+                      </select>
+                    </div>
+                    </div>
+                        <!-- RELATED BLOG END -->
 
                     </div><!-- /.box-body -->
                     <div class="box-footer">

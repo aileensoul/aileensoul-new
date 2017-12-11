@@ -56,6 +56,7 @@ echo $leftmenu;
                             <input type="text" class="form-control" name="blog_title" id="blog_title" value="<?php echo $blog_detail[0]['title']; ?>">
                         </div>
                         <!-- BLOG TITLE END -->
+                        <!-- BLOG CATEGORY END -->
 
                         <div class="box-body">                   
                             <div class="form-group col-sm-10">
@@ -71,6 +72,7 @@ echo $leftmenu;
                             </div>
                         </div>
 
+<!--  BLOG CATEGORY END -->
                         <!-- BLOG SLUG START -->
                         <div class="form-group col-sm-10">
                             <label for="blogslug" name="blogslug" id="blogslug">Blog Slug*</label>
@@ -121,6 +123,24 @@ echo $leftmenu;
 
                             <input type="hidden" class="form-control" name="hidden_image" id="hidden_image" value="<?php echo $blog_detail[0]['image']; ?>" style="border: none;" >
                         </div>
+                        
+                         <!-- BLOG RELATED END -->
+
+                        <div class="box-body">                   
+                            <div class="form-group col-sm-10">
+                                <label for="govcat" name="govcat" id="govcat">Category*</label>
+                                <select name="related[]" id="related" tabindex="1" class="form-control" multiple>
+                                    <!--<option value="">Select blog Category</option>--> 
+                                    <?php
+                                    $related = explode(',', $blog_detail[0]['blog_related_id']);
+                                    foreach ($blog_title as $blog) {
+                                        ?>
+                                        <option value="<?php echo $blog['id']; ?>" <?php echo (isset($related) && in_array($blog['id'], $related) ) ? "selected" : "" ?>><?php echo $blog['title']; ?></option>    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+
+                     <!--  BLOG RELATED END -->
                     </div>
                     <!-- BLOG IMAGE END -->
 

@@ -40,7 +40,7 @@ class Blog extends CI_Controller {
             $this->db->order_by('id', 'RANDOM');
             $this->db->limit(3);
             $this->db->where('blog_slug !=', $slug);
-            $this->db->where("FIND_IN_SET('$blogid',blog_category_id) !=", 0);
+            //$this->db->where("FIND_IN_SET('$blogid',blog_category_id) !=", 0);
             $query = $this->db->get('blog');
             $this->data['rand_blog'] = $query->result_array();
 
