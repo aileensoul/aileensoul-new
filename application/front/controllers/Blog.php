@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -228,7 +229,7 @@ class Blog extends CI_Controller {
         foreach ($blog_detail as $blog) {
 
             $blog_data .= '<div class="blog_main_o">';
-            $blog_data .= $blog['id'];
+            //$blog_data .= $blog['id'];
             $blog_data .= '<div class="date_blog_left">
                                             <div class="blog-date-change">
                                                     <div class="blog-month blog-picker">
@@ -318,33 +319,33 @@ class Blog extends CI_Controller {
             $url = urlencode(base_url('blog/' . $blog['blog_slug']));
             $summary = urlencode('"' . $blog['description'] . '"');
             $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
-            
-            $blog_data .= '<a class="fbk" onclick="facebookcheck()" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '" title="Facebook" summary="' . $summary . '" image="' . $image . '"> 
+
+            $blog_data .= '<a class="fbk" id="facebook_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '" title="Facebook" summary="' . $summary . '" image="' . $image . '"> 
                                                                                 <span  class="social_fb"></span>
                                                                             </a>
                                                                         </li>
                                                                         <li>';
 
-            /*   $blog_data .=  '<a href="https://plus.google.com/share?url='.$url.' title="Google +" onclick="javascript:window.open("https://plus.google.com/share?url='. $url .'", "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600");return false;">
-              <span  class="social_gp"></span>
-              </a>
-              </li>
-              <li>'; */
-            $blog_data .= '<a title="Google +" onclick="googlecheck(' . base_url('blog/' . $blog['blog_slug']) . ')" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '" >
+
+            $blog_data .= '<a href="javascript:void(0)" title="Google +" id="google_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '">
                                                                                 <span  class="social_gp"></span>
-                                                                            </a>
+                                                                            </a>';
+
+            $blog_data .= '<a href="javascript:void(0)" title="linkedin" id="linked_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '">
+                    <span  class="social_lk"></span></a>
                                                                         </li>
                                                                         <li>';
-
-            $blog_data .= "<a href='https://www.linkedin.com/cws/share?url='.$url.' title='linkedin' onclick='javascript:window.open('https://www.linkedin.com/cws/share?url='. $url .', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;'><span  class='social_lk'></span></a>
-                                                                        </li>
-                                                                        <li>";
-            $blog_data .= "<a href='https://twitter.com/intent/tweet?url='. $url .'  title='twitter' onclick='javascript:window.open('https://twitter.com/intent/tweet?url='.$url.', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;'><span  class='social_tw'></span></a>
-                                                                        </li>";
+            $blog_data .= '<a href="javascript:void(0)"  title="twitter" id="twitter_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '">
+                    <span  class="social_tw"></span></a>
+                                                                        </li>';
             $blog_data .= '</ul>
                                                                 </div>';
             $blog_data .= '<div class="fr blog_view_link">';
+<<<<<<< HEAD
             $blog_data .= "<a title='Read more' onclick='read_more('" . $blog['id'] . "', '" . $blog['blog_slug'] . "')'> Read more <i class='fa fa-long-arrow-right' aria-hidden='true'></i>
+=======
+                $blog_data .= '<a title="Read more" id="read_more" blog_id="' . $blog['id'] . '" blog_slug="' . $blog['blog_slug'] . '", "' . $blog['blog_slug'] . '")"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+>>>>>>> 38fb1fde3c7da01091009e0ab037fb598345de06
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -352,7 +353,7 @@ class Blog extends CI_Controller {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>";
+                                        </div>';
         }
 
         $record = $_GET["total_record"] / $perpage;
@@ -496,13 +497,27 @@ class Blog extends CI_Controller {
             $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
 
 
-            $blog_data .= '<a class="fbk" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '" title="Facebook" summary="' . $summary . '" image="' . $image . '"> 
+            $blog_data .= '<a class="fbk" id="facebook_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '" title="Facebook" summary="' . $summary . '" image="' . $image . '"> 
                                                                                 <span  class="social_fb"></span>
                                                                             </a>
                                                                         </li>
-                                                                
-                                                                 </ul>
+                                                                        <li>';
+
+
+            $blog_data .= '<a href="javascript:void(0)" title="Google +" id="google_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '">
+                                                                                <span  class="social_gp"></span>
+                                                                            </a>';
+
+            $blog_data .= '<a href="javascript:void(0)" title="linkedin" id="linked_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '">
+                    <span  class="social_lk"></span></a>
+                                                                        </li>
+                                                                        <li>';
+            $blog_data .= '<a href="javascript:void(0)"  title="twitter" id="twitter_link" url_encode="' . $url . '" url="' . base_url('blog/' . $blog['blog_slug']) . '">
+                    <span  class="social_tw"></span></a>
+                                                                        </li>';
+            $blog_data .= '</ul>
                                                                 </div>';
+
             $blog_data .= '<div class="fr blog_view_link">';
             $blog_data .= "<a title='Read more' onclick='read_more('" . $blog['id'] . "', '" . $blog['blog_slug'] . "')'> Read more <i class='fa fa-long-arrow-right' aria-hidden='true'></i>
                                                                     </a>

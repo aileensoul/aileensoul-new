@@ -2044,25 +2044,31 @@ class Recruiter extends MY_Controller {
                     $rec_post .= '<div class="post-img">
                                             <a href="#">';
                       if ($cache_time) {
+                       
                     if (IMAGEPATHFROM == 'upload') {
+                       
                         if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                           
+                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                           
                         } else {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                            $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
                         }
                     } else {
+                      
                         $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info) {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                            $rec_post .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
                         } else {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                            $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
                         }
                     }
                   
                 } else {
-                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                   
+                    $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
                 }
                     $rec_post .= '</a>
                                         </div>';

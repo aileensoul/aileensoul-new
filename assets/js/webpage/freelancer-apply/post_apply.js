@@ -87,7 +87,7 @@ function freelancerwork_home(pagenum)
             }
             function savepopup(id) {
                 save_post(id);
-                $('.biderror .mes').html("<div class='pop_content'>Post successfully saved.");
+                $('.biderror .mes').html("<div class='pop_content'>Your Project is successfully saved.");
                 $('#bidmodal').modal('show');
             }
 //CODE FOR SAVE USER END             
