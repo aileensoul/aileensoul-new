@@ -538,11 +538,6 @@
                                                 </fieldset>
                                                 <fieldset class="hs-submit half-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                                    <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                                        <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
-                                                    <?php } else { ?>
-                                                        <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
-                                                    <?php } ?>
                                                     <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                 </fieldset>
 
