@@ -52,7 +52,7 @@
                 <div class="container">
                     <!-- html code for inner page  --->
                     <div class="all-site-link">
-                        <h3>Business Profile <span>Categories</span></h3>
+                        <h3>Job Profile <span>Categories</span></h3>
                         <div class="linkbox">
 <?php
                             foreach ($getJobDataByLocation as $key => $value) {
