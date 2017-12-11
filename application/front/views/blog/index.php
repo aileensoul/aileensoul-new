@@ -32,10 +32,10 @@
         ?>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-6060111582812113",
-                enable_page_level_ads: true
-            });
+                (adsbygoogle = window.adsbygoogle || []).push({
+                    google_ad_client: "ca-pub-6060111582812113",
+                    enable_page_level_ads: true
+                });
         </script>
         <style type="text/css">
             footer > .container{border:1px solid transparent!important;}
@@ -119,13 +119,13 @@
                         <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                             <div class="main-menu-right">
                                 <ul class="">
-                                    <?php foreach($blog_category as $category){ ?>
-                                    <li class="category">
+                                    <?php foreach ($blog_category as $category) { ?>
+                                        <li class="category">
                                             <div id="category_<?php echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
-                                               <?php echo $category['name']; ?>
+                                                <?php echo $category['name']; ?>
                                             </div>
-                                    </li>
-                                   <?php  } ?>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -194,15 +194,15 @@
                                     <div class="job-contact-frnd">
 
                                     </div>
-<!--<li><a class="fbk" url_encode="http%3A%2F%2Flocalhost%2Faileensoul-new%2Fblog%2Fall-about-aileensoul" url="http://localhost/aileensoul-new/blog/all-about-aileensoul" title="Facebook" summary="%22%3Cp+xss%3D%22removed%22%3EAt+one+point+in+the+yester-years%2C+people+worked+jobs+to+feed+their+family+and+themselves.+In+this+day+and+age%2C+people+work+not+only+for+a+steady+source+of+income%2C+but+also+for+a+sense+of+fulfilment+that+one+gets+from+doing+something+that+they+love.+Thus%2C+it+is+important+for+an+individual%E2%80%99s+work-+be+it+a+job+or+a+business+or+a+skill+that+they+practice-+to+align+with+their+interests+and+mainly%2C+their+passion.+If+not%2C+one+ends+up+in+a+daily+monotonous+struggle+that+does+leave+them+satisfied%2C+but+not+inherently+happy.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EIt+might+not+always+be+the+easiest+task+to+land+that+perfect+job+for+yourself.+What+is+needed+is+a+single+roof+where+all+your+job-related+needs+are+satisfactorily+met.+Aileensoul+is+a+completely+free+platform+for+career-related+services%2C+such+as+hiring%2C+freelancing%2C+networking+and+much+more.+It+is+a+portal+that+seeks+to+connect+recruiters+to+prospective+employees.+It+also+helps+businesses+connect+with+each+other%2C+as+well+as+artists+find+a+platform+for+their+talents.+Simply+put%2C+anyone+with+any+requirement+related+to+the+job+or+business+sector+is+sure+to+find+a+solution+on+Aileensoul.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EThere+are+many+problems+encountered+by+both+employers+and+employees+while+looking+for+a+perfect+fit+for+themselves.+In+the+age+of+technology%2C+there+is+an+overwhelming+amount+of+job+portals%2C+freelancing+sites+and+such+that+make+it+difficult+for+an+individual+to+single+out+the+best+one.+There+is+the+added+hassle+of+creating+and+maintaining+separate+accounts+for+all+these+sites.+Moreover%2C+there+has+been+an+alarming+increase+in+the+number+of+start-ups+in+the+past+decade.+Most+of+these+business+face+the+problem+of+being+unable+to+recruit+capable%2C+trustworthy+employees%2C+owing+to+the+newness+of+their+business.+There+are+artists+that+usually+work+on+project+basis%2C+who+find+it+difficult+to+find+a+decent+job+or+project.+Aileensoul+seeks+to+provide+solutions+to+all+of+these+problems.+On+this+portal%2C+everyone+from+start-up+companies+to+multinational+corporations+can+find+suitable+recruitment.+Freelancers+and+artists+can+find+a+platform+for+themselves+on+Aileensoul+that+truly+values+their+talents.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EOn+Aileensoul%2C+job+seekers+can+easily+search+for+their+desired+profile%2C+shortlist+jobs+that+pique+their+interest%2C+and+then+apply+for+the+same.+They+can+also+connect+to+the+recruiters%E2%80%99+profile+to+find+out+more+about+the+same.+Aileensoul+also+allows+businesses+to+connect+with+one+another%2C+update+information+and+indulge+in+contact+networking.+On+this+portal%2C+artists+can+upload+their+PDF+files%2C+videos%2C+images%2C+etc+so+as+to+find+the+right+audience+for+their+talent.+Freelancers+can+connect+to+agents+and+other+mediums+to+find+the+perfect+project+that+meets+their+skill+set.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EAileensoul+is+a+unified+platform+for+every+career-related+need+that+an+individual+may+have.+It+provides+solutions+for+every+sector+of+the+job+market%2C+from+job+recruiters+to+%3Ca+href%3D%22https%3A%2F%2Fwww.aileensoul.com%22+target%3D%22_blank%22%3Ejob+seekers%3C%2Fa%3E+to+artists.+Aileensoul%E2%80%99s+mission+is+to+help+people+discover+and+rediscover+their+perfect+career+and+to+help+them+grow+in+their+chosen+career.+It+also+seeks+to+end+unemployment+and+by+extension%2C+poverty%2C+by+setting+people+up+with+their+desired+jobs+or+finding+them+projects+that+not+only+provides+a+source+of+income%2C+but+also+instils+them+with+a+sense+of+contentment.%3C%2Fp%3E%0D%0A%22" image="http%3A%2F%2Flocalhost%2Faileensoul-new%2Fuploads%2Fblog%2Fmain%2Fbanner_12.jpg"> -->
-<!--                                                                                <span class="social_fb"></span>
-                                                                            </a>
-                                                                        </li>-->
+                                    <!--<li><a class="fbk" url_encode="http%3A%2F%2Flocalhost%2Faileensoul-new%2Fblog%2Fall-about-aileensoul" url="http://localhost/aileensoul-new/blog/all-about-aileensoul" title="Facebook" summary="%22%3Cp+xss%3D%22removed%22%3EAt+one+point+in+the+yester-years%2C+people+worked+jobs+to+feed+their+family+and+themselves.+In+this+day+and+age%2C+people+work+not+only+for+a+steady+source+of+income%2C+but+also+for+a+sense+of+fulfilment+that+one+gets+from+doing+something+that+they+love.+Thus%2C+it+is+important+for+an+individual%E2%80%99s+work-+be+it+a+job+or+a+business+or+a+skill+that+they+practice-+to+align+with+their+interests+and+mainly%2C+their+passion.+If+not%2C+one+ends+up+in+a+daily+monotonous+struggle+that+does+leave+them+satisfied%2C+but+not+inherently+happy.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EIt+might+not+always+be+the+easiest+task+to+land+that+perfect+job+for+yourself.+What+is+needed+is+a+single+roof+where+all+your+job-related+needs+are+satisfactorily+met.+Aileensoul+is+a+completely+free+platform+for+career-related+services%2C+such+as+hiring%2C+freelancing%2C+networking+and+much+more.+It+is+a+portal+that+seeks+to+connect+recruiters+to+prospective+employees.+It+also+helps+businesses+connect+with+each+other%2C+as+well+as+artists+find+a+platform+for+their+talents.+Simply+put%2C+anyone+with+any+requirement+related+to+the+job+or+business+sector+is+sure+to+find+a+solution+on+Aileensoul.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EThere+are+many+problems+encountered+by+both+employers+and+employees+while+looking+for+a+perfect+fit+for+themselves.+In+the+age+of+technology%2C+there+is+an+overwhelming+amount+of+job+portals%2C+freelancing+sites+and+such+that+make+it+difficult+for+an+individual+to+single+out+the+best+one.+There+is+the+added+hassle+of+creating+and+maintaining+separate+accounts+for+all+these+sites.+Moreover%2C+there+has+been+an+alarming+increase+in+the+number+of+start-ups+in+the+past+decade.+Most+of+these+business+face+the+problem+of+being+unable+to+recruit+capable%2C+trustworthy+employees%2C+owing+to+the+newness+of+their+business.+There+are+artists+that+usually+work+on+project+basis%2C+who+find+it+difficult+to+find+a+decent+job+or+project.+Aileensoul+seeks+to+provide+solutions+to+all+of+these+problems.+On+this+portal%2C+everyone+from+start-up+companies+to+multinational+corporations+can+find+suitable+recruitment.+Freelancers+and+artists+can+find+a+platform+for+themselves+on+Aileensoul+that+truly+values+their+talents.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EOn+Aileensoul%2C+job+seekers+can+easily+search+for+their+desired+profile%2C+shortlist+jobs+that+pique+their+interest%2C+and+then+apply+for+the+same.+They+can+also+connect+to+the+recruiters%E2%80%99+profile+to+find+out+more+about+the+same.+Aileensoul+also+allows+businesses+to+connect+with+one+another%2C+update+information+and+indulge+in+contact+networking.+On+this+portal%2C+artists+can+upload+their+PDF+files%2C+videos%2C+images%2C+etc+so+as+to+find+the+right+audience+for+their+talent.+Freelancers+can+connect+to+agents+and+other+mediums+to+find+the+perfect+project+that+meets+their+skill+set.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EAileensoul+is+a+unified+platform+for+every+career-related+need+that+an+individual+may+have.+It+provides+solutions+for+every+sector+of+the+job+market%2C+from+job+recruiters+to+%3Ca+href%3D%22https%3A%2F%2Fwww.aileensoul.com%22+target%3D%22_blank%22%3Ejob+seekers%3C%2Fa%3E+to+artists.+Aileensoul%E2%80%99s+mission+is+to+help+people+discover+and+rediscover+their+perfect+career+and+to+help+them+grow+in+their+chosen+career.+It+also+seeks+to+end+unemployment+and+by+extension%2C+poverty%2C+by+setting+people+up+with+their+desired+jobs+or+finding+them+projects+that+not+only+provides+a+source+of+income%2C+but+also+instils+them+with+a+sense+of+contentment.%3C%2Fp%3E%0D%0A%22" image="http%3A%2F%2Flocalhost%2Faileensoul-new%2Fuploads%2Fblog%2Fmain%2Fbanner_12.jpg"> -->
+                                    <!--                                                                                <span class="social_fb"></span>
+                                                                                                                </a>
+                                                                                                            </li>-->
                                     <ul class="load-more-blog">
-										<li class="loadbutton"></li>
-										<li class="loadcatbutton"></li>
-									</ul>
-                                    <?php }
+                                        <li class="loadbutton"></li>
+                                        <li class="loadcatbutton"></li>
+                                    </ul>
+                                <?php }
                                 ?>
                             </div>
 
@@ -241,7 +241,7 @@
                                                         </div>
                                                     </a>
                                                 </li>
-                                                
+
                                             </ul>
                                         </div>
                                         <!--latest_post_posts end -->
@@ -307,25 +307,21 @@
         blog_post();
 
     });
-    
-     function category_data(catid,pagenum) {
-          $('.job-contact-frnd').html("");
-          $('.loadbutton').html("");
-         cat_post(catid,pagenum);
-     }
-     
-     $('.loadcatbutton').click(function () { alert(134343);
+
+    function category_data(catid, pagenum) {
+        $('.job-contact-frnd').html("");
+        $('.loadbutton').html("");
+        cat_post(catid, pagenum);
+    }
+
+    $('.loadcatbutton').click(function () {
         var pagenum = parseInt($(".page_number:last").val()) + 1;
         var catid = $(".catid").val();
-        alert(catid);
-        cat_post(catid,pagenum);
+        cat_post(catid, pagenum);
     });
-     
-     var isProcessing = false;
-    function cat_post(catid,pagenum) {
-        alert(catid);
-        alert(pagenum);
-       alert(121212);
+
+    var isProcessing = false;
+    function cat_post(catid, pagenum) {
         if (isProcessing) {
             /*
              *This won't go past this condition while
@@ -335,7 +331,7 @@
             return;
         }
         isProcessing = true;
-        $.ajax({ 
+        $.ajax({
             type: 'POST',
             url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
             data: {total_record: $("#total_record").val()},
@@ -361,7 +357,7 @@
             }
         });
     }
-    
+
 
     $('.loadbutton').click(function () {
         var pagenum = parseInt($(".page_number:last").val()) + 1;
