@@ -109,7 +109,7 @@ function job_home(pagenum)
 //save post start 
   function savepopup(id) {
        save_post(id);
-       $('.biderror .mes').html("<div class='pop_content'>Job successfully saved.");
+       $('.biderror .mes').html("<div class='pop_content'>Jobpost successfully saved.");
        $('#bidmodal').modal('show');
    }
 
@@ -130,7 +130,7 @@ function job_home(pagenum)
 //apply post start
  function applypopup(postid, userid) 
  {
-       $('.biderror .mes').html("<div class='pop_content'>Do you want to apply this job?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+       $('.biderror .mes').html("<div class='pop_content'>Are you sure want to apply this jobpost?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
        $('#bidmodal').modal('show');
   }
 

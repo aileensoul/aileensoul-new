@@ -322,7 +322,7 @@
                                                         ?>
                                                         <a href="javascript:void(0);" class="btn4 applied">Applied</a>
                                                     <?php } else { ?>
-                                                        <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
+                                                       
                                                         <?php
                                                         $userid = $this->session->userdata('aileenuser');
                                                         $contition_array = array(
@@ -338,13 +338,14 @@
                                                         <?php } else { ?>
                                                             <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> btn4 save_saved_btn">Save</a>
                                                         <?php } ?>
+                                                         <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
                                                         <?php
                                                     }
                                                 }
                                                 ?>
 
-                                                <!--                                                    <a href="#" class="btn4">Save</a>
-                                                                                                                            <a href="#" class="btn4">Apply</a>-->
+                                                <!--    <a href="#" class="btn4">Save</a>
+                                                 <a href="#" class="btn4">Apply</a>-->
                                             </p>
                                         </div>
                                     </div>
@@ -537,7 +538,7 @@
                                                         ?>
                                                         <a href="javascript:void(0);" class="btn4 applied">Applied</a>
                                                     <?php } else { ?>
-                                                        <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
+                                                        
                                                         <?php
                                                         $userid = $this->session->userdata('aileenuser');
                                                         $contition_array = array(
@@ -553,6 +554,7 @@
                                                         <?php } else { ?>
                                                             <a title="Save" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id'] ?>)" href="javascript:void(0);" class="savedpost<?php echo $post['post_id']; ?> btn4 save_saved_btn">Save</a>
                                                         <?php } ?>
+                                                        <a href="javascript:void(0);"  class= "applypost<?php echo $post['post_id']; ?>  btn4" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
                                                         <?php
                                                     }
                                                 }
@@ -706,7 +708,7 @@
                                                                     //apply post start
                                                                     function applypopup(postid, userid)
                                                                     {
-                                                                        $('.biderror .mes').html("<div class='pop_content'>Do you want to apply this job?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                                        $('.biderror .mes').html("<div class='pop_content'>Are you sure want to apply this  jobpost?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                                                         $('#bidmodal').modal('show');
                                                                     }
 
@@ -740,7 +742,7 @@
 //save post start 
                                                                     function savepopup(id) {
                                                                         save_post(id);
-                                                                        $('.biderror .mes').html("<div class='pop_content'>Job successfully saved.");
+                                                                        $('.biderror .mes').html("<div class='pop_content'>Jobpost successfully saved.");
                                                                         $('#bidmodal').modal('show');
                                                                     }
 
