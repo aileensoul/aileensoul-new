@@ -1356,7 +1356,7 @@ class Recruiter extends MY_Controller {
         );
         $contition_array = array('job_apply.post_id' => $id, 'job_apply.job_delete' => '0', 'job_reg.job_step' => '10');
 
-        $data = "job_reg.job_id,job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.phnno,job_reg.keyskill,job_reg.experience,job_reg.slug,job_add_edu.*";
+        $data = "job_reg.job_id,job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.phnno,job_reg.keyskill,job_reg.experience,job_reg.slug,job_add_edu.*,job_reg.job_user_image";
         $userdata = $this->data['user_data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = 'job_id');
 
         $this->load->view('recruiter/view_apply_list', $this->data);

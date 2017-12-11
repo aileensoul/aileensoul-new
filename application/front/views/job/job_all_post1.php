@@ -132,7 +132,7 @@
                                     <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                 </div>
                             </div>
-
+                            <?php echo $left_footer; ?>
                         </div>
                     </div>
                     <div class="custom-right-art mian_middle_post_box animated fadeInUp">

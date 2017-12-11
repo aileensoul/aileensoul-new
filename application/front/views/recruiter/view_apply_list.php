@@ -60,15 +60,20 @@
                                                                 <div class="profile-job-post-location-name-rec">
                                                                     <div style="display: inline-block; float: left;">
                                                                         <div  class="buisness-profile-pic-candidate">
-                                                                            <?php
-                                                                            $imageee = $this->config->item('job_profile_thumb_upload_path') . $row['job_user_image'];
-                                                                            if (file_exists($imageee) && $row['job_user_image'] != '') {
-                                                                                ?>
+                                                                             <a style="  font-size: 19px;
+                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug'] . '?page=recruiter'); ?>">
 
-                                                                                <img src="<?php echo base_url($this->config->item('job_profile_thumb_upload_path') . $row['job_user_image']); ?>" alt="" >
+                                                                                   <?php 
+                                                                                    $filename = $this->config->item('job_profile_thumb_upload_path') . $row['job_user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($row['job_user_image'] != '' && $info) { ?>
+                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $row['job_user_image']; ?>" alt="" >
+
+                                                                           
 
                                                                                 <?php
-                                                                            } else {
+                                                                            }  else { 
 
                                                                                 $a = $row['fname'];
                                                                                 $acr = substr($a, 0, 1);
@@ -82,7 +87,8 @@
                                                                                 </div>
 
                                                                             <?php }
-                                                                            ?>
+                                                                            ?> 
+                                                                        </a>
                                                                         </div>
 
                                                                     </div>
