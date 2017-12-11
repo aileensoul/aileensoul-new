@@ -23,11 +23,11 @@
             <h1 class="text-center"><a href="<?php echo base_url('sitemap') ?>"> Sitemap </a></h1>
             <div class="fw text-center">
                 <ul>
-                    <li><a href="<?php echo base_url('sitemap/job-profile') ?>">Job Profile</a></li>
-                    <li><a href="<?php echo base_url('sitemap/recruiter-profile') ?>">Recruiter Profile</a></li>
-                    <li><a href="<?php echo base_url('sitemap/freelance-profile') ?>">Freelance Profile</a></li>
-                    <li><a href="<?php echo base_url('sitemap/business-profile') ?>">Business Profile</a></li>
-                    <li><a href="<?php echo base_url('sitemap/artistic-profile') ?>">Artistic Profile</a></li>
+                    <li><a href="<?php echo base_url('sitemap/job-profile') ?>" class="<?php if($this->uri->segment(2) == 'job-profile'){ echo 'sitemap_active'; } ?>">Job Profile</a></li>
+                    <li><a href="<?php echo base_url('sitemap/recruiter-profile') ?>" class="<?php if($this->uri->segment(2) == 'recruiter-profile'){ echo 'sitemap_active'; } ?>">Recruiter Profile</a></li>
+                    <li><a href="<?php echo base_url('sitemap/freelance-profile') ?>" class="<?php if($this->uri->segment(2) == 'freelance-profile'){ echo 'sitemap_active'; } ?>">Freelance Profile</a></li>
+                    <li><a href="<?php echo base_url('sitemap/business-profile') ?>" class="<?php if($this->uri->segment(2) == 'business-profile'){ echo 'sitemap_active'; } ?>">Business Profile</a></li>
+                    <li><a href="<?php echo base_url('sitemap/artistic-profile') ?>" class="<?php if($this->uri->segment(2) == 'artistic-profile'){ echo 'sitemap_active'; } ?>">Artistic Profile</a></li>
                 </ul>
             </div>
 
