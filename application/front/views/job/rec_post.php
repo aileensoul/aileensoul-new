@@ -379,7 +379,7 @@
                                                     <span><?php echo $post['post_position']; ?>
                                                     </span>
                                                 </li>
-                                                <li><b>Indostry</b>
+                                                <li><b>Industry</b>
                                                     <span> 
                                                         <?php
                                                         $cache_time4 = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;

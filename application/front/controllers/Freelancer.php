@@ -1308,7 +1308,7 @@ class Freelancer extends MY_Controller {
                 <p class="pull-right">';
                 if ($retur == '' && $id == 'null') {
                     $return_html .= '<a href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['post_id'] . ')">Remove</a>';
-                    $return_html .= '<a href="' . base_url('freelancer-hire/edit-projects/' . $post['post_id']) . '" class="btn4" onclick="removepopup(' . $post['post_id'] . ')">Edit</a>';
+                    $return_html .= '<a href="' . base_url('freelancer-hire/edit-projects/' . $post['post_id']) . '" class="btn4")">Edit</a>';
 
                     $join_str[0]['table'] = 'freelancer_post_reg';
                     $join_str[0]['join_table_id'] = 'freelancer_post_reg.user_id';
@@ -1317,7 +1317,7 @@ class Freelancer extends MY_Controller {
 
                     $contition_array = array('freelancer_post_reg.status' => '1', 'freelancer_apply.post_id' => $post['post_id'], 'freelancer_apply.is_delete ' => '0');
                     $apply_count = $this->data['results'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'freelancer_apply.user_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-                    $return_html .= '<a href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['post_id'] . ')">Applied Persons:';
+                    $return_html .= '<a href="javascript:void(0);" class="btn4" >Applied Persons:';
                     $return_html .= count($apply_count);
                     $return_html .= '</a>';
 
@@ -1337,7 +1337,7 @@ class Freelancer extends MY_Controller {
                     $contition_array = array('freelancer_apply.post_id' => $post['post_id'], 'freelancer_apply.is_delete' => '0', 'save.from_id' => $userid, 'save.save_type' => '2', 'save.status' => '2', 'freelancer_post_reg.status' => '1');
                     $data = 'freelancer_post_reg.user_id';
                     $shortlist = $this->data['shortlist'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-                    $return_html .= '<a href="javascript:void(0);" class="btn4" onclick="removepopup(' . $post['post_id'] . ')">Shortlisted Persons:';
+                    $return_html .= '<a href="javascript:void(0);" class="btn4">Shortlisted Persons:';
                     $return_html .= count($shortlist);
                     $return_html .='</a>';
                 } else {
