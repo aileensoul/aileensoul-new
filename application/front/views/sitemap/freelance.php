@@ -90,7 +90,7 @@
                     } else {
                         $cityname = '';
                     }?>
-                                    <li><a href="<?php echo base_url('freelancer-hire/jobpost/' . $text . $cityname . '-' . $projects['user_id'] . '-' . $projects['post_id']) ?>"><?php echo $projects['post_name'] . '(' . $projects['fullname'] . ' ' . $projects['username'] . ')'; ?></a></li>
+                                    <li><a href="<?php echo base_url('freelancer-hire/projects/' . $text . $cityname . '-' . $projects['user_id'] . '-' . $projects['post_id']) ?>"><?php echo $projects['post_name'] . '(' . $projects['fullname'] . ' ' . $projects['username'] . ')'; ?></a></li>
                            <?php } ?>
                                 </ul>
                             </div>
