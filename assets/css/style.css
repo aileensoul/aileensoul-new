@@ -2072,7 +2072,7 @@ footer div.pt20{padding-top: 18px;}
 .job-detail .job-top-detail p{line-height:1.8;}
 .job-detail .all-job-top{border:1px solid #d2d2d2; margin-bottom:10px; border-radius:4px;}
 .job-detail .detail-discription{border:1px solid #d2d2d2; margin-bottom:10px; border-radius:4px; width:100%; float:left;}
-.job-detail .job-top-detail{width:87%;}
+.job-detail .job-top-detail{width:100%;}
 .cust-inner-part .job-top-detail{width: 100%}
 .detail-discription .all-job-middle ul{padding:0;} 
 .detail-discription .all-job-middle ul li{padding:3px 0; list-style-type:none; width:100%; float:left;} 
@@ -2153,7 +2153,7 @@ word-break: break-word;}
   
   /*** new flow  ***/
   .inner-right-part{width:805px;}
-	.job-detail .job-top-detail{width:85%;}
+	.job-detail .job-top-detail{width:100%;}
 	.detail-discription .all-job-middle ul li span{width:80%;}
   /*** end new flow  ***/
   
@@ -2166,7 +2166,7 @@ word-break: break-word;}
 	/***  new flow  ***/
 	.middle-part{left:358px;}
 	.inner-right-part{width:605px;}
-	.job-detail .job-top-detail{width:80%;}
+	.job-detail .job-top-detail{width:100%;}
 	.detail-discription .all-job-middle ul li span{width:75%;}
 	/***  end new flow  ***/
 }
@@ -2381,7 +2381,7 @@ word-break: break-word;}
 	btns .btn-4{font-size:14px !important; padding:5px 20px;}
 	.inner-right-part{width:100%;}
 	.middle-part{width:100%;}
-	.job-detail .job-top-detail{width:73%;}
+	.job-detail .job-top-detail{width:100%;}
 	.detail-discription .all-job-middle ul li span{width:68%;}
 	
 	.comment-dis{width:100%;}
