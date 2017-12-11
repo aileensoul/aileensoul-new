@@ -38,6 +38,11 @@
                     enable_page_level_ads: true
                 });
         </script>
+        <style type="text/css">
+            .full_page ul li{
+                width: 100% !important;
+            }
+        </style>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()) ?>">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -52,17 +57,23 @@
                 <div class="container">
                     <!-- html code for inner page  --->
                     <div class="all-site-link">
-                        <h3>Freelancer Profile</h3>
-                        <div class="linkbox">
-
+                        <h3>Freelancer Hire Profile</h3>
+                        <div class="linkbox full_page">
                             <div class="smap-catbox">
-                                <div class="catbox-left">
-                                    <h5>IT</h5>
-                                </div>
-                                <ul class="catbox-right">
+                                <ul class="catbox-right artist-sitemap">
+                                    <li><a href="#">url-link.html</a></li>
+                                    <li><a href="#">url-link.html</a></li>
+                                    <li><a href="#">url-link.html</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                                    <li><a href="#">url-link.html</a></li>
-                                    <li><a href="#">url-link.html</a></li>
+                    <div class="all-site-link">
+                        <h3>Freelancer Apply Profile</h3>
+                        <div class="linkbox">
+                            <div class="smap-catbox">
+                                <ul class="catbox-right">
                                     <li><a href="#">url-link.html</a></li>
                                     <li><a href="#">url-link.html</a></li>
                                     <li><a href="#">url-link.html</a></li>
@@ -97,7 +108,7 @@
 
                         </div>
                     </div>
-                    
+
                 </div>
 
             </section>
