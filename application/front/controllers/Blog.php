@@ -33,17 +33,18 @@ class Blog extends CI_Controller {
             $condition_array = array('status' => 'publish', 'blog_slug' => $slug);
             $this->data['blog_detail'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
             $blogid = $this->data['blog_detail'][0]['id'];
+        $relatedid = explode(',',$this->data['blog_detail'][0]['blog_related_id']); 
+       foreach($relatedid as $id){
+            $condition_array = array('status' => 'publish', 'id' => $id);
+            $blogs[] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+           
+       }
+      $this->data['rand_blog'] = array_reduce($blogs, 'array_merge', array()); 
             //FOR GETTING 5 LAST DATA
             $condition_array = array('status' => 'publish');
             $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
             //random blog
-            $this->db->order_by('id', 'RANDOM');
-            $this->db->limit(3);
-            $this->db->where('blog_slug !=', $slug);
-            //$this->db->where("FIND_IN_SET('$blogid',blog_category_id) !=", 0);
-            $query = $this->db->get('blog');
-            $this->data['rand_blog'] = $query->result_array();
-
+            
             // random blog end 
             $this->load->view('blog/blogdetail', $this->data);
         } else {

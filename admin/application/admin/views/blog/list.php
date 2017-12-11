@@ -113,6 +113,9 @@ echo $leftmenu;
                     
                     <th><i class="fa fa-bullhorn"></i> 
                     <a href="javascript:void(0);">Category</a></th>
+                    
+                     <th><i class="fa fa-bullhorn"></i> 
+                    <a href="javascript:void(0);">Related blog</a></th>
 
 <!--                    <th><i class="fa fa-envelope"></i> 
                      <a href="javascript:void(0);">Tag Name</a>
@@ -155,6 +158,12 @@ echo $leftmenu;
        $category =  explode(',', $blog['blog_category_id']);
       foreach($category as $catid){ 
   echo  '*' . $this->db->get_where('blog_category', array('id' => $catid))->row()->name . "<br>";
+      }?></td>
+                    
+                    <td><?php 
+       $related =  explode(',', $blog['blog_related_id']);
+      foreach($related as $relid){ 
+  echo  '*' . $this->db->get_where('blog', array('id' => $relid))->row()->title . "<br>";
       }?></td>
       
 

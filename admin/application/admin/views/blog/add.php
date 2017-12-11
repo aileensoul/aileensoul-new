@@ -104,7 +104,7 @@ echo $leftmenu;
                         <!-- RELATED BLOG START -->
                         <div class="box-body">                   
                     <div class="form-group col-sm-10">
-                            <label for="govcat" name="govcat" id="govcat">Related Blog*</label>
+                            <label for="govcat" name="govcat" id="relblog">Related Blog*</label>
                              <select name="related[]" id="related" tabindex="1" class="form-control" multiple>
                                <!--<option value="">Select blog Category</option>--> 
                             <?php                             
@@ -138,6 +138,15 @@ echo $leftmenu;
 <script type="text/javascript">
     //validation for edit email formate form
     $(document).ready(function () {
+        
+         $('#related option').click(function() 
+    { 
+        var items = $(this).parent().val();
+        if (items.length > 3) {
+                       alert("You can only select 3 Related blogs");
+           $(this).removeAttr("selected");
+        }
+    });
 
 
         $("#add_blog_frm").validate({
@@ -160,6 +169,12 @@ echo $leftmenu;
                 image: {
                     required: true,
                 },
+                "related[]": {
+                    required: true,
+                },
+                "category[]": {
+                    required: true,
+                },
                 
             },
             messages:
@@ -178,6 +193,12 @@ echo $leftmenu;
                         },
                         image: {
                             required: "Please choose image",
+                        },
+                        "related[]": {
+                            required: "Related category is required",
+                        },
+                         "category[]": {
+                            required: "category is required",
                         }
                        
                     },

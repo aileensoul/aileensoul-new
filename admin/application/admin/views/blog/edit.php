@@ -166,7 +166,16 @@ echo $leftmenu;
 <script type="text/javascript">
     //validation for edit email formate form
     $(document).ready(function () {
-
+    
+     $('#related option').click(function() 
+    { 
+        var items = $(this).parent().val();
+        if (items.length > 3) {
+                       alert("You can only select 3 Related blogs");
+           $(this).removeAttr("selected");
+        }
+    });
+    
 
         $("#edit_blog_frm").validate({
             rules: {
@@ -188,6 +197,12 @@ echo $leftmenu;
                 description: {
                     required: true,
                 },
+                "related[]": {
+                    required: true,
+                },
+                "category[]": {
+                    required: true,
+                },
 
             },
             messages:
@@ -207,6 +222,13 @@ echo $leftmenu;
                         description: {
                             required: "Please enter blog description",
                         },
+                        
+                        "related[]": {
+                            required: "Related category is required",
+                        },
+                         "related[]": {
+                            required: "category is required",
+                        }
 
                     },
         });
