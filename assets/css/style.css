@@ -2063,7 +2063,7 @@ footer div.pt20{padding-top: 18px;}
 .job-top-btn .saved {color: #fff !important}
 .job-top-btn .applied{color: #fff !important}
 /***  end all job page  ***/
-job-contact-frnd1{border: 1px solid #d9d9d9;}
+.cust-border{border: 1px solid #d9d9d9;margin-bottom: 50px;}
 /***  all job page detail  ***/
 .inner-right-part{width:915px; left:335px; position:relative; float:left;}
 .all-job-box.job-detail{border:none;}
