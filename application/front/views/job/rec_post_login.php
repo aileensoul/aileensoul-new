@@ -668,7 +668,7 @@
                                         <div class="all-job-middle">
                                             <ul>
                                                 <li>
-                                                    <b>Job discription</b>
+                                                    <b>Job description</b>
                                                     <span>
                                                         <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
                                                     </span>
