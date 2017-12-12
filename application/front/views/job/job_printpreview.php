@@ -1280,7 +1280,7 @@
                                        
                                        
                                        ?>
-                                    <?php if ($job_work) { ?>
+                                    <?php if ($job_work) {   ?>
                                     <div class="profile-job-profile-button clearfix">
                                        <div class="profile-job-details">
                                           <ul>
@@ -1297,7 +1297,7 @@
                                              <span>
                                              <?php
                                              
-                                             if($job[0]['exp_y'] == " " && $job[0]['exp_m'] == " "){
+                                             if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
                                                 $total_work_year = 0;
                                                 $total_work_month = 0;
                                                 foreach ($job_work as $work1) {
@@ -1335,7 +1335,7 @@
                                                     }
                                                 } 
                                                 }
-                                    }else{
+                                    }else{  
                                         if ($userdata[0]['exp_m'] == '12 month' && $userdata[0]['exp_y'] == '0 year') {
                                                     echo "1 year";
                                                 } else {
