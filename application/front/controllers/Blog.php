@@ -285,7 +285,7 @@ class Blog extends CI_Controller {
                                                         <div class="blog_main_post_second_part">
                                                             <div class="blog_class_main_name">
                                                                 <span>
-                                                                    <a href="' . base_url('blog/' . $blog['blog_slug']) . '">
+                                                                    <a target="_blank" href="' . base_url('blog/' . $blog['blog_slug']) . '">
                                                                         <h1>' . $blog['title'] . '</h1>
                                                                     </a>
                                                                 </span>
@@ -449,14 +449,14 @@ class Blog extends CI_Controller {
                                                     <div class="blog_inside_post_main">
                                                         <div class="blog_main_post_first_part">
                                                             <div class="blog_main_post_img">';
-            $blog_data .= '<a href="' .
+            $blog_data .= '<a target="_blank" href="' .
                     base_url('blog/' . $blog['blog_slug']) . '"> <img src="' . base_url($this->config->item('blog_main_upload_path') . $blog['image']) . '" ></a>';
             $blog_data .= '</div>
                                                         </div>
                                                         <div class="blog_main_post_second_part">
                                                             <div class="blog_class_main_name">
                                                                 <span>
-                                                                    <a href="' . base_url('blog/' . $blog['blog_slug']) . '">
+                                                                    <a target="_blank" href="' . base_url('blog/' . $blog['blog_slug']) . '">
                                                                         <h1>' . $blog['title'] . '</h1>
                                                                     </a>
                                                                 </span>

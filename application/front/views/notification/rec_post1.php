@@ -10,7 +10,7 @@
    <!DOCTYPE html>
 <html>
 
-<body>
+<body class="cust-job-width">
 
 <!-- cover pic start -->
 

@@ -3,6 +3,7 @@
     <head><title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
         <style>
             /***  commen css  ***/
@@ -352,11 +353,12 @@
              .profile-boxProfileCard-cover{height: 400px;border:1px solid #d9d9d9;padding-left: 10px;}
              .profile-boxProfileCard-cover a{color: black;}
              .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
+             .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
             /*second*/
 
         </style>
     </head>
-    <body>
+    <body class="no-login">
         <?php //echo $header; ?>
         <?php //echo $freelancer_post_header2_border; ?>
         <?php
@@ -494,7 +496,7 @@
 
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
-                <div class="modal-content">
+                <div class="modal-content ">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
                         <span class="mes"></span>
@@ -506,12 +508,12 @@
         <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content login-frm">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
-                        <div class="col-sm-12 right-main">
+                        <div class="right-main">
                             <div class="right-main-inner">
-                                <div class="login-frm">
+                                <div class="">
                                     <div class="title">
                                         <h1 class="ttc">Welcome To Aileensoul</h1>
                                     </div>

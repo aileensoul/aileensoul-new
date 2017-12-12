@@ -513,7 +513,7 @@ hr {
 }
 #paddingtop_fixed{padding-top: 83px!important; overflow:hidden;}
 #paddingtop_make_fixed{padding-top: 50px!important; overflow:hidden;}
-.no-login #paddingtop_fixed{padding-top: 70px!important;}
+.no-login #paddingtop_fixed{padding-top: 100px!important;}
 
 /***  form css  ***/
 form {
@@ -2073,6 +2073,7 @@ footer div.pt20{padding-top: 18px;}
 .job-detail .all-job-top{border:1px solid #d2d2d2; margin-bottom:10px; border-radius:4px;}
 .job-detail .detail-discription{border:1px solid #d2d2d2; margin-bottom:10px; border-radius:4px; width:100%; float:left;}
 .job-detail .job-top-detail{width:100%;}
+.cust-job-width .job-detail .job-top-detail{width:87%;}
 .cust-inner-part .job-top-detail{width: 100%}
 .detail-discription .all-job-middle ul{padding:0;} 
 .detail-discription .all-job-middle ul li{padding:3px 0; list-style-type:none; width:100%; float:left;} 
@@ -2167,6 +2168,7 @@ word-break: break-word;}
 	.middle-part{left:358px;}
 	.inner-right-part{width:605px;}
 	.job-detail .job-top-detail{width:100%;}
+    .cust-job-width .job-detail .job-top-detail{width:80%;}
 	.detail-discription .all-job-middle ul li span{width:75%;}
 	/***  end new flow  ***/
 }
@@ -2387,6 +2389,7 @@ word-break: break-word;}
 	.comment-dis{width:100%;}
 	.post-images .two-img{width:calc(50% - 4px);}
     .job-top-detail{width: 86%}
+    .cust-job-width .job-detail .job-top-detail{width: 100%;padding-top: 15px;}
 	/***  end new flow  ***/
 }
 
