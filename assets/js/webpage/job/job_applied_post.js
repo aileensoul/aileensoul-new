@@ -112,6 +112,13 @@ function job_apply(pagenum)
         success: function (data) {
             $('.loader').remove();
             $('.job-contact-frnd1').append(data);
+             //display border for no projects available start
+            var numItems = $('.job-contact-frnd1 .all-job-box').length;
+            // return false;
+            if (numItems == 0) {
+                $('.job-contact-frnd1').addClass('cust-border');
+            }
+            //display border for no projects available end
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
