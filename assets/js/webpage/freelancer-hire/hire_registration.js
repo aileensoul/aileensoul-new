@@ -55,17 +55,17 @@ $(document).ready(function () {
                 required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
-            email: {
+            email_reg: {
                 required: true,
                 email: true,
                 remote: {
                     url: site + "freelancer/check_email",
                     type: "post",
                     data: {
-                        email: function () {
-                            return $("#email").val();
+                        email_reg: function () {
+                            return $("#email_reg").val();
                         },
-//                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                         'aileensoulnewfrontcsrf': get_csrf_hash,
                     },
                 },
 
@@ -76,33 +76,25 @@ $(document).ready(function () {
             state: {
                 required: true,
             },
-            city:{
+            city: {
                 required: true,
-            },
-             professional_info: {
-               // required: true,
-                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/ 
             }
-            
-//            skills: {
-//                required: true,
-//                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-//            }
+           
 
 
         },
 
         messages: {
-             firstname: {
+            firstname: {
                 required: "First name is required."
             },
-             lastname: {
+            lastname: {
                 required: "Last name is required."
             },
             email: {
                 required: "Email id is required.",
                 email: "Please enter valid email id.",
-               // remote: "Email already exists."
+                remote: "Email already exists."
             },
             country: {
                 required: "Country is required.",
@@ -110,21 +102,15 @@ $(document).ready(function () {
             state: {
                 required: "State is required.",
             },
-            city:{
-                required:"City is required.",
-            },
-             professional_info: {
-                required: "Professional information is required."
+            city: {
+                required: "City is required.",
             }
-           
-//             skills: {
-//                required: "Skill is required"
-//            }
-
         },
     });
+
 });
 //FORM FILL UP VALIDATION END
+
 //CODE FOR COPY-PASTE START
 var _onPaste_StripFormatting_IEPaste = false;
 function OnPaste_StripFormatting(elem, e) {
@@ -149,14 +135,14 @@ function OnPaste_StripFormatting(elem, e) {
 }
 //CODE FOR COPY-PASTE END
 //
-//$("#submit").on('click', function ()
-//{
-//    if ($('#freelancerhire_regform').valid())
-//     {
-//     
-//         $("#submit").addClass("register_disable");
-//        
-//         
-//     } 
-//
-//});
+////DISABLE BUTTON ON ONE TIME CLICK START
+$("#submit").on('click', function ()
+{
+    if ($('#freelancerhire_regform').valid())
+    {
+        $("#submit").addClass("register_disable");
+        return true;
+    }
+
+});
+////DISABLE CUTTON ON ONE TIME CLICK END

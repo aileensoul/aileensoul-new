@@ -49,7 +49,7 @@
                                     </fieldset>
                                     <fieldset>
                                         <label >Email Address <font  color="red">*</font> :</label>
-                                        <input type="email" name="email" id="email" tabindex="3" placeholder="Enter email address" value="<?php  echo $userdata[0]['user_email']; ?>" maxlength="255">
+                                        <input type="email" name="email_reg" id="email_reg" tabindex="3" placeholder="Enter email address" value="<?php  echo $userdata[0]['user_email']; ?>" maxlength="255">
                                         <?php
                                         echo form_error('email');
                                         ;
@@ -58,10 +58,7 @@
                                     <fieldset>
                                         <label >Phone number:<span class="optional">(optional)</span></label>
                                         <input type="text" name="phoneno" id="phoneno" tabindex="4" placeholder="Enter phone number" value="" maxlength="255">
-                                        <?php
-                                        echo form_error('email');
-                                        ;
-                                        ?>
+                                       
                                     </fieldset>
 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
@@ -141,7 +138,7 @@
                                     <fieldset class=" full-width">
                                         <div class="job_reg">
                                            <!--<input type="reset">-->
-                                            <input title="Register" type="submit" id="submit" tabindex="9" name="" value="Register">
+                                            <input title="Register" type="submit" id="submit"  tabindex="9" name="" value="Register">
                                         </div>
                                     </fieldset>
                                     <?php echo form_close(); ?>
