@@ -720,8 +720,8 @@
                                                                             type: 'POST',
                                                                             url: base_url + 'job/job_apply_post',
                                                                             data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-                                                                            datatype: 'json',
-                                                                            success: function (data) {
+                                                                            dataType: 'json',
+                                                                            success: function (data) { alert(data.status);
                                                                                 $('.savedpost' + abc).hide();
                                                                                 $('.applypost' + abc).html(data.status);
                                                                                 $('.applypost' + abc).attr('disabled', 'disabled');
