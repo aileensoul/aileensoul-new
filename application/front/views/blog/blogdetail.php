@@ -30,6 +30,13 @@
         <?php
         }
         ?>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-6060111582812113",
+                enable_page_level_ads: true
+            });
+        </script>
       <!-- Open Graph data -->
       <meta property="og:title" content="<?php echo $blog_detail[0]['title']; ?>" />
       <meta  property="og:type" content="Blog" />
@@ -54,6 +61,8 @@
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
       <!-- This Css is used for call popup -->
       <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
+      
+      
    </head>
    <body class="blog-detail blog">
       <div class="main-inner">
@@ -88,10 +97,15 @@
                </div>
                <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                   <div class="main-menu-right">
-                     <ul class="">
-                        <li><a href="<?php echo base_url('blog/');?>">Recent Post </a></li>
-                        <li> <a href="<?php echo base_url('blog/popular');?>">Most Popular</a></li>
-                     </ul>
+ <ul class="">
+                                    <?php foreach ($blog_category as $category) { ?>
+                                        <li class="category">
+                                            <div id="category_<?php echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
+                                                <?php echo $category['name']; ?>
+                                            </div>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
                   </div>
                </div>
             </div>
@@ -102,10 +116,16 @@
             <div class="blog-mid-section user-midd-section">
                <div class="container">
                   <div class="row">
+                       <div class="blog_post_outer col-md-9 col-sm-8 pr0">
+                      <div class="job-contact-frnd">
+
+                                    
+                                                                                                          </a>
+                                     
                       <?php
                       if(count($blog_detail) > 0){
                       ?>
-                     <div class="blog_post_outer col-md-9 col-sm-8 pr0">
+                    
                         <div class="date_blog_right2">
                            <div class="blog_post_main">
                               <div class="blog_inside_post_main">
@@ -283,10 +303,29 @@
                               </fieldset>
                            </form>
                         </div>
-                     </div>
+                      <?php if(count($rand_blog) > 0) { ?>
+						<div class="related-blog">
+							<h3>Related Blogs</h3>
+							<div class="row">
+                                                            <?php foreach($rand_blog as $random) { ?>
+								<div class="col-md-4 col-sm-12">
+									<div class="rel-blog-box">
+										<a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
+											<img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>">
+										</div>
+										<h5> <?php echo $random['title']; ?> </a> </h5>
+									</div>
+								</div>
+                                                                                    
+                                                            <?php } ?>
+								
+							</div>
+						</div>
+                      <?php } ?>
+                     
                       <?php
                       }else{ ?>
-                      <div class="blog_post_outer col-md-9 col-sm-8 pr0">
+                      
                           <div class="art_no_post_avl">
                                     <div class="art-img-nn">
                                         <div class="art_no_post_img">
@@ -297,9 +336,16 @@
                                         </div>
                                     </div>
                                 </div>
-                      </div>
+                     
                       <?php }
                       ?>
+                      </div> 
+                                                                                                  </li>
+                                    <ul class="load-more-blog">
+                                        <!--<li class="loadbutton"></li>-->
+                                        <li class="loadcatbutton"></li>
+                                    </ul>
+                       </div>
                      <div class="col-md-3 col-sm-4 hidden-xs">
                         <div class="blog_latest_post" >
                            <h3>Latest Post</h3>
@@ -347,27 +393,129 @@
 							<div class="fw pt10">
 									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
 								</div>
-						</div>
+                                                </div>
+                                                </div>
                      </div>
                   </div>
+                   
                </div>
             </div>
          </section>
       </section>
-       <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
       <?php
             echo $login_footer
             ?>
    </body>
 </html>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-1.11.1.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
 <!-- This Js is used for call popup -->
 <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
 
 <script>
-var base_url = '<?php echo base_url(); ?>';
+                                        var base_url = '<?php echo base_url(); ?>';
+</script>
+<script>
+//AJAX DATA LOAD BY LAZZY LOADER START
+    $(document).ready(function () {
+       // blog_post();
+
+    });
+
+    function category_data(catid, pagenum) {
+        $('.job-contact-frnd').html("");
+      //  $('.loadbutton').html("");
+        cat_post(catid, pagenum);
+    }
+
+    $('.loadcatbutton').click(function () {
+        var pagenum = parseInt($(".page_number:last").val()) + 1;
+        var catid = $(".catid").val();
+        cat_post(catid, pagenum);
+    });
+
+    var isProcessing = false;
+    function cat_post(catid, pagenum) {
+        if (isProcessing) {
+            /*
+             *This won't go past this condition while
+             *isProcessing is true.
+             *You could even display a message.
+             **/
+            return;
+        }
+        isProcessing = true;
+        $.ajax({
+            type: 'POST',
+            url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
+            data: {total_record: $("#total_record").val()},
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            complete: function () {
+                $('#loader').hide();
+            },
+            success: function (data) {
+                $('.loader').remove();
+                $('.job-contact-frnd').append(data.blog_data);
+                $('.loadcatbutton').html(data.load_msg)
+                // second header class add for scroll
+                var nb = $('.post-design-box').length;
+                if (nb == 0) {
+                    $("#dropdownclass").addClass("no-post-h2");
+                } else {
+                    $("#dropdownclass").removeClass("no-post-h2");
+                }
+                isProcessing = false;
+            }
+        });
+    }
+
+
+//    $('.loadbutton').click(function () {
+//        var pagenum = parseInt($(".page_number:last").val()) + 1;
+//        blog_post(pagenum);
+//    });
+  //  var isProcessing = false;
+//    function blog_post(pagenum) {
+//        if (isProcessing) {
+//            /*
+//             *This won't go past this condition while
+//             *isProcessing is true.
+//             *You could even display a message.
+//             **/
+//            return;
+//        }
+//        isProcessing = true;
+//        $.ajax({
+//            type: 'POST',
+//            url: base_url + "blog/blog_ajax?page=" + pagenum,
+//            data: {total_record: $("#total_record").val()},
+//            dataType: "json",
+//            beforeSend: function () {
+//
+//            },
+//            complete: function () {
+//                $('#loader').hide();
+//            },
+//            success: function (data) {
+//                $('.loader').remove();
+//                $('.job-contact-frnd').append(data.blog_data);
+//                $('.loadbutton').html(data.load_msg)
+//                // second header class add for scroll
+//                var nb = $('.post-design-box').length;
+//                if (nb == 0) {
+//                    $("#dropdownclass").addClass("no-post-h2");
+//                } else {
+//                    $("#dropdownclass").removeClass("no-post-h2");
+//                }
+//                isProcessing = false;
+//            }
+//        });
+//    }
+//AJAX DATA LOAD BY LAZZY LOADER END
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog_detail.js'); ?>"></script>

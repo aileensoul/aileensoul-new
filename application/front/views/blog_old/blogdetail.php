@@ -30,13 +30,6 @@
         <?php
         }
         ?>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({
-                google_ad_client: "ca-pub-6060111582812113",
-                enable_page_level_ads: true
-            });
-        </script>
       <!-- Open Graph data -->
       <meta property="og:title" content="<?php echo $blog_detail[0]['title']; ?>" />
       <meta  property="og:type" content="Blog" />
@@ -61,8 +54,6 @@
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
       <!-- This Css is used for call popup -->
       <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
-      
-      
    </head>
    <body class="blog-detail blog">
       <div class="main-inner">
@@ -292,25 +283,6 @@
                               </fieldset>
                            </form>
                         </div>
-                      <?php if(count($rand_blog) > 0) { ?>
-						<div class="related-blog">
-							<h3>Related Blogs</h3>
-							<div class="row">
-                                                            <?php foreach($rand_blog as $random) { ?>
-								<div class="col-md-4 col-sm-12">
-									<div class="rel-blog-box">
-										<a href="<?php echo base_url('blog/' . $random['blog_slug']) ?>"><div class="rel-blog-img">
-											<img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $random['image']) ?>">
-										</div>
-										<h5> <?php echo $random['title']; ?> </a> </h5>
-									</div>
-								</div>
-                                                                                    
-                                                            <?php } ?>
-								
-							</div>
-						</div>
-                      <?php } ?>
                      </div>
                       <?php
                       }else{ ?>
@@ -382,12 +354,13 @@
             </div>
          </section>
       </section>
- <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+       <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
       <?php
             echo $login_footer
             ?>
    </body>
 </html>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-1.11.1.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
 <!-- This Js is used for call popup -->

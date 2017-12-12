@@ -1,3 +1,5 @@
+<!-- <!DOCTYPE html>
+-->
 <html class="blog_cl">
     <head>
         <title>Official Blog for Regular Updates , News and sharing knowledge - Ailensoul.com</title>
@@ -30,13 +32,6 @@
             <?php
         }
         ?>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script>
-                (adsbygoogle = window.adsbygoogle || []).push({
-                    google_ad_client: "ca-pub-6060111582812113",
-                    enable_page_level_ads: true
-                });
-        </script>
         <style type="text/css">
             footer > .container{border:1px solid transparent!important;}
             .footer{border:1px solid #d9d9d9;}
@@ -119,13 +114,32 @@
                         <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                             <div class="main-menu-right">
                                 <ul class="">
-                                    <?php foreach ($blog_category as $category) { ?>
-                                        <li class="category">
-                                            <div id="category_<?php echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
-                                                <?php echo $category['name']; ?>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
+                                    <li>
+                                        <?php
+                                        if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
+                                            ?>
+                                            <a title="Recent Post" href="<?php echo base_url('blog/'); ?>">Recent Post </a>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <a title="Recent Post" href="javascript:void(0)">Recent Post </a>
+                                            <?php
+                                        }
+                                        ?>
+                                    </li>
+                                    <li>
+                                        <?php
+                                        if ($this->uri->segment(3) == 'popular') {
+                                            ?>
+                                            <a title="Most Popular" href="javascript:void(0)">Most Popular</a>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <a title="Most Popular" href="<?php echo base_url('blog/popular'); ?>">Most Popular</a>
+                                            <?php
+                                        }
+                                        ?>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -189,20 +203,133 @@
                                 }//if end
                                 else {
 
-                                    //    foreach ($blog_detail as $blog) {
-                                    ?>
-                                    <div class="job-contact-frnd">
+                                    foreach ($blog_detail as $blog) {
+                                        ?>
+                                        <div class="blog_main_o">
+                                            <div class="date_blog_left">
+                                                <div class="blog-date-change">
+                                                    <div class="blog-month blog-picker">
+                                                        <span class="blog_monthd">
+                                                            <?php
+                                                            $date_time = new DateTime($blog['created_date']);
+                                                            $month = $date_time->format('M') . PHP_EOL;
+                                                            echo $month;
+                                                            ?>
+                                                        </span>
+                                                    </div class="blog-date blog-picker">
+                                                    <div>
+                                                        <span class="blog_mdate">
+                                                            <?php
+                                                            $date = new DateTime($blog['created_date']);
+                                                            echo $date->format('d') . PHP_EOL;
+                                                            ?>
+                                                        </span>
+                                                    </div>
+                                                    <div class="blog-year blog-picker">
+                                                        <span class="blog_moyear" >
+                                                            <?php
+                                                            $year = new DateTime($blog['created_date']);
+                                                            echo $year->format('Y') . PHP_EOL;
+                                                            ?>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="blog-left-comment">
+                                                    <div class="blog-comment-count">
+                                                        <a>
+                                                            <?php
+                                                            $condition_array = array('status' => 'approve', 'blog_id' => $blog['id']);
+                                                            $blog_comment = $this->common->select_data_by_condition('blog_comment', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+                                                            echo count($blog_comment);
+                                                            ?>
+                                                        </a>
+                                                    </div>
+                                                    <div class="blog-comment">
+                                                        <a>Comments</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="date_blog_right">
+                                                <div class="blog_post_main">
+                                                    <div class="blog_inside_post_main">
+                                                        <div class="blog_main_post_first_part">
+                                                            <div class="blog_main_post_img">
+                                                                <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path') . $blog['image']) ?>" ></a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="blog_main_post_second_part">
+                                                            <div class="blog_class_main_name">
+                                                                <span>
+                                                                    <a href="<?php echo base_url('blog/' . $blog['blog_slug']) ?>">
+                                                                        <h1> <?php echo $blog['title']; ?> </h1>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                            <div class="blog_class_main_by">
+                                                                <span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="blog_class_main_desc ">
+                                                                <span class="dot_span_desc">
+                                                                    <?php
+                                                                    $num_words = 75;
+                                                                    $words = array();
+                                                                    $words = explode(" ", $blog['description'], $num_words);
+                                                                    $shown_string = "";
 
-                                    </div>
-                                    <!--<li><a class="fbk" url_encode="http%3A%2F%2Flocalhost%2Faileensoul-new%2Fblog%2Fall-about-aileensoul" url="http://localhost/aileensoul-new/blog/all-about-aileensoul" title="Facebook" summary="%22%3Cp+xss%3D%22removed%22%3EAt+one+point+in+the+yester-years%2C+people+worked+jobs+to+feed+their+family+and+themselves.+In+this+day+and+age%2C+people+work+not+only+for+a+steady+source+of+income%2C+but+also+for+a+sense+of+fulfilment+that+one+gets+from+doing+something+that+they+love.+Thus%2C+it+is+important+for+an+individual%E2%80%99s+work-+be+it+a+job+or+a+business+or+a+skill+that+they+practice-+to+align+with+their+interests+and+mainly%2C+their+passion.+If+not%2C+one+ends+up+in+a+daily+monotonous+struggle+that+does+leave+them+satisfied%2C+but+not+inherently+happy.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EIt+might+not+always+be+the+easiest+task+to+land+that+perfect+job+for+yourself.+What+is+needed+is+a+single+roof+where+all+your+job-related+needs+are+satisfactorily+met.+Aileensoul+is+a+completely+free+platform+for+career-related+services%2C+such+as+hiring%2C+freelancing%2C+networking+and+much+more.+It+is+a+portal+that+seeks+to+connect+recruiters+to+prospective+employees.+It+also+helps+businesses+connect+with+each+other%2C+as+well+as+artists+find+a+platform+for+their+talents.+Simply+put%2C+anyone+with+any+requirement+related+to+the+job+or+business+sector+is+sure+to+find+a+solution+on+Aileensoul.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EThere+are+many+problems+encountered+by+both+employers+and+employees+while+looking+for+a+perfect+fit+for+themselves.+In+the+age+of+technology%2C+there+is+an+overwhelming+amount+of+job+portals%2C+freelancing+sites+and+such+that+make+it+difficult+for+an+individual+to+single+out+the+best+one.+There+is+the+added+hassle+of+creating+and+maintaining+separate+accounts+for+all+these+sites.+Moreover%2C+there+has+been+an+alarming+increase+in+the+number+of+start-ups+in+the+past+decade.+Most+of+these+business+face+the+problem+of+being+unable+to+recruit+capable%2C+trustworthy+employees%2C+owing+to+the+newness+of+their+business.+There+are+artists+that+usually+work+on+project+basis%2C+who+find+it+difficult+to+find+a+decent+job+or+project.+Aileensoul+seeks+to+provide+solutions+to+all+of+these+problems.+On+this+portal%2C+everyone+from+start-up+companies+to+multinational+corporations+can+find+suitable+recruitment.+Freelancers+and+artists+can+find+a+platform+for+themselves+on+Aileensoul+that+truly+values+their+talents.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EOn+Aileensoul%2C+job+seekers+can+easily+search+for+their+desired+profile%2C+shortlist+jobs+that+pique+their+interest%2C+and+then+apply+for+the+same.+They+can+also+connect+to+the+recruiters%E2%80%99+profile+to+find+out+more+about+the+same.+Aileensoul+also+allows+businesses+to+connect+with+one+another%2C+update+information+and+indulge+in+contact+networking.+On+this+portal%2C+artists+can+upload+their+PDF+files%2C+videos%2C+images%2C+etc+so+as+to+find+the+right+audience+for+their+talent.+Freelancers+can+connect+to+agents+and+other+mediums+to+find+the+perfect+project+that+meets+their+skill+set.%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3E%C2%A0%3C%2Fp%3E%0D%0A%0D%0A%3Cp+xss%3D%22removed%22%3EAileensoul+is+a+unified+platform+for+every+career-related+need+that+an+individual+may+have.+It+provides+solutions+for+every+sector+of+the+job+market%2C+from+job+recruiters+to+%3Ca+href%3D%22https%3A%2F%2Fwww.aileensoul.com%22+target%3D%22_blank%22%3Ejob+seekers%3C%2Fa%3E+to+artists.+Aileensoul%E2%80%99s+mission+is+to+help+people+discover+and+rediscover+their+perfect+career+and+to+help+them+grow+in+their+chosen+career.+It+also+seeks+to+end+unemployment+and+by+extension%2C+poverty%2C+by+setting+people+up+with+their+desired+jobs+or+finding+them+projects+that+not+only+provides+a+source+of+income%2C+but+also+instils+them+with+a+sense+of+contentment.%3C%2Fp%3E%0D%0A%22" image="http%3A%2F%2Flocalhost%2Faileensoul-new%2Fuploads%2Fblog%2Fmain%2Fbanner_12.jpg"> -->
-                                    <!--                                                                                <span class="social_fb"></span>
-                                                                                                                </a>
-                                                                                                            </li>-->
-                                    <ul class="load-more-blog">
-                                        <li class="loadbutton"></li>
-                                        <li class="loadcatbutton"></li>
-                                    </ul>
-                                <?php }
+                                                                    if (count($words) == 75) {
+                                                                        $words[74] = " ...... ";
+                                                                    }
+
+                                                                    $shown_string = implode(" ", $words);
+                                                                    echo $shown_string;
+                                                                    ?>
+                                                                </span>
+                                                            </div>
+                                                            <div class="blog_class_main_social">
+                                                                <div class="left_blog_icon fl">
+                                                                    <ul class="social_icon_bloag fl">
+                                                                        <li>
+                                                                            <?php
+                                                                            $title = urlencode('"' . $blog['title'] . '"');
+                                                                            $url = urlencode(base_url('blog/' . $blog['blog_slug']));
+                                                                            $summary = urlencode('"' . $blog['description'] . '"');
+                                                                            $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
+                                                                            ?>
+
+                                                                            <a class="fbk" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog/' . $blog['blog_slug']); ?>" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
+                                                                                <span  class="social_fb"></span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+
+                                                                            <a href="https://plus.google.com/share?url=<?php echo $url; ?>" title="Google +" onclick="javascript:window.open('https://plus.google.com/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                                                                                <span  class="social_gp"></span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+
+                                                                            <a href="https://www.linkedin.com/cws/share?url=<?php echo $url; ?>" title="linkedin"  onclick="javascript:window.open('https://www.linkedin.com/cws/share?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_lk"></span></a>
+                                                                        </li>
+                                                                        <li>
+
+                                                                            <a href="https://twitter.com/intent/tweet?url=<?php echo $url; ?>"  title="twitter" onclick="javascript:window.open('https://twitter.com/intent/tweet?url=<?php echo $url; ?>', '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><span  class="social_tw"></span></a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <div class="fr blog_view_link">
+                                                                    <a title="Read more" onclick="read_more('<?php echo $blog['id']; ?>', '<?php echo $blog['blog_slug']; ?>')"> Read more <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }//for loop end
+                                }//else end
                                 ?>
                             </div>
 
@@ -241,7 +368,6 @@
                                                         </div>
                                                     </a>
                                                 </li>
-
                                             </ul>
                                         </div>
                                         <!--latest_post_posts end -->
@@ -268,139 +394,37 @@
                                         <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
                                     </div>
                                 </div>
-                                <div class="fw text-center pt15 block-1279 main-none">
-                                    <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                </div>
+								<div class="fw text-center pt15 block-1279 main-none">
+									<script type="text/javascript">
+									(function () {
+										if (window.CHITIKA === undefined) {
+											window.CHITIKA = {'units': []}; };
+										var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+										var placement_id = window.CHITIKA.units.length;
+										window.CHITIKA.units.push(unit);
+										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+									}());
+									</script>
+									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+								</div>
 
                             </div>
 
-
+                      
                         </div>
                     </div>
                 </div>
         </div>
     </section>
-    <?php
-    echo $login_footer
-    ?>
+<?php
+            echo $login_footer
+            ?>
 </div>
 </body>
 </html>
 <script>
-                                        var base_url = '<?php echo base_url(); ?>';
+                            var base_url = '<?php echo base_url(); ?>';
 </script>
-<script>
-//AJAX DATA LOAD BY LAZZY LOADER START
-    $(document).ready(function () {
-        blog_post();
 
-    });
-
-    function category_data(catid, pagenum) {
-        $('.job-contact-frnd').html("");
-        $('.loadbutton').html("");
-        cat_post(catid, pagenum);
-    }
-
-    $('.loadcatbutton').click(function () {
-        var pagenum = parseInt($(".page_number:last").val()) + 1;
-        var catid = $(".catid").val();
-        cat_post(catid, pagenum);
-    });
-
-    var isProcessing = false;
-    function cat_post(catid, pagenum) {
-        if (isProcessing) {
-            /*
-             *This won't go past this condition while
-             *isProcessing is true.
-             *You could even display a message.
-             **/
-            return;
-        }
-        isProcessing = true;
-        $.ajax({
-            type: 'POST',
-            url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
-            data: {total_record: $("#total_record").val()},
-            dataType: "json",
-            beforeSend: function () {
-
-            },
-            complete: function () {
-                $('#loader').hide();
-            },
-            success: function (data) {
-                $('.loader').remove();
-                $('.job-contact-frnd').append(data.blog_data);
-                $('.loadcatbutton').html(data.load_msg)
-                // second header class add for scroll
-                var nb = $('.post-design-box').length;
-                if (nb == 0) {
-                    $("#dropdownclass").addClass("no-post-h2");
-                } else {
-                    $("#dropdownclass").removeClass("no-post-h2");
-                }
-                isProcessing = false;
-            }
-        });
-    }
-
-
-    $('.loadbutton').click(function () {
-        var pagenum = parseInt($(".page_number:last").val()) + 1;
-        blog_post(pagenum);
-    });
-    var isProcessing = false;
-    function blog_post(pagenum) {
-        if (isProcessing) {
-            /*
-             *This won't go past this condition while
-             *isProcessing is true.
-             *You could even display a message.
-             **/
-            return;
-        }
-        isProcessing = true;
-        $.ajax({
-            type: 'POST',
-            url: base_url + "blog/blog_ajax?page=" + pagenum,
-            data: {total_record: $("#total_record").val()},
-            dataType: "json",
-            beforeSend: function () {
-
-            },
-            complete: function () {
-                $('#loader').hide();
-            },
-            success: function (data) {
-                $('.loader').remove();
-                $('.job-contact-frnd').append(data.blog_data);
-                $('.loadbutton').html(data.load_msg)
-                // second header class add for scroll
-                var nb = $('.post-design-box').length;
-                if (nb == 0) {
-                    $("#dropdownclass").addClass("no-post-h2");
-                } else {
-                    $("#dropdownclass").removeClass("no-post-h2");
-                }
-                isProcessing = false;
-            }
-        });
-    }
-//AJAX DATA LOAD BY LAZZY LOADER END
-</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/blog/blog.js?ver=' . time()); ?>"></script>
 
