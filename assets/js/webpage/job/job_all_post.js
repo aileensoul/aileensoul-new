@@ -72,18 +72,20 @@ function job_home(pagenum)
         data: {total_record:$("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
-            if (pagenum == 'undefined') {
-                $('#loader').show();
-                $(".job-contact-frnd1").prepend('');
-            } else {
-                $('#loader').show();
-            }
+            // if (pagenum == 'undefined') { 
+            //     //$('#loader').show();
+            //     $(".job-contact-frnd1").prepend('');
+            // } else { 
+            //     //$('#loader').show();
+            // }
+            document.getElementById("loader").style.display = "block";
         },
         complete: function () {
-            $('#loader').hide();
+            //$('#loader').hide();
+             document.getElementById("loader").style.display = "none";
         },
         success: function (data) {
-            $('.loader').remove();
+            //$('#loader').hide();
             $('.job-contact-frnd1').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
