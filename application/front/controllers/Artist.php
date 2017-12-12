@@ -650,9 +650,15 @@ class Artist extends MY_Controller {
             }
         } else {
 
+
+            if (!$this->data['artisticdata'] && !$this->data['artsdata']) { //echo "22222222"; die();
+                $this->load->view('artist/notavalible');
+            }else{
+
             include ('artistic_include.php');
             $this->data['artistic_common_profile'] = $this->load->view('artist/artistic_common_profile', $this->data, true);
             $this->load->view('artist/art_dashboard_live', $this->data);
+           }
         }
     }
 
