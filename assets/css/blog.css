@@ -347,7 +347,8 @@ max-width: inherit;}
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;}
   .load-more-blog li button:focus{outline:none;}
-
+.main-menu-right .category{cursor: pointer;}
+.main-menu-right .category:hover{cursor: pointer;color: #1b8ab9;}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {

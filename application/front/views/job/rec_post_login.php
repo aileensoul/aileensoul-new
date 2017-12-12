@@ -364,7 +364,7 @@
 
 
     </style>
-    <body class="page-container-bg-solid page-boxed no-login freeh3">
+    <body class="page-container-bg-solid page-boxed no-login freeh3 cust-job-width">
 
         <header>
             <div class="container">

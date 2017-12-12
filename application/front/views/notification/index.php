@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-1 col-sm-1">
             </div>
-            <div class="col-md-10 col-sm-10">
+            <div class="col-md-10 col-sm-10" style="padding-bottom: 60px;">
                 <div class="common-form">
 
                     <div class="job-saved-box">
