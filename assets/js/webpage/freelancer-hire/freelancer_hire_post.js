@@ -17,8 +17,8 @@ $(document).ready(function () {
     freelancerhire_project(user_id, returnpage);
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-       // if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-        if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+        // if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -57,19 +57,24 @@ function freelancerhire_project(user_id, returnpage, pagenum)
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
-            if (pagenum == 'undefined') {
-                $(".job-contact-frnd1").prepend('');
-            } else {
-                $('#loader').show();
-            }
+            document.getElementById("loader").style.display = "block";
         },
         complete: function () {
-            $('#loader').hide();
+            document.getElementById("loader").style.display = "none";
         },
         success: function (data) {
-            $('.loader').remove();
+
             $('.job-contact-frnd1').append(data);
             // second header class add for scroll
+
+            //display border for no projects available start
+            var numItems = $('.job-contact-frnd1 .all-job-box').length;
+            // return false;
+            if (numItems == 0) {
+                $('.job-contact-frnd1').addClass('cust-border');
+            }
+            //display border for no projects available end
+
             var nb = $('.post-design-box').length;
             if (nb == 0) {
                 $("#dropdownclass").addClass("no-post-h2");
@@ -93,7 +98,7 @@ function divClicked() {
     editableText.focus();
     editableText.blur(editableTextBlurred);
 }
-function capitalize(s){
+function capitalize(s) {
     return s[0].toUpperCase() + s.slice(1);
 }
 function editableTextBlurred() {
@@ -192,19 +197,19 @@ function apply_post(abc, xyz) {
         type: 'POST',
         url: base_url + "freelancer/apply_insert",
         data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-        datatype:'json',
+        datatype: 'json',
         success: function (data) {
             $('.savedpost' + abc).hide();
             $('.applypost' + abc).html(data.status);
             $('.applypost' + abc).attr('disabled', 'disabled');
             $('.applypost' + abc).attr('onclick', 'myFunction()');
             $('.applypost' + abc).addClass('applied');
-            
+
             if (data.notification.notification_count != 0) {
-                            var notification_count = data.notification.notification_count;
-                            var to_id = data.notification.to_id;
-                            show_header_notification(notification_count, to_id);
-                        }
+                var notification_count = data.notification.notification_count;
+                var to_id = data.notification.to_id;
+                show_header_notification(notification_count, to_id);
+            }
         }
     });
 }

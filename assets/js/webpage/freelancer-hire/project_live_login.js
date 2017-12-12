@@ -572,3 +572,15 @@ $(document).ready(function () {
 //For Apply Button Click Process End
 
 // for registration apply only
+//ALL POPUP CLOSE BY ESC START
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#login').modal('hide');
+        $('#login').modal('hide');
+        $('#login_apply').modal('hide');
+        $('#forgotPassword').modal('hide');
+        $('#register').modal('hide');
+        $('#register_apply').modal('hide');
+    }
+});
+//ALL POPUP CLOSE BY ESC END

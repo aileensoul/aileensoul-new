@@ -245,7 +245,7 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                            <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
+                                            <!-- <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5> -->
                                             <p><a href="javascript:void(0);">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
@@ -267,7 +267,7 @@
                                                             if ($cityname) {
                                                                 echo $cityname . ', ';
                                                             }
-                                                            echo $countryname. " (Location)";
+                                                            echo $countryname;
                                                         }
                                                         ?>
                                                     </span>
@@ -720,8 +720,8 @@
                                                                             type: 'POST',
                                                                             url: base_url + 'job/job_apply_post',
                                                                             data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-                                                                            datatype: 'json',
-                                                                            success: function (data) {
+                                                                            dataType: 'json',
+                                                                            success: function (data) { alert(data.status);
                                                                                 $('.savedpost' + abc).hide();
                                                                                 $('.applypost' + abc).html(data.status);
                                                                                 $('.applypost' + abc).attr('disabled', 'disabled');

@@ -4031,19 +4031,34 @@ Your browser does not support the audio tag.
 
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
 
-                    $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
+                    // $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
 
-                    if ($total['user_image'] && (file_exists($filepath)) == 1) {
-                        $return_html .= '<img src="' . base_url() . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'] . '" >';
-                    } else {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                    // if ($total['user_image'] && (file_exists($filepath)) == 1) {
+                    //     $return_html .= '<img src="' . base_url() . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'] . '" >';
+                    // } else {
+                    //     $a = $companyname;
+                    //     $acr = substr($a, 0, 1);
 
 
-                        $return_html .= '<div class="post-img-div">' .
-                                ucwords($acr) .
-                                '</div>';
-                    }
+                    //     $return_html .= '<div class="post-img-div">' .
+                    //             ucwords($acr) .
+                    //             '</div>';
+                    // }
+
+                    $filename = $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
+                         $s3 = new S3(awsAccessKey, awsSecretKey);
+                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                      if ($total['user_image'] != '' && $info) { 
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $total['user_image'] . '" alt="" >';
+                        } else {
+//                            $a = $companyname;
+//                            $acr = substr($a, 0, 1);
+//                            $return_html .= '<div class="post-img-div">' .
+//                                    ucwords($acr) .
+//                                    '</div>';
+
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE2) . '" alt = "No Business Image">';
+                        }
 
                     $return_html .= '</div>
                                             

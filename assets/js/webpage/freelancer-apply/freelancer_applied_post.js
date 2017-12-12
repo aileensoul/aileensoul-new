@@ -94,17 +94,12 @@ function freelancerwork_applied(pagenum)
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
-            if (pagenum == 'undefined') {
-                $(".job-contact-frnd1").prepend('');
-            } else {
-                $('#loader').show();
-            }
+           document.getElementById("loader").style.display = "block";
         },
         complete: function () {
-            $('#loader').hide();
+           document.getElementById("loader").style.display = "none";
         },
         success: function (data) {
-            $('.loader').remove();
             $('.job-contact-frnd1').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
