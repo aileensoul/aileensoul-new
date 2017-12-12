@@ -96,31 +96,37 @@ class Sitemap_model extends CI_Model {
             $art_othercategory = $this->db->select('other_category')->get_where('art_other_category', array('other_category_id' => $arturl[0]['other_skill']))->row()->other_category;
             $category = $arturl[0]['art_skill'];
             $category = explode(',', $category);
-
+            $categorylist =array();
             foreach ($category as $catkey => $catval) {
                 $art_category = $this->db->select('art_category')->get_where('art_category', array('category_id' => $catval))->row()->art_category;
                 $categorylist[] = $art_category;
             }
-
+            
             $listfinal1 = array_diff($categorylist, array('other'));
             $listFinal = implode('-', $listfinal1);
 
             if (!in_array(26, $category)) {
-                $category_url = $this->common->clean($listFinal);
+                $category_url = $this->cleaning($listFinal);
             } else if ($arturl[0]['art_skill'] && $arturl[0]['other_skill']) {
 
-                $trimdata = $this->common->clean($listFinal) . '-' . $this->common->clean($art_othercategory);
+                $trimdata = $this->cleaning($listFinal) . '-' . $this->cleaning($art_othercategory);
                 $category_url = trim($trimdata, '-');
             } else {
-                $category_url = $this->common->clean($art_othercategory);
+                $category_url = $this->cleaning($art_othercategory);
             }
 
-            $city_get = $this->common->clean($city_url);
+            $city_get = $this->cleaning($city_url);
             $url = $arturl[0]['slug'] . '-' . $category_url . '-' . $city_get . '-' . $arturl[0]['art_id'];
             $result[$key]['get_url'] = $url;
         }
 
         return $result;
     }
-
+    function cleaning($string) { 
+      
+   $string = str_replace(' ', '-', $string);  // Replaces all spaces with hyphens.
+   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // replace double --- in single -
+  
+   return preg_replace('/-+/', '-', $string); // Removes special chars.
+}
 }

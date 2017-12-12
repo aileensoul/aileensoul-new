@@ -772,7 +772,7 @@
                                     <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                     </div>
                                                     <div class="sort-emp-detail">
-                                                        <h4><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></h4>
+                                                        <div><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></div>
                                                         <p><?php
                                                             if ($user['designation']) {
                                                                 echo $user['designation'];

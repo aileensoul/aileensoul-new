@@ -161,7 +161,7 @@
                                                                                             <li><a title="Projects" href="<?php echo base_url('freelancer-hire/projects/' . $recliveid . '?page=freelancer_post'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                                                         <?php } ?>
                                                                                         <?php if ($this->session->userdata('aileenuser') == $recliveid) { ?>
-                                                                                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved"); ?></a></li>
+                                                                                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>">Saved</a></li>
                                                                                         <?php } ?>
 
                                                                                     </ul>
@@ -456,27 +456,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                             <?php } ?>
-                                                                                        </div>
-
-                                                                                    <?php } else { ?>
-                                                                                        <div class="col-md- col-sm-12 mob-clear">
-                                                                                            <div class="common-form">
-                                                                                                <div class="job-saved-box">
-                                                                                                    <h3>Freelancer</h3>
-                                                                                                    <div class="contact-frnd-post">
-                                                                                                        <div class="art-img-nn">
-                                                                                                            <div class="art_no_post_img">
-                                                                                                                <img src="/assets/img/free-no.png">
-                                                                                                            </div>
-                                                                                                            <div class="art_no_post_text">   You must have a freelancer  profile for applying to this post </div>
-                                                                                                        </div>
-
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    <?php } ?>
-                                                                                    <!-- sortlisted employe -->
+                                                                                             <!-- sortlisted employe -->
                                                                                     <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser') || $applyuser) { ?>
                                                                                         <?php if ($shortlist) {
                                                                                             ?>
@@ -565,13 +545,13 @@
             <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                                                                             </div>
                                                                                                             <div class="sort-emp-detail">
-                                                                                                                <h4>
+                                                                                                                <div>
                                                                                                                     <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
                                                                                                                         <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                                     <?php } else { ?>
                                                                                                                         <a href="javascript:void(0);"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                                     <?php } ?>
-                                                                                                                </h4>
+                                                                                                                </div>
                                                                                                                 <p><?php
                                                                                                                     if ($user['designation']) {
                                                                                                                         echo $user['designation'];
@@ -598,6 +578,28 @@
                                                                                             <?php } ?>
                                                                                         </div>
                                                                                     <?php } ?>
+                                                                                             <!--shortlisted employy end-->
+                                                                                        </div>
+
+                                                                                    <?php } else { ?>
+                                                                                        <div class="inner-right-part cust-inner-part">
+                                                                                            <div class="common-form">
+                                                                                                <div class="job-saved-box">
+                                                                                                    <h3>Freelancer</h3>
+                                                                                                    <div class="contact-frnd-post">
+                                                                                                        <div class="art-img-nn">
+                                                                                                            <div class="art_no_post_img">
+                                                                                                                <img src="/assets/img/free-no.png">
+                                                                                                            </div>
+                                                                                                            <div class="art_no_post_text">   You must have a freelancer  profile for applying to this post </div>
+                                                                                                        </div>
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    <?php } ?>
+                                                                                   
                                                                                    <!--  <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
                                                                                         <div class="fw text-center">
