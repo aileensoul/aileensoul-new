@@ -308,11 +308,12 @@ ol.upper_alpha{list-style-type: upper-alpha; padding: 5px 25px;}
 	background-image: linear-gradient(to left, #F13B6F 0%, #ECB044 90%);
 }
 .custom-tp footer{background:#fff;}
+
  label.error {
 	margin-bottom: 0px!important;
 	right: 19px!important;
-	bottom: -18px!important;
-	color: #fff !important;
+	bottom: -6px!important;
+	color: #ff0000 !important;
 }
 
 .date_blog_right .blog_main_post_second_part h1{display: inline-block;}
