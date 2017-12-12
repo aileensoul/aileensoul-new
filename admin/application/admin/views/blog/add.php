@@ -2,7 +2,7 @@
 echo $header;
 echo $leftmenu;
 ?>
-
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />-->
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
@@ -60,7 +60,7 @@ echo $leftmenu;
                          <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govcat" name="govcat" id="govcat">Category*</label>
-                             <select name="category[]" id="category" tabindex="1" class="form-control" multiple>
+                             <select name="category[]" id="category" tabindex="1" class="form-control" multiple="multiple">
                                <!--<option value="">Select blog Category</option>--> 
                             <?php                             
                                       foreach($blog_category as $blog){ 
@@ -105,7 +105,7 @@ echo $leftmenu;
                         <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govcat" name="govcat" id="relblog">Related Blog*</label>
-                             <select name="related[]" id="related" tabindex="1" class="form-control" multiple>
+                             <select name="related[]" id="related" tabindex="1" class="form-control" multiple="multiple">
                                <!--<option value="">Select blog Category</option>--> 
                             <?php                             
                                       foreach($blog_title as $blog){ 
@@ -135,6 +135,7 @@ echo $leftmenu;
 </div><!-- /.content-wrapper -->
 <?php echo $footer; ?>
 
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>-->
 <script type="text/javascript">
     //validation for edit email formate form
     $(document).ready(function () {
@@ -147,6 +148,21 @@ echo $leftmenu;
            $(this).removeAttr("selected");
         }
     });
+    
+    
+    
+//        $('#related').multiselect({
+//            includeSelectAllOption: true,
+//            enableFiltering: true
+//        });
+        
+//         $('#category').multiselect({
+//            includeSelectAllOption: true,
+//            enableFiltering: true
+//        });
+//   
+
+
 
 
         $("#add_blog_frm").validate({

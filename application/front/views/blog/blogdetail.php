@@ -61,6 +61,8 @@
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
       <!-- This Css is used for call popup -->
       <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
+      
+      
    </head>
    <body class="blog-detail blog">
       <div class="main-inner">
@@ -380,12 +382,12 @@
             </div>
          </section>
       </section>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
       <?php
             echo $login_footer
             ?>
    </body>
 </html>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-1.11.1.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
 <!-- This Js is used for call popup -->
