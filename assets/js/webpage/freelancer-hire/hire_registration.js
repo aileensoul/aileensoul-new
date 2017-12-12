@@ -65,7 +65,7 @@ $(document).ready(function () {
                         email: function () {
                             return $("#email").val();
                         },
-                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+//                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
                     },
                 },
 
@@ -148,12 +148,15 @@ function OnPaste_StripFormatting(elem, e) {
     }
 }
 //CODE FOR COPY-PASTE END
-
-$("#submit").on('click', function ()
-{
-    if ($('#freelancerhire_regform').valid())
-     {
-         $("#submit").addClass("register_disable");
-     } 
-
-});
+//
+//$("#submit").on('click', function ()
+//{
+//    if ($('#freelancerhire_regform').valid())
+//     {
+//     
+//         $("#submit").addClass("register_disable");
+//        
+//         
+//     } 
+//
+//});
