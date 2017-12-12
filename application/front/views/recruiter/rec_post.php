@@ -218,21 +218,24 @@
                     <!-- text head start -->
                     <div class="profile-text" >
                         <?php
-                        if ($returnpage == '') {
-                            //echo "hii";
-                            if ($recdata[0]['designation'] == "") {
-                                ?>
-                                <a id="designation" class="designation" title="Designation">Designation</a>
-                                <?php
+                            if ($returnpage == '') {
+                                if ($recdata[0]['designation'] == '') {
+                                    ?>
+                                    <a id="designation" class="designation" title="Designation">Designation</a>
+                                <?php } else {
+                                    ?> 
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> 
+                                    <?php
+                                }
                             } else {
-                                ?> 
-                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($postdataone[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
-                                <?php
+                                if ($recdata[0]['designation'] == '') {
+                                    ?>
+                                    <a id="designation" class="designation" title="Designation">Designation</a>
+                                <?php } else { ?>
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                }
                             }
-                        } else {
-                            echo ucfirst(strtolower($postdataone['designation']));
-                        }
-                        ?>
+                            ?>
                     </div>
                     <div  class="add-post-button">
                         <?php if ($returnpage == '') { ?>
