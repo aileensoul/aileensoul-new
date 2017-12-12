@@ -105,7 +105,7 @@ echo $leftmenu;
                         <div class="box-body">                   
                     <div class="form-group col-sm-10">
                             <label for="govcat" name="govcat" id="relblog">Related Blog*</label>
-                             <select name="related[]" id="related" tabindex="1" class="form-control" multiple="multiple" size=16 style='height: 100%;'>
+                            <select name="related[]" id="related" tabindex="1" class="form-control" multiple="multiple" size=<?php echo count($blog_title) + 1; ?> style='height: 100%;'>
                                <!--<option value="">Select blog Category</option>--> 
                             <?php                             
                                       foreach($blog_title as $blog){ 

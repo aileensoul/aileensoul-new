@@ -129,7 +129,7 @@ echo $leftmenu;
                         <div class="box-body">                   
                             <div class="form-group col-sm-10">
                                 <label for="govcat" name="govcat" id="govcat">Category*</label>
-                                <select name="related[]" id="related" tabindex="1" class="form-control" multiple>
+                                <select name="related[]" id="related" tabindex="1" class="form-control" multiple size=<?php echo count($blog_title) + 1; ?> style='height: 100%;'>
                                     <!--<option value="">Select blog Category</option>--> 
                                     <?php
                                     $related = explode(',', $blog_detail[0]['blog_related_id']);
