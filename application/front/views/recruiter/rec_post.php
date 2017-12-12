@@ -218,21 +218,24 @@
                     <!-- text head start -->
                     <div class="profile-text" >
                         <?php
-                        if ($returnpage == '') {
-                            //echo "hii";
-                            if ($recdata[0]['designation'] == "") {
-                                ?>
-                                <a id="designation" class="designation" title="Designation">Designation</a>
-                                <?php
+                            if ($returnpage == '') {
+                                if ($recdata[0]['designation'] == '') {
+                                    ?>
+                                    <a id="designation" class="designation" title="Designation">Designation</a>
+                                <?php } else {
+                                    ?> 
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> 
+                                    <?php
+                                }
                             } else {
-                                ?> 
-                                <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($postdataone[0]['designation'])); ?>"><?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a>
-                                <?php
+                                if ($recdata[0]['designation'] == '') {
+                                    ?>
+                                    <a id="designation" class="designation" title="Designation">Designation</a>
+                                <?php } else { ?>
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                }
                             }
-                        } else {
-                            echo ucfirst(strtolower($postdataone['designation']));
-                        }
-                        ?>
+                            ?>
                     </div>
                     <div  class="add-post-button">
                         <?php if ($returnpage == '') { ?>
@@ -321,8 +324,12 @@
         <!-- FIELD VALIDATION JS END -->
         <?php
         if (IS_REC_JS_MINIFY == '0') {
-            ?>
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+          if($returnpage == 'job'){   ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+<?php }else{ ?>
+ <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+<?php } ?>
+            
             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
             <?php
         } else {

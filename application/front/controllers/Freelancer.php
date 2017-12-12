@@ -278,7 +278,7 @@ class Freelancer extends MY_Controller {
 
         if ($check_result) {
             echo 'true';
-            die();
+          //  die();
         } else {
             echo 'false';
             die();
@@ -4884,7 +4884,7 @@ class Freelancer extends MY_Controller {
 
         $this->form_validation->set_rules('firstname', 'Full Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
-        $this->form_validation->set_rules('email', 'EmailId', 'required|valid_email');
+        $this->form_validation->set_rules('email_reg', 'EmailId', 'required|valid_email');
         $this->form_validation->set_rules('country', 'country', 'required');
         $this->form_validation->set_rules('state', 'state', 'required');
 
@@ -4895,7 +4895,7 @@ class Freelancer extends MY_Controller {
             $data = array(
                 'fullname' => trim($this->input->post('firstname')),
                 'username' => trim($this->input->post('lastname')),
-                'email' => trim($this->input->post('email')),
+                'email' => trim($this->input->post('email_reg')),
                 'freelancer_hire_slug' => $this->setcategory_slug($first_lastname, 'freelancer_hire_slug', 'freelancer_hire_reg'),
                 'phone' => trim($this->input->post('phoneno')),
                 'country' => trim($this->input->post('country')),

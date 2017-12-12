@@ -48,19 +48,24 @@ function freelancerwork_save(pagenum)
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
-            if (pagenum == 'undefined') {
-                $(".job-contact-frnd1").prepend('');
-            } else {
-                $('#loader').show();
-            }
+            document.getElementById("loader").style.display = "block";
         },
         complete: function () {
-            $('#loader').hide();
+            document.getElementById("loader").style.display = "none";
         },
         success: function (data) {
-            $('.loader').remove();
+           
             $('.job-contact-frnd1').append(data);
             // second header class add for scroll
+            
+                   //display border for no projects available start
+            var numItems = $('.job-contact-frnd1 .all-job-box').length;
+            // return false;
+            if (numItems == 0) {
+                $('.job-contact-frnd1').addClass('cust-border');
+            }
+            //display border for no projects available end
+            
             var nb = $('.post-design-box').length;
             if (nb == 0) {
                 $("#dropdownclass").addClass("no-post-h2");
@@ -125,6 +130,7 @@ function remove_post(abc)
             if (numItems == '0') {
                 var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../assets/img/free-no1.png"></div><div class="art_no_post_text"> No Saved Projects Found.</div></div>';
                 $('.job-contact-frnd1').html(nodataHtml);
+                 $('.job-contact-frnd1').addClass('cust-border');
             }
         }
     });

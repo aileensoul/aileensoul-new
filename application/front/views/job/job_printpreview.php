@@ -1240,7 +1240,7 @@
                                        </div>
                                          <div class="profile-job-profile-menu">                          
                                         <ul class="clearfix">
-                                           <?php   if($job[0]['experience'] == 'Experience'){ ?>
+                                           <!-- <?php   if($job[0]['experience'] == 'Experience'){ ?>
                                           <li> <b> Total Experience</b> <span><?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
                                          if ($job[0]['exp_m'] == '12 month' && $job[0]['exp_y'] == '0 year') {
                                                     echo "1 year";
@@ -1256,7 +1256,64 @@
                                                 }
                                              } ?> </span>
                                           </li>
+                                         <?php } ?> -->
+
+                                                                                 <ul class="clearfix">
+                                           <?php   if($job[0]['experience'] == 'Experience'){ ?>
+                                          <li> <b> Total Experience</b> <span>
+
+                                            <?php  if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
+
+                                                $total_work_year = 0;
+                                                $total_work_month = 0;
+                                                foreach ($job_work as $work1) {
+                                                
+                                                    $total_work_year += $work1['experience_year'];
+                                                    $total_work_month += $work1['experience_month'];
+                                                }
+
+                                         if ($job[0]['exp_m'] == '12 month' && $job[0]['exp_y'] == '0 year') {
+                                                    echo "1 year";
+                                                } else {
+                                                  
+                                                // if($job[0]['exp_y'] != '0 year'){
+                                                //     echo $job[0]['exp_y'];
+                                                // }
+                                                //     if ($job[0]['exp_m'] != '0 month') {
+                                                //         echo ' ' . $job[0]['exp_m'];
+                                                        
+                                                //     } 
+
+                                                  $month = explode(' ', $total_work_year);
+                                                    //print_r($month);
+                                                    $year = $month[0];
+                                                    $y = 0;
+                                                    for ($i = 0; $i <= $y; $i++) {
+                                                        if ($total_work_month >= 12) {
+                                                            $year = $year + 1;
+                                                            $total_work_month = $total_work_month - 12;
+                                                            $y++;
+                                                        } else {
+                                                            $y = 0;
+                                                        }
+                                                    }
+                                                
+                                                
+                                                    echo $year;
+                                                    echo "&nbsp";
+                                                    echo "Year";
+                                                    echo "&nbsp";
+                                                    if ($total_work_month != 0) {
+                                                        echo $total_work_month;
+                                                        echo "&nbsp";
+                                                        echo "Month";
+                                                    }
+                                                }
+                                             } ?> </span>
+                                          </li>
                                          <?php } ?>
+                                       </ul>
+                                       
                                        </ul>
                                      </div>
 
@@ -1280,7 +1337,7 @@
                                        
                                        
                                        ?>
-                                    <?php if ($job_work) { ?>
+                                    <?php if ($job_work) {   ?>
                                     <div class="profile-job-profile-button clearfix">
                                        <div class="profile-job-details">
                                           <ul>
@@ -1297,7 +1354,7 @@
                                              <span>
                                              <?php
                                              
-                                             if($job[0]['exp_y'] == " " && $job[0]['exp_m'] == " "){
+                                             if($job[0]['exp_y'] != " " && $job[0]['exp_m'] != " "){ 
                                                 $total_work_year = 0;
                                                 $total_work_month = 0;
                                                 foreach ($job_work as $work1) {
@@ -1335,7 +1392,7 @@
                                                     }
                                                 } 
                                                 }
-                                    }else{
+                                    }else{  
                                         if ($userdata[0]['exp_m'] == '12 month' && $userdata[0]['exp_y'] == '0 year') {
                                                     echo "1 year";
                                                 } else {

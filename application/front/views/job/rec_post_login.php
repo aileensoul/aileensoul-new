@@ -611,15 +611,15 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                            <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
-                                            <p><a href="javascript:void(0);">
+                                            <!-- <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5> -->
+                                            <p><a href="javascript:void(0);" onclick="register_profile();">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
                                                     echo $out;
                                                     ?>
                                                 </a>
                                             </p>
-                                            <p><a href="javascript:void(0);"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
+                                            <p><a href="javascript:void(0);" onclick="register_profile();"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
                                             <p class="loca-exp">
                                                 <span class="location">
                                                     <?php
@@ -658,6 +658,8 @@
                                                 </span>
                                             </p>
                                             <p class="pull-right job-top-btn">
+                                                <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Save</a>
+
                                                 <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                             </p>
                                         </div>
@@ -666,7 +668,7 @@
                                         <div class="all-job-middle">
                                             <ul>
                                                 <li>
-                                                    <b>Job discription</b>
+                                                    <b>Job description</b>
                                                     <span>
                                                         <pre><?php echo $this->common->make_links($post['post_description']); ?></pre>
                                                     </span>
@@ -823,6 +825,7 @@
                                         <div class="all-job-bottom">
                                             <span class="job-post-date"><b>Posted on: </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
                                             <p class="pull-right">
+                                                 <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Save</a>
                                                 <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                             </p>
 
@@ -888,15 +891,15 @@
                                                     $cache_time1 = $post['post_name'];
                                                 }
                                                 ?>
-                                                <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
-                                                <p><a href="javascript:void(0);">
+                                             <!--    <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5> -->
+                                                <p><a href="javascript:void(0);" onclick="register_profile();">
                                                         <?php
                                                         $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
                                                         echo $out;
                                                         ?>
                                                     </a>
                                                 </p>
-                                                <p><a href="javascript:void(0);"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
+                                                <p><a href="javascript:void(0);" onclick="register_profile();"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
                                                 <p class="loca-exp">
                                                     <span class="location">
                                                         <?php

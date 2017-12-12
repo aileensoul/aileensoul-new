@@ -81,7 +81,8 @@ class Message extends MY_Controller {
         $message_to_profile = '5';
         $message_to_profile_id = $_POST['business_profile_id'];
 
-        $insert_message = $this->message_model->add_message($message, $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
+//        $insert_message = $this->message_model->add_message($message, $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
+        $insert_message = $this->message_model->add_message($message, $message_file='', $message_file_type='', $message_file_size='', $message_from, $message_to, $message_from_profile, $message_from_profile_id, $message_to_profile, $message_to_profile_id);
         if ($insert_message) {
             echo json_encode(array('result' => 'success'));
         } else {

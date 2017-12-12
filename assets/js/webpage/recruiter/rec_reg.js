@@ -253,4 +253,14 @@ $(document).ready(function () {
     });
 });
 
+////DISABLE BUTTON ON ONE TIME CLICK START
+$("#submit").on('click', function ()
+{
+    if ($('#basicinfo').valid())
+    {
+        $("#submit").addClass("register_disable");
+        return true;
+    }
 
+});
+////DISABLE CUTTON ON ONE TIME CLICK END

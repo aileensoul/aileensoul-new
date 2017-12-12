@@ -472,7 +472,7 @@
                                                     </li>                                
                                                     <li id="rec_post_home" <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Projects" href="javascript:void(0);" onclick="register_profile();"><?php echo $this->lang->line("Projects"); ?></a>
                                                     </li>
-                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer-save') { ?> class="active" <?php } ?>><a title="Saved Freelancer" class="padding_less_right" href="javascript:void(0);" onclick="register_profile();"><?php echo $this->lang->line("saved_freelancer"); ?></a>
+                                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer-save') { ?> class="active" <?php } ?>><a title="Saved Freelancer" class="padding_less_right" href="javascript:void(0);" onclick="register_profile();">Saved</a>
                                                     </li>
 
                                                 </ul>

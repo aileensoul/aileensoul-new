@@ -580,7 +580,13 @@
                                                             if ($recdata[0]['comp_logo']) {
                                                                 ?>
                                                                 <li><b>Company Logo</b> <span>
+
+                                                                       <?php if (IMAGEPATHFROM == 'upload') { ?>
                                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
+                                                                        <?php } else{ ?>
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" /> 
+                                                <?php }?>
+
                                                                     </span> </li>
                                                                 <?php
                                                             } else {
@@ -590,7 +596,13 @@
                                                             if ($recdata[0]['comp_logo']) {
                                                                 ?>
                                                                 <li><b>Company Logo</b> <span>
+
+                                                                     <?php if (IMAGEPATHFROM == 'upload') { ?>
                                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
+
+                                                                        <?php } else{ ?>
+                                <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" /> 
+                                                <?php }?>
 
                                                                     </span> </li>
                                                                 <?php

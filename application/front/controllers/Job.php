@@ -4226,7 +4226,7 @@ class Job extends MY_Controller {
             $join_str[0]['join_type'] = '';
 
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
-            $contition_array = array('status' => '1', 'rec_post.is_delete' => '0');
+            $contition_array = array('recruiter.re_status'=>'1','recruiter.is_delete'=>'0','status' => '1', 'rec_post.is_delete' => '0');
             $unique = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         } elseif ($search_job == "") {
 
@@ -4255,7 +4255,7 @@ class Job extends MY_Controller {
             $join_str[0]['join_type'] = '';
             $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_year,,min_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile,city,country,post_currency,salary_type';
             $search_condition = "city IN ('$city_names')";
-            $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = '', $orderby = 'ASC', $limit = '', $offset = '', $join_str, $groupby = '');
+            $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 // $unique = $this->data['results'] = $this->common->select_data_by_search('rec_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 //echo "<pre>"; print_r($unique);die();
         } elseif ($search_place == "") {
@@ -4280,7 +4280,7 @@ class Job extends MY_Controller {
             $search_condition = "(rec_post.post_name LIKE '%$search_job%' or recruiter.re_comp_name LIKE '%$search_job%' or recruiter.rec_firstname LIKE '%$search_job%' or recruiter.rec_lastname LIKE '%$search_job%' or rec_post.other_skill LIKE '%$search_job%' or concat(
                     rec_firstname,' ',rec_lastname) LIKE '%$search_job%')";
 
-            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             //Search For firstname,lastname,companyname,other_skill and concat(firstname,lastname) End
 
 
@@ -4323,7 +4323,7 @@ class Job extends MY_Controller {
             $search_condition = "(rec_post.post_name LIKE '%$search_job%' or recruiter.re_comp_name LIKE '%$search_job%' or recruiter.rec_firstname LIKE '%$search_job%' or recruiter.rec_lastname LIKE '%$search_job%' or rec_post.other_skill LIKE '%$search_job%' or concat(
                     rec_firstname,' ',rec_lastname) LIKE '%$search_job%')";
 
-            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $results_all = $recpostdata['data'] = $this->common->select_data_by_search('rec_post', $search_condition, $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             //Search For firstname,lastname,companyname,other_skill and concat(firstname,lastname) End
 
 

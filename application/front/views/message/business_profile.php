@@ -6,8 +6,6 @@
         <title>Chat | Aileensoul</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
-        <!--        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-                <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">-->
         <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/as-videoplayer/build/mediaelementplayer.css'); ?>" />
         <style type="text/css">
@@ -102,49 +100,7 @@
                 background-image: url("https://www.aileensoul.com/assets/as-videoplayer/build/mejs-controls.svg");
             }
         </style>
-<!--            <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.css">
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojipicker.js"></script>
-
-         Emoji Data 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/emoji/css/jquery.emojipicker.tw.css">
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/emoji/js/jquery.emojis.js"></script>-->
-
-<!--            <script type="text/javascript">
-                $(document).ready(function (e) {
-
-                    $('#input-default').emojiPicker();
-                    $('#input-custom-size').emojiPicker({
-                        width: '300px',
-                        height: '200px'
-                    });
-                    $('#input-left-position').emojiPicker({
-                        position: 'left'
-                    });
-                    $('#create').click(function (e) {
-                        e.preventDefault();
-                        $('#text-custom-trigger').emojiPicker({
-                            width: '300px',
-                            height: '200px',
-                            button: false
-                        });
-                    });
-                    $('#toggle').click(function (e) {
-                        e.preventDefault();
-                        $('#text-custom-trigger').emojiPicker('toggle');
-                    });
-                    $('#destroy').click(function (e) {
-                        e.preventDefault();
-                        $('#text-custom-trigger').emojiPicker('destroy');
-                    })
-
-                    // keyup event is fired
-                    $(".emojiable-question, .emojiable-option").on("keyup", function () {
-                        //console.log("emoji added, input val() is: " + $(this).val());
-                    });
-                });
-            </script>-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/emojionearea.css" media="screen">
-        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/emojionearea.js"></script>
         <style>
             .clearfix:after {
                 content: " ";
@@ -177,7 +133,8 @@
                                         </div>
                                         <div class="about">
                                             <div class="name">{{data.company_name}}<br></div>
-                                            <div>{{data.message| htmlToPlaintext}}</div>
+                                            <!--<div>{{data.message| htmlToPlaintext}}</div>-->
+                                            <div ng-bind-html="data.message"></div>
                                         </div>
                                     </li>
                                     <!--</a>-->
@@ -335,16 +292,17 @@
                                 <div class="" id="msg_block">
                                     <div class="input-group " id="set_input">
                                         <form name="blog">
-                                            <!--<div class="comment " ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>-->
+                                            <!--<div class="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message132" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>-->
                                             <textarea id="demo1"></textarea>
                                             <div id="message"></div>
                                             <!--                                            <div for="smily" class="smily_b">
                                                                                             <div><a class="smil" href="#" id="notificationLink1"><i class="em em-blush"></i></a></div>
                                                                                         </div>-->
+                                            <div for="smily" class="link_b input-group-btn box-tools pull-right desktop">
+                                                <button class="btn btn-warning btn-flat fr" data-widget="" ngf-select="upload($files)" ngf-multiple="true" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
+                                            </div>
                                         </form>
-                                        <div for="smily" class="link_b input-group-btn box-tools pull-right desktop">
-                                            <button class="btn btn-warning btn-flat fr" data-widget="" ngf-select="upload($files)" ngf-multiple="true" ng-model="Files"><i class="fa fa-paperclip" aria-hidden="true"></i></button>
-                                        </div>
+
                                         <span class="input-group-btn">
                                             <button class="btn btn-warning btn-sm main_send" ng-click="sendMsg()" id="submit">Send</button>
                                         </span>
@@ -365,14 +323,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
-        <script src="<?php echo base_url() ?>assets/services/sendImageService.js"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/build/mediaelement-and-player.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/as-videoplayer/demo.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/emojionearea.js"></script>
 
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload', 'Services']);
+                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload']);
+                    messageApp.factory('emojione', function ($window) {
+                        return $window.emojione;
+                    });
                     messageApp.filter('htmlToPlaintext', function () {
                         return function (text) {
                             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
@@ -522,7 +481,7 @@
                         // sending text message function
                         $scope.sendMsg = function () {
                             $scope.current = window.location.pathname.split("/").pop();
-                            var message = $('#message').html();
+                            var message = $('#as_chat_message').html();
                             message = message.replace(/^(<br\s*\/?>)+/, '');
                             if (message) {
                                 $scope.isFileSelected = false;
@@ -541,7 +500,7 @@
                                                     message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
                                                 });
                                                 // GET SOCKET USER LIST END    
-                                                $('#message').html('');
+                                                $('#as_chat_message').html('');
                                                 $scope.setFocus = true;
                                             }
                                         });
@@ -549,7 +508,6 @@
                                 $scope.isMsgBoxEmpty = true;
                             }
                         }
-                        var isProcessing = false;
                         $scope.$watch('files', function () {
                             $scope.upload($scope.files);
                         });
@@ -560,10 +518,6 @@
                         });
                         $scope.log = '';
                         $scope.upload = function (files) {
-                            if (isProcessing) {
-                                return;
-                            }
-                            isProcessing = true;
                             $scope.current = window.location.pathname.split("/").pop();
                             if (files && files.length) {
 
@@ -585,9 +539,8 @@
                                                             message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
                                                         });
                                                         // GET SOCKET USER LIST END    
-                                                        $('#message').html('');
+                                                        $('#as_chat_message').html('');
                                                         $scope.setFocus = true;
-                                                        isProcessing = false;
                                                     }
                                                 });
 //            .then(function (resp) {
@@ -608,6 +561,23 @@
                                 }
                             }
                         };
+                        $("#demo1").emojioneArea({
+                            container: "#message",
+                            hideSource: true,
+                            autoHideFilters: true,
+                            tonesStyle: "radio",
+                            events: {
+                                keypress: function (editor, event) {
+                                    if (event.which == 13 && !event.shiftKey) {
+                                        $scope.sendMsg();
+                                        event.preventDefault();
+                                    }else{
+                                        return false;
+                                    }
+                                },
+                            }
+
+                        });
                         // SOCKET ON
 
                         socket.on('getBusinessChatUserList', function (data) {
@@ -622,11 +592,7 @@
         </script>
         <script type="text/javascript">
                     $(document).ready(function () {
-                        $("#demo1").emojioneArea({
-                            container: "#message",
-                            hideSource: true,
-                            useSprite: false
-                        });
+
                     });
         </script>
     </body>

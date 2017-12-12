@@ -297,7 +297,7 @@ $(document).on('keydown', function (e) {
 //DISABLE BUTTON ON ONE TIME CLICK START
 $("#submit").on('click', function ()
 {
-    if ($('#artpost').valid())
+    if ($('#freelancer_regform').valid())
     {
         $("#submit").addClass("register_disable");
         return true;
