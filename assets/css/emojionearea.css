@@ -1,4 +1,7 @@
 /* line 3, ../scss/_text-complete.scss */
+.message .emojioneemoji, .ng-binding .emojioneemoji, .comment .emojioneemoji{
+    width: 20px;
+}
 .dropdown-menu.textcomplete-dropdown[data-strategy="emojionearea"] {
   position: absolute;
   z-index: 1000;
@@ -58,7 +61,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 /* line 11, ../scss/emojionearea.scss */
-.emojionearea, .emojionearea.form-control {
+/*.emojionearea, .emojionearea.form-control {
   display: block;
   position: relative !important;
   width: 100%;
@@ -67,7 +70,7 @@
   font-size: 14px;
   border: 0;
   background-color: #fff;
- /* border: 1px solid #ccc; */
+  border: 1px solid #ccc; 
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -77,21 +80,22 @@
   -moz-transition: border-color 0.15s ease-in-out,    -moz-box-shadow 0.15s ease-in-out;
   -o-transition: border-color 0.15s ease-in-out,         box-shadow 0.15s ease-in-out;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out,         box-shadow 0.15s ease-in-out; }
+  transition: border-color 0.15s ease-in-out,         box-shadow 0.15s ease-in-out; }  */
 /* line 29, ../scss/emojionearea.scss */
-.emojionearea.focused {
+/*.emojionearea.focused {
   border-color: #66afe9;
   outline: 0;
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
+*/
 /* line 35, ../scss/emojionearea.scss */
 .emojionearea .emojionearea-editor {
-  display: block;
-  height: auto;
+  /*display: block;
+  height: auto; */
   min-height: 4em;
   max-height: 4em;
-  overflow: auto;
+  /*overflow: auto;
   padding: 6px 24px 6px 12px;
   line-height: 1.42857143;
   font-size: inherit;
@@ -105,7 +109,8 @@
   border-radius: 0;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
-  box-shadow: none; }
+  box-shadow: none;  */
+  }
   /* line 52, ../scss/emojionearea.scss */
   .emojionearea .emojionearea-editor:empty:before {
     content: attr(placeholder);

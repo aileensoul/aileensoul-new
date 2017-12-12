@@ -93,13 +93,19 @@
     }
     var default_options = {
         attributes: {
-            dir               : "ltr",
-            spellcheck        : false,
-            autocomplete      : "off",
-            autocorrect       : "off",
-            autocapitalize    : "off",
+            id                : "as_chat_message",
+            class             : "comment",
+            'ng-class'        : "{'form-control': false, 'has-error':isMsgBoxEmpty}",
+            'ng-model'        : "chatMsg",
+            'ng-change'       : "isMsgBoxEmpty = false",
+            'ng-enter'        : "sendMsg()",
+            'ng-focus'        : "setFocus",
+            'focus-me'        : "setFocus",
+            'name'            : "message",
+            'onpaste'         : "OnPaste_StripFormatting(this, event);",
+            'style'           : "position: relative;",
         },
-        placeholder       : null,
+        placeholder       : 'Type your message here...',
         container         : null,
         hideSource        : true,
         shortnames        : true,
@@ -363,8 +369,14 @@
 
     var uniRegexp;
     var emojioneVersion = window.emojioneVersion || '2.1.4';
-
-    var cdn_base = "https://cdnjs.cloudflare.com/ajax/libs/emojione/";
+    //var cdn_base = "https://cdnjs.cloudflare.com/ajax/libs/emojione/";
+    if(window.location.hostname == 'localhost'){
+        var sitename ="/aileensoul-new";
+    }
+    else{
+        var sitename ="";
+    }
+    var cdn_base1 = window.location.protocol + '//' + window.location.hostname + sitename + '/assets';
     function detectVersion() {
         var version = emojione.cacheBustParam;
         if (!isObject(emojione['jsEscapeMap'])) return '1.5.2';
@@ -389,12 +401,14 @@
         }
     }
     if (!emojione || getSupportMode(detectVersion()) < 2) {
-        $.getScript(cdn_base + emojioneVersion + "/lib/js/emojione.min.js", function () {
+        //$.getScript(cdn_base + emojioneVersion + "/lib/js/emojione.min.js", function () {
+        $.getScript(cdn_base1 + "/js/emojione.min.js", function () {
             emojione = window.emojione;
             emojioneVersion = detectVersion();
             emojioneSupportMode = getSupportMode(emojioneVersion);
-            cdn_base += emojioneVersion + "/assets";
-            var sprite = cdn_base +"/sprites/emojione.sprites.css";
+            //cdn_base += emojioneVersion + "/assets";
+            cdn_base1 += "/emoji/";
+            var sprite = cdn_base1 +"../css/emojione.sprites.css";
             if (document.createStyleSheet) {
                 document.createStyleSheet(sprite);
             } else {
@@ -407,11 +421,13 @@
     } else {
         emojioneVersion = detectVersion();
         emojioneSupportMode = getSupportMode(emojioneVersion);
-        cdn_base += emojioneVersion + "/assets";
+        //cdn_base += emojioneVersion + "/assets";
+        cdn_base1 += "/emoji/";
     }
 
     emojioneReady(function() {
-        emojione.imagePathPNG = cdn_base + "/png/";
+        //emojione.imagePathPNG = cdn_base1 + "/png/";
+        emojione.imagePathPNG = cdn_base1 + "64x64/";
         uniRegexp = new RegExp("<object[^>]*>.*?<\/object>|<span[^>]*>.*?<\/span>|<(?:object|embed|svg|img|div|span|p|a)[^>]*>|("+
             emojione.unicodeRegexp+")", "gi");
     });
