@@ -182,11 +182,11 @@
                                         <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
                                             <div class="msg_right"> 
                                                 <div class="messagedelete fl">
-                                                    <a href="javascript:void(0);" ng-click="delete_chat('1', chat.id)">
+                                                    <a href="javascript:void(0);" ng-click="delete_chat('1', chat.id, chat)">
                                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
-                                                <div class="message other-message float-right" ng-bind-html="chat.message" ng-if="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                                <div class="message other-message float-right" ng-if="chat.message"><span ng-bind-html="chat.message"></span><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
                                                 <div class="message other-message float-right" ng-if="chat.message_file_type == 'image'">
                                                     <div class="file_image"><img ng-src="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}" alt="{{chat.message_file}}" style="width:100px; height: auto;"></div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
@@ -235,7 +235,7 @@
                                             <div class="msg_left_data"> 
                                                 <div class="msg-user-img" ng-if="chat.business_user_image"><img ng-src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{chat.company_name}}"></div>
                                                 <div class="msg-user-img" ng-if="!chat.business_user_image"><img ng-src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
-                                                <div class="message my-message" ng-bind-html="chat.message" ng-if="chat.message"><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
+                                                <div class="message my-message" ng-if="chat.message"><span ng-bind-html="chat.message"></span><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span></div>
                                                 <div class="message my-message" ng-if="chat.message_file_type == 'image'">
                                                     <div class="file_image"><img ng-src="<?php echo BUS_MESSAGE_THUMB_UPLOAD_URL ?>{{chat.message_file}}" alt="{{chat.message_file}}" style="width:100px; height: auto;"></div><span class="msg-time">{{chat.timestamp * 1000| date : "hh:mm a"}}</span>
                                                     <div class="file_property">
@@ -278,7 +278,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="messagedelete"> 
-                                                    <a href="javascript:void(0);" ng-click="delete_chat('2', chat.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                    <a href="javascript:void(0);" ng-click="delete_chat('2', chat.id, chat)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
                                         </li>
@@ -405,7 +405,7 @@
                     messageApp.controller('messageController', function ($scope, Upload, $timeout, $http) {
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
-                        $scope.delete_chat = function (message_for, message_id) {
+                        $scope.delete_chat = function (message_for, message_id, chat) {
                             $http({
                                 method: 'POST',
                                 url: base_url + 'message/businessmessageDelete',
@@ -413,9 +413,8 @@
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
                                     .then(function (success) {
-                                        //            $scope.loaded_user_data = success.data;
-//                                    alert($(this).parent().find('li').attr('id'));
-                                        $(this).parents('ng-scope').remove();
+                                        var index = $scope.user_chat.indexOf(chat);
+                                        $scope.user_chat.splice(index, 1);
                                     });
                         }
                         /*$scope.loadMediaElement = function ()
@@ -425,11 +424,6 @@
                          };*/
                         load_message_user();
                         function load_message_user() {
-//                            $http.get(base_url + "message/getBusinessUserChatList").success(function (data) {
-//                                $scope.loaded_user_data = data;
-//                                var select_segment = window.location.pathname.split("/").pop();
-//                                $('li#' + select_segment).addClass('active');
-//                            })
                             $http.get(base_url + "message/getBusinessUserChatList").then(function (success) {
                                 $scope.loaded_user_data = success.data;
                                 var select_segment = window.location.pathname.split("/").pop();
@@ -543,20 +537,6 @@
                                                         $scope.setFocus = true;
                                                     }
                                                 });
-//            .then(function (resp) {
-//            $timeout(function () {
-//            $scope.log = 'file: ' +
-//                    resp.config.data.file.name +
-//                    ', Response: ' + JSON.stringify(resp.data) +
-//                    '\n' + $scope.log;
-//            });
-//            }, null, function (evt) {
-//            var progressPercentage = parseInt(100.0 *
-//                    evt.loaded / evt.total);
-//            $scope.log = 'progress: ' + progressPercentage +
-//                    '% ' + evt.config.data.file.name + '\n' +
-//                    $scope.log;
-//            });
                                     }
                                 }
                             }
@@ -571,7 +551,7 @@
                                     if (event.which == 13 && !event.shiftKey) {
                                         $scope.sendMsg();
                                         event.preventDefault();
-                                    }else{
+                                    } else {
                                         return false;
                                     }
                                 },

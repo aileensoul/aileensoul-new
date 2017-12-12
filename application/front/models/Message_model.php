@@ -95,7 +95,12 @@ class Message_model extends CI_Model {
     function getBusinessChat($business_profile_id = '', $business_to_profile_id = '') {
         $this->db->select("m.id,m.message,m.message_file,m.message_file_type,m.message_file_size,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,b.company_name,b.business_user_image,b.business_slug")->from("messages m");
         $this->db->join('business_profile b', 'b.business_profile_id = m.message_from_profile_id');
-        $this->db->where("(m.message_from_profile_id='" . $business_profile_id . "' AND m.message_to_profile_id='" . $business_to_profile_id . "' ) OR (m.message_to_profile_id='" . $business_profile_id . "' AND m.message_from_profile_id='" . $business_to_profile_id . "')AND m.is_deleted = '0' AND m.is_message_from_delete != '.$business_profile_id.' AND m.is_message_to_delete != '.$business_profile_id.' AND m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        //$this->db->where("(m.is_deleted = '0') AND  ( m.is_message_from_delete != '". $business_profile_id ."' OR m.is_message_to_delete != '".$business_profile_id."' ) AND (m.message_from_profile_id='" . $business_profile_id . "' AND m.message_to_profile_id='" . $business_to_profile_id . "' ) OR (m.message_to_profile_id='" . $business_profile_id . "' AND m.message_from_profile_id='" . $business_to_profile_id . "') AND m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        
+        $where = '((m.message_from="' . $business_profile_id . '" AND m.message_to ="' . $business_to_profile_id . '") OR (m.message_to="' . $business_profile_id . '" AND m.message_from ="' . $business_to_profile_id . '")) AND ((m.message_from_profile = "' . $message_from_profile . '" AND m.message_to_profile ="' . $message_to_profile . '" ) OR (m.message_from_profile = "' . $message_to_profile . '" AND m.message_to_profile ="' . $message_from_profile . '" )) AND ((m.message_from_profile_id="' . $message_from_profile_id . '" AND m.message_to_profile_id ="' . $message_to_profile_id . '") OR (m.message_to_profile_id="' . $message_from_profile_id . '" AND m.message_from_profile_id ="' . $message_to_profile_id . '"))';
+        $where .= 'AND m1.is_message_from_delete !="' . $business_profile_id . '" AND m.is_message_to_delete !="' . $business_profile_id . '"';
+        $this->db->where($where);
+        
         $query = $this->db->get();
         $result_array = $query->result_array();
         return $result_array;
@@ -115,10 +120,10 @@ class Message_model extends CI_Model {
 
     function businessMessageData($message_for='',$business_profile_id='',$message_id = '') {
         if($message_for == 1){
-            $data = array('is_deleted' => '1','is_message_from_delete'=>$business_profile_id);
+            $data = array('is_message_from_delete'=>$business_profile_id);
         }
         else{
-            $data = array('is_deleted' => '1','is_message_to_delete'=>$business_profile_id);
+            $data = array('is_message_to_delete'=>$business_profile_id);
         }
         $this->db->where('id', $message_id);
         $update_data = $this->db->update('messages', $data);
