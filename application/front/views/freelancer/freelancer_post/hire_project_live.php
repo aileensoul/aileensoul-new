@@ -705,23 +705,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?php
-                                            }
-                                        } else {
-                                            ?>
-                                            <div class="art-img-nn">
-                                                <div class="art_no_post_img">
-                                                    <img src="' . base_url() . 'img/job-no.png">
-
-                                                </div>
-                                                <div class="art_no_post_text">
-                                                    No  Post Available.
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                             
-                                <!-- sortlisted employe -->
+                                                 <!-- sortlisted employe -->
 
                                 <?php if ($shortlist) {
                                     ?>
@@ -793,6 +777,23 @@
                                     <?php } ?>
                                 </div>
                                 <!-- end sortlisted employe -->
+                                                <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <div class="art-img-nn">
+                                                <div class="art_no_post_img">
+                                                    <img src="' . base_url() . 'img/job-no.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">
+                                                    No  Post Available.
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                             
+                               
                                 <div class="mob-add">
                                     <div class="fw text-center pt10 pb5">
                                         <script type="text/javascript">
