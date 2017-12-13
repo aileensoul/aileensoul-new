@@ -2101,6 +2101,10 @@ word-break: break-word;}
 .paddnone{padding: 0px;}
 .add-border{border:1px solid #d9d9d9; margin-bottom:10px; padding-top:9px; padding-bottom:4px; border-radius:4px;}
 
+/***  advertise problem  ***/
+.tablate-add-custom{display:none; width:160px; position:fixed; margin-left:565px;}
+/***  end advertise problem  ***/
+
 /***  media query  ***/
 
 @media screen and (max-height: 540px){
@@ -2270,6 +2274,9 @@ word-break: break-word;}
 	.job-detail .post-img{width:100px; height:100px;}
 	.detail-discription .all-job-middle ul li span{width:74%;}
 	/***  end new flow  ***/
+	/***  advertise problem  ***/
+	.tablate-add-custom{display:block;}
+	/***  end advertise problem  ***/
 	
 }
 
@@ -2370,6 +2377,10 @@ word-break: break-word;}
 	.no-login .sign_in.pt10{padding-top:0;}
 	.alert.alert-success{margin-top:20px; width:100%;}
 	.outer-page header{position:relative; background:url('../img/mob-about-bg.jpg');}
+	/***  advertise problem  ***/
+	.tablate-add-custom{display:none;}
+	/***  end advertise problem  ***/
+	.inner-right-part{width:100%;}
 }
 
 @media screen and (max-width: 640px) {
@@ -2399,8 +2410,10 @@ word-break: break-word;}
 	.comment-dis{width:100%;}
 	.post-images .two-img{width:calc(50% - 4px);}
     .job-top-detail{width: 86%}
-    .cust-job-width .job-detail .job-top-detail{width: 100%;padding-top: 15px;}
+    .cust-job-width .job-detail .job-top-detail{}
 	/***  end new flow  ***/
+	.job-detail .post-img{width:80px; height:80px;}
+	.job-top-detail .job-top-btn{margin-top:10px; float:left; width:100%;}
 }
 
 @media screen and (max-width: 540px) {
