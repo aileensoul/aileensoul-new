@@ -573,7 +573,7 @@
                                 <div class="all-job-box job-detail">
                                     <div class="all-job-top">
                                         <div class="post-img">
-                                            <a href="#">
+                                            <a>
                                                 <?php
                                                 $cache_time = $this->db->get_where('recruiter', array(
                                                             'user_id' => $post['user_id']
@@ -611,7 +611,7 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                             <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5> 
+                                             <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $cache_time1; ?></a></h5> 
                                             <p><a href="javascript:void(0);" onclick="register_profile();">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
@@ -658,9 +658,9 @@
                                                 </span>
                                             </p>
                                             <p class="pull-right job-top-btn">
-                                                <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Save</a>
+                                                <a href="javascript:void(0);"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Save</a>
 
-                                                <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
+                                                <a href="javascript:void(0);"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                             </p>
                                         </div>
                                     </div>
@@ -869,17 +869,35 @@
                                     <div class="all-job-box job-detail">
                                         <div class="all-job-top">
                                             <div class="post-img">
-                                                <a href="#">
+                                                <a >
+                                                    
                                                     <?php
-                                                    $cache_time = $this->db->get_where('recruiter', array(
-                                                                'user_id' => $post['user_id']
-                                                            ))->row()->comp_logo;
-                                                    if ($cache_time) {
-                                                        ?>
-                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time); ?>">
-                                                    <?php }else { ?>
-                                                    <img src="<?php echo base_url('assets/images/commen-img.png'); ?>">
-                                                    <?php } ?>
+                                                $cache_time = $this->db->get_where('recruiter', array(
+                                                            'user_id' => $post['user_id']
+                                                        ))->row()->comp_logo;
+                                                
+                                               if ($cache_time) {
+                                                    if (IMAGEPATHFROM == 'upload') {
+                                                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) { 
+                                                            ?>
+                                                           <img src="<?php echo  base_url('assets/images/commen-img.png') ?>">
+                                                   <?php     } else { ?>
+                                                           <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                       <?php  }
+                                                    } else {
+                                                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
+                                                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                        if ($info) { ?>
+                                                           <img src="<?php echo  REC_PROFILE_THUMB_UPLOAD_URL . $cache_time ?>">
+                                                         <?php } else { ?>
+                                                          <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                       <?php  }
+                                                    }
+                                                } else { ?>
+                                                    <img src="<?php echo base_url('assets/images/commen-img.png') ?>">
+                                                <?php } ?>
+                                                    
                                                 </a>
                                             </div>
                                             <div class="job-top-detail">
@@ -891,7 +909,7 @@
                                                     $cache_time1 = $post['post_name'];
                                                 }
                                                 ?>
-                                             <!--    <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5> -->
+                                                 <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $cache_time1; ?></a></h5> 
                                                 <p><a href="javascript:void(0);" onclick="register_profile();">
                                                         <?php
                                                         $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
