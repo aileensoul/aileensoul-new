@@ -18,7 +18,7 @@
 
             <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
             
-			<li><a style="cursor-event:none;" href="#" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Profiles</a></li>
+			<li><a style="pointer-events:none;" href="#" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Profiles</a></li>
         </ul>
 
     </div>

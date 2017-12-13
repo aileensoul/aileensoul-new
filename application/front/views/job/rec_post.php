@@ -148,10 +148,9 @@
 
 
                         </div>
-                        <?php echo $left_footer; ?>
+                       
                          <div id="hideuserlist" class=" fixed_right_display animated fadeInRightBig"> 
-
-                                                                                        <div class="fw text-center" style="text-align: center;">
+							<div class="fw text-center add-border" style="text-align: center;">
                                                                                             <script type="text/javascript">
                                                                                                 (function () {
                                                                                                     if (window.CHITIKA === undefined) {
@@ -171,6 +170,7 @@
                                                                                         </div>
 
                                                                                     </div>
+																					 <?php echo $left_footer; ?>
 
                         <!--left bar box end-->
                         <div  class="add-post-button mob-block">
