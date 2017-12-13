@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="tablate-potrat-add">
-                                <div class="fw text-center pt10">
+                                <div class="fw text-center add-border">
                                     <script type="text/javascript">
                                         (function () {
                                             if (window.CHITIKA === undefined) {

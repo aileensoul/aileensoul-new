@@ -103,7 +103,7 @@
                                     </div>                             
                                 </div>
                                 <div class="tablate-potrat-add">
-                                    <div class="fw text-center pt10">
+                                    <div class="fw text-center add-border">
                                         <script type="text/javascript">
                                             (function () {
                                                 if (window.CHITIKA === undefined) {
@@ -142,7 +142,7 @@
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
-                                    <div class="contact-frnd-post no-post-custom">
+                                    <div class="contact-frnd-post">
                                         <div class="mob-add">
                                             <div class="fw text-center pt10 pb5">
                                                 <script type="text/javascript">
