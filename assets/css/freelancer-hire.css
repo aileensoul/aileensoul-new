@@ -1577,7 +1577,7 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.sort-emp-img .post-img-user{font-size: 22px; padding: 20px 0;}
+.sort-emp-img .post-img-user{font-size: 22px; padding: 15px 0;}
 
  .profile-job-details ul li .post_title a{font-weight: bold;display: inline-block;cursor: pointer;}   
 .register_disable{pointer-events: none;}
@@ -2124,8 +2124,8 @@ font-weight: 500; color: #5c5c5c; background:#fff;}
         width: 50px;
     }
     .custom-row .user-pic:hover a {
-        width: 50px;
-		height:50px;
+        width: 88px;
+		height:88px;
 		font-size:0;
 		padding:27px 0;
     }

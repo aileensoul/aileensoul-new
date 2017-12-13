@@ -364,7 +364,7 @@
 
 
     </style>
-    <body class="page-container-bg-solid page-boxed no-login freeh3 cust-job-width">
+    <body class="page-container-bg-solid page-boxed no-login freeh3 cust-job-width paddnone">
 
         <header>
             <div class="container">
@@ -611,7 +611,7 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                            <!-- <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5> -->
+                                             <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5> 
                                             <p><a href="javascript:void(0);" onclick="register_profile();">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];

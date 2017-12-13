@@ -21,7 +21,9 @@
             <div class="container">
 <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
     <?php echo $left_artistic; ?>
+    <?php echo $left_footer; ?> 
 </div>
+
        <div class=" custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="">  
         <div class="right_side_posrt fl"> 
@@ -47,6 +49,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     </div>
     </div>
