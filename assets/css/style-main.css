@@ -1800,7 +1800,7 @@ img{
 
 .site-map .main-inner .middle-main{padding: 20px 0 0 !important;}
 /***  end site map  ***/
-
+.about-us p{margin-bottom: 30px;}
 
 /***  media query  ***/
 @media screen and (min-height: 540px){
@@ -2066,6 +2066,11 @@ img{
 	.about-us header{position: relative;}
 	/*.cust-disclaimer .cust-header{background-image: url("../../assets/img/disclaimer12.jpg");background-repeat: no-repeat;background-position: center;width: 100%;background-size: cover;}*/
 	.about-us .logo{padding-bottom: 10px;}
+	.custom-tp .logo{padding-bottom: 10px;}
+	.feedback-cus h2{line-height: 1.1;}
+	.feedback-cus .logo {padding-bottom: 10px;}
+	.feedback-cus .logo a{font-size: 24px !important;}
+	.site-map .logo{padding-bottom: 10px;}
 	.contact header{border-bottom:1px solid #d9d9d9; background:rgba(255,255,255,0.4) url('../img/mob-about-bg.jpg') !important; background-size:100% !important;}
 	.cust-disclaimer .about-h2{padding-top: 0px;padding-bottom: 190px;}
 	.feedback-cus .cus-about{padding:0;}
@@ -2081,6 +2086,7 @@ img{
 	.site-map .sm-header .site-map-all-profile{padding:35px 0;}
 	.site-map .main-inner .middle-main{padding-top:20px;}
 	.mg-left{margin-left: -2px;}
+	.about-us p{margin-bottom: 15px;}
 
 }
 
