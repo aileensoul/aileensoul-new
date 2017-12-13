@@ -635,7 +635,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -731,12 +731,12 @@ var keyword1 = '<?php echo $keyword1; ?>';
                                 window.location = "<?php echo base_url() ?>artist/search" +"?skills=" + keyword + "&searchplace=" + keyword1;
                             }
                             else{
-                                window.location = "<?php echo base_url()?>artistic";
+                                window.location = "<?php echo base_url()?>artist";
                             }
 
                                
                             }else if (response.is_artistic == 1) {
-                                window.location = "<?php echo base_url() ?>artist/";
+                                window.location = "<?php echo base_url() ?>artist";
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
@@ -929,7 +929,7 @@ var keyword1 = '<?php echo $keyword1; ?>';
                         success: function (response)
                         {
                             if (response == "ok") {
-                                window.location = "<?php echo base_url()?>artistic";
+                                window.location = "<?php echo base_url()?>artist";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');

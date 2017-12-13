@@ -37,8 +37,9 @@ class Artist extends MY_Controller {
     public function index() {
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('user_id' => $userid, 'status' => '0');
+        $contition_array = array('user_id' => $userid, 'status' => 0);
         $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r($artdata); die();
         if ($artdata) {
 
             $this->load->view('artist/reactivate', $this->data);
@@ -192,7 +193,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -223,7 +224,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $this->form_validation->set_rules('firstname', 'First name', 'required');
@@ -318,7 +319,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $contition_array = array('status' => '1');
@@ -390,7 +391,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         if ($this->input->post('next')) {
@@ -443,7 +444,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
@@ -489,7 +490,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
 
         $art_category = $this->input->post('skills');
@@ -591,7 +592,7 @@ class Artist extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
@@ -605,7 +606,7 @@ class Artist extends MY_Controller {
         $this->data['crosscount'] = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->data['get_url'] = $this->get_url($userid);
         if (!$this->data['artisticdata']) {
-            redirect('artist/');
+            redirect('artist');
         } else {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $artistic_name = $this->get_artistic_name($id);
@@ -622,7 +623,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $user_name = $this->session->userdata('user_name');
@@ -641,7 +642,7 @@ class Artist extends MY_Controller {
             if (!$this->data['artisticdata'] && !$this->data['artsdata']) { //echo "22222222"; die();
                 $this->load->view('artist/notavalible');
             } else if ($this->data['artisticdata'][0]['art_step'] != '4') {   //echo "hii"; die();
-                redirect('artist/');
+                redirect('artist');
             } else {
                 $this->data['artistic_common'] = $this->load->view('artist/artistic_common', $this->data, true);
                 $artistic_name = $this->get_artistic_name($id);
@@ -669,7 +670,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         if ($para == $userid || $para == '') {
@@ -1908,7 +1909,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $segment3 = explode('-', $this->uri->segment(3));
@@ -1928,7 +1929,7 @@ class Artist extends MY_Controller {
             } else if (!$this->data['artisticdata'] && $id != $userid) {
                 $this->load->view('artist/notavalible');
             } else if (!$this->data['artisticdata'] && ($id == $userid || $id == "")) {
-                redirect('artist/');
+                redirect('artist');
             }
         } else {
 
@@ -1959,7 +1960,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_name,art_lastname,profile_background,art_user_image,designation,slug,user_id');
@@ -1972,7 +1973,7 @@ class Artist extends MY_Controller {
             $this->data['title'] = ucfirst(strtolower($artistic_name)) . TITLEPOSTFIX;
             $this->load->view('artist/artistic_userlist', $this->data);
         } else {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -2089,7 +2090,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -2257,7 +2258,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -2856,7 +2857,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3018,7 +3019,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3195,7 +3196,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3231,7 +3232,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3279,7 +3280,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3340,7 +3341,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3363,7 +3364,7 @@ class Artist extends MY_Controller {
         } else if (!$this->data['artisticdata'] && $id != $userid) {
             $this->load->view('artist/notavalible');
         } else if (!$this->data['artisticdata'] && ($id == $userid || $id == "")) {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -3559,7 +3560,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3584,7 +3585,7 @@ class Artist extends MY_Controller {
 
             $this->load->view('artist/notavalible');
         } else if (!$this->data['artisticdata'] && ($id == $userid || $id == "")) {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -3805,7 +3806,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -3847,7 +3848,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
@@ -4084,7 +4085,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -4330,7 +4331,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $post_id = $_POST["post_id"];
@@ -4524,7 +4525,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $post_id = $_POST["post_id"];
@@ -4681,7 +4682,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $post_id = $_POST["post_id"];
@@ -4882,7 +4883,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $post_id = $_POST["post_id"];
@@ -5043,7 +5044,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -5401,7 +5402,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -5681,7 +5682,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -5908,7 +5909,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6218,7 +6219,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6295,7 +6296,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
 
 // REMOVE OLD IMAGE FROM FOLDER
@@ -6437,7 +6438,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $contition_array = array('user_id' => $userid, 'status' => '1');
@@ -6454,7 +6455,7 @@ class Artist extends MY_Controller {
             $this->data['left_artistic'] = $this->load->view('artist/left_artistic', $this->data, true);
             $this->load->view('artist/postnewpage', $this->data);
         } else {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -6472,7 +6473,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6595,7 +6596,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6784,7 +6785,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6832,7 +6833,7 @@ class Artist extends MY_Controller {
 
             $this->load->view('artist/notavalible');
         } else if (!$this->data['artisticdata'] && ($id == $userid || $id == "")) {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -6850,7 +6851,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6873,7 +6874,7 @@ class Artist extends MY_Controller {
 
             $this->load->view('artist/notavalible');
         } else if (!$this->data['artisticdata'] && ($id == $userid || $id == "")) {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -6891,7 +6892,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6918,7 +6919,7 @@ class Artist extends MY_Controller {
 
             $this->load->view('artist/notavalible');
         } else if (!$this->data['artisticdata'] && ($id == $userid || $id == "")) {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -6935,7 +6936,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -6963,7 +6964,7 @@ class Artist extends MY_Controller {
 
             $this->load->view('artist/notavalible');
         } else if (!$this->data['artisticdata'] && ($id == $userid || $id == "")) {
-            redirect('artist/');
+            redirect('artist');
         }
     }
 
@@ -6980,7 +6981,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         $artuserdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = 'art_id,art_user_image,slug,art_name,art_lastname,art_email');
@@ -7422,7 +7423,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -7707,7 +7708,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -7961,7 +7962,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -8204,7 +8205,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -8492,7 +8493,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -8741,7 +8742,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -8777,7 +8778,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -8980,7 +8981,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -9182,7 +9183,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         //$post_id =  $postid; 
@@ -9372,7 +9373,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         //$post_id =  $postid; 
@@ -9521,7 +9522,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -9730,7 +9731,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -10030,7 +10031,7 @@ class Artist extends MY_Controller {
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
 
@@ -13704,7 +13705,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($artistic_deactive) {
-            redirect('artist/');
+            redirect('artist');
         }
         //if user deactive profile then redirect to artist/index untill active profile End
         //$post_id =  $postid; 

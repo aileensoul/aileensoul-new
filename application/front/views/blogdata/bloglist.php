@@ -57,7 +57,7 @@
                                 <?php
                                 if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
                                     ?>
-                                    <a href="<?php echo base_url('blog/'); ?>">
+                                    <a href="<?php echo base_url('blog'); ?>">
                                         <h3  style="color: #1b8ab9;">Blog</h3>
                                     </a>
                                     <?php
@@ -78,7 +78,7 @@
                                         <?php
                                         if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
                                             ?>
-                                            <a title="Recent Post" href="<?php echo base_url('blog/'); ?>">Recent Post </a>
+                                            <a title="Recent Post" href="<?php echo base_url('blog'); ?>">Recent Post </a>
                                             <?php
                                         } else {
                                             ?>
@@ -162,13 +162,13 @@
                                                     <div class="blog_inside_post_main">
                                                         <div class="blog_main_post_first_part">
                                                             <div class="blog_main_post_img">
-                                                                <a href="<?php echo base_url('blog/') ?>{{post.blog_slug}}"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path'))?>{{post.image}}" ></a>
+                                                                <a href="<?php echo base_url('blog') ?>{{post.blog_slug}}"> <img src="<?php echo base_url($this->config->item('blog_main_upload_path'))?>{{post.image}}" ></a>
                                                             </div>
                                                         </div>
                                                         <div class="blog_main_post_second_part">
                                                             <div class="blog_class_main_name">
                                                                 <span>
-                                                                    <a href="<?php echo base_url('blog/') ?>{{post.blog_slug}}">
+                                                                    <a href="<?php echo base_url('blog') ?>{{post.blog_slug}}">
                                                                         <h1>{{post.title}} </h1>
                                                                     </a>
                                                                 </span>
@@ -193,7 +193,7 @@
                                                                             $image = urlencode(base_url($this->config->item('blog_main_upload_path') . $blog['image']));
                                                                             ?>
 
-                                                                            <a class="fbk" href="<?php base_url('blog/');?>{{post.blog_slug | escape}}" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog/')?>{{post.slug}}" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
+                                                                            <a class="fbk" href="<?php base_url('blog');?>{{post.blog_slug | escape}}" url_encode="<?php echo $url; ?>" url="<?php echo base_url('blog')?>{{post.slug}}" title="Facebook" summary="<?php echo $summary; ?>" image="<?php echo $image; ?>"> 
                                                                                 <span  class="social_fb"></span>
                                                                             </a>
                                                                         </li>

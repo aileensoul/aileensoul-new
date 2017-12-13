@@ -90,7 +90,7 @@
                <div class="col-md-4 col-sm-5 col-xs-3 mob-zindex">
                  
                   <div class="logo pl20">
-                     <a href="<?php echo base_url('blog/'); ?>">
+                     <a href="<?php echo base_url('blog'); ?>">
                         <h3  style="color: #1b8ab9;">Blog</h3>
                      </a>
                   </div>
