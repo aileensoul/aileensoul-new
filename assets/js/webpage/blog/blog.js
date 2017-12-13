@@ -14,7 +14,8 @@ $(document).on("click", '#read_more', function() {
         success: function (data) {
             if (data == 1)
             {
-                window.location = base_url + "blog/" + blog_slug;
+              //  window.location = base_url + "blog/" + blog_slug;
+              window.open(base_url + "blog/" + blog_slug, '_blank');
             }
 
         }

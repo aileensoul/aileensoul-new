@@ -134,7 +134,10 @@
                                         <div class="about">
                                             <div class="name">{{data.company_name}}<br></div>
                                             <!--<div>{{data.message| htmlToPlaintext}}</div>-->
-                                            <div ng-bind-html="data.message"></div>
+                                            <div  ng-if="data.message_file_type == 'image'">Sent a photo</div>
+                                            <div  ng-if="data.message_file_type == 'video'"></div>
+                                            <div  ng-if="data.message_file_type == 'audio'"></div>
+                                            <div  ng-if="data.message_file_type == 'pdf'"></div>
                                         </div>
                                     </li>
                                     <!--</a>-->

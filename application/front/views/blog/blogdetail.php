@@ -90,22 +90,22 @@
                <div class="col-md-4 col-sm-5 col-xs-3 mob-zindex">
                  
                   <div class="logo pl20">
-                     <a href="<?php echo base_url('blog/'); ?>">
+                     <a href="<?php echo base_url('blog'); ?>">
                         <h3  style="color: #1b8ab9;">Blog</h3>
                      </a>
                   </div>
                </div>
                <div class="col-md-8 col-sm-7 col-xs-9 header-left-menu">
                   <div class="main-menu-right">
- <ul class="">
-                                    <?php foreach ($blog_category as $category) { ?>
+<!-- <ul class="">
+                                    <?php// foreach ($blog_category as $category) { ?>
                                         <li class="category">
-                                            <div id="category_<?php echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
-                                                <?php echo $category['name']; ?>
+                                            <div id="category_<?php// echo $cateory['id']; ?>"  onclick="return category_data(<?php echo $category['id']; ?>);">
+                                                <?php //echo $category['name']; ?>
                                             </div>
                                         </li>
-                                    <?php } ?>
-                                </ul>
+                                    <?php //} ?>
+                                </ul>-->
                   </div>
                </div>
             </div>
@@ -414,64 +414,64 @@
 <script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
 
 <script>
-                                        var base_url = '<?php echo base_url(); ?>';
+                                       var base_url = '<?php echo base_url(); ?>';
 </script>
 <script>
 //AJAX DATA LOAD BY LAZZY LOADER START
-    $(document).ready(function () {
-       // blog_post();
+//    $(document).ready(function () {
+//       // blog_post();
+//
+//    });
 
-    });
-
-    function category_data(catid, pagenum) {
-        $('.job-contact-frnd').html("");
-      //  $('.loadbutton').html("");
-        cat_post(catid, pagenum);
-    }
-
-    $('.loadcatbutton').click(function () {
-        var pagenum = parseInt($(".page_number:last").val()) + 1;
-        var catid = $(".catid").val();
-        cat_post(catid, pagenum);
-    });
-
-    var isProcessing = false;
-    function cat_post(catid, pagenum) {
-        if (isProcessing) {
-            /*
-             *This won't go past this condition while
-             *isProcessing is true.
-             *You could even display a message.
-             **/
-            return;
-        }
-        isProcessing = true;
-        $.ajax({
-            type: 'POST',
-            url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
-            data: {total_record: $("#total_record").val()},
-            dataType: "json",
-            beforeSend: function () {
-
-            },
-            complete: function () {
-                $('#loader').hide();
-            },
-            success: function (data) {
-                $('.loader').remove();
-                $('.job-contact-frnd').append(data.blog_data);
-                $('.loadcatbutton').html(data.load_msg)
-                // second header class add for scroll
-                var nb = $('.post-design-box').length;
-                if (nb == 0) {
-                    $("#dropdownclass").addClass("no-post-h2");
-                } else {
-                    $("#dropdownclass").removeClass("no-post-h2");
-                }
-                isProcessing = false;
-            }
-        });
-    }
+//    function category_data(catid, pagenum) {
+//        $('.job-contact-frnd').html("");
+//      //  $('.loadbutton').html("");
+//        cat_post(catid, pagenum);
+//    }
+//
+//    $('.loadcatbutton').click(function () {
+//        var pagenum = parseInt($(".page_number:last").val()) + 1;
+//        var catid = $(".catid").val();
+//        cat_post(catid, pagenum);
+//    });
+//
+//    var isProcessing = false;
+//    function cat_post(catid, pagenum) {
+//        if (isProcessing) {
+//            /*
+//             *This won't go past this condition while
+//             *isProcessing is true.
+//             *You could even display a message.
+//             **/
+//            return;
+//        }
+//        isProcessing = true;
+//        $.ajax({
+//            type: 'POST',
+//            url: base_url + "blog/cat_ajax?page=" + pagenum + "&cateid=" + catid,
+//            data: {total_record: $("#total_record").val()},
+//            dataType: "json",
+//            beforeSend: function () {
+//
+//            },
+//            complete: function () {
+//                $('#loader').hide();
+//            },
+//            success: function (data) {
+//                $('.loader').remove();
+//                $('.job-contact-frnd').append(data.blog_data);
+//                $('.loadcatbutton').html(data.load_msg)
+//                // second header class add for scroll
+//                var nb = $('.post-design-box').length;
+//                if (nb == 0) {
+//                    $("#dropdownclass").addClass("no-post-h2");
+//                } else {
+//                    $("#dropdownclass").removeClass("no-post-h2");
+//                }
+//                isProcessing = false;
+//            }
+//        });
+//    }
 
 
 //    $('.loadbutton').click(function () {

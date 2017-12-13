@@ -657,7 +657,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 
                                     <p class="form-text">
                                         By Clicking on create an account button you agree our<br class="mob-none">
-                                        <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
+                                        <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
                                         <button tabindex="13" class="btn1">Create an account</button>
@@ -988,7 +988,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
                             if (response.okmsg == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>assets/images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
 //                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
-                                window.location = "<?php echo base_url() ?>artist/";
+                                window.location = "<?php echo base_url() ?>artist";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
