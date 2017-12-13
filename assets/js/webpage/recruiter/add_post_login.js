@@ -951,7 +951,7 @@ $(document).ready(function () {
                     var emp_type = $("#emp_type").val();
                     var education = $("#education").val();
                     var post_desc = $("#post_desc").val();
-                    var interview = $("#post_desc").val();
+                    var interview = $("#interview").val();
                     var country = $("#country").val();
                     var state = $("#state").val();
                     var city = $("#city").val();
