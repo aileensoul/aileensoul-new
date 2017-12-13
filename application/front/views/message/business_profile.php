@@ -131,14 +131,14 @@
                                         <div class="chat_heae_img" ng-if="!data.business_user_image">
                                             <img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Bus Image"/>
                                         </div>
-<!--                                        <div class="about">
+                                        <div class="about">
                                             <div class="name">{{data.company_name}}<br></div>
-                                            <div>{{data.message| htmlToPlaintext}}</div>
+                                            <!--<div>{{data.message| htmlToPlaintext}}</div>-->
                                             <div  ng-if="data.message_file_type == 'image'">Sent a photo</div>
                                             <div  ng-if="data.message_file_type == 'video'"></div>
                                             <div  ng-if="data.message_file_type == 'audio'"></div>
                                             <div  ng-if="data.message_file_type == 'pdf'"></div>
-                                        </div>-->
+                                        </div>
                                     </li>
                                     <!--</a>-->
                                 </div>
