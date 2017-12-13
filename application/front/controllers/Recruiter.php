@@ -2037,13 +2037,34 @@ class Recruiter extends MY_Controller {
                      $rec_post .= '<div class="all-job-box" id="removepost"' . $post['post_id'] . '">
                                     <div class="all-job-top">';
 
-                    $cache_time = $this->db->get_where('recruiter', array(
+                    $cache_time_1 = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->comp_logo;
 
+                    $cache_time = $this->db->get_where('job_title', array(
+                                'title_id' => $post['post_name']
+                            ))->row()->name;
+                    if ($cache_time) {
+                        $post_name = $cache_time;
+                    } else {
+                        $post_name = $post['post_name'];
+                    }
+
+                    if ($post_name != '') {
+                        $text = strtolower($this->common->clean($post_name));
+                    } else {
+                        $text = '';
+                    }
+                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                    if ($cityname != '') {
+                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
+                    } else {
+                        $cityname = '';
+                    }
+                    
                     $rec_post .= '<div class="post-img">
-                                            <a href="#">';
-                      if ($cache_time) {
+                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                      if ($cache_time_1) {
                        
                     if (IMAGEPATHFROM == 'upload') {
                        
@@ -2073,26 +2094,7 @@ class Recruiter extends MY_Controller {
                     $rec_post .= '</a>
                                         </div>';
 
-                    $cache_time = $this->db->get_where('job_title', array(
-                                'title_id' => $post['post_name']
-                            ))->row()->name;
-                    if ($cache_time) {
-                        $post_name = $cache_time;
-                    } else {
-                        $post_name = $post['post_name'];
-                    }
-
-                    if ($post_name != '') {
-                        $text = strtolower($this->common->clean($post_name));
-                    } else {
-                        $text = '';
-                    }
-                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
-                    if ($cityname != '') {
-                        $cityname = '-vacancy-in-' . strtolower($this->common->clean($cityname));
-                    } else {
-                        $cityname = '';
-                    }
+                    
                     $cache_time1 = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->re_comp_name;
@@ -2218,20 +2220,9 @@ class Recruiter extends MY_Controller {
                     $rec_post .= '<div class="all-job-box" id="removepost"' . $post['post_id'] . '">
                                     <div class="all-job-top">';
 
-                    $cache_time = $this->db->get_where('recruiter', array(
+                    $cache_time_1 = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->comp_logo;
-
-                    $rec_post .= '<div class="post-img">
-                                            <a href="#">';
-                    if ($cache_time) {
-                        $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '">';
-                    } else {
-                        $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                    }
-                    $rec_post .= '</a>
-                                        </div>';
-
                     $cache_time = $this->db->get_where('job_title', array(
                                 'title_id' => $post['post_name']
                             ))->row()->name;
@@ -2252,6 +2243,17 @@ class Recruiter extends MY_Controller {
                     } else {
                         $cityname = '';
                     }
+                    $rec_post .= '<div class="post-img">
+                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                    if ($cache_time_1) {
+                        $rec_post .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $cache_time) . '">';
+                    } else {
+                        $rec_post .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                    }
+                    $rec_post .= '</a>
+                                        </div>';
+
+                    
                     $cache_time1 = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->re_comp_name;

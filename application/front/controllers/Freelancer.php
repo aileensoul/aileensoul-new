@@ -5326,6 +5326,34 @@ class Freelancer extends MY_Controller {
         return $count;
     }
 
+    public function add_post_added(){
+         $userid = $this->session->userdata('aileenuser');
+         
+         $postname = $this->input->post('post_name');
+        $post_desc = $this->input->post('skills');
+        $position = $this->input->post('position');
+        $minyear = $this->input->post('minyear');
+        $maxyear = $this->input->post('maxyear');
+        $fresher = $this->input->post('fresher');
+        $industry = $this->input->post('industry');
+        $emp_type = $this->input->post('emp_type');
+        $education = $this->input->post('education');
+        $post_desc = $this->input->post('post_desc');
+        $interview = $this->input->post('interview');
+        $country = $this->input->post('country');
+        $state = $this->input->post('state');
+        $city = $this->input->post('city');
+        $salary_type = $this->input->post('salary_type');
+        $lastdate = $this->input->post('datepicker');
+        $minsal = $this->input->post('minsal');
+        $maxsal = $this->input->post('maxsal');
+        $currency = $this->input->post('currency');
+
+         
+         
+         
+    }
+    
 //    public function add_project_login(){
 //        
 //    }

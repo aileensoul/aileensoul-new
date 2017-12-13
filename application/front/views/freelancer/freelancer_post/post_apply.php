@@ -29,7 +29,7 @@
                                                    if ($freelancerdata[0]['profile_background'] != '') {
                                                        ?>
                                                     <div class="data_img">
-                                                        <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freelancerdata[0]['profile_background']); ?>" class="bgImage" alt="" >
+                                                        <img src="<?php echo FREE_POST_BG_THUMB_UPLOAD_URL . $freelancerdata[0]['profile_background']; ?>" class="bgImage" alt="" >
                                                     </div>
                                                     <?php
                                                 } else {

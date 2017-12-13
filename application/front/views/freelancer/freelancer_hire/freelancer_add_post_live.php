@@ -539,7 +539,8 @@
                                                 </fieldset>
                                                 <fieldset class="hs-submit half-width">
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                                    <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
+                                                    <input type="submit" title="Post" id="submit"  class="add_post_btns" tabindex="18" name="submit" value="Post">
+                                                    <!--<input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">-->    
                                                 </fieldset>
                                            
                                             </div>
@@ -712,7 +713,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy-policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>

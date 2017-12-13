@@ -3644,17 +3644,17 @@ class Job extends MY_Controller {
                 
                 if ($cache_time_1) {
                     if (IMAGEPATHFROM == 'upload') {
-                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
+                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time_1)) {
                             $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
                         } else {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
                         }
                     } else {
-                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
+                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info) {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
                         } else {
                             $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
                         }
@@ -3831,37 +3831,11 @@ class Job extends MY_Controller {
                 $return_html .= '<div class="all-job-box" id="postdata' . $post['app_id'] . '">
                                     <div class="all-job-top">';
 
-                $cache_time = $this->db->get_where('recruiter', array(
+                $cache_time_1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->comp_logo;
 
-                $return_html .= '<div class="post-img">
-                                            <a href="javascript:void(0);">';
-                  if ($cache_time) {
-                    if (IMAGEPATHFROM == 'upload') {
-                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                        } else {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
-                        }
-                    } else {
-                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($info) {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
-                        } else {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                        }
-                    }
-                  
-                } else {
-                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                }
-                $return_html .= '</a>
-                                        </div>';
-
-                $cache_time = $this->db->get_where('job_title', array(
+                        $cache_time = $this->db->get_where('job_title', array(
                             'title_id' => $post['post_name']
                         ))->row()->name;
                 if ($cache_time) {
@@ -3880,6 +3854,33 @@ class Job extends MY_Controller {
                 } else {
                     $cityname = '';
                 }
+                $return_html .= '<div class="post-img">
+                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                  if ($cache_time_1) {
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        } else {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
+                        }
+                    } else {
+                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if ($info) {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
+                        } else {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        }
+                    }
+                  
+                } else {
+                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                }
+                $return_html .= '</a>
+                                        </div>';
+
+                
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
@@ -4027,36 +4028,9 @@ class Job extends MY_Controller {
                 $return_html .= '<div class="all-job-box" id="removeapply' . $post['app_id'] . '">
                                     <div class="all-job-top">';
 
-                $cache_time = $this->db->get_where('recruiter', array(
+                $cache_time_1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->comp_logo;
-
-                $return_html .= '<div class="post-img">
-                                            <a href="javascript:void(0);">';
-                  if ($cache_time) {
-                    if (IMAGEPATHFROM == 'upload') {
-                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                        } else {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
-                        }
-                    } else {
-                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($info) {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
-                        } else {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                        }
-                    }
-                  
-                } else {
-                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                }
-                $return_html .= '</a>
-                                        </div>';
-
                 $cache_time = $this->db->get_where('job_title', array(
                             'title_id' => $post['post_name']
                         ))->row()->name;
@@ -4076,6 +4050,34 @@ class Job extends MY_Controller {
                 } else {
                     $cityname = '';
                 }
+                
+                $return_html .= '<div class="post-img">
+                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                  if ($cache_time_1) {
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        } else {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
+                        }
+                    } else {
+                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if ($info) {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
+                        } else {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        }
+                    }
+                  
+                } else {
+                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                }
+                $return_html .= '</a>
+                                        </div>';
+
+                
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
@@ -4365,35 +4367,9 @@ class Job extends MY_Controller {
                 $return_html .= '<div class="all-job-box" id="postdata' . $post['post_id'] . '">
                                     <div class="all-job-top">';
 
-                $cache_time = $this->db->get_where('recruiter', array(
+                $cache_time_1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->comp_logo;
-
-                $return_html .= '<div class="post-img">
-                                            <a href="#">';
-                  if ($cache_time) {
-                    if (IMAGEPATHFROM == 'upload') {
-                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                        } else {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
-                        }
-                    } else {
-                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time;
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($info) {
-                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time . '">';
-                        } else {
-                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                        }
-                    }
-                  
-                } else {
-                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
-                }
-                $return_html .= '</a>
-                                        </div>';
 
                 $cache_time = $this->db->get_where('job_title', array(
                             'title_id' => $post['post_name']
@@ -4414,6 +4390,33 @@ class Job extends MY_Controller {
                 } else {
                     $cityname = '';
                 }
+                $return_html .= '<div class="post-img">
+                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                  if ($cache_time_1) {
+                    if (IMAGEPATHFROM == 'upload') {
+                        if (!file_exists($this->config->item('rec_profile_thumb_upload_path') . $cache_time)) {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        } else {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
+                        }
+                    } else {
+                        $filename = $this->config->item('rec_profile_thumb_upload_path') . $cache_time_1;
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                        if ($info) {
+                            $return_html .= '<img src="' . REC_PROFILE_THUMB_UPLOAD_URL . $cache_time_1 . '">';
+                        } else {
+                            $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                        }
+                    }
+                  
+                } else {
+                    $return_html .= '<img src="' . base_url('assets/images/commen-img.png') . '">';
+                }
+                $return_html .= '</a>
+                                        </div>';
+
+                
                 $cache_time1 = $this->db->get_where('recruiter', array(
                             'user_id' => $post['user_id']
                         ))->row()->re_comp_name;
