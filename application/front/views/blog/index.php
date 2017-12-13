@@ -102,7 +102,7 @@
                                 <?php
                                 if ($this->input->get('q') || $this->uri->segment(2) == 'popular' || $this->uri->segment(2) == 'tag') {
                                     ?>
-                                    <a href="<?php echo base_url('blog/'); ?>">
+                                    <a href="<?php echo base_url('blog'); ?>">
                                         <h3  style="color: #1b8ab9;">Blog</h3>
                                     </a>
                                     <?php
@@ -211,7 +211,7 @@
                                     <h6> Blog Search </h6>
                                     <div>
 
-                                        <form action=<?php echo base_url('blog/') ?> method="get" autocomplete="off">
+                                        <form action=<?php echo base_url('blog') ?> method="get" autocomplete="off">
                                             <div class="searc_w"><input type="text" name="q" id="q" placeholder="Search Blog Post"></div>
                                             <button type="submit" class="butn_w" onclick="return checkvalue();"><i class="fa fa-search"></i></button> 
 
