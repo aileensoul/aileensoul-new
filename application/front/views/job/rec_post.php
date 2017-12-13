@@ -225,7 +225,7 @@
                                 <div class="all-job-box job-detail">
                                     <div class="all-job-top">
                                         <div class="post-img">
-                                            <a href="#">
+                                            <a>
                                                 <?php
                                                 $cache_time = $this->db->get_where('recruiter', array(
                                                             'user_id' => $post['user_id']
@@ -262,15 +262,15 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                            <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
-                                            <p><a href="javascript:void(0);">
+                                            <h5><a><?php echo $cache_time1; ?></a></h5>
+                                            <p><a href="<?php echo base_url('recruiter/profile/' . $post['user_id'] . '?page=job'); ?>">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
                                                     echo $out;
                                                     ?>
                                                 </a>
                                             </p>
-                                            <p><a href="javascript:void(0);"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
+                                            <p><a href="<?php echo base_url('recruiter/profile/' . $post['user_id'] . '?page=job'); ?>"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
                                             <p class="loca-exp">
                                                 <span class="location">
                                                     <?php
