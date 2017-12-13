@@ -41,9 +41,8 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/css/common-style.css?ver='.time()) ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/style-main.css?ver='.time()) ?>">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
-
     </head>
+
     <body class="about-us" >
         <div class="main-inner">
            <div class="terms-con-cus">
@@ -66,6 +65,7 @@
                     </div>
                 </div>
             </header>
+            
             <div class="container">
                 <div class="cus-about" >
             <section class="">
@@ -85,13 +85,16 @@
                             <h1 class="pb20">About Aileensoul</h1>
                         </div>
                         <div class="about-content">
+                          <p>
                             Founded in 2017, Aileensoul is a new age portal that amalgamates a variety of career-oriented services into a single unified platform with an aim to address the needs of  jobseekers, recruiters, business professionals, freelancers and artists - all under one roof! Introduced to fulfil one of the most fundamental and important aspects of an individual’s life - one’s desire to land a rewarding and successful career for himself or herself - Aileensoul’s futuristic platform serves to launch and advance the careers of first-time jobseekers, experienced business professionals/consultants and upcoming/veteran artists. 
-                        <br>
-                        <br>
+                         </p>    
+                        
+                            <p>
                             Whether you are looking to grow your business network or searching for a reliable job portal to explore vacancies in leading companies and reputed firms, Aileensoul caters to all your needs. We celebrate talent in every form and continue to innovate features and offerings that help individuals like you showcase their unique capabilities, talent and art to the global community that exists on our platform.  
-                        <br>
-                        <br>
+                            </p>
+                            <p>
                             All our niche profiles have been thoughtfully designed to touch upon every possible aspect that can influence your career progression - be it full-time/freelance job search, networking, real-time collaboration with recruiters or a platform to showcase your skills and arouse the interest of potential clients or companies.
+                            </p>
                         </div>
                        <!--  <p class="text-center"><img src="<?php //echo base_url('assets/img/message.png'); ?>"></p> -->
                         <!-- <div class="text-center">
@@ -103,18 +106,18 @@
                         </div> -->
                     </div>
                 </div>
-
                     <div class="container">
                     <div class="pt10">
                         <div class="titlea">
                             <h1 class="pb20">Our Mission</h1>
                         </div>
                         <div class="about-content">
+                            <p>
                             Social and economic upliftment of people is a key contributor to the all-round progress of a nation. Aileensoul endeavours to impact this very aspect of socio-economic development through creation of employment opportunities for the country’s youth and helping eradicate unemployment and poverty, not just from India but also from the world. 
-
-                      <br>
-                        <br>
+                        </p>
+                        <p>
                          We believe that every individual has the right to a better tomorrow and a prospering career is one its founding stones. At Aileensoul, we strive to remove the man-made barriers of bureaucracy by enabling individuals and professionals to connect and collaborate in a transparent and independent manner.
+                        </p>   
                         </div>
                        
                     </div>
@@ -132,10 +135,7 @@
                        
                     </div>
                 </div>
-
-
-
-                <div class="container" >
+       <div class="container" >
                     <div class="pt10">
                         <div class="titlea">
                             <h1 class="pb20">Our Team</h1>
@@ -254,14 +254,11 @@
                                     <h4>Pallavi Panaliya</h4>
                                     <p>Jr. Web Developer</p>
                                 </div>
-                             </li>
-
-                                
-
+                             </li>                
                              </ul>
 
 
-                              <ul class="">
+                            <ul class="">
                             <li class="img-custom">
                                 <div class="team-1" oncontextmenu="return false;">
                                     <img src="assets/img/Dhaval12.jpg" >
@@ -283,10 +280,10 @@
                                 </div>
                              </li>
 
-                         </ul>
+                            </ul>
 
-                          <ul class="Main-im">
-                            <li class="img-custom">
+                            <ul class="Main-im">
+                                <li class="img-custom">
                                 <div class="team-1" oncontextmenu="return false;">
                                     <img src="assets/img/ShahDhaval.jpg" >
                                 </div>
@@ -294,16 +291,14 @@
                                     <h4>Dhaval Shah</h4>
                                     <p>CEO</p>
                                 </div>
-                             </li>
-                         </ul>
+                                </li>
+                            </ul>
 
                         </div>
                     </div>
                 </div>
             </section>
-            <?php
-            echo $login_footer
-            ?>
+            <?php echo $login_footer ?>
         </div>
         <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/aboutus.js'); ?>"></script>
     </body>
