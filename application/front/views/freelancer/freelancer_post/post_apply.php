@@ -163,7 +163,7 @@
                             </div>
                         </div>
                         <!-- cover pic end -->
-                        <div class="custom-right-art mian_middle_post_box animated fadeInUp">
+                        <div class="custom-right-art mian_middle_post_box animated fadeInUp cust-inner-part">
                                 <?php if ($this->uri->segment(3) == 'live-post') { ?>
 
                                 <div>

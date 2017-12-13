@@ -1866,6 +1866,7 @@ img{
 	footer ul li{padding:0; margin:0;}
 	.ftr-copuright{padding-bottom:15px;}
 	.catbox-right{width:78%;}
+	.catbox-right.artist-sitemap{width:100%;}
 	
 }
 
@@ -1952,7 +1953,7 @@ img{
 	.about-content{width: 100%!important;}
 	.catbox-left{width:100%; padding-bottom:10px;}
 	.catbox-right{width:100%;}
-	.site-map-all-profile ul li{padding:5px 12px;}
+	.site-map-all-profile ul li{padding:5px 22px;}
 }
 @media screen and (max-width: 767px) {
 	.footer-ul .mob-none{display:none;}
