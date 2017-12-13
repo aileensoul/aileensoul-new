@@ -2158,13 +2158,14 @@ word-break: break-word;}
 	.fixed_right_side{right: 0;}
   .fixed_right_display_none{display:block;}
   .fixed_right_display{display: none;}
+  .profile-box-custom .fixed_right_display{display:block;}
   
   /*** new flow  ***/
   .inner-right-part{width:805px;}
 	.job-detail .job-top-detail{width:100%;}
 	.detail-discription .all-job-middle ul li span{width:80%;}
   /*** end new flow  ***/
-  
+  .cust-job-width .job-detail .job-top-detail{width:85%;}
 }
 
 @media screen and (max-width: 1199px) {
@@ -2264,8 +2265,10 @@ word-break: break-word;}
 	.custom-box .custom-width .right-box .btns{padding-top:60px;}
 	.left-part{display:none;}
 	.middle-part{left:0; right:0; margin:0 auto; float:none;}
-	.inner-right-part{width: 605px; left: 0; right: 0; float: none; margin: 0 auto;}
+	.inner-right-part{width: 550px; left: 0;}
     .job-top-detail{width: 88%}
+	.job-detail .post-img{width:100px; height:100px;}
+	.detail-discription .all-job-middle ul li span{width:74%;}
 	/***  end new flow  ***/
 	
 }
