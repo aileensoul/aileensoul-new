@@ -16,7 +16,7 @@
         <?php } ?>
 
     </head>
-    <body class="page-container-bg-solid page-boxed pushmenu-push freeh3">
+    <body class="page-container-bg-solid page-boxed pushmenu-push freeh3 cust-job-width">
         <?php echo $header; ?>
         <?php
         $returnpage = $_GET['page'];
