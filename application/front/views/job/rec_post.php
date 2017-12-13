@@ -284,7 +284,7 @@
                                                             if ($cityname) {
                                                                 echo $cityname . ', ';
                                                             }
-                                                            echo $countryname;
+                                                            echo $countryname.' '.'(Location)';
                                                         }
                                                         ?>
                                                     </span>
