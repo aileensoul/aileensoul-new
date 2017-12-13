@@ -1651,6 +1651,8 @@ label.cameraButton input[accept*="camera"] {
 .profile-job-details ul li .post_title a{font-weight: bold;display: inline-block;cursor: pointer;}   
 .register_disable {pointer-events: none;}
 
+.cust-inner-part .job-top-detail h5{max-width:100%;}
+
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {
