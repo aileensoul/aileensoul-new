@@ -361,7 +361,7 @@
                     <div class="col-md-8 col-sm-9 col-xs-8 right-header fw-479">
                         <div class="btn-right pull-right">
                             <a href="javascript:void(0);" onclick="login_profile();" class="btn2">Login</a>
-                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Creat an account</a>
+                            <a href="javascript:void(0);" onclick="register_profile();" class="btn3">Create an account</a>
                         </div>
                     </div>
                 </div>
@@ -395,12 +395,13 @@
 
                                     <div class="job-saved-box">
 
-                                        <?php echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
+                                        <?php // echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
 
                                         <!--                                    <div>
                                                                                 <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
                                                                                 <span style="color:#7f7f7e"><?php //ceho $this->lang->line("filed_required");    ?></span>
                                                                             </div>-->
+                                        <form id="postinfo" name="postinfo" class="clearfix">
                                         <?php
                                         $post_name = form_error('post_name');
                                         $skills = form_error('skills');
@@ -540,80 +541,12 @@
                                                     <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                                     <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                                 </fieldset>
-
-                                                <?php echo form_close(); ?>
-
-
+                                           
                                             </div>
                                         </div>
-                                        <!--									<div class="custom-add-box">
-                                                                                                                        <h3 class="freelancer_editpost_title">Location</h3>
-                                                                                                                        <div class="p15 fw">
-                                                                                                                                <fieldset class="fw" <?php if ($country) { ?> class="error-msg" <?php } ?>>
-                                                                                                                                        <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
-                                                                                                                                        <select tabindex="15" name="country" id="country">
-                                                                                                                                                <option value="" selected option disabled><?php echo $this->lang->line("select_country"); ?></option>
-                                        <?php
-                                        if (count($countries) > 0) {
-                                            foreach ($countries as $cnt) {
-                                                if ($country1) {
-                                                    ?>
-                                                                                                                                                                                                            <option value="<?php echo $cnt['country_id']; ?>" <?php if ($cnt['country_id'] == $country1) echo 'selected'; ?>><?php echo $cnt['country_name']; ?></option>
-                                                    <?php
-                                                }
-                                                else {
-                                                    ?>
-                                                                                                                                                                                                            <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name']; ?></option>
-                                                    <?php
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                                                                                                                        </select><span id="country-error"></span>
-                                        <?php echo form_error('country'); ?>
-                                                                                                                                </fieldset>
-                                                                                                                                <fieldset class="fw">
-                                                                                                                                        <label><?php echo $this->lang->line("state"); ?>:<span style="color:red">*</span></label>
-                                                                                                                                        <select tabindex="16" name="state" id="state">
-                                        <?php ?>
-                                                                                                                                                <option value="" selected option disabled><?php echo $this->lang->line("country_first"); ?></option>
-                                                                                                                                        </select>
-                                                                                                                                </fieldset>
-                                                                                                                                <fieldset class="fw">
-                                                                                                                                        <label><?php echo $this->lang->line("city"); ?>:</label>
-                                                                                                                                        <select tabindex="17" name="city" id="city">
-                                        <?php
-                                        if ($city1) {
-                                            foreach ($cities as $cnt) {
-                                                ?>
-                                                                                                                                                                                        <option value="<?php echo $cnt['city_id']; ?>" <?php if ($cnt['city_id'] == $city1) echo 'selected'; ?>><?php echo $cnt['city_name']; ?></option>
-                                                <?php
-                                            }
-                                        }
-                                        else {
-                                            ?>
-                                                                                                                                                                    <option value=""><?php echo $this->lang->line("state_first"); ?></option>
-                                                    
-                                            <?php
-                                        }
-                                        ?>
-                                                                                                                                        </select><span id="city-error"></span>
-                                        <?php echo form_error('city'); ?>
-                                                                                                                                </fieldset>
-                                                                                                                                <fieldset class="hs-submit half-width">
-                                                                                                                                        <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                        <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                                                                                                                                            <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
-                                        <?php } else { ?>
-                                                                                                                                                            <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
-                                        <?php } ?>
-                                                                                                                                        <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
-                                                                                                                                </fieldset>
-                                                                                                                        
-                                        <?php echo form_close(); ?>
-                                                                                                                                
-                                                                                                                        </div>
-                                                                                                                </div>   -->
+                                   
+                                        </form>
+
                                     </div>
                                     <div class="col-md-1">
                                     </div>
@@ -625,67 +558,7 @@
                 <!-- MIDDLE SECTION END-->
         </section>
         
-<!--        Login  
-        <div class="modal fade login" id="login1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <div class="right-main">
-                            <div class="right-main-inner">
-                                <div class="">
-                                        <div class="title">
-                                            <h1 class="ttc">Welcome To Aileensoul</h1>
-                                        </div>
 
-                                        <form role="form" name="login_form_not" id="login_form_not" method="post">
-
-                                            <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
-                                                <div id="error2" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('erroremail')) {
-                                                        echo $this->session->flashdata('erroremail');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorlogin"></div> 
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
-                                                <div id="error1" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('errorpass')) {
-                                                        echo $this->session->flashdata('errorpass');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorpass"></div> 
-                                            </div>
-
-                                            <p class="pt-20 ">
-                                                <button class="btn1" onclick="login()">Login</button>
-                                            </p>
-
-                                            <p class=" text-center">
-                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
-                                            </p>
-
-                                            <p class="pt15 text-center">
-                                                Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
-                                            </p>
-                                        </form>
-
-                                   
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-         Login -->
          
            <!-- Login for submit post data -->
         <div class="modal fade login" id="login" role="dialog">
@@ -839,7 +712,7 @@
 
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our
-                                            <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -916,10 +789,10 @@
                                                 var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                                 var base_url = '<?php echo base_url(); ?>';
                                                 var postslug = '<?php echo $this->uri->segment(3); ?>';
-                                                 var jobdata = <?php echo json_encode($jobtitle); ?>;
+                                                
 
 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/add_post_login.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/add_post_live.js?ver=' . time()); ?>"></script>
     </body>
 </html>
