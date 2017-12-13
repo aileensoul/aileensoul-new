@@ -443,22 +443,22 @@
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="page-title">
-                                <h3>
-                                    Search result of 
+                                <h3> <?php if($keyword == "" && $keyword1 == ""){
+                                    echo "Freelance Projects";
+                                }else{  ?>
+                                 
                                         <?php
-                                        if($keyword == "" && $keyword1 == ""){
-                                            echo "All Projects";
-                                        }
-                                        elseif ($keyword != "" && $keyword1 == "") {
-                                            echo '"' . $keyword . '"';
+                                        if ($keyword != "" && $keyword1 == "") {
+                                            echo ucfirst($keyword) . " Projects";
                                         } elseif ($keyword == "" && $keyword1 != "") {
-                                            echo '"' . $keyword1 . '"';
+                                            echo "Projects In ";
+                                            echo ucfirst($keyword1);
                                         } else {
-                                            echo '"' . $keyword . '"';
+                                            echo ucfirst($keyword) . " Projects";
                                             echo " In ";
-                                            echo '"' . $keyword1 . '"';
+                                            echo ucfirst($keyword1);
                                         }
-                                        ?>
+                                }  ?>
                                 </h3>
                             </div>
                             <div class="job-contact-frnd1">
