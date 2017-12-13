@@ -2180,6 +2180,7 @@ label.cameraButton input[accept*="camera"] {
 .tablate-add{display:none;}
 .tablate-potrat-add{display:none;}
 .mob-add{display:none;}
+
 /*** end add css  ***/
 .img_remove img{display: none!important;}
 #work6 {display: block;}
@@ -2623,6 +2624,7 @@ margin-bottom: 15px;}
 	.tablate-potrat-add{display:none;}
 	.tablate-add{display:block; width:160px; position:fixed; margin-left:565px;}
 	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
+	.tablate-add-custom{display:block; width:160px; position:fixed; margin-left:565px;}
 	/*** end advertise  ***/
 	.gov-all-post .fixed_right_display{display:none;}
 	.gov-job-detail-left{width:550px;}
