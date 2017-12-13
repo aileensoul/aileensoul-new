@@ -8,7 +8,7 @@ var options = {
     requestCert: true
 };
 //var server = require('https').createServer(options, app);
-var server = require('http').createServer(app);
+var server = require('https').createServer(app);
 var io = socket.listen(server);
 //console.log(io);
 var port = process.env.PORT || 3000;
