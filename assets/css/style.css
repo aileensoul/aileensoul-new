@@ -2043,9 +2043,9 @@ footer div.pt20{padding-top: 18px;}
 .all-job-box{margin:0 0 10px; border:1px solid #d2d2d2; border-radius:4px; width:100%; float:left;}
 .all-job-top{padding:10px 15px; border-bottom:1px solid #d2d2d2; width:100%; float:left;}
 .all-job-top .post-img{width:60px; height:60px; float:left; border:none;}
-.all-job-top .post-img img{width:100%;}
-.job-top-detail {width:87%; float:left;white-space: nowrap;padding-left: 10px;}
-.job-top-detail h5{ margin:0;font-size:15px;text-overflow: ellipsis;max-width: 87%;overflow: hidden;line-height: 1.3}
+.all-job-top .post-img img{width:100%; height:100%;}
+.job-top-detail {width:87%; float:left;padding-left: 10px;}
+.job-top-detail h5{ margin:0;font-size:15px; white-space: nowrap;text-overflow: ellipsis;max-width: 87%;overflow: hidden;line-height: 1.3}
 .job-top-detail h5 a{color:#5c5c5c; font-size:15px;line-height: 1; font-weight:bold;text-overflow: ellipsis;max-width: 100%;overflow: hidden; }
 .job-top-detail h5 a:hover{border-bottom:1px solid #5c5c5c;}
 .job-top-detail p{font-size:13px; margin:0;}
@@ -2079,7 +2079,7 @@ footer div.pt20{padding-top: 18px;}
 .job-detail .detail-discription{border:1px solid #d2d2d2; margin-bottom:10px; border-radius:4px; width:100%; float:left;}
 .job-detail .job-top-detail{width:100%;}
 .cust-job-width .job-detail .job-top-detail{width:87%;}
-.cust-inner-part .job-top-detail{width: 100%}
+.cust-inner-part .job-top-detail{width: 100%; padding-left:0;}
 .detail-discription .all-job-middle ul{padding:0;} 
 .detail-discription .all-job-middle ul li{padding:3px 0; list-style-type:none; width:100%; float:left;} 
 .detail-discription .all-job-middle ul li b{width:130px; float:left; position:relative;}
@@ -2100,6 +2100,10 @@ word-break: break-word;}
 /***  end all job page  ***/
 .paddnone{padding: 0px;}
 .add-border{border:1px solid #d9d9d9; margin-bottom:10px; padding-top:9px; padding-bottom:4px; border-radius:4px;}
+
+/***  advertise problem  ***/
+.tablate-add-custom{display:none; width:160px; position:fixed; margin-left:565px;}
+/***  end advertise problem  ***/
 
 /***  media query  ***/
 
@@ -2158,13 +2162,14 @@ word-break: break-word;}
 	.fixed_right_side{right: 0;}
   .fixed_right_display_none{display:block;}
   .fixed_right_display{display: none;}
+  .profile-box-custom .fixed_right_display{display:block;}
   
   /*** new flow  ***/
   .inner-right-part{width:805px;}
 	.job-detail .job-top-detail{width:100%;}
 	.detail-discription .all-job-middle ul li span{width:80%;}
   /*** end new flow  ***/
-  
+  .cust-job-width .job-detail .job-top-detail{width:85%;}
 }
 
 @media screen and (max-width: 1199px) {
@@ -2264,9 +2269,14 @@ word-break: break-word;}
 	.custom-box .custom-width .right-box .btns{padding-top:60px;}
 	.left-part{display:none;}
 	.middle-part{left:0; right:0; margin:0 auto; float:none;}
-	.inner-right-part{width: 605px; left: 0; right: 0; float: none; margin: 0 auto;}
+	.inner-right-part{width: 550px; left: 0;}
     .job-top-detail{width: 88%}
+	.job-detail .post-img{width:100px; height:100px;}
+	.detail-discription .all-job-middle ul li span{width:74%;}
 	/***  end new flow  ***/
+	/***  advertise problem  ***/
+	.tablate-add-custom{display:block;}
+	/***  end advertise problem  ***/
 	
 }
 
@@ -2367,6 +2377,10 @@ word-break: break-word;}
 	.no-login .sign_in.pt10{padding-top:0;}
 	.alert.alert-success{margin-top:20px; width:100%;}
 	.outer-page header{position:relative; background:url('../img/mob-about-bg.jpg');}
+	/***  advertise problem  ***/
+	.tablate-add-custom{display:none;}
+	/***  end advertise problem  ***/
+	.inner-right-part{width:100%;}
 }
 
 @media screen and (max-width: 640px) {
@@ -2396,8 +2410,10 @@ word-break: break-word;}
 	.comment-dis{width:100%;}
 	.post-images .two-img{width:calc(50% - 4px);}
     .job-top-detail{width: 86%}
-    .cust-job-width .job-detail .job-top-detail{width: 100%;padding-top: 15px;}
+    .cust-job-width .job-detail .job-top-detail{}
 	/***  end new flow  ***/
+	.job-detail .post-img{width:80px; height:80px;}
+	.job-top-detail .job-top-btn{margin-top:10px; float:left; width:100%;}
 }
 
 @media screen and (max-width: 540px) {
@@ -2547,6 +2563,10 @@ word-break: break-word;}
 	.all-job-top .post-img{width:50px; height:50px;}
 	/***  end new flow  ***/
 	.job-top-detail p{line-height:1.2;}
+	.all-job-top{padding:10px;}
+	.all-job-middle{padding:10px;}
+	.job-top-detail{width:83%;}
+
 }
 
 @media screen and (max-width: 360px) {

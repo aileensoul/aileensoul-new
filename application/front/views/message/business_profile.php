@@ -332,9 +332,9 @@
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
                     var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload']);
-                    messageApp.factory('emojione', function ($window) {
-                        return $window.emojione;
-                    });
+//                    messageApp.factory('emojione', function ($window) {
+//                        return $window.emojione;
+//                    });
                     messageApp.filter('htmlToPlaintext', function () {
                         return function (text) {
                             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
@@ -409,6 +409,8 @@
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
                         $scope.delete_chat = function (message_for, message_id, chat) {
+                            alert(message_id);
+                            return false;
                             $http({
                                 method: 'POST',
                                 url: base_url + 'message/businessmessageDelete',
@@ -571,11 +573,6 @@
                             load_message_user();
                             getUserMessage($scope.current);
                         });
-                    });
-        </script>
-        <script type="text/javascript">
-                    $(document).ready(function () {
-
                     });
         </script>
     </body>

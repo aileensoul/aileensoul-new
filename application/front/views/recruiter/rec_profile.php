@@ -583,11 +583,19 @@
 
                                                                        <?php if (IMAGEPATHFROM == 'upload') { ?>
                                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
-                                                                        <?php } else{ ?>
+                                                                        <?php } else{ 
+
+                                $filename = $this->config->item('rec_profile_thumb_upload_path') .$recdata[0]['comp_logo'];
+                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if($info){  ?>
                                 <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" /> 
+                                <?php }else{
+                                    echo PROFILENA;
+                                 }?>
                                                 <?php }?>
 
-                                                                    </span> </li>
+                                    </span> </li>
                                                                 <?php
                                                             } else {
                                                                 echo "";
@@ -600,9 +608,15 @@
                                                                      <?php if (IMAGEPATHFROM == 'upload') { ?>
                                                                         <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['comp_logo']) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
 
-                                                                        <?php } else{ ?>
+                                                                        <?php } else {  $filename = $this->config->item('rec_profile_thumb_upload_path') .$recdata[0]['comp_logo'];
+                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                    if($info){  ?>
                                 <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['comp_logo']; ?>" name="image_src" id="image_src" /> 
-                                                <?php }?>
+                                                <?php } else{
+                                    echo PROFILENA;
+                                 } }?>
+
 
                                                                     </span> </li>
                                                                 <?php

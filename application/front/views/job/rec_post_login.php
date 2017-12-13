@@ -611,7 +611,7 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                             <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $cache_time1; ?></a></h5> 
+                                             <!-- <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $cache_time1; ?></a></h5>  -->
                                             <p><a href="javascript:void(0);" onclick="register_profile();">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
@@ -641,7 +641,8 @@
                                             </p>
                                             <p class="loca-exp">
                                                 <span class="exp">
-                                                    <span><img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
+                                                    <span>
+                                                        <!-- <img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>"> -->
 
                                                         <?php
                                                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {

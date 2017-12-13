@@ -201,6 +201,23 @@
                                 ?>
                             </h3>
                         </div>
+						<div class="mob-add">
+                                <div class="fw text-center pt10 pb5">
+                                    <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                                    </script>
+                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                </div>
+                            </div>
                         <?php
                         if (count($postdata) > 0) {
                             foreach ($postdata as $post) {  
@@ -208,7 +225,7 @@
                                 <div class="all-job-box job-detail">
                                     <div class="all-job-top">
                                         <div class="post-img">
-                                            <a href="#">
+                                            <a>
                                                 <?php
                                                 $cache_time = $this->db->get_where('recruiter', array(
                                                             'user_id' => $post['user_id']
@@ -245,15 +262,15 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                            <h5><a href="javascript:void(0);"><?php echo $cache_time1; ?></a></h5>
-                                            <p><a href="javascript:void(0);">
+                                            <h5><a><?php echo $cache_time1; ?></a></h5>
+                                            <p><a href="<?php echo base_url('recruiter/profile/' . $post['user_id'] . '?page=job'); ?>">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
                                                     echo $out;
                                                     ?>
                                                 </a>
                                             </p>
-                                            <p><a href="javascript:void(0);"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
+                                            <p><a href="<?php echo base_url('recruiter/profile/' . $post['user_id'] . '?page=job'); ?>"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
                                             <p class="loca-exp">
                                                 <span class="location">
                                                     <?php
@@ -267,7 +284,7 @@
                                                             if ($cityname) {
                                                                 echo $cityname . ', ';
                                                             }
-                                                            echo $countryname;
+                                                            echo $countryname.' '.'(Location)';
                                                         }
                                                         ?>
                                                     </span>
@@ -276,7 +293,7 @@
                                             <p class="loca-exp">
                                                 <span class="exp">
                                                     <span>
-                                                        <!--<img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">-->
+                                                        <img class="pr5" src="<?php echo base_url('assets/images/exp.png'); ?>">
 
                                                         <?php
                                                         if (($post['min_year'] != '0' || $post['max_year'] != '0') && ($post['fresher'] == 1)) {
@@ -581,7 +598,23 @@
                             </div>
                         <?php } ?>
                     </div>
+					
+					<div class="tablate-add-custom">
 
+                        <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                        </script>
+                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                    </div>
 
                 </div>
             </div>
