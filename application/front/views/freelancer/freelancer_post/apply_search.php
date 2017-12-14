@@ -394,14 +394,11 @@
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
-<<<<<<< HEAD
-                                        
-||||||| merged common ancestors
-=======
+
                                        <ul>
                                         <li>
                                         <label for="City" class="lbpos fw">
->>>>>>> 3b7747c3391ce628ed53350de9d1f644752f1b57
+
                                         <a href="<?php echo base_url("projects"); ?>" >All Projects</a>
                                         </label>
                                         </li>
