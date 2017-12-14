@@ -729,7 +729,8 @@
                 </div>
                 <!-- MIDDLE SECTION END-->
         </section>
-        
+        <?php echo $login_footer ?>
+           <?php echo $footer; ?>
 <!--        Login  
         <div class="modal fade login" id="login1" role="dialog">
             <div class="modal-dialog">

@@ -392,6 +392,8 @@
                 </div>
                 <!-- MIDDLE SECTION END-->
         </section>
+        <?php echo $login_footer ?>
+           <?php echo $footer; ?>
         <!-- END CONTAINER -->
 
         <!-- Bid-modal  --> 

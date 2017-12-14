@@ -559,7 +559,8 @@
                 <!-- MIDDLE SECTION END-->
         </section>
         
-
+<?php echo $login_footer ?>
+   <?php echo $footer; ?>
          
            <!-- Login for submit post data -->
         <div class="modal fade login" id="login" role="dialog">
@@ -780,6 +781,7 @@
                 </div>
             </div>
         </div>
+
         
         <script src="<?php echo base_url('assets/js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>

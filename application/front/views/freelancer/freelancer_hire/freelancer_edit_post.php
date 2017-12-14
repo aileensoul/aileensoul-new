@@ -92,7 +92,7 @@
                                             <?php echo form_error('fields_req'); ?>
                                         </fieldset>
                                         <fieldset class="full-width two-select-box fullwidth_experience"> 
-                                            <label><?php echo $this->lang->line("required_experiance"); ?>:</label>
+                                            <label><?php echo $this->lang->line("required_experiance"); ?>:<span class="optional">(optional)</span></label>
 
                                             <select name="year" id="year" tabindex="5">
                                                 <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
@@ -121,7 +121,7 @@
                                             <span id="fullname-error"></span>
                                             <?php echo form_error('year'); ?>
 
-                                            <select name="month" style="margin-left: 8px;" tabindex="6" id="month">
+                                            <select name="month" style="margin-left: 12px;width: 48.7%" tabindex="6" id="month">
                                                 <option value="" selected option disabled><?php echo $this->lang->line("month"); ?></option>
                                                 <option value="0" <?php if ($freelancerpostdata[0]['post_exp_month'] == "0") echo 'selected="selected"'; ?>>0 Month</option>
                                                 <option value="1" <?php if ($freelancerpostdata[0]['post_exp_month'] == "1") echo 'selected="selected"'; ?>>1 Month</option>
@@ -135,7 +135,7 @@
 
                                         </fieldset>
                                         <fieldset>
-                                            <label><?php echo $this->lang->line("time_of_project"); ?>:</label>
+                                            <label><?php echo $this->lang->line("time_of_project"); ?>:<span class="optional">(optional)</span></label>
                                             <input name="est_time" type="text" tabindex="7" id="est_time" placeholder="Enter estimated time in month/year" value="<?php echo $freelancerpostdata[0]['post_est_time'] ?> "/>
                                             <span id="fullname-error"></span>
                                             <?php echo form_error('post_name'); ?>
@@ -154,13 +154,13 @@
                                     <h3 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?></h3>
                                     <div class="p15 fw">
                                         <fieldset style="padding-left: 8px;" class="col-md-6" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
-                                            <label class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
+                                            <label class="control-label"><?php echo $this->lang->line("rate"); ?>:<span class="optional">(optional)</span></label>
                                             <input name="rate" type="number" id="rate" tabindex="11" placeholder="Enter your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                             <span id="fullname-error"></span>
                                             <?php echo form_error('rate'); ?>
                                         </fieldset>
                                         <fieldset class=" col-md-6"> 
-                                            <label><?php echo $this->lang->line("currency"); ?>:</label>
+                                            <label><?php echo $this->lang->line("currency"); ?>:<span class="optional">(optional)</span></label>
                                             <select name="currency" id="currency" tabindex="12">
                                                 <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                                 <?php
@@ -181,7 +181,7 @@
                                             <?php echo form_error('currency'); ?>
                                         </fieldset>
                                         <fieldset style="padding-left: 8px;" class="col-md-12">
-                                            <label><?php echo $this->lang->line("work_type"); ?></label>
+                                            <label><?php echo $this->lang->line("work_type"); ?><span class="optional">(optional)</span></label>
                                             <input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
                                             <input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
                                             <?php echo form_error('rating'); ?>

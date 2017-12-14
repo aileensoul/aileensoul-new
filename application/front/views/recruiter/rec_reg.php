@@ -76,9 +76,9 @@
                                         ?>" /><span id="email-error" ></span>
                                                <?php echo form_error('email'); ?>
                                     </fieldset>
-                        
+                        <fieldset class="full-width">
                          <h4>Company Information</h4>
-                         
+                         </fieldset>
                          <fieldset <?php if ($comp_name) { ?> class="error-msg" <?php } ?>>
                                     <label>Company Name :<span class="red">*</span> </label>
                                     <input name="comp_name" tabindex="4" autofocus type="text" id="comp_name" placeholder="Enter Company Name"  value="<?php
