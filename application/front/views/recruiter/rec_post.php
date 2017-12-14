@@ -150,9 +150,9 @@
                             } else {
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
-                                    <a id="designation" class="designation" title="Designation">Designation</a>
+                                    <a id="designation"  title="Designation">Designation</a>
                                 <?php } else { ?>
-                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
                                 }
                             }
                             ?>
@@ -230,9 +230,9 @@
                             } else {
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
-                                    <a id="designation" class="designation" title="Designation">Designation</a>
+                                    <a id="designation"  title="Designation">Designation</a>
                                 <?php } else { ?>
-                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                    <a id="designation"  title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
                                 }
                             }
                             ?>
