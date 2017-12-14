@@ -562,6 +562,13 @@ class Registration extends CI_Controller {
         $recdata = $recdata[0]['total'];
         //CHECK USER HAVE RECRUITER PROFILE END
 
+      if($this->session->userdata('searchkeyword')){
+            $this->session->unset_userdata('searchkeyword');
+        }
+         if($this->session->userdata('searchplace')){
+            $this->session->unset_userdata('searchplace');
+        }
+        
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';

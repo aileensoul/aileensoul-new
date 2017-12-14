@@ -1354,7 +1354,7 @@ class Recruiter extends MY_Controller {
                 'join_table_id' => 'job_reg.user_id',
                 'from_table_id' => 'job_apply.user_id'),
         );
-        $contition_array = array('job_apply.post_id' => $id, 'job_apply.job_delete' => '0', 'job_reg.job_step' => '10');
+        $contition_array = array('job_apply.post_id' => $id, 'job_reg.status' => '1', 'job_apply.job_delete' => '0', 'job_reg.job_step' => '10');
 
         $data = "job_reg.job_id,job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.work_job_industry,job_reg.work_job_city,job_reg.work_job_title,job_reg.phnno,job_reg.keyskill,job_reg.experience,job_reg.slug,job_add_edu.*,job_reg.job_user_image";
         $userdata = $this->data['user_data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = 'job_id');
@@ -2313,7 +2313,7 @@ class Recruiter extends MY_Controller {
                     $rec_post .= $rest;
 
                     if (strlen($post['post_description']) > 150) {
-                        $rec_post .= '.....<a href="">Read more</a>';
+                        $rec_post .= '.....<a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">Read more</a>';
                     }
                     $rec_post .= '</p>
 
