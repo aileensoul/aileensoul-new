@@ -758,7 +758,7 @@
                                     <!--<img src="https://aileensoulimages.s3.amazonaws.com/uploads/business_profile/thumbs/1505729142.png">-->
                                                     </div>
                                                     <div class="sort-emp-detail">
-                                                        <div><a href="javascript:void(0)"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></div>
+                                                        <div><a><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a></div>
                                                         <p><?php
                                                             if ($user['designation']) {
                                                                 echo $user['designation'];
@@ -779,9 +779,7 @@
                                     <?php } ?>
                                 </div>
                                 <!-- end sortlisted employe -->
-<<<<<<< HEAD
-                                
-=======
+
                                                 <?php
                                             }
                                         } else {
@@ -816,7 +814,7 @@
                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
                                 </div>
->>>>>>> 4824aefde812ce38d3fec7ea3c4a8edcb0fc865a
+
                                 <!--recommen candidate start-->
                                 <?php if (count($recommandedpost) > 0) { ?>
                                   <div class="inner-right-part">
