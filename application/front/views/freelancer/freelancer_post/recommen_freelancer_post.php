@@ -137,20 +137,25 @@
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                              <div class="page-title">
                             <h3>
+                                <?php
+                              $searchkeyword = $this->session->userdata('searchkeyword');
+                              $searchplace = $this->session->userdata('searchplace');
+                                ?>
                                 Search result of 
                                         <?php
-                                        if($keyword == '' && $keyword1 == ''){
+                                        if($searchkeyword == '' && $searchplace == ''){
                                             echo "All Projects";
                                         }
-                                        elseif ($keyword != "" && $keyword1 == "") {
-                                            echo '"' . $keyword . '"';
-                                        } elseif ($keyword == "" && $keyword1 != "") {
-                                            echo '"' . $keyword1 . '"';
+                                        elseif ($searchkeyword != "" && $searchplace == "") {
+                                            echo '"' . $searchkeyword . '"';
+                                        } elseif ($searchkeyword == "" && $searchplace != "") {
+                                            echo '"' . $searchplace . '"';
                                         } else {
-                                            echo '"' . $keyword . '"';
+                                            echo '"' . $searchkeyword . '"';
                                             echo " In ";
-                                            echo '"' . $keyword1 . '"';
+                                            echo '"' . $searchplace . '"';
                                         }
+                                        
                                         ?>
                             </h3>
                         </div>

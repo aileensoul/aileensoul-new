@@ -174,6 +174,12 @@ class Dashboard extends MY_Controller {
             $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
         }
         //PROGRESSBAR JOB END
+        if($this->session->userdata('searchkeyword')){
+            $this->session->unset_userdata('searchkeyword');
+        }
+         if($this->session->userdata('searchplace')){
+            $this->session->unset_userdata('searchplace');
+        }
         //LOGOUT START       
         if ($this->session->userdata('aileenuser')) {
 

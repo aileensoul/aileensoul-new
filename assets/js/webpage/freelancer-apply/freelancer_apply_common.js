@@ -101,17 +101,18 @@ $(function () {
 
 //CHECK SEARCH KEYWORD AND LOCATION BLANK START
 function checkvalue() {
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-  //  var searchkeyword = searchkeyword.replace(' ', '-');
-  // var searchkeyword = searchkeyword.replace(/[^' ']/g, '-');
-    var searchkeyword = searchkeyword.replace(/\s/g, '-');
+    var searchkeyword1 = $.trim(document.getElementById('tags').value);
+
+    //  var searchkeyword = searchkeyword.replace(' ', '-');
+    // var searchkeyword = searchkeyword.replace(/[^' ']/g, '-');
+    var searchkeyword = searchkeyword1.replace(/\s/g, '-');
     var searchkeyword = searchkeyword.replace(/[^a-zA-Z0-9\-]/g, '');
     var searchkeyword = searchkeyword.replace(/-+/g, "-");
 
-    var searchplace = $.trim(document.getElementById('searchplace').value);
-    var searchplace = searchplace.replace(' ', '-');
+    var searchplace1 = $.trim(document.getElementById('searchplace').value);
+    var searchplace = searchplace1.replace(' ', '-');
     var searchplace = searchplace.replace(/[^a-zA-Z0-9\-]/g, '');
-  
+
 
 
     if (searchkeyword == "" && searchplace == "") {
@@ -121,14 +122,31 @@ function checkvalue() {
             window.location = base_url + 'project-in-' + searchplace;
             return false;
         } else if (searchplace == "") {
-            if(searchkeyword == 'projects'){
+            if (searchkeyword == 'projects') {
                 window.location = base_url + 'projects';
-            }else{
-            window.location = base_url + searchkeyword + '-project';
-        }
-        return false;
+            } else {
+
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "freelancer/session",
+                    data: 'keyword=' + encodeURIComponent(searchkeyword1) ,
+                    success: function (data) {
+                       window.location = base_url + searchkeyword + '-project';
+                    }
+                });
+              //  window.location = base_url + searchkeyword + '-project';
+            }
+            return false;
         } else {
-            window.location = base_url + searchkeyword + '-project-in-' + searchplace;
+             $.ajax({
+                    type: 'POST',
+                    url: base_url + "freelancer/session",
+                    data: 'keyword=' + encodeURIComponent(searchkeyword1) + '&keyword1=' + encodeURIComponent(searchplace1) ,
+                    success: function (data) {
+                       window.location = base_url + searchkeyword + '-project-in-' + searchplace;
+                    }
+                });
+            
             return false;
         }
     }

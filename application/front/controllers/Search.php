@@ -1468,7 +1468,7 @@ Your browser does not support the audio tag.
 
     public function freelancer_post_search() {
         // echo "hi";die();
-
+       
         $searchvalue = $this->uri->segment(1);
         
         if ($searchvalue == 'projects') {

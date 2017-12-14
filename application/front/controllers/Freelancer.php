@@ -278,7 +278,7 @@ class Freelancer extends MY_Controller {
 
         if ($check_result) {
             echo 'true';
-          //  die();
+            //  die();
         } else {
             echo 'false';
             die();
@@ -1434,7 +1434,7 @@ class Freelancer extends MY_Controller {
 
             $contition_array = array('status' => '1');
             $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
+
             //for getting univesity data Start
             $contition_array = array('is_delete' => '0', 'category_name !=' => "Other");
             $search_condition = "(status = '1')";
@@ -5218,6 +5218,15 @@ class Freelancer extends MY_Controller {
     }
 
 //CHECK FOR MAIL DESIGNING END
+    public function session() {
+        $keyword = $_POST['keyword'];
+        $keyword1 = $_POST['keyword1'];
+        $this->session->set_userdata('searchkeyword', $keyword);
+        $this->session->set_userdata('searchplace', $keyword1);
+       // $data='yes';
+        echo "yes";
+    }
+
     //FOR FREELANCER APPLY PROGRESSBAR START
     public function progressbar() {
         $userid = $this->session->userdata('aileenuser');
@@ -5326,10 +5335,10 @@ class Freelancer extends MY_Controller {
         return $count;
     }
 
-    public function add_post_added(){
-         $userid = $this->session->userdata('aileenuser');
-         
-         $postname = $this->input->post('post_name');
+    public function add_post_added() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $postname = $this->input->post('post_name');
         $post_desc = $this->input->post('skills');
         $position = $this->input->post('position');
         $minyear = $this->input->post('minyear');
@@ -5348,12 +5357,8 @@ class Freelancer extends MY_Controller {
         $minsal = $this->input->post('minsal');
         $maxsal = $this->input->post('maxsal');
         $currency = $this->input->post('currency');
-
-         
-         
-         
     }
-    
+
 //    public function add_project_login(){
 //        
 //    }
