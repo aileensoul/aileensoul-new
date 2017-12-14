@@ -3,15 +3,16 @@ var socket = require('socket.io');
 var express = require('express');
 var app = express();
 var options = {
-    key: fs.readFileSync('ssl-certificate/server.key'),
-    cert: fs.readFileSync('ssl-certificate/gd_bundle-g2-g1.crt'),
+    key: fs.readFileSync('/etc/apache2/ssl/server.key'),
+    cert: fs.readFileSync('/etc/apache2/ssl/gd_bundle-g2-g1.crt'),
     requestCert: true
 };
 var server = require('https').createServer(options, app);
 //var server = require('http').createServer(app);
 var io = socket.listen(server);
 //console.log(io);
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8443;
+
 
 server.listen(port, function () {
     console.log('Server listening at port %d', port);
