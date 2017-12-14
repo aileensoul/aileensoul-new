@@ -12,6 +12,7 @@ $result = $this->common->select_data_by_condition('notification', $contition_arr
 
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
+$this->data['head_message'] = $this->load->view('head_message', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
 $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
 $this->data['rec_search'] = $this->load->view('recruiter/rec_search', $this->data, true);
