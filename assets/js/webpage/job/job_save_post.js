@@ -150,6 +150,7 @@ function remove_post(abc)
             if (numItems == 0) {
                 var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src = '" + base_url + "assets/img/job-no.png'/></div><div class='art_no_post_text'>No Saved Job Available.</div></div>";
                 $('.job-contact-frnd1').html(nodataHtml);
+                 $('.job-contact-frnd1').addClass('cust-border');
             }
         }
     });

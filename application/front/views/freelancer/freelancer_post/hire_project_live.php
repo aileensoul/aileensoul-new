@@ -707,23 +707,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <?php
-                                            }
-                                        } else {
-                                            ?>
-                                            <div class="art-img-nn">
-                                                <div class="art_no_post_img">
-                                                    <img src="' . base_url() . 'img/job-no.png">
-
-                                                </div>
-                                                <div class="art_no_post_text">
-                                                    No  Post Available.
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                             
-                                <!-- sortlisted employe -->
+                                                 <!-- sortlisted employe -->
 
                                 <?php if ($shortlist) {
                                     ?>
@@ -795,7 +779,44 @@
                                     <?php } ?>
                                 </div>
                                 <!-- end sortlisted employe -->
+<<<<<<< HEAD
                                 
+=======
+                                                <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <div class="art-img-nn">
+                                                <div class="art_no_post_img">
+                                                    <img src="' . base_url() . 'img/job-no.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">
+                                                    No  Post Available.
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                             
+                               
+                                <div class="mob-add">
+                                    <div class="fw text-center pt10 pb5">
+                                        <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                        </script>
+                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    </div>
+                                </div>
+>>>>>>> 4824aefde812ce38d3fec7ea3c4a8edcb0fc865a
                                 <!--recommen candidate start-->
                                 <?php if (count($recommandedpost) > 0) { ?>
                                   <div class="inner-right-part">

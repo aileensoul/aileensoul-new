@@ -332,9 +332,9 @@
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
                     var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload']);
-                    messageApp.factory('emojione', function ($window) {
-                        return $window.emojione;
-                    });
+//                    messageApp.factory('emojione', function ($window) {
+//                        return $window.emojione;
+//                    });
                     messageApp.filter('htmlToPlaintext', function () {
                         return function (text) {
                             return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
@@ -408,7 +408,13 @@
                     messageApp.controller('messageController', function ($scope, Upload, $timeout, $http) {
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
+
                         $scope.delete_chat = function (message_for, message_id, chat) {
+                            $('.biderror .mes').html("<div class='pop_content'> Do you want to delete this message?<div class='model_ok_cancel'><a class='okbtn' ng-click='deleted_chat(" + message_for + ',' + message_id + ',' + chat + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            $('#bidmodal').modal('show');
+                        }
+                        $scope.deleted_chat = function (message_for, message_id, chat) {
+                            alert(13213);
                             $http({
                                 method: 'POST',
                                 url: base_url + 'message/businessmessageDelete',
@@ -571,11 +577,6 @@
                             load_message_user();
                             getUserMessage($scope.current);
                         });
-                    });
-        </script>
-        <script type="text/javascript">
-                    $(document).ready(function () {
-
                     });
         </script>
     </body>

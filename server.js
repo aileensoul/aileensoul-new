@@ -1,9 +1,17 @@
+var fs = require('fs');
 var socket = require('socket.io');
 var express = require('express');
 var app = express();
-var server = require('http').createServer(app);
+var options = {
+    key: fs.readFileSync('/etc/apache2/ssl/server.key'),
+    cert: fs.readFileSync('/etc/apache2/ssl/gd_bundle-g2-g1.crt'),
+    requestCert: true
+};
+var server = require('https').createServer(options, app);
+//var server = require('http').createServer(app);
 var io = socket.listen(server);
-var port = process.env.PORT || 3000;
+//console.log(io);
+var port = process.env.PORT || 443;
 
 server.listen(port, function () {
     console.log('Server listening at port %d', port);
@@ -25,13 +33,6 @@ io.on('connection', function (socket) {
         io.sockets.emit('contact_request_count', {
             contact_request_count: data.contact_request_count,
             contact_to_id: data.contact_to_id,
-        });
-    });
-    
-    socket.on('getBusinessChatUserList', function (data) {
-        console.log(data);
-        io.sockets.emit('getBusinessChatUserList', {
-            message_slug:data.message_slug, message_to_slug:data.message_to_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
         });
     });
 
