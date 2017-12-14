@@ -493,13 +493,13 @@
                                     if ($keyword == "" && $keyword1 == "") {
                                         echo 'All Jobs';
                                     } elseif ($keyword != "" && $keyword1 == "") {
-                                        echo '"' . $keyword . '"';
+                                        echo $keyword; echo " Jobs";
                                     } elseif ($keyword == "" && $keyword1 != "") {
-                                        echo '"' . $keyword1 . '"';
+                                       echo " Jobs in "; echo $keyword1;
                                     } else {
-                                        echo '"' . $keyword . '"';
+                                        echo $keyword;
                                         echo " Jobs in ";
-                                        echo '"' . $keyword1 . '"';
+                                        echo $keyword1;
                                     }
                                     ?>
                                 </h3>
