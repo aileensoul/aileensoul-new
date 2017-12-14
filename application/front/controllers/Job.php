@@ -4249,7 +4249,7 @@ class Job extends MY_Controller {
 
             $city_names = implode(',', $city_names);
 
-            $contition_array = array('re_status' => '1', 'recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3, 'rec_post.is_delete' => '0');
+            $contition_array = array('re_status' => '1', 'recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3, 'rec_post.is_delete' => '0', 'rec_post.city !=' => '0');
 
             $join_str[0]['table'] = 'recruiter';
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
