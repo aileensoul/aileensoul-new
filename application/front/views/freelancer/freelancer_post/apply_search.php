@@ -394,45 +394,46 @@
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
+                                        
                                         <a href="<?php echo base_url("projects"); ?>" >All Projects</a>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword1 == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
+                                            <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword1 == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
+                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw"> 
-                                            <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword1 == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
+                                            <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword1 == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
+                                            <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
                                         </label>
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword1 == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
-                                        </label>
-
-                                        <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword1 == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                            <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
                                         </label>
 
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword1 == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
+                                            <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
                                         </label>
 
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword1 == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
+                                            <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
                                         </label>
 
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
+                                            <a href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
                                         </label>
 
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                            <a href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
                                         </label>
 
                                         <label for="City" class="lbpos fw">
-                                            <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
+                                            <a href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                        </label>
+
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
                                         </label>
 
                                     </div>
@@ -460,6 +461,7 @@
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="page-title">
+                              
                                 <h3> <?php if($keyword == "" && $keyword1 == ""){
                                     echo "Freelance Projects";
                                 }else{  ?>

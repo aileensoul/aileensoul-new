@@ -1580,7 +1580,7 @@ Your browser does not support the audio tag.
             $join_str[0]['join_type'] = '';
 
             $contition_array = array('freelancer_post.status' =>'1','freelancer_post.is_delete'=>'0','freelancer_hire_reg.status' => '1','freelancer_hire_reg.is_delete' => '0', 'freelancer_hire_reg.user_id !=' => $userid, 'freelancer_hire_reg.free_hire_step' => '3');
-            $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+            $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = 'freelancer_post.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             
             
         }
