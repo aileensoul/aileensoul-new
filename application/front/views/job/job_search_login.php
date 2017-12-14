@@ -360,7 +360,7 @@
         .job_active{color: #1b8ab9 !important;}
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: auto;border: none;}
-        .full-box-module{width: 100%;float: left;height: auto;}
+        .full-box-module{width: 550px;float: left;height: auto;}
 
     </style>
     <body class="page-container-bg-solid page-boxed no-login">
@@ -439,7 +439,7 @@
 
 
                          <?php echo $left_footer; ?>
-                            <div class="tablate-potrat-add">
+                            <!-- <div class="tablate-potrat-add">
                                 <div class="fw text-center pt10">
                                     <script type="text/javascript">
                                         (function () {
@@ -455,7 +455,7 @@
                                     </script>
                                     <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                 </div>
-                            </div>
+                            </div> -->
 
 
 
@@ -536,6 +536,22 @@
                         </div>
 
                     </div>
+                    <div class="tablate-add">
+
+                            <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                            </script>
+                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                        </div>
                 </div>
 
             </div>
