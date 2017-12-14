@@ -390,21 +390,36 @@
                 <div class="container">
                     <div class="">
                         <!--COVER PIC START-->
-                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt cust-block">
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
+<<<<<<< HEAD
                                         
+||||||| merged common ancestors
+=======
+                                       <ul>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+>>>>>>> 3b7747c3391ce628ed53350de9d1f644752f1b57
                                         <a href="<?php echo base_url("projects"); ?>" >All Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
                                         </label>
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
                                         </label>
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw"> 
                                             <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
                                         </label>
+                                        </li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
                                         </label>
@@ -435,7 +450,7 @@
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
                                         </label>
-
+                                    </ul>
                                     </div>
                                 </div>
 							
