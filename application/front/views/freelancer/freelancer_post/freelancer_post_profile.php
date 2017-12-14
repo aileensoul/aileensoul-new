@@ -52,11 +52,11 @@
                             $user_id = $userid;
                         } else {
                             if (is_numeric($this->uri->segment(3))) {
-                                    $user_id = $this->uri->segment(3);
-                                } else {
-                                    $user_id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
-                                }
-                           // $user_id = $this->uri->segment(3);
+                                $user_id = $this->uri->segment(3);
+                            } else {
+                                $user_id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
+                            }
+                            // $user_id = $this->uri->segment(3);
                         }
                         $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 'status' => '1');
                         $image = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -193,15 +193,15 @@
 //                                echo $userid;
                                 $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => '2');
                                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                              //  echo "<pre>"; print_r($data); die();
+                                //  echo "<pre>"; print_r($data); die();
                                 if ($userid != $this->uri->segment(3)) {
                                     if ($this->uri->segment(3) != "") {
                                         ?>
                                         <div class="flw_msg_btn fr">
                                             <ul>
-                                                <?php 
+                                                <?php
                                                 if ($data[0]['status'] == '1' || $data[0]['status'] == '') {
-                                                    
+
                                                     if ($_GET['post_id']) {
                                                         ?> 
                                                         <li>
@@ -214,14 +214,14 @@
                                                                 <?php echo $this->lang->line("save"); ?>
                                                             </a> 
 
-                                                        </li> <?php }
-                                        } elseif ($data[0]['status'] == '0') {
-                                           
-                                                            ?>
+                                                        </li> <?php
+                                                    }
+                                                } elseif ($data[0]['status'] == '0') {
+                                                    ?>
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> "><?php echo $this->lang->line("saved"); ?></a>
-                                                    </li> <?php } else { 
-                                        ?>
+                                                    </li> <?php } else {
+                                                    ?>
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $id; ?> ">Shortlisted</a>
                                                     </li> 
@@ -280,53 +280,51 @@
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
-                   <?php if(!($returnpage))
-                {
-                  if($count_profile == 100)
-                  {
-                    if($freepostdata[0]['progressbar']==0)
-                    {
-          ?>
+                    <?php
+                    if (!($returnpage)) {
+                        if ($count_profile == 100) {
+                            if ($freepostdata[0]['progressbar'] == 0) {
+                                ?>
 
-          <div class="mob-progressbar" >
-               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               <p class="mob-edit-pro">
-                 
-                  <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
-                  
-                 
-               </p>
-               <div class="progress skill-bar ">
-                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
-                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
-                  </div>
-               </div>
-            </div>
-            <?php
-          }
-        }else{
+                                <div class="mob-progressbar" >
+                                    <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                    <p class="mob-edit-pro">
 
-            ?>
-            <div class="mob-progressbar" >
-               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               <p class="mob-edit-pro">
-                  
-                    
-                  <a href="<?php echo base_url('freelancer-work/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
-                  
-                    
-               </p>
-               <div class="progress skill-bar ">
-                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
-                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
-                  </div>
-               </div>
-            </div>
+                                        <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
 
-            <?php
-          }}
-          ?>
-                     <div class="common-form">
+
+                                    </p>
+                                    <div class="progress skill-bar ">
+                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile); ?>" aria-valuemin="0" aria-valuemax="100">
+                                            <span class="skill"><i class="val"><?php echo(round($count_profile)); ?>%</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class="mob-progressbar" >
+                                <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                <p class="mob-edit-pro">
+
+
+                                    <a href="<?php echo base_url('freelancer-work/basic-information') ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+
+
+                                </p>
+                                <div class="progress skill-bar ">
+                                    <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile); ?>" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="skill"><i class="val"><?php echo(round($count_profile)); ?>%</i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <?php
+                        }
+                    }
+                    ?>
+                    <div class="common-form">
                         <div class="job-saved-box">
                             <h3><?php echo $this->lang->line("freelancer_details"); ?> </h3>
                             <div class=" fr rec-edit-pro">
@@ -345,7 +343,7 @@
                                     ?>
                                     <ul>
                                     </ul>
-<?php } ?>
+                                <?php } ?>
                             </div> 
                             <div class="contact-frnd-post">
                                 <div class="job-contact-frnd ">
@@ -382,7 +380,7 @@
                                                         } else {
                                                             ?>
                                                             <li><b><?php echo $this->lang->line("phone_no"); ?></b> <span>
-                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                             </li>
                                                             <?php
                                                         }
@@ -407,7 +405,7 @@
                                                         } else {
                                                             ?>
                                                             <li><b><?php echo $this->lang->line("skype_id"); ?></b> <span>
-                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                             </li>
                                                             <?php
                                                         }
@@ -455,7 +453,7 @@
                                                                 } else {
                                                                     ?>
                                                                 <li><b><?php echo $this->lang->line("city"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -480,7 +478,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b><?php echo $this->lang->line("pincode"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -499,7 +497,7 @@
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-<?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
+                                                        <?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
                                                         <li> <b><?php echo $this->lang->line("field"); ?></b> <span> <?php echo $categoryname; ?> </span>
                                                         </li>
                                                         <?php
@@ -528,7 +526,7 @@
                                                                     ?>     
                                                                 </span>
                                                             </li>
-<?php } ?>
+                                                        <?php } ?>
 
                                                         <li><b><?php echo $this->lang->line("skill_description"); ?></b> <span> <pre><?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_skill_description']); ?> </pre> </span> </li>
 
@@ -552,7 +550,7 @@
                                             <?php
                                             if ($returnpage == 'freelancer_hire') {
                                                 $currancy = $this->db->get_where('currency', array('currency_id' => $freelancerpostdata[0]['freelancer_post_ratestate']))->row()->currency_name;
-                                                if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" && $freelancerpostdata[0]['freelancer_post_ratestate'] != "") {
+                                                if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" && $freelancerpostdata[0]['freelancer_post_ratestate'] != "0") {
                                                     ?>
                                                     <div class="profile-job-post-title clearfix">
                                                         <div class="profile-job-profile-button clearfix">
@@ -694,7 +692,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b>Timing<?php echo $this->lang->line("timing"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -707,10 +705,10 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("working_hours_week"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-    <?php } ?>
+                                                            <?php } ?>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -719,7 +717,7 @@
                                             ?>
                                             <?php
                                             if ($returnpage == 'freelancer_hire') {
-                                                if ($freelancerpostdata[0]['freelancer_post_degree'] != "" || $freelancerpostdata[0]['freelancer_post_stream'] != "" || $freelancerpostdata[0]['freelancer_post_univercity'] != "" || $freelancerpostdata[0]['freelancer_post_percentage'] != "" || $freelancerpostdata[0]['freelancer_post_passingyear'] != "") {
+                                                if ($freelancerpostdata[0]['freelancer_post_degree'] != "0" || $freelancerpostdata[0]['freelancer_post_stream'] != "0" || $freelancerpostdata[0]['freelancer_post_univercity'] != "0" || $freelancerpostdata[0]['freelancer_post_percentage'] != "" || $freelancerpostdata[0]['freelancer_post_passingyear'] != "0") {
                                                     ?> 
                                                     <div class="profile-job-post-title clearfix">
                                                         <div class="profile-job-profile-button clearfix">
@@ -820,7 +818,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("degree"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -834,7 +832,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("stream"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -848,7 +846,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("university"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -862,7 +860,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("college"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -878,7 +876,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("percentage"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -893,7 +891,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("year_passing"); ?></b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -946,7 +944,7 @@
                                                             if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("descri"); ?></b> <span><pre>
-                                                                <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </pre></span>
+                                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </pre></span>
                                                                 </li>
                                                                 <?php
                                                             } else {
@@ -988,7 +986,7 @@
                                                         } else {
                                                             ?>
                                                             <li> <b><?php echo $this->lang->line("attach"); ?></b><span> 
-        <?php echo PROFILENA; ?>
+                                                                    <?php echo PROFILENA; ?>
                                                                 </span>
 
                                                             </li>
@@ -998,20 +996,20 @@
                                                         if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
                                                             ?>
                                                             <li> <b><?php echo $this->lang->line("descri"); ?></b> <span><p>
-                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
+                                                                        <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
                                                             </li>
                                                             <?php
                                                         } else {
                                                             ?>
                                                             <li> <b><?php echo $this->lang->line("descri"); ?></b><span> 
-        <?php echo PROFILENA; ?>
+                                                                    <?php echo PROFILENA; ?>
                                                                 </span>
                                                             </li>
                                                         <?php }
                                                         ?>
                                                     </ul>
                                                 </div>
-<?php } ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1019,65 +1017,59 @@
                         </div>
                     </div>
                 </div>
-                <?php 
-               if(!($returnpage))
-                       {
-                           if($count_profile == 100)
-                           {
-                            if($freepostdata[0]['progressbar']==0)
-                            {
-                             
-               ?>
-            <div class="edit_profile_progress edit_pr_bar complete_profile">
-               <div class="progre_bar_text">
-                  <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               </div>
-               <div class="count_main_progress">
-                  <div class="circles">
-                     <div class="second circle-1 ">
-                        <div class="true_progtree">
-                           <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                <?php
+                if (!($returnpage)) {
+                    if ($count_profile == 100) {
+                        if ($freepostdata[0]['progressbar'] == 0) {
+                            ?>
+                            <div class="edit_profile_progress edit_pr_bar complete_profile">
+                                <div class="progre_bar_text">
+                                    <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                                </div>
+                                <div class="count_main_progress">
+                                    <div class="circles">
+                                        <div class="second circle-1 ">
+                                            <div class="true_progtree">
+                                                <img src="<?php echo base_url("assets/img/true.png"); ?>">
+                                            </div>
+                                            <div class="tr_text">
+                                                Successfully Completed
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    } else {
+                        ?>
+                        <div class="edit_profile_progress edit_pr_bar">
+                            <div class="progre_bar_text">
+                                <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+                            </div>
+                            <div class="count_main_progress">
+                                <div class="circles">
+                                    <div class="second circle-1">
+                                        <div>
+                                            <strong></strong>
+                                            <a href="<?php echo base_url('freelancer-work/basic-information') ?>" class="edit_profile_job">Edit Profile
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="tr_text">
-                           Successfully Completed
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <?php
-               }
-                  }
-               else
-               {
-                   ?>
-            <div class="edit_profile_progress edit_pr_bar">
-               <div class="progre_bar_text">
-                  <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-               </div>
-               <div class="count_main_progress">
-                  <div class="circles">
-                     <div class="second circle-1">
-                        <div>
-                           <strong></strong>
-                           <a href="<?php echo base_url('freelancer-work/basic-information')?>" class="edit_profile_job">Edit Profile
-                           </a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <?php
-               }
-               ?>
-            <?php
-               }
-               ?>
+                        <?php
+                    }
+                    ?>
+                    <?php
+                }
+                ?>
             </div>
             <div class="clearfix"></div>
         </section>
         <?php echo $login_footer ?>
-<?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -1100,7 +1092,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));          ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));           ?>
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -1109,7 +1101,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-<?php //echo form_close();          ?>
+                                <?php //echo form_close();           ?>
                             </div>
                         </span>
                     </div>

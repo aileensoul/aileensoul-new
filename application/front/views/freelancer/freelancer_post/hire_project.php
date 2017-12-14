@@ -513,7 +513,7 @@
                                                                                                                             <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
                                                                                                                                 <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
                                                                                                                         <?php } else { ?>
-                                                                                                                            <a href="javascript: void(0);">
+                                                                                                                            <a>
                                                                                                                                 <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
                                                                                                                         <?php } ?>
                                                                                                                         <?php
@@ -527,7 +527,7 @@
                                                                                                                                 <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['freelancer_apply_slug'] . '?page=freelancer_hire'); ?>">
                                                                                                                                     <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
                                                                                                                             <?php } else { ?>
-                                                                                                                                <a href="javascript:void(0);">
+                                                                                                                                <a>
                                                                                                                                     <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $user['freelancer_post_user_image']; ?>" alt="" > </a>
                                                                                                                             <?php } ?>
                                                                                                                         <?php } else { ?>
@@ -568,7 +568,7 @@
                                                                                                                     <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
                                                                                                                         <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $user['user_id'] . '?page=freelancer_hire'); ?>"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                                     <?php } else { ?>
-                                                                                                                        <a href="javascript:void(0);"><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
+                                                                                                                        <a><?php echo $user['freelancer_post_fullname'] . " " . $user['freelancer_post_username']; ?></a>
                                                                                                                     <?php } ?>
                                                                                                                 </div>
                                                                                                                 <p><?php
