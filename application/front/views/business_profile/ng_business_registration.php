@@ -216,7 +216,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" tabindex="5"  value="Next">
-                                                                 <div class="loader-cust" ng-show="loader_show"> </div>
+                                                                <div class="loader-cust" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -273,7 +273,7 @@
                                                             <input type="hidden" name="busreg_step" ng-model="user.busreg_step" id="busreg_step" tabindex="4"  value="">
                                                             <fieldset class="hs-submit full-width" style="position: relative;">
                                                                 <input type="submit"  id="next" name="next" value="Next" tabindex="6" >
-                                                                 <div class="loader-cust" ng-show="loader_show"> </div>
+                                                                <div class="loader-cust" ng-show="loader_show"> </div>
                                                             </fieldset>
                                                         </form>
                                                     </div>
@@ -315,13 +315,13 @@
         <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/js/angular-validate.min.js?ver=' . time()) ?>"></script>
         <script>
-                                                                        var base_url = '<?php echo base_url(); ?>';
-                                                                        var slug = '<?php echo $slugid; ?>';
-                                                                        var reg_uri = '<?php echo $reg_uri ?>';
-                                                                        var company_name_validation = '<?php echo $this->lang->line('company_name_validation') ?>';
-                                                                        var country_validation = '<?php echo $this->lang->line('country_validation') ?>';
-                                                                        var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
-                                                                        var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
+                                                                            var base_url = '<?php echo base_url(); ?>';
+                                                                            var slug = '<?php echo $slugid; ?>';
+                                                                            var reg_uri = '<?php echo $reg_uri ?>';
+                                                                            var company_name_validation = '<?php echo $this->lang->line('company_name_validation') ?>';
+                                                                            var country_validation = '<?php echo $this->lang->line('country_validation') ?>';
+                                                                            var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
+                                                                            var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
         <script>
                     // Defining angularjs application.
@@ -435,7 +435,6 @@
                         $scope.getCountry = function () {
                             getCountry();
                         };
-
                         function select_color_change() {
                             var selected_val = $('select').val();
                             if (selected_val == '') {
@@ -698,6 +697,15 @@
                             }
 
                         };
+                        $.validator.addMethod("regx2", function (value, element, regexpr) {
+                            if (!value)
+                            {
+                                return true;
+                            } else
+                            {
+                                return regexpr.test(value);
+                            }
+                        }, "please enter valid mobile number.");
                         $scope.conInfoValidate = {
                             rules: {
                                 contactname: {
@@ -708,12 +716,13 @@
                                     required: true,
                                     number: true,
                                     minlength: 8,
-                                    maxlength: 15
+                                    maxlength: 15,
+                                    regx2: /^[1-9][0-9]*/
                                 },
                                 email: {
                                     required: true,
                                     email: true,
-                                //    regx1: /^[a-zA-Z0-9.@]+$/
+                                    //    regx1: /^[a-zA-Z0-9.@]+$/
                                 }
                             },
                             messages: {
@@ -891,16 +900,16 @@
                         }
                     });
         </script>
-        <?php
-        if (IS_BUSINESS_JS_MINIFY == '0') {
-            ?>
-                                                                                                                                                                                                                                                                                                                                                                                                                        <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
-                                                                                                                                                                                                                                                                                                                                                                                                                        <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
+<?php
+if (IS_BUSINESS_JS_MINIFY == '0') {
+    ?>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    <!--            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/business-profile/information.js?ver=' . time()); ?>"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>-->
         <?php } else {
             ?>
             <script type="text/javascript" src="<?php echo base_url('assets/js_min/webpage/business-profile/information.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" defer="defer" src="<?php echo base_url('assets/js_min/webpage/business-profile/common.min.js?ver=' . time()); ?>"></script>
-        <?php }
-        ?>
+<?php }
+?>
     </body>
 </html>
