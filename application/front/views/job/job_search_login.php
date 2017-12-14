@@ -360,7 +360,7 @@
         .job_active{color: #1b8ab9 !important;}
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: auto;border: none;}
-        .full-box-module{width: 550px;float: left;height: auto;}
+        .full-box-module{width: 320px;float: left;height: auto;}
 
     </style>
     <body class="page-container-bg-solid page-boxed no-login">
@@ -488,7 +488,7 @@
                             </div>
                             <div class="job-saved-box">
                                 <h3>
-                                    Search result of 
+                                  
                                     <?php
                                     if ($keyword == "" && $keyword1 == "") {
                                         echo 'All Jobs';
@@ -498,7 +498,7 @@
                                         echo '"' . $keyword1 . '"';
                                     } else {
                                         echo '"' . $keyword . '"';
-                                        echo " in ";
+                                        echo " Jobs in ";
                                         echo '"' . $keyword1 . '"';
                                     }
                                     ?>
