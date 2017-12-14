@@ -317,6 +317,18 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade message-box" id="message_delete" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close1" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div class='pop_content'> Do you want to delete this message?<div class='model_ok_cancel'><a class='okbtn' ng-click='deleted_chat("123")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php echo $footer; ?>
         <script>
                     var base_url = '<?php echo base_url(); ?>';
@@ -327,11 +339,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload-all.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/emojionearea.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/angular-ui-bootstrap-modal.js"></script>
 
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload']);
+                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload','ui.bootstrap.modal']);
 //                    messageApp.factory('emojione', function ($window) {
 //                        return $window.emojione;
 //                    });
