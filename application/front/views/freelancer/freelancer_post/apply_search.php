@@ -417,36 +417,46 @@
                                             <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
                                         </label>
                                         </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
                                         </label>
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
                                         </label>
-
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
                                         </label>
-
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
                                         </label>
-
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
-                                        </label>
-
+                                      </label>
+                                      </li>
+                                      <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
                                         </label>
-
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
                                         </label>
-
+                                        </li>
+                                        <li>
                                         <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
                                         </label>
+                                        </li>
                                     </ul>
                                     </div>
                                 </div>
