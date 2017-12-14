@@ -172,10 +172,10 @@
                                                                                     </div>  
 
                                                                                     </div>                           
-                                                                                    <?php echo $left_footer; ?>
+                                                                                    
                                                                                     <div id="hideuserlist" class=" fixed_right_display animated fadeInRightBig"> 
 
-                                                                                        <div class="fw text-center" style="text-align: center;">
+                                                                                        <div class="fw text-center add-border" style="text-align: center;">
                                                                                             <script type="text/javascript">
                                                                                                 (function () {
                                                                                                     if (window.CHITIKA === undefined) {
@@ -195,7 +195,9 @@
                                                                                         </div>
 
                                                                                     </div>
-                                                                                    </div>
+                                                                                    
+																					<?php echo $left_footer; ?>
+																					</div>
                                                                                     </div>
                                                                                     <?php
                                                                                     $applyuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
@@ -211,6 +213,23 @@
                                                                                                     ?>
                                                                                                 </h3>
                                                                                             </div>
+																							<div class="mob-add">
+                                            <div class="fw text-center pt10 pb5">
+                                                <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                                </script>
+                                                <script type="text/javascript" src="//cdn.chitika.net/getads.js"></script>
+                                            </div>
+                                        </div>
                                                                                             <?php
                                                                                             if (count($postdata) > 0) {
                                                                                                 foreach ($postdata as $post) {
@@ -597,7 +616,10 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
+																						
+																							
                                                                                         </div>
+																						
                                                                                     <?php } ?>
                                                                                    
                                                                                    <!--  <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 

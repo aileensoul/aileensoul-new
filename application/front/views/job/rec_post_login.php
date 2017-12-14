@@ -383,7 +383,7 @@
         </header>
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
-                <div class="container">
+                <div class="container padding-360">
                     <div class="row4">
 
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
@@ -505,10 +505,10 @@
                                                                         </div>-->
                                 <?php } ?>
 
-                                <?php echo $left_footer; ?>
+                                
                                  <div id="hideuserlist" class=" fixed_right_display animated fadeInRightBig"> 
 
-                                                                                        <div class="fw text-center" style="text-align: center;">
+                                                                                        <div class="fw text-center add-border" style="text-align: center;">
                                                                                             <script type="text/javascript">
                                                                                                 (function () {
                                                                                                     if (window.CHITIKA === undefined) {
@@ -528,24 +528,9 @@
                                                                                         </div>
 
                                                                                     </div>
+																					<?php echo $left_footer; ?>
 
-                                <div class="tablate-potrat-add">
-                                    <div class="fw text-center pt10">
-                                        <script type="text/javascript">
-                                            (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []};
-                                                }
-                                                ;
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                            }());
-                                        </script>
-                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                    </div>
-                                </div>
+                                
 
 
 
@@ -839,23 +824,24 @@
 
 
                         </div>
-                        <div class="mob-add">
-                            <div class="fw text-center pt10 pb5">
-                                <script type="text/javascript">
-                                    (function () {
-                                        if (window.CHITIKA === undefined) {
-                                            window.CHITIKA = {'units': []};
-                                        }
-                                        ;
-                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                        var placement_id = window.CHITIKA.units.length;
-                                        window.CHITIKA.units.push(unit);
-                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                    }());
-                                </script>
-                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                            </div>
-                        </div>
+						<div class="tablate-potrat-add">
+                                    <div class="fw text-center add-border">
+                                        <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                        </script>
+                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    </div>
+                                </div>
+                        
                         <!--recommen candidate start-->
                         <?php if (count($recommandedpost) > 0) { ?>
                             <div class="inner-right-part">
@@ -864,6 +850,7 @@
                                         Recommended job
                                     </h3>
                                 </div>
+								
                                 <?php
                                 foreach ($recommandedpost as $post) {
                                     ?>

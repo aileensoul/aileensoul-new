@@ -1885,6 +1885,7 @@ label.cameraButton input[accept*="camera"] {
 	.mian_middle_post_box{position:inherit; float:left; margin:0 auto; width:550px; }
 	/*** end advertise  ***/
     .mob-progressbar{display: block;}
+	.edit_profile_progress{display:none;}
 }
 @media screen and (max-width: 840px) {
     
