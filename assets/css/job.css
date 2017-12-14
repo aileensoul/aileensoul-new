@@ -2634,6 +2634,7 @@ margin-bottom: 15px;}
     .cust-block ul{text-align: center;width: 100%;display: inline-block;padding-left: 0px;}
     .cust-block li{display: inline-block;padding-left: 0px;padding: 0px 10px;}
     .profile-boxProfileCard-cover{width: 100%;text-align: center;}
+    .full-box-module{width: 550px;float: left;height: auto;}
 }
 @media screen and (max-width: 767px) {
     .common-form input[type="radio"],
