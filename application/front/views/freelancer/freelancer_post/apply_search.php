@@ -350,10 +350,11 @@
             .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
             .job_active{color: #1b8ab9 !important;}
             .no-login .left_side_posrt .lbpos input{width: 10% !important; }
-             .profile-boxProfileCard-cover{height: 400px;border:1px solid #d9d9d9;padding-left: 10px;}
+             .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
              .profile-boxProfileCard-cover a{color: black;}
              .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
              .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
+             .full-box-module{width: 100%;float: left;}
             /*second*/
 
         </style>
@@ -395,7 +396,7 @@
                                 <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
 
-                                       <ul>
+                                       <ul style="list-style-type: none;">
                                         <li>
                                         <label for="City" class="lbpos fw">
 

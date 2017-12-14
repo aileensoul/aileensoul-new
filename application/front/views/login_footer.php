@@ -14,11 +14,11 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
 
                 <div class="fw text-center">
                     <ul class="footer-ul">
-						<li><a title="Sitemap" href="<?php echo base_url('job-profile'); ?>" target="_blank">Job Profile</a></li>
-						<li><a title="Sitemap" href="<?php echo base_url('recruiter-profile'); ?>" target="_blank">Recruiter Profile</a></li>
-						<li><a title="Sitemap" href="<?php echo base_url('freelance-profile'); ?>" target="_blank">Freelancer Profile</a></li>
-						<li><a title="Sitemap" href="<?php echo base_url('business-profile'); ?>" target="_blank">Business Profile</a></li>
-						<li><a title="Sitemap" href="<?php echo base_url('artistic-profile'); ?>" target="_blank">Artistic Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelancer Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-business-profile-in-aileensoul'); ?>" target="_blank">Business Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-artistic-profile-in-aileensoul'); ?>" target="_blank">Artistic Profile</a></li>
 						
 					
                         <li><a title="About Us" href="<?php echo base_url('about-us'); ?>"  target="_blank">About Us</a></li>
