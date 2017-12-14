@@ -2313,7 +2313,7 @@ class Recruiter extends MY_Controller {
                     $rec_post .= $rest;
 
                     if (strlen($post['post_description']) > 150) {
-                        $rec_post .= '.....<a href="">Read more</a>';
+                        $rec_post .= '.....<a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">Read more</a>';
                     }
                     $rec_post .= '</p>
 
