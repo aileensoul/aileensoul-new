@@ -44,7 +44,7 @@ class Freelancer_hire extends MY_Controller {
                     redirect('freelancer-hire/home', refresh);
                 }
             } else {
-                redirect('freelancer-hire/registation',refresh);
+                redirect('freelancer-hire/registration',refresh);
                // $this->load->view('freelancer/freelancer_hire/freelancer_hire_basic_info', $this->data);
             }
         }
