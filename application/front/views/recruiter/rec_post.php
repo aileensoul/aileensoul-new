@@ -323,14 +323,17 @@
 
         <!-- FIELD VALIDATION JS END -->
         <?php
-        if (IS_REC_JS_MINIFY == '0') {
-          if($returnpage == 'job'){   ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+        if (IS_REC_JS_MINIFY == '0') { ?>
+
+             <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
+
+         <?php if($returnpage == 'job'){   ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/webpage/job/search_common.js?ver=' . time()); ?>"></script>    
 <?php }else{ ?>
  <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
 <?php } ?>
             
-            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/rec_post.js'); ?>"></script>
+           
             <?php
         } else {
             ?>
