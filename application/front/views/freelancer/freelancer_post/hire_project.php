@@ -121,7 +121,7 @@
                                                                             <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
                                                                                 <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                                             <?php } else if ($hire_user) { ?>
-                                                                                <a href="javascript:void(0);"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
+                                                                                <a title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                                             <?php } else { ?>
                                                                                 <a href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data['username'])); ?>">   <?php echo ucfirst(strtolower($freelancr_user_data[0]['fullname'])) . ' ' . ucfirst(strtolower($freelancr_user_data[0]['username'])); ?></a>
                                                                             <?php } ?>
@@ -132,7 +132,7 @@
                                                                             <?php if ($this->session->userdata('aileenuser') == $post_user[0]['user_id']) { ?>
                                                                                 <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                                                 <?php } else if ($hire_user) { ?>
-                                                                                    <a href="javascript:void(0);"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
+                                                                                    <a title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                                                     <?php } else { ?>
                                                                                         <a href="<?php echo base_url('freelancer-hire/employer-details/' . $recliveid . '?page=freelancer_post'); ?>"  title="<?php echo ucfirst(strtolower($freelancr_user_data[0]['designation'])); ?>">
                                                                                         <?php } ?>
@@ -237,7 +237,7 @@
                                                                                                     <div class="all-job-box job-detail">
                                                                                                         <div class="all-job-top">
                                                                                                             <div class="job-top-detail">
-                                                                                                                <h5><a href="javascript:void(0);"><?php echo $post['post_name']; ?></a></h5>
+                                                                                                                <h5><a><?php echo $post['post_name']; ?></a></h5>
                                                                                                                 <?php
                                                                                                                 $postuser = $this->common->select_data_by_id('freelancer_post', 'post_id', $post['post_id'], $data = 'user_id', $join_str = array());
                                                                                                                 $hireuser = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
@@ -250,7 +250,7 @@
                                                                                                                     <?php if ($postuser[0]['user_id'] == $this->session->userdata('aileenuser')) { ?>
                                                                                                                         <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                                                                     <?php } else if ($hireuser) { ?>
-                                                                                                                        <a href="javascript:void(0);"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
+                                                                                                                        <a><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                                                                     <?php } else { ?>
                                                                                                                         <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                                                                                     <?php } ?>
@@ -309,18 +309,18 @@
                                                                                                                         $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                                                         if ($freelancerapply1) {
                                                                                                                             ?>
-                                                                                                                            <a href="javascript:void(0);" class="btn4 applied">Applied</a>
+                                                                                                                            <a class="btn4 applied">Applied</a>
                                                                                                                         <?php } else if ($applyuser) { ?>
-                                                                                                                            <a href="javascript:void(0);"  class= "applypost btn4"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
+                                                                                                                            <a  class= "applypost btn4"  onClick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id']; ?>)"> Apply</a>
                                                                                                                             <?php
                                                                                                                             $userid = $this->session->userdata('aileenuser');
                                                                                                                             $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
                                                                                                                             $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                                                                                                                             if ($data) { ?>
-                                                                                                                                <a href="javascript:void(0);" class="btn4 saved savedpost<?php echo $post['post_id']; ?>">Saved</a>
+                                                                                                                                <a class="btn4 saved savedpost<?php echo $post['post_id']; ?>">Saved</a>
                                                                                                                            <?php  } else { ?>
-                                                                                                                                <a href="javascript:void(0);" id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id'];?>">Save</a>
+                                                                                                                                <a id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" class="btn4 savedpost<?php echo $post['post_id'];?>">Save</a>
                                                                                                                                 
                                                                                                                            <?php  }
                                                                                                                             ?>
