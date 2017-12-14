@@ -353,7 +353,7 @@ $route['notification/art-post/(:any)'] = "notification/art_post/$1";
 
 $route['job-profile'] = "profile_job";
 $route['recruiter-profile'] = "recruiter_profile";
-$route['freelancer-profile'] = "freealncer_profile";
+$route['freelancer-profile'] = "freelancer_profile";
 $route['business-profile'] = "profile_business";
 $route['artistic-profile'] = "artistic_profile";
 
