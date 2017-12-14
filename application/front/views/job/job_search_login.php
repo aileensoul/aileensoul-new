@@ -359,7 +359,8 @@
         .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
         .job_active{color: #1b8ab9 !important;}
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
-        .no-login .left_side_posrt .profile-boxProfileCard-cover{height: 210px;border: none;}
+        .no-login .left_side_posrt .profile-boxProfileCard-cover{height: auto;border: none;}
+        .full-box-module{width: 100%;float: left;height: auto;}
 
     </style>
     <body class="page-container-bg-solid page-boxed no-login">
@@ -382,44 +383,58 @@
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
-                    <div class="row row4">
-
-
-                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt"><div class="">
-
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt cust-block">
+                             <div class="">
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
+                                            <ul style="list-style-type: none;">
+                                                <li>
+                                             <label for="City" class="lbpos fw">
                                             <a href="<?php echo base_url("jobs"); ?>" >All Jobs</a>
+                                            </label>
+                                            </li>
+                                            <li>
                                             <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs-in-Ahmedabad"); ?>" <?php if ($keyword1 == 'Ahmedabad') { ?> class="job_active" <?php } ?>>Ahmedabad Jobs</a>
                                             </label>
+                                            </li>
+                                            <li>
                                             <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs-in-Bengaluru"); ?>" <?php if ($keyword1 == 'Bengaluru') { ?> class="job_active" <?php } ?>>Bengaluru Jobs</a>
                                             </label>
+                                            </li>
+                                            <li>
                                             <label for="City" class="lbpos fw"> 
                                                 <a href="<?php echo base_url("jobs-in-Chennai"); ?>" <?php if ($keyword1 == 'Chennai') { ?> class="job_active" <?php } ?>>Chennai Jobs</a>
                                             </label>
+                                            </li>
+                                            <li>
                                             <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs-in-Delhi"); ?>" <?php if ($keyword1 == 'Delhi') { ?> class="job_active" <?php } ?>>Delhi Jobs</a>
                                             </label>
+                                            </li>
+                                            <li>
                                             <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs-in-Hyderabad"); ?>" <?php if ($keyword1 == 'Hyderabad') { ?> class="job_active" <?php } ?>>Hyderabad Jobs</a>
                                             </label>
-
+                                            </li>
+                                            <li>
                                             <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs-in-Mumbai"); ?>" <?php if ($keyword1 == 'Mumbai') { ?> class="job_active" <?php } ?>>Mumbai Jobs</a>
                                             </label>
-
+                                            </li>
+                                            <li>
                                             <label for="City" class="lbpos fw">
                                                 <a href="<?php echo base_url("jobs-in-Pune"); ?>" <?php if ($keyword1 == 'Pune') { ?> class="job_active" <?php } ?>>Pune Jobs</a>
                                             </label>
-
+                                            </li>
+                                            </ul>
                                         </div>
                                     </div>
 
                                 </div>                             
-                            </div>
+                        
 
 
 

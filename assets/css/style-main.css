@@ -1867,6 +1867,7 @@ img{
 	.ftr-copuright{padding-bottom:15px;}
 	.catbox-right{width:78%;}
 	.catbox-right.artist-sitemap{width:100%;}
+	.about-content{width: 100% !important;}
 	
 }
 
@@ -2141,7 +2142,7 @@ img{
 	.middle-main{padding:30px 0;}
 	.login{width:100%;}
 	.header-login .input{width:44%;}
-	footer ul li a{padding:5px 8px;}
+	footer ul li a{padding:5px 7px;}
 	.main-inner .btn-right.pull-right a.btn2{margin-bottom:15px;}
 	.about-us .main-inner .btn-right.pull-right a.btn2{margin-bottom:0px;}
 	.contact .main-inner .btn-right.pull-right a.btn2{margin-bottom:0px;}

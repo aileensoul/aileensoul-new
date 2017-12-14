@@ -180,13 +180,13 @@
                                             </select>
                                             <?php echo form_error('currency'); ?>
                                         </fieldset>
-                                        <fieldset style="padding-left: 8px;" class="col-md-12">
+                                        <fieldset style="padding-left: 8px;" class="col-md-6">
                                             <label><?php echo $this->lang->line("work_type"); ?><span class="optional">(optional)</span></label>
                                             <input type="radio" name="rating" tabindex="13" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
                                             <input type="radio" name="rating" tabindex="14"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
                                             <?php echo form_error('rating'); ?>
                                         </fieldset>
-                                        <fieldset class="hs-submit half-width">
+                                        <fieldset class="hs-submit full-width">
                                             <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                 <a class="add_post_btnc" onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                             <?php } else { ?>

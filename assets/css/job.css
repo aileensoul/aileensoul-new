@@ -2628,6 +2628,12 @@ margin-bottom: 15px;}
 	/*** end advertise  ***/
 	.gov-all-post .fixed_right_display{display:none;}
 	.gov-job-detail-left{width:550px;}
+    .cust-block{display: block;}
+    .cust-block .custom_footer_left{display: none;}
+    .cust-block{display: block;width: 100% !important}
+    .cust-block ul{text-align: center;width: 100%;display: inline-block;padding-left: 0px;}
+    .cust-block li{display: inline-block;padding-left: 0px;padding: 0px 10px;}
+    .profile-boxProfileCard-cover{width: 100%;text-align: center;}
 }
 @media screen and (max-width: 767px) {
     .common-form input[type="radio"],
@@ -2970,6 +2976,7 @@ margin-bottom: 15px;}
 	.gov-job-detail-left{width:100%;}
 	.all-job-box .job-box-left{max-width:50px;}
 	.all-job-box .all-job-right .job-name{font-size:16px;}
+    
 }
 @media screen and (max-width: 639px) {
 	.mian_middle_post_box{width:100%;}
@@ -3254,6 +3261,7 @@ margin-bottom: 15px;}
 
     .work_exp .profile-job-profile-menu ul li b{font-size: 13px;width: 48%;}
     .work_exp .profile-job-profile-menu ul li span{width: 52%;font-size: 12px;}
+    .cust-block li{width: 100%;}
     /*.job_reg_page_fprm #experience_year{margin-right: 18px !important;}*//*d*/
 }
 @media screen and (max-width: 360px) {
