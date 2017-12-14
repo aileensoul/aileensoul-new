@@ -190,9 +190,8 @@
                         <h3>Saved Job</h3>
                     </div>
                     <div class="job-contact-frnd1">
-                        <div class="loader"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
-
                     </div>
+                     <div class="loader"><p style="text-align:center;"><img  src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
                 </div>
                 <?php
                 if ($count_profile == 100) {

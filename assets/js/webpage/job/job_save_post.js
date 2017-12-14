@@ -101,14 +101,14 @@ function job_save(pagenum)
 
                 $(".job-contact-frnd1").prepend('');
             } else {
-                $('#loader').show();
+                $('.loader').show();
             }
         },
         complete: function () {
-            $('#loader').hide();
+            $('.loader').hide();
         },
         success: function (data) {
-            $('.loader').remove();
+           // $('.loader').remove();
             $('.job-contact-frnd1').append(data);
             // second header class add for scroll
              //display border for no projects available start
