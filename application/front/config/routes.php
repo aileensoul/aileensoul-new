@@ -349,3 +349,11 @@ $route['notification/details/(:any)'] = "business_profile/business_resume/$1";
 $route['notification/business-post/(:any)'] = "business_profile/edit_post/$1";
 
 $route['notification/art-post/(:any)'] = "notification/art_post/$1";
+
+
+$route['job-profile'] = "profile_job";
+$route['recruiter-profile'] = "recruiter_profile";
+$route['freelance-profile'] = "freealncer_profile";
+$route['business-profile'] = "profile_business";
+$route['artistic-profile'] = "artistic_profile";
+
