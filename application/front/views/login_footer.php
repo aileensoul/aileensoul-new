@@ -12,19 +12,28 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
         <div class="container pt20">
             <div class="row">
 
-                <div class="col-lg-9 col-md-12 col-sm-12 pull-right col-xs-12">
+                <div class="fw text-center">
                     <ul class="footer-ul">
-                        <li><a title="About Us" href="<?php echo base_url('about-us'); ?>"  target="_blank">About Us</a><span class="mob-none">|</span></li>
-                        <li><a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a><span class="mob-none">|</span></li>
-                        <li><a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a><span class="mob-none">|</span></li>
-                        <li><a title="Disclaimer" href="<?php echo base_url('Disclaimer'); ?>"  target="_blank">Disclaimer policy</a><span class="mob-none">|</span></li>
-                        <li><a title="Contact Us" href="<?php echo base_url('contact-us'); ?>"  target="_blank">Contact Us</a><span class="mob-none">|</span></li>
-                        <li><a title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a><span class="mob-none">|</span></li>
-                        <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a><span class="mob-none">|</span></li>
+						<li><a title="Sitemap" href="<?php echo base_url('job-profile'); ?>" target="_blank">Job Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('recruiter-profile'); ?>" target="_blank">Recruiter Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('freelance-profile'); ?>" target="_blank">Freelancer Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('business-profile'); ?>" target="_blank">Business Profile</a></li>
+						<li><a title="Sitemap" href="<?php echo base_url('artistic-profile'); ?>" target="_blank">Artistic Profile</a></li>
+						
+					
+                        <li><a title="About Us" href="<?php echo base_url('about-us'); ?>"  target="_blank">About Us</a></li>
+                        <li><a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a></li>
+                        <li><a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a></li>
+                        <li><a title="Disclaimer" href="<?php echo base_url('Disclaimer'); ?>"  target="_blank">Disclaimer policy</a></li>
+                        <li><a title="Contact Us" href="<?php echo base_url('contact-us'); ?>"  target="_blank">Contact Us</a></li>
+                        <li><a title="Blog" href="<?php echo base_url('blog'); ?>" target="_blank">Blog</a></li>
+                        <li><a title="Send Us Feedback" href="<?php echo base_url('feedback'); ?>" target="_blank">Send Us Feedback</a></li>
                         <li><a title="Sitemap" href="<?php echo base_url('sitemap'); ?>" target="_blank">Sitemap</a></li>
+						
+						 
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ftr-copuright">
+                <div class="ftr-copuright text-center pt10 pb20 fw">
                     <span>    &#9400; 2017 | by Aileensoul </span>
                 </div>
             </div>
