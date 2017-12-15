@@ -351,9 +351,9 @@ $route['notification/business-post/(:any)'] = "business_profile/edit_post/$1";
 $route['notification/art-post/(:any)'] = "notification/art_post/$1";
 
 
-$route['job-profile'] = "profile_job";
-$route['recruiter-profile'] = "recruiter_profile";
-$route['freelance-profile'] = "freealncer_profile";
-$route['business-profile'] = "profile_business";
-$route['artistic-profile'] = "artistic_profile";
+$route['how-to-use-job-profile-in-aileensoul'] = "profile_job";
+$route['how-to-use-recruiter-profile-in-aileensoul'] = "recruiter_profile";
+$route['how-to-use-freelance-profile-in-aileensoul'] = "freelancer_profile";
+$route['how-to-use-business-profile-in-aileensoul'] = "profile_business";
+$route['how-to-use-artistic-profile-in-aileensoul'] = "artistic_profile";
 

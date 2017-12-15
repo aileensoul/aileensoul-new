@@ -165,11 +165,11 @@
                                 </div>
                             </a>
                             <div class="chat_drop">
-                                <a onclick="myFunction()" class="chatdropbtn fr"> 
-                                    <img src="<?php base_url('assets/img/t_dot.png') ?>" onclick="myFunction()">
+                                <a ng-click="dropdown_delete_option()" class="chatdropbtn fr"> 
+                                    <img src="<?php echo base_url('assets/img/t_dot.png') ?>" ng-click="dropdown_delete_option()">
                                 </a>
                                 <div id="mychat_dropdown" class="chatdropdown-content">
-                                    <a href="javascript:void(0);" onclick="delete_history()">
+                                    <a href="javascript:void(0);" ng-click="delete_history(business_profile_id)">
                                         <span class="h4-img h2-srrt"></span>  Delete All
                                     </a>
                                 </div>
@@ -317,18 +317,19 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade message-box" id="message_delete" role="dialog">
+        <div class="modal fade message-box" id="message_model" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
-                    <button type="button" class="modal-close1" data-dismiss="modal">&times;</button>       
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
                     <div class="modal-body">
                         <span class="mes">
-                            <div class='pop_content'> Do you want to delete this message?<div class='model_ok_cancel'><a class='okbtn' ng-click='deleted_chat("123")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>
+                            <div class="pop_content">Do you want to delete this message?<div class="model_ok_cancel"><a class="okbtn" ng-click="deleted_chat(m_d_message_for, m_d_message_id, m_d_chat)" href="javascript:void(0);" data-dismiss="modal">Yes</a><a class="cnclbtn" href="javascript:void(0);" data-dismiss="modal">No</a></div></div>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
+
         <?php echo $footer; ?>
         <script>
                     var base_url = '<?php echo base_url(); ?>';
@@ -340,11 +341,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/emojionearea.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/angular-ui-bootstrap-modal.js"></script>
-
         <script>
                     // Defining angularjs application.
 //            var messageApp = angular.module('messageApp', []);
-                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload','ui.bootstrap.modal']);
+                    var messageApp = angular.module('messageApp', ['angular.filter', 'ngSanitize', 'ngFileUpload', 'ui.bootstrap.modal']);
 //                    messageApp.factory('emojione', function ($window) {
 //                        return $window.emojione;
 //                    });
@@ -421,13 +421,13 @@
                     messageApp.controller('messageController', function ($scope, Upload, $timeout, $http) {
                         var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000');
                         $scope.current = '<?php echo $this->uri->segment(3); ?>';
-
                         $scope.delete_chat = function (message_for, message_id, chat) {
-                            $('.biderror .mes').html("<div class='pop_content'> Do you want to delete this message?<div class='model_ok_cancel'><a class='okbtn' ng-click='deleted_chat(" + message_for + ',' + message_id + ',' + chat + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                            $('#bidmodal').modal('show');
+                            $scope.m_d_message_for = message_for;
+                            $scope.m_d_message_id = message_id;
+                            $scope.m_d_chat = chat;
+                            $('#message_model').modal('show');
                         }
                         $scope.deleted_chat = function (message_for, message_id, chat) {
-                            alert(13213);
                             $http({
                                 method: 'POST',
                                 url: base_url + 'message/businessmessageDelete',
@@ -437,6 +437,21 @@
                                     .then(function (success) {
                                         var index = $scope.user_chat.indexOf(chat);
                                         $scope.user_chat.splice(index, 1);
+                                    });
+                        }
+                        $scope.dropdown_delete_option = function () {
+                            document.getElementById("mychat_dropdown").style.display = "block";
+                        }
+                        $scope.delete_history = function (business_to_profile_id) {
+                            $http({
+                                method: 'POST',
+                                url: base_url + 'message/allMessageDelete',
+                                data: 'business_to_profile_id=' + business_to_profile_id,
+                                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                            })
+                                    .then(function (success) {
+                                        $scope.user_chat=[];
+                                document.getElementById("mychat_dropdown").style.display = "none";
                                     });
                         }
                         /*$scope.loadMediaElement = function ()
@@ -485,6 +500,7 @@
                             })
                                     .then(function (success) {
                                         data = success.data;
+                                        $scope.business_profile_id = data.business_profile_id;
                                         $scope.business_user_image = data.business_user_image;
                                         $scope.company_name = data.company_name;
                                         $scope.industriyal = data.industriyal;

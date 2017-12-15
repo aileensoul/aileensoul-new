@@ -1886,6 +1886,13 @@ label.cameraButton input[accept*="camera"] {
 	/*** end advertise  ***/
     .mob-progressbar{display: block;}
 	.edit_profile_progress{display:none;}
+    .cust-block{display: block;}
+    .cust-block .custom_footer_left{display: none;}
+    .cust-block{display: block;width: 100% !important}
+    .cust-block ul{text-align: center;width: 100%;display: inline-block;padding-left: 0px;}
+    .cust-block li{display: inline-block;padding-left: 0px;padding: 0px 10px;}
+    .profile-boxProfileCard-cover{width: 100%;text-align: center;}
+    .full-box-module{width: 550px !important;float: left;height: auto;}
 }
 @media screen and (max-width: 840px) {
     
@@ -2185,6 +2192,8 @@ label.cameraButton input[accept*="camera"] {
 	.tablate-add{display:none;}
 	.mian_middle_post_box{float:none;}
 	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
+    .full-box-module{margin: 0 auto;margin-bottom: 15px;height: auto;width: 550px !important;float: none !important;}
+    .page-title{width: 100% !important;float: left !important;}
 	/*** end add  ***/
 }
 @media screen and (max-width: 640px) {
@@ -2225,6 +2234,8 @@ label.cameraButton input[accept*="camera"] {
     .profile-job-post-location-name-rec .post_designation {
         font-size: 12px;
     }
+    .full-box-module{margin: 0 auto;float: none !important;margin-bottom: 15px;width: 100% !important;}
+
 }
 @media screen and (max-width: 540px) {
     .file_name_pdf {

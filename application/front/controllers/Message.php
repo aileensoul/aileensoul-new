@@ -307,6 +307,18 @@ class Message extends MY_Controller {
             echo json_encode(array('result' => 'fail'));
         }
     }
+    
+    public function allMessageDelete(){
+        $business_profile_id = $this->data['business_login_profile_id'];
+        $business_to_profile_id = $_POST['business_to_profile_id'];
+        $deleteData = $this->message_model->allMessageDelete($business_profile_id, $business_to_profile_id);
+        if ($deleteData) {
+            echo json_encode(array('result' => 'success'));
+        } else {
+            echo json_encode(array('result' => 'fail'));
+        }
+    }
+    
     public function recruiter_profile() {
         $this->load->view('message/recruiter_profile');
     }
