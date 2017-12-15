@@ -70,5 +70,11 @@ echo '<pre>'; print_r($last_chat); die();
             echo json_encode(array('result' => 'fail'));
         }
     }
+    
+    public function getRecruiterUserChatList() {
+        $recruiter_profile_id = $this->data['recdata'][0]['rec_id'];
+        $user_data = $this->rmessage_model->getRecruiterUserChatList($recruiter_profile_id);
+        echo json_encode($user_data);
+    }
 
 }

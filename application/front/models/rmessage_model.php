@@ -109,5 +109,22 @@ class Rmessage_model extends CI_Model {
         $update_data = $this->db->update('messages');
         return $update_data;
     }
+    
+    function getRecruiterUserChatList($recruiter_profile_id = '') {
+        $this->db->select("max(m.id) as max_id")->from("messages m");
+        //$this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        $this->db->where("((m.message_from_profile_id='" . $recruiter_profile_id . "') OR (m.message_to_profile_id='" . $recruiter_profile_id . "')) AND m.message_from_profile = '5' AND m.message_to_profile = '5' AND (CASE WHEN (m.message_from_profile_id = '$recruiter_profile_id') THEN (m.is_message_from_delete = '0' AND m.is_deleted = '0') WHEN (m.message_to_profile_id = '$recruiter_profile_id') THEN (m.is_message_to_delete = '0' AND m.is_deleted = '0') END)");
+        $this->db->group_by("(CASE WHEN m.message_from_profile_id ='" . $recruiter_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
+        $query1 = $this->db->get();
+        $result_array1 = $query1->result_array(); 
+
+        $this->db->select("b.business_profile_id,b.company_name,b.business_user_image,b.business_slug,b.user_id,m.message,m.id,m.message_file_type")->from("business_profile  b");
+        $this->db->join('messages m', 'b.business_profile_id = (CASE WHEN m.message_from_profile_id=' . $business_profile_id . ' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)');
+        $this->db->where("m.id IN (" . implode(',', array_column($result_array1, 'max_id')) . ")");
+        $this->db->order_by("m.id", "DESC");
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
 
 }

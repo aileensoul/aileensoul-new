@@ -461,7 +461,7 @@
                          };*/
                         load_message_user();
                         function load_message_user() {
-                            $http.get(base_url + "message/getBusinessUserChatList").then(function (success) {
+                            $http.get(base_url + "rmessage/getRecruiterUserChatList").then(function (success) {
                                 $scope.loaded_user_data = success.data;
                                 var select_segment = window.location.pathname.split("/").pop();
                                 $('li#' + select_segment).addClass('active');
