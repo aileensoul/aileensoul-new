@@ -113,7 +113,7 @@ class Rmessage_model extends CI_Model {
     function getRecruiterUserChatList($recruiter_profile_id = '') {
         $this->db->select("max(m.id) as max_id")->from("messages m");
         //$this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
-        $this->db->where("((m.message_from_profile_id='" . $recruiter_profile_id . "') OR (m.message_to_profile_id='" . $recruiter_profile_id . "')) AND m.message_from_profile = '5' AND m.message_to_profile = '5' AND (CASE WHEN (m.message_from_profile_id = '$recruiter_profile_id') THEN (m.is_message_from_delete = '0' AND m.is_deleted = '0') WHEN (m.message_to_profile_id = '$recruiter_profile_id') THEN (m.is_message_to_delete = '0' AND m.is_deleted = '0') END)");
+        $this->db->where("((m.message_from_profile_id='" . $recruiter_profile_id . "') OR (m.message_to_profile_id='" . $recruiter_profile_id . "')) AND m.message_from_profile = '2' AND m.message_to_profile = '1' AND (CASE WHEN (m.message_from_profile_id = '$recruiter_profile_id') THEN (m.is_message_from_delete = '0' AND m.is_deleted = '0') WHEN (m.message_to_profile_id = '$recruiter_profile_id') THEN (m.is_message_to_delete = '0' AND m.is_deleted = '0') END)");
         $this->db->group_by("(CASE WHEN m.message_from_profile_id ='" . $recruiter_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
         $query1 = $this->db->get();
         $result_array1 = $query1->result_array(); 
