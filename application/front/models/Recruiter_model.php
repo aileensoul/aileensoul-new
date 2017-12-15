@@ -5,9 +5,9 @@ if (!defined('BASEPATH'))
 
 class Recruiter_model extends CI_Model {
 
-    function getRecruiterDataBySlug($recruiter_slug='',$select_data='*'){ 
-        $this->db->select($select_data)->from('recruiter');
-        $this->db->where("rec_id='$recruiter_slug'");
+    function getJObDataBySlug($job_slug='',$select_data='*'){ 
+        $this->db->select($select_data)->from('job_reg');
+        $this->db->where("slug='$job_slug'");
         $query = $this->db->get();
         $result_array = $query->row_array();
         return $result_array;
