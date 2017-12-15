@@ -1,22 +1,13 @@
 var fs = require('fs');
+var socket = require('socket.io');
 var express = require('express');
-var hskey = fs.readFileSync('ssl-certificate/dhavalshah.pem');
-var hscert = fs.readFileSync('ssl-certificate/gd_bundle-g2-g1.crt')
+var app = express();
 var options = {
-    key: hskey,
-    cert: hscert
+    key: fs.readFileSync('ssl-certificate/server.key'),
+    cert: fs.readFileSync('ssl-certificate/gd_bundle-g2-g1.crt'),
+    requestCert: true
 };
-
-//Create server
-var app = express(options);
-
-//app.all('/*', function(req, res, next) {
-//  res.header("Access-Control-Allow-Origin", "*");
-//  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, *');
-//  next();
-//});
-
+/*
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -35,18 +26,17 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
-
-
-
-//Start server
-//var port = nconf.get('port');;
+*/
+var server = require('https').createServer(options, app);
+//var server = require('http').createServer(app);
+var io = socket.listen(server);
+//console.log(io);
 var port = process.env.PORT || 3000;
-var server = require('https').createServer(app),
-    io = require('socket.io').listen(server);
-server.listen(port, function () {
 
-    console.log('Express server listening on port %d in %s mode', port, app.settings.env);
+server.listen(port, function () {
+    console.log('Server listening at port %d', port);
 });
+
 
 io.on('connection', function (socket) {
 
