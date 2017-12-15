@@ -82,20 +82,23 @@
             text-decoration:none;
         }
         .btn3{
-            font-size:16px;
-            color:#fff;
-            padding:8px 25px;
-            text-align:center;
-            border-radius:4px;
-            display:inline-block;
-            border:1px solid #fff;
-            font-family: 'robotolight';
-            line-height:1;
-        }
-        .btn3:hover {
-            background: #fff;
-            color: #1b83b9;
-        }
+                font-size:16px;
+                color:#fff;
+                background: #1b8ab9 !important;
+                padding:8px 25px;
+                text-align:center;
+                border-radius:4px;
+                display:inline-block;
+                border:1px solid #fff;
+                font-weight: normal;
+                font-family: 'robotolight';
+                line-height:1;
+            }
+            .btn3:hover {
+                background: #fff !important;
+                color: #1b83b9;
+            }
+
         .clr-c a{color:#999;}
         .main-login{
             background-color:#fff;
@@ -361,7 +364,7 @@
         .no-login .left_side_posrt .lbpos input{width: 10% !important; }
         .no-login .left_side_posrt .profile-boxProfileCard-cover{height: auto;border: none;}
         .full-box-module{width: 320px;float: left;height: auto;}
-
+        .profile-boxProfileCard{border: none;}
     </style>
     <body class="page-container-bg-solid page-boxed no-login">
 
@@ -388,6 +391,9 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
+                                            <div style="border-bottom: 1px solid #5c5c5c;margin-bottom: 10px;">
+                                                <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Job by Location</h3>
+                                            </div>
                                             <ul style="list-style-type: none;">
                                                 <li>
                                              <label for="City" class="lbpos fw">
