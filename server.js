@@ -34,9 +34,9 @@ io.on('connection', function (socket) {
             message_slug:data.message_slug, message_to_slug:data.message_to_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
         });
     });
-    socket.on('newMessageNotification', function (data) {
+    socket.on('message_notification_count', function (data) {
         console.log(data);
-        io.sockets.emit('newMessageNotification', {
+        io.sockets.emit('message_notification_count', {
             message_slug:data.message_slug, message_to_slug:data.message_to_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
         });
     });
