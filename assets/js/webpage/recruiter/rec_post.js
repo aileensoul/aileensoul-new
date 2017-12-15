@@ -310,7 +310,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
 //apply post start
 
-                    function apply_post(abc, xyz) {
+                    function apply_post(abc, xyz) { 
                         
                         var alldata = 'all';
                         var user = xyz;
