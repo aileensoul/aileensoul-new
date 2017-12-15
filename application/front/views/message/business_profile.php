@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="about">
                                             <div class="name">{{data.company_name}}<br></div>
-                                            <!--<div>{{data.message| htmlToPlaintext}}</div>-->
+                                            <div>{{data.message| htmlToPlaintext}}</div>
                                             <div  ng-if="data.message_file_type == 'image'">Sent a photo</div>
                                             <div  ng-if="data.message_file_type == 'video'"></div>
                                             <div  ng-if="data.message_file_type == 'audio'"></div>
@@ -329,6 +329,18 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade message-box" id="message_delete_model" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div class="pop_content">Do you want to delete all message?<div class="model_ok_cancel"><a class="okbtn" ng-click="delete_all_history(m_a_d_message_to_profile_id)" href="javascript:void(0);" data-dismiss="modal">Yes</a><a class="cnclbtn" href="javascript:void(0);" data-dismiss="modal">No</a></div></div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <?php echo $footer; ?>
         <script>
@@ -443,6 +455,10 @@
                             document.getElementById("mychat_dropdown").style.display = "block";
                         }
                         $scope.delete_history = function (business_to_profile_id) {
+                            $scope.m_a_d_message_to_profile_id = business_to_profile_id;
+                            $('#message_delete_model').modal('show');
+                        }
+                        $scope.delete_all_history = function (business_to_profile_id) {
                             $http({
                                 method: 'POST',
                                 url: base_url + 'message/allMessageDelete',
@@ -450,8 +466,8 @@
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
                                     .then(function (success) {
-                                        $scope.user_chat=[];
-                                document.getElementById("mychat_dropdown").style.display = "none";
+                                        $scope.user_chat = [];
+                                        document.getElementById("mychat_dropdown").style.display = "none";
                                     });
                         }
                         /*$scope.loadMediaElement = function ()
@@ -570,6 +586,9 @@
                                                         socket.emit('getBusinessChatUserList', {
                                                             message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
                                                         });
+                                                        socket.emit('newMessageNotification', {
+                                                            message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
+                                                        });
                                                         // GET SOCKET USER LIST END    
                                                         $('#as_chat_message').html('');
                                                         $scope.setFocus = true;
@@ -605,6 +624,14 @@
                             }
                             load_message_user();
                             getUserMessage($scope.current);
+                        });
+                    });
+                    $(document).ready(function () {
+                        $('body').on('click', function (e) {
+                            if (!$(e.target).closest('.chatdropbtn').length)
+                            {
+                                document.getElementById("mychat_dropdown").style.display = "none";
+                            }
                         });
                     });
         </script>

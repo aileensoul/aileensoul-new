@@ -158,6 +158,15 @@
         });
 
 
+        socket.on('message_notification_count', function (data) {
+            var chat_length = $scope.user_chat.length;
+            if (chat_length == 0) {
+                $scope.user_chat = [];
+            }
+            load_message_user();
+            getUserMessage($scope.current);
+        });
+
 
         //waitForMsg();
         $menuLeft = $('.pushmenu-left');
