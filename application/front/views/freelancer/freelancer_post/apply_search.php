@@ -352,12 +352,27 @@
             .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
             .job_active{color: #1b8ab9 !important;}
             .no-login .left_side_posrt .lbpos input{width: 10% !important; }
+
+            .profile-boxProfileCard-cover{height: 400px;border:1px solid #d9d9d9;padding-left: 10px;}
+            .profile-boxProfileCard-cover a{color: black;}
+            .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
+            .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
+
+             .profile-boxProfileCard-cover{height: 400px;border:1px solid #d9d9d9;padding-left: 10px;}
+             .profile-boxProfileCard-cover a{color: black;}
+             .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
+             .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
+
              .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
              .profile-boxProfileCard-cover a{color: black;}
              .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
              .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
              .full-box-module{width: 100%;float: left;}
+<<<<<<< HEAD
              .profile-boxProfileCard{border: none;}
+=======
+
+>>>>>>> e02955299bc9c0e2046f7516c3a53fe690096f13
             /*second*/
 
         </style>
@@ -397,10 +412,144 @@
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt cust-block">
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
+<<<<<<< HEAD
                                     <div class="profile-boxProfileCard-cover" style="padding-left: 0px;"> 
                                          <div style="border-bottom: 1px solid #5c5c5c;margin-bottom: 10px;">
                                                 <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Projects by Location</h3>
                                             </div>
+=======
+                                    <div class="profile-boxProfileCard-cover"> 
+
+<<<<<<< HEAD
+                                        <ul>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+
+                                                    <a href="<?php echo base_url("projects"); ?>" >All Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw"> 
+                                                    <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="City" class="lbpos fw">
+                                                    <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
+                                                </label>
+                                            </li>
+                                        </ul>
+||||||| merged common ancestors
+                                       <ul>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+
+                                        <a href="<?php echo base_url("projects"); ?>" >All Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Accounting-Consulting-project"); ?>" <?php if ($keyword == 'Accounting-Consulting') { ?> class="job_active" <?php } ?>>Accounting & Consulting Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Admin-Support-project"); ?>" <?php if ($keyword == 'Admin-Support') { ?> class="job_active" <?php } ?>>Admin Support Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw"> 
+                                            <a href="<?php echo base_url("Customer-Service-project"); ?>" <?php if ($keyword == 'Customer-Service') { ?> class="job_active" <?php } ?>>Customer Service Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Data-Science-Analytics-project"); ?>" <?php if ($keyword == 'Data-Science-Analytics') { ?> class="job_active" <?php } ?>>Data Science & Analytics Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Design-Creative-project"); ?>" <?php if ($keyword == 'Design-Creative') { ?> class="job_active" <?php } ?>>Design & Creative  Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Engineering-Architecture-project"); ?>" <?php if ($keyword == 'Engineering-Architecture') { ?> class="job_active" <?php } ?>>Engineering & Architecture Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Legal-project"); ?>" <?php if ($keyword == 'Legal') { ?> class="job_active" <?php } ?>>Legal Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Sales-Marketing-project"); ?>" <?php if ($keyword == 'Sales-Marketing') { ?> class="job_active" <?php } ?>>Sales & Marketing Projects</a>
+                                      </label>
+                                      </li>
+                                      <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Translation-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Translation Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("WebsiteMobileSoftware-DevelopmentIT-Networking-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Website,Mobile,Software Development,IT & Networking Projects</a>
+                                        </label>
+                                        </li>
+                                        <li>
+                                        <label for="City" class="lbpos fw">
+                                            <a href="<?php echo base_url("Writing-Content-project"); ?>" <?php if ($keyword == 'Pune') { ?> class="job_active" <?php } ?>>Writing & Content Projects</a>
+                                        </label>
+                                        </li>
+                                    </ul>
+=======
+>>>>>>> e02955299bc9c0e2046f7516c3a53fe690096f13
                                        <ul style="list-style-type: none;">
                                         <li>
                                         <label for="City" class="lbpos fw">
@@ -464,11 +613,49 @@
                                         </label>
                                         </li>
                                     </ul>
+>>>>>>> 108b7e6e6a434705992cef4ff150e9b0a47a4280
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-							
+
                             </div> 
+<<<<<<< HEAD
+                            <div class="tablate-potrat-add">
+                                <div class="fw text-center add-border">
+                                    <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                                    </script>
+                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                </div>
+                            </div>
+||||||| merged common ancestors
+							<div class="tablate-potrat-add">
+                                    <div class="fw text-center add-border">
+                                        <script type="text/javascript">
+                                            (function () {
+                                                if (window.CHITIKA === undefined) {
+                                                    window.CHITIKA = {'units': []};
+                                                }
+                                                ;
+                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                                var placement_id = window.CHITIKA.units.length;
+                                                window.CHITIKA.units.push(unit);
+                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                            }());
+                                        </script>
+                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                                    </div>
+                                </div>
+=======
 							<!-- <div class="tablate-potrat-add">
                                     <div class="fw text-center add-border">
                                         <script type="text/javascript">
@@ -486,15 +673,18 @@
                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
                                 </div> -->
+>>>>>>> 108b7e6e6a434705992cef4ff150e9b0a47a4280
                         </div>
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="page-title">
-                              
-                                <h3> <?php if($keyword == "" && $keyword1 == ""){
-                                    echo "Freelance Projects";
-                                }else{  ?>
-                                 
+
+                                <h3> <?php
+                                    if ($keyword == "" && $keyword1 == "") {
+                                        echo "Freelance Projects";
+                                    } else {
+                                        ?>
+
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {
                                             echo ucfirst($keyword) . " Projects";
@@ -506,36 +696,12 @@
                                             echo " In ";
                                             echo ucfirst($keyword1);
                                         }
-                                }  ?>
+                                    }
+                                    ?>
                                 </h3>
                             </div>
-							<div class="mob-add">
-												<div class="fw text-center pt10 pb5">
-													<script type="text/javascript">
-														(function () {
-															if (window.CHITIKA === undefined) {
-																window.CHITIKA = {'units': []};
-															}
-															;
-															var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-															var placement_id = window.CHITIKA.units.length;
-															window.CHITIKA.units.push(unit);
-															document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-														}());
-													</script>
-													<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-												</div>
-											</div>
-                            <div class="job-contact-frnd1 fw">
-                                
-
-                            </div>
-                            <div id="loader" style="display: none;"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
-                        </div>
-                    </div>
-                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-
-                                <div class="fw text-center">
+                            <div class="mob-add">
+                                <div class="fw text-center pt10 pb5">
                                     <script type="text/javascript">
                                         (function () {
                                             if (window.CHITIKA === undefined) {
@@ -549,28 +715,53 @@
                                         }());
                                     </script>
                                     <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                    <div class="fw pt10">
-                                        <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-                                    </div>
                                 </div>
+                            </div>
+                            <div class="job-contact-frnd1 fw">
+
 
                             </div>
-					<div class="tablate-add">
+                            <div id="loader" style="display: none;"><p style="text-align:center;"><img class="loader" src="<?php echo base_url('assets/images/loading.gif'); ?>"/></p></div>
+                        </div>
+                    </div>
+                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
+                        <div class="fw text-center">
                             <script type="text/javascript">
-                                            (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []};
-                                                }
-                                                ;
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                            }());
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
                             </script>
                             <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                            <div class="fw pt10">
+                                <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                            </div>
                         </div>
+
+                    </div>
+                    <div class="tablate-add">
+
+                        <script type="text/javascript">
+                                        (function () {
+                                            if (window.CHITIKA === undefined) {
+                                                window.CHITIKA = {'units': []};
+                                            }
+                                            ;
+                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
+                                            var placement_id = window.CHITIKA.units.length;
+                                            window.CHITIKA.units.push(unit);
+                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+                                        }());
+                        </script>
+                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                    </div>
                 </div>
             </div>
         </section>
@@ -794,7 +985,7 @@
         <?php
         for ($i = 1; $i <= 31; $i++) {
             ?>
-                                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
             <?php
         }
         ?>
@@ -828,7 +1019,7 @@
         <?php
         for ($i = date('Y'); $i >= 1900; $i--) {
             ?>
-                                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
             <?php
         }
         ?>
