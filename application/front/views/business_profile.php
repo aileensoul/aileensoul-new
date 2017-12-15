@@ -81,10 +81,10 @@
 				
 						<div class="row dis-box">
 							<h2>Aileensoul - Cost-Free and Enriching Business Collaboration Is Now at Your Fingertips</h2>
-							<div class="col-md-6 col-sm-6 pb20">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job1.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/bus1.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>One of the common challenges faced by many small-sized companies and upcoming ventures is their relative unfamiliarity and unpreparedness for the typical bottlenecks of their industry, owing to their lack of adequate awareness and experience in their respective fields and domains. Often, such firms struggle to find the right channel or resources to help them manage and overcome their growth-limiting issues and obstacles. <br>
 								Aileensoul aims to break this networking barrier by giving small firms a chance to join relevant business communities and engage with like-minded and influential people who can play a pivotal role in developing their network, equip them with referrals/leads and introduce them to prospective customers and/or partners to help them grow and expand their business. Moreover, such communities can aid start-ups in finding angel investors who can provide them with the necessary funding to solve their capital woes. The best part is that Aileensoul offers all these services completely free of cost and with the sole intent of providing ‘hope for the souls’ - a theme that exemplifies its motto and intent.
 </p>
@@ -92,20 +92,20 @@
 						</div>
 						<div class="row dis-box">
 							<h2>How to Register With Aileensoul’s Business Profile?</h2>
-							<div class="col-md-6 col-sm-6 pb20 pull-right">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job2.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20 pull-right">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/bus2.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20 pull-left">
+							<div class="col-md-6 col-sm-12 pb20 pull-left">
 								<p>After successfully registering with the platform, you need to register with Aileensoul’s ‘Business Profile’ to take advantage of the latter’s features and functionalities. The registration process is easy and self-explanatory with few basic steps that require completion. These include furnishing information about your company’s name, address and contact details, specifying the business type, category and description and uploading of appropriate business images of high quality and resolution. Once you have provided the necessary information, you need to click on the ‘Submit’ button to complete the profile creation process. 
 </p>
 							</div>
 						</div>
 						<div class="row dis-box">
 							<h2>Additional Features of Aileensoul’s Business Profile:</h2>
-							<div class="col-md-6 col-sm-6 pb20">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job3.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/bus3.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>Other than networking, entrepreneurs, professionals and business owners can follow specific business categories of their interest and relevance to stay updated with the latest happenings in their chosen space in the form of regular and continuous newsfeed. They can even demonstrate their preference and inclination for specific type of content by liking and commenting on the posts of others. Additionally, they can promote and spread awareness about their own brands by uploading interesting and thought-provoking posts and PDF attachments along with photos, videos and audios to spark the curiosity and interest of their target audience.  
 
 								</p>

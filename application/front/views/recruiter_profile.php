@@ -81,10 +81,10 @@
 				
 						<div class="row dis-box">
 							<h2>Aileensoul - Helping You Fulfil Your Hiring Needs Effectively and At No Cost</h2>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<img style="width:100%;" src="<?php echo base_url('assets/img/rec1.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>Gone are the days when internal job postings, referrals, newspaper advertisements, recruitment agencies, college campus recruitments and walk-in interviews were the primary channels for hiring managers and recruiters to find and source talented candidates for various open positions in their companies. In today’s digital era, recruiters are increasingly resorting to online job platforms and social media to speed up their hiring process and make it more simplified, efficient and cost-effective. While job sites can serve as a means to curtail exorbitant hiring costs that are typically associated with offline recruitment channels, yet it is a known fact that many such online portals charge a fee for allowing recruiters to use their advanced features while offering them the sites’ basic features free of cost. <br>
 								Aileensoul is a one of kind unified platform that blends the features and capabilities of multiple sites and portals under one roof. It aims to bridge the long-standing communication gap between hiring personnel and job-seekers and serve as an effective recruitment platform for start-ups and small firms who face challenge in hiring skilled people because of their lack of visibility to reliable talent sourcing avenues and their limited budget which becomes a hindrance in opting for paid recruitment services with established job boards and portals.  Aileensoul’s platform is completely free for all, including recruiters who can register themselves with the website to post their vacancies and leverage its user-friendly interface to connect with shortlisted candidates and also invite the latter for a round of interview if deemed necessary. 
 </p>
@@ -92,20 +92,20 @@
 						</div>
 						<div class="row dis-box">
 							<h2>How to Register With Aileensoul’s Recruiter Profile?</h2>
-							<div class="col-md-6 col-sm-6 pb20 pull-right">
+							<div class="col-md-6 col-sm-12 pb20 pull-right">
 								<img style="width:100%;" src="<?php echo base_url('assets/img/rec2.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20 pull-left">
+							<div class="col-md-6 col-sm-12 pb20 pull-left">
 								<p>As a platform user, your first step will be to register with Aileensoul to gain access to its multiple service profiles. Post successful registration, you will be able to individually list yourself with each of the service profiles to utilise their offerings to your benefit. <br>
 								If you are a hiring executive or a recruiter, then you need to create a corresponding account for yourself by clicking on the ‘Register’ button below the ‘Recruiter Profile’. Doing so will direct you to a form where you need to populate your personal as well as your company’s details (name, email address, company profile etc.). Next, click on ‘Register’ to land on the page where you will be asked to share the job requirements that will be visible to the candidates after the job post is published on the website. Finally, click on ‘Post’ to complete the listing process. Next time you log in to the platform, you will see a ‘Take me in’ option below the ‘Recruiter Profile’. Click on that to access the next page that displays an active ‘Post a Job’ button. Clicking on this button will allow you to create and publish your job post on Aileensoul’s platform. </p>
 							</div>
 						</div>
 						<div class="row dis-box">
 							<h2>Additional Features of Aileensoul’s Recruiter Profile:</h2>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<img style="width:100%;" src="<?php echo base_url('assets/img/rec3.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>Other than the standard features of online job posting that include the provision to modify, delete, refresh and repost  jobs and receive system notifications regarding applications from job-seekers, Aileensoul helps recruiters shorten their screening time by suggesting them with a list of ‘best fits’ filtered by its built-in algorithm on the basis of specific words and phrases mentioned in the job description, skills, industry, experience, educational qualifications and other details provided by the recruiters in their job postings. This eliminates the need for the hiring executives to sift through loads of irrelevant applications in order to find the exact match that they are looking for, thereby saving precious time and effort on their part! <br>
 								Moreover, instead of waiting for a response to their job postings, recruiters can exploit the platform’s exhaustive resume database to proactively identify and shortlist eligible candidates, view their profiles and use its ‘easy to use’ interface to connect with and evaluate prospects for further rounds of discussions and interviews. All in all, Aileensoul’s ‘Recruiter Profile’ is a one-stop solution for all hiring-related challenges - be it aggressive hiring timelines, cost pressures or the want of qualified and skilled resources across niche industries and sectors. 
 								</p>

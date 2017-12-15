@@ -81,10 +81,10 @@
 				
 						<div class="row dis-box">
 							<h2>Aileensoul - A Dream Come True for Freelancers and Employers Alike</h2>
-							<div class="col-md-6 col-sm-6 pb20">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job1.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/art1.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>One of the common challenges faced by many budding artists is the dilemma of how to get their precious work out there for the awareness and attention of the general public as well as the art communities. Unavailability of a powerful platform to present one’s art and talent to the outside world has been the reason for many a talented and creative soul to completely give up on their artistic passions or take up art as a mere hobby or a supplementary activity that is best pursued during one’s spare time.<br>
 								Aileensoul is a free platform that allows artists and performers to connect and collaborate with its growing community of fellow artists and individuals with diverse skills, interests, educational and professional backgrounds. It enables artists to bring their creative work to the notice of its geographically dispersed and multicultural audience in the form of photo, video, audio and PDF uploads.  Knowing that artists need an uninhibited environment and open communication for their creativity to flourish, Aileensoul gives the creative personalities a free hand to display their art in their own way and in a manner that demonstrates how serious they are about treading the challenging yet fulfilling path of an artist with unswerving commitment and purpose.
 
@@ -93,20 +93,20 @@
 						</div>
 						<div class="row dis-box">
 							<h2>How to Register With Aileensoul’s Artistic Profile?</h2>
-							<div class="col-md-6 col-sm-6 pb20 pull-right">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job2.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20 pull-right">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/art2.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20 pull-left">
+							<div class="col-md-6 col-sm-12 pb20 pull-left">
 								<p>To create an artistic profile on Aileensoul’s platform, you first need to sign up with the website and then click on the ‘Register’ button under its ‘Artistic Profile’ to land on the next page where you have to provide your personal details and select your art category from a dropdown menu. Depending on your inherent skills and talent, you may choose from a wide selection of vocations, such as singer, photographer, musician, writer, artist, stand-up comedian etc. If you are blessed with many skills, then you can even select more than one option to display your multifaceted personality! Click on ‘Register’ to complete the process and you are ready to grab eyes and ears alike with your videos and audios!    
 </p>
 							</div>
 						</div>
 						<div class="row dis-box">
 							<h2>Additional Features of Aileensoul’s Artistic Profile:</h2>
-							<div class="col-md-6 col-sm-6 pb20">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job3.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/art3.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>Aileensoul’s ‘Artistic Profile’ is not just a quick and easy way for artists to spread the word about their art and talent online without incurring any expense, but also an innovative and efficient way to stay abreast of the current happenings in their world with regular newsfeed of their chosen artistic categories and the various art forms that they advocate and follow. Not to forget the platform’s in-built provision to look up the work of an existing artist who is registered with Aileensoul or its elaborate dashboard that enables individuals to check who all are following their art and whose art or talent is being followed by them.  
 
 								</p>

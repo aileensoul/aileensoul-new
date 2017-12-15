@@ -45,7 +45,7 @@
     <body class="job-pro">
         <div class="main-inner">
 			<div class="profile-bnr">
-				<img src="<?php echo base_url('assets/img/jp1.jpg'); ?>">
+				<img style="width:auto;" src="<?php echo base_url('assets/img/fp.jpg'); ?>">
 			
 				<header class="profile-header">
 						<div class="container">
@@ -66,7 +66,7 @@
 				</header>
 				<div class="container">
 					<div class="prof-title" style="left:39%;">
-						<h1>Freelancer Profile</h1>
+						<!--h1>Freelancer Profile</h1-->
 					</div>
 				</div>
 			</div>		
@@ -81,20 +81,20 @@
 				
 						<div class="row dis-box">
 							<h2>Aileensoul - A Dream Come True for Freelancers and Employers Alike</h2>
-							<div class="col-md-6 col-sm-6 pb20">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job1.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/fre1.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>A rising trend in present times, freelancing has amassed immense popularity in India in the last few years, especially in the aftermath of renewed focus and impetus from the government to launch and implement policies that can help accelerate the growth of the country’s flourishing start-up ecosystem. Additionally, increasing globalisation of the world economy, proliferation of technology and easy access to the Internet have collectively catalysed the blurring of geographical boundaries and prepared the ground for free-flowing communication between people and companies of different nations around the world. This has encouraged the burgeoning of the freelancer community in India and across the globe. <br>
 								Designed to help talented individuals find their dream opportunity and grow their career, Aileensoul’s transparent and collaborative platform serves as a boon for freshers and veteran professionals who have opted to look beyond the rigid rules and restrictions that are part and parcel of any full-time employment and have chosen to pursue their interests and career aspirations in an independent manner and with the support of freelance work. </p>
 							</div>
 						</div>
 						<div class="row dis-box">
 							<h2>How to Register With Aileensoul’s Freelance Profile?</h2>
-							<div class="col-md-6 col-sm-6 pb20 pull-right">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job2.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20 pull-right">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/fre2.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20 pull-left">
+							<div class="col-md-6 col-sm-12 pb20 pull-left">
 								<p>Depending on whether you are an individual who is exploring freelance work or an employer who is looking to hire a freelancer for his or her project, you will first have to register yourself with Aileensoul’s platform and then create your freelance profile by choosing the ‘Apply’ or ‘Hire’ option as appropriate for you.<br> 
 								As a freelancer, you will be asked to provide basic details about yourself, your educational qualification, professional skills & experience, hourly/fixed rate and payment currency, availability (full-time or part-time) and a concise and attractive portfolio of your skills, interests and accomplishments. Once you have filled all the relevant fields, click on ‘Submit’. Your freelancer profile is now active on Aileensoul’s platform and you are ready to peruse the recommended projects that have been listed by the portal in line with your expertise and skills. You can choose to shortlist and save projects for consideration at a later stage or apply to them then and there in case they interest you and meet your remuneration expectations. <br>
 								If you are an employer, then the profile registration process is even simpler for you as you just need to populate a one page form that will require you to provide elementary details, such as your name, email address, country, state, city and professional information. It’s that simple! Click on ‘Register’ to complete the enrolment process and follow this up by clicking on ‘Post Project’ to start creating and publishing orders on Aileensoul’s website.
@@ -103,10 +103,10 @@
 						</div>
 						<div class="row dis-box">
 							<h2>Additional Features of Aileensoul’s Freelance Profile:</h2>
-							<div class="col-md-6 col-sm-6 pb20">
-								<img style="width:100%;" src="<?php echo base_url('assets/img/job3.jpg'); ?>">
+							<div class="col-md-6 col-sm-12 pb20">
+								<img style="width:100%;" src="<?php echo base_url('assets/img/fre3.jpg'); ?>">
 							</div>
-							<div class="col-md-6 col-sm-6 pb20">
+							<div class="col-md-6 col-sm-12 pb20">
 								<p>Unlike many freelance websites in India that do not allow individuals to communicate with their prospective employers unless the client chooses to initiate a chat for discussion, Aileensoul encourages free-flowing communication between the employer and the prospect by enabling either party to begin a chat as per their need and convenience. <br>
 								Employers too can benefit from the platform’s recommended list of verified and reliable freelancers to expedite their screening process and select candidates with matching skill sets and experience at short notice. Not just that, employers also get to chat with the freelancers who have applied to their postings and those whom the employer has chosen to communicate with proactively to undertake a thorough evaluation of their skills and accomplishments before they are hired for critical projects and initiatives. 
 
