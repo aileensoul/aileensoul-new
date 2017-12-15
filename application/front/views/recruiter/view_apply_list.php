@@ -29,13 +29,13 @@
                     <div class="row">
 
 
-                        <div class="col-md-4 col-sm-3">
+                        <div class="col-md-3 col-sm-3">
 
 
                             <div class="add-post-button">
 
                                 <a href="<?php echo base_url('recruiter/post'); ?>"><div class="back">
-                                        <div class="but1">
+                                        <div class="but1" >
                                             Back To Post
                                         </div>
                                     </div></a>
