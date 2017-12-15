@@ -527,6 +527,10 @@
                         }
 
                         // sending text message function
+                        function getMessageNotificationCount(){
+                            
+                        }
+                        
                         $scope.sendMsg = function () {
                             $scope.current = window.location.pathname.split("/").pop();
                             var message = $('#as_chat_message').html();
@@ -545,6 +549,9 @@
                                             if (data.result != 'fail') {
                                                 // GET SOCKET USER LIST START
                                                 socket.emit('getBusinessChatUserList', {
+                                                    message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
+                                                });
+                                                socket.emit('message_notification_count', {
                                                     message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
                                                 });
                                                 // GET SOCKET USER LIST END    
@@ -586,7 +593,7 @@
                                                         socket.emit('getBusinessChatUserList', {
                                                             message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
                                                         });
-                                                        socket.emit('newMessageNotification', {
+                                                        socket.emit('message_notification_count', {
                                                             message_slug: $scope.current, message_to_slug: data.business_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
                                                         });
                                                         // GET SOCKET USER LIST END    
