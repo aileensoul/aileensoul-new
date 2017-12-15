@@ -526,15 +526,15 @@ footer ul{
 	margin-bottom:0;
 }
 footer ul li{
-	float:left;
+	display:inline-block;
 	list-style-type:none;
 }
 footer ul li a{
 	color:#353535;
-	padding:5px 10px;
+	padding:5px 8px;
 	font-size:12px;
 }
-footer ul li:last-child a{padding-right:0;}
+footer ul li:last-child a{/*padding-right:0;*/}
 footer ul li a:hover{
 	color:#353535;
 	text-decoration:underline;
@@ -1856,7 +1856,7 @@ header.profile-header{background:none; position:absolute; top:0; border-bottom:n
 header.profile-header .logo a{color:#5c5c5c;}
 .prof-title{position:absolute; top:45%;}
 .prof-title h1{font-size:50px;}
-.profile-bnr img{width:100%;}
+.profile-bnr img{width:auto;}
 .profiles-details .top-detail{text-align:justify; padding:25px 0; width:70%; margin:0 auto;}
 .profiles-details .top-detail h1{ padding:0px 0 25px;}
 .profiles-details h2{padding:20px 15px 80px; text-align:center; position:relative;}
@@ -2032,7 +2032,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	footer{padding:0; height:65px; text-align:center;}
 	footer .pt20{padding:10px 15px !important;}
 	footer ul{padding-bottom:5px; float:none; display:inline-block; padding-top:15px; }
-	footer ul li{padding-left:0; width:50%; margin-bottom:0;}
+	footer ul li{padding-left:0; margin-bottom:0;}
 	footer ul li:last-child a{padding-right:15px;}
 	.banner-box .upload-camera {
 		height: 34px;
@@ -2159,7 +2159,11 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.profiles-details h2{font-size:22px;}
 	.right-header{padding-top:15px;}
 	.profile-bnr{padding-top:100px;}
+<<<<<<< HEAD
 	#onload-Modal{display: none !important;}
+=======
+	
+>>>>>>> ac0f0aee1a252c9103f1ab8a810c9efa56eefd62
 }
 
 @media screen and (max-width: 640px) {
@@ -2196,6 +2200,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	/*.about-us .about-h2{padding-bottom: 50px;}*/
 	.about-us .cus-about{padding: 32px 0;padding-top: 0px;}
 	.linkbox ul li{width:100%;}
+	.profile-bnr img{width:100%;}
 }
 @media screen and (max-width: 540px) {
 	.cus-about{padding: 25px 0px;padding-top: 0px}
@@ -2246,6 +2251,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	/*.privacy-cust .about-h2{padding-top: 50px;padding-bottom: 50px;}*/
 	/*.privacy-cust .main-comtai{padding: 47px 0;}*/
 	.site-map-all-profile ul li{width:100%;}
+	footer ul li a{padding:5px !important;}
 }
 
 @media screen and (max-width: 360px) {
