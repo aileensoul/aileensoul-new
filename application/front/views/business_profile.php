@@ -57,7 +57,7 @@
 									<div class="btn-right pull-right">
 									 <?php if(!$this->session->userdata('aileenuser')) {?>
 										<a href="<?php echo base_url('login'); ?>" class="btn-new1">Login</a>
-										<a href="<?php echo base_url('registration'); ?>" class="btn3-cust">Create an account</a>
+										<a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
 										<?php }?>
 									</div>
 								</div>
