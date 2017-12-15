@@ -2321,7 +2321,7 @@ margin-bottom: 15px;}
 #experience_month3-error{display: none !important;}
 #experience_month4-error{display: none !important;}
 #experience_month5-error{display: none !important;}
-
+.cust-block li{margin-left: -20px;}
 /***  media query  ***/
 @media screen and (min-width: 768px) {
     .mob-progressbar.temp {
@@ -2632,7 +2632,7 @@ margin-bottom: 15px;}
     .cust-block .custom_footer_left{display: none;}
     .cust-block{display: block;width: 100% !important}
     .cust-block ul{text-align: center;width: 100%;display: inline-block;padding-left: 0px;}
-    .cust-block li{display: inline-block;padding-left: 0px;padding: 0px 10px;}
+    .cust-block li{display: block;padding-left: 0px;padding: 0px 10px;text-align: justify;margin: 0px;}
     .profile-boxProfileCard-cover{width: 100%;text-align: center;}
     .full-box-module{width: 550px !important;float: left;height: auto;}
 }

@@ -1652,7 +1652,7 @@ label.cameraButton input[accept*="camera"] {
 .register_disable {pointer-events: none;}
 
 .cust-inner-part .job-top-detail h5{max-width:100%;}
-
+.cust-block li{margin-left: -20px;}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {
@@ -1890,7 +1890,7 @@ label.cameraButton input[accept*="camera"] {
     .cust-block .custom_footer_left{display: none;}
     .cust-block{display: block;width: 100% !important}
     .cust-block ul{text-align: center;width: 100%;display: inline-block;padding-left: 0px;}
-    .cust-block li{display: inline-block;padding-left: 0px;padding: 0px 10px;}
+    .cust-block li{display: inline-block;padding-left: 0px;padding: 0px 10px;width: 100%;margin-left: 0px;}
     .profile-boxProfileCard-cover{width: 100%;text-align: center;}
     .full-box-module{width: 550px !important;float: left;height: auto;}
 }
@@ -2195,7 +2195,7 @@ label.cameraButton input[accept*="camera"] {
     .full-box-module{margin: 0 auto;margin-bottom: 15px;height: auto;width: 550px !important;float: none !important;}
     .page-title{width: 100% !important;float: left !important;}
     .no-login .left_side_posrt label{margin-bottom: 0px !important;font-size: 14px;}
-    .no-login .left_side_posrt li{margin-bottom: 5px !important;}
+    .no-login .left_side_posrt li{margin-bottom: 5px !important;width: 100%;}
 	/*** end add  ***/
 }
 @media screen and (max-width: 640px) {
