@@ -45,7 +45,7 @@
     <body class="job-pro">
         <div class="main-inner">
 			<div class="profile-bnr">
-				<img src="<?php echo base_url('assets/img/jp1.jpg'); ?>">
+				<img src="<?php echo base_url('assets/img/rp.jpg'); ?>">
 			
 				<header class="profile-header">
 						<div class="container">
@@ -66,7 +66,7 @@
 				</header>
 				<div class="container">
 					<div class="prof-title" style="left:39%;">
-						<h1>Recruiter Profile</h1>
+						<!--h1>Freelancer Profile</h1-->
 					</div>
 				</div>
 			</div>		
