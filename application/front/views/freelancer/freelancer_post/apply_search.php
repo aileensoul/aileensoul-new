@@ -77,16 +77,18 @@
             .btn3{
                 font-size:16px;
                 color:#fff;
+                background: #1b8ab9 !important;
                 padding:8px 25px;
                 text-align:center;
                 border-radius:4px;
                 display:inline-block;
                 border:1px solid #fff;
+                font-weight: normal;
                 font-family: 'robotolight';
                 line-height:1;
             }
             .btn3:hover {
-                background: #fff;
+                background: #fff !important;
                 color: #1b83b9;
             }
             .clr-c a{color:#999;}
@@ -460,10 +462,11 @@
                                         </li>
                                     </ul>
                                     </div>
+                                    <div class="clearfix"></div>
                                 </div>
 							
                             </div> 
-							<div class="tablate-potrat-add">
+							<!-- <div class="tablate-potrat-add">
                                     <div class="fw text-center add-border">
                                         <script type="text/javascript">
                                             (function () {
@@ -479,7 +482,7 @@
                                         </script>
                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
-                                </div>
+                                </div> -->
                         </div>
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">

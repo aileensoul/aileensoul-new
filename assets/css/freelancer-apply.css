@@ -2192,8 +2192,8 @@ label.cameraButton input[accept*="camera"] {
 	.tablate-add{display:none;}
 	.mian_middle_post_box{float:none;}
 	.mob-add{display:block; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; width:100%; float:left;}
-    .full-box-module{margin: 0 auto;float: none !important;margin-bottom: 15px;height: auto;}
-
+    .full-box-module{margin: 0 auto;margin-bottom: 15px;height: auto;width: 550px !important;float: none !important;}
+    .page-title{width: 100% !important;float: left !important;}
 	/*** end add  ***/
 }
 @media screen and (max-width: 640px) {
@@ -2235,6 +2235,7 @@ label.cameraButton input[accept*="camera"] {
         font-size: 12px;
     }
     .full-box-module{margin: 0 auto;float: none !important;margin-bottom: 15px;width: 100% !important;}
+
 }
 @media screen and (max-width: 540px) {
     .file_name_pdf {
