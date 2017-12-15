@@ -43,7 +43,7 @@
                                         <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                            aria-hidden="true" rel="noopener">
                                            <?php } else { ?>
-                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $recliveid . '?page=job') ?>" title="' . $cache_time1" tabindex="-1" 
+                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile/' . $recliveid . '?page=job') ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
                                                <?php } ?>
                                             <div class="bg-images no-cover-upload"> 
