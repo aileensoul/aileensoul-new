@@ -61,7 +61,8 @@ class Message_model extends CI_Model {
 
     function getBusinessUserChatList($business_profile_id = '') {
         $this->db->select("max(m.id) as max_id")->from("messages m");
-        $this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        //$this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        $this->db->where("((m.message_from_profile_id='" . $business_profile_id . "') OR (m.message_to_profile_id='" . $business_profile_id . "')) AND m.message_from_profile = '5' AND m.message_to_profile = '5' AND (CASE WHEN (m.message_from_profile_id = '$business_profile_id') THEN (m.is_message_from_delete = '0' AND m.is_deleted = '0') WHEN (m.message_to_profile_id = '$business_profile_id') THEN (m.is_message_to_delete = '0' AND m.is_deleted = '0') END)");
         $this->db->group_by("(CASE WHEN m.message_from_profile_id ='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
         $query1 = $this->db->get();
         $result_array1 = $query1->result_array();
@@ -78,7 +79,8 @@ class Message_model extends CI_Model {
     function getBusinessUserChatSearchList($business_profile_id = '', $search_key = '') {
 
         $this->db->select("max(m.id) as max_id")->from("messages m");
-        $this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        //$this->db->where("m.message_from_profile_id='" . $business_profile_id . "' OR m.message_to_profile_id='" . $business_profile_id . "' AND m.is_deleted = '0' and m.message_from_profile = '5' AND m.message_to_profile = '5'");
+        $this->db->where("((m.message_from_profile_id='" . $business_profile_id . "') OR (m.message_to_profile_id='" . $business_profile_id . "')) AND m.message_from_profile = '5' AND m.message_to_profile = '5' AND (CASE WHEN (m.message_from_profile_id = '$business_profile_id') THEN (m.is_message_from_delete = '0' AND m.is_deleted = '0') WHEN (m.message_to_profile_id = '$business_profile_id') THEN (m.is_message_to_delete = '0' AND m.is_deleted = '0') END)");
         $this->db->group_by("(CASE WHEN m.message_from_profile_id ='" . $business_profile_id . "' THEN m.message_to_profile_id ELSE m.message_from_profile_id END)");
         $query1 = $this->db->get();
         $result_array1 = $query1->result_array();
@@ -127,16 +129,28 @@ class Message_model extends CI_Model {
     }
 
     function allMessageDelete($business_profile_id = '', $business_to_profile_id = '') {
-        
 //        $this->db->set('is_message_from_delete', "CASE WHEN `message_from_profile_id` ='".$business_profile_id."' THEN '1' ELSE '0' END", FALSE);
 //        $this->db->set('is_message_to_delete', "CASE WHEN `message_to_profile_id` ='".$business_profile_id."' THEN '1' ELSE '0' END", FALSE);
 //        $this->db->where("(message_from_profile_id='" . $business_profile_id . "' AND message_to_profile_id='" . $business_to_profile_id . "' ) OR (message_to_profile_id='" . $business_profile_id . "' AND message_from_profile_id='" . $business_to_profile_id . "') ");
 //        $update_data = $this->db->update('messages');
 //        return $update_data;
-        $this->db->set('is_message_from_delete', "CASE WHEN `message_from_profile_id` ='".$business_profile_id."' THEN '1' END", FALSE);
-        $this->db->set('is_message_to_delete', "CASE WHEN `message_to_profile_id` ='".$business_profile_id."' THEN '1' END", FALSE);
-        $this->db->where("(message_from_profile_id='" . $business_profile_id . "' AND message_to_profile_id='" . $business_to_profile_id . "' ) OR (message_to_profile_id='" . $business_profile_id . "' AND message_from_profile_id='" . $business_to_profile_id . "') ");
-        $update_data = $this->db->update('messages');
+
+
+        $this->db->select("*")->from("messages");
+        $this->db->where("(message_from_profile_id='" . $business_profile_id . "' AND message_to_profile_id='" . $business_to_profile_id . "') OR (message_to_profile_id='" . $business_profile_id . "' AND message_from_profile_id='" . $business_to_profile_id . "') AND is_deleted = '0' and message_from_profile = '5' AND message_to_profile = '5'");
+        $query1 = $this->db->get();
+        $result_array1 = $query1->result_array();
+
+        foreach ($result_array1 as $result) {
+            if ($result['message_from_profile_id'] == $business_profile_id && $result['message_to_profile_id'] == $business_to_profile_id) {
+                $data = array('is_message_from_delete' => '1', 'is_message_to_delete' => $result['is_message_to_delete']);
+                $this->db->where('id='.$result['id']);
+            } else {
+                $data = array('is_message_to_delete' => '1', 'is_message_from_delete' => $result['is_message_from_delete']);
+                $this->db->where('id='.$result['id']);
+            }
+            $update_data = $this->db->update('messages', $data);
+        }
         return $update_data;
     }
 
