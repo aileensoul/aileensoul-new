@@ -319,7 +319,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
                             type: 'POST',
                             url: base_url +'job/job_apply_post',
                             data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-                           datatype: 'json',
+                           dataType: 'json',
                             success: function (data) {
                                 $('.savedpost' + abc).hide();
                                 $('.applypost' + abc).html(data.status);
