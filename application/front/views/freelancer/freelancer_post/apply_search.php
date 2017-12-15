@@ -369,6 +369,8 @@
              .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
              .full-box-module{width: 100%;float: left;}
 
+             .profile-boxProfileCard{border: none;}
+
             /*second*/
 
         </style>
@@ -408,9 +410,15 @@
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt cust-block">
                             <div class="full-box-module">   
                                 <div class="profile-boxProfileCard  module">
+
+                                    <div class="profile-boxProfileCard-cover" style="padding-left: 0px;"> 
+                                         <div style="border-bottom: 1px solid #5c5c5c;margin-bottom: 10px;">
+                                                <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Projects by Location</h3>
+                                            </div>
+
                                     <div class="profile-boxProfileCard-cover"> 
 
-<<<<<<< HEAD
+
                                         <ul>
                                             <li>
                                                 <label for="City" class="lbpos fw">
@@ -474,7 +482,7 @@
                                                 </label>
                                             </li>
                                         </ul>
-||||||| merged common ancestors
+
                                        <ul>
                                         <li>
                                         <label for="City" class="lbpos fw">
@@ -538,7 +546,7 @@
                                         </label>
                                         </li>
                                     </ul>
-=======
+
                                        <ul style="list-style-type: none;">
                                         <li>
                                         <label for="City" class="lbpos fw">
@@ -602,13 +610,13 @@
                                         </label>
                                         </li>
                                     </ul>
->>>>>>> 108b7e6e6a434705992cef4ff150e9b0a47a4280
+
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
 
                             </div> 
-<<<<<<< HEAD
+
                             <div class="tablate-potrat-add">
                                 <div class="fw text-center add-border">
                                     <script type="text/javascript">
@@ -626,7 +634,7 @@
                                     <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                 </div>
                             </div>
-||||||| merged common ancestors
+
 							<div class="tablate-potrat-add">
                                     <div class="fw text-center add-border">
                                         <script type="text/javascript">
@@ -644,7 +652,7 @@
                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
                                 </div>
-=======
+
 							<!-- <div class="tablate-potrat-add">
                                     <div class="fw text-center add-border">
                                         <script type="text/javascript">
@@ -662,7 +670,7 @@
                                         <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
                                     </div>
                                 </div> -->
->>>>>>> 108b7e6e6a434705992cef4ff150e9b0a47a4280
+
                         </div>
                         <!--COVER PIC END-->
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">

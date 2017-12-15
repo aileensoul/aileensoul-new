@@ -2978,6 +2978,8 @@ margin-bottom: 15px;}
 	.all-job-box .job-box-left{max-width:50px;}
 	.all-job-box .all-job-right .job-name{font-size:16px;}
     .full-box-module{margin: 0 auto;float: none !important;margin-bottom: 15px;}
+    .no-login .left_side_posrt label{margin-bottom: 0px !important;font-size: 14px;}
+    .no-login .left_side_posrt li{margin-bottom: 5px !important;}
     
 }
 @media screen and (max-width: 639px) {
