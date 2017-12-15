@@ -2159,6 +2159,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.profiles-details h2{font-size:22px;}
 	.right-header{padding-top:15px;}
 	.profile-bnr{padding-top:100px;}
+	#onload-Modal{display: none !important;}
 }
 
 @media screen and (max-width: 640px) {
