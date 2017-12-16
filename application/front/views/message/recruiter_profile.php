@@ -124,15 +124,15 @@
                             <div id="userlist">
                                 <div class="userlist_repeat" ng-repeat="data in loaded_user_data">
                                     <!--<a href="<?php echo base_url() ?>message/b/{{data.business_slug}}">-->
-                                    <li class="clearfix" id="{{data.business_slug}}" ng-class="{'active': data.business_slug == current}" ng-click="getuserMessage()">
+                                    <li class="clearfix" id="{{data.slug}}" ng-class="{'active': data.slug == current}" ng-click="getuserMessage()">
                                         <div class="chat_heae_img" ng-if="data.business_user_image">
-                                            <img ng-src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{data.business_user_image}}" alt="{{data.company_name}}"/>
+                                            <img ng-src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{data.job_user_image}}" alt="{{data.fname}}"/>
                                         </div>
                                         <div class="chat_heae_img" ng-if="!data.business_user_image">
                                             <img src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Bus Image"/>
                                         </div>
                                         <div class="about">
-                                            <div class="name">{{data.company_name}}<br></div>
+                                            <div class="name">{{data.fname}}<br></div>
                                             <!--<div>{{data.message| htmlToPlaintext}}</div>-->
                                             <div  ng-if="data.message_file_type == 'image'">Sent a photo</div>
                                             <div  ng-if="data.message_file_type == 'video'"></div>
@@ -463,6 +463,7 @@
                         function load_message_user() {
                             $http.get(base_url + "rmessage/getRecruiterUserChatList").then(function (success) {
                                 $scope.loaded_user_data = success.data;
+                                alert(success.data);
                                 var select_segment = window.location.pathname.split("/").pop();
                                 $('li#' + select_segment).addClass('active');
                             }, function (error) {
