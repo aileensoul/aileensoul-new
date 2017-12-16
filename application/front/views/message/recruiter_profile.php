@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="about">
                                             <div class="name">{{data.fname}}<br></div>
-                                            <!--<div>{{data.message| htmlToPlaintext}}</div>-->
+                                            <div>{{data.message| htmlToPlaintext}}</div>
                                             <div  ng-if="data.message_file_type == 'image'">Sent a photo</div>
                                             <div  ng-if="data.message_file_type == 'video'"></div>
                                             <div  ng-if="data.message_file_type == 'audio'"></div>
@@ -463,7 +463,6 @@
                         function load_message_user() {
                             $http.get(base_url + "rmessage/getRecruiterUserChatList").then(function (success) {
                                 $scope.loaded_user_data = success.data;
-                                alert(success.data);
                                 var select_segment = window.location.pathname.split("/").pop();
                                 $('li#' + select_segment).addClass('active');
                             }, function (error) {
@@ -492,11 +491,11 @@
                         }
 
                         getUserMessage($scope.current);
-                        function getUserMessage(business_slug) {
+                        function getUserMessage(slug) {
                             $http({
                                 method: 'POST',
-                                url: base_url + 'message/getBusinessUserChat',
-                                data: 'business_slug=' + business_slug,
+                                url: base_url + 'rmessage/getRecruiterUserChat',
+                                data: 'job_slug=' + slug,
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
                                     .then(function (success) {

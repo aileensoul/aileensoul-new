@@ -76,5 +76,14 @@ echo '<pre>'; print_r($last_chat); die();
         $user_data = $this->rmessage_model->getRecruiterUserChatList($recruiter_profile_id);
         echo json_encode($user_data);
     }
+public function getRecruiterUserChat() {
+//        $business_profile_id = $this->data['business_login_profile_id'];
+     $recruiter_profile_id = $this->data['recdata'][0]['rec_id'];
 
+        $job_slug = $_POST['job_slug'];
+        $user_data = $this->recruiter_model->getJobDataBySlug($job_slug, $select_data = "job_id,fname,lname,job_user_image,slug,designation");
+        
+        $user_data['chat'] = $this->rmessage_model->getRecruiterChat($recruiter_profile_id, $user_data['job_id']);
+        echo json_encode($user_data);
+    }
 }

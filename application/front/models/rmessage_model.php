@@ -126,5 +126,14 @@ class Rmessage_model extends CI_Model {
         $result_array = $query->result_array();
         return $result_array;
     }
+    
+    function getRecruiterChat($recruiter_profile_id = '', $job_profile_id = '') {
+        $this->db->select("m.id,m.message,m.message_file,m.message_file_type,m.message_file_size,m.timestamp,m.message_from_profile_id,DATE_FORMAT(from_unixtime(timestamp),'%W, %d %M %Y') as date,,j.fname,j.lname,j.job_user_image,j.slug")->from("messages m");
+        $this->db->join('job_reg j', 'j.job_id = m.message_from_profile_id');
+        $this->db->where("((m.message_from_profile_id='" . $recruiter_profile_id . "' AND m.message_to_profile_id='" . $job_profile_id . "' ) OR (m.message_to_profile_id='" . $recruiter_profile_id . "' AND m.message_from_profile_id='" . $job_profile_id . "')) AND m.message_from_profile = '2' AND m.message_to_profile = '1' AND (CASE WHEN (m.message_from_profile_id = '$recruiter_profile_id' AND m.message_to_profile_id = '$job_profile_id') THEN (m.is_message_from_delete = '0' AND m.is_deleted = '0') WHEN (m.message_to_profile_id = '$recruiter_profile_id' AND m.message_from_profile_id = '$job_profile_id') THEN (m.is_message_to_delete = '0' AND m.is_deleted = '0') END)");
+        $query = $this->db->get();
+        $result_array = $query->result_array();
+        return $result_array;
+    }
 
 }
