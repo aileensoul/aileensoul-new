@@ -208,6 +208,7 @@ header .logo a:focus, header .logo a:hover {
 }
 header h2{
 	margin:0; 
+	text-align:left;
 
 }
 .header-login .input{		
