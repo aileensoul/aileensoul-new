@@ -319,7 +319,7 @@ $route['recruiter/basic-information'] = "recruiter/rec_basic_information";
 $route['recruiter/company-information'] = "recruiter/company_info_form";
 
 $route['recruiter/home'] = "recruiter/recommen_candidate";
-$route['recruiter/add-post-live'] = "recruiter/add_post_login";
+//$route['recruiter/add-post-live'] = "recruiter/add_post_login";
 
 
 $route['recruiter/profile'] = "recruiter/rec_profile";

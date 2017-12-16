@@ -811,8 +811,8 @@
                                         <div class="all-job-bottom">
                                             <span class="job-post-date"><b>Posted on: </b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
                                             <p class="pull-right">
-                                                 <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Save</a>
-                                                <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
+                                                 <a href="javascript:void(0);"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Save</a>
+                                                <a href="javascript:void(0);"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                             </p>
 
                                         </div>
@@ -944,7 +944,7 @@
                                                 </p>
                                                 <p class="pull-right job-top-btn">
                                                     <!--<a href="#" class="btn4">Save</a>-->
-                                                    <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
+                                                    <a href="javascript:void(0);"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -1109,7 +1109,7 @@
                                             <div class="all-job-bottom">
                                                 <span class="job-post-date"><b>Posted on:</b><?php echo date('d-M-Y', strtotime($post['created_date'])); ?></span>
                                                 <p class="pull-right">
-                                                    <a href="#"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
+                                                    <a href="javascript:void(0);"  onClick="create_profile_apply(<?php echo $post['post_id']; ?>)" class= "applypost  btn4">Apply</a>
                                                 </p>
 
                                             </div>

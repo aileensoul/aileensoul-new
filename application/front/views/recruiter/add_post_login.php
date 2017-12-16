@@ -809,7 +809,7 @@
                                     <form role="form" name="login_form" id="login_form" method="post">
 
                                         <div class="form-group">
-                                            <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                            <input type="email" value="<?php echo $email; ?>" tabindex="40" autofocus name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
                                             <div id="error2" style="display:block;">
                                                 <?php
                                                 if ($this->session->flashdata('erroremail')) {
@@ -820,7 +820,7 @@
                                             <div id="errorlogin"></div> 
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                            <input type="password" tabindex="41" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
                                             <div id="error1" style="display:block;">
                                                 <?php
                                                 if ($this->session->flashdata('errorpass')) {
@@ -832,15 +832,15 @@
                                         </div>
 
                                         <p class="pt-20 ">
-                                            <button class="btn1" onclick="login()">Login</button>
+                                            <button class="btn1" tabindex="42" onclick="login()">Login</button>
                                         </p>
 
                                         <p class=" text-center">
-                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                            <a href="javascript:void(0)" tabindex="43" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                         </p>
 
                                         <p class="pt15 text-center">
-                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" tabindex="44" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                         </p>
                                     </form>
 
@@ -866,26 +866,26 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                    <input tabindex="30" autofocus type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                    <input tabindex="31" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                            <input tabindex="32" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
                                         </div>
                                         <div class="form-group">
-                                            <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                            <input tabindex="33" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
                                             <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
-                                            <span> <select tabindex="9" class="day1" name="selday" id="selday">
+                                            <span> <select tabindex="34" class="day1" name="selday" id="selday">
                                                     <option value="" disabled selected value>Day</option>
                                                     <?php
                                                     for ($i = 1; $i <= 31; $i++) {
@@ -896,7 +896,7 @@
                                                     ?>
                                                 </select></span>
                                             <span>
-                                                <select tabindex="10" class="month1" name="selmonth" id="selmonth">
+                                                <select tabindex="35" class="month1" name="selmonth" id="selmonth">
                                                     <option value="" disabled selected value>Month</option>
                                                     //<?php
 //                  for($i = 1; $i <= 12; $i++){
@@ -920,7 +920,7 @@
                                                     ?>
                                                 </select></span>
                                             <span>
-                                                <select tabindex="11" class="year1" name="selyear" id="selyear">
+                                                <select tabindex="36" class="year1" name="selyear" id="selyear">
                                                     <option value="" disabled selected value>Year</option>
                                                     <?php
                                                     for ($i = date('Y'); $i >= 1900; $i--) {
@@ -936,7 +936,7 @@
                                         <div class="dateerror" style="color:#f00; display: block;"></div>
 
                                         <div class="form-group gender-custom">
-                                            <span><select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                            <span><select tabindex="37" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                                                     <option value="" disabled selected value>Gender</option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
@@ -948,12 +948,12 @@
                                             <a href="<?php echo base_url('main/terms-and-condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
                                         </p>
                                         <p>
-                                            <button tabindex="13" class="btn1">Create an account</button>
+                                            <button tabindex="38" class="btn1">Create an account</button>
                                                                                         <!--<p class="next">Next</p>-->
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a tabindex="39" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
@@ -988,7 +988,7 @@
                                     echo form_open('profile/forgot_password', $form_attribute);
                                     ?>
                                     <div class="form-group">
-                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                        <input type="email" tabindex="50"  value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*" autofocus>
                                         <div id="error2" style="display:block;">
                                             <?php
                                             if ($this->session->flashdata('erroremail')) {
@@ -1000,7 +1000,7 @@
                                     </div>
 
                                     <p class="pt-20 text-center">
-                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
+                                        <input class="btn btn-theme btn1" tabindex="51" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
                                     </p>
 
                                     </form>
