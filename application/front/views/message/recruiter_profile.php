@@ -182,7 +182,7 @@
                                         <span class="message-data-time">{{key}}</span>
                                     </div>
                                     <div ng-repeat="chat in value"> 
-                                        <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $business_login_profile_id ?>'">   
+                                        <li class="clearfix" ng-if="chat.message_from_profile_id == '<?php echo $recruiter_profile_id ?>'">   
                                             <div class="msg_right"> 
                                                 <div class="messagedelete fl">
                                                     <a href="javascript:void(0);" ng-click="delete_chat('1', chat.id, chat)">
@@ -234,7 +234,7 @@
                                                 <div class="msg-user-img" ng-if="!chat.business_user_image"><img ng-src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>
                                             </div>
                                         </li> 
-                                        <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $business_login_profile_id ?>'"> 
+                                        <li class="recive-data" ng-if="chat.message_from_profile_id != '<?php echo $recruiter_profile_id ?>'"> 
                                             <div class="msg_left_data"> 
                                                 <div class="msg-user-img" ng-if="chat.business_user_image"><img ng-src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL ?>{{business_user_image}}" alt="{{chat.company_name}}"></div>
                                                 <div class="msg-user-img" ng-if="!chat.business_user_image"><img ng-src="<?php echo base_url() . NOBUSIMAGE2 ?>" alt="No Business Image"></div>

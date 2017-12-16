@@ -26,7 +26,7 @@ class Rmessage extends MY_Controller {
     }
     
     public function recruiter_profile($job_slug = '') { 
-        $recruiter_profile_id = $this->data['recdata'][0]['rec_id'];  
+    $this->data['recruiter_profile_id'] =    $recruiter_profile_id = $this->data['recdata'][0]['rec_id'];  
         $user_data = $this->recruiter_model->getJobDataBySlug($job_slug, $select_data = "job_id,fname,lname,slug,designation");
         $this->data['user_data'] = $user_data;
        
