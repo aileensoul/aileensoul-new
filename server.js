@@ -1,14 +1,52 @@
-var socket = require('socket.io');
+var fs = require('fs');
 var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = socket.listen(server);
-var port = process.env.PORT || 3000;
+var hskey = fs.readFileSync('ssl-certificate/dhavalshah.pem');
+var hscert = fs.readFileSync('ssl-certificate/gd_bundle-g2-g1.crt')
+var options = {
+    key: hskey,
+    cert: hscert
+};
 
-server.listen(port, function () {
-    console.log('Server listening at port %d', port);
+//Create server
+var app = express(options);
+
+//app.all('/*', function(req, res, next) {
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, *');
+//  next();
+//});
+
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://35.165.1.109:3000');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
 });
 
+
+
+//Start server
+//var port = nconf.get('port');;
+var port = process.env.PORT || 3000;
+var server = require('https').createServer(app),
+    io = require('socket.io').listen(server);
+server.listen(port, function () {
+
+    console.log('Express server listening on port %d in %s mode', port, app.settings.env);
+});
 
 io.on('connection', function (socket) {
 
@@ -25,20 +63,6 @@ io.on('connection', function (socket) {
         io.sockets.emit('contact_request_count', {
             contact_request_count: data.contact_request_count,
             contact_to_id: data.contact_to_id,
-        });
-    });
-    
-    socket.on('getBusinessChatUserList', function (data) {
-        console.log(data);
-        io.sockets.emit('getBusinessChatUserList', {
-            message_slug:data.message_slug, message_to_slug:data.message_to_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
-        });
-    });
-    
-    socket.on('getRecruiterChatUserList', function (data) {
-        console.log(data);
-        io.sockets.emit('getRecruiterChatUserList', {
-            message_slug:data.message_slug, message_to_slug:data.message_to_slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, company_name: data.company_name, business_user_image: data.business_user_image, date: data.date
         });
     });
 
