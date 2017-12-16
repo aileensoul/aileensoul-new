@@ -201,7 +201,7 @@
                                                                                     </div>
                                                                                     <?php
                                                                                     $applyuser = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $this->session->userdata('aileenuser'), $data = 'user_id', $join_str = array());
-                                                                                    if ($applyuser) {
+                                                                                  //  if ($applyuser) {
                                                                                         ?>
 
 
@@ -600,8 +600,8 @@
                                                                                              <!--shortlisted employy end-->
                                                                                         </div>
 
-                                                                                    <?php } else { ?>
-                                                                                        <div class="inner-right-part cust-inner-part">
+                                                                                    <?php //} else { ?>
+<!--                                                                                        <div class="inner-right-part cust-inner-part">
                                                                                             <div class="common-form">
                                                                                                 <div class="job-saved-box">
                                                                                                     <h3>Freelancer</h3>
@@ -618,9 +618,9 @@
                                                                                             </div>
 																						
 																							
-                                                                                        </div>
+                                                                                        </div>-->
 																						
-                                                                                    <?php } ?>
+                                                                                    <?php //} ?>
                                                                                    
                                                                                    <!--  <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 

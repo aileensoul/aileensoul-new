@@ -2270,10 +2270,10 @@ class Recruiter extends MY_Controller {
                     $rec_post .= '<h5><a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                     $rec_post .= $post_name;
                     $rec_post .= '</a></h5>';
-                    $rec_post .= '<p><a href = "#">';
+                    $rec_post .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                     $rec_post .= $cache_time1;
                     $rec_post .= '</a></p>';
-                    $rec_post .= '<p><a href="#">';
+                    $rec_post .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
                     $rec_post .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                     $rec_post .= '</a></p>
             </div>
