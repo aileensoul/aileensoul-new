@@ -1893,6 +1893,7 @@ label.cameraButton input[accept*="camera"] {
     .cust-block li{display: inline-block;padding-left: 0px;padding: 0px 10px;width: 100%;margin-left: 0px;}
     .profile-boxProfileCard-cover{width: 100%;text-align: center;}
     .full-box-module{width: 550px !important;float: left;height: auto;}
+    .cust-div-h3{margin-bottom: 10px;}
 }
 @media screen and (max-width: 840px) {
     

@@ -2103,6 +2103,7 @@ word-break: break-word;}
 /***  advertise problem  ***/
 .tablate-add-custom{display:none; width:160px; position:fixed; margin-left:565px;}
 /***  end advertise problem  ***/
+.cust-div-h3{border-bottom: 1px solid #d9d9d9;margin-bottom: -3px;}
 
 /***  media query  ***/
 
