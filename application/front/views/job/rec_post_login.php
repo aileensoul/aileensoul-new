@@ -558,7 +558,7 @@
                                 <div class="all-job-box job-detail">
                                     <div class="all-job-top">
                                         <div class="post-img">
-                                            <a>
+                                            <a title="<?php echo $post['re_comp_name']; ?>">
                                                 <?php
                                                 $cache_time = $this->db->get_where('recruiter', array(
                                                             'user_id' => $post['user_id']
@@ -596,15 +596,15 @@
                                                 $cache_time1 = $post['post_name'];
                                             }
                                             ?>
-                                             <!-- <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $cache_time1; ?></a></h5>  -->
-                                            <p><a href="javascript:void(0);" onclick="register_profile();">
+                                            <h5><a href="javascript:void(0);" onclick="register_profile();" title="<?php echo $cache_time1; ?>"><?php echo $cache_time1; ?></a></h5>  
+                                            <p><a href="javascript:void(0);" onclick="register_profile();" title="<?php echo $post['re_comp_name']; ?>">
                                                     <?php
                                                     $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
                                                     echo $out;
                                                     ?>
                                                 </a>
                                             </p>
-                                            <p><a href="javascript:void(0);" onclick="register_profile();"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
+                                            <p><a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?>"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
                                             <p class="loca-exp">
                                                 <span class="location">
                                                     <?php
@@ -857,7 +857,7 @@
                                     <div class="all-job-box job-detail">
                                         <div class="all-job-top">
                                             <div class="post-img">
-                                                <a >
+                                                <a title="<?php echo $post['re_comp_name']; ?>">
                                                     
                                                     <?php
                                                 $cache_time = $this->db->get_where('recruiter', array(
@@ -897,15 +897,15 @@
                                                     $cache_time1 = $post['post_name'];
                                                 }
                                                 ?>
-                                                 <h5><a href="javascript:void(0);" onclick="register_profile();"><?php echo $cache_time1; ?></a></h5> 
-                                                <p><a href="javascript:void(0);" onclick="register_profile();">
+                                                <h5><a href="javascript:void(0);" onclick="register_profile();" title="<?php echo $cache_time1; ?>"><?php echo $cache_time1; ?></a></h5> 
+                                                <p><a href="javascript:void(0);" onclick="register_profile();"<?php echo $post['re_comp_name'];?>>
                                                         <?php
                                                         $out = strlen($post['re_comp_name']) > 40 ? substr($post['re_comp_name'], 0, 40) . "..." : $post['re_comp_name'];
                                                         echo $out;
                                                         ?>
                                                     </a>
                                                 </p>
-                                                <p><a href="javascript:void(0);" onclick="register_profile();"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
+                                                <p><a href="javascript:void(0);" onclick="register_profile();" title="<?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?>"><?php echo ucfirst(strtolower($post['rec_firstname'])) . ' ' . ucfirst(strtolower($post['rec_lastname'])); ?></a></p>
                                                 <p class="loca-exp">
                                                     <span class="location">
                                                         <?php

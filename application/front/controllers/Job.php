@@ -3640,7 +3640,7 @@ class Job extends MY_Controller {
                     $cityname = '';
                 }
                 $return_html .= '<div class="post-img">
-                                            <a href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
+                                            <a  title="'.$post_name.'" href="' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 
                 if ($cache_time_1) {
                     if (IMAGEPATHFROM == 'upload') {
