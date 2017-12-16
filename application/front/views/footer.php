@@ -142,7 +142,7 @@
         // MAIN NOTIFICATION
 
        // var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
-        var socket = io.connect('http://35.165.1.109:3000');
+        var socket = io.connect();
         socket.on('notification_count', function (data) {
             $("#notification_count" + data.to_id).html(data.notification_count);
             $('#notification_count' + data.to_id).css({
@@ -215,7 +215,7 @@
 
     function show_header_notification(notification_count, to_id) {
 //        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
-        var socket = io.connect('http://35.165.1.109:3000');
+        var socket = io.connect();
         socket.emit('notification_count', {
             notification_count: notification_count,
             to_id: to_id,
