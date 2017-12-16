@@ -1310,6 +1310,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     font-size:12px;
     padding: 0px 2px;
 	line-height:1;
+	position:relative;
 }
 .custom_footer_left ul li a {
     padding: 0px;
@@ -2224,6 +2225,20 @@ footer ul li a:hover{
 }
 .cover button.modal-close:hover{background: #156f95 !important;}
 .cus-full1{padding: 0 10px !important;}
+/*** left footer all profile ***/
+.click-profiles{position:relative;}
+.custom_footer_left ul.left-ftr-profiles{position: absolute;
+	bottom: 14px;
+	width: 150px;
+	background: #fff;
+	padding: 5px 10px;
+	border: 1px solid #d9d9d9;
+	border-radius: 4px; right:0; display:none;}
+.custom_footer_left ul.left-ftr-profiles li{padding:5px 0;}
+.click-profiles .fa-sort-asc{padding-left:5px; font-size:16px; height:10px; float:right; padding-top:2px;}
+/*** end left footer all profile ***/
+
+
 
 /***  media query  ***/
 
