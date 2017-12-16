@@ -911,3 +911,14 @@ $config['blog_thumb_width'] = '150';
 $config['blog_thumb_height'] = '150';
 
 
+// BUSINESS MESSAGE IMAGE
+$config['rec_message_main_upload_path'] = 'uploads/recruiter_message/main/';
+$config['rec_message_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
+$config['rec_message_main_max_size'] = '100000000'; //in KB
+$config['rec_message_main_max_width'] = '4500';
+$config['rec_message_main_max_height'] = '3000';
+
+// BUSINESS PROFILE IMAGE THUMBS
+$config['rec_message_thumb_upload_path'] = 'uploads/recruiter_message/thumbs/';
+$config['rec_message_thumb_width'] = '160';
+$config['rec_message_thumb_height'] = '160';
