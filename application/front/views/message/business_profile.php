@@ -288,12 +288,12 @@
                                     </div>
                                 </ul>
                             </div>
-                            <div class="loader">Loading...</div>
+                            <div class="loader" style="display:none;">Loading...</div>
                         </div>
                         <div class="panel-footer">
                             <div class="">
                                 <div class="" id="msg_block">
-                                    <div class="input-group " id="set_input">
+                                    <div class="input-group" id="set_input">
                                         <form name="blog">
                                             <!--<div class="comment" ng-class="{'form-control': false, 'has-error':isMsgBoxEmpty}" ng-model="chatMsg" ng-change="isMsgBoxEmpty = false" ng-enter="sendMsg()" ng-focus="setFocus" focus-me="setFocus" name="message" id="message132" onpaste="OnPaste_StripFormatting(this, event);" placeholder="Type your message here..." style="position: relative;" contenteditable="true"></div>-->
                                             <textarea id="demo1"></textarea>
@@ -568,6 +568,7 @@
                         $scope.log = '';
                         $scope.upload = function (files) {
                             $scope.current = window.location.pathname.split("/").pop();
+                            $('.loader').show();
                             if (files && files.length) {
 
                                 for (var i = 0; i < files.length; i++) {
@@ -593,6 +594,7 @@
                                                         // GET SOCKET USER LIST END    
                                                         $('#as_chat_message').html('');
                                                         $scope.setFocus = true;
+                                                        $('.loader').hide();
                                                     }
                                                 });
                                     }
