@@ -169,7 +169,7 @@
                                     <img src="<?php echo base_url('assets/img/t_dot.png') ?>" ng-click="dropdown_delete_option()">
                                 </a>
                                 <div id="mychat_dropdown" class="chatdropdown-content">
-                                    <a href="javascript:void(0);" ng-click="delete_history(business_profile_id)">
+                                    <a href="javascript:void(0);" ng-click="delete_history(job_profile_id)">
                                         <span class="h4-img h2-srrt"></span>  Delete All
                                     </a>
                                 </div>
@@ -430,7 +430,7 @@
                         $scope.deleted_chat = function (message_for, message_id, chat) {
                             $http({
                                 method: 'POST',
-                                url: base_url + 'message/businessmessageDelete',
+                                url: base_url + 'rmessage/recruitermessageDelete',
                                 data: 'message_id=' + message_id + '&message_for=' + message_for,
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
@@ -442,11 +442,11 @@
                         $scope.dropdown_delete_option = function () {
                             document.getElementById("mychat_dropdown").style.display = "block";
                         }
-                        $scope.delete_history = function (business_to_profile_id) {
+                        $scope.delete_history = function (job_profile_id) {
                             $http({
                                 method: 'POST',
-                                url: base_url + 'message/allMessageDelete',
-                                data: 'business_to_profile_id=' + business_to_profile_id,
+                                url: base_url + 'rmessage/allMessageDelete',
+                                data: 'business_to_profile_id=' + job_profile_id,
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
                                     .then(function (success) {
@@ -473,7 +473,7 @@
                         $scope.getSearchdata = function () {
                             $http({
                                 method: 'POST',
-                                url: base_url + 'message/getBusinessUserChatSearchList',
+                                url: base_url + 'rmessage/getRecruiterUserChatSearchList',
                                 data: 'search_key=' + $scope.search_key,
                                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                             })
@@ -560,7 +560,7 @@
                                             url: base_url + 'message/business_file_upload',
                                             data: {
                                                 file: file,
-                                                business_slug: $scope.current,
+                                                slug: $scope.current,
                                             }
                                         })
                                                 .then(function (success) {
