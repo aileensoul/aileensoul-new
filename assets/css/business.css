@@ -2940,7 +2940,7 @@ label.cameraButton:active {
     font-size: 22px;
     background: #fff;
     color: #000;
-    padding: 15px 14px;
+    padding: 5px 10px;
     border-bottom: 1px solid #d9d9d9;
     font-family: arial;
 }
@@ -3077,8 +3077,8 @@ label.cameraButton:active {
     float: left;
     background-color: white;
     width: 100%;
-    padding-top: 15px;
 }
+.cq_desc_post{line-height:1.2;}
 .cq_post {
     width: 100%;
     float: left;
@@ -3093,17 +3093,18 @@ label.cameraButton:active {
     float: left;
     width: 100%;
     border-bottom: 1px solid #d9d9d9;
-    padding-bottom: 14px;
+    padding:9px 10px;
+	margin:0;
 }
 .cq_post ul li:last-child {
     border-bottom: none;
 }
 .cq_post_img {
-    height: 68px;
+    height: 50px;
     border: 1px solid #d9d9d9;
-    width: 68px;
+    width: 50px;
     float: left;
-    padding: 5px;
+    padding: 2px;
     display: inline-block;
 }
 .cq_main_lp {
@@ -3121,7 +3122,7 @@ label.cameraButton:active {
 .cq_latest_right {
     width: 79%;
     float: left;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 .cq_desc_post .rifght_fname .main_name {
     font-size: 15px;
