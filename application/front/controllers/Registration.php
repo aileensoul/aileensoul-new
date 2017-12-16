@@ -114,7 +114,6 @@ class Registration extends CI_Controller {
                         'user_slider' => '1',
                     );
 
-                    //echo "<pre>"; print_r($data); die();
                     $insert_id = $this->common->insert_data_getid($data, 'user');
                 }
                 //for getting last insrert id

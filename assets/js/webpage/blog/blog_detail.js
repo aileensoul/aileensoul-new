@@ -49,10 +49,12 @@ $(document).ready(function () {
            url: base_url + 'blog/comment_insert',
            data: 'blog_id=' +blog_id+ '&name=' +name+ '&email=' + email+ '&message=' + message,         
    
-           success: function (data) {
-               if (data == 1) 
-               {
-                  $.fancybox.open('<div class="message"><h2>Thank you for your valuable feedback</h2></div>');
+           success: function (data) { 
+               if(data == 1) 
+               { 
+                $('.biderror .mes').html("<div class='pop_content'>Thank you for your valuable feedback.</div>");
+                $('#bidmodal').modal('show');
+
                   $('#name').val(''); 
                   $('#email').val(''); 
                   $('#message').val(''); 
