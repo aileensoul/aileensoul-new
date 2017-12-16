@@ -287,8 +287,8 @@
                                         </li>
                                     </div>
                                 </ul>
-                                <div class="loader">Loading...</div>
                             </div>
+                            <div class="loader">Loading...</div>
                         </div>
                         <div class="panel-footer">
                             <div class="">
