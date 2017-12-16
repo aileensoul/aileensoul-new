@@ -349,6 +349,7 @@ max-width: inherit;}
   .load-more-blog li button:focus{outline:none;}
 .main-menu-right .category{cursor: pointer;}
 .main-menu-right .category:hover{cursor: pointer;color: #1b8ab9;}
+.message{padding: 20px 30px;}
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {

@@ -2209,14 +2209,17 @@ footer ul{
     /*float:right;*/
     padding-left:0;
     margin-bottom:0;
+    display: inline-block;
 }
 footer ul li{
-    float:left;
+    /*float:left;*/
+    display: inline-block;
     list-style-type:none;
 }
 footer ul li a{
     color:#353535;
-    padding:5px 15px;
+    padding:5px 8px;
+    font-size: 12px;
 }
 footer ul li:last-child a{padding-right:0;}
 footer ul li a:hover{

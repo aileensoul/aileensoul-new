@@ -2025,6 +2025,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.profiles-details h2{padding-bottom:20px;}
 	.profiles-details h2::after {display:none;}
 	.profiles-details p{line-height:1.5;}
+	#onload-Modal .modal-dialog button{top:80px;}
 }
 @media screen and (max-width: 767px) {
 	.footer-ul .mob-none{display:none;}

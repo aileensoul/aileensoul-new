@@ -60,7 +60,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
       <!-- This Css is used for call popup -->
-      <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
+
       
       
    </head>
@@ -400,9 +400,26 @@
                    
                </div>
             </div>
+
+            <!-- Bid-modal  -->
+      <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content message">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+
          </section>
       </section>
  <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+      <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver='.time()); ?>"></script>
+ 
+
       <?php
             echo $login_footer
             ?>
@@ -411,7 +428,6 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js'); ?>"></script>
 <!-- This Js is used for call popup -->
-<script src="<?php echo base_url('assets/js/jquery.fancybox.js'); ?>"></script>
 
 <script>
                                        var base_url = '<?php echo base_url(); ?>';

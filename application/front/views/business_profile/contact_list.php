@@ -33,7 +33,7 @@
                                 <div class="contact-list ">
                                     <h3 class="list-title">Contact Request Notifications</h3>
                                     <div class="noti_cq">
-                                        <div class="cq_post">
+                                        <div class="cq_post content mCustomScrollbar">
                                             <ul>
                                                 <?php
                                                 if ($friendlist_con) {
@@ -118,7 +118,7 @@
                                 <div class="contact-list ">
                                     <h3 class="list-title">Contact Request Notifications</h3>
                                     <div class="noti_cq">
-                                        <div class="cq_post">
+                                        <div class="cq_post content mCustomScrollbar">
                                             <ul>
                                                 <?php
                                                 if ($friendlist_con) {

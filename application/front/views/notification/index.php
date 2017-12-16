@@ -4,7 +4,7 @@
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
-
+<title><?php echo $title; ?></title>
 <body class="page-container-bg-solid page-boxed">
 
     <?php echo $dash_header; ?>

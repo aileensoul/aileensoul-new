@@ -391,7 +391,7 @@
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
-                                            <div style="border-bottom: 1px solid #d9d9d9;margin-bottom: 10px;">
+                                            <div class="cust-div-h3">
                                                 <h3 style="color: #5c5c5c;text-align: center;font-size: 24px;">Job by Location</h3>
                                             </div>
                                             <ul style="list-style-type: none;">
