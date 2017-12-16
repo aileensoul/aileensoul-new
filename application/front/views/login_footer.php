@@ -15,16 +15,14 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                 <div class="fw text-center">
                     <ul class="footer-ul">
 
-<<<<<<< HEAD
+
 						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
 						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
 						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelance Profile</a></li>
 						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-business-profile-in-aileensoul'); ?>" target="_blank">Business Profile</a></li>
 						<li><a title="Sitemap" href="<?php echo base_url('how-to-use-artistic-profile-in-aileensoul'); ?>" target="_blank">Artistic Profile</a></li>
 
-=======
-						
->>>>>>> d09b6921585f679fa9081fff66a0728f8e9d0283
+
 						<li><a title="Job Profile" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
 						<li><a title="Recruiter Profile" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
 						<li><a title="Freelancer Profile" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelancer Profile</a></li>
