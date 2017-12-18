@@ -61,7 +61,7 @@
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
 
             }
-
+            
             .btn1:focus{
                 opacity:0.6;
             }
@@ -606,7 +606,7 @@
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>          -->
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
@@ -721,7 +721,7 @@
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>          -->
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
