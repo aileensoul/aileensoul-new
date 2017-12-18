@@ -111,6 +111,7 @@
 								</p>
 							</div>
 						</div>
+                                            <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('business-profile/business-information') ?>" title="Create Business Profile" target="_blank" class="btn-new1">Create Business Profile</a></div>
 					</div>
                 </div>
             </section>

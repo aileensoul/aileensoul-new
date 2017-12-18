@@ -111,6 +111,7 @@
 								</p>
 							</div>
 						</div>
+                                            <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('recruiter/registration') ?>" title="Create Recruiter Profile" target="_blank" class="btn-new1">Create Recruiter Profile</a></div>
 					</div>
                 </div>
             </section>

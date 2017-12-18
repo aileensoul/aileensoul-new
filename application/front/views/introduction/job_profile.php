@@ -112,7 +112,7 @@
 						</div>
                                             
                                             
-                                            <div class="text-center pb20 introduce_button"><a href="http://localhost/aileensoul-new/login" class="btn-new1">Create Job Profile</a></div>
+                                            <div class="text-center pb20 introduce_button"><a href="<?php echo base_url('job/profile') ?>" target="_blank" title="Create Job Profile" class="btn-new1">Create Job Profile</a></div>
 					</div>
                 </div>
             </section>

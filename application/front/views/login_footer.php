@@ -14,8 +14,14 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
 
                 <div class="fw text-center">
                     <ul class="footer-ul">
-                        <li><a title="Login" href="<?php echo base_url('login'); ?>" target="_blank">Login</a></li>
-                        <li><a title="Create an Account" href="<?php echo base_url('registration'); ?>" target="_blank">Create an Account</a></li>
+                        <?php
+                        if (!$this->session->userdata('aileenuser')) {
+                            ?>
+                            <li><a title="Login" href="<?php echo base_url('login'); ?>" target="_blank">Login</a></li>
+                            <li><a title="Create an Account" href="<?php echo base_url('registration'); ?>" target="_blank">Create an Account</a></li>
+                            <?php
+                        }
+                        ?>
                         <li><a title="Job Profile" href="<?php echo base_url('how-to-use-job-profile-in-aileensoul'); ?>" target="_blank">Job Profile</a></li>
                         <li><a title="Recruiter Profile" href="<?php echo base_url('how-to-use-recruiter-profile-in-aileensoul'); ?>" target="_blank">Recruiter Profile</a></li>
                         <li><a title="Freelance Profile" href="<?php echo base_url('how-to-use-freelance-profile-in-aileensoul'); ?>" target="_blank">Freelance Profile</a></li>
