@@ -1,9 +1,192 @@
 //CODE FOR COUNTRY,STATE, CITY START
 $(document).ready(function () {
-  
     if(!user_session){
         $('#register').modal('show');
     }
+    
+    $.validator.addMethod("lowercase", function (value, element, regexpr) {
+        return regexpr.test(value);
+    }, "Email should be in small character");
+
+    $("#register_form").validate({
+        rules: {
+            first_name: {
+                required: true,
+            },
+            last_name: {
+                required: true,
+            },
+            email_reg: {
+                required: true,
+                email: true,
+                lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+                remote: {
+                    url: base_url + "registration/check_email",
+                    type: "post",
+                    data: {
+                        email_reg: function () {
+                            // alert("hi");
+                            return $("#email_reg").val();
+                        },
+                      
+                    },
+                },
+            },
+            password_reg: {
+                required: true,
+            },
+            selday: {
+                required: true,
+            },
+            selmonth: {
+                required: true,
+            },
+            selyear: {
+                required: true,
+            },
+            selgen: {
+                required: true,
+            }
+        },
+
+        groups: {
+            selyear: "selyear selmonth selday"
+        },
+        messages:
+                {
+                    first_name: {
+                        required: "Please enter first name",
+                    },
+                    last_name: {
+                        required: "Please enter last name",
+                    },
+                    email_reg: {
+                        required: "Please enter email address",
+                        remote: "Email address already exists",
+                    },
+                    password_reg: {
+                        required: "Please enter password",
+                    },
+
+                    selday: {
+                        required: "Please enter your birthdate",
+                    },
+                    selmonth: {
+                        required: "Please enter your birthdate",
+                    },
+                    selyear: {
+                        required: "Please enter your birthdate",
+                    },
+                    selgen: {
+                        required: "Please enter your gender",
+                    }
+
+                },
+        submitHandler: submitRegisterForm
+    });
+    /* register submit */
+    function submitRegisterForm()
+    {
+        var first_name = $("#first_name").val();
+        var last_name = $("#last_name").val();
+        var email_reg = $("#email_reg").val();
+        var password_reg = $("#password_reg").val();
+        var selday = $("#selday").val();
+        var selmonth = $("#selmonth").val();
+        var selyear = $("#selyear").val();
+        var selgen = $("#selgen").val();
+    
+        var post_data = {
+            'first_name': first_name,
+            'last_name': last_name,
+            'email_reg': email_reg,
+            'password_reg': password_reg,
+            'selday': selday,
+            'selmonth': selmonth,
+            'selyear': selyear,
+            'selgen': selgen,
+       
+        }
+
+
+        var todaydate = new Date();
+        var dd = todaydate.getDate();
+        var mm = todaydate.getMonth() + 1; //January is 0!
+        var yyyy = todaydate.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        var todaydate = yyyy + '/' + mm + '/' + dd;
+        var value = selyear + '/' + selmonth + '/' + selday;
+
+
+        var d1 = Date.parse(todaydate);
+        var d2 = Date.parse(value);
+        if (d1 < d2) {
+            $(".dateerror").html("Date of birth always less than to today's date.");
+            return false;
+        } else {
+            if ((0 == selyear % 4) && (0 != selyear % 100) || (0 == selyear % 400))
+            {
+                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
+                    if (selday == 31) {
+                        $(".dateerror").html("This month has only 30 days.");
+                        return false;
+                    }
+                } else if (selmonth == 2) { //alert("hii");
+                    if (selday == 31 || selday == 30) {
+                        $(".dateerror").html("This month has only 29 days.");
+                        return false;
+                    }
+                }
+            } else {
+                if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
+                    if (selday == 31) {
+                        $(".dateerror").html("This month has only 30 days.");
+                        return false;
+                    }
+                } else if (selmonth == 2) {
+                    if (selday == 31 || selday == 30 || selday == 29) {
+                        $(".dateerror").html("This month has only 28 days.");
+                        return false;
+                    }
+                }
+            }
+        }
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'registration/reg_insert',
+            dataType: 'json',
+            data: post_data,
+            beforeSend: function ()
+            {
+                $("#register_error").fadeOut();
+                $("#btn1").html('Create an account ...');
+            },
+            success: function (response)
+            { //alert("ksjkskjds");
+              //alert(postid);
+                var userid = response.userid;
+                if (response.okmsg == "ok") {
+                    window.location = base_url + "freelancer-hire/registration";
+                } else {
+                    $("#register_error").fadeIn(1000, function () {
+                        $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
+                        $("#btn1").html('Create an account');
+                    });
+                }
+
+            }
+        });
+        return false;
+    }
+    
     
     $('#country').on('change', function () {
         var countryID = $(this).val();

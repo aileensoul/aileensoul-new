@@ -4,9 +4,8 @@ $userid = $this->session->userdata('aileenuser');
 
 <script type="text/javascript">
     function show_contact_notification(contact_notification_count, contact_to_id) {
-        //var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
+        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
         //var socket = io.connect();
-        var socket = io.connect(window.location.protocol + '//' + location.host + ':3000', {secure: true});
         socket.emit('contact_request_count', {
             contact_request_count: contact_notification_count,
             contact_to_id: contact_to_id,
@@ -53,9 +52,9 @@ $userid = $this->session->userdata('aileenuser');
 //
 //    });
     $(document).ready(function () {
-        //var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
+        var socket = io.connect(window.location.protocol + '//' + window.location.hostname + ':3000', {secure: true});
         //var socket = io.connect();
-        var socket = io.connect(window.location.protocol + '//' + location.host + ':3000', {secure: true});
+        //var socket = io.connect(window.location.protocol + '//' + location.host + ':3000', {secure: true});
         socket.on('contact_request_count', function (data) {
             $("#addcontact_count" + data.contact_to_id).html(data.contact_request_count);
             $('#addcontact_count' + data.contact_to_id).css({

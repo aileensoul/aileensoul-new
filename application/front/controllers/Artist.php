@@ -99,38 +99,25 @@ class Artist extends MY_Controller {
 
     public function profile() {
 
+         $userid = $this->session->userdata('aileenuser');
+
         $contition_array = array('status' => '1');
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('status' => '1');
         $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($this->data['countries']); die();
-
+        if($userid){
+            $this->data['profile_login'] = "login";
+        }else{
+            $this->data['profile_login'] = "live";
+        }
         $this->load->view('artist/profile', $this->data);
     }
-
-
-    //  public function profile_live() {
-
-
-    //     $contition_array = array('status' => '1');
-    //     $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-    //     $contition_array = array('status' => '1');
-    //     $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-    //     //echo "<pre>"; print_r($this->data['countries']); die();
-
-    //     $this->load->view('artist/profile_live', $this->data);
-    // }
-
 
     public function profile_insert() {
 
         $userid = $this->session->userdata('aileenuser');
-
-
         $other_category = $this->input->post('othercategory');
         $contition_array = array('other_category' => $other_category, 'status' => '1');
         $exist_other = $this->common->select_data_by_condition('art_other_category', $contition_array, $data = 'other_category,other_category_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
@@ -147,7 +134,7 @@ class Artist extends MY_Controller {
         //     $this->load->view('artist/profile');
         // }else{
 
-
+    if($userid){
         if ($other_category) {
 
             if ($exist_other) {
@@ -164,6 +151,8 @@ class Artist extends MY_Controller {
                 $insertid = $this->common->insert_data_getid($data1, 'art_other_category');
             }
         }
+
+    }
 
         $checkval = $this->input->post('skills');
         if (in_array(26, $checkval)) {
@@ -193,9 +182,9 @@ class Artist extends MY_Controller {
             'art_step' => '4',
             'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
         );
-
-        $insert_id = $this->common->insert_data_getid($data, 'art_reg');
-        //}    
+        if($userid){
+         $insert_id = $this->common->insert_data_getid($data, 'art_reg');
+       }
 
         redirect('artist/home', refresh);
     }
