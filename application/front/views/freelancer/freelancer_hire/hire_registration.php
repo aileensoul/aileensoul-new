@@ -422,7 +422,7 @@
                                     </fieldset>
                                     <fieldset>
                                         <label >Email Address <font  color="red">*</font> :</label>
-                                        <input type="email" name="email_reg" id="email_reg" tabindex="3" placeholder="Enter email address" value="<?php  echo $userdata[0]['user_email']; ?>" maxlength="255">
+                                        <input type="email" name="email_reg1" id="email_reg1" tabindex="3" placeholder="Enter email address" value="<?php  echo $userdata[0]['user_email']; ?>" maxlength="255">
                                         <?php
                                         echo form_error('email');
                                         ;
@@ -567,7 +567,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                            <input type="hidden" name="password_login_postid" id="password_login_postid" class="form-control input-sm post_id_login">
+                                            
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
@@ -663,8 +663,8 @@
         <script async type="text/javascript" src="<?php echo base_url('assets/js/webpage/freelancer-hire/hire_registration.js?ver=' . time()); ?>"></script>
 
         <script>
-                                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                        var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+//                                        var get_csrf_token_name = '<?php //echo $this->security->get_csrf_token_name(); ?>';
+//                                        var csrf_hash = '<?php //echo $this->security->get_csrf_hash(); ?>';
                                         var base_url = '<?php echo base_url(); ?>';
                                         var site = '<?php echo base_url(); ?>';
                                         var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';

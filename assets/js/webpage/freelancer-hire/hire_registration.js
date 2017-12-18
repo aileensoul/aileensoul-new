@@ -38,7 +38,87 @@ $(document).ready(function () {
             $('#city').html('<option value="">Select state first</option>');
         }
     });
+    
+     $("#register_form").validate({
+         rules: {
+            first_name: {
+                required: true,
+            },
+            last_name: {
+                required: true,
+            },
+            email_reg: {
+                required: true,
+                email: true,
+                lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+                remote: {
+                    url: base_url + "registration/check_email",
+                    type: "post",
+                    data: {
+                        email_reg: function () {
+                            // alert("hi");
+                            return $("#email_reg").val();
+                        },
+                       // csrf_token_name: csrf_hash,
+                    },
+                },
+            },
+            password_reg: {
+                required: true,
+            },
+            selday: {
+                required: true,
+            },
+            selmonth: {
+                required: true,
+            },
+            selyear: {
+                required: true,
+            },
+            selgen: {
+                required: true,
+            }
+        },
+        groups: {
+            selyear: "selyear selmonth selday"
+        },
+        messages:
+                {
+                    first_name: {
+                        required: "Please enter first name",
+                    },
+                    last_name: {
+                        required: "Please enter last name",
+                    },
+                     email_reg: {
+                        required: "Please enter email address",
+                        remote: "Email address already exists",
+                    },
+                    password_reg: {
+                        required: "Please enter password",
+                    },
+
+                    selday: {
+                        required: "Please enter your birthdate",
+                    },
+                    selmonth: {
+                        required: "Please enter your birthdate",
+                    },
+                    selyear: {
+                        required: "Please enter your birthdate",
+                    },
+                    selgen: {
+                        required: "Please enter your gender",
+                    }
+                },
+                
+       submitHandler: submitRegisterForm
+     });
+     function  submitRegisterForm (){
+         alert(222);
+     }
 });
+
 //CODE FOR COUNTRY,STATE,CITY END
 
 $.validator.addMethod("regx", function (value, element, regexpr) {
@@ -63,16 +143,16 @@ $(document).ready(function () {
             email_reg: {
                 required: true,
                 email: true,
-                remote: {
-                    url: site + "freelancer/check_email",
-                    type: "post",
-                    data: {
-                        email_reg: function () {
-                            return $("#email_reg").val();
-                        },
-                         'aileensoulnewfrontcsrf': get_csrf_hash,
-                    },
-                },
+//                remote: {
+//                    url: site + "freelancer/check_email",
+//                    type: "post",
+//                    data: {
+//                        email_reg: function () {
+//                            return $("#email_reg").val();
+//                        },
+//                         'aileensoulnewfrontcsrf': get_csrf_hash,
+//                    },
+//                },
 
             },
             country: {
@@ -96,10 +176,10 @@ $(document).ready(function () {
             lastname: {
                 required: "Last name is required."
             },
-            email: {
+            email_reg: {
                 required: "Email id is required.",
                 email: "Please enter valid email id.",
-                remote: "Email already exists."
+                //remote: "Email already exists."
             },
             country: {
                 required: "Country is required.",
