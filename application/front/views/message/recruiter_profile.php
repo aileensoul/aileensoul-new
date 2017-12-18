@@ -529,7 +529,7 @@
                                             if (data.result != 'fail') {
                                                 // GET SOCKET USER LIST START
                                                 socket.emit('getRecruiterChatUserList', {
-                                                    message_slug: $scope.current, message_to_slug: data.slug        , message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, first_name: data.fname,last_name: data.lname, job_user_image: data.job_user_image, date: data.date
+                                                    message_slug: $scope.current, message_to_slug: data.slug, message: data.message, message_file: data.message_file, message_file_type: data.message_file_type, message_file_size: data.message_file_size, timestamp: data.timestamp, message_from_profile_id: data.message_from_profile_id, first_name: data.fname,last_name: data.lname, job_user_image: data.job_user_image, date: data.date
                                                 });
                                                 // GET SOCKET USER LIST END    
                                                 $('#as_chat_message').html('');
