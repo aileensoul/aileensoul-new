@@ -394,7 +394,14 @@
             -o-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);}
                 /*second*/
-
+                .no-login .dob .error{bottom:-25px;}
+            .no-login .gender-custom .error{bottom:-25px;}
+            .no-login .job-saved-box{margin-bottom:15px;}
+            .no-login .job-post-detail{margin-bottom:0;}
+            .no-login .login p{font-size:14px; margin-bottom:9px;}
+            .no-login .btn1{padding: 5px 20px; font-size:16px !important;}
+            .no-login .inner-form1{width:560px;}
+            .no-login.modal-open{overflow-y:auto;}
         </style>
 </head>
 <!-- END HEAD -->
@@ -402,7 +409,7 @@
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
-<body>
+<body class="no-login">
    <section>
       <div class="user-midd-section " id="paddingtop_fixed">
          <div class="container">
@@ -599,7 +606,7 @@
         <div class="modal fade login register-model" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>   -->       
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
@@ -714,7 +721,7 @@
         <div class="modal login fade" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
-                    <!-- <button type="button" class="modal-close" data-dismiss="modal">&times;</button>   -->       
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
                         <div class="right-main">
                             <div class="right-main-inner">
