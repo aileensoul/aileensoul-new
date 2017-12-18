@@ -479,6 +479,14 @@ $(document).ready(function () {
             });
 
 
+function submit_forgot(){
+   
+   var x = document.getElementById("forgot_email").value;
+   if(x != ''){
+    $('#forgotPassword').modal('hide');
+    event.preventDefault();
+  }
+}
 
 $(document).ready(function () { //aletr("hii");
                 /* validation */
@@ -553,7 +561,7 @@ function login()
                             $("#btn1").html('Login');
                         },
                         success: function (response)
-                        { alert(response.data);
+                        { 
                             if (response.data == "ok") {                              
                                 window.location = base_url + "artist/profile";                              
                             }else if (response.is_artistic == 1) {

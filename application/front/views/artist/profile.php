@@ -799,7 +799,7 @@
                     </div>
                     <div class="modal-footer ">
                         <div class="submit_btn">              
-                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" onclick="submit_forgot();"/> 
                         </div>
                     </div>
                     <?php echo form_close(); ?>
