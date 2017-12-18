@@ -1,9 +1,9 @@
 //CODE FOR COUNTRY,STATE, CITY START
 $(document).ready(function () {
-    if(!user_session){
+    if (!user_session) {
         $('#register').modal('show');
     }
-    
+// for registation of main profile start
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
         return regexpr.test(value);
     }, "Email should be in small character");
@@ -28,7 +28,7 @@ $(document).ready(function () {
                             // alert("hi");
                             return $("#email_reg").val();
                         },
-                      
+
                     },
                 },
             },
@@ -95,7 +95,7 @@ $(document).ready(function () {
         var selmonth = $("#selmonth").val();
         var selyear = $("#selyear").val();
         var selgen = $("#selgen").val();
-    
+
         var post_data = {
             'first_name': first_name,
             'last_name': last_name,
@@ -105,7 +105,7 @@ $(document).ready(function () {
             'selmonth': selmonth,
             'selyear': selyear,
             'selgen': selgen,
-       
+
         }
 
 
@@ -171,7 +171,7 @@ $(document).ready(function () {
             },
             success: function (response)
             { //alert("ksjkskjds");
-              //alert(postid);
+                //alert(postid);
                 var userid = response.userid;
                 if (response.okmsg == "ok") {
                     window.location = base_url + "freelancer-hire/registration";
@@ -186,8 +186,13 @@ $(document).ready(function () {
         });
         return false;
     }
-    
-    
+// for registation of main profile end
+//login pop up open start
+    function login_profile() {
+        $('#login').modal('show');
+    }
+//login pop up open end
+// country statre and city ajax data for freelancer profile start
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {
@@ -225,12 +230,12 @@ $(document).ready(function () {
 //CODE FOR COUNTRY,STATE,CITY END
 
 $.validator.addMethod("regx", function (value, element, regexpr) {
-    if(!value){
-    return true;
-}else{
-   
-     return regexpr.test(value);
-}
+    if (!value) {
+        return true;
+    } else {
+
+        return regexpr.test(value);
+    }
 }, "Only space, only number and only special characters are not allow");
 $(document).ready(function () {
 
@@ -243,17 +248,17 @@ $(document).ready(function () {
                 required: true,
                 regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
-            email_reg: {
+            email_reg1: {
                 required: true,
                 email: true,
                 remote: {
                     url: site + "freelancer/check_email",
                     type: "post",
                     data: {
-                        email_reg: function () {
-                            return $("#email_reg").val();
+                        email_reg1: function () {
+                            return $("#email_reg1").val();
                         },
-                         'aileensoulnewfrontcsrf': get_csrf_hash,
+                        'aileensoulnewfrontcsrf': get_csrf_hash,
                     },
                 },
 
@@ -267,7 +272,7 @@ $(document).ready(function () {
             city: {
                 required: true,
             }
-           
+
 
 
         },
@@ -279,7 +284,7 @@ $(document).ready(function () {
             lastname: {
                 required: "Last name is required."
             },
-            email: {
+            email1: {
                 required: "Email id is required.",
                 email: "Please enter valid email id.",
                 remote: "Email already exists."
@@ -302,7 +307,7 @@ $(document).ready(function () {
 //CODE FOR COPY-PASTE START
 var _onPaste_StripFormatting_IEPaste = false;
 function OnPaste_StripFormatting(elem, e) {
-   
+
     if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
         e.preventDefault();
         var text = e.originalEvent.clipboardData.getData('text/plain');

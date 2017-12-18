@@ -225,7 +225,7 @@
                                 <div class="all-job-box job-detail">
                                     <div class="all-job-top">
                                         <div class="post-img">
-                                            <a title="<?php echo $post['re_comp_name']; ?>">
+                                            <a title="<?php echo $post['re_comp_name']; ?>" href="<?php echo base_url('recruiter/profile/' . $post['user_id'] . '?page=job'); ?>">
                                                 <?php
                                                 $cache_time = $this->db->get_where('recruiter', array(
                                                             'user_id' => $post['user_id']
