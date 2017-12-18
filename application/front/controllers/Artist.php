@@ -99,7 +99,6 @@ class Artist extends MY_Controller {
 
     public function profile() {
 
-
         $contition_array = array('status' => '1');
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -110,6 +109,22 @@ class Artist extends MY_Controller {
 
         $this->load->view('artist/profile', $this->data);
     }
+
+
+    //  public function profile_live() {
+
+
+    //     $contition_array = array('status' => '1');
+    //     $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+    //     $contition_array = array('status' => '1');
+    //     $this->data['art_category'] = $this->common->select_data_by_condition('art_category', $contition_array, $data = 'category_id,art_category', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+    //     //echo "<pre>"; print_r($this->data['countries']); die();
+
+    //     $this->load->view('artist/profile_live', $this->data);
+    // }
+
 
     public function profile_insert() {
 
