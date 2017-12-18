@@ -1,5 +1,10 @@
 //CODE FOR COUNTRY,STATE, CITY START
 $(document).ready(function () {
+  
+    if(!user_session){
+        $('#register').modal('show');
+    }
+    
     $('#country').on('change', function () {
         var countryID = $(this).val();
         if (countryID) {

@@ -43,7 +43,7 @@ class MY_Controller extends CI_Controller {
         }
 
 //freelancer search live link end  
-        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc, 'add-post', 'ajax_data', 'get_skill', 'get_degree','add-projects','profile');
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search', 'post', 'ajax_rec_post', 'jobpost', 'project', 'postlocation', $segjobloc, $segfreelancerloc, 'add-post', 'ajax_data', 'get_skill', 'get_degree','add-projects','profile','registration');
 
         $segment1 = $this->uri->segment(1);
 
