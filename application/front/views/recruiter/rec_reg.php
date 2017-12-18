@@ -639,12 +639,12 @@
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                                    <input tabindex="5" type="text" name="first_name1" id="first_name1" class="form-control input-sm" placeholder="First Name">
                                                 </div>
                                             </div>
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
-                                                    <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                                    <input tabindex="6" type="text" name="last_name1" id="last_name1" class="form-control input-sm" placeholder="Last Name">
                                                 </div>
                                             </div>
                                         </div>
@@ -854,8 +854,8 @@
                                         var base_url = '<?php echo base_url(); ?>';
                                         var data1 = <?php echo json_encode($de); ?>;
                                         var data = <?php echo json_encode($demo); ?>;
-                                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                        var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+//                                        var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+//                                        var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                         var user_session = '<?php echo $this->session->userdata('aileenuser'); ?>';
         
   </script>

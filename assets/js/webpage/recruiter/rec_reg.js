@@ -20,10 +20,10 @@ $(document).ready(function () {
 
     $("#register_form").validate({
         rules: {
-            first_name: {
+            first_name1: {
                 required: true,
             },
-            last_name: {
+            last_name1: {
                 required: true,
             },
             email_reg: {
@@ -64,10 +64,10 @@ $(document).ready(function () {
         },
         messages:
                 {
-                    first_name: {
+                    first_name1: {
                         required: "Please enter first name",
                     },
-                    last_name: {
+                    last_name1: {
                         required: "Please enter last name",
                     },
                     email_reg: {
@@ -97,8 +97,8 @@ $(document).ready(function () {
     /* register submit */
     function submitRegisterForm()
     {
-        var first_name = $("#first_name").val();
-        var last_name = $("#last_name").val();
+        var first_name = $("#first_name1").val();
+        var last_name = $("#last_name1").val();
         var email_reg = $("#email_reg").val();
         var password_reg = $("#password_reg").val();
         var selday = $("#selday").val();
@@ -229,7 +229,7 @@ $(document).ready(function () {
                         email: function () {
                             return $("#email").val();
                         },
-                        get_csrf_token_name: get_csrf_hash,
+//                        get_csrf_token_name: get_csrf_hash,
                     },
                 },
             },
@@ -253,7 +253,7 @@ $(document).ready(function () {
                         email: function () {
                             return $("#comp_email").val();
                         },
-                         get_csrf_token_name: get_csrf_hash,
+//                         get_csrf_token_name: get_csrf_hash,
                     },
                 },
             },
