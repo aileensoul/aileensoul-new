@@ -1823,7 +1823,7 @@ img{
 	display: inline-block;
 	text-align:center;
 	display:inline-block;
-	font-weight:bold;
+	font-weight:normal;
 	font-family: Arial;
 	margin:0 5px;
 }
@@ -1842,6 +1842,7 @@ img{
 	padding:5px 25px;
 	color:#fff;
 	border-radius:4px;
+	font-weight: normal;
 	display: inline-block;
 	background: #912281; /* Old browsers */
 	background: -moz-linear-gradient(top, #912281 0%, #207cca 0%, #912281 0%, #de5c90 100%); /* FF3.6-15 */
@@ -1863,7 +1864,10 @@ img{
       font-family: arial; 
       font-size: 16px;
       border: 2px solid #912281;
+      font-weight: bold;
 }
+.introduce_button .btn-new1:hover{text-decoration:none;}
+.introduce_button .btn-new1:focus{text-decoration:none;}
 .profile-bnr{position:relative; text-align:center;}
 header.profile-header{background:none; position:absolute; top:0; border-bottom:none;}
 header.profile-header .logo a{color:#5c5c5c;}
