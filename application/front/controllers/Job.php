@@ -3110,14 +3110,24 @@ class Job extends MY_Controller {
         $this->data['jobtitle'] = array_values($result1);
 
         $contition_array = array('is_delete' => '0', 'status' => '1', 'industry_name !=' => "Others");
-        $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
+        if($userid){
+           $search_condition = "((is_other = '1' AND user_id = $userid) OR (is_other = '0'))";
+
+        }else{
+            $search_condition = "((is_other = '1') OR (is_other = '0'))";
+
+        }
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('is_delete' => '0', 'industry_name' => "Others", 'is_other' => '0');
         $search_condition = "((status = '1'))";
         $this->data['other_industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>";print_r($this->data['other_industry']);die();
-
+        if($userid){
+            $this->data['profile_login'] = "login";
+        }else{
+            $this->data['profile_login'] = "live";
+        }
         $this->load->view('job/job_reg', $this->data);
     }
 
@@ -3157,7 +3167,9 @@ class Job extends MY_Controller {
                     'slug' => $this->common->clean($forslug),
                     'status' => 'draft',
                 );
+                if($userid){
                 $jobtitle = $this->common->insert_data_getid($data, 'job_title');
+                }
             }
         }
 
@@ -3182,7 +3194,9 @@ class Job extends MY_Controller {
                         'type' => '4',
                         'user_id' => $userid,
                     );
+                    if($userid){
                     $skill[] = $this->common->insert_data_getid($data, 'skill');
+                   }
                 }
             }
             $skills = implode(',', $skill);
@@ -3202,7 +3216,9 @@ class Job extends MY_Controller {
                         'city_name' => $cit,
                         'status' => '1',
                     );
+                    if($userid){
                     $city[] = $this->common->insert_data_getid($data, 'cities');
+                   }
                 }
             }
 
@@ -3232,13 +3248,13 @@ class Job extends MY_Controller {
 
         $contition_array = array('user_id' => $userid);
         $job = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+    if($userid){
         if ($job[0]['total'] != 0) {
             $insert_id = $this->common->update_data($data1, 'job_reg', 'user_id', $userid);
         } else {
             $insert_id = $this->common->insert_data_getid($data1, 'job_reg');
         }
-
+    }
         if ($insert_id) {
             // $this->session->set_flashdata('success', 'Basic information updated successfully');
             if ($poslivtid) {
