@@ -187,11 +187,7 @@ $(document).ready(function () {
         return false;
     }
 // for registation of main profile end
-//login pop up open start
-    function login_profile() {
-        $('#login').modal('show');
-    }
-//login pop up open end
+
 // country statre and city ajax data for freelancer profile start
     $('#country').on('change', function () {
         var countryID = $(this).val();
@@ -339,3 +335,127 @@ $("#submit").on('click', function ()
 
 });
 ////DISABLE CUTTON ON ONE TIME CLICK END
+//login pop up open start
+    function login_profile() {
+        $('#login').modal('show');
+    }
+//login pop up open end
+function forgot_profile() {
+    $('#forgotPassword').modal('show');
+}
+  /* validation */
+
+    $("#login_form").validate({
+
+        rules: {
+            email_login: {
+                required: true,
+            },
+            password_login: {
+                required: true,
+            }
+        },
+        messages:
+                {
+                    email_login: {
+                        required: "Please enter email address",
+                    },
+                    password_login: {
+                        required: "Please enter password",
+                    }
+                },
+        submitHandler: submitForm
+    });
+    /* validation */
+    /* login submit */
+    function submitForm()
+    {
+
+        var email_login = $("#email_login").val();
+        var password_login = $("#password_login").val();
+        var post_data = {
+            'email_login': email_login,
+            'password_login': password_login,
+//            csrf_token_name: csrf_hash
+        }
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'registration/check_login',
+            data: post_data,
+            dataType: "json",
+            beforeSend: function ()
+            {
+                $("#error").fadeOut();
+                $("#btn1").html('Login ...');
+            },
+            success: function (response)
+            {
+                if (response.data == "ok") {
+                  //  alert("login");
+                    $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                    window.location = base_url + "freelancer-hire/home";
+                } else if (response.data == "password") {
+                    $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                    document.getElementById("password_login").classList.add('error');
+                    document.getElementById("password_login").classList.add('error');
+                    $("#btn1").html('Login');
+                } else {
+                    $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                    document.getElementById("email_login").classList.add('error');
+                    document.getElementById("email_login").classList.add('error');
+                    $("#btn1").html('Login');
+                }
+            }
+        });
+        return false;
+    }
+    /* login submit */
+    $("#forgot_password").validate({
+        rules: {
+            forgot_email: {
+                required: true,
+                email: true,
+            }
+
+        },
+        messages: {
+            forgot_email: {
+                required: "Email address is required.",
+            }
+        },
+        submitHandler: submitforgotForm
+    });
+    
+          function submitforgotForm()
+    {
+
+        var email_login = $("#forgot_email").val();
+        
+        var post_data = {
+            'forgot_email': email_login,
+//            csrf_token_name: csrf_hash
+        }
+        $.ajax({
+            type: 'POST',
+            url: base_url + 'profile/forgot_live',
+            data: post_data,
+            dataType: "json",
+            beforeSend: function ()
+            {
+                $("#error").fadeOut();
+                $("#forgotbuton").html('Your credential has been send in your register email id');
+            },
+            success: function (response)
+            {
+                if (response.data == "success") {
+                  //  alert("login");
+                    $("#forgotbuton").html(response.data);
+                    //window.location = base_url + "job/home/live-post";
+                } else {
+                    $("#forgotbuton").html(response.message);
+                    
+                }
+            }
+        });
+        return false;
+    }

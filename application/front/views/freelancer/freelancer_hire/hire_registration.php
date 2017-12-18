@@ -543,7 +543,7 @@
         <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content inner-form1">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->       
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="">
@@ -640,7 +640,7 @@
                                         </p>
                                         <div class="sign_in pt10">
                                             <p>
-                                                Already have an account ? <a tabindex="12" onClick="login_profile_apply(<?php echo $post['post_id']; ?>)" href="javascript:void(0);"> Log In </a>
+                                                Already have an account ? <a tabindex="12" onClick="login_profile();" href="javascript:void(0);"> Log In </a>
                                             </p>
                                         </div>
                                     </form>
@@ -654,6 +654,116 @@
         </div>
         <!-- register -->
         
+                <!-- Login  -->
+        <div class="modal fade login" id="login" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content login-frm">
+                    <!--<button type="button" class="modal-close" data-dismiss="modal">&times;</button>-->       
+                    <div class="modal-body">
+                        <div class="right-main">
+                            <div class="right-main-inner">
+                                <div class="">
+                                    <div class="title">
+                                        <h1 class="ttc">Welcome To Aileensoul</h1>
+                                    </div>
+
+                                    <form role="form" name="login_form" id="login_form" method="post">
+
+                                        <div class="form-group">
+                                            <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                            <div id="error2" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('erroremail')) {
+                                                    echo $this->session->flashdata('erroremail');
+                                                }
+                                                ?>
+                                            </div>
+                                            <div id="errorlogin"></div> 
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                            <div id="error1" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('errorpass')) {
+                                                    echo $this->session->flashdata('errorpass');
+                                                }
+                                                ?>
+                                            </div>
+                                            <div id="errorpass"></div> 
+                                        </div>
+
+                                        <p class="pt-20 ">
+                                            <button class="btn1" onclick="login()">Login</button>
+                                        </p>
+
+                                        <p class=" text-center">
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                        </p>
+
+                                        <p class="pt15 text-center">
+                                            Don't have an account? <a class="db-479" href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                        </p>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- Login -->
+        <!-- model for forgot password start -->
+        <div class="modal fade login" id="forgotPassword" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content login-frm">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <div class="right-main">
+                            <div class="right-main-inner">
+                                <div class="">
+                                    <div id="forgotbuton"></div> 
+                                    <div class="title">
+                                        <h1 class="ttc">Forgot Password</h1>
+                                    </div>
+                                    <?php
+                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                    echo form_open('profile/forgot_password', $form_attribute);
+                                    ?>
+                                    <div class="form-group">
+                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
+                                        </div>
+                                        <div id="errorlogin"></div> 
+                                    </div>
+
+                                    <p class="pt-20 text-center">
+                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:105px; margin:0px auto;" /> 
+                                    </p>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- model for forgot password end -->
         
         <!-- <footer>        -->
         <?php echo $login_footer ?> 
