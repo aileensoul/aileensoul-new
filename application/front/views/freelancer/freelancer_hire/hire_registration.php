@@ -380,7 +380,8 @@
            #forgot_password .modal-header label{color: #1b8ab9 !important; margin-bottom: 0px;}
            #forgot_password .modal-body label{color: #5b5b5b !important;}
            #forgot_password .submit_btn{text-align:center;}
-
+           .modal-content{padding: 0px !important;width: 560px;}
+            .sign_in p{font-size:14px; margin-bottom:9px;}
 
             /*second*/
 
