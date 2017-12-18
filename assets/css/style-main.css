@@ -1867,7 +1867,7 @@ img{
       font-weight: bold;
 }
 .introduce_button .btn-new1:hover{text-decoration:none;}
-.introduce_button .btn-new1:focus{text-decoration:none;}
+.introduce_button .btn-new1:focus{text-decoration:none;color: white}
 .profile-bnr{position:relative; text-align:center;}
 header.profile-header{background:none; position:absolute; top:0; border-bottom:none;}
 header.profile-header .logo a{color:#5c5c5c;}

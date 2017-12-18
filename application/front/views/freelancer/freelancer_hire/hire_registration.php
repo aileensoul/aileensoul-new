@@ -382,7 +382,16 @@
            #forgot_password .submit_btn{text-align:center;}
            .modal-content{padding: 0px !important;width: 560px;}
             .sign_in p{font-size:14px; margin-bottom:9px;}
-
+            .md-2{
+            width: 450px!important;
+            margin: 0 auto; 
+            top: 50%; position: absolute; left: 50%;
+            -ms-transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);}
+                /*second*/
             /*second*/
 
         </style>

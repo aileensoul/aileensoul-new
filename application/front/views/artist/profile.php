@@ -51,7 +51,7 @@
 
             }
             .btn1:hover{
-                border:2px solid #1b8ab9;
+                border:0px solid #1b8ab9;
                 color:#fff;
                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
                 background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
@@ -384,7 +384,16 @@
            .modal-content{padding: 0px !important;width: 560px;}
             .sign_in p{font-size:14px; margin-bottom:9px;}
 
-            /*second*/
+            .md-2{
+            width: 450px!important;
+            margin: 0 auto; 
+            top: 50%; position: absolute; left: 50%;
+            -ms-transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);}
+                /*second*/
 
         </style>
 </head>
@@ -775,7 +784,7 @@
                         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>  
                         <label style="color: #a0b3b0;">Forgot Password</label>
                     </div>
-                    <div class="modal-body" style="text-align: center;">
+                    <div class="modal-body" style="text-align: center;padding: 15px!important;">
                         <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
                         <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
                         <div id="error2" style="display:block;">
