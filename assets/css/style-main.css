@@ -1820,6 +1820,7 @@ img{
     font-size:14px;
 	color:#9C9999;
 	padding:5px 25px;
+	display: inline-block;
 	text-align:center;
 	display:inline-block;
 	font-weight:bold;
@@ -1838,9 +1839,10 @@ img{
     text-decoration: none;
 }
 .btn-new1{
-	padding:8px 25px;
+	padding:5px 25px;
 	color:#fff;
 	border-radius:4px;
+	display: inline-block;
 	background: #912281; /* Old browsers */
 	background: -moz-linear-gradient(top, #912281 0%, #207cca 0%, #912281 0%, #de5c90 100%); /* FF3.6-15 */
 	background: -webkit-linear-gradient(top, #912281 0%,#207cca 0%,#912281 0%,#de5c90 100%); /* Chrome10-25,Safari5.1-6 */
@@ -1855,6 +1857,12 @@ img{
 	background: linear-gradient(to bottom, #de5c90 0%,#207cca 0%,#de5c90 0%,#912281 100%,#de5c90 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de5c90', endColorstr='#de5c90',GradientType=0 ); /* IE6-9 */
 	text-decoration: none;
+}
+.introduce_button .btn-new1{
+	  letter-spacing: 1.5px !important;
+      font-family: arial; 
+      font-size: 16px;
+      border: 2px solid #912281;
 }
 .profile-bnr{position:relative; text-align:center;}
 header.profile-header{background:none; position:absolute; top:0; border-bottom:none;}
@@ -2026,7 +2034,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.dis-box{padding:0;}
 	.profiles-details h2{padding-bottom:20px;}
 	.profiles-details h2::after {display:none;}
-	.profiles-details p{line-height:1.5;}
+	.profiles-details p{line-height:2;}
 	#onload-Modal .modal-dialog button{top:80px;}
 }
 @media screen and (max-width: 767px) {
@@ -2161,8 +2169,8 @@ header.profile-header .logo a{color:#5c5c5c;}
 	.site-map .main-inner .middle-main{padding-top:20px;}
 	.mg-left{margin-left: -2px;}
 	.about-us p{margin-bottom: 15px;}
-	.profiles-details .top-detail{width:90%;}
-	.profiles-details h2{font-size:22px;}
+	.profiles-details .top-detail{width:100%;padding: 0px;}
+	.profiles-details h2{font-size:19px;margin-top: 0px;}
 	.right-header{padding-top:15px;}
 	.profile-bnr{padding-top:100px;}
 
