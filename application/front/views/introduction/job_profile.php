@@ -110,6 +110,9 @@
 								<p>To promote seamless communication between you and the recruiter, Aileensoul has an in-built feature lets you view recruiter details (personal as well as company email ids, phone numbers etc. if provided by the recruiter at the time of sign up) and also initiate chat with the hiring executive to clarify doubts and seek additional information about a specific job role or company before you decide to apply for the open position. Apart from interacting with the recruiter regarding a particular job opening, you can also explore the complete list of all the job postings that have been published by him or her on the website to ensure that you do no miss out any career-propelling opportunity that could give your career the desired impetus that it was missing till now.</p>
 							</div>
 						</div>
+                                            
+                                            
+                                            <div class="text-center pb20 introduce_button"><a href="http://localhost/aileensoul-new/login" class="btn-new1">Create Job Profile</a></div>
 					</div>
                 </div>
             </section>
