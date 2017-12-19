@@ -75,7 +75,7 @@ if(IS_CSS_MINIFY == '0'){
 ?>
 
 <?php
-if ($this->uri->segment(1) == 'dashboard') {
+if ($this->uri->segment(1) == 'profiles') {
     ?>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" async></script>-->
     <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-2.0.3.min.js?ver=' . time()); ?>"></script> 

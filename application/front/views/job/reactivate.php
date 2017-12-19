@@ -27,7 +27,7 @@
                      <a href="<?php echo base_url('job/reactivate'); ?>">Yes</a>
                   </div>
                   <div class="reactivate_btn_n">
-                     <a href="<?php echo base_url('dashboard'); ?>">No</a>
+                     <a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>">No</a>
                   </div>
                </div>
             </center>

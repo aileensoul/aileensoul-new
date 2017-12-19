@@ -3,7 +3,7 @@
 class Common extends CI_Model {
 
     function check_login($user_name, $user_password) {
-        $this->db->select("user_id,first_name,last_name,user_email,user_password,status");
+        $this->db->select("user_id,first_name,last_name,user_email,user_password,status,user_slug");
         $this->db->where("user_email", $user_name);
         $this->db->where("user_password", md5($user_password));
         $this->db->where('is_delete', '0');

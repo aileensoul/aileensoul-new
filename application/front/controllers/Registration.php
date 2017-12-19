@@ -14,6 +14,17 @@ class Registration extends CI_Controller {
         $this->load->library('S3');
         //AWS access info end
         include('include.php');
+        
+        //This function is there only one time users slug created after remove it start
+//         $this->db->select('user_id,first_name,last_name');
+//         $res = $this->db->get('user')->result();
+//         foreach ($res as $k => $v) {
+//             $data = array('user_slug' => $this->setuser_slug($v->first_name."-". $v->last_name, 'use_slug', 'user'));
+//             $this->db->where('user_id', $v->user_id);
+//             $this->db->update('user', $data);
+//          }
+        //This function is there only one time users slug created after remove it End
+
     }
 
     //Show main registratin page insert Start
@@ -77,7 +88,7 @@ class Registration extends CI_Controller {
         $ip = $this->input->ip_address();
         // $this->form_validation->set_rules('uname', 'Username', 'required');
 
-        $this->form_validation->set_rules('first_name', 'Firstname', 'required');
+        $this->form_validation->set_rules('first_name', 'Firstname', 'requireds');
         $this->form_validation->set_rules('last_name', 'Lastname', 'required');
         $this->form_validation->set_rules('email_reg', 'Store  email', 'required|valid_email');
         $this->form_validation->set_rules('password_reg', 'Password', 'trim|required');
@@ -112,6 +123,7 @@ class Registration extends CI_Controller {
                         'verify_date' => date('Y-m-d h:i:s', time()),
                         'user_verify' => '0',
                         'user_slider' => '1',
+                        'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
                     );
 
                     $insert_id = $this->common->insert_data_getid($data, 'user');
@@ -119,12 +131,16 @@ class Registration extends CI_Controller {
                 //for getting last insrert id
 
                 if ($insert_id) {
+                    
+                     $user = $this->common->select_data_by_id('user', 'user_id', $insert_id, 'user_slug', '');
                     $this->session->set_userdata('aileenuser', $insert_id);
+                    $this->session->set_userdata('aileenuser_slug', $user[0]['user_slug']);
                     $datavl = "ok";
                     echo json_encode(
                             array(
                                 "okmsg" => $datavl,
                                 "userid" => $insert_id,
+                                "userslug" => $user[0]['user_slug'],
                     ));
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
@@ -536,7 +552,7 @@ class Registration extends CI_Controller {
     }
 
     // login check and email validation start
-    public function check_login() {
+    public function check_login() { 
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
@@ -574,6 +590,7 @@ class Registration extends CI_Controller {
                 echo 'Sorry, user is Inactive.';
             } else {
                 $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
                 $data = 'ok';
             }
         } else if ($email_login == $result[0]['user_email']) {
@@ -681,6 +698,32 @@ class Registration extends CI_Controller {
             echo 'false';
             die();
         }
+    }
+    
+      // CREATE SLUG START
+    public function setuser_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $slugname = $oldslugname = $this->create_slug($slugname);
+        $i = 1;
+        while ($this->compareuser_slug($slugname, $filedname, $tablename, $notin_id) > 0) {
+            $slugname = $oldslugname . '-' . $i;
+            $i++;
+        }return $slugname;
+    }
+
+    public function compareuser_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $this->db->where($filedname, $slugname);
+        if (isset($notin_id) && $notin_id != "" && count($notin_id) > 0 && !empty($notin_id)) {
+            $this->db->where($notin_id);
+        }
+        $num_rows = $this->db->count_all_results($tablename);
+        return $num_rows;
+    }
+
+    public function create_slug($string) {
+        $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower(stripslashes($string)));
+        $slug = preg_replace('/[-]+/', '-', $slug);
+        $slug = trim($slug, '-');
+        return $slug;
     }
 
 }

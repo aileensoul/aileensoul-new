@@ -76,7 +76,10 @@ class Login extends CI_Controller {
                     }
 
                     $this->session->set_userdata('aileenuser', $user_check[0]['user_id']);
-                    redirect('dashboard', 'refresh');
+                    $this->session->set_userdata('aileenuser_slug', $user_check[0]['user_slug']);
+                    
+                    echo $this->session->userdata('aileenuser_slug', $user_check[0]['user_slug']); die();
+                    //redirect('dashboard', 'refresh');
                 } else {
 
                     if ($para == login) {
