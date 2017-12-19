@@ -59,7 +59,7 @@ class Freelancer extends MY_Controller {
             } else if ($jobdata[0]['free_post_step'] == 7) {
                 redirect('freelancer-work/home', refresh);
             } else {
-                redirect('freelancer-work/registation', refresh);
+                redirect('freelancer-work/registration', refresh);
                 //  redirect('freelancer-work/basic-information', refresh);
                 // $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information',$this->data);
             }
@@ -4884,7 +4884,7 @@ class Freelancer extends MY_Controller {
 
         $this->form_validation->set_rules('firstname', 'Full Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
-        $this->form_validation->set_rules('email_reg', 'EmailId', 'required|valid_email');
+        $this->form_validation->set_rules('email_reg1', 'EmailId', 'required|valid_email');
         $this->form_validation->set_rules('country', 'country', 'required');
         $this->form_validation->set_rules('state', 'state', 'required');
 
@@ -4895,7 +4895,7 @@ class Freelancer extends MY_Controller {
             $data = array(
                 'fullname' => trim($this->input->post('firstname')),
                 'username' => trim($this->input->post('lastname')),
-                'email' => trim($this->input->post('email_reg')),
+                'email' => trim($this->input->post('email_reg1')),
                 'freelancer_hire_slug' => $this->setcategory_slug($first_lastname, 'freelancer_hire_slug', 'freelancer_hire_reg'),
                 'phone' => trim($this->input->post('phoneno')),
                 'country' => trim($this->input->post('country')),

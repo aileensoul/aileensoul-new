@@ -92,4 +92,5 @@ crossorigin="anonymous"></script>-->
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min-1.12.1.js?ver=' . time()); ?>"></script>  
 <!--<script src="<?php // echo base_url('assets/js/fb_login.js?ver='.time());    ?>"></script>-->
 <!--<script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js'); ?>"></script>-->
-<script src="https://www.aileensoul.com:3000/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+<!--<script src="https://www.aileensoul.com:3000/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>-->
+<script src="<?php echo base_url('node_modules/socket.io/node_modules/socket.io-client/socket.io.js'); ?>"></script>

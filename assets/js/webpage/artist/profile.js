@@ -452,6 +452,7 @@ $(document).ready(function () {
                         type: 'POST',
                        // url: '<?php echo base_url() ?>registration/reg_insert',
                         url: base_url + "registration/reg_insert",
+                        dataType: 'json',
                         data: post_data,
                         beforeSend: function ()
                         {
@@ -460,9 +461,10 @@ $(document).ready(function () {
                         },
                         success: function (response)
                         {
-                            if (response == "ok") {
+                            if (response.okmsg == "ok") {  
+                               //  $('#register').modal('hide');
                               //  window.location = "<?php echo base_url()?>artist/profile";
-                                window.location = base_url + "artist/profile";
+                               window.location = base_url + "artist/profile";
 
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
@@ -477,6 +479,14 @@ $(document).ready(function () {
             });
 
 
+function submit_forgot(){
+   
+   var x = document.getElementById("forgot_email").value;
+   if(x != ''){
+    $('#forgotPassword').modal('hide');
+    event.preventDefault();
+  }
+}
 
 $(document).ready(function () { //aletr("hii");
                 /* validation */
@@ -551,20 +561,9 @@ function login()
                             $("#btn1").html('Login');
                         },
                         success: function (response)
-                        {
-                            if (response.data == "ok") {
-                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                if(response.is_artistic == 1){
-
-                                window.location = base_url + "artist/search" +"?skills=" + keyword + "&searchplace=" + keyword1;
-                                //window.location = "<?php echo base_url() ?>artist/search" +"?skills=" + keyword + "&searchplace=" + keyword1;
-                            }
-                            else{
-                                window.location = base_url + "artist/profile";
-                               // window.location = "<?php echo base_url()?>artist/profile";
-                            }
-
-                               
+                        { 
+                            if (response.data == "ok") {                              
+                                window.location = base_url + "artist/profile";                              
                             }else if (response.is_artistic == 1) {
                                 window.location = base_url + "artist/profile";
                                // window.location = "<?php echo base_url() ?>artist/profile";
