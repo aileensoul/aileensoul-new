@@ -174,45 +174,45 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
 
                             <div class="all-profile-box">
                                 <div class="all-pro-head">
-                                    <h4>Profiles<a href="" class="pull-right">All</a></h4>
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
                                 </div>
                                 <ul class="all-pr-list">
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo base_url('job'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="img/i1.png">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="img/i2.jpg">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="img/i3.jpg">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo base_url('business-profile'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="img/i4.jpg">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?php echo base_url('artist'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="img/i5.jpg">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>

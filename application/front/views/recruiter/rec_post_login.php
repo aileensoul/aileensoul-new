@@ -507,23 +507,7 @@
 
                       <?php echo $left_footer; ?>
 
-                                <div class="tablate-potrat-add">
-                                    <div class="fw text-center pt10">
-                                        <script type="text/javascript">
-                                            (function () {
-                                                if (window.CHITIKA === undefined) {
-                                                    window.CHITIKA = {'units': []};
-                                                }
-                                                ;
-                                                var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                                var placement_id = window.CHITIKA.units.length;
-                                                window.CHITIKA.units.push(unit);
-                                                document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                            }());
-                                        </script>
-                                        <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                    </div>
-                                </div>
+                                
 
 
 
@@ -854,23 +838,7 @@
 
                                 </div>
                             </div>
-                            <div class="mob-add">
-                                <div class="fw text-center pt10 pb5">
-                                    <script type="text/javascript">
-                                        (function () {
-                                            if (window.CHITIKA === undefined) {
-                                                window.CHITIKA = {'units': []};
-                                            }
-                                            ;
-                                            var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                            var placement_id = window.CHITIKA.units.length;
-                                            window.CHITIKA.units.push(unit);
-                                            document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                        }());
-                                    </script>
-                                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                </div>
-                            </div>
+                            
                             <!--recommen candidate start-->
                             <?php if (count($recommandedpost) > 0) { ?>
                                 <div class="common-form">
@@ -1195,42 +1163,56 @@
 
                         <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
 
-                            <div class="fw text-center">
-                                <script type="text/javascript">
-                                    (function () {
-                                        if (window.CHITIKA === undefined) {
-                                            window.CHITIKA = {'units': []};
-                                        }
-                                        ;
-                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 300, "height": 250, "sid": "Chitika Default"};
-                                        var placement_id = window.CHITIKA.units.length;
-                                        window.CHITIKA.units.push(unit);
-                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                    }());
-                                </script>
-                                <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                                <div class="fw pt10">
-                                    <a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
+                            <div class="all-profile-box">
+                                <div class="all-pro-head">
+                                    <h4>Profiles<a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="pull-right">All</a></h4>
                                 </div>
+                                <ul class="all-pr-list">
+                                    <li>
+                                        <a href="<?php echo base_url('job'); ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                            </div>
+                                            <span>Job Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                            </div>
+                                            <span>Recruiter Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                            </div>
+                                            <span>Freelance Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('business-profile'); ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                            </div>
+                                            <span>Business Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo base_url('artist'); ?>">
+                                            <div class="all-pr-img">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                            </div>
+                                            <span>Artistic Profile</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
 
                         </div>
-                        <div class="tablate-add">
-
-                            <script type="text/javascript">
-                                    (function () {
-                                        if (window.CHITIKA === undefined) {
-                                            window.CHITIKA = {'units': []};
-                                        }
-                                        ;
-                                        var unit = {"calltype": "async[2]", "publisher": "Aileensoul", "width": 160, "height": 600, "sid": "Chitika Default"};
-                                        var placement_id = window.CHITIKA.units.length;
-                                        window.CHITIKA.units.push(unit);
-                                        document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-                                    }());
-                            </script>
-                            <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-                        </div>
+                       
 
                     </div>
                 </div>
