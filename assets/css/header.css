@@ -2886,6 +2886,8 @@ footer ul li a:hover{
         margin-top: 4px;
     }
     .dropdown-content_hover::before{right: 3px !important;} /*d*/
+    .header-left-menu{margin-top: -45px;}
+    .header ul li{padding: 1px 8px 0px;}
 }
 @media screen and (max-width: 320px) {
     .header2 ul li.active a {
@@ -2910,4 +2912,5 @@ footer ul li a:hover{
     ul#dropdownclass {
         padding-right: 15px; /*d*/
     }
+    .header ul li{padding: 1px 6px 0px;}
 }
