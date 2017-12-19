@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="custom-main">
     <head>
+		<meta charset="utf-8">
         <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
         <meta name="description" content="Aileensoul provides completely free platform for career-related services, such as job, hiring, freelancing, business networking, artistic and much more.">
         <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
@@ -16,7 +17,7 @@
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
-            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+          
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -40,14 +41,12 @@
         ?>
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, 
-              minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
+        <script src="<?php echo base_url('assets/js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script> 
 
     </head>
     <body class="custom-landscape">
@@ -71,7 +70,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-lg-5">
-                            <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
+                             <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
                         </div>
                         <div class="col-lg-1"></div>
                         <div class="col-md-8 col-sm-9 col-lg-6">
@@ -100,7 +99,7 @@
                         <div class="">
                             <div class="col-md-7 col-sm-6">
                                 <div class="top-middle">
-                                    <h3 class="text-effect"><p>We provide platform & opportunities to</p><p>every person in the world to make their career.</p></h3>
+                                    <div class="text-effect"><p>We provide platform & opportunities to</p><p>every person in the world to make their career.</p></div>
                                 </div>
                                 <div class="bottom-middle">
                                     <div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">
@@ -159,7 +158,7 @@
                             <div class="col-md-5 col-sm-6 custom-padd">
                                 <div class="login">
                                     <h4>Join Aileensoul - It's Free</h4>
-                                    <form role="form" name="register_form" id="register_form" method="post">
+                                    <form name="register_form" id="register_form" method="post">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
@@ -183,7 +182,7 @@
                                             <label class="d_o_b"> Date Of Birth :</label>
                                             <span>
                                                 <select tabindex="9" class="day" name="selday" id="selday">
-                                                    <option value="" disabled selected value>Day</option>
+                                                    <option value="" disabled selected>Day</option>
                                                     <?php
                                                     for ($i = 1; $i <= 31; $i++) {
                                                         ?>
@@ -195,7 +194,7 @@
                                             </span>
                                             <span>
                                                 <select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                                    <option value="" disabled selected value>Month</option>
+                                                    <option value="" disabled selected>Month</option>
                                                     <option value="1">Jan</option>
                                                     <option value="2">Feb</option>
                                                     <option value="3">Mar</option>
@@ -212,7 +211,7 @@
                                             </span>
                                             <span>
                                                 <select tabindex="11" class="year" name="selyear" id="selyear">
-                                                    <option value="" disabled selected value>Year</option>
+                                                    <option value="" disabled selected>Year</option>
                                                     <?php
                                                     for ($i = date('Y'); $i >= 1900; $i--) {
                                                         ?>
@@ -226,7 +225,7 @@
                                         <div class="form-group gender-custom">
                                             <span>
                                                 <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                                    <option value="" disabled selected value>Gender</option>
+                                                    <option value="" disabled selected>Gender</option>
                                                     <option value="M">Male</option>
                                                     <option value="F">Female</option>
                                                 </select>
@@ -246,7 +245,7 @@
                     </div>
                 </div>
                 <div style="opacity:0; position:absolute; left:0; top:0; pointer-events:none;">
-                    <script type="text/javascript">
+                    <script>
                         (function () {
                             if (window.CHITIKA === undefined) {
                                 window.CHITIKA = {'units': []};
@@ -258,7 +257,7 @@
                             document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
                         }());
                     </script>
-                    <script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                    <script src="//cdn.chitika.net/getads.js" async></script>
                 </div>
 
                 <div id="myModal" class="modal">
@@ -288,15 +287,15 @@
             </section>
 <?php echo $login_footer ?>
         </div>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-    <!--    <script type="text/javascript">
+        <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+    <!--    <script>
                                                 var loader = document.getElementById('adsense-loader');
                                                 document.getElementById("adsense").appendChild(loader);
         </script>-->
 
         <!--    <div id="adsense-loader" style="display:block;">
                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <script type="text/javascript">
+                <script>
                                                     (adsbygoogle = window.adsbygoogle || []).push({
                                                         google_ad_client: "ca-pub-6060111582812113",
                                                         enable_page_level_ads: true
@@ -310,7 +309,7 @@
                         var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                         var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/webpage/main.js?ver=' . time()); ?>"></script>
     </body>
 </html>
 
