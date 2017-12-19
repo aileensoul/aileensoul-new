@@ -42,16 +42,16 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
     </head>
-    <body class="job-pro">
+    <body class="outer-page">
         <div class="main-inner">
             <div class="profile-bnr">
-                <img style="width:auto;" src="<?php echo base_url('assets/img/fp.jpg'); ?>">
+                <img style="width:auto;" src="<?php echo base_url('assets/img/fp.jpg'); ?>" alt="banner-image">
 
                 <header class="profile-header">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-sm-3 left-header">
-                                <h2 class="logo"><a href="<?php echo base_url(); ?>"><img style="height:30px; width:auto;" src="<?php echo base_url('assets/img/logo2.png'); ?>"></a></h2>
+                                <div class="logo"><a href="<?php echo base_url(); ?>"><img style="height:30px; width:auto;" src="<?php echo base_url('assets/img/logo2.png'); ?>" alt="logo"></a></div>
                             </div>
                             <div class="col-md-8 col-sm-9 right-header">
                                 <div class="btn-right pull-right">
@@ -82,7 +82,7 @@
                         <div class="row dis-box">
                             <h2>Aileensoul - A Dream Come True for Freelancers and Employers Alike</h2>
                             <div class="col-md-6 col-sm-12 pb20">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre1.jpg'); ?>">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre1.jpg'); ?>" alt="freelance-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20">
                                 <p>A rising trend in present times, freelancing has amassed immense popularity in India in the last few years, especially in the aftermath of renewed focus and impetus from the government to launch and implement policies that can help accelerate the growth of the country’s flourishing start-up ecosystem. Additionally, increasing globalisation of the world economy, proliferation of technology and easy access to the Internet have collectively catalysed the blurring of geographical boundaries and prepared the ground for free-flowing communication between people and companies of different nations around the world. This has encouraged the burgeoning of the freelancer community in India and across the globe. <br>
@@ -92,7 +92,7 @@
                         <div class="row dis-box">
                             <h2>How to Register With Aileensoul’s Freelance Profile?</h2>
                             <div class="col-md-6 col-sm-12 pb20 pull-right">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre2.jpg'); ?>">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre2.jpg'); ?>" alt="freelance-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20 pull-left">
                                 <p>Depending on whether you are an individual who is exploring freelance work or an employer who is looking to hire a freelancer for his or her project, you will first have to register yourself with Aileensoul’s platform and then create your freelance profile by choosing the ‘Apply’ or ‘Hire’ option as appropriate for you.<br> 
@@ -104,7 +104,7 @@
                         <div class="row dis-box">
                             <h2>Additional Features of Aileensoul’s Freelance Profile:</h2>
                             <div class="col-md-6 col-sm-12 pb20">
-                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre3.jpg'); ?>">
+                                <img style="width:100%;" src="<?php echo base_url('assets/img/fre3.jpg'); ?>" alt="freelance-image">
                             </div>
                             <div class="col-md-6 col-sm-12 pb20">
                                 <p>Unlike many freelance websites in India that do not allow individuals to communicate with their prospective employers unless the client chooses to initiate a chat for discussion, Aileensoul encourages free-flowing communication between the employer and the prospect by enabling either party to begin a chat as per their need and convenience. <br>
