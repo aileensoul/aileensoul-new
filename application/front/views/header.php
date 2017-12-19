@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-5 col-xs-5 mob-zindex">
                         <div class="logo">
-                            <a tabindex="-200" href="<?php echo base_url('dashboard') ?>">
+                            <a tabindex="-200" href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>">
                                 <p><img src="<?php echo base_url('assets/img/logo-name.png') ?>"></p>
                             </a>
                         </div>
@@ -62,7 +62,7 @@
                                     <li id="a_li">
                                         <a id="alink" class="action-button shadow animate dropbtn_common"  <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add-post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>onclick="return leave_page(5)" <?php } ?>> <span class="all"></span></a>
                                         <div id="acon"  class="dropdown2_content">
-                                            <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
+                                            <div id="atittle">Profiles <a href="<?php echo base_url('profiles/') . $this->session->userdata('aileenuser_slug'); ?>" class="fr">All</a></div>
                                             <div id="abody" class="as">
                                                 <!--AJAX DATA-->
                                             </div>
