@@ -53,7 +53,10 @@ class Registration extends CI_Controller {
         $this->load->view('registration/registration', $this->data);
     }
 
-    public function verify($id = " ") {   //echo $id;die();
+    public function verify($id = " ") {   
+        
+         $user = $this->common->select_data_by_id('user', 'user_id', $id, '*', '');
+         
         $data = array(
             'user_verify' => '1',
             'modified_date' => date('Y-m-d h:i:s', time())
@@ -63,6 +66,7 @@ class Registration extends CI_Controller {
         $updatedata = $this->common->update_data($data, 'user', 'user_id', $id);
         if ($updatedata) {
             $this->session->set_userdata('aileenuser', $id);
+            $this->session->set_userdata('aileenuser_slug', $user[0]['user_slug']);
             redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
             // echo "hi";die();
         }
@@ -294,10 +298,14 @@ class Registration extends CI_Controller {
             //echo $updatedata;die();
 
             if ($updatedata) {
+                
+                $user = $this->common->select_data_by_id('user', 'user_id', $id, '*', '');
+                
                 //$this->load->view('job/job_apply_for');
                 //$this->session->set_flashdata('success', 'Skill updated successfully'); 
                 //redirect('/');
                 $this->session->set_userdata('aileenuser', $user_id);
+                $this->session->set_userdata('aileenuser_slug', $user[0]['user_slug']);
                 redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
@@ -626,6 +634,7 @@ class Registration extends CI_Controller {
                 echo 'Sorry, user is Inactive.';
             } else {
                 $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
+                $this->session->set_userdata('aileenuser_slug', $userinfo[0]['user_slug']);
                 $is_data = 'ok';
             }
         } else if ($email_login == $result[0]['user_email']) {

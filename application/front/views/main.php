@@ -302,7 +302,8 @@
                                                     });
                 </script>
             </div>-->
-        <script>
+        <script>        
+                        var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                         var base_url = '<?php echo base_url(); ?>';
                         var data = <?php echo json_encode($demo); ?>;
                         var data1 = <?php echo json_encode($city_data); ?>;

@@ -76,7 +76,7 @@ $(document).ready(function () {
             {
                 if (response.data == "ok") {
                     $("#btn-login").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                    window.location = base_url + "dashboard";
+                    window.location = base_url + "profiles/" + user_slug;
                 } else if (response.data == "password") {
                     var id = response.id;
                     window.location = base_url + "login?error_msg=2&lwc=" + id;

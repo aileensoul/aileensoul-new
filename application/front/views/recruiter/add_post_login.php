@@ -1017,7 +1017,7 @@
         <script src="<?php echo base_url('assets/js/bootstrap.min.js?ver=' . time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
              <script>
-
+                                                 var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                                                 var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                                                 var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                                                 var base_url = '<?php echo base_url(); ?>';

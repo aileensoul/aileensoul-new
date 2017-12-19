@@ -996,7 +996,7 @@ $(document).ready(function () {
                         }
                     });
                     }else{
-                        window.location = base_url + + "profiles/" + user_slug;
+                        window.location = base_url + "profiles/" + user_slug;
                     }
                   
 
