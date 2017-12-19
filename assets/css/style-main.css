@@ -185,6 +185,7 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
 }
 .login-frm .login form{padding: 16px 60px 15px;}
 body.custom-landscape{padding-bottom:104px;}
+body.outer-page{padding-bottom:104px;}
 /***  header  ***/
 header{
     z-index: 10;
@@ -2052,6 +2053,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	#onload-Modal .modal-dialog button{top:80px;}
 }
 @media screen and (max-width: 767px) {
+	header .col-md-4.col-sm-3{text-align:center;}
 	.footer-ul .mob-none{display:none;}
 	header{}
 	.footer-ul{width:auto;}
