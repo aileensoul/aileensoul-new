@@ -50,7 +50,7 @@
 
             }
             .btn1:hover{
-                border:2px solid #1b8ab9;
+                /*border:2px solid #1b8ab9;*/
                 color:#fff;
                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
                 background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
