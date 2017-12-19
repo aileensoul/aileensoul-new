@@ -2670,7 +2670,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                 $return_html .= $post['post_name'];
                 $return_html .= '</a></h5>';
-                $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
+                $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
                 $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                 $return_html .= '</a></p>
             </div>
@@ -3257,7 +3257,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= '<h5><a href="' . base_url('freelancer-hire/project/' . $text . $cityname1 . '-' . $post['user_id'] . '-' . $post['post_id']) . ' ">';
                     $return_html .= $post['post_name'];
                     $return_html .= '</a></h5>';
-                    $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
+                    $return_html .= '<p><a href="' . base_url('freelancer-hire/employer-details/' . $hireslug) . '">';
                     $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                     $return_html .= '</a></p>
             </div>
@@ -4807,7 +4807,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid.'">view</a></p>
                                             </td>
 					</tr>
                                     </table>';
@@ -5212,7 +5212,7 @@ class Freelancer extends MY_Controller {
 						<span style="display:block; font-size:13px; padding-top: 1px; color: #646464;">' . date('j F') . ' at ' . date('H:i') . '</span>
                                             </td>
                                             <td style="padding:5px;">
-                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '?page=freelancer_hire">view</a></p>
+                                                <p><a class="btn" href="' . BASEURL . 'freelancer-work/freelancer-details/' . $userid . '">view</a></p>
                                             </td>
 					</tr>
                                     </table>';

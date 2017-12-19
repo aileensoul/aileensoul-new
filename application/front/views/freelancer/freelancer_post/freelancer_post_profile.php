@@ -5,7 +5,7 @@
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/freelancer-apply.css?ver=' . time()); ?>">
         <style>
-             /***  commen css  ***/
+            /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
             .pr0{padding-right: 0;} .pr5{padding-right: 5px;} .pr10{padding-right: 10px;} .pr15{padding-right: 15px;} .pr20{padding-right: 20px;}
             .pl0{padding-left: 0;} .pl5{padding-left: 5px;} .pl10{padding-left: 10px;} .pl15{padding-left: 15px;} .pl20{padding-left: 20px;}
@@ -351,37 +351,37 @@
             .no-login .left_side_posrt  a:hover{color: #1b8ab9 !important;}
             .job_active{color: #1b8ab9 !important;}
             .no-login .left_side_posrt .lbpos input{width: 10% !important; }
-             .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
-             .profile-boxProfileCard-cover a{color: black;}
-             .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
-             .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
-             .full-box-module{width: 100%;float: left;}
-             .profile-boxProfileCard{border: none;}
-             .d_o_b{color: #848484;font-size: 10px;font-weight: normal;line-height: 1;margin-bottom: 0;padding-left: 5px; width: 100%;}       
-             .title{text-align:center;margin: 0 auto;border-bottom: 1px solid #c7c7c7;border-top-left-radius: 5px;  border-top-right-radius: 5px;}
-             .title h1{font-family: 'robotoregular';display:inline-block;text-align:center;font-size:38px;color:#1b8ab9;
-            background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position:relative;margin-bottom:20px;text-transform:capitalize;}
-           .sign_in{width:100%; text-align:center;}
-           .sign_in p a:hover{text-decoration:underline;}
-           .login p a:hover{text-decoration:underline; color:#337ab7;}
-           #forgot_password .modal-header label{color: #1b8ab9 !important; margin-bottom: 0px;}
-           #forgot_password .modal-body label{color: #5b5b5b !important;}
-           #forgot_password .submit_btn{text-align:center;}
-           .modal-content{padding: 0px !important;width: 560px;}
+            .profile-boxProfileCard-cover{width: 100%;border:none;padding-left: 10px;float: left;height: auto;}
+            .profile-boxProfileCard-cover a{color: black;}
+            .profile-boxProfileCard-cover a:hover{color: #1b8ab9;}
+            .title h1{font-family: 'robotoregular';font-size: 38px;color: #1b8ab9;background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);background-clip: border-box;-webkit-background-clip: text;-webkit-text-fill-color: transparent;position: relative;margin-bottom: 20px;/*text-transform: capitalize;*/}
+            .full-box-module{width: 100%;float: left;}
+            .profile-boxProfileCard{border: none;}
+            .d_o_b{color: #848484;font-size: 10px;font-weight: normal;line-height: 1;margin-bottom: 0;padding-left: 5px; width: 100%;}       
+            .title{text-align:center;margin: 0 auto;border-bottom: 1px solid #c7c7c7;border-top-left-radius: 5px;  border-top-right-radius: 5px;}
+            .title h1{font-family: 'robotoregular';display:inline-block;text-align:center;font-size:38px;color:#1b8ab9;
+                      background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                      position:relative;margin-bottom:20px;text-transform:capitalize;}
+            .sign_in{width:100%; text-align:center;}
+            .sign_in p a:hover{text-decoration:underline;}
+            .login p a:hover{text-decoration:underline; color:#337ab7;}
+            #forgot_password .modal-header label{color: #1b8ab9 !important; margin-bottom: 0px;}
+            #forgot_password .modal-body label{color: #5b5b5b !important;}
+            #forgot_password .submit_btn{text-align:center;}
+            .modal-content{padding: 0px !important;width: 560px;}
             .sign_in p{font-size:14px; margin-bottom:9px;}
             .md-2{
-            width: 450px!important;
-            margin: 0 auto; 
-            top: 50%; position: absolute; left: 50%;
-            -ms-transform: translate(-50%,-50%);
-            -webkit-transform: translate(-50%,-50%);
-            -moz-transform: translate(-50%,-50%);
-            -o-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%);}
-                /*second*/
+                width: 450px!important;
+                margin: 0 auto; 
+                top: 50%; position: absolute; left: 50%;
+                -ms-transform: translate(-50%,-50%);
+                -webkit-transform: translate(-50%,-50%);
+                -moz-transform: translate(-50%,-50%);
+                -o-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);}
+            /*second*/
             /*second*/
 
         </style>
@@ -389,7 +389,7 @@
     <body class="page-container-bg-solid page-boxed botton_footer">
         <?php echo $header; ?>
         <?php
-       // $returnpage = $_GET['page'];
+        // $returnpage = $_GET['page'];
         if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
             echo $freelancer_hire_header2_border;
         } else {
@@ -557,7 +557,10 @@
                                         <?php if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) { ?>
                                             <a title="Freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details/') . $this->uri->segment(3); ?>">Details</a><?php } else { ?><a title="Freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php echo $this->lang->line("freelancer_details"); ?></a><?php } ?>
                                     </li>
-                                    <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
+                                    <?php
+                                    $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => '1'))->row()->user_id;
+                                    if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'applied-projects') && ($id == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) {
+                                        ?>
                                         <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer-work/saved-projects'); ?>"><?php echo $this->lang->line("saved_projects"); ?></a> </li>
                                         <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied  Post" href="<?php echo base_url('freelancer-work/applied-projects'); ?>"><?php echo $this->lang->line("applied_projects"); ?></a> </li>
                                     <?php } ?>
@@ -575,7 +578,7 @@
                                 $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_type' => '2');
                                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = 'status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 //  echo "<pre>"; print_r($data); die();
-                                if ($userid != $this->uri->segment(3)) {
+                                if ($userid != $id) {
                                     if ($this->uri->segment(3) != "") {
                                         ?>
                                         <div class="flw_msg_btn fr">
@@ -611,7 +614,7 @@
                                                 <li>
                                                     <input type="hidden" id="<?php echo 'hideenpostid'; ?>" value= "<?php echo $_GET['page']; ?>">
                                                     <?php
-                                                  //  $returnpage = $_GET['page'];
+                                                    //  $returnpage = $_GET['page'];
                                                     if ($freelancerpostdata['0']['user_id'] != $this->session->userdata('aileenuser')) {
                                                         ?>
                                                         <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
@@ -1473,7 +1476,7 @@
                             <div id="popup-form">
                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));           ?>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));            ?>
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
@@ -1482,7 +1485,7 @@
                                     </div>
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                                <?php //echo form_close();           ?>
+                                <?php //echo form_close();            ?>
                             </div>
                         </span>
                     </div>
@@ -1490,7 +1493,7 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-      <!-- register -->
+        <!-- register -->
 
         <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
@@ -1520,7 +1523,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                            
+
                                         </div>
                                         <div class="form-group dob">
                                             <label class="d_o_b"> Date Of Birth :</label>
@@ -1605,8 +1608,8 @@
             </div>
         </div>
         <!-- register -->
-        
-                <!-- Login  -->
+
+        <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content login-frm">
