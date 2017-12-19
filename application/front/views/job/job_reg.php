@@ -50,19 +50,19 @@
 
             }
             .btn1:hover{
-                border:2px solid #1b8ab9;
+                /*border:2px solid #1b8ab9;*/
                 color:#fff;
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
-                background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-                background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%);
-                background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-                background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%); 
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac))!important; 
+                background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%)!important; 
+                background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%)!important;
+                background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%)!important; 
+                background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%)!important; 
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 )!important; 
 
             }
-
+            
             .btn1:focus{
-                opacity:0.6;
+                opacity:1;
             }
 
             .btn2{
@@ -393,15 +393,26 @@
             -o-transform: translate(-50%,-50%);
             transform: translate(-50%,-50%);}
                 /*second*/
+             .cus-no-login .dob .error{bottom:-25px;}
+            .cus-no-login .gender-custom .error{bottom:-25px;}
+            .cus-no-login .job-saved-box{margin-bottom:15px;}
+            .cus-no-login .job-post-detail{margin-bottom:0;}
+            .cus-no-login .login p{font-size:14px; margin-bottom:9px;}
+            .cus-no-login .btn1{padding: 5px 20px; font-size:16px !important;}
+            .cus-no-login .inner-form1{width:560px;}
+            .cus-no-login.modal-open{overflow-y:auto;}
 
+            .modal-footer{border: none;}
         </style>
+</head>
+<!-- END HEAD -->
 </head>
 <!-- END HEAD -->
 
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
-<body class="botton_footer">
+<body class="cus-no-login botton_footer">
    <section>
       <div class="user-midd-section " id="paddingtop_fixed">
          <div class="container">
