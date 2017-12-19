@@ -3706,7 +3706,7 @@ class Job extends MY_Controller {
                 $return_html .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $cache_time1;
                 $return_html .= '</a></p>';
-                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                 $return_html .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                 $return_html .= '</a></p>
             </div>
@@ -3920,7 +3920,7 @@ class Job extends MY_Controller {
                 $return_html .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $cache_time1;
                 $return_html .= '</a></p>';
-                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                 $return_html .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                 $return_html .= '</a></p>
             </div>
@@ -4117,7 +4117,7 @@ class Job extends MY_Controller {
                 $return_html .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $cache_time1;
                 $return_html .= '</a></p>';
-                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                 $return_html .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                 $return_html .= '</a></p>
             </div>
@@ -4456,7 +4456,7 @@ class Job extends MY_Controller {
                 $return_html .= '<p><a href = "' . base_url() . 'recruiter/jobpost/' . $text . $cityname . '-' . $post['user_id'] . '-' . $post['post_id'] . '">';
                 $return_html .= $cache_time1;
                 $return_html .= '</a></p>';
-                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                $return_html .= '<p><a href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                 $return_html .= ucwords($cache_time2) . " " . ucfirst($cache_time3);
                 $return_html .= '</a></p>
             </div>
@@ -4762,10 +4762,10 @@ class Job extends MY_Controller {
                     $cache_time1 = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->re_comp_name;
-                    $return_html .= '<a class="job_companyname "  href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '" title="' . $cache_time1 . '">';
+                    $return_html .= '<a class="job_companyname "  href="' . base_url('recruiter/profile/' . $post['user_id']) . '" title="' . $cache_time1 . '">';
                     $out = strlen($cache_time1) > 40 ? substr($cache_time1, 0, 40) . "..." : $cache_time1;
                     $return_html .= $out . '</a></li>';
-                    $return_html .= '<li><a class="display_inline" title="Recruiter Name" href="' . base_url('recruiter/profile/' . $post['user_id'] . '?page=job') . '">';
+                    $return_html .= '<li><a class="display_inline" title="Recruiter Name" href="' . base_url('recruiter/profile/' . $post['user_id']) . '">';
                     $cache_time = $this->db->get_where('recruiter', array(
                                 'user_id' => $post['user_id']
                             ))->row()->rec_firstname;
