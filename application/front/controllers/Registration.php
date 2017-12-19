@@ -14,7 +14,7 @@ class Registration extends CI_Controller {
         $this->load->library('S3');
         //AWS access info end
         include('include.php');
-        
+
         //This function is there only one time users slug created after remove it start
 //         $this->db->select('user_id,first_name,last_name');
 //         $res = $this->db->get('user')->result();
@@ -24,7 +24,6 @@ class Registration extends CI_Controller {
 //             $this->db->update('user', $data);
 //          }
         //This function is there only one time users slug created after remove it End
-
     }
 
     //Show main registratin page insert Start
@@ -53,10 +52,10 @@ class Registration extends CI_Controller {
         $this->load->view('registration/registration', $this->data);
     }
 
-    public function verify($id = " ") {   
-        
-         $user = $this->common->select_data_by_id('user', 'user_id', $id, '*', '');
-         
+    public function verify($id = " ") {
+
+        $user = $this->common->select_data_by_id('user', 'user_id', $id, '*', '');
+
         $data = array(
             'user_verify' => '1',
             'modified_date' => date('Y-m-d h:i:s', time())
@@ -92,7 +91,7 @@ class Registration extends CI_Controller {
         $ip = $this->input->ip_address();
         // $this->form_validation->set_rules('uname', 'Username', 'required');
 
-        $this->form_validation->set_rules('first_name', 'Firstname', 'requireds');
+        $this->form_validation->set_rules('first_name', 'Firstname', 'required');
         $this->form_validation->set_rules('last_name', 'Lastname', 'required');
         $this->form_validation->set_rules('email_reg', 'Store  email', 'required|valid_email');
         $this->form_validation->set_rules('password_reg', 'Password', 'trim|required');
@@ -101,16 +100,24 @@ class Registration extends CI_Controller {
         $this->form_validation->set_rules('selmonth', 'month', 'required');
         $this->form_validation->set_rules('selyear', 'year', 'required');
         $this->form_validation->set_rules('selgen', 'Gender', 'required');
-
+        
+//        echo "<pre>"; print_r($_POST);die();
+        
         $contition_array = array('user_email' => $email_reg, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
         if ($userdata) {
+           
         } else {
+           
             if ($this->form_validation->run() == FALSE) {
+               
                 $this->load->view('registration/registration');
             } else {
+             
                 $userdata = $this->db->get_where('user', array('user_email' => $email_reg))->row()->user_id;
                 if ($userdata) {
+                    
                 } else {
                     $data = array(
                         'first_name' => $this->input->post('first_name'),
@@ -130,13 +137,14 @@ class Registration extends CI_Controller {
                         'user_slug' => $this->setuser_slug($this->input->post('first_name') . '-' . $this->input->post('last_name'), 'user_slug', 'user'),
                     );
 
+                      
                     $insert_id = $this->common->insert_data_getid($data, 'user');
                 }
                 //for getting last insrert id
 
                 if ($insert_id) {
-                    
-                     $user = $this->common->select_data_by_id('user', 'user_id', $insert_id, 'user_slug', '');
+
+                    $user = $this->common->select_data_by_id('user', 'user_id', $insert_id, 'user_slug', '');
                     $this->session->set_userdata('aileenuser', $insert_id);
                     $this->session->set_userdata('aileenuser_slug', $user[0]['user_slug']);
                     $datavl = "ok";
@@ -298,9 +306,9 @@ class Registration extends CI_Controller {
             //echo $updatedata;die();
 
             if ($updatedata) {
-                
+
                 $user = $this->common->select_data_by_id('user', 'user_id', $id, '*', '');
-                
+
                 //$this->load->view('job/job_apply_for');
                 //$this->session->set_flashdata('success', 'Skill updated successfully'); 
                 //redirect('/');
@@ -378,7 +386,7 @@ class Registration extends CI_Controller {
                     $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
                     if ($updatdata) {
 
-                       redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
+                        redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
                         $this->session->flashdata('success', 'Update Successfully!!');
                     } else {
                         $this->session->flashdata('error', 'Your Password not Edited');
@@ -560,7 +568,7 @@ class Registration extends CI_Controller {
     }
 
     // login check and email validation start
-    public function check_login() { 
+    public function check_login() {
         $email_login = $this->input->post('email_login');
         $password_login = $this->input->post('password_login');
 
@@ -586,13 +594,13 @@ class Registration extends CI_Controller {
         $recdata = $recdata[0]['total'];
         //CHECK USER HAVE RECRUITER PROFILE END
 
-      if($this->session->userdata('searchkeyword')){
+        if ($this->session->userdata('searchkeyword')) {
             $this->session->unset_userdata('searchkeyword');
         }
-         if($this->session->userdata('searchplace')){
+        if ($this->session->userdata('searchplace')) {
             $this->session->unset_userdata('searchplace');
         }
-        
+
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
@@ -614,7 +622,7 @@ class Registration extends CI_Controller {
                     "id" => $id,
                     "jobuser" => $jobuser,
                     "freelancerapply" => $freelancer_apply_user,
-                    "recuser"=>$recdata,
+                    "recuser" => $recdata,
         ));
     }
 
@@ -708,8 +716,8 @@ class Registration extends CI_Controller {
             die();
         }
     }
-    
-      // CREATE SLUG START
+
+    // CREATE SLUG START
     public function setuser_slug($slugname, $filedname, $tablename, $notin_id = array()) {
         $slugname = $oldslugname = $this->create_slug($slugname);
         $i = 1;
