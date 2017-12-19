@@ -1191,7 +1191,7 @@ class Recruiter extends MY_Controller {
 
         if ($update) {
             $this->session->set_flashdata('success', 'You are deactivate successfully.');
-            redirect('dashboard', 'refresh');
+            redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
         } else {
             $this->session->flashdata('error', 'Sorry!! Your are not deactivate!!');
             redirect('recruiter', 'refresh');
@@ -1547,7 +1547,7 @@ class Recruiter extends MY_Controller {
 
                 if (file_exists($imagee) && $row['job_user_image'] != '') {
 
-                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['slug'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
+                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['slug'] . '" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                     $postdata .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $row['job_user_image'] . '" alt="' . $row[0]['fname'] . ' ' . $row[0]['lname'] . '">';
                     $postdata .= '</a>';
                 } else {
@@ -1559,7 +1559,7 @@ class Recruiter extends MY_Controller {
                     $b = $row['lname'];
                     $acr1 = substr($b, 0, 1);
 
-                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['slug'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
+                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['slug'] . '" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                     $postdata .= '<div class="post-img-profile">';
                     $postdata .= '' . ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)) . '';
 
@@ -1573,7 +1573,7 @@ class Recruiter extends MY_Controller {
                 $postdata .= '<div class="designation_rec fl">';
                 $postdata .= '<ul>';
                 $postdata .= '<li>';
-                $postdata .= '<a  class="post_name" href="' . base_url() . 'job/resume/' . $row['slug'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
+                $postdata .= '<a  class="post_name" href="' . base_url() . 'job/resume/' . $row['slug'] . '" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                 $postdata .= '' . ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])) . '</a>';
                 $postdata .= '</li>';
 
@@ -2708,7 +2708,7 @@ class Recruiter extends MY_Controller {
                 if (file_exists($imageee) && $p['job_user_image'] != '') {
 
 
-                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
+                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
                                     <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
                 } else {
@@ -2718,7 +2718,7 @@ class Recruiter extends MY_Controller {
                     $b = $p['lname'];
                     $acr1 = substr($b, 0, 1);
 
-                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">';
+                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '">';
                     $return_html .= '<div class="post-img-profile">' . ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)) . '</div>';
                     $return_html .= '</a>';
                 }
@@ -2728,7 +2728,7 @@ class Recruiter extends MY_Controller {
                                     <ul>
                                         <li>';
                 if ($this->session->userdata('aileenuser')) {
-                    $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '">';
+                    $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="' . base_url('job/resume/' . $p['slug'] . '') . '">';
                 } else {
                     $return_html .= '<a style="font-size: 19px;font-weight: 600;" class="post_name" href="javascript:void(0)" onClick="login_profile()">';
                 }
@@ -3205,11 +3205,11 @@ class Recruiter extends MY_Controller {
 
                     $imageee = $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'];
                     if (file_exists($imageee) && $rec['job_user_image'] != '') {
-                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
+                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
                         $return_html .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $rec['job_user_image'] . '" alt="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '"></a>';
                     } else {
 
-                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
+                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
 
                         $a = $rec['fname'];
                         $acr = substr($a, 0, 1);
@@ -3228,7 +3228,7 @@ class Recruiter extends MY_Controller {
                                                                         <li>';
                     // $return_html .=$rec['fname'].''.$rec['lname'];
 
-                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $rec['fname'] . ' ' . $rec['lname'] . '">';
+                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['slug'] . '" title="' . $rec['fname'] . ' ' . $rec['lname'] . '">';
                     $return_html .= $rec['fname'] . ' ' . $rec['lname'] . '</a>';
                     $return_html .= '</li><li style="display: block;">
                                     <a class="post_designation"  href="javascript:void(0)" title="' . $rec['designation'] . '">';
