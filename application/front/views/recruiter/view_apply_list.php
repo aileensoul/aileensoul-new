@@ -68,7 +68,7 @@
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                       if ($row['job_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $row['job_user_image']; ?>" alt="" >
+                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $row['job_user_image']; ?>" alt="<?php echo $row['job_user_image']; ?>" >
 
                                                                            
 
@@ -604,7 +604,7 @@
                                                 <div class="art-img-nn">
                                                     <div class="art_no_post_img">
 
-                                                        <img src="<?php echo base_url('assets/img/job-no1.png') ?>">
+                                                        <img src="<?php echo base_url('assets/img/job-no1.png') ?>" alt="job-no1.png">
 
                                                     </div>
                                                     <div class="art_no_post_text">

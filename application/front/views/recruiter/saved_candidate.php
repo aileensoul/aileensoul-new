@@ -74,12 +74,12 @@
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                         if ($info && $image[0]['profile_background'] != '') {
                             ?>
-                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $image[0]['profile_background']; ?>" />
                      <?php
                         } else {
                             ?>
 <div class="bg-images no-cover-upload">
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" alt="<?php echo "NOIMAGE" ?>" />
                              </div>
                              <?php }
                              ?>
@@ -111,7 +111,7 @@
                          $s3 = new S3(awsAccessKey, awsSecretKey);
                          $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                       if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
                                 <?php
                             } else {
                                 $a = $recdata[0]['rec_firstname'];
@@ -126,7 +126,7 @@
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '') { ?>
-                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"> Update Profile Picture</a>
+                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>assets/img/cam.png"  alt="<?php echo "cam.png"; ?>"> Update Profile Picture</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -248,7 +248,7 @@
                                 <div class = "job-contact-frnd">
                                     <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
                                 </div>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                             </div>
 
                         </div>
@@ -268,7 +268,7 @@
                   <span class="mes">
                      <div id="popup-form">
 
-                        <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+                        <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" alt="<?php echo "loader.gif"; ?>"/></div>
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="fw">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >

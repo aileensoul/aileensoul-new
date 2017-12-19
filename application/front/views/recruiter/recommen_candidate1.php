@@ -41,7 +41,7 @@
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                 if ($info && $recdata[0]['profile_background'] != '') {
                                                     ?>
-                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                                                    <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" alt="<?php echo $recdata[0]['profile_background']; ?>"/>
                                                     <?php
                                                 } else {
                                                     ?>
@@ -63,7 +63,7 @@
                                                 $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
                                                 if ($recdata[0]['recruiter_user_image'] != '' && $info) {
                                                     ?>
-                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                                    <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="<?php echo $recdata[0]['recruiter_user_image']; ?>" >
                                                     <?php
                                                 } else {
 
@@ -156,7 +156,7 @@
                                     <div class = "job-contact-frnd">
                                         <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
                                     </div>
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" alt="<?php echo 'LOADERIAMGE'; ?>"/></div>
                                 </div>
 
                             </div>
@@ -172,7 +172,7 @@
                                     <li>
                                         <a href="<?php echo base_url('job'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i1.jpg'); ?>" alt="<?php echo 'JOBIAMGE'; ?>">
                                             </div>
                                             <span>Job Profile</span>
                                         </a>
@@ -180,7 +180,7 @@
                                     <li>
                                         <a href="<?php echo base_url('recruiter'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i2.jpg'); ?>" alt="<?php echo 'RECIAMGE'; ?>">
                                             </div>
                                             <span>Recruiter Profile</span>
                                         </a>
@@ -188,7 +188,7 @@
                                     <li>
                                         <a href="<?php echo base_url('freelancer'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i3.jpg'); ?>" alt="<?php echo 'FREELANCERIAMGE'; ?>">
                                             </div>
                                             <span>Freelance Profile</span>
                                         </a>
@@ -196,7 +196,7 @@
                                     <li>
                                         <a href="<?php echo base_url('business-profile'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i4.jpg'); ?>" alt="<?php echo 'BUSIAMGE'; ?>">
                                             </div>
                                             <span>Business Profile</span>
                                         </a>
@@ -204,7 +204,7 @@
                                     <li>
                                         <a href="<?php echo base_url('artist'); ?>">
                                             <div class="all-pr-img">
-                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>">
+                                                <img src="<?php echo base_url('assets/img/i5.jpg'); ?>" alt="<?php echo 'ARTIAMGE'; ?>">
                                             </div>
                                             <span>Artistic Profile</span>
                                         </a>
