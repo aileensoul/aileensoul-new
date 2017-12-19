@@ -8,7 +8,7 @@
       <?php
         if($_SERVER['HTTP_HOST'] != "localhost"){
         ?>
-        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
