@@ -51,4 +51,6 @@ class Goverment extends MY_Controller {
          $this->data['govjob_post'] = $govjob_post = $this->common->select_data_by_condition('gov_post', $contition_array, $data = 'id,title,category_id,post_name,no_vacancies,pay_scale,job_location,req_exp,post_image,sector,eligibility,last_date,description,apply_link,created_date', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $this->load->view('goverment/gov_all_post_detail', $this->data);     
     }
+  
+    
 }
