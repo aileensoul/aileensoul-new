@@ -30,6 +30,18 @@ class Userslug extends MY_Controller {
     public function index($id = " ") {
     
     }
+    
+     public function user_slug() { 
+               $this->db->select('user_id,first_name,last_name');
+         $res = $this->db->get('user')->result();
+         foreach ($res as $k => $v) {
+             $data = array('user_slug' => $this->setuser_slug($v->first_name."-". $v->last_name, 'user_slug', 'user'));
+             $this->db->where('user_id', $v->user_id);
+             $this->db->update('user', $data);
+          }
+          
+          
+    }
 
      // CREATE SLUG START
     public function setuser_slug($slugname, $filedname, $tablename, $notin_id = array()) {

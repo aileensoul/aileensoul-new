@@ -6,18 +6,18 @@
         <?php
         if (IS_REC_CSS_MINIFY == '0') {
             ?>
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/1.10.3.jquery-ui.css'); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/recruiter.css'); ?>">
             <?php
         } else {
             ?>
             <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css_min/recruiter/rec_common_header.min.css?ver=' . time()); ?>">
         <?php } ?>
 <!--   <script type="text/javascript" language="javascript">
-                                            var aax_size = '300x250';
-                                            var aax_pubname = 'aileensoul-21';
-                                            var aax_src = '302';
-                                </script>-->
+                                        var aax_size = '300x250';
+                                        var aax_pubname = 'aileensoul-21';
+                                        var aax_src = '302';
+                            </script>-->
 
 <!--<script type="text/javascript">
   var oldDocumentWrite = document.write
@@ -37,7 +37,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
 
 </script>-->
 
-    
+
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -58,35 +58,37 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                                         <div class="profile-boxProfileCard-cover"> 
                                             <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo base_url('recruiter/profile'); ?>" tabindex="-1" 
                                                aria-hidden="true" rel="noopener">
-<div class="bg-images no-cover-upload"> 
-                                                <?php
-                                                 $image_ori = $recdata[0]['profile_background'];
-                         $filename = $this->config->item('rec_bg_main_upload_path') . $recdata[0]['profile_background'];
-                         $s3 = new S3(awsAccessKey, awsSecretKey);
-                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                        if ($info && $recdata[0]['profile_background'] != '') {
-                            ?>
-                           <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
-                     <?php
-                                                } else {
-                                                    ?>
-                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
+                                                <div class="bg-images no-cover-upload"> 
                                                     <?php
-                                                }
-                                                ?>
-</div>
+                                                    $image_ori = $recdata[0]['profile_background'];
+                                                    $filename = $this->config->item('rec_bg_main_upload_path') . $recdata[0]['profile_background'];
+                                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                    if ($info && $recdata[0]['profile_background'] != '') {
+                                                        ?>
+                                                        <img src = "<?php echo REC_BG_MAIN_UPLOAD_URL . $recdata[0]['profile_background']; ?>" name="image_src" id="image_src" />
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
                                             </a>
                                         </div>
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
                                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                                                    <?php  $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
-                         $s3 = new S3(awsAccessKey, awsSecretKey);
-                         $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
-                      if ($recdata[0]['recruiter_user_image'] != '' && $info) { ?>
-                     <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
-                                <?php
+                                                    <?php
+                                                    $filename = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                                                    $s3 = new S3(awsAccessKey, awsSecretKey);
+                                                    $this->data['info'] = $info = $s3->getObjectInfo(bucket, $filename);
+                                                    if ($recdata[0]['recruiter_user_image'] != '' && $info) {
+                                                        ?>
+                                                        <img src="<?php echo REC_PROFILE_THUMB_UPLOAD_URL . $recdata[0]['recruiter_user_image']; ?>" alt="" >
+                                                        <?php
                                                     } else {
 
 
@@ -97,7 +99,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                                                         $acr1 = substr($b, 0, 1);
                                                         ?>
                                                         <div class="post-img-profile">
-                                                            <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
+    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
 
                                                         </div>
 
@@ -111,7 +113,7 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                                                     <a href="<?php echo site_url('recruiter/profile'); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
                                                 </span>
 
-                                                <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;  ?>
+                                                        <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;   ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a href="<?php echo site_url('recruiter/profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
                                                         <?php
@@ -135,26 +137,13 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                                         </div>
                                     </div>                             
                                 </div>
-							<div class="tablate-potrat-add">
-								<div class="fw text-center add-border">
-									<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-								</div>
-							</div>
-                                
-            <?php echo $left_footer; ?>
-                                <?php// if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
-                                    <div  class="add-post-button">
-                                        <a class="btn btn-3 btn-3b"  href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
-                                    </div> <?php //} ?>
+
+
+<?php echo $left_footer; ?>
+<?php // if (($candidatejob != NULL) || ($recruiterdata != NULL)) {  ?>
+                                <div  class="add-post-button">
+                                    <a class="btn btn-3 btn-3b"  href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                                </div> <?php //}  ?>
                                 <div id="khyati"></div>
                             </div>
 
@@ -165,74 +154,80 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
                         <div class="custom-right-art mian_middle_post_box animated fadeInUp">
                             <div class="common-form ">
                                 <div class="job-saved-box">
-                                    <?php //if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
-                                        <h3>
-                                            Recommended Candidate
-                                        </h3>
-                                    <?php// } ?>
+<?php //if (($candidatejob != NULL) || ($recruiterdata != NULL)) {  ?>
+                                    <h3>
+                                        Recommended Candidate
+                                    </h3>
+<?php // }  ?>
                                     <div class="contact-frnd-post">
-										<div class="mob-add">
-								<div class="fw text-center pt10 pb5">
-									<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-									<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-								</div>
-							</div>
-                                         <div class = "job-contact-frnd">
-                                       <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
-                                         </div>
-                                       <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver='.time()) ?>" /></div>
+
+                                        <div class = "job-contact-frnd">
+                                            <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
+                                        </div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('assets/images/loader.gif?ver=' . time()) ?>" /></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-						
-						<div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
-					
-							<div class="fw text-center">
-								<script type="text/javascript">
-									  ( function() {
-										if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-										var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":300,"height":250,"sid":"Chitika Default"};
-										var placement_id = window.CHITIKA.units.length;
-										window.CHITIKA.units.push(unit);
-										document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-									}());
-									</script>
-								<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-								<div class="fw pt10">
-									<a href="https://www.chitika.com/publishers/apply?refid=aileensoul"><img src="https://images.chitika.net/ref_banners/300x250_hidden_ad.png" /></a>
-								</div>
-							</div>
-							
-						</div>
-						<div class="tablate-add">
 
-                            <script type="text/javascript">
-						  ( function() {
-							if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-							var unit = {"calltype":"async[2]","publisher":"Aileensoul","width":160,"height":600,"sid":"Chitika Default"};
-							var placement_id = window.CHITIKA.units.length;
-							window.CHITIKA.units.push(unit);
-							document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-						}());
-						</script>
-						<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+                        <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
+
+                            <div class="all-profile-box">
+                                <div class="all-pro-head">
+                                    <h4>Profiles<a href="" class="pull-right">All</a></h4>
+                                </div>
+                                <ul class="all-pr-list">
+                                    <li>
+                                        <a href="#">
+                                            <div class="all-pr-img">
+                                                <img src="img/i1.png">
+                                            </div>
+                                            <span>Job Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="all-pr-img">
+                                                <img src="img/i2.jpg">
+                                            </div>
+                                            <span>Recruiter Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="all-pr-img">
+                                                <img src="img/i3.jpg">
+                                            </div>
+                                            <span>Freelance Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="all-pr-img">
+                                                <img src="img/i4.jpg">
+                                            </div>
+                                            <span>Business Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="all-pr-img">
+                                                <img src="img/i5.jpg">
+                                            </div>
+                                            <span>Artistic Profile</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
                         </div>
-					
-					</div>
+
+                    </div>
                 </div>
             </div>
             <!-- MIDDLE SECTION END -->
         </section>
-        
+
         <!-- END CONTAINER -->
 
         <!-- BEGIN FOOTER -->
@@ -250,41 +245,41 @@ $.getScript( "http://www.googleadservices.com/pagead/conversion.js", function() 
         </div>
         <!-- BID MODAL END-->
         <!-- START FOOTER -->
-        
-            <?php echo $footer; ?>
-        
+
+<?php echo $footer; ?>
+
         <!-- END FOOTER -->
-        
+
 
         <!-- FIELD VALIDATION JS START -->
-        
-        
-        
-        
+
+
+
+
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
-             //   var data1 = <?php //echo json_encode($de); ?>;
-            //   var data = <?php //echo json_encode($demo); ?>;
+            //   var data1 = <?php //echo json_encode($de);  ?>;
+            //   var data = <?php //echo json_encode($demo);  ?>;
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
 
-       
+
 
         <!-- FIELD VALIDATION JS END -->
-         <?php
+        <?php
         if (IS_REC_JS_MINIFY == '0') {
             ?>
-           <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/recommen_candidate.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/search.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('assets/js/webpage/recruiter/recommen_candidate.js'); ?>"></script>
             <?php
         } else {
             ?>
             <script type="text/javascript"  src="<?php echo base_url('assets/js_min/webpage/recruiter/recommen_candidate.min.js?ver=' . time()); ?>"></script>
-        <?php } ?>
-       
-       
+<?php } ?>
+
+
 
 
     </body>
