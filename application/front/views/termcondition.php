@@ -43,7 +43,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/blog.css'); ?>">
     </head>
-    <body class="custom-tp turmcon-cust ">
+    <body class="custom-tp turmcon-cust outer-page">
         <div class="main-inner">
             <header class="terms-con bg-none">
                 <div class="overlaay">

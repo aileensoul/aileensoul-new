@@ -48,7 +48,7 @@
         <div class="main-inner">
             <?php echo $login_header; ?>
 			<div class="contact-banner">
-				<img src="<?php echo base_url('assets/img/contactus.jpg'); ?>">
+				<img src="<?php echo base_url('assets/img/contactus.jpg'); ?>" alt="contactus">
 			</div>
             <section class="middle-main">
                 <div class="container">
@@ -59,7 +59,7 @@
                                 <div class="title">
                                     <h1>Contact us</h1>
                                 </div>
-                                <form role="form" name="contact_form" id="contact_form" method="post">
+                                <form name="contact_form" id="contact_form" method="post">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
@@ -79,7 +79,7 @@
                                         <input type="text" name="contact_subject" id="contact_subject" class="form-control input-sm" placeholder="Subject*">
                                     </div>
                                     <div class="form-group">
-                                        <textarea type="text" id="contact_message" name="contact_message" class="form-control" placeholder="Message*"></textarea>
+                                        <textarea id="contact_message" name="contact_message" class="form-control" placeholder="Message*"></textarea>
 
                                     </div>
                                     <p class="pb15">
@@ -99,10 +99,10 @@
 								<h1>Reach Us</h1>
 							</div>
 							<div class="fw p20">
-								<table width="100%" class="con-address">
+								<table style="width:100%;" class="con-address">
 									<tr>
 										<td><h4>Address:</h4></td>
-										<td valign="middle">
+										<td style="vertical-align:middle;" >
 											<address>
 											Aileensoul Technologies Private Limited<br>
 											Satellite,
@@ -114,7 +114,7 @@
 									<tr><td colspan="2" style="padding:10px;"></td></tr>
 								</table>
 								
-								<table width="100%" class="con-address">
+								<table style="width:100%;" class="con-address">
 									<tr><td colspan="2" style="padding:10px;"></td></tr>
 									<tr>
 										<td><h4>Mail Us:</h4></td>
