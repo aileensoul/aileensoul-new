@@ -2052,6 +2052,7 @@ header.profile-header .logo a{color:#5c5c5c;}
 	#onload-Modal .modal-dialog button{top:80px;}
 }
 @media screen and (max-width: 767px) {
+	header .col-md-4.col-sm-3{text-align:center;}
 	.footer-ul .mob-none{display:none;}
 	header{}
 	.footer-ul{width:auto;}
