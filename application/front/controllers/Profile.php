@@ -104,7 +104,7 @@ class Profile extends CI_Controller {
    if($updatdata ){ //echo"falguni"; die();
            
               $this->session->set_flashdata('success', 'Profile information updated successfully');
-             redirect('dashboard', 'refresh');
+             redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
        }else{
                 
                 $this->session->flashdata('error','Sorry!! Your data not updated');
@@ -288,7 +288,7 @@ class Profile extends CI_Controller {
      
     $updatdata =   $this->common->update_data($data,'user','user_id',$abc);
     $this->session->set_userdata('aileenuser', $abc);
-    redirect('dashboard', refresh); 
+    redirect('profiles/' . $this->session->userdata('aileenuser_slug'), refresh); 
   }
 
      public function sendEmail($app_name = '', $app_email = '', $to_email = '', $subject = '', $mail_body = '') {

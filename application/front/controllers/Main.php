@@ -98,7 +98,7 @@ class Main extends CI_Controller {
         $this->load->view('main', $this->data);
 
         if ($this->session->userdata('aileenuser')) {
-            redirect('dashboard', 'refresh');
+            redirect('profiles/' . $this->session->userdata('aileenuser_slug'), 'refresh');
         }
     }
     //job user end
