@@ -964,7 +964,7 @@ $(document).ready(function () {
                     return regexpr.test(value);
                 }, "Email Should be in Small Character");
 
-                $("#register_form").validate({
+                $("#register_form").validate({ 
                     rules: {
                         first_name: {
                             required: true,
