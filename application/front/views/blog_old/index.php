@@ -32,6 +32,7 @@
             <?php
         }
         ?>
+            <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <style type="text/css">
             footer > .container{border:1px solid transparent!important;}
             .footer{border:1px solid #d9d9d9;}

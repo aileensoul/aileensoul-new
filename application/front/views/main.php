@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" class="custom-main">
     <head>
-		<meta charset="utf-8">
+        <meta charset="utf-8">
         <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
         <meta name="description" content="Aileensoul provides completely free platform for career-related services, such as job, hiring, freelancing, business networking, artistic and much more.">
         <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
@@ -17,7 +17,7 @@
         <?php
         if ($_SERVER['HTTP_HOST'] != "localhost") {
             ?>
-          
+
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r;
@@ -39,9 +39,10 @@
             <?php
         }
         ?>
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
         <link rel="icon" href="<?php echo base_url('assets/images/favicon.png?ver=' . time()); ?>">
-		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style-main.css?ver=' . time()); ?>">
@@ -70,7 +71,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-lg-5">
-                             <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
+                            <a href="<?php echo base_url(); ?>"><img src="<?php echo base_url('assets/img/logo-name.png') ?>" alt="logo"></a>
                         </div>
                         <div class="col-lg-1"></div>
                         <div class="col-md-8 col-sm-9 col-lg-6">
@@ -279,13 +280,13 @@
                                 <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" /> 
                             </div>
                         </div>
-<?php echo form_close(); ?>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
 
 
             </section>
-<?php echo $login_footer ?>
+            <?php echo $login_footer ?>
         </div>
         <script src="<?php echo base_url('assets/js/jquery.validate.min.js?ver=' . time()) ?>"></script>
     <!--    <script>
@@ -302,7 +303,7 @@
                                                     });
                 </script>
             </div>-->
-        <script>        
+        <script>
                         var user_slug = '<?php echo $this->session->userdata('aileenuser_slug'); ?>';
                         var base_url = '<?php echo base_url(); ?>';
                         var data = <?php echo json_encode($demo); ?>;

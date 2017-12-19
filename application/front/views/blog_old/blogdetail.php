@@ -30,6 +30,7 @@
         <?php
         }
         ?>
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
       <!-- Open Graph data -->
       <meta property="og:title" content="<?php echo $blog_detail[0]['title']; ?>" />
       <meta  property="og:type" content="Blog" />
